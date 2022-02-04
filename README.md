@@ -1,1 +1,1 @@
-This repository contains the result of the toolchain producing the SEMIC specifications.
+This directory contains the static content for the generated website.
