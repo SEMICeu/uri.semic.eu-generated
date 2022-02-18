@@ -4,14 +4,15 @@
 @prefix prov: <http://www.w3.org/ns/prov#> .
 @prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
 @prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
-@prefix schema: <http://schema.org/> .
-@prefix schemas: <https://schema.org/> .
 @prefix shacl: <http://www.w3.org/ns/shacl#> .
 @prefix skos: <http://www.w3.org/2004/02/skos/core#> .
 @prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
 
-<https://semiceu.github.io//shacl/core-public-organisation-ap-SHACL_en> <https://semiceu.github.io//shacl/core-public-organisation-ap-SHACL_enshapes> <https://semiceu.github.io//shacl/core-public-organisation-ap-SHACL_en#AdministrativeTerritorialUnitShape>,
+<https://semiceu.github.io//shacl/core-public-organisation-ap-SHACL_en> <https://semiceu.github.io//shacl/core-public-organisation-ap-SHACL_enshapes> <https://semiceu.github.io//shacl/core-public-organisation-ap-SHACL_en#ContactPointShape>,
+    <https://semiceu.github.io//shacl/core-public-organisation-ap-SHACL_en#AdministrativeTerritorialUnitShape>,
     <https://semiceu.github.io//shacl/core-public-organisation-ap-SHACL_en#FoundationEventShape>,
+    <https://semiceu.github.io//shacl/core-public-organisation-ap-SHACL_en#ImageObjectShape>,
+    <https://semiceu.github.io//shacl/core-public-organisation-ap-SHACL_en#OpeningHoursSpecificationShape>,
     <https://semiceu.github.io//shacl/core-public-organisation-ap-SHACL_en#PublicOrganisationShape>,
     <https://semiceu.github.io//shacl/core-public-organisation-ap-SHACL_en#ConceptShape>,
     <https://semiceu.github.io//shacl/core-public-organisation-ap-SHACL_en#IdentifierShape>,
@@ -19,16 +20,13 @@
     <https://semiceu.github.io//shacl/core-public-organisation-ap-SHACL_en#ChangeEventShape>,
     <https://semiceu.github.io//shacl/core-public-organisation-ap-SHACL_en#OrganizationalUnitShape>,
     <https://semiceu.github.io//shacl/core-public-organisation-ap-SHACL_en#OrganizationShape>,
-    <https://semiceu.github.io//shacl/core-public-organisation-ap-SHACL_en#DocumentShape>,
-    <https://semiceu.github.io//shacl/core-public-organisation-ap-SHACL_en#ContactPointShape>,
-    <https://semiceu.github.io//shacl/core-public-organisation-ap-SHACL_en#ImageObjectShape>,
-    <https://semiceu.github.io//shacl/core-public-organisation-ap-SHACL_en#OpeningHoursSpecificationShape> .
+    <https://semiceu.github.io//shacl/core-public-organisation-ap-SHACL_en#DocumentShape> .
 
 <https://semiceu.github.io//shacl/core-public-organisation-ap-SHACL_en#AddressShape> a shacl:NodeShape;
   shacl:closed false;
   shacl:property [
     shacl:datatype rdf:langString;
-    shacl:description "The name or names of a geographic area or locality that groups a number of addressable objects for addressing purposes, without being an administrative unit."@en;
+    shacl:description "The name of a geographic area that groups Addresses."@en;
     shacl:name "address area"@en;
     shacl:path <http://www.w3.org/ns/locn#addressArea>
   ], [
@@ -38,22 +36,22 @@
     shacl:path <http://www.w3.org/ns/locn#addressID>
   ], [
     shacl:class skos:Concept;
-    shacl:description "The name or names of a unit of administration where a Member State has and/or exercises jurisdictional rights, for local, regional and national governance. Level 1 refers to the uppermost administrative unit for the address, almost always a country."@en;
+    shacl:description "The name of the uppermost level of the address, almost always a country."@en;
     shacl:name "administrative unit level 1 (country)"@en;
     shacl:path <http://www.w3.org/ns/locn#adminUnitL1>
   ], [
     shacl:class skos:Concept;
-    shacl:description "The name or names of a unit of administration where a Member State has and/or exercises jurisdictional rights, for local, regional and national governance. Level 1 refers to the uppermost administrative unit for the address, almost always a country."@en;
+    shacl:description "The name of a secondary level/region of the address, usually a county, state or other such area that typically encompasses several localities."@en;
     shacl:name "administrative unit level 2 (country/region/state)"@en;
     shacl:path <http://www.w3.org/ns/locn#adminUnitL2>
   ], [
     shacl:datatype rdf:langString;
-    shacl:description "The complete address written as a formatted string."@en;
+    shacl:description "The complete address written as a string."@en;
     shacl:name "full address"@en;
     shacl:path <http://www.w3.org/ns/locn#fullAddress>
   ], [
     shacl:datatype xsd:string;
-    shacl:description "A number or a sequence of characters which allows a user or an application to interpret, parse and format the locator within the relevant scope. A locator may include more locator designators."@en;
+    shacl:description "A number or sequence of characters that uniquely identifies the locator within the relevant scope."@en;
     shacl:name "locator designator"@en;
     shacl:path <http://www.w3.org/ns/locn#locatorDesignator>
   ], [
@@ -63,22 +61,22 @@
     shacl:path <http://www.w3.org/ns/locn#locatorName>
   ], [
     shacl:datatype xsd:string;
-    shacl:description "The Post Office Box number."@en;
+    shacl:description "A location designator for a postal delivery point at a post office, usually a number."@en;
     shacl:name "post office box"@en;
     shacl:path <http://www.w3.org/ns/locn#poBox>
   ], [
     shacl:datatype xsd:string;
-    shacl:description "The post/zip code of an address. (INSPIRE's definition is \"A code created and maintained for postal purposes to identify a subdivision of addresses and postal delivery points.\")"@en;
+    shacl:description "The code created and maintained for postal purposes to identify a subdivision of addresses and postal delivery points."@en;
     shacl:name "post code"@en;
     shacl:path <http://www.w3.org/ns/locn#postCode>
   ], [
     shacl:datatype rdf:langString;
-    shacl:description """The key postal division of the address, usually the city. (INSPIRE's definition is \"One or more names created and maintained for postal purposes to identify a subdivision of addresses and postal delivery points.) For example, \"Paris\"."""@en;
+    shacl:description "A name created and maintained for postal purposes to identify a subdivision of addresses and postal delivery points."@en;
     shacl:name "post name (city)"@en;
     shacl:path <http://www.w3.org/ns/locn#postName>
   ], [
     shacl:datatype rdf:langString;
-    shacl:description "An address component that represents the name or names of a passage or way through from one location to another. A thoroughfare is not necessarily a road, it might be a waterway or some other feature."@en;
+    shacl:description "The name of a passage or way through from one location to another."@en;
     shacl:name "thoroughfare"@en;
     shacl:path <http://www.w3.org/ns/locn#thoroughfare>
   ];
@@ -92,17 +90,17 @@
   shacl:closed false;
   shacl:property [
     shacl:datatype rdf:langString;
-    shacl:description "A textual description of the event."@en;
+    shacl:description "A textual explanation of the event."@en;
     shacl:name "description"@en;
     shacl:path dc:description
   ], [
     shacl:datatype xsd:dateTime;
-    shacl:description "The time at which the Change Event ended."@en;
+    shacl:description "The time instant when the state of the organisation update was terminated."@en;
     shacl:name "ended at time"@en;
     shacl:path prov:endedAtTime
   ], [
     shacl:class <http://data.europa.eu/m8g/PublicOrganisation>;
-    shacl:description "The original organization property links a Change Event to the Organization that existed before the change. Although the Foundation Event class is defined as a subclass of Change Event, it is inappropriate to use the original organization property with the Foundation Event class."@en;
+    shacl:description "The Organization that existed before the change."@en;
     shacl:name "original organization"@en;
     shacl:path org:originalOrganization
   ], [
@@ -112,7 +110,7 @@
     shacl:path org:resultingOrganization
   ], [
     shacl:datatype xsd:dateTime;
-    shacl:description "The time at which the Change Event started."@en;
+    shacl:description "The time instant when the state of the organisation update was initiated."@en;
     shacl:name "started at time"@en;
     shacl:path prov:startedAtTime
   ];
@@ -125,28 +123,27 @@
 <https://semiceu.github.io//shacl/core-public-organisation-ap-SHACL_en#ContactPointShape> a shacl:NodeShape;
   shacl:closed false;
   shacl:property [
-    shacl:class schemas:OpeningHoursSpecification;
-    shacl:description "The availability restriction property links a Contact Point to details of specific details of its opening hours that override the general case."@en;
+    shacl:class <http://data.europa.eu/m8g/OpeningHoursSpecification>;
+    shacl:description "The time interval during which the Contact Point is not available."@en;
     shacl:name "availability restriction"@en;
-    shacl:path schema:hoursAvailable
+    shacl:path <http://data.europa.eu/m8g/hoursAvailable>
   ], [
     shacl:datatype rdfs:Literal;
-    shacl:description """A property through which an e-mail address for the Public Organisation, or a
-representative of it, can be contacted."""@en;
+    shacl:description "An electronic address through which the Contact Point can be contacted."@en;
     shacl:name "has email"@en;
-    shacl:path schemas:email
+    shacl:path <http://data.europa.eu/m8g/email>
   ], [
     shacl:datatype rdfs:Literal;
-    shacl:description "A property through which a phone number for the Public Organization, or a representative of it, can be contacted."@en;
+    shacl:description "A telephone number through which the Contact Point can be contacted."@en;
     shacl:name "has telephone"@en;
-    shacl:path schemas:telephone
+    shacl:path <http://data.europa.eu/m8g/telephone>
   ], [
     shacl:datatype rdfs:Literal;
-    shacl:description "The value of this property is structured text that gives the hours at which the contact point is normally available."@en;
+    shacl:description "The (structured) hours at which the contact point is normally available."@en;
     shacl:name "opening hours"@en;
-    shacl:path schemas:openingHours
+    shacl:path <http://data.europa.eu/m8g/openingHours>
   ];
-  shacl:targetClass schemas:ContactPoint .
+  shacl:targetClass <http://data.europa.e/m8g/ContactPoint> .
 
 <https://semiceu.github.io//shacl/core-public-organisation-ap-SHACL_en#DocumentShape> a shacl:NodeShape;
   shacl:closed false;
@@ -164,15 +161,15 @@ representative of it, can be contacted."""@en;
     shacl:name "date of issue"@en;
     shacl:path dc:issued
   ], [
-    shacl:datatype rdfs:Literal;
-    shacl:description "The value of this property is the Identifier itself."@en;
-    shacl:name "identifier"@en;
-    shacl:path skos:notation
-  ], [
     shacl:datatype rdf:langString;
     shacl:description "The name of the agency responsible for issuing the Identifier."@en;
     shacl:name "issuing authority name"@en;
     shacl:path <http://www.w3.org/ns/adms#schemeAgency>
+  ], [
+    shacl:datatype rdfs:Literal;
+    shacl:description "A string of characters to uniquely identify a concept."@en;
+    shacl:name "notation"@en;
+    shacl:path skos:notation
   ], [
     shacl:datatype rdf:langString;
     shacl:description "Name of the scheme used to construct the identifier."@en;
@@ -188,7 +185,7 @@ representative of it, can be contacted."""@en;
 
 <https://semiceu.github.io//shacl/core-public-organisation-ap-SHACL_en#ImageObjectShape> a shacl:NodeShape;
   shacl:closed false;
-  shacl:targetClass schemas:ImageObject .
+  shacl:targetClass <http://data.europa.eu/m8g/ImageObject> .
 
 <https://semiceu.github.io//shacl/core-public-organisation-ap-SHACL_en#OpeningHoursSpecificationShape> a shacl:NodeShape;
   shacl:closed false;
@@ -196,19 +193,19 @@ representative of it, can be contacted."""@en;
     shacl:datatype xsd:anyURI;
     shacl:description "The day of the week for which these opening hours are valid."@en;
     shacl:name "day of week"@en;
-    shacl:path schemas:dayOfWeek
+    shacl:path <http://data.europa.eu/m8g/dayOfWeek>
   ], [
     shacl:datatype xsd:dateTime;
     shacl:description "The date when the Opening Hours Specification becomes valid."@en;
     shacl:name "valid from"@en;
-    shacl:path schemas:validFrom
+    shacl:path <http://data.europa.eu/m8g/validFrom>
   ], [
     shacl:datatype xsd:dateTime;
     shacl:description "The date after when the Opening Hours Specification is not valid."@en;
     shacl:name "valid through"@en;
-    shacl:path schemas:validThrough
+    shacl:path <http://data.europa.eu/m8g/validThrough>
   ];
-  shacl:targetClass schemas:OpeningHoursSpecification .
+  shacl:targetClass <http://data.europa.eu/m8g/OpeningHoursSpecification> .
 
 <https://semiceu.github.io//shacl/core-public-organisation-ap-SHACL_en#OrganizationShape> a shacl:NodeShape;
   shacl:closed false;
@@ -218,7 +215,7 @@ representative of it, can be contacted."""@en;
   shacl:closed false;
   shacl:property [
     shacl:class <http://data.europa.eu/m8g/PublicOrganisation>;
-    shacl:description "The properties hasUnit and unitOf are used to link to operational departments within an Organization that may not generally exist in their own right."@en;
+    shacl:description "The Public Organisation of which the Organizational Unit is an operational department."@en;
     shacl:name "unit of"@en;
     shacl:path org:unitOf
   ];
@@ -228,47 +225,47 @@ representative of it, can be contacted."""@en;
   shacl:closed false;
   shacl:property [
     shacl:class <http://www.w3.org/ns/locn#Address>;
-    shacl:description "A property to link a public organization to its address."@en;
+    shacl:description "The Address of a Public Organization."@en;
     shacl:name "address"@en;
     shacl:path <http://w3.org/ns/locn#address>
   ], [
     shacl:datatype rdf:langString;
-    shacl:description "In line with ORG and SKOS itself, an organization may have any number of alternative or informal names, irrespective of language."@en;
+    shacl:description "An alternative or informal name(s) of a Public Organization, irrespective of language."@en;
     shacl:name "alternative label"@en;
     shacl:path skos:altLabel
   ], [
     shacl:class org:ChangeEvent;
-    shacl:description "The changed by organization property links an Organization to the Change Event that changed the Organization."@en;
+    shacl:description "The Change Event that changed the Organization."@en;
     shacl:name "changed by"@en;
     shacl:path org:changedBy
   ], [
     shacl:class skos:Concept;
-    shacl:description "";
-    shacl:path <https://data.europa.eu/m8g/classification>
+    shacl:description "The categorisation of the Public Organization."@en;
+    shacl:name "classification"@en;
+    shacl:path org:classification
   ], [
-    shacl:class schemas:ContactPoint;
-    shacl:description """The contact point property links to a Contact Point that provides contact
-information, in particular a phone number and e-mail address."""@en;
+    shacl:class <http://data.europa.e/m8g/ContactPoint>;
+    shacl:description "The Contact Point that provides contact information of the Public Organization."@en;
     shacl:name "contact point"@en;
-    shacl:path schemas:contactPoint
+    shacl:path <http://data.europa.eu/m8g/contactPoint>
   ], [
     shacl:datatype rdf:langString;
-    shacl:description "This property provides a textual description of the organization."@en;
+    shacl:description "The textual description of the Public Organization"@en;
     shacl:name "description"@en;
     shacl:path dc:description
   ], [
     shacl:class org:OrganizationalUnit;
-    shacl:description "The properties hasUnit and unitOf are used to link to operational departments within an Organization that may not generally exist in their own right."@en;
+    shacl:description "An operational department within the Public Organization."@en;
     shacl:name "has unit"@en;
     shacl:path org:hasUnit
   ], [
     shacl:class foaf:Document;
-    shacl:description "A property to link an Organization to its logo."@en;
+    shacl:description "The official home page of the Public Organization."@en;
     shacl:name "homepage"@en;
     shacl:path foaf:homepage
   ], [
     shacl:class <http://www.w3.org/ns/adms#Identifier>;
-    shacl:description "Many organizations are referred to by an acronym or some other identifier."@en;
+    shacl:description "The unambiguous structured reference for the Public Organization."@en;
     shacl:name "identifier"@en;
     shacl:path org:identifier
   ], [
@@ -277,22 +274,23 @@ information, in particular a phone number and e-mail address."""@en;
     shacl:name "spatial"@en;
     shacl:path dc:spatial
   ], [
-    shacl:class schemas:ImageObject;
-    shacl:description "A property to link an Organization to its logo."@en;
+    shacl:class <http://data.europa.eu/m8g/ImageObject>;
+    shacl:description "A graphic symbol to represent the Public Oorganization."@en;
     shacl:name "logo"@en;
-    shacl:path schemas:logo
+    shacl:path <http://data.europa.eu/m8g/logo>
   ], [
     shacl:datatype rdf:langString;
-    shacl:description "As defined in the ORG Ontology, a preferred label is used to provide the primary, legally recognised name of the organization"@en;
+    shacl:description "A preferred label is used to provide the primary, legally recognised name of the Public Organization, as defined in the ORG Ontology."@en;
     shacl:name "preferred label"@en;
     shacl:path skos:prefLabel
   ], [
     shacl:class skos:Concept;
-    shacl:description "";
-    shacl:path <https://data.europa.eu/m8g/purpose>
+    shacl:description "This property describes the reasons of existence of an Organization."@en;
+    shacl:name "purpose"@en;
+    shacl:path org:purpose
   ], [
     shacl:class org:ChangeEvent;
-    shacl:description "This property link an Organization to the Change Event it resulted from."@en;
+    shacl:description "A Change Event from which the Public Organisation resulted."@en;
     shacl:name "resulted from"@en;
     shacl:path org:resultedFrom
   ];

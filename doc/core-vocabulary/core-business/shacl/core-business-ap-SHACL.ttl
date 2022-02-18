@@ -15,7 +15,7 @@
   shacl:closed false;
   shacl:property [
     shacl:datatype rdf:langString;
-    shacl:description "The name or names of a geographic area or locality that groups a number of addressable objects for addressing purposes, without being an administrative unit."@en;
+    shacl:description "The name of a geographic area that groups Addresses."@en;
     shacl:name "address area"@en;
     shacl:path <http://www.w3.org/ns/locn#addressArea>
   ], [
@@ -25,22 +25,22 @@
     shacl:path <http://www.w3.org/ns/locn#addressID>
   ], [
     shacl:class skos:Concept;
-    shacl:description "The name or names of a unit of administration where a Member State has and/or exercises jurisdictional rights, for local, regional and national governance. Level 1 refers to the uppermost administrative unit for the address, almost always a country."@en;
+    shacl:description "The name of the uppermost level of the address, almost always a country."@en;
     shacl:name "administrative unit level 1 (country)"@en;
     shacl:path <http://www.w3.org/ns/locn#adminUnitL1>
   ], [
     shacl:class skos:Concept;
-    shacl:description "The name or names of a unit of administration where a Member State has and/or exercises jurisdictional rights, for local, regional and national governance. Level 1 refers to the uppermost administrative unit for the address, almost always a country."@en;
+    shacl:description "The name of a secondary level/region of the address, usually a county, state or other such area that typically encompasses several localities."@en;
     shacl:name "administrative unit level 2 (country/region/state)"@en;
     shacl:path <http://www.w3.org/ns/locn#adminUnitL2>
   ], [
     shacl:datatype rdf:langString;
-    shacl:description "The complete address written as a formatted string."@en;
+    shacl:description "The complete address written as a string."@en;
     shacl:name "full address"@en;
     shacl:path <http://www.w3.org/ns/locn#fullAddress>
   ], [
     shacl:datatype xsd:string;
-    shacl:description "A number or a sequence of characters which allows a user or an application to interpret, parse and format the locator within the relevant scope. A locator may include more locator designators."@en;
+    shacl:description "A number or sequence of characters that uniquely identifies the locator within the relevant scope."@en;
     shacl:name "locator designator"@en;
     shacl:path <http://www.w3.org/ns/locn#locatorDesignator>
   ], [
@@ -50,22 +50,22 @@
     shacl:path <http://www.w3.org/ns/locn#locatorName>
   ], [
     shacl:datatype xsd:string;
-    shacl:description "The Post Office Box number."@en;
+    shacl:description "A location designator for a postal delivery point at a post office, usually a number."@en;
     shacl:name "post office box"@en;
     shacl:path <http://www.w3.org/ns/locn#poBox>
   ], [
     shacl:datatype xsd:string;
-    shacl:description "The post/zip code of an address. (INSPIRE's definition is \"A code created and maintained for postal purposes to identify a subdivision of addresses and postal delivery points.\")"@en;
+    shacl:description "The code created and maintained for postal purposes to identify a subdivision of addresses and postal delivery points."@en;
     shacl:name "post code"@en;
     shacl:path <http://www.w3.org/ns/locn#postCode>
   ], [
     shacl:datatype rdf:langString;
-    shacl:description """The key postal division of the address, usually the city. (INSPIRE's definition is \"One or more names created and maintained for postal purposes to identify a subdivision of addresses and postal delivery points.) For example, \"Paris\"."""@en;
+    shacl:description "A name created and maintained for postal purposes to identify a subdivision of addresses and postal delivery points."@en;
     shacl:name "post name (city)"@en;
     shacl:path <http://www.w3.org/ns/locn#postName>
   ], [
     shacl:datatype rdf:langString;
-    shacl:description "An address component that represents the name or names of a passage or way through from one location to another. A thoroughfare is not necessarily a road, it might be a waterway or some other feature."@en;
+    shacl:description "The name of a passage or way through from one location to another."@en;
     shacl:name "thoroughfare"@en;
     shacl:path <http://www.w3.org/ns/locn#thoroughfare>
   ];
@@ -87,13 +87,8 @@
     shacl:name "date of issue"@en;
     shacl:path dc:issued
   ], [
-    shacl:datatype rdfs:Literal;
-    shacl:description "The value of this property is the Identifier itself."@en;
-    shacl:name "identifier"@en;
-    shacl:path skos:notation
-  ], [
     shacl:class <http://www.w3.org/ns/legal#LegalEntity>;
-    shacl:description "The identifies relationship links an Identifier class to the resource it identifies."@en;
+    shacl:description "The entity that is referenced by the Identifier."@en;
     shacl:name "identifies"@en;
     shacl:path <https://data.europa.eu/m8g/identifies>
   ], [
@@ -101,6 +96,11 @@
     shacl:description "The name of the agency responsible for issuing the Identifier."@en;
     shacl:name "issuing authority name"@en;
     shacl:path <http://www.w3.org/ns/adms#schemeAgency>
+  ], [
+    shacl:datatype rdfs:Literal;
+    shacl:description "A string of characters to uniquely identify a concept."@en;
+    shacl:name "notation"@en;
+    shacl:path skos:notation
   ], [
     shacl:datatype rdf:langString;
     shacl:description "Name of the scheme used to construct the identifier."@en;
@@ -116,53 +116,56 @@
 
  [
     shacl:datatype rdf:langString;
-    shacl:description "Some jurisdictions recognise concepts such as a trading name or alternative forms of a legal entity's name. The alternative name property can be used to record such names but should not be used to record translations of the primary legal name."@en;
+    shacl:description "Any name by which a Legal Entity is known, other than their legal name."@en;
     shacl:name "alternative name"@en;
     shacl:path dc:alternative
   ] .
 
  [
     shacl:class <http://www.w3.org/ns/adms#Identifier>;
-    shacl:description "The identifier relation links a Resource to any formally issued Identifier for that Resource other than the one that confers legal status upon it."@en;
+    shacl:description "The unambiguous structured reference for the Legal Entity, which is different from the one denoting its legal status."@en;
     shacl:name "identifier"@en;
     shacl:path dc:identifier
   ] .
 
  [
     shacl:class skos:Concept;
-    shacl:description "";
-    shacl:path <https://data.europa.eu/m8g/legalEntityStatus>
+    shacl:description "The area of work in which the Legal Entity is engaged."@en;
+    shacl:name "legal entity activity"@en;
+    shacl:path <http://www.w3.org/ns/legal#companyActivity>
   ] .
 
  [
     shacl:class skos:Concept;
-    shacl:description "";
-    shacl:path <https://data.europa.eu/m8g/legalFormType>
+    shacl:description "information about the viability of the current position of the legal entity."@en;
+    shacl:name "legal entity status"@en;
+    shacl:path <http://www.w3.org/ns/legal#companyStatus>
+  ] .
+
+ [
+    shacl:class skos:Concept;
+    shacl:description "The classification of the Legal Entity as a member of a particular group in the context of legal registration."@en;
+    shacl:name "legal form type"@en;
+    shacl:path <http://www.w3.org/ns/legal#companyType>
   ] .
 
  [
     shacl:class <http://www.w3.org/ns/adms#Identifier>;
-    shacl:description "The legal status of a business is conferred on it by an authority within a given jurisdiction. The legal identifier is therefore a fundamental relationship between a Legal Entity and the authority with which it is registered."@en;
+    shacl:description "The unambiguous structured reference assigned to the Legal Entity by the legal authority that registered it."@en;
     shacl:name "legal identifier"@en;
     shacl:path <http://www.w3.org/ns/legal#legalIdentifier>
   ] .
 
  [
     shacl:datatype rdf:langString;
-    shacl:description "The legal name of the business."@en;
+    shacl:description "The name under which the Legal Entity is legally registered."@en;
     shacl:name "legal name"@en;
     shacl:path <http://www.w3.org/ns/legal#legalName>
   ] .
 
  [
-    shacl:class skos:Concept;
-    shacl:description "";
-    shacl:path <https://data.europa.eu/m8g/legalentityActivity>
-  ] .
-
- [
     shacl:class <http://www.w3.org/ns/locn#Address>;
-    shacl:description "In almost all jurisdictions, Legal Entities must register a public address. This may or may not be the actual address at which the Legal Entity does its business, it is commonly the address of their lawyer or accountant, but it is the address to which formal communications can be sent."@en;
+    shacl:description "The address at which the Legal Entity is legally registered."@en;
     shacl:name "registered address"@en;
     shacl:path <http://www.w3.org/ns/legal#registeredAddress>
   ] .
