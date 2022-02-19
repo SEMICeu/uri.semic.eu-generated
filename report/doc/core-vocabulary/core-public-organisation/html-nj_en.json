@@ -13,30 +13,14 @@
     "documentconfig": {},
     "status": "Semic Recommendation",
     "statuslabel": "Onbekend",
-    "repositoryurl": "git@uri.semic.eu-thema:SEMICeu/uri.semic.eu-thema.git/tree/545b88d9752a1bc093be417b187c6d43ee23cd3f",
-    "changelogurl": "git@uri.semic.eu-thema:SEMICeu/uri.semic.eu-thema.git/blob/545b88d9752a1bc093be417b187c6d43ee23cd3f/CHANGELOG",
+    "repositoryurl": "git@uri.semic.eu-thema:SEMICeu/uri.semic.eu-thema.git/tree/52399072d88fbde5acea49117383a336896ef234",
+    "changelogurl": "git@uri.semic.eu-thema:SEMICeu/uri.semic.eu-thema.git/blob/52399072d88fbde5acea49117383a336896ef234/CHANGELOG",
     "feedbackurl": "https://github.com/SEMICeu/CPOV/issues",
     "standaardregisterurl": "CPOV",
     "usesVocs": [],
     "usesAPs": []
   },
   "classes": [
-    {
-      "uri": "http://data.europa.eu/m8g/FoundationEvent",
-      "name": "Foundation Event",
-      "label": {
-        "en": "Foundation Event"
-      },
-      "sort": "Foundation Event",
-      "description": {
-        "en": "An event which resulted in the foundation of an Organization."
-      },
-      "usage": {
-        "en": "Public Organizations are formed and changed in response to events. This may be the result of new legislation, new policies, taking on new obligations etc. The CPOV captures this in its Change Event class but recognises the specific case of an Organization's foundation as being sufficiently distinct to require a subclass of Change Event."
-      },
-      "parents": [],
-      "properties": []
-    },
     {
       "uri": "http://data.europa.eu/m8g/ImageObject",
       "name": "Image Object",
@@ -236,6 +220,43 @@
           "codelist_uri": ""
         },
         {
+          "uri": "http://www.w3.org/ns/org#subOrganizationOf",
+          "name": "sub organization of",
+          "sort": "sub organization of",
+          "label": {
+            "en": "sub organization of"
+          },
+          "description": {
+            "en": "An Organization of which the Public Organization is a sub organization."
+          },
+          "usage": {
+            "en": "Public Organizations are often large and complex and may be a collection of smaller Organizations, each of which has a specific identity that may be legally defined. The hasSubOrganization and subOrganizationOf properties express the relationships between"
+          },
+          "domain": [
+            {
+              "EA-Name": "PublicOrganisation",
+              "uri": "http://data.europa.eu/m8g/PublicOrganisation"
+            }
+          ],
+          "range": [
+            {
+              "range_label": "PublicOrganisation",
+              "range_uri": "http://data.europa.eu/m8g/PublicOrganisation"
+            }
+          ],
+          "scopedrange": [
+            {
+              "range_uri": "#Public Organisation",
+              "range_puri": "http://data.europa.eu/m8g/PublicOrganisation",
+              "range_label": {
+                "en": "Public Organisation"
+              }
+            }
+          ],
+          "cardinality": "",
+          "codelist_uri": ""
+        },
+        {
           "uri": "http://www.w3.org/ns/org#resultedFrom",
           "name": "resulted from",
           "sort": "resulted from",
@@ -310,6 +331,43 @@
           "codelist_uri": ""
         },
         {
+          "uri": "http://www.w3.org/ns/org#memberOf",
+          "name": "member of",
+          "sort": "member of",
+          "label": {
+            "en": "member of"
+          },
+          "description": {
+            "en": "An Organization of which the Public Organisation is a member without being a sub organization, they are independent entities."
+          },
+          "usage": {
+            "en": "The memberOf and hasMember properties are very simple and don't support statements describing the nature of the membership. The <a href=\"https://www.w3.org/TR/vocab-org/\">W3C Organization Ontology</a> provides both this simple method and a more sophisticated model that does make it possible to, for example, provide information about the period of time in which one Organization was a member of another, the level of membership etc. That more sophisticated model should be used where necessary and may be used in addition to the simple memberOf/hasMember properties.\r\n\r\nAn example of memberships are the EU member states and other partners which could be represented via different legal entities as members of EFSA, the <a href=\"https://www.efsa.europa.eu/en/partnersnetworks/euinstitutions\"> European Food Safety Agency</a>"
+          },
+          "domain": [
+            {
+              "EA-Name": "PublicOrganisation",
+              "uri": "http://data.europa.eu/m8g/PublicOrganisation"
+            }
+          ],
+          "range": [
+            {
+              "range_label": "PublicOrganisation",
+              "range_uri": "http://data.europa.eu/m8g/PublicOrganisation"
+            }
+          ],
+          "scopedrange": [
+            {
+              "range_uri": "#Public Organisation",
+              "range_puri": "http://data.europa.eu/m8g/PublicOrganisation",
+              "range_label": {
+                "en": "Public Organisation"
+              }
+            }
+          ],
+          "cardinality": "",
+          "codelist_uri": ""
+        },
+        {
           "uri": "http://www.w3.org/ns/org#identifier",
           "name": "identifier",
           "sort": "identifier",
@@ -377,6 +435,78 @@
               "range_puri": "http://www.w3.org/ns/org#OrganizationalUnit",
               "range_label": {
                 "en": "Organizational Unit"
+              }
+            }
+          ],
+          "cardinality": "",
+          "codelist_uri": ""
+        },
+        {
+          "uri": "http://www.w3.org/ns/org#hasSubOrganization",
+          "name": "has sub organization",
+          "sort": "has sub organization",
+          "label": {
+            "en": "has sub organization"
+          },
+          "description": {
+            "en": "An Organization which is a sub-part or child of the Pulic Organization."
+          },
+          "usage": {},
+          "domain": [
+            {
+              "EA-Name": "PublicOrganisation",
+              "uri": "http://data.europa.eu/m8g/PublicOrganisation"
+            }
+          ],
+          "range": [
+            {
+              "range_label": "PublicOrganisation",
+              "range_uri": "http://data.europa.eu/m8g/PublicOrganisation"
+            }
+          ],
+          "scopedrange": [
+            {
+              "range_uri": "#Public Organisation",
+              "range_puri": "http://data.europa.eu/m8g/PublicOrganisation",
+              "range_label": {
+                "en": "Public Organisation"
+              }
+            }
+          ],
+          "cardinality": "",
+          "codelist_uri": ""
+        },
+        {
+          "uri": "http://www.w3.org/ns/org#hasMember",
+          "name": "has member",
+          "sort": "has member",
+          "label": {
+            "en": "has member"
+          },
+          "description": {
+            "en": "An Organization which is a member of another without being a sub organization, they are independent entities."
+          },
+          "usage": {
+            "en": "The memberOf and hasMember properties are very simple and don't support statements describing the nature of the membership. The W3C Organization Ontology provides both this simple method and a more sophisticated model25 [ADD REFERENCE] that does make it possible to, for example, provide information about the period of time in which one Organization was a member of another, the level of membership etc. That more sophisticated model should be used where necessary and may be used in addition to the simple memberOf/hasMember properties.\r\n\r\nAn example of memberships are the EU member states and other partners which could be represented via different legal entities as members of EFSA, the European Food Safety Agency:  https://www.efsa.europa.eu/en/partnersnetworks/euinstitutions"
+          },
+          "domain": [
+            {
+              "EA-Name": "PublicOrganisation",
+              "uri": "http://data.europa.eu/m8g/PublicOrganisation"
+            }
+          ],
+          "range": [
+            {
+              "range_label": "PublicOrganisation",
+              "range_uri": "http://data.europa.eu/m8g/PublicOrganisation"
+            }
+          ],
+          "scopedrange": [
+            {
+              "range_uri": "#Public Organisation",
+              "range_puri": "http://data.europa.eu/m8g/PublicOrganisation",
+              "range_label": {
+                "en": "Public Organisation"
               }
             }
           ],
@@ -527,6 +657,80 @@
             }
           ],
           "cardinality": "0..*",
+          "codelist_uri": ""
+        },
+        {
+          "uri": "http://www.w3.org/1999/xhtml/vocab#prev",
+          "name": "prev",
+          "sort": "prev",
+          "label": {
+            "en": "prev"
+          },
+          "description": {
+            "en": "In some cases, it is necessary to be able to create an ordered sequence of an organization that precede and succeed each other. To support this, the CPOV includes the well-known relationships of previous and next to allow such sequences to be captured and"
+          },
+          "usage": {
+            "en": "Examples of events leading to sequences could be renaming, splitting or merging of public organizations."
+          },
+          "domain": [
+            {
+              "EA-Name": "PublicOrganisation",
+              "uri": "http://data.europa.eu/m8g/PublicOrganisation"
+            }
+          ],
+          "range": [
+            {
+              "range_label": "PublicOrganisation",
+              "range_uri": "http://data.europa.eu/m8g/PublicOrganisation"
+            }
+          ],
+          "scopedrange": [
+            {
+              "range_uri": "#Public Organisation",
+              "range_puri": "http://data.europa.eu/m8g/PublicOrganisation",
+              "range_label": {
+                "en": "Public Organisation"
+              }
+            }
+          ],
+          "cardinality": "",
+          "codelist_uri": ""
+        },
+        {
+          "uri": "http://www.w3.org/1999/xhtml/vocab#next",
+          "name": "next",
+          "sort": "next",
+          "label": {
+            "en": "next"
+          },
+          "description": {
+            "en": "In some cases, it is necessary to be able to create an ordered sequence of an organization that precede and succeed each other. To support this, the CPOV includes the well-known relationships of previous and next to allow such sequences to be captured and"
+          },
+          "usage": {
+            "en": "Examples of events leading to sequences could be renaming, splitting or merging of public organizations."
+          },
+          "domain": [
+            {
+              "EA-Name": "PublicOrganisation",
+              "uri": "http://data.europa.eu/m8g/PublicOrganisation"
+            }
+          ],
+          "range": [
+            {
+              "range_label": "PublicOrganisation",
+              "range_uri": "http://data.europa.eu/m8g/PublicOrganisation"
+            }
+          ],
+          "scopedrange": [
+            {
+              "range_uri": "#Public Organisation",
+              "range_puri": "http://data.europa.eu/m8g/PublicOrganisation",
+              "range_label": {
+                "en": "Public Organisation"
+              }
+            }
+          ],
+          "cardinality": "",
           "codelist_uri": ""
         },
         {
@@ -715,6 +919,95 @@
       ]
     },
     {
+      "uri": "http://data.europa.eu/m8g/ReferenceFramework",
+      "name": "Reference Framework",
+      "label": {
+        "en": "Reference Framework"
+      },
+      "sort": "Reference Framework",
+      "description": {
+        "en": "Legislation or official policy from which Requirements are derived."
+      },
+      "usage": {
+        "en": "Usual Reference Frameworks are legal and non-legal specifications. Examples include procedures, tendering legislation, etc."
+      },
+      "parents": [],
+      "properties": [
+        {
+          "uri": "http://purl.org/vocab/cpsv#implements",
+          "name": "implements",
+          "sort": "implements",
+          "label": {
+            "en": "implements"
+          },
+          "description": {
+            "en": "A Change Event linked to relevant legislation or policy documents."
+          },
+          "usage": {
+            "en": "An example is the reference framework under which the Change Event is defined."
+          },
+          "domain": [
+            {
+              "EA-Name": "ReferenceFramework",
+              "uri": "http://data.europa.eu/m8g/ReferenceFramework"
+            }
+          ],
+          "range": [
+            {
+              "range_label": "ChangeEvent",
+              "range_uri": "http://www.w3.org/ns/org#ChangeEvent"
+            }
+          ],
+          "scopedrange": [
+            {
+              "range_uri": "#Change Event",
+              "range_puri": "http://www.w3.org/ns/org#ChangeEvent",
+              "range_label": {
+                "en": "Change Event"
+              }
+            }
+          ],
+          "cardinality": "",
+          "codelist_uri": ""
+        },
+        {
+          "uri": "http://purl.org/dc/terms/identifier",
+          "name": "identifier",
+          "sort": "identifier",
+          "label": {
+            "en": "identifier"
+          },
+          "description": {
+            "en": "An unambiguous reference to a Reference Framework."
+          },
+          "usage": {},
+          "domain": [
+            {
+              "EA-Name": "ReferenceFramework",
+              "uri": "http://data.europa.eu/m8g/ReferenceFramework"
+            }
+          ],
+          "range": [
+            {
+              "range_label": "Literal",
+              "range_uri": "http://www.w3.org/2000/01/rdf-schema#Literal"
+            }
+          ],
+          "scopedrange": [
+            {
+              "range_uri": "http://www.w3.org/2000/01/rdf-schema#Literal",
+              "range_puri": "http://www.w3.org/2000/01/rdf-schema#Literal",
+              "range_label": {
+                "en": "Literal"
+              }
+            }
+          ],
+          "cardinality": "0..*",
+          "codelist_uri": ""
+        }
+      ]
+    },
+    {
       "uri": "http://data.europa.e/m8g/ContactPoint",
       "name": "Contact Point",
       "label": {
@@ -884,38 +1177,6 @@
         "en": "A code from a list that represents the administrative territorial unit of the EU Member States, based on national official / legal information and the ISO 3166-2 standard."
       },
       "usage": {},
-      "parents": [],
-      "properties": []
-    },
-    {
-      "uri": "http://data.europa.eu/eli/ontology#LegalResource",
-      "name": "Legal resource",
-      "label": {
-        "en": "Legal resource"
-      },
-      "sort": "Legal resource",
-      "description": {
-        "en": "Legislation, policy, or policies lying behind the rules that govern a public service."
-      },
-      "usage": {
-        "en": "Instances of the Formal Framwork class are FRBR Expressions, i.e., concrete expressions of the more abstract concept of the piece of legislation or policy itself.\nThe European Council's invitation to introduce the European Legislation Identifier and portals such as legislation.gov.uk are relevant in this context. Adding '/data.xml' or /data.rdf' to any legislation URI on legislation.gov.uk will reveal how this can be done, for example http://www.legislation.gov.uk/uksi/2012/3170/contents/made{/data.rdf or /data.xml}."
-      },
-      "parents": [],
-      "properties": []
-    },
-    {
-      "uri": "http://www.w3.org/2004/02/skos/core#Concept",
-      "name": "Concept",
-      "label": {
-        "en": "Concept"
-      },
-      "sort": "Concept",
-      "description": {
-        "en": "An idea or notion; unit of thought."
-      },
-      "usage": {
-        "en": "What constitutes a unit of thought is subjective, and this definition is meant to be suggestive, rather than restrictive."
-      },
       "parents": [],
       "properties": []
     },
@@ -1731,6 +1992,41 @@
             }
           ],
           "cardinality": "0..*",
+          "codelist_uri": ""
+        },
+        {
+          "uri": "http://data.europa.eu/m8g/hasFormalFramework",
+          "name": "has formal framework",
+          "sort": "has formal framework",
+          "label": {
+            "en": "has formal framework"
+          },
+          "description": {
+            "en": "The property hasFormalFramework links a Change Event or Foundation Event to a piece of legislation or a policy document that prompted the change."
+          },
+          "usage": {},
+          "domain": [
+            {
+              "EA-Name": "ChangeEvent",
+              "uri": "http://www.w3.org/ns/org#ChangeEvent"
+            }
+          ],
+          "range": [
+            {
+              "range_label": "ReferenceFramework",
+              "range_uri": "http://data.europa.eu/m8g/ReferenceFramework"
+            }
+          ],
+          "scopedrange": [
+            {
+              "range_uri": "#Reference Framework",
+              "range_puri": "http://data.europa.eu/m8g/ReferenceFramework",
+              "range_label": {
+                "en": "Reference Framework"
+              }
+            }
+          ],
+          "cardinality": "",
           "codelist_uri": ""
         }
       ]

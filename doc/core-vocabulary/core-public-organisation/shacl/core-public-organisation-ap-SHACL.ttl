@@ -6,15 +6,15 @@
 @prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
 @prefix shacl: <http://www.w3.org/ns/shacl#> .
 @prefix skos: <http://www.w3.org/2004/02/skos/core#> .
+@prefix xhv: <http://www.w3.org/1999/xhtml/vocab#> .
 @prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
 
-<https://semiceu.github.io//shacl/core-public-organisation-ap-SHACL_en> <https://semiceu.github.io//shacl/core-public-organisation-ap-SHACL_enshapes> <https://semiceu.github.io//shacl/core-public-organisation-ap-SHACL_en#FoundationEventShape>,
-    <https://semiceu.github.io//shacl/core-public-organisation-ap-SHACL_en#ImageObjectShape>,
+<https://semiceu.github.io//shacl/core-public-organisation-ap-SHACL_en> <https://semiceu.github.io//shacl/core-public-organisation-ap-SHACL_enshapes> <https://semiceu.github.io//shacl/core-public-organisation-ap-SHACL_en#ImageObjectShape>,
     <https://semiceu.github.io//shacl/core-public-organisation-ap-SHACL_en#OpeningHoursSpecificationShape>,
     <https://semiceu.github.io//shacl/core-public-organisation-ap-SHACL_en#PublicOrganisationShape>,
+    <https://semiceu.github.io//shacl/core-public-organisation-ap-SHACL_en#ReferenceFrameworkShape>,
     <https://semiceu.github.io//shacl/core-public-organisation-ap-SHACL_en#ContactPointShape>,
     <https://semiceu.github.io//shacl/core-public-organisation-ap-SHACL_en#AdministrativeTerritorialUnitShape>,
-    <https://semiceu.github.io//shacl/core-public-organisation-ap-SHACL_en#ConceptShape>,
     <https://semiceu.github.io//shacl/core-public-organisation-ap-SHACL_en#IdentifierShape>,
     <https://semiceu.github.io//shacl/core-public-organisation-ap-SHACL_en#AddressShape>,
     <https://semiceu.github.io//shacl/core-public-organisation-ap-SHACL_en#ChangeEventShape>,
@@ -99,6 +99,11 @@
     shacl:name "ended at time"@en;
     shacl:path prov:endedAtTime
   ], [
+    shacl:class <http://data.europa.eu/m8g/ReferenceFramework>;
+    shacl:description "The property hasFormalFramework links a Change Event or Foundation Event to a piece of legislation or a policy document that prompted the change."@en;
+    shacl:name "has formal framework"@en;
+    shacl:path <http://data.europa.eu/m8g/hasFormalFramework>
+  ], [
     shacl:class <http://data.europa.eu/m8g/PublicOrganisation>;
     shacl:description "The Organization that existed before the change."@en;
     shacl:name "original organization"@en;
@@ -115,10 +120,6 @@
     shacl:path prov:startedAtTime
   ];
   shacl:targetClass org:ChangeEvent .
-
-<https://semiceu.github.io//shacl/core-public-organisation-ap-SHACL_en#ConceptShape> a shacl:NodeShape;
-  shacl:closed false;
-  shacl:targetClass skos:Concept .
 
 <https://semiceu.github.io//shacl/core-public-organisation-ap-SHACL_en#ContactPointShape> a shacl:NodeShape;
   shacl:closed false;
@@ -148,10 +149,6 @@
 <https://semiceu.github.io//shacl/core-public-organisation-ap-SHACL_en#DocumentShape> a shacl:NodeShape;
   shacl:closed false;
   shacl:targetClass foaf:Document .
-
-<https://semiceu.github.io//shacl/core-public-organisation-ap-SHACL_en#FoundationEventShape> a shacl:NodeShape;
-  shacl:closed false;
-  shacl:targetClass <http://data.europa.eu/m8g/FoundationEvent> .
 
 <https://semiceu.github.io//shacl/core-public-organisation-ap-SHACL_en#IdentifierShape> a shacl:NodeShape;
   shacl:closed false;
@@ -254,6 +251,16 @@
     shacl:name "description"@en;
     shacl:path dc:description
   ], [
+    shacl:class <http://data.europa.eu/m8g/PublicOrganisation>;
+    shacl:description "An Organization which is a member of another without being a sub organization, they are independent entities."@en;
+    shacl:name "has member"@en;
+    shacl:path org:hasMember
+  ], [
+    shacl:class <http://data.europa.eu/m8g/PublicOrganisation>;
+    shacl:description "An Organization which is a sub-part or child of the Pulic Organization."@en;
+    shacl:name "has sub organization"@en;
+    shacl:path org:hasSubOrganization
+  ], [
     shacl:class org:OrganizationalUnit;
     shacl:description "An operational department within the Public Organization."@en;
     shacl:name "has unit"@en;
@@ -279,10 +286,25 @@
     shacl:name "logo"@en;
     shacl:path <http://data.europa.eu/m8g/logo>
   ], [
+    shacl:class <http://data.europa.eu/m8g/PublicOrganisation>;
+    shacl:description "An Organization of which the Public Organisation is a member without being a sub organization, they are independent entities."@en;
+    shacl:name "member of"@en;
+    shacl:path org:memberOf
+  ], [
+    shacl:class <http://data.europa.eu/m8g/PublicOrganisation>;
+    shacl:description "In some cases, it is necessary to be able to create an ordered sequence of an organization that precede and succeed each other. To support this, the CPOV includes the well-known relationships of previous and next to allow such sequences to be captured and"@en;
+    shacl:name "next"@en;
+    shacl:path xhv:next
+  ], [
     shacl:datatype rdf:langString;
     shacl:description "A preferred label is used to provide the primary, legally recognised name of the Public Organization, as defined in the ORG Ontology."@en;
     shacl:name "preferred label"@en;
     shacl:path skos:prefLabel
+  ], [
+    shacl:class <http://data.europa.eu/m8g/PublicOrganisation>;
+    shacl:description "In some cases, it is necessary to be able to create an ordered sequence of an organization that precede and succeed each other. To support this, the CPOV includes the well-known relationships of previous and next to allow such sequences to be captured and"@en;
+    shacl:name "prev"@en;
+    shacl:path xhv:prev
   ], [
     shacl:class skos:Concept;
     shacl:description "This property describes the reasons of existence of an Organization."@en;
@@ -293,5 +315,25 @@
     shacl:description "A Change Event from which the Public Organisation resulted."@en;
     shacl:name "resulted from"@en;
     shacl:path org:resultedFrom
+  ], [
+    shacl:class <http://data.europa.eu/m8g/PublicOrganisation>;
+    shacl:description "An Organization of which the Public Organization is a sub organization."@en;
+    shacl:name "sub organization of"@en;
+    shacl:path org:subOrganizationOf
   ];
   shacl:targetClass <http://data.europa.eu/m8g/PublicOrganisation> .
+
+<https://semiceu.github.io//shacl/core-public-organisation-ap-SHACL_en#ReferenceFrameworkShape> a shacl:NodeShape;
+  shacl:closed false;
+  shacl:property [
+    shacl:datatype rdfs:Literal;
+    shacl:description "An unambiguous reference to a Reference Framework."@en;
+    shacl:name "identifier"@en;
+    shacl:path dc:identifier
+  ], [
+    shacl:class org:ChangeEvent;
+    shacl:description "A Change Event linked to relevant legislation or policy documents."@en;
+    shacl:name "implements"@en;
+    shacl:path <http://purl.org/vocab/cpsv#implements>
+  ];
+  shacl:targetClass <http://data.europa.eu/m8g/ReferenceFramework> .

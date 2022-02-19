@@ -41,13 +41,6 @@
   "@id": "https://semiceu.github.io//shacl/core-public-organisation-ap-SHACL_en",
   "shapes": [
     {
-      "@id": "https://semiceu.github.io//shacl/core-public-organisation-ap-SHACL_en#FoundationEventShape",
-      "@type": "sh:NodeShape",
-      "sh:closed": false,
-      "sh:property": [],
-      "sh:targetClass": "http://data.europa.eu/m8g/FoundationEvent"
-    },
-    {
       "@id": "https://semiceu.github.io//shacl/core-public-organisation-ap-SHACL_en#ImageObjectShape",
       "@type": "sh:NodeShape",
       "sh:closed": false,
@@ -158,6 +151,26 @@
           "sh:path": "http://purl.org/dc/terms/description"
         },
         {
+          "sh:class": "http://data.europa.eu/m8g/PublicOrganisation",
+          "sh:description": {
+            "en": "An Organization which is a member of another without being a sub organization, they are independent entities."
+          },
+          "sh:name": {
+            "en": "has member"
+          },
+          "sh:path": "http://www.w3.org/ns/org#hasMember"
+        },
+        {
+          "sh:class": "http://data.europa.eu/m8g/PublicOrganisation",
+          "sh:description": {
+            "en": "An Organization which is a sub-part or child of the Pulic Organization."
+          },
+          "sh:name": {
+            "en": "has sub organization"
+          },
+          "sh:path": "http://www.w3.org/ns/org#hasSubOrganization"
+        },
+        {
           "sh:class": "http://www.w3.org/ns/org#OrganizationalUnit",
           "sh:description": {
             "en": "An operational department within the Public Organization."
@@ -208,6 +221,26 @@
           "sh:path": "http://data.europa.eu/m8g/logo"
         },
         {
+          "sh:class": "http://data.europa.eu/m8g/PublicOrganisation",
+          "sh:description": {
+            "en": "An Organization of which the Public Organisation is a member without being a sub organization, they are independent entities."
+          },
+          "sh:name": {
+            "en": "member of"
+          },
+          "sh:path": "http://www.w3.org/ns/org#memberOf"
+        },
+        {
+          "sh:class": "http://data.europa.eu/m8g/PublicOrganisation",
+          "sh:description": {
+            "en": "In some cases, it is necessary to be able to create an ordered sequence of an organization that precede and succeed each other. To support this, the CPOV includes the well-known relationships of previous and next to allow such sequences to be captured and"
+          },
+          "sh:name": {
+            "en": "next"
+          },
+          "sh:path": "http://www.w3.org/1999/xhtml/vocab#next"
+        },
+        {
           "sh:datatype": "http://www.w3.org/1999/02/22-rdf-syntax-ns#langString",
           "sh:description": {
             "en": "A preferred label is used to provide the primary, legally recognised name of the Public Organization, as defined in the ORG Ontology."
@@ -216,6 +249,16 @@
             "en": "preferred label"
           },
           "sh:path": "http://www.w3.org/2004/02/skos/core#prefLabel"
+        },
+        {
+          "sh:class": "http://data.europa.eu/m8g/PublicOrganisation",
+          "sh:description": {
+            "en": "In some cases, it is necessary to be able to create an ordered sequence of an organization that precede and succeed each other. To support this, the CPOV includes the well-known relationships of previous and next to allow such sequences to be captured and"
+          },
+          "sh:name": {
+            "en": "prev"
+          },
+          "sh:path": "http://www.w3.org/1999/xhtml/vocab#prev"
         },
         {
           "sh:class": "http://www.w3.org/2004/02/skos/core#Concept",
@@ -236,9 +279,47 @@
             "en": "resulted from"
           },
           "sh:path": "http://www.w3.org/ns/org#resultedFrom"
+        },
+        {
+          "sh:class": "http://data.europa.eu/m8g/PublicOrganisation",
+          "sh:description": {
+            "en": "An Organization of which the Public Organization is a sub organization."
+          },
+          "sh:name": {
+            "en": "sub organization of"
+          },
+          "sh:path": "http://www.w3.org/ns/org#subOrganizationOf"
         }
       ],
       "sh:targetClass": "http://data.europa.eu/m8g/PublicOrganisation"
+    },
+    {
+      "@id": "https://semiceu.github.io//shacl/core-public-organisation-ap-SHACL_en#ReferenceFrameworkShape",
+      "@type": "sh:NodeShape",
+      "sh:closed": false,
+      "sh:property": [
+        {
+          "sh:datatype": "http://www.w3.org/2000/01/rdf-schema#Literal",
+          "sh:description": {
+            "en": "An unambiguous reference to a Reference Framework."
+          },
+          "sh:name": {
+            "en": "identifier"
+          },
+          "sh:path": "http://purl.org/dc/terms/identifier"
+        },
+        {
+          "sh:class": "http://www.w3.org/ns/org#ChangeEvent",
+          "sh:description": {
+            "en": "A Change Event linked to relevant legislation or policy documents."
+          },
+          "sh:name": {
+            "en": "implements"
+          },
+          "sh:path": "http://purl.org/vocab/cpsv#implements"
+        }
+      ],
+      "sh:targetClass": "http://data.europa.eu/m8g/ReferenceFramework"
     },
     {
       "@id": "https://semiceu.github.io//shacl/core-public-organisation-ap-SHACL_en#ContactPointShape",
@@ -294,20 +375,6 @@
       "sh:closed": false,
       "sh:property": [],
       "sh:targetClass": "http://data.europa.eu/88u/dataset/atu-type"
-    },
-    {
-      "@id": "https://semiceu.github.io//shacl/core-public-organisation-ap-SHACL_en#Legal ResourceShape",
-      "@type": "sh:NodeShape",
-      "sh:closed": false,
-      "sh:property": [],
-      "sh:targetClass": "http://data.europa.eu/eli/ontology#LegalResource"
-    },
-    {
-      "@id": "https://semiceu.github.io//shacl/core-public-organisation-ap-SHACL_en#ConceptShape",
-      "@type": "sh:NodeShape",
-      "sh:closed": false,
-      "sh:property": [],
-      "sh:targetClass": "http://www.w3.org/2004/02/skos/core#Concept"
     },
     {
       "@id": "https://semiceu.github.io//shacl/core-public-organisation-ap-SHACL_en#IdentifierShape",
@@ -509,6 +576,16 @@
             "en": "ended at time"
           },
           "sh:path": "http://www.w3.org/ns/prov#endedAtTime"
+        },
+        {
+          "sh:class": "http://data.europa.eu/m8g/ReferenceFramework",
+          "sh:description": {
+            "en": "The property hasFormalFramework links a Change Event or Foundation Event to a piece of legislation or a policy document that prompted the change."
+          },
+          "sh:name": {
+            "en": "has formal framework"
+          },
+          "sh:path": "http://data.europa.eu/m8g/hasFormalFramework"
         },
         {
           "sh:class": "http://data.europa.eu/m8g/PublicOrganisation",

@@ -6,7 +6,8 @@
 @prefix skos: <http://www.w3.org/2004/02/skos/core#> .
 @prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
 
-<https://semiceu.github.io//shacl/core-location-ap-SHACL_en> <https://semiceu.github.io//shacl/core-location-ap-SHACL_enshapes> <https://semiceu.github.io//shacl/core-location-ap-SHACL_en#LocationShape>,
+<https://semiceu.github.io//shacl/core-location-ap-SHACL_en> <https://semiceu.github.io//shacl/core-location-ap-SHACL_enshapes> <https://semiceu.github.io//shacl/core-location-ap-SHACL_en#AdminUnitShape>,
+    <https://semiceu.github.io//shacl/core-location-ap-SHACL_en#LocationShape>,
     <https://semiceu.github.io//shacl/core-location-ap-SHACL_en#ResourceShape>,
     <https://semiceu.github.io//shacl/core-location-ap-SHACL_en#AddressShape>,
     <https://semiceu.github.io//shacl/core-location-ap-SHACL_en#GeometryShape> .
@@ -14,6 +15,10 @@
 <https://semiceu.github.io//shacl/core-location-ap-SHACL_en#AddressShape> a shacl:NodeShape;
   shacl:closed false;
   shacl:property [
+    shacl:class <http://data.europa.eu/m8g/AdminUnit>;
+    shacl:description "";
+    shacl:path <http://data.europa.eu/m8g/additionalAdminUnit>
+  ], [
     shacl:datatype rdf:langString;
     shacl:description "The name of a geographic area that groups Addresses."@en;
     shacl:name "address area"@en;
@@ -70,6 +75,19 @@
     shacl:path <http://www.w3.org/ns/locn#thoroughfare>
   ];
   shacl:targetClass <http://www.w3.org/ns/locn#Address> .
+
+<https://semiceu.github.io//shacl/core-location-ap-SHACL_en#AdminUnitShape> a shacl:NodeShape;
+  shacl:closed false;
+  shacl:property [
+    shacl:class skos:Concept;
+    shacl:description "";
+    shacl:path <http://data.europa.eu/m8g/code>
+  ], [
+    shacl:class skos:Concept;
+    shacl:description "";
+    shacl:path <http://data.europa.eu/m8g/level>
+  ];
+  shacl:targetClass <http://data.europa.eu/m8g/AdminUnit> .
 
 <https://semiceu.github.io//shacl/core-location-ap-SHACL_en#GeometryShape> a shacl:NodeShape;
   shacl:closed false;
