@@ -1,0 +1,119 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<xs:schema xmlns="https://data.europa.eu/m8g/xml/" xmlns:xs="http://www.w3.org/2001/XMLSchema" targetNamespace="https://data.europa.eu/m8g/xml/" version="2.0.0" elementFormDefault="qualified" attributeFormDefault="unqualified" xmlns:cv="https://data.europa.eu/m8g/xml/">
+  <xs:element name="Constraint" type="ConstraintType"/>
+  <xs:element name="Criterion" type="CriterionType"/>
+  <xs:element name="Evidence" type="EvidenceType"/>
+  <xs:element name="EvidenceType" type="EvidenceTypeType"/>
+  <xs:element name="EvidenceTypeList" type="EvidenceTypeListType"/>
+  <xs:element name="InformationConcept" type="InformationConceptType"/>
+  <xs:element name="InformationRequirement" type="InformationRequirementType"/>
+  <xs:element name="ReferenceFramework" type="ReferenceFrameworkType"/>
+  <xs:element name="Requirement" type="RequirementType"/>
+  <xs:element name="SupportedValue" type="SupportedValueType"/>
+  <xs:element name="Location" type="LocationType"/>
+  <xs:element name="PeriodOfTime" type="PeriodOfTimeType"/>
+  <xs:element name="Dataset" type="DatasetType"/>
+  <xs:element name="Agent" type="AgentType"/>
+  <xs:complexType name="ConstraintType">
+    <xs:sequence>
+      <xs:element name="constrains" ref="InformationConcept" maxOccurs="unbounded" minOccurs="0"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="CriterionType">
+    <xs:sequence>
+      <xs:element name="bias" maxOccurs="1" minOccurs="1"/>
+      <xs:element name="weight" maxOccurs="1" minOccurs="1"/>
+      <xs:element name="weightingConsiderationDescription" type="http://www.w3.org/2001/XMLSchema#string" maxOccurs="1" minOccurs="1"/>
+      <xs:element name="weightingType" maxOccurs="1" minOccurs="1"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="EvidenceType">
+    <xs:sequence>
+      <xs:element name="confidentialityLevelType" maxOccurs="1" minOccurs="1"/>
+      <xs:element name="isAbout" ref="Agent" maxOccurs="unbounded" minOccurs="0"/>
+      <xs:element name="isConformantTo" ref="EvidenceType" maxOccurs="unbounded" minOccurs="0"/>
+      <xs:element name="isCreatedBy" ref="Agent" maxOccurs="unbounded" minOccurs="0"/>
+      <xs:element name="isIssuedBy" ref="Agent" maxOccurs="unbounded" minOccurs="0"/>
+      <xs:element name="isProvidedBy" ref="Agent" maxOccurs="unbounded" minOccurs="0"/>
+      <xs:element name="supportsConcept" ref="InformationConcept" maxOccurs="unbounded" minOccurs="0"/>
+      <xs:element name="supportsRequirement" ref="Requirement" maxOccurs="unbounded" minOccurs="0"/>
+      <xs:element name="supportsValue" ref="SupportedValue" maxOccurs="unbounded" minOccurs="0"/>
+      <xs:element name="validityPeriod" ref="PeriodOfTime" maxOccurs="unbounded" minOccurs="0"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="EvidenceTypeType">
+    <xs:sequence>
+      <xs:element name="evidenceTypeClassification" maxOccurs="1" minOccurs="1"/>
+      <xs:element name="identifier" type="http://www.w3.org/2000/01/rdf-schema#Literal" maxOccurs="1" minOccurs="1"/>
+      <xs:element name="isSpecifiedIn" ref="EvidenceTypeList" maxOccurs="unbounded" minOccurs="0"/>
+      <xs:element name="issuingPlace" ref="Location" maxOccurs="unbounded" minOccurs="0"/>
+      <xs:element name="validityPeriodConstraint" ref="PeriodOfTime" maxOccurs="unbounded" minOccurs="0"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="EvidenceTypeListType">
+    <xs:sequence>
+      <xs:element name="description" type="http://www.w3.org/2001/XMLSchema#string" maxOccurs="1" minOccurs="1"/>
+      <xs:element name="identifier" type="http://www.w3.org/2000/01/rdf-schema#Literal" maxOccurs="1" minOccurs="1"/>
+      <xs:element name="name" type="http://www.w3.org/2001/XMLSchema#string" maxOccurs="1" minOccurs="1"/>
+      <xs:element name="specifiesEvidenceType" ref="EvidenceType" maxOccurs="unbounded" minOccurs="0"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="InformationConceptType">
+    <xs:sequence>
+      <xs:element name="description" type="http://www.w3.org/2001/XMLSchema#string" maxOccurs="1" minOccurs="1"/>
+      <xs:element name="expressionOfExpectedValue" type="http://www.w3.org/2000/01/rdf-schema#Literal" maxOccurs="1" minOccurs="1"/>
+      <xs:element name="identifier" type="http://www.w3.org/2000/01/rdf-schema#Literal" maxOccurs="1" minOccurs="1"/>
+      <xs:element name="name" type="http://www.w3.org/2001/XMLSchema#string" maxOccurs="1" minOccurs="1"/>
+      <xs:element name="type" maxOccurs="1" minOccurs="1"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="InformationRequirementType">
+    <xs:sequence/>
+  </xs:complexType>
+  <xs:complexType name="ReferenceFrameworkType">
+    <xs:sequence>
+      <xs:element name="identifier" type="http://www.w3.org/2000/01/rdf-schema#Literal" maxOccurs="1" minOccurs="1"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="RequirementType">
+    <xs:sequence>
+      <xs:element name="description" type="http://www.w3.org/2001/XMLSchema#string" maxOccurs="1" minOccurs="1"/>
+      <xs:element name="hasConcept" ref="InformationConcept" maxOccurs="unbounded" minOccurs="0"/>
+      <xs:element name="hasEvidenceTypeList" ref="EvidenceTypeList" maxOccurs="unbounded" minOccurs="0"/>
+      <xs:element name="hasQualifiedRelation" ref="Requirement" maxOccurs="unbounded" minOccurs="0"/>
+      <xs:element name="hasRequirement" ref="Requirement" maxOccurs="unbounded" minOccurs="0"/>
+      <xs:element name="hasSupportingEvidence" ref="Evidence" maxOccurs="unbounded" minOccurs="0"/>
+      <xs:element name="identifier" type="http://www.w3.org/2000/01/rdf-schema#Literal" maxOccurs="1" minOccurs="1"/>
+      <xs:element name="isDerivedFrom" ref="ReferenceFramework" maxOccurs="unbounded" minOccurs="0"/>
+      <xs:element name="isIssuedBy" ref="Agent" maxOccurs="unbounded" minOccurs="0"/>
+      <xs:element name="isRequirementOf" ref="Requirement" maxOccurs="unbounded" minOccurs="0"/>
+      <xs:element name="name" type="http://www.w3.org/2001/XMLSchema#string" maxOccurs="1" minOccurs="1"/>
+      <xs:element name="type" maxOccurs="1" minOccurs="1"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="SupportedValueType">
+    <xs:sequence>
+      <xs:element name="providesValueFor" ref="InformationConcept" maxOccurs="unbounded" minOccurs="0"/>
+      <xs:element name="query" type="http://www.w3.org/2000/01/rdf-schema#Literal" maxOccurs="1" minOccurs="1"/>
+      <xs:element name="value" type="http://www.w3.org/2000/01/rdf-schema#Literal" maxOccurs="1" minOccurs="1"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="LocationType">
+    <xs:sequence/>
+  </xs:complexType>
+  <xs:complexType name="PeriodOfTimeType">
+    <xs:sequence>
+      <xs:element name="duration" type="http://www.w3.org/2001/XMLSchema#duration" maxOccurs="1" minOccurs="1"/>
+      <xs:element name="endtime" type="http://www.w3.org/2001/XMLSchema#dateTime" maxOccurs="1" minOccurs="1"/>
+      <xs:element name="starttime" type="http://www.w3.org/2001/XMLSchema#dateTime" maxOccurs="1" minOccurs="1"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="DatasetType">
+    <xs:sequence>
+      <xs:element name="identifier" type="http://www.w3.org/2000/01/rdf-schema#Literal" maxOccurs="1" minOccurs="1"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="AgentType">
+    <xs:sequence/>
+  </xs:complexType>
+</xs:schema>

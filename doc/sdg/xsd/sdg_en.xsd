@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<xs:schema xmlns="https://data.europa.eu/m8g/xml/" xmlns:xs="http://www.w3.org/2001/XMLSchema" targetNamespace="https://data.europa.eu/m8g/xml/" version="2.0.0" elementFormDefault="qualified" attributeFormDefault="unqualified" xmlns:cv="https://data.europa.eu/m8g/xml/">
+  <xs:element name="Event" type="EventType"/>
+  <xs:element name="Output" type="OutputType"/>
+  <xs:element name="PublicOrganisation" type="PublicOrganisationType"/>
+  <xs:element name="LinguisticSystem" type="LinguisticSystemType"/>
+  <xs:element name="Location" type="LocationType"/>
+  <xs:element name="PublicService" type="PublicServiceType"/>
+  <xs:element name="Webpage" type="WebpageType"/>
+  <xs:complexType name="EventType">
+    <xs:sequence>
+      <xs:element name="type" maxOccurs="unbounded" minOccurs="0"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="OutputType">
+    <xs:sequence>
+      <xs:element name="description" type="http://www.w3.org/2000/01/rdf-schema#Literal" maxOccurs="unbounded" minOccurs="1"/>
+      <xs:element name="identifier" type="http://www.w3.org/2000/01/rdf-schema#Literal" maxOccurs="unbounded" minOccurs="1"/>
+      <xs:element name="name" type="http://www.w3.org/2000/01/rdf-schema#Literal" maxOccurs="unbounded" minOccurs="1"/>
+      <xs:element name="type" maxOccurs="unbounded" minOccurs="0"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="PublicOrganisationType">
+    <xs:sequence>
+      <xs:element name="identifier" type="http://www.w3.org/2000/01/rdf-schema#Literal" maxOccurs="unbounded" minOccurs="1"/>
+      <xs:element name="preferredLabel" type="http://www.w3.org/2000/01/rdf-schema#Literal" maxOccurs="unbounded" minOccurs="1"/>
+      <xs:element name="spatial" ref="Location" maxOccurs="1" minOccurs="1"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="LinguisticSystemType">
+    <xs:sequence>
+      <xs:element name="language" maxOccurs="1" minOccurs="1"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="LocationType">
+    <xs:sequence>
+      <xs:element name="additionalName" type="http://www.w3.org/2000/01/rdf-schema#Literal" maxOccurs="unbounded" minOccurs="0"/>
+      <xs:element name="geographicIdentifier" type="http://www.w3.org/2001/XMLSchema#anyURI" maxOccurs="unbounded" minOccurs="1"/>
+      <xs:element name="geographicName" type="http://www.w3.org/2000/01/rdf-schema#Literal" maxOccurs="unbounded" minOccurs="1"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="PublicServiceType">
+    <xs:sequence>
+      <xs:element name="description" type="http://www.w3.org/2000/01/rdf-schema#Literal" maxOccurs="unbounded" minOccurs="1"/>
+      <xs:element name="hasCompetentAuthority" ref="PublicOrganisation" maxOccurs="1" minOccurs="1"/>
+      <xs:element name="hasWebpage" ref="Webpage" maxOccurs="unbounded" minOccurs="1"/>
+      <xs:element name="identifier" type="http://www.w3.org/2000/01/rdf-schema#Literal" maxOccurs="unbounded" minOccurs="1"/>
+      <xs:element name="isGroupedBy" ref="Event" maxOccurs="unbounded" minOccurs="0"/>
+      <xs:element name="name" type="http://www.w3.org/2000/01/rdf-schema#Literal" maxOccurs="unbounded" minOccurs="1"/>
+      <xs:element name="policyCode" maxOccurs="unbounded" minOccurs="1"/>
+      <xs:element name="produces" ref="Output" maxOccurs="unbounded" minOccurs="0"/>
+      <xs:element name="spatial" ref="Location" maxOccurs="unbounded" minOccurs="1"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="WebpageType">
+    <xs:sequence>
+      <xs:element name="identifier" type="http://www.w3.org/2000/01/rdf-schema#Literal" maxOccurs="unbounded" minOccurs="1"/>
+      <xs:element name="url" type="http://www.w3.org/2001/XMLSchema#anyURI" maxOccurs="unbounded" minOccurs="1"/>
+      <xs:element name="hasLanguage" ref="LinguisticSystem" maxOccurs="1" minOccurs="1"/>
+      <xs:element name="type" maxOccurs="2" minOccurs="0"/>
+    </xs:sequence>
+  </xs:complexType>
+</xs:schema>
