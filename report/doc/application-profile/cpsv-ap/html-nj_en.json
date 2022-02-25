@@ -2,7 +2,7 @@
   "metadata": {
     "title": "Core Public Service Vocabulary Application Profile (CPSV-AP)",
     "uri": "https://data.europa.eu/m8g",
-    "issued": "2021-07-01",
+    "issued": "2022-03-02",
     "baseURI": "https://data.europa.eu/m8g/",
     "filename": "cpsv-ap",
     "navigation": {
@@ -13,14 +13,136 @@
     "documentconfig": {},
     "status": "Working Draft",
     "statuslabel": "Onbekend",
-    "repositoryurl": "git@uri.semic.eu-thema:SEMICeu/uri.semic.eu-thema.git/tree/be87dbfcd335b6d415431de95e89d5d757ece182",
-    "changelogurl": "git@uri.semic.eu-thema:SEMICeu/uri.semic.eu-thema.git/blob/be87dbfcd335b6d415431de95e89d5d757ece182/CHANGELOG",
+    "repositoryurl": "git@uri.semic.eu-thema:SEMICeu/uri.semic.eu-thema.git/tree/d5fa6c1fccc0960ceac40b0ea4cd4a604849bed5",
+    "changelogurl": "git@uri.semic.eu-thema:SEMICeu/uri.semic.eu-thema.git/blob/d5fa6c1fccc0960ceac40b0ea4cd4a604849bed5/CHANGELOG",
     "feedbackurl": "https://github.com/catalogue-of-services-isa/CPSV-AP/issues",
     "standaardregisterurl": "TODO",
     "usesVocs": [],
     "usesAPs": []
   },
   "classes": [
+    {
+      "uri": "http://data.europa.e/m8g/ContactPoint",
+      "name": "Contact Point",
+      "label": {
+        "en": "Contact Point"
+      },
+      "sort": "Contact Point",
+      "description": {
+        "en": "This class represents the contact information for a Public Service, Channel, Public Organization, etc."
+      },
+      "usage": {
+        "en": "Similarly to the Channel class, a Contact Point may have regular opening hours that are then overridden by, for example, public holidays, using the Opening Hours Specification class."
+      },
+      "parents": [],
+      "properties": [
+        {
+          "uri": "https://schema.org/hoursAvailable",
+          "name": "availability restriction",
+          "sort": "availability restriction",
+          "label": {
+            "en": "availability restriction"
+          },
+          "description": {
+            "en": "This property links a ContactPoint to information about when the ContactPointl is not available, overriding the general opening hours information. The details are provided using the Opening Hours Specification class."
+          },
+          "usage": {},
+          "domain": [
+            {
+              "EA-Name": "ContactPoint",
+              "uri": "http://data.europa.e/m8g/ContactPoint"
+            }
+          ],
+          "range": [
+            {
+              "range_label": "OpeningHoursSpecification",
+              "range_uri": "http://data.europa.eu/m8g/OpeningHoursSpecification"
+            }
+          ],
+          "scopedrange": [
+            {
+              "range_uri": "#Opening Hours Specification",
+              "range_puri": "http://data.europa.eu/m8g/OpeningHoursSpecification",
+              "range_label": {
+                "en": "Opening Hours Specification"
+              }
+            }
+          ],
+          "cardinality": "0..*",
+          "codelist_uri": ""
+        },
+        {
+          "uri": "http://data.europa.eu/m8g/telephone",
+          "name": "has telephone",
+          "sort": "has telephone",
+          "label": {
+            "en": "has telephone"
+          },
+          "description": {
+            "en": "the telephone of the ContactPoint"
+          },
+          "usage": {},
+          "domain": [
+            {
+              "EA-Name": "ContactPoint",
+              "uri": "http://data.europa.e/m8g/ContactPoint"
+            }
+          ],
+          "range": [
+            {
+              "range_label": "Text",
+              "range_uri": "http://www.w3.org/1999/02/22-rdf-syntax-ns#langString"
+            }
+          ],
+          "scopedrange": [
+            {
+              "range_uri": "http://www.w3.org/1999/02/22-rdf-syntax-ns#langString",
+              "range_puri": "http://www.w3.org/1999/02/22-rdf-syntax-ns#langString",
+              "range_label": {
+                "en": "Text"
+              }
+            }
+          ],
+          "cardinality": "0..*",
+          "codelist_uri": ""
+        },
+        {
+          "uri": "http://data.europa.eu/m8g/email",
+          "name": "has email",
+          "sort": "has email",
+          "label": {
+            "en": "has email"
+          },
+          "description": {
+            "en": "the email of the ContactPoint"
+          },
+          "usage": {},
+          "domain": [
+            {
+              "EA-Name": "ContactPoint",
+              "uri": "http://data.europa.e/m8g/ContactPoint"
+            }
+          ],
+          "range": [
+            {
+              "range_label": "Text",
+              "range_uri": "http://www.w3.org/1999/02/22-rdf-syntax-ns#langString"
+            }
+          ],
+          "scopedrange": [
+            {
+              "range_uri": "http://www.w3.org/1999/02/22-rdf-syntax-ns#langString",
+              "range_puri": "http://www.w3.org/1999/02/22-rdf-syntax-ns#langString",
+              "range_label": {
+                "en": "Text"
+              }
+            }
+          ],
+          "cardinality": "0..*",
+          "codelist_uri": ""
+        }
+      ]
+    },
     {
       "uri": "http://data.europa.eu/eli/ontology#LegalResource",
       "name": "Legal Resource",
@@ -103,48 +225,11 @@
       },
       "sort": "Channel",
       "description": {
-        "en": "The Channel class represents the medium through which an Agent provides, uses or interacts in another way with a Public Service. Typical examples include online services, phone, walk-in centres etc."
+        "en": "A medium through which an Agent provides, uses or interacts in another way with a Public Service. Typical examples include online services, phone, walk-in centres etc."
       },
       "usage": {},
       "parents": [],
       "properties": [
-        {
-          "uri": "https://schema.org/openingHours",
-          "name": "opening hours",
-          "sort": "opening hours",
-          "label": {
-            "en": "opening hours"
-          },
-          "description": {
-            "en": "This property represents the normal opening hours of a channel."
-          },
-          "usage": {
-            "en": "The value should follow the flexible format defined for schema.org's opening hours property.\r\nFollowing that structure, days of the week are represented by two letter codes (Mo,Tu, We, Th, Fr, Sa, Su).  Lists should be comma separated (for example: Mo, We, Fr) and periods separated by a hyphen (for example: Mo-Fr).\r\n\r\nIf it is appropriate to add opening hours then this follows the day so if a phone service is available 08:00-20:00 Monday to Saturday and 08:00-18:00 on Sundays that would be encoded as Mo-Sa 08:00-20:00, Su 08:00-18:00.\r"
-          },
-          "domain": [
-            {
-              "EA-Name": "Channel",
-              "uri": "http://data.europa.eu/m8g/Channel"
-            }
-          ],
-          "range": [
-            {
-              "range_label": "Text",
-              "range_uri": "http://www.w3.org/1999/02/22-rdf-syntax-ns#langString"
-            }
-          ],
-          "scopedrange": [
-            {
-              "range_uri": "http://www.w3.org/1999/02/22-rdf-syntax-ns#langString",
-              "range_puri": "http://www.w3.org/1999/02/22-rdf-syntax-ns#langString",
-              "range_label": {
-                "en": "Text"
-              }
-            }
-          ],
-          "cardinality": "0..*",
-          "codelist_uri": ""
-        },
         {
           "uri": "https://schema.org/hoursAvailable",
           "name": "availability restriction",
@@ -165,13 +250,13 @@
           "range": [
             {
               "range_label": "OpeningHoursSpecification",
-              "range_uri": "https://schema.org/OpeningHoursSpecification"
+              "range_uri": "http://data.europa.eu/m8g/OpeningHoursSpecification"
             }
           ],
           "scopedrange": [
             {
               "range_uri": "#Opening Hours Specification",
-              "range_puri": "https://schema.org/OpeningHoursSpecification",
+              "range_puri": "http://data.europa.eu/m8g/OpeningHoursSpecification",
               "range_label": {
                 "en": "Opening Hours Specification"
               }
@@ -306,16 +391,53 @@
           ],
           "range": [
             {
-              "range_label": "PublicOrganization",
-              "range_uri": "http://data.europa.eu/m8g/PublicOrganization"
+              "range_label": "PublicOrganisation",
+              "range_uri": "http://data.europa.eu/m8g/PublicOrganisation"
             }
           ],
           "scopedrange": [
             {
               "range_uri": "#Public Organization",
-              "range_puri": "http://data.europa.eu/m8g/PublicOrganization",
+              "range_puri": "http://data.europa.eu/m8g/PublicOrganisation",
               "range_label": {
                 "en": "Public Organization"
+              }
+            }
+          ],
+          "cardinality": "0..*",
+          "codelist_uri": ""
+        },
+        {
+          "uri": "http://data.europa.eu/m8g/openingHours",
+          "name": "opening hours",
+          "sort": "opening hours",
+          "label": {
+            "en": "opening hours"
+          },
+          "description": {
+            "en": "This property represents the normal opening hours of a channel."
+          },
+          "usage": {
+            "en": "The value should follow the flexible format defined for schema.org's opening hours property.\r\nFollowing that structure, days of the week are represented by two letter codes (Mo,Tu, We, Th, Fr, Sa, Su).  Lists should be comma separated (for example: Mo, We, Fr) and periods separated by a hyphen (for example: Mo-Fr).\r\n\r\nIf it is appropriate to add opening hours then this follows the day so if a phone service is available 08:00-20:00 Monday to Saturday and 08:00-18:00 on Sundays that would be encoded as Mo-Sa 08:00-20:00, Su 08:00-18:00.\r"
+          },
+          "domain": [
+            {
+              "EA-Name": "Channel",
+              "uri": "http://data.europa.eu/m8g/Channel"
+            }
+          ],
+          "range": [
+            {
+              "range_label": "Text",
+              "range_uri": "http://www.w3.org/1999/02/22-rdf-syntax-ns#langString"
+            }
+          ],
+          "scopedrange": [
+            {
+              "range_uri": "http://www.w3.org/1999/02/22-rdf-syntax-ns#langString",
+              "range_puri": "http://www.w3.org/1999/02/22-rdf-syntax-ns#langString",
+              "range_label": {
+                "en": "Text"
               }
             }
           ],
@@ -461,14 +583,14 @@
           ],
           "range": [
             {
-              "range_label": "PublicOrganization",
-              "range_uri": "http://data.europa.eu/m8g/PublicOrganization"
+              "range_label": "PublicOrganisation",
+              "range_uri": "http://data.europa.eu/m8g/PublicOrganisation"
             }
           ],
           "scopedrange": [
             {
               "range_uri": "#Public Organization",
-              "range_puri": "http://data.europa.eu/m8g/PublicOrganization",
+              "range_puri": "http://data.europa.eu/m8g/PublicOrganisation",
               "range_label": {
                 "en": "Public Organization"
               }
@@ -559,10 +681,10 @@
       },
       "sort": "Criterion",
       "description": {
-        "en": "A Criterion can be expressed as a set of requirements where every requirement must be valid. A Criterion requirement is an atomic requirement. Some criteria can be expressed with several atomic requirements. A Criterion requirement can specify the expected value that the Criterion response has to contain, or a range of threshold values within which the Criterion response has to fit in. The Criterion requirement may apply to a certain period of time. It also can provide a list of candidate evidences that the responder can use to prove the Criterion requirement."
+        "en": "Condition for evaluation or assessment."
       },
       "usage": {
-        "en": "Not all public services are needed or usable by everyone. For example, the visa service operated by European countries is not needed by European citizens but is needed by some citizens from elsewhere, or public services offering unemployment benefits and grants are targeting specific societal groups. The CPSV-AP reuses the Core Criterion and Core Evidence Vocabulary for this class."
+        "en": "Not all public services are needed or usable by everyone. For example, the visa service operated by European countries is not needed by European citizens but is needed by some citizens from elsewhere, or public services offering unemployment benefits and grants are targeting specific societal groups. The CPSV-AP reuses the Core Criterion and Core Evidence Vocabulary for this class.\r\n\r\nIn general, Criteria are used for comparison, filtering or selection purposes. Criteria usually set minimum conditions (e.g. limits, intervals, thresholds, etc.) that need to be met in order to pass the requirements or to fulfil them to a certain degree or quality. The concept of Criteria is broader than the concept of Constraint since it covers more usages. The evaluation of the fulfilment is usually supported by the provision of Evidence. \nFor example in the eProcurement domain, the eProcurement Ontology defines different subclasses of Criterion such as exclusion grounds, selection criteria or award criteria. A concrete example of a Criterion is 'participation in a criminal organisation' which could also be considered as an exclusion ground criterion in the procurement domain or for requiring a public service."
       },
       "parents": [],
       "properties": [
@@ -644,7 +766,7 @@
             "en": "identifier"
           },
           "description": {
-            "en": "This property represents an Identifier for the Criteriont."
+            "en": "This property represents an Identifier for the Criterion."
           },
           "usage": {},
           "domain": [
@@ -1115,6 +1237,22 @@
       "properties": []
     },
     {
+      "uri": "http://data.europa.eu/m8g/OpeningHoursSpecification",
+      "name": "Opening Hours Specification",
+      "label": {
+        "en": "Opening Hours Specification"
+      },
+      "sort": "Opening Hours Specification",
+      "description": {
+        "en": "An exceptional circumstance that overrides the normal Opening Hours, such as being closed on public holidays."
+      },
+      "usage": {
+        "en": "This class is aligned to Schema.org OpeningHoursSpecification class\r\n\r\nThe Opening Hours Specification class can be used to provide details of exceptional circumstances, such as being closed on public holidays, which is encoded (in Turtle), thus:\r\nex:PublicHolidayClosed a schema:OpeningHoursSpecification;\r\nschema:dayOfWeek <http://schema.org/PublicHoliday>.\r\n\r\nNote that the property schema:opens is not used, therefore the contact point is closed. More specific closures can be indicated by including the schema:validFrom and schema:validThrough properties, for example:\r\nex:ChristmasClosed a schema:OpeningHoursSpecification;\r\nschema:validFrom \"2016-12-24T012:00Z\";\r\nschema:validThrough \"2017-01-02T09:00Z\".\r\n"
+      },
+      "parents": [],
+      "properties": []
+    },
+    {
       "uri": "http://data.europa.eu/m8g/Output",
       "name": "Output",
       "label": {
@@ -1394,17 +1532,17 @@
       ]
     },
     {
-      "uri": "http://data.europa.eu/m8g/PublicOrganization",
+      "uri": "http://data.europa.eu/m8g/PublicOrganisation",
       "name": "Public Organization",
       "label": {
         "en": "Public Organization"
       },
       "sort": "Public Organization",
       "description": {
-        "en": "Any Organization that is defined as being part of the public sector by a legal framework at any level."
+        "en": "An Organization that is defined as being part of the public sector by a legal framework at any level."
       },
       "usage": {
-        "en": "Within the CPSV-AP the following properties are mandatory: preferred label and spatial. The value of the latter should be a URI from the Administrative Territorial Units Named Authority List maintained by the Publications Office's Metadata Registry.\r"
+        "en": "Organizations which exist to provide services for its citizens and companies are called Public Organizations. The Public Organization class represents the organization. One organization may comprise several sub-organizations and any organization may have one or more organizational units. Each of these is described using the same properties and relationships.\r\n\r\nThis definition is consistent with the more detailed definition of a \"public sector body\" as given in the PSI Directive: \"the State, regional or local authorities, bodies governed by public law and associations formed by one or several such authorities or one or several such bodies governed by public law\". It further defines a body governed by public law as any body \"(a) established for the specific purpose of meeting needs in the general interest, not having an industrial or commercial character; and (b) having legal personality; and (c) financed, for the most part by the State, or regional or local authorities, or other bodies governed by public law; or subject to management supervision by those bodies; or having an administrative, managerial or supervisory board, more than half of whose members are appointed by the State, regional or local authorities or by other bodies governed by public law\"."
       },
       "parents": [],
       "properties": [
@@ -1416,13 +1554,15 @@
             "en": "preferred label"
           },
           "description": {
-            "en": "The primary (e.g. legally recognized) name."
+            "en": "A preferred label is used to provide the primary, legally recognised name of the Public Organization, as defined in the ORG Ontology."
           },
-          "usage": {},
+          "usage": {
+            "en": "Refers to the official or legal name of a Public Organization. An organization may only have one such name in any given language. Primary names may be provided in multiple languages with multiple instances of the preferred label property."
+          },
           "domain": [
             {
-              "EA-Name": "PublicOrganization",
-              "uri": "http://data.europa.eu/m8g/PublicOrganization"
+              "EA-Name": "PublicOrganisation",
+              "uri": "http://data.europa.eu/m8g/PublicOrganisation"
             }
           ],
           "range": [
@@ -1458,8 +1598,8 @@
           },
           "domain": [
             {
-              "EA-Name": "PublicOrganization",
-              "uri": "http://data.europa.eu/m8g/PublicOrganization"
+              "EA-Name": "PublicOrganisation",
+              "uri": "http://data.europa.eu/m8g/PublicOrganisation"
             }
           ],
           "range": [
@@ -2354,13 +2494,13 @@
           "range": [
             {
               "range_label": "ContactPoint",
-              "range_uri": "https://schema.org/ContactPoint"
+              "range_uri": "http://data.europa.e/m8g/ContactPoint"
             }
           ],
           "scopedrange": [
             {
               "range_uri": "#Contact Point",
-              "range_puri": "https://schema.org/ContactPoint",
+              "range_puri": "http://data.europa.e/m8g/ContactPoint",
               "range_label": {
                 "en": "Contact Point"
               }
@@ -2388,14 +2528,14 @@
           ],
           "range": [
             {
-              "range_label": "PublicOrganization",
-              "range_uri": "http://data.europa.eu/m8g/PublicOrganization"
+              "range_label": "PublicOrganisation",
+              "range_uri": "http://data.europa.eu/m8g/PublicOrganisation"
             }
           ],
           "scopedrange": [
             {
               "range_uri": "#Public Organization",
-              "range_puri": "http://data.europa.eu/m8g/PublicOrganization",
+              "range_puri": "http://data.europa.eu/m8g/PublicOrganisation",
               "range_label": {
                 "en": "Public Organization"
               }
@@ -2984,10 +3124,10 @@
             "en": "thoroughfare"
           },
           "description": {
-            "en": "An address component that represents the name or names of a passage or way through from one location to another. A thoroughfare is not necessarily a road, it might be a waterway or some other feature."
+            "en": "The name of a passage or way through from one location to another."
           },
           "usage": {
-            "en": "For example, \"Avenue des Champs-Élysées\"."
+            "en": "A thoroughfare is usually a street, but it might be a waterway or some other feature. For example, \"Avenue des Champs-Élysées\"."
           },
           "domain": [
             {
@@ -3010,7 +3150,7 @@
               }
             }
           ],
-          "cardinality": "1",
+          "cardinality": "0..*",
           "codelist_uri": ""
         },
         {
@@ -3021,9 +3161,11 @@
             "en": "post name (city)"
           },
           "description": {
-            "en": "The key postal division of the address, usually the city. (INSPIRE's definition is \"One or more names created and maintained for postal purposes to identify a subdivision of addresses and postal delivery points.)\r\n For example, \"Paris\"."
+            "en": "A name created and maintained for postal purposes to identify a subdivision of addresses and postal delivery points."
           },
-          "usage": {},
+          "usage": {
+            "en": "Usually a city, for example \"Paris\"."
+          },
           "domain": [
             {
               "EA-Name": "Address",
@@ -3045,7 +3187,7 @@
               }
             }
           ],
-          "cardinality": "1",
+          "cardinality": "0..*",
           "codelist_uri": ""
         },
         {
@@ -3056,7 +3198,7 @@
             "en": "post code"
           },
           "description": {
-            "en": "The post/zip code of an address. (INSPIRE's definition is \"A code created and maintained for postal purposes to identify a subdivision of addresses and postal delivery points.\")"
+            "en": "The code created and maintained for postal purposes to identify a subdivision of addresses and postal delivery points."
           },
           "usage": {
             "en": "Post codes are common elements in many countries' postal address systems. One of the many post codes of Paris is for example \"75000\"."
@@ -3082,7 +3224,7 @@
               }
             }
           ],
-          "cardinality": "1",
+          "cardinality": "0..*",
           "codelist_uri": ""
         },
         {
@@ -3093,7 +3235,7 @@
             "en": "post office box"
           },
           "description": {
-            "en": "The Post Office Box number."
+            "en": "A location designator for a postal delivery point at a post office, usually a number."
           },
           "usage": {
             "en": "INSPIRE's name for this is \"postalDeliveryIdentifier\" for which it uses the locator designator property with a type attribute of that name. This vocabulary separates out the Post Office Box for greater independence of technology. An example post office box number is \"9383\"."
@@ -3119,7 +3261,7 @@
               }
             }
           ],
-          "cardinality": "1",
+          "cardinality": "0..*",
           "codelist_uri": ""
         },
         {
@@ -3133,7 +3275,7 @@
             "en": "Proper noun(s) applied to the real world entity identified by the locator."
           },
           "usage": {
-            "en": "<p>\r\nThe locator name could be the name of the property or complex, of the building or part of the building, or it could be the name of a room inside a building.\r\n</p></br>\r\n<p>\r\nThe key difference between a locator and a locator name is that the latter is a proper name and is unlikely to include digits. For example, \"Schuman, Berlaymont\" is a meeting room within the European Commission headquarters for which locator name is more appropriate than locator.\r\n</p>"
+            "en": "The locator name could be the name of the property or complex, of the building or part of the building, or it could be the name of a room inside a building.\r\n\r\nThe key difference between a locator and a locator name is that the latter is a proper name and is unlikely to include digits. For example, \"Shumann, Berlaymont\" is a meeting room within the European Commission headquarters for which locator name is more appropriate than locator."
           },
           "domain": [
             {
@@ -3156,7 +3298,7 @@
               }
             }
           ],
-          "cardinality": "1",
+          "cardinality": "0..*",
           "codelist_uri": ""
         },
         {
@@ -3167,7 +3309,7 @@
             "en": "locator designator"
           },
           "description": {
-            "en": "A number or a sequence of characters which allows a user or an application to interpret, parse and format the locator within the relevant scope. A locator may include more locator designators."
+            "en": "A number or sequence of characters that uniquely identifies the locator within the relevant scope."
           },
           "usage": {
             "en": "In simpler terms, this is the building number, apartment number, etc. For an address such as \"Flat 3, 17 Bridge Street\", the locator is \"flat 3, 17\"."
@@ -3193,7 +3335,7 @@
               }
             }
           ],
-          "cardinality": "1",
+          "cardinality": "0..*",
           "codelist_uri": ""
         },
         {
@@ -3204,7 +3346,7 @@
             "en": "full address"
           },
           "description": {
-            "en": "The complete address written as a formatted string."
+            "en": "The complete address written as a string."
           },
           "usage": {
             "en": "Use of this property is recommended as it will not suffer any misunderstandings that might arise through the breaking up of an address into its component parts. This property is analogous to vCard's label property but with two important differences: (1) formatting is not assumed so that, unlike vCard label, it may not be suitable to print this on an address label, (2) vCard's label property has a domain of vCard Address; the fullAddress property has no such restriction. An example of a full address is \"Champ de Mars, 5 Avenue Anatole France, 75007 Paris, France\"."
@@ -3230,7 +3372,7 @@
               }
             }
           ],
-          "cardinality": "1",
+          "cardinality": "0..*",
           "codelist_uri": ""
         },
         {
@@ -3241,47 +3383,10 @@
             "en": "administrative unit level 2 (country/region/state)"
           },
           "description": {
-            "en": "The name or names of a unit of administration where a Member State has and/or exercises jurisdictional rights, for local, regional and national governance. Level 2 referst to the region of the address, usually a county, state or other such area that typically encompasses several localities."
+            "en": "The name of a secondary level/region of the address, usually a county, state or other such area that typically encompasses several localities."
           },
           "usage": {
-            "en": "Some recommended codelists from the EU Publications Office include:\r\n<a href=\"http://publications.europa.eu/resource/authority/atu\">Administrative Territorial Units (ATU)</a>,\r\n<a href=\"https://ec.europa.eu/eurostat/web/nuts/background\">NUTS</a> and\r\n<a href=\"https://ec.europa.eu/eurostat/web/nuts/local-administrative-units\">Local Administrative Units (LAU)</a>. The first arrondissement of Paris is for example expressed as \"http://publications.europa.eu/resource/authority/atu/FRA_AR_PAR01\" in the ATU controlled vocabulary."
-          },
-          "domain": [
-            {
-              "EA-Name": "Address",
-              "uri": "http://www.w3.org/ns/locn#Address"
-            }
-          ],
-          "range": [
-            {
-              "range_label": "Text",
-              "range_uri": "http://www.w3.org/1999/02/22-rdf-syntax-ns#langString"
-            }
-          ],
-          "scopedrange": [
-            {
-              "range_uri": "http://www.w3.org/1999/02/22-rdf-syntax-ns#langString",
-              "range_puri": "http://www.w3.org/1999/02/22-rdf-syntax-ns#langString",
-              "range_label": {
-                "en": "Text"
-              }
-            }
-          ],
-          "cardinality": "1",
-          "codelist_uri": ""
-        },
-        {
-          "uri": "http://www.w3.org/ns/locn#adminUnitL1",
-          "name": "administrative unit level 1 (country)",
-          "sort": "administrative unit level 1 (country)",
-          "label": {
-            "en": "administrative unit level 1 (country)"
-          },
-          "description": {
-            "en": "The name or names of a unit of administration where a Member State has and/or exercises jurisdictional rights, for local, regional and national governance. Level 1 refers to the uppermost administrative unit for the address, almost always a country."
-          },
-          "usage": {
-            "en": "Best practice is to use the ISO 3166-1 code but if this is inappropriate for the context, country names should be provided in a consistent manner to reduce ambiguity. For example, either write 'France' or 'FRA' consistently throughout the dataset and avoid mixing the two. The <a href=\"https://op.europa.eu/en/web/eu-vocabularies/dataset/-/resource?uri=http://publications.europa.eu/resource/dataset/country\">Country controlled vocabulary</a> from the Publications Office can be reused for this."
+            "en": "Some recommended codelists from the EU Publications Office include: <a href=\"https://op.europa.eu/fr/web/eu-vocabularies/dataset/-/resource?uri=http://publications.europa.eu/resource/dataset/atu\">Administrative Territorial Units (ATU)</a>, <a href=\"https://ec.europa.eu/eurostat/web/nuts/background\">NUTS</a> and <a href=\"https://ec.europa.eu/eurostat/web/nuts/local-administrative-units\">Local Administrative Units (LAU)</a>. The first arrondissement of Paris is for example expressed as \"http://publications.europa.eu/resource/authority/atu/FRA\\_AR\\_PAR01\" in the ATU controlled vocabulary."
           },
           "domain": [
             {
@@ -3304,7 +3409,44 @@
               }
             }
           ],
-          "cardinality": "1",
+          "cardinality": "0..*",
+          "codelist_uri": ""
+        },
+        {
+          "uri": "http://www.w3.org/ns/locn#adminUnitL1",
+          "name": "administrative unit level 1 (country)",
+          "sort": "administrative unit level 1 (country)",
+          "label": {
+            "en": "administrative unit level 1 (country)"
+          },
+          "description": {
+            "en": "The name of the uppermost level of the address, almost always a country."
+          },
+          "usage": {
+            "en": "Best practice is to use the ISO 3166-1 code but if this is inappropriate for the context, country names should be provided in a consistent manner to reduce ambiguity. For example, either write 'France' or 'FRA' consistently throughout the dataset and avoid mixing the two. The <a href=\"http://publications.europa.eu/resource/dataset/country\">Country controlled vocabulary</a> from the Publications Office can be reused for this."
+          },
+          "domain": [
+            {
+              "EA-Name": "Address",
+              "uri": "http://www.w3.org/ns/locn#Address"
+            }
+          ],
+          "range": [
+            {
+              "range_label": "Code",
+              "range_uri": "http://www.w3.org/2004/02/skos/core#Concept"
+            }
+          ],
+          "scopedrange": [
+            {
+              "range_uri": "http://www.w3.org/2004/02/skos/core#Concept",
+              "range_puri": "http://www.w3.org/2004/02/skos/core#Concept",
+              "range_label": {
+                "en": "Code"
+              }
+            }
+          ],
+          "cardinality": "0..*",
           "codelist_uri": ""
         },
         {
@@ -3318,7 +3460,7 @@
             "en": "A globally unique identifier for each instance of an Address."
           },
           "usage": {
-            "en": "<p>\r\nThe concept of adding a globally unique identifier for each instance of an address is a crucial part of the INSPIRE data spec. A number of EU countries have already implemented an ID (a UUID) in their Address Register/gazetteer, among them Denmark. OASIS xAL also includes an\r\naddress identifier. It is the address Identifier that allows an address to be represented in a format other than INSPIRE whilst remaining conformant to the Core Vocabulary.\r\n</p></br>\r\n<p>\r\nThe INSPIRE method of representing addresses is very detailed, designed primarily for use in databases of addresses. Whilst data that is published in full conformance with the INSPIRE data structure can be made available using the Location Core Vocabulary the reverse is not true since the Core Vocabulary allows much greater flexibility.\r\n</p></br>\r\n<p>\r\nMany datasets that include address data as one piece of information about something else are likely to have that data in simpler formats. These might be tailored to the specific need of the dataset, follow a national norm, or make use of a standard like vCard.\r\n</p></br>\r\n<p>\r\nTo provide maximum flexibility in the Core Vocabulary, whilst remaining interoperable with INSPIRE Address Guidelines (which EU Member States are obliged to use), the Location Core Vocabulary provides the extra property of full address and makes use of INSPIRE's addressID.\r\n</p>"
+            "en": "The concept of adding a globally unique identifier for each instance of an address is a crucial part of the INSPIRE data spec. A number of EU countries have already implemented an ID (a UUID) in their Address Register/gazetteer, among them Denmark. OASIS xAL also includes an address identifier. It is the address Identifier that allows an address to be represented in a format other than INSPIRE whilst remaining conformant to the Core Vocabulary.\r\n\r\nThe INSPIRE method of representing addresses is very detailed, designed primarily for use in databases of addresses. Whilst data that is published in full conformance with the INSPIRE data structure can be made available using the Location Core Vocabulary the reverse is not true since the Core Vocabulary allows much greater flexibility.\r\n\r\nMany datasets that include address data as one piece of information about something else are likely to have that data in simpler formats. These might be tailored to the specific need of the dataset, follow a national norm, or make use of a standard like vCard.\r\n\r\nTo provide maximum flexibility in the Core Vocabulary, whilst remaining interoperable with INSPIRE Address Guidelines (which EU Member States are obliged to use), the Location Core Vocabulary provides the extra property of full address and makes use of INSPIRE's addressID."
           },
           "domain": [
             {
@@ -3341,7 +3483,7 @@
               }
             }
           ],
-          "cardinality": "1",
+          "cardinality": "0..*",
           "codelist_uri": ""
         },
         {
@@ -3352,10 +3494,10 @@
             "en": "address area"
           },
           "description": {
-            "en": "The name or names of a geographic area or locality that groups a number of addressable objects for addressing purposes, without being an administrative unit."
+            "en": "The name of a geographic area that groups Addresses."
           },
           "usage": {
-            "en": "This would typically be part of a city, a neighbourhood or village, e.g. Montmartre."
+            "en": "This would typically be part of a city, a neighbourhood or village, e.g. Montmartre. Address area is not an administrative unit."
           },
           "domain": [
             {
@@ -3378,7 +3520,7 @@
               }
             }
           ],
-          "cardinality": "1",
+          "cardinality": "0..*",
           "codelist_uri": ""
         }
       ]
@@ -3549,144 +3691,6 @@
         "en": "A document."
       },
       "usage": {},
-      "parents": [],
-      "properties": []
-    },
-    {
-      "uri": "https://schema.org/ContactPoint",
-      "name": "Contact Point",
-      "label": {
-        "en": "Contact Point"
-      },
-      "sort": "Contact Point",
-      "description": {
-        "en": "This class represents the contact information for a Public Service, Channel, Public Organization, etc."
-      },
-      "usage": {
-        "en": "Similarly to the Channel class, a Contact Point may have regular opening hours that are then overridden by, for example, public holidays, using the Opening Hours Specification class."
-      },
-      "parents": [],
-      "properties": [
-        {
-          "uri": "https://schema.org/telephone",
-          "name": "has telephone",
-          "sort": "has telephone",
-          "label": {
-            "en": "has telephone"
-          },
-          "description": {
-            "en": "the telephone of the ContactPoint"
-          },
-          "usage": {},
-          "domain": [
-            {
-              "EA-Name": "ContactPoint",
-              "uri": "https://schema.org/ContactPoint"
-            }
-          ],
-          "range": [
-            {
-              "range_label": "Text",
-              "range_uri": "http://www.w3.org/1999/02/22-rdf-syntax-ns#langString"
-            }
-          ],
-          "scopedrange": [
-            {
-              "range_uri": "http://www.w3.org/1999/02/22-rdf-syntax-ns#langString",
-              "range_puri": "http://www.w3.org/1999/02/22-rdf-syntax-ns#langString",
-              "range_label": {
-                "en": "Text"
-              }
-            }
-          ],
-          "cardinality": "0..*",
-          "codelist_uri": ""
-        },
-        {
-          "uri": "https://schema.org/hoursAvailable",
-          "name": "availability restriction",
-          "sort": "availability restriction",
-          "label": {
-            "en": "availability restriction"
-          },
-          "description": {
-            "en": "This property links a ContactPoint to information about when the ContactPointl is not available, overriding the general opening hours information. The details are provided using the Opening Hours Specification class."
-          },
-          "usage": {},
-          "domain": [
-            {
-              "EA-Name": "ContactPoint",
-              "uri": "https://schema.org/ContactPoint"
-            }
-          ],
-          "range": [
-            {
-              "range_label": "OpeningHoursSpecification",
-              "range_uri": "https://schema.org/OpeningHoursSpecification"
-            }
-          ],
-          "scopedrange": [
-            {
-              "range_uri": "#Opening Hours Specification",
-              "range_puri": "https://schema.org/OpeningHoursSpecification",
-              "range_label": {
-                "en": "Opening Hours Specification"
-              }
-            }
-          ],
-          "cardinality": "0..*",
-          "codelist_uri": ""
-        },
-        {
-          "uri": "https://schema.org/email",
-          "name": "has email",
-          "sort": "has email",
-          "label": {
-            "en": "has email"
-          },
-          "description": {
-            "en": "the email of the ContactPoint"
-          },
-          "usage": {},
-          "domain": [
-            {
-              "EA-Name": "ContactPoint",
-              "uri": "https://schema.org/ContactPoint"
-            }
-          ],
-          "range": [
-            {
-              "range_label": "Text",
-              "range_uri": "http://www.w3.org/1999/02/22-rdf-syntax-ns#langString"
-            }
-          ],
-          "scopedrange": [
-            {
-              "range_uri": "http://www.w3.org/1999/02/22-rdf-syntax-ns#langString",
-              "range_puri": "http://www.w3.org/1999/02/22-rdf-syntax-ns#langString",
-              "range_label": {
-                "en": "Text"
-              }
-            }
-          ],
-          "cardinality": "0..*",
-          "codelist_uri": ""
-        }
-      ]
-    },
-    {
-      "uri": "https://schema.org/OpeningHoursSpecification",
-      "name": "Opening Hours Specification",
-      "label": {
-        "en": "Opening Hours Specification"
-      },
-      "sort": "Opening Hours Specification",
-      "description": {
-        "en": "The CPSV-AP makes use of schema.org's openingHours property to provide details of regular operations."
-      },
-      "usage": {
-        "en": "The Opening Hours Specification class can be used to provide details of exceptional circumstances, such as being closed on public holidays, which is encoded (in Turtle), thus:\r\nex:PublicHolidayClosed a schema:OpeningHoursSpecification;\r\nschema:dayOfWeek <http://schema.org/PublicHoliday>.\r\n\r\nNote that the property schema:opens is not used, therefore the contact point is closed. More specific closures can be indicated by including the schema:validFrom and schema:validThrough properties, for example:\r\nex:ChristmasClosed a schema:OpeningHoursSpecification;\r\nschema:validFrom \"2016-12-24T012:00Z\";\r\nschema:validThrough \"2017-01-02T09:00Z\".\r\n"
-      },
       "parents": [],
       "properties": []
     }
