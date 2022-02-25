@@ -190,7 +190,7 @@
               <div class="head" role="metainfo" id="metainfo">
               <dl>
               <dt>Source</dt><dd><a href="https://github.com/SEMICeu/TODO/tree/master/releases/2.00">https://github.com/SEMICeu/TODO/tree/master/releases/2.00</a></dd>
-              <!--<dt>Changelog</dt><dd><a href="git@uri.semic.eu-thema:SEMICeu/uri.semic.eu-thema.git/blob/cefe32c039405a17d6b5a3fab3c39edc58eebeba/CHANGELOG">git@uri.semic.eu-thema:SEMICeu/uri.semic.eu-thema.git/blob/cefe32c039405a17d6b5a3fab3c39edc58eebeba/CHANGELOG</a></dd>-->
+              <!--<dt>Changelog</dt><dd><a href="git@uri.semic.eu-thema:SEMICeu/uri.semic.eu-thema.git/blob/be87dbfcd335b6d415431de95e89d5d757ece182/CHANGELOG">git@uri.semic.eu-thema:SEMICeu/uri.semic.eu-thema.git/blob/be87dbfcd335b6d415431de95e89d5d757ece182/CHANGELOG</a></dd>-->
               <dt>Feedback</dt><dd><a href="https://github.com/catalogue-of-services-isa/CPSV-AP/issues">https://github.com/catalogue-of-services-isa/CPSV-AP/issues</a></dd>
               <!--<dt>Registry of standards</dt><dd><a href="TODO">TODO</a></dd>-->
 
@@ -639,6 +639,7 @@ The key difference between a locator and a locator name is that the latter is a 
                     <dt>Properties</dt>
 		     
                     <dd>For this entity the following properties are defined:
+                      <a href="#Agent%3AhasAddress">hasAddress</a>, 
                       <a href="#Agent%3Aidentifier">identifier</a>, 
                       <a href="#Agent%3Aname">name</a>, 
                       <a href="#Agent%3Aplays%20role">plays role</a>.</dd>
@@ -660,6 +661,26 @@ The key difference between a locator and a locator name is that the latter is a 
                     </thead>
 
                     <tbody class="supertype">
+                    
+                      <tr id="Agent%3AhasAddress" typeof="rdfs:Property" resource="http://data.europa.eu/m8g/hasAddress">
+                        <td>
+                          <code property="rdfs:label">
+                            <a href="http://data.europa.eu/m8g/hasAddress" data-toggle="tooltip" data-content="http://data.europa.eu/m8g/hasAddress" data-placement="right">
+                            hasAddress</a>
+                          </code>
+                        </td>
+                        <td>
+                          
+			    
+			    <a href="#Address" data-placement="right">Address</a>
+			    
+                          
+                        </td>
+			<td>0..1</td>
+                        <td property="rdfs:comment">This property represents an Address related to an Agent. Asserting the address relationship implies that the Agent has an Address.</td>
+                        <td property="skos:scopeNote"></td>
+                        <td></td>
+                      </tr>
                     
                       <tr id="Agent%3Aidentifier" typeof="rdfs:Property" resource="http://purl.org/dc/terms/identifier">
                         <td>
@@ -1040,7 +1061,7 @@ The Concept may or may not belong to (member) a certain Collection.</dd>
                           
                         </td>
 			<td>0..*</td>
-                        <td property="rdfs:comment">This property links a channel to information about when the channel is not available, overriding the general opening hours information. The details are provided using the Opening Hours Specification class.</td>
+                        <td property="rdfs:comment">This property links a ContactPoint to information about when the ContactPointl is not available, overriding the general opening hours information. The details are provided using the Opening Hours Specification class.</td>
                         <td property="skos:scopeNote"></td>
                         <td></td>
                       </tr>
@@ -1302,7 +1323,7 @@ The Concept may or may not belong to (member) a certain Collection.</dd>
                           
                         </td>
 			<td>1</td>
-                        <td property="rdfs:comment">This property represents an Identifier for the Criterion Requirement.</td>
+                        <td property="rdfs:comment">This property represents an Identifier for the Criteriont.</td>
                         <td property="skos:scopeNote"></td>
                         <td></td>
                       </tr>
@@ -1322,7 +1343,7 @@ The Concept may or may not belong to (member) a certain Collection.</dd>
                           
                         </td>
 			<td>1</td>
-                        <td property="rdfs:comment">This property represents the official Name of the Criterion Requirement.</td>
+                        <td property="rdfs:comment">This property represents the official Name of the Criterion.</td>
                         <td property="skos:scopeNote"></td>
                         <td></td>
                       </tr>
@@ -1342,7 +1363,7 @@ The Concept may or may not belong to (member) a certain Collection.</dd>
                           
                         </td>
 			<td>0..*</td>
-                        <td property="rdfs:comment">This property represents the type of Criterion Requirement as described in a controlled vocabulary.</td>
+                        <td property="rdfs:comment">This property represents the type of Criterion as described in a controlled vocabulary.</td>
                         <td property="skos:scopeNote"></td>
                         <td></td>
                       </tr>
@@ -1770,7 +1791,7 @@ In some cases, the Output of one service will be Evidence for another service. S
                         </td>
 			<td>0..*</td>
                         <td property="rdfs:comment">Indicates the language(s) in which the Evidence must be provided.</td>
-                        <td property="skos:scopeNote">The recommended controlled vocabularies forthis property is the <a href="https://op.europa.eu/en/web/eu-vocabularies/dataset/-/resource?uri=http://publications.europa.eu/resource/dataset/language">Language</a> Authority Table of the Publications Office</td>
+                        <td property="skos:scopeNote">The recommended controlled vocabularies for this property is the <a href="https://op.europa.eu/en/web/eu-vocabularies/dataset/-/resource?uri=http://publications.europa.eu/resource/dataset/language">Language</a> Authority Table of the Publications Office</td>
                         <td></td>
                       </tr>
                     
@@ -2266,8 +2287,8 @@ this is an extension mechanism for the CSPV-AP, the controlled vocabulary should
 			    
                           
                         </td>
-			<td>1</td>
-                        <td property="rdfs:comment">A Public Service is likely to be available only within a given area, typically the area covered by a particular public authority.</td>
+			<td>1..*</td>
+                        <td property="rdfs:comment">Cardinality [1..n]. A Public Organisation has to be associated to one or multiple locations.</td>
                         <td property="skos:scopeNote">The value should be a URI from the <a href="https://op.europa.eu/en/web/eu-vocabularies/dataset/-/resource?uri=http://publications.europa.eu/resource/dataset/atu">Administrative Territorial Units</a> Authority Table maintained by the Publications Office.</td>
                         <td></td>
                       </tr>
@@ -3095,6 +3116,22 @@ the Legal Resource under which the Rules are being defined.</td>
             </div>
 	    -->
 	    
+			<div class="region region--no-space-top" id="uml">
+                <h2 class="h2" aria-level="1" role="heading" id="h2_sotd">UML representation</h2>
+                (non-normative)
+                
+		<p>The UML representation from which this Core Vocabulary has been build is available <a href="/doc/application-profile/cpsv-ap/uml/cpsv-ap.eap" target="_blank">here.</a></p>
+                
+            </div>
+			
+			<div class="region region--no-space-top" id="rdf">
+                <h2 class="h2" aria-level="1" role="heading" id="h2_sotd">RDF representation</h2>
+                (non-normative)
+                
+		<p>A reusable RDF representation (in turtle) for this Core Vocabulary is retrievable <a href="/doc/application-profile/cpsv-ap/rdf/cpsv-ap.ttl" target="_blank">here.</a></p></a></p>
+                
+            </div>
+			
             <div class="region region--no-space-top" id="jsonld">
                 <h2 class="h2" aria-level="1" role="heading" id="h2_sotd">JSON-LD context</h2>
                 (non-normative)
@@ -3102,7 +3139,6 @@ the Legal Resource under which the Rules are being defined.</td>
 		<p>A reusable JSON-LD context definition for this Core Vocabulary is retrievable at: <a href="/doc/application-profile/cpsv-ap/context/cpsv-ap_en.jsonld" target="_blank">/doc/application-profile/cpsv-ap/context/cpsv-ap_en.jsonld</a></p>
                 
             </div>
-	    <!--
             <div class="region region--no-space-top" id="shacl">
                 <h2 class="h2" aria-level="1" role="heading" id="h2_sotd">SHACL template</h2>
                 (non-normative)
@@ -3110,7 +3146,6 @@ the Legal Resource under which the Rules are being defined.</td>
 		<p>A reusable SHACL template for this Core Vocabulary is retrievable at: <a href="/doc/application-profile/cpsv-ap/shacl/cpsv-ap_en-SHACL.ttl" target="_blank">/doc/application-profile/cpsv-ap/shacl/cpsv-ap_en-SHACL.ttl</a></p>
                 
             </div>
-	    -->
           </div>
           <div class="col--3-12 col--12-12--s col--4-12--m push--1-12 push--reset--m" id="sideNav">
               <nav class="side-navigation js-sticky region" id="sideNav">
@@ -3146,14 +3181,19 @@ the Legal Resource under which the Rules are being defined.</td>
                                   <a href="#changelog">Changelog</a>
                               </li>
 			      -->
-                              <li class="side-navigation__item">
-                                  <a href="#jsonld">JSON-LD Context</a>
+							<li class="side-navigation__item">
+                                  <a href="#uml">UML representation</a>
                               </li>
-			      <!--
+                              <li class="side-navigation__item">
+                                  <a href="#rdf">RDF representation</a>
+                              </li>
+			      
+                              <li class="side-navigation__item">
+                                  <a href="#jsonld">JSON-LD context</a>
+                              </li>
                               <li class="side-navigation__item">
                                   <a href="#shacl">SHACL template</a>
                               </li>
-			      -->
                           </ul>
                       </div>
                   </div>

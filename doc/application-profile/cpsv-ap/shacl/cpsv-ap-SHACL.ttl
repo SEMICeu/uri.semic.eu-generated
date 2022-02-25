@@ -117,6 +117,12 @@
 <https://semiceu.github.io//shacl/cpsv-ap-SHACL_en#AgentShape> a shacl:NodeShape;
   shacl:closed false;
   shacl:property [
+    shacl:class <http://www.w3.org/ns/locn#Address>;
+    shacl:description "This property represents an Address related to an Agent. Asserting the address relationship implies that the Agent has an Address."@en;
+    shacl:maxCount 1;
+    shacl:name "hasAddress"@en;
+    shacl:path <http://data.europa.eu/m8g/hasAddress>
+  ], [
     shacl:datatype rdf:langString;
     shacl:description "This property represents an Identifier for the Agent."@en;
     shacl:maxCount 1;
@@ -201,7 +207,7 @@ required for an online channel, whereas a physical signature may be required for
   shacl:closed false;
   shacl:property [
     shacl:class schemas:OpeningHoursSpecification;
-    shacl:description "This property links a channel to information about when the channel is not available, overriding the general opening hours information. The details are provided using the Opening Hours Specification class."@en;
+    shacl:description "This property links a ContactPoint to information about when the ContactPointl is not available, overriding the general opening hours information. The details are provided using the Opening Hours Specification class."@en;
     shacl:name "availability restriction"@en;
     shacl:path schemas:hoursAvailable
   ], [
@@ -262,21 +268,21 @@ required for an online channel, whereas a physical signature may be required for
   shacl:closed false;
   shacl:property [
     shacl:datatype rdf:langString;
-    shacl:description "This property represents an Identifier for the Criterion Requirement."@en;
+    shacl:description "This property represents an Identifier for the Criteriont."@en;
     shacl:maxCount 1;
     shacl:minCount 1;
     shacl:name "identifier"@en;
     shacl:path dc:identifier
   ], [
     shacl:datatype rdf:langString;
-    shacl:description "This property represents the official Name of the Criterion Requirement."@en;
+    shacl:description "This property represents the official Name of the Criterion."@en;
     shacl:maxCount 1;
     shacl:minCount 1;
     shacl:name "name"@en;
     shacl:path dc:title
   ], [
     shacl:class skos:Concept;
-    shacl:description "This property represents the type of Criterion Requirement as described in a controlled vocabulary."@en;
+    shacl:description "This property represents the type of Criterion as described in a controlled vocabulary."@en;
     shacl:name "type"@en;
     shacl:path dc:type
   ];
@@ -494,8 +500,7 @@ this is an extension mechanism for the CSPV-AP, the controlled vocabulary should
     shacl:path skos:prefLabel
   ], [
     shacl:class dc:Location;
-    shacl:description "A Public Service is likely to be available only within a given area, typically the area covered by a particular public authority."@en;
-    shacl:maxCount 1;
+    shacl:description "Cardinality [1..n]. A Public Organisation has to be associated to one or multiple locations."@en;
     shacl:minCount 1;
     shacl:name "spatial"@en;
     shacl:path dc:spatial
