@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <xs:schema xmlns="https://data.europa.eu/m8g/xml/" xmlns:xs="http://www.w3.org/2001/XMLSchema" targetNamespace="https://data.europa.eu/m8g/xml/" version="2.0.0" elementFormDefault="qualified" attributeFormDefault="unqualified" xmlns:cv="https://data.europa.eu/m8g/xml/">
+  <xs:element name="ContactPoint" type="ContactPointType"/>
   <xs:element name="ImageObject" type="ImageObjectType"/>
   <xs:element name="OpeningHoursSpecification" type="OpeningHoursSpecificationType"/>
   <xs:element name="PublicOrganisation" type="PublicOrganisationType"/>
   <xs:element name="ReferenceFramework" type="ReferenceFrameworkType"/>
-  <xs:element name="ContactPoint" type="ContactPointType"/>
   <xs:element name="AdministrativeTerritorialUnit" type="AdministrativeTerritorialUnitType"/>
   <xs:element name="Identifier" type="IdentifierType"/>
   <xs:element name="Address" type="AddressType"/>
@@ -12,6 +12,14 @@
   <xs:element name="OrganizationalUnit" type="OrganizationalUnitType"/>
   <xs:element name="Organization" type="OrganizationType"/>
   <xs:element name="Document" type="DocumentType"/>
+  <xs:complexType name="ContactPointType">
+    <xs:sequence>
+      <xs:element name="availabilityRestriction" ref="OpeningHoursSpecification" maxOccurs="unbounded" minOccurs="0"/>
+      <xs:element name="hasEmail" type="http://www.w3.org/2000/01/rdf-schema#Literal" maxOccurs="unbounded" minOccurs="0"/>
+      <xs:element name="hasTelephone" type="http://www.w3.org/2000/01/rdf-schema#Literal" maxOccurs="unbounded" minOccurs="0"/>
+      <xs:element name="openingHours" type="http://www.w3.org/2000/01/rdf-schema#Literal" maxOccurs="unbounded" minOccurs="0"/>
+    </xs:sequence>
+  </xs:complexType>
   <xs:complexType name="ImageObjectType">
     <xs:sequence/>
   </xs:complexType>
@@ -50,14 +58,6 @@
     <xs:sequence>
       <xs:element name="identifier" type="http://www.w3.org/2000/01/rdf-schema#Literal" maxOccurs="unbounded" minOccurs="0"/>
       <xs:element name="implements" ref="ChangeEvent" maxOccurs="unbounded" minOccurs="0"/>
-    </xs:sequence>
-  </xs:complexType>
-  <xs:complexType name="ContactPointType">
-    <xs:sequence>
-      <xs:element name="availabilityRestriction" ref="OpeningHoursSpecification" maxOccurs="unbounded" minOccurs="0"/>
-      <xs:element name="hasEmail" type="http://www.w3.org/2000/01/rdf-schema#Literal" maxOccurs="unbounded" minOccurs="0"/>
-      <xs:element name="hasTelephone" type="http://www.w3.org/2000/01/rdf-schema#Literal" maxOccurs="unbounded" minOccurs="0"/>
-      <xs:element name="openingHours" type="http://www.w3.org/2000/01/rdf-schema#Literal" maxOccurs="unbounded" minOccurs="0"/>
     </xs:sequence>
   </xs:complexType>
   <xs:complexType name="AdministrativeTerritorialUnitType">
