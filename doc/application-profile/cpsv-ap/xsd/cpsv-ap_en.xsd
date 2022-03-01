@@ -5,7 +5,6 @@
   <xs:element name="BusinessEvent" type="BusinessEventType"/>
   <xs:element name="Channel" type="ChannelType"/>
   <xs:element name="Cost" type="CostType"/>
-  <xs:element name="Criterion" type="CriterionType"/>
   <xs:element name="Event" type="EventType"/>
   <xs:element name="Evidence" type="EvidenceType"/>
   <xs:element name="LifeEvent" type="LifeEventType"/>
@@ -13,6 +12,7 @@
   <xs:element name="Output" type="OutputType"/>
   <xs:element name="Participation" type="ParticipationType"/>
   <xs:element name="PublicOrganization" type="PublicOrganizationType"/>
+  <xs:element name="Requirement" type="RequirementType"/>
   <xs:element name="LinguisticSystem" type="LinguisticSystemType"/>
   <xs:element name="Location" type="LocationType"/>
   <xs:element name="PublicService" type="PublicServiceType"/>
@@ -56,13 +56,6 @@
       <xs:element name="ifAccessedThrough" ref="Channel" maxOccurs="1" minOccurs="0"/>
       <xs:element name="isDefinedBy" ref="PublicOrganization" maxOccurs="unbounded" minOccurs="0"/>
       <xs:element name="value" type="http://www.w3.org/2001/XMLSchema#double" maxOccurs="1" minOccurs="0"/>
-    </xs:sequence>
-  </xs:complexType>
-  <xs:complexType name="CriterionType">
-    <xs:sequence>
-      <xs:element name="identifier" type="xs:string" maxOccurs="1" minOccurs="1"/>
-      <xs:element name="name" type="xs:string" maxOccurs="1" minOccurs="1"/>
-      <xs:element name="type" maxOccurs="unbounded" minOccurs="0"/>
     </xs:sequence>
   </xs:complexType>
   <xs:complexType name="EventType">
@@ -111,6 +104,13 @@
       <xs:element name="spatial" ref="Location" maxOccurs="unbounded" minOccurs="1"/>
     </xs:sequence>
   </xs:complexType>
+  <xs:complexType name="RequirementType">
+    <xs:sequence>
+      <xs:element name="identifier" type="xs:string" maxOccurs="1" minOccurs="1"/>
+      <xs:element name="name" type="xs:string" maxOccurs="1" minOccurs="1"/>
+      <xs:element name="type" maxOccurs="unbounded" minOccurs="0"/>
+    </xs:sequence>
+  </xs:complexType>
   <xs:complexType name="LinguisticSystemType">
     <xs:sequence/>
   </xs:complexType>
@@ -125,10 +125,10 @@
       <xs:element name="hasCompetentAuthority" ref="PublicOrganization" maxOccurs="1" minOccurs="1"/>
       <xs:element name="hasContactPoint" ref="ContactPoint" maxOccurs="unbounded" minOccurs="0"/>
       <xs:element name="hasCost" ref="Cost" maxOccurs="unbounded" minOccurs="0"/>
-      <xs:element name="hasCriterion" ref="Criterion" maxOccurs="unbounded" minOccurs="0"/>
       <xs:element name="hasInput" ref="Evidence" maxOccurs="unbounded" minOccurs="0"/>
       <xs:element name="hasLegalResource" ref="LegalResource" maxOccurs="unbounded" minOccurs="0"/>
       <xs:element name="hasParticipation" ref="Participation" maxOccurs="unbounded" minOccurs="0"/>
+      <xs:element name="holdRequirement" ref="Requirement" maxOccurs="unbounded" minOccurs="0"/>
       <xs:element name="identifier" type="xs:string" maxOccurs="1" minOccurs="1"/>
       <xs:element name="isClassifiedBy" ref="Concept" maxOccurs="unbounded" minOccurs="0"/>
       <xs:element name="isDescribedAt" ref="Dataset" maxOccurs="unbounded" minOccurs="0"/>
