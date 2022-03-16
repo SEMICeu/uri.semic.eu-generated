@@ -7,57 +7,207 @@
   <xs:element name="Location" type="LocationType"/>
   <xs:element name="PublicService" type="PublicServiceType"/>
   <xs:element name="Webpage" type="WebpageType"/>
+  <xs:complexType name="langstring">
+    <xs:simpleContent>
+      <xs:extension base="xs:string">
+        <xs:attribute name="lang" type="xs:language"/>
+      </xs:extension>
+    </xs:simpleContent>
+  </xs:complexType>
+  <xs:complexType name="ConceptType">
+    <xs:simpleContent>
+      <xs:extension base="xs:token">
+        <xs:attribute name="ref" type="xs:IDREF"/>
+        <xs:attribute name="conceptSchemeRef" type="xs:IDREF"/>
+      </xs:extension>
+    </xs:simpleContent>
+  </xs:complexType>
   <xs:complexType name="EventType">
     <xs:sequence>
-      <xs:element name="type" maxOccurs="unbounded" minOccurs="0"/>
+      <xs:element name="type" type="ConceptType" maxOccurs="unbounded" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation xml:lang="en">The type of the Event as defined in a controlled vocabulary.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
     </xs:sequence>
+    <xs:attribute name="EventRef" type="xs:IDREF">
+      <xs:annotation>
+        <xs:documentation xml:lang="en">Reference to Event ID</xs:documentation>
+      </xs:annotation>
+    </xs:attribute>
   </xs:complexType>
   <xs:complexType name="OutputType">
     <xs:sequence>
-      <xs:element name="description" type="http://www.w3.org/2000/01/rdf-schema#Literal" maxOccurs="unbounded" minOccurs="1"/>
-      <xs:element name="identifier" type="http://www.w3.org/2000/01/rdf-schema#Literal" maxOccurs="unbounded" minOccurs="1"/>
-      <xs:element name="name" type="http://www.w3.org/2000/01/rdf-schema#Literal" maxOccurs="unbounded" minOccurs="1"/>
-      <xs:element name="type" maxOccurs="unbounded" minOccurs="0"/>
+      <xs:element name="description" type="xs:string" maxOccurs="unbounded" minOccurs="1">
+        <xs:annotation>
+          <xs:documentation xml:lang="en">A free text description of the Output.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="identifier" type="xs:string" maxOccurs="unbounded" minOccurs="1">
+        <xs:annotation>
+          <xs:documentation xml:lang="en">A unique identifier of the Output produced by the Public Service.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="name" type="xs:string" maxOccurs="unbounded" minOccurs="1">
+        <xs:annotation>
+          <xs:documentation xml:lang="en">The name of the Output that is produced by the Public Service.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="type" type="ConceptType" maxOccurs="unbounded" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation xml:lang="en">The type of the Output as defined in a controlled vocabulary.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
     </xs:sequence>
+    <xs:attribute name="OutputRef" type="xs:IDREF">
+      <xs:annotation>
+        <xs:documentation xml:lang="en">Reference to Output ID</xs:documentation>
+      </xs:annotation>
+    </xs:attribute>
   </xs:complexType>
   <xs:complexType name="PublicOrganisationType">
     <xs:sequence>
-      <xs:element name="identifier" type="http://www.w3.org/2000/01/rdf-schema#Literal" maxOccurs="unbounded" minOccurs="1"/>
-      <xs:element name="preferredLabel" type="http://www.w3.org/2000/01/rdf-schema#Literal" maxOccurs="unbounded" minOccurs="1"/>
-      <xs:element name="spatial" ref="Location" maxOccurs="1" minOccurs="1"/>
+      <xs:element name="identifier" type="xs:string" maxOccurs="unbounded" minOccurs="1">
+        <xs:annotation>
+          <xs:documentation xml:lang="en">A unique identifier of the Public Organisation.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="preferredLabel" type="xs:string" maxOccurs="unbounded" minOccurs="1">
+        <xs:annotation>
+          <xs:documentation xml:lang="en">The preferred label of the Public Organisation.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="spatial" ref="Location" maxOccurs="1" minOccurs="1">
+        <xs:annotation>
+          <xs:documentation xml:lang="en">The Location, or given area, in which the Public Organisation is competent.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
     </xs:sequence>
+    <xs:attribute name="PublicOrganisationRef" type="xs:IDREF">
+      <xs:annotation>
+        <xs:documentation xml:lang="en">Reference to PublicOrganisation ID</xs:documentation>
+      </xs:annotation>
+    </xs:attribute>
   </xs:complexType>
   <xs:complexType name="LinguisticSystemType">
     <xs:sequence>
-      <xs:element name="language" maxOccurs="1" minOccurs="1"/>
+      <xs:element name="language" type="ConceptType" maxOccurs="1" minOccurs="1">
+        <xs:annotation>
+          <xs:documentation xml:lang="en">The code which indicates the language.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
     </xs:sequence>
+    <xs:attribute name="LinguisticSystemRef" type="xs:IDREF">
+      <xs:annotation>
+        <xs:documentation xml:lang="en">Reference to LinguisticSystem ID</xs:documentation>
+      </xs:annotation>
+    </xs:attribute>
   </xs:complexType>
   <xs:complexType name="LocationType">
     <xs:sequence>
-      <xs:element name="additionalName" type="http://www.w3.org/2000/01/rdf-schema#Literal" maxOccurs="unbounded" minOccurs="0"/>
-      <xs:element name="geographicIdentifier" type="http://www.w3.org/2001/XMLSchema#anyURI" maxOccurs="unbounded" minOccurs="1"/>
-      <xs:element name="geographicName" type="http://www.w3.org/2000/01/rdf-schema#Literal" maxOccurs="unbounded" minOccurs="1"/>
+      <xs:element name="additionalName" type="xs:string" maxOccurs="unbounded" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation xml:lang="en">An additional name of the Location.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="geographicIdentifier" type="xs:anyURI" maxOccurs="unbounded" minOccurs="1">
+        <xs:annotation>
+          <xs:documentation xml:lang="en">A unique identifier for the Location.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="geographicName" type="xs:string" maxOccurs="unbounded" minOccurs="1">
+        <xs:annotation>
+          <xs:documentation xml:lang="en">The geographic name of the Location.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
     </xs:sequence>
+    <xs:attribute name="LocationRef" type="xs:IDREF">
+      <xs:annotation>
+        <xs:documentation xml:lang="en">Reference to Location ID</xs:documentation>
+      </xs:annotation>
+    </xs:attribute>
   </xs:complexType>
   <xs:complexType name="PublicServiceType">
     <xs:sequence>
-      <xs:element name="description" type="http://www.w3.org/2000/01/rdf-schema#Literal" maxOccurs="unbounded" minOccurs="1"/>
-      <xs:element name="hasCompetentAuthority" ref="PublicOrganisation" maxOccurs="1" minOccurs="1"/>
-      <xs:element name="hasWebpage" ref="Webpage" maxOccurs="unbounded" minOccurs="1"/>
-      <xs:element name="identifier" type="http://www.w3.org/2000/01/rdf-schema#Literal" maxOccurs="unbounded" minOccurs="1"/>
-      <xs:element name="isGroupedBy" ref="Event" maxOccurs="unbounded" minOccurs="0"/>
-      <xs:element name="name" type="http://www.w3.org/2000/01/rdf-schema#Literal" maxOccurs="unbounded" minOccurs="1"/>
-      <xs:element name="policyCode" maxOccurs="unbounded" minOccurs="1"/>
-      <xs:element name="produces" ref="Output" maxOccurs="unbounded" minOccurs="0"/>
-      <xs:element name="spatial" ref="Location" maxOccurs="unbounded" minOccurs="1"/>
+      <xs:element name="description" type="xs:string" maxOccurs="unbounded" minOccurs="1">
+        <xs:annotation>
+          <xs:documentation xml:lang="en">A free text description of the Public Service.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="hasCompetentAuthority" ref="PublicOrganisation" maxOccurs="1" minOccurs="1">
+        <xs:annotation>
+          <xs:documentation xml:lang="en">Any Member State authority or body established at national, regional or local level with specific responsibilities relating to the information, procedures, assistance and problem-solving services covered by the Single Digital Gateway Regulation.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="hasWebpage" ref="Webpage" maxOccurs="unbounded" minOccurs="1">
+        <xs:annotation>
+          <xs:documentation xml:lang="en">The Webpage(s) on which the information is provided about the Public Service.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="identifier" type="xs:string" maxOccurs="unbounded" minOccurs="1">
+        <xs:annotation>
+          <xs:documentation xml:lang="en">A unique identifier of the Public Service.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="isGroupedBy" ref="Event" maxOccurs="unbounded" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation xml:lang="en">The Event (life/business) that is related to this Public Service.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="name" type="xs:string" maxOccurs="unbounded" minOccurs="1">
+        <xs:annotation>
+          <xs:documentation xml:lang="en">The official name of the Public Service.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="policyCode" type="ConceptType" maxOccurs="unbounded" minOccurs="1">
+        <xs:annotation>
+          <xs:documentation xml:lang="en">Controlled vocabulary derived from Annexes I and II which determines the procedure(s) or information area(s) relevant for the Public Service.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="produces" ref="Output" maxOccurs="unbounded" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation xml:lang="en">The Output, or actual result of a Public Service.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="spatial" ref="Location" maxOccurs="unbounded" minOccurs="1">
+        <xs:annotation>
+          <xs:documentation xml:lang="en">The Location, or given area, in which the Public Service is available, typically the area covered by a specific competent authority.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
     </xs:sequence>
+    <xs:attribute name="PublicServiceRef" type="xs:IDREF">
+      <xs:annotation>
+        <xs:documentation xml:lang="en">Reference to PublicService ID</xs:documentation>
+      </xs:annotation>
+    </xs:attribute>
   </xs:complexType>
   <xs:complexType name="WebpageType">
     <xs:sequence>
-      <xs:element name="identifier" type="http://www.w3.org/2000/01/rdf-schema#Literal" maxOccurs="unbounded" minOccurs="1"/>
-      <xs:element name="url" type="http://www.w3.org/2001/XMLSchema#anyURI" maxOccurs="unbounded" minOccurs="1"/>
-      <xs:element name="hasLanguage" ref="LinguisticSystem" maxOccurs="1" minOccurs="1"/>
-      <xs:element name="type" maxOccurs="2" minOccurs="0"/>
+      <xs:element name="identifier" type="xs:string" maxOccurs="unbounded" minOccurs="1">
+        <xs:annotation>
+          <xs:documentation xml:lang="en">A unique identifier of the Webpage.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="url" type="xs:anyURI" maxOccurs="unbounded" minOccurs="1">
+        <xs:annotation>
+          <xs:documentation xml:lang="en">The URL of the webpage.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="hasLanguage" ref="LinguisticSystem" maxOccurs="1" minOccurs="1">
+        <xs:annotation>
+          <xs:documentation xml:lang="en">The Language(s) in which the Webpage is available.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="type" type="ConceptType" maxOccurs="2" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation xml:lang="en">The kind of information that can be found on the Webpage.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
     </xs:sequence>
+    <xs:attribute name="WebpageRef" type="xs:IDREF">
+      <xs:annotation>
+        <xs:documentation xml:lang="en">Reference to Webpage ID</xs:documentation>
+      </xs:annotation>
+    </xs:attribute>
   </xs:complexType>
 </xs:schema>
