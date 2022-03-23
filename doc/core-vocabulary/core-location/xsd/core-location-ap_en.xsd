@@ -24,12 +24,12 @@
     <xs:sequence>
       <xs:element name="code" type="ConceptType" maxOccurs="unbounded" minOccurs="0">
         <xs:annotation>
-          <xs:documentation xml:lang="en">The classification of the administrative unit</xs:documentation>
+          <xs:documentation xml:lang="en">The classification of the administrative unit.</xs:documentation>
         </xs:annotation>
       </xs:element>
       <xs:element name="level" type="ConceptType" maxOccurs="unbounded" minOccurs="0">
         <xs:annotation>
-          <xs:documentation xml:lang="en">The level of the administrative unit (below L2).</xs:documentation>
+          <xs:documentation xml:lang="en">The level of the administrative unit in the hierarchy.</xs:documentation>
         </xs:annotation>
       </xs:element>
     </xs:sequence>
@@ -78,7 +78,7 @@ linked to its address using this property).</xs:documentation>
       </xs:element>
       <xs:element name="registeredAddress" ref="Address" maxOccurs="unbounded" minOccurs="0">
         <xs:annotation>
-          <xs:documentation xml:lang="en">The address at which the resource is legally registered.</xs:documentation>
+          <xs:documentation xml:lang="en">The registered address relationship link a Resource with the legally registered Address.</xs:documentation>
         </xs:annotation>
       </xs:element>
     </xs:sequence>
@@ -90,11 +90,6 @@ linked to its address using this property).</xs:documentation>
   </xs:complexType>
   <xs:complexType name="AddressType">
     <xs:sequence>
-      <xs:element name="additionalAdministrativeUnit" ref="AdministrativeUnit" maxOccurs="unbounded" minOccurs="0">
-        <xs:annotation>
-          <xs:documentation xml:lang="en">a custom administrative unit in addition to the adminUnitL1 and adminUnitL2</xs:documentation>
-        </xs:annotation>
-      </xs:element>
       <xs:element name="addressArea" type="xs:string" maxOccurs="unbounded" minOccurs="0">
         <xs:annotation>
           <xs:documentation xml:lang="en">The name of a geographic area that groups Addresses.</xs:documentation>
@@ -103,6 +98,11 @@ linked to its address using this property).</xs:documentation>
       <xs:element name="addressId" type="xs:string" maxOccurs="unbounded" minOccurs="0">
         <xs:annotation>
           <xs:documentation xml:lang="en">A globally unique identifier for each instance of an Address.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="administrativeUnit" ref="AdministrativeUnit" maxOccurs="unbounded" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation xml:lang="en">The adminUnit relationship link an Address with the Admin Unit class.</xs:documentation>
         </xs:annotation>
       </xs:element>
       <xs:element name="administrativeUnitLevel1country" type="ConceptType" maxOccurs="unbounded" minOccurs="0">
