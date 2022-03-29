@@ -1,12 +1,12 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <xs:schema xmlns="https://data.europa.eu/m8g/xml/" xmlns:xs="http://www.w3.org/2001/XMLSchema" targetNamespace="https://data.europa.eu/m8g/xml/" version="2.0.0" elementFormDefault="qualified" attributeFormDefault="unqualified" xmlns:cv="https://data.europa.eu/m8g/xml/">
-  <xs:element name="Date" type="DateType"/>
   <xs:element name="Jurisdiction" type="JurisdictionType"/>
   <xs:element name="Location" type="LocationType"/>
   <xs:element name="Identifier" type="IdentifierType"/>
   <xs:element name="Address" type="AddressType"/>
   <xs:element name="Person" type="PersonType"/>
   <xs:element name="Agent" type="AgentType"/>
+  <xs:element name="Date" type="DateType"/>
   <xs:complexType name="langstring">
     <xs:simpleContent>
       <xs:extension base="xs:string">
@@ -21,14 +21,6 @@
         <xs:attribute name="conceptSchemeRef" type="xs:IDREF"/>
       </xs:extension>
     </xs:simpleContent>
-  </xs:complexType>
-  <xs:complexType name="DateType">
-    <xs:sequence/>
-    <xs:attribute name="DateRef" type="xs:IDREF">
-      <xs:annotation>
-        <xs:documentation xml:lang="en">Reference to Date ID</xs:documentation>
-      </xs:annotation>
-    </xs:attribute>
   </xs:complexType>
   <xs:complexType name="JurisdictionType">
     <xs:sequence>
@@ -203,12 +195,12 @@
           <xs:documentation xml:lang="en">The country in which a Person died.</xs:documentation>
         </xs:annotation>
       </xs:element>
-      <xs:element name="dateOfBirth" type="http://data.europa.eu/m8g/Date" maxOccurs="unbounded" minOccurs="0">
+      <xs:element name="dateOfBirth" type="https://data.europa.eu/m8g/GenericDate" maxOccurs="unbounded" minOccurs="0">
         <xs:annotation>
           <xs:documentation xml:lang="en">The point in time on which the Person was born.</xs:documentation>
         </xs:annotation>
       </xs:element>
-      <xs:element name="dateOfDeath" type="http://data.europa.eu/m8g/Date" maxOccurs="unbounded" minOccurs="0">
+      <xs:element name="dateOfDeath" type="https://data.europa.eu/m8g/GenericDate" maxOccurs="unbounded" minOccurs="0">
         <xs:annotation>
           <xs:documentation xml:lang="en">The point in time on which the Person died.</xs:documentation>
         </xs:annotation>
@@ -280,6 +272,14 @@
     <xs:attribute name="AgentRef" type="xs:IDREF">
       <xs:annotation>
         <xs:documentation xml:lang="en">Reference to Agent ID</xs:documentation>
+      </xs:annotation>
+    </xs:attribute>
+  </xs:complexType>
+  <xs:complexType name="DateType">
+    <xs:sequence/>
+    <xs:attribute name="DateRef" type="xs:IDREF">
+      <xs:annotation>
+        <xs:documentation xml:lang="en">Reference to Date ID</xs:documentation>
       </xs:annotation>
     </xs:attribute>
   </xs:complexType>
