@@ -13,8 +13,8 @@
     "documentconfig": {},
     "status": "Working Draft",
     "statuslabel": "Onbekend",
-    "repositoryurl": "git@uri.semic.eu-thema:SEMICeu/uri.semic.eu-thema.git/tree/72232f1d5b87a07f92d4cccfee080e9f52b9b8a0",
-    "changelogurl": "git@uri.semic.eu-thema:SEMICeu/uri.semic.eu-thema.git/blob/72232f1d5b87a07f92d4cccfee080e9f52b9b8a0/CHANGELOG",
+    "repositoryurl": "git@uri.semic.eu-thema:SEMICeu/uri.semic.eu-thema.git/tree/f9b9390a5c5558a5038a423e4c660bf7ce1bf83d",
+    "changelogurl": "git@uri.semic.eu-thema:SEMICeu/uri.semic.eu-thema.git/blob/f9b9390a5c5558a5038a423e4c660bf7ce1bf83d/CHANGELOG",
     "feedbackurl": "https://github.com/catalogue-of-services-isa/CPSV-AP/issues",
     "standaardregisterurl": "TODO",
     "usesVocs": [],
@@ -370,6 +370,41 @@
             }
           ],
           "cardinality": "1",
+          "codelist_uri": ""
+        },
+        {
+          "uri": "http://data.europa.eu/m8g/processingTime",
+          "name": "processing time",
+          "sort": "processing time",
+          "label": {
+            "en": "processing time"
+          },
+          "description": {
+            "en": "The value of this property is the (estimated) time needed for executing a Public Service which may depend on the Channel chosen . The actual information is provided using the ISO8601 syntax for durations. "
+          },
+          "usage": {},
+          "domain": [
+            {
+              "EA-Name": "Channel",
+              "uri": "http://data.europa.eu/m8g/Channel"
+            }
+          ],
+          "range": [
+            {
+              "range_label": "Duration",
+              "range_uri": "http://www.w3.org/2001/XMLSchema#duration"
+            }
+          ],
+          "scopedrange": [
+            {
+              "range_uri": "http://www.w3.org/2001/XMLSchema#duration",
+              "range_puri": "http://www.w3.org/2001/XMLSchema#duration",
+              "range_label": {
+                "en": "Duration"
+              }
+            }
+          ],
+          "cardinality": "0..1",
           "codelist_uri": ""
         },
         {
@@ -1253,6 +1288,41 @@
           "codelist_uri": ""
         },
         {
+          "uri": "http://purl.org/dc/terms/language",
+          "name": "language",
+          "sort": "language",
+          "label": {
+            "en": "language"
+          },
+          "description": {},
+          "usage": {
+            "en": "The possible values for this property are described in the controlled vocabulary <a href=\" https://op.europa.eu/en/web/eu-vocabularies/concept-scheme/-/resource?uri=http://publications.europa.eu/resource/authority/language\">Language</a> Authority Table of the Publications Office. "
+          },
+          "domain": [
+            {
+              "EA-Name": "Output",
+              "uri": "http://data.europa.eu/m8g/Output"
+            }
+          ],
+          "range": [
+            {
+              "range_label": "LinguisticSystem",
+              "range_uri": "http://purl.org/dc/terms/LinguisticSystem"
+            }
+          ],
+          "scopedrange": [
+            {
+              "range_uri": "#LinguisticSystem",
+              "range_puri": "http://purl.org/dc/terms/LinguisticSystem",
+              "range_label": {
+                "en": "LinguisticSystem"
+              }
+            }
+          ],
+          "cardinality": "0..*",
+          "codelist_uri": ""
+        },
+        {
           "uri": "http://purl.org/dc/terms/identifier",
           "name": "identifier",
           "sort": "identifier",
@@ -1988,7 +2058,7 @@
             "en": "requires"
           },
           "description": {
-            "en": "One Public Service may require, or in some way make use of, the output of one or several other Public Services. In this case, for a Public Service to be executed, another Public Service must be executed beforehand. The nature of the requirement will be described in the associated Rule or Input."
+            "en": "One Public Service may require, or in some way make use of, the output of one or several other Public Services. In this case, for a Public Service to be executed, another Public Service must be executed beforehand. The nature of the requirement will be described in the associated Rule or Evidence."
           },
           "usage": {},
           "domain": [
@@ -2576,7 +2646,7 @@
               }
             }
           ],
-          "cardinality": "1",
+          "cardinality": "1..*",
           "codelist_uri": ""
         },
         {
@@ -2674,7 +2744,9 @@
           "description": {
             "en": "Type of Rule."
           },
-          "usage": {},
+          "usage": {
+            "en": "For example: a rule for non-disclosure of a dataset, a rule for disclosure of a dataset, etc."
+          },
           "domain": [
             {
               "EA-Name": "Rule",
@@ -3574,6 +3646,41 @@
       "parents": [],
       "properties": [
         {
+          "uri": "http://www.w3.org/ns/locn#address",
+          "name": "address",
+          "sort": "address",
+          "label": {
+            "en": "address"
+          },
+          "description": {
+            "en": "This property represents an Address related to an Agent. Asserting the address relationship implies that the Agent has an Address."
+          },
+          "usage": {},
+          "domain": [
+            {
+              "EA-Name": "Agent",
+              "uri": "http://xmlns.com/foaf/0.1/Agent"
+            }
+          ],
+          "range": [
+            {
+              "range_label": "Address",
+              "range_uri": "http://www.w3.org/ns/locn#Address"
+            }
+          ],
+          "scopedrange": [
+            {
+              "range_uri": "#Address",
+              "range_puri": "http://www.w3.org/ns/locn#Address",
+              "range_label": {
+                "en": "Address"
+              }
+            }
+          ],
+          "cardinality": "0..1",
+          "codelist_uri": ""
+        },
+        {
           "uri": "http://purl.org/dc/terms/title",
           "name": "name",
           "sort": "name",
@@ -3676,41 +3783,6 @@
             }
           ],
           "cardinality": "0..*",
-          "codelist_uri": ""
-        },
-        {
-          "uri": "http://data.europa.eu/m8g/address",
-          "name": "address",
-          "sort": "address",
-          "label": {
-            "en": "address"
-          },
-          "description": {
-            "en": "This property represents an Address related to an Agent. Asserting the address relationship implies that the Agent has an Address."
-          },
-          "usage": {},
-          "domain": [
-            {
-              "EA-Name": "Agent",
-              "uri": "http://xmlns.com/foaf/0.1/Agent"
-            }
-          ],
-          "range": [
-            {
-              "range_label": "Address",
-              "range_uri": "http://www.w3.org/ns/locn#Address"
-            }
-          ],
-          "scopedrange": [
-            {
-              "range_uri": "#Address",
-              "range_puri": "http://www.w3.org/ns/locn#Address",
-              "range_label": {
-                "en": "Address"
-              }
-            }
-          ],
-          "cardinality": "0..1",
           "codelist_uri": ""
         }
       ]
