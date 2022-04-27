@@ -13,14 +13,28 @@
     "documentconfig": {},
     "status": "Working Draft",
     "statuslabel": "Onbekend",
-    "repositoryurl": "git@uri.semic.eu-thema:SEMICeu/uri.semic.eu-thema.git/tree/07b328e8f8810654a2dda3bd58aa64d19d91f7d4",
-    "changelogurl": "git@uri.semic.eu-thema:SEMICeu/uri.semic.eu-thema.git/blob/07b328e8f8810654a2dda3bd58aa64d19d91f7d4/CHANGELOG",
+    "repositoryurl": "git@uri.semic.eu-thema:SEMICeu/uri.semic.eu-thema.git/tree/99a7040a3a8a0c11dbec718112c104ed52acddef",
+    "changelogurl": "git@uri.semic.eu-thema:SEMICeu/uri.semic.eu-thema.git/blob/99a7040a3a8a0c11dbec718112c104ed52acddef/CHANGELOG",
     "feedbackurl": "https://github.com/catalogue-of-services-isa/CPSV-AP/issues",
     "standaardregisterurl": "TODO",
     "usesVocs": [],
     "usesAPs": []
   },
   "classes": [
+    {
+      "uri": "http://data.europa.eu/ePO/ontology#Contract",
+      "name": "Contract",
+      "label": {
+        "en": "Contract"
+      },
+      "sort": "Contract",
+      "description": {
+        "en": "A voluntary, deliberate, and legally binding agreement between two or more competent parties."
+      },
+      "usage": {},
+      "parents": [],
+      "properties": []
+    },
     {
       "uri": "http://data.europa.eu/eli/ontology#LegalResource",
       "name": "Legal Resource",
@@ -154,7 +168,7 @@
             "en": "This property represents the type of Channel as defined in a controlled vocabulary."
           },
           "usage": {
-            "en": "TODO"
+            "en": "The recommended controlled vocabularies forthis property is the <a href=\"https://op.europa.eu/en/web/eu-vocabularies/concept-scheme/-/resource?uri=http://data.europa.eu/snb/com-channel/25831c2\">Europass channel type</a> Authority Table of the Publications Office"
           },
           "domain": [
             {
@@ -216,6 +230,76 @@
           "codelist_uri": ""
         },
         {
+          "uri": "http://purl.org/dc/terms/description",
+          "name": "description",
+          "sort": "description",
+          "label": {
+            "en": "description"
+          },
+          "description": {
+            "en": "This property represents a free text description of the Channel, for example to describe conditiions when to use it."
+          },
+          "usage": {},
+          "domain": [
+            {
+              "EA-Name": "Channel",
+              "uri": "http://data.europa.eu/m8g/Channel"
+            }
+          ],
+          "range": [
+            {
+              "range_label": "Text",
+              "range_uri": "http://www.w3.org/1999/02/22-rdf-syntax-ns#langString"
+            }
+          ],
+          "scopedrange": [
+            {
+              "range_uri": "http://www.w3.org/1999/02/22-rdf-syntax-ns#langString",
+              "range_puri": "http://www.w3.org/1999/02/22-rdf-syntax-ns#langString",
+              "range_label": {
+                "en": "Text"
+              }
+            }
+          ],
+          "cardinality": "0..*",
+          "codelist_uri": ""
+        },
+        {
+          "uri": "http://data.europa.eu/m8g/specialOpeningHoursSpecification",
+          "name": "availability restriction",
+          "sort": "availability restriction",
+          "label": {
+            "en": "availability restriction"
+          },
+          "description": {
+            "en": "This property links a channel to information about when the channel is not available, overriding the general opening hours information. The details are provided using the Opening Hours Specification class."
+          },
+          "usage": {},
+          "domain": [
+            {
+              "EA-Name": "Channel",
+              "uri": "http://data.europa.eu/m8g/Channel"
+            }
+          ],
+          "range": [
+            {
+              "range_label": "OpeningHoursSpecification",
+              "range_uri": "http://data.europa.eu/m8g/OpeningHoursSpecification"
+            }
+          ],
+          "scopedrange": [
+            {
+              "range_uri": "#Opening Hours Specification",
+              "range_puri": "http://data.europa.eu/m8g/OpeningHoursSpecification",
+              "range_label": {
+                "en": "Opening Hours Specification"
+              }
+            }
+          ],
+          "cardinality": "0..1",
+          "codelist_uri": ""
+        },
+        {
           "uri": "http://data.europa.eu/m8g/processingTime",
           "name": "processing time",
           "sort": "processing time",
@@ -269,16 +353,16 @@
           ],
           "range": [
             {
-              "range_label": "PublicOrganisation",
-              "range_uri": "http://data.europa.eu/m8g/PublicOrganisation"
+              "range_label": "Organization",
+              "range_uri": "http://www.w3.org/ns/org#Organization"
             }
           ],
           "scopedrange": [
             {
-              "range_uri": "#Public Organization",
-              "range_puri": "http://data.europa.eu/m8g/PublicOrganisation",
+              "range_uri": "#Organization",
+              "range_puri": "http://www.w3.org/ns/org#Organization",
               "range_label": {
-                "en": "Public Organization"
+                "en": "Organization"
               }
             }
           ],
@@ -321,40 +405,236 @@
           ],
           "cardinality": "0..*",
           "codelist_uri": ""
-        },
+        }
+      ]
+    },
+    {
+      "uri": "http://data.europa.eu/m8g/ConcessionContract",
+      "name": "Concession Contract",
+      "label": {
+        "en": "Concession Contract"
+      },
+      "sort": "Concession Contract",
+      "description": {
+        "en": "Concessions are contracts for pecuniary interest by means of which one or more contracting authorities or contracting entities entrusts the execution of works, or the provision and the management of services, to one or more economic operators. The object of such contracts is the procurement of works or services by means of a concession, the consideration of which consists in the right to exploit the works or services or in that right together with payment. Such contracts may, but do not necessarily, involve a transfer of ownership to contracting authorities or contracting entities, but contracting authorities or contracting entities always obtain the benefits of the works or services in question.\r\nSee <a href=\"https://eur-lex.europa.eu/legal-content/EN/TXT/HTML/?uri=CELEX:32014L0023&from=EN\">DIRECTIVE 2014/23/EU</a>"
+      },
+      "usage": {},
+      "parents": [
         {
-          "uri": "http://data.europa.eu/m8g/hoursAvailable",
-          "name": "availability restriction",
-          "sort": "availability restriction",
+          "label": "Contract",
+          "name": "Contract",
+          "package": "epo",
+          "uri": "http://data.europa.eu/ePO/ontology#Contract",
+          "scoped_uri": "#Contract"
+        }
+      ],
+      "properties": [
+        {
+          "uri": "http://purl.org/dc/terms/title",
+          "name": "name",
+          "sort": "name",
           "label": {
-            "en": "availability restriction"
+            "en": "name"
           },
           "description": {
-            "en": "This property links a channel to information about when the channel is not available, overriding the general opening hours information. The details are provided using the Opening Hours Specification class."
+            "en": "This property represents the Name of the Concession Contract."
           },
           "usage": {},
           "domain": [
             {
-              "EA-Name": "Channel",
-              "uri": "http://data.europa.eu/m8g/Channel"
+              "EA-Name": "ConcessionContract",
+              "uri": "http://data.europa.eu/m8g/ConcessionContract"
             }
           ],
           "range": [
             {
-              "range_label": "OpeningHoursSpecification",
-              "range_uri": "http://data.europa.eu/m8g/OpeningHoursSpecification"
+              "range_label": "Text",
+              "range_uri": "http://www.w3.org/1999/02/22-rdf-syntax-ns#langString"
             }
           ],
           "scopedrange": [
             {
-              "range_uri": "#Opening Hours Specification",
-              "range_puri": "http://data.europa.eu/m8g/OpeningHoursSpecification",
+              "range_uri": "http://www.w3.org/1999/02/22-rdf-syntax-ns#langString",
+              "range_puri": "http://www.w3.org/1999/02/22-rdf-syntax-ns#langString",
               "range_label": {
-                "en": "Opening Hours Specification"
+                "en": "Text"
               }
             }
           ],
-          "cardinality": "0..1",
+          "cardinality": "1..*",
+          "codelist_uri": ""
+        },
+        {
+          "uri": "http://purl.org/dc/terms/identifier",
+          "name": "identifier",
+          "sort": "identifier",
+          "label": {
+            "en": "identifier"
+          },
+          "description": {},
+          "usage": {},
+          "domain": [
+            {
+              "EA-Name": "ConcessionContract",
+              "uri": "http://data.europa.eu/m8g/ConcessionContract"
+            }
+          ],
+          "range": [
+            {
+              "range_label": "Text",
+              "range_uri": "http://www.w3.org/1999/02/22-rdf-syntax-ns#langString"
+            }
+          ],
+          "scopedrange": [
+            {
+              "range_uri": "http://www.w3.org/1999/02/22-rdf-syntax-ns#langString",
+              "range_puri": "http://www.w3.org/1999/02/22-rdf-syntax-ns#langString",
+              "range_label": {
+                "en": "Text"
+              }
+            }
+          ],
+          "cardinality": "1",
+          "codelist_uri": ""
+        },
+        {
+          "uri": "http://purl.org/dc/terms/description",
+          "name": "description",
+          "sort": "description",
+          "label": {
+            "en": "description"
+          },
+          "description": {
+            "en": "This property represents a free text description of the Concession Contract."
+          },
+          "usage": {},
+          "domain": [
+            {
+              "EA-Name": "ConcessionContract",
+              "uri": "http://data.europa.eu/m8g/ConcessionContract"
+            }
+          ],
+          "range": [
+            {
+              "range_label": "Text",
+              "range_uri": "http://www.w3.org/1999/02/22-rdf-syntax-ns#langString"
+            }
+          ],
+          "scopedrange": [
+            {
+              "range_uri": "http://www.w3.org/1999/02/22-rdf-syntax-ns#langString",
+              "range_puri": "http://www.w3.org/1999/02/22-rdf-syntax-ns#langString",
+              "range_label": {
+                "en": "Text"
+              }
+            }
+          ],
+          "cardinality": "1..*",
+          "codelist_uri": ""
+        },
+        {
+          "uri": "http://data.europa.eu/m8g/hasEconomicOperator",
+          "name": "has economic operator",
+          "sort": "has economic operator",
+          "label": {
+            "en": "has economic operator"
+          },
+          "description": {
+            "en": "This property links a Concession Contract with the Economic Operator in charge for the provision and the management of public services."
+          },
+          "usage": {},
+          "domain": [
+            {
+              "EA-Name": "ConcessionContract",
+              "uri": "http://data.europa.eu/m8g/ConcessionContract"
+            }
+          ],
+          "range": [
+            {
+              "range_label": "Organization",
+              "range_uri": "http://www.w3.org/ns/org#Organization"
+            }
+          ],
+          "scopedrange": [
+            {
+              "range_uri": "#Organization",
+              "range_puri": "http://www.w3.org/ns/org#Organization",
+              "range_label": {
+                "en": "Organization"
+              }
+            }
+          ],
+          "cardinality": "1..*",
+          "codelist_uri": ""
+        },
+        {
+          "uri": "http://data.europa.eu/m8g/hasContractingAuthority",
+          "name": "has contracting authority",
+          "sort": "has contracting authority",
+          "label": {
+            "en": "has contracting authority"
+          },
+          "description": {
+            "en": "This property links a Concession Contract with the Contracting Authority which is ultimately responsible for a public service"
+          },
+          "usage": {},
+          "domain": [
+            {
+              "EA-Name": "ConcessionContract",
+              "uri": "http://data.europa.eu/m8g/ConcessionContract"
+            }
+          ],
+          "range": [
+            {
+              "range_label": "PublicOrganisation",
+              "range_uri": "http://data.europa.eu/m8g/PublicOrganisation"
+            }
+          ],
+          "scopedrange": [
+            {
+              "range_uri": "#Public Organization",
+              "range_puri": "http://data.europa.eu/m8g/PublicOrganisation",
+              "range_label": {
+                "en": "Public Organization"
+              }
+            }
+          ],
+          "cardinality": "1..*",
+          "codelist_uri": ""
+        },
+        {
+          "uri": "http://data.europa.eu/m8g/establishedUnder",
+          "name": "established under",
+          "sort": "established under",
+          "label": {
+            "en": "established under"
+          },
+          "description": {
+            "en": "This property links a Concession Contract to relevant legislation or policy documents i.e.\r\nthe Legal Resource under which the Concession Contracts are being defined."
+          },
+          "usage": {},
+          "domain": [
+            {
+              "EA-Name": "ConcessionContract",
+              "uri": "http://data.europa.eu/m8g/ConcessionContract"
+            }
+          ],
+          "range": [
+            {
+              "range_label": "LegalResource",
+              "range_uri": "http://data.europa.eu/eli/ontology#LegalResource"
+            }
+          ],
+          "scopedrange": [
+            {
+              "range_uri": "#Legal Resource",
+              "range_puri": "http://data.europa.eu/eli/ontology#LegalResource",
+              "range_label": {
+                "en": "Legal Resource"
+              }
+            }
+          ],
+          "cardinality": "0..*",
           "codelist_uri": ""
         }
       ]
@@ -410,7 +690,7 @@
           "codelist_uri": ""
         },
         {
-          "uri": "http://data.europa.eu/m8g/hoursAvailable",
+          "uri": "http://data.europa.eu/m8g/specialOpeningHoursSpecification",
           "name": "availability restriction",
           "sort": "availability restriction",
           "label": {
@@ -487,7 +767,7 @@
             "en": "contact page"
           },
           "description": {
-            "en": "A contact form that could be used to reach out the contact point"
+            "en": "A contact form that could be used to reach out the contact point."
           },
           "usage": {},
           "domain": [
@@ -504,14 +784,14 @@
           ],
           "scopedrange": [
             {
-              "range_uri": "#Document",
+              "range_uri": "http://xmlns.com/foaf/0.1/Document",
               "range_puri": "http://xmlns.com/foaf/0.1/Document",
               "range_label": {
                 "en": "Document"
               }
             }
           ],
-          "cardinality": "0..*",
+          "cardinality": "0..n",
           "codelist_uri": ""
         }
       ]
@@ -618,16 +898,16 @@
           ],
           "range": [
             {
-              "range_label": "PublicOrganisation",
-              "range_uri": "http://data.europa.eu/m8g/PublicOrganisation"
+              "range_label": "Organization",
+              "range_uri": "http://www.w3.org/ns/org#Organization"
             }
           ],
           "scopedrange": [
             {
-              "range_uri": "#Public Organization",
-              "range_puri": "http://data.europa.eu/m8g/PublicOrganisation",
+              "range_uri": "#Organization",
+              "range_puri": "http://www.w3.org/ns/org#Organization",
               "range_label": {
-                "en": "Public Organization"
+                "en": "Organization"
               }
             }
           ],
@@ -956,7 +1236,7 @@
             "en": "related documentation"
           },
           "description": {
-            "en": "This property represents documentation that contains information related to the Evidence, for instance a particular template for an administrative document, an application or a guide on formatting the Input."
+            "en": "This property represents documentation that contains information related to the Evidence, for instance a particular template for an administrative document, an application or a guide on formatting the Evidence."
           },
           "usage": {},
           "domain": [
@@ -973,14 +1253,14 @@
           ],
           "scopedrange": [
             {
-              "range_uri": "#Document",
+              "range_uri": "http://xmlns.com/foaf/0.1/Document",
               "range_puri": "http://xmlns.com/foaf/0.1/Document",
               "range_label": {
                 "en": "Document"
               }
             }
           ],
-          "cardinality": "0..*",
+          "cardinality": "0..n",
           "codelist_uri": ""
         },
         {
@@ -1064,7 +1344,7 @@
             "en": "Indicates the language(s) in which the Evidence must be provided."
           },
           "usage": {
-            "en": "The recommended controlled vocabularies for this property is the <a href=\"https://op.europa.eu/en/web/eu-vocabularies/dataset/-/resource?uri=http://publications.europa.eu/resource/dataset/language\">Language</a> Authority Table of the Publications Office"
+            "en": "The recommended controlled vocabularies for this property is the <a href=\"https://op.europa.eu/en/web/eu-vocabularies/dataset/-/resource?uri=http://publications.europa.eu/resource/dataset/language\">Language</a> Authority Table of the Publications Office."
           },
           "domain": [
             {
@@ -1080,10 +1360,10 @@
           ],
           "scopedrange": [
             {
-              "range_uri": "#Linguistic System",
+              "range_uri": "http://purl.org/dc/terms/LinguisticSystem",
               "range_puri": "http://purl.org/dc/terms/LinguisticSystem",
               "range_label": {
-                "en": "Linguistic System"
+                "en": "LinguisticSystem"
               }
             }
           ],
@@ -1314,10 +1594,10 @@
           ],
           "scopedrange": [
             {
-              "range_uri": "#Linguistic System",
+              "range_uri": "http://purl.org/dc/terms/LinguisticSystem",
               "range_puri": "http://purl.org/dc/terms/LinguisticSystem",
               "range_label": {
-                "en": "Linguistic System"
+                "en": "LinguisticSystem"
               }
             }
           ],
@@ -1529,7 +1809,15 @@
       "usage": {
         "en": "Organizations which exist to provide services for its citizens and companies are called Public Organizations. The Public Organization class represents the organization. One organization may comprise several sub-organizations and any organization may have one or more organizational units. Each of these is described using the same properties and relationships.\r\n\r\nThis definition is consistent with the more detailed definition of a \"public sector body\" as given in the PSI Directive: \"the State, regional or local authorities, bodies governed by public law and associations formed by one or several such authorities or one or several such bodies governed by public law\". It further defines a body governed by public law as any body \"(a) established for the specific purpose of meeting needs in the general interest, not having an industrial or commercial character; and (b) having legal personality; and (c) financed, for the most part by the State, or regional or local authorities, or other bodies governed by public law; or subject to management supervision by those bodies; or having an administrative, managerial or supervisory board, more than half of whose members are appointed by the State, regional or local authorities or by other bodies governed by public law\"."
       },
-      "parents": [],
+      "parents": [
+        {
+          "label": "Organization",
+          "name": "Organization",
+          "package": "org",
+          "uri": "http://www.w3.org/ns/org#Organization",
+          "scoped_uri": "#Organization"
+        }
+      ],
       "properties": [
         {
           "uri": "http://www.w3.org/2004/02/skos/core#prefLabel",
@@ -1595,7 +1883,7 @@
           ],
           "scopedrange": [
             {
-              "range_uri": "#Location",
+              "range_uri": "http://purl.org/dc/terms/Location",
               "range_puri": "http://purl.org/dc/terms/Location",
               "range_label": {
                 "en": "Location"
@@ -1726,36 +2014,43 @@
           ],
           "cardinality": "1",
           "codelist_uri": ""
+        },
+        {
+          "uri": "http://data.europa.eu/m8g/fulfils",
+          "name": "fulfils",
+          "sort": "fulfils",
+          "label": {
+            "en": "fulfils"
+          },
+          "description": {
+            "en": "This property links a Requirement to the Rules that the requiremens fulfils. "
+          },
+          "usage": {},
+          "domain": [
+            {
+              "EA-Name": "Requirement",
+              "uri": "http://data.europa.eu/m8g/Requirement"
+            }
+          ],
+          "range": [
+            {
+              "range_label": "Rule",
+              "range_uri": "http://purl.org/vocab/cpsv#Rule"
+            }
+          ],
+          "scopedrange": [
+            {
+              "range_uri": "#Rule",
+              "range_puri": "http://purl.org/vocab/cpsv#Rule",
+              "range_label": {
+                "en": "Rule"
+              }
+            }
+          ],
+          "cardinality": "0..*",
+          "codelist_uri": ""
         }
       ]
-    },
-    {
-      "uri": "http://purl.org/dc/terms/LinguisticSystem",
-      "name": "Linguistic System",
-      "label": {
-        "en": "Linguistic System"
-      },
-      "sort": "Linguistic System",
-      "description": {
-        "en": "A system of signs, symbols, sounds, gestures, or rules used in communication."
-      },
-      "usage": {},
-      "parents": [],
-      "properties": []
-    },
-    {
-      "uri": "http://purl.org/dc/terms/Location",
-      "name": "Location",
-      "label": {
-        "en": "Location"
-      },
-      "sort": "Location",
-      "description": {
-        "en": "An identifiable geographic place or named place."
-      },
-      "usage": {},
-      "parents": [],
-      "properties": []
     },
     {
       "uri": "http://purl.org/vocab/cpsv#PublicService",
@@ -1947,15 +2242,17 @@
         },
         {
           "uri": "http://purl.org/dc/terms/type",
-          "name": "type",
-          "sort": "type",
+          "name": "functions of government",
+          "sort": "functions of government",
           "label": {
-            "en": "type"
+            "en": "functions of government"
           },
           "description": {
             "en": "This property represents the Type of a Public Service as described in a controlled vocabulary. For the indicating the Type, we are referring to the functions of government to indicate the purpose of a government activity, which the public service is intended for."
           },
-          "usage": {},
+          "usage": {
+            "en": "The possible values for this property are described in the controlled vocabulary <a href=\" https://op.europa.eu/en/web/eu-vocabularies/concept-scheme/-/resource?uri=http://publications.europa.eu/resource/authority/main-activity\">COFOG main activity</a> Authority Table of the Publications Office. "
+          },
           "domain": [
             {
               "EA-Name": "PublicService",
@@ -2022,9 +2319,7 @@
           "label": {
             "en": "spatial"
           },
-          "description": {
-            "en": "A Public Service is likely to be available only within a given area, typically the area covered by a particular public authority."
-          },
+          "description": {},
           "usage": {
             "en": "A common usage of the spatial property will be to define the Administrative Territorial Unit(s) - typically a country or region - in which a Public Service is available. The Publications Office of the European Union offers <a href=\"https://op.europa.eu/en/web/eu-vocabularies/dataset/-/resource?uri=http://publications.europa.eu/resource/dataset/atu\">a URI set</a> that is suitable for this purpose, e.g. Malta is identified by\r\nhttp://publications.europa.eu/resource/authority/atu/MLT,\r\nWest Flanders by\r\nhttp://publications.europa.eu/resource/authority/atu/BEL_PR_WVL and so on. In case the ATU code list is not suitable, <a href=\"https://op.europa.eu/en/web/eu-vocabularies/dataset/-/resource?uri=http://publications.europa.eu/resource/dataset/nuts\">NUTS</a> or <a href=\"https://ec.europa.eu/eurostat/web/nuts/local-administrative-units\">LAU</a>, <a href=\"https://op.europa.eu/en/web/eu-vocabularies/dataset/-/resource?uri=http://publications.europa.eu/resource/dataset/place\">NAL Place</a> or <a href=\"http://www.geonames.org\">Geonames</a> are recommended to use, in that order. If those are still not sufficient, we recommend to define your own code list.\r\n\r\nN.B. The spatial restriction is not meant to be used to describe eligibility or the speed of operation of the service. These aspects will be covered by the Criterion class."
           },
@@ -2042,7 +2337,7 @@
           ],
           "scopedrange": [
             {
-              "range_uri": "#Location",
+              "range_uri": "http://purl.org/dc/terms/Location",
               "range_puri": "http://purl.org/dc/terms/Location",
               "range_label": {
                 "en": "Location"
@@ -2149,10 +2444,10 @@
           ],
           "scopedrange": [
             {
-              "range_uri": "#Linguistic System",
+              "range_uri": "http://purl.org/dc/terms/LinguisticSystem",
               "range_puri": "http://purl.org/dc/terms/LinguisticSystem",
               "range_label": {
-                "en": "Linguistic System"
+                "en": "LinguisticSystem"
               }
             }
           ],
@@ -2274,7 +2569,9 @@
           "description": {
             "en": "This property represents the industry or sector a Public Service relates to, or is intended for. For example: environment, safety, housing. Note that a single Public Service may relate to multiple sectors. The possible values for this property are provided as a controlled vocabulary."
           },
-          "usage": {},
+          "usage": {
+            "en": "The possible values for this property are described in the controlled vocabulary <a href=\" https://op.europa.eu/en/web/eu-vocabularies/concept-scheme/-/resource?uri=http://publications.europa.eu/resource/authority/data-theme\">Data theme</a> Authority Table of the Publications Office. "
+          },
           "domain": [
             {
               "EA-Name": "PublicService",
@@ -2443,10 +2740,10 @@
         },
         {
           "uri": "http://data.europa.eu/m8g/holdsRequirement",
-          "name": "hold requirement",
-          "sort": "hold requirement",
+          "name": "holds requirement",
+          "sort": "holds requirement",
           "label": {
-            "en": "hold requirement"
+            "en": "holds requirement"
           },
           "description": {
             "en": "Links a Public Service to a class that describes the requirement for needing or using the service, such as residency in a given location, being over a certain age etc. The Requirement class is defined in the Core Criterion and Core Evidence Vocabulary"
@@ -2702,41 +2999,6 @@
       "parents": [],
       "properties": [
         {
-          "uri": "http://purl.org/vocab/cpsv#implements",
-          "name": "implements",
-          "sort": "implements",
-          "label": {
-            "en": "implements"
-          },
-          "description": {
-            "en": "The Implements property links a Rule to relevant legislation or policy documents i.e.\r\nthe Legal Resource under which the Rules are being defined."
-          },
-          "usage": {},
-          "domain": [
-            {
-              "EA-Name": "Rule",
-              "uri": "http://purl.org/vocab/cpsv#Rule"
-            }
-          ],
-          "range": [
-            {
-              "range_label": "LegalResource",
-              "range_uri": "http://data.europa.eu/eli/ontology#LegalResource"
-            }
-          ],
-          "scopedrange": [
-            {
-              "range_uri": "#Legal Resource",
-              "range_puri": "http://data.europa.eu/eli/ontology#LegalResource",
-              "range_label": {
-                "en": "Legal Resource"
-              }
-            }
-          ],
-          "cardinality": "0..*",
-          "codelist_uri": ""
-        },
-        {
           "uri": "http://purl.org/dc/terms/type",
           "name": "type",
           "sort": "type",
@@ -2819,7 +3081,7 @@
             "en": "This property represents the language(s) in which the Rule is available. This could be one or multiple languages, for instance in countries with more than one official language."
           },
           "usage": {
-            "en": "The possible values for this property are described in the controlled vocabulary <a href=\" https://op.europa.eu/en/web/eu-vocabularies/concept-scheme/-/resource?uri=http://publications.europa.eu/resource/authority/language\">Language</a> Authority Table of the Publications Office. "
+            "en": "The possible values for this property are described in the controlled vocabulary <a href=\" https://op.europa.eu/en/web/eu-vocabularies/concept-scheme/-/resource?uri=http://publications.europa.eu/resource/authority/language\">Language</a> Authority Table of the Publications Office."
           },
           "domain": [
             {
@@ -2835,10 +3097,10 @@
           ],
           "scopedrange": [
             {
-              "range_uri": "#Linguistic System",
+              "range_uri": "http://purl.org/dc/terms/LinguisticSystem",
               "range_puri": "http://purl.org/dc/terms/LinguisticSystem",
               "range_label": {
-                "en": "Linguistic System"
+                "en": "LinguisticSystem"
               }
             }
           ],
@@ -3021,14 +3283,14 @@
           ],
           "scopedrange": [
             {
-              "range_uri": "#Document",
+              "range_uri": "http://xmlns.com/foaf/0.1/Document",
               "range_puri": "http://xmlns.com/foaf/0.1/Document",
               "range_label": {
                 "en": "Document"
               }
             }
           ],
-          "cardinality": "0..*",
+          "cardinality": "0..n",
           "codelist_uri": ""
         },
         {
@@ -3635,6 +3897,28 @@
       ]
     },
     {
+      "uri": "http://www.w3.org/ns/org#Organization",
+      "name": "Organization",
+      "label": {
+        "en": "Organization"
+      },
+      "sort": "Organization",
+      "description": {
+        "en": "A collection of people organized together into a community or other social, commercial or political structure. The group has some common purpose or reason for existence which goes beyond the set of people belonging to it and can act as an Agent. Organizat"
+      },
+      "usage": {},
+      "parents": [
+        {
+          "label": "Agent",
+          "name": "Agent",
+          "package": "foaf",
+          "uri": "http://xmlns.com/foaf/0.1/Agent",
+          "scoped_uri": "#Agent"
+        }
+      ],
+      "properties": []
+    },
+    {
       "uri": "http://xmlns.com/foaf/0.1/Agent",
       "name": "Agent",
       "label": {
@@ -3788,20 +4072,6 @@
           "codelist_uri": ""
         }
       ]
-    },
-    {
-      "uri": "http://xmlns.com/foaf/0.1/Document",
-      "name": "Document",
-      "label": {
-        "en": "Document"
-      },
-      "sort": "Document",
-      "description": {
-        "en": "A document."
-      },
-      "usage": {},
-      "parents": [],
-      "properties": []
     }
   ],
   "properties": [],

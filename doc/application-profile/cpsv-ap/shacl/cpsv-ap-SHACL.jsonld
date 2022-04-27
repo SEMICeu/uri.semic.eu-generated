@@ -41,6 +41,13 @@
   "@id": "https://semiceu.github.io//shacl/cpsv-ap-SHACL_en",
   "shapes": [
     {
+      "@id": "https://semiceu.github.io//shacl/cpsv-ap-SHACL_en#ContractShape",
+      "@type": "sh:NodeShape",
+      "sh:closed": false,
+      "sh:property": [],
+      "sh:targetClass": "http://data.europa.eu/ePO/ontology#Contract"
+    },
+    {
       "@id": "https://semiceu.github.io//shacl/cpsv-ap-SHACL_en#LegalResourceShape",
       "@type": "sh:NodeShape",
       "sh:closed": false,
@@ -79,7 +86,17 @@
           "sh:name": {
             "en": "availability restriction"
           },
-          "sh:path": "http://data.europa.eu/m8g/hoursAvailable"
+          "sh:path": "http://data.europa.eu/m8g/specialOpeningHoursSpecification"
+        },
+        {
+          "sh:datatype": "http://www.w3.org/1999/02/22-rdf-syntax-ns#langString",
+          "sh:description": {
+            "en": "This property represents a free text description of the Channel, for example to describe conditiions when to use it."
+          },
+          "sh:name": {
+            "en": "description"
+          },
+          "sh:path": "http://purl.org/dc/terms/description"
         },
         {
           "sh:class": "http://data.europa.eu/m8g/Evidence",
@@ -114,7 +131,7 @@
           "sh:path": "http://data.europa.eu/m8g/openingHours"
         },
         {
-          "sh:class": "http://data.europa.eu/m8g/PublicOrganisation",
+          "sh:class": "http://www.w3.org/ns/org#Organization",
           "sh:description": {
             "en": "This property indicates the owner of a specific Channel through which a Public Service is being delivered."
           },
@@ -149,6 +166,77 @@
       "sh:targetClass": "http://data.europa.eu/m8g/Channel"
     },
     {
+      "@id": "https://semiceu.github.io//shacl/cpsv-ap-SHACL_en#ConcessionContractShape",
+      "@type": "sh:NodeShape",
+      "sh:closed": false,
+      "sh:property": [
+        {
+          "sh:datatype": "http://www.w3.org/1999/02/22-rdf-syntax-ns#langString",
+          "sh:description": {
+            "en": "This property represents a free text description of the Concession Contract."
+          },
+          "sh:minCount": "1",
+          "sh:name": {
+            "en": "description"
+          },
+          "sh:path": "http://purl.org/dc/terms/description"
+        },
+        {
+          "sh:class": "http://data.europa.eu/eli/ontology#LegalResource",
+          "sh:description": {
+            "en": "This property links a Concession Contract to relevant legislation or policy documents i.e.\r\nthe Legal Resource under which the Concession Contracts are being defined."
+          },
+          "sh:name": {
+            "en": "established under"
+          },
+          "sh:path": "http://data.europa.eu/m8g/establishedUnder"
+        },
+        {
+          "sh:class": "http://data.europa.eu/m8g/PublicOrganisation",
+          "sh:description": {
+            "en": "This property links a Concession Contract with the Contracting Authority which is ultimately responsible for a public service"
+          },
+          "sh:minCount": "1",
+          "sh:name": {
+            "en": "has contracting authority"
+          },
+          "sh:path": "http://data.europa.eu/m8g/hasContractingAuthority"
+        },
+        {
+          "sh:class": "http://www.w3.org/ns/org#Organization",
+          "sh:description": {
+            "en": "This property links a Concession Contract with the Economic Operator in charge for the provision and the management of public services."
+          },
+          "sh:minCount": "1",
+          "sh:name": {
+            "en": "has economic operator"
+          },
+          "sh:path": "http://data.europa.eu/m8g/hasEconomicOperator"
+        },
+        {
+          "sh:datatype": "http://www.w3.org/1999/02/22-rdf-syntax-ns#langString",
+          "sh:maxCount": "1",
+          "sh:minCount": "1",
+          "sh:name": {
+            "en": "identifier"
+          },
+          "sh:path": "http://purl.org/dc/terms/identifier"
+        },
+        {
+          "sh:datatype": "http://www.w3.org/1999/02/22-rdf-syntax-ns#langString",
+          "sh:description": {
+            "en": "This property represents the Name of the Concession Contract."
+          },
+          "sh:minCount": "1",
+          "sh:name": {
+            "en": "name"
+          },
+          "sh:path": "http://purl.org/dc/terms/title"
+        }
+      ],
+      "sh:targetClass": "http://data.europa.eu/m8g/ConcessionContract"
+    },
+    {
       "@id": "https://semiceu.github.io//shacl/cpsv-ap-SHACL_en#ContactPointShape",
       "@type": "sh:NodeShape",
       "sh:closed": false,
@@ -161,12 +249,12 @@
           "sh:name": {
             "en": "availability restriction"
           },
-          "sh:path": "http://data.europa.eu/m8g/hoursAvailable"
+          "sh:path": "http://data.europa.eu/m8g/specialOpeningHoursSpecification"
         },
         {
           "sh:class": "http://xmlns.com/foaf/0.1/Document",
           "sh:description": {
-            "en": "A contact form that could be used to reach out the contact point"
+            "en": "A contact form that could be used to reach out the contact point."
           },
           "sh:name": {
             "en": "contact page"
@@ -246,7 +334,7 @@
           "sh:path": "http://data.europa.eu/m8g/ifAccessedThrough"
         },
         {
-          "sh:class": "http://data.europa.eu/m8g/PublicOrganisation",
+          "sh:class": "http://www.w3.org/ns/org#Organization",
           "sh:description": {
             "en": "This property links the Cost class with one or more instances of the Public Organization class. This property indicates which Public Organization is the Competent Authority for defining the costs associated with the delivery of a particular Public Service.\r"
           },
@@ -381,7 +469,7 @@
         {
           "sh:class": "http://xmlns.com/foaf/0.1/Document",
           "sh:description": {
-            "en": "This property represents documentation that contains information related to the Evidence, for instance a particular template for an administrative document, an application or a guide on formatting the Input."
+            "en": "This property represents documentation that contains information related to the Evidence, for instance a particular template for an administrative document, an application or a guide on formatting the Evidence."
           },
           "sh:name": {
             "en": "related documentation"
@@ -556,6 +644,16 @@
       "sh:closed": false,
       "sh:property": [
         {
+          "sh:class": "http://purl.org/vocab/cpsv#Rule",
+          "sh:description": {
+            "en": "This property links a Requirement to the Rules that the requiremens fulfils. "
+          },
+          "sh:name": {
+            "en": "fulfils"
+          },
+          "sh:path": "http://data.europa.eu/m8g/fulfils"
+        },
+        {
           "sh:datatype": "http://www.w3.org/1999/02/22-rdf-syntax-ns#langString",
           "sh:description": {
             "en": "Unambiguous reference to a Requirement."
@@ -592,20 +690,6 @@
       "sh:targetClass": "http://data.europa.eu/m8g/Requirement"
     },
     {
-      "@id": "https://semiceu.github.io//shacl/cpsv-ap-SHACL_en#LinguisticSystemShape",
-      "@type": "sh:NodeShape",
-      "sh:closed": false,
-      "sh:property": [],
-      "sh:targetClass": "http://purl.org/dc/terms/LinguisticSystem"
-    },
-    {
-      "@id": "https://semiceu.github.io//shacl/cpsv-ap-SHACL_en#LocationShape",
-      "@type": "sh:NodeShape",
-      "sh:closed": false,
-      "sh:property": [],
-      "sh:targetClass": "http://purl.org/dc/terms/Location"
-    },
-    {
       "@id": "https://semiceu.github.io//shacl/cpsv-ap-SHACL_en#PublicServiceShape",
       "@type": "sh:NodeShape",
       "sh:closed": false,
@@ -630,6 +714,16 @@
             "en": "follows"
           },
           "sh:path": "http://purl.org/vocab/cpsv#follows"
+        },
+        {
+          "sh:class": "http://www.w3.org/2004/02/skos/core#Concept",
+          "sh:description": {
+            "en": "This property represents the Type of a Public Service as described in a controlled vocabulary. For the indicating the Type, we are referring to the functions of government to indicate the purpose of a government activity, which the public service is intended for."
+          },
+          "sh:name": {
+            "en": "functions of government"
+          },
+          "sh:path": "http://purl.org/dc/terms/type"
         },
         {
           "sh:class": "http://data.europa.eu/m8g/Channel",
@@ -708,7 +802,7 @@
             "en": "Links a Public Service to a class that describes the requirement for needing or using the service, such as residency in a given location, being over a certain age etc. The Requirement class is defined in the Core Criterion and Core Evidence Vocabulary"
           },
           "sh:name": {
-            "en": "hold requirement"
+            "en": "holds requirement"
           },
           "sh:path": "http://data.europa.eu/m8g/holdsRequirement"
         },
@@ -838,9 +932,6 @@
         },
         {
           "sh:class": "http://purl.org/dc/terms/Location",
-          "sh:description": {
-            "en": "A Public Service is likely to be available only within a given area, typically the area covered by a particular public authority."
-          },
           "sh:name": {
             "en": "spatial"
           },
@@ -866,16 +957,6 @@
             "en": "thematic area"
           },
           "sh:path": "http://data.europa.eu/m8g/thematicArea"
-        },
-        {
-          "sh:class": "http://www.w3.org/2004/02/skos/core#Concept",
-          "sh:description": {
-            "en": "This property represents the Type of a Public Service as described in a controlled vocabulary. For the indicating the Type, we are referring to the functions of government to indicate the purpose of a government activity, which the public service is intended for."
-          },
-          "sh:name": {
-            "en": "type"
-          },
-          "sh:path": "http://purl.org/dc/terms/type"
         }
       ],
       "sh:targetClass": "http://purl.org/vocab/cpsv#PublicService"
@@ -907,16 +988,6 @@
             "en": "identifier"
           },
           "sh:path": "http://purl.org/dc/terms/identifier"
-        },
-        {
-          "sh:class": "http://data.europa.eu/eli/ontology#LegalResource",
-          "sh:description": {
-            "en": "The Implements property links a Rule to relevant legislation or policy documents i.e.\r\nthe Legal Resource under which the Rules are being defined."
-          },
-          "sh:name": {
-            "en": "implements"
-          },
-          "sh:path": "http://purl.org/vocab/cpsv#implements"
         },
         {
           "sh:class": "http://purl.org/dc/terms/LinguisticSystem",
@@ -1169,6 +1240,13 @@
       "sh:targetClass": "http://www.w3.org/ns/locn#Address"
     },
     {
+      "@id": "https://semiceu.github.io//shacl/cpsv-ap-SHACL_en#OrganizationShape",
+      "@type": "sh:NodeShape",
+      "sh:closed": false,
+      "sh:property": [],
+      "sh:targetClass": "http://www.w3.org/ns/org#Organization"
+    },
+    {
       "@id": "https://semiceu.github.io//shacl/cpsv-ap-SHACL_en#AgentShape",
       "@type": "sh:NodeShape",
       "sh:closed": false,
@@ -1219,13 +1297,6 @@
         }
       ],
       "sh:targetClass": "http://xmlns.com/foaf/0.1/Agent"
-    },
-    {
-      "@id": "https://semiceu.github.io//shacl/cpsv-ap-SHACL_en#DocumentShape",
-      "@type": "sh:NodeShape",
-      "sh:closed": false,
-      "sh:property": [],
-      "sh:targetClass": "http://xmlns.com/foaf/0.1/Document"
     }
   ]
 }
