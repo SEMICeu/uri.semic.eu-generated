@@ -13,8 +13,8 @@
     "documentconfig": {},
     "status": "Working Draft",
     "statuslabel": "Onbekend",
-    "repositoryurl": "git@uri.semic.eu-thema:SEMICeu/uri.semic.eu-thema.git/tree/6b0d2a74f4ca30bb2184b9fdafd24c7ee23dd1ac",
-    "changelogurl": "git@uri.semic.eu-thema:SEMICeu/uri.semic.eu-thema.git/blob/6b0d2a74f4ca30bb2184b9fdafd24c7ee23dd1ac/CHANGELOG",
+    "repositoryurl": "git@uri.semic.eu-thema:SEMICeu/uri.semic.eu-thema.git/tree/cc5a0d88072c3eb0449895804115ac0081a84644",
+    "changelogurl": "git@uri.semic.eu-thema:SEMICeu/uri.semic.eu-thema.git/blob/cc5a0d88072c3eb0449895804115ac0081a84644/CHANGELOG",
     "feedbackurl": "https://github.com/catalogue-of-services-isa/CPSV-AP/issues",
     "standaardregisterurl": "TODO",
     "usesVocs": [],
@@ -22,7 +22,7 @@
   },
   "classes": [
     {
-      "uri": "http://data.europa.eu/ePO/ontology#Contract",
+      "uri": "http://data.europa.eu/a4g/ontology#Contract",
       "name": "Contract",
       "label": {
         "en": "Contract"
@@ -428,7 +428,7 @@
           "label": "Contract",
           "name": "Contract",
           "package": "epo",
-          "uri": "http://data.europa.eu/ePO/ontology#Contract",
+          "uri": "http://data.europa.eu/a4g/ontology#Contract",
           "scoped_uri": "#Contract"
         }
       ],
@@ -661,41 +661,6 @@
       "parents": [],
       "properties": [
         {
-          "uri": "http://data.europa.eu/m8g/telephone",
-          "name": "has telephone",
-          "sort": "has telephone",
-          "label": {
-            "en": "has telephone"
-          },
-          "description": {
-            "en": "The telephone number of the ContactPoint."
-          },
-          "usage": {},
-          "domain": [
-            {
-              "EA-Name": "ContactPoint",
-              "uri": "http://data.europa.eu/m8g/ContactPoint"
-            }
-          ],
-          "range": [
-            {
-              "range_label": "Text",
-              "range_uri": "http://www.w3.org/1999/02/22-rdf-syntax-ns#langString"
-            }
-          ],
-          "scopedrange": [
-            {
-              "range_uri": "http://www.w3.org/1999/02/22-rdf-syntax-ns#langString",
-              "range_puri": "http://www.w3.org/1999/02/22-rdf-syntax-ns#langString",
-              "range_label": {
-                "en": "Text"
-              }
-            }
-          ],
-          "cardinality": "0..*",
-          "codelist_uri": ""
-        },
-        {
           "uri": "http://data.europa.eu/m8g/specialOpeningHoursSpecification",
           "name": "availability restriction",
           "sort": "availability restriction",
@@ -731,7 +696,42 @@
           "codelist_uri": ""
         },
         {
-          "uri": "http://data.europa.eu/m8g/email",
+          "uri": "http://data.europa.eu/m8g/hasTelephone",
+          "name": "has telephone",
+          "sort": "has telephone",
+          "label": {
+            "en": "has telephone"
+          },
+          "description": {
+            "en": "The telephone number of the ContactPoint."
+          },
+          "usage": {},
+          "domain": [
+            {
+              "EA-Name": "ContactPoint",
+              "uri": "http://data.europa.eu/m8g/ContactPoint"
+            }
+          ],
+          "range": [
+            {
+              "range_label": "Text",
+              "range_uri": "http://www.w3.org/1999/02/22-rdf-syntax-ns#langString"
+            }
+          ],
+          "scopedrange": [
+            {
+              "range_uri": "http://www.w3.org/1999/02/22-rdf-syntax-ns#langString",
+              "range_puri": "http://www.w3.org/1999/02/22-rdf-syntax-ns#langString",
+              "range_label": {
+                "en": "Text"
+              }
+            }
+          ],
+          "cardinality": "0..*",
+          "codelist_uri": ""
+        },
+        {
+          "uri": "http://data.europa.eu/m8g/hasEmail",
           "name": "has email",
           "sort": "has email",
           "label": {
@@ -1835,7 +1835,7 @@
             "en": "preferred label"
           },
           "description": {
-            "en": "The primary, legally recognised name of the Public Organization, as defined in the ORG Ontology."
+            "en": "A preferred label is used to provide the primary, legally recognised name of the Public Organization, as defined in the ORG Ontology."
           },
           "usage": {
             "en": "Refers to the official or legal name of a Public Organization. An organization may only have one such name in any given language. Primary names may be provided in multiple languages with multiple instances of the preferred label property."
@@ -1872,10 +1872,10 @@
             "en": "spatial"
           },
           "description": {
-            "en": "A Public Organisation has to be associated to one or multiple locations."
+            "en": "AThis property links an Organization to the Administrative Region(s) that it covers."
           },
           "usage": {
-            "en": "The value should be a URI from the <a href=\"https://op.europa.eu/en/web/eu-vocabularies/dataset/-/resource?uri=http://publications.europa.eu/resource/dataset/atu\">Administrative Territorial Units</a> Authority Table maintained by the Publications Office."
+            "en": "The value of the properly should be the URI of the region as defined in an authoritative list of regions. In Europe, this is likely to be the Administrative Territorial Units Named Authority List maintained by the Publications Office's Metadata Registry.\r\n<br/><br/>\r\nThe ATU list does not include a geometry. That is, the territory is only identified by its name not its spatial coordinates. This is likely to be the case for similar lists. If geometries are available for the Public Organization's territory, they can be linked from the territorial unit using the Core Location Vocabulary's locn:geometry property."
           },
           "domain": [
             {
@@ -1885,16 +1885,16 @@
           ],
           "range": [
             {
-              "range_label": "Location",
-              "range_uri": "http://purl.org/dc/terms/Location"
+              "range_label": "AdministrativeTerritorialUnit",
+              "range_uri": "http://data.europa.eu/88u/dataset/atu-type"
             }
           ],
           "scopedrange": [
             {
-              "range_uri": "http://purl.org/dc/terms/Location",
-              "range_puri": "http://purl.org/dc/terms/Location",
+              "range_uri": "http://data.europa.eu/88u/dataset/atu-type",
+              "range_puri": "http://data.europa.eu/88u/dataset/atu-type",
               "range_label": {
-                "en": "Location"
+                "en": "AdministrativeTerritorialUnit"
               }
             }
           ],
@@ -1961,7 +1961,7 @@
             "en": "name"
           },
           "description": {
-            "en": "Name of the Requirement"
+            "en": "Name of the Requirement."
           },
           "usage": {},
           "domain": [
@@ -2116,7 +2116,7 @@
             "en": "status"
           },
           "description": {
-            "en": "Indicates whether a Public Service is active, inactive, under development etc. according to a controlled vocabulary."
+            "en": "It indicates whether a Public Service is active, inactive, under development etc. according to a controlled vocabulary."
           },
           "usage": {},
           "domain": [
@@ -2258,7 +2258,7 @@
             "en": "functions of government"
           },
           "description": {
-            "en": "The functions of government to indicate the purpose of a government activity, which the public service is intended for."
+            "en": "The purpose of a government activity, which the public service is intended for."
           },
           "usage": {
             "en": "The possible values for this property are described in the controlled vocabulary <a href=\" https://op.europa.eu/en/web/eu-vocabularies/concept-scheme/-/resource?uri=http://publications.europa.eu/resource/authority/main-activity\">COFOG main activity</a> Authority Table of the Publications Office. "
@@ -2440,7 +2440,7 @@
             "en": "The language(s) in which the Public Service is available. This could be one language or multiple languages, for instance in countries with more than one official language."
           },
           "usage": {
-            "en": "The recommended controlled vocabularies forthis property is the <a href=\"https://op.europa.eu/en/web/eu-vocabularies/dataset/-/resource?uri=http://publications.europa.eu/resource/dataset/language\">Language</a> Authority Table of the Publications Office"
+            "en": "The recommended controlled vocabularies forthis property is the <a href=\"https://op.europa.eu/en/web/eu-vocabularies/dataset/-/resource?uri=http://publications.europa.eu/resource/dataset/language\">Language</a> Authority Table of the Publications Office."
           },
           "domain": [
             {
@@ -2690,7 +2690,7 @@
             "en": "is described at"
           },
           "description": {
-            "en": "It links a Public Service to the Public Service Dataset(s) in which it is being described."
+            "en": "It links a Public Service to the Dataset(s) in which it is being described."
           },
           "usage": {},
           "domain": [
@@ -2760,7 +2760,7 @@
             "en": "holds requirement"
           },
           "description": {
-            "en": "It links a Public Service to a class that describes the requirement for needing or using the service, such as residency in a given location, being over a certain age etc. The Requirement class is defined in the Core Criterion and Core Evidence Vocabulary"
+            "en": "It links a Public Service to a class that describes the requirement for needing or using the service, such as residency in a given location, being over a certain age etc. The Requirement class is defined in the Core Criterion and Core Evidence Vocabulary."
           },
           "usage": {},
           "domain": [
@@ -3095,7 +3095,7 @@
             "en": "The language(s) in which the Rule is available. This could be one or multiple languages, for instance in countries with more than one official language."
           },
           "usage": {
-            "en": "The possible values for this property are described in the controlled vocabulary <a href=\" https://op.europa.eu/en/web/eu-vocabularies/concept-scheme/-/resource?uri=http://publications.europa.eu/resource/authority/language\">Language</a> Authority Table of the Publications Office."
+            "en": "The recommended controlled vocabularies for this property is the <a href=\" https://op.europa.eu/en/web/eu-vocabularies/concept-scheme/-/resource?uri=http://publications.europa.eu/resource/authority/language\">Language</a> Authority Table of the Publications Office."
           },
           "domain": [
             {
@@ -3352,7 +3352,7 @@
             "en": "publisher"
           },
           "description": {
-            "en": "The Publisher of the Public Service Dataset, i.e. an entity  (organisation) responsible for making the Public Service Dataset available."
+            "en": "The Publisher of the Dataset, i.e. an entity  (organisation) responsible for making the Dataset available."
           },
           "usage": {},
           "domain": [
@@ -3422,7 +3422,7 @@
             "en": "has part"
           },
           "description": {
-            "en": "It links a Public Service Dataset to the Public Service."
+            "en": "It links a Dataset to the Public Service."
           },
           "usage": {},
           "domain": [
