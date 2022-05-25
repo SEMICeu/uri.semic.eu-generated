@@ -5,6 +5,9 @@
   <xs:element name="Resource" type="ResourceType"/>
   <xs:element name="Address" type="AddressType"/>
   <xs:element name="Geometry" type="GeometryType"/>
+  <xs:simpleType name="Literal">
+    <xs:restriction base="xs:string"/>
+  </xs:simpleType>
   <xs:complexType name="langstring">
     <xs:simpleContent>
       <xs:extension base="xs:string">
@@ -60,22 +63,22 @@
   </xs:complexType>
   <xs:complexType name="ResourceType">
     <xs:sequence>
-      <xs:element name="address" ref="Address" maxOccurs="unbounded" minOccurs="0">
+      <xs:element name="address" ref="AddressType" maxOccurs="unbounded" minOccurs="0">
         <xs:annotation>
           <xs:documentation xml:lang="en">Associates any Resource with the corresponding Address.</xs:documentation>
         </xs:annotation>
       </xs:element>
-      <xs:element name="geometry" ref="Geometry" maxOccurs="unbounded" minOccurs="0">
+      <xs:element name="geometry" ref="GeometryType" maxOccurs="unbounded" minOccurs="0">
         <xs:annotation>
           <xs:documentation xml:lang="en">Associates any Resource with the corresponding Geometry.</xs:documentation>
         </xs:annotation>
       </xs:element>
-      <xs:element name="location" ref="Location" maxOccurs="unbounded" minOccurs="0">
+      <xs:element name="location" ref="LocationType" maxOccurs="unbounded" minOccurs="0">
         <xs:annotation>
           <xs:documentation xml:lang="en">Associates any Resource with the corresponding Location.</xs:documentation>
         </xs:annotation>
       </xs:element>
-      <xs:element name="registeredAddress" ref="Address" maxOccurs="unbounded" minOccurs="0">
+      <xs:element name="registeredAddress" ref="AddressType" maxOccurs="unbounded" minOccurs="0">
         <xs:annotation>
           <xs:documentation xml:lang="en">The registered address relationship links a Resource with the legally registered Address.</xs:documentation>
         </xs:annotation>
@@ -99,7 +102,7 @@
           <xs:documentation xml:lang="en">A globally unique identifier for each instance of an Address.</xs:documentation>
         </xs:annotation>
       </xs:element>
-      <xs:element name="administrativeUnit" ref="AdministrativeUnit" maxOccurs="unbounded" minOccurs="0">
+      <xs:element name="administrativeUnit" ref="AdministrativeUnitType" maxOccurs="unbounded" minOccurs="0">
         <xs:annotation>
           <xs:documentation xml:lang="en">The adminUnit relationship links an Address with the Administrative Unit class.</xs:documentation>
         </xs:annotation>

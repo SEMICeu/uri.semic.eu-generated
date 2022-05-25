@@ -8,6 +8,9 @@
   <xs:element name="Person" type="PersonType"/>
   <xs:element name="Agent" type="AgentType"/>
   <xs:element name="Person" type="PersonType"/>
+  <xs:simpleType name="Literal">
+    <xs:restriction base="xs:string"/>
+  </xs:simpleType>
   <xs:complexType name="langstring">
     <xs:simpleContent>
       <xs:extension base="xs:string">
@@ -76,7 +79,7 @@
           <xs:documentation xml:lang="en">The date on which the Identifier was assigned.</xs:documentation>
         </xs:annotation>
       </xs:element>
-      <xs:element name="identifies" ref="Person" maxOccurs="unbounded" minOccurs="0">
+      <xs:element name="identifies" ref="PersonType" maxOccurs="unbounded" minOccurs="0">
         <xs:annotation>
           <xs:documentation xml:lang="en">The entity that is referenced by the Identifier.</xs:documentation>
         </xs:annotation>
@@ -86,7 +89,7 @@
           <xs:documentation xml:lang="en">The name of the agency responsible for issuing the Identifier.</xs:documentation>
         </xs:annotation>
       </xs:element>
-      <xs:element name="issuingAuthorityUri" ref="Agent" maxOccurs="unbounded" minOccurs="0">
+      <xs:element name="issuingAuthorityUri" ref="AgentType" maxOccurs="unbounded" minOccurs="0">
         <xs:annotation>
           <xs:documentation xml:lang="en">The reference in the form of a Uniform Resource Identifier to the issuing authority.</xs:documentation>
         </xs:annotation>
@@ -189,17 +192,17 @@
           <xs:documentation xml:lang="en">Full name of the Person given upon their birth.</xs:documentation>
         </xs:annotation>
       </xs:element>
-      <xs:element name="citizenship" ref="Jurisdiction" maxOccurs="unbounded" minOccurs="0">
+      <xs:element name="citizenship" ref="JurisdictionType" maxOccurs="unbounded" minOccurs="0">
         <xs:annotation>
           <xs:documentation xml:lang="en">The Jurisdiction that has conferred citizenship rights on the Person such as the right to vote, to receive certain protection from the community or the issuance of a passport.</xs:documentation>
         </xs:annotation>
       </xs:element>
-      <xs:element name="countryOfBirth" ref="Location" maxOccurs="unbounded" minOccurs="0">
+      <xs:element name="countryOfBirth" ref="LocationType" maxOccurs="unbounded" minOccurs="0">
         <xs:annotation>
           <xs:documentation xml:lang="en">The country in which the Person was born.</xs:documentation>
         </xs:annotation>
       </xs:element>
-      <xs:element name="countryOfDeath" ref="Location" maxOccurs="unbounded" minOccurs="0">
+      <xs:element name="countryOfDeath" ref="LocationType" maxOccurs="unbounded" minOccurs="0">
         <xs:annotation>
           <xs:documentation xml:lang="en">The country in which a Person died.</xs:documentation>
         </xs:annotation>
@@ -214,7 +217,7 @@
           <xs:documentation xml:lang="en">The point in time on which the Person died.</xs:documentation>
         </xs:annotation>
       </xs:element>
-      <xs:element name="domicile" ref="Address" maxOccurs="unbounded" minOccurs="0">
+      <xs:element name="domicile" ref="AddressType" maxOccurs="unbounded" minOccurs="0">
         <xs:annotation>
           <xs:documentation xml:lang="en">The place that the Person treats as permanent home.</xs:documentation>
         </xs:annotation>
@@ -239,7 +242,7 @@
           <xs:documentation xml:lang="en">The name(s) that identify the Person within a family with a common surname.</xs:documentation>
         </xs:annotation>
       </xs:element>
-      <xs:element name="identifier" ref="Identifier" maxOccurs="unbounded" minOccurs="0">
+      <xs:element name="identifier" ref="IdentifierType" maxOccurs="unbounded" minOccurs="0">
         <xs:annotation>
           <xs:documentation xml:lang="en">The unambiguous structured reference to the Person.</xs:documentation>
         </xs:annotation>
@@ -254,17 +257,17 @@
           <xs:documentation xml:lang="en">Name based on the given name of the Person's father.</xs:documentation>
         </xs:annotation>
       </xs:element>
-      <xs:element name="placeOfBirth" ref="Location" maxOccurs="unbounded" minOccurs="0">
+      <xs:element name="placeOfBirth" ref="LocationType" maxOccurs="unbounded" minOccurs="0">
         <xs:annotation>
           <xs:documentation xml:lang="en">The Location where the Person was born.</xs:documentation>
         </xs:annotation>
       </xs:element>
-      <xs:element name="placeOfDeath" ref="Location" maxOccurs="unbounded" minOccurs="0">
+      <xs:element name="placeOfDeath" ref="LocationType" maxOccurs="unbounded" minOccurs="0">
         <xs:annotation>
           <xs:documentation xml:lang="en">The Location where the Person died.</xs:documentation>
         </xs:annotation>
       </xs:element>
-      <xs:element name="residency" ref="Jurisdiction" maxOccurs="unbounded" minOccurs="0">
+      <xs:element name="residency" ref="JurisdictionType" maxOccurs="unbounded" minOccurs="0">
         <xs:annotation>
           <xs:documentation xml:lang="en">Jurisdiction where the Person has their dwelling.</xs:documentation>
         </xs:annotation>

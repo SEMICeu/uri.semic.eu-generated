@@ -7,6 +7,9 @@
   <xs:element name="Location" type="LocationType"/>
   <xs:element name="PublicService" type="PublicServiceType"/>
   <xs:element name="Webpage" type="WebpageType"/>
+  <xs:simpleType name="Literal">
+    <xs:restriction base="xs:string"/>
+  </xs:simpleType>
   <xs:complexType name="langstring">
     <xs:simpleContent>
       <xs:extension base="xs:string">
@@ -77,7 +80,7 @@
           <xs:documentation xml:lang="en">The preferred label of the Public Organisation.</xs:documentation>
         </xs:annotation>
       </xs:element>
-      <xs:element name="spatial" ref="Location" maxOccurs="1" minOccurs="1">
+      <xs:element name="spatial" ref="LocationType" maxOccurs="1" minOccurs="1">
         <xs:annotation>
           <xs:documentation xml:lang="en">The Location, or given area, in which the Public Organisation is competent.</xs:documentation>
         </xs:annotation>
@@ -134,12 +137,12 @@
           <xs:documentation xml:lang="en">A free text description of the Public Service.</xs:documentation>
         </xs:annotation>
       </xs:element>
-      <xs:element name="hasCompetentAuthority" ref="PublicOrganisation" maxOccurs="1" minOccurs="1">
+      <xs:element name="hasCompetentAuthority" ref="PublicOrganisationType" maxOccurs="1" minOccurs="1">
         <xs:annotation>
           <xs:documentation xml:lang="en">Any Member State authority or body established at national, regional or local level with specific responsibilities relating to the information, procedures, assistance and problem-solving services covered by the Single Digital Gateway Regulation.</xs:documentation>
         </xs:annotation>
       </xs:element>
-      <xs:element name="hasWebpage" ref="Webpage" maxOccurs="unbounded" minOccurs="1">
+      <xs:element name="hasWebpage" ref="WebpageType" maxOccurs="unbounded" minOccurs="1">
         <xs:annotation>
           <xs:documentation xml:lang="en">The Webpage(s) on which the information is provided about the Public Service.</xs:documentation>
         </xs:annotation>
@@ -149,7 +152,7 @@
           <xs:documentation xml:lang="en">A unique identifier of the Public Service.</xs:documentation>
         </xs:annotation>
       </xs:element>
-      <xs:element name="isGroupedBy" ref="Event" maxOccurs="unbounded" minOccurs="0">
+      <xs:element name="isGroupedBy" ref="EventType" maxOccurs="unbounded" minOccurs="0">
         <xs:annotation>
           <xs:documentation xml:lang="en">The Event (life/business) that is related to this Public Service.</xs:documentation>
         </xs:annotation>
@@ -164,12 +167,12 @@
           <xs:documentation xml:lang="en">Controlled vocabulary derived from Annexes I and II which determines the procedure(s) or information area(s) relevant for the Public Service.</xs:documentation>
         </xs:annotation>
       </xs:element>
-      <xs:element name="produces" ref="Output" maxOccurs="unbounded" minOccurs="0">
+      <xs:element name="produces" ref="OutputType" maxOccurs="unbounded" minOccurs="0">
         <xs:annotation>
           <xs:documentation xml:lang="en">The Output, or actual result of a Public Service.</xs:documentation>
         </xs:annotation>
       </xs:element>
-      <xs:element name="spatial" ref="Location" maxOccurs="unbounded" minOccurs="1">
+      <xs:element name="spatial" ref="LocationType" maxOccurs="unbounded" minOccurs="1">
         <xs:annotation>
           <xs:documentation xml:lang="en">The Location, or given area, in which the Public Service is available, typically the area covered by a specific competent authority.</xs:documentation>
         </xs:annotation>
@@ -193,7 +196,7 @@
           <xs:documentation xml:lang="en">The URL of the webpage.</xs:documentation>
         </xs:annotation>
       </xs:element>
-      <xs:element name="hasLanguage" ref="LinguisticSystem" maxOccurs="1" minOccurs="1">
+      <xs:element name="hasLanguage" ref="LinguisticSystemType" maxOccurs="1" minOccurs="1">
         <xs:annotation>
           <xs:documentation xml:lang="en">The Language(s) in which the Webpage is available.</xs:documentation>
         </xs:annotation>

@@ -14,6 +14,9 @@
   <xs:element name="PeriodOfTime" type="PeriodOfTimeType"/>
   <xs:element name="Dataset" type="DatasetType"/>
   <xs:element name="Agent" type="AgentType"/>
+  <xs:simpleType name="Literal">
+    <xs:restriction base="xs:string"/>
+  </xs:simpleType>
   <xs:complexType name="langstring">
     <xs:simpleContent>
       <xs:extension base="xs:string">
@@ -31,7 +34,7 @@
   </xs:complexType>
   <xs:complexType name="ConstraintType">
     <xs:sequence>
-      <xs:element name="constrains" ref="InformationConcept" maxOccurs="unbounded" minOccurs="0">
+      <xs:element name="constrains" ref="InformationConceptType" maxOccurs="unbounded" minOccurs="0">
         <xs:annotation>
           <xs:documentation xml:lang="en">Information Concept about which a Constraint expresses a limitation.</xs:documentation>
         </xs:annotation>
@@ -79,47 +82,47 @@
           <xs:documentation xml:lang="en">Security classification assigned to an Evidence e.g. classified, sensitive, public.</xs:documentation>
         </xs:annotation>
       </xs:element>
-      <xs:element name="isAbout" ref="Agent" maxOccurs="unbounded" minOccurs="0">
+      <xs:element name="isAbout" ref="AgentType" maxOccurs="unbounded" minOccurs="0">
         <xs:annotation>
           <xs:documentation xml:lang="en">Agent that is the subject in the provided Evidence.</xs:documentation>
         </xs:annotation>
       </xs:element>
-      <xs:element name="isConformantTo" ref="EvidenceType" maxOccurs="unbounded" minOccurs="0">
+      <xs:element name="isConformantTo" ref="EvidenceTypeType" maxOccurs="unbounded" minOccurs="0">
         <xs:annotation>
           <xs:documentation xml:lang="en">Evidence Type that specifies characteristics of the Evidence.</xs:documentation>
         </xs:annotation>
       </xs:element>
-      <xs:element name="isCreatedBy" ref="Agent" maxOccurs="unbounded" minOccurs="0">
+      <xs:element name="isCreatedBy" ref="AgentType" maxOccurs="unbounded" minOccurs="0">
         <xs:annotation>
           <xs:documentation xml:lang="en">Agent that produces the Evidence.</xs:documentation>
         </xs:annotation>
       </xs:element>
-      <xs:element name="isIssuedBy" ref="Agent" maxOccurs="unbounded" minOccurs="0">
+      <xs:element name="isIssuedBy" ref="AgentType" maxOccurs="unbounded" minOccurs="0">
         <xs:annotation>
           <xs:documentation xml:lang="en">Agent legally responsible for the Evidence, e.g. a legal authority.</xs:documentation>
         </xs:annotation>
       </xs:element>
-      <xs:element name="isProvidedBy" ref="Agent" maxOccurs="unbounded" minOccurs="0">
+      <xs:element name="isProvidedBy" ref="AgentType" maxOccurs="unbounded" minOccurs="0">
         <xs:annotation>
           <xs:documentation xml:lang="en">Agent that transmits the Evidence.</xs:documentation>
         </xs:annotation>
       </xs:element>
-      <xs:element name="supportsConcept" ref="InformationConcept" maxOccurs="unbounded" minOccurs="0">
+      <xs:element name="supportsConcept" ref="InformationConceptType" maxOccurs="unbounded" minOccurs="0">
         <xs:annotation>
           <xs:documentation xml:lang="en">Information Concept providing facts found/inferred from the Evidence.</xs:documentation>
         </xs:annotation>
       </xs:element>
-      <xs:element name="supportsRequirement" ref="Requirement" maxOccurs="unbounded" minOccurs="0">
+      <xs:element name="supportsRequirement" ref="RequirementType" maxOccurs="unbounded" minOccurs="0">
         <xs:annotation>
           <xs:documentation xml:lang="en">Requirement for which the Evidence provides proof.</xs:documentation>
         </xs:annotation>
       </xs:element>
-      <xs:element name="supportsValue" ref="SupportedValue" maxOccurs="unbounded" minOccurs="0">
+      <xs:element name="supportsValue" ref="SupportedValueType" maxOccurs="unbounded" minOccurs="0">
         <xs:annotation>
           <xs:documentation xml:lang="en">Supported Value that the Evidence contains.</xs:documentation>
         </xs:annotation>
       </xs:element>
-      <xs:element name="validityPeriod" ref="PeriodOfTime" maxOccurs="unbounded" minOccurs="0">
+      <xs:element name="validityPeriod" ref="PeriodOfTimeType" maxOccurs="unbounded" minOccurs="0">
         <xs:annotation>
           <xs:documentation xml:lang="en">Period of Time during which the Evidence holds true or has force.</xs:documentation>
         </xs:annotation>
@@ -143,17 +146,17 @@
           <xs:documentation xml:lang="en">Unambiguous reference to the Evidence Type.</xs:documentation>
         </xs:annotation>
       </xs:element>
-      <xs:element name="isSpecifiedIn" ref="EvidenceTypeList" maxOccurs="unbounded" minOccurs="0">
+      <xs:element name="isSpecifiedIn" ref="EvidenceTypeListType" maxOccurs="unbounded" minOccurs="0">
         <xs:annotation>
           <xs:documentation xml:lang="en">Evidence Type List in which the Evidence Type is included.</xs:documentation>
         </xs:annotation>
       </xs:element>
-      <xs:element name="issuingPlace" ref="Location" maxOccurs="unbounded" minOccurs="0">
+      <xs:element name="issuingPlace" ref="LocationType" maxOccurs="unbounded" minOccurs="0">
         <xs:annotation>
           <xs:documentation xml:lang="en">Refers to the Location where an Evidence Type is issued.</xs:documentation>
         </xs:annotation>
       </xs:element>
-      <xs:element name="validityPeriodConstraint" ref="PeriodOfTime" maxOccurs="unbounded" minOccurs="0">
+      <xs:element name="validityPeriodConstraint" ref="PeriodOfTimeType" maxOccurs="unbounded" minOccurs="0">
         <xs:annotation>
           <xs:documentation xml:lang="en">Temporal condition on the validity period of the Evidence Type.</xs:documentation>
         </xs:annotation>
@@ -182,7 +185,7 @@
           <xs:documentation xml:lang="en">Name of the Evidence Type List.</xs:documentation>
         </xs:annotation>
       </xs:element>
-      <xs:element name="specifiesEvidenceType" ref="EvidenceType" maxOccurs="unbounded" minOccurs="0">
+      <xs:element name="specifiesEvidenceType" ref="EvidenceTypeType" maxOccurs="unbounded" minOccurs="0">
         <xs:annotation>
           <xs:documentation xml:lang="en">Evidence Type included in this Evidence Type List.</xs:documentation>
         </xs:annotation>
@@ -257,27 +260,27 @@
           <xs:documentation xml:lang="en">A short explanation supporting the understanding of the Requirement.</xs:documentation>
         </xs:annotation>
       </xs:element>
-      <xs:element name="hasConcept" ref="InformationConcept" maxOccurs="unbounded" minOccurs="0">
+      <xs:element name="hasConcept" ref="InformationConceptType" maxOccurs="unbounded" minOccurs="0">
         <xs:annotation>
           <xs:documentation xml:lang="en">Information Concept for which a value is expected by the Requirement.</xs:documentation>
         </xs:annotation>
       </xs:element>
-      <xs:element name="hasEvidenceTypeList" ref="EvidenceTypeList" maxOccurs="unbounded" minOccurs="0">
+      <xs:element name="hasEvidenceTypeList" ref="EvidenceTypeListType" maxOccurs="unbounded" minOccurs="0">
         <xs:annotation>
           <xs:documentation xml:lang="en">Evidence Type List that specifies the Evidence Types that are needed to meet the Requirement.</xs:documentation>
         </xs:annotation>
       </xs:element>
-      <xs:element name="hasQualifiedRelation" ref="Requirement" maxOccurs="unbounded" minOccurs="0">
+      <xs:element name="hasQualifiedRelation" ref="RequirementType" maxOccurs="unbounded" minOccurs="0">
         <xs:annotation>
           <xs:documentation xml:lang="en">Described and/or categorised relation to another Requirement.</xs:documentation>
         </xs:annotation>
       </xs:element>
-      <xs:element name="hasRequirement" ref="Requirement" maxOccurs="unbounded" minOccurs="0">
+      <xs:element name="hasRequirement" ref="RequirementType" maxOccurs="unbounded" minOccurs="0">
         <xs:annotation>
           <xs:documentation xml:lang="en">A more specific Requirement that is part of the Requirement.</xs:documentation>
         </xs:annotation>
       </xs:element>
-      <xs:element name="hasSupportingEvidence" ref="Evidence" maxOccurs="unbounded" minOccurs="0">
+      <xs:element name="hasSupportingEvidence" ref="EvidenceType" maxOccurs="unbounded" minOccurs="0">
         <xs:annotation>
           <xs:documentation xml:lang="en">Evidence that supplies information, proof or support for the Requirement.</xs:documentation>
         </xs:annotation>
@@ -287,17 +290,17 @@
           <xs:documentation xml:lang="en">Unambiguous reference to a Requirement.</xs:documentation>
         </xs:annotation>
       </xs:element>
-      <xs:element name="isDerivedFrom" ref="ReferenceFramework" maxOccurs="unbounded" minOccurs="0">
+      <xs:element name="isDerivedFrom" ref="ReferenceFrameworkType" maxOccurs="unbounded" minOccurs="0">
         <xs:annotation>
           <xs:documentation xml:lang="en">Reference Framework on which the Requirement is based, such as a law or regulation.</xs:documentation>
         </xs:annotation>
       </xs:element>
-      <xs:element name="isIssuedBy" ref="Agent" maxOccurs="unbounded" minOccurs="0">
+      <xs:element name="isIssuedBy" ref="AgentType" maxOccurs="unbounded" minOccurs="0">
         <xs:annotation>
           <xs:documentation xml:lang="en">Agent that has published the Requirement.</xs:documentation>
         </xs:annotation>
       </xs:element>
-      <xs:element name="isRequirementOf" ref="Requirement" maxOccurs="unbounded" minOccurs="0">
+      <xs:element name="isRequirementOf" ref="RequirementType" maxOccurs="unbounded" minOccurs="0">
         <xs:annotation>
           <xs:documentation xml:lang="en">A reference between a sub-Requirement and its parent Requirement.</xs:documentation>
         </xs:annotation>
@@ -321,7 +324,7 @@
   </xs:complexType>
   <xs:complexType name="SupportedValueType">
     <xs:sequence>
-      <xs:element name="providesValueFor" ref="InformationConcept" maxOccurs="unbounded" minOccurs="0">
+      <xs:element name="providesValueFor" ref="InformationConceptType" maxOccurs="unbounded" minOccurs="0">
         <xs:annotation>
           <xs:documentation xml:lang="en">Information Concept for which the Supported Value provides a value.</xs:documentation>
         </xs:annotation>
