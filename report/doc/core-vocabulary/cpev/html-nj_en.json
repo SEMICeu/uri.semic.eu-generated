@@ -15,8 +15,8 @@
     },
     "status": "Semic Draft",
     "statuslabel": "Onbekend",
-    "repositoryurl": "git@uri.semic.eu-thema:SEMICeu/uri.semic.eu-thema.git/tree/ec49a558672a6c44f5fe23ceaa08025dd8b17fde",
-    "changelogurl": "git@uri.semic.eu-thema:SEMICeu/uri.semic.eu-thema.git/blob/ec49a558672a6c44f5fe23ceaa08025dd8b17fde/CHANGELOG",
+    "repositoryurl": "git@uri.semic.eu-thema:SEMICeu/uri.semic.eu-thema.git/tree/3e800f60938419d87762e3d8c2f9d96a79b7f11e",
+    "changelogurl": "git@uri.semic.eu-thema:SEMICeu/uri.semic.eu-thema.git/blob/3e800f60938419d87762e3d8c2f9d96a79b7f11e/CHANGELOG",
     "feedbackurl": "https://github.com/SEMICeu/Core-Public-Event-Vocabulary/issues",
     "standaardregisterurl": "Core-Public-Event-Vocabulary",
     "usesVocs": [],
@@ -116,7 +116,7 @@
             "en": "availability restriction"
           },
           "description": {
-            "en": "The time interval during which the Contact Point is not available."
+            "en": "The time during which the Contact Point is not available."
           },
           "usage": {},
           "domain": [
@@ -128,15 +128,50 @@
           "range": [
             {
               "range_label": "TemporalEntity",
-              "range_uri": "http://fixme.com#TemporalEntity"
+              "range_uri": "http://www.w3.org/2006/time#TemporalEntity"
             }
           ],
           "scopedrange": [
             {
-              "range_uri": "#TemporalEntity",
-              "range_puri": "http://fixme.com#TemporalEntity",
+              "range_uri": "#Temporal Entity",
+              "range_puri": "http://www.w3.org/2006/time#TemporalEntity",
               "range_label": {
-                "en": "TemporalEntity"
+                "en": "Temporal Entity"
+              }
+            }
+          ],
+          "cardinality": "0..*",
+          "codelist_uri": ""
+        },
+        {
+          "uri": "http://data.europa.eu/m8g/openingHours",
+          "name": "opening hours",
+          "sort": "opening hours",
+          "label": {
+            "en": "opening hours"
+          },
+          "description": {
+            "en": "The time at which the contact point is normally available."
+          },
+          "usage": {},
+          "domain": [
+            {
+              "EA-Name": "ContactPoint",
+              "uri": "http://data.europa.eu/m8g/ContactPoint"
+            }
+          ],
+          "range": [
+            {
+              "range_label": "TemporalEntity",
+              "range_uri": "http://www.w3.org/2006/time#TemporalEntity"
+            }
+          ],
+          "scopedrange": [
+            {
+              "range_uri": "#Temporal Entity",
+              "range_puri": "http://www.w3.org/2006/time#TemporalEntity",
+              "range_label": {
+                "en": "Temporal Entity"
               }
             }
           ],
@@ -522,6 +557,41 @@
           "codelist_uri": ""
         },
         {
+          "uri": "http://www.w3.org/2006/time#hasTime",
+          "name": "has time",
+          "sort": "has time",
+          "label": {
+            "en": "has time"
+          },
+          "description": {
+            "en": "Supports the association of a temporal entity (instant or interval) to any thing."
+          },
+          "usage": {},
+          "domain": [
+            {
+              "EA-Name": "PublicEvent",
+              "uri": "http://data.europa.eu/m8g/PublicEvent"
+            }
+          ],
+          "range": [
+            {
+              "range_label": "TemporalEntity",
+              "range_uri": "http://www.w3.org/2006/time#TemporalEntity"
+            }
+          ],
+          "scopedrange": [
+            {
+              "range_uri": "#Temporal Entity",
+              "range_puri": "http://www.w3.org/2006/time#TemporalEntity",
+              "range_label": {
+                "en": "Temporal Entity"
+              }
+            }
+          ],
+          "cardinality": "0..*",
+          "codelist_uri": ""
+        },
+        {
           "uri": "http://purl.org/dc/terms/type",
           "name": "event type",
           "sort": "event type",
@@ -631,24 +701,139 @@
           ],
           "cardinality": "0..*",
           "codelist_uri": ""
+        },
+        {
+          "uri": "http://data.europa.eu/m8g/hasRole",
+          "name": "hasRole",
+          "sort": "hasRole",
+          "label": {
+            "en": "hasRole"
+          },
+          "description": {
+            "en": "the relation between a resource and role"
+          },
+          "usage": {},
+          "domain": [
+            {
+              "EA-Name": "PublicEvent",
+              "uri": "http://data.europa.eu/m8g/PublicEvent"
+            }
+          ],
+          "range": [
+            {
+              "range_label": "Role",
+              "range_uri": "http://data.europa.eu/m8g/Role"
+            }
+          ],
+          "scopedrange": [
+            {
+              "range_uri": "#Role",
+              "range_puri": "http://data.europa.eu/m8g/Role",
+              "range_label": {
+                "en": "Role"
+              }
+            }
+          ],
+          "cardinality": "0..*",
+          "codelist_uri": ""
+        },
+        {
+          "uri": "http://data.europa.eu/m8g/contactPoint",
+          "name": "contact point",
+          "sort": "contact point",
+          "label": {
+            "en": "contact point"
+          },
+          "description": {
+            "en": "The Contact Point that provides contact information of the Public Organization."
+          },
+          "usage": {
+            "en": "Usually a phone number and e-mail address. Other contact methods may be included, including online contact information, but this is conceptually distinct from the organization's homepage that may or may not provide contact information."
+          },
+          "domain": [
+            {
+              "EA-Name": "PublicEvent",
+              "uri": "http://data.europa.eu/m8g/PublicEvent"
+            }
+          ],
+          "range": [
+            {
+              "range_label": "ContactPoint",
+              "range_uri": "http://data.europa.eu/m8g/ContactPoint"
+            }
+          ],
+          "scopedrange": [
+            {
+              "range_uri": "#Contact Point",
+              "range_puri": "http://data.europa.eu/m8g/ContactPoint",
+              "range_label": {
+                "en": "Contact Point"
+              }
+            }
+          ],
+          "cardinality": "0..*",
+          "codelist_uri": ""
         }
       ]
     },
     {
       "uri": "http://data.europa.eu/m8g/Role",
-      "name": "",
-      "label": {},
-      "sort": "",
-      "description": {},
+      "name": "Role",
+      "label": {
+        "en": "Role"
+      },
+      "sort": "Role",
+      "description": {
+        "en": "The function occupied by an agent in a certain context"
+      },
       "usage": {},
       "parents": [],
       "properties": [
         {
-          "uri": "http://data.europa.eu/m8g/type",
-          "name": "",
-          "sort": "",
-          "label": {},
-          "description": {},
+          "uri": "http://www.w3.org/2006/time#hasTime",
+          "name": "has time",
+          "sort": "has time",
+          "label": {
+            "en": "has time"
+          },
+          "description": {
+            "en": "Supports the association of a temporal entity (instant or interval) to any thing."
+          },
+          "usage": {},
+          "domain": [
+            {
+              "EA-Name": "Role",
+              "uri": "http://data.europa.eu/m8g/Role"
+            }
+          ],
+          "range": [
+            {
+              "range_label": "TemporalEntity",
+              "range_uri": "http://www.w3.org/2006/time#TemporalEntity"
+            }
+          ],
+          "scopedrange": [
+            {
+              "range_uri": "#Temporal Entity",
+              "range_puri": "http://www.w3.org/2006/time#TemporalEntity",
+              "range_label": {
+                "en": "Temporal Entity"
+              }
+            }
+          ],
+          "cardinality": "0..*",
+          "codelist_uri": ""
+        },
+        {
+          "uri": "http://purl.org/dc/terms/type",
+          "name": "type",
+          "sort": "type",
+          "label": {
+            "en": "type"
+          },
+          "description": {
+            "en": "A classification used for the role"
+          },
           "usage": {},
           "domain": [
             {
@@ -675,11 +860,15 @@
           "codelist_uri": ""
         },
         {
-          "uri": "http://data.europa.eu/m8g/name",
-          "name": "",
-          "sort": "",
-          "label": {},
-          "description": {},
+          "uri": "http://purl.org/dc/terms/title",
+          "name": "name",
+          "sort": "name",
+          "label": {
+            "en": "name"
+          },
+          "description": {
+            "en": "A label for the role"
+          },
           "usage": {},
           "domain": [
             {
@@ -704,29 +893,72 @@
           ],
           "cardinality": "0..*",
           "codelist_uri": ""
+        },
+        {
+          "uri": "http://data.europa.eu/m8g/isPlayedBy",
+          "name": "isPlayedBy",
+          "sort": "isPlayedBy",
+          "label": {
+            "en": "isPlayedBy"
+          },
+          "description": {
+            "en": "A relation betwen a role and the agent occupiying such role"
+          },
+          "usage": {},
+          "domain": [
+            {
+              "EA-Name": "Role",
+              "uri": "http://data.europa.eu/m8g/Role"
+            }
+          ],
+          "range": [
+            {
+              "range_label": "Agent",
+              "range_uri": "http://xmlns.com/foaf/0.1/Agent"
+            }
+          ],
+          "scopedrange": [
+            {
+              "range_uri": "#Agent",
+              "range_puri": "http://xmlns.com/foaf/0.1/Agent",
+              "range_label": {
+                "en": "Agent"
+              }
+            }
+          ],
+          "cardinality": "",
+          "codelist_uri": ""
         }
       ]
     },
     {
-      "uri": "http://fixme.com#TemporalEntity",
-      "name": "",
-      "label": {},
-      "sort": "",
-      "description": {},
+      "uri": "http://www.w3.org/2006/time#TemporalEntity",
+      "name": "Temporal Entity",
+      "label": {
+        "en": "Temporal Entity"
+      },
+      "sort": "Temporal Entity",
+      "description": {
+        "en": "A temporal interval or instant."
+      },
       "usage": {},
       "parents": [],
       "properties": [
         {
-          "uri": "http://fixme.com#frequency",
-          "name": "",
-          "sort": "",
-          "label": {},
-          "description": {},
+          "uri": "http://data.europa.eu/m8g/frequency",
+          "name": "frequency",
+          "sort": "frequency",
+          "label": {
+            "en": "frequency"
+          },
+          "description": {
+            "en": "The recurrence of the temporal entity"
+          },
           "usage": {},
           "domain": [
             {
               "EA-Name": "TemporalEntity",
-              "uri": "http://fixme.com#TemporalEntity"
+              "uri": "http://www.w3.org/2006/time#TemporalEntity"
             }
           ],
           "range": [
@@ -748,16 +980,20 @@
           "codelist_uri": ""
         },
         {
-          "uri": "http://fixme.com#description",
-          "name": "",
-          "sort": "",
-          "label": {},
-          "description": {},
+          "uri": "http://purl.org/dc/terms/description",
+          "name": "description",
+          "sort": "description",
+          "label": {
+            "en": "description"
+          },
+          "description": {
+            "en": "A  textual representation of the Temporal Entity"
+          },
           "usage": {},
           "domain": [
             {
               "EA-Name": "TemporalEntity",
-              "uri": "http://fixme.com#TemporalEntity"
+              "uri": "http://www.w3.org/2006/time#TemporalEntity"
             }
           ],
           "range": [
@@ -1280,6 +1516,41 @@
           ],
           "cardinality": "0..*",
           "codelist_uri": ""
+        },
+        {
+          "uri": "http://data.europa.eu/m8g/playsRole",
+          "name": "playRole",
+          "sort": "playRole",
+          "label": {
+            "en": "playRole"
+          },
+          "description": {
+            "en": "A relation between an agent and its role"
+          },
+          "usage": {},
+          "domain": [
+            {
+              "EA-Name": "Agent",
+              "uri": "http://xmlns.com/foaf/0.1/Agent"
+            }
+          ],
+          "range": [
+            {
+              "range_label": "Role",
+              "range_uri": "http://data.europa.eu/m8g/Role"
+            }
+          ],
+          "scopedrange": [
+            {
+              "range_uri": "#Role",
+              "range_puri": "http://data.europa.eu/m8g/Role",
+              "range_label": {
+                "en": "Role"
+              }
+            }
+          ],
+          "cardinality": "0..*",
+          "codelist_uri": ""
         }
       ]
     }
@@ -1359,6 +1630,21 @@
       "uri": "http://data.europa.eu/m8g/homepage",
       "name": {
         "undefined": ""
+      },
+      "description": {},
+      "domain": [
+        null
+      ],
+      "range": [
+        null
+      ],
+      "parents": []
+    },
+    {
+      "uri": "http://data.europa.eu/m8g/frequency",
+      "name": {
+        "en": "frequency",
+        "undefined": "frequency"
       },
       "description": {},
       "domain": [
