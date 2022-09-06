@@ -1,0 +1,201 @@
+@prefix dc: <http://purl.org/dc/terms/> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix shacl: <http://www.w3.org/ns/shacl#> .
+@prefix skos: <http://www.w3.org/2004/02/skos/core#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+<https://semiceu.github.io//shacl/core-public-event-ap-SHACL_en> <https://semiceu.github.io//shacl/core-public-event-ap-SHACL_enshapes> <https://semiceu.github.io//shacl/core-public-event-ap-SHACL_en#ContactPointShape>,
+    <https://semiceu.github.io//shacl/core-public-event-ap-SHACL_en#PublicEventShape>,
+    <https://semiceu.github.io//shacl/core-public-event-ap-SHACL_en#RoleShape>,
+    <https://semiceu.github.io//shacl/core-public-event-ap-SHACL_en#TemporalEntityShape>,
+    <https://semiceu.github.io//shacl/core-public-event-ap-SHACL_en#AddressShape>,
+    <https://semiceu.github.io//shacl/core-public-event-ap-SHACL_en#AgentShape> .
+
+<https://semiceu.github.io//shacl/core-public-event-ap-SHACL_en#AddressShape> a shacl:NodeShape;
+  shacl:closed false;
+  shacl:property [
+    shacl:datatype rdf:langString;
+    shacl:description "The name of a geographic area that groups Addresses."@en;
+    shacl:name "address area"@en;
+    shacl:path <http://www.w3.org/ns/locn#addressArea>
+  ], [
+    shacl:datatype xsd:string;
+    shacl:description "A globally unique identifier for each instance of an Address."@en;
+    shacl:name "address ID"@en;
+    shacl:path <http://www.w3.org/ns/locn#addressId>
+  ], [
+    shacl:datatype rdf:langString;
+    shacl:description "The name of the uppermost level of the address, almost always a country."@en;
+    shacl:name "administrative unit level 1 (country)"@en;
+    shacl:path <http://www.w3.org/ns/locn#adminUnitL1>
+  ], [
+    shacl:datatype rdf:langString;
+    shacl:description "The name of a secondary level/region of the address, usually a county, state or other such area that typically encompasses several localities."@en;
+    shacl:name "administrative unit level 2 (country/region/state)"@en;
+    shacl:path <http://www.w3.org/ns/locn#adminUnitL2>
+  ], [
+    shacl:datatype rdf:langString;
+    shacl:description "The complete address written as a string."@en;
+    shacl:name "full address"@en;
+    shacl:path <http://www.w3.org/ns/locn#fullAddress>
+  ], [
+    shacl:datatype xsd:string;
+    shacl:description "A number or sequence of characters that uniquely identifies the locator within the relevant scope."@en;
+    shacl:name "locator designator"@en;
+    shacl:path <http://www.w3.org/ns/locn#locatorDesignator>
+  ], [
+    shacl:datatype rdf:langString;
+    shacl:description "Proper noun(s) applied to the real world entity identified by the locator."@en;
+    shacl:name "locator name"@en;
+    shacl:path <http://www.w3.org/ns/locn#locatorName>
+  ], [
+    shacl:datatype xsd:string;
+    shacl:description "A location designator for a postal delivery point at a post office, usually a number."@en;
+    shacl:name "post office box"@en;
+    shacl:path <http://www.w3.org/ns/locn#poBox>
+  ], [
+    shacl:datatype xsd:string;
+    shacl:description "The code created and maintained for postal purposes to identify a subdivision of addresses and postal delivery points."@en;
+    shacl:name "post code"@en;
+    shacl:path <http://www.w3.org/ns/locn#postCode>
+  ], [
+    shacl:datatype rdf:langString;
+    shacl:description "A name created and maintained for postal purposes to identify a subdivision of addresses and postal delivery points."@en;
+    shacl:name "post name (city)"@en;
+    shacl:path <http://www.w3.org/ns/locn#postName>
+  ], [
+    shacl:datatype rdf:langString;
+    shacl:description "The name of a passage or way through from one location to another."@en;
+    shacl:name "thoroughfare"@en;
+    shacl:path <http://www.w3.org/ns/locn#thoroughfare>
+  ];
+  shacl:targetClass <http://www.w3.org/ns/locn#Address> .
+
+<https://semiceu.github.io//shacl/core-public-event-ap-SHACL_en#AgentShape> a shacl:NodeShape;
+  shacl:closed false;
+  shacl:property [
+    shacl:datatype rdfs:Literal;
+    shacl:description "";
+    shacl:path <http://fixme.com#identifier>
+  ], [
+    shacl:datatype rdf:langString;
+    shacl:description "";
+    shacl:path <http://fixme.com#name>
+  ];
+  shacl:targetClass foaf:Agent .
+
+<https://semiceu.github.io//shacl/core-public-event-ap-SHACL_en#ContactPointShape> a shacl:NodeShape;
+  shacl:closed false;
+  shacl:property [
+    shacl:class <http://fixme.com#TemporalEntity>;
+    shacl:description "The time interval during which the Contact Point is not available."@en;
+    shacl:name "availability restriction"@en;
+    shacl:path <http://data.europa.eu/m8g/specialOpeningHoursSpecification>
+  ], [
+    shacl:class foaf:Document;
+    shacl:description "";
+    shacl:path <http://data.europa.eu/m8g/contactPage>
+  ], [
+    shacl:datatype rdfs:Literal;
+    shacl:description "An electronic address through which the Contact Point can be contacted."@en;
+    shacl:name "has email"@en;
+    shacl:path <http://data.europa.eu/m8g/email>
+  ], [
+    shacl:datatype rdfs:Literal;
+    shacl:description "A telephone number through which the Contact Point can be contacted."@en;
+    shacl:name "has telephone"@en;
+    shacl:path <http://data.europa.eu/m8g/telephone>
+  ];
+  shacl:targetClass <http://data.europa.eu/m8g/ContactPoint> .
+
+<https://semiceu.github.io//shacl/core-public-event-ap-SHACL_en#PublicEventShape> a shacl:NodeShape;
+  shacl:closed false;
+  shacl:property [
+    shacl:datatype rdf:langString;
+    shacl:description "";
+    shacl:path <http://data.europa.eu/m8g/accessibility>
+  ], [
+    shacl:datatype rdf:langString;
+    shacl:description "A textual explanation of the event."@en;
+    shacl:name "description"@en;
+    shacl:path dc:description
+  ], [
+    shacl:datatype rdf:langString;
+    shacl:description "";
+    shacl:path <http://data.europa.eu/m8g/edition>
+  ], [
+    shacl:class skos:Concept;
+    shacl:description "The nature or genre of the event. "@en;
+    shacl:name "event type"@en;
+    shacl:path dc:type
+  ], [
+    shacl:class skos:Concept;
+    shacl:description "A plan of organisation or arrangement of the event."@en;
+    shacl:name "format"@en;
+    shacl:path <http://data.europa.eu/m8g/format>
+  ], [
+    shacl:class foaf:Document;
+    shacl:description "";
+    shacl:path <http://data.europa.eu/m8g/homepage>
+  ], [
+    shacl:datatype rdfs:Literal;
+    shacl:description "";
+    shacl:path <http://data.europa.eu/m8g/identifier>
+  ], [
+    shacl:description "";
+    shacl:path <http://data.europa.eu/m8g/maxNumberOfParticipant>
+  ], [
+    shacl:class foaf:Document;
+    shacl:description "";
+    shacl:path <http://data.europa.eu/m8g/registration>
+  ], [
+    shacl:class <http://data.europa.eu/m8g/PublicEvent>;
+    shacl:description "";
+    shacl:path <http://data.europa.eu/m8g/related>
+  ], [
+    shacl:class <http://data.europa.eu/m8g/PublicEvent>;
+    shacl:description "";
+    shacl:path <http://data.europa.eu/m8g/subEvent>
+  ], [
+    shacl:class <http://data.europa.eu/m8g/PublicEvent>;
+    shacl:description "";
+    shacl:path <http://data.europa.eu/m8g/subEvent>
+  ], [
+    shacl:datatype rdf:langString;
+    shacl:description "The name given to the event."@en;
+    shacl:name "title"@en;
+    shacl:path dc:title
+  ], [
+    shacl:class skos:Concept;
+    shacl:description "";
+    shacl:path <http://data.europa.eu/m8g/topic>
+  ];
+  shacl:targetClass <http://data.europa.eu/m8g/PublicEvent> .
+
+<https://semiceu.github.io//shacl/core-public-event-ap-SHACL_en#RoleShape> a shacl:NodeShape;
+  shacl:closed false;
+  shacl:property [
+    shacl:datatype rdf:langString;
+    shacl:description "";
+    shacl:path <http://data.europa.eu/m8g/name>
+  ], [
+    shacl:class skos:Concept;
+    shacl:description "";
+    shacl:path <http://data.europa.eu/m8g/type>
+  ];
+  shacl:targetClass <http://data.europa.eu/m8g/Role> .
+
+<https://semiceu.github.io//shacl/core-public-event-ap-SHACL_en#TemporalEntityShape> a shacl:NodeShape;
+  shacl:closed false;
+  shacl:property [
+    shacl:datatype rdf:langString;
+    shacl:description "";
+    shacl:path <http://fixme.com#description>
+  ], [
+    shacl:class <http://fixme.com#Frequency>;
+    shacl:description "";
+    shacl:path <http://fixme.com#frequency>
+  ];
+  shacl:targetClass <http://fixme.com#TemporalEntity> .
