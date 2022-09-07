@@ -1,4 +1,5 @@
 @prefix dc: <http://purl.org/dc/terms/> .
+@prefix dc11: <http://purl.org/dc/elements/1.1/> .
 @prefix foaf: <http://xmlns.com/foaf/0.1/> .
 @prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
 @prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
@@ -82,6 +83,7 @@
     shacl:path dc:identifier
   ], [
     shacl:datatype rdf:langString;
+    shacl:description "The noun given to the Agent."@en;
     shacl:name "name"@en;
     shacl:path dc:title
   ], [
@@ -101,7 +103,8 @@
     shacl:path <http://data.europa.eu/m8g/specialOpeningHoursSpecification>
   ], [
     shacl:class foaf:Document;
-    shacl:description "";
+    shacl:description """	A contact page that could be used to reach out the contact point."""@en;
+    shacl:name "contact page"@en;
     shacl:path <http://data.europa.eu/m8g/contactPage>
   ], [
     shacl:datatype rdfs:Literal;
@@ -167,30 +170,35 @@
     shacl:class foaf:Document;
     shacl:description "This property links to the website of the event. The value of this property is a URL."@en;
     shacl:name "homepage"@en;
-    shacl:path <http://data.europa.eu/m8g/homepage>
+    shacl:path foaf:homepage
   ], [
     shacl:datatype rdfs:Literal;
     shacl:description "The unambiguous structured reference for the Public Event."@en;
     shacl:name "identifier"@en;
     shacl:path dc:identifier
   ], [
-    shacl:description "";
-    shacl:path <http://data.europa.eu/m8g/maxNumberOfParticipant>
+    shacl:description "The total capacity of the event."@en;
+    shacl:name "maximum number of participants"@en;
+    shacl:path <http://data.europa.eu/m8g/maxNumberofParticipants>
+  ], [
+    shacl:class <http://data.europa.eu/m8g/PublicEvent>;
+    shacl:description "A relation to another Event that encompasses it."@en;
+    shacl:name "parent event"@en;
+    shacl:path <http://data.europa.eu/m8g/parentEvent>
   ], [
     shacl:class foaf:Document;
-    shacl:description "";
-    shacl:path <http://data.europa.eu/m8g/registration>
+    shacl:description "A page that provides means to attend the event."@en;
+    shacl:name "registration page"@en;
+    shacl:path <http://data.europa.eu/m8g/registrationPage>
   ], [
     shacl:class <http://data.europa.eu/m8g/PublicEvent>;
-    shacl:description "";
-    shacl:path <http://data.europa.eu/m8g/related>
+    shacl:description "A relation towards another public event."@en;
+    shacl:name "related"@en;
+    shacl:path dc11:relation
   ], [
     shacl:class <http://data.europa.eu/m8g/PublicEvent>;
-    shacl:description "";
-    shacl:path <http://data.europa.eu/m8g/subEvent>
-  ], [
-    shacl:class <http://data.europa.eu/m8g/PublicEvent>;
-    shacl:description "";
+    shacl:description "A relation towards another Events that belong to it."@en;
+    shacl:name "sub event"@en;
     shacl:path <http://data.europa.eu/m8g/subEvent>
   ], [
     shacl:datatype rdf:langString;
@@ -199,8 +207,9 @@
     shacl:path dc:title
   ], [
     shacl:class skos:Concept;
-    shacl:description "";
-    shacl:path <http://data.europa.eu/m8g/topic>
+    shacl:description "The classification used for the event."@en;
+    shacl:name "topic"@en;
+    shacl:path dc:subject
   ];
   shacl:targetClass <http://data.europa.eu/m8g/PublicEvent> .
 
