@@ -12,8 +12,8 @@
     "documentconfig": {},
     "status": "https://data.vlaanderen.be/id/concept/StandaardStatus/OntwerpStandaard",
     "statuslabel": "Ontwerp Standaard",
-    "repositoryurl": "git@github.com:bertvannuffelen/DCATprofile.git/tree/df788c26339560d0a0acaae77185027548eb6d71",
-    "changelogurl": "git@github.com:bertvannuffelen/DCATprofile.git/blob/df788c26339560d0a0acaae77185027548eb6d71/CHANGELOG",
+    "repositoryurl": "git@github.com:bertvannuffelen/DCATprofile.git/tree/cf053561a93641099018e212cce62ed948fb6039",
+    "changelogurl": "git@github.com:bertvannuffelen/DCATprofile.git/blob/cf053561a93641099018e212cce62ed948fb6039/CHANGELOG",
     "feedbackurl": "https://github.com/SEMICeu/DCAT-AP/issues",
     "standaardregisterurl": "",
     "usesVocs": [],
@@ -79,42 +79,7 @@
               }
             }
           ],
-          "cardinality": "0..*",
-          "codelist_uri": ""
-        },
-        {
-          "uri": "http://purl.org/dc/terms/type",
-          "name": "type",
-          "sort": "type",
-          "label": {
-            "en": "type"
-          },
-          "description": {
-            "en": "This property refers to a type of licence, e.g. indicating public domain or royalties required."
-          },
-          "usage": {},
-          "domain": [
-            {
-              "EA-Name": "dct:LicenseDocument",
-              "uri": "http://purl.org/dc/terms/LicenseDocument"
-            }
-          ],
-          "range": [
-            {
-              "range_label": "skos:Concept",
-              "range_uri": "http://www.w3.org/2004/02/skos/core#Concept"
-            }
-          ],
-          "scopedrange": [
-            {
-              "range_uri": "#Concept",
-              "range_puri": "http://www.w3.org/2004/02/skos/core#Concept",
-              "range_label": {
-                "en": "Concept"
-              }
-            }
-          ],
-          "cardinality": "1",
+          "cardinality": "0..n",
           "codelist_uri": ""
         }
       ]
@@ -491,9 +456,7 @@
           "label": {
             "en": "preferred label"
           },
-          "description": {
-            "en": "This property contains a preferred label of the category. This property can be repeated for parallel language versions of the label."
-          },
+          "description": {},
           "usage": {},
           "domain": [
             {
@@ -501,9 +464,22 @@
               "uri": "http://www.w3.org/2004/02/skos/core#Concept"
             }
           ],
-          "range": [],
-          "scopedrange": [],
-          "cardinality": "1..*",
+          "range": [
+            {
+              "range_label": "rdfs:Literal",
+              "range_uri": "http://www.w3.org/2000/01/rdf-schema#Literal"
+            }
+          ],
+          "scopedrange": [
+            {
+              "range_uri": "#Literal",
+              "range_puri": "http://www.w3.org/2000/01/rdf-schema#Literal",
+              "range_label": {
+                "en": "Literal"
+              }
+            }
+          ],
+          "cardinality": "1..n",
           "codelist_uri": ""
         }
       ]
@@ -1504,16 +1480,16 @@
           ],
           "range": [
             {
-              "range_label": "dcat:DataService",
-              "range_uri": "http://www.w3.org/ns/dcat#DataService"
+              "range_label": "dcat:Dataset",
+              "range_uri": "http://www.w3.org/ns/dcat#Dataset"
             }
           ],
           "scopedrange": [
             {
-              "range_uri": "#Data service",
-              "range_puri": "http://www.w3.org/ns/dcat#DataService",
+              "range_uri": "#Dataset",
+              "range_puri": "http://www.w3.org/ns/dcat#Dataset",
               "range_label": {
-                "en": "Data service"
+                "en": "Dataset"
               }
             }
           ],
@@ -1539,55 +1515,20 @@
           ],
           "range": [
             {
-              "range_label": "dcat:Dataset",
-              "range_uri": "http://www.w3.org/ns/dcat#Dataset"
+              "range_label": "dcat:DataService",
+              "range_uri": "http://www.w3.org/ns/dcat#DataService"
             }
           ],
           "scopedrange": [
             {
-              "range_uri": "#Dataset",
-              "range_puri": "http://www.w3.org/ns/dcat#Dataset",
+              "range_uri": "#Data service",
+              "range_puri": "http://www.w3.org/ns/dcat#DataService",
               "range_label": {
-                "en": "Dataset"
+                "en": "Data service"
               }
             }
           ],
           "cardinality": "1",
-          "codelist_uri": ""
-        },
-        {
-          "uri": "http://www.w3.org/ns/adms#status",
-          "name": "change type",
-          "sort": "change type",
-          "label": {
-            "en": "change type"
-          },
-          "description": {
-            "en": "The status of the catalogue record in the context of editorial flow of the dataset and data service descriptions"
-          },
-          "usage": {},
-          "domain": [
-            {
-              "EA-Name": "dcat:CatalogRecord",
-              "uri": "http://www.w3.org/ns/dcat#CatalogRecord"
-            }
-          ],
-          "range": [
-            {
-              "range_label": "skos:Concept",
-              "range_uri": "http://www.w3.org/2004/02/skos/core#Concept"
-            }
-          ],
-          "scopedrange": [
-            {
-              "range_uri": "#Concept",
-              "range_puri": "http://www.w3.org/2004/02/skos/core#Concept",
-              "range_label": {
-                "en": "Concept"
-              }
-            }
-          ],
-          "cardinality": "0..1",
           "codelist_uri": ""
         },
         {
@@ -1642,8 +1583,21 @@
               "uri": "http://www.w3.org/ns/dcat#CatalogRecord"
             }
           ],
-          "range": [],
-          "scopedrange": [],
+          "range": [
+            {
+              "range_label": "rdfs:Literal",
+              "range_uri": "http://www.w3.org/2000/01/rdf-schema#Literal"
+            }
+          ],
+          "scopedrange": [
+            {
+              "range_uri": "#Literal",
+              "range_puri": "http://www.w3.org/2000/01/rdf-schema#Literal",
+              "range_label": {
+                "en": "Literal"
+              }
+            }
+          ],
           "cardinality": "0..n",
           "codelist_uri": ""
         },
@@ -1699,8 +1653,21 @@
               "uri": "http://www.w3.org/ns/dcat#CatalogRecord"
             }
           ],
-          "range": [],
-          "scopedrange": [],
+          "range": [
+            {
+              "range_label": "TemporalLiteral",
+              "range_uri": "http://www.w3.org/2000/01/rdf-schema#Literal"
+            }
+          ],
+          "scopedrange": [
+            {
+              "range_uri": "http://www.w3.org/2000/01/rdf-schema#Literal",
+              "range_puri": "http://www.w3.org/2000/01/rdf-schema#Literal",
+              "range_label": {
+                "en": "TemporalLiteral"
+              }
+            }
+          ],
           "cardinality": "1",
           "codelist_uri": ""
         },
@@ -1791,8 +1758,21 @@
               "uri": "http://www.w3.org/ns/dcat#CatalogRecord"
             }
           ],
-          "range": [],
-          "scopedrange": [],
+          "range": [
+            {
+              "range_label": "TemporalLiteral",
+              "range_uri": "http://www.w3.org/2000/01/rdf-schema#Literal"
+            }
+          ],
+          "scopedrange": [
+            {
+              "range_uri": "http://www.w3.org/2000/01/rdf-schema#Literal",
+              "range_puri": "http://www.w3.org/2000/01/rdf-schema#Literal",
+              "range_label": {
+                "en": "TemporalLiteral"
+              }
+            }
+          ],
           "cardinality": "0..1",
           "codelist_uri": ""
         },
@@ -1813,8 +1793,21 @@
               "uri": "http://www.w3.org/ns/dcat#CatalogRecord"
             }
           ],
-          "range": [],
-          "scopedrange": [],
+          "range": [
+            {
+              "range_label": "rdfs:Literal",
+              "range_uri": "http://www.w3.org/2000/01/rdf-schema#Literal"
+            }
+          ],
+          "scopedrange": [
+            {
+              "range_uri": "#Literal",
+              "range_puri": "http://www.w3.org/2000/01/rdf-schema#Literal",
+              "range_label": {
+                "en": "Literal"
+              }
+            }
+          ],
           "cardinality": "0..n",
           "codelist_uri": ""
         },
@@ -2252,7 +2245,7 @@
               }
             }
           ],
-          "cardinality": "1",
+          "cardinality": "0..n",
           "codelist_uri": ""
         },
         {
@@ -2403,41 +2396,6 @@
             }
           ],
           "cardinality": "0..n",
-          "codelist_uri": ""
-        },
-        {
-          "uri": "http://www.w3.org/ns/dcat#theme",
-          "name": "theme",
-          "sort": "theme",
-          "label": {
-            "en": "theme"
-          },
-          "description": {
-            "en": "This property refers to a category of the Dataset. A Dataset may be associated with multiple themes."
-          },
-          "usage": {},
-          "domain": [
-            {
-              "EA-Name": "dcat:Dataset",
-              "uri": "http://www.w3.org/ns/dcat#Dataset"
-            }
-          ],
-          "range": [
-            {
-              "range_label": "skos:Concept",
-              "range_uri": "http://www.w3.org/2004/02/skos/core#Concept"
-            }
-          ],
-          "scopedrange": [
-            {
-              "range_uri": "#Concept",
-              "range_puri": "http://www.w3.org/2004/02/skos/core#Concept",
-              "range_label": {
-                "en": "Concept"
-              }
-            }
-          ],
-          "cardinality": "0..*",
           "codelist_uri": ""
         },
         {
@@ -2975,41 +2933,6 @@
           "codelist_uri": ""
         },
         {
-          "uri": "http://purl.org/dc/terms/type",
-          "name": "type",
-          "sort": "type",
-          "label": {
-            "en": "type"
-          },
-          "description": {
-            "en": "This property refers to the type of the Dataset. A recommended rcontrolled vocabulary data-type is foreseen."
-          },
-          "usage": {},
-          "domain": [
-            {
-              "EA-Name": "dcat:Dataset",
-              "uri": "http://www.w3.org/ns/dcat#Dataset"
-            }
-          ],
-          "range": [
-            {
-              "range_label": "skos:Concept",
-              "range_uri": "http://www.w3.org/2004/02/skos/core#Concept"
-            }
-          ],
-          "scopedrange": [
-            {
-              "range_uri": "#Concept",
-              "range_puri": "http://www.w3.org/2004/02/skos/core#Concept",
-              "range_label": {
-                "en": "Concept"
-              }
-            }
-          ],
-          "cardinality": "0..1",
-          "codelist_uri": ""
-        },
-        {
           "uri": "http://purl.org/dc/terms/title",
           "name": "title",
           "sort": "title",
@@ -3041,7 +2964,7 @@
               }
             }
           ],
-          "cardinality": "1..*",
+          "cardinality": "1..n",
           "codelist_uri": ""
         },
         {
@@ -4548,41 +4471,6 @@
           "codelist_uri": ""
         },
         {
-          "uri": "http://www.w3.org/ns/adms#status",
-          "name": "status",
-          "sort": "status",
-          "label": {
-            "en": "status"
-          },
-          "description": {
-            "en": "The status of the distribution in the context of maturity lifecycle. It MUST take one of the values Completed, Deprecated, Under Development, Withdrawn."
-          },
-          "usage": {},
-          "domain": [
-            {
-              "EA-Name": "dcat:Distribution",
-              "uri": "http://www.w3.org/ns/dcat#Distribution"
-            }
-          ],
-          "range": [
-            {
-              "range_label": "skos:Concept",
-              "range_uri": "http://www.w3.org/2004/02/skos/core#Concept"
-            }
-          ],
-          "scopedrange": [
-            {
-              "range_uri": "#Concept",
-              "range_puri": "http://www.w3.org/2004/02/skos/core#Concept",
-              "range_label": {
-                "en": "Concept"
-              }
-            }
-          ],
-          "cardinality": "0..1",
-          "codelist_uri": ""
-        },
-        {
           "uri": "http://spdx.org/rdf/terms#checksum",
           "name": "checksum",
           "sort": "checksum",
@@ -5251,16 +5139,16 @@
           ],
           "range": [
             {
-              "range_label": "dcat:Catalog",
-              "range_uri": "http://www.w3.org/ns/dcat#Catalog"
+              "range_label": "dcat:Dataset",
+              "range_uri": "http://www.w3.org/ns/dcat#Dataset"
             }
           ],
           "scopedrange": [
             {
-              "range_uri": "#Catalogue",
-              "range_puri": "http://www.w3.org/ns/dcat#Catalog",
+              "range_uri": "#Dataset",
+              "range_puri": "http://www.w3.org/ns/dcat#Dataset",
               "range_label": {
-                "en": "Catalogue"
+                "en": "Dataset"
               }
             }
           ],
@@ -5286,16 +5174,16 @@
           ],
           "range": [
             {
-              "range_label": "dcat:Dataset",
-              "range_uri": "http://www.w3.org/ns/dcat#Dataset"
+              "range_label": "dcat:Catalog",
+              "range_uri": "http://www.w3.org/ns/dcat#Catalog"
             }
           ],
           "scopedrange": [
             {
-              "range_uri": "#Dataset",
-              "range_puri": "http://www.w3.org/ns/dcat#Dataset",
+              "range_uri": "#Catalogue",
+              "range_puri": "http://www.w3.org/ns/dcat#Catalog",
               "range_label": {
-                "en": "Dataset"
+                "en": "Catalogue"
               }
             }
           ],
@@ -5383,42 +5271,7 @@
               }
             }
           ],
-          "cardinality": "1..*",
-          "codelist_uri": ""
-        },
-        {
-          "uri": "http://purl.org/dc/terms/type",
-          "name": "type",
-          "sort": "type",
-          "label": {
-            "en": "type"
-          },
-          "description": {
-            "en": "This property refers to a type of the agent that makes the Catalogue or Dataset available"
-          },
-          "usage": {},
-          "domain": [
-            {
-              "EA-Name": "foaf: Agent",
-              "uri": "http://xmlns.com/foaf/0.1/Agent"
-            }
-          ],
-          "range": [
-            {
-              "range_label": "skos:Concept",
-              "range_uri": "http://www.w3.org/2004/02/skos/core#Concept"
-            }
-          ],
-          "scopedrange": [
-            {
-              "range_uri": "#Concept",
-              "range_puri": "http://www.w3.org/2004/02/skos/core#Concept",
-              "range_label": {
-                "en": "Concept"
-              }
-            }
-          ],
-          "cardinality": "0..1",
+          "cardinality": "1..n",
           "codelist_uri": ""
         },
         {
