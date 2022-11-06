@@ -1,10 +1,5 @@
 {
   "@context": {
-    "Adms:Identifier": "http://fixme.com#adms:Identifier",
-    "Adms:Identifier.skos:notation": {
-      "@id": "http://fixme.com#skos:notation",
-      "@type": ""
-    },
     "Agent": "http://xmlns.com/foaf/0.1/Agent",
     "Agent.name": {
       "@container": "@set",
@@ -153,6 +148,15 @@
       "@id": "http://purl.org/dc/terms/title",
       "@type": ""
     },
+    "Checksum": "http://fixme.com#spdx:Checksum",
+    "Checksum.spdx:algorithm": {
+      "@id": "http://fixme.com#spdx:algorithm",
+      "@type": ""
+    },
+    "Checksum.spdx:checksumValue": {
+      "@id": "http://fixme.com#spdx:checksumValue",
+      "@type": ""
+    },
     "DataService": "http://www.w3.org/ns/dcat#DataService",
     "DataService.accessRights": {
       "@id": "http://purl.org/dc/terms/accessRights",
@@ -172,7 +176,7 @@
       "@id": "http://www.w3.org/ns/dcat#endpointURL",
       "@type": "@id"
     },
-    "DataService.isReferenceBy|k=domainModel::rdfss": {
+    "DataService.isReferencedBy": {
       "@container": "@set",
       "@id": "http://purl.org/dc/terms/isReferencedBy",
       "@type": "@id"
@@ -181,19 +185,19 @@
       "@id": "http://purl.org/dc/terms/license",
       "@type": "@id"
     },
-    "DataService.periodOfs": {
-      "@container": "@set",
-      "@id": "http://purl.org/dc/terms/temporal",
-      "@type": "@id"
-    },
     "DataService.servesDataset": {
       "@container": "@set",
       "@id": "http://www.w3.org/ns/dcat#servesDataset",
       "@type": "@id"
     },
-    "DataService.spatial|k=domainModel::dcts": {
+    "DataService.spatialCoverage": {
       "@container": "@set",
       "@id": "http://purl.org/dc/terms/spatial",
+      "@type": "@id"
+    },
+    "DataService.temporalCoverage": {
+      "@container": "@set",
+      "@id": "http://purl.org/dc/terms/temporal",
       "@type": "@id"
     },
     "DataService.title": {
@@ -374,29 +378,6 @@
       "@id": "http://purl.org/dc/terms/:dcat:Dataset",
       "@type": ""
     },
-    "Dcat:Relationship": "http://fixme.com#dcat:Relationship",
-    "Dcat:Relationship.dct:hadRole": {
-      "@container": "@set",
-      "@id": "http://fixme.com#dct:hadRole",
-      "@type": ""
-    },
-    "Dcat:Relationship.dct:relation": {
-      "@container": "@set",
-      "@id": "http://fixme.com#dct:relation",
-      "@type": ""
-    },
-    "Dcat:Relationship.relation": {
-      "@container": "@set",
-      "@id": "http://purl.org/dc/terms/relation",
-      "@type": "@id"
-    },
-    "Dcat:Role": "http://fixme.com#dcat:Role",
-    "Dct:Frequency": "http://fixme.com#dct:Frequency",
-    "Dct:LinguisticSystem": "http://fixme.com#dct:LinguisticSystem",
-    "Dct:MediaType": "http://fixme.com#dct:MediaType",
-    "Dct:ProvenanceStatement": "http://fixme.com#dct:ProvenanceStatement",
-    "Dct:RightsStatement": "http://fixme.com#dct:RightsStatement",
-    "Dct:Standard": "http://fixme.com#dct:Standard",
     "Distribution": "http://www.w3.org/ns/dcat#Distribution",
     "Distribution.accessService": {
       "@container": "@set",
@@ -417,7 +398,7 @@
       "@type": ""
     },
     "Distribution.checksum": {
-      "@id": "http://purl.org/dc/terms/:dcat:Distribution",
+      "@id": "http://purl.org/dc/terms/checksum",
       "@type": "@id"
     },
     "Distribution.compressionFormat": {
@@ -444,7 +425,7 @@
       "@type": ""
     },
     "Distribution.hasPolicy": {
-      "@id": "http://purl.org/dc/terms/:dcat:Distribution",
+      "@id": "http://www.w3.org/ns/odrl/2/hasPolicy",
       "@type": ""
     },
     "Distribution.language": {
@@ -500,13 +481,23 @@
       "@id": "http://purl.org/dc/terms/title",
       "@type": ""
     },
-    "Foaf:Document": "http://fixme.com#foaf:Document",
+    "Document": "http://fixme.com#foaf:Document",
+    "Frequency": "http://fixme.com#dct:Frequency",
+    "Identifier": "http://fixme.com#adms:Identifier",
+    "Identifier.skos:notation": {
+      "@id": "http://fixme.com#skos:notation",
+      "@type": ""
+    },
+    "Kind": "http://fixme.com#vcard:Kind",
     "LicenceDocument": "http://purl.org/dc/terms/LicenseDocument",
     "LicenceDocument.type": {
-      "@id": "http://purl.org/dc/terms/type",
+      "@container": "@set",
+      "@id": "http://purl.org/dc/terms/Location",
       "@type": "@id"
     },
-    "Location": "http://fixme.com#dct:Location",
+    "LinguisticSystem": "http://fixme.com#dct:LinguisticSystem",
+    "Literal": "http://fixme.com#rdfs:Literal",
+    "Location": "http://purl.org/dc/terms/type",
     "Location.bbox": {
       "@id": "http://www.w3.org/ns/dcat#bbox",
       "@type": ""
@@ -516,28 +507,47 @@
       "@type": ""
     },
     "Location.geometry": {
-      "@id": "http://purl.org/dc/terms/:dct:Location",
+      "@id": "http://www.w3.org/ns/locn#geometry",
       "@type": ""
     },
-    "PeriodOfs": "http://purl.org/dc/terms/omain",
-    "PeriodOfs.beginning": {
-      "@id": "http://purl.org/dc/terms/:dct:PeriodOfTime",
+    "MediaType": "http://fixme.com#dct:MediaType",
+    "PeriodOfTime": "http://purl.org/dc/terms/PeriodOfTime",
+    "PeriodOfTime.beginning": {
+      "@id": "http://www.w3.org/2006/time#hasBeginning",
       "@type": ""
     },
-    "PeriodOfs.end": {
-      "@id": "http://purl.org/dc/terms/:dct:PeriodOfTime",
+    "PeriodOfTime.end": {
+      "@id": "http://www.w3.org/2006/time#hasEnd",
       "@type": ""
     },
-    "PeriodOfs.endDate": {
+    "PeriodOfTime.endDate": {
       "@id": "http://www.w3.org/ns/dcat#endDate",
       "@type": ""
     },
-    "PeriodOfs.startDate": {
+    "PeriodOfTime.startDate": {
       "@id": "http://www.w3.org/ns/dcat#startDate",
       "@type": ""
     },
-    "Rdfs:Literal": "http://fixme.com#rdfs:Literal",
-    "Rdfs:Resource": "http://fixme.com#rdfs:Resource",
+    "ProvenanceStatement": "http://fixme.com#dct:ProvenanceStatement",
+    "Relationship": "http://fixme.com#dcat:Relationship",
+    "Relationship.dct:hadRole": {
+      "@container": "@set",
+      "@id": "http://fixme.com#dct:hadRole",
+      "@type": ""
+    },
+    "Relationship.dct:relation": {
+      "@container": "@set",
+      "@id": "http://fixme.com#dct:relation",
+      "@type": ""
+    },
+    "Relationship.relation": {
+      "@container": "@set",
+      "@id": "http://purl.org/dc/terms/relation",
+      "@type": "@id"
+    },
+    "Resource": "http://fixme.com#rdfs:Resource",
+    "RightsStatement": "http://fixme.com#dct:RightsStatement",
+    "Role": "http://fixme.com#dcat:Role",
     "Skos:Concept": "http://fixme.com#skos:Concept",
     "Skos:Concept.skos:prefLabel": {
       "@container": "@set",
@@ -550,15 +560,6 @@
       "@id": "http://fixme.com#dct:title",
       "@type": ""
     },
-    "Spdx:Checksum": "http://fixme.com#spdx:Checksum",
-    "Spdx:Checksum.spdx:algorithm": {
-      "@id": "http://fixme.com#spdx:algorithm",
-      "@type": ""
-    },
-    "Spdx:Checksum.spdx:checksumValue": {
-      "@id": "http://fixme.com#spdx:checksumValue",
-      "@type": ""
-    },
-    "Vcard:Kind": "http://fixme.com#vcard:Kind"
+    "Standard": "http://fixme.com#dct:Standard"
   }
 }
