@@ -15,8 +15,8 @@
     },
     "status": "Semic Recommendation",
     "statuslabel": "Onbekend",
-    "repositoryurl": "git@uri.semic.eu-thema:SEMICeu/uri.semic.eu-thema.git/tree/ec49a558672a6c44f5fe23ceaa08025dd8b17fde",
-    "changelogurl": "git@uri.semic.eu-thema:SEMICeu/uri.semic.eu-thema.git/blob/ec49a558672a6c44f5fe23ceaa08025dd8b17fde/CHANGELOG",
+    "repositoryurl": "git@uri.semic.eu-thema:SEMICeu/uri.semic.eu-thema.git/tree/3dc72cd35eedafd446c7c2a2f7a59cf2661ced8b",
+    "changelogurl": "git@uri.semic.eu-thema:SEMICeu/uri.semic.eu-thema.git/blob/3dc72cd35eedafd446c7c2a2f7a59cf2661ced8b/CHANGELOG",
     "feedbackurl": "https://github.com/SEMICeu/CPOV/issues",
     "standaardregisterurl": "CPOV",
     "usesVocs": [],
@@ -31,7 +31,7 @@
       },
       "sort": "Contact Point",
       "description": {
-        "en": "information (e.g. e-mail address, telephone number) of a person or department through which the user can get in touch with."
+        "en": "Information (e.g. e-mail address, telephone number) of a person or department through which the user can get in touch with."
       },
       "usage": {
         "en": "The Core Public Organization Vocabulary defines properties for telephone number, e-mail address and opening hours although it is noteworthy that the class is based on schema.org's ContactPoint class (http://schema.org/ContactPoint) that has additional properties that some implementations may find useful."
@@ -110,10 +110,14 @@
         },
         {
           "uri": "http://data.europa.eu/m8g/contactPage",
-          "name": "",
-          "sort": "",
-          "label": {},
-          "description": {},
+          "name": "contact page",
+          "sort": "contact page",
+          "label": {
+            "en": "contact page"
+          },
+          "description": {
+            "en": "\tA contact page that could be used to reach out the contact point."
+          },
           "usage": {},
           "domain": [
             {
@@ -138,6 +142,76 @@
           ],
           "cardinality": "0..*",
           "codelist_uri": ""
+        },
+        {
+          "uri": "http://data.europa.eu/m8g/specialOpeningHoursSpecification",
+          "name": "availability restriction",
+          "sort": "availability restriction",
+          "label": {
+            "en": "availability restriction"
+          },
+          "description": {
+            "en": "The time during which the Contact Point is not available."
+          },
+          "usage": {},
+          "domain": [
+            {
+              "EA-Name": "ContactPoint",
+              "uri": "http://data.europa.eu/m8g/ContactPoint"
+            }
+          ],
+          "range": [
+            {
+              "range_label": "TemporalEntity",
+              "range_uri": "http://www.w3.org/2006/time#TemporalEntity"
+            }
+          ],
+          "scopedrange": [
+            {
+              "range_uri": "#Temporal Entity",
+              "range_puri": "http://www.w3.org/2006/time#TemporalEntity",
+              "range_label": {
+                "en": "Temporal Entity"
+              }
+            }
+          ],
+          "cardinality": "0..*",
+          "codelist_uri": ""
+        },
+        {
+          "uri": "http://data.europa.eu/m8g/openingHours",
+          "name": "opening hours",
+          "sort": "opening hours",
+          "label": {
+            "en": "opening hours"
+          },
+          "description": {
+            "en": "The time at which the contact point is normally available."
+          },
+          "usage": {},
+          "domain": [
+            {
+              "EA-Name": "ContactPoint",
+              "uri": "http://data.europa.eu/m8g/ContactPoint"
+            }
+          ],
+          "range": [
+            {
+              "range_label": "TemporalEntity",
+              "range_uri": "http://www.w3.org/2006/time#TemporalEntity"
+            }
+          ],
+          "scopedrange": [
+            {
+              "range_uri": "#Temporal Entity",
+              "range_puri": "http://www.w3.org/2006/time#TemporalEntity",
+              "range_label": {
+                "en": "Temporal Entity"
+              }
+            }
+          ],
+          "cardinality": "0..*",
+          "codelist_uri": ""
         }
       ]
     },
@@ -154,130 +228,6 @@
       "usage": {},
       "parents": [],
       "properties": []
-    },
-    {
-      "uri": "http://data.europa.eu/m8g/OpeningHoursSpecification",
-      "name": "Opening Hours Specification",
-      "label": {
-        "en": "Opening Hours Specification"
-      },
-      "sort": "Opening Hours Specification",
-      "description": {
-        "en": "An exceptional circumstance that overrides the normal Opening Hours, such as being closed on public holidays."
-      },
-      "usage": {
-        "en": "This class is aligned to Schema.org OpeningHoursSpecification class."
-      },
-      "parents": [],
-      "properties": [
-        {
-          "uri": "http://data.europa.eu/m8g/validThrough",
-          "name": "valid through",
-          "sort": "valid through",
-          "label": {
-            "en": "valid through"
-          },
-          "description": {
-            "en": "The date after when the Opening Hours Specification is not valid."
-          },
-          "usage": {
-            "en": "For example the end of an offer, salary period, or a period of opening hours."
-          },
-          "domain": [
-            {
-              "EA-Name": "OpeningHoursSpecification",
-              "uri": "http://data.europa.eu/m8g/OpeningHoursSpecification"
-            }
-          ],
-          "range": [
-            {
-              "range_label": "DateTime",
-              "range_uri": "http://www.w3.org/2001/XMLSchema#dateTime"
-            }
-          ],
-          "scopedrange": [
-            {
-              "range_uri": "http://www.w3.org/2001/XMLSchema#dateTime",
-              "range_puri": "http://www.w3.org/2001/XMLSchema#dateTime",
-              "range_label": {
-                "en": "DateTime"
-              }
-            }
-          ],
-          "cardinality": "0..*",
-          "codelist_uri": ""
-        },
-        {
-          "uri": "http://data.europa.eu/m8g/validFrom",
-          "name": "valid from",
-          "sort": "valid from",
-          "label": {
-            "en": "valid from"
-          },
-          "description": {
-            "en": "The date when the Opening Hours Specification becomes valid."
-          },
-          "usage": {},
-          "domain": [
-            {
-              "EA-Name": "OpeningHoursSpecification",
-              "uri": "http://data.europa.eu/m8g/OpeningHoursSpecification"
-            }
-          ],
-          "range": [
-            {
-              "range_label": "DateTime",
-              "range_uri": "http://www.w3.org/2001/XMLSchema#dateTime"
-            }
-          ],
-          "scopedrange": [
-            {
-              "range_uri": "http://www.w3.org/2001/XMLSchema#dateTime",
-              "range_puri": "http://www.w3.org/2001/XMLSchema#dateTime",
-              "range_label": {
-                "en": "DateTime"
-              }
-            }
-          ],
-          "cardinality": "0..*",
-          "codelist_uri": ""
-        },
-        {
-          "uri": "http://data.europa.eu/m8g/dayOfWeek",
-          "name": "day of week",
-          "sort": "day of week",
-          "label": {
-            "en": "day of week"
-          },
-          "description": {
-            "en": "The day of the week for which these opening hours are valid."
-          },
-          "usage": {},
-          "domain": [
-            {
-              "EA-Name": "OpeningHoursSpecification",
-              "uri": "http://data.europa.eu/m8g/OpeningHoursSpecification"
-            }
-          ],
-          "range": [
-            {
-              "range_label": "URI",
-              "range_uri": "http://www.w3.org/2001/XMLSchema#anyURI"
-            }
-          ],
-          "scopedrange": [
-            {
-              "range_uri": "http://www.w3.org/2001/XMLSchema#anyURI",
-              "range_puri": "http://www.w3.org/2001/XMLSchema#anyURI",
-              "range_label": {
-                "en": "URI"
-              }
-            }
-          ],
-          "cardinality": "0..*",
-          "codelist_uri": ""
-        }
-      ]
     },
     {
       "uri": "http://data.europa.eu/m8g/PublicOrganisation",
@@ -302,6 +252,37 @@
         }
       ],
       "properties": [
+        {
+          "uri": "http://data.europa.eu/m8g/spatial",
+          "name": "",
+          "sort": "",
+          "label": {},
+          "description": {},
+          "usage": {},
+          "domain": [
+            {
+              "EA-Name": "PublicOrganisation",
+              "uri": "http://data.europa.eu/m8g/PublicOrganisation"
+            }
+          ],
+          "range": [
+            {
+              "range_label": "Code",
+              "range_uri": "http://www.w3.org/2004/02/skos/core#Concept"
+            }
+          ],
+          "scopedrange": [
+            {
+              "range_uri": "http://www.w3.org/2004/02/skos/core#Concept",
+              "range_puri": "http://www.w3.org/2004/02/skos/core#Concept",
+              "range_label": {
+                "en": "Code"
+              }
+            }
+          ],
+          "cardinality": "0..*",
+          "codelist_uri": ""
+        },
         {
           "uri": "http://xmlns.com/foaf/0.1/homepage",
           "name": "homepage",
@@ -336,7 +317,7 @@
               }
             }
           ],
-          "cardinality": "",
+          "cardinality": "0..*",
           "codelist_uri": ""
         },
         {
@@ -373,7 +354,7 @@
               }
             }
           ],
-          "cardinality": "",
+          "cardinality": "0..*",
           "codelist_uri": ""
         },
         {
@@ -410,7 +391,7 @@
               }
             }
           ],
-          "cardinality": "",
+          "cardinality": "0..*",
           "codelist_uri": ""
         },
         {
@@ -484,7 +465,7 @@
               }
             }
           ],
-          "cardinality": "",
+          "cardinality": "0..*",
           "codelist_uri": ""
         },
         {
@@ -521,7 +502,7 @@
               }
             }
           ],
-          "cardinality": "",
+          "cardinality": "0..*",
           "codelist_uri": ""
         },
         {
@@ -556,7 +537,7 @@
               }
             }
           ],
-          "cardinality": "",
+          "cardinality": "0..*",
           "codelist_uri": ""
         },
         {
@@ -593,7 +574,7 @@
               }
             }
           ],
-          "cardinality": "",
+          "cardinality": "0..*",
           "codelist_uri": ""
         },
         {
@@ -667,7 +648,7 @@
               }
             }
           ],
-          "cardinality": "",
+          "cardinality": "0..*",
           "codelist_uri": ""
         },
         {
@@ -704,7 +685,7 @@
               }
             }
           ],
-          "cardinality": "",
+          "cardinality": "0..*",
           "codelist_uri": ""
         },
         {
@@ -741,7 +722,7 @@
               }
             }
           ],
-          "cardinality": "",
+          "cardinality": "0..*",
           "codelist_uri": ""
         },
         {
@@ -850,7 +831,7 @@
               }
             }
           ],
-          "cardinality": "",
+          "cardinality": "0..*",
           "codelist_uri": ""
         },
         {
@@ -887,44 +868,7 @@
               }
             }
           ],
-          "cardinality": "",
-          "codelist_uri": ""
-        },
-        {
-          "uri": "http://purl.org/dc/terms/spatial",
-          "name": "spatial",
-          "sort": "spatial",
-          "label": {
-            "en": "spatial"
-          },
-          "description": {
-            "en": "This property links an Organization to the Administrative Region(s) that it covers."
-          },
-          "usage": {
-            "en": "The value of the properly should be the URI of the region as defined in an authoritative\r\nlist of regions. In Europe, this is likely to be the Administrative Territorial Units\r\nNamed Authority List maintained by the Publications Office's Metadata Registry.\r\n<br/><br/>\r\nThe ATU list does not include a geometry. That is, the territory is only identified by\r\nits name not its spatial coordinates. This is likely to be the case for similar lists. If\r\ngeometries are available for the Public Organization's territory, they can be linked\r\nfrom the territorial unit using the Core Location Vocabulary's locn:geometry\r\nproperty."
-          },
-          "domain": [
-            {
-              "EA-Name": "PublicOrganisation",
-              "uri": "http://data.europa.eu/m8g/PublicOrganisation"
-            }
-          ],
-          "range": [
-            {
-              "range_label": "AdministrativeTerritorialUnit",
-              "range_uri": "http://data.europa.eu/88u/dataset/atu-type"
-            }
-          ],
-          "scopedrange": [
-            {
-              "range_uri": "#Administrative Territorial Unit",
-              "range_puri": "http://data.europa.eu/88u/dataset/atu-type",
-              "range_label": {
-                "en": "Administrative Territorial Unit"
-              }
-            }
-          ],
-          "cardinality": "",
+          "cardinality": "0..*",
           "codelist_uri": ""
         },
         {
@@ -996,7 +940,7 @@
               }
             }
           ],
-          "cardinality": "",
+          "cardinality": "0..*",
           "codelist_uri": ""
         },
         {
@@ -1033,7 +977,7 @@
               }
             }
           ],
-          "cardinality": "",
+          "cardinality": "0..*",
           "codelist_uri": ""
         }
       ]
@@ -1087,7 +1031,7 @@
               }
             }
           ],
-          "cardinality": "",
+          "cardinality": "0..*",
           "codelist_uri": ""
         },
         {
@@ -1128,18 +1072,89 @@
       ]
     },
     {
-      "uri": "http://data.europa.eu/88u/dataset/atu-type",
-      "name": "Administrative Territorial Unit",
+      "uri": "http://www.w3.org/2006/time#TemporalEntity",
+      "name": "Temporal Entity",
       "label": {
-        "en": "Administrative Territorial Unit"
+        "en": "Temporal Entity"
       },
-      "sort": "Administrative Territorial Unit",
+      "sort": "Temporal Entity",
       "description": {
-        "en": "A code from a list that represents the administrative territorial unit of the EU Member States, based on national official / legal information and the ISO 3166-2 standard."
+        "en": "A temporal interval or instant."
       },
       "usage": {},
       "parents": [],
-      "properties": []
+      "properties": [
+        {
+          "uri": "http://data.europa.eu/m8g/frequency",
+          "name": "frequency",
+          "sort": "frequency",
+          "label": {
+            "en": "frequency"
+          },
+          "description": {
+            "en": "The recurrence of the temporal entity."
+          },
+          "usage": {},
+          "domain": [
+            {
+              "EA-Name": "TemporalEntity",
+              "uri": "http://www.w3.org/2006/time#TemporalEntity"
+            }
+          ],
+          "range": [
+            {
+              "range_label": "Code",
+              "range_uri": "http://www.w3.org/2004/02/skos/core#Concept"
+            }
+          ],
+          "scopedrange": [
+            {
+              "range_uri": "http://www.w3.org/2004/02/skos/core#Concept",
+              "range_puri": "http://www.w3.org/2004/02/skos/core#Concept",
+              "range_label": {
+                "en": "Code"
+              }
+            }
+          ],
+          "cardinality": "0..*",
+          "codelist_uri": ""
+        },
+        {
+          "uri": "http://purl.org/dc/terms/description",
+          "name": "description",
+          "sort": "description",
+          "label": {
+            "en": "description"
+          },
+          "description": {
+            "en": "A  textual representation of the Temporal Entity."
+          },
+          "usage": {},
+          "domain": [
+            {
+              "EA-Name": "TemporalEntity",
+              "uri": "http://www.w3.org/2006/time#TemporalEntity"
+            }
+          ],
+          "range": [
+            {
+              "range_label": "Text",
+              "range_uri": "http://www.w3.org/1999/02/22-rdf-syntax-ns#langString"
+            }
+          ],
+          "scopedrange": [
+            {
+              "range_uri": "http://www.w3.org/1999/02/22-rdf-syntax-ns#langString",
+              "range_puri": "http://www.w3.org/1999/02/22-rdf-syntax-ns#langString",
+              "range_label": {
+                "en": "Text"
+              }
+            }
+          ],
+          "cardinality": "0..*",
+          "codelist_uri": ""
+        }
+      ]
     },
     {
       "uri": "http://www.w3.org/ns/adms#Identifier",
@@ -1353,6 +1368,41 @@
       "parents": [],
       "properties": [
         {
+          "uri": "http://data.europa.eu/m8g/streetName",
+          "name": "street name",
+          "sort": "street name",
+          "label": {
+            "en": "street name"
+          },
+          "description": {
+            "en": "The part of address indicating the street."
+          },
+          "usage": {},
+          "domain": [
+            {
+              "EA-Name": "Address",
+              "uri": "http://www.w3.org/ns/locn#Address"
+            }
+          ],
+          "range": [
+            {
+              "range_label": "Text",
+              "range_uri": "http://www.w3.org/1999/02/22-rdf-syntax-ns#langString"
+            }
+          ],
+          "scopedrange": [
+            {
+              "range_uri": "http://www.w3.org/1999/02/22-rdf-syntax-ns#langString",
+              "range_puri": "http://www.w3.org/1999/02/22-rdf-syntax-ns#langString",
+              "range_label": {
+                "en": "Text"
+              }
+            }
+          ],
+          "cardinality": "0..*",
+          "codelist_uri": ""
+        },
+        {
           "uri": "http://www.w3.org/ns/locn#thoroughfare",
           "name": "thoroughfare",
           "sort": "thoroughfare",
@@ -1391,10 +1441,10 @@
         },
         {
           "uri": "http://www.w3.org/ns/locn#postName",
-          "name": "post name (city)",
-          "sort": "post name (city)",
+          "name": "post name",
+          "sort": "post name",
           "label": {
-            "en": "post name (city)"
+            "en": "post name"
           },
           "description": {
             "en": "A name created and maintained for postal purposes to identify a subdivision of addresses and postal delivery points."
@@ -1437,7 +1487,7 @@
             "en": "The code created and maintained for postal purposes to identify a subdivision of addresses and postal delivery points."
           },
           "usage": {
-            "en": "Post codes are common elements in many countries' postal address systems. One of the many post codes of Paris is for example \"75000\"."
+            "en": "Post codes are common elements in many countries' postal address systems. One of the many post codes of Paris is for example \"75000\".\r\n\r\nThe datatype of addressID is indicated as Literal (keeping backward compatibility with the old W3C specification) that can be typed differently, see <a href=\"https://www.w3.org/TR/rdf11-concepts/#section-Graph-Literal\">more</a>."
           },
           "domain": [
             {
@@ -1447,16 +1497,16 @@
           ],
           "range": [
             {
-              "range_label": "String",
-              "range_uri": "http://www.w3.org/2001/XMLSchema#string"
+              "range_label": "Literal",
+              "range_uri": "http://www.w3.org/2000/01/rdf-schema#Literal"
             }
           ],
           "scopedrange": [
             {
-              "range_uri": "http://www.w3.org/2001/XMLSchema#string",
-              "range_puri": "http://www.w3.org/2001/XMLSchema#string",
+              "range_uri": "http://www.w3.org/2000/01/rdf-schema#Literal",
+              "range_puri": "http://www.w3.org/2000/01/rdf-schema#Literal",
               "range_label": {
-                "en": "String"
+                "en": "Literal"
               }
             }
           ],
@@ -1474,7 +1524,7 @@
             "en": "A location designator for a postal delivery point at a post office, usually a number."
           },
           "usage": {
-            "en": "INSPIRE's name for this is \"postalDeliveryIdentifier\" for which it uses the locator designator property with a type attribute of that name. This vocabulary separates out the Post Office Box for greater independence of technology. An example post office box number is \"9383\"."
+            "en": "INSPIRE's name for this is \"postalDeliveryIdentifier\" for which it uses the locator designator property with a type attribute of that name. This vocabulary separates out the Post Office Box for greater independence of technology. An example post office box number is \"9383\".\r\n<br/><br/>\r\nThe datatype of poBox is indicated as Literal (keeping backward compatibility with the old W3C specification) that can be typed differently, see <a href=\"https://www.w3.org/TR/rdf11-concepts/#section-Graph-Literal\">more</a>."
           },
           "domain": [
             {
@@ -1484,16 +1534,16 @@
           ],
           "range": [
             {
-              "range_label": "String",
-              "range_uri": "http://www.w3.org/2001/XMLSchema#string"
+              "range_label": "Literal",
+              "range_uri": "http://www.w3.org/2000/01/rdf-schema#Literal"
             }
           ],
           "scopedrange": [
             {
-              "range_uri": "http://www.w3.org/2001/XMLSchema#string",
-              "range_puri": "http://www.w3.org/2001/XMLSchema#string",
+              "range_uri": "http://www.w3.org/2000/01/rdf-schema#Literal",
+              "range_puri": "http://www.w3.org/2000/01/rdf-schema#Literal",
               "range_label": {
-                "en": "String"
+                "en": "Literal"
               }
             }
           ],
@@ -1548,7 +1598,7 @@
             "en": "A number or sequence of characters that uniquely identifies the locator within the relevant scope."
           },
           "usage": {
-            "en": "In simpler terms, this is the building number, apartment number, etc. For an address such as \"Flat 3, 17 Bridge Street\", the locator is \"flat 3, 17\"."
+            "en": "In simpler terms, this is the building number, apartment number, etc. For an address such as \"Flat 3, 17 Bridge Street\", the locator is \"flat 3, 17\".\r\n<br/><br/>\r\nThe datatype of locatorDesignator is indicated as Literal (keeping backward compatibility with the old W3C specification) that can be typed differently, see <a href=\"https://www.w3.org/TR/rdf11-concepts/#section-Graph-Literal\">more</a>."
           },
           "domain": [
             {
@@ -1558,16 +1608,16 @@
           ],
           "range": [
             {
-              "range_label": "String",
-              "range_uri": "http://www.w3.org/2001/XMLSchema#string"
+              "range_label": "Literal",
+              "range_uri": "http://www.w3.org/2000/01/rdf-schema#Literal"
             }
           ],
           "scopedrange": [
             {
-              "range_uri": "http://www.w3.org/2001/XMLSchema#string",
-              "range_puri": "http://www.w3.org/2001/XMLSchema#string",
+              "range_uri": "http://www.w3.org/2000/01/rdf-schema#Literal",
+              "range_puri": "http://www.w3.org/2000/01/rdf-schema#Literal",
               "range_label": {
-                "en": "String"
+                "en": "Literal"
               }
             }
           ],
@@ -1613,10 +1663,10 @@
         },
         {
           "uri": "http://www.w3.org/ns/locn#adminUnitL2",
-          "name": "administrative unit level 2 (country/region/state)",
-          "sort": "administrative unit level 2 (country/region/state)",
+          "name": "administrative unit level 2",
+          "sort": "administrative unit level 2",
           "label": {
-            "en": "administrative unit level 2 (country/region/state)"
+            "en": "administrative unit level 2"
           },
           "description": {
             "en": "The name of a secondary level/region of the address, usually a county, state or other such area that typically encompasses several localities."
@@ -1650,10 +1700,10 @@
         },
         {
           "uri": "http://www.w3.org/ns/locn#adminUnitL1",
-          "name": "administrative unit level 1 (country)",
-          "sort": "administrative unit level 1 (country)",
+          "name": "administrative unit level 1",
+          "sort": "administrative unit level 1",
           "label": {
-            "en": "administrative unit level 1 (country)"
+            "en": "administrative unit level 1"
           },
           "description": {
             "en": "The name of the uppermost level of the address, almost always a country."
@@ -1696,7 +1746,7 @@
             "en": "A globally unique identifier for each instance of an Address."
           },
           "usage": {
-            "en": "The concept of adding a globally unique identifier for each instance of an address is a crucial part of the INSPIRE data spec. A number of EU countries have already implemented an ID (a UUID) in their Address Register/gazetteer, among them Denmark. OASIS xAL also includes an address identifier. It is the address Identifier that allows an address to be represented in a format other than INSPIRE whilst remaining conformant to the Core Vocabulary.\r\n<br/><br/>\r\nThe INSPIRE method of representing addresses is very detailed, designed primarily for use in databases of addresses. Whilst data that is published in full conformance with the INSPIRE data structure can be made available using the Core  Location Vocabulary the reverse is not true since the Core Vocabulary allows much greater flexibility.\r\n<br/><br/>\r\nMany datasets that include address data as one piece of information about something else are likely to have that data in simpler formats. These might be tailored to the specific need of the dataset, follow a national norm, or make use of a standard like vCard.\r\n<br/><br/>\r\nTo provide maximum flexibility in the Core Vocabulary, whilst remaining interoperable with INSPIRE Address Guidelines (which EU Member States are obliged to use), the  Core Location Vocabulary provides the extra property of full address and makes use of INSPIRE's addressID."
+            "en": "The concept of adding a globally unique identifier for each instance of an address is a crucial part of the INSPIRE data spec. A number of EU countries have already implemented an ID (a UUID) in their Address Register/gazetteer, among them Denmark. OASIS xAL also includes an address identifier. It is the address Identifier that allows an address to be represented in a format other than INSPIRE whilst remaining conformant to the Core Vocabulary.\r\n<br/><br/>\r\nThe INSPIRE method of representing addresses is very detailed, designed primarily for use in databases of addresses. Whilst data that is published in full conformance with the INSPIRE data structure can be made available using the Core  Location Vocabulary the reverse is not true since the Core Vocabulary allows much greater flexibility.\r\n<br/><br/>\r\nMany datasets that include address data as one piece of information about something else are likely to have that data in simpler formats. These might be tailored to the specific need of the dataset, follow a national norm, or make use of a standard like vCard.\r\n<br/><br/>\r\nTo provide maximum flexibility in the Core Vocabulary, whilst remaining interoperable with INSPIRE Address Guidelines (which EU Member States are obliged to use), the  Core Location Vocabulary provides the extra property of full address and makes use of INSPIRE's addressID.\r\n<br/><br/>\r\nThe datatype of addressID is indicated as Literal (keeping backward compatibility with the old W3C specification) that can be typed differently, see <a href=\"https://www.w3.org/TR/rdf11-concepts/#section-Graph-Literal\">more</a>.\r\n"
           },
           "domain": [
             {
@@ -1706,16 +1756,16 @@
           ],
           "range": [
             {
-              "range_label": "String",
-              "range_uri": "http://www.w3.org/2001/XMLSchema#string"
+              "range_label": "Literal",
+              "range_uri": "http://www.w3.org/2000/01/rdf-schema#Literal"
             }
           ],
           "scopedrange": [
             {
-              "range_uri": "http://www.w3.org/2001/XMLSchema#string",
-              "range_puri": "http://www.w3.org/2001/XMLSchema#string",
+              "range_uri": "http://www.w3.org/2000/01/rdf-schema#Literal",
+              "range_puri": "http://www.w3.org/2000/01/rdf-schema#Literal",
               "range_label": {
-                "en": "String"
+                "en": "Literal"
               }
             }
           ],
@@ -1878,7 +1928,7 @@
               }
             }
           ],
-          "cardinality": "",
+          "cardinality": "0..*",
           "codelist_uri": ""
         },
         {
@@ -1915,7 +1965,7 @@
               }
             }
           ],
-          "cardinality": "",
+          "cardinality": "0..*",
           "codelist_uri": ""
         },
         {
@@ -1987,7 +2037,7 @@
               }
             }
           ],
-          "cardinality": "",
+          "cardinality": "0..*",
           "codelist_uri": ""
         }
       ]
@@ -2071,7 +2121,7 @@
               }
             }
           ],
-          "cardinality": "",
+          "cardinality": "0..*",
           "codelist_uri": ""
         }
       ]
@@ -2090,10 +2140,91 @@
         "en": "In alignment with foaf,  there is no distinction between physical and electronic documents, or between copies of a work and the abstraction those copies embody."
       },
       "parents": [],
-      "properties": []
+      "properties": [
+        {
+          "uri": "http://purl.org/dc/terms/title",
+          "name": "title",
+          "sort": "title",
+          "label": {
+            "en": "title"
+          },
+          "description": {
+            "en": "The name given to the Document."
+          },
+          "usage": {},
+          "domain": [
+            {
+              "EA-Name": "Document",
+              "uri": "http://xmlns.com/foaf/0.1/Document"
+            }
+          ],
+          "range": [
+            {
+              "range_label": "Literal",
+              "range_uri": "http://www.w3.org/2000/01/rdf-schema#Literal"
+            }
+          ],
+          "scopedrange": [
+            {
+              "range_uri": "http://www.w3.org/2000/01/rdf-schema#Literal",
+              "range_puri": "http://www.w3.org/2000/01/rdf-schema#Literal",
+              "range_label": {
+                "en": "Literal"
+              }
+            }
+          ],
+          "cardinality": "0..*",
+          "codelist_uri": ""
+        }
+      ]
     }
   ],
-  "properties": [],
+  "properties": [
+    {
+      "uri": "http://data.europa.eu/m8g/spatial",
+      "name": {
+        "undefined": ""
+      },
+      "description": {},
+      "domain": [
+        null
+      ],
+      "range": [
+        null
+      ],
+      "parents": []
+    },
+    {
+      "uri": "http://data.europa.eu/m8g/frequency",
+      "name": {
+        "en": "frequency",
+        "undefined": "frequency"
+      },
+      "description": {},
+      "domain": [
+        null
+      ],
+      "range": [
+        null
+      ],
+      "parents": []
+    },
+    {
+      "uri": "http://data.europa.eu/m8g/contactPage",
+      "name": {
+        "en": "contact page",
+        "undefined": "contact page"
+      },
+      "description": {},
+      "domain": [
+        null
+      ],
+      "range": [
+        null
+      ],
+      "parents": []
+    }
+  ],
   "contributors": [
     {
       "role": "A",

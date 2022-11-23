@@ -46,8 +46,23 @@
       "sh:closed": false,
       "sh:property": [
         {
+          "sh:class": "http://www.w3.org/2006/time#TemporalEntity",
+          "sh:description": {
+            "en": "The time during which the Contact Point is not available."
+          },
+          "sh:name": {
+            "en": "availability restriction"
+          },
+          "sh:path": "http://data.europa.eu/m8g/specialOpeningHoursSpecification"
+        },
+        {
           "sh:class": "http://xmlns.com/foaf/0.1/Document",
-          "sh:description": "",
+          "sh:description": {
+            "en": "\tA contact page that could be used to reach out the contact point."
+          },
+          "sh:name": {
+            "en": "contact page"
+          },
           "sh:path": "http://data.europa.eu/m8g/contactPage"
         },
         {
@@ -69,6 +84,16 @@
             "en": "has telephone"
           },
           "sh:path": "http://data.europa.eu/m8g/telephone"
+        },
+        {
+          "sh:class": "http://www.w3.org/2006/time#TemporalEntity",
+          "sh:description": {
+            "en": "The time at which the contact point is normally available."
+          },
+          "sh:name": {
+            "en": "opening hours"
+          },
+          "sh:path": "http://data.europa.eu/m8g/openingHours"
         }
       ],
       "sh:targetClass": "http://data.europa.eu/m8g/ContactPoint"
@@ -79,44 +104,6 @@
       "sh:closed": false,
       "sh:property": [],
       "sh:targetClass": "http://data.europa.eu/m8g/ImageObject"
-    },
-    {
-      "@id": "https://semiceu.github.io//shacl/core-public-organisation-ap-SHACL_en#OpeningHoursSpecificationShape",
-      "@type": "sh:NodeShape",
-      "sh:closed": false,
-      "sh:property": [
-        {
-          "sh:datatype": "http://www.w3.org/2001/XMLSchema#anyURI",
-          "sh:description": {
-            "en": "The day of the week for which these opening hours are valid."
-          },
-          "sh:name": {
-            "en": "day of week"
-          },
-          "sh:path": "http://data.europa.eu/m8g/dayOfWeek"
-        },
-        {
-          "sh:datatype": "http://www.w3.org/2001/XMLSchema#dateTime",
-          "sh:description": {
-            "en": "The date when the Opening Hours Specification becomes valid."
-          },
-          "sh:name": {
-            "en": "valid from"
-          },
-          "sh:path": "http://data.europa.eu/m8g/validFrom"
-        },
-        {
-          "sh:datatype": "http://www.w3.org/2001/XMLSchema#dateTime",
-          "sh:description": {
-            "en": "The date after when the Opening Hours Specification is not valid."
-          },
-          "sh:name": {
-            "en": "valid through"
-          },
-          "sh:path": "http://data.europa.eu/m8g/validThrough"
-        }
-      ],
-      "sh:targetClass": "http://data.europa.eu/m8g/OpeningHoursSpecification"
     },
     {
       "@id": "https://semiceu.github.io//shacl/core-public-organisation-ap-SHACL_en#PublicOrganisationShape",
@@ -304,14 +291,9 @@
           "sh:path": "http://www.w3.org/ns/org#resultedFrom"
         },
         {
-          "sh:class": "http://data.europa.eu/88u/dataset/atu-type",
-          "sh:description": {
-            "en": "This property links an Organization to the Administrative Region(s) that it covers."
-          },
-          "sh:name": {
-            "en": "spatial"
-          },
-          "sh:path": "http://purl.org/dc/terms/spatial"
+          "sh:class": "http://www.w3.org/2004/02/skos/core#Concept",
+          "sh:description": "",
+          "sh:path": "http://data.europa.eu/m8g/spatial"
         },
         {
           "sh:class": "http://data.europa.eu/m8g/PublicOrganisation",
@@ -355,11 +337,32 @@
       "sh:targetClass": "http://data.europa.eu/m8g/ReferenceFramework"
     },
     {
-      "@id": "https://semiceu.github.io//shacl/core-public-organisation-ap-SHACL_en#AdministrativeTerritorialUnitShape",
+      "@id": "https://semiceu.github.io//shacl/core-public-organisation-ap-SHACL_en#TemporalEntityShape",
       "@type": "sh:NodeShape",
       "sh:closed": false,
-      "sh:property": [],
-      "sh:targetClass": "http://data.europa.eu/88u/dataset/atu-type"
+      "sh:property": [
+        {
+          "sh:datatype": "http://www.w3.org/1999/02/22-rdf-syntax-ns#langString",
+          "sh:description": {
+            "en": "A  textual representation of the Temporal Entity."
+          },
+          "sh:name": {
+            "en": "description"
+          },
+          "sh:path": "http://purl.org/dc/terms/description"
+        },
+        {
+          "sh:class": "http://www.w3.org/2004/02/skos/core#Concept",
+          "sh:description": {
+            "en": "The recurrence of the temporal entity."
+          },
+          "sh:name": {
+            "en": "frequency"
+          },
+          "sh:path": "http://data.europa.eu/m8g/frequency"
+        }
+      ],
+      "sh:targetClass": "http://www.w3.org/2006/time#TemporalEntity"
     },
     {
       "@id": "https://semiceu.github.io//shacl/core-public-organisation-ap-SHACL_en#IdentifierShape",
@@ -435,7 +438,7 @@
           "sh:path": "http://www.w3.org/ns/locn#addressArea"
         },
         {
-          "sh:datatype": "http://www.w3.org/2001/XMLSchema#string",
+          "sh:datatype": "http://www.w3.org/2000/01/rdf-schema#Literal",
           "sh:description": {
             "en": "A globally unique identifier for each instance of an Address."
           },
@@ -450,7 +453,7 @@
             "en": "The name of the uppermost level of the address, almost always a country."
           },
           "sh:name": {
-            "en": "administrative unit level 1 (country)"
+            "en": "administrative unit level 1"
           },
           "sh:path": "http://www.w3.org/ns/locn#adminUnitL1"
         },
@@ -460,7 +463,7 @@
             "en": "The name of a secondary level/region of the address, usually a county, state or other such area that typically encompasses several localities."
           },
           "sh:name": {
-            "en": "administrative unit level 2 (country/region/state)"
+            "en": "administrative unit level 2"
           },
           "sh:path": "http://www.w3.org/ns/locn#adminUnitL2"
         },
@@ -475,7 +478,7 @@
           "sh:path": "http://www.w3.org/ns/locn#fullAddress"
         },
         {
-          "sh:datatype": "http://www.w3.org/2001/XMLSchema#string",
+          "sh:datatype": "http://www.w3.org/2000/01/rdf-schema#Literal",
           "sh:description": {
             "en": "A number or sequence of characters that uniquely identifies the locator within the relevant scope."
           },
@@ -495,7 +498,7 @@
           "sh:path": "http://www.w3.org/ns/locn#locatorName"
         },
         {
-          "sh:datatype": "http://www.w3.org/2001/XMLSchema#string",
+          "sh:datatype": "http://www.w3.org/2000/01/rdf-schema#Literal",
           "sh:description": {
             "en": "A location designator for a postal delivery point at a post office, usually a number."
           },
@@ -505,7 +508,7 @@
           "sh:path": "http://www.w3.org/ns/locn#poBox"
         },
         {
-          "sh:datatype": "http://www.w3.org/2001/XMLSchema#string",
+          "sh:datatype": "http://www.w3.org/2000/01/rdf-schema#Literal",
           "sh:description": {
             "en": "The code created and maintained for postal purposes to identify a subdivision of addresses and postal delivery points."
           },
@@ -520,9 +523,19 @@
             "en": "A name created and maintained for postal purposes to identify a subdivision of addresses and postal delivery points."
           },
           "sh:name": {
-            "en": "post name (city)"
+            "en": "post name"
           },
           "sh:path": "http://www.w3.org/ns/locn#postName"
+        },
+        {
+          "sh:datatype": "http://www.w3.org/1999/02/22-rdf-syntax-ns#langString",
+          "sh:description": {
+            "en": "The part of address indicating the street."
+          },
+          "sh:name": {
+            "en": "street name"
+          },
+          "sh:path": "http://data.europa.eu/m8g/streetName"
         },
         {
           "sh:datatype": "http://www.w3.org/1999/02/22-rdf-syntax-ns#langString",
@@ -634,7 +647,18 @@
       "@id": "https://semiceu.github.io//shacl/core-public-organisation-ap-SHACL_en#DocumentShape",
       "@type": "sh:NodeShape",
       "sh:closed": false,
-      "sh:property": [],
+      "sh:property": [
+        {
+          "sh:datatype": "http://www.w3.org/2000/01/rdf-schema#Literal",
+          "sh:description": {
+            "en": "The name given to the Document."
+          },
+          "sh:name": {
+            "en": "title"
+          },
+          "sh:path": "http://purl.org/dc/terms/title"
+        }
+      ],
       "sh:targetClass": "http://xmlns.com/foaf/0.1/Document"
     }
   ]

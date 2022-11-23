@@ -9,11 +9,42 @@
 @prefix xhv: <http://www.w3.org/1999/xhtml/vocab#> .
 @prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
 
-<http://data.europa.eu/88u/dataset/atu-type> a rdfs:Class;
-  rdfs:label "Administrative Territorial Unit"@en .
-
 <http://data.europa.eu/m8g/ImageObject> a owl:Class;
   rdfs:isDefinedBy <http://data.europa.eu/m8g> .
+
+<http://data.europa.eu/m8g/ReferenceFramework> a owl:Class;
+  <http://purl.org/vocab/vann/usageNote> "Usual Reference Frameworks are legal and non-legal specifications. Examples include procedures, tendering legislation, etc."@en;
+  rdfs:isDefinedBy <http://data.europa.eu/m8g> .
+
+<http://data.europa.eu/m8g/contactPage> a owl:ObjectProperty;
+  rdfs:domain <http://data.europa.eu/m8g/ContactPoint>;
+  rdfs:isDefinedBy <http://data.europa.eu/m8g>;
+  rdfs:range foaf:Document .
+
+<http://data.europa.eu/m8g/email> a owl:DatatypeProperty;
+  rdfs:domain <http://data.europa.eu/m8g/ContactPoint>;
+  rdfs:isDefinedBy <http://data.europa.eu/m8g>;
+  rdfs:range rdfs:Literal .
+
+<http://data.europa.eu/m8g/frequency> a owl:ObjectProperty;
+  rdfs:domain <http://www.w3.org/2006/time#TemporalEntity>;
+  rdfs:isDefinedBy <http://data.europa.eu/m8g>;
+  rdfs:range skos:Concept .
+
+<http://data.europa.eu/m8g/spatial> a owl:ObjectProperty;
+  rdfs:domain <http://data.europa.eu/m8g/PublicOrganisation>;
+  rdfs:isDefinedBy <http://data.europa.eu/m8g>;
+  rdfs:range skos:Concept .
+
+<http://data.europa.eu/m8g/streetName> a owl:DatatypeProperty;
+  rdfs:domain <http://www.w3.org/ns/locn#Address>;
+  rdfs:isDefinedBy <http://data.europa.eu/m8g>;
+  rdfs:range rdf:langString .
+
+<http://data.europa.eu/m8g/telephone> a owl:DatatypeProperty;
+  rdfs:domain <http://data.europa.eu/m8g/ContactPoint>;
+  rdfs:isDefinedBy <http://data.europa.eu/m8g>;
+  rdfs:range rdfs:Literal .
 
 <http://data.europa.eu/m8g/PublicOrganisation> a owl:Class;
   <http://purl.org/vocab/vann/usageNote> """Organizations which exist to provide services for its citizens and companies are called Public Organizations. The Public Organization class represents the organization. One organization may comprise several sub-organizations and any organization may have one or more organizational units. Each of these is described using the same properties and relationships.
@@ -22,41 +53,8 @@ This definition is consistent with the more detailed definition of a \"public se
   rdfs:isDefinedBy <http://data.europa.eu/m8g>;
   rdfs:subClassOf org:Organization .
 
-<http://data.europa.eu/m8g/ReferenceFramework> a owl:Class;
-  <http://purl.org/vocab/vann/usageNote> "Usual Reference Frameworks are legal and non-legal specifications. Examples include procedures, tendering legislation, etc."@en;
-  rdfs:isDefinedBy <http://data.europa.eu/m8g> .
-
-<http://data.europa.eu/m8g/dayOfWeek> a owl:DatatypeProperty;
-  rdfs:domain <http://data.europa.eu/m8g/OpeningHoursSpecification>;
-  rdfs:isDefinedBy <http://data.europa.eu/m8g>;
-  rdfs:range xsd:anyURI .
-
-<http://data.europa.eu/m8g/email> a owl:DatatypeProperty;
-  rdfs:domain <http://data.europa.eu/m8g/ContactPoint>;
-  rdfs:isDefinedBy <http://data.europa.eu/m8g>;
-  rdfs:range rdfs:Literal .
-
-<http://data.europa.eu/m8g/telephone> a owl:DatatypeProperty;
-  rdfs:domain <http://data.europa.eu/m8g/ContactPoint>;
-  rdfs:isDefinedBy <http://data.europa.eu/m8g>;
-  rdfs:range rdfs:Literal .
-
-<http://data.europa.eu/m8g/validFrom> a owl:DatatypeProperty;
-  rdfs:domain <http://data.europa.eu/m8g/OpeningHoursSpecification>;
-  rdfs:isDefinedBy <http://data.europa.eu/m8g>;
-  rdfs:range xsd:dateTime .
-
-<http://data.europa.eu/m8g/validThrough> a owl:DatatypeProperty;
-  <http://purl.org/vocab/vann/usageNote> "For example the end of an offer, salary period, or a period of opening hours."@en;
-  rdfs:domain <http://data.europa.eu/m8g/OpeningHoursSpecification>;
-  rdfs:isDefinedBy <http://data.europa.eu/m8g>;
-  rdfs:range xsd:dateTime .
-
 dc:description a rdf:Property;
   rdfs:label "description"@en .
-
-dc:spatial a rdf:Property;
-  rdfs:label "spatial"@en .
 
 xhv:next a rdf:Property;
   rdfs:label "next"@en .
@@ -92,10 +90,6 @@ org:subOrganizationOf a rdf:Property;
   <http://purl.org/vocab/vann/usageNote> "The Core Public Organization Vocabulary defines properties for telephone number, e-mail address and opening hours although it is noteworthy that the class is based on schema.org's ContactPoint class (http://schema.org/ContactPoint) that has additional properties that some implementations may find useful."@en;
   rdfs:isDefinedBy <http://data.europa.eu/m8g> .
 
-<http://data.europa.eu/m8g/OpeningHoursSpecification> a owl:Class;
-  <http://purl.org/vocab/vann/usageNote> "This class is aligned to Schema.org OpeningHoursSpecification class."@en;
-  rdfs:isDefinedBy <http://data.europa.eu/m8g> .
-
 <http://data.europa.eu/m8g> a owl:Ontology;
   rdfs:label "core-public-organisation"@en,
     "core-public-organisation"@nl;
@@ -112,8 +106,7 @@ org:subOrganizationOf a rdf:Property;
     foaf:homepage <https://semic.eu>;
     foaf:name "Semantic Interoperability Community (SEMIC)"
   ];
-  rdfs:seeAlso <http://data.europa.eu/88u/dataset/atu-type>,
-    org:subOrganizationOf,
+  rdfs:seeAlso org:subOrganizationOf,
     org:purpose,
     org:memberOf,
     org:hasSubOrganization,
@@ -123,7 +116,6 @@ org:subOrganizationOf a rdf:Property;
     skos:altLabel,
     xhv:prev,
     xhv:next,
-    dc:spatial,
     dc:description;
   <http://www.w3.org/2001/02pd/rec54#editor> [
     a foaf:Person;

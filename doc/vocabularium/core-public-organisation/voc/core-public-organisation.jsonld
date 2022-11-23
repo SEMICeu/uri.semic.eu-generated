@@ -95,7 +95,7 @@
       "@id": "http://data.europa.eu/m8g/ContactPoint",
       "@type": "http://www.w3.org/2002/07/owl#Class",
       "definition": {
-        "en": "information (e.g. e-mail address, telephone number) of a person or department through which the user can get in touch with."
+        "en": "Information (e.g. e-mail address, telephone number) of a person or department through which the user can get in touch with."
       },
       "usage": {
         "en": "The Core Public Organization Vocabulary defines properties for telephone number, e-mail address and opening hours although it is noteworthy that the class is based on schema.org's ContactPoint class (http://schema.org/ContactPoint) that has additional properties that some implementations may find useful."
@@ -107,17 +107,6 @@
       "@type": "http://www.w3.org/2002/07/owl#Class",
       "definition": {
         "en": "A logo to describe / represent the PublicOrganization."
-      },
-      "parents": []
-    },
-    {
-      "@id": "http://data.europa.eu/m8g/OpeningHoursSpecification",
-      "@type": "http://www.w3.org/2002/07/owl#Class",
-      "definition": {
-        "en": "An exceptional circumstance that overrides the normal Opening Hours, such as being closed on public holidays."
-      },
-      "usage": {
-        "en": "This class is aligned to Schema.org OpeningHoursSpecification class."
       },
       "parents": []
     },
@@ -146,47 +135,8 @@
       "parents": []
     }
   ],
-  "externals": [
-    {
-      "name": {
-        "en": "Administrative Territorial Unit"
-      },
-      "@id": "http://data.europa.eu/88u/dataset/atu-type",
-      "@type": "rdfs:Class"
-    }
-  ],
+  "externals": [],
   "properties": [
-    {
-      "@id": "http://data.europa.eu/m8g/validThrough",
-      "@type": "http://www.w3.org/2002/07/owl#DatatypeProperty",
-      "definition": {
-        "en": "The date after when the Opening Hours Specification is not valid."
-      },
-      "usage": {
-        "en": "For example the end of an offer, salary period, or a period of opening hours."
-      },
-      "domain": [
-        "http://data.europa.eu/m8g/OpeningHoursSpecification"
-      ],
-      "range": [
-        "http://www.w3.org/2001/XMLSchema#dateTime"
-      ],
-      "generalization": []
-    },
-    {
-      "@id": "http://data.europa.eu/m8g/validFrom",
-      "@type": "http://www.w3.org/2002/07/owl#DatatypeProperty",
-      "definition": {
-        "en": "The date when the Opening Hours Specification becomes valid."
-      },
-      "domain": [
-        "http://data.europa.eu/m8g/OpeningHoursSpecification"
-      ],
-      "range": [
-        "http://www.w3.org/2001/XMLSchema#dateTime"
-      ],
-      "generalization": []
-    },
     {
       "@id": "http://data.europa.eu/m8g/telephone",
       "@type": "http://www.w3.org/2002/07/owl#DatatypeProperty",
@@ -198,6 +148,45 @@
       ],
       "range": [
         "http://www.w3.org/2000/01/rdf-schema#Literal"
+      ],
+      "generalization": []
+    },
+    {
+      "@id": "http://data.europa.eu/m8g/streetName",
+      "@type": "http://www.w3.org/2002/07/owl#DatatypeProperty",
+      "definition": {
+        "en": "The part of address indicating the street."
+      },
+      "domain": [
+        "http://www.w3.org/ns/locn#Address"
+      ],
+      "range": [
+        "http://www.w3.org/1999/02/22-rdf-syntax-ns#langString"
+      ],
+      "generalization": []
+    },
+    {
+      "@id": "http://data.europa.eu/m8g/spatial",
+      "@type": "http://www.w3.org/2002/07/owl#ObjectProperty",
+      "domain": [
+        "http://data.europa.eu/m8g/PublicOrganisation"
+      ],
+      "range": [
+        "http://www.w3.org/2004/02/skos/core#Concept"
+      ],
+      "generalization": []
+    },
+    {
+      "@id": "http://data.europa.eu/m8g/frequency",
+      "@type": "http://www.w3.org/2002/07/owl#ObjectProperty",
+      "definition": {
+        "en": "The recurrence of the temporal entity."
+      },
+      "domain": [
+        "http://www.w3.org/2006/time#TemporalEntity"
+      ],
+      "range": [
+        "http://www.w3.org/2004/02/skos/core#Concept"
       ],
       "generalization": []
     },
@@ -216,16 +205,16 @@
       "generalization": []
     },
     {
-      "@id": "http://data.europa.eu/m8g/dayOfWeek",
-      "@type": "http://www.w3.org/2002/07/owl#DatatypeProperty",
+      "@id": "http://data.europa.eu/m8g/contactPage",
+      "@type": "http://www.w3.org/2002/07/owl#ObjectProperty",
       "definition": {
-        "en": "The day of the week for which these opening hours are valid."
+        "en": "\tA contact page that could be used to reach out the contact point."
       },
       "domain": [
-        "http://data.europa.eu/m8g/OpeningHoursSpecification"
+        "http://data.europa.eu/m8g/ContactPoint"
       ],
       "range": [
-        "http://www.w3.org/2001/XMLSchema#anyURI"
+        "http://xmlns.com/foaf/0.1/Document"
       ],
       "generalization": []
     }
@@ -299,13 +288,6 @@
         "en": "next"
       },
       "@id": "http://www.w3.org/1999/xhtml/vocab#next",
-      "@type": "rdf:Property"
-    },
-    {
-      "name": {
-        "en": "spatial"
-      },
-      "@id": "http://purl.org/dc/terms/spatial",
       "@type": "rdf:Property"
     },
     {
