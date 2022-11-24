@@ -58,7 +58,7 @@
         {
           "sh:class": "http://xmlns.com/foaf/0.1/Document",
           "sh:description": {
-            "en": "\tA contact page that could be used to reach out the contact point."
+            "en": "A web page that could be used to reach out the Contact Point."
           },
           "sh:name": {
             "en": "contact page"
@@ -88,7 +88,7 @@
         {
           "sh:class": "http://www.w3.org/2006/time#TemporalEntity",
           "sh:description": {
-            "en": "The time at which the contact point is normally available."
+            "en": "The time at which the Contact Point is normally available."
           },
           "sh:name": {
             "en": "opening hours"
@@ -97,6 +97,66 @@
         }
       ],
       "sh:targetClass": "http://data.europa.eu/m8g/ContactPoint"
+    },
+    {
+      "@id": "https://semiceu.github.io//shacl/core-public-event-ap-SHACL_en#ParticipationShape",
+      "@type": "sh:NodeShape",
+      "sh:closed": false,
+      "sh:property": [
+        {
+          "sh:datatype": "http://www.w3.org/1999/02/22-rdf-syntax-ns#langString",
+          "sh:description": {
+            "en": "A free text description of the Participation."
+          },
+          "sh:name": {
+            "en": "description"
+          },
+          "sh:path": "http://purl.org/dc/terms/description"
+        },
+        {
+          "sh:class": "http://xmlns.com/foaf/0.1/Agent",
+          "sh:description": {
+            "en": "The Agent involved in the Participation."
+          },
+          "sh:name": {
+            "en": "hasParticipant"
+          },
+          "sh:path": "http://data.europa.eu/m8g/hasParticipant"
+        },
+        {
+          "sh:class": "http://www.w3.org/2006/time#TemporalEntity",
+          "sh:description": {
+            "en": "Supports the association of a temporal entity (instant or interval) to any thing."
+          },
+          "sh:name": {
+            "en": "has time"
+          },
+          "sh:path": "http://www.w3.org/2006/time#hasTime"
+        },
+        {
+          "sh:datatype": "http://www.w3.org/2000/01/rdf-schema#Literal",
+          "sh:description": {
+            "en": "This property represents an Identifier for the Participation."
+          },
+          "sh:maxCount": "1",
+          "sh:minCount": "1",
+          "sh:name": {
+            "en": "identifier"
+          },
+          "sh:path": "http://www.w3.org/ns/org#identifier"
+        },
+        {
+          "sh:class": "http://www.w3.org/2004/02/skos/core#Concept",
+          "sh:description": {
+            "en": "Provides the role played."
+          },
+          "sh:name": {
+            "en": "role"
+          },
+          "sh:path": "http://data.europa.eu/m8g/role"
+        }
+      ],
+      "sh:targetClass": "http://data.europa.eu/m8g/Participation"
     },
     {
       "@id": "https://semiceu.github.io//shacl/core-public-event-ap-SHACL_en#PublicEventShape",
@@ -112,6 +172,11 @@
             "en": "accessibility"
           },
           "sh:path": "http://data.europa.eu/m8g/accessibility"
+        },
+        {
+          "sh:class": "http://www.w3.org/2004/02/skos/core#Concept",
+          "sh:description": "",
+          "sh:path": "http://data.europa.eu/m8g/audience"
         },
         {
           "sh:class": "http://data.europa.eu/m8g/ContactPoint",
@@ -136,12 +201,12 @@
         {
           "sh:datatype": "http://www.w3.org/1999/02/22-rdf-syntax-ns#langString",
           "sh:description": {
-            "en": "The characteristic of the event that distinguish it from others related."
+            "en": "The sequence position of the Public Event."
           },
           "sh:name": {
-            "en": "edition"
+            "en": "eventNumber"
           },
-          "sh:path": "http://data.europa.eu/m8g/edition"
+          "sh:path": "http://data.europa.eu/m8g/eventNumber"
         },
         {
           "sh:class": "http://www.w3.org/2004/02/skos/core#Concept",
@@ -164,14 +229,34 @@
           "sh:path": "http://data.europa.eu/m8g/format"
         },
         {
-          "sh:class": "http://data.europa.eu/m8g/Role",
+          "sh:class": "http://data.europa.eu/m8g/PublicEvent",
           "sh:description": {
-            "en": "The relation between a resource and role."
+            "en": "The event that comes after this event."
           },
           "sh:name": {
-            "en": "has role"
+            "en": "has next event"
           },
-          "sh:path": "http://data.europa.eu/m8g/hasRole"
+          "sh:path": "http://data.europa.eu/m8g/hasNextEvent"
+        },
+        {
+          "sh:class": "http://data.europa.eu/m8g/Participation",
+          "sh:description": {
+            "en": "The relation between a Public Event "
+          },
+          "sh:name": {
+            "en": "has participation"
+          },
+          "sh:path": "http://data.europa.eu/m8g/hasParticipation"
+        },
+        {
+          "sh:class": "http://data.europa.eu/m8g/PublicEvent",
+          "sh:description": {
+            "en": "The event that comes before this event."
+          },
+          "sh:name": {
+            "en": "has previous event"
+          },
+          "sh:path": "http://data.europa.eu/m8g/hasPreviousEvent"
         },
         {
           "sh:class": "http://www.w3.org/2006/time#TemporalEntity",
@@ -204,14 +289,14 @@
           "sh:path": "http://purl.org/dc/terms/identifier"
         },
         {
-          "sh:datatype": "http://www.w3.org/2001/XMLSchema#integer",
+          "sh:class": "http://purl.org/dc/terms/LinguisticSystem",
           "sh:description": {
-            "en": "The total capacity of the event."
+            "en": "The language in which the Public Event is given"
           },
           "sh:name": {
-            "en": "maximum number of participants"
+            "en": "language"
           },
-          "sh:path": "http://data.europa.eu/m8g/maxNumberOfParticipants"
+          "sh:path": "http://purl.org/dc/terms/language"
         },
         {
           "sh:class": "http://data.europa.eu/m8g/PublicEvent",
@@ -236,16 +321,6 @@
         {
           "sh:class": "http://data.europa.eu/m8g/PublicEvent",
           "sh:description": {
-            "en": "A relation towards another public event."
-          },
-          "sh:name": {
-            "en": "related"
-          },
-          "sh:path": "http://purl.org/dc/elements/1.1/relation"
-        },
-        {
-          "sh:class": "http://data.europa.eu/m8g/PublicEvent",
-          "sh:description": {
             "en": "A relation towards another Events that belong to it."
           },
           "sh:name": {
@@ -266,7 +341,7 @@
         {
           "sh:class": "http://www.w3.org/2004/02/skos/core#Concept",
           "sh:description": {
-            "en": "The classification used for the event."
+            "en": "The subject of the event."
           },
           "sh:name": {
             "en": "topic"
@@ -275,54 +350,6 @@
         }
       ],
       "sh:targetClass": "http://data.europa.eu/m8g/PublicEvent"
-    },
-    {
-      "@id": "https://semiceu.github.io//shacl/core-public-event-ap-SHACL_en#RoleShape",
-      "@type": "sh:NodeShape",
-      "sh:closed": false,
-      "sh:property": [
-        {
-          "sh:class": "http://www.w3.org/2006/time#TemporalEntity",
-          "sh:description": {
-            "en": "Supports the association of a temporal entity (instant or interval) to any thing."
-          },
-          "sh:name": {
-            "en": "has time"
-          },
-          "sh:path": "http://www.w3.org/2006/time#hasTime"
-        },
-        {
-          "sh:class": "http://xmlns.com/foaf/0.1/Agent",
-          "sh:description": {
-            "en": "A relation betwen a role and the agent occupiying such role"
-          },
-          "sh:name": {
-            "en": "is played by"
-          },
-          "sh:path": "http://data.europa.eu/m8g/isPlayedBy"
-        },
-        {
-          "sh:datatype": "http://www.w3.org/1999/02/22-rdf-syntax-ns#langString",
-          "sh:description": {
-            "en": "A label for the role."
-          },
-          "sh:name": {
-            "en": "name"
-          },
-          "sh:path": "http://purl.org/dc/terms/title"
-        },
-        {
-          "sh:class": "http://www.w3.org/2004/02/skos/core#Concept",
-          "sh:description": {
-            "en": "A classification used for the role."
-          },
-          "sh:name": {
-            "en": "type"
-          },
-          "sh:path": "http://purl.org/dc/terms/type"
-        }
-      ],
-      "sh:targetClass": "http://data.europa.eu/m8g/Role"
     },
     {
       "@id": "https://semiceu.github.io//shacl/core-public-event-ap-SHACL_en#TemporalEntityShape",
@@ -340,9 +367,9 @@
           "sh:path": "http://purl.org/dc/terms/description"
         },
         {
-          "sh:class": "http://purl.org/dc/terms/Frequency",
+          "sh:class": "http://www.w3.org/2004/02/skos/core#Concept",
           "sh:description": {
-            "en": "The recurrence of the temporal entity."
+            "en": "The recurrence of an instant or period."
           },
           "sh:name": {
             "en": "frequency"
@@ -368,7 +395,7 @@
           "sh:path": "http://www.w3.org/ns/locn#addressArea"
         },
         {
-          "sh:datatype": "http://www.w3.org/2001/XMLSchema#string",
+          "sh:datatype": "http://www.w3.org/2000/01/rdf-schema#Literal",
           "sh:description": {
             "en": "A globally unique identifier for each instance of an Address."
           },
@@ -408,7 +435,7 @@
           "sh:path": "http://www.w3.org/ns/locn#fullAddress"
         },
         {
-          "sh:datatype": "http://www.w3.org/2001/XMLSchema#string",
+          "sh:datatype": "http://www.w3.org/2000/01/rdf-schema#Literal",
           "sh:description": {
             "en": "A number or sequence of characters that uniquely identifies the locator within the relevant scope."
           },
@@ -428,7 +455,7 @@
           "sh:path": "http://www.w3.org/ns/locn#locatorName"
         },
         {
-          "sh:datatype": "http://www.w3.org/2001/XMLSchema#string",
+          "sh:datatype": "http://www.w3.org/2000/01/rdf-schema#Literal",
           "sh:description": {
             "en": "A location designator for a postal delivery point at a post office, usually a number."
           },
@@ -438,7 +465,7 @@
           "sh:path": "http://www.w3.org/ns/locn#poBox"
         },
         {
-          "sh:datatype": "http://www.w3.org/2001/XMLSchema#string",
+          "sh:datatype": "http://www.w3.org/2000/01/rdf-schema#Literal",
           "sh:description": {
             "en": "The code created and maintained for postal purposes to identify a subdivision of addresses and postal delivery points."
           },
@@ -506,14 +533,14 @@
           "sh:path": "http://purl.org/dc/terms/title"
         },
         {
-          "sh:class": "http://data.europa.eu/m8g/Role",
+          "sh:class": "http://data.europa.eu/m8g/Participation",
           "sh:description": {
-            "en": "A relation between an Agent and its Role."
+            "en": "The participation in which an Agent is involved."
           },
           "sh:name": {
-            "en": "playsRole"
+            "en": "participates"
           },
-          "sh:path": "http://data.europa.eu/m8g/playsRole"
+          "sh:path": "http://data.europa.eu/m8g/participates"
         }
       ],
       "sh:targetClass": "http://xmlns.com/foaf/0.1/Agent"
