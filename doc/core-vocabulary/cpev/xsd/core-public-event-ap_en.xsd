@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <xs:schema xmlns="https://data.europa.eu/m8g/xml/" xmlns:xs="http://www.w3.org/2001/XMLSchema" targetNamespace="https://data.europa.eu/m8g/xml/" version="2.0.0" elementFormDefault="qualified" attributeFormDefault="unqualified" xmlns:cv="https://data.europa.eu/m8g/xml/">
   <xs:element name="ContactPoint" type="ContactPointType"/>
+  <xs:element name="Participation" type="ParticipationType"/>
   <xs:element name="PublicEvent" type="PublicEventType"/>
-  <xs:element name="Role" type="RoleType"/>
   <xs:element name="TemporalEntity" type="TemporalEntityType"/>
   <xs:element name="Address" type="AddressType"/>
   <xs:element name="Agent" type="AgentType"/>
@@ -33,7 +33,7 @@
       </xs:element>
       <xs:element name="contactPage" maxOccurs="unbounded" minOccurs="0">
         <xs:annotation>
-          <xs:documentation xml:lang="en">	A contact page that could be used to reach out the contact point.</xs:documentation>
+          <xs:documentation xml:lang="en">A web page that could be used to reach out the Contact Point.</xs:documentation>
         </xs:annotation>
       </xs:element>
       <xs:element name="hasEmail" type="xs:string" maxOccurs="unbounded" minOccurs="0">
@@ -48,7 +48,7 @@
       </xs:element>
       <xs:element name="openingHours" ref="TemporalEntityType" maxOccurs="unbounded" minOccurs="0">
         <xs:annotation>
-          <xs:documentation xml:lang="en">The time at which the contact point is normally available.</xs:documentation>
+          <xs:documentation xml:lang="en">The time at which the Contact Point is normally available.</xs:documentation>
         </xs:annotation>
       </xs:element>
     </xs:sequence>
@@ -58,11 +58,50 @@
       </xs:annotation>
     </xs:attribute>
   </xs:complexType>
+  <xs:complexType name="ParticipationType">
+    <xs:sequence>
+      <xs:element name="description" type="xs:string" maxOccurs="unbounded" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation xml:lang="en">A free text description of the Participation.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="hasParticipant" ref="AgentType" maxOccurs="unbounded" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation xml:lang="en">The Agent involved in the Participation.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="hasTime" ref="TemporalEntityType" maxOccurs="unbounded" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation xml:lang="en">The association of a temporal entity (instant or interval) to any thing.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="identifier" type="xs:string" maxOccurs="unbounded" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation xml:lang="en">This property represents an Identifier for the Participation.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="role" type="ConceptType" maxOccurs="unbounded" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation xml:lang="en">The role played by an Agent.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+    </xs:sequence>
+    <xs:attribute name="ParticipationRef" type="xs:IDREF">
+      <xs:annotation>
+        <xs:documentation xml:lang="en">Reference to Participation ID</xs:documentation>
+      </xs:annotation>
+    </xs:attribute>
+  </xs:complexType>
   <xs:complexType name="PublicEventType">
     <xs:sequence>
       <xs:element name="accessibility" type="xs:string" maxOccurs="unbounded" minOccurs="0">
         <xs:annotation>
           <xs:documentation xml:lang="en">Information about how the event can be approached, reached or entered, in particular for people with special needs. This property may be provided in multiple languages with multiple instances of the accessibility property.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="audience" type="ConceptType" maxOccurs="unbounded" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation xml:lang="en">The target group of people for whom the Public Event is created.</xs:documentation>
         </xs:annotation>
       </xs:element>
       <xs:element name="contactPoint" ref="ContactPointType" maxOccurs="unbounded" minOccurs="0">
@@ -75,9 +114,9 @@
           <xs:documentation xml:lang="en">A textual explanation of the event.</xs:documentation>
         </xs:annotation>
       </xs:element>
-      <xs:element name="edition" type="xs:string" maxOccurs="unbounded" minOccurs="0">
+      <xs:element name="eventNumber" type="xs:string" maxOccurs="unbounded" minOccurs="0">
         <xs:annotation>
-          <xs:documentation xml:lang="en">The characteristic of the event that distinguish it from others related.</xs:documentation>
+          <xs:documentation xml:lang="en">The sequence position of the Public Event.</xs:documentation>
         </xs:annotation>
       </xs:element>
       <xs:element name="eventType" type="ConceptType" maxOccurs="unbounded" minOccurs="0">
@@ -90,14 +129,24 @@
           <xs:documentation xml:lang="en">A plan of organisation or arrangement of the event.</xs:documentation>
         </xs:annotation>
       </xs:element>
-      <xs:element name="hasRole" ref="RoleType" maxOccurs="unbounded" minOccurs="0">
+      <xs:element name="hasNextEvent" ref="PublicEventType" maxOccurs="unbounded" minOccurs="0">
         <xs:annotation>
-          <xs:documentation xml:lang="en">The relation between a resource and role.</xs:documentation>
+          <xs:documentation xml:lang="en">The event that comes after this event.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="hasParticipation" ref="ParticipationType" maxOccurs="unbounded" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation xml:lang="en">The way how Agents participate in a Public Event.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="hasPreviousEvent" ref="PublicEventType" maxOccurs="unbounded" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation xml:lang="en">The event that comes before this event.</xs:documentation>
         </xs:annotation>
       </xs:element>
       <xs:element name="hasTime" ref="TemporalEntityType" maxOccurs="unbounded" minOccurs="0">
         <xs:annotation>
-          <xs:documentation xml:lang="en">Supports the association of a temporal entity (instant or interval) to any thing.</xs:documentation>
+          <xs:documentation xml:lang="en">Tthe association of a temporal entity (instant or interval) to any thing.</xs:documentation>
         </xs:annotation>
       </xs:element>
       <xs:element name="homepage" maxOccurs="unbounded" minOccurs="0">
@@ -110,9 +159,9 @@
           <xs:documentation xml:lang="en">The unambiguous structured reference for the Public Event.</xs:documentation>
         </xs:annotation>
       </xs:element>
-      <xs:element name="maximumNumberOfParticipants" type="xs:integer" maxOccurs="unbounded" minOccurs="0">
+      <xs:element name="language" maxOccurs="unbounded" minOccurs="0">
         <xs:annotation>
-          <xs:documentation xml:lang="en">The total capacity of the event.</xs:documentation>
+          <xs:documentation xml:lang="en">The language in which the Public Event is given.</xs:documentation>
         </xs:annotation>
       </xs:element>
       <xs:element name="parentEvent" ref="PublicEventType" maxOccurs="unbounded" minOccurs="0">
@@ -123,11 +172,6 @@
       <xs:element name="registrationPage" maxOccurs="unbounded" minOccurs="0">
         <xs:annotation>
           <xs:documentation xml:lang="en">A page that provides means to attend the event.</xs:documentation>
-        </xs:annotation>
-      </xs:element>
-      <xs:element name="related" ref="PublicEventType" maxOccurs="unbounded" minOccurs="0">
-        <xs:annotation>
-          <xs:documentation xml:lang="en">A relation towards another public event.</xs:documentation>
         </xs:annotation>
       </xs:element>
       <xs:element name="subEvent" ref="PublicEventType" maxOccurs="unbounded" minOccurs="0">
@@ -142,42 +186,13 @@
       </xs:element>
       <xs:element name="topic" type="ConceptType" maxOccurs="unbounded" minOccurs="0">
         <xs:annotation>
-          <xs:documentation xml:lang="en">The classification used for the event.</xs:documentation>
+          <xs:documentation xml:lang="en">The subject of the event.</xs:documentation>
         </xs:annotation>
       </xs:element>
     </xs:sequence>
     <xs:attribute name="PublicEventRef" type="xs:IDREF">
       <xs:annotation>
         <xs:documentation xml:lang="en">Reference to PublicEvent ID</xs:documentation>
-      </xs:annotation>
-    </xs:attribute>
-  </xs:complexType>
-  <xs:complexType name="RoleType">
-    <xs:sequence>
-      <xs:element name="hasTime" ref="TemporalEntityType" maxOccurs="unbounded" minOccurs="0">
-        <xs:annotation>
-          <xs:documentation xml:lang="en">Supports the association of a temporal entity (instant or interval) to any thing.</xs:documentation>
-        </xs:annotation>
-      </xs:element>
-      <xs:element name="isPlayedBy" ref="AgentType" maxOccurs="unbounded" minOccurs="0">
-        <xs:annotation>
-          <xs:documentation xml:lang="en">A relation betwen a role and the agent occupiying such role</xs:documentation>
-        </xs:annotation>
-      </xs:element>
-      <xs:element name="name" type="xs:string" maxOccurs="unbounded" minOccurs="0">
-        <xs:annotation>
-          <xs:documentation xml:lang="en">A label for the role.</xs:documentation>
-        </xs:annotation>
-      </xs:element>
-      <xs:element name="type" type="ConceptType" maxOccurs="unbounded" minOccurs="0">
-        <xs:annotation>
-          <xs:documentation xml:lang="en">A classification used for the role.</xs:documentation>
-        </xs:annotation>
-      </xs:element>
-    </xs:sequence>
-    <xs:attribute name="RoleRef" type="xs:IDREF">
-      <xs:annotation>
-        <xs:documentation xml:lang="en">Reference to Role ID</xs:documentation>
       </xs:annotation>
     </xs:attribute>
   </xs:complexType>
@@ -188,9 +203,9 @@
           <xs:documentation xml:lang="en">A  textual representation of the Temporal Entity.</xs:documentation>
         </xs:annotation>
       </xs:element>
-      <xs:element name="frequency" maxOccurs="unbounded" minOccurs="0">
+      <xs:element name="frequency" type="ConceptType" maxOccurs="unbounded" minOccurs="0">
         <xs:annotation>
-          <xs:documentation xml:lang="en">The recurrence of the temporal entity.</xs:documentation>
+          <xs:documentation xml:lang="en">The recurrence of an instant or period.</xs:documentation>
         </xs:annotation>
       </xs:element>
     </xs:sequence>
@@ -281,9 +296,9 @@
           <xs:documentation xml:lang="en">The noun given to the Agent.</xs:documentation>
         </xs:annotation>
       </xs:element>
-      <xs:element name="playsRole" ref="RoleType" maxOccurs="unbounded" minOccurs="0">
+      <xs:element name="participates" ref="ParticipationType" maxOccurs="unbounded" minOccurs="0">
         <xs:annotation>
-          <xs:documentation xml:lang="en">A relation between an Agent and its Role.</xs:documentation>
+          <xs:documentation xml:lang="en">The participation in which an Agent is involved.</xs:documentation>
         </xs:annotation>
       </xs:element>
     </xs:sequence>
