@@ -15,8 +15,8 @@
     },
     "status": "SEMIC Recommendation",
     "statuslabel": "Onbekend",
-    "repositoryurl": "git@uri.semic.eu-thema:SEMICeu/uri.semic.eu-thema.git/tree/ec49a558672a6c44f5fe23ceaa08025dd8b17fde",
-    "changelogurl": "git@uri.semic.eu-thema:SEMICeu/uri.semic.eu-thema.git/blob/ec49a558672a6c44f5fe23ceaa08025dd8b17fde/CHANGELOG",
+    "repositoryurl": "git@uri.semic.eu-thema:SEMICeu/uri.semic.eu-thema.git/tree/239fb5208e71f4ff4534f832d838e280c14f8c8b",
+    "changelogurl": "git@uri.semic.eu-thema:SEMICeu/uri.semic.eu-thema.git/blob/239fb5208e71f4ff4534f832d838e280c14f8c8b/CHANGELOG",
     "feedbackurl": "https://github.com/SEMICeu/CPSV-AP/issues",
     "standaardregisterurl": "TODO",
     "usesVocs": [],
@@ -174,7 +174,7 @@
             "en": "The type of Channel as defined in a controlled vocabulary."
           },
           "usage": {
-            "en": "The recommended controlled vocabularies for this property is the <a href=\"https://op.europa.eu/en/web/eu-vocabularies/concept-scheme/-/resource?uri=http://data.europa.eu/snb/com-channel/25831c2\">Europass Channel Type</a> Authority Table of the Publications Office."
+            "en": "The recommended controlled vocabularies for this property is the <a href=\"https://op.europa.eu/en/web/eu-vocabularies/concept-scheme/-/resource?uri=http://data.europa.eu/snb/com-channel/25831c2\">Europass Channel Type</a> Authority Table of the Publications Office.\r\n\r\nMember States could create subclasses of Channel by adding a e-mail address or an homepage depending on the channel type, in this case VCard could be eventually used. "
           },
           "domain": [
             {
@@ -281,7 +281,7 @@
             "en": "It links a channel to information about when the channel is not available."
           },
           "usage": {
-            "en": "The information overrides the general opening hours information. The details are provided using the Opening Hours Specification class."
+            "en": "For a simple description of the time use the description property of TemporalEntity.\r\n\r\nFor more structured data use the model in Time Ontology, see an <a href=\"https://www.w3.org/TR/owl-time/#dtd-vs-dt\">example</a>."
           },
           "domain": [
             {
@@ -291,20 +291,20 @@
           ],
           "range": [
             {
-              "range_label": "OpeningHoursSpecification",
-              "range_uri": "http://data.europa.eu/m8g/OpeningHoursSpecification"
+              "range_label": "TemporalEntity",
+              "range_uri": "http://www.w3.org/2006/time#TemporalEntity"
             }
           ],
           "scopedrange": [
             {
-              "range_uri": "#Opening Hours Specification",
-              "range_puri": "http://data.europa.eu/m8g/OpeningHoursSpecification",
+              "range_uri": "#Temporal Entity",
+              "range_puri": "http://www.w3.org/2006/time#TemporalEntity",
               "range_label": {
-                "en": "Opening Hours Specification"
+                "en": "Temporal Entity"
               }
             }
           ],
-          "cardinality": "0..1",
+          "cardinality": "0..*",
           "codelist_uri": ""
         },
         {
@@ -387,10 +387,10 @@
             "en": "opening hours"
           },
           "description": {
-            "en": "The normal opening hours of a channel."
+            "en": "The (structured) hours at which the contact point is normally available."
           },
           "usage": {
-            "en": "The value should follow the flexible format defined for schema.org's opening hours property.\r\nFollowing that structure, days of the week are represented by two letter codes (Mo,Tu, We, Th, Fr, Sa, Su).  Lists should be comma separated (for example: Mo, We, Fr) and periods separated by a hyphen (for example: Mo-Fr).\r\n\r\nIf it is appropriate to add opening hours then this follows the day so if a phone service is available 08:00-20:00 Monday to Saturday and 08:00-18:00 on Sundays that would be encoded as Mo-Sa 08:00-20:00, Su 08:00-18:00.\r"
+            "en": "For a simple description of the time use the description property of TemporalEntity.\r\n\r\nFor more structured data use the model in Time Ontology, see an <a href=\"https://www.w3.org/TR/owl-time/#dtd-vs-dt\">example</a>."
           },
           "domain": [
             {
@@ -400,251 +400,16 @@
           ],
           "range": [
             {
-              "range_label": "Text",
-              "range_uri": "http://www.w3.org/1999/02/22-rdf-syntax-ns#langString"
+              "range_label": "TemporalEntity",
+              "range_uri": "http://www.w3.org/2006/time#TemporalEntity"
             }
           ],
           "scopedrange": [
             {
-              "range_uri": "http://www.w3.org/1999/02/22-rdf-syntax-ns#langString",
-              "range_puri": "http://www.w3.org/1999/02/22-rdf-syntax-ns#langString",
+              "range_uri": "#Temporal Entity",
+              "range_puri": "http://www.w3.org/2006/time#TemporalEntity",
               "range_label": {
-                "en": "Text"
-              }
-            }
-          ],
-          "cardinality": "0..*",
-          "codelist_uri": ""
-        }
-      ]
-    },
-    {
-      "uri": "http://data.europa.eu/m8g/ConcessionContract",
-      "name": "Concession Contract",
-      "label": {
-        "en": "Concession Contract"
-      },
-      "sort": "Concession Contract",
-      "description": {
-        "en": "Concessions are contracts for pecuniary interest by means of which one or more contracting authorities or contracting entities entrusts the execution of works, or the provision and the management of services, to one or more economic operators."
-      },
-      "usage": {
-        "en": "The object of such contracts is the procurement of works or services by means of a concession, the consideration of which consists in the right to exploit the works or services or in that right together with payment. Such contracts may, but do not necessarily, involve a transfer of ownership to contracting authorities or contracting entities, but contracting authorities or contracting entities always obtain the benefits of the works or services in\r\nquestion. The definition comes from the Directive <a href=\"https://eur-lex.europa.eu/legal-content/EN/TXT/HTML/?uri=CELEX:32014L0023&from=EN\">2014/23/EU</a>."
-      },
-      "parents": [
-        {
-          "label": "Contract",
-          "name": "Contract",
-          "package": "epo",
-          "uri": "http://data.europa.eu/a4g/ontology#Contract",
-          "scoped_uri": "#Contract"
-        }
-      ],
-      "properties": [
-        {
-          "uri": "http://purl.org/dc/terms/title",
-          "name": "name",
-          "sort": "name",
-          "label": {
-            "en": "name"
-          },
-          "description": {
-            "en": "The Name of the Concession Contract."
-          },
-          "usage": {},
-          "domain": [
-            {
-              "EA-Name": "ConcessionContract",
-              "uri": "http://data.europa.eu/m8g/ConcessionContract"
-            }
-          ],
-          "range": [
-            {
-              "range_label": "Text",
-              "range_uri": "http://www.w3.org/1999/02/22-rdf-syntax-ns#langString"
-            }
-          ],
-          "scopedrange": [
-            {
-              "range_uri": "http://www.w3.org/1999/02/22-rdf-syntax-ns#langString",
-              "range_puri": "http://www.w3.org/1999/02/22-rdf-syntax-ns#langString",
-              "range_label": {
-                "en": "Text"
-              }
-            }
-          ],
-          "cardinality": "1..*",
-          "codelist_uri": ""
-        },
-        {
-          "uri": "http://purl.org/dc/terms/identifier",
-          "name": "identifier",
-          "sort": "identifier",
-          "label": {
-            "en": "identifier"
-          },
-          "description": {
-            "en": "An Identifier for the Concession Contract."
-          },
-          "usage": {},
-          "domain": [
-            {
-              "EA-Name": "ConcessionContract",
-              "uri": "http://data.europa.eu/m8g/ConcessionContract"
-            }
-          ],
-          "range": [
-            {
-              "range_label": "Literal",
-              "range_uri": "http://www.w3.org/2000/01/rdf-schema#Literal"
-            }
-          ],
-          "scopedrange": [
-            {
-              "range_uri": "http://www.w3.org/2000/01/rdf-schema#Literal",
-              "range_puri": "http://www.w3.org/2000/01/rdf-schema#Literal",
-              "range_label": {
-                "en": "Literal"
-              }
-            }
-          ],
-          "cardinality": "1",
-          "codelist_uri": ""
-        },
-        {
-          "uri": "http://purl.org/dc/terms/description",
-          "name": "description",
-          "sort": "description",
-          "label": {
-            "en": "description"
-          },
-          "description": {
-            "en": "A free text description of the Concession Contract."
-          },
-          "usage": {},
-          "domain": [
-            {
-              "EA-Name": "ConcessionContract",
-              "uri": "http://data.europa.eu/m8g/ConcessionContract"
-            }
-          ],
-          "range": [
-            {
-              "range_label": "Text",
-              "range_uri": "http://www.w3.org/1999/02/22-rdf-syntax-ns#langString"
-            }
-          ],
-          "scopedrange": [
-            {
-              "range_uri": "http://www.w3.org/1999/02/22-rdf-syntax-ns#langString",
-              "range_puri": "http://www.w3.org/1999/02/22-rdf-syntax-ns#langString",
-              "range_label": {
-                "en": "Text"
-              }
-            }
-          ],
-          "cardinality": "1..*",
-          "codelist_uri": ""
-        },
-        {
-          "uri": "http://data.europa.eu/m8g/hasEconomicOperator",
-          "name": "has economic operator",
-          "sort": "has economic operator",
-          "label": {
-            "en": "has economic operator"
-          },
-          "description": {
-            "en": "It links a Concession Contract with the Economic Operator in charge for the provision and the management of public services."
-          },
-          "usage": {},
-          "domain": [
-            {
-              "EA-Name": "ConcessionContract",
-              "uri": "http://data.europa.eu/m8g/ConcessionContract"
-            }
-          ],
-          "range": [
-            {
-              "range_label": "Organization",
-              "range_uri": "http://www.w3.org/ns/org#Organization"
-            }
-          ],
-          "scopedrange": [
-            {
-              "range_uri": "#Organization",
-              "range_puri": "http://www.w3.org/ns/org#Organization",
-              "range_label": {
-                "en": "Organization"
-              }
-            }
-          ],
-          "cardinality": "1..*",
-          "codelist_uri": ""
-        },
-        {
-          "uri": "http://data.europa.eu/m8g/hasContractingAuthority",
-          "name": "has contracting authority",
-          "sort": "has contracting authority",
-          "label": {
-            "en": "has contracting authority"
-          },
-          "description": {
-            "en": "It links a Concession Contract with the Contracting Authority which is ultimately responsible for a public service."
-          },
-          "usage": {},
-          "domain": [
-            {
-              "EA-Name": "ConcessionContract",
-              "uri": "http://data.europa.eu/m8g/ConcessionContract"
-            }
-          ],
-          "range": [
-            {
-              "range_label": "PublicOrganisation",
-              "range_uri": "http://data.europa.eu/m8g/PublicOrganisation"
-            }
-          ],
-          "scopedrange": [
-            {
-              "range_uri": "#Public Organization",
-              "range_puri": "http://data.europa.eu/m8g/PublicOrganisation",
-              "range_label": {
-                "en": "Public Organization"
-              }
-            }
-          ],
-          "cardinality": "1..*",
-          "codelist_uri": ""
-        },
-        {
-          "uri": "http://data.europa.eu/m8g/establishedUnder",
-          "name": "established under",
-          "sort": "established under",
-          "label": {
-            "en": "established under"
-          },
-          "description": {
-            "en": "It links a Concession Contract to relevant legislation or policy documents i.e.\r\nthe Legal Resource under which the Concession Contracts are being defined."
-          },
-          "usage": {},
-          "domain": [
-            {
-              "EA-Name": "ConcessionContract",
-              "uri": "http://data.europa.eu/m8g/ConcessionContract"
-            }
-          ],
-          "range": [
-            {
-              "range_label": "LegalResource",
-              "range_uri": "http://data.europa.eu/eli/ontology#LegalResource"
-            }
-          ],
-          "scopedrange": [
-            {
-              "range_uri": "#Legal Resource",
-              "range_puri": "http://data.europa.eu/eli/ontology#LegalResource",
-              "range_label": {
-                "en": "Legal Resource"
+                "en": "Temporal Entity"
               }
             }
           ],
@@ -669,79 +434,7 @@
       "parents": [],
       "properties": [
         {
-          "uri": "http://data.europa.eu/m8g/specialOpeningHoursSpecification",
-          "name": "availability restriction",
-          "sort": "availability restriction",
-          "label": {
-            "en": "availability restriction"
-          },
-          "description": {
-            "en": "The time interval during which the Contact Point is not available."
-          },
-          "usage": {},
-          "domain": [
-            {
-              "EA-Name": "ContactPoint",
-              "uri": "http://data.europa.eu/m8g/ContactPoint"
-            }
-          ],
-          "range": [
-            {
-              "range_label": "OpeningHoursSpecification",
-              "range_uri": "http://data.europa.eu/m8g/OpeningHoursSpecification"
-            }
-          ],
-          "scopedrange": [
-            {
-              "range_uri": "#Opening Hours Specification",
-              "range_puri": "http://data.europa.eu/m8g/OpeningHoursSpecification",
-              "range_label": {
-                "en": "Opening Hours Specification"
-              }
-            }
-          ],
-          "cardinality": "0..*",
-          "codelist_uri": ""
-        },
-        {
-          "uri": "http://data.europa.eu/m8g/openingHours",
-          "name": "opening hours",
-          "sort": "opening hours",
-          "label": {
-            "en": "opening hours"
-          },
-          "description": {
-            "en": "The (structured) hours at which the contact point is normally available."
-          },
-          "usage": {
-            "en": "Days are specified using two-letter combinations: Mo, Tu, We, Th, Fr, Sa, Su. For example, if the contact point is open Monday-Friday, 9 -5, the value of the openingHours property would be Mo-Fr 09:00-17:00. If the Contact Point is only available on Tuesday and Thursday between 6 and 8pm, the value would be Tu,Th 16:00-20:00."
-          },
-          "domain": [
-            {
-              "EA-Name": "ContactPoint",
-              "uri": "http://data.europa.eu/m8g/ContactPoint"
-            }
-          ],
-          "range": [
-            {
-              "range_label": "Literal",
-              "range_uri": "http://www.w3.org/2000/01/rdf-schema#Literal"
-            }
-          ],
-          "scopedrange": [
-            {
-              "range_uri": "http://www.w3.org/2000/01/rdf-schema#Literal",
-              "range_puri": "http://www.w3.org/2000/01/rdf-schema#Literal",
-              "range_label": {
-                "en": "Literal"
-              }
-            }
-          ],
-          "cardinality": "0..*",
-          "codelist_uri": ""
-        },
-        {
-          "uri": "http://data.europa.eu/m8g/hasTelephone",
+          "uri": "http://data.europa.eu/m8g/telephone",
           "name": "has telephone",
           "sort": "has telephone",
           "label": {
@@ -776,7 +469,81 @@
           "codelist_uri": ""
         },
         {
-          "uri": "http://data.europa.eu/m8g/hasEmail",
+          "uri": "http://data.europa.eu/m8g/specialOpeningHoursSpecification",
+          "name": "availability restriction",
+          "sort": "availability restriction",
+          "label": {
+            "en": "availability restriction"
+          },
+          "description": {
+            "en": "The time interval during which the Contact Point is not available."
+          },
+          "usage": {
+            "en": "For a simple description of the time use the description property of TemporalEntity.\r\n\r\nFor more structured data use the model in Time Ontology, see an <a href=\"https://www.w3.org/TR/owl-time/#dtd-vs-dt\">example</a>."
+          },
+          "domain": [
+            {
+              "EA-Name": "ContactPoint",
+              "uri": "http://data.europa.eu/m8g/ContactPoint"
+            }
+          ],
+          "range": [
+            {
+              "range_label": "TemporalEntity",
+              "range_uri": "http://www.w3.org/2006/time#TemporalEntity"
+            }
+          ],
+          "scopedrange": [
+            {
+              "range_uri": "#Temporal Entity",
+              "range_puri": "http://www.w3.org/2006/time#TemporalEntity",
+              "range_label": {
+                "en": "Temporal Entity"
+              }
+            }
+          ],
+          "cardinality": "0..*",
+          "codelist_uri": ""
+        },
+        {
+          "uri": "http://data.europa.eu/m8g/openingHours",
+          "name": "opening hours",
+          "sort": "opening hours",
+          "label": {
+            "en": "opening hours"
+          },
+          "description": {
+            "en": "The (structured) hours at which the contact point is normally available."
+          },
+          "usage": {
+            "en": "For a simple description of the time use the description property of TemporalEntity.\r\n\r\nFor more structured data use the model in Time Ontology, see an <a href=\"https://www.w3.org/TR/owl-time/#dtd-vs-dt\">example</a>."
+          },
+          "domain": [
+            {
+              "EA-Name": "ContactPoint",
+              "uri": "http://data.europa.eu/m8g/ContactPoint"
+            }
+          ],
+          "range": [
+            {
+              "range_label": "TemporalEntity",
+              "range_uri": "http://www.w3.org/2006/time#TemporalEntity"
+            }
+          ],
+          "scopedrange": [
+            {
+              "range_uri": "#Temporal Entity",
+              "range_puri": "http://www.w3.org/2006/time#TemporalEntity",
+              "range_label": {
+                "en": "Temporal Entity"
+              }
+            }
+          ],
+          "cardinality": "0..*",
+          "codelist_uri": ""
+        },
+        {
+          "uri": "http://data.europa.eu/m8g/email",
           "name": "has email",
           "sort": "has email",
           "label": {
@@ -1166,41 +933,6 @@
           "codelist_uri": ""
         },
         {
-          "uri": "http://purl.org/dc/terms/relation",
-          "name": "related service",
-          "sort": "related service",
-          "label": {
-            "en": "related service"
-          },
-          "description": {
-            "en": "It links an event directly to a public service that is related to it."
-          },
-          "usage": {},
-          "domain": [
-            {
-              "EA-Name": "Event",
-              "uri": "http://data.europa.eu/m8g/Event"
-            }
-          ],
-          "range": [
-            {
-              "range_label": "PublicService",
-              "range_uri": "http://purl.org/vocab/cpsv#PublicService"
-            }
-          ],
-          "scopedrange": [
-            {
-              "range_uri": "#Public Service",
-              "range_puri": "http://purl.org/vocab/cpsv#PublicService",
-              "range_label": {
-                "en": "Public Service"
-              }
-            }
-          ],
-          "cardinality": "0..*",
-          "codelist_uri": ""
-        },
-        {
           "uri": "http://purl.org/dc/terms/identifier",
           "name": "identifier",
           "sort": "identifier",
@@ -1271,6 +1003,43 @@
           ],
           "cardinality": "0..*",
           "codelist_uri": ""
+        },
+        {
+          "uri": "http://data.europa.eu/m8g/hasRelatedService",
+          "name": "has related service",
+          "sort": "has related service",
+          "label": {
+            "en": "has related service"
+          },
+          "description": {
+            "en": "It links an event directly to a public service that is related to it."
+          },
+          "usage": {
+            "en": "This property is a sub-property of dct:relation."
+          },
+          "domain": [
+            {
+              "EA-Name": "Event",
+              "uri": "http://data.europa.eu/m8g/Event"
+            }
+          ],
+          "range": [
+            {
+              "range_label": "PublicService",
+              "range_uri": "http://purl.org/vocab/cpsv#PublicService"
+            }
+          ],
+          "scopedrange": [
+            {
+              "range_uri": "#Public Service",
+              "range_puri": "http://purl.org/vocab/cpsv#PublicService",
+              "range_label": {
+                "en": "Public Service"
+              }
+            }
+          ],
+          "cardinality": "0..*",
+          "codelist_uri": ""
         }
       ]
     },
@@ -1331,7 +1100,7 @@
               }
             }
           ],
-          "cardinality": "0..n",
+          "cardinality": "0..*",
           "codelist_uri": ""
         },
         {
@@ -1512,6 +1281,43 @@
           "codelist_uri": ""
         },
         {
+          "uri": "http://purl.org/dc/terms/conformsTo",
+          "name": "is conformant to",
+          "sort": "is conformant to",
+          "label": {
+            "en": "is conformant to"
+          },
+          "description": {
+            "en": "Evidence Type that specifies characteristics of the Evidence."
+          },
+          "usage": {
+            "en": "Examples of characteristics could be the layout or the configuration of the Evidence."
+          },
+          "domain": [
+            {
+              "EA-Name": "Evidence",
+              "uri": "http://data.europa.eu/m8g/Evidence"
+            }
+          ],
+          "range": [
+            {
+              "range_label": "EvidenceType",
+              "range_uri": "http://data.europa.eu/m8g/EvidenceType"
+            }
+          ],
+          "scopedrange": [
+            {
+              "range_uri": "#EvidenceType",
+              "range_puri": "http://data.europa.eu/m8g/EvidenceType",
+              "range_label": {
+                "en": "EvidenceType"
+              }
+            }
+          ],
+          "cardinality": "0..*",
+          "codelist_uri": ""
+        },
+        {
           "uri": "http://data.europa.eu/m8g/supportsRequirement",
           "name": "supports requirement",
           "sort": "supports requirement",
@@ -1549,6 +1355,87 @@
       ]
     },
     {
+      "uri": "http://data.europa.eu/m8g/EvidenceType",
+      "name": "",
+      "label": {},
+      "sort": "",
+      "description": {},
+      "usage": {},
+      "parents": [],
+      "properties": [
+        {
+          "uri": "http://purl.org/dc/terms/identifier",
+          "name": "identifier",
+          "sort": "identifier",
+          "label": {
+            "en": "identifier"
+          },
+          "description": {},
+          "usage": {},
+          "domain": [
+            {
+              "EA-Name": "EvidenceType",
+              "uri": "http://data.europa.eu/m8g/EvidenceType"
+            }
+          ],
+          "range": [
+            {
+              "range_label": "Literal",
+              "range_uri": "http://www.w3.org/2000/01/rdf-schema#Literal"
+            }
+          ],
+          "scopedrange": [
+            {
+              "range_uri": "http://www.w3.org/2000/01/rdf-schema#Literal",
+              "range_puri": "http://www.w3.org/2000/01/rdf-schema#Literal",
+              "range_label": {
+                "en": "Literal"
+              }
+            }
+          ],
+          "cardinality": "1",
+          "codelist_uri": ""
+        },
+        {
+          "uri": "http://data.europa.eu/m8g/evidenceTypeClassification",
+          "name": "evidence type classification",
+          "sort": "evidence type classification",
+          "label": {
+            "en": "evidence type classification"
+          },
+          "description": {
+            "en": "Category to which the Evidence Type belongs."
+          },
+          "usage": {
+            "en": "The categories agreed are left open but could for example specify the layout and content expected for an Evidence. An example could be id cards."
+          },
+          "domain": [
+            {
+              "EA-Name": "EvidenceType",
+              "uri": "http://data.europa.eu/m8g/EvidenceType"
+            }
+          ],
+          "range": [
+            {
+              "range_label": "Code",
+              "range_uri": "http://www.w3.org/2004/02/skos/core#Concept"
+            }
+          ],
+          "scopedrange": [
+            {
+              "range_uri": "http://www.w3.org/2004/02/skos/core#Concept",
+              "range_puri": "http://www.w3.org/2004/02/skos/core#Concept",
+              "range_label": {
+                "en": "Code"
+              }
+            }
+          ],
+          "cardinality": "0..*",
+          "codelist_uri": ""
+        }
+      ]
+    },
+    {
       "uri": "http://data.europa.eu/m8g/LifeEvent",
       "name": "Life Event",
       "label": {
@@ -1570,22 +1457,6 @@
           "scoped_uri": "#Event"
         }
       ],
-      "properties": []
-    },
-    {
-      "uri": "http://data.europa.eu/m8g/OpeningHoursSpecification",
-      "name": "Opening Hours Specification",
-      "label": {
-        "en": "Opening Hours Specification"
-      },
-      "sort": "Opening Hours Specification",
-      "description": {
-        "en": "An exceptional circumstance that overrides the normal Opening Hours, such as being closed on public holidays."
-      },
-      "usage": {
-        "en": "This class is aligned to Schema.org OpeningHoursSpecification class.\r\n\r\nThe Opening Hours Specification class can be used to provide details of exceptional circumstances, such as being closed on public holidays, which is encoded (in Turtle), thus:\r\nex:PublicHolidayClosed a cv:OpeningHoursSpecification;\r\nschema:dayOfWeek <http://schema.org/PublicHoliday>.\r\n\r\nNote that the property schema:opens is not used, therefore the contact point is closed. More specific closures can be indicated by including the schema:validFrom and schema:validThrough properties, for example:\r\nex:ChristmasClosed a cv:OpeningHoursSpecification;\r\nschema:validFrom \"2016-12-24T012:00Z\";\r\nschema:validThrough \"2017-01-02T09:00Z\".\r\n"
-      },
-      "parents": [],
       "properties": []
     },
     {
@@ -1942,7 +1813,7 @@
             "en": "A preferred label is used to provide the primary, legally recognised name of the Public Organization, as defined in the ORG Ontology."
           },
           "usage": {
-            "en": "Refers to the official or legal name of a Public Organization. An organization may only have one such name in any given language. Primary names may be provided in multiple languages with multiple instances of the preferred label property."
+            "en": "Refers to the official or legal name of a Public Organization. An organization may only have one such name in any given language. Primary names may be provided in multiple languages with multiple instances of the preferred label property. This allowed in SKOS for skos:prefLabel, see <a href=\"https://www.w3.org/TR/skos-reference/#L1567\">integrity conditions and subsequent example</a>."
           },
           "domain": [
             {
@@ -1965,7 +1836,7 @@
               }
             }
           ],
-          "cardinality": "1",
+          "cardinality": "1..*",
           "codelist_uri": ""
         },
         {
@@ -2191,6 +2062,241 @@
               "range_puri": "http://purl.org/vocab/cpsv#Rule",
               "range_label": {
                 "en": "Rule"
+              }
+            }
+          ],
+          "cardinality": "0..*",
+          "codelist_uri": ""
+        }
+      ]
+    },
+    {
+      "uri": "http://data.europa.eu/m8g/ServiceConcessionContract",
+      "name": "Service Concession Contract",
+      "label": {
+        "en": "Service Concession Contract"
+      },
+      "sort": "Service Concession Contract",
+      "description": {
+        "en": "Concessions are contracts for pecuniary interest by means of which one or more contracting authorities or contracting entities entrusts the execution of works, or the provision and the management of services, to one or more economic operators."
+      },
+      "usage": {
+        "en": "The object of such contracts is the procurement of works or services by means of a concession, the consideration of which consists in the right to exploit the works or services or in that right together with payment. Such contracts may, but do not necessarily, involve a transfer of ownership to contracting authorities or contracting entities, but contracting authorities or contracting entities always obtain the benefits of the works or services in\r\nquestion. The definition comes from the Directive <a href=\"https://eur-lex.europa.eu/legal-content/EN/TXT/HTML/?uri=CELEX:32014L0023&from=EN\">2014/23/EU</a>."
+      },
+      "parents": [
+        {
+          "label": "Contract",
+          "name": "ConcessionContract",
+          "package": "epo",
+          "uri": "http://data.europa.eu/a4g/ontology#Contract",
+          "scoped_uri": "#Contract"
+        }
+      ],
+      "properties": [
+        {
+          "uri": "http://purl.org/dc/terms/title",
+          "name": "name",
+          "sort": "name",
+          "label": {
+            "en": "name"
+          },
+          "description": {
+            "en": "The Name of the Concession Contract."
+          },
+          "usage": {},
+          "domain": [
+            {
+              "EA-Name": "ServiceConcessionContract",
+              "uri": "http://data.europa.eu/m8g/ServiceConcessionContract"
+            }
+          ],
+          "range": [
+            {
+              "range_label": "Text",
+              "range_uri": "http://www.w3.org/1999/02/22-rdf-syntax-ns#langString"
+            }
+          ],
+          "scopedrange": [
+            {
+              "range_uri": "http://www.w3.org/1999/02/22-rdf-syntax-ns#langString",
+              "range_puri": "http://www.w3.org/1999/02/22-rdf-syntax-ns#langString",
+              "range_label": {
+                "en": "Text"
+              }
+            }
+          ],
+          "cardinality": "1..*",
+          "codelist_uri": ""
+        },
+        {
+          "uri": "http://purl.org/dc/terms/identifier",
+          "name": "identifier",
+          "sort": "identifier",
+          "label": {
+            "en": "identifier"
+          },
+          "description": {
+            "en": "An Identifier for the Concession Contract."
+          },
+          "usage": {},
+          "domain": [
+            {
+              "EA-Name": "ServiceConcessionContract",
+              "uri": "http://data.europa.eu/m8g/ServiceConcessionContract"
+            }
+          ],
+          "range": [
+            {
+              "range_label": "Literal",
+              "range_uri": "http://www.w3.org/2000/01/rdf-schema#Literal"
+            }
+          ],
+          "scopedrange": [
+            {
+              "range_uri": "http://www.w3.org/2000/01/rdf-schema#Literal",
+              "range_puri": "http://www.w3.org/2000/01/rdf-schema#Literal",
+              "range_label": {
+                "en": "Literal"
+              }
+            }
+          ],
+          "cardinality": "1",
+          "codelist_uri": ""
+        },
+        {
+          "uri": "http://purl.org/dc/terms/description",
+          "name": "description",
+          "sort": "description",
+          "label": {
+            "en": "description"
+          },
+          "description": {
+            "en": "A free text description of the Concession Contract."
+          },
+          "usage": {},
+          "domain": [
+            {
+              "EA-Name": "ServiceConcessionContract",
+              "uri": "http://data.europa.eu/m8g/ServiceConcessionContract"
+            }
+          ],
+          "range": [
+            {
+              "range_label": "Text",
+              "range_uri": "http://www.w3.org/1999/02/22-rdf-syntax-ns#langString"
+            }
+          ],
+          "scopedrange": [
+            {
+              "range_uri": "http://www.w3.org/1999/02/22-rdf-syntax-ns#langString",
+              "range_puri": "http://www.w3.org/1999/02/22-rdf-syntax-ns#langString",
+              "range_label": {
+                "en": "Text"
+              }
+            }
+          ],
+          "cardinality": "1..*",
+          "codelist_uri": ""
+        },
+        {
+          "uri": "http://data.europa.eu/m8g/hasEconomicOperator",
+          "name": "has economic operator",
+          "sort": "has economic operator",
+          "label": {
+            "en": "has economic operator"
+          },
+          "description": {
+            "en": "It links a Concession Contract with the Economic Operator in charge for the provision and the management of public services."
+          },
+          "usage": {},
+          "domain": [
+            {
+              "EA-Name": "ServiceConcessionContract",
+              "uri": "http://data.europa.eu/m8g/ServiceConcessionContract"
+            }
+          ],
+          "range": [
+            {
+              "range_label": "Organization",
+              "range_uri": "http://www.w3.org/ns/org#Organization"
+            }
+          ],
+          "scopedrange": [
+            {
+              "range_uri": "#Organization",
+              "range_puri": "http://www.w3.org/ns/org#Organization",
+              "range_label": {
+                "en": "Organization"
+              }
+            }
+          ],
+          "cardinality": "1..*",
+          "codelist_uri": ""
+        },
+        {
+          "uri": "http://data.europa.eu/m8g/hasContractingAuthority",
+          "name": "has contracting authority",
+          "sort": "has contracting authority",
+          "label": {
+            "en": "has contracting authority"
+          },
+          "description": {
+            "en": "It links a Concession Contract with the Contracting Authority which is ultimately responsible for a public service."
+          },
+          "usage": {},
+          "domain": [
+            {
+              "EA-Name": "ServiceConcessionContract",
+              "uri": "http://data.europa.eu/m8g/ServiceConcessionContract"
+            }
+          ],
+          "range": [
+            {
+              "range_label": "PublicOrganisation",
+              "range_uri": "http://data.europa.eu/m8g/PublicOrganisation"
+            }
+          ],
+          "scopedrange": [
+            {
+              "range_uri": "#Public Organization",
+              "range_puri": "http://data.europa.eu/m8g/PublicOrganisation",
+              "range_label": {
+                "en": "Public Organization"
+              }
+            }
+          ],
+          "cardinality": "1..*",
+          "codelist_uri": ""
+        },
+        {
+          "uri": "http://data.europa.eu/m8g/establishedUnder",
+          "name": "established under",
+          "sort": "established under",
+          "label": {
+            "en": "established under"
+          },
+          "description": {
+            "en": "It links a Concession Contract to relevant legislation or policy documents i.e.\r\nthe Legal Resource under which the Concession Contracts are being defined."
+          },
+          "usage": {},
+          "domain": [
+            {
+              "EA-Name": "ServiceConcessionContract",
+              "uri": "http://data.europa.eu/m8g/ServiceConcessionContract"
+            }
+          ],
+          "range": [
+            {
+              "range_label": "LegalResource",
+              "range_uri": "http://data.europa.eu/eli/ontology#LegalResource"
+            }
+          ],
+          "scopedrange": [
+            {
+              "range_uri": "#Legal Resource",
+              "range_puri": "http://data.europa.eu/eli/ontology#LegalResource",
+              "range_label": {
+                "en": "Legal Resource"
               }
             }
           ],
@@ -2540,41 +2646,6 @@
           "codelist_uri": ""
         },
         {
-          "uri": "http://purl.org/dc/terms/relation",
-          "name": "related",
-          "sort": "related",
-          "label": {
-            "en": "related"
-          },
-          "description": {
-            "en": "A Public Service related to the particular instance of the Public Service class."
-          },
-          "usage": {},
-          "domain": [
-            {
-              "EA-Name": "PublicService",
-              "uri": "http://purl.org/vocab/cpsv#PublicService"
-            }
-          ],
-          "range": [
-            {
-              "range_label": "PublicService",
-              "range_uri": "http://purl.org/vocab/cpsv#PublicService"
-            }
-          ],
-          "scopedrange": [
-            {
-              "range_uri": "#Public Service",
-              "range_puri": "http://purl.org/vocab/cpsv#PublicService",
-              "range_label": {
-                "en": "Public Service"
-              }
-            }
-          ],
-          "cardinality": "0..*",
-          "codelist_uri": ""
-        },
-        {
           "uri": "http://purl.org/dc/terms/language",
           "name": "language",
           "sort": "language",
@@ -2684,6 +2755,43 @@
           "codelist_uri": ""
         },
         {
+          "uri": "http://purl.org/dc/terms/audience",
+          "name": "addressee",
+          "sort": "addressee",
+          "label": {
+            "en": "addressee"
+          },
+          "description": {
+            "en": "The target recipient of the Public Service"
+          },
+          "usage": {
+            "en": "Examples are citizens, business, etc."
+          },
+          "domain": [
+            {
+              "EA-Name": "PublicService",
+              "uri": "http://purl.org/vocab/cpsv#PublicService"
+            }
+          ],
+          "range": [
+            {
+              "range_label": "Code",
+              "range_uri": "http://www.w3.org/2004/02/skos/core#Concept"
+            }
+          ],
+          "scopedrange": [
+            {
+              "range_uri": "http://www.w3.org/2004/02/skos/core#Concept",
+              "range_puri": "http://www.w3.org/2004/02/skos/core#Concept",
+              "range_label": {
+                "en": "Code"
+              }
+            }
+          ],
+          "cardinality": "0..*",
+          "codelist_uri": ""
+        },
+        {
           "uri": "http://data.europa.eu/m8g/thematicArea",
           "name": "thematic area",
           "sort": "thematic area",
@@ -2751,6 +2859,43 @@
               "range_puri": "http://www.w3.org/2004/02/skos/core#Concept",
               "range_label": {
                 "en": "Code"
+              }
+            }
+          ],
+          "cardinality": "0..*",
+          "codelist_uri": ""
+        },
+        {
+          "uri": "http://data.europa.eu/m8g/relatedService",
+          "name": "related",
+          "sort": "related",
+          "label": {
+            "en": "related"
+          },
+          "description": {
+            "en": "A Public Service related to the particular instance of the Public Service class."
+          },
+          "usage": {
+            "en": "This property is a sub-property of dct:relation."
+          },
+          "domain": [
+            {
+              "EA-Name": "PublicService",
+              "uri": "http://purl.org/vocab/cpsv#PublicService"
+            }
+          ],
+          "range": [
+            {
+              "range_label": "PublicService",
+              "range_uri": "http://purl.org/vocab/cpsv#PublicService"
+            }
+          ],
+          "scopedrange": [
+            {
+              "range_uri": "#Public Service",
+              "range_puri": "http://purl.org/vocab/cpsv#PublicService",
+              "range_label": {
+                "en": "Public Service"
               }
             }
           ],
@@ -3006,6 +3151,41 @@
               "range_puri": "http://data.europa.eu/eli/ontology#LegalResource",
               "range_label": {
                 "en": "Legal Resource"
+              }
+            }
+          ],
+          "cardinality": "0..*",
+          "codelist_uri": ""
+        },
+        {
+          "uri": "http://data.europa.eu/m8g/hasInputType",
+          "name": "has input type",
+          "sort": "has input type",
+          "label": {
+            "en": "has input type"
+          },
+          "description": {
+            "en": "It links a Public Service to one or more instances of the EvidenceType class. "
+          },
+          "usage": {},
+          "domain": [
+            {
+              "EA-Name": "PublicService",
+              "uri": "http://purl.org/vocab/cpsv#PublicService"
+            }
+          ],
+          "range": [
+            {
+              "range_label": "EvidenceType",
+              "range_uri": "http://data.europa.eu/m8g/EvidenceType"
+            }
+          ],
+          "scopedrange": [
+            {
+              "range_uri": "#EvidenceType",
+              "range_puri": "http://data.europa.eu/m8g/EvidenceType",
+              "range_label": {
+                "en": "EvidenceType"
               }
             }
           ],
@@ -3460,6 +3640,93 @@
       "properties": []
     },
     {
+      "uri": "http://www.w3.org/2006/time#TemporalEntity",
+      "name": "Temporal Entity",
+      "label": {
+        "en": "Temporal Entity"
+      },
+      "sort": "Temporal Entity",
+      "description": {
+        "en": "A temporal interval or instant."
+      },
+      "usage": {},
+      "parents": [],
+      "properties": [
+        {
+          "uri": "http://purl.org/dc/terms/description",
+          "name": "description",
+          "sort": "description",
+          "label": {
+            "en": "description"
+          },
+          "description": {
+            "en": "A  textual representation of the Temporal Entity."
+          },
+          "usage": {},
+          "domain": [
+            {
+              "EA-Name": "TemporalEntity",
+              "uri": "http://www.w3.org/2006/time#TemporalEntity"
+            }
+          ],
+          "range": [
+            {
+              "range_label": "Text",
+              "range_uri": "http://www.w3.org/1999/02/22-rdf-syntax-ns#langString"
+            }
+          ],
+          "scopedrange": [
+            {
+              "range_uri": "http://www.w3.org/1999/02/22-rdf-syntax-ns#langString",
+              "range_puri": "http://www.w3.org/1999/02/22-rdf-syntax-ns#langString",
+              "range_label": {
+                "en": "Text"
+              }
+            }
+          ],
+          "cardinality": "0..*",
+          "codelist_uri": ""
+        },
+        {
+          "uri": "http://data.europa.eu/m8g/frequency",
+          "name": "frequency",
+          "sort": "frequency",
+          "label": {
+            "en": "frequency"
+          },
+          "description": {
+            "en": "The recurrence of an instant or period."
+          },
+          "usage": {
+            "en": "It is recommended to use the frequency from an existing vocabulary like the <a href=\"https://op.europa.eu/en/web/eu-vocabularies/concept-scheme/-/resource?uri=http://publications.europa.eu/resource/authority/frequency\">Frequency</a> from the Publications Office."
+          },
+          "domain": [
+            {
+              "EA-Name": "TemporalEntity",
+              "uri": "http://www.w3.org/2006/time#TemporalEntity"
+            }
+          ],
+          "range": [
+            {
+              "range_label": "Code",
+              "range_uri": "http://www.w3.org/2004/02/skos/core#Concept"
+            }
+          ],
+          "scopedrange": [
+            {
+              "range_uri": "http://www.w3.org/2004/02/skos/core#Concept",
+              "range_puri": "http://www.w3.org/2004/02/skos/core#Concept",
+              "range_label": {
+                "en": "Code"
+              }
+            }
+          ],
+          "cardinality": "0..*",
+          "codelist_uri": ""
+        }
+      ]
+    },
+    {
       "uri": "http://www.w3.org/ns/dcat#Dataset",
       "name": "Dataset",
       "label": {
@@ -3506,7 +3773,7 @@
               }
             }
           ],
-          "cardinality": "0..n",
+          "cardinality": "0..*",
           "codelist_uri": ""
         },
         {
@@ -4214,7 +4481,7 @@
               }
             }
           ],
-          "cardinality": "0..1",
+          "cardinality": "0..*",
           "codelist_uri": ""
         },
         {
@@ -4288,7 +4555,7 @@
           "codelist_uri": ""
         },
         {
-          "uri": "http://data.europa.eu/m8g/playsRole",
+          "uri": "http://data.europa.eu/m8g/particpates",
           "name": "plays role",
           "sort": "plays role",
           "label": {
@@ -4318,6 +4585,79 @@
               "range_puri": "http://data.europa.eu/m8g/Participation",
               "range_label": {
                 "en": "Participation"
+              }
+            }
+          ],
+          "cardinality": "1..*",
+          "codelist_uri": ""
+        }
+      ]
+    },
+    {
+      "uri": "http://xmlns.com/foaf/0.1/Group",
+      "name": "",
+      "label": {},
+      "sort": "",
+      "description": {},
+      "usage": {},
+      "parents": [],
+      "properties": [
+        {
+          "uri": "http://xmlns.com/foaf/0.1/name",
+          "name": "",
+          "sort": "",
+          "label": {},
+          "description": {},
+          "usage": {},
+          "domain": [
+            {
+              "EA-Name": "Group",
+              "uri": "http://xmlns.com/foaf/0.1/Group"
+            }
+          ],
+          "range": [
+            {
+              "range_label": "Text",
+              "range_uri": "http://www.w3.org/1999/02/22-rdf-syntax-ns#langString"
+            }
+          ],
+          "scopedrange": [
+            {
+              "range_uri": "http://www.w3.org/1999/02/22-rdf-syntax-ns#langString",
+              "range_puri": "http://www.w3.org/1999/02/22-rdf-syntax-ns#langString",
+              "range_label": {
+                "en": "Text"
+              }
+            }
+          ],
+          "cardinality": "1..*",
+          "codelist_uri": ""
+        },
+        {
+          "uri": "http://xmlns.com/foaf/0.1/member",
+          "name": "",
+          "sort": "",
+          "label": {},
+          "description": {},
+          "usage": {},
+          "domain": [
+            {
+              "EA-Name": "Group",
+              "uri": "http://xmlns.com/foaf/0.1/Group"
+            }
+          ],
+          "range": [
+            {
+              "range_label": "Agent",
+              "range_uri": "http://xmlns.com/foaf/0.1/Agent"
+            }
+          ],
+          "scopedrange": [
+            {
+              "range_uri": "#Agent",
+              "range_puri": "http://xmlns.com/foaf/0.1/Agent",
+              "range_label": {
+                "en": "Agent"
               }
             }
           ],

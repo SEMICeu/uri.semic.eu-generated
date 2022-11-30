@@ -41,7 +41,7 @@
   "@id": "https://semiceu.github.io//shacl/cpsv-ap-SHACL_en",
   "shapes": [
     {
-      "@id": "https://semiceu.github.io//shacl/cpsv-ap-SHACL_en#ContractShape",
+      "@id": "https://semiceu.github.io//shacl/cpsv-ap-SHACL_en#ConcessionContractShape",
       "@type": "sh:NodeShape",
       "sh:closed": false,
       "sh:property": [],
@@ -78,11 +78,10 @@
       "sh:closed": false,
       "sh:property": [
         {
-          "sh:class": "http://data.europa.eu/m8g/OpeningHoursSpecification",
+          "sh:class": "http://www.w3.org/2006/time#TemporalEntity",
           "sh:description": {
             "en": "It links a channel to information about when the channel is not available."
           },
-          "sh:maxCount": "1",
           "sh:name": {
             "en": "availability restriction"
           },
@@ -121,9 +120,9 @@
           "sh:path": "http://purl.org/dc/terms/identifier"
         },
         {
-          "sh:datatype": "http://www.w3.org/1999/02/22-rdf-syntax-ns#langString",
+          "sh:class": "http://www.w3.org/2006/time#TemporalEntity",
           "sh:description": {
-            "en": "The normal opening hours of a channel."
+            "en": "The (structured) hours at which the contact point is normally available."
           },
           "sh:name": {
             "en": "opening hours"
@@ -166,86 +165,12 @@
       "sh:targetClass": "http://data.europa.eu/m8g/Channel"
     },
     {
-      "@id": "https://semiceu.github.io//shacl/cpsv-ap-SHACL_en#ConcessionContractShape",
-      "@type": "sh:NodeShape",
-      "sh:closed": false,
-      "sh:property": [
-        {
-          "sh:datatype": "http://www.w3.org/1999/02/22-rdf-syntax-ns#langString",
-          "sh:description": {
-            "en": "A free text description of the Concession Contract."
-          },
-          "sh:minCount": "1",
-          "sh:name": {
-            "en": "description"
-          },
-          "sh:path": "http://purl.org/dc/terms/description"
-        },
-        {
-          "sh:class": "http://data.europa.eu/eli/ontology#LegalResource",
-          "sh:description": {
-            "en": "It links a Concession Contract to relevant legislation or policy documents i.e.\r\nthe Legal Resource under which the Concession Contracts are being defined."
-          },
-          "sh:name": {
-            "en": "established under"
-          },
-          "sh:path": "http://data.europa.eu/m8g/establishedUnder"
-        },
-        {
-          "sh:class": "http://data.europa.eu/m8g/PublicOrganisation",
-          "sh:description": {
-            "en": "It links a Concession Contract with the Contracting Authority which is ultimately responsible for a public service."
-          },
-          "sh:minCount": "1",
-          "sh:name": {
-            "en": "has contracting authority"
-          },
-          "sh:path": "http://data.europa.eu/m8g/hasContractingAuthority"
-        },
-        {
-          "sh:class": "http://www.w3.org/ns/org#Organization",
-          "sh:description": {
-            "en": "It links a Concession Contract with the Economic Operator in charge for the provision and the management of public services."
-          },
-          "sh:minCount": "1",
-          "sh:name": {
-            "en": "has economic operator"
-          },
-          "sh:path": "http://data.europa.eu/m8g/hasEconomicOperator"
-        },
-        {
-          "sh:datatype": "http://www.w3.org/2000/01/rdf-schema#Literal",
-          "sh:description": {
-            "en": "An Identifier for the Concession Contract."
-          },
-          "sh:maxCount": "1",
-          "sh:minCount": "1",
-          "sh:name": {
-            "en": "identifier"
-          },
-          "sh:path": "http://purl.org/dc/terms/identifier"
-        },
-        {
-          "sh:datatype": "http://www.w3.org/1999/02/22-rdf-syntax-ns#langString",
-          "sh:description": {
-            "en": "The Name of the Concession Contract."
-          },
-          "sh:minCount": "1",
-          "sh:name": {
-            "en": "name"
-          },
-          "sh:path": "http://purl.org/dc/terms/title"
-        }
-      ],
-      "sh:targetClass": "http://data.europa.eu/m8g/ConcessionContract"
-    },
-    {
       "@id": "https://semiceu.github.io//shacl/cpsv-ap-SHACL_en#ContactPointShape",
       "@type": "sh:NodeShape",
       "sh:closed": false,
       "sh:property": [
         {
-          "sh:class": "http://data.europa.eu/m8g/OpeningHoursSpecification",
+          "sh:class": "http://www.w3.org/2006/time#TemporalEntity",
           "sh:description": {
             "en": "The time interval during which the Contact Point is not available."
           },
@@ -272,7 +197,7 @@
           "sh:name": {
             "en": "has email"
           },
-          "sh:path": "http://data.europa.eu/m8g/hasEmail"
+          "sh:path": "http://data.europa.eu/m8g/email"
         },
         {
           "sh:datatype": "http://www.w3.org/2000/01/rdf-schema#Literal",
@@ -282,10 +207,10 @@
           "sh:name": {
             "en": "has telephone"
           },
-          "sh:path": "http://data.europa.eu/m8g/hasTelephone"
+          "sh:path": "http://data.europa.eu/m8g/telephone"
         },
         {
-          "sh:datatype": "http://www.w3.org/2000/01/rdf-schema#Literal",
+          "sh:class": "http://www.w3.org/2006/time#TemporalEntity",
           "sh:description": {
             "en": "The (structured) hours at which the contact point is normally available."
           },
@@ -386,6 +311,16 @@
           "sh:path": "http://purl.org/dc/terms/description"
         },
         {
+          "sh:class": "http://purl.org/vocab/cpsv#PublicService",
+          "sh:description": {
+            "en": "It links an event directly to a public service that is related to it."
+          },
+          "sh:name": {
+            "en": "has related service"
+          },
+          "sh:path": "http://data.europa.eu/m8g/hasRelatedService"
+        },
+        {
           "sh:datatype": "http://www.w3.org/2000/01/rdf-schema#Literal",
           "sh:description": {
             "en": "An Identifier for the Event."
@@ -407,16 +342,6 @@
             "en": "name"
           },
           "sh:path": "http://purl.org/dc/terms/title"
-        },
-        {
-          "sh:class": "http://purl.org/vocab/cpsv#PublicService",
-          "sh:description": {
-            "en": "It links an event directly to a public service that is related to it."
-          },
-          "sh:name": {
-            "en": "related service"
-          },
-          "sh:path": "http://purl.org/dc/terms/relation"
         },
         {
           "sh:class": "http://www.w3.org/2004/02/skos/core#Concept",
@@ -457,6 +382,16 @@
             "en": "identifier"
           },
           "sh:path": "http://purl.org/dc/terms/identifier"
+        },
+        {
+          "sh:class": "http://data.europa.eu/m8g/EvidenceType",
+          "sh:description": {
+            "en": "Evidence Type that specifies characteristics of the Evidence."
+          },
+          "sh:name": {
+            "en": "is conformant to"
+          },
+          "sh:path": "http://purl.org/dc/terms/conformsTo"
         },
         {
           "sh:class": "http://purl.org/dc/terms/LinguisticSystem",
@@ -514,18 +449,38 @@
       "sh:targetClass": "http://data.europa.eu/m8g/Evidence"
     },
     {
+      "@id": "https://semiceu.github.io//shacl/cpsv-ap-SHACL_en#EvidenceTypeShape",
+      "@type": "sh:NodeShape",
+      "sh:closed": false,
+      "sh:property": [
+        {
+          "sh:class": "http://www.w3.org/2004/02/skos/core#Concept",
+          "sh:description": {
+            "en": "Category to which the Evidence Type belongs."
+          },
+          "sh:name": {
+            "en": "evidence type classification"
+          },
+          "sh:path": "http://data.europa.eu/m8g/evidenceTypeClassification"
+        },
+        {
+          "sh:datatype": "http://www.w3.org/2000/01/rdf-schema#Literal",
+          "sh:maxCount": "1",
+          "sh:minCount": "1",
+          "sh:name": {
+            "en": "identifier"
+          },
+          "sh:path": "http://purl.org/dc/terms/identifier"
+        }
+      ],
+      "sh:targetClass": "http://data.europa.eu/m8g/EvidenceType"
+    },
+    {
       "@id": "https://semiceu.github.io//shacl/cpsv-ap-SHACL_en#LifeEventShape",
       "@type": "sh:NodeShape",
       "sh:closed": false,
       "sh:property": [],
       "sh:targetClass": "http://data.europa.eu/m8g/LifeEvent"
-    },
-    {
-      "@id": "https://semiceu.github.io//shacl/cpsv-ap-SHACL_en#OpeningHoursSpecificationShape",
-      "@type": "sh:NodeShape",
-      "sh:closed": false,
-      "sh:property": [],
-      "sh:targetClass": "http://data.europa.eu/m8g/OpeningHoursSpecification"
     },
     {
       "@id": "https://semiceu.github.io//shacl/cpsv-ap-SHACL_en#OutputShape",
@@ -640,7 +595,6 @@
           "sh:description": {
             "en": "A preferred label is used to provide the primary, legally recognised name of the Public Organization, as defined in the ORG Ontology."
           },
-          "sh:maxCount": "1",
           "sh:minCount": "1",
           "sh:name": {
             "en": "preferred label"
@@ -723,10 +677,94 @@
       "sh:targetClass": "http://data.europa.eu/m8g/Requirement"
     },
     {
+      "@id": "https://semiceu.github.io//shacl/cpsv-ap-SHACL_en#ServiceConcessionContractShape",
+      "@type": "sh:NodeShape",
+      "sh:closed": false,
+      "sh:property": [
+        {
+          "sh:datatype": "http://www.w3.org/1999/02/22-rdf-syntax-ns#langString",
+          "sh:description": {
+            "en": "A free text description of the Concession Contract."
+          },
+          "sh:minCount": "1",
+          "sh:name": {
+            "en": "description"
+          },
+          "sh:path": "http://purl.org/dc/terms/description"
+        },
+        {
+          "sh:class": "http://data.europa.eu/eli/ontology#LegalResource",
+          "sh:description": {
+            "en": "It links a Concession Contract to relevant legislation or policy documents i.e.\r\nthe Legal Resource under which the Concession Contracts are being defined."
+          },
+          "sh:name": {
+            "en": "established under"
+          },
+          "sh:path": "http://data.europa.eu/m8g/establishedUnder"
+        },
+        {
+          "sh:class": "http://data.europa.eu/m8g/PublicOrganisation",
+          "sh:description": {
+            "en": "It links a Concession Contract with the Contracting Authority which is ultimately responsible for a public service."
+          },
+          "sh:minCount": "1",
+          "sh:name": {
+            "en": "has contracting authority"
+          },
+          "sh:path": "http://data.europa.eu/m8g/hasContractingAuthority"
+        },
+        {
+          "sh:class": "http://www.w3.org/ns/org#Organization",
+          "sh:description": {
+            "en": "It links a Concession Contract with the Economic Operator in charge for the provision and the management of public services."
+          },
+          "sh:minCount": "1",
+          "sh:name": {
+            "en": "has economic operator"
+          },
+          "sh:path": "http://data.europa.eu/m8g/hasEconomicOperator"
+        },
+        {
+          "sh:datatype": "http://www.w3.org/2000/01/rdf-schema#Literal",
+          "sh:description": {
+            "en": "An Identifier for the Concession Contract."
+          },
+          "sh:maxCount": "1",
+          "sh:minCount": "1",
+          "sh:name": {
+            "en": "identifier"
+          },
+          "sh:path": "http://purl.org/dc/terms/identifier"
+        },
+        {
+          "sh:datatype": "http://www.w3.org/1999/02/22-rdf-syntax-ns#langString",
+          "sh:description": {
+            "en": "The Name of the Concession Contract."
+          },
+          "sh:minCount": "1",
+          "sh:name": {
+            "en": "name"
+          },
+          "sh:path": "http://purl.org/dc/terms/title"
+        }
+      ],
+      "sh:targetClass": "http://data.europa.eu/m8g/ServiceConcessionContract"
+    },
+    {
       "@id": "https://semiceu.github.io//shacl/cpsv-ap-SHACL_en#PublicServiceShape",
       "@type": "sh:NodeShape",
       "sh:closed": false,
       "sh:property": [
+        {
+          "sh:class": "http://www.w3.org/2004/02/skos/core#Concept",
+          "sh:description": {
+            "en": "The target recipient of the Public Service"
+          },
+          "sh:name": {
+            "en": "addressee"
+          },
+          "sh:path": "http://purl.org/dc/terms/audience"
+        },
         {
           "sh:datatype": "http://www.w3.org/1999/02/22-rdf-syntax-ns#langString",
           "sh:description": {
@@ -808,6 +846,16 @@
             "en": "has input"
           },
           "sh:path": "http://purl.org/vocab/cpsv#hasInput"
+        },
+        {
+          "sh:class": "http://data.europa.eu/m8g/EvidenceType",
+          "sh:description": {
+            "en": "It links a Public Service to one or more instances of the EvidenceType class. "
+          },
+          "sh:name": {
+            "en": "has input type"
+          },
+          "sh:path": "http://data.europa.eu/m8g/hasInputType"
         },
         {
           "sh:class": "http://data.europa.eu/eli/ontology#LegalResource",
@@ -941,7 +989,7 @@
           "sh:name": {
             "en": "related"
           },
-          "sh:path": "http://purl.org/dc/terms/relation"
+          "sh:path": "http://data.europa.eu/m8g/relatedService"
         },
         {
           "sh:class": "http://purl.org/vocab/cpsv#PublicService",
@@ -1094,6 +1142,34 @@
       "sh:closed": false,
       "sh:property": [],
       "sh:targetClass": "http://www.w3.org/2004/02/skos/core#Concept"
+    },
+    {
+      "@id": "https://semiceu.github.io//shacl/cpsv-ap-SHACL_en#TemporalEntityShape",
+      "@type": "sh:NodeShape",
+      "sh:closed": false,
+      "sh:property": [
+        {
+          "sh:datatype": "http://www.w3.org/1999/02/22-rdf-syntax-ns#langString",
+          "sh:description": {
+            "en": "A  textual representation of the Temporal Entity."
+          },
+          "sh:name": {
+            "en": "description"
+          },
+          "sh:path": "http://purl.org/dc/terms/description"
+        },
+        {
+          "sh:class": "http://www.w3.org/2004/02/skos/core#Concept",
+          "sh:description": {
+            "en": "The recurrence of an instant or period."
+          },
+          "sh:name": {
+            "en": "frequency"
+          },
+          "sh:path": "http://data.europa.eu/m8g/frequency"
+        }
+      ],
+      "sh:targetClass": "http://www.w3.org/2006/time#TemporalEntity"
     },
     {
       "@id": "https://semiceu.github.io//shacl/cpsv-ap-SHACL_en#DatasetShape",
@@ -1312,7 +1388,6 @@
           "sh:description": {
             "en": "An Address related to an Agent. Asserting the address relationship implies that the Agent has an Address."
           },
-          "sh:maxCount": "1",
           "sh:name": {
             "en": "address"
           },
@@ -1346,13 +1421,33 @@
           "sh:description": {
             "en": "It links an Agent to the Participation class."
           },
+          "sh:minCount": "1",
           "sh:name": {
             "en": "plays role"
           },
-          "sh:path": "http://data.europa.eu/m8g/playsRole"
+          "sh:path": "http://data.europa.eu/m8g/particpates"
         }
       ],
       "sh:targetClass": "http://xmlns.com/foaf/0.1/Agent"
+    },
+    {
+      "@id": "https://semiceu.github.io//shacl/cpsv-ap-SHACL_en#GroupShape",
+      "@type": "sh:NodeShape",
+      "sh:closed": false,
+      "sh:property": [
+        {
+          "sh:class": "http://xmlns.com/foaf/0.1/Agent",
+          "sh:description": "",
+          "sh:path": "http://xmlns.com/foaf/0.1/member"
+        },
+        {
+          "sh:datatype": "http://www.w3.org/1999/02/22-rdf-syntax-ns#langString",
+          "sh:description": "",
+          "sh:minCount": "1",
+          "sh:path": "http://xmlns.com/foaf/0.1/name"
+        }
+      ],
+      "sh:targetClass": "http://xmlns.com/foaf/0.1/Group"
     }
   ]
 }

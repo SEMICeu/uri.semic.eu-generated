@@ -8,29 +8,31 @@
 @prefix skos: <http://www.w3.org/2004/02/skos/core#> .
 @prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
 
-<https://semiceu.github.io//shacl/cpsv-ap-SHACL_en> <https://semiceu.github.io//shacl/cpsv-ap-SHACL_enshapes> <https://semiceu.github.io//shacl/cpsv-ap-SHACL_en#ContractShape>,
+<https://semiceu.github.io//shacl/cpsv-ap-SHACL_en> <https://semiceu.github.io//shacl/cpsv-ap-SHACL_enshapes> <https://semiceu.github.io//shacl/cpsv-ap-SHACL_en#ConcessionContractShape>,
     <https://semiceu.github.io//shacl/cpsv-ap-SHACL_en#LegalResourceShape>,
     <https://semiceu.github.io//shacl/cpsv-ap-SHACL_en#BusinessEventShape>,
     <https://semiceu.github.io//shacl/cpsv-ap-SHACL_en#ChannelShape>,
-    <https://semiceu.github.io//shacl/cpsv-ap-SHACL_en#ConcessionContractShape>,
     <https://semiceu.github.io//shacl/cpsv-ap-SHACL_en#ContactPointShape>,
     <https://semiceu.github.io//shacl/cpsv-ap-SHACL_en#CostShape>,
     <https://semiceu.github.io//shacl/cpsv-ap-SHACL_en#EventShape>,
     <https://semiceu.github.io//shacl/cpsv-ap-SHACL_en#EvidenceShape>,
+    <https://semiceu.github.io//shacl/cpsv-ap-SHACL_en#EvidenceTypeShape>,
     <https://semiceu.github.io//shacl/cpsv-ap-SHACL_en#LifeEventShape>,
-    <https://semiceu.github.io//shacl/cpsv-ap-SHACL_en#OpeningHoursSpecificationShape>,
     <https://semiceu.github.io//shacl/cpsv-ap-SHACL_en#OutputShape>,
     <https://semiceu.github.io//shacl/cpsv-ap-SHACL_en#ParticipationShape>,
     <https://semiceu.github.io//shacl/cpsv-ap-SHACL_en#PublicOrganisationShape>,
     <https://semiceu.github.io//shacl/cpsv-ap-SHACL_en#RequirementShape>,
+    <https://semiceu.github.io//shacl/cpsv-ap-SHACL_en#ServiceConcessionContractShape>,
     <https://semiceu.github.io//shacl/cpsv-ap-SHACL_en#PublicServiceShape>,
     <https://semiceu.github.io//shacl/cpsv-ap-SHACL_en#RuleShape>,
     <https://semiceu.github.io//shacl/cpsv-ap-SHACL_en#CollectionShape>,
     <https://semiceu.github.io//shacl/cpsv-ap-SHACL_en#ConceptShape>,
+    <https://semiceu.github.io//shacl/cpsv-ap-SHACL_en#TemporalEntityShape>,
     <https://semiceu.github.io//shacl/cpsv-ap-SHACL_en#DatasetShape>,
     <https://semiceu.github.io//shacl/cpsv-ap-SHACL_en#AddressShape>,
     <https://semiceu.github.io//shacl/cpsv-ap-SHACL_en#OrganizationShape>,
-    <https://semiceu.github.io//shacl/cpsv-ap-SHACL_en#AgentShape> .
+    <https://semiceu.github.io//shacl/cpsv-ap-SHACL_en#AgentShape>,
+    <https://semiceu.github.io//shacl/cpsv-ap-SHACL_en#GroupShape> .
 
 <https://semiceu.github.io//shacl/cpsv-ap-SHACL_en#AddressShape> a shacl:NodeShape;
   shacl:closed false;
@@ -102,7 +104,6 @@
   shacl:property [
     shacl:class <http://www.w3.org/ns/locn#Address>;
     shacl:description "An Address related to an Agent. Asserting the address relationship implies that the Agent has an Address."@en;
-    shacl:maxCount 1;
     shacl:name "address"@en;
     shacl:path <http://www.w3.org/ns/locn#address>
   ], [
@@ -121,8 +122,9 @@
   ], [
     shacl:class <http://data.europa.eu/m8g/Participation>;
     shacl:description "It links an Agent to the Participation class."@en;
+    shacl:minCount 1;
     shacl:name "plays role"@en;
-    shacl:path <http://data.europa.eu/m8g/playsRole>
+    shacl:path <http://data.europa.eu/m8g/particpates>
   ];
   shacl:targetClass foaf:Agent .
 
@@ -133,9 +135,8 @@
 <https://semiceu.github.io//shacl/cpsv-ap-SHACL_en#ChannelShape> a shacl:NodeShape;
   shacl:closed false;
   shacl:property [
-    shacl:class <http://data.europa.eu/m8g/OpeningHoursSpecification>;
+    shacl:class <http://www.w3.org/2006/time#TemporalEntity>;
     shacl:description "It links a channel to information about when the channel is not available."@en;
-    shacl:maxCount 1;
     shacl:name "availability restriction"@en;
     shacl:path <http://data.europa.eu/m8g/specialOpeningHoursSpecification>
   ], [
@@ -156,8 +157,8 @@
     shacl:name "identifier"@en;
     shacl:path dc:identifier
   ], [
-    shacl:datatype rdf:langString;
-    shacl:description "The normal opening hours of a channel."@en;
+    shacl:class <http://www.w3.org/2006/time#TemporalEntity>;
+    shacl:description "The (structured) hours at which the contact point is normally available."@en;
     shacl:name "opening hours"@en;
     shacl:path <http://data.europa.eu/m8g/openingHours>
   ], [
@@ -196,50 +197,12 @@
 
 <https://semiceu.github.io//shacl/cpsv-ap-SHACL_en#ConcessionContractShape> a shacl:NodeShape;
   shacl:closed false;
-  shacl:property [
-    shacl:datatype rdf:langString;
-    shacl:description "A free text description of the Concession Contract."@en;
-    shacl:minCount 1;
-    shacl:name "description"@en;
-    shacl:path dc:description
-  ], [
-    shacl:class <http://data.europa.eu/eli/ontology#LegalResource>;
-    shacl:description """It links a Concession Contract to relevant legislation or policy documents i.e.
-the Legal Resource under which the Concession Contracts are being defined."""@en;
-    shacl:name "established under"@en;
-    shacl:path <http://data.europa.eu/m8g/establishedUnder>
-  ], [
-    shacl:class <http://data.europa.eu/m8g/PublicOrganisation>;
-    shacl:description "It links a Concession Contract with the Contracting Authority which is ultimately responsible for a public service."@en;
-    shacl:minCount 1;
-    shacl:name "has contracting authority"@en;
-    shacl:path <http://data.europa.eu/m8g/hasContractingAuthority>
-  ], [
-    shacl:class org:Organization;
-    shacl:description "It links a Concession Contract with the Economic Operator in charge for the provision and the management of public services."@en;
-    shacl:minCount 1;
-    shacl:name "has economic operator"@en;
-    shacl:path <http://data.europa.eu/m8g/hasEconomicOperator>
-  ], [
-    shacl:datatype rdfs:Literal;
-    shacl:description "An Identifier for the Concession Contract."@en;
-    shacl:maxCount 1;
-    shacl:minCount 1;
-    shacl:name "identifier"@en;
-    shacl:path dc:identifier
-  ], [
-    shacl:datatype rdf:langString;
-    shacl:description "The Name of the Concession Contract."@en;
-    shacl:minCount 1;
-    shacl:name "name"@en;
-    shacl:path dc:title
-  ];
-  shacl:targetClass <http://data.europa.eu/m8g/ConcessionContract> .
+  shacl:targetClass <http://data.europa.eu/a4g/ontology#Contract> .
 
 <https://semiceu.github.io//shacl/cpsv-ap-SHACL_en#ContactPointShape> a shacl:NodeShape;
   shacl:closed false;
   shacl:property [
-    shacl:class <http://data.europa.eu/m8g/OpeningHoursSpecification>;
+    shacl:class <http://www.w3.org/2006/time#TemporalEntity>;
     shacl:description "The time interval during which the Contact Point is not available."@en;
     shacl:name "availability restriction"@en;
     shacl:path <http://data.europa.eu/m8g/specialOpeningHoursSpecification>
@@ -252,23 +215,19 @@ the Legal Resource under which the Concession Contracts are being defined."""@en
     shacl:datatype rdfs:Literal;
     shacl:description "An electronic address through which the Contact Point can be contacted."@en;
     shacl:name "has email"@en;
-    shacl:path <http://data.europa.eu/m8g/hasEmail>
+    shacl:path <http://data.europa.eu/m8g/email>
   ], [
     shacl:datatype rdfs:Literal;
     shacl:description "A telephone number through which the Contact Point can be contacted."@en;
     shacl:name "has telephone"@en;
-    shacl:path <http://data.europa.eu/m8g/hasTelephone>
+    shacl:path <http://data.europa.eu/m8g/telephone>
   ], [
-    shacl:datatype rdfs:Literal;
+    shacl:class <http://www.w3.org/2006/time#TemporalEntity>;
     shacl:description "The (structured) hours at which the contact point is normally available."@en;
     shacl:name "opening hours"@en;
     shacl:path <http://data.europa.eu/m8g/openingHours>
   ];
   shacl:targetClass <http://data.europa.eu/m8g/ContactPoint> .
-
-<https://semiceu.github.io//shacl/cpsv-ap-SHACL_en#ContractShape> a shacl:NodeShape;
-  shacl:closed false;
-  shacl:targetClass <http://data.europa.eu/a4g/ontology#Contract> .
 
 <https://semiceu.github.io//shacl/cpsv-ap-SHACL_en#CostShape> a shacl:NodeShape;
   shacl:closed false;
@@ -357,6 +316,11 @@ the Legal Resource under which the Concession Contracts are being defined."""@en
     shacl:name "description"@en;
     shacl:path dc:description
   ], [
+    shacl:class <http://purl.org/vocab/cpsv#PublicService>;
+    shacl:description "It links an event directly to a public service that is related to it."@en;
+    shacl:name "has related service"@en;
+    shacl:path <http://data.europa.eu/m8g/hasRelatedService>
+  ], [
     shacl:datatype rdfs:Literal;
     shacl:description "An Identifier for the Event."@en;
     shacl:maxCount 1;
@@ -369,11 +333,6 @@ the Legal Resource under which the Concession Contracts are being defined."""@en
     shacl:minCount 1;
     shacl:name "name"@en;
     shacl:path dc:title
-  ], [
-    shacl:class <http://purl.org/vocab/cpsv#PublicService>;
-    shacl:description "It links an event directly to a public service that is related to it."@en;
-    shacl:name "related service"@en;
-    shacl:path dc:relation
   ], [
     shacl:class skos:Concept;
     shacl:description "It links an Event to a controlled vocabulary of event types."@en;
@@ -396,6 +355,11 @@ the Legal Resource under which the Concession Contracts are being defined."""@en
     shacl:minCount 1;
     shacl:name "identifier"@en;
     shacl:path dc:identifier
+  ], [
+    shacl:class <http://data.europa.eu/m8g/EvidenceType>;
+    shacl:description "Evidence Type that specifies characteristics of the Evidence."@en;
+    shacl:name "is conformant to"@en;
+    shacl:path dc:conformsTo
   ], [
     shacl:class dc:LinguisticSystem;
     shacl:description "The language(s) in which the Evidence must be provided."@en;
@@ -426,6 +390,36 @@ the Legal Resource under which the Concession Contracts are being defined."""@en
   ];
   shacl:targetClass <http://data.europa.eu/m8g/Evidence> .
 
+<https://semiceu.github.io//shacl/cpsv-ap-SHACL_en#EvidenceTypeShape> a shacl:NodeShape;
+  shacl:closed false;
+  shacl:property [
+    shacl:class skos:Concept;
+    shacl:description "Category to which the Evidence Type belongs."@en;
+    shacl:name "evidence type classification"@en;
+    shacl:path <http://data.europa.eu/m8g/evidenceTypeClassification>
+  ], [
+    shacl:datatype rdfs:Literal;
+    shacl:maxCount 1;
+    shacl:minCount 1;
+    shacl:name "identifier"@en;
+    shacl:path dc:identifier
+  ];
+  shacl:targetClass <http://data.europa.eu/m8g/EvidenceType> .
+
+<https://semiceu.github.io//shacl/cpsv-ap-SHACL_en#GroupShape> a shacl:NodeShape;
+  shacl:closed false;
+  shacl:property [
+    shacl:class foaf:Agent;
+    shacl:description "";
+    shacl:path foaf:member
+  ], [
+    shacl:datatype rdf:langString;
+    shacl:description "";
+    shacl:minCount 1;
+    shacl:path foaf:name
+  ];
+  shacl:targetClass foaf:Group .
+
 <https://semiceu.github.io//shacl/cpsv-ap-SHACL_en#LegalResourceShape> a shacl:NodeShape;
   shacl:closed false;
   shacl:property [
@@ -439,10 +433,6 @@ the Legal Resource under which the Concession Contracts are being defined."""@en
 <https://semiceu.github.io//shacl/cpsv-ap-SHACL_en#LifeEventShape> a shacl:NodeShape;
   shacl:closed false;
   shacl:targetClass <http://data.europa.eu/m8g/LifeEvent> .
-
-<https://semiceu.github.io//shacl/cpsv-ap-SHACL_en#OpeningHoursSpecificationShape> a shacl:NodeShape;
-  shacl:closed false;
-  shacl:targetClass <http://data.europa.eu/m8g/OpeningHoursSpecification> .
 
 <https://semiceu.github.io//shacl/cpsv-ap-SHACL_en#OrganizationShape> a shacl:NodeShape;
   shacl:closed false;
@@ -510,7 +500,6 @@ the Legal Resource under which the Concession Contracts are being defined."""@en
   shacl:property [
     shacl:datatype rdf:langString;
     shacl:description "A preferred label is used to provide the primary, legally recognised name of the Public Organization, as defined in the ORG Ontology."@en;
-    shacl:maxCount 1;
     shacl:minCount 1;
     shacl:name "preferred label"@en;
     shacl:path skos:prefLabel
@@ -526,6 +515,11 @@ the Legal Resource under which the Concession Contracts are being defined."""@en
 <https://semiceu.github.io//shacl/cpsv-ap-SHACL_en#PublicServiceShape> a shacl:NodeShape;
   shacl:closed false;
   shacl:property [
+    shacl:class skos:Concept;
+    shacl:description "The target recipient of the Public Service"@en;
+    shacl:name "addressee"@en;
+    shacl:path dc:audience
+  ], [
     shacl:datatype rdf:langString;
     shacl:description "A free text Description of the Public Service."@en;
     shacl:minCount 1;
@@ -567,6 +561,11 @@ the Legal Resource under which the Concession Contracts are being defined."""@en
     shacl:description "It links a Public Service to one or more instances of the Evidence class. A specific Public Service may require the presence of certain pieces of Evidence in order to be delivered. If the evidence required to make use of a service varies according to the channel through which it is accessed, then Has Input should be at the level of the Channel."@en;
     shacl:name "has input"@en;
     shacl:path <http://purl.org/vocab/cpsv#hasInput>
+  ], [
+    shacl:class <http://data.europa.eu/m8g/EvidenceType>;
+    shacl:description "It links a Public Service to one or more instances of the EvidenceType class. "@en;
+    shacl:name "has input type"@en;
+    shacl:path <http://data.europa.eu/m8g/hasInputType>
   ], [
     shacl:class <http://data.europa.eu/eli/ontology#LegalResource>;
     shacl:description """It indicates the Legal Resource (e.g. legislation) to which the Public Service relates, operates or has its legal basis."""@en;
@@ -635,7 +634,7 @@ the Legal Resource under which the Concession Contracts are being defined."""@en
     shacl:class <http://purl.org/vocab/cpsv#PublicService>;
     shacl:description "A Public Service related to the particular instance of the Public Service class."@en;
     shacl:name "related"@en;
-    shacl:path dc:relation
+    shacl:path <http://data.europa.eu/m8g/relatedService>
   ], [
     shacl:class <http://purl.org/vocab/cpsv#PublicService>;
     shacl:description "The way a Public Service makes use of other Public Services."@en;
@@ -738,3 +737,60 @@ the Legal Resource under which the Rules are being defined."""@en;
     shacl:path dc:type
   ];
   shacl:targetClass <http://purl.org/vocab/cpsv#Rule> .
+
+<https://semiceu.github.io//shacl/cpsv-ap-SHACL_en#ServiceConcessionContractShape> a shacl:NodeShape;
+  shacl:closed false;
+  shacl:property [
+    shacl:datatype rdf:langString;
+    shacl:description "A free text description of the Concession Contract."@en;
+    shacl:minCount 1;
+    shacl:name "description"@en;
+    shacl:path dc:description
+  ], [
+    shacl:class <http://data.europa.eu/eli/ontology#LegalResource>;
+    shacl:description """It links a Concession Contract to relevant legislation or policy documents i.e.
+the Legal Resource under which the Concession Contracts are being defined."""@en;
+    shacl:name "established under"@en;
+    shacl:path <http://data.europa.eu/m8g/establishedUnder>
+  ], [
+    shacl:class <http://data.europa.eu/m8g/PublicOrganisation>;
+    shacl:description "It links a Concession Contract with the Contracting Authority which is ultimately responsible for a public service."@en;
+    shacl:minCount 1;
+    shacl:name "has contracting authority"@en;
+    shacl:path <http://data.europa.eu/m8g/hasContractingAuthority>
+  ], [
+    shacl:class org:Organization;
+    shacl:description "It links a Concession Contract with the Economic Operator in charge for the provision and the management of public services."@en;
+    shacl:minCount 1;
+    shacl:name "has economic operator"@en;
+    shacl:path <http://data.europa.eu/m8g/hasEconomicOperator>
+  ], [
+    shacl:datatype rdfs:Literal;
+    shacl:description "An Identifier for the Concession Contract."@en;
+    shacl:maxCount 1;
+    shacl:minCount 1;
+    shacl:name "identifier"@en;
+    shacl:path dc:identifier
+  ], [
+    shacl:datatype rdf:langString;
+    shacl:description "The Name of the Concession Contract."@en;
+    shacl:minCount 1;
+    shacl:name "name"@en;
+    shacl:path dc:title
+  ];
+  shacl:targetClass <http://data.europa.eu/m8g/ServiceConcessionContract> .
+
+<https://semiceu.github.io//shacl/cpsv-ap-SHACL_en#TemporalEntityShape> a shacl:NodeShape;
+  shacl:closed false;
+  shacl:property [
+    shacl:datatype rdf:langString;
+    shacl:description "A  textual representation of the Temporal Entity."@en;
+    shacl:name "description"@en;
+    shacl:path dc:description
+  ], [
+    shacl:class skos:Concept;
+    shacl:description "The recurrence of an instant or period."@en;
+    shacl:name "frequency"@en;
+    shacl:path <http://data.europa.eu/m8g/frequency>
+  ];
+  shacl:targetClass <http://www.w3.org/2006/time#TemporalEntity> .
