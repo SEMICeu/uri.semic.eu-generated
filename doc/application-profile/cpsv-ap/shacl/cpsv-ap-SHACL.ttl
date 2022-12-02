@@ -31,8 +31,7 @@
     <https://semiceu.github.io//shacl/cpsv-ap-SHACL_en#DatasetShape>,
     <https://semiceu.github.io//shacl/cpsv-ap-SHACL_en#AddressShape>,
     <https://semiceu.github.io//shacl/cpsv-ap-SHACL_en#OrganizationShape>,
-    <https://semiceu.github.io//shacl/cpsv-ap-SHACL_en#AgentShape>,
-    <https://semiceu.github.io//shacl/cpsv-ap-SHACL_en#GroupShape> .
+    <https://semiceu.github.io//shacl/cpsv-ap-SHACL_en#AgentShape> .
 
 <https://semiceu.github.io//shacl/cpsv-ap-SHACL_en#AddressShape> a shacl:NodeShape;
   shacl:closed false;
@@ -192,7 +191,7 @@
 
 <https://semiceu.github.io//shacl/cpsv-ap-SHACL_en#ConcessionContractShape> a shacl:NodeShape;
   shacl:closed false;
-  shacl:targetClass <http://data.europa.eu/a4g/ontology#Contract> .
+  shacl:targetClass <http://data.europa.eu/a4g/ontology#ConcessionContract> .
 
 <https://semiceu.github.io//shacl/cpsv-ap-SHACL_en#ContactPointShape> a shacl:NodeShape;
   shacl:closed false;
@@ -312,7 +311,7 @@
     shacl:path dc:description
   ], [
     shacl:class <http://purl.org/vocab/cpsv#PublicService>;
-    shacl:description "It links an event directly to a public service that is related to it."@en;
+    shacl:description "The Public Service related to the Event."@en;
     shacl:name "has related service"@en;
     shacl:path <http://data.europa.eu/m8g/hasRelatedService>
   ], [
@@ -394,26 +393,13 @@
     shacl:path <http://data.europa.eu/m8g/evidenceTypeClassification>
   ], [
     shacl:datatype rdfs:Literal;
+    shacl:description "Unambiguous reference to the Evidence Type."@en;
     shacl:maxCount 1;
     shacl:minCount 1;
     shacl:name "identifier"@en;
     shacl:path dc:identifier
   ];
   shacl:targetClass <http://data.europa.eu/m8g/EvidenceType> .
-
-<https://semiceu.github.io//shacl/cpsv-ap-SHACL_en#GroupShape> a shacl:NodeShape;
-  shacl:closed false;
-  shacl:property [
-    shacl:class foaf:Agent;
-    shacl:description "";
-    shacl:path foaf:member
-  ], [
-    shacl:datatype rdf:langString;
-    shacl:description "";
-    shacl:minCount 1;
-    shacl:path foaf:name
-  ];
-  shacl:targetClass foaf:Group .
 
 <https://semiceu.github.io//shacl/cpsv-ap-SHACL_en#LegalResourceShape> a shacl:NodeShape;
   shacl:closed false;
@@ -479,7 +465,7 @@
     shacl:description "The Agent involved in the Participation."@en;
     shacl:maxCount 1;
     shacl:minCount 1;
-    shacl:name "hasParticipant"@en;
+    shacl:name "has participant"@en;
     shacl:path <http://data.europa.eu/m8g/hasParticipant>
   ], [
     shacl:datatype rdfs:Literal;
@@ -744,38 +730,38 @@ the Legal Resource under which the Rules are being defined."""@en;
   shacl:closed false;
   shacl:property [
     shacl:datatype rdf:langString;
-    shacl:description "A free text description of the Concession Contract."@en;
+    shacl:description "A free text description of the Service Concession Contract."@en;
     shacl:minCount 1;
     shacl:name "description"@en;
     shacl:path dc:description
   ], [
     shacl:class <http://data.europa.eu/eli/ontology#LegalResource>;
-    shacl:description """It links a Concession Contract to relevant legislation or policy documents i.e.
-the Legal Resource under which the Concession Contracts are being defined."""@en;
+    shacl:description """It links a Service Concession Contract to relevant legislation or policy documents i.e.
+the Legal Resource under which the Service Concession Contracts are being defined."""@en;
     shacl:name "established under"@en;
     shacl:path <http://data.europa.eu/m8g/establishedUnder>
   ], [
     shacl:class <http://data.europa.eu/m8g/PublicOrganisation>;
-    shacl:description "It links a Concession Contract with the Contracting Authority which is ultimately responsible for a public service."@en;
+    shacl:description "It links a Service Concession Contract with the Contracting Authority which is ultimately responsible for a public service."@en;
     shacl:minCount 1;
     shacl:name "has contracting authority"@en;
     shacl:path <http://data.europa.eu/m8g/hasContractingAuthority>
   ], [
     shacl:class org:Organization;
-    shacl:description "It links a Concession Contract with the Economic Operator in charge for the provision and the management of public services."@en;
+    shacl:description "It links a Service Concession Contract with the Economic Operator in charge for the provision and the management of public services"@en;
     shacl:minCount 1;
     shacl:name "has economic operator"@en;
     shacl:path <http://data.europa.eu/m8g/hasEconomicOperator>
   ], [
     shacl:datatype rdfs:Literal;
-    shacl:description "An Identifier for the Concession Contract."@en;
+    shacl:description "An Identifier for the Service Concession Contract."@en;
     shacl:maxCount 1;
     shacl:minCount 1;
     shacl:name "identifier"@en;
     shacl:path dc:identifier
   ], [
     shacl:datatype rdf:langString;
-    shacl:description "The Name of the Concession Contract."@en;
+    shacl:description "The Name of the Service Concession Contract."@en;
     shacl:minCount 1;
     shacl:name "name"@en;
     shacl:path dc:title
