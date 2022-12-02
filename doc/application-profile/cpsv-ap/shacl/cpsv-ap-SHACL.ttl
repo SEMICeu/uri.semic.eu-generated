@@ -42,24 +42,19 @@
     shacl:name "address area"@en;
     shacl:path <http://www.w3.org/ns/locn#addressArea>
   ], [
-    shacl:datatype xsd:string;
+    shacl:datatype rdfs:Literal;
     shacl:description "A globally unique identifier for each instance of an Address."@en;
     shacl:name "address ID"@en;
     shacl:path <http://www.w3.org/ns/locn#addressId>
   ], [
-    shacl:class <http://data.europa.eu/m8g/AdminUnit>;
-    shacl:description "The adminUnit relationship links an Address with the Administrative Unit class."@en;
-    shacl:name "administrative unit"@en;
-    shacl:path <http://data.europa.eu/m8g/adminUnit>
-  ], [
     shacl:datatype rdf:langString;
     shacl:description "The name of the uppermost level of the address, almost always a country."@en;
-    shacl:name "administrative unit level 1 (country)"@en;
+    shacl:name "administrative unit level 1"@en;
     shacl:path <http://www.w3.org/ns/locn#adminUnitL1>
   ], [
     shacl:datatype rdf:langString;
     shacl:description "The name of a secondary level/region of the address, usually a county, state or other such area that typically encompasses several localities."@en;
-    shacl:name "administrative unit level 2 (country/region/state)"@en;
+    shacl:name "administrative unit level 2"@en;
     shacl:path <http://www.w3.org/ns/locn#adminUnitL2>
   ], [
     shacl:datatype rdf:langString;
@@ -67,7 +62,7 @@
     shacl:name "full address"@en;
     shacl:path <http://www.w3.org/ns/locn#fullAddress>
   ], [
-    shacl:datatype xsd:string;
+    shacl:datatype rdfs:Literal;
     shacl:description "A number or sequence of characters that uniquely identifies the locator within the relevant scope."@en;
     shacl:name "locator designator"@en;
     shacl:path <http://www.w3.org/ns/locn#locatorDesignator>
@@ -77,19 +72,19 @@
     shacl:name "locator name"@en;
     shacl:path <http://www.w3.org/ns/locn#locatorName>
   ], [
-    shacl:datatype xsd:string;
+    shacl:datatype rdfs:Literal;
     shacl:description "A location designator for a postal delivery point at a post office, usually a number."@en;
     shacl:name "post office box"@en;
     shacl:path <http://www.w3.org/ns/locn#poBox>
   ], [
-    shacl:datatype xsd:string;
+    shacl:datatype rdfs:Literal;
     shacl:description "The code created and maintained for postal purposes to identify a subdivision of addresses and postal delivery points."@en;
     shacl:name "post code"@en;
     shacl:path <http://www.w3.org/ns/locn#postCode>
   ], [
     shacl:datatype rdf:langString;
     shacl:description "A name created and maintained for postal purposes to identify a subdivision of addresses and postal delivery points."@en;
-    shacl:name "post name (city)"@en;
+    shacl:name "post name"@en;
     shacl:path <http://www.w3.org/ns/locn#postName>
   ], [
     shacl:datatype rdf:langString;
@@ -121,10 +116,10 @@
     shacl:path dc:title
   ], [
     shacl:class <http://data.europa.eu/m8g/Participation>;
-    shacl:description "It links an Agent to the Participation class."@en;
+    shacl:description "The participation in which an Agent is involved."@en;
     shacl:minCount 1;
-    shacl:name "plays role"@en;
-    shacl:path <http://data.europa.eu/m8g/particpates>
+    shacl:name "participates"@en;
+    shacl:path <http://data.europa.eu/m8g/participates>
   ];
   shacl:targetClass foaf:Agent .
 
@@ -136,7 +131,7 @@
   shacl:closed false;
   shacl:property [
     shacl:class <http://www.w3.org/2006/time#TemporalEntity>;
-    shacl:description "It links a channel to information about when the channel is not available."@en;
+    shacl:description "The time during which the Contact Point is not available."@en;
     shacl:name "availability restriction"@en;
     shacl:path <http://data.europa.eu/m8g/specialOpeningHoursSpecification>
   ], [
@@ -158,7 +153,7 @@
     shacl:path dc:identifier
   ], [
     shacl:class <http://www.w3.org/2006/time#TemporalEntity>;
-    shacl:description "The (structured) hours at which the contact point is normally available."@en;
+    shacl:description "The time at which the Contact Point is normally available."@en;
     shacl:name "opening hours"@en;
     shacl:path <http://data.europa.eu/m8g/openingHours>
   ], [
@@ -203,12 +198,12 @@
   shacl:closed false;
   shacl:property [
     shacl:class <http://www.w3.org/2006/time#TemporalEntity>;
-    shacl:description "The time interval during which the Contact Point is not available."@en;
+    shacl:description "The time during which the Contact Point is not available."@en;
     shacl:name "availability restriction"@en;
     shacl:path <http://data.europa.eu/m8g/specialOpeningHoursSpecification>
   ], [
     shacl:class foaf:Document;
-    shacl:description "A contact page that could be used to reach out the contact point."@en;
+    shacl:description "A web page that could be used to reach out the Contact Point."@en;
     shacl:name "contact page"@en;
     shacl:path <http://data.europa.eu/m8g/contactPage>
   ], [
@@ -223,7 +218,7 @@
     shacl:path <http://data.europa.eu/m8g/telephone>
   ], [
     shacl:class <http://www.w3.org/2006/time#TemporalEntity>;
-    shacl:description "The (structured) hours at which the contact point is normally available."@en;
+    shacl:description "The time at which the Contact Point is normally available."@en;
     shacl:name "opening hours"@en;
     shacl:path <http://data.europa.eu/m8g/openingHours>
   ];
@@ -475,20 +470,27 @@
   shacl:closed false;
   shacl:property [
     shacl:datatype rdf:langString;
-    shacl:description "A free text description of the Participation."@en;
+    shacl:description "A textual explanation of the Participation."@en;
     shacl:minCount 1;
     shacl:name "description"@en;
     shacl:path dc:description
   ], [
+    shacl:class foaf:Agent;
+    shacl:description "The Agent involved in the Participation."@en;
+    shacl:maxCount 1;
+    shacl:minCount 1;
+    shacl:name "hasParticipant"@en;
+    shacl:path <http://data.europa.eu/m8g/hasParticipant>
+  ], [
     shacl:datatype rdfs:Literal;
-    shacl:description "An Identifier for the Participation."@en;
+    shacl:description "The unambiguous structured reference for the Participation."@en;
     shacl:maxCount 1;
     shacl:minCount 1;
     shacl:name "identifier"@en;
     shacl:path dc:identifier
   ], [
     shacl:class skos:Concept;
-    shacl:description "It provides the role played. This should be provided using a controlled vocabulary."@en;
+    shacl:description "The function of an Agent within a Participation."@en;
     shacl:minCount 1;
     shacl:name "role"@en;
     shacl:path <http://data.europa.eu/m8g/role>
@@ -520,6 +522,11 @@
     shacl:name "addressee"@en;
     shacl:path dc:audience
   ], [
+    shacl:class <http://data.europa.eu/m8g/ContactPoint>;
+    shacl:description "The main contact information of the resource."@en;
+    shacl:name "contact point"@en;
+    shacl:path <http://data.europa.eu/m8g/contactPoint>
+  ], [
     shacl:datatype rdf:langString;
     shacl:description "A free text Description of the Public Service."@en;
     shacl:minCount 1;
@@ -547,11 +554,6 @@
     shacl:name "has competent authority"@en;
     shacl:path <http://data.europa.eu/m8g/hasCompetentAuthority>
   ], [
-    shacl:class <http://data.europa.eu/m8g/ContactPoint>;
-    shacl:description "The way a Public Service is linked to the class Contact Point."@en;
-    shacl:name "has contact point"@en;
-    shacl:path <http://data.europa.eu/m8g/hasContactPoint>
-  ], [
     shacl:class <http://data.europa.eu/m8g/Cost>;
     shacl:description "It indicates the costs related to the execution of a Public Service for the citizen or business related to the execution of the particular Public Service."@en;
     shacl:name "has cost"@en;
@@ -573,7 +575,7 @@
     shacl:path <http://data.europa.eu/m8g/hasLegalResource>
   ], [
     shacl:class <http://data.europa.eu/m8g/Participation>;
-    shacl:description "It links a Public Service to the Participation class."@en;
+    shacl:description "The way how a resource is organized."@en;
     shacl:name "has participation"@en;
     shacl:path <http://data.europa.eu/m8g/hasParticipation>
   ], [
@@ -633,7 +635,7 @@
   ], [
     shacl:class <http://purl.org/vocab/cpsv#PublicService>;
     shacl:description "A Public Service related to the particular instance of the Public Service class."@en;
-    shacl:name "related"@en;
+    shacl:name "related service"@en;
     shacl:path <http://data.europa.eu/m8g/relatedService>
   ], [
     shacl:class <http://purl.org/vocab/cpsv#PublicService>;
