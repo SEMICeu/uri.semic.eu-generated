@@ -1,0 +1,447 @@
+@prefix dc: <http://purl.org/dc/terms/> .
+@prefix dcat: <http://www.w3.org/ns/dcat#> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix schema: <http://schema.org/> .
+@prefix shacl: <http://www.w3.org/ns/shacl#> .
+@prefix skos: <http://www.w3.org/2004/02/skos/core#> .
+@prefix vcard: <http://www.w3.org/2006/vcard/ns#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+<https://semiceu.github.io//shacl/adms-ap-SHACL_en> <https://semiceu.github.io//shacl/adms-ap-SHACL_enshapes> <https://semiceu.github.io//shacl/adms-ap-SHACL_en#LicenseDocumentShape>,
+    <https://semiceu.github.io//shacl/adms-ap-SHACL_en#LinguisticSystemShape>,
+    <https://semiceu.github.io//shacl/adms-ap-SHACL_en#LocationShape>,
+    <https://semiceu.github.io//shacl/adms-ap-SHACL_en#MediaTypeOrExtentShape>,
+    <https://semiceu.github.io//shacl/adms-ap-SHACL_en#ChecksumShape>,
+    <https://semiceu.github.io//shacl/adms-ap-SHACL_en#ConceptShape>,
+    <https://semiceu.github.io//shacl/adms-ap-SHACL_en#ConceptSchemeShape>,
+    <https://semiceu.github.io//shacl/adms-ap-SHACL_en#KindShape>,
+    <https://semiceu.github.io//shacl/adms-ap-SHACL_en#CatalogShape>,
+    <https://semiceu.github.io//shacl/adms-ap-SHACL_en#DatasetShape>,
+    <https://semiceu.github.io//shacl/adms-ap-SHACL_en#DistributionShape>,
+    <https://semiceu.github.io//shacl/adms-ap-SHACL_en#AgentShape>,
+    <https://semiceu.github.io//shacl/adms-ap-SHACL_en#DocumentShape> .
+
+<https://semiceu.github.io//shacl/adms-ap-SHACL_en#AgentShape> a shacl:NodeShape;
+  shacl:closed false;
+  shacl:property [
+    shacl:datatype rdfs:Literal;
+    shacl:description "Name of the person or organisation."@en;
+    shacl:minCount 1;
+    shacl:name "name"@en;
+    shacl:path foaf:name
+  ], [
+    shacl:class skos:Concept;
+    shacl:description "The type of publisher."@en;
+    shacl:name "type"@en;
+    shacl:path dc:type
+  ];
+  shacl:targetClass foaf:Agent .
+
+<https://semiceu.github.io//shacl/adms-ap-SHACL_en#CatalogShape> a shacl:NodeShape;
+  shacl:closed false;
+  shacl:property [
+    shacl:class vcard:Kind;
+    shacl:description """Contact point for further information about the Repository."""@en;
+    shacl:name "contact point"@en;
+    shacl:path dcat:contactPoint
+  ], [
+    shacl:class dcat:Dataset;
+    shacl:description "An Asset included in the Repositor."@en;
+    shacl:name "dataset"@en;
+    shacl:path dcat:dataset
+  ], [
+    shacl:datatype rdfs:Literal;
+    shacl:description "Descriptive text for the Repository."@en;
+    shacl:minCount 1;
+    shacl:name "description"@en;
+    shacl:path dc:description
+  ], [
+    shacl:class foaf:Document;
+    shacl:description "Web page that gives access to the Repository."@en;
+    shacl:maxCount 1;
+    shacl:name "homepage"@en;
+    shacl:path foaf:homepage
+  ], [
+    shacl:datatype rdfs:Literal;
+    shacl:description "Date of formal issuance of the Repository."@en;
+    shacl:name "issued"@en;
+    shacl:path dc:issued
+  ], [
+    shacl:datatype rdfs:Literal;
+    shacl:description "Word of phrase to describe the Repository."@en;
+    shacl:name "keyword"@en;
+    shacl:path dcat:keyword
+  ], [
+    shacl:class foaf:Agent;
+    shacl:description "Organisation making the Repository available."@en;
+    shacl:maxCount 1;
+    shacl:minCount 1;
+    shacl:name "publisher"@en;
+    shacl:path dc:publisher
+  ], [
+    shacl:class dc:Location;
+    shacl:description "Geographic region or jurisdiction to which the Repository applies, using a controlled vocabulary."@en;
+    shacl:name "spatial"@en;
+    shacl:path dc:spatial
+  ], [
+    shacl:class skos:ConceptScheme;
+    shacl:description "Concept Scheme used to classify an Asset Repository's assets, using a controlled vocabulary."@en;
+    shacl:name "theme taxonomy"@en;
+    shacl:path dcat:themeTaxonomy
+  ], [
+    shacl:datatype rdfs:Literal;
+    shacl:description "Name of the Repository."@en;
+    shacl:minCount 1;
+    shacl:name "title"@en;
+    shacl:path dc:title
+  ];
+  shacl:targetClass dcat:Catalog .
+
+<https://semiceu.github.io//shacl/adms-ap-SHACL_en#ChecksumShape> a shacl:NodeShape;
+  shacl:closed false;
+  shacl:property [
+    shacl:class <http://spdx.org/rdf/terms#checksumAlgorithm_sha1>;
+    shacl:maxCount 1;
+    shacl:minCount 1;
+    shacl:name "algorithm"@en;
+    shacl:path <http://spdx.org/rdf/terms#algorithm>
+  ], [
+    shacl:datatype rdfs:Literal;
+    shacl:description "Lower case hexadecimal encoded digest value produced using a specific algorithm."@en;
+    shacl:maxCount 1;
+    shacl:minCount 1;
+    shacl:name "checksum value"@en;
+    shacl:path <http://spdx.org/rdf/terms#checksumValue>
+  ];
+  shacl:targetClass <http://spdx.org/rdf/terms#Checksum> .
+
+<https://semiceu.github.io//shacl/adms-ap-SHACL_en#ConceptSchemeShape> a shacl:NodeShape;
+  shacl:closed false;
+  shacl:property [
+    shacl:datatype rdfs:Literal;
+    shacl:description "Name of the Theme Taxonomy."@en;
+    shacl:name "has top concept"@en;
+    shacl:path skos:hasTopConcept
+  ], [
+    shacl:datatype rdfs:Literal;
+    shacl:description "Name of the Theme Taxonomy."@en;
+    shacl:name "label"@en;
+    shacl:path rdfs:label
+  ];
+  shacl:targetClass skos:ConceptScheme .
+
+<https://semiceu.github.io//shacl/adms-ap-SHACL_en#ConceptShape> a shacl:NodeShape;
+  shacl:closed false;
+  shacl:property [
+    shacl:class skos:ConceptScheme;
+    shacl:description "Concept scheme in which the Status, Theme, Asset Type, Interoperability Level or Representation Technique are included."@en;
+    shacl:name "in scheme"@en;
+    shacl:path skos:inScheme
+  ], [
+    shacl:datatype rdfs:Literal;
+    shacl:description "Label for the Status, Theme, Asset Type, Interoperability Level or Representation Technique."@en;
+    shacl:name "label"@en;
+    shacl:path skos:label
+  ];
+  shacl:targetClass skos:Concept .
+
+<https://semiceu.github.io//shacl/adms-ap-SHACL_en#DatasetShape> a shacl:NodeShape;
+  shacl:closed false;
+  shacl:property [
+    shacl:datatype rdfs:Literal;
+    shacl:description "Alternative name for the Asset."@en;
+    shacl:name "alternative name"@en;
+    shacl:path skos:altLabel
+  ], [
+    shacl:class vcard:Kind;
+    shacl:description "Contact point for further information about the Asset, where errors can be reported or suggestions can be made."@en;
+    shacl:minCount 1;
+    shacl:name "contact point"@en;
+    shacl:path dcat:contactPoint
+  ], [
+    shacl:datatype rdfs:Literal;
+    shacl:description "Descriptive text for the Asset."@en;
+    shacl:minCount 1;
+    shacl:name "description"@en;
+    shacl:path dc:description
+  ], [
+    shacl:class dcat:Distribution;
+    shacl:description """Implementation of the Asset in a particular format."""@en;
+    shacl:name "distribution"@en;
+    shacl:path dcat:distribution
+  ], [
+    shacl:class dcat:Dataset;
+    shacl:name "has version"@en;
+    shacl:path dc:hasVersion
+  ], [
+    shacl:datatype rdfs:Literal;
+    shacl:description """Main identifier for the Asset, e.g. the URI or other unique identifier in the context of the Repository."""@en;
+    shacl:name "identifier"@en;
+    shacl:path dc:identifier
+  ], [
+    shacl:class dcat:Dataset;
+    shacl:description """An Asset that is contained in the Asset being described."""@en;
+    shacl:name "included asset"@en;
+    shacl:path <http://www.w3.org/ns/adms#includedAsset>
+  ], [
+    shacl:class dcat:Dataset;
+    shacl:description "An Asset that is the solution of which this Asset is a release."@en;
+    shacl:maxCount 1;
+    shacl:name "is version of"@en;
+    shacl:path dc:isVersionOf
+  ], [
+    shacl:datatype rdfs:Literal;
+    shacl:description "Date of formal issuance of this version of the Asset."@en;
+    shacl:maxCount 1;
+    shacl:name "issued"@en;
+    shacl:path dc:issued
+  ], [
+    shacl:datatype rdfs:Literal;
+    shacl:description "Word of phrase to describe the Asset."@en;
+    shacl:name "keyword"@en;
+    shacl:path dcat:keyword
+  ], [
+    shacl:class foaf:Document;
+    shacl:description "Web page that provides access to the asset, its releases, distributions and/or additional information."@en;
+    shacl:maxCount 1;
+    shacl:name "landing page"@en;
+    shacl:path dcat:landingPage
+  ], [
+    shacl:class dc:LinguisticSystem;
+    shacl:description "Language of the Asset, or language supported by software, using a controlled vocabulary."@en;
+    shacl:name "language"@en;
+    shacl:path dc:language
+  ], [
+    shacl:datatype rdfs:Literal;
+    shacl:description "Date of latest update of Asset."@en;
+    shacl:maxCount 1;
+    shacl:name "modified"@en;
+    shacl:path dc:modified
+  ], [
+    shacl:class foaf:Document;
+    shacl:description "Documentation that contains information related to the asset."@en;
+    shacl:name "page"@en;
+    shacl:path foaf:page
+  ], [
+    shacl:class foaf:Agent;
+    shacl:description "Organisation making the Asset available."@en;
+    shacl:minCount 1;
+    shacl:name "publisher"@en;
+    shacl:path dc:publisher
+  ], [
+    shacl:class rdfs:Resource;
+    shacl:description "Related resource, in particular a related asset."@en;
+    shacl:name "relation"@en;
+    shacl:path dc:relation
+  ], [
+    shacl:class dc:Location;
+    shacl:description "Geographic region or jurisdiction to which the Asset applies, using a controlled vocabulary."@en;
+    shacl:name "spatial"@en;
+    shacl:path dc:spatial
+  ], [
+    shacl:class skos:Concept;
+    shacl:description "Status of the Asset in the context of a particular workflow process, using a controlled vocabulary."@en;
+    shacl:maxCount 1;
+    shacl:name "status"@en;
+    shacl:path <http://www.w3.org/ns/adms#status>
+  ], [
+    shacl:class skos:Concept;
+    shacl:description "Theme or sector to which the Asset applies, using a controlled vocabulary."@en;
+    shacl:name "theme"@en;
+    shacl:path dcat:theme
+  ], [
+    shacl:datatype rdfs:Literal;
+    shacl:description "Name of the Asset."@en;
+    shacl:minCount 1;
+    shacl:name "title"@en;
+    shacl:path dc:title
+  ], [
+    shacl:class dcat:Dataset;
+    shacl:description "Translation of the Asset."@en;
+    shacl:name "translation"@en;
+    shacl:path <http://www.w3.org/ns/adms#translation>
+  ], [
+    shacl:class skos:Concept;
+    shacl:description "Type of the Asset, using a controlled vocabulary."@en;
+    shacl:minCount 1;
+    shacl:name "type"@en;
+    shacl:path dc:type
+  ], [
+    shacl:datatype rdfs:Literal;
+    shacl:description "Version number or other designation of the Asset."@en;
+    shacl:maxCount 1;
+    shacl:name "version info"@en;
+    shacl:path owl:versionInfo
+  ], [
+    shacl:datatype rdfs:Literal;
+    shacl:description "Description of changes between this version and the previous version of the Asset."@en;
+    shacl:maxCount 1;
+    shacl:name "version notes"@en;
+    shacl:path <http://www.w3.org/ns/adms#versionNotes>
+  ];
+  shacl:targetClass dcat:Dataset .
+
+<https://semiceu.github.io//shacl/adms-ap-SHACL_en#DistributionShape> a shacl:NodeShape;
+  shacl:closed false;
+  shacl:property [
+    shacl:class rdfs:Resource;
+    shacl:description "URL of the Distribution"@en;
+    shacl:minCount 1;
+    shacl:name "access URL"@en;
+    shacl:path dcat:accessURL
+  ], [
+    shacl:class <http://spdx.org/rdf/terms#Checksum>;
+    shacl:description "Checksum of the distribution."@en;
+    shacl:maxCount 1;
+    shacl:name "checksum"@en;
+    shacl:path <http://spdx.org/rdf/terms#checksum>
+  ], [
+    shacl:datatype rdfs:Literal;
+    shacl:description "Descriptive text for the Distribution."@en;
+    shacl:name "description"@en;
+    shacl:path dc:description
+  ], [
+    shacl:datatype rdfs:Literal;
+    shacl:description "Size of the file of the distribution."@en;
+    shacl:maxCount 1;
+    shacl:name "file size"@en;
+    shacl:path schema:fileSize
+  ], [
+    shacl:class dc:MediaTypeOrExtent;
+    shacl:description """Media type of the Distribution, using a 
+controlled vocabulary."""@en;
+    shacl:maxCount 1;
+    shacl:name "format"@en;
+    shacl:path dc:format
+  ], [
+    shacl:datatype rdfs:Literal;
+    shacl:description "";
+    shacl:path dcat:ignoreAttribute
+  ], [
+    shacl:datatype rdfs:Literal;
+    shacl:description "Date of formal issuance of the Distribution."@en;
+    shacl:maxCount 1;
+    shacl:name "issued"@en;
+    shacl:path dc:issued
+  ], [
+    shacl:class dc:LicenseDocument;
+    shacl:description "Conditions or restrictions for (re)use of the Distribution."@en;
+    shacl:maxCount 1;
+    shacl:minCount 1;
+    shacl:name "license"@en;
+    shacl:path dc:license
+  ], [
+    shacl:datatype rdfs:Literal;
+    shacl:description "Date of latest update of the Distribution."@en;
+    shacl:maxCount 1;
+    shacl:name "modified"@en;
+    shacl:path dc:modified
+  ], [
+    shacl:class foaf:Agent;
+    shacl:description "Organisation making the Distribution available."@en;
+    shacl:name "publisher"@en;
+    shacl:path dc:publisher
+  ], [
+    shacl:class skos:Concept;
+    shacl:description "Status of the Distribution in the context of a particular workflow process, using a controlled vocabulary"@en;
+    shacl:maxCount 1;
+    shacl:name "status"@en;
+    shacl:path <http://www.w3.org/ns/adms#status>
+  ], [
+    shacl:datatype rdfs:Literal;
+    shacl:description "Name of the Distribution. "@en;
+    shacl:name "title"@en;
+    shacl:path dc:title
+  ];
+  shacl:targetClass dcat:Distribution .
+
+<https://semiceu.github.io//shacl/adms-ap-SHACL_en#DocumentShape> a shacl:NodeShape;
+  shacl:closed false;
+  shacl:targetClass foaf:Document .
+
+<https://semiceu.github.io//shacl/adms-ap-SHACL_en#KindShape> a shacl:NodeShape;
+  shacl:closed false;
+  shacl:property [
+    shacl:datatype rdfs:Literal;
+    shacl:description "Full name of the contact."@en;
+    shacl:minCount 1;
+    shacl:name "full name"@en;
+    shacl:path vcard:fn
+  ], [
+    shacl:class vcard:Address;
+    shacl:description "Full address of the contact."@en;
+    shacl:name "has address"@en;
+    shacl:path vcard:hasAddress
+  ], [
+    shacl:class vcard:Email;
+    shacl:description "E-mail address where comments and question for an Asset or Repository can be sent."@en;
+    shacl:minCount 1;
+    shacl:name "has email"@en;
+    shacl:path vcard:hasEmail
+  ], [
+    shacl:datatype rdfs:Literal;
+    shacl:description "Telephone number of the contact."@en;
+    shacl:name "has telephone"@en;
+    shacl:path vcard:hasTelephone
+  ], [
+    shacl:datatype rdfs:Literal;
+    shacl:description "Webpage of the contact."@en;
+    shacl:name "has URL"@en;
+    shacl:path vcard:hasURL
+  ];
+  shacl:targetClass vcard:Kind .
+
+<https://semiceu.github.io//shacl/adms-ap-SHACL_en#LicenseDocumentShape> a shacl:NodeShape;
+  shacl:closed false;
+  shacl:property [
+    shacl:datatype rdfs:Literal;
+    shacl:description "Description of the Licence."@en;
+    shacl:name "description"@en;
+    shacl:path dc:description
+  ], [
+    shacl:datatype rdfs:Literal;
+    shacl:description "Label for the Licence."@en;
+    shacl:name "label"@en;
+    shacl:path rdfs:label
+  ], [
+    shacl:class skos:Concept;
+    shacl:description "Type of the licence, using a controlled vocabulary."@en;
+    shacl:maxCount 1;
+    shacl:minCount 1;
+    shacl:name "type"@en;
+    shacl:path dc:type
+  ];
+  shacl:targetClass dc:LicenseDocument .
+
+<https://semiceu.github.io//shacl/adms-ap-SHACL_en#LinguisticSystemShape> a shacl:NodeShape;
+  shacl:closed false;
+  shacl:property [
+    shacl:datatype rdfs:Literal;
+    shacl:description "Name of the Language."@en;
+    shacl:name "label"@en;
+    shacl:path rdfs:label
+  ];
+  shacl:targetClass dc:LinguisticSystem .
+
+<https://semiceu.github.io//shacl/adms-ap-SHACL_en#LocationShape> a shacl:NodeShape;
+  shacl:closed false;
+  shacl:property [
+    shacl:datatype rdfs:Literal;
+    shacl:description "Name of the Location."@en;
+    shacl:name "label"@en;
+    shacl:path rdfs:label
+  ];
+  shacl:targetClass dc:Location .
+
+<https://semiceu.github.io//shacl/adms-ap-SHACL_en#MediaTypeOrExtentShape> a shacl:NodeShape;
+  shacl:closed false;
+  shacl:property [
+    shacl:datatype rdfs:Literal;
+    shacl:description "Label for the File Format."@en;
+    shacl:name "label"@en;
+    shacl:path rdfs:label
+  ];
+  shacl:targetClass dc:MediaTypeOrExtent .
