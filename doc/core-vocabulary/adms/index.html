@@ -38,6 +38,14 @@
                 iFrameID.height = iFrameID.contentWindow.document.body.scrollHeight + "px";
           }   
       }
+      function iframeLoadedById(myid) {
+         var iFrameID = document.getElementById(myid);
+          if(iFrameID) {
+                // here you can make the height, I delete it first, then I make it again
+                iFrameID.height = "";
+                iFrameID.height = iFrameID.contentWindow.document.body.scrollHeight + "px";
+          }   
+      }
   </script> 
 
   <div style="min-height:44px;;" id="duet-header" class="header">
@@ -65,7 +73,10 @@
               <dl>
               <dt>Status</dt><dd>Working Draft</dd>
               <dt>Published at</dt><dd>2022-09-27</dd>
-              <dt>This version</dt><dd><a href="https://semiceu.github.io/CPSV-AP/releases/3.1.0">https://semiceu.github.io/CPSV-AP/releases/3.1.0</a></dd>
+              <dt>This version</dt><dd>
+               
+              
+              </dd>
               
               
               </dl>
@@ -109,8 +120,11 @@
 
               <div class="head" role="metainfo" id="metainfo">
               <dl>
-              <dt>Source</dt><dd><a href="https://github.com/SEMICeu/CPSV-AP/tree/3.1.0/releases/3.1.0">https://github.com/SEMICeu/CPSV-AP/tree/3.1.0/releases/3.1.0</a></dd>
-              <!--<dt>Changelog</dt><dd><a href="git@uri.semic.eu-thema:SEMICeu/uri.semic.eu-thema.git/blob/a439612aa8ebc64786ba9cc80c81b976b4ee2087/CHANGELOG">git@uri.semic.eu-thema:SEMICeu/uri.semic.eu-thema.git/blob/a439612aa8ebc64786ba9cc80c81b976b4ee2087/CHANGELOG</a></dd>-->
+              <dt>Source</dt><dd>
+			   
+              
+			  </dd>
+              <!--<dt>Changelog</dt><dd><a href="git@uri.semic.eu-thema:SEMICeu/uri.semic.eu-thema.git/blob/a083767d8c4bfe11a505bc337383954e51c0326e/CHANGELOG">git@uri.semic.eu-thema:SEMICeu/uri.semic.eu-thema.git/blob/a083767d8c4bfe11a505bc337383954e51c0326e/CHANGELOG</a></dd>-->
               <dt>Feedback</dt><dd><a href="https://github.com/SEMICeu/ADMS/issues">https://github.com/SEMICeu/ADMS/issues</a></dd>
               <!--<dt>Registry of standards</dt><dd><a href="ADMS">ADMS</a></dd>-->
 
@@ -139,10 +153,28 @@
                 -->
                 
 <p>
-	This application profile aimed to extend the use of ADMS, originally 
-    envisaged for the description of semantic interoperability assets, to also support 
-    description of other types of interoperability solutions, covering the political, legal, 
-    organisational and technical interoperability layers defined by the European Interoperability Framework.
+	Locations can be described in three principal ways: by using a place name, a geometry or an
+    address. The specific context will determine which method of describing a location is most
+    appropriate. The Core Location Vocabulary provides structure for all three.
+</p>
+<p>
+    ISO 19112 defines a location as "an identifiable geographic place." With this in mind, "Eiffel
+    Tower", "Madrid" and "California" are all locations and this is a common way of representing
+    locations in public sector data, i.e. simply by using a recognised name. Such identifiers are
+    common although they can be highly ambiguous as many places share the same or similar names.
+</p>
+<p>
+    In addition to a simple (string) label or name for a Location, this vocabulary defines a property
+    that allows a Location to be defined by a URI, such as a GeoNames or DBpedia URI.
+</p>
+<p>
+    No cardinality constraints are placed on any property of the Location, Address or Geometry
+    classes in order to maximise flexibility. A single address may be defined in different ways, a
+    geometry may be defined using different coordinate reference systems and a single place may
+    have no recognised name or multiple names. The Core Location Vocabulary makes a minimum
+    number of assumptions about what data will be encoded. However, it clearly makes no sense to
+    define any of the location classes without any properties or to provide multiple instances of the
+    same property with conflicting values.
 </p>
 
             </div>
@@ -152,26 +184,26 @@
                 <h2 class="h2" aria-level="1" role="heading" id="h2_sotd">Status of this document</h2>
                 
                 <p>
-                  This specification has the status of SEMIC Recommendation published on 2022-09-27.
+                  This Core Vocabulary has the status of Semic Recommendation published on 2022-09-27.
 	        </p>
                 
               </section>
             </div>
-			<!--
-            <div class="region region--no-space-top typography" id="license">
+
+            <!--<div class="region region--no-space-top typography" id="license">
               <h2 class="h2">License</h2>
               
 <p>This specification of <a href=”https://joinup.ec.europa.eu/collection/semantic-interoperability-community-semic”>SEMIC</a> is published under “<a href=”https://joinup.ec.europa.eu/licence/isa-open-metadata-licence-v11”ISA Open Metadata Licence 1.1</a>”.</p>
 
             </div>
-	   
+	    
             <div class="region region--no-space-top typography" id="conformance">
               <h2 class="h2" id="conformance" aria-level="1" role="heading">Conformance</h2>
               
               <p>TBD</p>
               
             </div>
-			-->
+		-->
             <div class="region region--no-space-top" id="overview">
               <h2 class="h2">Overview</h2>
               <div class="grid">
@@ -215,7 +247,7 @@
               <h3 class="h3" id="Agent"><a href="http://xmlns.com/foaf/0.1/Agent" data-toggle="tooltip" data-content="http://xmlns.com/foaf/0.1/Agent" data-placement="right">Agent</a></h3>
                 <div class="region region--no-space-top">
                   <dl>
-                    <dt>Definition</dt><dd>Entity that is able to carry out action</dd>
+                    <dt>Description</dt><dd>Entity that is able to carry out action</dd>
                     
                     <dt>Usage</dt><dd>In compliance with the description from FOAF, an Agent is considered as any entity that is able to carry out actions. The Agent class acts as a generic element which can be further specified by implementers for their usages, for example by defining the Person class from the Core Person Vocabulary or Organization from W3C's Organization Ontology as subclasses of Agent. This Person or Organization can then issue a certain Requirement or be concerned by an Evidence provided.</dd>
                     
@@ -236,8 +268,7 @@
                       <tr class="data-table__header">
                         <th class="data-table__header-title--sortable data-table__header-title--sortable-active">Property</th>
                         <th class="data-table__header-title--sortable">Expected Range</th>
-			<th class="data-table__header-title--sortable">Cardinality</th>
-                        <th class="data-table__header-title--sortable">Definition</th>
+                        <th class="data-table__header-title--sortable">Description</th>
                         <th class="data-table__header-title--sortable">Usage</th>
                         <th class="data-table__header-title--sortable">Codelist</th>
                       </tr>
@@ -259,7 +290,6 @@
                             
                           
                         </td>
-			<td>0..*</td>
                         <td property="rdfs:comment">The unambiguous structured reference for the Agent.</td>
                         <td property="skos:scopeNote"></td>
                         <td></td>
@@ -279,7 +309,6 @@
                             
                           
                         </td>
-			<td>0..*</td>
                         <td property="rdfs:comment">The noun given to the Agent.</td>
                         <td property="skos:scopeNote"></td>
                         <td></td>
@@ -299,7 +328,6 @@
 			    
                           
                         </td>
-			<td>0..*</td>
                         <td property="rdfs:comment">This property is used to point to the specific type of publisher.</td>
                         <td property="skos:scopeNote">The type should be provided using a controlled vocabulary encoded as a SKOS Concept.</td>
                         <td></td>
@@ -315,7 +343,7 @@
               <h3 class="h3" id="Asset"><a href="http://www.w3.org/ns/adms#Asset" data-toggle="tooltip" data-content="http://www.w3.org/ns/adms#Asset" data-placement="right">Asset</a></h3>
                 <div class="region region--no-space-top">
                   <dl>
-                    <dt>Definition</dt><dd>An abstract entity that reflects the intellectual content of the asset and represents those characteristics of the asset that are independent of its physical embodiment. This abstract entity combines the FRBR entities work (a distinct intellectual or artistic creation) and expression (the intellectual or artistic realization of a work).</dd>
+                    <dt>Description</dt><dd>An abstract entity that reflects the intellectual content of the asset and represents those characteristics of the asset that are independent of its physical embodiment. This abstract entity combines the FRBR entities work (a distinct intellectual or artistic creation) and expression (the intellectual or artistic realization of a work).</dd>
                     
                     <dt>Usage</dt><dd>Assets can be versioned. Every time the intellectual content of an asset changes, the result is considered to be a new asset that can be linked to previous and next versions of the Asset.
 <br/><br/>
@@ -364,8 +392,7 @@ The physical embodiment of an Asset is called an Asset Distribution. A particula
                       <tr class="data-table__header">
                         <th class="data-table__header-title--sortable data-table__header-title--sortable-active">Property</th>
                         <th class="data-table__header-title--sortable">Expected Range</th>
-			<th class="data-table__header-title--sortable">Cardinality</th>
-                        <th class="data-table__header-title--sortable">Definition</th>
+                        <th class="data-table__header-title--sortable">Description</th>
                         <th class="data-table__header-title--sortable">Usage</th>
                         <th class="data-table__header-title--sortable">Codelist</th>
                       </tr>
@@ -387,7 +414,6 @@ The physical embodiment of an Asset is called an Asset Distribution. A particula
                             
                           
                         </td>
-			<td>0..*</td>
                         <td property="rdfs:comment">An alternative name for the Asset.</td>
                         <td property="skos:scopeNote"></td>
                         <td></td>
@@ -407,7 +433,6 @@ The physical embodiment of an Asset is called an Asset Distribution. A particula
 			    
                           
                         </td>
-			<td>0..*</td>
                         <td property="rdfs:comment">Links an asset to a contact point from where further information about an Asset can be obtained.</td>
                         <td property="skos:scopeNote"></td>
                         <td></td>
@@ -427,7 +452,6 @@ The physical embodiment of an Asset is called an Asset Distribution. A particula
 			    
                           
                         </td>
-			<td>0..*</td>
                         <td property="rdfs:comment">The main documentation or specification of the Asset.</td>
                         <td property="skos:scopeNote">See also dcat:landingPage , foaf:page.</td>
                         <td></td>
@@ -447,7 +471,6 @@ The physical embodiment of an Asset is called an Asset Distribution. A particula
                             
                           
                         </td>
-			<td>0..*</td>
                         <td property="rdfs:comment">A description of the Asset.</td>
                         <td property="skos:scopeNote"></td>
                         <td></td>
@@ -467,7 +490,6 @@ The physical embodiment of an Asset is called an Asset Distribution. A particula
 			    
                           
                         </td>
-			<td>0..*</td>
                         <td property="rdfs:comment">Links an Asset to an implementation in a particular format.</td>
                         <td property="skos:scopeNote"></td>
                         <td></td>
@@ -487,7 +509,6 @@ The physical embodiment of an Asset is called an Asset Distribution. A particula
 			    
                           
                         </td>
-			<td>0..*</td>
                         <td property="rdfs:comment">Links a resource to an adms:Identifier class.</td>
                         <td property="skos:scopeNote"></td>
                         <td></td>
@@ -507,7 +528,6 @@ The physical embodiment of an Asset is called an Asset Distribution. A particula
 			    
                           
                         </td>
-			<td>0..*</td>
                         <td property="rdfs:comment">An Asset that is contained in the Asset being described, e.g. when there are several vocabularies defined in a single document.</td>
                         <td property="skos:scopeNote"></td>
                         <td></td>
@@ -527,7 +547,6 @@ The physical embodiment of an Asset is called an Asset Distribution. A particula
 			    
                           
                         </td>
-			<td>0..*</td>
                         <td property="rdfs:comment">The interoperability level for which the Asset is relevant.</td>
                         <td property="skos:scopeNote"></td>
                         <td></td>
@@ -547,7 +566,6 @@ The physical embodiment of an Asset is called an Asset Distribution. A particula
                             
                           
                         </td>
-			<td>0..*</td>
                         <td property="rdfs:comment">Date of formal issuance (e.g., publication) of the Asset.</td>
                         <td property="skos:scopeNote"></td>
                         <td></td>
@@ -567,7 +585,6 @@ The physical embodiment of an Asset is called an Asset Distribution. A particula
                             
                           
                         </td>
-			<td>0..*</td>
                         <td property="rdfs:comment">A word, phrase or tag to describe the Asset.</td>
                         <td property="skos:scopeNote"></td>
                         <td></td>
@@ -587,7 +604,6 @@ The physical embodiment of an Asset is called an Asset Distribution. A particula
 			    
                           
                         </td>
-			<td>0..*</td>
                         <td property="rdfs:comment">A Web page that can be navigated to in a Web browser to gain access to the Asset, its distributions and/or additional information.</td>
                         <td property="skos:scopeNote">If the Asset Distribution(s) are accessible only through a landing page (i.e. direct download URLs are not known), then the landing page link should be duplicated as accessURL on a distribution.</td>
                         <td></td>
@@ -607,7 +623,6 @@ The physical embodiment of an Asset is called an Asset Distribution. A particula
                             
                           
                         </td>
-			<td>0..*</td>
                         <td property="rdfs:comment">The language of the Asset.</td>
                         <td property="skos:scopeNote"></td>
                         <td></td>
@@ -627,7 +642,6 @@ The physical embodiment of an Asset is called an Asset Distribution. A particula
 			    
                           
                         </td>
-			<td>0..*</td>
                         <td property="rdfs:comment">A link to the current or latest version of the Asset.</td>
                         <td property="skos:scopeNote"></td>
                         <td></td>
@@ -647,7 +661,6 @@ The physical embodiment of an Asset is called an Asset Distribution. A particula
                             
                           
                         </td>
-			<td>0..*</td>
                         <td property="rdfs:comment">Date of the latest update of the Asset.</td>
                         <td property="skos:scopeNote"></td>
                         <td></td>
@@ -667,7 +680,6 @@ The physical embodiment of an Asset is called an Asset Distribution. A particula
 			    
                           
                         </td>
-			<td>0..*</td>
                         <td property="rdfs:comment">A link to the next version of the Asset.</td>
                         <td property="skos:scopeNote"></td>
                         <td></td>
@@ -687,7 +699,6 @@ The physical embodiment of an Asset is called an Asset Distribution. A particula
 			    
                           
                         </td>
-			<td>0..*</td>
                         <td property="rdfs:comment">Links to documentation that contains information related to the Asset.</td>
                         <td property="skos:scopeNote">See also dcat:landingPage , wdrs:describedby.</td>
                         <td></td>
@@ -707,7 +718,6 @@ The physical embodiment of an Asset is called an Asset Distribution. A particula
 			    
                           
                         </td>
-			<td>0..*</td>
                         <td property="rdfs:comment">A link to the previous version of the Asset.</td>
                         <td property="skos:scopeNote"></td>
                         <td></td>
@@ -727,7 +737,6 @@ The physical embodiment of an Asset is called an Asset Distribution. A particula
 			    
                           
                         </td>
-			<td>0..*</td>
                         <td property="rdfs:comment">inks an Asset to the publishing foaf:Agent.</td>
                         <td property="skos:scopeNote"></td>
                         <td></td>
@@ -747,7 +756,6 @@ The physical embodiment of an Asset is called an Asset Distribution. A particula
 			    
                           
                         </td>
-			<td>0..*</td>
                         <td property="rdfs:comment">A link between two Assets that are related in some (unspecified) way.</td>
                         <td property="skos:scopeNote"></td>
                         <td></td>
@@ -767,7 +775,6 @@ The physical embodiment of an Asset is called an Asset Distribution. A particula
 			    
                           
                         </td>
-			<td>0..*</td>
                         <td property="rdfs:comment">Links to a sample of an Asset (which is itself an Asset).</td>
                         <td property="skos:scopeNote"></td>
                         <td></td>
@@ -787,7 +794,6 @@ The physical embodiment of an Asset is called an Asset Distribution. A particula
 			    
                           
                         </td>
-			<td>0..*</td>
                         <td property="rdfs:comment">The geographic region to which the Asset Repository applies.</td>
                         <td property="skos:scopeNote"></td>
                         <td></td>
@@ -807,7 +813,6 @@ The physical embodiment of an Asset is called an Asset Distribution. A particula
 			    
                           
                         </td>
-			<td>0..*</td>
                         <td property="rdfs:comment">The status of the Asset in the context of a particular workflow process.</td>
                         <td property="skos:scopeNote"></td>
                         <td></td>
@@ -827,7 +832,6 @@ The physical embodiment of an Asset is called an Asset Distribution. A particula
 			    
                           
                         </td>
-			<td>0..*</td>
                         <td property="rdfs:comment">The time period to which the Asset applies, e.g. its validity.</td>
                         <td property="skos:scopeNote"></td>
                         <td></td>
@@ -847,7 +851,6 @@ The physical embodiment of an Asset is called an Asset Distribution. A particula
 			    
                           
                         </td>
-			<td>0..*</td>
                         <td property="rdfs:comment">The theme or sector to which the Asset applies.</td>
                         <td property="skos:scopeNote"></td>
                         <td></td>
@@ -867,7 +870,6 @@ The physical embodiment of an Asset is called an Asset Distribution. A particula
                             
                           
                         </td>
-			<td>0..*</td>
                         <td property="rdfs:comment">A name given to the Asset.</td>
                         <td property="skos:scopeNote"></td>
                         <td></td>
@@ -887,7 +889,6 @@ The physical embodiment of an Asset is called an Asset Distribution. A particula
 			    
                           
                         </td>
-			<td>0..*</td>
                         <td property="rdfs:comment">Links Assets that are translations of each other.</td>
                         <td property="skos:scopeNote"></td>
                         <td></td>
@@ -907,7 +908,6 @@ The physical embodiment of an Asset is called an Asset Distribution. A particula
 			    
                           
                         </td>
-			<td>0..*</td>
                         <td property="rdfs:comment">This property is used to point to the specific type of Asset.</td>
                         <td property="skos:scopeNote">The type should be provided using a controlled vocabulary encoded as a SKOS Concept.</td>
                         <td></td>
@@ -927,7 +927,6 @@ The physical embodiment of an Asset is called an Asset Distribution. A particula
                             
                           
                         </td>
-			<td>0..*</td>
                         <td property="rdfs:comment">A version number or other designation of the Asset.</td>
                         <td property="skos:scopeNote"></td>
                         <td></td>
@@ -947,7 +946,6 @@ The physical embodiment of an Asset is called an Asset Distribution. A particula
                             
                           
                         </td>
-			<td>0..*</td>
                         <td property="rdfs:comment">A description of changes between this version and the previous version of the Asset.</td>
                         <td property="skos:scopeNote"></td>
                         <td></td>
@@ -963,7 +961,7 @@ The physical embodiment of an Asset is called an Asset Distribution. A particula
               <h3 class="h3" id="Asset Distribution"><a href="http://www.w3.org/ns/adms#AssetDistribution" data-toggle="tooltip" data-content="http://www.w3.org/ns/adms#AssetDistribution" data-placement="right">Asset Distribution</a></h3>
                 <div class="region region--no-space-top">
                   <dl>
-                    <dt>Definition</dt><dd>A particular physical embodiment of an Asset, which is an example of the FRBR entity manifestation (the physical embodiment of an expression of a work).</dd>
+                    <dt>Description</dt><dd>A particular physical embodiment of an Asset, which is an example of the FRBR entity manifestation (the physical embodiment of an expression of a work).</dd>
                     
                     <dt>Usage</dt><dd>A Distribution is typically a downloadable computer file (but in principle it could also be a paper document or API response) that implements the intellectual content of an Asset.
 <br/><br/>
@@ -997,8 +995,7 @@ Distributions themselves are not versioned. If Distribution 1A is the manifestat
                       <tr class="data-table__header">
                         <th class="data-table__header-title--sortable data-table__header-title--sortable-active">Property</th>
                         <th class="data-table__header-title--sortable">Expected Range</th>
-			<th class="data-table__header-title--sortable">Cardinality</th>
-                        <th class="data-table__header-title--sortable">Definition</th>
+                        <th class="data-table__header-title--sortable">Description</th>
                         <th class="data-table__header-title--sortable">Usage</th>
                         <th class="data-table__header-title--sortable">Codelist</th>
                       </tr>
@@ -1020,7 +1017,6 @@ Distributions themselves are not versioned. If Distribution 1A is the manifestat
                             
                           
                         </td>
-			<td>0..*</td>
                         <td property="rdfs:comment">Any kind of URL that gives access to an Asset Repository or Asset Distribution, e.g. a landing page, download, feed URL, SPARQL endpoint etc.</td>
                         <td property="skos:scopeNote"> Use dcat:accessURL when you do not have information on which it is or when it is definitely not a download.
 
@@ -1043,7 +1039,6 @@ Distributions themselves are not versioned. If Distribution 1A is the manifestat
                             
                           
                         </td>
-			<td>0..*</td>
                         <td property="rdfs:comment">A description of the Asset Distribution.</td>
                         <td property="skos:scopeNote"></td>
                         <td></td>
@@ -1063,7 +1058,6 @@ Distributions themselves are not versioned. If Distribution 1A is the manifestat
                             
                           
                         </td>
-			<td>0..*</td>
                         <td property="rdfs:comment">This is a direct link from an Asset Distribution to a downloadable file in a given format, e.g. CSV file or RDF file. The format is described by the distribution&#39;s dcterms:format and/or dcat:mediaType.</td>
                         <td property="skos:scopeNote"></td>
                         <td></td>
@@ -1083,7 +1077,6 @@ Distributions themselves are not versioned. If Distribution 1A is the manifestat
 			    
                           
                         </td>
-			<td>0..*</td>
                         <td property="rdfs:comment">The file format of the distribution.</td>
                         <td property="skos:scopeNote">dcat:mediaType should be used if the type of the distribution is defined by IANA . Suitable values for dcterms:format include URIs as used in the example . See also adms:representationTechnique .</td>
                         <td></td>
@@ -1103,7 +1096,6 @@ Distributions themselves are not versioned. If Distribution 1A is the manifestat
                             
                           
                         </td>
-			<td>0..*</td>
                         <td property="rdfs:comment">Date of formal issuance (e.g., publication) of the Asset Distribution.</td>
                         <td property="skos:scopeNote"></td>
                         <td></td>
@@ -1123,7 +1115,6 @@ Distributions themselves are not versioned. If Distribution 1A is the manifestat
 			    
                           
                         </td>
-			<td>0..*</td>
                         <td property="rdfs:comment">Links to the conditions or restrictions for (re-)use of the Asset Distribution.</td>
                         <td property="skos:scopeNote">If multiple licenses are given, these licenses apply to all files in the Asset Distribution.</td>
                         <td></td>
@@ -1143,7 +1134,6 @@ Distributions themselves are not versioned. If Distribution 1A is the manifestat
 			    
                           
                         </td>
-			<td>0..*</td>
                         <td property="rdfs:comment">The media type of the distribution as defined by IANA .</td>
                         <td property="skos:scopeNote">This property should be used when the media type of the distribution is defined in IANA , e.g. text/csv otherwise dcterms:format may be used with different values. See also adms:representationTechnique .</td>
                         <td></td>
@@ -1163,7 +1153,6 @@ Distributions themselves are not versioned. If Distribution 1A is the manifestat
                             
                           
                         </td>
-			<td>0..*</td>
                         <td property="rdfs:comment">Date of the latest update of the Asset Distribution.</td>
                         <td property="skos:scopeNote"></td>
                         <td></td>
@@ -1183,7 +1172,6 @@ Distributions themselves are not versioned. If Distribution 1A is the manifestat
 			    
                           
                         </td>
-			<td>0..*</td>
                         <td property="rdfs:comment">inks an Asset Distribution to the publishing foaf:Agent.</td>
                         <td property="skos:scopeNote"></td>
                         <td></td>
@@ -1203,7 +1191,6 @@ Distributions themselves are not versioned. If Distribution 1A is the manifestat
 			    
                           
                         </td>
-			<td>0..*</td>
                         <td property="rdfs:comment">More information about the format in which an Asset Distribution is released. This is different from the file format as, for example, a ZIP file (file format) could contain an XML schema (representation technique).</td>
                         <td property="skos:scopeNote">See also dcterms:format and dcat:mediaType .</td>
                         <td></td>
@@ -1223,7 +1210,6 @@ Distributions themselves are not versioned. If Distribution 1A is the manifestat
 			    
                           
                         </td>
-			<td>0..*</td>
                         <td property="rdfs:comment">The status of the AssetRepository in the context of a particular workflow process.</td>
                         <td property="skos:scopeNote"></td>
                         <td></td>
@@ -1243,7 +1229,6 @@ Distributions themselves are not versioned. If Distribution 1A is the manifestat
                             
                           
                         </td>
-			<td>0..*</td>
                         <td property="rdfs:comment">A name given to the Asset Distribution.</td>
                         <td property="skos:scopeNote"></td>
                         <td></td>
@@ -1259,7 +1244,7 @@ Distributions themselves are not versioned. If Distribution 1A is the manifestat
               <h3 class="h3" id="Asset Repository"><a href="http://www.w3.org/ns/adms#AssetRepository" data-toggle="tooltip" data-content="http://www.w3.org/ns/adms#AssetRepository" data-placement="right">Asset Repository</a></h3>
                 <div class="region region--no-space-top">
                   <dl>
-                    <dt>Definition</dt><dd>A system or service that provides facilities for storage and maintenance of descriptions of Assets and Asset Distributions, and functionality that allows users to search and access these descriptions. An Asset Repository will typically contain descriptions of several Assets and related Asset Distributions.</dd>
+                    <dt>Description</dt><dd>A system or service that provides facilities for storage and maintenance of descriptions of Assets and Asset Distributions, and functionality that allows users to search and access these descriptions. An Asset Repository will typically contain descriptions of several Assets and related Asset Distributions.</dd>
                     
                     <dt>Usage</dt><dd>adms:AssetRepository is a sub class of dcat:Catalog</dd>
                     
@@ -1287,8 +1272,7 @@ Distributions themselves are not versioned. If Distribution 1A is the manifestat
                       <tr class="data-table__header">
                         <th class="data-table__header-title--sortable data-table__header-title--sortable-active">Property</th>
                         <th class="data-table__header-title--sortable">Expected Range</th>
-			<th class="data-table__header-title--sortable">Cardinality</th>
-                        <th class="data-table__header-title--sortable">Definition</th>
+                        <th class="data-table__header-title--sortable">Description</th>
                         <th class="data-table__header-title--sortable">Usage</th>
                         <th class="data-table__header-title--sortable">Codelist</th>
                       </tr>
@@ -1310,7 +1294,6 @@ Distributions themselves are not versioned. If Distribution 1A is the manifestat
                             
                           
                         </td>
-			<td>0..*</td>
                         <td property="rdfs:comment">Any kind of URL that gives access to an Asset Repository or Asset Distribution, e.g. a landing page, download, feed URL, SPARQL endpoint etc. Use dcat:accessURL when you do not have information on which it is or when it is definitely not a download.</td>
                         <td property="skos:scopeNote">Use dcat:accessURL when you do not have information on which it is or when it is definitely not a download.
 
@@ -1333,7 +1316,6 @@ Distributions themselves are not versioned. If Distribution 1A is the manifestat
 			    
                           
                         </td>
-			<td>0..*</td>
                         <td property="rdfs:comment">Used to link an Asset Repository to an Asset.</td>
                         <td property="skos:scopeNote"></td>
                         <td></td>
@@ -1353,7 +1335,6 @@ Distributions themselves are not versioned. If Distribution 1A is the manifestat
                             
                           
                         </td>
-			<td>0..*</td>
                         <td property="rdfs:comment">A description of the Asset Repository.</td>
                         <td property="skos:scopeNote"></td>
                         <td></td>
@@ -1373,7 +1354,6 @@ Distributions themselves are not versioned. If Distribution 1A is the manifestat
                             
                           
                         </td>
-			<td>0..*</td>
                         <td property="rdfs:comment">Date of formal issuance (e.g., publication) of the Asset Repository.</td>
                         <td property="skos:scopeNote"></td>
                         <td></td>
@@ -1393,7 +1373,6 @@ Distributions themselves are not versioned. If Distribution 1A is the manifestat
                             
                           
                         </td>
-			<td>0..*</td>
                         <td property="rdfs:comment">Date of the latest update of the Asset Repository.</td>
                         <td property="skos:scopeNote"></td>
                         <td></td>
@@ -1413,7 +1392,6 @@ Distributions themselves are not versioned. If Distribution 1A is the manifestat
 			    
                           
                         </td>
-			<td>0..*</td>
                         <td property="rdfs:comment">inks an Asset Repository to the publishing foaf:Agent.</td>
                         <td property="skos:scopeNote"></td>
                         <td></td>
@@ -1433,7 +1411,6 @@ Distributions themselves are not versioned. If Distribution 1A is the manifestat
 			    
                           
                         </td>
-			<td>0..*</td>
                         <td property="rdfs:comment">The geographic region to which the Asset Repository applies.</td>
                         <td property="skos:scopeNote"></td>
                         <td></td>
@@ -1453,7 +1430,6 @@ Distributions themselves are not versioned. If Distribution 1A is the manifestat
 			    
                           
                         </td>
-			<td>0..*</td>
                         <td property="rdfs:comment">A schema according to which the Asset Repository can provide data about its content, e.g. ADMS.</td>
                         <td property="skos:scopeNote"></td>
                         <td></td>
@@ -1473,7 +1449,6 @@ Distributions themselves are not versioned. If Distribution 1A is the manifestat
 			    
                           
                         </td>
-			<td>0..*</td>
                         <td property="rdfs:comment">The SKOS Concept Scheme used to classify an Asset Repository&#39;s assets.</td>
                         <td property="skos:scopeNote"></td>
                         <td></td>
@@ -1493,7 +1468,6 @@ Distributions themselves are not versioned. If Distribution 1A is the manifestat
                             
                           
                         </td>
-			<td>0..*</td>
                         <td property="rdfs:comment">A name given to the Asset Repository.</td>
                         <td property="skos:scopeNote"></td>
                         <td></td>
@@ -1509,7 +1483,7 @@ Distributions themselves are not versioned. If Distribution 1A is the manifestat
               <h3 class="h3" id="Concept"><a href="http://www.w3.org/2004/02/skos/core#Concept" data-toggle="tooltip" data-content="http://www.w3.org/2004/02/skos/core#Concept" data-placement="right">Concept</a></h3>
                 <div class="region region--no-space-top">
                   <dl>
-                    <dt>Definition</dt><dd>An idea or notion; unit of thought.</dd>
+                    <dt>Description</dt><dd>An idea or notion; unit of thought.</dd>
                     
                     <dt>Usage</dt><dd>What constitutes a unit of thought is subjective, and this definition is meant to be suggestive, rather than restrictive.</dd>
                     
@@ -1528,8 +1502,7 @@ Distributions themselves are not versioned. If Distribution 1A is the manifestat
                       <tr class="data-table__header">
                         <th class="data-table__header-title--sortable data-table__header-title--sortable-active">Property</th>
                         <th class="data-table__header-title--sortable">Expected Range</th>
-			<th class="data-table__header-title--sortable">Cardinality</th>
-                        <th class="data-table__header-title--sortable">Definition</th>
+                        <th class="data-table__header-title--sortable">Description</th>
                         <th class="data-table__header-title--sortable">Usage</th>
                         <th class="data-table__header-title--sortable">Codelist</th>
                       </tr>
@@ -1551,7 +1524,6 @@ Distributions themselves are not versioned. If Distribution 1A is the manifestat
 			    
                           
                         </td>
-			<td>0..*</td>
                         <td property="rdfs:comment">The ConceptScheme to which the Concept belongs to.</td>
                         <td property="skos:scopeNote"></td>
                         <td></td>
@@ -1567,7 +1539,7 @@ Distributions themselves are not versioned. If Distribution 1A is the manifestat
               <h3 class="h3" id="Concept Scheme"><a href="http://www.w3.org/2004/02/skos/core#ConceptScheme" data-toggle="tooltip" data-content="http://www.w3.org/2004/02/skos/core#ConceptScheme" data-placement="right">Concept Scheme</a></h3>
                 <div class="region region--no-space-top">
                   <dl>
-                    <dt>Definition</dt><dd>A SKOS concept scheme can be viewed as an aggregation of one or more SKOS concepts. Semantic relationships (links) between those concepts may also be viewed as part of a concept scheme. This definition is, however, meant to be suggestive rather than restrictive, and there is some flexibility in the formal data model stated below.</dd>
+                    <dt>Description</dt><dd>A SKOS concept scheme can be viewed as an aggregation of one or more SKOS concepts. Semantic relationships (links) between those concepts may also be viewed as part of a concept scheme. This definition is, however, meant to be suggestive rather than restrictive, and there is some flexibility in the formal data model stated below.</dd>
                     
                     <dt>Usage</dt><dd>The notion of a concept scheme is useful when dealing with data from an unknown source, and when dealing with data that describes two or more different knowledge organization systems.</dd>
                     
@@ -1585,7 +1557,7 @@ Distributions themselves are not versioned. If Distribution 1A is the manifestat
               <h3 class="h3" id="Document"><a href="http://xmlns.com/foaf/0.1/Document" data-toggle="tooltip" data-content="http://xmlns.com/foaf/0.1/Document" data-placement="right">Document</a></h3>
                 <div class="region region--no-space-top">
                   <dl>
-                    <dt>Definition</dt><dd>A self-contained collection of information in a readable format.</dd>
+                    <dt>Description</dt><dd>A self-contained collection of information in a readable format.</dd>
                     
                     <dt>Usage</dt><dd>In alignment with foaf,  there is no distinction between physical and electronic documents, or between copies of a work and the abstraction those copies embody.</dd>
                     
@@ -1603,7 +1575,7 @@ Distributions themselves are not versioned. If Distribution 1A is the manifestat
               <h3 class="h3" id="File Format"><a href="http://purl.org/dc/terms/FileFormat" data-toggle="tooltip" data-content="http://purl.org/dc/terms/FileFormat" data-placement="right">File Format</a></h3>
                 <div class="region region--no-space-top">
                   <dl>
-                    <dt>Definition</dt><dd>A digital resource format.</dd>
+                    <dt>Description</dt><dd>A digital resource format.</dd>
                     
 		    
                     <dt>Properties</dt>
@@ -1619,7 +1591,7 @@ Distributions themselves are not versioned. If Distribution 1A is the manifestat
               <h3 class="h3" id="Identifier"><a href="http://www.w3.org/ns/adms#Identifier" data-toggle="tooltip" data-content="http://www.w3.org/ns/adms#Identifier" data-placement="right">Identifier</a></h3>
                 <div class="region region--no-space-top">
                   <dl>
-                    <dt>Definition</dt><dd>A structured reference that identifies an entity.</dd>
+                    <dt>Description</dt><dd>A structured reference that identifies an entity.</dd>
                     
                     <dt>Usage</dt><dd>The Identifier class is based on the UN/CEFACT class of the same name and is defined under the ADMS namespace.</dd>
                     
@@ -1643,8 +1615,7 @@ Distributions themselves are not versioned. If Distribution 1A is the manifestat
                       <tr class="data-table__header">
                         <th class="data-table__header-title--sortable data-table__header-title--sortable-active">Property</th>
                         <th class="data-table__header-title--sortable">Expected Range</th>
-			<th class="data-table__header-title--sortable">Cardinality</th>
-                        <th class="data-table__header-title--sortable">Definition</th>
+                        <th class="data-table__header-title--sortable">Description</th>
                         <th class="data-table__header-title--sortable">Usage</th>
                         <th class="data-table__header-title--sortable">Codelist</th>
                       </tr>
@@ -1666,7 +1637,6 @@ Distributions themselves are not versioned. If Distribution 1A is the manifestat
                             
                           
                         </td>
-			<td>0..*</td>
                         <td property="rdfs:comment">The date on which the Identifier was assigned.</td>
                         <td property="skos:scopeNote"></td>
                         <td></td>
@@ -1686,7 +1656,6 @@ Distributions themselves are not versioned. If Distribution 1A is the manifestat
                             
                           
                         </td>
-			<td>0..*</td>
                         <td property="rdfs:comment">The name of the agency responsible for issuing the Identifier.</td>
                         <td property="skos:scopeNote">Example: "Federal Public Service Interior"@en.</td>
                         <td></td>
@@ -1706,7 +1675,6 @@ Distributions themselves are not versioned. If Distribution 1A is the manifestat
 			    
                           
                         </td>
-			<td>0..*</td>
                         <td property="rdfs:comment">The reference in the form of a Uniform Resource Identifier to the issuing authority.</td>
                         <td property="skos:scopeNote">Example: "https://belgium.be/id/organizations/1233".</td>
                         <td></td>
@@ -1726,7 +1694,6 @@ Distributions themselves are not versioned. If Distribution 1A is the manifestat
                             
                           
                         </td>
-			<td>0..*</td>
                         <td property="rdfs:comment">A string of characters to uniquely identify a concept.</td>
                         <td property="skos:scopeNote">Example: "abc-12345-de"^^https://belgium.be/scheme/nationalIDnumber.</td>
                         <td></td>
@@ -1746,7 +1713,6 @@ Distributions themselves are not versioned. If Distribution 1A is the manifestat
                             
                           
                         </td>
-			<td>0..*</td>
                         <td property="rdfs:comment">Name of the scheme used to construct the identifier.</td>
                         <td property="skos:scopeNote"></td>
                         <td></td>
@@ -1766,7 +1732,6 @@ Distributions themselves are not versioned. If Distribution 1A is the manifestat
                             
                           
                         </td>
-			<td>0..*</td>
                         <td property="rdfs:comment">URI of the scheme used to construct the identifier.</td>
                         <td property="skos:scopeNote"></td>
                         <td></td>
@@ -1782,7 +1747,7 @@ Distributions themselves are not versioned. If Distribution 1A is the manifestat
               <h3 class="h3" id="License Document"><a href="http://purl.org/dc/terms/LicenseDocument" data-toggle="tooltip" data-content="http://purl.org/dc/terms/LicenseDocument" data-placement="right">License Document</a></h3>
                 <div class="region region--no-space-top">
                   <dl>
-                    <dt>Definition</dt><dd>A legal document giving official permission to do something with a resource.</dd>
+                    <dt>Description</dt><dd>A legal document giving official permission to do something with a resource.</dd>
                     
 		    
                     <dt>Properties</dt>
@@ -1801,8 +1766,7 @@ Distributions themselves are not versioned. If Distribution 1A is the manifestat
                       <tr class="data-table__header">
                         <th class="data-table__header-title--sortable data-table__header-title--sortable-active">Property</th>
                         <th class="data-table__header-title--sortable">Expected Range</th>
-			<th class="data-table__header-title--sortable">Cardinality</th>
-                        <th class="data-table__header-title--sortable">Definition</th>
+                        <th class="data-table__header-title--sortable">Description</th>
                         <th class="data-table__header-title--sortable">Usage</th>
                         <th class="data-table__header-title--sortable">Codelist</th>
                       </tr>
@@ -1824,7 +1788,6 @@ Distributions themselves are not versioned. If Distribution 1A is the manifestat
                             
                           
                         </td>
-			<td>0..*</td>
                         <td property="rdfs:comment">A description of the License Document.</td>
                         <td property="skos:scopeNote"></td>
                         <td></td>
@@ -1844,7 +1807,6 @@ Distributions themselves are not versioned. If Distribution 1A is the manifestat
                             
                           
                         </td>
-			<td>0..*</td>
                         <td property="rdfs:comment">A name given to the License Document.</td>
                         <td property="skos:scopeNote"></td>
                         <td></td>
@@ -1864,7 +1826,6 @@ Distributions themselves are not versioned. If Distribution 1A is the manifestat
 			    
                           
                         </td>
-			<td>0..*</td>
                         <td property="rdfs:comment">This property is used to point to the specific type of publisher, Asset and License Document.</td>
                         <td property="skos:scopeNote">The type should be provided using a controlled vocabulary encoded as a SKOS Concept.</td>
                         <td></td>
@@ -1880,7 +1841,7 @@ Distributions themselves are not versioned. If Distribution 1A is the manifestat
               <h3 class="h3" id="Location"><a href="http://purl.org/dc/terms/Location" data-toggle="tooltip" data-content="http://purl.org/dc/terms/Location" data-placement="right">Location</a></h3>
                 <div class="region region--no-space-top">
                   <dl>
-                    <dt>Definition</dt><dd>An identifiable geographic place or named place.</dd>
+                    <dt>Description</dt><dd>An identifiable geographic place or named place.</dd>
                     
 		    
                     <dt>Properties</dt>
@@ -1898,8 +1859,7 @@ Distributions themselves are not versioned. If Distribution 1A is the manifestat
                       <tr class="data-table__header">
                         <th class="data-table__header-title--sortable data-table__header-title--sortable-active">Property</th>
                         <th class="data-table__header-title--sortable">Expected Range</th>
-			<th class="data-table__header-title--sortable">Cardinality</th>
-                        <th class="data-table__header-title--sortable">Definition</th>
+                        <th class="data-table__header-title--sortable">Description</th>
                         <th class="data-table__header-title--sortable">Usage</th>
                         <th class="data-table__header-title--sortable">Codelist</th>
                       </tr>
@@ -1921,7 +1881,6 @@ Distributions themselves are not versioned. If Distribution 1A is the manifestat
                             
                           
                         </td>
-			<td>0..*</td>
                         <td property="rdfs:comment">A reference in the form of a Uniform Resource Identifier to the Location.</td>
                         <td property="skos:scopeNote">GeoNames.org provides stable, widely recognised identifiers for more than 10 million geographical names that can be used as links to further information. For example, http://sws.geonames.org/593116/ identifies the Lithuanian capital Vilnius. Unfortunately these URIs cannot easily be automatically deduced since the URI scheme uses simple numeric codes. Finding a GeoNames identifier for a Location is almost always a manual process. Where such identifiers are known or can be found, however, it is recommended that they be used.
 Where the Location Class is used to identify a country, if the geonames URI is not known, the recommendation is to use DBpedia URIs of the form http://dbpedia.org/resource/ISO\_3166-1:XX where XX is the ISO 3166 two character code for the country.
@@ -1947,7 +1906,6 @@ even when the geographic name is given as EL or UK.</td>
                             
                           
                         </td>
-			<td>0..*</td>
                         <td property="rdfs:comment">A textual description for a Location.</td>
                         <td property="skos:scopeNote">The <a href="https://inspire.ec.europa.eu/Themes/132/2892">INSPIRE Data Specification on Geographical Names</a> provides a detailed model for describing a 'named place', including methods for providing multiple names in multiple scripts. INSPIRE's definition is the following: Names of areas, regions, localities, cities, suburbs, towns or settlements, or any geographical or topographical feature of public or historical interest. This is beyond what is necessary for the Core Location Vocabulary but, importantly, the concept of a geographic name used here is consistent.
 <br/><br/>
@@ -1974,7 +1932,7 @@ Where a country has changed its name or no longer exists (such as Czechoslovakia
               <h3 class="h3" id="Period of Time"><a href="http://purl.org/dc/terms/PeriodOfTime" data-toggle="tooltip" data-content="http://purl.org/dc/terms/PeriodOfTime" data-placement="right">Period of Time</a></h3>
                 <div class="region region--no-space-top">
                   <dl>
-                    <dt>Definition</dt><dd>An interval of time that is named or defined by its start and end dates.</dd>
+                    <dt>Description</dt><dd>An interval of time that is named or defined by its start and end dates.</dd>
                     
 		    
                     <dt>Properties</dt>
@@ -1992,8 +1950,7 @@ Where a country has changed its name or no longer exists (such as Czechoslovakia
                       <tr class="data-table__header">
                         <th class="data-table__header-title--sortable data-table__header-title--sortable-active">Property</th>
                         <th class="data-table__header-title--sortable">Expected Range</th>
-			<th class="data-table__header-title--sortable">Cardinality</th>
-                        <th class="data-table__header-title--sortable">Definition</th>
+                        <th class="data-table__header-title--sortable">Description</th>
                         <th class="data-table__header-title--sortable">Usage</th>
                         <th class="data-table__header-title--sortable">Codelist</th>
                       </tr>
@@ -2015,7 +1972,6 @@ Where a country has changed its name or no longer exists (such as Czechoslovakia
                             
                           
                         </td>
-			<td>0..*</td>
                         <td property="rdfs:comment">Used in ADMS to define the end of a period of time during which an Asset is valid or applicable.</td>
                         <td property="skos:scopeNote"></td>
                         <td></td>
@@ -2035,7 +1991,6 @@ Where a country has changed its name or no longer exists (such as Czechoslovakia
                             
                           
                         </td>
-			<td>0..*</td>
                         <td property="rdfs:comment">Used in ADMS to define the start of a period of time during which an Asset is valid or applicable.</td>
                         <td property="skos:scopeNote"></td>
                         <td></td>
@@ -2051,7 +2006,7 @@ Where a country has changed its name or no longer exists (such as Czechoslovakia
               <h3 class="h3" id="VCard"><a href="http://www.w3.org/2006/vcard/ns#VCard" data-toggle="tooltip" data-content="http://www.w3.org/2006/vcard/ns#VCard" data-placement="right">VCard</a></h3>
                 <div class="region region--no-space-top">
                   <dl>
-                    <dt>Definition</dt><dd>The vCard class is equivalent to the new Kind class, which is the parent for the four explicit types of vCards (Individual, Organization, Location, Group)</dd>
+                    <dt>Description</dt><dd>The vCard class is equivalent to the new Kind class, which is the parent for the four explicit types of vCards (Individual, Organization, Location, Group)</dd>
                     
 		    
                     <dt>Properties</dt>
@@ -2066,7 +2021,6 @@ Where a country has changed its name or no longer exists (such as Czechoslovakia
 
             
 	    
-	    <!--
 	    
 <h2 class="h2" id="examples">Examples</h2>
 
@@ -2115,8 +2069,6 @@ Where a country has changed its name or no longer exists (such as Czechoslovakia
 </div>
 
 
-	    -->
-	    
 	    
 	    <div class="region region--no-space-top" id="changelog">
                 <h2 class="h2" aria-level="1" role="heading" id="h2_sotd">Changelog w.r.t. previous version</h2>
@@ -2127,38 +2079,43 @@ A changelog describing the (major) changes to the previous version (1.0.0) of th
 <p>
 
             </div>
-	    
-	    
-			<div class="region region--no-space-top" id="uml">
+	    <div class="region region--no-space-top" id="uml">
                 <h2 class="h2" aria-level="1" role="heading" id="h2_sotd">UML representation</h2>
                 (non-normative)
                 
-		<p>The UML representation from which this specification has been build is available <a href="./uml/cpsv-ap.eap" target="_blank">here</a>.</p>
+		<p>The UML representation from which this Core Vocabulary has been build is available <a href="./uml/adms.eap" target="_blank">here</a>.
+		</p>
                 
-            </div>
-			
-			<div class="region region--no-space-top" id="rdf">
+        </div>
+
+        <div class="region region--no-space-top" id="rdf">
                 <h2 class="h2" aria-level="1" role="heading" id="h2_sotd">RDF representation</h2>
                 (non-normative)
                 
-		<p>A reusable RDF representation (in turtle) for this specification is retrievable <a href="./rdf/cpsv-ap.ttl" target="_blank">here</a>.</p>
+		<p>A reusable RDF representation (in turtle) for this Core Vocabulary is retrievable <a href="./voc/adms.ttl" target="_blank">here</a>.
+		<br>
+                This RDF file contains only the terminology for which the URI is minted in the Core Vocabularies domain http://data.europa.eu/m8g.
+                Terms that are mapped on an existing URI (hence reused from other vocabularies) are not included.
+		</p>
                 
-            </div>
-			
+        </div>
+		
             <div class="region region--no-space-top" id="jsonld">
                 <h2 class="h2" aria-level="1" role="heading" id="h2_sotd">JSON-LD context</h2>
                 (non-normative)
                 
-		<p>A reusable JSON-LD context definition for this specification is retrievable <a href="./context/adms_en.jsonld" target="_blank">here</a>.</p>
+		<p>A reusable JSON-LD context definition for this Core Vocabulary is retrievable <a href="./context/adms.jsonld" target="_blank">here</a>.</p>
                 
             </div>
+	    
             <div class="region region--no-space-top" id="shacl">
                 <h2 class="h2" aria-level="1" role="heading" id="h2_sotd">SHACL template</h2>
                 (non-normative)
                 
-		<p>A reusable SHACL template for this specification is retrievable <a href="./shacl/adms-SHACL.ttl" target="_blank">here</a>.</p>
+		<p>A reusable SHACL template for this Core Vocabulary is retrievable <a href="./shacl/adms-SHACL.ttl" target="_blank">here</a>.</p>
                 
             </div>
+	    
           </div>
           <div class="col--3-12 col--12-12--s col--4-12--m push--1-12 push--reset--m" id="sideNav">
               <nav class="side-navigation js-sticky region" id="sideNav">
@@ -2169,12 +2126,12 @@ A changelog describing the (major) changes to the previous version (1.0.0) of th
                               <li class="side-navigation__item">
                                   <a href="#introduction">Introduction</a>
                               </li>
-							-->
+						-->
                               <li class="side-navigation__item">
                                   <a href="#summary">Summary</a>
                               </li>
                               <li class="side-navigation__item">
-                                  <a href="#status">Status of this document</a>
+                                  <a href="#sotd">Status of this document</a>
                               </li>
                               <!--
 			      <li class="side-navigation__item">
@@ -2188,28 +2145,26 @@ A changelog describing the (major) changes to the previous version (1.0.0) of th
                               <li class="side-navigation__item">
                                   <a href="#overview">Overview</a>
                               </li>
-			      <!--
 			      <li class="side-navigation__item">
                                   <a href="#examples">Examples</a>
-			      -->
-			     
+			      </li>
 			      <li class="side-navigation__item">
                                   <a href="#changelog">Changelog</a>
-                              </li>
-			      
-							<li class="side-navigation__item">
-                                  <a href="#uml">UML representation</a>
+			      </li>
+				               <li class="side-navigation__item">
+                                  <a href="#jsonld">UML representation</a>
                               </li>
                               <li class="side-navigation__item">
-                                  <a href="#rdf">RDF representation</a>
+                                  <a href="#jsonld">RDF representation</a>
                               </li>
-			      
                               <li class="side-navigation__item">
                                   <a href="#jsonld">JSON-LD context</a>
                               </li>
+			      
                               <li class="side-navigation__item">
                                   <a href="#shacl">SHACL template</a>
                               </li>
+
                           </ul>
                       </div>
                   </div>
@@ -2225,6 +2180,14 @@ A changelog describing the (major) changes to the previous version (1.0.0) of th
   <script type="text/javascript">
       function iframeLoaded() {
          var iFrameID = document.getElementById('exampleiframe');
+          if(iFrameID) {
+                // here you can make the height, I delete it first, then I make it again
+                iFrameID.height = "";
+                iFrameID.height = iFrameID.contentWindow.document.body.scrollHeight + "px";
+          }   
+      }
+      function iframeLoadedById(myid) {
+         var iFrameID = document.getElementById(myid);
           if(iFrameID) {
                 // here you can make the height, I delete it first, then I make it again
                 iFrameID.height = "";

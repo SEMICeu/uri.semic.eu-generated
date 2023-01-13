@@ -1,0 +1,1444 @@
+{
+  "@context": {
+    "@vocab": "https://semiceu.github.io//shacl/mldcat-ap-SHACL_en",
+    "qb": "http://purl.org/linked-data/cube#",
+    "qb:codeList": {
+      "@type": "@id"
+    },
+    "sh": "http://www.w3.org/ns/shacl#",
+    "sh:class": {
+      "@type": "@id"
+    },
+    "sh:datatype": {
+      "@type": "@id"
+    },
+    "sh:description": {
+      "@container": "@language"
+    },
+    "sh:maxCount": {
+      "@type": "http://www.w3.org/2001/XMLSchema#integer"
+    },
+    "sh:minCount": {
+      "@type": "http://www.w3.org/2001/XMLSchema#integer"
+    },
+    "sh:name": {
+      "@container": "@language"
+    },
+    "sh:path": {
+      "@type": "@id"
+    },
+    "sh:property": {
+      "@type": "@id"
+    },
+    "sh:targetClass": {
+      "@type": "@id"
+    },
+    "shapes": {
+      "@type": "@id"
+    },
+    "vl": "https://data.vlaanderen.be/ns/shacl#"
+  },
+  "@id": "https://semiceu.github.io//shacl/mldcat-ap-SHACL_en",
+  "shapes": [
+    {
+      "@id": "https://semiceu.github.io//shacl/mldcat-ap-SHACL_en#LicenseDocumentShape",
+      "@type": "sh:NodeShape",
+      "sh:closed": false,
+      "sh:property": [],
+      "sh:targetClass": "http://purl.org/dc/terms/LicenseDocument"
+    },
+    {
+      "@id": "https://semiceu.github.io//shacl/mldcat-ap-SHACL_en#CatalogShape",
+      "@type": "sh:NodeShape",
+      "sh:closed": false,
+      "sh:property": [
+        {
+          "sh:class": "http://www.w3.org/ns/dcat#Dataset",
+          "sh:description": {
+            "en": "This property links the Catalogue with a Dataset that is part of the Catalogue. As empty Catalogues are usually indications of problems, this property should be combined with the next property service to implement an empty Catalogue check."
+          },
+          "sh:name": {
+            "en": "dataset"
+          },
+          "sh:path": "http://www.w3.org/ns/dcat#dataset"
+        },
+        {
+          "sh:datatype": "http://www.w3.org/2000/01/rdf-schema#Literal",
+          "sh:description": {
+            "en": "This property contains a free-text account of the Catalogue. This property can be repeated for parallel language versions of the description."
+          },
+          "sh:minCount": "1",
+          "sh:name": {
+            "en": "description"
+          },
+          "sh:path": "http://purl.org/dc/terms/description"
+        },
+        {
+          "sh:class": "http://xmlns.com/foaf/0.1/Agent",
+          "sh:description": {
+            "en": "This property refers to an entity (organisation) responsible for making the Catalogue available."
+          },
+          "sh:maxCount": "1",
+          "sh:minCount": "1",
+          "sh:name": {
+            "en": "publisher"
+          },
+          "sh:path": "http://purl.org/dc/terms/publisher"
+        },
+        {
+          "sh:class": "http://www.w3.org/ns/dcat#CatalogRecord",
+          "sh:description": {
+            "en": "This property refers to a Catalogue Record that is part of the Catalogue."
+          },
+          "sh:name": {
+            "en": "record"
+          },
+          "sh:path": "http://www.w3.org/ns/dcat#record"
+        },
+        {
+          "sh:class": "http://www.w3.org/ns/dcat#DataService",
+          "sh:description": {
+            "en": "This property refers to a site or end-point (Data Service) that is listed in the Catalogue."
+          },
+          "sh:name": {
+            "en": "service"
+          },
+          "sh:path": "http://www.w3.org/ns/dcat#service"
+        },
+        {
+          "sh:datatype": "http://www.w3.org/2000/01/rdf-schema#Literal",
+          "sh:description": {
+            "en": "This property contains a name given to the Catalogue. This property can be repeated for parallel language versions of the name."
+          },
+          "sh:minCount": "1",
+          "sh:name": {
+            "en": "title"
+          },
+          "sh:path": "http://purl.org/dc/terms/title"
+        }
+      ],
+      "sh:targetClass": "http://www.w3.org/ns/dcat#Catalog"
+    },
+    {
+      "@id": "https://semiceu.github.io//shacl/mldcat-ap-SHACL_en#CatalogRecordShape",
+      "@type": "sh:NodeShape",
+      "sh:closed": false,
+      "sh:property": [
+        {
+          "sh:datatype": "http://www.w3.org/2000/01/rdf-schema#Literal",
+          "sh:description": {
+            "en": "This property contains a free-text account of the record. This property can be repeated for parallel language versions of the description."
+          },
+          "sh:name": {
+            "en": "description"
+          },
+          "sh:path": "http://purl.org/dc/terms/description"
+        },
+        {
+          "sh:datatype": "http://www.w3.org/2000/01/rdf-schema#Literal",
+          "sh:description": {
+            "en": "This property contains the most recent date on which the Catalogue entry was changed or modified."
+          },
+          "sh:maxCount": "1",
+          "sh:minCount": "1",
+          "sh:name": {
+            "en": "modification date"
+          },
+          "sh:path": "http://purl.org/dc/terms/modified"
+        },
+        {
+          "sh:class": "http://www.w3.org/ns/dcat#Dataset",
+          "sh:description": {
+            "en": "This property links the Catalogue Record to the Dataset, Data service or Catalog described in the record."
+          },
+          "sh:maxCount": "1",
+          "sh:minCount": "1",
+          "sh:name": {
+            "en": "primary topic"
+          },
+          "sh:path": "http://xmlns.com/foaf/0.1/primaryTopic"
+        },
+        {
+          "sh:datatype": "http://www.w3.org/2000/01/rdf-schema#Literal",
+          "sh:description": "",
+          "sh:maxCount": "1",
+          "sh:path": "http://www.w3.org/ns/dcat#version"
+        }
+      ],
+      "sh:targetClass": "http://www.w3.org/ns/dcat#CatalogRecord"
+    },
+    {
+      "@id": "https://semiceu.github.io//shacl/mldcat-ap-SHACL_en#DataServiceShape",
+      "@type": "sh:NodeShape",
+      "sh:closed": false,
+      "sh:property": [
+        {
+          "sh:class": "http://www.w3.org/2000/01/rdf-schema#Resource",
+          "sh:description": {
+            "en": "The root location or primary endpoint of the service (an IRI)."
+          },
+          "sh:minCount": "1",
+          "sh:name": {
+            "en": "endpoint URL"
+          },
+          "sh:path": "http://www.w3.org/ns/dcat#endPointURL"
+        },
+        {
+          "sh:class": "http://www.w3.org/ns/dcat#Dataset",
+          "sh:description": {
+            "en": "This property refers to a collection of data that this data service can distribute."
+          },
+          "sh:name": {
+            "en": "serves dataset"
+          },
+          "sh:path": "http://www.w3.org/ns/dcat#servesDataset"
+        },
+        {
+          "sh:datatype": "http://www.w3.org/2000/01/rdf-schema#Literal",
+          "sh:description": {
+            "en": "This property contains a name given to the Data Service. This property can be repeated for parallel language versions of the name."
+          },
+          "sh:minCount": "1",
+          "sh:name": {
+            "en": "title"
+          },
+          "sh:path": "http://purl.org/dc/terms/title"
+        }
+      ],
+      "sh:targetClass": "http://www.w3.org/ns/dcat#DataService"
+    },
+    {
+      "@id": "https://semiceu.github.io//shacl/mldcat-ap-SHACL_en#DatasetShape",
+      "@type": "sh:NodeShape",
+      "sh:closed": false,
+      "sh:property": [
+        {
+          "sh:class": "http://purl.org/dc/terms/RightsStatement",
+          "sh:description": {
+            "en": "This property refers to information that indicates whether the Dataset is open data, has access restrictions or is not public."
+          },
+          "sh:maxCount": "1",
+          "sh:name": {
+            "en": "access rights"
+          },
+          "sh:path": "http://purl.org/dc/terms/accessRights"
+        },
+        {
+          "sh:datatype": "http://www.w3.org/2000/01/rdf-schema#Literal",
+          "sh:description": "",
+          "sh:maxCount": "1",
+          "sh:minCount": "1",
+          "sh:path": "http://www.w3.org/ns/dcat#collectionDate"
+        },
+        {
+          "sh:class": "http://xmlns.com/foaf/0.1/Agent",
+          "sh:description": {
+            "en": "This property refers to the  entity responsible for producing the dataset."
+          },
+          "sh:maxCount": "1",
+          "sh:name": {
+            "en": "creator"
+          },
+          "sh:path": "http://purl.org/dc/terms/creator"
+        },
+        {
+          "sh:datatype": "http://www.w3.org/2000/01/rdf-schema#Literal",
+          "sh:description": {
+            "en": "This property contains a free-text account of the Dataset. This property can be repeated for parallel language versions of the description."
+          },
+          "sh:minCount": "1",
+          "sh:name": {
+            "en": "description"
+          },
+          "sh:path": "http://purl.org/dc/terms/description"
+        },
+        {
+          "sh:class": "http://www.w3.org/ns/dcat#Distribution",
+          "sh:description": {
+            "en": "This property links the Dataset to an available Distribution."
+          },
+          "sh:name": {
+            "en": "distribution"
+          },
+          "sh:path": "http://www.w3.org/ns/dcat#distribution"
+        },
+        {
+          "sh:class": "http://www.w3.org/ns/dcat#Dataset",
+          "sh:description": {
+            "en": "This property refers to a related Dataset that is a version, edition, or adaptation of the described Dataset."
+          },
+          "sh:name": {
+            "en": "has version"
+          },
+          "sh:path": "http://purl.org/dc/terms/hasVersion"
+        },
+        {
+          "sh:datatype": "http://www.w3.org/2000/01/rdf-schema#Literal",
+          "sh:description": {
+            "en": "This property contains the main identifier for the Dataset, e.g. the URI or other unique identifier in the context of the Catalogue."
+          },
+          "sh:name": {
+            "en": "identifier"
+          },
+          "sh:path": "http://purl.org/dc/terms/identifier"
+        },
+        {
+          "sh:class": "http://www.w3.org/2000/01/rdf-schema#Resource",
+          "sh:description": {
+            "en": "This property is about a related resource, such as a publication, that references, cites, or otherwise points to the dataset."
+          },
+          "sh:name": {
+            "en": "is referenced by"
+          },
+          "sh:path": "http://purl.org/dc/terms/isReferencedBy"
+        },
+        {
+          "sh:class": "http://www.w3.org/ns/dcat#Dataset",
+          "sh:description": {
+            "en": "This property refers to a related Dataset of which the described Dataset is a version, edition, or adaptation."
+          },
+          "sh:name": {
+            "en": "is version of"
+          },
+          "sh:path": "http://purl.org/dc/terms/isVersionOf"
+        },
+        {
+          "sh:datatype": "http://www.w3.org/2000/01/rdf-schema#Literal",
+          "sh:description": {
+            "en": "This property contains the date of formal issuance (e.g., publication) of the Dataset."
+          },
+          "sh:maxCount": "1",
+          "sh:name": {
+            "en": "issued"
+          },
+          "sh:path": "http://purl.org/dc/terms/issued"
+        },
+        {
+          "sh:datatype": "http://www.w3.org/2000/01/rdf-schema#Literal",
+          "sh:description": {
+            "en": "This property contains a keyword or tag describing the Dataset."
+          },
+          "sh:name": {
+            "en": "keyword"
+          },
+          "sh:path": "http://www.w3.org/ns/dcat#keyword"
+        },
+        {
+          "sh:class": "http://xmlns.com/foaf/0.1/Document",
+          "sh:description": {
+            "en": "This property refers to a web page that provides access to the Dataset, its Distributions and/or additional information. It is intended to point to a landing page at the original data provider, not to a page on a site of a third party, such as an aggregator."
+          },
+          "sh:name": {
+            "en": "landing page"
+          },
+          "sh:path": "http://www.w3.org/ns/dcat#landingPage"
+        },
+        {
+          "sh:datatype": "http://www.w3.org/2000/01/rdf-schema#Literal",
+          "sh:description": "",
+          "sh:maxCount": "1",
+          "sh:path": "http://www.w3.org/ns/dcat#processingDate"
+        },
+        {
+          "sh:class": "http://xmlns.com/foaf/0.1/Agent",
+          "sh:description": {
+            "en": "This property refers to an entity (organisation) responsible for making the Dataset available."
+          },
+          "sh:maxCount": "1",
+          "sh:name": {
+            "en": "publisher"
+          },
+          "sh:path": "http://purl.org/dc/terms/publisher"
+        },
+        {
+          "sh:class": "http://www.w3.org/2004/02/skos/core#Concept",
+          "sh:description": "",
+          "sh:maxCount": "1",
+          "sh:path": "http://www.w3.org/ns/dcat#status"
+        },
+        {
+          "sh:datatype": "http://www.w3.org/2000/01/rdf-schema#Literal",
+          "sh:description": {
+            "en": "This property contains a name given to the Dataset. This property can be repeated for parallel language versions of the name."
+          },
+          "sh:minCount": "1",
+          "sh:name": {
+            "en": "title"
+          },
+          "sh:path": "http://purl.org/dc/terms/title"
+        },
+        {
+          "sh:datatype": "http://www.w3.org/2000/01/rdf-schema#Literal",
+          "sh:description": {
+            "en": "This property contains a version number or other version designation of the Dataset."
+          },
+          "sh:maxCount": "1",
+          "sh:name": {
+            "en": "version info"
+          },
+          "sh:path": "https://www.w3.org/2002/07/owl#versionInfo"
+        },
+        {
+          "sh:datatype": "http://www.w3.org/2000/01/rdf-schema#Literal",
+          "sh:description": "",
+          "sh:maxCount": "1",
+          "sh:path": "http://www.w3.org/ns/dcat#versionLabel"
+        },
+        {
+          "sh:class": "http://www.w3.org/2004/02/skos/core#Concept",
+          "sh:description": "",
+          "sh:maxCount": "1",
+          "sh:path": "http://www.w3.org/ns/dcat#visibility"
+        }
+      ],
+      "sh:targetClass": "http://www.w3.org/ns/dcat#Dataset"
+    },
+    {
+      "@id": "https://semiceu.github.io//shacl/mldcat-ap-SHACL_en#DistributionShape",
+      "@type": "sh:NodeShape",
+      "sh:closed": false,
+      "sh:property": [
+        {
+          "sh:class": "http://www.w3.org/ns/dcat#DataService",
+          "sh:description": {
+            "en": "This property refers to a data service that gives access to the distribution of the dataset."
+          },
+          "sh:name": {
+            "en": "access service"
+          },
+          "sh:path": "http://www.w3.org/ns/dcat#accessService"
+        },
+        {
+          "sh:class": "http://www.w3.org/2000/01/rdf-schema#Resource",
+          "sh:description": {
+            "en": "This property contains a URL that gives access to a Distribution of the Dataset. The resource at the access URL may contain information about how to get the Dataset."
+          },
+          "sh:minCount": "1",
+          "sh:name": {
+            "en": "access URL"
+          },
+          "sh:path": "http://www.w3.org/ns/dcat#accessURL"
+        },
+        {
+          "sh:datatype": "http://www.w3.org/2000/01/rdf-schema#Literal",
+          "sh:description": {
+            "en": "This property contains the size of a Distribution in bytes."
+          },
+          "sh:maxCount": "1",
+          "sh:name": {
+            "en": "byte size"
+          },
+          "sh:path": "http://www.w3.org/ns/dcat#byteSize"
+        },
+        {
+          "sh:class": "http://spdx.org/rdf/terms#Checksum",
+          "sh:description": {
+            "en": "This property provides a mechanism that can be used to verify that the contents of a distribution have not changed. The checksum is related to the downloadURL."
+          },
+          "sh:maxCount": "1",
+          "sh:name": {
+            "en": "checksum"
+          },
+          "sh:path": "http://spdx.org/rdf/terms#checksum"
+        },
+        {
+          "sh:datatype": "http://www.w3.org/2000/01/rdf-schema#Literal",
+          "sh:description": "",
+          "sh:maxCount": "1",
+          "sh:path": "http://www.w3.org/ns/dcat#defaultTargetAttribute"
+        },
+        {
+          "sh:class": "http://www.w3.org/2000/01/rdf-schema#Resource",
+          "sh:description": {
+            "en": "This property contains a URL that is a direct link to a downloadable file in a given format. "
+          },
+          "sh:name": {
+            "en": "download URL"
+          },
+          "sh:path": "http://www.w3.org/ns/dcat#downloadURL"
+        },
+        {
+          "sh:class": "http://purl.org/dc/terms/MediaTypeOrExtent",
+          "sh:description": {
+            "en": "This property refers to the file format of the Distribution."
+          },
+          "sh:maxCount": "1",
+          "sh:name": {
+            "en": "format"
+          },
+          "sh:path": "http://purl.org/dc/terms/format"
+        },
+        {
+          "sh:class": "http://www.w3.org/ns/odrl/2/Policy",
+          "sh:description": {
+            "en": "This property refers to the policy expressing the rights associated with the distribution if using the ODRL vocabulary."
+          },
+          "sh:maxCount": "1",
+          "sh:name": {
+            "en": "has policy"
+          },
+          "sh:path": "http://www.w3.org/ns/odrl/2/hasPolicy"
+        },
+        {
+          "sh:datatype": "http://www.w3.org/2000/01/rdf-schema#Literal",
+          "sh:description": "",
+          "sh:maxCount": "1",
+          "sh:path": "http://www.w3.org/ns/dcat#identifier"
+        },
+        {
+          "sh:datatype": "http://www.w3.org/2000/01/rdf-schema#Literal",
+          "sh:description": "",
+          "sh:path": "http://www.w3.org/ns/dcat#ignoreAttribute"
+        },
+        {
+          "sh:class": "http://purl.org/dc/terms/LinguisticSystem",
+          "sh:description": {
+            "en": "This property refers to a language used in the Distribution. This property can be repeated if the metadata is provided in multiple languages."
+          },
+          "sh:name": {
+            "en": "language"
+          },
+          "sh:path": "http://purl.org/dc/terms/language"
+        },
+        {
+          "sh:class": "http://purl.org/dc/terms/LicenseDocument",
+          "sh:description": {
+            "en": "This property refers to the licence under which the Distribution is made available."
+          },
+          "sh:maxCount": "1",
+          "sh:name": {
+            "en": "licence"
+          },
+          "sh:path": "http://purl.org/dc/terms/license"
+        },
+        {
+          "sh:class": "http://www.w3.org/2000/01/rdf-schema#Resource",
+          "sh:description": "",
+          "sh:maxCount": "1",
+          "sh:path": "http://www.w3.org/ns/dcat#parquetURL"
+        },
+        {
+          "sh:datatype": "http://www.w3.org/2000/01/rdf-schema#Literal",
+          "sh:description": "",
+          "sh:maxCount": "1",
+          "sh:path": "http://www.w3.org/ns/dcat#processingError"
+        },
+        {
+          "sh:datatype": "http://www.w3.org/2000/01/rdf-schema#Literal",
+          "sh:description": "",
+          "sh:maxCount": "1",
+          "sh:path": "http://www.w3.org/ns/dcat#processingWarning"
+        },
+        {
+          "sh:datatype": "http://www.w3.org/2000/01/rdf-schema#Literal",
+          "sh:description": "",
+          "sh:maxCount": "1",
+          "sh:path": "http://www.w3.org/ns/dcat#rowIDAttribute"
+        },
+        {
+          "sh:datatype": "http://www.w3.org/2000/01/rdf-schema#Literal",
+          "sh:description": {
+            "en": "This property contains a name given to the Distribution. This property can be repeated for parallel language versions of the description."
+          },
+          "sh:name": {
+            "en": "title"
+          },
+          "sh:path": "http://purl.org/dc/terms/title"
+        }
+      ],
+      "sh:targetClass": "http://www.w3.org/ns/dcat#Distribution"
+    },
+    {
+      "@id": "https://semiceu.github.io//shacl/mldcat-ap-SHACL_en#AgentShape",
+      "@type": "sh:NodeShape",
+      "sh:closed": false,
+      "sh:property": [
+        {
+          "sh:datatype": "http://www.w3.org/2000/01/rdf-schema#Literal",
+          "sh:description": {
+            "en": "This property contains a name of the agent. This property can be repeated for different versions of the name (e.g. the name in different languages)"
+          },
+          "sh:minCount": "1",
+          "sh:name": {
+            "en": "name"
+          },
+          "sh:path": "http://xmlns.com/foaf/0.1/name"
+        }
+      ],
+      "sh:targetClass": "http://xmlns.com/foaf/0.1/Agent"
+    },
+    {
+      "@id": "https://semiceu.github.io//shacl/mldcat-ap-SHACL_en#ColllectionShape",
+      "@type": "sh:NodeShape",
+      "sh:closed": false,
+      "sh:property": [
+        {
+          "sh:datatype": "http://www.w3.org/2000/01/rdf-schema#Literal",
+          "sh:description": "",
+          "sh:maxCount": "1",
+          "sh:minCount": "1",
+          "sh:path": "https://www.openml.org/model#creationDate"
+        },
+        {
+          "sh:datatype": "http://www.w3.org/2000/01/rdf-schema#Literal",
+          "sh:description": "",
+          "sh:maxCount": "1",
+          "sh:path": "https://www.openml.org/model#description"
+        },
+        {
+          "sh:datatype": "http://www.w3.org/2000/01/rdf-schema#Literal",
+          "sh:description": "",
+          "sh:maxCount": "1",
+          "sh:minCount": "1",
+          "sh:path": "https://www.openml.org/model#id"
+        },
+        {
+          "sh:datatype": "http://www.w3.org/2000/01/rdf-schema#Literal",
+          "sh:description": "",
+          "sh:maxCount": "1",
+          "sh:minCount": "1",
+          "sh:path": "https://www.openml.org/model#name"
+        },
+        {
+          "sh:class": "http://www.w3.org/2004/02/skos/core#Concept",
+          "sh:description": "",
+          "sh:maxCount": "1",
+          "sh:minCount": "1",
+          "sh:path": "https://www.openml.org/model#visibility"
+        }
+      ],
+      "sh:targetClass": "https://www.openml.org/model#Colllection"
+    },
+    {
+      "@id": "https://semiceu.github.io//shacl/mldcat-ap-SHACL_en#CostMatrixShape",
+      "@type": "sh:NodeShape",
+      "sh:closed": false,
+      "sh:property": [],
+      "sh:targetClass": "https://www.openml.org/model#CostMatrix"
+    },
+    {
+      "@id": "https://semiceu.github.io//shacl/mldcat-ap-SHACL_en#EstimationProcedureShape",
+      "@type": "sh:NodeShape",
+      "sh:closed": false,
+      "sh:property": [
+        {
+          "sh:class": "http://www.w3.org/2000/01/rdf-schema#Resource",
+          "sh:description": "",
+          "sh:maxCount": "1",
+          "sh:minCount": "1",
+          "sh:path": "https://www.openml.org/model#dataSplitsURL"
+        },
+        {
+          "sh:datatype": "http://www.w3.org/2000/01/rdf-schema#Literal",
+          "sh:description": "",
+          "sh:maxCount": "1",
+          "sh:minCount": "1",
+          "sh:path": "https://www.openml.org/model#description"
+        },
+        {
+          "sh:class": "https://www.openml.org/model#Parameter",
+          "sh:description": "",
+          "sh:minCount": "1",
+          "sh:path": "https://www.openml.org/model#hasParameter"
+        },
+        {
+          "sh:datatype": "http://www.w3.org/2000/01/rdf-schema#Literal",
+          "sh:description": "",
+          "sh:maxCount": "1",
+          "sh:minCount": "1",
+          "sh:path": "https://www.openml.org/model#id"
+        },
+        {
+          "sh:datatype": "http://www.w3.org/2000/01/rdf-schema#Literal",
+          "sh:description": "",
+          "sh:maxCount": "1",
+          "sh:minCount": "1",
+          "sh:path": "https://www.openml.org/model#name"
+        },
+        {
+          "sh:class": "http://www.w3.org/2004/02/skos/core#Concept",
+          "sh:description": "",
+          "sh:maxCount": "1",
+          "sh:minCount": "1",
+          "sh:path": "https://www.openml.org/model#type"
+        }
+      ],
+      "sh:targetClass": "https://www.openml.org/model#EstimationProcedure"
+    },
+    {
+      "@id": "https://semiceu.github.io//shacl/mldcat-ap-SHACL_en#EvaluationShape",
+      "@type": "sh:NodeShape",
+      "sh:closed": false,
+      "sh:property": [
+        {
+          "sh:datatype": "http://www.w3.org/2000/01/rdf-schema#Literal",
+          "sh:description": "",
+          "sh:maxCount": "1",
+          "sh:path": "https://www.openml.org/model#arrayData"
+        },
+        {
+          "sh:datatype": "http://www.w3.org/2000/01/rdf-schema#Literal",
+          "sh:description": "",
+          "sh:maxCount": "1",
+          "sh:path": "https://www.openml.org/model#fold"
+        },
+        {
+          "sh:class": "https://www.openml.org/model#Flow",
+          "sh:description": "",
+          "sh:path": "https://www.openml.org/model#hasFlow"
+        },
+        {
+          "sh:datatype": "http://www.w3.org/2000/01/rdf-schema#Literal",
+          "sh:description": "",
+          "sh:maxCount": "1",
+          "sh:path": "https://www.openml.org/model#id"
+        },
+        {
+          "sh:datatype": "http://www.w3.org/2000/01/rdf-schema#Literal",
+          "sh:description": "",
+          "sh:maxCount": "1",
+          "sh:path": "https://www.openml.org/model#intervalEnd"
+        },
+        {
+          "sh:datatype": "http://www.w3.org/2000/01/rdf-schema#Literal",
+          "sh:description": "",
+          "sh:maxCount": "1",
+          "sh:path": "https://www.openml.org/model#intervalStart"
+        },
+        {
+          "sh:datatype": "http://www.w3.org/2000/01/rdf-schema#Literal",
+          "sh:description": "",
+          "sh:maxCount": "1",
+          "sh:path": "https://www.openml.org/model#label"
+        },
+        {
+          "sh:datatype": "http://www.w3.org/2000/01/rdf-schema#Literal",
+          "sh:description": "",
+          "sh:maxCount": "1",
+          "sh:minCount": "1",
+          "sh:path": "https://www.openml.org/model#name"
+        },
+        {
+          "sh:datatype": "http://www.w3.org/2000/01/rdf-schema#Literal",
+          "sh:description": "",
+          "sh:maxCount": "1",
+          "sh:path": "https://www.openml.org/model#repeat"
+        },
+        {
+          "sh:datatype": "http://www.w3.org/2000/01/rdf-schema#Literal",
+          "sh:description": "",
+          "sh:maxCount": "1",
+          "sh:path": "https://www.openml.org/model#sample"
+        },
+        {
+          "sh:datatype": "http://www.w3.org/2000/01/rdf-schema#Literal",
+          "sh:description": "",
+          "sh:maxCount": "1",
+          "sh:path": "https://www.openml.org/model#sampleSize"
+        },
+        {
+          "sh:datatype": "http://www.w3.org/2000/01/rdf-schema#Literal",
+          "sh:description": "",
+          "sh:maxCount": "1",
+          "sh:path": "https://www.openml.org/model#stdev"
+        },
+        {
+          "sh:datatype": "http://www.w3.org/2000/01/rdf-schema#Literal",
+          "sh:description": "",
+          "sh:maxCount": "1",
+          "sh:path": "https://www.openml.org/model#value"
+        }
+      ],
+      "sh:targetClass": "https://www.openml.org/model#Evaluation"
+    },
+    {
+      "@id": "https://semiceu.github.io//shacl/mldcat-ap-SHACL_en#EvaluationMeasureShape",
+      "@type": "sh:NodeShape",
+      "sh:closed": false,
+      "sh:property": [
+        {
+          "sh:datatype": "http://www.w3.org/2000/01/rdf-schema#Literal",
+          "sh:description": "",
+          "sh:maxCount": "1",
+          "sh:path": "https://www.openml.org/model#description"
+        },
+        {
+          "sh:datatype": "http://www.w3.org/2000/01/rdf-schema#Literal",
+          "sh:description": "",
+          "sh:maxCount": "1",
+          "sh:path": "https://www.openml.org/model#implementation"
+        },
+        {
+          "sh:datatype": "http://www.w3.org/2000/01/rdf-schema#Literal",
+          "sh:description": "",
+          "sh:maxCount": "1",
+          "sh:minCount": "1",
+          "sh:path": "https://www.openml.org/model#name"
+        },
+        {
+          "sh:datatype": "http://www.w3.org/2000/01/rdf-schema#Literal",
+          "sh:description": "",
+          "sh:maxCount": "1",
+          "sh:minCount": "1",
+          "sh:path": "https://www.openml.org/model#value"
+        },
+        {
+          "sh:datatype": "http://www.w3.org/2000/01/rdf-schema#Literal",
+          "sh:description": "",
+          "sh:maxCount": "1",
+          "sh:path": "https://www.openml.org/model#valueBad"
+        },
+        {
+          "sh:datatype": "http://www.w3.org/2000/01/rdf-schema#Literal",
+          "sh:description": "",
+          "sh:maxCount": "1",
+          "sh:path": "https://www.openml.org/model#valueGood"
+        }
+      ],
+      "sh:targetClass": "https://www.openml.org/model#EvaluationMeasure"
+    },
+    {
+      "@id": "https://semiceu.github.io//shacl/mldcat-ap-SHACL_en#FeatureShape",
+      "@type": "sh:NodeShape",
+      "sh:closed": false,
+      "sh:property": [
+        {
+          "sh:datatype": "http://www.w3.org/2000/01/rdf-schema#Literal",
+          "sh:description": "",
+          "sh:maxCount": "1",
+          "sh:minCount": "1",
+          "sh:path": "https://www.openml.org/model#description"
+        },
+        {
+          "sh:datatype": "http://www.w3.org/2000/01/rdf-schema#Literal",
+          "sh:description": "",
+          "sh:maxCount": "1",
+          "sh:minCount": "1",
+          "sh:path": "https://www.openml.org/model#name"
+        },
+        {
+          "sh:class": "http://www.w3.org/2004/02/skos/core#Concept",
+          "sh:description": "",
+          "sh:maxCount": "1",
+          "sh:minCount": "1",
+          "sh:path": "https://www.openml.org/model#type"
+        }
+      ],
+      "sh:targetClass": "https://www.openml.org/model#Feature"
+    },
+    {
+      "@id": "https://semiceu.github.io//shacl/mldcat-ap-SHACL_en#FlowShape",
+      "@type": "sh:NodeShape",
+      "sh:closed": false,
+      "sh:property": [
+        {
+          "sh:datatype": "http://www.w3.org/2000/01/rdf-schema#Literal",
+          "sh:description": "",
+          "sh:maxCount": "1",
+          "sh:path": "https://www.openml.org/model#className"
+        },
+        {
+          "sh:datatype": "http://www.w3.org/2000/01/rdf-schema#Literal",
+          "sh:description": "",
+          "sh:maxCount": "1",
+          "sh:path": "https://www.openml.org/model#customName"
+        },
+        {
+          "sh:datatype": "http://www.w3.org/2000/01/rdf-schema#Literal",
+          "sh:description": "",
+          "sh:maxCount": "1",
+          "sh:path": "https://www.openml.org/model#description"
+        },
+        {
+          "sh:datatype": "http://www.w3.org/2000/01/rdf-schema#Literal",
+          "sh:description": "",
+          "sh:maxCount": "1",
+          "sh:path": "https://www.openml.org/model#externalVersion"
+        },
+        {
+          "sh:class": "https://www.openml.org/model#Library",
+          "sh:description": "",
+          "sh:minCount": "1",
+          "sh:path": "https://www.openml.org/model#hasDependency"
+        },
+        {
+          "sh:class": "https://www.openml.org/model#FlowParameter",
+          "sh:description": "",
+          "sh:path": "https://www.openml.org/model#hasFlowParameter"
+        },
+        {
+          "sh:datatype": "http://www.w3.org/2000/01/rdf-schema#Literal",
+          "sh:description": "",
+          "sh:maxCount": "1",
+          "sh:path": "https://www.openml.org/model#id"
+        },
+        {
+          "sh:datatype": "http://www.w3.org/2000/01/rdf-schema#Literal",
+          "sh:description": "",
+          "sh:maxCount": "1",
+          "sh:minCount": "1",
+          "sh:path": "https://www.openml.org/model#name"
+        },
+        {
+          "sh:class": "http://www.w3.org/2004/02/skos/core#Concept",
+          "sh:description": "",
+          "sh:maxCount": "1",
+          "sh:minCount": "1",
+          "sh:path": "https://www.openml.org/model#status"
+        },
+        {
+          "sh:datatype": "http://www.w3.org/2000/01/rdf-schema#Literal",
+          "sh:description": "",
+          "sh:path": "https://www.openml.org/model#tag"
+        },
+        {
+          "sh:datatype": "http://www.w3.org/2000/01/rdf-schema#Literal",
+          "sh:description": "",
+          "sh:maxCount": "1",
+          "sh:minCount": "1",
+          "sh:path": "https://www.openml.org/model#uploaded"
+        },
+        {
+          "sh:datatype": "http://www.w3.org/2000/01/rdf-schema#Literal",
+          "sh:description": "",
+          "sh:maxCount": "1",
+          "sh:path": "https://www.openml.org/model#version"
+        }
+      ],
+      "sh:targetClass": "https://www.openml.org/model#Flow"
+    },
+    {
+      "@id": "https://semiceu.github.io//shacl/mldcat-ap-SHACL_en#FlowParameterShape",
+      "@type": "sh:NodeShape",
+      "sh:closed": false,
+      "sh:property": [
+        {
+          "sh:datatype": "http://www.w3.org/2000/01/rdf-schema#Literal",
+          "sh:description": "",
+          "sh:maxCount": "1",
+          "sh:path": "https://www.openml.org/model#defaultValue"
+        },
+        {
+          "sh:datatype": "http://www.w3.org/2000/01/rdf-schema#Literal",
+          "sh:description": "",
+          "sh:maxCount": "1",
+          "sh:path": "https://www.openml.org/model#description"
+        },
+        {
+          "sh:datatype": "http://www.w3.org/2000/01/rdf-schema#Literal",
+          "sh:description": "",
+          "sh:maxCount": "1",
+          "sh:minCount": "1",
+          "sh:path": "https://www.openml.org/model#name"
+        },
+        {
+          "sh:datatype": "http://www.w3.org/2000/01/rdf-schema#Literal",
+          "sh:description": "",
+          "sh:maxCount": "1",
+          "sh:path": "https://www.openml.org/model#recommendedRange"
+        },
+        {
+          "sh:class": "http://www.w3.org/2004/02/skos/core#Concept",
+          "sh:description": "",
+          "sh:maxCount": "1",
+          "sh:path": "https://www.openml.org/model#type"
+        }
+      ],
+      "sh:targetClass": "https://www.openml.org/model#FlowParameter"
+    },
+    {
+      "@id": "https://semiceu.github.io//shacl/mldcat-ap-SHACL_en#LibraryShape",
+      "@type": "sh:NodeShape",
+      "sh:closed": false,
+      "sh:property": [
+        {
+          "sh:datatype": "http://www.w3.org/2000/01/rdf-schema#Literal",
+          "sh:description": "",
+          "sh:maxCount": "1",
+          "sh:minCount": "1",
+          "sh:path": "https://www.openml.org/model#name"
+        },
+        {
+          "sh:datatype": "http://www.w3.org/2000/01/rdf-schema#Literal",
+          "sh:description": "",
+          "sh:maxCount": "1",
+          "sh:minCount": "1",
+          "sh:path": "https://www.openml.org/model#version"
+        }
+      ],
+      "sh:targetClass": "https://www.openml.org/model#Library"
+    },
+    {
+      "@id": "https://semiceu.github.io//shacl/mldcat-ap-SHACL_en#MachineLearningModelShape",
+      "@type": "sh:NodeShape",
+      "sh:closed": false,
+      "sh:property": [
+        {
+          "sh:datatype": "http://www.w3.org/2000/01/rdf-schema#Literal",
+          "sh:description": "",
+          "sh:maxCount": "1",
+          "sh:path": "https://www.openml.org/model#description"
+        },
+        {
+          "sh:datatype": "http://www.w3.org/2000/01/rdf-schema#Literal",
+          "sh:description": "",
+          "sh:maxCount": "1",
+          "sh:path": "https://www.openml.org/model#ethicalConsiderations"
+        },
+        {
+          "sh:datatype": "http://www.w3.org/2000/01/rdf-schema#Literal",
+          "sh:description": "",
+          "sh:maxCount": "1",
+          "sh:path": "https://www.openml.org/model#evaluationResults"
+        },
+        {
+          "sh:class": "https://www.openml.org/model#OutputFilePrediction",
+          "sh:description": "",
+          "sh:maxCount": "1",
+          "sh:minCount": "1",
+          "sh:path": "https://www.openml.org/model#hasOutPutFilePrediction"
+        },
+        {
+          "sh:datatype": "http://www.w3.org/2000/01/rdf-schema#Literal",
+          "sh:description": "",
+          "sh:maxCount": "1",
+          "sh:path": "https://www.openml.org/model#intendedUse"
+        },
+        {
+          "sh:datatype": "http://www.w3.org/2000/01/rdf-schema#Literal",
+          "sh:description": "",
+          "sh:maxCount": "1",
+          "sh:minCount": "1",
+          "sh:path": "https://www.openml.org/model#name"
+        },
+        {
+          "sh:datatype": "http://www.w3.org/2000/01/rdf-schema#Literal",
+          "sh:description": "",
+          "sh:path": "https://www.openml.org/model#tag"
+        },
+        {
+          "sh:datatype": "http://www.w3.org/2000/01/rdf-schema#Literal",
+          "sh:description": "",
+          "sh:maxCount": "1",
+          "sh:path": "https://www.openml.org/model#trainingProcess"
+        },
+        {
+          "sh:description": "",
+          "sh:maxCount": "1",
+          "sh:minCount": "1",
+          "sh:path": "https://www.openml.org/model#version"
+        }
+      ],
+      "sh:targetClass": "https://www.openml.org/model#MachineLearningModel"
+    },
+    {
+      "@id": "https://semiceu.github.io//shacl/mldcat-ap-SHACL_en#MeasureShape",
+      "@type": "sh:NodeShape",
+      "sh:closed": false,
+      "sh:property": [],
+      "sh:targetClass": "https://www.openml.org/model#Measure"
+    },
+    {
+      "@id": "https://semiceu.github.io//shacl/mldcat-ap-SHACL_en#OutputFileDescriptionShape",
+      "@type": "sh:NodeShape",
+      "sh:closed": false,
+      "sh:property": [
+        {
+          "sh:datatype": "http://www.w3.org/2000/01/rdf-schema#Literal",
+          "sh:description": "",
+          "sh:maxCount": "1",
+          "sh:minCount": "1",
+          "sh:path": "https://www.openml.org/model#id"
+        },
+        {
+          "sh:datatype": "http://www.w3.org/2000/01/rdf-schema#Literal",
+          "sh:description": "",
+          "sh:maxCount": "1",
+          "sh:minCount": "1",
+          "sh:path": "https://www.openml.org/model#name"
+        },
+        {
+          "sh:datatype": "http://www.w3.org/2000/01/rdf-schema#Literal",
+          "sh:description": "",
+          "sh:maxCount": "1",
+          "sh:minCount": "1",
+          "sh:path": "https://www.openml.org/model#url"
+        }
+      ],
+      "sh:targetClass": "https://www.openml.org/model#OutputFileDescription"
+    },
+    {
+      "@id": "https://semiceu.github.io//shacl/mldcat-ap-SHACL_en#OutputFilePredictionShape",
+      "@type": "sh:NodeShape",
+      "sh:closed": false,
+      "sh:property": [
+        {
+          "sh:datatype": "http://www.w3.org/2000/01/rdf-schema#Literal",
+          "sh:description": "",
+          "sh:maxCount": "1",
+          "sh:minCount": "1",
+          "sh:path": "https://www.openml.org/model#id"
+        },
+        {
+          "sh:datatype": "http://www.w3.org/2000/01/rdf-schema#Literal",
+          "sh:description": "",
+          "sh:maxCount": "1",
+          "sh:minCount": "1",
+          "sh:path": "https://www.openml.org/model#name"
+        },
+        {
+          "sh:class": "http://www.w3.org/2000/01/rdf-schema#Resource",
+          "sh:description": "",
+          "sh:maxCount": "1",
+          "sh:minCount": "1",
+          "sh:path": "https://www.openml.org/model#url"
+        }
+      ],
+      "sh:targetClass": "https://www.openml.org/model#OutputFilePrediction"
+    },
+    {
+      "@id": "https://semiceu.github.io//shacl/mldcat-ap-SHACL_en#ParameterShape",
+      "@type": "sh:NodeShape",
+      "sh:closed": false,
+      "sh:property": [
+        {
+          "sh:datatype": "http://www.w3.org/2000/01/rdf-schema#Literal",
+          "sh:description": "",
+          "sh:maxCount": "1",
+          "sh:minCount": "1",
+          "sh:path": "https://www.openml.org/model#name"
+        },
+        {
+          "sh:datatype": "http://www.w3.org/2000/01/rdf-schema#Literal",
+          "sh:description": "",
+          "sh:maxCount": "1",
+          "sh:minCount": "1",
+          "sh:path": "https://www.openml.org/model#value"
+        }
+      ],
+      "sh:targetClass": "https://www.openml.org/model#Parameter"
+    },
+    {
+      "@id": "https://semiceu.github.io//shacl/mldcat-ap-SHACL_en#ParameterSettingShape",
+      "@type": "sh:NodeShape",
+      "sh:closed": false,
+      "sh:property": [
+        {
+          "sh:datatype": "http://www.w3.org/2000/01/rdf-schema#Literal",
+          "sh:description": "",
+          "sh:maxCount": "1",
+          "sh:path": "https://www.openml.org/model#component"
+        },
+        {
+          "sh:datatype": "http://www.w3.org/2000/01/rdf-schema#Literal",
+          "sh:description": "",
+          "sh:maxCount": "1",
+          "sh:minCount": "1",
+          "sh:path": "https://www.openml.org/model#name"
+        },
+        {
+          "sh:datatype": "http://www.w3.org/2000/01/rdf-schema#Literal",
+          "sh:description": "",
+          "sh:maxCount": "1",
+          "sh:minCount": "1",
+          "sh:path": "https://www.openml.org/model#value"
+        }
+      ],
+      "sh:targetClass": "https://www.openml.org/model#ParameterSetting"
+    },
+    {
+      "@id": "https://semiceu.github.io//shacl/mldcat-ap-SHACL_en#PredictionShape",
+      "@type": "sh:NodeShape",
+      "sh:closed": false,
+      "sh:property": [
+        {
+          "sh:class": "http://www.w3.org/2004/02/skos/core#Concept",
+          "sh:description": "",
+          "sh:maxCount": "1",
+          "sh:minCount": "1",
+          "sh:path": "https://www.openml.org/model#format"
+        },
+        {
+          "sh:class": "https://www.openml.org/model#PredictionFeature",
+          "sh:description": "",
+          "sh:minCount": "1",
+          "sh:path": "https://www.openml.org/model#hasPredictionfeature"
+        }
+      ],
+      "sh:targetClass": "https://www.openml.org/model#Prediction"
+    },
+    {
+      "@id": "https://semiceu.github.io//shacl/mldcat-ap-SHACL_en#PredictionFeatureShape",
+      "@type": "sh:NodeShape",
+      "sh:closed": false,
+      "sh:property": [
+        {
+          "sh:datatype": "http://www.w3.org/2000/01/rdf-schema#Literal",
+          "sh:description": "",
+          "sh:maxCount": "1",
+          "sh:minCount": "1",
+          "sh:path": "https://www.openml.org/model#name"
+        },
+        {
+          "sh:class": "http://www.w3.org/2004/02/skos/core#Concept",
+          "sh:description": "",
+          "sh:maxCount": "1",
+          "sh:minCount": "1",
+          "sh:path": "https://www.openml.org/model#type"
+        }
+      ],
+      "sh:targetClass": "https://www.openml.org/model#PredictionFeature"
+    },
+    {
+      "@id": "https://semiceu.github.io//shacl/mldcat-ap-SHACL_en#QualityShape",
+      "@type": "sh:NodeShape",
+      "sh:closed": false,
+      "sh:property": [
+        {
+          "sh:datatype": "http://www.w3.org/2000/01/rdf-schema#Literal",
+          "sh:description": "",
+          "sh:maxCount": "1",
+          "sh:minCount": "1",
+          "sh:path": "https://www.openml.org/model#name"
+        },
+        {
+          "sh:description": "",
+          "sh:maxCount": "1",
+          "sh:minCount": "1",
+          "sh:path": "https://www.openml.org/model#value"
+        }
+      ],
+      "sh:targetClass": "https://www.openml.org/model#Quality"
+    },
+    {
+      "@id": "https://semiceu.github.io//shacl/mldcat-ap-SHACL_en#RunShape",
+      "@type": "sh:NodeShape",
+      "sh:closed": false,
+      "sh:property": [
+        {
+          "sh:datatype": "http://www.w3.org/2000/01/rdf-schema#Literal",
+          "sh:description": "",
+          "sh:maxCount": "1",
+          "sh:path": "https://www.openml.org/model#errorMessage"
+        },
+        {
+          "sh:class": "https://www.openml.org/model#Evaluation",
+          "sh:description": "",
+          "sh:path": "https://www.openml.org/model#hasEvaluation"
+        },
+        {
+          "sh:class": "https://www.openml.org/model#Flow",
+          "sh:description": "",
+          "sh:maxCount": "1",
+          "sh:minCount": "1",
+          "sh:path": "https://www.openml.org/model#hasFlow"
+        },
+        {
+          "sh:class": "https://www.openml.org/model#OutputFileDescription",
+          "sh:description": "",
+          "sh:maxCount": "1",
+          "sh:minCount": "1",
+          "sh:path": "https://www.openml.org/model#hasOutputFileDescription"
+        },
+        {
+          "sh:class": "https://www.openml.org/model#OutputFilePrediction",
+          "sh:description": "",
+          "sh:maxCount": "1",
+          "sh:minCount": "1",
+          "sh:path": "https://www.openml.org/model#hasOutputFilePrediction"
+        },
+        {
+          "sh:class": "https://www.openml.org/model#ParameterSetting",
+          "sh:description": "",
+          "sh:maxCount": "1",
+          "sh:path": "https://www.openml.org/model#hasParameterSetting"
+        },
+        {
+          "sh:class": "https://www.openml.org/model#Task",
+          "sh:description": "",
+          "sh:maxCount": "1",
+          "sh:path": "https://www.openml.org/model#hasTask"
+        },
+        {
+          "sh:datatype": "http://www.w3.org/2000/01/rdf-schema#Literal",
+          "sh:description": "",
+          "sh:maxCount": "1",
+          "sh:path": "https://www.openml.org/model#id"
+        },
+        {
+          "sh:datatype": "http://www.w3.org/2000/01/rdf-schema#Literal",
+          "sh:description": "",
+          "sh:maxCount": "1",
+          "sh:path": "https://www.openml.org/model#runDetails"
+        },
+        {
+          "sh:datatype": "http://www.w3.org/2000/01/rdf-schema#Literal",
+          "sh:description": "",
+          "sh:maxCount": "1",
+          "sh:path": "https://www.openml.org/model#setupId"
+        },
+        {
+          "sh:datatype": "http://www.w3.org/2000/01/rdf-schema#Literal",
+          "sh:description": "",
+          "sh:maxCount": "1",
+          "sh:path": "https://www.openml.org/model#setupString"
+        },
+        {
+          "sh:datatype": "http://www.w3.org/2000/01/rdf-schema#Literal",
+          "sh:description": "",
+          "sh:path": "https://www.openml.org/model#tag"
+        }
+      ],
+      "sh:targetClass": "https://www.openml.org/model#Run"
+    },
+    {
+      "@id": "https://semiceu.github.io//shacl/mldcat-ap-SHACL_en#RunCollectionShape",
+      "@type": "sh:NodeShape",
+      "sh:closed": false,
+      "sh:property": [
+        {
+          "sh:class": "https://www.openml.org/model#Run",
+          "sh:description": "",
+          "sh:minCount": "1",
+          "sh:path": "https://www.openml.org/model#hasRun"
+        }
+      ],
+      "sh:targetClass": "https://www.openml.org/model#RunCollection"
+    },
+    {
+      "@id": "https://semiceu.github.io//shacl/mldcat-ap-SHACL_en#SplitShape",
+      "@type": "sh:NodeShape",
+      "sh:closed": false,
+      "sh:property": [
+        {
+          "sh:datatype": "http://www.w3.org/2000/01/rdf-schema#Literal",
+          "sh:description": "",
+          "sh:maxCount": "1",
+          "sh:path": "https://www.openml.org/model#description"
+        },
+        {
+          "sh:datatype": "http://www.w3.org/2000/01/rdf-schema#Literal",
+          "sh:description": "",
+          "sh:maxCount": "1",
+          "sh:minCount": "1",
+          "sh:path": "https://www.openml.org/model#id"
+        },
+        {
+          "sh:datatype": "http://www.w3.org/2000/01/rdf-schema#Literal",
+          "sh:description": "",
+          "sh:maxCount": "1",
+          "sh:minCount": "1",
+          "sh:path": "https://www.openml.org/model#name"
+        }
+      ],
+      "sh:targetClass": "https://www.openml.org/model#Split"
+    },
+    {
+      "@id": "https://semiceu.github.io//shacl/mldcat-ap-SHACL_en#TaskShape",
+      "@type": "sh:NodeShape",
+      "sh:closed": false,
+      "sh:property": [
+        {
+          "sh:class": "https://www.openml.org/model#CostMatrix",
+          "sh:description": "",
+          "sh:maxCount": "1",
+          "sh:path": "https://www.openml.org/model#hasCostMatrix"
+        },
+        {
+          "sh:class": "https://www.openml.org/model#EvaluationMeasure",
+          "sh:description": "",
+          "sh:minCount": "1",
+          "sh:path": "https://www.openml.org/model#hasEValuationMeasure"
+        },
+        {
+          "sh:class": "https://www.openml.org/model#EstimationProcedure",
+          "sh:description": "",
+          "sh:minCount": "1",
+          "sh:path": "https://www.openml.org/model#hasEstimationProcedure"
+        },
+        {
+          "sh:class": "https://www.openml.org/model#Prediction",
+          "sh:description": "",
+          "sh:maxCount": "1",
+          "sh:minCount": "1",
+          "sh:path": "https://www.openml.org/model#hasOutput"
+        },
+        {
+          "sh:class": "https://www.openml.org/model#TaskType",
+          "sh:description": "",
+          "sh:maxCount": "1",
+          "sh:minCount": "1",
+          "sh:path": "https://www.openml.org/model#hasTaskType"
+        },
+        {
+          "sh:datatype": "http://www.w3.org/2000/01/rdf-schema#Literal",
+          "sh:description": "",
+          "sh:maxCount": "1",
+          "sh:path": "https://www.openml.org/model#id"
+        },
+        {
+          "sh:datatype": "http://www.w3.org/2000/01/rdf-schema#Literal",
+          "sh:description": "",
+          "sh:maxCount": "1",
+          "sh:minCount": "1",
+          "sh:path": "https://www.openml.org/model#name"
+        },
+        {
+          "sh:datatype": "http://www.w3.org/2000/01/rdf-schema#Literal",
+          "sh:description": "",
+          "sh:path": "https://www.openml.org/model#tag"
+        },
+        {
+          "sh:class": "https://www.openml.org/model#Feature",
+          "sh:description": "",
+          "sh:minCount": "1",
+          "sh:path": "https://www.openml.org/model#targetFeature"
+        }
+      ],
+      "sh:targetClass": "https://www.openml.org/model#Task"
+    },
+    {
+      "@id": "https://semiceu.github.io//shacl/mldcat-ap-SHACL_en#TaskCollectionShape",
+      "@type": "sh:NodeShape",
+      "sh:closed": false,
+      "sh:property": [
+        {
+          "sh:class": "https://www.openml.org/model#Task",
+          "sh:description": "",
+          "sh:minCount": "1",
+          "sh:path": "https://www.openml.org/model#hasTask"
+        }
+      ],
+      "sh:targetClass": "https://www.openml.org/model#TaskCollection"
+    },
+    {
+      "@id": "https://semiceu.github.io//shacl/mldcat-ap-SHACL_en#TaskTypeShape",
+      "@type": "sh:NodeShape",
+      "sh:closed": false,
+      "sh:property": [
+        {
+          "sh:datatype": "http://www.w3.org/2000/01/rdf-schema#Literal",
+          "sh:description": "",
+          "sh:maxCount": "1",
+          "sh:minCount": "1",
+          "sh:path": "https://www.openml.org/model#description"
+        },
+        {
+          "sh:datatype": "http://www.w3.org/2000/01/rdf-schema#Literal",
+          "sh:description": "",
+          "sh:maxCount": "1",
+          "sh:minCount": "1",
+          "sh:path": "https://www.openml.org/model#identifier"
+        },
+        {
+          "sh:datatype": "http://www.w3.org/2000/01/rdf-schema#Literal",
+          "sh:description": "",
+          "sh:maxCount": "1",
+          "sh:minCount": "1",
+          "sh:path": "https://www.openml.org/model#name"
+        }
+      ],
+      "sh:targetClass": "https://www.openml.org/model#TaskType"
+    }
+  ]
+}

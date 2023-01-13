@@ -7,6 +7,7 @@
 @prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
 
 <https://semiceu.github.io//shacl/core-person-ap-SHACL_en> <https://semiceu.github.io//shacl/core-person-ap-SHACL_enshapes> <https://semiceu.github.io//shacl/core-person-ap-SHACL_en#GenericDateShape>,
+    <https://semiceu.github.io//shacl/core-person-ap-SHACL_en#NameShape>,
     <https://semiceu.github.io//shacl/core-person-ap-SHACL_en#JurisdictionShape>,
     <https://semiceu.github.io//shacl/core-person-ap-SHACL_en#LocationShape>,
     <https://semiceu.github.io//shacl/core-person-ap-SHACL_en#IdentifierShape>,
@@ -153,7 +154,7 @@
   ];
   shacl:targetClass dc:Location .
 
-<https://semiceu.github.io//shacl/core-person-ap-SHACL_en#PersonShape> a shacl:NodeShape;
+<https://semiceu.github.io//shacl/core-person-ap-SHACL_en#NameShape> a shacl:NodeShape;
   shacl:closed false;
   shacl:property [
     shacl:datatype rdf:langString;
@@ -166,6 +167,40 @@
     shacl:name "birth name"@en;
     shacl:path <http://www.w3.org/ns/person#birthName>
   ], [
+    shacl:datatype rdf:langString;
+    shacl:description "The hereditary surname of a family."@en;
+    shacl:name "family name"@en;
+    shacl:path foaf:familyName
+  ], [
+    shacl:datatype rdf:langString;
+    shacl:description "The complete name of the Person as one string."@en;
+    shacl:name "full name"@en;
+    shacl:path foaf:name
+  ], [
+    shacl:datatype rdf:langString;
+    shacl:description "The name(s) that identify the Person within a family with a common surname."@en;
+    shacl:name "given name"@en;
+    shacl:path foaf:givenName
+  ], [
+    shacl:datatype rdf:langString;
+    shacl:description "Name based on the given name of the Person's mother."@en;
+    shacl:name "matronymic name"@en;
+    shacl:path <http://data.europa.eu/m8g/matronymicName>
+  ], [
+    shacl:datatype rdf:langString;
+    shacl:name "middle name"@en;
+    shacl:path <http://data.europe.eu/m8g/middleName>
+  ], [
+    shacl:datatype rdf:langString;
+    shacl:description "Name based on the given name of the Person's father."@en;
+    shacl:name "patronymic name"@en;
+    shacl:path <http://www.w3.org/ns/person#patronymicName>
+  ];
+  shacl:targetClass <http://data.europa.eu/m8g/Name> .
+
+<https://semiceu.github.io//shacl/core-person-ap-SHACL_en#PersonShape> a shacl:NodeShape;
+  shacl:closed false;
+  shacl:property [
     shacl:class dc:Jurisdiction;
     shacl:description "The Jurisdiction that has conferred citizenship rights on the Person such as the right to vote, to receive certain protection from the community or the issuance of a passport."@en;
     shacl:name "citizenship"@en;
@@ -196,46 +231,15 @@
     shacl:name "domicile"@en;
     shacl:path <http://data.europa.eu/m8g/domicile>
   ], [
-    shacl:datatype rdf:langString;
-    shacl:description "The hereditary surname of a family."@en;
-    shacl:name "family name (surname)"@en;
-    shacl:path foaf:familyName
-  ], [
-    shacl:datatype rdf:langString;
-    shacl:description "The complete name of the Person as one string."@en;
-    shacl:name "full name"@en;
-    shacl:path foaf:name
-  ], [
     shacl:class skos:Concept;
     shacl:description "The identities, expressions and societal roles of the Person"@en;
     shacl:name "gender"@en;
     shacl:path <http://data.europa.eu/m8g/gender>
   ], [
-    shacl:datatype rdf:langString;
-    shacl:description "The name(s) that identify the Person within a family with a common surname."@en;
-    shacl:name "given name (forename)"@en;
-    shacl:path foaf:givenName
-  ], [
     shacl:class <http://www.w3.org/ns/adms#Identifier>;
     shacl:description "The unambiguous structured reference to the Person."@en;
     shacl:name "identifier"@en;
     shacl:path dc:identifier
-  ], [
-    shacl:datatype rdf:langString;
-    shacl:description "Name based on the given name of the Person's mother."@en;
-    shacl:name "matronymic name"@en;
-    shacl:path <http://data.europa.eu/m8g/matronymicName>
-  ], [
-    shacl:datatype rdf:langString;
-    shacl:maxCount 1;
-    shacl:minCount 1;
-    shacl:name "middle name"@en;
-    shacl:path <http://data.europe.eu/m8g/middleName>
-  ], [
-    shacl:datatype rdf:langString;
-    shacl:description "Name based on the given name of the Person's father."@en;
-    shacl:name "patronymic name"@en;
-    shacl:path <http://www.w3.org/ns/person#patronymicName>
   ], [
     shacl:class dc:Location;
     shacl:description "The Location where the Person was born."@en;
