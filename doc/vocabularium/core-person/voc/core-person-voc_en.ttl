@@ -29,7 +29,7 @@
   rdfs:range <http://data.europa.eu/m8g/GenericDate> .
 
 <http://data.europa.eu/m8g/gender> a owl:ObjectProperty;
-  <http://purl.org/vocab/vann/usageNote> "The gender of an individual should be recorded using a controlled vocabulary that is appropriate for the specific context. In some cases, the chromosomal or physical state of an individual will be more important than the gender that they express, in others the reverse will be true. What is always important is that the controlled vocabulary used to describe an individual's gender is stated explicitly."@en;
+  <http://purl.org/vocab/vann/usageNote> "The gender of an individual should be recorded using a controlled vocabulary that is appropriate for the specific context."@en;
   rdfs:domain <http://www.w3.org/ns/person#Person>;
   rdfs:isDefinedBy <http://data.europa.eu/m8g>;
   rdfs:range skos:Concept .
@@ -41,11 +41,27 @@ Languages are represented by two character codes, optionally followed by a local
   rdfs:isDefinedBy <http://data.europa.eu/m8g>;
   rdfs:range rdf:langString .
 
-<http://data.europa.eu/m8g/Name> a owl:Class;
-  rdfs:isDefinedBy <http://data.europa.eu/m8g> .
+<http://data.europa.eu/m8g/sex> a owl:ObjectProperty;
+  <http://purl.org/vocab/vann/usageNote> "The recommended controlled vocabulary is the <a href=\"https://op.europa.eu/en/web/eu-vocabularies/concept-scheme/-/resource?uri=http://publications.europa.eu/resource/authority/human-sex\">Human sex</a> from Publications Office."@en;
+  rdfs:domain <http://www.w3.org/ns/person#Person>;
+  rdfs:isDefinedBy <http://data.europa.eu/m8g>;
+  rdfs:range skos:Concept .
+
+<http://data.europa.eu/m8g/validFrom> a owl:DatatypeProperty;
+  rdfs:domain <http://data.europa.eu/m8g/Name>;
+  rdfs:isDefinedBy <http://data.europa.eu/m8g>;
+  rdfs:range <http://data.europa.eu/m8g/GenericDate> .
+
+<http://data.europa.eu/m8g/validUntil> a owl:DatatypeProperty;
+  rdfs:domain <http://data.europa.eu/m8g/Name>;
+  rdfs:isDefinedBy <http://data.europa.eu/m8g>;
+  rdfs:range <http://data.europa.eu/m8g/GenericDate> .
 
 <http://data.europa.eu/m8g/domicile> a rdf:Property;
   rdfs:label "domicile"@en .
+
+<http://data.europa.eu/m8g/hasName> a rdf:Property;
+  rdfs:label "has name"@en .
 
 <http://data.europe.eu/m8g/middleName> a rdf:Property;
   rdfs:label "middle name"@en .
@@ -63,8 +79,8 @@ dc:identifier a rdf:Property;
   rdfs:label "birth name"@en .
 
 <http://www.w3.org/ns/person#countryOfBirth> a rdf:Property;
-  rdfs:label "country of birth"@en,
-    "residency"@en .
+  rdfs:label "residency"@en,
+    "country of birth"@en .
 
 <http://www.w3.org/ns/person#countryOfDeath> a rdf:Property;
   rdfs:label "country of death"@en .
@@ -87,6 +103,9 @@ foaf:givenName a rdf:Property;
 foaf:name a rdf:Property;
   rdfs:label "full name"@en .
 
+<http://data.europa.eu/m8g/Name> a owl:Class;
+  rdfs:isDefinedBy <http://data.europa.eu/m8g> .
+
 <http://data.europa.eu/m8g/GenericDate> a owl:Class;
   rdfs:isDefinedBy <http://data.europa.eu/m8g> .
 
@@ -107,34 +126,35 @@ foaf:name a rdf:Property;
     foaf:name "Semantic Interoperability Community (SEMIC)"
   ];
   rdfs:seeAlso <http://www.w3.org/ns/person#Person>,
-    <http://data.europa.eu/m8g/domicile>,
-    <http://data.europe.eu/m8g/middleName>,
-    dc:alternative,
-    dc:citizenship,
-    dc:identifier,
-    <http://www.w3.org/ns/person#birthName>,
-    <http://www.w3.org/ns/person#countryOfBirth>,
-    <http://www.w3.org/ns/person#countryOfDeath>,
-    <http://www.w3.org/ns/person#patronymicName>,
-    <http://www.w3.org/ns/person#placeOfBirth>,
-    <http://www.w3.org/ns/person#placeOfDeath>,
-    foaf:familyName,
+    foaf:name,
     foaf:givenName,
-    foaf:name;
+    foaf:familyName,
+    <http://www.w3.org/ns/person#placeOfDeath>,
+    <http://www.w3.org/ns/person#placeOfBirth>,
+    <http://www.w3.org/ns/person#patronymicName>,
+    <http://www.w3.org/ns/person#countryOfDeath>,
+    <http://www.w3.org/ns/person#countryOfBirth>,
+    <http://www.w3.org/ns/person#birthName>,
+    dc:identifier,
+    dc:citizenship,
+    dc:alternative,
+    <http://data.europe.eu/m8g/middleName>,
+    <http://data.europa.eu/m8g/hasName>,
+    <http://data.europa.eu/m8g/domicile>;
   <http://www.w3.org/2001/02pd/rec54#editor> [
     a foaf:Person;
-    foaf:firstName "Florian";
-    foaf:lastName "Barthelemy";
+    foaf:firstName "Bert";
+    foaf:lastName "Van Nuffelen";
+    schemas:affiliation [foaf:name "TenForce"]
+  ], [
+    a foaf:Person;
+    foaf:firstName "Emidio";
+    foaf:lastName "Stani";
     schemas:affiliation [foaf:name "PwC EU Services"]
   ], [
     a foaf:Person;
-    foaf:firstName "Alexandre";
-    foaf:lastName "Beaufays";
-    schemas:affiliation [foaf:name "PwC EU Services"]
-  ], [
-    a foaf:Person;
-    foaf:firstName "Michiel";
-    foaf:lastName "De Keyzer";
+    foaf:firstName "Dimitri";
+    foaf:lastName "Schepers";
     schemas:affiliation [foaf:name "PwC EU Services"]
   ], [
     a foaf:Person;
@@ -143,19 +163,19 @@ foaf:name a rdf:Property;
     schemas:affiliation [foaf:name "European Commission"]
   ], [
     a foaf:Person;
-    foaf:firstName "Dimitri";
-    foaf:lastName "Schepers";
+    foaf:firstName "Michiel";
+    foaf:lastName "De Keyzer";
     schemas:affiliation [foaf:name "PwC EU Services"]
   ], [
     a foaf:Person;
-    foaf:firstName "Emidio";
-    foaf:lastName "Stani";
+    foaf:firstName "Alexandre";
+    foaf:lastName "Beaufays";
     schemas:affiliation [foaf:name "PwC EU Services"]
   ], [
     a foaf:Person;
-    foaf:firstName "Bert";
-    foaf:lastName "Van Nuffelen";
-    schemas:affiliation [foaf:name "TenForce"]
+    foaf:firstName "Florian";
+    foaf:lastName "Barthelemy";
+    schemas:affiliation [foaf:name "PwC EU Services"]
   ];
   foaf:maker [
     a foaf:Person;

@@ -56,6 +56,16 @@
   ],
   "properties": [
     {
+      "EA-Guid": "{16401340-517E-4b2a-972F-5BB90CD9F972}",
+      "name": "version notes",
+      "label": {
+        "en": "version notes"
+      },
+      "definition": {
+        "en": "A description of changes between this version and the previous version of the Asset."
+      }
+    },
+    {
       "EA-Guid": "{898C9352-2AE7-446e-9F20-26A8DBD97C02}",
       "name": "issuing authority name",
       "label": {
@@ -66,16 +76,6 @@
       },
       "usage": {
         "en": "Example: \"Federal Public Service Interior\"@en."
-      }
-    },
-    {
-      "EA-Guid": "{16401340-517E-4b2a-972F-5BB90CD9F972}",
-      "name": "version notes",
-      "label": {
-        "en": "version notes"
-      },
-      "definition": {
-        "en": "A description of changes between this version and the previous version of the Asset."
       }
     }
   ],
@@ -185,26 +185,648 @@
   ],
   "externalproperties": [
     {
-      "EA-Guid": "{A145710E-6B8F-4a53-B0F3-3AB50C244C08}",
-      "name": "scheme URI",
+      "EA-Guid": "{99CBAAC9-51FF-4467-96DC-630ED49FF547}",
+      "name": "start date",
       "label": {
-        "en": "scheme URI"
+        "en": "start date"
       },
       "definition": {
-        "en": "URI of the scheme used to construct the identifier."
+        "en": "Used in ADMS to define the start of a period of time during which an Asset is valid or applicable."
       }
     },
     {
-      "EA-Guid": "{F41A0156-324A-4648-A6E8-F50E0A5E6ED4}",
-      "name": "issuing authority URI",
+      "EA-Guid": "{72EED1D2-8D07-4d00-A0A7-CEA86D203B7A}",
+      "name": "end date",
       "label": {
-        "en": "issuing authority URI"
+        "en": "end date"
       },
       "definition": {
-        "en": "The reference in the form of a Uniform Resource Identifier to the issuing authority."
+        "en": "Used in ADMS to define the end of a period of time during which an Asset is valid or applicable."
+      }
+    },
+    {
+      "EA-Guid": "{DFB116D1-42BB-4d59-B22E-3CD075A5E251}",
+      "name": "page",
+      "label": {
+        "en": "page"
+      },
+      "definition": {
+        "en": "Links to documentation that contains information related to the Asset."
       },
       "usage": {
-        "en": "Example: \"https://belgium.be/id/organizations/1233\"."
+        "en": "See also dcat:landingPage , wdrs:describedby."
+      }
+    },
+    {
+      "EA-Guid": "{773B9A30-8874-4c47-9ECF-97324E0EC181}",
+      "name": "geographic name",
+      "label": {
+        "en": "geographic name"
+      },
+      "definition": {
+        "en": "A textual description for a Location."
+      },
+      "usage": {
+        "en": "The <a href=\"https://inspire.ec.europa.eu/Themes/132/2892\">INSPIRE Data Specification on Geographical Names</a> provides a detailed model for describing a 'named place', including methods for providing multiple names in multiple scripts. INSPIRE's definition is the following: Names of areas, regions, localities, cities, suburbs, towns or settlements, or any geographical or topographical feature of public or historical interest. This is beyond what is necessary for the Core Location Vocabulary but, importantly, the concept of a geographic name used here is consistent.\r\n<br/><br/>\r\nA geographic name is a proper noun applied to a spatial object. Taking the example used in the <a href=\"https://inspire.ec.europa.eu/documents/Data_Specifications/INSPIRE_DataSpecification_GN_v3.0.1.pdf\">INSPIRE document</a> (page 18), the following are all valid geographic names for the Greek capital:\r\n- \"A&theta;n&nu;a\"@gr-Grek (the Greek endonym written in the Greek script)\r\n- \"Athína\"@gr-Latn (the standard Romanisation of the endonym)\r\n- \"Athens\"@en (the English language exonym)\r\nINSPIRE has a detailed (XML-based) method of providing metadata about a geographic name and in XML-data sets that may be the most appropriate method to follow. When using the Core Location Vocabulary in data sets that are not focussed on environmental/geographical data (the use case for INSPIRE), the Code datatype or a simple language identifier may be used to provide such metadata.\r\n<br/><br/>\r\nThe country codes defined in <a href=\"https://www.iso.org/iso-3166-country-codes.html\">ISO 3166</a> may be used as geographic names and these are generally preferred over either the long form or short form of a country's name (as they are less error prone). The Publications Office of the European Union recommends the use of ISO 3166-1 codes for countries in all cases except two:\r\n- use 'UK' in preference to the ISO 3166 code GB for the United Kingdom;\r\n- use 'EL' in preference to the ISO 3166 code GR for Greece.\r\nWhere a country has changed its name or no longer exists (such as Czechoslovakia, Yugoslavia etc.) use the ISO 3166-3 code."
+      }
+    },
+    {
+      "EA-Guid": "{ECB1EC61-C38F-4404-8DCD-7602A112782C}",
+      "name": "theme taxonomy",
+      "label": {
+        "en": "theme taxonomy"
+      },
+      "definition": {
+        "en": "The SKOS Concept Scheme used to classify an Asset Repository's assets."
+      }
+    },
+    {
+      "EA-Guid": "{662B2555-A298-4a28-97AD-4DE714A9EFB3}",
+      "name": "theme",
+      "label": {
+        "en": "theme"
+      },
+      "definition": {
+        "en": "The theme or sector to which the Asset applies."
+      }
+    },
+    {
+      "EA-Guid": "{B74FF823-EA6A-4a53-8EF6-2D6275F3575C}",
+      "name": "mediatype",
+      "label": {
+        "en": "mediatype"
+      },
+      "definition": {
+        "en": "The media type of the distribution as defined by IANA ."
+      },
+      "usage": {
+        "en": "This property should be used when the media type of the distribution is defined in IANA , e.g. text/csv otherwise dcterms:format may be used with different values. See also adms:representationTechnique ."
+      }
+    },
+    {
+      "EA-Guid": "{BD37DE2D-6536-486b-93F6-8EB90A92DFEA}",
+      "name": "landing page",
+      "label": {
+        "en": "landing page"
+      },
+      "definition": {
+        "en": "A Web page that can be navigated to in a Web browser to gain access to the Asset, its distributions and/or additional information."
+      },
+      "usage": {
+        "en": "If the Asset Distribution(s) are accessible only through a landing page (i.e. direct download URLs are not known), then the landing page link should be duplicated as accessURL on a distribution."
+      }
+    },
+    {
+      "EA-Guid": "{CA0CEFE0-05CA-4949-A7F6-891D13A9D029}",
+      "name": "keyword",
+      "label": {
+        "en": "keyword"
+      },
+      "definition": {
+        "en": "A word, phrase or tag to describe the Asset."
+      }
+    },
+    {
+      "EA-Guid": "{14CBA5CA-FFFB-4ee4-824A-9B7094A1C034}",
+      "name": "download URL",
+      "label": {
+        "en": "download URL"
+      },
+      "definition": {
+        "en": "This is a direct link from an Asset Distribution to a downloadable file in a given format, e.g. CSV file or RDF file. The format is described by the distribution's dcterms:format and/or dcat:mediaType."
+      }
+    },
+    {
+      "EA-Guid": "{AD3F1B2F-F545-4295-8C71-B492465D3606}",
+      "name": "distribution",
+      "label": {
+        "en": "distribution"
+      },
+      "definition": {
+        "en": "Links an Asset to an implementation in a particular format."
+      }
+    },
+    {
+      "EA-Guid": "{FC1E8EE7-84DD-4afa-84CF-91B6BC0E7D35}",
+      "name": "dataset",
+      "label": {
+        "en": "dataset"
+      },
+      "definition": {
+        "en": "Used to link an Asset Repository to an Asset."
+      }
+    },
+    {
+      "EA-Guid": "{08FAE1E6-2BDF-408a-8B75-891DEB4BE3C4}",
+      "name": "contact point",
+      "label": {
+        "en": "contact point"
+      },
+      "definition": {
+        "en": "Links an asset to a contact point from where further information about an Asset can be obtained."
+      }
+    },
+    {
+      "EA-Guid": "{74FCDD02-0137-4f3c-9CD9-C5ECD7F5DB7A}",
+      "name": "access URL",
+      "label": {
+        "en": "access URL"
+      },
+      "definition": {
+        "en": "Any kind of URL that gives access to an Asset Repository or Asset Distribution, e.g. a landing page, download, feed URL, SPARQL endpoint etc."
+      },
+      "usage": {
+        "en": " Use dcat:accessURL when you do not have information on which it is or when it is definitely not a download.\r\n\r\n* the value is a URL.\r\n* If the distribution(s) are accessible only through a landing page (i.e. direct download URLs are not known), then the landing page link should be duplicated as accessURL on a distribution (see also dcat:landingPage )."
+      }
+    },
+    {
+      "EA-Guid": "{1C9550CE-829A-43aa-B3CD-3D3F518AC326}",
+      "name": "access URL",
+      "label": {
+        "en": "access URL"
+      },
+      "definition": {
+        "en": "Any kind of URL that gives access to an Asset Repository or Asset Distribution, e.g. a landing page, download, feed URL, SPARQL endpoint etc. Use dcat:accessURL when you do not have information on which it is or when it is definitely not a download."
+      },
+      "usage": {
+        "en": "Use dcat:accessURL when you do not have information on which it is or when it is definitely not a download.\r\n\r\n* the value is a URL.\r\n* If the distribution(s) are accessible only through a landing page (i.e. direct download URLs are not known), then the landing page link should be duplicated as accessURL on a distribution (see also dcat:landingPage )."
+      }
+    },
+    {
+      "EA-Guid": "{3004C8F4-0AEF-4efa-BF7A-80932EF370A0}",
+      "name": "translation",
+      "label": {
+        "en": "translation"
+      },
+      "definition": {
+        "en": "Links Assets that are translations of each other."
+      }
+    },
+    {
+      "EA-Guid": "{4D292F28-DED2-4760-8B9F-80D4478CF4C9}",
+      "name": "supported schema",
+      "label": {
+        "en": "supported schema"
+      },
+      "definition": {
+        "en": "A schema according to which the Asset Repository can provide data about its content, e.g. ADMS."
+      }
+    },
+    {
+      "EA-Guid": "{F6C29A7F-37B8-429d-AB31-13690BF86084}",
+      "name": "status",
+      "label": {
+        "en": "status"
+      },
+      "definition": {
+        "en": "The status of the Asset in the context of a particular workflow process."
+      }
+    },
+    {
+      "EA-Guid": "{D1F57405-DF7E-4ba6-8D47-C0E3FDF102E3}",
+      "name": "status",
+      "label": {
+        "en": "status"
+      },
+      "definition": {
+        "en": "The status of the AssetRepository in the context of a particular workflow process."
+      }
+    },
+    {
+      "EA-Guid": "{70A7DECE-0E45-4447-A576-25A525D2436F}",
+      "name": "sample",
+      "label": {
+        "en": "sample"
+      },
+      "definition": {
+        "en": "Links to a sample of an Asset (which is itself an Asset)."
+      }
+    },
+    {
+      "EA-Guid": "{A99FED4A-B25A-47e9-BF50-72DE15F3B254}",
+      "name": "representation technique",
+      "label": {
+        "en": "representation technique"
+      },
+      "definition": {
+        "en": "More information about the format in which an Asset Distribution is released. This is different from the file format as, for example, a ZIP file (file format) could contain an XML schema (representation technique)."
+      },
+      "usage": {
+        "en": "See also dcterms:format and dcat:mediaType ."
+      }
+    },
+    {
+      "EA-Guid": "{D40F5214-CC6E-4ad0-8338-19DBF9A7B465}",
+      "name": "prev",
+      "label": {
+        "en": "prev"
+      },
+      "definition": {
+        "en": "A link to the previous version of the Asset."
+      }
+    },
+    {
+      "EA-Guid": "{A023D13F-E474-4a1e-93D5-97F3CC6CCEA3}",
+      "name": "next",
+      "label": {
+        "en": "next"
+      },
+      "definition": {
+        "en": "A link to the next version of the Asset."
+      }
+    },
+    {
+      "EA-Guid": "{AECF5FEA-D0E3-445d-B778-5A537E1154C8}",
+      "name": "last",
+      "label": {
+        "en": "last"
+      },
+      "definition": {
+        "en": "A link to the current or latest version of the Asset."
+      }
+    },
+    {
+      "EA-Guid": "{67E1F5AC-EC3E-43d2-BD69-56AF1031D707}",
+      "name": "interoperability level",
+      "label": {
+        "en": "interoperability level"
+      },
+      "definition": {
+        "en": "The interoperability level for which the Asset is relevant."
+      }
+    },
+    {
+      "EA-Guid": "{B204F0E0-7797-4dba-A433-7D3F74DC0117}",
+      "name": "included asset",
+      "label": {
+        "en": "included asset"
+      },
+      "definition": {
+        "en": "An Asset that is contained in the Asset being described, e.g. when there are several vocabularies defined in a single document."
+      }
+    },
+    {
+      "EA-Guid": "{7598DC80-4E87-4630-8F2E-9F0C7DFAEAD9}",
+      "name": "identifier",
+      "label": {
+        "en": "identifier"
+      },
+      "definition": {
+        "en": "Links a resource to an adms:Identifier class."
+      }
+    },
+    {
+      "EA-Guid": "{10AD0997-5F2C-47a7-8270-BD937822146C}",
+      "name": "described by",
+      "label": {
+        "en": "described by"
+      },
+      "definition": {
+        "en": "The main documentation or specification of the Asset."
+      },
+      "usage": {
+        "en": "See also dcat:landingPage , foaf:page."
+      }
+    },
+    {
+      "EA-Guid": "{1387E307-13D3-40fd-B618-26538B4FF177}",
+      "name": "notation",
+      "label": {
+        "en": "notation"
+      },
+      "definition": {
+        "en": "A string of characters to uniquely identify a concept."
+      },
+      "usage": {
+        "en": "Example: \"abc-12345-de\"^^https://belgium.be/scheme/nationalIDnumber."
+      }
+    },
+    {
+      "EA-Guid": "{92997B99-BEDE-49ad-8BCA-E720B11D0074}",
+      "name": "in scheme",
+      "label": {
+        "en": "in scheme"
+      },
+      "definition": {
+        "en": "The ConceptScheme to which the Concept belongs to."
+      }
+    },
+    {
+      "EA-Guid": "{4D39E835-1988-40aa-8039-971FC41943F5}",
+      "name": "alternative label",
+      "label": {
+        "en": "alternative label"
+      },
+      "definition": {
+        "en": "An alternative name for the Asset."
+      }
+    },
+    {
+      "EA-Guid": "{F716CC2D-7483-4dc6-908C-93DCA94996B2}",
+      "name": "version info",
+      "label": {
+        "en": "version info"
+      },
+      "definition": {
+        "en": "A version number or other designation of the Asset."
+      }
+    },
+    {
+      "EA-Guid": "{18B1572F-CC98-472c-8363-43739E1F52DA}",
+      "name": "geographic identifier",
+      "label": {
+        "en": "geographic identifier"
+      },
+      "definition": {
+        "en": "A reference in the form of a Uniform Resource Identifier to the Location."
+      },
+      "usage": {
+        "en": "GeoNames.org provides stable, widely recognised identifiers for more than 10 million geographical names that can be used as links to further information. For example, http://sws.geonames.org/593116/ identifies the Lithuanian capital Vilnius. Unfortunately these URIs cannot easily be automatically deduced since the URI scheme uses simple numeric codes. Finding a GeoNames identifier for a Location is almost always a manual process. Where such identifiers are known or can be found, however, it is recommended that they be used.\r\nWhere the Location Class is used to identify a country, if the geonames URI is not known, the recommendation is to use DBpedia URIs of the form http://dbpedia.org/resource/ISO\\_3166-1:XX where XX is the ISO 3166 two character code for the country.\r\n<br/><br/>\r\nThe EU's Publication Office diverges from ISO 3166-1 and uses EL and UK for Greece and the United Kingdom respectively. DBpedia sticks to the ISO codes and so the correct URIs for these countries are:\r\n- http://dbpedia.org/resource/ISO\\_3166-1:GR\r\n- http://dbpedia.org/resource/ISO\\_3166-1:GB\r\neven when the geographic name is given as EL or UK."
+      }
+    },
+    {
+      "EA-Guid": "{F9250A30-C64A-4cf8-B6E9-A15F1441C964}",
+      "name": "scheme name",
+      "label": {
+        "en": "scheme name"
+      },
+      "definition": {
+        "en": "Name of the scheme used to construct the identifier."
+      }
+    },
+    {
+      "EA-Guid": "{7BAD2BAF-CDC1-4a76-BA83-6264E3EFBFE0}",
+      "name": "type",
+      "label": {
+        "en": "type"
+      },
+      "definition": {
+        "en": "This property is used to point to the specific type of publisher, Asset and License Document."
+      },
+      "usage": {
+        "en": "The type should be provided using a controlled vocabulary encoded as a SKOS Concept."
+      }
+    },
+    {
+      "EA-Guid": "{E518E82F-2FF7-440f-A095-9EA2D6ACB2AA}",
+      "name": "type",
+      "label": {
+        "en": "type"
+      },
+      "definition": {
+        "en": "This property is used to point to the specific type of publisher."
+      },
+      "usage": {
+        "en": "The type should be provided using a controlled vocabulary encoded as a SKOS Concept."
+      }
+    },
+    {
+      "EA-Guid": "{6BF27F72-133D-4ae2-8018-2FB9B3D4E765}",
+      "name": "type",
+      "label": {
+        "en": "type"
+      },
+      "definition": {
+        "en": "This property is used to point to the specific type of Asset."
+      },
+      "usage": {
+        "en": "The type should be provided using a controlled vocabulary encoded as a SKOS Concept."
+      }
+    },
+    {
+      "EA-Guid": "{F3A77051-A189-4bc9-AD22-BB26702EB024}",
+      "name": "title",
+      "label": {
+        "en": "title"
+      },
+      "definition": {
+        "en": "A name given to the Asset."
+      }
+    },
+    {
+      "EA-Guid": "{9EA8C193-E1B9-4153-83E7-63D69EF0A824}",
+      "name": "title",
+      "label": {
+        "en": "title"
+      },
+      "definition": {
+        "en": "A name given to the Asset Distribution."
+      }
+    },
+    {
+      "EA-Guid": "{48C098BF-5A79-4562-A49F-EF9598815E81}",
+      "name": "title",
+      "label": {
+        "en": "title"
+      },
+      "definition": {
+        "en": "A name given to the License Document."
+      }
+    },
+    {
+      "EA-Guid": "{AA6A48B4-BE51-4f6d-9953-9415AA279F19}",
+      "name": "title",
+      "label": {
+        "en": "title"
+      },
+      "definition": {
+        "en": "A name given to the Asset Repository."
+      }
+    },
+    {
+      "EA-Guid": "{C6023897-66C4-46e9-87EF-2B4849CC698A}",
+      "name": "name",
+      "label": {
+        "en": "name"
+      },
+      "definition": {
+        "en": "The noun given to the Agent."
+      }
+    },
+    {
+      "EA-Guid": "{C8E99BEC-B8C4-481e-83C6-D70C88ABA5FE}",
+      "name": "temporal",
+      "label": {
+        "en": "temporal"
+      },
+      "definition": {
+        "en": "The time period to which the Asset applies, e.g. its validity."
+      }
+    },
+    {
+      "EA-Guid": "{4F344054-D7D1-407c-919F-FC9797F6F619}",
+      "name": "spatial",
+      "label": {
+        "en": "spatial"
+      },
+      "definition": {
+        "en": "The geographic region to which the Asset Repository applies."
+      }
+    },
+    {
+      "EA-Guid": "{E638DC74-2F86-4056-BDB3-E27CB161953C}",
+      "name": "spatial",
+      "label": {
+        "en": "spatial"
+      },
+      "definition": {
+        "en": "The geographic region to which the Asset Repository applies."
+      }
+    },
+    {
+      "EA-Guid": "{88358082-9E0A-4f9a-A844-097E6151850B}",
+      "name": "relation",
+      "label": {
+        "en": "relation"
+      },
+      "definition": {
+        "en": "A link between two Assets that are related in some (unspecified) way."
+      }
+    },
+    {
+      "EA-Guid": "{511BC74A-3800-4bcc-8205-51FADA396E50}",
+      "name": "publisher",
+      "label": {
+        "en": "publisher"
+      },
+      "definition": {
+        "en": "inks an Asset Repository to the publishing foaf:Agent."
+      }
+    },
+    {
+      "EA-Guid": "{70CB0B46-097C-44bd-87C5-5BC79CDFE602}",
+      "name": "publisher",
+      "label": {
+        "en": "publisher"
+      },
+      "definition": {
+        "en": "inks an Asset Distribution to the publishing foaf:Agent."
+      }
+    },
+    {
+      "EA-Guid": "{F0008CD7-FB6A-468d-9E10-242DA5ED8AF3}",
+      "name": "publisher",
+      "label": {
+        "en": "publisher"
+      },
+      "definition": {
+        "en": "inks an Asset to the publishing foaf:Agent."
+      }
+    },
+    {
+      "EA-Guid": "{3F8B0776-0F1D-41b1-AC9A-9140FAA84C5D}",
+      "name": "modified",
+      "label": {
+        "en": "modified"
+      },
+      "definition": {
+        "en": "Date of the latest update of the Asset."
+      }
+    },
+    {
+      "EA-Guid": "{50967A09-7014-460c-B68E-99F607DB7F46}",
+      "name": "modified",
+      "label": {
+        "en": "modified"
+      },
+      "definition": {
+        "en": "Date of the latest update of the Asset Distribution."
+      }
+    },
+    {
+      "EA-Guid": "{4BC7A2D4-4E3D-412f-AC00-7922CAAA97B9}",
+      "name": "modified",
+      "label": {
+        "en": "modified"
+      },
+      "definition": {
+        "en": "Date of the latest update of the Asset Repository."
+      }
+    },
+    {
+      "EA-Guid": "{84E5303E-416A-498f-9260-112E9201CEA3}",
+      "name": "license",
+      "label": {
+        "en": "license"
+      },
+      "definition": {
+        "en": "Links to the conditions or restrictions for (re-)use of the Asset Distribution."
+      },
+      "usage": {
+        "en": "If multiple licenses are given, these licenses apply to all files in the Asset Distribution."
+      }
+    },
+    {
+      "EA-Guid": "{85E5D93A-2758-4fcc-A15D-E114BDE6B2BE}",
+      "name": "language",
+      "label": {
+        "en": "language"
+      },
+      "definition": {
+        "en": "The language of the Asset."
+      }
+    },
+    {
+      "EA-Guid": "{29E05A2E-400E-408c-A171-41B2035F0C69}",
+      "name": "issued",
+      "label": {
+        "en": "issued"
+      },
+      "definition": {
+        "en": "Date of formal issuance (e.g., publication) of the Asset."
+      }
+    },
+    {
+      "EA-Guid": "{B93CF3A3-1C8C-4f67-94D5-6487C822266E}",
+      "name": "issued",
+      "label": {
+        "en": "issued"
+      },
+      "definition": {
+        "en": "Date of formal issuance (e.g., publication) of the Asset Distribution."
+      }
+    },
+    {
+      "EA-Guid": "{41BCB0F4-932B-4725-905D-B9BC435238F8}",
+      "name": "issued",
+      "label": {
+        "en": "issued"
+      },
+      "definition": {
+        "en": "Date of formal issuance (e.g., publication) of the Asset Repository."
+      }
+    },
+    {
+      "EA-Guid": "{DF953D05-18CC-40fd-A09C-3ED1D82948E5}",
+      "name": "date of issue",
+      "label": {
+        "en": "date of issue"
+      },
+      "definition": {
+        "en": "The date on which the Identifier was assigned."
+      }
+    },
+    {
+      "EA-Guid": "{A22C8E4F-243E-4d90-B305-875EEFFC03C6}",
+      "name": "identifier",
+      "label": {
+        "en": "identifier"
+      },
+      "definition": {
+        "en": "The unambiguous structured reference for the Agent."
+      }
+    },
+    {
+      "EA-Guid": "{EC8069EC-2BA7-4d45-99EB-94D03EC513D8}",
+      "name": "format",
+      "label": {
+        "en": "format"
+      },
+      "definition": {
+        "en": "The file format of the distribution."
+      },
+      "usage": {
+        "en": "dcat:mediaType should be used if the type of the distribution is defined by IANA . Suitable values for dcterms:format include URIs as used in the example . See also adms:representationTechnique ."
       }
     },
     {
@@ -248,648 +870,26 @@
       }
     },
     {
-      "EA-Guid": "{EC8069EC-2BA7-4d45-99EB-94D03EC513D8}",
-      "name": "format",
+      "EA-Guid": "{F41A0156-324A-4648-A6E8-F50E0A5E6ED4}",
+      "name": "issuing authority URI",
       "label": {
-        "en": "format"
+        "en": "issuing authority URI"
       },
       "definition": {
-        "en": "The file format of the distribution."
+        "en": "The reference in the form of a Uniform Resource Identifier to the issuing authority."
       },
       "usage": {
-        "en": "dcat:mediaType should be used if the type of the distribution is defined by IANA . Suitable values for dcterms:format include URIs as used in the example . See also adms:representationTechnique ."
+        "en": "Example: \"https://belgium.be/id/organizations/1233\"."
       }
     },
     {
-      "EA-Guid": "{A22C8E4F-243E-4d90-B305-875EEFFC03C6}",
-      "name": "identifier",
+      "EA-Guid": "{A145710E-6B8F-4a53-B0F3-3AB50C244C08}",
+      "name": "scheme URI",
       "label": {
-        "en": "identifier"
+        "en": "scheme URI"
       },
       "definition": {
-        "en": "The unambiguous structured reference for the Agent."
-      }
-    },
-    {
-      "EA-Guid": "{DF953D05-18CC-40fd-A09C-3ED1D82948E5}",
-      "name": "date of issue",
-      "label": {
-        "en": "date of issue"
-      },
-      "definition": {
-        "en": "The date on which the Identifier was assigned."
-      }
-    },
-    {
-      "EA-Guid": "{29E05A2E-400E-408c-A171-41B2035F0C69}",
-      "name": "issued",
-      "label": {
-        "en": "issued"
-      },
-      "definition": {
-        "en": "Date of formal issuance (e.g., publication) of the Asset."
-      }
-    },
-    {
-      "EA-Guid": "{B93CF3A3-1C8C-4f67-94D5-6487C822266E}",
-      "name": "issued",
-      "label": {
-        "en": "issued"
-      },
-      "definition": {
-        "en": "Date of formal issuance (e.g., publication) of the Asset Distribution."
-      }
-    },
-    {
-      "EA-Guid": "{41BCB0F4-932B-4725-905D-B9BC435238F8}",
-      "name": "issued",
-      "label": {
-        "en": "issued"
-      },
-      "definition": {
-        "en": "Date of formal issuance (e.g., publication) of the Asset Repository."
-      }
-    },
-    {
-      "EA-Guid": "{85E5D93A-2758-4fcc-A15D-E114BDE6B2BE}",
-      "name": "language",
-      "label": {
-        "en": "language"
-      },
-      "definition": {
-        "en": "The language of the Asset."
-      }
-    },
-    {
-      "EA-Guid": "{84E5303E-416A-498f-9260-112E9201CEA3}",
-      "name": "license",
-      "label": {
-        "en": "license"
-      },
-      "definition": {
-        "en": "Links to the conditions or restrictions for (re-)use of the Asset Distribution."
-      },
-      "usage": {
-        "en": "If multiple licenses are given, these licenses apply to all files in the Asset Distribution."
-      }
-    },
-    {
-      "EA-Guid": "{3F8B0776-0F1D-41b1-AC9A-9140FAA84C5D}",
-      "name": "modified",
-      "label": {
-        "en": "modified"
-      },
-      "definition": {
-        "en": "Date of the latest update of the Asset."
-      }
-    },
-    {
-      "EA-Guid": "{50967A09-7014-460c-B68E-99F607DB7F46}",
-      "name": "modified",
-      "label": {
-        "en": "modified"
-      },
-      "definition": {
-        "en": "Date of the latest update of the Asset Distribution."
-      }
-    },
-    {
-      "EA-Guid": "{4BC7A2D4-4E3D-412f-AC00-7922CAAA97B9}",
-      "name": "modified",
-      "label": {
-        "en": "modified"
-      },
-      "definition": {
-        "en": "Date of the latest update of the Asset Repository."
-      }
-    },
-    {
-      "EA-Guid": "{511BC74A-3800-4bcc-8205-51FADA396E50}",
-      "name": "publisher",
-      "label": {
-        "en": "publisher"
-      },
-      "definition": {
-        "en": "inks an Asset Repository to the publishing foaf:Agent."
-      }
-    },
-    {
-      "EA-Guid": "{F0008CD7-FB6A-468d-9E10-242DA5ED8AF3}",
-      "name": "publisher",
-      "label": {
-        "en": "publisher"
-      },
-      "definition": {
-        "en": "inks an Asset to the publishing foaf:Agent."
-      }
-    },
-    {
-      "EA-Guid": "{70CB0B46-097C-44bd-87C5-5BC79CDFE602}",
-      "name": "publisher",
-      "label": {
-        "en": "publisher"
-      },
-      "definition": {
-        "en": "inks an Asset Distribution to the publishing foaf:Agent."
-      }
-    },
-    {
-      "EA-Guid": "{88358082-9E0A-4f9a-A844-097E6151850B}",
-      "name": "relation",
-      "label": {
-        "en": "relation"
-      },
-      "definition": {
-        "en": "A link between two Assets that are related in some (unspecified) way."
-      }
-    },
-    {
-      "EA-Guid": "{4F344054-D7D1-407c-919F-FC9797F6F619}",
-      "name": "spatial",
-      "label": {
-        "en": "spatial"
-      },
-      "definition": {
-        "en": "The geographic region to which the Asset Repository applies."
-      }
-    },
-    {
-      "EA-Guid": "{E638DC74-2F86-4056-BDB3-E27CB161953C}",
-      "name": "spatial",
-      "label": {
-        "en": "spatial"
-      },
-      "definition": {
-        "en": "The geographic region to which the Asset Repository applies."
-      }
-    },
-    {
-      "EA-Guid": "{C8E99BEC-B8C4-481e-83C6-D70C88ABA5FE}",
-      "name": "temporal",
-      "label": {
-        "en": "temporal"
-      },
-      "definition": {
-        "en": "The time period to which the Asset applies, e.g. its validity."
-      }
-    },
-    {
-      "EA-Guid": "{F3A77051-A189-4bc9-AD22-BB26702EB024}",
-      "name": "title",
-      "label": {
-        "en": "title"
-      },
-      "definition": {
-        "en": "A name given to the Asset."
-      }
-    },
-    {
-      "EA-Guid": "{9EA8C193-E1B9-4153-83E7-63D69EF0A824}",
-      "name": "title",
-      "label": {
-        "en": "title"
-      },
-      "definition": {
-        "en": "A name given to the Asset Distribution."
-      }
-    },
-    {
-      "EA-Guid": "{C6023897-66C4-46e9-87EF-2B4849CC698A}",
-      "name": "name",
-      "label": {
-        "en": "name"
-      },
-      "definition": {
-        "en": "The noun given to the Agent."
-      }
-    },
-    {
-      "EA-Guid": "{48C098BF-5A79-4562-A49F-EF9598815E81}",
-      "name": "title",
-      "label": {
-        "en": "title"
-      },
-      "definition": {
-        "en": "A name given to the License Document."
-      }
-    },
-    {
-      "EA-Guid": "{AA6A48B4-BE51-4f6d-9953-9415AA279F19}",
-      "name": "title",
-      "label": {
-        "en": "title"
-      },
-      "definition": {
-        "en": "A name given to the Asset Repository."
-      }
-    },
-    {
-      "EA-Guid": "{6BF27F72-133D-4ae2-8018-2FB9B3D4E765}",
-      "name": "type",
-      "label": {
-        "en": "type"
-      },
-      "definition": {
-        "en": "This property is used to point to the specific type of Asset."
-      },
-      "usage": {
-        "en": "The type should be provided using a controlled vocabulary encoded as a SKOS Concept."
-      }
-    },
-    {
-      "EA-Guid": "{E518E82F-2FF7-440f-A095-9EA2D6ACB2AA}",
-      "name": "type",
-      "label": {
-        "en": "type"
-      },
-      "definition": {
-        "en": "This property is used to point to the specific type of publisher."
-      },
-      "usage": {
-        "en": "The type should be provided using a controlled vocabulary encoded as a SKOS Concept."
-      }
-    },
-    {
-      "EA-Guid": "{7BAD2BAF-CDC1-4a76-BA83-6264E3EFBFE0}",
-      "name": "type",
-      "label": {
-        "en": "type"
-      },
-      "definition": {
-        "en": "This property is used to point to the specific type of publisher, Asset and License Document."
-      },
-      "usage": {
-        "en": "The type should be provided using a controlled vocabulary encoded as a SKOS Concept."
-      }
-    },
-    {
-      "EA-Guid": "{F9250A30-C64A-4cf8-B6E9-A15F1441C964}",
-      "name": "scheme name",
-      "label": {
-        "en": "scheme name"
-      },
-      "definition": {
-        "en": "Name of the scheme used to construct the identifier."
-      }
-    },
-    {
-      "EA-Guid": "{18B1572F-CC98-472c-8363-43739E1F52DA}",
-      "name": "geographic identifier",
-      "label": {
-        "en": "geographic identifier"
-      },
-      "definition": {
-        "en": "A reference in the form of a Uniform Resource Identifier to the Location."
-      },
-      "usage": {
-        "en": "GeoNames.org provides stable, widely recognised identifiers for more than 10 million geographical names that can be used as links to further information. For example, http://sws.geonames.org/593116/ identifies the Lithuanian capital Vilnius. Unfortunately these URIs cannot easily be automatically deduced since the URI scheme uses simple numeric codes. Finding a GeoNames identifier for a Location is almost always a manual process. Where such identifiers are known or can be found, however, it is recommended that they be used.\r\nWhere the Location Class is used to identify a country, if the geonames URI is not known, the recommendation is to use DBpedia URIs of the form http://dbpedia.org/resource/ISO\\_3166-1:XX where XX is the ISO 3166 two character code for the country.\r\n<br/><br/>\r\nThe EU's Publication Office diverges from ISO 3166-1 and uses EL and UK for Greece and the United Kingdom respectively. DBpedia sticks to the ISO codes and so the correct URIs for these countries are:\r\n- http://dbpedia.org/resource/ISO\\_3166-1:GR\r\n- http://dbpedia.org/resource/ISO\\_3166-1:GB\r\neven when the geographic name is given as EL or UK."
-      }
-    },
-    {
-      "EA-Guid": "{F716CC2D-7483-4dc6-908C-93DCA94996B2}",
-      "name": "version info",
-      "label": {
-        "en": "version info"
-      },
-      "definition": {
-        "en": "A version number or other designation of the Asset."
-      }
-    },
-    {
-      "EA-Guid": "{4D39E835-1988-40aa-8039-971FC41943F5}",
-      "name": "alternative label",
-      "label": {
-        "en": "alternative label"
-      },
-      "definition": {
-        "en": "An alternative name for the Asset."
-      }
-    },
-    {
-      "EA-Guid": "{92997B99-BEDE-49ad-8BCA-E720B11D0074}",
-      "name": "in scheme",
-      "label": {
-        "en": "in scheme"
-      },
-      "definition": {
-        "en": "The ConceptScheme to which the Concept belongs to."
-      }
-    },
-    {
-      "EA-Guid": "{1387E307-13D3-40fd-B618-26538B4FF177}",
-      "name": "notation",
-      "label": {
-        "en": "notation"
-      },
-      "definition": {
-        "en": "A string of characters to uniquely identify a concept."
-      },
-      "usage": {
-        "en": "Example: \"abc-12345-de\"^^https://belgium.be/scheme/nationalIDnumber."
-      }
-    },
-    {
-      "EA-Guid": "{10AD0997-5F2C-47a7-8270-BD937822146C}",
-      "name": "described by",
-      "label": {
-        "en": "described by"
-      },
-      "definition": {
-        "en": "The main documentation or specification of the Asset."
-      },
-      "usage": {
-        "en": "See also dcat:landingPage , foaf:page."
-      }
-    },
-    {
-      "EA-Guid": "{7598DC80-4E87-4630-8F2E-9F0C7DFAEAD9}",
-      "name": "identifier",
-      "label": {
-        "en": "identifier"
-      },
-      "definition": {
-        "en": "Links a resource to an adms:Identifier class."
-      }
-    },
-    {
-      "EA-Guid": "{B204F0E0-7797-4dba-A433-7D3F74DC0117}",
-      "name": "included asset",
-      "label": {
-        "en": "included asset"
-      },
-      "definition": {
-        "en": "An Asset that is contained in the Asset being described, e.g. when there are several vocabularies defined in a single document."
-      }
-    },
-    {
-      "EA-Guid": "{67E1F5AC-EC3E-43d2-BD69-56AF1031D707}",
-      "name": "interoperability level",
-      "label": {
-        "en": "interoperability level"
-      },
-      "definition": {
-        "en": "The interoperability level for which the Asset is relevant."
-      }
-    },
-    {
-      "EA-Guid": "{AECF5FEA-D0E3-445d-B778-5A537E1154C8}",
-      "name": "last",
-      "label": {
-        "en": "last"
-      },
-      "definition": {
-        "en": "A link to the current or latest version of the Asset."
-      }
-    },
-    {
-      "EA-Guid": "{A023D13F-E474-4a1e-93D5-97F3CC6CCEA3}",
-      "name": "next",
-      "label": {
-        "en": "next"
-      },
-      "definition": {
-        "en": "A link to the next version of the Asset."
-      }
-    },
-    {
-      "EA-Guid": "{D40F5214-CC6E-4ad0-8338-19DBF9A7B465}",
-      "name": "prev",
-      "label": {
-        "en": "prev"
-      },
-      "definition": {
-        "en": "A link to the previous version of the Asset."
-      }
-    },
-    {
-      "EA-Guid": "{A99FED4A-B25A-47e9-BF50-72DE15F3B254}",
-      "name": "representation technique",
-      "label": {
-        "en": "representation technique"
-      },
-      "definition": {
-        "en": "More information about the format in which an Asset Distribution is released. This is different from the file format as, for example, a ZIP file (file format) could contain an XML schema (representation technique)."
-      },
-      "usage": {
-        "en": "See also dcterms:format and dcat:mediaType ."
-      }
-    },
-    {
-      "EA-Guid": "{70A7DECE-0E45-4447-A576-25A525D2436F}",
-      "name": "sample",
-      "label": {
-        "en": "sample"
-      },
-      "definition": {
-        "en": "Links to a sample of an Asset (which is itself an Asset)."
-      }
-    },
-    {
-      "EA-Guid": "{D1F57405-DF7E-4ba6-8D47-C0E3FDF102E3}",
-      "name": "status",
-      "label": {
-        "en": "status"
-      },
-      "definition": {
-        "en": "The status of the AssetRepository in the context of a particular workflow process."
-      }
-    },
-    {
-      "EA-Guid": "{F6C29A7F-37B8-429d-AB31-13690BF86084}",
-      "name": "status",
-      "label": {
-        "en": "status"
-      },
-      "definition": {
-        "en": "The status of the Asset in the context of a particular workflow process."
-      }
-    },
-    {
-      "EA-Guid": "{4D292F28-DED2-4760-8B9F-80D4478CF4C9}",
-      "name": "supported schema",
-      "label": {
-        "en": "supported schema"
-      },
-      "definition": {
-        "en": "A schema according to which the Asset Repository can provide data about its content, e.g. ADMS."
-      }
-    },
-    {
-      "EA-Guid": "{3004C8F4-0AEF-4efa-BF7A-80932EF370A0}",
-      "name": "translation",
-      "label": {
-        "en": "translation"
-      },
-      "definition": {
-        "en": "Links Assets that are translations of each other."
-      }
-    },
-    {
-      "EA-Guid": "{74FCDD02-0137-4f3c-9CD9-C5ECD7F5DB7A}",
-      "name": "access URL",
-      "label": {
-        "en": "access URL"
-      },
-      "definition": {
-        "en": "Any kind of URL that gives access to an Asset Repository or Asset Distribution, e.g. a landing page, download, feed URL, SPARQL endpoint etc."
-      },
-      "usage": {
-        "en": " Use dcat:accessURL when you do not have information on which it is or when it is definitely not a download.\r\n\r\n* the value is a URL.\r\n* If the distribution(s) are accessible only through a landing page (i.e. direct download URLs are not known), then the landing page link should be duplicated as accessURL on a distribution (see also dcat:landingPage )."
-      }
-    },
-    {
-      "EA-Guid": "{1C9550CE-829A-43aa-B3CD-3D3F518AC326}",
-      "name": "access URL",
-      "label": {
-        "en": "access URL"
-      },
-      "definition": {
-        "en": "Any kind of URL that gives access to an Asset Repository or Asset Distribution, e.g. a landing page, download, feed URL, SPARQL endpoint etc. Use dcat:accessURL when you do not have information on which it is or when it is definitely not a download."
-      },
-      "usage": {
-        "en": "Use dcat:accessURL when you do not have information on which it is or when it is definitely not a download.\r\n\r\n* the value is a URL.\r\n* If the distribution(s) are accessible only through a landing page (i.e. direct download URLs are not known), then the landing page link should be duplicated as accessURL on a distribution (see also dcat:landingPage )."
-      }
-    },
-    {
-      "EA-Guid": "{08FAE1E6-2BDF-408a-8B75-891DEB4BE3C4}",
-      "name": "contact point",
-      "label": {
-        "en": "contact point"
-      },
-      "definition": {
-        "en": "Links an asset to a contact point from where further information about an Asset can be obtained."
-      }
-    },
-    {
-      "EA-Guid": "{FC1E8EE7-84DD-4afa-84CF-91B6BC0E7D35}",
-      "name": "dataset",
-      "label": {
-        "en": "dataset"
-      },
-      "definition": {
-        "en": "Used to link an Asset Repository to an Asset."
-      }
-    },
-    {
-      "EA-Guid": "{AD3F1B2F-F545-4295-8C71-B492465D3606}",
-      "name": "distribution",
-      "label": {
-        "en": "distribution"
-      },
-      "definition": {
-        "en": "Links an Asset to an implementation in a particular format."
-      }
-    },
-    {
-      "EA-Guid": "{14CBA5CA-FFFB-4ee4-824A-9B7094A1C034}",
-      "name": "download URL",
-      "label": {
-        "en": "download URL"
-      },
-      "definition": {
-        "en": "This is a direct link from an Asset Distribution to a downloadable file in a given format, e.g. CSV file or RDF file. The format is described by the distribution's dcterms:format and/or dcat:mediaType."
-      }
-    },
-    {
-      "EA-Guid": "{CA0CEFE0-05CA-4949-A7F6-891D13A9D029}",
-      "name": "keyword",
-      "label": {
-        "en": "keyword"
-      },
-      "definition": {
-        "en": "A word, phrase or tag to describe the Asset."
-      }
-    },
-    {
-      "EA-Guid": "{BD37DE2D-6536-486b-93F6-8EB90A92DFEA}",
-      "name": "landing page",
-      "label": {
-        "en": "landing page"
-      },
-      "definition": {
-        "en": "A Web page that can be navigated to in a Web browser to gain access to the Asset, its distributions and/or additional information."
-      },
-      "usage": {
-        "en": "If the Asset Distribution(s) are accessible only through a landing page (i.e. direct download URLs are not known), then the landing page link should be duplicated as accessURL on a distribution."
-      }
-    },
-    {
-      "EA-Guid": "{B74FF823-EA6A-4a53-8EF6-2D6275F3575C}",
-      "name": "mediatype",
-      "label": {
-        "en": "mediatype"
-      },
-      "definition": {
-        "en": "The media type of the distribution as defined by IANA ."
-      },
-      "usage": {
-        "en": "This property should be used when the media type of the distribution is defined in IANA , e.g. text/csv otherwise dcterms:format may be used with different values. See also adms:representationTechnique ."
-      }
-    },
-    {
-      "EA-Guid": "{662B2555-A298-4a28-97AD-4DE714A9EFB3}",
-      "name": "theme",
-      "label": {
-        "en": "theme"
-      },
-      "definition": {
-        "en": "The theme or sector to which the Asset applies."
-      }
-    },
-    {
-      "EA-Guid": "{ECB1EC61-C38F-4404-8DCD-7602A112782C}",
-      "name": "theme taxonomy",
-      "label": {
-        "en": "theme taxonomy"
-      },
-      "definition": {
-        "en": "The SKOS Concept Scheme used to classify an Asset Repository's assets."
-      }
-    },
-    {
-      "EA-Guid": "{773B9A30-8874-4c47-9ECF-97324E0EC181}",
-      "name": "geographic name",
-      "label": {
-        "en": "geographic name"
-      },
-      "definition": {
-        "en": "A textual description for a Location."
-      },
-      "usage": {
-        "en": "The <a href=\"https://inspire.ec.europa.eu/Themes/132/2892\">INSPIRE Data Specification on Geographical Names</a> provides a detailed model for describing a 'named place', including methods for providing multiple names in multiple scripts. INSPIRE's definition is the following: Names of areas, regions, localities, cities, suburbs, towns or settlements, or any geographical or topographical feature of public or historical interest. This is beyond what is necessary for the Core Location Vocabulary but, importantly, the concept of a geographic name used here is consistent.\r\n<br/><br/>\r\nA geographic name is a proper noun applied to a spatial object. Taking the example used in the <a href=\"https://inspire.ec.europa.eu/documents/Data_Specifications/INSPIRE_DataSpecification_GN_v3.0.1.pdf\">INSPIRE document</a> (page 18), the following are all valid geographic names for the Greek capital:\r\n- \"A&theta;n&nu;a\"@gr-Grek (the Greek endonym written in the Greek script)\r\n- \"Athína\"@gr-Latn (the standard Romanisation of the endonym)\r\n- \"Athens\"@en (the English language exonym)\r\nINSPIRE has a detailed (XML-based) method of providing metadata about a geographic name and in XML-data sets that may be the most appropriate method to follow. When using the Core Location Vocabulary in data sets that are not focussed on environmental/geographical data (the use case for INSPIRE), the Code datatype or a simple language identifier may be used to provide such metadata.\r\n<br/><br/>\r\nThe country codes defined in <a href=\"https://www.iso.org/iso-3166-country-codes.html\">ISO 3166</a> may be used as geographic names and these are generally preferred over either the long form or short form of a country's name (as they are less error prone). The Publications Office of the European Union recommends the use of ISO 3166-1 codes for countries in all cases except two:\r\n- use 'UK' in preference to the ISO 3166 code GB for the United Kingdom;\r\n- use 'EL' in preference to the ISO 3166 code GR for Greece.\r\nWhere a country has changed its name or no longer exists (such as Czechoslovakia, Yugoslavia etc.) use the ISO 3166-3 code."
-      }
-    },
-    {
-      "EA-Guid": "{DFB116D1-42BB-4d59-B22E-3CD075A5E251}",
-      "name": "page",
-      "label": {
-        "en": "page"
-      },
-      "definition": {
-        "en": "Links to documentation that contains information related to the Asset."
-      },
-      "usage": {
-        "en": "See also dcat:landingPage , wdrs:describedby."
-      }
-    },
-    {
-      "EA-Guid": "{72EED1D2-8D07-4d00-A0A7-CEA86D203B7A}",
-      "name": "end date",
-      "label": {
-        "en": "end date"
-      },
-      "definition": {
-        "en": "Used in ADMS to define the end of a period of time during which an Asset is valid or applicable."
-      }
-    },
-    {
-      "EA-Guid": "{99CBAAC9-51FF-4467-96DC-630ED49FF547}",
-      "name": "start date",
-      "label": {
-        "en": "start date"
-      },
-      "definition": {
-        "en": "Used in ADMS to define the start of a period of time during which an Asset is valid or applicable."
+        "en": "URI of the scheme used to construct the identifier."
       }
     }
   ]
