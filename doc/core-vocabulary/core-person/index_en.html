@@ -199,7 +199,7 @@
 <a href="https://github.com/SEMICeu/Core-Person-Vocabulary/tree/master/releases/2.00">https://github.com/SEMICeu/Core-Person-Vocabulary/tree/master/releases/2.00</a>
 
               </dd>
-              <!--<dt>Changelog</dt><dd><a href="git@uri.semic.eu-thema:SEMICeu/uri.semic.eu-thema.git/blob/e268ee535db2a0de50651aeff66caae453fd6766/CHANGELOG">git@uri.semic.eu-thema:SEMICeu/uri.semic.eu-thema.git/blob/e268ee535db2a0de50651aeff66caae453fd6766/CHANGELOG</a></dd>-->
+              <!--<dt>Changelog</dt><dd><a href="git@uri.semic.eu-thema:SEMICeu/uri.semic.eu-thema.git/blob/bc042833a7d6e825d08aea0374bd5700cc702081/CHANGELOG">git@uri.semic.eu-thema:SEMICeu/uri.semic.eu-thema.git/blob/bc042833a7d6e825d08aea0374bd5700cc702081/CHANGELOG</a></dd>-->
               <dt>Feedback</dt><dd><a href="https://github.com/SEMICeu/Core-Person-Vocabulary/issues">https://github.com/SEMICeu/Core-Person-Vocabulary/issues</a></dd>
               <!--<dt>Registry of standards</dt><dd><a href="Core-Person-Vocabulary">Core-Person-Vocabulary</a></dd>-->
 
@@ -960,7 +960,9 @@ Where a country has changed its name or no longer exists (such as Czechoslovakia
                       <a href="#Name%3Agiven%20name">given name</a>, 
                       <a href="#Name%3Amatronymic%20name">matronymic name</a>, 
                       <a href="#Name%3Amiddle%20name">middle name</a>, 
-                      <a href="#Name%3Apatronymic%20name">patronymic name</a>.</dd>
+                      <a href="#Name%3Apatronymic%20name">patronymic name</a>, 
+                      <a href="#Name%3Avalid%20from">valid from</a>, 
+                      <a href="#Name%3Avalid%20until">valid until</a>.</dd>
                     
                   </dl>
                 </div>
@@ -1140,6 +1142,44 @@ Languages are represented by two character codes, optionally followed by a local
                         <td></td>
                       </tr>
                     
+                      <tr id="Name%3Avalid%20from" typeof="rdfs:Property" resource="http://data.europa.eu/m8g/validFrom">
+                        <td>
+                          <code property="rdfs:label">
+                            <a href="http://data.europa.eu/m8g/validFrom" data-toggle="tooltip" data-content="http://data.europa.eu/m8g/validFrom" data-placement="right">
+                            valid from</a>
+                          </code>
+                        </td>
+                        <td>
+                          
+			    
+			    <a href="#GenericDate" data-placement="right">GenericDate</a>
+			    
+                          
+                        </td>
+                        <td property="rdfs:comment">The date since something is effective.</td>
+                        <td property="skos:scopeNote"></td>
+                        <td></td>
+                      </tr>
+                    
+                      <tr id="Name%3Avalid%20until" typeof="rdfs:Property" resource="http://data.europa.eu/m8g/validUntil">
+                        <td>
+                          <code property="rdfs:label">
+                            <a href="http://data.europa.eu/m8g/validUntil" data-toggle="tooltip" data-content="http://data.europa.eu/m8g/validUntil" data-placement="right">
+                            valid until</a>
+                          </code>
+                        </td>
+                        <td>
+                          
+			    
+			    <a href="#GenericDate" data-placement="right">GenericDate</a>
+			    
+                          
+                        </td>
+                        <td property="rdfs:comment">The date until something remains effective.</td>
+                        <td property="skos:scopeNote"></td>
+                        <td></td>
+                      </tr>
+                    
                     </tbody>
                   </table>
                 </div>
@@ -1162,7 +1202,6 @@ Languages are represented by two character codes, optionally followed by a local
                     <dt>Properties</dt>
 		     
                     <dd>For this entity the following properties are defined:
-                      <a href="#Person%3A"></a>, 
                       <a href="#Person%3Acitizenship">citizenship</a>, 
                       <a href="#Person%3Acountry%20of%20birth">country of birth</a>, 
                       <a href="#Person%3Acountry%20of%20death">country of death</a>, 
@@ -1170,6 +1209,7 @@ Languages are represented by two character codes, optionally followed by a local
                       <a href="#Person%3Adate%20of%20death">date of death</a>, 
                       <a href="#Person%3Adomicile">domicile</a>, 
                       <a href="#Person%3Agender">gender</a>, 
+                      <a href="#Person%3Ahas%20name">has name</a>, 
                       <a href="#Person%3Aidentifier">identifier</a>, 
                       <a href="#Person%3Aplace%20of%20birth">place of birth</a>, 
                       <a href="#Person%3Aplace%20of%20death">place of death</a>, 
@@ -1192,25 +1232,6 @@ Languages are represented by two character codes, optionally followed by a local
                     </thead>
 
                     <tbody class="supertype">
-                    
-                      <tr id="Person%3A" typeof="rdfs:Property" resource="http://data.europa.eu/m8g/hasName">
-                        <td>
-                          <code property="rdfs:label">
-                            <a href="http://data.europa.eu/m8g/hasName" data-toggle="tooltip" data-content="http://data.europa.eu/m8g/hasName" data-placement="right">
-                            </a>
-                          </code>
-                        </td>
-                        <td>
-                          
-			    
-			    <a href="#Name" data-placement="right">Name</a>
-			    
-                          
-                        </td>
-                        <td property="rdfs:comment"></td>
-                        <td property="skos:scopeNote"></td>
-                        <td></td>
-                      </tr>
                     
                       <tr id="Person%3Acitizenship" typeof="rdfs:Property" resource="http://purl.org/dc/terms/citizenship">
                         <td>
@@ -1348,8 +1369,27 @@ Citizenship is information needed by many cross-border use cases and is a legal 
                             
                           
                         </td>
-                        <td property="rdfs:comment">The identities, expressions and societal roles of the Person</td>
-                        <td property="skos:scopeNote">The gender of an individual should be recorded using a controlled vocabulary that is appropriate for the specific context. In some cases, the chromosomal or physical state of an individual will be more important than the gender that they express, in others the reverse will be true. What is always important is that the controlled vocabulary used to describe an individual's gender is stated explicitly.</td>
+                        <td property="rdfs:comment">The identities, expressions and societal roles of the Person.</td>
+                        <td property="skos:scopeNote">The gender of an individual should be recorded using a controlled vocabulary that is appropriate for the specific context.</td>
+                        <td></td>
+                      </tr>
+                    
+                      <tr id="Person%3Ahas%20name" typeof="rdfs:Property" resource="http://data.europa.eu/m8g/hasName">
+                        <td>
+                          <code property="rdfs:label">
+                            <a href="http://data.europa.eu/m8g/hasName" data-toggle="tooltip" data-content="http://data.europa.eu/m8g/hasName" data-placement="right">
+                            has name</a>
+                          </code>
+                        </td>
+                        <td>
+                          
+			    
+			    <a href="#Name" data-placement="right">Name</a>
+			    
+                          
+                        </td>
+                        <td property="rdfs:comment">The set of names associated with a person.</td>
+                        <td property="skos:scopeNote"></td>
                         <td></td>
                       </tr>
                     
@@ -1444,7 +1484,7 @@ Citizenship is information needed by many cross-border use cases and is a legal 
                           
                         </td>
                         <td property="rdfs:comment">The organism&#39;s biological sex.</td>
-                        <td property="skos:scopeNote">NOTE </td>
+                        <td property="skos:scopeNote">The recommended controlled vocabulary is the <a href="https://op.europa.eu/en/web/eu-vocabularies/concept-scheme/-/resource?uri=http://publications.europa.eu/resource/authority/human-sex">Human sex</a> from Publications Office.</td>
                         <td></td>
                       </tr>
                     
