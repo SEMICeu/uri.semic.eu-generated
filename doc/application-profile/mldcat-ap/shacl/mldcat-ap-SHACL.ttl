@@ -7,14 +7,7 @@
 @prefix skos: <http://www.w3.org/2004/02/skos/core#> .
 @prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
 
-<https://semiceu.github.io//shacl/mldcat-ap-SHACL_en> <https://semiceu.github.io//shacl/mldcat-ap-SHACL_enshapes> <https://semiceu.github.io//shacl/mldcat-ap-SHACL_en#LicenseDocumentShape>,
-    <https://semiceu.github.io//shacl/mldcat-ap-SHACL_en#CatalogShape>,
-    <https://semiceu.github.io//shacl/mldcat-ap-SHACL_en#CatalogRecordShape>,
-    <https://semiceu.github.io//shacl/mldcat-ap-SHACL_en#DataServiceShape>,
-    <https://semiceu.github.io//shacl/mldcat-ap-SHACL_en#DatasetShape>,
-    <https://semiceu.github.io//shacl/mldcat-ap-SHACL_en#DistributionShape>,
-    <https://semiceu.github.io//shacl/mldcat-ap-SHACL_en#AgentShape>,
-    <https://semiceu.github.io//shacl/mldcat-ap-SHACL_en#CollectionShape>,
+<https://semiceu.github.io//shacl/mldcat-ap-SHACL_en> <https://semiceu.github.io//shacl/mldcat-ap-SHACL_enshapes> <https://semiceu.github.io//shacl/mldcat-ap-SHACL_en#CollectionShape>,
     <https://semiceu.github.io//shacl/mldcat-ap-SHACL_en#CostMatrixShape>,
     <https://semiceu.github.io//shacl/mldcat-ap-SHACL_en#EstimationProcedureShape>,
     <https://semiceu.github.io//shacl/mldcat-ap-SHACL_en#EvaluationShape>,
@@ -37,7 +30,14 @@
     <https://semiceu.github.io//shacl/mldcat-ap-SHACL_en#SplitShape>,
     <https://semiceu.github.io//shacl/mldcat-ap-SHACL_en#TaskShape>,
     <https://semiceu.github.io//shacl/mldcat-ap-SHACL_en#TaskCollectionShape>,
-    <https://semiceu.github.io//shacl/mldcat-ap-SHACL_en#TaskTypeShape> .
+    <https://semiceu.github.io//shacl/mldcat-ap-SHACL_en#TaskTypeShape>,
+    <https://semiceu.github.io//shacl/mldcat-ap-SHACL_en#LicenseDocumentShape>,
+    <https://semiceu.github.io//shacl/mldcat-ap-SHACL_en#CatalogShape>,
+    <https://semiceu.github.io//shacl/mldcat-ap-SHACL_en#CatalogRecordShape>,
+    <https://semiceu.github.io//shacl/mldcat-ap-SHACL_en#DataServiceShape>,
+    <https://semiceu.github.io//shacl/mldcat-ap-SHACL_en#DatasetShape>,
+    <https://semiceu.github.io//shacl/mldcat-ap-SHACL_en#DistributionShape>,
+    <https://semiceu.github.io//shacl/mldcat-ap-SHACL_en#AgentShape> .
 
 <https://semiceu.github.io//shacl/mldcat-ap-SHACL_en#AgentShape> a shacl:NodeShape;
   shacl:closed false;
@@ -126,36 +126,42 @@
     shacl:maxCount 1;
     shacl:minCount 1;
     shacl:name "creation date"@en;
-    shacl:path <https://www.openml.org/model#creationDate>
+    shacl:path <http://openml.org/openml#creationDate>
   ], [
     shacl:datatype rdfs:Literal;
     shacl:maxCount 1;
     shacl:name "description"@en;
-    shacl:path <https://www.openml.org/model#description>
+    shacl:path dc:description
+  ], [
+    shacl:class foaf:Agent;
+    shacl:maxCount 1;
+    shacl:minCount 1;
+    shacl:name "has uploader"@en;
+    shacl:path <http://openml.org/openml#hasUploader>
   ], [
     shacl:datatype rdfs:Literal;
     shacl:maxCount 1;
     shacl:minCount 1;
     shacl:name "id"@en;
-    shacl:path <https://www.openml.org/model#id>
+    shacl:path dc:identifier
   ], [
     shacl:datatype rdfs:Literal;
     shacl:maxCount 1;
     shacl:minCount 1;
     shacl:name "name"@en;
-    shacl:path <https://www.openml.org/model#name>
+    shacl:path dc:title
   ], [
     shacl:class skos:Concept;
     shacl:maxCount 1;
     shacl:minCount 1;
     shacl:name "visibility"@en;
-    shacl:path <https://www.openml.org/model#visibility>
+    shacl:path <http://openml.org/openml#visibility>
   ];
-  shacl:targetClass <https://www.openml.org/model#Collection> .
+  shacl:targetClass <http://openml.org/openml#Collection> .
 
 <https://semiceu.github.io//shacl/mldcat-ap-SHACL_en#CostMatrixShape> a shacl:NodeShape;
   shacl:closed false;
-  shacl:targetClass <https://www.openml.org/model#CostMatrix> .
+  shacl:targetClass <http://openml.org/openml#CostMatrix> .
 
 <https://semiceu.github.io//shacl/mldcat-ap-SHACL_en#DataServiceShape> a shacl:NodeShape;
   shacl:closed false;
@@ -340,20 +346,34 @@
     shacl:name "format"@en;
     shacl:path dc:format
   ], [
+    shacl:class <http://openml.org/openml#Feature>;
+    shacl:description "The attribute or column being part of a distribution."@en;
+    shacl:minCount 1;
+    shacl:name "has feature"@en;
+    shacl:path <http://openml.org/openml#hasFeature>
+  ], [
     shacl:class <http://www.w3.org/ns/odrl/2/Policy>;
     shacl:description "This property refers to the policy expressing the rights associated with the distribution if using the ODRL vocabulary."@en;
     shacl:maxCount 1;
     shacl:name "has policy"@en;
     shacl:path <http://www.w3.org/ns/odrl/2/hasPolicy>
   ], [
-    shacl:datatype rdfs:Literal;
-    shacl:maxCount 1;
-    shacl:name "identifier"@en;
-    shacl:path dcat:identifier
+    shacl:class <http://openml.org/openml#Quality>;
+    shacl:description "A computed characteristic that describes a distribution."@en;
+    shacl:minCount 1;
+    shacl:name "has quality"@en;
+    shacl:path <http://openml.org/openml#hasQuality>
   ], [
     shacl:datatype rdfs:Literal;
+    shacl:description "File identifier"@en;
+    shacl:maxCount 1;
+    shacl:name "identifier"@en;
+    shacl:path dc:identifier
+  ], [
+    shacl:datatype rdfs:Literal;
+    shacl:description "Attributes that should be excluded in modelling, such as identifiers and indexes."@en;
     shacl:name "ignore attribute"@en;
-    shacl:path dcat:ignoreAttribute
+    shacl:path <http://openml.org/openml#ignoreAttribute>
   ], [
     shacl:class dc:LinguisticSystem;
     shacl:description "This property refers to a language used in the Distribution. This property can be repeated if the metadata is provided in multiple languages."@en;
@@ -366,25 +386,23 @@
     shacl:name "licence"@en;
     shacl:path dc:license
   ], [
-    shacl:class rdfs:Resource;
-    shacl:maxCount 1;
-    shacl:name "parquet URL"@en;
-    shacl:path dcat:parquetURL
-  ], [
     shacl:datatype rdfs:Literal;
+    shacl:description "Errors discovered while processing the dataset."@en;
     shacl:maxCount 1;
     shacl:name "processing error"@en;
-    shacl:path dcat:processingError
+    shacl:path <http://openml.org/openml#processingError>
   ], [
     shacl:datatype rdfs:Literal;
+    shacl:description "Warnings while processing the dataset."@en;
     shacl:maxCount 1;
     shacl:name "processing warning"@en;
-    shacl:path dcat:processingWarning
+    shacl:path <http://openml.org/openml#processingWarning>
   ], [
     shacl:datatype rdfs:Literal;
+    shacl:description "The attribute that represents the row-id column, if present in the dataset."@en;
     shacl:maxCount 1;
     shacl:name "row ID attribute"@en;
-    shacl:path dcat:rowIDAttribute
+    shacl:path <http://openml.org/openml#rowIDAttribute>
   ], [
     shacl:datatype rdfs:Literal;
     shacl:description "This property contains a name given to the Distribution. This property can be repeated for parallel language versions of the description."@en;
@@ -400,38 +418,38 @@
     shacl:maxCount 1;
     shacl:minCount 1;
     shacl:name "data splits URL"@en;
-    shacl:path <https://www.openml.org/model#dataSplitsURL>
+    shacl:path <http://openml.org/openml#dataSplitsURL>
   ], [
     shacl:datatype rdfs:Literal;
     shacl:maxCount 1;
     shacl:minCount 1;
     shacl:name "description"@en;
-    shacl:path <https://www.openml.org/model#description>
+    shacl:path dc:description
   ], [
-    shacl:class <https://www.openml.org/model#Parameter>;
-    shacl:description "";
+    shacl:class <http://openml.org/openml#Parameter>;
     shacl:minCount 1;
-    shacl:path <https://www.openml.org/model#hasParameter>
+    shacl:name "has parameter"@en;
+    shacl:path <http://openml.org/openml#hasParameter>
   ], [
     shacl:datatype rdfs:Literal;
     shacl:maxCount 1;
     shacl:minCount 1;
     shacl:name "id"@en;
-    shacl:path <https://www.openml.org/model#id>
+    shacl:path dc:identifier
   ], [
     shacl:datatype rdfs:Literal;
     shacl:maxCount 1;
     shacl:minCount 1;
     shacl:name "name"@en;
-    shacl:path <https://www.openml.org/model#name>
+    shacl:path dc:title
   ], [
     shacl:class skos:Concept;
     shacl:maxCount 1;
     shacl:minCount 1;
     shacl:name "type"@en;
-    shacl:path <https://www.openml.org/model#type>
+    shacl:path dc:type
   ];
-  shacl:targetClass <https://www.openml.org/model#EstimationProcedure> .
+  shacl:targetClass <http://openml.org/openml#EstimationProcedure> .
 
 <https://semiceu.github.io//shacl/mldcat-ap-SHACL_en#EvaluationMeasureShape> a shacl:NodeShape;
   shacl:closed false;
@@ -439,36 +457,36 @@
     shacl:datatype rdfs:Literal;
     shacl:maxCount 1;
     shacl:name "description"@en;
-    shacl:path <https://www.openml.org/model#description>
+    shacl:path dc:description
   ], [
     shacl:datatype rdfs:Literal;
     shacl:maxCount 1;
     shacl:name "implementation"@en;
-    shacl:path <https://www.openml.org/model#implementation>
+    shacl:path <http://openml.org/openml#implementation>
   ], [
     shacl:datatype rdfs:Literal;
     shacl:maxCount 1;
     shacl:minCount 1;
     shacl:name "name"@en;
-    shacl:path <https://www.openml.org/model#name>
+    shacl:path dc:title
   ], [
     shacl:datatype rdfs:Literal;
     shacl:maxCount 1;
     shacl:minCount 1;
     shacl:name "value"@en;
-    shacl:path <https://www.openml.org/model#value>
+    shacl:path <http://openml.org/openml#value>
   ], [
     shacl:datatype rdfs:Literal;
     shacl:maxCount 1;
     shacl:name "value bad"@en;
-    shacl:path <https://www.openml.org/model#valueBad>
+    shacl:path <http://openml.org/openml#valueBad>
   ], [
     shacl:datatype rdfs:Literal;
     shacl:maxCount 1;
     shacl:name "value good"@en;
-    shacl:path <https://www.openml.org/model#valueGood>
+    shacl:path <http://openml.org/openml#valueGood>
   ];
-  shacl:targetClass <https://www.openml.org/model#EvaluationMeasure> .
+  shacl:targetClass <http://openml.org/openml#EvaluationMeasure> .
 
 <https://semiceu.github.io//shacl/mldcat-ap-SHACL_en#EvaluationShape> a shacl:NodeShape;
   shacl:closed false;
@@ -476,92 +494,95 @@
     shacl:datatype rdfs:Literal;
     shacl:maxCount 1;
     shacl:name "array data"@en;
-    shacl:path <https://www.openml.org/model#arrayData>
+    shacl:path <http://openml.org/openml#arrayData>
   ], [
     shacl:datatype rdfs:Literal;
     shacl:maxCount 1;
     shacl:name "fold"@en;
-    shacl:path <https://www.openml.org/model#fold>
+    shacl:path <http://openml.org/openml#fold>
   ], [
-    shacl:class <https://www.openml.org/model#Flow>;
-    shacl:description "";
-    shacl:path <https://www.openml.org/model#hasFlow>
+    shacl:class <http://openml.org/openml#Flow>;
+    shacl:name "has flow"@en;
+    shacl:path <http://openml.org/openml#hasFlow>
   ], [
     shacl:datatype rdfs:Literal;
     shacl:maxCount 1;
     shacl:name "id"@en;
-    shacl:path <https://www.openml.org/model#id>
+    shacl:path dc:identifier
   ], [
     shacl:datatype rdfs:Literal;
     shacl:maxCount 1;
     shacl:name "interval end"@en;
-    shacl:path <https://www.openml.org/model#intervalEnd>
+    shacl:path <http://openml.org/openml#intervalEnd>
   ], [
     shacl:datatype rdfs:Literal;
     shacl:maxCount 1;
     shacl:name "interval start"@en;
-    shacl:path <https://www.openml.org/model#intervalStart>
+    shacl:path <http://openml.org/openml#intervalStart>
   ], [
     shacl:datatype rdfs:Literal;
     shacl:maxCount 1;
     shacl:name "label"@en;
-    shacl:path <https://www.openml.org/model#label>
+    shacl:path rdfs:label
   ], [
     shacl:datatype rdfs:Literal;
     shacl:maxCount 1;
     shacl:minCount 1;
     shacl:name "name"@en;
-    shacl:path <https://www.openml.org/model#name>
+    shacl:path dc:title
   ], [
     shacl:datatype rdfs:Literal;
     shacl:maxCount 1;
     shacl:name "repeat"@en;
-    shacl:path <https://www.openml.org/model#repeat>
+    shacl:path <http://openml.org/openml#repeat>
   ], [
     shacl:datatype rdfs:Literal;
     shacl:maxCount 1;
     shacl:name "sample"@en;
-    shacl:path <https://www.openml.org/model#sample>
+    shacl:path <http://openml.org/openml#sample>
   ], [
     shacl:datatype rdfs:Literal;
     shacl:maxCount 1;
     shacl:name "sample size"@en;
-    shacl:path <https://www.openml.org/model#sampleSize>
+    shacl:path <http://openml.org/openml#sampleSize>
   ], [
     shacl:datatype rdfs:Literal;
     shacl:maxCount 1;
     shacl:name "stdev"@en;
-    shacl:path <https://www.openml.org/model#stdev>
+    shacl:path <http://openml.org/openml#stdev>
   ], [
     shacl:datatype rdfs:Literal;
     shacl:maxCount 1;
     shacl:name "value"@en;
-    shacl:path <https://www.openml.org/model#value>
+    shacl:path <http://openml.org/openml#value>
   ];
-  shacl:targetClass <https://www.openml.org/model#Evaluation> .
+  shacl:targetClass <http://openml.org/openml#Evaluation> .
 
 <https://semiceu.github.io//shacl/mldcat-ap-SHACL_en#FeatureShape> a shacl:NodeShape;
   shacl:closed false;
   shacl:property [
     shacl:datatype rdfs:Literal;
+    shacl:description "An explanation of the attribute."@en;
     shacl:maxCount 1;
     shacl:minCount 1;
     shacl:name "description"@en;
-    shacl:path <https://www.openml.org/model#description>
+    shacl:path dc:description
   ], [
     shacl:datatype rdfs:Literal;
+    shacl:description "The label of the attribute."@en;
     shacl:maxCount 1;
     shacl:minCount 1;
     shacl:name "name"@en;
-    shacl:path <https://www.openml.org/model#name>
+    shacl:path dc:title
   ], [
     shacl:class skos:Concept;
+    shacl:description "A classification of the attribute."@en;
     shacl:maxCount 1;
     shacl:minCount 1;
     shacl:name "type"@en;
-    shacl:path <https://www.openml.org/model#type>
+    shacl:path dc:type
   ];
-  shacl:targetClass <https://www.openml.org/model#Feature> .
+  shacl:targetClass <http://openml.org/openml#Feature> .
 
 <https://semiceu.github.io//shacl/mldcat-ap-SHACL_en#FlowParameterShape> a shacl:NodeShape;
   shacl:closed false;
@@ -569,30 +590,30 @@
     shacl:datatype rdfs:Literal;
     shacl:maxCount 1;
     shacl:name "default value"@en;
-    shacl:path <https://www.openml.org/model#defaultValue>
+    shacl:path <http://openml.org/openml#defaultValue>
   ], [
     shacl:datatype rdfs:Literal;
     shacl:maxCount 1;
     shacl:name "description"@en;
-    shacl:path <https://www.openml.org/model#description>
+    shacl:path dc:description
   ], [
     shacl:datatype rdfs:Literal;
     shacl:maxCount 1;
     shacl:minCount 1;
     shacl:name "name"@en;
-    shacl:path <https://www.openml.org/model#name>
+    shacl:path dc:title
   ], [
     shacl:datatype rdfs:Literal;
     shacl:maxCount 1;
     shacl:name "recommended range"@en;
-    shacl:path <https://www.openml.org/model#recommendedRange>
+    shacl:path <http://openml.org/openml#recommendedRange>
   ], [
     shacl:class skos:Concept;
     shacl:maxCount 1;
     shacl:name "type"@en;
-    shacl:path <https://www.openml.org/model#type>
+    shacl:path dc:type
   ];
-  shacl:targetClass <https://www.openml.org/model#FlowParameter> .
+  shacl:targetClass <http://openml.org/openml#FlowParameter> .
 
 <https://semiceu.github.io//shacl/mldcat-ap-SHACL_en#FlowShape> a shacl:NodeShape;
   shacl:closed false;
@@ -600,65 +621,70 @@
     shacl:datatype rdfs:Literal;
     shacl:maxCount 1;
     shacl:name "class name"@en;
-    shacl:path <https://www.openml.org/model#className>
+    shacl:path <http://openml.org/openml#className>
   ], [
     shacl:datatype rdfs:Literal;
     shacl:maxCount 1;
     shacl:name "custom name"@en;
-    shacl:path <https://www.openml.org/model#customName>
+    shacl:path <http://openml.org/openml#customName>
   ], [
     shacl:datatype rdfs:Literal;
     shacl:maxCount 1;
     shacl:name "description"@en;
-    shacl:path <https://www.openml.org/model#description>
+    shacl:path dc:description
   ], [
     shacl:datatype rdfs:Literal;
     shacl:maxCount 1;
     shacl:name "external version"@en;
-    shacl:path <https://www.openml.org/model#externalVersion>
+    shacl:path <http://openml.org/openml#externalVersion>
   ], [
-    shacl:class <https://www.openml.org/model#Library>;
-    shacl:description "";
+    shacl:class <http://openml.org/openml#Library>;
     shacl:minCount 1;
-    shacl:path <https://www.openml.org/model#hasDependency>
+    shacl:name "has dependency"@en;
+    shacl:path <http://openml.org/openml#hasDependency>
   ], [
-    shacl:class <https://www.openml.org/model#FlowParameter>;
-    shacl:description "";
-    shacl:path <https://www.openml.org/model#hasFlowParameter>
+    shacl:class <http://openml.org/openml#FlowParameter>;
+    shacl:name "has flow parameter"@en;
+    shacl:path <http://openml.org/openml#hasFlowParameter>
+  ], [
+    shacl:class foaf:Agent;
+    shacl:maxCount 1;
+    shacl:name "has uploader"@en;
+    shacl:path <http://openml.org/openml#hasUploader>
   ], [
     shacl:datatype rdfs:Literal;
     shacl:maxCount 1;
     shacl:name "id"@en;
-    shacl:path <https://www.openml.org/model#id>
+    shacl:path dc:identifier
   ], [
     shacl:datatype rdfs:Literal;
     shacl:maxCount 1;
     shacl:minCount 1;
     shacl:name "name"@en;
-    shacl:path <https://www.openml.org/model#name>
+    shacl:path dc:title
   ], [
     shacl:class skos:Concept;
     shacl:maxCount 1;
     shacl:minCount 1;
     shacl:name "status"@en;
-    shacl:path <https://www.openml.org/model#status>
+    shacl:path <http://openml.org/openml#status>
   ], [
     shacl:datatype rdfs:Literal;
     shacl:name "tag"@en;
-    shacl:path <https://www.openml.org/model#tag>
+    shacl:path dcat:keyword
   ], [
     shacl:datatype rdfs:Literal;
     shacl:maxCount 1;
     shacl:minCount 1;
     shacl:name "uploaded"@en;
-    shacl:path <https://www.openml.org/model#uploaded>
+    shacl:path <http://openml.org/openml#uploaded>
   ], [
     shacl:datatype rdfs:Literal;
     shacl:maxCount 1;
     shacl:name "version"@en;
-    shacl:path <https://www.openml.org/model#version>
+    shacl:path <http://openml.org/openml#version>
   ];
-  shacl:targetClass <https://www.openml.org/model#Flow> .
+  shacl:targetClass <http://openml.org/openml#Flow> .
 
 <https://semiceu.github.io//shacl/mldcat-ap-SHACL_en#LibraryShape> a shacl:NodeShape;
   shacl:closed false;
@@ -667,15 +693,15 @@
     shacl:maxCount 1;
     shacl:minCount 1;
     shacl:name "name"@en;
-    shacl:path <https://www.openml.org/model#name>
+    shacl:path dc:title
   ], [
     shacl:datatype rdfs:Literal;
     shacl:maxCount 1;
     shacl:minCount 1;
     shacl:name "version"@en;
-    shacl:path <https://www.openml.org/model#version>
+    shacl:path <http://openml.org/openml#version>
   ];
-  shacl:targetClass <https://www.openml.org/model#Library> .
+  shacl:targetClass <http://openml.org/openml#Library> .
 
 <https://semiceu.github.io//shacl/mldcat-ap-SHACL_en#LicenseDocumentShape> a shacl:NodeShape;
   shacl:closed false;
@@ -684,57 +710,80 @@
 <https://semiceu.github.io//shacl/mldcat-ap-SHACL_en#MachineLearningModelShape> a shacl:NodeShape;
   shacl:closed false;
   shacl:property [
+    shacl:class foaf:Agent;
+    shacl:name "contributor"@en;
+    shacl:path dc:contributor
+  ], [
+    shacl:class foaf:Agent;
+    shacl:name "creator"@en;
+    shacl:path dc:creator
+  ], [
     shacl:datatype rdfs:Literal;
     shacl:maxCount 1;
     shacl:name "description"@en;
-    shacl:path <https://www.openml.org/model#description>
+    shacl:path dc:description
   ], [
     shacl:datatype rdfs:Literal;
     shacl:maxCount 1;
     shacl:name "ethical considerations"@en;
-    shacl:path <https://www.openml.org/model#ethicalConsiderations>
+    shacl:path <http://openml.org/openml#ethicalConsiderations>
   ], [
     shacl:datatype rdfs:Literal;
     shacl:maxCount 1;
     shacl:name "evaluation results"@en;
-    shacl:path <https://www.openml.org/model#evaluationResults>
+    shacl:path <http://openml.org/openml#evaluationResults>
   ], [
-    shacl:class <https://www.openml.org/model#OutputFilePrediction>;
-    shacl:description "";
+    shacl:class <http://openml.org/openml#OutputFilePrediction>;
     shacl:maxCount 1;
     shacl:minCount 1;
-    shacl:path <https://www.openml.org/model#hasOutPutFilePrediction>
+    shacl:name "has output file prediction"@en;
+    shacl:path <http://openml.org/openml#hasOutputFilePrediction>
+  ], [
+    shacl:class foaf:Agent;
+    shacl:maxCount 1;
+    shacl:name "has uploader"@en;
+    shacl:path <http://openml.org/openml#hasUploader>
   ], [
     shacl:datatype rdfs:Literal;
     shacl:maxCount 1;
     shacl:name "intended use"@en;
-    shacl:path <https://www.openml.org/model#intendedUse>
+    shacl:path <http://openml.org/openml#intendedUse>
+  ], [
+    shacl:class dc:LicenseDocument;
+    shacl:name "license"@en;
+    shacl:path dc:license
   ], [
     shacl:datatype rdfs:Literal;
     shacl:maxCount 1;
     shacl:minCount 1;
     shacl:name "name"@en;
-    shacl:path <https://www.openml.org/model#name>
+    shacl:path dc:title
   ], [
     shacl:datatype rdfs:Literal;
     shacl:name "tag"@en;
-    shacl:path <https://www.openml.org/model#tag>
+    shacl:path dcat:keyword
+  ], [
+    shacl:class dcat:Dataset;
+    shacl:maxCount 1;
+    shacl:minCount 1;
+    shacl:name "trained on"@en;
+    shacl:path <http://openml.org/openml#trainedOn>
   ], [
     shacl:datatype rdfs:Literal;
     shacl:maxCount 1;
     shacl:name "training process"@en;
-    shacl:path <https://www.openml.org/model#trainingProcess>
+    shacl:path <http://openml.org/openml#trainingProcess>
   ], [
     shacl:maxCount 1;
     shacl:minCount 1;
     shacl:name "version"@en;
-    shacl:path <https://www.openml.org/model#version>
+    shacl:path <http://openml.org/openml#version>
   ];
-  shacl:targetClass <https://www.openml.org/model#MachineLearningModel> .
+  shacl:targetClass <http://openml.org/openml#MachineLearningModel> .
 
 <https://semiceu.github.io//shacl/mldcat-ap-SHACL_en#MeasureShape> a shacl:NodeShape;
   shacl:closed false;
-  shacl:targetClass <https://www.openml.org/model#Measure> .
+  shacl:targetClass <http://openml.org/openml#Measure> .
 
 <https://semiceu.github.io//shacl/mldcat-ap-SHACL_en#OutputFileDescriptionShape> a shacl:NodeShape;
   shacl:closed false;
@@ -743,21 +792,21 @@
     shacl:maxCount 1;
     shacl:minCount 1;
     shacl:name "id"@en;
-    shacl:path <https://www.openml.org/model#id>
+    shacl:path dc:identifier
   ], [
     shacl:datatype rdfs:Literal;
     shacl:maxCount 1;
     shacl:minCount 1;
     shacl:name "name"@en;
-    shacl:path <https://www.openml.org/model#name>
+    shacl:path dc:title
   ], [
     shacl:datatype rdfs:Literal;
     shacl:maxCount 1;
     shacl:minCount 1;
     shacl:name "url"@en;
-    shacl:path <https://www.openml.org/model#url>
+    shacl:path <http://openml.org/openml#url>
   ];
-  shacl:targetClass <https://www.openml.org/model#OutputFileDescription> .
+  shacl:targetClass <http://openml.org/openml#OutputFileDescription> .
 
 <https://semiceu.github.io//shacl/mldcat-ap-SHACL_en#OutputFilePredictionShape> a shacl:NodeShape;
   shacl:closed false;
@@ -766,21 +815,21 @@
     shacl:maxCount 1;
     shacl:minCount 1;
     shacl:name "id"@en;
-    shacl:path <https://www.openml.org/model#id>
+    shacl:path dc:identifier
   ], [
     shacl:datatype rdfs:Literal;
     shacl:maxCount 1;
     shacl:minCount 1;
     shacl:name "name"@en;
-    shacl:path <https://www.openml.org/model#name>
+    shacl:path dc:title
   ], [
     shacl:class rdfs:Resource;
     shacl:maxCount 1;
     shacl:minCount 1;
     shacl:name "url"@en;
-    shacl:path <https://www.openml.org/model#url>
+    shacl:path <http://openml.org/openml#url>
   ];
-  shacl:targetClass <https://www.openml.org/model#OutputFilePrediction> .
+  shacl:targetClass <http://openml.org/openml#OutputFilePrediction> .
 
 <https://semiceu.github.io//shacl/mldcat-ap-SHACL_en#ParameterSettingShape> a shacl:NodeShape;
   shacl:closed false;
@@ -788,21 +837,21 @@
     shacl:datatype rdfs:Literal;
     shacl:maxCount 1;
     shacl:name "component"@en;
-    shacl:path <https://www.openml.org/model#component>
+    shacl:path <http://openml.org/openml#component>
   ], [
     shacl:datatype rdfs:Literal;
     shacl:maxCount 1;
     shacl:minCount 1;
     shacl:name "name"@en;
-    shacl:path <https://www.openml.org/model#name>
+    shacl:path dc:title
   ], [
     shacl:datatype rdfs:Literal;
     shacl:maxCount 1;
     shacl:minCount 1;
     shacl:name "value"@en;
-    shacl:path <https://www.openml.org/model#value>
+    shacl:path <http://openml.org/openml#value>
   ];
-  shacl:targetClass <https://www.openml.org/model#ParameterSetting> .
+  shacl:targetClass <http://openml.org/openml#ParameterSetting> .
 
 <https://semiceu.github.io//shacl/mldcat-ap-SHACL_en#ParameterShape> a shacl:NodeShape;
   shacl:closed false;
@@ -811,15 +860,15 @@
     shacl:maxCount 1;
     shacl:minCount 1;
     shacl:name "name"@en;
-    shacl:path <https://www.openml.org/model#name>
+    shacl:path dc:title
   ], [
     shacl:datatype rdfs:Literal;
     shacl:maxCount 1;
     shacl:minCount 1;
     shacl:name "value"@en;
-    shacl:path <https://www.openml.org/model#value>
+    shacl:path <http://openml.org/openml#value>
   ];
-  shacl:targetClass <https://www.openml.org/model#Parameter> .
+  shacl:targetClass <http://openml.org/openml#Parameter> .
 
 <https://semiceu.github.io//shacl/mldcat-ap-SHACL_en#PredictionFeatureShape> a shacl:NodeShape;
   shacl:closed false;
@@ -828,15 +877,15 @@
     shacl:maxCount 1;
     shacl:minCount 1;
     shacl:name "name"@en;
-    shacl:path <https://www.openml.org/model#name>
+    shacl:path dc:title
   ], [
     shacl:class skos:Concept;
-    shacl:description "";
     shacl:maxCount 1;
     shacl:minCount 1;
-    shacl:path <https://www.openml.org/model#type>
+    shacl:name "type"@en;
+    shacl:path dc:type
   ];
-  shacl:targetClass <https://www.openml.org/model#PredictionFeature> .
+  shacl:targetClass <http://openml.org/openml#PredictionFeature> .
 
 <https://semiceu.github.io//shacl/mldcat-ap-SHACL_en#PredictionShape> a shacl:NodeShape;
   shacl:closed false;
@@ -845,40 +894,42 @@
     shacl:maxCount 1;
     shacl:minCount 1;
     shacl:name "format"@en;
-    shacl:path <https://www.openml.org/model#format>
+    shacl:path dc:format
   ], [
-    shacl:class <https://www.openml.org/model#PredictionFeature>;
-    shacl:description "";
+    shacl:class <http://openml.org/openml#PredictionFeature>;
     shacl:minCount 1;
-    shacl:path <https://www.openml.org/model#hasPredictionfeature>
+    shacl:name "has prediction feature"@en;
+    shacl:path <http://openml.org/openml#hasPredictionFeature>
   ];
-  shacl:targetClass <https://www.openml.org/model#Prediction> .
+  shacl:targetClass <http://openml.org/openml#Prediction> .
 
 <https://semiceu.github.io//shacl/mldcat-ap-SHACL_en#QualityShape> a shacl:NodeShape;
   shacl:closed false;
   shacl:property [
     shacl:datatype rdfs:Literal;
+    shacl:description "A title of the quality."@en;
     shacl:maxCount 1;
     shacl:minCount 1;
     shacl:name "name"@en;
-    shacl:path <https://www.openml.org/model#name>
+    shacl:path dc:title
   ], [
+    shacl:description "A computed value of the quality."@en;
     shacl:maxCount 1;
     shacl:minCount 1;
     shacl:name "value"@en;
-    shacl:path <https://www.openml.org/model#value>
+    shacl:path <http://openml.org/openml#value>
   ];
-  shacl:targetClass <https://www.openml.org/model#Quality> .
+  shacl:targetClass <http://openml.org/openml#Quality> .
 
 <https://semiceu.github.io//shacl/mldcat-ap-SHACL_en#RunCollectionShape> a shacl:NodeShape;
   shacl:closed false;
   shacl:property [
-    shacl:class <https://www.openml.org/model#Run>;
-    shacl:description "";
+    shacl:class <http://openml.org/openml#Run>;
     shacl:minCount 1;
-    shacl:path <https://www.openml.org/model#hasRun>
+    shacl:name "has run"@en;
+    shacl:path <http://openml.org/openml#hasRun>
   ];
-  shacl:targetClass <https://www.openml.org/model#RunCollection> .
+  shacl:targetClass <http://openml.org/openml#RunCollection> .
 
 <https://semiceu.github.io//shacl/mldcat-ap-SHACL_en#RunShape> a shacl:NodeShape;
   shacl:closed false;
@@ -886,65 +937,70 @@
     shacl:datatype rdfs:Literal;
     shacl:maxCount 1;
     shacl:name "error message"@en;
-    shacl:path <https://www.openml.org/model#errorMessage>
+    shacl:path <http://openml.org/openml#errorMessage>
   ], [
-    shacl:class <https://www.openml.org/model#Evaluation>;
-    shacl:description "";
-    shacl:path <https://www.openml.org/model#hasEvaluation>
+    shacl:class <http://openml.org/openml#Evaluation>;
+    shacl:name "has evaluation"@en;
+    shacl:path <http://openml.org/openml#hasEvaluation>
   ], [
-    shacl:class <https://www.openml.org/model#Flow>;
-    shacl:description "";
+    shacl:class <http://openml.org/openml#Flow>;
     shacl:maxCount 1;
     shacl:minCount 1;
-    shacl:path <https://www.openml.org/model#hasFlow>
+    shacl:name "has flow"@en;
+    shacl:path <http://openml.org/openml#hasFlow>
   ], [
-    shacl:class <https://www.openml.org/model#OutputFileDescription>;
-    shacl:description "";
+    shacl:class <http://openml.org/openml#OutputFileDescription>;
     shacl:maxCount 1;
     shacl:minCount 1;
-    shacl:path <https://www.openml.org/model#hasOutputFileDescription>
+    shacl:name "has output file description"@en;
+    shacl:path <http://openml.org/openml#hasOutputFileDescription>
   ], [
-    shacl:class <https://www.openml.org/model#OutputFilePrediction>;
-    shacl:description "";
+    shacl:class <http://openml.org/openml#OutputFilePrediction>;
     shacl:maxCount 1;
     shacl:minCount 1;
-    shacl:path <https://www.openml.org/model#hasOutputFilePrediction>
+    shacl:name "has output file prediction"@en;
+    shacl:path <http://openml.org/openml#hasOutputFilePrediction>
   ], [
-    shacl:class <https://www.openml.org/model#ParameterSetting>;
-    shacl:description "";
+    shacl:class <http://openml.org/openml#ParameterSetting>;
     shacl:maxCount 1;
-    shacl:path <https://www.openml.org/model#hasParameterSetting>
+    shacl:name "has parameter"@en;
+    shacl:path <http://openml.org/openml#hasParameterSetting>
   ], [
-    shacl:class <https://www.openml.org/model#Task>;
-    shacl:description "";
+    shacl:class <http://openml.org/openml#Task>;
     shacl:maxCount 1;
-    shacl:path <https://www.openml.org/model#hasTask>
+    shacl:name "has task"@en;
+    shacl:path <http://openml.org/openml#hasTask>
+  ], [
+    shacl:class foaf:Agent;
+    shacl:maxCount 1;
+    shacl:name "has uploader"@en;
+    shacl:path <http://openml.org/openml#hasUploader>
   ], [
     shacl:datatype rdfs:Literal;
     shacl:maxCount 1;
     shacl:name "id"@en;
-    shacl:path <https://www.openml.org/model#id>
+    shacl:path dc:identifier
   ], [
     shacl:datatype rdfs:Literal;
     shacl:maxCount 1;
     shacl:name "run details"@en;
-    shacl:path <https://www.openml.org/model#runDetails>
+    shacl:path <http://openml.org/openml#runDetails>
   ], [
     shacl:datatype rdfs:Literal;
     shacl:maxCount 1;
     shacl:name "setup Id"@en;
-    shacl:path <https://www.openml.org/model#setupId>
+    shacl:path <http://openml.org/openml#setupId>
   ], [
     shacl:datatype rdfs:Literal;
     shacl:maxCount 1;
     shacl:name "setup string"@en;
-    shacl:path <https://www.openml.org/model#setupString>
+    shacl:path <http://openml.org/openml#setupString>
   ], [
     shacl:datatype rdfs:Literal;
     shacl:name "tag"@en;
-    shacl:path <https://www.openml.org/model#tag>
+    shacl:path dcat:keyword
   ];
-  shacl:targetClass <https://www.openml.org/model#Run> .
+  shacl:targetClass <http://openml.org/openml#Run> .
 
 <https://semiceu.github.io//shacl/mldcat-ap-SHACL_en#SplitShape> a shacl:NodeShape;
   shacl:closed false;
@@ -952,83 +1008,93 @@
     shacl:datatype rdfs:Literal;
     shacl:maxCount 1;
     shacl:name "description"@en;
-    shacl:path <https://www.openml.org/model#description>
+    shacl:path dc:description
   ], [
     shacl:datatype rdfs:Literal;
     shacl:maxCount 1;
     shacl:minCount 1;
     shacl:name "id"@en;
-    shacl:path <https://www.openml.org/model#id>
+    shacl:path dc:identifier
+  ], [
+    shacl:class dcat:Distribution;
+    shacl:minCount 1;
+    shacl:name "is applied to"@en;
+    shacl:path <http://openml.org/openml#isAppliedTo>
   ], [
     shacl:datatype rdfs:Literal;
     shacl:maxCount 1;
     shacl:minCount 1;
     shacl:name "name"@en;
-    shacl:path <https://www.openml.org/model#name>
+    shacl:path dc:title
   ];
-  shacl:targetClass <https://www.openml.org/model#Split> .
+  shacl:targetClass <http://openml.org/openml#Split> .
 
 <https://semiceu.github.io//shacl/mldcat-ap-SHACL_en#TaskCollectionShape> a shacl:NodeShape;
   shacl:closed false;
   shacl:property [
-    shacl:class <https://www.openml.org/model#Task>;
-    shacl:description "";
+    shacl:class <http://openml.org/openml#Task>;
     shacl:minCount 1;
-    shacl:path <https://www.openml.org/model#hasTask>
+    shacl:name "has task"@en;
+    shacl:path <http://openml.org/openml#hasTask>
   ];
-  shacl:targetClass <https://www.openml.org/model#TaskCollection> .
+  shacl:targetClass <http://openml.org/openml#TaskCollection> .
 
 <https://semiceu.github.io//shacl/mldcat-ap-SHACL_en#TaskShape> a shacl:NodeShape;
   shacl:closed false;
   shacl:property [
-    shacl:class <https://www.openml.org/model#CostMatrix>;
-    shacl:description "";
+    shacl:class <http://openml.org/openml#CostMatrix>;
     shacl:maxCount 1;
-    shacl:path <https://www.openml.org/model#hasCostMatrix>
+    shacl:name "has cost matrix"@en;
+    shacl:path <http://openml.org/openml#hasCostMatrix>
   ], [
-    shacl:class <https://www.openml.org/model#EvaluationMeasure>;
-    shacl:description "";
+    shacl:class <http://openml.org/openml#EvaluationMeasure>;
     shacl:minCount 1;
-    shacl:path <https://www.openml.org/model#hasEValuationMeasure>
+    shacl:name "has evaluation measure"@en;
+    shacl:path <http://openml.org/openml#hasEvaluationMeasure>
   ], [
-    shacl:class <https://www.openml.org/model#EstimationProcedure>;
-    shacl:description "";
+    shacl:class <http://openml.org/openml#EstimationProcedure>;
     shacl:minCount 1;
-    shacl:path <https://www.openml.org/model#hasEstimationProcedure>
+    shacl:name "has estimation procedure"@en;
+    shacl:path <http://openml.org/openml#hasEstimationProcedure>
   ], [
-    shacl:class <https://www.openml.org/model#Prediction>;
-    shacl:description "";
-    shacl:maxCount 1;
-    shacl:minCount 1;
-    shacl:path <https://www.openml.org/model#hasOutput>
-  ], [
-    shacl:class <https://www.openml.org/model#TaskType>;
-    shacl:description "";
+    shacl:class <http://openml.org/openml#Prediction>;
     shacl:maxCount 1;
     shacl:minCount 1;
-    shacl:path <https://www.openml.org/model#hasTaskType>
+    shacl:name "has output"@en;
+    shacl:path <http://openml.org/openml#hasOutput>
+  ], [
+    shacl:class <http://openml.org/openml#TaskType>;
+    shacl:maxCount 1;
+    shacl:minCount 1;
+    shacl:name "has task type"@en;
+    shacl:path <http://openml.org/openml#hasTaskType>
   ], [
     shacl:datatype rdfs:Literal;
     shacl:maxCount 1;
     shacl:name "id"@en;
-    shacl:path <https://www.openml.org/model#id>
+    shacl:path dc:identifier
   ], [
     shacl:datatype rdfs:Literal;
     shacl:maxCount 1;
     shacl:minCount 1;
     shacl:name "name"@en;
-    shacl:path <https://www.openml.org/model#name>
+    shacl:path dc:title
+  ], [
+    shacl:class dcat:Dataset;
+    shacl:minCount 1;
+    shacl:name "source data"@en;
+    shacl:path <http://openml.org/openml#sourceData>
   ], [
     shacl:datatype rdfs:Literal;
     shacl:name "tag"@en;
-    shacl:path <https://www.openml.org/model#tag>
+    shacl:path dcat:keyword
   ], [
-    shacl:class <https://www.openml.org/model#Feature>;
-    shacl:description "";
+    shacl:class <http://openml.org/openml#Feature>;
     shacl:minCount 1;
-    shacl:path <https://www.openml.org/model#targetFeature>
+    shacl:name "target feature"@en;
+    shacl:path <http://openml.org/openml#targetFeature>
   ];
-  shacl:targetClass <https://www.openml.org/model#Task> .
+  shacl:targetClass <http://openml.org/openml#Task> .
 
 <https://semiceu.github.io//shacl/mldcat-ap-SHACL_en#TaskTypeShape> a shacl:NodeShape;
   shacl:closed false;
@@ -1037,18 +1103,18 @@
     shacl:maxCount 1;
     shacl:minCount 1;
     shacl:name "description"@en;
-    shacl:path <https://www.openml.org/model#description>
+    shacl:path dc:description
   ], [
     shacl:datatype rdfs:Literal;
     shacl:maxCount 1;
     shacl:minCount 1;
     shacl:name "identifier"@en;
-    shacl:path <https://www.openml.org/model#identifier>
+    shacl:path dc:identifier
   ], [
     shacl:datatype rdfs:Literal;
     shacl:maxCount 1;
     shacl:minCount 1;
     shacl:name "name"@en;
-    shacl:path <https://www.openml.org/model#name>
+    shacl:path dc:title
   ];
-  shacl:targetClass <https://www.openml.org/model#TaskType> .
+  shacl:targetClass <http://openml.org/openml#TaskType> .
