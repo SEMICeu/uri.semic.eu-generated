@@ -21,42 +21,10 @@
     {
       "@type": "foaf:Person",
       "affiliation": {
-        "foaf:name": "TenForce"
-      },
-      "foaf:firstName": "Bert",
-      "foaf:lastName": "Van Nuffelen"
-    },
-    {
-      "@type": "foaf:Person",
-      "affiliation": {
         "foaf:name": "PwC EU Services"
       },
-      "foaf:firstName": "Emidio",
-      "foaf:lastName": "Stani"
-    },
-    {
-      "@type": "foaf:Person",
-      "affiliation": {
-        "foaf:name": "PwC EU Services"
-      },
-      "foaf:firstName": "Dimitri",
-      "foaf:lastName": "Schepers"
-    },
-    {
-      "@type": "foaf:Person",
-      "affiliation": {
-        "foaf:name": "European Commission"
-      },
-      "foaf:firstName": "Pavlina",
-      "foaf:lastName": "Fragkou"
-    },
-    {
-      "@type": "foaf:Person",
-      "affiliation": {
-        "foaf:name": "PwC EU Services"
-      },
-      "foaf:firstName": "Michiel",
-      "foaf:lastName": "De Keyzer"
+      "foaf:firstName": "Florian",
+      "foaf:lastName": "Barthelemy"
     },
     {
       "@type": "foaf:Person",
@@ -71,8 +39,40 @@
       "affiliation": {
         "foaf:name": "PwC EU Services"
       },
-      "foaf:firstName": "Florian",
-      "foaf:lastName": "Barthelemy"
+      "foaf:firstName": "Michiel",
+      "foaf:lastName": "De Keyzer"
+    },
+    {
+      "@type": "foaf:Person",
+      "affiliation": {
+        "foaf:name": "European Commission"
+      },
+      "foaf:firstName": "Pavlina",
+      "foaf:lastName": "Fragkou"
+    },
+    {
+      "@type": "foaf:Person",
+      "affiliation": {
+        "foaf:name": "PwC EU Services"
+      },
+      "foaf:firstName": "Dimitri",
+      "foaf:lastName": "Schepers"
+    },
+    {
+      "@type": "foaf:Person",
+      "affiliation": {
+        "foaf:name": "PwC EU Services"
+      },
+      "foaf:firstName": "Emidio",
+      "foaf:lastName": "Stani"
+    },
+    {
+      "@type": "foaf:Person",
+      "affiliation": {
+        "foaf:name": "TenForce"
+      },
+      "foaf:firstName": "Bert",
+      "foaf:lastName": "Van Nuffelen"
     }
   ],
   "contributors": [
@@ -121,98 +121,35 @@
   ],
   "properties": [
     {
-      "@id": "http://data.europa.eu/m8g/longitude",
-      "@type": "http://www.w3.org/2002/07/owl#DatatypeProperty",
-      "definition": {
-        "en": "The geographic coordinate that specifies the east / west position of the Geometry on the Earth's surface."
-      },
-      "domain": [
-        "http://www.w3.org/ns/locn#Geometry"
-      ],
-      "range": [
-        "http://www.w3.org/2001/XMLSchema#string"
-      ],
-      "generalization": []
-    },
-    {
-      "@id": "http://data.europa.eu/m8g/location",
+      "@id": "http://data.europa.eu/m8g/address",
       "@type": "http://www.w3.org/2002/07/owl#ObjectProperty",
       "definition": {
-        "en": "Associates any Resource with the corresponding Location."
+        "en": "Associates any Resource with the corresponding Address."
       },
       "usage": {
-        "en": "Asserting the location relationship implies only that the domain has some connection to a Location in time or space. It does not imply that the Resource is necessarily at that Location at the time when the assertion is made."
+        "en": "Asserting the address relationship implies that the\r\n Resource has an Address."
       },
       "domain": [
         "http://www.w3.org/2000/01/rdf-schema#Resource"
       ],
       "range": [
-        "http://purl.org/dc/terms/Location"
+        "http://www.w3.org/ns/locn#Address"
       ],
-      "generalization": []
+      "generalization": [
+        "http://w3.org/ns/locn#address"
+      ]
     },
     {
-      "@id": "http://data.europa.eu/m8g/level",
+      "@id": "http://data.europa.eu/m8g/code",
       "@type": "http://www.w3.org/2002/07/owl#ObjectProperty",
       "definition": {
-        "en": "The level of the administrative unit in the hierarchy."
-      },
-      "usage": {
-        "en": "Some recommended codelists from the EU Publications Office and Eurostat include: <a href=\"https://op.europa.eu/fr/web/eu-vocabularies/dataset/-/resource?uri=http://publications.europa.eu/resource/dataset/atu\">Administrative Territorial Units (ATU)</a>, <a href=\"https://ec.europa.eu/eurostat/web/nuts/background\">NUTS</a> and <a href=\"https://ec.europa.eu/eurostat/web/nuts/local-administrative-units\">Local Administrative Units (LAU)</a>. The first arrondissement of Paris is for example expressed as \"http://publications.europa.eu/resource/authority/atu/FRA\\_AR\\_PAR01\" in the ATU controlled vocabulary."
+        "en": "The classification of the administrative unit."
       },
       "domain": [
         "http://data.europa.eu/m8g/AdminUnit"
       ],
       "range": [
         "http://www.w3.org/2004/02/skos/core#Concept"
-      ],
-      "generalization": []
-    },
-    {
-      "@id": "http://data.europa.eu/m8g/latitude",
-      "@type": "http://www.w3.org/2002/07/owl#DatatypeProperty",
-      "definition": {
-        "en": "The geographic coordinate that specifies the north / south position of the Geomerty on the Earth's surface."
-      },
-      "domain": [
-        "http://www.w3.org/ns/locn#Geometry"
-      ],
-      "range": [
-        "http://www.w3.org/2001/XMLSchema#string"
-      ],
-      "generalization": []
-    },
-    {
-      "@id": "http://data.europa.eu/m8g/geometryType",
-      "@type": "http://www.w3.org/2002/07/owl#ObjectProperty",
-      "definition": {
-        "en": "The classification of the Geometry."
-      },
-      "usage": {
-        "en": "Can be a point, line or polygon."
-      },
-      "domain": [
-        "http://www.w3.org/ns/locn#Geometry"
-      ],
-      "range": [
-        "http://www.w3.org/2004/02/skos/core#Concept"
-      ],
-      "generalization": []
-    },
-    {
-      "@id": "http://data.europa.eu/m8g/crs",
-      "@type": "http://www.w3.org/2002/07/owl#DatatypeProperty",
-      "definition": {
-        "en": "An identifier for the coordinate reference system."
-      },
-      "usage": {
-        "en": "Can be a coordinate-based local, regional or global system used to locate geographical entities."
-      },
-      "domain": [
-        "http://www.w3.org/ns/locn#Geometry"
-      ],
-      "range": [
-        "http://www.w3.org/2001/XMLSchema#anyURI"
       ],
       "generalization": []
     },
@@ -234,10 +171,61 @@
       "generalization": []
     },
     {
-      "@id": "http://data.europa.eu/m8g/code",
+      "@id": "http://data.europa.eu/m8g/crs",
+      "@type": "http://www.w3.org/2002/07/owl#DatatypeProperty",
+      "definition": {
+        "en": "An identifier for the coordinate reference system."
+      },
+      "usage": {
+        "en": "Can be a coordinate-based local, regional or global system used to locate geographical entities."
+      },
+      "domain": [
+        "http://www.w3.org/ns/locn#Geometry"
+      ],
+      "range": [
+        "http://www.w3.org/2001/XMLSchema#anyURI"
+      ],
+      "generalization": []
+    },
+    {
+      "@id": "http://data.europa.eu/m8g/geometryType",
       "@type": "http://www.w3.org/2002/07/owl#ObjectProperty",
       "definition": {
-        "en": "The classification of the administrative unit."
+        "en": "The classification of the Geometry."
+      },
+      "usage": {
+        "en": "Can be a point, line or polygon."
+      },
+      "domain": [
+        "http://www.w3.org/ns/locn#Geometry"
+      ],
+      "range": [
+        "http://www.w3.org/2004/02/skos/core#Concept"
+      ],
+      "generalization": []
+    },
+    {
+      "@id": "http://data.europa.eu/m8g/latitude",
+      "@type": "http://www.w3.org/2002/07/owl#DatatypeProperty",
+      "definition": {
+        "en": "The geographic coordinate that specifies the north / south position of the Geomerty on the Earth's surface."
+      },
+      "domain": [
+        "http://www.w3.org/ns/locn#Geometry"
+      ],
+      "range": [
+        "http://www.w3.org/2001/XMLSchema#string"
+      ],
+      "generalization": []
+    },
+    {
+      "@id": "http://data.europa.eu/m8g/level",
+      "@type": "http://www.w3.org/2002/07/owl#ObjectProperty",
+      "definition": {
+        "en": "The level of the administrative unit in the hierarchy."
+      },
+      "usage": {
+        "en": "Some recommended codelists from the EU Publications Office and Eurostat include: <a href=\"https://op.europa.eu/fr/web/eu-vocabularies/dataset/-/resource?uri=http://publications.europa.eu/resource/dataset/atu\">Administrative Territorial Units (ATU)</a>, <a href=\"https://ec.europa.eu/eurostat/web/nuts/background\">NUTS</a> and <a href=\"https://ec.europa.eu/eurostat/web/nuts/local-administrative-units\">Local Administrative Units (LAU)</a>. The first arrondissement of Paris is for example expressed as \"http://publications.europa.eu/resource/authority/atu/FRA\\_AR\\_PAR01\" in the ATU controlled vocabulary."
       },
       "domain": [
         "http://data.europa.eu/m8g/AdminUnit"
@@ -248,115 +236,43 @@
       "generalization": []
     },
     {
-      "@id": "http://data.europa.eu/m8g/address",
+      "@id": "http://data.europa.eu/m8g/location",
       "@type": "http://www.w3.org/2002/07/owl#ObjectProperty",
       "definition": {
-        "en": "Associates any Resource with the corresponding Address."
+        "en": "Associates any Resource with the corresponding Location."
       },
       "usage": {
-        "en": "Asserting the address relationship implies that the\r\n Resource has an Address."
+        "en": "Asserting the location relationship implies only that the domain has some connection to a Location in time or space. It does not imply that the Resource is necessarily at that Location at the time when the assertion is made."
       },
       "domain": [
         "http://www.w3.org/2000/01/rdf-schema#Resource"
       ],
       "range": [
-        "http://www.w3.org/ns/locn#Address"
+        "http://purl.org/dc/terms/Location"
       ],
-      "generalization": [
-        "http://w3.org/ns/locn#address"
-      ]
+      "generalization": []
+    },
+    {
+      "@id": "http://data.europa.eu/m8g/longitude",
+      "@type": "http://www.w3.org/2002/07/owl#DatatypeProperty",
+      "definition": {
+        "en": "The geographic coordinate that specifies the east / west position of the Geometry on the Earth's surface."
+      },
+      "domain": [
+        "http://www.w3.org/ns/locn#Geometry"
+      ],
+      "range": [
+        "http://www.w3.org/2001/XMLSchema#string"
+      ],
+      "generalization": []
     }
   ],
   "externalproperties": [
     {
       "name": {
-        "en": "thoroughfare"
+        "en": "administrative unit"
       },
-      "@id": "http://www.w3.org/ns/locn#thoroughfare",
-      "@type": "rdf:Property"
-    },
-    {
-      "name": {
-        "en": "post name"
-      },
-      "@id": "http://www.w3.org/ns/locn#postName",
-      "@type": "rdf:Property"
-    },
-    {
-      "name": {
-        "en": "post code"
-      },
-      "@id": "http://www.w3.org/ns/locn#postCode",
-      "@type": "rdf:Property"
-    },
-    {
-      "name": {
-        "en": "post office box"
-      },
-      "@id": "http://www.w3.org/ns/locn#poBox",
-      "@type": "rdf:Property"
-    },
-    {
-      "name": {
-        "en": "locator name"
-      },
-      "@id": "http://www.w3.org/ns/locn#locatorName",
-      "@type": "rdf:Property"
-    },
-    {
-      "name": {
-        "en": "locator designator"
-      },
-      "@id": "http://www.w3.org/ns/locn#locatorDesignator",
-      "@type": "rdf:Property"
-    },
-    {
-      "name": {
-        "en": "full address"
-      },
-      "@id": "http://www.w3.org/ns/locn#fullAddress",
-      "@type": "rdf:Property"
-    },
-    {
-      "name": {
-        "en": "administrative unit level 2"
-      },
-      "@id": "http://www.w3.org/ns/locn#adminUnitL2",
-      "@type": "rdf:Property"
-    },
-    {
-      "name": {
-        "en": "administrative unit level 1"
-      },
-      "@id": "http://www.w3.org/ns/locn#adminUnitL1",
-      "@type": "rdf:Property"
-    },
-    {
-      "name": {
-        "en": "address ID"
-      },
-      "@id": "http://www.w3.org/ns/locn#addressId",
-      "@type": "rdf:Property"
-    },
-    {
-      "name": {
-        "en": "address area"
-      },
-      "@id": "http://www.w3.org/ns/locn#addressArea",
-      "@type": "rdf:Property"
-    },
-    {
-      "name": {
-        "en": "wkt"
-      },
-      "@id": "http://www.opengis.net/ont/geosparql#asWKT",
-      "@type": "rdf:Property"
-    },
-    {
-      "name": {
-        "en": "gml"
-      },
-      "@id": "http://www.opengis.net/ont/geosparql#asGML",
+      "@id": "http://data.europa.eu/m8g/adminUnit",
       "@type": "rdf:Property"
     },
     {
@@ -368,9 +284,93 @@
     },
     {
       "name": {
-        "en": "administrative unit"
+        "en": "gml"
       },
-      "@id": "http://data.europa.eu/m8g/adminUnit",
+      "@id": "http://www.opengis.net/ont/geosparql#asGML",
+      "@type": "rdf:Property"
+    },
+    {
+      "name": {
+        "en": "wkt"
+      },
+      "@id": "http://www.opengis.net/ont/geosparql#asWKT",
+      "@type": "rdf:Property"
+    },
+    {
+      "name": {
+        "en": "address area"
+      },
+      "@id": "http://www.w3.org/ns/locn#addressArea",
+      "@type": "rdf:Property"
+    },
+    {
+      "name": {
+        "en": "address ID"
+      },
+      "@id": "http://www.w3.org/ns/locn#addressId",
+      "@type": "rdf:Property"
+    },
+    {
+      "name": {
+        "en": "administrative unit level 1"
+      },
+      "@id": "http://www.w3.org/ns/locn#adminUnitL1",
+      "@type": "rdf:Property"
+    },
+    {
+      "name": {
+        "en": "administrative unit level 2"
+      },
+      "@id": "http://www.w3.org/ns/locn#adminUnitL2",
+      "@type": "rdf:Property"
+    },
+    {
+      "name": {
+        "en": "full address"
+      },
+      "@id": "http://www.w3.org/ns/locn#fullAddress",
+      "@type": "rdf:Property"
+    },
+    {
+      "name": {
+        "en": "locator designator"
+      },
+      "@id": "http://www.w3.org/ns/locn#locatorDesignator",
+      "@type": "rdf:Property"
+    },
+    {
+      "name": {
+        "en": "locator name"
+      },
+      "@id": "http://www.w3.org/ns/locn#locatorName",
+      "@type": "rdf:Property"
+    },
+    {
+      "name": {
+        "en": "post office box"
+      },
+      "@id": "http://www.w3.org/ns/locn#poBox",
+      "@type": "rdf:Property"
+    },
+    {
+      "name": {
+        "en": "post code"
+      },
+      "@id": "http://www.w3.org/ns/locn#postCode",
+      "@type": "rdf:Property"
+    },
+    {
+      "name": {
+        "en": "post name"
+      },
+      "@id": "http://www.w3.org/ns/locn#postName",
+      "@type": "rdf:Property"
+    },
+    {
+      "name": {
+        "en": "thoroughfare"
+      },
+      "@id": "http://www.w3.org/ns/locn#thoroughfare",
       "@type": "rdf:Property"
     }
   ],
