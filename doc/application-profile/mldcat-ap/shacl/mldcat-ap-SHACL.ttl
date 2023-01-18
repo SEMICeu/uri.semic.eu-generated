@@ -34,6 +34,7 @@
     <https://semiceu.github.io//shacl/mldcat-ap-SHACL_en#TaskCollectionShape>,
     <https://semiceu.github.io//shacl/mldcat-ap-SHACL_en#TaskTypeShape>,
     <https://semiceu.github.io//shacl/mldcat-ap-SHACL_en#LicenseDocumentShape>,
+    <https://semiceu.github.io//shacl/mldcat-ap-SHACL_en#ChecksumShape>,
     <https://semiceu.github.io//shacl/mldcat-ap-SHACL_en#CatalogShape>,
     <https://semiceu.github.io//shacl/mldcat-ap-SHACL_en#CatalogRecordShape>,
     <https://semiceu.github.io//shacl/mldcat-ap-SHACL_en#DataServiceShape>,
@@ -120,6 +121,25 @@
     shacl:path dc:title
   ];
   shacl:targetClass dcat:Catalog .
+
+<https://semiceu.github.io//shacl/mldcat-ap-SHACL_en#ChecksumShape> a shacl:NodeShape;
+  shacl:closed false;
+  shacl:property [
+    shacl:class <http://spdx.org/rdf/terms#ChecksumAlgorithm>;
+    shacl:description "This property identifies the algorithm used to produce the subject Checksum."@en;
+    shacl:maxCount 1;
+    shacl:minCount 1;
+    shacl:name "algorithm"@en;
+    shacl:path <http://spdx.org/rdf/terms#algorithm>
+  ], [
+    shacl:datatype rdfs:Literal;
+    shacl:description "This property provides a lower case hexadecimal encoded digest value produced using a specific algorithm."@en;
+    shacl:maxCount 1;
+    shacl:minCount 1;
+    shacl:name "checksum value"@en;
+    shacl:path <http://spdx.org/rdf/terms#checksumValue>
+  ];
+  shacl:targetClass <http://spdx.org/rdf/terms#Checksum> .
 
 <https://semiceu.github.io//shacl/mldcat-ap-SHACL_en#CollectionShape> a shacl:NodeShape;
   shacl:closed false;
@@ -967,6 +987,24 @@
 
 <https://semiceu.github.io//shacl/mldcat-ap-SHACL_en#QualityTypeShape> a shacl:NodeShape;
   shacl:closed false;
+  shacl:property [
+    shacl:datatype rdfs:Literal;
+    shacl:description "";
+    shacl:maxCount 1;
+    shacl:path <https://www.openml.org/model#description>
+  ], [
+    shacl:datatype rdfs:Literal;
+    shacl:description "";
+    shacl:maxCount 1;
+    shacl:minCount 1;
+    shacl:path <https://www.openml.org/model#id>
+  ], [
+    shacl:datatype rdfs:Literal;
+    shacl:description "";
+    shacl:maxCount 1;
+    shacl:minCount 1;
+    shacl:path <https://www.openml.org/model#name>
+  ];
   shacl:targetClass <http://openml.org/openml#QualityType> .
 
 <https://semiceu.github.io//shacl/mldcat-ap-SHACL_en#RunCollectionShape> a shacl:NodeShape;
