@@ -1,4 +1,5 @@
 @prefix dc: <http://purl.org/dc/terms/> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
 @prefix org: <http://www.w3.org/ns/org#> .
 @prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
 @prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
@@ -7,6 +8,7 @@
 @prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
 
 <https://semiceu.github.io//shacl/core-business-ap-SHACL_en> <https://semiceu.github.io//shacl/core-business-ap-SHACL_enshapes> <https://semiceu.github.io//shacl/core-business-ap-SHACL_en#AccountingDocumentShape>,
+    <https://semiceu.github.io//shacl/core-business-ap-SHACL_en#ContactPointShape>,
     <https://semiceu.github.io//shacl/core-business-ap-SHACL_en#IdentifierShape>,
     <https://semiceu.github.io//shacl/core-business-ap-SHACL_en#LegalEntityShape>,
     <https://semiceu.github.io//shacl/core-business-ap-SHACL_en#AddressShape>,
@@ -75,6 +77,26 @@
     shacl:path <http://www.w3.org/ns/locn#thoroughfare>
   ];
   shacl:targetClass <http://www.w3.org/ns/locn#Address> .
+
+<https://semiceu.github.io//shacl/core-business-ap-SHACL_en#ContactPointShape> a shacl:NodeShape;
+  shacl:closed false;
+  shacl:property [
+    shacl:class foaf:Document;
+    shacl:description "A web page that could be used to reach out the Contact Point."@en;
+    shacl:name "contact page"@en;
+    shacl:path <http://data.europa.eu/m8g/contactPage>
+  ], [
+    shacl:datatype rdfs:Literal;
+    shacl:description "An electronic address through which the Contact Point can be contacted."@en;
+    shacl:name "has email"@en;
+    shacl:path <http://data.europa.eu/m8g/email>
+  ], [
+    shacl:datatype rdfs:Literal;
+    shacl:description "A telephone number through which the Contact Point can be contacted."@en;
+    shacl:name "has telephone"@en;
+    shacl:path <http://data.europa.eu/m8g/telephone>
+  ];
+  shacl:targetClass <http://data.europa.eu/m8g/ContactPoint> .
 
 <https://semiceu.github.io//shacl/core-business-ap-SHACL_en#FormalOrganizationShape> a shacl:NodeShape;
   shacl:closed false;
