@@ -2,6 +2,7 @@
 <xs:schema xmlns="https://data.europa.eu/m8g/xml/" xmlns:xs="http://www.w3.org/2001/XMLSchema" targetNamespace="https://data.europa.eu/m8g/xml/" version="2.0.0" elementFormDefault="qualified" attributeFormDefault="unqualified" xmlns:cv="https://data.europa.eu/m8g/xml/">
   <xs:element name="GenericDate" type="GenericDateType"/>
   <xs:element name="Name" type="NameType"/>
+  <xs:element name="ContactPoint" type="ContactPointType"/>
   <xs:element name="Jurisdiction" type="JurisdictionType"/>
   <xs:element name="Location" type="LocationType"/>
   <xs:element name="Identifier" type="IdentifierType"/>
@@ -91,6 +92,30 @@
     <xs:attribute name="NameRef" type="xs:IDREF">
       <xs:annotation>
         <xs:documentation xml:lang="en">Reference to Name ID</xs:documentation>
+      </xs:annotation>
+    </xs:attribute>
+  </xs:complexType>
+  <xs:complexType name="ContactPointType">
+    <xs:sequence>
+      <xs:element name="openingHours" maxOccurs="unbounded" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation xml:lang="en">The (structured) hours at which the contact point is normally available.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="hasEmail" type="xs:string" maxOccurs="unbounded" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation xml:lang="en">An electronic address through which the Contact Point can be contacted.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="hasTelephone" type="xs:string" maxOccurs="unbounded" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation xml:lang="en">A telephone number through which the Contact Point can be contacted.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+    </xs:sequence>
+    <xs:attribute name="ContactPointRef" type="xs:IDREF">
+      <xs:annotation>
+        <xs:documentation xml:lang="en">Reference to ContactPoint ID</xs:documentation>
       </xs:annotation>
     </xs:attribute>
   </xs:complexType>
@@ -245,6 +270,11 @@
       <xs:element name="citizenship" ref="JurisdictionType" maxOccurs="unbounded" minOccurs="0">
         <xs:annotation>
           <xs:documentation xml:lang="en">The Jurisdiction that has conferred citizenship rights on the Person such as the right to vote, to receive certain protection from the community or the issuance of a passport.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="contactPoint" ref="ContactPointType" maxOccurs="unbounded" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation xml:lang="en">The main contact information of the resource.</xs:documentation>
         </xs:annotation>
       </xs:element>
       <xs:element name="countryOfBirth" ref="LocationType" maxOccurs="unbounded" minOccurs="0">

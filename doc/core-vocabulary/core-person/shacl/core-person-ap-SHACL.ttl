@@ -8,6 +8,7 @@
 
 <https://semiceu.github.io//shacl/core-person-ap-SHACL_en> <https://semiceu.github.io//shacl/core-person-ap-SHACL_enshapes> <https://semiceu.github.io//shacl/core-person-ap-SHACL_en#GenericDateShape>,
     <https://semiceu.github.io//shacl/core-person-ap-SHACL_en#NameShape>,
+    <https://semiceu.github.io//shacl/core-person-ap-SHACL_en#ContactPointShape>,
     <https://semiceu.github.io//shacl/core-person-ap-SHACL_en#JurisdictionShape>,
     <https://semiceu.github.io//shacl/core-person-ap-SHACL_en#LocationShape>,
     <https://semiceu.github.io//shacl/core-person-ap-SHACL_en#IdentifierShape>,
@@ -79,6 +80,26 @@
 <https://semiceu.github.io//shacl/core-person-ap-SHACL_en#AgentShape> a shacl:NodeShape;
   shacl:closed false;
   shacl:targetClass foaf:Agent .
+
+<https://semiceu.github.io//shacl/core-person-ap-SHACL_en#ContactPointShape> a shacl:NodeShape;
+  shacl:closed false;
+  shacl:property [
+    shacl:class foaf:Document;
+    shacl:description "The (structured) hours at which the contact point is normally available."@en;
+    shacl:name "opening hours"@en;
+    shacl:path <http://data.europa.eu/m8g/openingHours>
+  ], [
+    shacl:datatype rdfs:Literal;
+    shacl:description "An electronic address through which the Contact Point can be contacted."@en;
+    shacl:name "has email"@en;
+    shacl:path <http://data.europa.eu/m8g/email>
+  ], [
+    shacl:datatype rdfs:Literal;
+    shacl:description "A telephone number through which the Contact Point can be contacted."@en;
+    shacl:name "has telephone"@en;
+    shacl:path <http://data.europa.eu/m8g/telephone>
+  ];
+  shacl:targetClass <http://data.europa.e/m8g/ContactPoint> .
 
 <https://semiceu.github.io//shacl/core-person-ap-SHACL_en#GenericDateShape> a shacl:NodeShape;
   shacl:closed false;
@@ -216,6 +237,11 @@
     shacl:description "The Jurisdiction that has conferred citizenship rights on the Person such as the right to vote, to receive certain protection from the community or the issuance of a passport."@en;
     shacl:name "citizenship"@en;
     shacl:path dc:citizenship
+  ], [
+    shacl:class <http://data.europa.e/m8g/ContactPoint>;
+    shacl:description "The main contact information of the resource."@en;
+    shacl:name "contact point"@en;
+    shacl:path <http://data.europa.eu/m8g/contactPoint>
   ], [
     shacl:class dc:Location;
     shacl:description "The country in which the Person was born."@en;
