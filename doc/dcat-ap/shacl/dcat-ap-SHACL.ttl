@@ -1,6 +1,7 @@
 @prefix dc: <http://purl.org/dc/terms/> .
 @prefix dcat: <http://www.w3.org/ns/dcat#> .
 @prefix foaf: <http://xmlns.com/foaf/0.1/> .
+@prefix prov: <http://www.w3.org/ns/prov#> .
 @prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
 @prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
 @prefix shacl: <http://www.w3.org/ns/shacl#> .
@@ -8,12 +9,13 @@
 @prefix vcard: <http://www.w3.org/2006/vcard/ns#> .
 @prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
 
-<https://semiceu.github.io//doc/dcat-ap> rdfs:member <https://semiceu.github.io//doc/dcat-ap#xsd:hexBinaryShape>,
-    <https://semiceu.github.io//doc/dcat-ap#dct:FrequencyShape>,
+<https://semiceu.github.io//doc/dcat-ap> rdfs:member <https://semiceu.github.io//doc/dcat-ap#dct:FrequencyShape>,
     <https://semiceu.github.io//doc/dcat-ap#dct:LicenseDocumentShape>,
     <https://semiceu.github.io//doc/dcat-ap#dct:LinguisticSystemShape>,
     <https://semiceu.github.io//doc/dcat-ap#dct:LocationShape>,
     <https://semiceu.github.io//doc/dcat-ap#dct:MediaTypeShape>,
+    <https://semiceu.github.io//doc/dcat-ap#dct:mediaTypeShape>,
+    <https://semiceu.github.io//doc/dcat-ap#dct:MediaTypeOrExtentShape>,
     <https://semiceu.github.io//doc/dcat-ap#dct:PeriodOfTimeShape>,
     <https://semiceu.github.io//doc/dcat-ap#dct:ProvenanceStatementShape>,
     <https://semiceu.github.io//doc/dcat-ap#dct:RightsStatementShape>,
@@ -23,6 +25,10 @@
     <https://semiceu.github.io//doc/dcat-ap#rdfs:LiteralShape>,
     <https://semiceu.github.io//doc/dcat-ap#TemporalLiteralShape>,
     <https://semiceu.github.io//doc/dcat-ap#rdfs:ResourceShape>,
+    <https://semiceu.github.io//doc/dcat-ap#xsd:dateTimeShape>,
+    <https://semiceu.github.io//doc/dcat-ap#xsd:decimalShape>,
+    <https://semiceu.github.io//doc/dcat-ap#xsd:durationShape>,
+    <https://semiceu.github.io//doc/dcat-ap#xsd:hexBinaryShape>,
     <https://semiceu.github.io//doc/dcat-ap#skos:ConceptShape>,
     <https://semiceu.github.io//doc/dcat-ap#skos:ConceptSchemeShape>,
     <https://semiceu.github.io//doc/dcat-ap#TimeInstantShape>,
@@ -35,6 +41,7 @@
     <https://semiceu.github.io//doc/dcat-ap#dcat:DistributionShape>,
     <https://semiceu.github.io//doc/dcat-ap#dcat:RelationshipShape>,
     <https://semiceu.github.io//doc/dcat-ap#dcat:RoleShape>,
+    <https://semiceu.github.io//doc/dcat-ap#prov:ActivityShape>,
     <https://semiceu.github.io//doc/dcat-ap#foaf:DocumentShape> .
 
 <https://semiceu.github.io//doc/dcat-ap#ChecksumAlgorithmShape> a shacl:NodeShape;
@@ -111,7 +118,7 @@
   shacl:targetClass dcat:CatalogRecord .
 
 <https://semiceu.github.io//doc/dcat-ap#dcat:CatalogRecordShape/023a24a6e9c21959163a9bb1b855be5e90e06ac7> rdfs:seeAlso "https://semiceu.github.io//doc/dcat-ap#dcat%3ACatalogRecord%3Amodification%20date";
-  shacl:class rdfs:Literal;
+  shacl:datatype rdfs:Literal;
   shacl:description "This property contains the most recent date on which the Catalogue entry was changed or modified."@en;
   shacl:name "modification date"@en;
   shacl:path dc:modified;
@@ -127,7 +134,7 @@
   <https://data.vlaanderen.be/ns/shacl#rule> "" .
 
 <https://semiceu.github.io//doc/dcat-ap#dcat:CatalogRecordShape/1c1bf4071371c9982d24c69a0475f112b6319c91> rdfs:seeAlso "https://semiceu.github.io//doc/dcat-ap#dcat%3ACatalogRecord%3Alisting%20date";
-  shacl:class rdfs:Literal;
+  shacl:datatype rdfs:Literal;
   shacl:description "This property contains the date on which the description of the Dataset was included in the Catalogue."@en;
   shacl:name "listing date"@en;
   shacl:path dc:issued;
@@ -209,9 +216,9 @@
 <https://semiceu.github.io//doc/dcat-ap#dcat:CatalogRecordShape/6b7242b6b89977700c05e4875131fbb975c4235e> rdfs:seeAlso "https://semiceu.github.io//doc/dcat-ap#dcat%3ACatalogRecord%3Amodification%20date";
   shacl:description "This property contains the most recent date on which the Catalogue entry was changed or modified."@en;
   shacl:name "modification date"@en;
-  shacl:nodekind "sh:BlankNodeOrIRI";
+  shacl:nodekind "sh:Literal";
   shacl:path dc:modified;
-  <https://data.vlaanderen.be/ns/shacl#message> [<https://semiceu.github.io//doc/dcat-apen> "De verwachte waarde voor modification date is een rdfs:Resource (URI of blank node)"];
+  <https://data.vlaanderen.be/ns/shacl#message> [<https://semiceu.github.io//doc/dcat-apen> "De verwachte waarde voor modification date is een Literal"];
   <https://data.vlaanderen.be/ns/shacl#rule> "" .
 
 <https://semiceu.github.io//doc/dcat-ap#dcat:CatalogRecordShape/6cae9880e515253132af1452a38a8a5827165149> rdfs:seeAlso "https://semiceu.github.io//doc/dcat-ap#dcat%3ACatalogRecord%3Adescription";
@@ -274,9 +281,9 @@
 <https://semiceu.github.io//doc/dcat-ap#dcat:CatalogRecordShape/d4c0539354cbf13f62e53a5a69e3f2b0e384f727> rdfs:seeAlso "https://semiceu.github.io//doc/dcat-ap#dcat%3ACatalogRecord%3Alisting%20date";
   shacl:description "This property contains the date on which the description of the Dataset was included in the Catalogue."@en;
   shacl:name "listing date"@en;
-  shacl:nodekind "sh:BlankNodeOrIRI";
+  shacl:nodekind "sh:Literal";
   shacl:path dc:issued;
-  <https://data.vlaanderen.be/ns/shacl#message> [<https://semiceu.github.io//doc/dcat-apen> "De verwachte waarde voor listing date is een rdfs:Resource (URI of blank node)"];
+  <https://data.vlaanderen.be/ns/shacl#message> [<https://semiceu.github.io//doc/dcat-apen> "De verwachte waarde voor listing date is een Literal"];
   <https://data.vlaanderen.be/ns/shacl#rule> "" .
 
 <https://semiceu.github.io//doc/dcat-ap#dcat:CatalogRecordShape/d4d4f2399b8cf2f615ac658920373b714726bed0> rdfs:seeAlso "https://semiceu.github.io//doc/dcat-ap#dcat%3ACatalogRecord%3Adescription";
@@ -397,7 +404,7 @@
   <https://data.vlaanderen.be/ns/shacl#rule> "" .
 
 <https://semiceu.github.io//doc/dcat-ap#dcat:CatalogShape/023a24a6e9c21959163a9bb1b855be5e90e06ac7> rdfs:seeAlso "https://semiceu.github.io//doc/dcat-ap#dcat%3ACatalog%3Amodification%20date";
-  shacl:class rdfs:Literal;
+  shacl:datatype rdfs:Literal;
   shacl:description "This property contains the most recent date on which the Catalogue was modified."@en;
   shacl:name "modification date"@en;
   shacl:path dc:modified;
@@ -479,9 +486,9 @@
 <https://semiceu.github.io//doc/dcat-ap#dcat:CatalogShape/4be37093e4c3ba0d5b5a18ef6b97778d6d689392> rdfs:seeAlso "https://semiceu.github.io//doc/dcat-ap#dcat%3ACatalog%3Arelease%20date";
   shacl:description "This property contains the date of formal issuance (e.g., publication) of the Catalogue."@en;
   shacl:name "release date"@en;
-  shacl:nodekind "sh:BlankNodeOrIRI";
+  shacl:nodekind "sh:Literal";
   shacl:path dc:issued;
-  <https://data.vlaanderen.be/ns/shacl#message> [<https://semiceu.github.io//doc/dcat-apen> "De verwachte waarde voor release date is een rdfs:Resource (URI of blank node)"];
+  <https://data.vlaanderen.be/ns/shacl#message> [<https://semiceu.github.io//doc/dcat-apen> "De verwachte waarde voor release date is een Literal"];
   <https://data.vlaanderen.be/ns/shacl#rule> "" .
 
 <https://semiceu.github.io//doc/dcat-ap#dcat:CatalogShape/5d3b501368b0e6230133103390ac50e7385e214a> rdfs:seeAlso "https://semiceu.github.io//doc/dcat-ap#dcat%3ACatalog%3Ais%20part%20of";
@@ -511,9 +518,9 @@
 <https://semiceu.github.io//doc/dcat-ap#dcat:CatalogShape/6b7242b6b89977700c05e4875131fbb975c4235e> rdfs:seeAlso "https://semiceu.github.io//doc/dcat-ap#dcat%3ACatalog%3Amodification%20date";
   shacl:description "This property contains the most recent date on which the Catalogue was modified."@en;
   shacl:name "modification date"@en;
-  shacl:nodekind "sh:BlankNodeOrIRI";
+  shacl:nodekind "sh:Literal";
   shacl:path dc:modified;
-  <https://data.vlaanderen.be/ns/shacl#message> [<https://semiceu.github.io//doc/dcat-apen> "De verwachte waarde voor modification date is een rdfs:Resource (URI of blank node)"];
+  <https://data.vlaanderen.be/ns/shacl#message> [<https://semiceu.github.io//doc/dcat-apen> "De verwachte waarde voor modification date is een Literal"];
   <https://data.vlaanderen.be/ns/shacl#rule> "" .
 
 <https://semiceu.github.io//doc/dcat-ap#dcat:CatalogShape/6cae9880e515253132af1452a38a8a5827165149> rdfs:seeAlso "https://semiceu.github.io//doc/dcat-ap#dcat%3ACatalog%3Adescription";
@@ -747,7 +754,7 @@
   <https://data.vlaanderen.be/ns/shacl#rule> "" .
 
 <https://semiceu.github.io//doc/dcat-ap#dcat:CatalogShape/fabf14eff90936c4692cb3b5b4e5bc48873c8640> rdfs:seeAlso "https://semiceu.github.io//doc/dcat-ap#dcat%3ACatalog%3Arelease%20date";
-  shacl:class rdfs:Literal;
+  shacl:datatype rdfs:Literal;
   shacl:description "This property contains the date of formal issuance (e.g., publication) of the Catalogue."@en;
   shacl:name "release date"@en;
   shacl:path dc:issued;
@@ -940,7 +947,9 @@
     <https://semiceu.github.io//doc/dcat-ap#dcat:DatasetShape/0c6b02433cfa73d8b8722f9924d10ba90a0a13ee>,
     <https://semiceu.github.io//doc/dcat-ap#dcat:DatasetShape/10c0ca4deadefb51c529f56ee01caf9bd2639ef4>,
     <https://semiceu.github.io//doc/dcat-ap#dcat:DatasetShape/1e2ff89f72ca069b1668489d90cb44ba553353d5>,
+    <https://semiceu.github.io//doc/dcat-ap#dcat:DatasetShape/21ff3c331383c15dedf63f9f30c0818ccac87497>,
     <https://semiceu.github.io//doc/dcat-ap#dcat:DatasetShape/236f0210baaf149903750c43bbe7012c21debb2a>,
+    <https://semiceu.github.io//doc/dcat-ap#dcat:DatasetShape/2961dd5b80e9c0f6242da8cf9eea53ad610d7602>,
     <https://semiceu.github.io//doc/dcat-ap#dcat:DatasetShape/29ba27566ab1f32c8bb73f3492436d4bd868d3d2>,
     <https://semiceu.github.io//doc/dcat-ap#dcat:DatasetShape/2ab9813b47309d4af98fdfe34189ea24baecc8cd>,
     <https://semiceu.github.io//doc/dcat-ap#dcat:DatasetShape/2d388ed1a94fa93a83fb179a4ecb339b2566b790>,
@@ -949,8 +958,11 @@
     <https://semiceu.github.io//doc/dcat-ap#dcat:DatasetShape/33c1aef2d5f513df6f3c2e40c43297b18b2f556b>,
     <https://semiceu.github.io//doc/dcat-ap#dcat:DatasetShape/34ba47520d520f97bbcdea3c6fd3dc176d312689>,
     <https://semiceu.github.io//doc/dcat-ap#dcat:DatasetShape/3894f9fa605c37b8ff4766859d3107f97cc5f934>,
+    <https://semiceu.github.io//doc/dcat-ap#dcat:DatasetShape/397755646b3e9ed0cfae7a2a581d26251329edb7>,
     <https://semiceu.github.io//doc/dcat-ap#dcat:DatasetShape/3f1fe87dc7be37001827234cfe37b5314b16efcc>,
     <https://semiceu.github.io//doc/dcat-ap#dcat:DatasetShape/41f263bb74ca0c94c6c7a50c981cace98f35802d>,
+    <https://semiceu.github.io//doc/dcat-ap#dcat:DatasetShape/42110293925ce8bdb81f82dee95d1f78b2fca91c>,
+    <https://semiceu.github.io//doc/dcat-ap#dcat:DatasetShape/46a60c7d3d828d3006937a12f82c1958b94e6f76>,
     <https://semiceu.github.io//doc/dcat-ap#dcat:DatasetShape/488f0bcb1b2d7cb5288ca9952a7b94f106f95859>,
     <https://semiceu.github.io//doc/dcat-ap#dcat:DatasetShape/4918ff7a6c1c4b0eea6403dca4b992b87ee1f4ab>,
     <https://semiceu.github.io//doc/dcat-ap#dcat:DatasetShape/495a2bdea22c8a156f1a7926737cdf33529871fd>,
@@ -997,6 +1009,7 @@
     <https://semiceu.github.io//doc/dcat-ap#dcat:DatasetShape/db878f1cb93930f64561d0504123c66feacfad5a>,
     <https://semiceu.github.io//doc/dcat-ap#dcat:DatasetShape/dede6a68a95ac0f43ca88def472d8fc001f86ebe>,
     <https://semiceu.github.io//doc/dcat-ap#dcat:DatasetShape/e2017f72421063cd9ff494011ec78f35f9632a4a>,
+    <https://semiceu.github.io//doc/dcat-ap#dcat:DatasetShape/e6d76f7de5d5b08e584d9cd40619631987a64a7c>,
     <https://semiceu.github.io//doc/dcat-ap#dcat:DatasetShape/ee60fdd4b8581460f5fc4077813b8bb3e3d77441>,
     <https://semiceu.github.io//doc/dcat-ap#dcat:DatasetShape/f17847e940bbcc6c79ef55ad620214918ca79c79>,
     <https://semiceu.github.io//doc/dcat-ap#dcat:DatasetShape/f6f077451f13ccf5d721838425fcc37f6cebfe48>,
@@ -1023,7 +1036,7 @@
   <https://data.vlaanderen.be/ns/shacl#rule> "" .
 
 <https://semiceu.github.io//doc/dcat-ap#dcat:DatasetShape/023a24a6e9c21959163a9bb1b855be5e90e06ac7> rdfs:seeAlso "https://semiceu.github.io//doc/dcat-ap#dcat%3ADataset%3Amodification%20date";
-  shacl:class rdfs:Literal;
+  shacl:datatype rdfs:Literal;
   shacl:description "This property contains the most recent date on which the Dataset was changed or modified."@en;
   shacl:name "modification date"@en;
   shacl:path dc:modified;
@@ -1086,12 +1099,28 @@
   <https://data.vlaanderen.be/ns/shacl#message> [<https://semiceu.github.io//doc/dcat-apen> "Maximaal 1 waarden toegelaten voor version"];
   <https://data.vlaanderen.be/ns/shacl#rule> "" .
 
+<https://semiceu.github.io//doc/dcat-ap#dcat:DatasetShape/21ff3c331383c15dedf63f9f30c0818ccac87497> rdfs:seeAlso "https://semiceu.github.io//doc/dcat-ap#dcat%3ADataset%3Awas%20generated%20by";
+  shacl:description "This property refers to an activity that generated, or provides the business context for, the creation of the dataset."@en;
+  shacl:name "was generated by"@en;
+  shacl:nodekind "sh:BlankNodeOrIRI";
+  shacl:path prov:wasGeneratedBy;
+  <https://data.vlaanderen.be/ns/shacl#message> [<https://semiceu.github.io//doc/dcat-apen> "De verwachte waarde voor was generated by is een rdfs:Resource (URI of blank node)"];
+  <https://data.vlaanderen.be/ns/shacl#rule> "" .
+
 <https://semiceu.github.io//doc/dcat-ap#dcat:DatasetShape/236f0210baaf149903750c43bbe7012c21debb2a> rdfs:seeAlso "https://semiceu.github.io//doc/dcat-ap#dcat%3ADataset%3Atype";
   shacl:description "This property refers to the type of the Dataset. A recommended rcontrolled vocabulary data-type is foreseen."@en;
   shacl:maxCount 1;
   shacl:name "type"@en;
   shacl:path dc:type;
   <https://data.vlaanderen.be/ns/shacl#message> [<https://semiceu.github.io//doc/dcat-apen> "Maximaal 1 waarden toegelaten voor type"];
+  <https://data.vlaanderen.be/ns/shacl#rule> "" .
+
+<https://semiceu.github.io//doc/dcat-ap#dcat:DatasetShape/2961dd5b80e9c0f6242da8cf9eea53ad610d7602> rdfs:seeAlso "https://semiceu.github.io//doc/dcat-ap#dcat%3ADataset%3Atemporal%20resolution";
+  shacl:description "This property refers to the minimum time period resolvable in the dataset."@en;
+  shacl:name "temporal resolution"@en;
+  shacl:nodekind "sh:Literal";
+  shacl:path dcat:temporalResolution;
+  <https://data.vlaanderen.be/ns/shacl#message> [<https://semiceu.github.io//doc/dcat-apen> "De verwachte waarde voor temporal resolution is een Literal"];
   <https://data.vlaanderen.be/ns/shacl#rule> "" .
 
 <https://semiceu.github.io//doc/dcat-ap#dcat:DatasetShape/29ba27566ab1f32c8bb73f3492436d4bd868d3d2> rdfs:seeAlso "https://semiceu.github.io//doc/dcat-ap#dcat%3ADataset%3Alanguage";
@@ -1158,6 +1187,14 @@
   <https://data.vlaanderen.be/ns/shacl#message> [<https://semiceu.github.io//doc/dcat-apen> "De range van keyword moet van het type <http://www.w3.org/2000/01/rdf-schema#Literal> zijn."];
   <https://data.vlaanderen.be/ns/shacl#rule> "" .
 
+<https://semiceu.github.io//doc/dcat-ap#dcat:DatasetShape/397755646b3e9ed0cfae7a2a581d26251329edb7> rdfs:seeAlso "https://semiceu.github.io//doc/dcat-ap#dcat%3ADataset%3Awas%20generated%20by";
+  shacl:class prov:Activity;
+  shacl:description "This property refers to an activity that generated, or provides the business context for, the creation of the dataset."@en;
+  shacl:name "was generated by"@en;
+  shacl:path prov:wasGeneratedBy;
+  <https://data.vlaanderen.be/ns/shacl#message> [<https://semiceu.github.io//doc/dcat-apen> "De range van was generated by moet van het type <http://www.w3.org/ns/prov#Activity> zijn."];
+  <https://data.vlaanderen.be/ns/shacl#rule> "" .
+
 <https://semiceu.github.io//doc/dcat-ap#dcat:DatasetShape/3f1fe87dc7be37001827234cfe37b5314b16efcc> rdfs:seeAlso "https://semiceu.github.io//doc/dcat-ap#dcat%3ADataset%3Ais%20referenced%20by";
   shacl:description "This property is about a related resource, such as a publication, that references, cites, or otherwise points to the dataset."@en;
   shacl:name "is referenced by"@en;
@@ -1172,6 +1209,22 @@
   shacl:nodekind "sh:BlankNodeOrIRI";
   shacl:path dcat:qualifiedRelation;
   <https://data.vlaanderen.be/ns/shacl#message> [<https://semiceu.github.io//doc/dcat-apen> "De verwachte waarde voor qualified relation is een rdfs:Resource (URI of blank node)"];
+  <https://data.vlaanderen.be/ns/shacl#rule> "" .
+
+<https://semiceu.github.io//doc/dcat-ap#dcat:DatasetShape/42110293925ce8bdb81f82dee95d1f78b2fca91c> rdfs:seeAlso "https://semiceu.github.io//doc/dcat-ap#dcat%3ADataset%3Aspatial%20resolution";
+  shacl:datatype xsd:decimal;
+  shacl:description "This property refers to the minimum spatial separation resolvable in a dataset, measured in meters."@en;
+  shacl:name "spatial resolution"@en;
+  shacl:path dcat:spatialResolutionInMeters;
+  <https://data.vlaanderen.be/ns/shacl#message> [<https://semiceu.github.io//doc/dcat-apen> "De range van spatial resolution moet van het type <http://www.w3.org/2001/XMLSchema#decimal> zijn."];
+  <https://data.vlaanderen.be/ns/shacl#rule> "" .
+
+<https://semiceu.github.io//doc/dcat-ap#dcat:DatasetShape/46a60c7d3d828d3006937a12f82c1958b94e6f76> rdfs:seeAlso "https://semiceu.github.io//doc/dcat-ap#dcat%3ADataset%3Aspatial%20resolution";
+  shacl:description "This property refers to the minimum spatial separation resolvable in a dataset, measured in meters."@en;
+  shacl:name "spatial resolution"@en;
+  shacl:nodekind "sh:Literal";
+  shacl:path dcat:spatialResolutionInMeters;
+  <https://data.vlaanderen.be/ns/shacl#message> [<https://semiceu.github.io//doc/dcat-apen> "De verwachte waarde voor spatial resolution is een Literal"];
   <https://data.vlaanderen.be/ns/shacl#rule> "" .
 
 <https://semiceu.github.io//doc/dcat-ap#dcat:DatasetShape/488f0bcb1b2d7cb5288ca9952a7b94f106f95859> rdfs:seeAlso "https://semiceu.github.io//doc/dcat-ap#dcat%3ADataset%3Atitle";
@@ -1201,9 +1254,9 @@
 <https://semiceu.github.io//doc/dcat-ap#dcat:DatasetShape/4be37093e4c3ba0d5b5a18ef6b97778d6d689392> rdfs:seeAlso "https://semiceu.github.io//doc/dcat-ap#dcat%3ADataset%3Arelease%20date";
   shacl:description "This property contains the date of formal issuance (e.g., publication) of the Dataset."@en;
   shacl:name "release date"@en;
-  shacl:nodekind "sh:BlankNodeOrIRI";
+  shacl:nodekind "sh:Literal";
   shacl:path dc:issued;
-  <https://data.vlaanderen.be/ns/shacl#message> [<https://semiceu.github.io//doc/dcat-apen> "De verwachte waarde voor release date is een rdfs:Resource (URI of blank node)"];
+  <https://data.vlaanderen.be/ns/shacl#message> [<https://semiceu.github.io//doc/dcat-apen> "De verwachte waarde voor release date is een Literal"];
   <https://data.vlaanderen.be/ns/shacl#rule> "" .
 
 <https://semiceu.github.io//doc/dcat-ap#dcat:DatasetShape/4f381639bb6e021939f65b4f41409d1edaeade9b> rdfs:seeAlso "https://semiceu.github.io//doc/dcat-ap#dcat%3ADataset%3Atype";
@@ -1273,9 +1326,9 @@
 <https://semiceu.github.io//doc/dcat-ap#dcat:DatasetShape/6b7242b6b89977700c05e4875131fbb975c4235e> rdfs:seeAlso "https://semiceu.github.io//doc/dcat-ap#dcat%3ADataset%3Amodification%20date";
   shacl:description "This property contains the most recent date on which the Dataset was changed or modified."@en;
   shacl:name "modification date"@en;
-  shacl:nodekind "sh:BlankNodeOrIRI";
+  shacl:nodekind "sh:Literal";
   shacl:path dc:modified;
-  <https://data.vlaanderen.be/ns/shacl#message> [<https://semiceu.github.io//doc/dcat-apen> "De verwachte waarde voor modification date is een rdfs:Resource (URI of blank node)"];
+  <https://data.vlaanderen.be/ns/shacl#message> [<https://semiceu.github.io//doc/dcat-apen> "De verwachte waarde voor modification date is een Literal"];
   <https://data.vlaanderen.be/ns/shacl#rule> "" .
 
 <https://semiceu.github.io//doc/dcat-ap#dcat:DatasetShape/6cae9880e515253132af1452a38a8a5827165149> rdfs:seeAlso "https://semiceu.github.io//doc/dcat-ap#dcat%3ADataset%3Adescription";
@@ -1542,6 +1595,14 @@
   <https://data.vlaanderen.be/ns/shacl#message> [<https://semiceu.github.io//doc/dcat-apen> "De range van identifier moet van het type <http://www.w3.org/2000/01/rdf-schema#Literal> zijn."];
   <https://data.vlaanderen.be/ns/shacl#rule> "" .
 
+<https://semiceu.github.io//doc/dcat-ap#dcat:DatasetShape/e6d76f7de5d5b08e584d9cd40619631987a64a7c> rdfs:seeAlso "https://semiceu.github.io//doc/dcat-ap#dcat%3ADataset%3Atemporal%20resolution";
+  shacl:datatype xsd:duration;
+  shacl:description "This property refers to the minimum time period resolvable in the dataset."@en;
+  shacl:name "temporal resolution"@en;
+  shacl:path dcat:temporalResolution;
+  <https://data.vlaanderen.be/ns/shacl#message> [<https://semiceu.github.io//doc/dcat-apen> "De range van temporal resolution moet van het type <http://www.w3.org/2001/XMLSchema#duration> zijn."];
+  <https://data.vlaanderen.be/ns/shacl#rule> "" .
+
 <https://semiceu.github.io//doc/dcat-ap#dcat:DatasetShape/ee60fdd4b8581460f5fc4077813b8bb3e3d77441> rdfs:seeAlso "https://semiceu.github.io//doc/dcat-ap#dcat%3ADataset%3Aaccess%20rights";
   shacl:class dc:RightsStatement;
   shacl:description "This property refers to information that indicates whether the Dataset is open data, has access restrictions or is not public."@en;
@@ -1575,7 +1636,7 @@
   <https://data.vlaanderen.be/ns/shacl#rule> "" .
 
 <https://semiceu.github.io//doc/dcat-ap#dcat:DatasetShape/fabf14eff90936c4692cb3b5b4e5bc48873c8640> rdfs:seeAlso "https://semiceu.github.io//doc/dcat-ap#dcat%3ADataset%3Arelease%20date";
-  shacl:class rdfs:Literal;
+  shacl:datatype rdfs:Literal;
   shacl:description "This property contains the date of formal issuance (e.g., publication) of the Dataset."@en;
   shacl:name "release date"@en;
   shacl:path dc:issued;
@@ -1609,13 +1670,16 @@
     <https://semiceu.github.io//doc/dcat-ap#dcat:DistributionShape/23d4c038584493decec780192681ef61694bff7c>,
     <https://semiceu.github.io//doc/dcat-ap#dcat:DistributionShape/27b3b10cebe804356667d0cfca6f658b01f83fbb>,
     <https://semiceu.github.io//doc/dcat-ap#dcat:DistributionShape/27ee30c66ff3cd2714f73a4b488a5e0f6b64b7f6>,
+    <https://semiceu.github.io//doc/dcat-ap#dcat:DistributionShape/2961dd5b80e9c0f6242da8cf9eea53ad610d7602>,
     <https://semiceu.github.io//doc/dcat-ap#dcat:DistributionShape/29ba27566ab1f32c8bb73f3492436d4bd868d3d2>,
     <https://semiceu.github.io//doc/dcat-ap#dcat:DistributionShape/2bc917d85a4ffccfa9de4268bf84b517c322ce2c>,
     <https://semiceu.github.io//doc/dcat-ap#dcat:DistributionShape/36b68d0f06c0eacbbddd0d2891379c6d005dc861>,
     <https://semiceu.github.io//doc/dcat-ap#dcat:DistributionShape/3844f5a8620973800a0f9d6121572dbe0082c955>,
     <https://semiceu.github.io//doc/dcat-ap#dcat:DistributionShape/39da16eecfc16996eed6a010f4203cdcec7c388d>,
     <https://semiceu.github.io//doc/dcat-ap#dcat:DistributionShape/3c1ab2e1170c5050c8b7742e97810027ddc104b1>,
+    <https://semiceu.github.io//doc/dcat-ap#dcat:DistributionShape/42110293925ce8bdb81f82dee95d1f78b2fca91c>,
     <https://semiceu.github.io//doc/dcat-ap#dcat:DistributionShape/4546bd675f20c3ead3fabfd84682d9063fd2926a>,
+    <https://semiceu.github.io//doc/dcat-ap#dcat:DistributionShape/46a60c7d3d828d3006937a12f82c1958b94e6f76>,
     <https://semiceu.github.io//doc/dcat-ap#dcat:DistributionShape/488f0bcb1b2d7cb5288ca9952a7b94f106f95859>,
     <https://semiceu.github.io//doc/dcat-ap#dcat:DistributionShape/4be37093e4c3ba0d5b5a18ef6b97778d6d689392>,
     <https://semiceu.github.io//doc/dcat-ap#dcat:DistributionShape/59cbd395c4b9167c030b3fd61001eeeee5034346>,
@@ -1626,6 +1690,7 @@
     <https://semiceu.github.io//doc/dcat-ap#dcat:DistributionShape/6b7242b6b89977700c05e4875131fbb975c4235e>,
     <https://semiceu.github.io//doc/dcat-ap#dcat:DistributionShape/6cae9880e515253132af1452a38a8a5827165149>,
     <https://semiceu.github.io//doc/dcat-ap#dcat:DistributionShape/73765ca7a6e23ef17cf4e67a576e90a0c391f1c1>,
+    <https://semiceu.github.io//doc/dcat-ap#dcat:DistributionShape/737cd5f1c9f0e13c35eb82b7f0d2b2f76a9a82c7>,
     <https://semiceu.github.io//doc/dcat-ap#dcat:DistributionShape/7434c99492683a2fb06dcdcf1f238671caf3d462>,
     <https://semiceu.github.io//doc/dcat-ap#dcat:DistributionShape/767d3c883420029775eaa27192a9a4a004e31fce>,
     <https://semiceu.github.io//doc/dcat-ap#dcat:DistributionShape/9484b608420ccb732e39ca34b588c57868c81181>,
@@ -1640,6 +1705,7 @@
     <https://semiceu.github.io//doc/dcat-ap#dcat:DistributionShape/b362d2bdbbe8ba1c689e5554cca2bcbd295546de>,
     <https://semiceu.github.io//doc/dcat-ap#dcat:DistributionShape/b4c4138f0581e7240ec4dd866004c56407b3705a>,
     <https://semiceu.github.io//doc/dcat-ap#dcat:DistributionShape/bbf361efc13fcb633496674f93db9d3cfb08732a>,
+    <https://semiceu.github.io//doc/dcat-ap#dcat:DistributionShape/c1577bd231c71b0b1910272999755d3414867cfd>,
     <https://semiceu.github.io//doc/dcat-ap#dcat:DistributionShape/cde78c9a823f798f6a3de93270dde9283cc6e872>,
     <https://semiceu.github.io//doc/dcat-ap#dcat:DistributionShape/d4d4f2399b8cf2f615ac658920373b714726bed0>,
     <https://semiceu.github.io//doc/dcat-ap#dcat:DistributionShape/d5d74574f70f9a979535f3624608f88180dd0c97>,
@@ -1648,6 +1714,7 @@
     <https://semiceu.github.io//doc/dcat-ap#dcat:DistributionShape/dc17e7a798aea475507009807c87717284c17830>,
     <https://semiceu.github.io//doc/dcat-ap#dcat:DistributionShape/e0065293221c5851ec508ae96cd4ad03ffdedd19>,
     <https://semiceu.github.io//doc/dcat-ap#dcat:DistributionShape/e093e156f972fa1af3526cd6d68f11bbdc8fa7c5>,
+    <https://semiceu.github.io//doc/dcat-ap#dcat:DistributionShape/e6d76f7de5d5b08e584d9cd40619631987a64a7c>,
     <https://semiceu.github.io//doc/dcat-ap#dcat:DistributionShape/ed8e40725c55813428b73d8e5042c6affe821ea2>,
     <https://semiceu.github.io//doc/dcat-ap#dcat:DistributionShape/f30149ffb6ec9d00dd5866b052105729fa27d02a>,
     <https://semiceu.github.io//doc/dcat-ap#dcat:DistributionShape/f635b26fbf54b0114a70dd22929ed87f5f34b230>,
@@ -1655,7 +1722,7 @@
   shacl:targetClass dcat:Distribution .
 
 <https://semiceu.github.io//doc/dcat-ap#dcat:DistributionShape/023a24a6e9c21959163a9bb1b855be5e90e06ac7> rdfs:seeAlso "https://semiceu.github.io//doc/dcat-ap#dcat%3ADistribution%3Amodification%20date";
-  shacl:class rdfs:Literal;
+  shacl:datatype rdfs:Literal;
   shacl:description "This property contains the most recent date on which the Distribution was changed or modified."@en;
   shacl:name "modification date"@en;
   shacl:path dc:modified;
@@ -1727,6 +1794,14 @@
   <https://data.vlaanderen.be/ns/shacl#message> [<https://semiceu.github.io//doc/dcat-apen> "De verwachte waarde voor download URL is een rdfs:Resource (URI of blank node)"];
   <https://data.vlaanderen.be/ns/shacl#rule> "" .
 
+<https://semiceu.github.io//doc/dcat-ap#dcat:DistributionShape/2961dd5b80e9c0f6242da8cf9eea53ad610d7602> rdfs:seeAlso "https://semiceu.github.io//doc/dcat-ap#dcat%3ADistribution%3Atemporal%20resolution";
+  shacl:description "This property refers to the minimum time period resolvable in the dataset distribution."@en;
+  shacl:name "temporal resolution"@en;
+  shacl:nodekind "sh:Literal";
+  shacl:path dcat:temporalResolution;
+  <https://data.vlaanderen.be/ns/shacl#message> [<https://semiceu.github.io//doc/dcat-apen> "De verwachte waarde voor temporal resolution is een Literal"];
+  <https://data.vlaanderen.be/ns/shacl#rule> "" .
+
 <https://semiceu.github.io//doc/dcat-ap#dcat:DistributionShape/29ba27566ab1f32c8bb73f3492436d4bd868d3d2> rdfs:seeAlso "https://semiceu.github.io//doc/dcat-ap#dcat%3ADistribution%3Alanguage";
   shacl:class dc:LinguisticSystem;
   shacl:description "This property refers to a language used in the Distribution. This property can be repeated if the metadata is provided in multiple languages."@en;
@@ -1775,12 +1850,28 @@
   <https://data.vlaanderen.be/ns/shacl#message> [<https://semiceu.github.io//doc/dcat-apen> "De verwachte waarde voor status is een rdfs:Resource (URI of blank node)"];
   <https://data.vlaanderen.be/ns/shacl#rule> "" .
 
+<https://semiceu.github.io//doc/dcat-ap#dcat:DistributionShape/42110293925ce8bdb81f82dee95d1f78b2fca91c> rdfs:seeAlso "https://semiceu.github.io//doc/dcat-ap#dcat%3ADistribution%3Aspatial%20resolution";
+  shacl:datatype xsd:decimal;
+  shacl:description "This property refers to the minimum spatial separation resolvable in a dataset distribution, measured in meters."@en;
+  shacl:name "spatial resolution"@en;
+  shacl:path dcat:spatialResolutionInMeters;
+  <https://data.vlaanderen.be/ns/shacl#message> [<https://semiceu.github.io//doc/dcat-apen> "De range van spatial resolution moet van het type <http://www.w3.org/2001/XMLSchema#decimal> zijn."];
+  <https://data.vlaanderen.be/ns/shacl#rule> "" .
+
 <https://semiceu.github.io//doc/dcat-ap#dcat:DistributionShape/4546bd675f20c3ead3fabfd84682d9063fd2926a> rdfs:seeAlso "https://semiceu.github.io//doc/dcat-ap#dcat%3ADistribution%3Amedia%20type";
   shacl:description "This property refers to the media type of the Distribution as defined in the official register of media types managed by IANA."@en;
   shacl:name "media type"@en;
   shacl:nodekind "sh:BlankNodeOrIRI";
   shacl:path dcat:mediaType;
   <https://data.vlaanderen.be/ns/shacl#message> [<https://semiceu.github.io//doc/dcat-apen> "De verwachte waarde voor media type is een rdfs:Resource (URI of blank node)"], [<https://semiceu.github.io//doc/dcat-apen> "De verwachte waarde voor media type is een rdfs:Resource (URI of blank node)"];
+  <https://data.vlaanderen.be/ns/shacl#rule> "" .
+
+<https://semiceu.github.io//doc/dcat-ap#dcat:DistributionShape/46a60c7d3d828d3006937a12f82c1958b94e6f76> rdfs:seeAlso "https://semiceu.github.io//doc/dcat-ap#dcat%3ADistribution%3Aspatial%20resolution";
+  shacl:description "This property refers to the minimum spatial separation resolvable in a dataset distribution, measured in meters."@en;
+  shacl:name "spatial resolution"@en;
+  shacl:nodekind "sh:Literal";
+  shacl:path dcat:spatialResolutionInMeters;
+  <https://data.vlaanderen.be/ns/shacl#message> [<https://semiceu.github.io//doc/dcat-apen> "De verwachte waarde voor spatial resolution is een Literal"];
   <https://data.vlaanderen.be/ns/shacl#rule> "" .
 
 <https://semiceu.github.io//doc/dcat-ap#dcat:DistributionShape/488f0bcb1b2d7cb5288ca9952a7b94f106f95859> rdfs:seeAlso "https://semiceu.github.io//doc/dcat-ap#dcat%3ADistribution%3Atitle";
@@ -1794,17 +1885,17 @@
 <https://semiceu.github.io//doc/dcat-ap#dcat:DistributionShape/4be37093e4c3ba0d5b5a18ef6b97778d6d689392> rdfs:seeAlso "https://semiceu.github.io//doc/dcat-ap#dcat%3ADistribution%3Arelease%20date";
   shacl:description "This property contains the date of formal issuance (e.g., publication) of the Distribution."@en;
   shacl:name "release date"@en;
-  shacl:nodekind "sh:BlankNodeOrIRI";
+  shacl:nodekind "sh:Literal";
   shacl:path dc:issued;
-  <https://data.vlaanderen.be/ns/shacl#message> [<https://semiceu.github.io//doc/dcat-apen> "De verwachte waarde voor release date is een rdfs:Resource (URI of blank node)"];
+  <https://data.vlaanderen.be/ns/shacl#message> [<https://semiceu.github.io//doc/dcat-apen> "De verwachte waarde voor release date is een Literal"];
   <https://data.vlaanderen.be/ns/shacl#rule> "" .
 
 <https://semiceu.github.io//doc/dcat-ap#dcat:DistributionShape/59cbd395c4b9167c030b3fd61001eeeee5034346> rdfs:seeAlso "https://semiceu.github.io//doc/dcat-ap#dcat%3ADistribution%3Abyte%20size";
   shacl:description "This property contains the size of a Distribution in bytes."@en;
   shacl:name "byte size"@en;
-  shacl:nodekind "sh:BlankNodeOrIRI";
+  shacl:nodekind "sh:Literal";
   shacl:path dcat:byteSize;
-  <https://data.vlaanderen.be/ns/shacl#message> [<https://semiceu.github.io//doc/dcat-apen> "De verwachte waarde voor byte size is een rdfs:Resource (URI of blank node)"];
+  <https://data.vlaanderen.be/ns/shacl#message> [<https://semiceu.github.io//doc/dcat-apen> "De verwachte waarde voor byte size is een Literal"];
   <https://data.vlaanderen.be/ns/shacl#rule> "" .
 
 <https://semiceu.github.io//doc/dcat-ap#dcat:DistributionShape/6311ab0f528a12e90a9d4be09bdec4ff36578b32> rdfs:seeAlso "https://semiceu.github.io//doc/dcat-ap#dcat%3ADistribution%3Achecksum";
@@ -1842,9 +1933,9 @@
 <https://semiceu.github.io//doc/dcat-ap#dcat:DistributionShape/6b7242b6b89977700c05e4875131fbb975c4235e> rdfs:seeAlso "https://semiceu.github.io//doc/dcat-ap#dcat%3ADistribution%3Amodification%20date";
   shacl:description "This property contains the most recent date on which the Distribution was changed or modified."@en;
   shacl:name "modification date"@en;
-  shacl:nodekind "sh:BlankNodeOrIRI";
+  shacl:nodekind "sh:Literal";
   shacl:path dc:modified;
-  <https://data.vlaanderen.be/ns/shacl#message> [<https://semiceu.github.io//doc/dcat-apen> "De verwachte waarde voor modification date is een rdfs:Resource (URI of blank node)"];
+  <https://data.vlaanderen.be/ns/shacl#message> [<https://semiceu.github.io//doc/dcat-apen> "De verwachte waarde voor modification date is een Literal"];
   <https://data.vlaanderen.be/ns/shacl#rule> "" .
 
 <https://semiceu.github.io//doc/dcat-ap#dcat:DistributionShape/6cae9880e515253132af1452a38a8a5827165149> rdfs:seeAlso "https://semiceu.github.io//doc/dcat-ap#dcat%3ADistribution%3Adescription";
@@ -1861,6 +1952,14 @@
   shacl:name "checksum"@en;
   shacl:path <http://spdx.org/rdf/terms#checksum>;
   <https://data.vlaanderen.be/ns/shacl#message> [<https://semiceu.github.io//doc/dcat-apen> "Maximaal 1 waarden toegelaten voor checksum"];
+  <https://data.vlaanderen.be/ns/shacl#rule> "" .
+
+<https://semiceu.github.io//doc/dcat-ap#dcat:DistributionShape/737cd5f1c9f0e13c35eb82b7f0d2b2f76a9a82c7> rdfs:seeAlso "https://semiceu.github.io//doc/dcat-ap#dcat%3ADistribution%3Aformat";
+  shacl:class dc:MediaTypeOrExtent;
+  shacl:description "This property refers to the file format of the Distribution."@en;
+  shacl:name "format"@en;
+  shacl:path dc:format;
+  <https://data.vlaanderen.be/ns/shacl#message> [<https://semiceu.github.io//doc/dcat-apen> "De range van format moet van het type <http://purl.org/dc/terms/MediaTypeOrExtent> zijn."];
   <https://data.vlaanderen.be/ns/shacl#rule> "" .
 
 <https://semiceu.github.io//doc/dcat-ap#dcat:DistributionShape/7434c99492683a2fb06dcdcf1f238671caf3d462> rdfs:seeAlso "https://semiceu.github.io//doc/dcat-ap#dcat%3ADistribution%3Aaccess%20service";
@@ -1976,6 +2075,14 @@
   <https://data.vlaanderen.be/ns/shacl#message> [<https://semiceu.github.io//doc/dcat-apen> "Maximaal 1 waarden toegelaten voor packaging format"];
   <https://data.vlaanderen.be/ns/shacl#rule> "" .
 
+<https://semiceu.github.io//doc/dcat-ap#dcat:DistributionShape/c1577bd231c71b0b1910272999755d3414867cfd> rdfs:seeAlso "https://semiceu.github.io//doc/dcat-ap#dcat%3ADistribution%3Aformat";
+  shacl:description "This property refers to the file format of the Distribution."@en;
+  shacl:name "format"@en;
+  shacl:nodekind "sh:BlankNodeOrIRI";
+  shacl:path dc:format;
+  <https://data.vlaanderen.be/ns/shacl#message> [<https://semiceu.github.io//doc/dcat-apen> "De verwachte waarde voor format is een rdfs:Resource (URI of blank node)"];
+  <https://data.vlaanderen.be/ns/shacl#rule> "" .
+
 <https://semiceu.github.io//doc/dcat-ap#dcat:DistributionShape/cde78c9a823f798f6a3de93270dde9283cc6e872> rdfs:seeAlso "https://semiceu.github.io//doc/dcat-ap#dcat%3ADistribution%3Apackaging%20format";
   shacl:description "This property refers to the format of the file in which one or more data files are grouped together, e.g. to enable a set of related files to be downloaded together. It SHOULD be expressed using a media type as defined in the official register of media types managed by IANA."@en;
   shacl:name "packaging format"@en;
@@ -2040,12 +2147,20 @@
   <https://data.vlaanderen.be/ns/shacl#message> [<https://semiceu.github.io//doc/dcat-apen> "De range van compression format moet van het type <http://purl.org/dc/terms/MediaType> zijn."];
   <https://data.vlaanderen.be/ns/shacl#rule> "" .
 
+<https://semiceu.github.io//doc/dcat-ap#dcat:DistributionShape/e6d76f7de5d5b08e584d9cd40619631987a64a7c> rdfs:seeAlso "https://semiceu.github.io//doc/dcat-ap#dcat%3ADistribution%3Atemporal%20resolution";
+  shacl:datatype xsd:duration;
+  shacl:description "This property refers to the minimum time period resolvable in the dataset distribution."@en;
+  shacl:name "temporal resolution"@en;
+  shacl:path dcat:temporalResolution;
+  <https://data.vlaanderen.be/ns/shacl#message> [<https://semiceu.github.io//doc/dcat-apen> "De range van temporal resolution moet van het type <http://www.w3.org/2001/XMLSchema#duration> zijn."];
+  <https://data.vlaanderen.be/ns/shacl#rule> "" .
+
 <https://semiceu.github.io//doc/dcat-ap#dcat:DistributionShape/ed8e40725c55813428b73d8e5042c6affe821ea2> rdfs:seeAlso "https://semiceu.github.io//doc/dcat-ap#dcat%3ADistribution%3Abyte%20size";
-  shacl:class <http://fixme.com#xsd:hexBinary>;
+  shacl:datatype xsd:hexBinary;
   shacl:description "This property contains the size of a Distribution in bytes."@en;
   shacl:name "byte size"@en;
   shacl:path dcat:byteSize;
-  <https://data.vlaanderen.be/ns/shacl#message> [<https://semiceu.github.io//doc/dcat-apen> "De range van byte size moet van het type <http://fixme.com#xsd:hexBinary> zijn."];
+  <https://data.vlaanderen.be/ns/shacl#message> [<https://semiceu.github.io//doc/dcat-apen> "De range van byte size moet van het type <http://www.w3.org/2001/XMLSchema#hexBinary> zijn."];
   <https://data.vlaanderen.be/ns/shacl#rule> "" .
 
 <https://semiceu.github.io//doc/dcat-ap#dcat:DistributionShape/f30149ffb6ec9d00dd5866b052105729fa27d02a> rdfs:seeAlso "https://semiceu.github.io//doc/dcat-ap#dcat%3ADistribution%3Alicence";
@@ -2065,7 +2180,7 @@
   <https://data.vlaanderen.be/ns/shacl#rule> "" .
 
 <https://semiceu.github.io//doc/dcat-ap#dcat:DistributionShape/fabf14eff90936c4692cb3b5b4e5bc48873c8640> rdfs:seeAlso "https://semiceu.github.io//doc/dcat-ap#dcat%3ADistribution%3Arelease%20date";
-  shacl:class rdfs:Literal;
+  shacl:datatype rdfs:Literal;
   shacl:description "This property contains the date of formal issuance (e.g., publication) of the Distribution."@en;
   shacl:name "release date"@en;
   shacl:path dc:issued;
@@ -2249,21 +2364,37 @@
   <https://data.vlaanderen.be/ns/shacl#message> [<https://semiceu.github.io//doc/dcat-apen> "De range van centroid moet van het type <http://www.w3.org/2000/01/rdf-schema#Literal> zijn."];
   <https://data.vlaanderen.be/ns/shacl#rule> "" .
 
+<https://semiceu.github.io//doc/dcat-ap#dct:MediaTypeOrExtentShape> a shacl:NodeShape;
+  shacl:closed false;
+  shacl:targetClass dc:MediaTypeOrExtent .
+
 <https://semiceu.github.io//doc/dcat-ap#dct:MediaTypeShape> a shacl:NodeShape;
   shacl:closed false;
   shacl:targetClass dc:MediaType .
 
 <https://semiceu.github.io//doc/dcat-ap#dct:PeriodOfTimeShape> a shacl:NodeShape;
   shacl:closed false;
-  shacl:property <https://semiceu.github.io//doc/dcat-ap#dct:PeriodOfTimeShape/238fde7d71612ea8f00826d9c60106d3ef9c4063>,
+  shacl:property <https://semiceu.github.io//doc/dcat-ap#dct:PeriodOfTimeShape/060e7b8260504ecdc352754bdc66692a030718d6>,
+    <https://semiceu.github.io//doc/dcat-ap#dct:PeriodOfTimeShape/238fde7d71612ea8f00826d9c60106d3ef9c4063>,
     <https://semiceu.github.io//doc/dcat-ap#dct:PeriodOfTimeShape/343620e6c6e38873922b5acfdb46382ab0be183a>,
     <https://semiceu.github.io//doc/dcat-ap#dct:PeriodOfTimeShape/3648a78b9b0570b660934474f131e41284725cd8>,
+    <https://semiceu.github.io//doc/dcat-ap#dct:PeriodOfTimeShape/59fdfa4abfd9413716ffbdf9a27b9fdbf23d7772>,
     <https://semiceu.github.io//doc/dcat-ap#dct:PeriodOfTimeShape/734ca37cb57eb7386e624ca5375d566ae94864ef>,
     <https://semiceu.github.io//doc/dcat-ap#dct:PeriodOfTimeShape/9053142781444816deeb00f184b765d8cb15b929>,
     <https://semiceu.github.io//doc/dcat-ap#dct:PeriodOfTimeShape/c7fb86be0667a2402b275afe51fe509a49d6e4af>,
+    <https://semiceu.github.io//doc/dcat-ap#dct:PeriodOfTimeShape/ca557d93c60335eb94cfb2cbade6564cfa29da81>,
+    <https://semiceu.github.io//doc/dcat-ap#dct:PeriodOfTimeShape/de859f6cb226ad795bc5b0dfa9777c0f6352efaf>,
     <https://semiceu.github.io//doc/dcat-ap#dct:PeriodOfTimeShape/eb883e24d5d0a294a30545021f24e485d59d1e47>,
     <https://semiceu.github.io//doc/dcat-ap#dct:PeriodOfTimeShape/f72c3efebeb551122e98eb731aa0ec8af8b4c1b7>;
   shacl:targetClass dc:PeriodOfTime .
+
+<https://semiceu.github.io//doc/dcat-ap#dct:PeriodOfTimeShape/060e7b8260504ecdc352754bdc66692a030718d6> rdfs:seeAlso "https://semiceu.github.io//doc/dcat-ap#dct%3APeriodOfTime%3Astart%20date";
+  shacl:datatype rdfs:Literal;
+  shacl:description "This property contains the start of the period"@en;
+  shacl:name "start date"@en;
+  shacl:path dcat:startDate;
+  <https://data.vlaanderen.be/ns/shacl#message> [<https://semiceu.github.io//doc/dcat-apen> "De range van start date moet van het type <http://www.w3.org/2000/01/rdf-schema#Literal> zijn."];
+  <https://data.vlaanderen.be/ns/shacl#rule> "" .
 
 <https://semiceu.github.io//doc/dcat-ap#dct:PeriodOfTimeShape/238fde7d71612ea8f00826d9c60106d3ef9c4063> rdfs:seeAlso "https://semiceu.github.io//doc/dcat-ap#dct%3APeriodOfTime%3Abeginning";
   shacl:description "This property contains the beginning of a period or interval."@en;
@@ -2289,6 +2420,14 @@
   <https://data.vlaanderen.be/ns/shacl#message> [<https://semiceu.github.io//doc/dcat-apen> "Maximaal 1 waarden toegelaten voor end"];
   <https://data.vlaanderen.be/ns/shacl#rule> "" .
 
+<https://semiceu.github.io//doc/dcat-ap#dct:PeriodOfTimeShape/59fdfa4abfd9413716ffbdf9a27b9fdbf23d7772> rdfs:seeAlso "https://semiceu.github.io//doc/dcat-ap#dct%3APeriodOfTime%3Astart%20date";
+  shacl:description "This property contains the start of the period"@en;
+  shacl:name "start date"@en;
+  shacl:nodekind "sh:Literal";
+  shacl:path dcat:startDate;
+  <https://data.vlaanderen.be/ns/shacl#message> [<https://semiceu.github.io//doc/dcat-apen> "De verwachte waarde voor start date is een Literal"];
+  <https://data.vlaanderen.be/ns/shacl#rule> "" .
+
 <https://semiceu.github.io//doc/dcat-ap#dct:PeriodOfTimeShape/734ca37cb57eb7386e624ca5375d566ae94864ef> rdfs:seeAlso "https://semiceu.github.io//doc/dcat-ap#dct%3APeriodOfTime%3Aend%20date";
   shacl:description "This property contains the end of the period"@en;
   shacl:maxCount 1;
@@ -2311,6 +2450,22 @@
   shacl:nodekind "sh:BlankNodeOrIRI";
   shacl:path <http://www.w3.org/2006/time#hasEnd>;
   <https://data.vlaanderen.be/ns/shacl#message> [<https://semiceu.github.io//doc/dcat-apen> "De verwachte waarde voor end is een rdfs:Resource (URI of blank node)"];
+  <https://data.vlaanderen.be/ns/shacl#rule> "" .
+
+<https://semiceu.github.io//doc/dcat-ap#dct:PeriodOfTimeShape/ca557d93c60335eb94cfb2cbade6564cfa29da81> rdfs:seeAlso "https://semiceu.github.io//doc/dcat-ap#dct%3APeriodOfTime%3Aend%20date";
+  shacl:datatype rdfs:Literal;
+  shacl:description "This property contains the end of the period"@en;
+  shacl:name "end date"@en;
+  shacl:path dcat:endDate;
+  <https://data.vlaanderen.be/ns/shacl#message> [<https://semiceu.github.io//doc/dcat-apen> "De range van end date moet van het type <http://www.w3.org/2000/01/rdf-schema#Literal> zijn."];
+  <https://data.vlaanderen.be/ns/shacl#rule> "" .
+
+<https://semiceu.github.io//doc/dcat-ap#dct:PeriodOfTimeShape/de859f6cb226ad795bc5b0dfa9777c0f6352efaf> rdfs:seeAlso "https://semiceu.github.io//doc/dcat-ap#dct%3APeriodOfTime%3Aend%20date";
+  shacl:description "This property contains the end of the period"@en;
+  shacl:name "end date"@en;
+  shacl:nodekind "sh:Literal";
+  shacl:path dcat:endDate;
+  <https://data.vlaanderen.be/ns/shacl#message> [<https://semiceu.github.io//doc/dcat-apen> "De verwachte waarde voor end date is een Literal"];
   <https://data.vlaanderen.be/ns/shacl#rule> "" .
 
 <https://semiceu.github.io//doc/dcat-ap#dct:PeriodOfTimeShape/eb883e24d5d0a294a30545021f24e485d59d1e47> rdfs:seeAlso "https://semiceu.github.io//doc/dcat-ap#dct%3APeriodOfTime%3Abeginning";
@@ -2341,9 +2496,17 @@
   shacl:closed false;
   shacl:targetClass dc:Standard .
 
+<https://semiceu.github.io//doc/dcat-ap#dct:mediaTypeShape> a shacl:NodeShape;
+  shacl:closed false;
+  shacl:targetClass dc:MediaType .
+
 <https://semiceu.github.io//doc/dcat-ap#foaf:DocumentShape> a shacl:NodeShape;
   shacl:closed false;
   shacl:targetClass foaf:Document .
+
+<https://semiceu.github.io//doc/dcat-ap#prov:ActivityShape> a shacl:NodeShape;
+  shacl:closed false;
+  shacl:targetClass prov:Activity .
 
 <https://semiceu.github.io//doc/dcat-ap#rdfs:LiteralShape> a shacl:NodeShape;
   shacl:closed false;
@@ -2427,17 +2590,17 @@
 <https://semiceu.github.io//doc/dcat-ap#spdx:ChecksumShape/18334d9daf21fe247c499aab3d04ddd1d4f391b7> rdfs:seeAlso "https://semiceu.github.io//doc/dcat-ap#spdx%3AChecksum%3Achecksum%20value";
   shacl:description "This property provides a lower case hexadecimal encoded digest value produced using a specific algorithm."@en;
   shacl:name "checksum value"@en;
-  shacl:nodekind "sh:BlankNodeOrIRI";
+  shacl:nodekind "sh:Literal";
   shacl:path <http://spdx.org/rdf/terms#checksumValue>;
-  <https://data.vlaanderen.be/ns/shacl#message> [<https://semiceu.github.io//doc/dcat-apen> "De verwachte waarde voor checksum value is een rdfs:Resource (URI of blank node)"];
+  <https://data.vlaanderen.be/ns/shacl#message> [<https://semiceu.github.io//doc/dcat-apen> "De verwachte waarde voor checksum value is een Literal"];
   <https://data.vlaanderen.be/ns/shacl#rule> "" .
 
 <https://semiceu.github.io//doc/dcat-ap#spdx:ChecksumShape/3eab73d86ca644be3c17cec9470a00ee097d8515> rdfs:seeAlso "https://semiceu.github.io//doc/dcat-ap#spdx%3AChecksum%3Achecksum%20value";
-  shacl:class <http://fixme.com#xsd:hexBinary>;
+  shacl:datatype xsd:hexBinary;
   shacl:description "This property provides a lower case hexadecimal encoded digest value produced using a specific algorithm."@en;
   shacl:name "checksum value"@en;
   shacl:path <http://spdx.org/rdf/terms#checksumValue>;
-  <https://data.vlaanderen.be/ns/shacl#message> [<https://semiceu.github.io//doc/dcat-apen> "De range van checksum value moet van het type <http://fixme.com#xsd:hexBinary> zijn."];
+  <https://data.vlaanderen.be/ns/shacl#message> [<https://semiceu.github.io//doc/dcat-apen> "De range van checksum value moet van het type <http://www.w3.org/2001/XMLSchema#hexBinary> zijn."];
   <https://data.vlaanderen.be/ns/shacl#rule> "" .
 
 <https://semiceu.github.io//doc/dcat-ap#spdx:ChecksumShape/842b9830971c91bb7d9da12b52e0b63ac999367d> rdfs:seeAlso "https://semiceu.github.io//doc/dcat-ap#spdx%3AChecksum%3Achecksum%20value";
@@ -2492,9 +2655,21 @@
   shacl:closed false;
   shacl:targetClass vcard:Kind .
 
+<https://semiceu.github.io//doc/dcat-ap#xsd:dateTimeShape> a shacl:NodeShape;
+  shacl:closed false;
+  shacl:targetClass xsd:dateTime .
+
+<https://semiceu.github.io//doc/dcat-ap#xsd:decimalShape> a shacl:NodeShape;
+  shacl:closed false;
+  shacl:targetClass xsd:decimal .
+
+<https://semiceu.github.io//doc/dcat-ap#xsd:durationShape> a shacl:NodeShape;
+  shacl:closed false;
+  shacl:targetClass xsd:duration .
+
 <https://semiceu.github.io//doc/dcat-ap#xsd:hexBinaryShape> a shacl:NodeShape;
   shacl:closed false;
-  shacl:targetClass <http://fixme.com#xsd:hexBinary> .
+  shacl:targetClass xsd:hexBinary .
 
  [<https://semiceu.github.io//doc/dcat-apen> "Maximaal 1 waarden toegelaten voor type"] .
 
