@@ -120,6 +120,22 @@
       }
     };
     </script>
+    <script>
+	    var prefixes = [ {'ns':"http://purl.org/dc/terms/",'pref':"dct:"},
+			     {'ns':"http://www.w3.org/ns/dcat#",'pref':"dcat:"}
+				];
+	    function shorturl (url) {
+				var short = url;
+				for (e in prefixes) {
+				   if (short.startsWith(e.ns)) {
+  					short = e.pref + short.slice(e.ns.length);
+					}
+				};
+ 				console.log(short);
+				return short;
+			};
+	    shorturl("http://www.w3.org/ns/dcat#TEST");
+    </script>
     <style>
       .figure img, .sidefigure img, figure img, .figure object, .sidefigure object, figure object, img, .img {
       max-width: 100%;
