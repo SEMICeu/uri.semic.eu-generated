@@ -9196,10 +9196,31 @@ Contributors:
 </section>
 <!-- End page content -->
 </body>
+
+<!-- This must be at the end of the template, to ensure that the iterator properly works -->
     <script defer>
-	    var prefixes = [ {'ns':"http://purl.org/dc/terms/",'pref':"dct:"},
-			     {'ns':"http://www.w3.org/ns/dcat#",'pref':"dcat:"}
+
+
+	    var prefixes = [ 
+{'pref':'adms', 'ns': 'http://www.w3.org/ns/adms#'},
+{'pref':'dcat', 'ns': 'http://www.w3.org/ns/dcat#'},
+{'pref':'dcatap', 'ns': 'http://data.europa.eu/r5r/'},
+{'pref':'dct', 'ns': 'http://purl.org/dc/terms/'},
+{'pref':'dctype', 'ns': 'http://purl.org/dc/dcmitype/'},
+{'pref':'foaf', 'ns': 'http://xmlns.com/foaf/0.1/'},
+{'pref':'locn', 'ns': 'http://www.w3.org/ns/locn#'},
+{'pref':'odrl', 'ns': 'http://www.w3.org/ns/odrl/2/'},
+{'pref':'owl', 'ns': 'http://www.w3.org/2002/07/owl#'},
+{'pref':'prov', 'ns': 'http://www.w3.org/ns/prov#'},
+{'pref':'rdf', 'ns': 'http://www.w3.org/1999/02/22-rdf-syntax-ns#'},
+{'pref':'rdfs', 'ns': 'http://www.w3.org/2000/01/rdf-schema#'},
+{'pref':'skos', 'ns': 'http://www.w3.org/2004/02/skos/core#'},
+{'pref':'spdx', 'ns': 'http://spdx.org/rdf/terms#'},
+{'pref':'time', 'ns': 'http://www.w3.org/2006/time#'},
+{'pref':'vcard', 'ns': 'http://www.w3.org/2006/vcard/ns#'},
+{'pref':'xsd', 'ns': 'http://www.w3.org/2001/XMLSchema#'}
 				];
+
 	    function shorturl (url) {
 				var short = url;
 				for (e in prefixes) {
@@ -9208,16 +9229,13 @@ Contributors:
   					short = elem.pref + short.slice(elem.ns.length);
 					}
 				};
- 				console.log(short);
 				return short;
 			};
-	    shorturl("http://www.w3.org/ns/dcat#TEST");
 
 	    var shorten = document.getElementsByClassName("shorten");
-	    console.log(shorten);
-	    console.log(shorten.length);
-		//	    for (k=0;k < shorten.length ; k++){
-	    for (k=0;k < 28 ; k++){
+			console.log(shorten);
+	    for (k=0;k < shorten.length ; k++){
+//	    for (k=0;k < 28 ; k++){
 			var selem = shorten[k];	
 			console.log(selem);
 	                selem.innerHTML = shorturl(selem.innerHTML.trim());
