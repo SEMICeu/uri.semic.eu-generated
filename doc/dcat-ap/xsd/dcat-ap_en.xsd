@@ -32,6 +32,7 @@
   <xs:element name="Distribution" type="DistributionType"/>
   <xs:element name="Relationship" type="RelationshipType"/>
   <xs:element name="Role" type="RoleType"/>
+  <xs:element name="Geometry" type="GeometryType"/>
   <xs:element name="Activity" type="ActivityType"/>
   <xs:element name="Atttribution" type="AtttributionType"/>
   <xs:element name="Agent" type="AgentType"/>
@@ -96,7 +97,7 @@
           <xs:documentation xml:lang="en">The geographic center (centroid) of a resource.</xs:documentation>
         </xs:annotation>
       </xs:element>
-      <xs:element name="geometry" type="xs:string" maxOccurs="1" minOccurs="0">
+      <xs:element name="geometry" ref="GeometryType" maxOccurs="1" minOccurs="0">
         <xs:annotation>
           <xs:documentation xml:lang="en">The corresponding geometry for a resource</xs:documentation>
         </xs:annotation>
@@ -516,6 +517,11 @@
           <xs:documentation xml:lang="en">A free-text account of the Data Service.</xs:documentation>
         </xs:annotation>
       </xs:element>
+      <xs:element name="format" ref="MediaTypeOrExtentType" maxOccurs="unbounded" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation xml:lang="en">The structure that can be returned by querying the endpointURL.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
       <xs:element name="licence" ref="LicenceDocumentType" maxOccurs="1" minOccurs="0">
         <xs:annotation>
           <xs:documentation xml:lang="en">A licence under which the Data service is made available.</xs:documentation>
@@ -880,6 +886,14 @@
     <xs:attribute name="RoleRef" type="xs:IDREF">
       <xs:annotation>
         <xs:documentation xml:lang="en">Reference to Role ID</xs:documentation>
+      </xs:annotation>
+    </xs:attribute>
+  </xs:complexType>
+  <xs:complexType name="GeometryType">
+    <xs:sequence/>
+    <xs:attribute name="GeometryRef" type="xs:IDREF">
+      <xs:annotation>
+        <xs:documentation xml:lang="en">Reference to Geometry ID</xs:documentation>
       </xs:annotation>
     </xs:attribute>
   </xs:complexType>

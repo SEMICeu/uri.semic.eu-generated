@@ -41,6 +41,7 @@
     <https://semiceu.github.io//doc/dcat-ap#dcat:DistributionShape>,
     <https://semiceu.github.io//doc/dcat-ap#dcat:RelationshipShape>,
     <https://semiceu.github.io//doc/dcat-ap#dcat:RoleShape>,
+    <https://semiceu.github.io//doc/dcat-ap#locn:GeometryShape>,
     <https://semiceu.github.io//doc/dcat-ap#prov:ActivityShape>,
     <https://semiceu.github.io//doc/dcat-ap#prov:AttributionShape>,
     <https://semiceu.github.io//doc/dcat-ap#foaf:DocumentShape> .
@@ -780,9 +781,11 @@
     <https://semiceu.github.io//doc/dcat-ap#dcat:DataServiceShape/488f0bcb1b2d7cb5288ca9952a7b94f106f95859>,
     <https://semiceu.github.io//doc/dcat-ap#dcat:DataServiceShape/63240e11f1eb66f636413d1dbb134f0ff9066a7c>,
     <https://semiceu.github.io//doc/dcat-ap#dcat:DataServiceShape/6cae9880e515253132af1452a38a8a5827165149>,
+    <https://semiceu.github.io//doc/dcat-ap#dcat:DataServiceShape/737cd5f1c9f0e13c35eb82b7f0d2b2f76a9a82c7>,
     <https://semiceu.github.io//doc/dcat-ap#dcat:DataServiceShape/7a20e2eb5f5549088fd53fa93fab0958019f267e>,
     <https://semiceu.github.io//doc/dcat-ap#dcat:DataServiceShape/83ad7325cc6681e43e44550c269847065a95a14f>,
     <https://semiceu.github.io//doc/dcat-ap#dcat:DataServiceShape/9eaae476a881de13b9430537ace6e70da7327dbd>,
+    <https://semiceu.github.io//doc/dcat-ap#dcat:DataServiceShape/c1577bd231c71b0b1910272999755d3414867cfd>,
     <https://semiceu.github.io//doc/dcat-ap#dcat:DataServiceShape/ca2bd10c893237fa342edb75240b08731acda92f>,
     <https://semiceu.github.io//doc/dcat-ap#dcat:DataServiceShape/d4d4f2399b8cf2f615ac658920373b714726bed0>,
     <https://semiceu.github.io//doc/dcat-ap#dcat:DataServiceShape/d5d74574f70f9a979535f3624608f88180dd0c97>,
@@ -842,6 +845,14 @@
   <https://data.vlaanderen.be/ns/shacl#message> [<https://semiceu.github.io//doc/dcat-apen> "De verwachte waarde voor description is een rdfs:Resource (URI of blank node)"];
   <https://data.vlaanderen.be/ns/shacl#rule> "" .
 
+<https://semiceu.github.io//doc/dcat-ap#dcat:DataServiceShape/737cd5f1c9f0e13c35eb82b7f0d2b2f76a9a82c7> rdfs:seeAlso "https://semiceu.github.io//doc/dcat-ap#dcat%3ADataService%3Aformat";
+  shacl:class dc:MediaTypeOrExtent;
+  shacl:description "The structure that can be returned by querying the endpointURL."@en;
+  shacl:name "format"@en;
+  shacl:path dc:format;
+  <https://data.vlaanderen.be/ns/shacl#message> [<https://semiceu.github.io//doc/dcat-apen> "De range van format moet van het type <http://purl.org/dc/terms/MediaTypeOrExtent> zijn."];
+  <https://data.vlaanderen.be/ns/shacl#rule> "" .
+
 <https://semiceu.github.io//doc/dcat-ap#dcat:DataServiceShape/7a20e2eb5f5549088fd53fa93fab0958019f267e> rdfs:seeAlso "https://semiceu.github.io//doc/dcat-ap#dcat%3ADataService%3Aaccess%20rights";
   shacl:description "Information regarding access or restrictions based on privacy, security, or other policies."@en;
   shacl:maxCount 1;
@@ -864,6 +875,14 @@
   shacl:name "licence"@en;
   shacl:path dc:license;
   <https://data.vlaanderen.be/ns/shacl#message> [<https://semiceu.github.io//doc/dcat-apen> "Maximaal 1 waarden toegelaten voor licence"];
+  <https://data.vlaanderen.be/ns/shacl#rule> "" .
+
+<https://semiceu.github.io//doc/dcat-ap#dcat:DataServiceShape/c1577bd231c71b0b1910272999755d3414867cfd> rdfs:seeAlso "https://semiceu.github.io//doc/dcat-ap#dcat%3ADataService%3Aformat";
+  shacl:description "The structure that can be returned by querying the endpointURL."@en;
+  shacl:name "format"@en;
+  shacl:nodekind "sh:BlankNodeOrIRI";
+  shacl:path dc:format;
+  <https://data.vlaanderen.be/ns/shacl#message> [<https://semiceu.github.io//doc/dcat-apen> "De verwachte waarde voor format is een rdfs:Resource (URI of blank node)"];
   <https://data.vlaanderen.be/ns/shacl#rule> "" .
 
 <https://semiceu.github.io//doc/dcat-ap#dcat:DataServiceShape/ca2bd10c893237fa342edb75240b08731acda92f> rdfs:seeAlso "https://semiceu.github.io//doc/dcat-ap#dcat%3ADataService%3Aserves%20dataset";
@@ -2304,11 +2323,11 @@
   <https://data.vlaanderen.be/ns/shacl#rule> "" .
 
 <https://semiceu.github.io//doc/dcat-ap#dct:LocationShape/53c8e9f0fc79ab4ed706e31129a2b3e02f7edd22> rdfs:seeAlso "https://semiceu.github.io//doc/dcat-ap#dct%3ALocation%3Ageometry";
-  shacl:class rdfs:Literal;
+  shacl:class <http://www.w3.org/ns/locn#locn:Geometry>;
   shacl:description "The corresponding geometry for a resource"@en;
   shacl:name "geometry"@en;
   shacl:path <http://www.w3.org/ns/locn#geometry>;
-  <https://data.vlaanderen.be/ns/shacl#message> [<https://semiceu.github.io//doc/dcat-apen> "De range van geometry moet van het type <http://www.w3.org/2000/01/rdf-schema#Literal> zijn."];
+  <https://data.vlaanderen.be/ns/shacl#message> [<https://semiceu.github.io//doc/dcat-apen> "De range van geometry moet van het type <http://www.w3.org/ns/locn#locn:Geometry> zijn."];
   <https://data.vlaanderen.be/ns/shacl#rule> "" .
 
 <https://semiceu.github.io//doc/dcat-ap#dct:LocationShape/53e5ef9f230bd01e06ffbb904b03d2000aa15bb7> rdfs:seeAlso "https://semiceu.github.io//doc/dcat-ap#dct%3ALocation%3Abbox";
@@ -2506,6 +2525,10 @@
 <https://semiceu.github.io//doc/dcat-ap#foaf:DocumentShape> a shacl:NodeShape;
   shacl:closed false;
   shacl:targetClass foaf:Document .
+
+<https://semiceu.github.io//doc/dcat-ap#locn:GeometryShape> a shacl:NodeShape;
+  shacl:closed false;
+  shacl:targetClass <http://www.w3.org/ns/locn#locn:Geometry> .
 
 <https://semiceu.github.io//doc/dcat-ap#prov:ActivityShape> a shacl:NodeShape;
   shacl:closed false;
