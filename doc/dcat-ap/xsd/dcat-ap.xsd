@@ -35,6 +35,7 @@
   <xs:element name="CataloguedResource" type="CataloguedResourceType"/>
   <xs:element name="Role" type="RoleType"/>
   <xs:element name="Geometry" type="GeometryType"/>
+  <xs:element name="Policy" type="PolicyType"/>
   <xs:element name="Activity" type="ActivityType"/>
   <xs:element name="Atttribution" type="AtttributionType"/>
   <xs:element name="Agent" type="AgentType"/>
@@ -800,11 +801,6 @@
           <xs:documentation xml:lang="en">An indication how long it is planned to keep the Distribution of the Dataset available.</xs:documentation>
         </xs:annotation>
       </xs:element>
-      <xs:element name="availability" type="ConceptType" maxOccurs="1" minOccurs="0">
-        <xs:annotation>
-          <xs:documentation xml:lang="en">An indication how long it is planned to keep the Distribution of the Dataset available.</xs:documentation>
-        </xs:annotation>
-      </xs:element>
       <xs:element name="linkedSchemas" ref="StandardType" maxOccurs="unbounded" minOccurs="0">
         <xs:annotation>
           <xs:documentation xml:lang="en">An established schema to which the described Distribution conforms.</xs:documentation>
@@ -855,7 +851,7 @@
           <xs:documentation xml:lang="en">A page or document about this Distribution.</xs:documentation>
         </xs:annotation>
       </xs:element>
-      <xs:element name="hasPolicy" maxOccurs="1" minOccurs="0">
+      <xs:element name="hasPolicy" ref="PolicyType" maxOccurs="1" minOccurs="0">
         <xs:annotation>
           <xs:documentation xml:lang="en">The policy expressing the rights associated with the distribution if using the ODRL vocabulary</xs:documentation>
         </xs:annotation>
@@ -912,6 +908,14 @@
     <xs:attribute name="GeometryRef" type="xs:IDREF">
       <xs:annotation>
         <xs:documentation xml:lang="en">Reference to Geometry ID</xs:documentation>
+      </xs:annotation>
+    </xs:attribute>
+  </xs:complexType>
+  <xs:complexType name="PolicyType">
+    <xs:sequence/>
+    <xs:attribute name="PolicyRef" type="xs:IDREF">
+      <xs:annotation>
+        <xs:documentation xml:lang="en">Reference to Policy ID</xs:documentation>
       </xs:annotation>
     </xs:attribute>
   </xs:complexType>
