@@ -1,6 +1,7 @@
 @prefix dc: <http://purl.org/dc/terms/> .
 @prefix dcat: <http://www.w3.org/ns/dcat#> .
 @prefix foaf: <http://xmlns.com/foaf/0.1/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
 @prefix prov: <http://www.w3.org/ns/prov#> .
 @prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
 @prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
@@ -10,11 +11,17 @@
 @prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
 
 <https://semiceu.github.io//doc/dcat-ap-hvd> rdfs:member <https://semiceu.github.io//doc/dcat-ap-hvd#dct:LicenseDocumentShape>,
+    <https://semiceu.github.io//doc/dcat-ap-hvd#dct:StandardShape>,
     <https://semiceu.github.io//doc/dcat-ap-hvd#TemporalLiteralShape>,
+    <https://semiceu.github.io//doc/dcat-ap-hvd#rdfs:LiteralShape>,
+    <https://semiceu.github.io//doc/dcat-ap-hvd#rdfs:ResourceShape>,
     <https://semiceu.github.io//doc/dcat-ap-hvd#xsd:decimalShape>,
     <https://semiceu.github.io//doc/dcat-ap-hvd#xsd:durationShape>,
     <https://semiceu.github.io//doc/dcat-ap-hvd#xsd:hexBinaryShape>,
+    <https://semiceu.github.io//doc/dcat-ap-hvd#skos:ConceptShape>,
     <https://semiceu.github.io//doc/dcat-ap-hvd#TimeInstantShape>,
+    <https://semiceu.github.io//doc/dcat-ap-hvd#vcard:KindShape>,
+    <https://semiceu.github.io//doc/dcat-ap-hvd#adms:IdentifierShape>,
     <https://semiceu.github.io//doc/dcat-ap-hvd#dcat:CatalogShape>,
     <https://semiceu.github.io//doc/dcat-ap-hvd#dcat:CatalogRecordShape>,
     <https://semiceu.github.io//doc/dcat-ap-hvd#dcat:DataServiceShape>,
@@ -30,6 +37,37 @@
 <https://semiceu.github.io//doc/dcat-ap-hvd#TimeInstantShape> a shacl:NodeShape;
   shacl:closed false;
   shacl:targetClass <http://www.w3.org/2006/time#Instant> .
+
+<https://semiceu.github.io//doc/dcat-ap-hvd#adms:IdentifierShape> a shacl:NodeShape;
+  shacl:closed false;
+  shacl:property <https://semiceu.github.io//doc/dcat-ap-hvd#adms:IdentifierShape/053d0ae3c4b213ae2f708e5e492b97e2cce08686>,
+    <https://semiceu.github.io//doc/dcat-ap-hvd#adms:IdentifierShape/540857eb5364e19b19192903edb3521c4ca629d8>,
+    <https://semiceu.github.io//doc/dcat-ap-hvd#adms:IdentifierShape/e02208f9fa32c429dc5023f2799d03368703b974>;
+  shacl:targetClass <http://www.w3.org/ns/adms#identifier> .
+
+<https://semiceu.github.io//doc/dcat-ap-hvd#adms:IdentifierShape/053d0ae3c4b213ae2f708e5e492b97e2cce08686> rdfs:seeAlso "https://semiceu.github.io//doc/dcat-ap-hvd#adms%3AIdentifier%3Anotation";
+  shacl:description "A string that is an identifier in the context of the identifier scheme referenced by its datatype."@en;
+  shacl:name "notation"@en;
+  shacl:nodekind "sh:BlankNodeOrIRI";
+  shacl:path skos:notation;
+  <https://data.vlaanderen.be/ns/shacl#message> [<https://semiceu.github.io//doc/dcat-ap-hvden> "De verwachte waarde voor notation is een rdfs:Resource (URI of blank node)"];
+  <https://data.vlaanderen.be/ns/shacl#rule> "" .
+
+<https://semiceu.github.io//doc/dcat-ap-hvd#adms:IdentifierShape/540857eb5364e19b19192903edb3521c4ca629d8> rdfs:seeAlso "https://semiceu.github.io//doc/dcat-ap-hvd#adms%3AIdentifier%3Anotation";
+  shacl:class rdfs:Literal;
+  shacl:description "A string that is an identifier in the context of the identifier scheme referenced by its datatype."@en;
+  shacl:name "notation"@en;
+  shacl:path skos:notation;
+  <https://data.vlaanderen.be/ns/shacl#message> [<https://semiceu.github.io//doc/dcat-ap-hvden> "De range van notation moet van het type <http://www.w3.org/2000/01/rdf-schema#Literal> zijn."];
+  <https://data.vlaanderen.be/ns/shacl#rule> "" .
+
+<https://semiceu.github.io//doc/dcat-ap-hvd#adms:IdentifierShape/e02208f9fa32c429dc5023f2799d03368703b974> rdfs:seeAlso "https://semiceu.github.io//doc/dcat-ap-hvd#adms%3AIdentifier%3Anotation";
+  shacl:description "A string that is an identifier in the context of the identifier scheme referenced by its datatype."@en;
+  shacl:maxCount 1;
+  shacl:name "notation"@en;
+  shacl:path skos:notation;
+  <https://data.vlaanderen.be/ns/shacl#message> [<https://semiceu.github.io//doc/dcat-ap-hvden> "Maximaal 1 waarden toegelaten voor notation"];
+  <https://data.vlaanderen.be/ns/shacl#rule> "" .
 
 <https://semiceu.github.io//doc/dcat-ap-hvd#dcat:CatalogRecordShape> a shacl:NodeShape;
   shacl:closed false;
@@ -196,6 +234,8 @@
   shacl:closed false;
   shacl:property <https://semiceu.github.io//doc/dcat-ap-hvd#dcat:DataServiceShape/10c0ca4deadefb51c529f56ee01caf9bd2639ef4>,
     <https://semiceu.github.io//doc/dcat-ap-hvd#dcat:DataServiceShape/1a61f733fafb015548fe0e21203d559c9cb4d228>,
+    <https://semiceu.github.io//doc/dcat-ap-hvd#dcat:DataServiceShape/30e78cd98aa6cd5dbc31678289abb5e0cc0b55c7>,
+    <https://semiceu.github.io//doc/dcat-ap-hvd#dcat:DataServiceShape/396231de4783bdfd25c32e935e43dec4585563ce>,
     <https://semiceu.github.io//doc/dcat-ap-hvd#dcat:DataServiceShape/3bde2663aaca96d953765ac2e525ef64710bf4d6>,
     <https://semiceu.github.io//doc/dcat-ap-hvd#dcat:DataServiceShape/488f0bcb1b2d7cb5288ca9952a7b94f106f95859>,
     <https://semiceu.github.io//doc/dcat-ap-hvd#dcat:DataServiceShape/63240e11f1eb66f636413d1dbb134f0ff9066a7c>,
@@ -203,17 +243,23 @@
     <https://semiceu.github.io//doc/dcat-ap-hvd#dcat:DataServiceShape/737cd5f1c9f0e13c35eb82b7f0d2b2f76a9a82c7>,
     <https://semiceu.github.io//doc/dcat-ap-hvd#dcat:DataServiceShape/7a20e2eb5f5549088fd53fa93fab0958019f267e>,
     <https://semiceu.github.io//doc/dcat-ap-hvd#dcat:DataServiceShape/83ad7325cc6681e43e44550c269847065a95a14f>,
+    <https://semiceu.github.io//doc/dcat-ap-hvd#dcat:DataServiceShape/892bcf3c90199fdd741a47fc4559dc59d5a5b034>,
+    <https://semiceu.github.io//doc/dcat-ap-hvd#dcat:DataServiceShape/924bfd3702cf51f4a6bc11bd1b7e06790d5d2fbc>,
     <https://semiceu.github.io//doc/dcat-ap-hvd#dcat:DataServiceShape/9eaae476a881de13b9430537ace6e70da7327dbd>,
+    <https://semiceu.github.io//doc/dcat-ap-hvd#dcat:DataServiceShape/9f9f581dcae4fbd1653141d8b35ba7f86b4cf740>,
+    <https://semiceu.github.io//doc/dcat-ap-hvd#dcat:DataServiceShape/afe6c8f8c4da405ff95a02a644ddb583eef63087>,
     <https://semiceu.github.io//doc/dcat-ap-hvd#dcat:DataServiceShape/c1577bd231c71b0b1910272999755d3414867cfd>,
     <https://semiceu.github.io//doc/dcat-ap-hvd#dcat:DataServiceShape/ca2bd10c893237fa342edb75240b08731acda92f>,
     <https://semiceu.github.io//doc/dcat-ap-hvd#dcat:DataServiceShape/d4d4f2399b8cf2f615ac658920373b714726bed0>,
     <https://semiceu.github.io//doc/dcat-ap-hvd#dcat:DataServiceShape/d5d74574f70f9a979535f3624608f88180dd0c97>,
     <https://semiceu.github.io//doc/dcat-ap-hvd#dcat:DataServiceShape/dbcf2adef675735c48b532392359af27af5e8b71>,
     <https://semiceu.github.io//doc/dcat-ap-hvd#dcat:DataServiceShape/dc08f4dca4377fade57f89454e3fa06a8389d314>,
+    <https://semiceu.github.io//doc/dcat-ap-hvd#dcat:DataServiceShape/eab49dbeb9d895c6e13fc1a939b8a3a7cde0b52b>,
     <https://semiceu.github.io//doc/dcat-ap-hvd#dcat:DataServiceShape/eb3ac4e4fdde2e2588a9502c5956060a18c5c99f>,
     <https://semiceu.github.io//doc/dcat-ap-hvd#dcat:DataServiceShape/ee60fdd4b8581460f5fc4077813b8bb3e3d77441>,
     <https://semiceu.github.io//doc/dcat-ap-hvd#dcat:DataServiceShape/f30149ffb6ec9d00dd5866b052105729fa27d02a>,
-    <https://semiceu.github.io//doc/dcat-ap-hvd#dcat:DataServiceShape/f8b02efd063b8089b72ce9677a1e4a3488eeb9a9>;
+    <https://semiceu.github.io//doc/dcat-ap-hvd#dcat:DataServiceShape/f8b02efd063b8089b72ce9677a1e4a3488eeb9a9>,
+    <https://semiceu.github.io//doc/dcat-ap-hvd#dcat:DataServiceShape/ffbbcd28b1fd92213d8350e1b6418d3d998c7197>;
   shacl:targetClass dcat:DataService .
 
 <https://semiceu.github.io//doc/dcat-ap-hvd#dcat:DataServiceShape/10c0ca4deadefb51c529f56ee01caf9bd2639ef4> rdfs:seeAlso "https://semiceu.github.io//doc/dcat-ap-hvd#dcat%3ADataService%3Aaccess%20rights";
@@ -230,6 +276,21 @@
   shacl:name "serves dataset"@en;
   shacl:path dcat:servesDataset;
   <https://data.vlaanderen.be/ns/shacl#message> [<https://semiceu.github.io//doc/dcat-ap-hvden> "De range van serves dataset moet van het type <http://www.w3.org/ns/dcat#Dataset> zijn."];
+  <https://data.vlaanderen.be/ns/shacl#rule> "" .
+
+<https://semiceu.github.io//doc/dcat-ap-hvd#dcat:DataServiceShape/30e78cd98aa6cd5dbc31678289abb5e0cc0b55c7> rdfs:seeAlso "https://semiceu.github.io//doc/dcat-ap-hvd#dcat%3ADataService%3Alanding%20page";
+  shacl:name "landing page"@en;
+  shacl:nodekind "sh:BlankNodeOrIRI";
+  shacl:path dcat:landingPage;
+  <https://data.vlaanderen.be/ns/shacl#message> [<https://semiceu.github.io//doc/dcat-ap-hvden> "De verwachte waarde voor landing page is een rdfs:Resource (URI of blank node)"];
+  <https://data.vlaanderen.be/ns/shacl#rule> "" .
+
+<https://semiceu.github.io//doc/dcat-ap-hvd#dcat:DataServiceShape/396231de4783bdfd25c32e935e43dec4585563ce> rdfs:seeAlso "https://semiceu.github.io//doc/dcat-ap-hvd#dcat%3ADataService%3Alicence";
+  shacl:description "A licence under which the Data service is made available."@en;
+  shacl:minCount 1;
+  shacl:name "licence"@en;
+  shacl:path dc:license;
+  <https://data.vlaanderen.be/ns/shacl#message> [<https://semiceu.github.io//doc/dcat-ap-hvden> "Minimaal 1 waarden verwacht voor licence"];
   <https://data.vlaanderen.be/ns/shacl#rule> "" .
 
 <https://semiceu.github.io//doc/dcat-ap-hvd#dcat:DataServiceShape/3bde2663aaca96d953765ac2e525ef64710bf4d6> rdfs:seeAlso "https://semiceu.github.io//doc/dcat-ap-hvd#dcat%3ADataService%3Aendpoint%20URL";
@@ -288,12 +349,40 @@
   <https://data.vlaanderen.be/ns/shacl#message> [<https://semiceu.github.io//doc/dcat-ap-hvden> "Minimaal 1 waarden verwacht voor endpoint URL"];
   <https://data.vlaanderen.be/ns/shacl#rule> "" .
 
+<https://semiceu.github.io//doc/dcat-ap-hvd#dcat:DataServiceShape/892bcf3c90199fdd741a47fc4559dc59d5a5b034> rdfs:seeAlso "https://semiceu.github.io//doc/dcat-ap-hvd#dcat%3ADataService%3AHVD%20Category";
+  shacl:class skos:Concept;
+  shacl:name "HVD Category"@en;
+  shacl:path <http://data.europa.eu/r5r/hvdCategory>;
+  <https://data.vlaanderen.be/ns/shacl#message> [<https://semiceu.github.io//doc/dcat-ap-hvden> "De range van HVD Category moet van het type <http://www.w3.org/2004/02/skos/core#Concept> zijn."];
+  <https://data.vlaanderen.be/ns/shacl#rule> "" .
+
+<https://semiceu.github.io//doc/dcat-ap-hvd#dcat:DataServiceShape/924bfd3702cf51f4a6bc11bd1b7e06790d5d2fbc> rdfs:seeAlso "https://semiceu.github.io//doc/dcat-ap-hvd#dcat%3ADataService%3AHVD%20Category";
+  shacl:name "HVD Category"@en;
+  shacl:nodekind "sh:BlankNodeOrIRI";
+  shacl:path <http://data.europa.eu/r5r/hvdCategory>;
+  <https://data.vlaanderen.be/ns/shacl#message> [<https://semiceu.github.io//doc/dcat-ap-hvden> "De verwachte waarde voor HVD Category is een rdfs:Resource (URI of blank node)"];
+  <https://data.vlaanderen.be/ns/shacl#rule> "" .
+
 <https://semiceu.github.io//doc/dcat-ap-hvd#dcat:DataServiceShape/9eaae476a881de13b9430537ace6e70da7327dbd> rdfs:seeAlso "https://semiceu.github.io//doc/dcat-ap-hvd#dcat%3ADataService%3Alicence";
   shacl:description "A licence under which the Data service is made available."@en;
   shacl:maxCount 1;
   shacl:name "licence"@en;
   shacl:path dc:license;
   <https://data.vlaanderen.be/ns/shacl#message> [<https://semiceu.github.io//doc/dcat-ap-hvden> "Maximaal 1 waarden toegelaten voor licence"];
+  <https://data.vlaanderen.be/ns/shacl#rule> "" .
+
+<https://semiceu.github.io//doc/dcat-ap-hvd#dcat:DataServiceShape/9f9f581dcae4fbd1653141d8b35ba7f86b4cf740> rdfs:seeAlso "https://semiceu.github.io//doc/dcat-ap-hvd#dcat%3ADataService%3AHVD%20Category";
+  shacl:minCount 1;
+  shacl:name "HVD Category"@en;
+  shacl:path <http://data.europa.eu/r5r/hvdCategory>;
+  <https://data.vlaanderen.be/ns/shacl#message> [<https://semiceu.github.io//doc/dcat-ap-hvden> "Minimaal 1 waarden verwacht voor HVD Category"];
+  <https://data.vlaanderen.be/ns/shacl#rule> "" .
+
+<https://semiceu.github.io//doc/dcat-ap-hvd#dcat:DataServiceShape/afe6c8f8c4da405ff95a02a644ddb583eef63087> rdfs:seeAlso "https://semiceu.github.io//doc/dcat-ap-hvd#dcat%3ADataService%3Alanding%20page";
+  shacl:minCount 1;
+  shacl:name "landing page"@en;
+  shacl:path dcat:landingPage;
+  <https://data.vlaanderen.be/ns/shacl#message> [<https://semiceu.github.io//doc/dcat-ap-hvden> "Minimaal 1 waarden verwacht voor landing page"];
   <https://data.vlaanderen.be/ns/shacl#rule> "" .
 
 <https://semiceu.github.io//doc/dcat-ap-hvd#dcat:DataServiceShape/c1577bd231c71b0b1910272999755d3414867cfd> rdfs:seeAlso "https://semiceu.github.io//doc/dcat-ap-hvd#dcat%3ADataService%3Aformat";
@@ -344,6 +433,14 @@
   <https://data.vlaanderen.be/ns/shacl#message> [<https://semiceu.github.io//doc/dcat-ap-hvden> "De range van endpoint description moet van het type <http://www.w3.org/2000/01/rdf-schema#Resource> zijn."];
   <https://data.vlaanderen.be/ns/shacl#rule> "" .
 
+<https://semiceu.github.io//doc/dcat-ap-hvd#dcat:DataServiceShape/eab49dbeb9d895c6e13fc1a939b8a3a7cde0b52b> rdfs:seeAlso "https://semiceu.github.io//doc/dcat-ap-hvd#dcat%3ADataService%3Aserves%20dataset";
+  shacl:description "This property refers to a collection of data that this data service can distribute."@en;
+  shacl:minCount 1;
+  shacl:name "serves dataset"@en;
+  shacl:path dcat:servesDataset;
+  <https://data.vlaanderen.be/ns/shacl#message> [<https://semiceu.github.io//doc/dcat-ap-hvden> "Minimaal 1 waarden verwacht voor serves dataset"];
+  <https://data.vlaanderen.be/ns/shacl#rule> "" .
+
 <https://semiceu.github.io//doc/dcat-ap-hvd#dcat:DataServiceShape/eb3ac4e4fdde2e2588a9502c5956060a18c5c99f> rdfs:seeAlso "https://semiceu.github.io//doc/dcat-ap-hvd#dcat%3ADataService%3Aendpoint%20URL";
   shacl:class rdfs:Resource;
   shacl:description "The root location or primary endpoint of the service (an IRI)."@en;
@@ -376,6 +473,13 @@
   <https://data.vlaanderen.be/ns/shacl#message> [<https://semiceu.github.io//doc/dcat-ap-hvden> "Minimaal 1 waarden verwacht voor title"];
   <https://data.vlaanderen.be/ns/shacl#rule> "" .
 
+<https://semiceu.github.io//doc/dcat-ap-hvd#dcat:DataServiceShape/ffbbcd28b1fd92213d8350e1b6418d3d998c7197> rdfs:seeAlso "https://semiceu.github.io//doc/dcat-ap-hvd#dcat%3ADataService%3Alanding%20page";
+  shacl:class foaf:Document;
+  shacl:name "landing page"@en;
+  shacl:path dcat:landingPage;
+  <https://data.vlaanderen.be/ns/shacl#message> [<https://semiceu.github.io//doc/dcat-ap-hvden> "De range van landing page moet van het type <http://xmlns.com/foaf/0.1/Document> zijn."];
+  <https://data.vlaanderen.be/ns/shacl#rule> "" .
+
 <https://semiceu.github.io//doc/dcat-ap-hvd#dcat:DatasetShape> a shacl:NodeShape;
   shacl:closed false;
   shacl:property <https://semiceu.github.io//doc/dcat-ap-hvd#dcat:DatasetShape/016e621848f36eb558335ecb98b4b24cb2447d37>,
@@ -383,6 +487,7 @@
     <https://semiceu.github.io//doc/dcat-ap-hvd#dcat:DatasetShape/10c0ca4deadefb51c529f56ee01caf9bd2639ef4>,
     <https://semiceu.github.io//doc/dcat-ap-hvd#dcat:DatasetShape/236f0210baaf149903750c43bbe7012c21debb2a>,
     <https://semiceu.github.io//doc/dcat-ap-hvd#dcat:DatasetShape/2ab9813b47309d4af98fdfe34189ea24baecc8cd>,
+    <https://semiceu.github.io//doc/dcat-ap-hvd#dcat:DatasetShape/2f39bbd821cac86ab81596cd47c8798f3f60f0b9>,
     <https://semiceu.github.io//doc/dcat-ap-hvd#dcat:DatasetShape/322371a77364a50f049d46180f6192532eea26dc>,
     <https://semiceu.github.io//doc/dcat-ap-hvd#dcat:DatasetShape/34ba47520d520f97bbcdea3c6fd3dc176d312689>,
     <https://semiceu.github.io//doc/dcat-ap-hvd#dcat:DatasetShape/4f381639bb6e021939f65b4f41409d1edaeade9b>,
@@ -390,8 +495,11 @@
     <https://semiceu.github.io//doc/dcat-ap-hvd#dcat:DatasetShape/67dcdb36167ca7969c0532898e11a98e9c2a80f5>,
     <https://semiceu.github.io//doc/dcat-ap-hvd#dcat:DatasetShape/7a20e2eb5f5549088fd53fa93fab0958019f267e>,
     <https://semiceu.github.io//doc/dcat-ap-hvd#dcat:DatasetShape/7b6713c1f4a52e964f5db57eabef294b6d04e90e>,
+    <https://semiceu.github.io//doc/dcat-ap-hvd#dcat:DatasetShape/892bcf3c90199fdd741a47fc4559dc59d5a5b034>,
+    <https://semiceu.github.io//doc/dcat-ap-hvd#dcat:DatasetShape/924bfd3702cf51f4a6bc11bd1b7e06790d5d2fbc>,
     <https://semiceu.github.io//doc/dcat-ap-hvd#dcat:DatasetShape/93f73e69bb03d2928fcf758a253ef316becdf9b9>,
     <https://semiceu.github.io//doc/dcat-ap-hvd#dcat:DatasetShape/9adf9f5890592909cf3e67021ae7ab4f895a7745>,
+    <https://semiceu.github.io//doc/dcat-ap-hvd#dcat:DatasetShape/9f9f581dcae4fbd1653141d8b35ba7f86b4cf740>,
     <https://semiceu.github.io//doc/dcat-ap-hvd#dcat:DatasetShape/9fe7c5889615d19dd4849fb66a5664fc016aa598>,
     <https://semiceu.github.io//doc/dcat-ap-hvd#dcat:DatasetShape/b3ec0655204c62a2531244aaeab12f1a2c5e5b5d>,
     <https://semiceu.github.io//doc/dcat-ap-hvd#dcat:DatasetShape/c84f7330b9538a899ebb875c44dc23c9882e74ac>,
@@ -437,6 +545,14 @@
   shacl:name "dataset distribution"@en;
   shacl:path dcat:distribution;
   <https://data.vlaanderen.be/ns/shacl#message> [<https://semiceu.github.io//doc/dcat-ap-hvden> "De range van dataset distribution moet van het type <http://www.w3.org/ns/dcat#Distribution> zijn."];
+  <https://data.vlaanderen.be/ns/shacl#rule> "" .
+
+<https://semiceu.github.io//doc/dcat-ap-hvd#dcat:DatasetShape/2f39bbd821cac86ab81596cd47c8798f3f60f0b9> rdfs:seeAlso "https://semiceu.github.io//doc/dcat-ap-hvd#dcat%3ADataset%3Adataset%20distribution";
+  shacl:description "An available Distribution for the Dataset."@en;
+  shacl:minCount 1;
+  shacl:name "dataset distribution"@en;
+  shacl:path dcat:distribution;
+  <https://data.vlaanderen.be/ns/shacl#message> [<https://semiceu.github.io//doc/dcat-ap-hvden> "Minimaal 1 waarden verwacht voor dataset distribution"];
   <https://data.vlaanderen.be/ns/shacl#rule> "" .
 
 <https://semiceu.github.io//doc/dcat-ap-hvd#dcat:DatasetShape/322371a77364a50f049d46180f6192532eea26dc> rdfs:seeAlso "https://semiceu.github.io//doc/dcat-ap-hvd#dcat%3ADataset%3Atype";
@@ -495,6 +611,20 @@
   <https://data.vlaanderen.be/ns/shacl#message> [<https://semiceu.github.io//doc/dcat-ap-hvden> "De range van contact point moet van het type <http://www.w3.org/2006/vcard/ns#Kind> zijn."];
   <https://data.vlaanderen.be/ns/shacl#rule> "" .
 
+<https://semiceu.github.io//doc/dcat-ap-hvd#dcat:DatasetShape/892bcf3c90199fdd741a47fc4559dc59d5a5b034> rdfs:seeAlso "https://semiceu.github.io//doc/dcat-ap-hvd#dcat%3ADataset%3AHVD%20Category";
+  shacl:class skos:Concept;
+  shacl:name "HVD Category"@en;
+  shacl:path <http://data.europa.eu/r5r/hvdCategory>;
+  <https://data.vlaanderen.be/ns/shacl#message> [<https://semiceu.github.io//doc/dcat-ap-hvden> "De range van HVD Category moet van het type <http://www.w3.org/2004/02/skos/core#Concept> zijn."];
+  <https://data.vlaanderen.be/ns/shacl#rule> "" .
+
+<https://semiceu.github.io//doc/dcat-ap-hvd#dcat:DatasetShape/924bfd3702cf51f4a6bc11bd1b7e06790d5d2fbc> rdfs:seeAlso "https://semiceu.github.io//doc/dcat-ap-hvd#dcat%3ADataset%3AHVD%20Category";
+  shacl:name "HVD Category"@en;
+  shacl:nodekind "sh:BlankNodeOrIRI";
+  shacl:path <http://data.europa.eu/r5r/hvdCategory>;
+  <https://data.vlaanderen.be/ns/shacl#message> [<https://semiceu.github.io//doc/dcat-ap-hvden> "De verwachte waarde voor HVD Category is een rdfs:Resource (URI of blank node)"];
+  <https://data.vlaanderen.be/ns/shacl#rule> "" .
+
 <https://semiceu.github.io//doc/dcat-ap-hvd#dcat:DatasetShape/93f73e69bb03d2928fcf758a253ef316becdf9b9> rdfs:seeAlso "https://semiceu.github.io//doc/dcat-ap-hvd#dcat%3ADataset%3Apublisher";
   shacl:description "An entity (organisation) responsible for making the Dataset available."@en;
   shacl:name "publisher"@en;
@@ -509,6 +639,13 @@
   shacl:nodekind "sh:BlankNodeOrIRI";
   shacl:path dcat:contactPoint;
   <https://data.vlaanderen.be/ns/shacl#message> [<https://semiceu.github.io//doc/dcat-ap-hvden> "De verwachte waarde voor contact point is een rdfs:Resource (URI of blank node)"];
+  <https://data.vlaanderen.be/ns/shacl#rule> "" .
+
+<https://semiceu.github.io//doc/dcat-ap-hvd#dcat:DatasetShape/9f9f581dcae4fbd1653141d8b35ba7f86b4cf740> rdfs:seeAlso "https://semiceu.github.io//doc/dcat-ap-hvd#dcat%3ADataset%3AHVD%20Category";
+  shacl:minCount 1;
+  shacl:name "HVD Category"@en;
+  shacl:path <http://data.europa.eu/r5r/hvdCategory>;
+  <https://data.vlaanderen.be/ns/shacl#message> [<https://semiceu.github.io//doc/dcat-ap-hvden> "Minimaal 1 waarden verwacht voor HVD Category"];
   <https://data.vlaanderen.be/ns/shacl#rule> "" .
 
 <https://semiceu.github.io//doc/dcat-ap-hvd#dcat:DatasetShape/9fe7c5889615d19dd4849fb66a5664fc016aa598> rdfs:seeAlso "https://semiceu.github.io//doc/dcat-ap-hvd#dcat%3ADataset%3Aother%20identifier";
@@ -556,9 +693,13 @@
   shacl:property <https://semiceu.github.io//doc/dcat-ap-hvd#dcat:DistributionShape/226b9cb0511ec6b8da045829e10d2676ddbb8375>,
     <https://semiceu.github.io//doc/dcat-ap-hvd#dcat:DistributionShape/23d4c038584493decec780192681ef61694bff7c>,
     <https://semiceu.github.io//doc/dcat-ap-hvd#dcat:DistributionShape/27b3b10cebe804356667d0cfca6f658b01f83fbb>,
+    <https://semiceu.github.io//doc/dcat-ap-hvd#dcat:DistributionShape/396231de4783bdfd25c32e935e43dec4585563ce>,
     <https://semiceu.github.io//doc/dcat-ap-hvd#dcat:DistributionShape/653804840386e33525b3d39d205c174780be414b>,
     <https://semiceu.github.io//doc/dcat-ap-hvd#dcat:DistributionShape/7434c99492683a2fb06dcdcf1f238671caf3d462>,
+    <https://semiceu.github.io//doc/dcat-ap-hvd#dcat:DistributionShape/892bcf3c90199fdd741a47fc4559dc59d5a5b034>,
+    <https://semiceu.github.io//doc/dcat-ap-hvd#dcat:DistributionShape/924bfd3702cf51f4a6bc11bd1b7e06790d5d2fbc>,
     <https://semiceu.github.io//doc/dcat-ap-hvd#dcat:DistributionShape/9eaae476a881de13b9430537ace6e70da7327dbd>,
+    <https://semiceu.github.io//doc/dcat-ap-hvd#dcat:DistributionShape/9f9f581dcae4fbd1653141d8b35ba7f86b4cf740>,
     <https://semiceu.github.io//doc/dcat-ap-hvd#dcat:DistributionShape/a490981ff58636ec8601ca500e67bd9c575eaed9>,
     <https://semiceu.github.io//doc/dcat-ap-hvd#dcat:DistributionShape/dbcf2adef675735c48b532392359af27af5e8b71>,
     <https://semiceu.github.io//doc/dcat-ap-hvd#dcat:DistributionShape/e0065293221c5851ec508ae96cd4ad03ffdedd19>,
@@ -589,6 +730,14 @@
   <https://data.vlaanderen.be/ns/shacl#message> [<https://semiceu.github.io//doc/dcat-ap-hvden> "De verwachte waarde voor linked schemas is een rdfs:Resource (URI of blank node)"];
   <https://data.vlaanderen.be/ns/shacl#rule> "" .
 
+<https://semiceu.github.io//doc/dcat-ap-hvd#dcat:DistributionShape/396231de4783bdfd25c32e935e43dec4585563ce> rdfs:seeAlso "https://semiceu.github.io//doc/dcat-ap-hvd#dcat%3ADistribution%3Alicence";
+  shacl:description "A licence under which the Distribution is made available."@en;
+  shacl:minCount 1;
+  shacl:name "licence"@en;
+  shacl:path dc:license;
+  <https://data.vlaanderen.be/ns/shacl#message> [<https://semiceu.github.io//doc/dcat-ap-hvden> "Minimaal 1 waarden verwacht voor licence"];
+  <https://data.vlaanderen.be/ns/shacl#rule> "" .
+
 <https://semiceu.github.io//doc/dcat-ap-hvd#dcat:DistributionShape/653804840386e33525b3d39d205c174780be414b> rdfs:seeAlso "https://semiceu.github.io//doc/dcat-ap-hvd#dcat%3ADistribution%3Aaccess%20URL";
   shacl:class rdfs:Resource;
   shacl:description "A URL that gives access to a Distribution of the Dataset."@en;
@@ -605,12 +754,33 @@
   <https://data.vlaanderen.be/ns/shacl#message> [<https://semiceu.github.io//doc/dcat-ap-hvden> "De range van access service moet van het type <http://www.w3.org/ns/dcat#DataService> zijn."];
   <https://data.vlaanderen.be/ns/shacl#rule> "" .
 
+<https://semiceu.github.io//doc/dcat-ap-hvd#dcat:DistributionShape/892bcf3c90199fdd741a47fc4559dc59d5a5b034> rdfs:seeAlso "https://semiceu.github.io//doc/dcat-ap-hvd#dcat%3ADistribution%3AHVD%20Category";
+  shacl:class skos:Concept;
+  shacl:name "HVD Category"@en;
+  shacl:path <http://data.europa.eu/r5r/hvdCategory>;
+  <https://data.vlaanderen.be/ns/shacl#message> [<https://semiceu.github.io//doc/dcat-ap-hvden> "De range van HVD Category moet van het type <http://www.w3.org/2004/02/skos/core#Concept> zijn."];
+  <https://data.vlaanderen.be/ns/shacl#rule> "" .
+
+<https://semiceu.github.io//doc/dcat-ap-hvd#dcat:DistributionShape/924bfd3702cf51f4a6bc11bd1b7e06790d5d2fbc> rdfs:seeAlso "https://semiceu.github.io//doc/dcat-ap-hvd#dcat%3ADistribution%3AHVD%20Category";
+  shacl:name "HVD Category"@en;
+  shacl:nodekind "sh:BlankNodeOrIRI";
+  shacl:path <http://data.europa.eu/r5r/hvdCategory>;
+  <https://data.vlaanderen.be/ns/shacl#message> [<https://semiceu.github.io//doc/dcat-ap-hvden> "De verwachte waarde voor HVD Category is een rdfs:Resource (URI of blank node)"];
+  <https://data.vlaanderen.be/ns/shacl#rule> "" .
+
 <https://semiceu.github.io//doc/dcat-ap-hvd#dcat:DistributionShape/9eaae476a881de13b9430537ace6e70da7327dbd> rdfs:seeAlso "https://semiceu.github.io//doc/dcat-ap-hvd#dcat%3ADistribution%3Alicence";
   shacl:description "A licence under which the Distribution is made available."@en;
   shacl:maxCount 1;
   shacl:name "licence"@en;
   shacl:path dc:license;
   <https://data.vlaanderen.be/ns/shacl#message> [<https://semiceu.github.io//doc/dcat-ap-hvden> "Maximaal 1 waarden toegelaten voor licence"];
+  <https://data.vlaanderen.be/ns/shacl#rule> "" .
+
+<https://semiceu.github.io//doc/dcat-ap-hvd#dcat:DistributionShape/9f9f581dcae4fbd1653141d8b35ba7f86b4cf740> rdfs:seeAlso "https://semiceu.github.io//doc/dcat-ap-hvd#dcat%3ADistribution%3AHVD%20Category";
+  shacl:minCount 1;
+  shacl:name "HVD Category"@en;
+  shacl:path <http://data.europa.eu/r5r/hvdCategory>;
+  <https://data.vlaanderen.be/ns/shacl#message> [<https://semiceu.github.io//doc/dcat-ap-hvden> "Minimaal 1 waarden verwacht voor HVD Category"];
   <https://data.vlaanderen.be/ns/shacl#rule> "" .
 
 <https://semiceu.github.io//doc/dcat-ap-hvd#dcat:DistributionShape/a490981ff58636ec8601ca500e67bd9c575eaed9> rdfs:seeAlso "https://semiceu.github.io//doc/dcat-ap-hvd#dcat%3ADistribution%3Aaccess%20URL";
@@ -652,7 +822,11 @@
 <https://semiceu.github.io//doc/dcat-ap-hvd#dct:LicenseDocumentShape> a shacl:NodeShape;
   shacl:closed false;
   shacl:property <https://semiceu.github.io//doc/dcat-ap-hvd#dct:LicenseDocumentShape/322371a77364a50f049d46180f6192532eea26dc>,
-    <https://semiceu.github.io//doc/dcat-ap-hvd#dct:LicenseDocumentShape/4f381639bb6e021939f65b4f41409d1edaeade9b>;
+    <https://semiceu.github.io//doc/dcat-ap-hvd#dct:LicenseDocumentShape/4f381639bb6e021939f65b4f41409d1edaeade9b>,
+    <https://semiceu.github.io//doc/dcat-ap-hvd#dct:LicenseDocumentShape/621bd55ad606a5c75d25ce4a7adc2b2993e564e6>,
+    <https://semiceu.github.io//doc/dcat-ap-hvd#dct:LicenseDocumentShape/6eeb76090ddf8889d5ade597142d1d1880494fcf>,
+    <https://semiceu.github.io//doc/dcat-ap-hvd#dct:LicenseDocumentShape/77db7a4324686086fb8f3bc73fd9c45c2d2b88dd>,
+    <https://semiceu.github.io//doc/dcat-ap-hvd#dct:LicenseDocumentShape/919381c74aad211b4f84b33cbb635a364a3986f6>;
   shacl:targetClass dc:LicenseDocument .
 
 <https://semiceu.github.io//doc/dcat-ap-hvd#dct:LicenseDocumentShape/322371a77364a50f049d46180f6192532eea26dc> rdfs:seeAlso "https://semiceu.github.io//doc/dcat-ap-hvd#dct%3ALicenseDocument%3Atype";
@@ -671,9 +845,164 @@
   <https://data.vlaanderen.be/ns/shacl#message> [<https://semiceu.github.io//doc/dcat-ap-hvden> "De verwachte waarde voor type is een rdfs:Resource (URI of blank node)"];
   <https://data.vlaanderen.be/ns/shacl#rule> "" .
 
+<https://semiceu.github.io//doc/dcat-ap-hvd#dct:LicenseDocumentShape/621bd55ad606a5c75d25ce4a7adc2b2993e564e6> rdfs:seeAlso "https://semiceu.github.io//doc/dcat-ap-hvd#dct%3ALicenseDocument%3Asame%20as";
+  shacl:class dc:LicenseDocument;
+  shacl:description "The corresponding licence in the NAL licence."@en;
+  shacl:name "same as"@en;
+  shacl:path owl:sameAs;
+  <https://data.vlaanderen.be/ns/shacl#message> [<https://semiceu.github.io//doc/dcat-ap-hvden> "De range van same as moet van het type <http://purl.org/dc/terms/LicenseDocument> zijn."];
+  <https://data.vlaanderen.be/ns/shacl#rule> "" .
+
+<https://semiceu.github.io//doc/dcat-ap-hvd#dct:LicenseDocumentShape/6eeb76090ddf8889d5ade597142d1d1880494fcf> rdfs:seeAlso "https://semiceu.github.io//doc/dcat-ap-hvd#dct%3ALicenseDocument%3Asame%20as";
+  shacl:description "The corresponding licence in the NAL licence."@en;
+  shacl:maxCount 1;
+  shacl:name "same as"@en;
+  shacl:path owl:sameAs;
+  <https://data.vlaanderen.be/ns/shacl#message> [<https://semiceu.github.io//doc/dcat-ap-hvden> "Maximaal 1 waarden toegelaten voor same as"];
+  <https://data.vlaanderen.be/ns/shacl#rule> "" .
+
+<https://semiceu.github.io//doc/dcat-ap-hvd#dct:LicenseDocumentShape/77db7a4324686086fb8f3bc73fd9c45c2d2b88dd> rdfs:seeAlso "https://semiceu.github.io//doc/dcat-ap-hvd#dct%3ALicenseDocument%3Asame%20as";
+  shacl:description "The corresponding licence in the NAL licence."@en;
+  shacl:name "same as"@en;
+  shacl:nodekind "sh:BlankNodeOrIRI";
+  shacl:path owl:sameAs;
+  <https://data.vlaanderen.be/ns/shacl#message> [<https://semiceu.github.io//doc/dcat-ap-hvden> "De verwachte waarde voor same as is een rdfs:Resource (URI of blank node)"];
+  <https://data.vlaanderen.be/ns/shacl#rule> "" .
+
+<https://semiceu.github.io//doc/dcat-ap-hvd#dct:LicenseDocumentShape/919381c74aad211b4f84b33cbb635a364a3986f6> rdfs:seeAlso "https://semiceu.github.io//doc/dcat-ap-hvd#dct%3ALicenseDocument%3Asame%20as";
+  shacl:description "The corresponding licence in the NAL licence."@en;
+  shacl:minCount 1;
+  shacl:name "same as"@en;
+  shacl:path owl:sameAs;
+  <https://data.vlaanderen.be/ns/shacl#message> [<https://semiceu.github.io//doc/dcat-ap-hvden> "Minimaal 1 waarden verwacht voor same as"];
+  <https://data.vlaanderen.be/ns/shacl#rule> "" .
+
+<https://semiceu.github.io//doc/dcat-ap-hvd#dct:StandardShape> a shacl:NodeShape;
+  shacl:closed false;
+  shacl:targetClass dc:Standard .
+
 <https://semiceu.github.io//doc/dcat-ap-hvd#prov:ActivityShape> a shacl:NodeShape;
   shacl:closed false;
   shacl:targetClass prov:Activity .
+
+<https://semiceu.github.io//doc/dcat-ap-hvd#rdfs:LiteralShape> a shacl:NodeShape;
+  shacl:closed false;
+  shacl:targetClass rdfs:Literal .
+
+<https://semiceu.github.io//doc/dcat-ap-hvd#rdfs:ResourceShape> a shacl:NodeShape;
+  shacl:closed false;
+  shacl:targetClass rdfs:Resource .
+
+<https://semiceu.github.io//doc/dcat-ap-hvd#skos:ConceptShape> a shacl:NodeShape;
+  shacl:closed false;
+  shacl:property <https://semiceu.github.io//doc/dcat-ap-hvd#skos:ConceptShape/322ac30abbb777e02239ab84ebf7d14ebde22688>,
+    <https://semiceu.github.io//doc/dcat-ap-hvd#skos:ConceptShape/6cd0f0f5e19a1c8dce362ecbe8a196575b9cd85f>,
+    <https://semiceu.github.io//doc/dcat-ap-hvd#skos:ConceptShape/e4d44fb0d3c41df2a4042ee73fec8d83fc141a60>;
+  shacl:targetClass skos:Concept .
+
+<https://semiceu.github.io//doc/dcat-ap-hvd#skos:ConceptShape/322ac30abbb777e02239ab84ebf7d14ebde22688> rdfs:seeAlso "https://semiceu.github.io//doc/dcat-ap-hvd#skos%3AConcept%3Apreferred%20label";
+  shacl:class rdfs:Literal;
+  shacl:description "A preferred label of the category."@en;
+  shacl:name "preferred label"@en;
+  shacl:path skos:prefLabel;
+  <https://data.vlaanderen.be/ns/shacl#message> [<https://semiceu.github.io//doc/dcat-ap-hvden> "De range van preferred label moet van het type <http://www.w3.org/2000/01/rdf-schema#Literal> zijn."];
+  <https://data.vlaanderen.be/ns/shacl#rule> "" .
+
+<https://semiceu.github.io//doc/dcat-ap-hvd#skos:ConceptShape/6cd0f0f5e19a1c8dce362ecbe8a196575b9cd85f> rdfs:seeAlso "https://semiceu.github.io//doc/dcat-ap-hvd#skos%3AConcept%3Apreferred%20label";
+  shacl:description "A preferred label of the category."@en;
+  shacl:name "preferred label"@en;
+  shacl:nodekind "sh:BlankNodeOrIRI";
+  shacl:path skos:prefLabel;
+  <https://data.vlaanderen.be/ns/shacl#message> [<https://semiceu.github.io//doc/dcat-ap-hvden> "De verwachte waarde voor preferred label is een rdfs:Resource (URI of blank node)"];
+  <https://data.vlaanderen.be/ns/shacl#rule> "" .
+
+<https://semiceu.github.io//doc/dcat-ap-hvd#skos:ConceptShape/e4d44fb0d3c41df2a4042ee73fec8d83fc141a60> rdfs:seeAlso "https://semiceu.github.io//doc/dcat-ap-hvd#skos%3AConcept%3Apreferred%20label";
+  shacl:description "A preferred label of the category."@en;
+  shacl:minCount 1;
+  shacl:name "preferred label"@en;
+  shacl:path skos:prefLabel;
+  <https://data.vlaanderen.be/ns/shacl#message> [<https://semiceu.github.io//doc/dcat-ap-hvden> "Minimaal 1 waarden verwacht voor preferred label"];
+  <https://data.vlaanderen.be/ns/shacl#rule> "" .
+
+<https://semiceu.github.io//doc/dcat-ap-hvd#vcard:KindShape> a shacl:NodeShape;
+  shacl:closed false;
+  shacl:property <https://semiceu.github.io//doc/dcat-ap-hvd#vcard:KindShape/7930e9ce7e36c30cae6174390ef005669c59e5ad>,
+    <https://semiceu.github.io//doc/dcat-ap-hvd#vcard:KindShape/8cf3e751730442052d1b2174336d21bb838e4aab>,
+    <https://semiceu.github.io//doc/dcat-ap-hvd#vcard:KindShape/95cf5318d1604f72f1c5d4d22a360ce268437bf0>,
+    <https://semiceu.github.io//doc/dcat-ap-hvd#vcard:KindShape/9b6ccc41bb0ced6f6b8f28a86e120bd9d73b32fb>,
+    <https://semiceu.github.io//doc/dcat-ap-hvd#vcard:KindShape/a736c4b01ea7557518c0c146f3e311947ce00ccc>,
+    <https://semiceu.github.io//doc/dcat-ap-hvd#vcard:KindShape/abe13467d83c0301d2d6c2d77bd37218b9f6b62b>,
+    <https://semiceu.github.io//doc/dcat-ap-hvd#vcard:KindShape/af064e842c8e058505005f10ba6025ee57ad168b>,
+    <https://semiceu.github.io//doc/dcat-ap-hvd#vcard:KindShape/df2e16526cd0f7cc796d3bb27ac1861737a35d91>;
+  shacl:targetClass vcard:Kind .
+
+<https://semiceu.github.io//doc/dcat-ap-hvd#vcard:KindShape/7930e9ce7e36c30cae6174390ef005669c59e5ad> rdfs:seeAlso "https://semiceu.github.io//doc/dcat-ap-hvd#vcard%3AKind%3Acontact%20page";
+  shacl:description "A webpage that either allows to make contact (i.e. a webform) or the information contains how to get into contact. "@en;
+  shacl:minCount 1;
+  shacl:name "contact page"@en;
+  shacl:path foaf:page;
+  <https://data.vlaanderen.be/ns/shacl#message> [<https://semiceu.github.io//doc/dcat-ap-hvden> "Minimaal 1 waarden verwacht voor contact page"];
+  <https://data.vlaanderen.be/ns/shacl#rule> "" .
+
+<https://semiceu.github.io//doc/dcat-ap-hvd#vcard:KindShape/8cf3e751730442052d1b2174336d21bb838e4aab> rdfs:seeAlso "https://semiceu.github.io//doc/dcat-ap-hvd#vcard%3AKind%3Aemail";
+  shacl:class rdfs:Resource;
+  shacl:description """A email address via which contact can be made.
+"""@en;
+  shacl:name "email"@en;
+  shacl:path vcard:hasEmail;
+  <https://data.vlaanderen.be/ns/shacl#message> [<https://semiceu.github.io//doc/dcat-ap-hvden> "De range van email moet van het type <http://www.w3.org/2000/01/rdf-schema#Resource> zijn."];
+  <https://data.vlaanderen.be/ns/shacl#rule> "" .
+
+<https://semiceu.github.io//doc/dcat-ap-hvd#vcard:KindShape/95cf5318d1604f72f1c5d4d22a360ce268437bf0> rdfs:seeAlso "https://semiceu.github.io//doc/dcat-ap-hvd#vcard%3AKind%3Acontact%20page";
+  shacl:class rdfs:Resource;
+  shacl:description "A webpage that either allows to make contact (i.e. a webform) or the information contains how to get into contact. "@en;
+  shacl:name "contact page"@en;
+  shacl:path foaf:page;
+  <https://data.vlaanderen.be/ns/shacl#message> [<https://semiceu.github.io//doc/dcat-ap-hvden> "De range van contact page moet van het type <http://www.w3.org/2000/01/rdf-schema#Resource> zijn."];
+  <https://data.vlaanderen.be/ns/shacl#rule> "" .
+
+<https://semiceu.github.io//doc/dcat-ap-hvd#vcard:KindShape/9b6ccc41bb0ced6f6b8f28a86e120bd9d73b32fb> rdfs:seeAlso "https://semiceu.github.io//doc/dcat-ap-hvd#vcard%3AKind%3Aemail";
+  shacl:description """A email address via which contact can be made.
+"""@en;
+  shacl:name "email"@en;
+  shacl:nodekind "sh:BlankNodeOrIRI";
+  shacl:path vcard:hasEmail;
+  <https://data.vlaanderen.be/ns/shacl#message> [<https://semiceu.github.io//doc/dcat-ap-hvden> "De verwachte waarde voor email is een rdfs:Resource (URI of blank node)"];
+  <https://data.vlaanderen.be/ns/shacl#rule> "" .
+
+<https://semiceu.github.io//doc/dcat-ap-hvd#vcard:KindShape/a736c4b01ea7557518c0c146f3e311947ce00ccc> rdfs:seeAlso "https://semiceu.github.io//doc/dcat-ap-hvd#vcard%3AKind%3Acontact%20page";
+  shacl:description "A webpage that either allows to make contact (i.e. a webform) or the information contains how to get into contact. "@en;
+  shacl:name "contact page"@en;
+  shacl:nodekind "sh:BlankNodeOrIRI";
+  shacl:path foaf:page;
+  <https://data.vlaanderen.be/ns/shacl#message> [<https://semiceu.github.io//doc/dcat-ap-hvden> "De verwachte waarde voor contact page is een rdfs:Resource (URI of blank node)"];
+  <https://data.vlaanderen.be/ns/shacl#rule> "" .
+
+<https://semiceu.github.io//doc/dcat-ap-hvd#vcard:KindShape/abe13467d83c0301d2d6c2d77bd37218b9f6b62b> rdfs:seeAlso "https://semiceu.github.io//doc/dcat-ap-hvd#vcard%3AKind%3Aemail";
+  shacl:description """A email address via which contact can be made.
+"""@en;
+  shacl:minCount 1;
+  shacl:name "email"@en;
+  shacl:path vcard:hasEmail;
+  <https://data.vlaanderen.be/ns/shacl#message> [<https://semiceu.github.io//doc/dcat-ap-hvden> "Minimaal 1 waarden verwacht voor email"];
+  <https://data.vlaanderen.be/ns/shacl#rule> "" .
+
+<https://semiceu.github.io//doc/dcat-ap-hvd#vcard:KindShape/af064e842c8e058505005f10ba6025ee57ad168b> rdfs:seeAlso "https://semiceu.github.io//doc/dcat-ap-hvd#vcard%3AKind%3Acontact%20page";
+  shacl:description "A webpage that either allows to make contact (i.e. a webform) or the information contains how to get into contact. "@en;
+  shacl:maxCount 1;
+  shacl:name "contact page"@en;
+  shacl:path foaf:page;
+  <https://data.vlaanderen.be/ns/shacl#message> [<https://semiceu.github.io//doc/dcat-ap-hvden> "Maximaal 1 waarden toegelaten voor contact page"];
+  <https://data.vlaanderen.be/ns/shacl#rule> "" .
+
+<https://semiceu.github.io//doc/dcat-ap-hvd#vcard:KindShape/df2e16526cd0f7cc796d3bb27ac1861737a35d91> rdfs:seeAlso "https://semiceu.github.io//doc/dcat-ap-hvd#vcard%3AKind%3Aemail";
+  shacl:description """A email address via which contact can be made.
+"""@en;
+  shacl:maxCount 1;
+  shacl:name "email"@en;
+  shacl:path vcard:hasEmail;
+  <https://data.vlaanderen.be/ns/shacl#message> [<https://semiceu.github.io//doc/dcat-ap-hvden> "Maximaal 1 waarden toegelaten voor email"];
+  <https://data.vlaanderen.be/ns/shacl#rule> "" .
 
 <https://semiceu.github.io//doc/dcat-ap-hvd#xsd:decimalShape> a shacl:NodeShape;
   shacl:closed false;
