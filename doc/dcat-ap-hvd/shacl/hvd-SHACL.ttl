@@ -2,7 +2,6 @@
 @prefix dcat: <http://www.w3.org/ns/dcat#> .
 @prefix foaf: <http://xmlns.com/foaf/0.1/> .
 @prefix owl: <http://www.w3.org/2002/07/owl#> .
-@prefix prov: <http://www.w3.org/ns/prov#> .
 @prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
 @prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
 @prefix shacl: <http://www.w3.org/ns/shacl#> .
@@ -11,15 +10,13 @@
 @prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
 
 <https://semiceu.github.io//doc/dcat-ap-hvd> rdfs:member <https://semiceu.github.io//doc/dcat-ap-hvd#dct:LicenseDocumentShape>,
+    <https://semiceu.github.io//doc/dcat-ap-hvd#dct:mediaTypeShape>,
+    <https://semiceu.github.io//doc/dcat-ap-hvd#dct:MediaTypeOrExtentShape>,
+    <https://semiceu.github.io//doc/dcat-ap-hvd#dct:RightsStatementShape>,
     <https://semiceu.github.io//doc/dcat-ap-hvd#dct:StandardShape>,
-    <https://semiceu.github.io//doc/dcat-ap-hvd#TemporalLiteralShape>,
     <https://semiceu.github.io//doc/dcat-ap-hvd#rdfs:LiteralShape>,
     <https://semiceu.github.io//doc/dcat-ap-hvd#rdfs:ResourceShape>,
-    <https://semiceu.github.io//doc/dcat-ap-hvd#xsd:decimalShape>,
-    <https://semiceu.github.io//doc/dcat-ap-hvd#xsd:durationShape>,
-    <https://semiceu.github.io//doc/dcat-ap-hvd#xsd:hexBinaryShape>,
     <https://semiceu.github.io//doc/dcat-ap-hvd#skos:ConceptShape>,
-    <https://semiceu.github.io//doc/dcat-ap-hvd#TimeInstantShape>,
     <https://semiceu.github.io//doc/dcat-ap-hvd#vcard:KindShape>,
     <https://semiceu.github.io//doc/dcat-ap-hvd#adms:IdentifierShape>,
     <https://semiceu.github.io//doc/dcat-ap-hvd#dcat:CatalogShape>,
@@ -28,15 +25,7 @@
     <https://semiceu.github.io//doc/dcat-ap-hvd#dcat:DatasetShape>,
     <https://semiceu.github.io//doc/dcat-ap-hvd#dcat:DistributionShape>,
     <https://semiceu.github.io//doc/dcat-ap-hvd#dcat:ResourceShape>,
-    <https://semiceu.github.io//doc/dcat-ap-hvd#prov:ActivityShape> .
-
-<https://semiceu.github.io//doc/dcat-ap-hvd#TemporalLiteralShape> a shacl:NodeShape;
-  shacl:closed false;
-  shacl:targetClass rdfs:Literal .
-
-<https://semiceu.github.io//doc/dcat-ap-hvd#TimeInstantShape> a shacl:NodeShape;
-  shacl:closed false;
-  shacl:targetClass <http://www.w3.org/2006/time#Instant> .
+    <https://semiceu.github.io//doc/dcat-ap-hvd#foaf:DocumentShape> .
 
 <https://semiceu.github.io//doc/dcat-ap-hvd#adms:IdentifierShape> a shacl:NodeShape;
   shacl:closed false;
@@ -877,13 +866,25 @@
   <https://data.vlaanderen.be/ns/shacl#message> [<https://semiceu.github.io//doc/dcat-ap-hvden> "Minimaal 1 waarden verwacht voor same as"];
   <https://data.vlaanderen.be/ns/shacl#rule> "" .
 
+<https://semiceu.github.io//doc/dcat-ap-hvd#dct:MediaTypeOrExtentShape> a shacl:NodeShape;
+  shacl:closed false;
+  shacl:targetClass dc:MediaTypeOrExtent .
+
+<https://semiceu.github.io//doc/dcat-ap-hvd#dct:RightsStatementShape> a shacl:NodeShape;
+  shacl:closed false;
+  shacl:targetClass dc:RightsStatement .
+
 <https://semiceu.github.io//doc/dcat-ap-hvd#dct:StandardShape> a shacl:NodeShape;
   shacl:closed false;
   shacl:targetClass dc:Standard .
 
-<https://semiceu.github.io//doc/dcat-ap-hvd#prov:ActivityShape> a shacl:NodeShape;
+<https://semiceu.github.io//doc/dcat-ap-hvd#dct:mediaTypeShape> a shacl:NodeShape;
   shacl:closed false;
-  shacl:targetClass prov:Activity .
+  shacl:targetClass dc:MediaType .
+
+<https://semiceu.github.io//doc/dcat-ap-hvd#foaf:DocumentShape> a shacl:NodeShape;
+  shacl:closed false;
+  shacl:targetClass foaf:Document .
 
 <https://semiceu.github.io//doc/dcat-ap-hvd#rdfs:LiteralShape> a shacl:NodeShape;
   shacl:closed false;
@@ -1003,18 +1004,6 @@
   shacl:path vcard:hasEmail;
   <https://data.vlaanderen.be/ns/shacl#message> [<https://semiceu.github.io//doc/dcat-ap-hvden> "Maximaal 1 waarden toegelaten voor email"];
   <https://data.vlaanderen.be/ns/shacl#rule> "" .
-
-<https://semiceu.github.io//doc/dcat-ap-hvd#xsd:decimalShape> a shacl:NodeShape;
-  shacl:closed false;
-  shacl:targetClass xsd:decimal .
-
-<https://semiceu.github.io//doc/dcat-ap-hvd#xsd:durationShape> a shacl:NodeShape;
-  shacl:closed false;
-  shacl:targetClass xsd:duration .
-
-<https://semiceu.github.io//doc/dcat-ap-hvd#xsd:hexBinaryShape> a shacl:NodeShape;
-  shacl:closed false;
-  shacl:targetClass xsd:hexBinary .
 
  [<https://semiceu.github.io//doc/dcat-ap-hvden> "Maximaal 1 waarden toegelaten voor type"] .
 
