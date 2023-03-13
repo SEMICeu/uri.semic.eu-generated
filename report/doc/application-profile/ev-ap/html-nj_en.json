@@ -15,8 +15,8 @@
     },
     "status": "Working Draft",
     "statuslabel": "Onbekend",
-    "repositoryurl": "git@uri.semic.eu-thema:SEMICeu/uri.semic.eu-thema.git/tree/4af8ca17acf595efce5f0936074f8e1de04dd681",
-    "changelogurl": "git@uri.semic.eu-thema:SEMICeu/uri.semic.eu-thema.git/blob/4af8ca17acf595efce5f0936074f8e1de04dd681/CHANGELOG",
+    "repositoryurl": "git@uri.semic.eu-thema:SEMICeu/uri.semic.eu-thema.git/tree/2f5d32e7c57811d8bc011f4ec58e663fa73587e7",
+    "changelogurl": "git@uri.semic.eu-thema:SEMICeu/uri.semic.eu-thema.git/blob/2f5d32e7c57811d8bc011f4ec58e663fa73587e7/CHANGELOG",
     "feedbackurl": "https://github.com/SEMICeu/EV-AP/issues",
     "standaardregisterurl": "EV-AP",
     "usesVocs": [],
@@ -1926,6 +1926,39 @@
           "codelist_uri": ""
         },
         {
+          "uri": "http://data.europa.eu/m8g/owns",
+          "name": "owns",
+          "sort": "owns",
+          "label": {
+            "en": "owns"
+          },
+          "description": {},
+          "usage": {},
+          "domain": [
+            {
+              "EA-Name": "Person",
+              "uri": "http://www.w3.org/ns/person#Person"
+            }
+          ],
+          "range": [
+            {
+              "range_label": "ElectricCar",
+              "range_uri": "http://data.europa.eu/m8g/ElectricCar"
+            }
+          ],
+          "scopedrange": [
+            {
+              "range_uri": "#Electric Car",
+              "range_puri": "http://data.europa.eu/m8g/ElectricCar",
+              "range_label": {
+                "en": "Electric Car"
+              }
+            }
+          ],
+          "cardinality": "0..*",
+          "codelist_uri": ""
+        },
+        {
           "uri": "http://data.europa.eu/m8g/matronymicName",
           "name": "matronymicName",
           "sort": "matronymic name",
@@ -2230,13 +2263,52 @@
     },
     {
       "uri": "https://smartdatamodels.org/dataModel.Battery/StorageBatteryMeasurement",
-      "name": "",
-      "label": {},
-      "sort": "",
+      "name": "StorageBatteryMeasurement",
+      "label": {
+        "en": "Storage Battery Measurement"
+      },
+      "sort": "Storage Battery Measurement",
       "description": {},
       "usage": {},
       "parents": [],
       "properties": [
+        {
+          "uri": "http://www.w3.org/ns/locn#geometry",
+          "name": "geometry",
+          "sort": "geometry",
+          "label": {
+            "en": "geometry"
+          },
+          "description": {
+            "en": "Associates any Resource with the corresponding Geometry."
+          },
+          "usage": {
+            "en": "<p>Depending on how a geometry is encoded, the range of this property may be one of the following:\r\n<ul>\r\n  <li>- a literal (e.g., WKT - string literal -, GML, KML - XML literal)</li>\r\n  <li>- a geometry class, as those defined in the OGC's GeoSPARQL specification, in the W3C's Basic Geo (WGS84 lat/long) vocabulary, and at schema.org;</li>\r\n  <li>- geocoded URIs, as geo or GeoHash URIs, treated as URI references.</li>\r\n</ul>\r\n\r\n<p>\r\nFor interoperability reasons, it is recommended using one of the following:\r\n<ul>\r\n  <li>- Any geometry:\r\n    <ul>\r\n      <li>  - WKT, GML, and RDF+WKT/GML, as per the GeoSPARQL specification.</li>\r\n      <li>  - KML (Keyhole Markup Language) - note that KML supports the following geometries only: point, line string, linear ring, and polygon.\r\n      <li>  - RDF as per the schema.org vocabulary (see classes schema:GeoCoordinates and schema:GeoShape).\r\n    </ul>\r\n  </li>\r\n  <li>- Points: one of the above, or:\r\n    <ul>\r\n      <li>  - RDF as per the W3C Basic Geo (WGS84 lat/long) vocabulary.</li>\r\n      <li>  - GeoHash URIs.</li>\r\n      <li>  - geo URIs.</li>\r\n    </ul>\r\n  </li>\r\n</ul>\r\n</p>"
+          },
+          "domain": [
+            {
+              "EA-Name": "StorageBatteryMeasurement",
+              "uri": "https://smartdatamodels.org/dataModel.Battery/StorageBatteryMeasurement"
+            }
+          ],
+          "range": [
+            {
+              "range_label": "Geometry",
+              "range_uri": "http://www.w3.org/ns/locn#Geometry"
+            }
+          ],
+          "scopedrange": [
+            {
+              "range_uri": "#Geometry",
+              "range_puri": "http://www.w3.org/ns/locn#Geometry",
+              "range_label": {
+                "en": "Geometry"
+              }
+            }
+          ],
+          "cardinality": "",
+          "codelist_uri": ""
+        },
         {
           "uri": "http://data.europa.eu/m8g/dateObserved",
           "name": "dateObserved",
@@ -2502,6 +2574,41 @@
             }
           ],
           "cardinality": "0..1",
+          "codelist_uri": ""
+        },
+        {
+          "uri": "http://data.europa.eu/m8g/quantity",
+          "name": "quantity",
+          "sort": "quantity",
+          "label": {
+            "en": "quantity"
+          },
+          "description": {
+            "en": "Quantity of which the child part is assembled into the parent part."
+          },
+          "usage": {},
+          "domain": [
+            {
+              "EA-Name": "VehicleComponent",
+              "uri": "https://www.w3.org/TR/vsso-core/#VehicleComponent"
+            }
+          ],
+          "range": [
+            {
+              "range_label": "QuantityValue",
+              "range_uri": "https://qudt.org/schema/qudt/#QuantityValue"
+            }
+          ],
+          "scopedrange": [
+            {
+              "range_uri": "#QuantityValue",
+              "range_puri": "https://qudt.org/schema/qudt/#QuantityValue",
+              "range_label": {
+                "en": "QuantityValue"
+              }
+            }
+          ],
+          "cardinality": "1",
           "codelist_uri": ""
         },
         {
