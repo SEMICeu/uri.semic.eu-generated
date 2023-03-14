@@ -500,6 +500,7 @@
     <https://semiceu.github.io//doc/application-profile/ev-ap#EVChargingStationShape/0d1a5e90603f220d39f0a954ddeb51618c1d2bca>,
     <https://semiceu.github.io//doc/application-profile/ev-ap#EVChargingStationShape/12b7af33dc2d29d29fee1578411033fdbe8c2bd4>,
     <https://semiceu.github.io//doc/application-profile/ev-ap#EVChargingStationShape/15dcae4d5ddb2ab070ee181f77a7dfbcf800539e>,
+    <https://semiceu.github.io//doc/application-profile/ev-ap#EVChargingStationShape/231c6c5fcbc5ec772efa304fe1e93f336581c293>,
     <https://semiceu.github.io//doc/application-profile/ev-ap#EVChargingStationShape/263a563c5bed08cdaadf4a0fd0a5fb9874d742bc>,
     <https://semiceu.github.io//doc/application-profile/ev-ap#EVChargingStationShape/2c7d994dd540f92c116cac913e2aa5d588945f1f>,
     <https://semiceu.github.io//doc/application-profile/ev-ap#EVChargingStationShape/36e1cae2f9036bc0ffe22898f93a87830dc90105>,
@@ -511,6 +512,7 @@
     <https://semiceu.github.io//doc/application-profile/ev-ap#EVChargingStationShape/96cdcbb0489a41ab01fc39c521f5ed607a0b2c41>,
     <https://semiceu.github.io//doc/application-profile/ev-ap#EVChargingStationShape/9caf9e629daa0e64ece77788576468821d7cff8c>,
     <https://semiceu.github.io//doc/application-profile/ev-ap#EVChargingStationShape/abe3df04b14328c60429350e4ae7c1eb8090491f>,
+    <https://semiceu.github.io//doc/application-profile/ev-ap#EVChargingStationShape/be01df43f1c288b656b3ca3879eb3dd9d8c700b9>,
     <https://semiceu.github.io//doc/application-profile/ev-ap#EVChargingStationShape/c6b026a669392902fee3cfceb3ea735676a037d3>,
     <https://semiceu.github.io//doc/application-profile/ev-ap#EVChargingStationShape/d0b958cd33e8ef1bc031edaf2859b44db128a644>,
     <https://semiceu.github.io//doc/application-profile/ev-ap#EVChargingStationShape/dde6f1d3b53e457ed56cd01d51f110aea62f5d72>;
@@ -552,11 +554,18 @@
   <https://data.vlaanderen.be/ns/shacl#message> [<https://semiceu.github.io//doc/application-profile/ev-apen> "De verwachte waarde voor allowed vehicle type is een rdfs:Resource (URI of blank node)"];
   <https://data.vlaanderen.be/ns/shacl#rule> "" .
 
+<https://semiceu.github.io//doc/application-profile/ev-ap#EVChargingStationShape/231c6c5fcbc5ec772efa304fe1e93f336581c293> rdfs:seeAlso "https://semiceu.github.io//doc/application-profile/ev-ap#EVChargingStation%3Acapacity";
+  shacl:maxCount 1;
+  shacl:name "capacity"@en;
+  shacl:path <http://data.europa.eu/m8g/capacity>;
+  <https://data.vlaanderen.be/ns/shacl#message> [<https://semiceu.github.io//doc/application-profile/ev-apen> "Maximaal 1 waarden toegelaten voor capacity"];
+  <https://data.vlaanderen.be/ns/shacl#rule> "" .
+
 <https://semiceu.github.io//doc/application-profile/ev-ap#EVChargingStationShape/263a563c5bed08cdaadf4a0fd0a5fb9874d742bc> rdfs:seeAlso "https://semiceu.github.io//doc/application-profile/ev-ap#EVChargingStation%3Aname";
-  shacl:datatype xsd:string;
+  shacl:datatype rdf:langString;
   shacl:name "name"@en;
   shacl:path rdfs:label;
-  <https://data.vlaanderen.be/ns/shacl#message> [<https://semiceu.github.io//doc/application-profile/ev-apen> "De range van name moet van het type <http://www.w3.org/2001/XMLSchema#string> zijn."];
+  <https://data.vlaanderen.be/ns/shacl#message> [<https://semiceu.github.io//doc/application-profile/ev-apen> "De range van name moet van het type <http://www.w3.org/1999/02/22-rdf-syntax-ns#langString> zijn."];
   <https://data.vlaanderen.be/ns/shacl#rule> "" .
 
 <https://semiceu.github.io//doc/application-profile/ev-ap#EVChargingStationShape/2c7d994dd540f92c116cac913e2aa5d588945f1f> rdfs:seeAlso "https://semiceu.github.io//doc/application-profile/ev-ap#EVChargingStation%3Aaddress";
@@ -632,6 +641,13 @@
   <https://data.vlaanderen.be/ns/shacl#message> [<https://semiceu.github.io//doc/application-profile/ev-apen> "De verwachte waarde voor capacity is een Literal"];
   <https://data.vlaanderen.be/ns/shacl#rule> "" .
 
+<https://semiceu.github.io//doc/application-profile/ev-ap#EVChargingStationShape/be01df43f1c288b656b3ca3879eb3dd9d8c700b9> rdfs:seeAlso "https://semiceu.github.io//doc/application-profile/ev-ap#EVChargingStation%3Aname";
+  shacl:name "name"@en;
+  shacl:path rdfs:label;
+  shacl:uniqueLang true;
+  <https://data.vlaanderen.be/ns/shacl#message> [<https://semiceu.github.io//doc/application-profile/ev-apen> "Slechts 1 waarde voor elke taal toegelaten voor name"];
+  <https://data.vlaanderen.be/ns/shacl#rule> "" .
+
 <https://semiceu.github.io//doc/application-profile/ev-ap#EVChargingStationShape/c6b026a669392902fee3cfceb3ea735676a037d3> rdfs:seeAlso "https://semiceu.github.io//doc/application-profile/ev-ap#EVChargingStation%3Asocket%20type";
   shacl:minCount 1;
   shacl:name "socket type"@en;
@@ -679,9 +695,7 @@
     <https://semiceu.github.io//doc/application-profile/ev-ap#ElectricCarShape/919e921b3ffc5a271efb298c1c2a1de1a0223cb0>,
     <https://semiceu.github.io//doc/application-profile/ev-ap#ElectricCarShape/93a67896c369f039b1976afad1f9effad39c0165>,
     <https://semiceu.github.io//doc/application-profile/ev-ap#ElectricCarShape/9718e5b2dd3f60e9750c9cee147b504912839223>,
-    <https://semiceu.github.io//doc/application-profile/ev-ap#ElectricCarShape/9b2f6cad0d2dd6acb08b92984be3588e6aa301ef>,
     <https://semiceu.github.io//doc/application-profile/ev-ap#ElectricCarShape/9ba405338576314672ad4706ce5b1c37a3c7d183>,
-    <https://semiceu.github.io//doc/application-profile/ev-ap#ElectricCarShape/b6bab182e9a1a88b4da725fe07e140a34c1cd9b4>,
     <https://semiceu.github.io//doc/application-profile/ev-ap#ElectricCarShape/bb94d993ad4b3f207dc0c78c2e32aef72caf2bf4>,
     <https://semiceu.github.io//doc/application-profile/ev-ap#ElectricCarShape/c14c91bc058b2360dcdb1b27523c7f270a2a18ab>,
     <https://semiceu.github.io//doc/application-profile/ev-ap#ElectricCarShape/c35a7dffb911441888508b61027ed2aac3179d29>,
@@ -868,28 +882,12 @@
   <https://data.vlaanderen.be/ns/shacl#message> [<https://semiceu.github.io//doc/application-profile/ev-apen> "De range van vehicle identification number moet van het type <http://www.w3.org/2001/XMLSchema#string> zijn."];
   <https://data.vlaanderen.be/ns/shacl#rule> "" .
 
-<https://semiceu.github.io//doc/application-profile/ev-ap#ElectricCarShape/9b2f6cad0d2dd6acb08b92984be3588e6aa301ef> rdfs:seeAlso "https://semiceu.github.io//doc/application-profile/ev-ap#ElectricCar%3Afuel%20consumption";
-  shacl:description "The fuel used per unit of distance traveled."@en;
-  shacl:minCount 1;
-  shacl:name "fuel consumption"@en;
-  shacl:path <http://data.europa.eu/m8g/fuelConsumption>;
-  <https://data.vlaanderen.be/ns/shacl#message> [<https://semiceu.github.io//doc/application-profile/ev-apen> "Minimaal 1 waarden verwacht voor fuel consumption"];
-  <https://data.vlaanderen.be/ns/shacl#rule> "" .
-
 <https://semiceu.github.io//doc/application-profile/ev-ap#ElectricCarShape/9ba405338576314672ad4706ce5b1c37a3c7d183> rdfs:seeAlso "https://semiceu.github.io//doc/application-profile/ev-ap#ElectricCar%3AinletType";
   shacl:class skos:Concept;
   shacl:description "The type of plug this car is equiped with."@en;
   shacl:name "inletType"@en;
   shacl:path <http://data.europa.eu/m8g/inletType>;
   <https://data.vlaanderen.be/ns/shacl#message> [<https://semiceu.github.io//doc/application-profile/ev-apen> "De range van inletType moet van het type <http://www.w3.org/2004/02/skos/core#Concept> zijn."];
-  <https://data.vlaanderen.be/ns/shacl#rule> "" .
-
-<https://semiceu.github.io//doc/application-profile/ev-ap#ElectricCarShape/b6bab182e9a1a88b4da725fe07e140a34c1cd9b4> rdfs:seeAlso "https://semiceu.github.io//doc/application-profile/ev-ap#ElectricCar%3Afuel%20efficiency";
-  shacl:description "The distance traveled per unit of fuel used."@en;
-  shacl:minCount 1;
-  shacl:name "fuel efficiency"@en;
-  shacl:path <http://data.europa.eu/m8g/fuelEfficiency>;
-  <https://data.vlaanderen.be/ns/shacl#message> [<https://semiceu.github.io//doc/application-profile/ev-apen> "Minimaal 1 waarden verwacht voor fuel efficiency"];
   <https://data.vlaanderen.be/ns/shacl#rule> "" .
 
 <https://semiceu.github.io//doc/application-profile/ev-ap#ElectricCarShape/bb94d993ad4b3f207dc0c78c2e32aef72caf2bf4> rdfs:seeAlso "https://semiceu.github.io//doc/application-profile/ev-ap#ElectricCar%3Afuel%20efficiency";
@@ -1644,10 +1642,10 @@
   <https://data.vlaanderen.be/ns/shacl#rule> "" .
 
 <https://semiceu.github.io//doc/application-profile/ev-ap#StorageBatteryMeasurementShape/9b511a6513712d6d98e43c3df8a82bf52e992d62> rdfs:seeAlso "https://semiceu.github.io//doc/application-profile/ev-ap#StorageBatteryMeasurement%3Adate%20observed";
-  shacl:class <http://www.w3.org/2006/time#TemporalEntity>;
+  shacl:datatype xsd:dateTime;
   shacl:name "date observed"@en;
   shacl:path <http://data.europa.eu/m8g/dateObserved>;
-  <https://data.vlaanderen.be/ns/shacl#message> [<https://semiceu.github.io//doc/application-profile/ev-apen> "De range van date observed moet van het type <http://www.w3.org/2006/time#TemporalEntity> zijn."];
+  <https://data.vlaanderen.be/ns/shacl#message> [<https://semiceu.github.io//doc/application-profile/ev-apen> "De range van date observed moet van het type <http://www.w3.org/2001/XMLSchema#dateTime> zijn."];
   <https://data.vlaanderen.be/ns/shacl#rule> "" .
 
 <https://semiceu.github.io//doc/application-profile/ev-ap#StorageBatteryMeasurementShape/a8e9e58bcd9056f4c386d3a984a41159637ba27c> rdfs:seeAlso "https://semiceu.github.io//doc/application-profile/ev-ap#StorageBatteryMeasurement%3Adate%20observed";
@@ -1675,9 +1673,9 @@
 
 <https://semiceu.github.io//doc/application-profile/ev-ap#StorageBatteryMeasurementShape/e4e6b0e9521a41c8237b44a48ea7bd7c78918dd9> rdfs:seeAlso "https://semiceu.github.io//doc/application-profile/ev-ap#StorageBatteryMeasurement%3Adate%20observed";
   shacl:name "date observed"@en;
-  shacl:nodekind "sh:BlankNodeOrIRI";
+  shacl:nodekind "sh:Literal";
   shacl:path <http://data.europa.eu/m8g/dateObserved>;
-  <https://data.vlaanderen.be/ns/shacl#message> [<https://semiceu.github.io//doc/application-profile/ev-apen> "De verwachte waarde voor date observed is een rdfs:Resource (URI of blank node)"];
+  <https://data.vlaanderen.be/ns/shacl#message> [<https://semiceu.github.io//doc/application-profile/ev-apen> "De verwachte waarde voor date observed is een Literal"];
   <https://data.vlaanderen.be/ns/shacl#rule> "" .
 
 <https://semiceu.github.io//doc/application-profile/ev-ap#StorageBatteryMeasurementShape/f4a65c32a7ffc98bd7399aeaa01cd0d277b3e3ea> rdfs:seeAlso "https://semiceu.github.io//doc/application-profile/ev-ap#StorageBatteryMeasurement%3Astate%20of%20charge";
@@ -1779,7 +1777,7 @@
   shacl:description "Unique identifier of the entity"@en;
   shacl:minCount 1;
   shacl:name "identifier"@en;
-  shacl:path <http://data.europa.eu/m8g/identifier>;
+  shacl:path dc:identifier;
   <https://data.vlaanderen.be/ns/shacl#message> [<https://semiceu.github.io//doc/application-profile/ev-apen> "Minimaal 1 waarden verwacht voor identifier"];
   <https://data.vlaanderen.be/ns/shacl#rule> "" .
 
@@ -1811,7 +1809,7 @@
   shacl:description "Unique identifier of the entity"@en;
   shacl:name "identifier"@en;
   shacl:nodekind "sh:Literal";
-  shacl:path <http://data.europa.eu/m8g/identifier>;
+  shacl:path dc:identifier;
   <https://data.vlaanderen.be/ns/shacl#message> [<https://semiceu.github.io//doc/application-profile/ev-apen> "De verwachte waarde voor identifier is een Literal"];
   <https://data.vlaanderen.be/ns/shacl#rule> "" .
 
@@ -1827,7 +1825,7 @@
   shacl:description "Unique identifier of the entity"@en;
   shacl:maxCount 1;
   shacl:name "identifier"@en;
-  shacl:path <http://data.europa.eu/m8g/identifier>;
+  shacl:path dc:identifier;
   <https://data.vlaanderen.be/ns/shacl#message> [<https://semiceu.github.io//doc/application-profile/ev-apen> "Maximaal 1 waarden toegelaten voor identifier"];
   <https://data.vlaanderen.be/ns/shacl#rule> "" .
 
@@ -1835,7 +1833,7 @@
   shacl:datatype xsd:string;
   shacl:description "Unique identifier of the entity"@en;
   shacl:name "identifier"@en;
-  shacl:path <http://data.europa.eu/m8g/identifier>;
+  shacl:path dc:identifier;
   <https://data.vlaanderen.be/ns/shacl#message> [<https://semiceu.github.io//doc/application-profile/ev-apen> "De range van identifier moet van het type <http://www.w3.org/2001/XMLSchema#string> zijn."];
   <https://data.vlaanderen.be/ns/shacl#rule> "" .
 
