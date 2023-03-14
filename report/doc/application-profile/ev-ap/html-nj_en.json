@@ -15,8 +15,8 @@
     },
     "status": "Working Draft",
     "statuslabel": "Onbekend",
-    "repositoryurl": "git@uri.semic.eu-thema:SEMICeu/uri.semic.eu-thema.git/tree/68b835a4e1c6565ba8af6d0a682dd527773ed3f9",
-    "changelogurl": "git@uri.semic.eu-thema:SEMICeu/uri.semic.eu-thema.git/blob/68b835a4e1c6565ba8af6d0a682dd527773ed3f9/CHANGELOG",
+    "repositoryurl": "git@uri.semic.eu-thema:SEMICeu/uri.semic.eu-thema.git/tree/e2e5242a73b92cbd6ddcebae4fa299cb18d963fc",
+    "changelogurl": "git@uri.semic.eu-thema:SEMICeu/uri.semic.eu-thema.git/blob/e2e5242a73b92cbd6ddcebae4fa299cb18d963fc/CHANGELOG",
     "feedbackurl": "https://github.com/SEMICeu/EV-AP/issues",
     "standaardregisterurl": "EV-AP",
     "usesVocs": [],
@@ -25,11 +25,11 @@
   "classes": [
     {
       "uri": "http://data.europa.eu/m8g/Battery",
-      "name": "Battery",
+      "name": "StorageBatteryDevice",
       "label": {
-        "en": "Battery"
+        "en": "Storage Battery Device"
       },
-      "sort": "Battery",
+      "sort": "Storage Battery Device",
       "description": {
         "en": "An energy storage device capable of converting electric energy into chemical energy  and back."
       },
@@ -45,248 +45,215 @@
       ],
       "properties": [
         {
-          "uri": "http://data.europa.eu/m8g/status",
-          "name": "status",
-          "sort": "status",
+          "uri": "http://www.w3.org/ns/locn#geometry",
+          "name": "geometry",
+          "sort": "geometry",
           "label": {
-            "en": "status"
+            "en": "geometry"
           },
           "description": {
-            "en": "Current operational status of the item."
+            "en": "Associates any Resource with the corresponding Geometry."
           },
-          "usage": {},
+          "usage": {
+            "en": "<p>Depending on how a geometry is encoded, the range of this property may be one of the following:\r\n<ul>\r\n  <li>- a literal (e.g., WKT - string literal -, GML, KML - XML literal)</li>\r\n  <li>- a geometry class, as those defined in the OGC's GeoSPARQL specification, in the W3C's Basic Geo (WGS84 lat/long) vocabulary, and at schema.org;</li>\r\n  <li>- geocoded URIs, as geo or GeoHash URIs, treated as URI references.</li>\r\n</ul>\r\n\r\n<p>\r\nFor interoperability reasons, it is recommended using one of the following:\r\n<ul>\r\n  <li>- Any geometry:\r\n    <ul>\r\n      <li>  - WKT, GML, and RDF+WKT/GML, as per the GeoSPARQL specification.</li>\r\n      <li>  - KML (Keyhole Markup Language) - note that KML supports the following geometries only: point, line string, linear ring, and polygon.\r\n      <li>  - RDF as per the schema.org vocabulary (see classes schema:GeoCoordinates and schema:GeoShape).\r\n    </ul>\r\n  </li>\r\n  <li>- Points: one of the above, or:\r\n    <ul>\r\n      <li>  - RDF as per the W3C Basic Geo (WGS84 lat/long) vocabulary.</li>\r\n      <li>  - GeoHash URIs.</li>\r\n      <li>  - geo URIs.</li>\r\n    </ul>\r\n  </li>\r\n</ul>\r\n</p>"
+          },
           "domain": [
             {
-              "EA-Name": "Battery",
+              "EA-Name": "StorageBatteryDevice",
               "uri": "http://data.europa.eu/m8g/Battery"
             }
           ],
           "range": [
             {
-              "range_label": "string",
-              "range_uri": "http://www.w3.org/2001/XMLSchema#string"
+              "range_label": "Geometry",
+              "range_uri": "http://www.w3.org/ns/locn#Geometry"
             }
           ],
           "scopedrange": [
             {
-              "range_uri": "http://www.w3.org/2001/XMLSchema#string",
-              "range_puri": "http://www.w3.org/2001/XMLSchema#string",
+              "range_uri": "#Geometry",
+              "range_puri": "http://www.w3.org/ns/locn#Geometry",
               "range_label": {
-                "en": "string"
+                "en": "Geometry"
               }
             }
           ],
-          "cardinality": "0..*",
+          "cardinality": "1",
           "codelist_uri": ""
         },
         {
-          "uri": "http://data.europa.eu/m8g/rechargeTime",
-          "name": "rechargeTime",
-          "sort": "recharge time",
+          "uri": "http://data.europa.eu/m8g/rechargeEnergySource",
+          "name": "rechargeEnergySource",
+          "sort": "recharge energy source",
           "label": {
-            "en": "recharge time"
+            "en": "recharge energy source"
           },
           "description": {
-            "en": "Time for the full charge of the battery."
+            "en": "The type of power source of the battery."
           },
           "usage": {},
           "domain": [
             {
-              "EA-Name": "Battery",
+              "EA-Name": "StorageBatteryDevice",
               "uri": "http://data.europa.eu/m8g/Battery"
             }
           ],
           "range": [
             {
-              "range_label": "double",
-              "range_uri": "http://www.w3.org/2001/XMLSchema#double"
+              "range_label": "Concept",
+              "range_uri": "http://www.w3.org/2004/02/skos/core#Concept"
             }
           ],
           "scopedrange": [
             {
-              "range_uri": "http://www.w3.org/2001/XMLSchema#double",
-              "range_puri": "http://www.w3.org/2001/XMLSchema#double",
+              "range_uri": "http://www.w3.org/2004/02/skos/core#Concept",
+              "range_puri": "http://www.w3.org/2004/02/skos/core#Concept",
               "range_label": {
-                "en": "double"
+                "en": "Concept"
               }
             }
           ],
-          "cardinality": "0..1",
+          "cardinality": "1",
           "codelist_uri": ""
         },
         {
-          "uri": "http://data.europa.eu/m8g/dcPowerOutput",
-          "name": "dcPowerOutput",
-          "sort": "dc power output",
+          "uri": "http://data.europa.eu/m8g/nominalVoltage",
+          "name": "nominalVoltage",
+          "sort": "nominal voltage",
           "label": {
-            "en": "dc power output"
+            "en": "nominal voltage"
           },
           "description": {
-            "en": "Numeric value in volts for the continuous current charge ."
+            "en": "Nominal battery voltage."
           },
           "usage": {},
           "domain": [
             {
-              "EA-Name": "Battery",
+              "EA-Name": "StorageBatteryDevice",
               "uri": "http://data.europa.eu/m8g/Battery"
             }
           ],
           "range": [
             {
-              "range_label": "double",
-              "range_uri": "http://www.w3.org/2001/XMLSchema#double"
+              "range_label": "QuantityValue",
+              "range_uri": "https://qudt.org/schema/qudt/#QuantityValue"
             }
           ],
           "scopedrange": [
             {
-              "range_uri": "http://www.w3.org/2001/XMLSchema#double",
-              "range_puri": "http://www.w3.org/2001/XMLSchema#double",
+              "range_uri": "#Quantity Value",
+              "range_puri": "https://qudt.org/schema/qudt/#QuantityValue",
               "range_label": {
-                "en": "double"
+                "en": "Quantity Value"
               }
             }
           ],
-          "cardinality": "0..1",
+          "cardinality": "1",
           "codelist_uri": ""
         },
         {
-          "uri": "http://data.europa.eu/m8g/dcPowerInput",
-          "name": "dcPowerInput",
-          "sort": "dc power input",
+          "uri": "http://data.europa.eu/m8g/nominalCapacity",
+          "name": "nominalCapacity",
+          "sort": "nominal capacity",
           "label": {
-            "en": "dc power input"
+            "en": "nominal capacity"
           },
           "description": {
-            "en": "Numeric value in volts for the continuous current charge."
+            "en": "Nominal Energy capacity."
           },
           "usage": {},
           "domain": [
             {
-              "EA-Name": "Battery",
+              "EA-Name": "StorageBatteryDevice",
               "uri": "http://data.europa.eu/m8g/Battery"
             }
           ],
           "range": [
             {
-              "range_label": "double",
-              "range_uri": "http://www.w3.org/2001/XMLSchema#double"
+              "range_label": "QuantityValue",
+              "range_uri": "https://qudt.org/schema/qudt/#QuantityValue"
             }
           ],
           "scopedrange": [
             {
-              "range_uri": "http://www.w3.org/2001/XMLSchema#double",
-              "range_puri": "http://www.w3.org/2001/XMLSchema#double",
+              "range_uri": "#Quantity Value",
+              "range_puri": "https://qudt.org/schema/qudt/#QuantityValue",
               "range_label": {
-                "en": "double"
+                "en": "Quantity Value"
               }
             }
           ],
-          "cardinality": "0..1",
+          "cardinality": "1",
           "codelist_uri": ""
         },
         {
-          "uri": "http://data.europa.eu/m8g/cycleLife",
-          "name": "cycleLife",
-          "sort": "cycle life",
+          "uri": "http://data.europa.eu/m8g/dateLastReported",
+          "name": "dateLastReported",
+          "sort": "date last reported",
           "label": {
-            "en": "cycle life"
+            "en": "date last reported"
           },
           "description": {
-            "en": "Numeric value of the load/unload operation cycles for the item."
+            "en": "he last time when the device successfully reported data."
           },
           "usage": {},
           "domain": [
             {
-              "EA-Name": "Battery",
+              "EA-Name": "StorageBatteryDevice",
               "uri": "http://data.europa.eu/m8g/Battery"
             }
           ],
           "range": [
             {
-              "range_label": "integer",
-              "range_uri": "http://www.w3.org/2001/XMLSchema#integer"
+              "range_label": "dateTime",
+              "range_uri": "http://www.w3.org/2001/XMLSchema#dateTime"
             }
           ],
           "scopedrange": [
             {
-              "range_uri": "http://www.w3.org/2001/XMLSchema#integer",
-              "range_puri": "http://www.w3.org/2001/XMLSchema#integer",
+              "range_uri": "http://www.w3.org/2001/XMLSchema#dateTime",
+              "range_puri": "http://www.w3.org/2001/XMLSchema#dateTime",
               "range_label": {
-                "en": "integer"
+                "en": "dateTime"
               }
             }
           ],
-          "cardinality": "0..1",
+          "cardinality": "1",
           "codelist_uri": ""
         },
         {
-          "uri": "http://data.europa.eu/m8g/autonomyTime",
-          "name": "autonomyTime",
-          "sort": "autonomy time",
+          "uri": "http://data.europa.eu/m8g/batteryType",
+          "name": "batteryType",
+          "sort": "battery type",
           "label": {
-            "en": "autonomy time"
+            "en": "battery type"
           },
           "description": {
-            "en": "Autonomy of operations of the item without further charge."
+            "en": "Type of battery used."
           },
           "usage": {},
           "domain": [
             {
-              "EA-Name": "Battery",
+              "EA-Name": "StorageBatteryDevice",
               "uri": "http://data.europa.eu/m8g/Battery"
             }
           ],
           "range": [
             {
-              "range_label": "double",
-              "range_uri": "http://www.w3.org/2001/XMLSchema#double"
+              "range_label": "Concept",
+              "range_uri": "http://www.w3.org/2004/02/skos/core#Concept"
             }
           ],
           "scopedrange": [
             {
-              "range_uri": "http://www.w3.org/2001/XMLSchema#double",
-              "range_puri": "http://www.w3.org/2001/XMLSchema#double",
+              "range_uri": "http://www.w3.org/2004/02/skos/core#Concept",
+              "range_puri": "http://www.w3.org/2004/02/skos/core#Concept",
               "range_label": {
-                "en": "double"
+                "en": "Concept"
               }
             }
           ],
-          "cardinality": "0..1",
-          "codelist_uri": ""
-        },
-        {
-          "uri": "http://data.europa.eu/m8g/acPowerInput",
-          "name": "acPowerInput",
-          "sort": "ac power input",
-          "label": {
-            "en": "ac power input"
-          },
-          "description": {
-            "en": "Numeric value in volts for the alternate current charge."
-          },
-          "usage": {},
-          "domain": [
-            {
-              "EA-Name": "Battery",
-              "uri": "http://data.europa.eu/m8g/Battery"
-            }
-          ],
-          "range": [
-            {
-              "range_label": "double",
-              "range_uri": "http://www.w3.org/2001/XMLSchema#double"
-            }
-          ],
-          "scopedrange": [
-            {
-              "range_uri": "http://www.w3.org/2001/XMLSchema#double",
-              "range_puri": "http://www.w3.org/2001/XMLSchema#double",
-              "range_label": {
-                "en": "double"
-              }
-            }
-          ],
-          "cardinality": "0..1",
+          "cardinality": "1",
           "codelist_uri": ""
         }
       ]
@@ -414,16 +381,16 @@
           ],
           "range": [
             {
-              "range_label": "Battery",
+              "range_label": "StorageBatteryDevice",
               "range_uri": "http://data.europa.eu/m8g/Battery"
             }
           ],
           "scopedrange": [
             {
-              "range_uri": "#Battery",
+              "range_uri": "#Storage Battery Device",
               "range_puri": "http://data.europa.eu/m8g/Battery",
               "range_label": {
-                "en": "Battery"
+                "en": "Storage Battery Device"
               }
             }
           ],
@@ -2385,7 +2352,9 @@
           "label": {
             "en": "state of charge"
           },
-          "description": {},
+          "description": {
+            "en": "The ratio between the remaining and the current capacities."
+          },
           "usage": {},
           "domain": [
             {
