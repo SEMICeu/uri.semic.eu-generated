@@ -199,7 +199,7 @@
 <a href="https://github.com/SEMICeu/Core-Person-Vocabulary/tree/master/releases/2.00">https://github.com/SEMICeu/Core-Person-Vocabulary/tree/master/releases/2.00</a>
 
               </dd>
-              <!--<dt>Changelog</dt><dd><a href="git@uri.semic.eu-thema:SEMICeu/uri.semic.eu-thema.git/blob/a30984b79c93e75041d9963fd847dfb2f38b6085/CHANGELOG">git@uri.semic.eu-thema:SEMICeu/uri.semic.eu-thema.git/blob/a30984b79c93e75041d9963fd847dfb2f38b6085/CHANGELOG</a></dd>-->
+              <!--<dt>Changelog</dt><dd><a href="git@uri.semic.eu-thema:SEMICeu/uri.semic.eu-thema.git/blob/b63caaf8a83e24998fb1e9180c17166ec5efdc07/CHANGELOG">git@uri.semic.eu-thema:SEMICeu/uri.semic.eu-thema.git/blob/b63caaf8a83e24998fb1e9180c17166ec5efdc07/CHANGELOG</a></dd>-->
               <dt>Feedback</dt><dd><a href="https://github.com/SEMICeu/Core-Person-Vocabulary/issues">https://github.com/SEMICeu/Core-Person-Vocabulary/issues</a></dd>
               <!--<dt>Registry of standards</dt><dd><a href="Core-Person-Vocabulary">Core-Person-Vocabulary</a></dd>-->
 
@@ -316,6 +316,7 @@ This specification was heavily based on the INSPIRE Address Representation data 
 <br/><br/>
 - full address (the complete address as a formatted string)<br/>
 - addressID (a unique identifier for the address).
+<br/><br/>
 The first of these allows publishers to simply provide the complete Address as one string, with or without formatting. This is analogous to <a href="https://www.w3.org/TR/vcard-rdf/#d4e953">vCard's label property</a>.
 <br/><br/>
 The addressID is part of the INSPIRE guidelines and provides a hook that can be used to link the Address to an alternative representation, such as vCard or OASIS xAL.
@@ -396,8 +397,7 @@ The INSPIRE method of representing addresses is very detailed, designed primaril
 Many datasets that include address data as one piece of information about something else are likely to have that data in simpler formats. These might be tailored to the specific need of the dataset, follow a national norm, or make use of a standard like vCard.
 <br/><br/>
 To provide maximum flexibility in the Core Vocabulary, whilst remaining interoperable with INSPIRE Address Guidelines (which EU Member States are obliged to use), the  Core Location Vocabulary provides the extra property of full address and makes use of INSPIRE's addressID.
-<br/><br/>
-The datatype of addressID is indicated as Literal (keeping backward compatibility with the old W3C specification) that can be typed differently, see <a href="https://www.w3.org/TR/rdf11-concepts/#section-Graph-Literal">more</a>.
+
 </td>
                         <td></td>
                       </tr>
@@ -475,8 +475,8 @@ The datatype of addressID is indicated as Literal (keeping backward compatibilit
                         </td>
                         <td property="rdfs:comment">A number or sequence of characters that uniquely identifies the locator within the relevant scope.</td>
                         <td property="skos:scopeNote">In simpler terms, this is the building number, apartment number, etc. For an address such as "Flat 3, 17 Bridge Street", the locator is "flat 3, 17".
-<br/><br/>
-The datatype of locatorDesignator is indicated as Literal (keeping backward compatibility with the old W3C specification) that can be typed differently, see <a href="https://www.w3.org/TR/rdf11-concepts/#section-Graph-Literal">more</a>.</td>
+
+</td>
                         <td></td>
                       </tr>
                     
@@ -516,9 +516,7 @@ The key difference between a locator and a locator name is that the latter is a 
                           
                         </td>
                         <td property="rdfs:comment">The code created and maintained for postal purposes to identify a subdivision of addresses and postal delivery points.</td>
-                        <td property="skos:scopeNote">Post codes are common elements in many countries' postal address systems. One of the many post codes of Paris is for example "75000".
-
-The datatype of addressID is indicated as Literal (keeping backward compatibility with the old W3C specification) that can be typed differently, see <a href="https://www.w3.org/TR/rdf11-concepts/#section-Graph-Literal">more</a>.</td>
+                        <td property="skos:scopeNote">Post codes are common elements in many countries' postal address systems. One of the many post codes of Paris is for example "75000".</td>
                         <td></td>
                       </tr>
                     
@@ -556,9 +554,7 @@ The datatype of addressID is indicated as Literal (keeping backward compatibilit
                           
                         </td>
                         <td property="rdfs:comment">A location designator for a postal delivery point at a post office, usually a number.</td>
-                        <td property="skos:scopeNote">INSPIRE's name for this is "postalDeliveryIdentifier" for which it uses the locator designator property with a type attribute of that name. This vocabulary separates out the Post Office Box for greater independence of technology. An example post office box number is "9383".
-<br/><br/>
-The datatype of poBox is indicated as Literal (keeping backward compatibility with the old W3C specification) that can be typed differently, see <a href="https://www.w3.org/TR/rdf11-concepts/#section-Graph-Literal">more</a>.</td>
+                        <td property="skos:scopeNote">INSPIRE's name for this is "postalDeliveryIdentifier" for which it uses the locator designator property with a type attribute of that name. This vocabulary separates out the Post Office Box for greater independence of technology. An example post office box number is "9383".</td>
                         <td></td>
                       </tr>
                     
@@ -1108,7 +1104,7 @@ Where a country has changed its name or no longer exists (such as Czechoslovakia
                   <dl>
                     <dt>Definition</dt><dd>A individual human being who may be dead or alive, but not imaginary.</dd>
                     
-                    <dt>Usage</dt><dd>The fact that a person in the context of Core Person Vocabulary cannot be imaginary makes person:Person a subclass of both foaf:Person and schema:Person which both cover imaginary characters as well as real people. The Person Class is a subclass of the more general <a href="#Agent">'Agent' class</a>.</dd>
+                    <dt>Usage</dt><dd>The fact that a person in the context of Core Person Vocabulary cannot be imaginary makes person:Person a subclass of foaf:Person which cover imaginary characters as well as real people. The Person Class is a subclass of the more general <a href="#Agent">'Agent' class</a>.</dd>
                     
 		     
 		    <dt>Subclass of<dt><dd>
@@ -1251,7 +1247,7 @@ Citizenship is information needed by many cross-border use cases and is a legal 
                           
                         </td>
                         <td property="rdfs:comment">The country in which the Person was born.</td>
-                        <td property="skos:scopeNote">The Location Class has two properties: a Geographic Name and a Geographic Identifier. Plain codes like "DE" should be provided as values for Geographical Names whereas URIs should be provided as value of the Geographical Identifier. Ideally, provide both. Providing a simple country name is problematic and should be avoided whereas using a standardised system that allows the use of a code list for country names has a lot of potential for increasing semantic interoperability. Known diversity that one has to deal with when exchanging country names between different communication partners without relying on an agreed code list are: (a) long form vs. short form of a country name (e.g. Federal Republic of Germany vs. Germany), (b) different languages (Italy vs. Italia), (c) historic name vs. current name (Burma vs. Myanmar), (d) ambiguity of similar sounding countries (Republic of the Congo vs. Democratic Republic of the Congo). The Publications Office of the European Union recommends and uses <a href="https://www.iso.org/iso-3166-country-codes.html">ISO 3166-1</a> codes for countries in all cases except two: use 'UK' in preference to the ISO 3166 code GB for the United Kingdom; use 'EL' in preference to the ISO 3166 code GR for Greece. See http://publications.europa.eu/code/en/en-5000500.htm for details of the OPOCE's full list of countries, codes, currencies and more. Where a country has changed its name or no longer exists (such as Czechoslovakia, Yugoslavia etc.) use the ISO 3166-3 code [ISO 3166-3].</td>
+                        <td property="skos:scopeNote">The Location Class has two properties: a Geographic Name and a Geographic Identifier. Plain codes like "DE" should be provided as values for Geographical Names whereas URIs should be provided as value of the Geographical Identifier. Ideally, provide both. Providing a simple country name is problematic and should be avoided whereas using a standardised system that allows the use of a code list for country names has a lot of potential for increasing semantic interoperability. Known diversity that one has to deal with when exchanging country names between different communication partners without relying on an agreed code list are: (a) long form vs. short form of a country name (e.g. Federal Republic of Germany vs. Germany), (b) different languages (Italy vs. Italia), (c) historic name vs. current name (Burma vs. Myanmar), (d) ambiguity of similar sounding countries (Republic of the Congo vs. Democratic Republic of the Congo). The Publications Office of the European Union recommends and uses <a href="https://www.iso.org/iso-3166-country-codes.html">ISO 3166-1</a> codes for countries in all cases except two: use 'UK' in preference to the ISO 3166 code GB for the United Kingdom; use 'EL' in preference to the ISO 3166 code GR for Greece. See <a href="http://publications.europa.eu/code/en/en-5000500.htm"> Publications Office list of countries</a> for details of the OPOCE's full list of countries, codes, currencies and more. Where a country has changed its name or no longer exists (such as Czechoslovakia, Yugoslavia etc.) use the<a href="https://www.iso.org/standard/72484.html">ISO 3166-3 code</a>.</td>
                         <td></td>
                       </tr>
                     
@@ -1270,7 +1266,7 @@ Citizenship is information needed by many cross-border use cases and is a legal 
                           
                         </td>
                         <td property="rdfs:comment">The country in which the Person died.</td>
-                        <td property="skos:scopeNote">The Location Class has two properties: a Geographic Name and a Geographic Identifier. Plain codes like "DE" should be provided as values for Geographical Names whereas URIs should be provided as value of the Geographical Identifier. Ideally, provide both. Providing a simple country name is problematic and should be avoided whereas using a standardised system that allows the use of a code list for country names has a lot of potential for increasing semantic interoperability. Known diversity that one has to deal with when exchanging country names between different communication partners without relying on an agreed code list are: (a) long form vs. short form of a country name (e.g. Federal Republic of Germany vs. Germany), (b) different languages (Italy vs. Italia), (c) historic name vs. current name (Burma vs. Myanmar), (d) ambiguity of similar sounding countries (Republic of the Congo vs. Democratic Republic of the Congo). The Publications Office of the European Union recommends and uses ISO 3166-1 codes for countries in all cases except two: use 'UK' in preference to the ISO 3166 code GB for the United Kingdom; use 'EL' in preference to the ISO 3166 code GR for Greece. See http://publications.europa.eu/code/en/en-5000500.htm for details of the OPOCE's full list of countries, codes, currencies and more. Where a country has changed its name or no longer exists (such as Czechoslovakia, Yugoslavia etc.) use the ISO 3166-3 code [ISO 3166-3].</td>
+                        <td property="skos:scopeNote">The Location Class has two properties: a Geographic Name and a Geographic Identifier. Plain codes like "DE" should be provided as values for Geographical Names whereas URIs should be provided as value of the Geographical Identifier. Ideally, provide both. Providing a simple country name is problematic and should be avoided whereas using a standardised system that allows the use of a code list for country names has a lot of potential for increasing semantic interoperability. Known diversity that one has to deal with when exchanging country names between different communication partners without relying on an agreed code list are: (a) long form vs. short form of a country name (e.g. Federal Republic of Germany vs. Germany), (b) different languages (Italy vs. Italia), (c) historic name vs. current name (Burma vs. Myanmar), (d) ambiguity of similar sounding countries (Republic of the Congo vs. Democratic Republic of the Congo). The Publications Office of the European Union recommends and uses <a href="https://www.iso.org/iso-3166-country-codes.html">ISO 3166-1</a> codes for countries in all cases except two: use 'UK' in preference to the ISO 3166 code GB for the United Kingdom; use 'EL' in preference to the ISO 3166 code GR for Greece. See <a href="http://publications.europa.eu/code/en/en-5000500.htm"> Publications Office list of countries</a> for details of the OPOCE's full list of countries, codes, currencies and more. Where a country has changed its name or no longer exists (such as Czechoslovakia, Yugoslavia etc.) use the<a href="https://www.iso.org/standard/72484.html">ISO 3166-3 code</a>.</td>
                         <td></td>
                       </tr>
                     
@@ -1291,9 +1287,9 @@ Citizenship is information needed by many cross-border use cases and is a legal 
                         <td property="rdfs:comment">The point in time on which the Person was born.</td>
                         <td property="skos:scopeNote">The date of birth could be expressed as date, gYearMonth or gYear, example:
 <ul>
-<li>1980-09-16^^xs:date</li>
-<li>1980-09^^xs:gYearMonth</li>
-<li>1980^^xs:gYear</li>
+<li>- 1980-09-16^^xs:date</li>
+<li>- 1980-09^^xs:gYearMonth</li>
+<li>- 1980^^xs:gYear</li>
 </ul></td>
                         <td></td>
                       </tr>
@@ -1315,9 +1311,9 @@ Citizenship is information needed by many cross-border use cases and is a legal 
                         <td property="rdfs:comment">The point in time on which the Person died.</td>
                         <td property="skos:scopeNote">The date of birth could be expressed as date, gYearMonth or gYear, example:
 <ul>
-<li>1980-09-16^^xs:date</li>
-<li>1980-09^^xs:gYearMonth</li>
-<li>1980^^xs:gYear</li>
+<li>- 1980-09-16^^xs:date</li>
+<li>- 1980-09^^xs:gYearMonth</li>
+<li>- 1980^^xs:gYear</li>
 </ul></td>
                         <td></td>
                       </tr>
@@ -1376,11 +1372,11 @@ Citizenship is information needed by many cross-border use cases and is a legal 
                         </td>
                         <td property="rdfs:comment">The complete name of the Person as one string.</td>
                         <td property="skos:scopeNote">It can be equal to or different from a Person's birth name. The birth name is used as a legal term, whereas the full name just gives a representation of the complete name of a Person.
-
+<br/><br/>
 In addition to the content of given name, family name and, in some systems, patronymic name, this can carry additional parts of a person's name such as titles, middle names or suffixes like "the third" or names which are neither a given nor a family name. The full name is the most reliable label for an individual and as such its use is strongly encouraged, irrespective of whether that name is broken down using the more granular elements.
-
+<br/><br/>
 It is anticipated that some systems will only provide or process the full name of a person. Where an individual has more than one full legal name (a relatively rare but not unknown phenomenon), the full name property can be used more than once. In this case, however, the granular name elements should not be used since the intention is that these provide a breakdown of the full name and it will not be clear of which full name this is true. Note that the vocabulary provides an alternative name property. This allows name(s) to be recorded that have no legal status but that nevertheless are the names by which an individual is generally known.
-
+<br/><br/>
 A name usually sticks with a person for a long time period. In some European countries a name may only be changed according to certain laws and life events, e.g. marriage. The name denominates a natural person even if he/she changes their address. Documents like birth certificate or diploma usually don't carry an address but always the name. Thus the name is one of the core attributes. However it is not sufficient to identify a person since there are combinations of very common names like Smith in the UK, Meier in Germany, or Li in China.</td>
                         <td></td>
                       </tr>
@@ -1418,8 +1414,8 @@ A name usually sticks with a person for a long time period. In some European cou
                             
                           
                         </td>
-                        <td property="rdfs:comment">The name(s) (or forename) that identify the Person within a family with a common surname.</td>
-                        <td property="skos:scopeNote">Usually a first name. Given to a person by his or her parents at birth or legally recognised as 'given names' through a formal process. All given names are ordered in one property so that, for example, the given name for Johann Sebastian Bach is "Johann Sebastian".</td>
+                        <td property="rdfs:comment">The name(s) that identify the Person within a family with a common surname.</td>
+                        <td property="skos:scopeNote">Usually a first name or forename. Given to a person by his or her parents at birth or legally recognised as 'given names' through a formal process. All given names are ordered in one property so that, for example, the given name for Johann Sebastian Bach is "Johann Sebastian".</td>
                         <td></td>
                       </tr>
                     
@@ -1495,7 +1491,7 @@ A name usually sticks with a person for a long time period. In some European cou
                           
                         </td>
                         <td property="rdfs:comment">The Location where the Person was born.</td>
-                        <td property="skos:scopeNote">The Place of Birth and Place of Death are given using the Location class which is associated via the appropriate relationship. The Location Class has two properties: (1) the geographic name of the place, which is given as a string such as "Amsterdam" or "Valetta" and (2) an identifier, such as a geonames URI http://sws.geonames.org/2759794 (which identifies Amsterdam) or http://sws.geonames.org/2562305 (which identifies Valetta). The use of identifiers is preferred as these are unambiguous, however, public sector data typically uses simple names to record places and this is fully supported.</td>
+                        <td property="skos:scopeNote">The Place of Birth and Place of Death are given using the Location class which is associated via the appropriate relationship. The Location Class has two properties: (1) the geographic name of the place, which is given as a string such as "Amsterdam" or "Valetta" and (2) an identifier, such as a geonames URI <a href="http://sws.geonames.org/2759794">http://sws.geonames.org/2759794</a> (which identifies Amsterdam) or <a href="http://sws.geonames.org/2562305">http://sws.geonames.org/2562305</a> (which identifies Valetta). The use of identifiers is preferred as these are unambiguous, however, public sector data typically uses simple names to record places and this is fully supported.</td>
                         <td></td>
                       </tr>
                     
@@ -1514,7 +1510,7 @@ A name usually sticks with a person for a long time period. In some European cou
                           
                         </td>
                         <td property="rdfs:comment">The Location where the Person died.</td>
-                        <td property="skos:scopeNote">The Place of Birth and Place of Death are given using the Location class which is associated via the appropriate relationship. The Location Class has two properties: (1) the geographic name of the place, which is given as a string such as "Amsterdam" or "Valetta" and (2) an identifier, such as a geonames URI http://sws.geonames.org/2759794 (which identifies Amsterdam) or http://sws.geonames.org/2562305 (which identifies Valetta). The use of identifiers is preferred as these are unambiguous, however, public sector data typically uses simple names to record places and this is fully supported.</td>
+                        <td property="skos:scopeNote">The Place of Birth and Place of Death are given using the Location class which is associated via the appropriate relationship. The Location Class has two properties: (1) the geographic name of the place, which is given as a string such as "Amsterdam" or "Valetta" and (2) an identifier, such as a geonames URI <a href="http://sws.geonames.org/2759794">http://sws.geonames.org/2759794</a> (which identifies Amsterdam) or <a href="http://sws.geonames.org/2562305">http://sws.geonames.org/2562305</a> (which identifies Valetta). The use of identifiers is preferred as these are unambiguous, however, public sector data typically uses simple names to record places and this is fully supported.</td>
                         <td></td>
                       </tr>
                     
@@ -1552,7 +1548,7 @@ A name usually sticks with a person for a long time period. In some European cou
                           
                         </td>
                         <td property="rdfs:comment">The organism&#39;s biological sex.</td>
-                        <td property="skos:scopeNote"></td>
+                        <td property="skos:scopeNote">The recommended controlled vocabulary for this property is <a href="https://op.europa.eu/en/web/eu-vocabularies/concept-scheme/-/resource?uri=http://publications.europa.eu/resource/authority/human-sex">the sex authority table of the Publications Office.</a></td>
                         <td></td>
                       </tr>
                     
@@ -1606,7 +1602,7 @@ A name usually sticks with a person for a long time period. In some European cou
                 (non-normative)
                 
 <p>
-A changelog describing the (major) changes to the previous version (1.0.0) of the Core Person Vocabulary and the new version that is being proposed in this specification (2.0.0), can be found <a href="https://github.com/SEMICeu/Core-Person-Vocabulary/blob/master/releases/2.00/Changelog.md">here</a>.
+A changelog describing the (major) changes to the previous version (2.0.0) of the Core Person Vocabulary and the new version that is being proposed in this specification (2.1.0), can be found <a href="https://github.com/SEMICeu/Core-Person-Vocabulary/blob/master/releases/2.1.0/Changelog.md">here</a>.
 <p>
 
             </div>
