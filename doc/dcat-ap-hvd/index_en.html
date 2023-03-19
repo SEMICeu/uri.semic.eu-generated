@@ -3416,7 +3416,79 @@ E.g. the Data Governance Act requires to provide sufficient legal reuse informat
 
 </section>
 
-  
+  <section class="informative">
+<h2>Guidelines on the mapping of the HVD regulation to DCAT-AP</h2>
+
+
+<p>
+This section provides general insights in how the HVD regulation is encoded as a DCAT-AP metadata structure.
+These insights for the basis of the DCAT-AP HVD.
+
+<p></p>
+A bulk download in the HVD regulation is considered a Distribution.
+
+<p></p>
+
+An API in the HVD regulation is considered a Data Service.
+
+<p></p>
+
+A Dataset is a HVD dataset if and only if a MS has included it in its reporting.
+The HVD regulation circumscribes HVD datasets. 
+It may be possible that the same circumpscription applies to multiple entities. 
+In that case a MS should select according to the rules in the regulation the best-fitted one. 
+If the MS decides to include multiple in the reporting, then for all the HVD regulation requirements will apply.
+
+If a reuser discovers a dataset that seems to be a HVD, then the responsible MS should provide an explanation why it is not included in the reporting.
+Normally it should be possible to provide the relevant HVD corresponding to that dataset.
+
+
+</p>
+
+<h3 id="persistentlink">Persistent Link</h3>
+The HVD regulation requires as part of the reporting requirements (article 5.3) that Licensing Conditions and APIs have a persistent link.
+
+Persistency means that for these entities MemberStates take the responsibability to maintain the real world entity indefinitely and additionally reduce the accessibility challenge by maintaining the same name for that real world entity indefinitely.
+Thus for the enitities that MSs include in the reporting and for which the reporting requires a persistent link, a MS takes an engagement and commitment.
+
+As DCAT-AP is a Semantic Web data specification, persistency has been associated with the use persistent URIs (PURIs) for the metadata descriptions.
+A general advice for DCAT-AP implementers is the use of PURIs for all entities, but in particular for Datasets and Data Services.
+The practice, though, shows that this is not commonly applied, and therefore guidelines on identifiers have proprosed which mitigate the existing practice and the ultimate situation [[IdentifierGuidelines]].
+Implementers of the HVD regulation are adviced to read these guidelines to understand how identity might or might not be preserved from one data portal to another.
+And based on this take the appropriate actions.
+
+
+In article 5.3 the broad term Licensing Conditions is used, while in the other parts of the regulation the term Licence is used.
+DCAT-AP provides several means to express legal information, notably the properties licence (dct:license) and rights (dct:rights). 
+This may lead to considerations whether or not <strong>rights</strong> are included by the reporting requirement.
+As the final objective is to provide a trusted legal statement it is considered that the requirement  for a persistent link applies to rights too.
+
+The reporting requirement for a persistent link for APIs is from DCAT-AP perspective ambiguous. 
+In DCAT-AP there is the identifier for the Data Service, i.e. the description about the API, and the property endpoint URL, which is the technical endpoint via which the data exchange will happen.
+As the HVD regulation does not specify precisely which case it covers, both are considered in scope. 
+That means that each Dataset Service has a PURI and that the endpoint URL is persistent. 
+Thus when an API is shifted on a new platform (e.g. from a local API gateway to an organisation wide one), the original endpoint URL must be maintained, and also the metadata management must be maintained.
+
+In general neither DCAT-AP nor DCAT do impose endpoint URL persistency. 
+They, however, expect a life cycle management of the API through meta data. 
+For that DCAT-AP includes a few properties for life cycle management.  
+
+For example, conside an API which is end-of-life. 
+According to the general DCAT-AP the PURI of the Data Service could get the status deprecated/out-of-service and the endpoint url could me made void when the endpoint url is taken offline. 
+Any data portal user would understand that this Data Service is not to be used anymore. 
+If the meta data is augmented with the information about the successor of the Data Service, the data portal owner could be guided to the new Data Service.
+
+The impact for an user of the endpoint url is higher: it may face a sudden inaccessibility and systems might get broken when the endpoint url is taken offline.
+This situation is the result of a shared responsability: either the publishers did not applied a decent life cycle management or the users did not informed the publisher about their critical dependency.
+The enforcement of a persistent link for the endpoint url will be reduce the occurrance of such cases, but it won't resolve all issues.
+For that reason, even if the API provides open data (in the most extreme meaning) users that want to establish a critical dependency of their application on it, are adviced to inform the publisher.
+But also, publishers must improve their life cycle management for these APIs so that reusers get the right information, and can take the evolution of the API into account in their roadmaps.
+
+
+
+
+</section>
+
   <section id="conformance" class="informative">
 <h2>Conformance Statement</h2>
 
