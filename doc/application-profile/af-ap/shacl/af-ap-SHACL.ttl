@@ -13,6 +13,7 @@
   shacl:property <https://semiceu.github.io//doc/application-profile/af-ap#AlignmentShape/00b30102ff3f2631bf5533972a1b61f7a7e77e9c>,
     <https://semiceu.github.io//doc/application-profile/af-ap#AlignmentShape/0dd198e4d9393375fdb696edbb2e40628f88d8e1>,
     <https://semiceu.github.io//doc/application-profile/af-ap#AlignmentShape/1005c70cdaf3191dccda92cb00e6b4e611551faf>,
+    <https://semiceu.github.io//doc/application-profile/af-ap#AlignmentShape/102212deb894002287cc458618844b6f9404246e>,
     <https://semiceu.github.io//doc/application-profile/af-ap#AlignmentShape/136bb2abfdf5aa444a60bb48633b362319dea4db>,
     <https://semiceu.github.io//doc/application-profile/af-ap#AlignmentShape/1e20261e0dbd8e9b9b2e0b8bd56bf1d9b7b66073>,
     <https://semiceu.github.io//doc/application-profile/af-ap#AlignmentShape/2400a356c445d175f7ced0a5a473c51df498dcad>,
@@ -38,11 +39,12 @@
     <https://semiceu.github.io//doc/application-profile/af-ap#AlignmentShape/b7c1682ac55110d92f125d5980cda87210c9f892>,
     <https://semiceu.github.io//doc/application-profile/af-ap#AlignmentShape/b8a78c0030a7ef14a7a7c32943c2924ca8a3e14c>,
     <https://semiceu.github.io//doc/application-profile/af-ap#AlignmentShape/bd39c29760d4c2f5108dc01175a7d8138a964da0>,
-    <https://semiceu.github.io//doc/application-profile/af-ap#AlignmentShape/bf0c8b97a82b68b1b4e79ec3ca5bd49edc4f37c0>,
     <https://semiceu.github.io//doc/application-profile/af-ap#AlignmentShape/c4fdb9967443dd30f3b42d440beb3d113f53bd01>,
     <https://semiceu.github.io//doc/application-profile/af-ap#AlignmentShape/d4d4f2399b8cf2f615ac658920373b714726bed0>,
     <https://semiceu.github.io//doc/application-profile/af-ap#AlignmentShape/d5d74574f70f9a979535f3624608f88180dd0c97>,
+    <https://semiceu.github.io//doc/application-profile/af-ap#AlignmentShape/e8ac7cd26c5072ab169f5455146a25903e442a20>,
     <https://semiceu.github.io//doc/application-profile/af-ap#AlignmentShape/eb2074c986e17285803fe70f7bbc7db1fd1fd2ef>,
+    <https://semiceu.github.io//doc/application-profile/af-ap#AlignmentShape/f1db4963126c4a52c815fce110fd8f36a5106dc9>,
     <https://semiceu.github.io//doc/application-profile/af-ap#AlignmentShape/f8b02efd063b8089b72ce9677a1e4a3488eeb9a9>,
     <https://semiceu.github.io//doc/application-profile/af-ap#AlignmentShape/f8e82c89465f6a51c459ee372e25ba0f3c768d71>,
     <https://semiceu.github.io//doc/application-profile/af-ap#AlignmentShape/fe648f3431b73a7d76f10e2faf6e368a4bc2c041>;
@@ -70,6 +72,14 @@
   shacl:name "target ontology"@en;
   shacl:path <http://knowledgeweb.semanticweb.org/heterogeneity/alignment#onto2>;
   <https://data.vlaanderen.be/ns/shacl#message> [<https://semiceu.github.io//doc/application-profile/af-apen> "Minimaal 1 waarden verwacht voor target ontology"];
+  <https://data.vlaanderen.be/ns/shacl#rule> "" .
+
+<https://semiceu.github.io//doc/application-profile/af-ap#AlignmentShape/102212deb894002287cc458618844b6f9404246e> rdfs:seeAlso "https://semiceu.github.io//doc/application-profile/af-ap#Alignment%3Amodified";
+  shacl:class xsd:date;
+  shacl:description "Date of last change of the alignment"@en;
+  shacl:name "modified"@en;
+  shacl:path dc:modified;
+  <https://data.vlaanderen.be/ns/shacl#message> [<https://semiceu.github.io//doc/application-profile/af-apen> "De range van modified moet van het type <http://www.w3.org/2001/XMLSchema#date> zijn."];
   <https://data.vlaanderen.be/ns/shacl#rule> "" .
 
 <https://semiceu.github.io//doc/application-profile/af-ap#AlignmentShape/136bb2abfdf5aa444a60bb48633b362319dea4db> rdfs:seeAlso "https://semiceu.github.io//doc/application-profile/af-ap#Alignment%3Alicense";
@@ -272,14 +282,6 @@
   <https://data.vlaanderen.be/ns/shacl#message> [<https://semiceu.github.io//doc/application-profile/af-apen> "De verwachte waarde voor source version is een rdfs:Resource (URI of blank node)"];
   <https://data.vlaanderen.be/ns/shacl#rule> "" .
 
-<https://semiceu.github.io//doc/application-profile/af-ap#AlignmentShape/bf0c8b97a82b68b1b4e79ec3ca5bd49edc4f37c0> rdfs:seeAlso "https://semiceu.github.io//doc/application-profile/af-ap#Alignment%3Amap";
-  shacl:description "A correspondance between entities of the ontologies."@en;
-  shacl:minCount 1;
-  shacl:name "map"@en;
-  shacl:path <http://knowledgeweb.semanticweb.org/heterogeneity/alignment#map>;
-  <https://data.vlaanderen.be/ns/shacl#message> [<https://semiceu.github.io//doc/application-profile/af-apen> "Minimaal 1 waarden verwacht voor map"];
-  <https://data.vlaanderen.be/ns/shacl#rule> "" .
-
 <https://semiceu.github.io//doc/application-profile/af-ap#AlignmentShape/c4fdb9967443dd30f3b42d440beb3d113f53bd01> rdfs:seeAlso "https://semiceu.github.io//doc/application-profile/af-ap#Alignment%3Atitle";
   shacl:description "A name given to the alignment."@en;
   shacl:maxCount 1;
@@ -304,12 +306,28 @@
   <https://data.vlaanderen.be/ns/shacl#message> [<https://semiceu.github.io//doc/application-profile/af-apen> "De verwachte waarde voor title is een Literal"];
   <https://data.vlaanderen.be/ns/shacl#rule> "" .
 
+<https://semiceu.github.io//doc/application-profile/af-ap#AlignmentShape/e8ac7cd26c5072ab169f5455146a25903e442a20> rdfs:seeAlso "https://semiceu.github.io//doc/application-profile/af-ap#Alignment%3Amodified";
+  shacl:description "Date of last change of the alignment"@en;
+  shacl:maxCount 1;
+  shacl:name "modified"@en;
+  shacl:path dc:modified;
+  <https://data.vlaanderen.be/ns/shacl#message> [<https://semiceu.github.io//doc/application-profile/af-apen> "Maximaal 1 waarden toegelaten voor modified"];
+  <https://data.vlaanderen.be/ns/shacl#rule> "" .
+
 <https://semiceu.github.io//doc/application-profile/af-ap#AlignmentShape/eb2074c986e17285803fe70f7bbc7db1fd1fd2ef> rdfs:seeAlso "https://semiceu.github.io//doc/application-profile/af-ap#Alignment%3Atarget%20version";
   shacl:description "Version IRI or version string of the source ontology."@en;
   shacl:minCount 1;
   shacl:name "target version"@en;
   shacl:path <https://w3id.org/sssom/object_source_version>;
   <https://data.vlaanderen.be/ns/shacl#message> [<https://semiceu.github.io//doc/application-profile/af-apen> "Minimaal 1 waarden verwacht voor target version"];
+  <https://data.vlaanderen.be/ns/shacl#rule> "" .
+
+<https://semiceu.github.io//doc/application-profile/af-ap#AlignmentShape/f1db4963126c4a52c815fce110fd8f36a5106dc9> rdfs:seeAlso "https://semiceu.github.io//doc/application-profile/af-ap#Alignment%3Amodified";
+  shacl:description "Date of last change of the alignment"@en;
+  shacl:name "modified"@en;
+  shacl:nodekind "sh:BlankNodeOrIRI";
+  shacl:path dc:modified;
+  <https://data.vlaanderen.be/ns/shacl#message> [<https://semiceu.github.io//doc/application-profile/af-apen> "De verwachte waarde voor modified is een rdfs:Resource (URI of blank node)"];
   <https://data.vlaanderen.be/ns/shacl#rule> "" .
 
 <https://semiceu.github.io//doc/application-profile/af-ap#AlignmentShape/f8b02efd063b8089b72ce9677a1e4a3488eeb9a9> rdfs:seeAlso "https://semiceu.github.io//doc/application-profile/af-ap#Alignment%3Atitle";
@@ -409,9 +427,9 @@
 <https://semiceu.github.io//doc/application-profile/af-ap#CellShape/21297e5dda0ebb79c5d930d3d0f1619ccad45a6d> rdfs:seeAlso "https://semiceu.github.io//doc/application-profile/af-ap#Cell%3Asource%20label";
   shacl:description "The label of the source entity of the mapping."@en;
   shacl:name "source label"@en;
-  shacl:nodekind "sh:BlankNodeOrIRI";
+  shacl:nodekind "sh:Literal";
   shacl:path <https://w3id.org/sssom/subject_label>;
-  <https://data.vlaanderen.be/ns/shacl#message> [<https://semiceu.github.io//doc/application-profile/af-apen> "De verwachte waarde voor source label is een rdfs:Resource (URI of blank node)"];
+  <https://data.vlaanderen.be/ns/shacl#message> [<https://semiceu.github.io//doc/application-profile/af-apen> "De verwachte waarde voor source label is een Literal"];
   <https://data.vlaanderen.be/ns/shacl#rule> "" .
 
 <https://semiceu.github.io//doc/application-profile/af-ap#CellShape/22658d5a8f01130b4acb7b74fa2fc69c5840666f> rdfs:seeAlso "https://semiceu.github.io//doc/application-profile/af-ap#Cell%3Atarget%20entity";
@@ -489,9 +507,9 @@
 <https://semiceu.github.io//doc/application-profile/af-ap#CellShape/617959d9ad0eb5319cf3006dd68e606579efbe67> rdfs:seeAlso "https://semiceu.github.io//doc/application-profile/af-ap#Cell%3Acomment";
   shacl:description "Free text field containing either curator notes or text generated by tool providing additional informative information."@en;
   shacl:name "comment"@en;
-  shacl:nodekind "sh:BlankNodeOrIRI";
+  shacl:nodekind "sh:Literal";
   shacl:path rdfs:comment;
-  <https://data.vlaanderen.be/ns/shacl#message> [<https://semiceu.github.io//doc/application-profile/af-apen> "De verwachte waarde voor comment is een rdfs:Resource (URI of blank node)"];
+  <https://data.vlaanderen.be/ns/shacl#message> [<https://semiceu.github.io//doc/application-profile/af-apen> "De verwachte waarde voor comment is een Literal"];
   <https://data.vlaanderen.be/ns/shacl#rule> "" .
 
 <https://semiceu.github.io//doc/application-profile/af-ap#CellShape/61d4d1bb73510396a4b50a22e2191fcf169ab141> rdfs:seeAlso "https://semiceu.github.io//doc/application-profile/af-ap#Cell%3Atarget%20identifier";
@@ -513,9 +531,9 @@
 <https://semiceu.github.io//doc/application-profile/af-ap#CellShape/6cae9880e515253132af1452a38a8a5827165149> rdfs:seeAlso "https://semiceu.github.io//doc/application-profile/af-ap#Cell%3Adescription";
   shacl:description "A description of the mapping."@en;
   shacl:name "description"@en;
-  shacl:nodekind "sh:BlankNodeOrIRI";
+  shacl:nodekind "sh:Literal";
   shacl:path dc:description;
-  <https://data.vlaanderen.be/ns/shacl#message> [<https://semiceu.github.io//doc/application-profile/af-apen> "De verwachte waarde voor description is een rdfs:Resource (URI of blank node)"];
+  <https://data.vlaanderen.be/ns/shacl#message> [<https://semiceu.github.io//doc/application-profile/af-apen> "De verwachte waarde voor description is een Literal"];
   <https://data.vlaanderen.be/ns/shacl#rule> "" .
 
 <https://semiceu.github.io//doc/application-profile/af-ap#CellShape/725247a85ce885c5f0b80274d4bc28b0472c328f> rdfs:seeAlso "https://semiceu.github.io//doc/application-profile/af-ap#Cell%3AmappingURI";
@@ -535,19 +553,19 @@
   <https://data.vlaanderen.be/ns/shacl#rule> "" .
 
 <https://semiceu.github.io//doc/application-profile/af-ap#CellShape/82ab0e7eef89e037a4d54890e386669135f24f6a> rdfs:seeAlso "https://semiceu.github.io//doc/application-profile/af-ap#Cell%3Asource%20label";
-  shacl:class xsd:string;
+  shacl:datatype rdfs:Literal;
   shacl:description "The label of the source entity of the mapping."@en;
   shacl:name "source label"@en;
   shacl:path <https://w3id.org/sssom/subject_label>;
-  <https://data.vlaanderen.be/ns/shacl#message> [<https://semiceu.github.io//doc/application-profile/af-apen> "De range van source label moet van het type <http://www.w3.org/2001/XMLSchema#string> zijn."];
+  <https://data.vlaanderen.be/ns/shacl#message> [<https://semiceu.github.io//doc/application-profile/af-apen> "De range van source label moet van het type <http://www.w3.org/2000/01/rdf-schema#Literal> zijn."];
   <https://data.vlaanderen.be/ns/shacl#rule> "" .
 
 <https://semiceu.github.io//doc/application-profile/af-ap#CellShape/8383422d0480a725f35bd98777967a90267d898c> rdfs:seeAlso "https://semiceu.github.io//doc/application-profile/af-ap#Cell%3Atarget%20label";
   shacl:description "The label of the target entity of the mapping."@en;
   shacl:name "target label"@en;
-  shacl:nodekind "sh:BlankNodeOrIRI";
+  shacl:nodekind "sh:Literal";
   shacl:path <https://w3id.org/sssom/object_label>;
-  <https://data.vlaanderen.be/ns/shacl#message> [<https://semiceu.github.io//doc/application-profile/af-apen> "De verwachte waarde voor target label is een rdfs:Resource (URI of blank node)"];
+  <https://data.vlaanderen.be/ns/shacl#message> [<https://semiceu.github.io//doc/application-profile/af-apen> "De verwachte waarde voor target label is een Literal"];
   <https://data.vlaanderen.be/ns/shacl#rule> "" .
 
 <https://semiceu.github.io//doc/application-profile/af-ap#CellShape/83a585ec769fd2c6fb6e23ba09734e68126b8ef3> rdfs:seeAlso "https://semiceu.github.io//doc/application-profile/af-ap#Cell%3Amapping%20justification";
@@ -623,11 +641,11 @@
   <https://data.vlaanderen.be/ns/shacl#rule> "" .
 
 <https://semiceu.github.io//doc/application-profile/af-ap#CellShape/bec1e62fca0d819dd854855116e1247d8e7f11bc> rdfs:seeAlso "https://semiceu.github.io//doc/application-profile/af-ap#Cell%3Atarget%20label";
-  shacl:class xsd:string;
+  shacl:datatype rdfs:Literal;
   shacl:description "The label of the target entity of the mapping."@en;
   shacl:name "target label"@en;
   shacl:path <https://w3id.org/sssom/object_label>;
-  <https://data.vlaanderen.be/ns/shacl#message> [<https://semiceu.github.io//doc/application-profile/af-apen> "De range van target label moet van het type <http://www.w3.org/2001/XMLSchema#string> zijn."];
+  <https://data.vlaanderen.be/ns/shacl#message> [<https://semiceu.github.io//doc/application-profile/af-apen> "De range van target label moet van het type <http://www.w3.org/2000/01/rdf-schema#Literal> zijn."];
   <https://data.vlaanderen.be/ns/shacl#rule> "" .
 
 <https://semiceu.github.io//doc/application-profile/af-ap#CellShape/cad182081be292c639c6c4431690aaffdcefbd62> rdfs:seeAlso "https://semiceu.github.io//doc/application-profile/af-ap#Cell%3AmappingURI";
@@ -647,11 +665,11 @@
   <https://data.vlaanderen.be/ns/shacl#rule> "" .
 
 <https://semiceu.github.io//doc/application-profile/af-ap#CellShape/d4d4f2399b8cf2f615ac658920373b714726bed0> rdfs:seeAlso "https://semiceu.github.io//doc/application-profile/af-ap#Cell%3Adescription";
-  shacl:class xsd:string;
+  shacl:datatype rdfs:Literal;
   shacl:description "A description of the mapping."@en;
   shacl:name "description"@en;
   shacl:path dc:description;
-  <https://data.vlaanderen.be/ns/shacl#message> [<https://semiceu.github.io//doc/application-profile/af-apen> "De range van description moet van het type <http://www.w3.org/2001/XMLSchema#string> zijn."];
+  <https://data.vlaanderen.be/ns/shacl#message> [<https://semiceu.github.io//doc/application-profile/af-apen> "De range van description moet van het type <http://www.w3.org/2000/01/rdf-schema#Literal> zijn."];
   <https://data.vlaanderen.be/ns/shacl#rule> "" .
 
 <https://semiceu.github.io//doc/application-profile/af-ap#CellShape/d8199ae40b3b6884d888fe1dd76be4ba1084e76c> rdfs:seeAlso "https://semiceu.github.io//doc/application-profile/af-ap#Cell%3Asource%20identifier";
@@ -695,11 +713,11 @@
   <https://data.vlaanderen.be/ns/shacl#rule> "" .
 
 <https://semiceu.github.io//doc/application-profile/af-ap#CellShape/e9888decc1114bbd2888e7a09b6f9246e350e497> rdfs:seeAlso "https://semiceu.github.io//doc/application-profile/af-ap#Cell%3Acomment";
-  shacl:class xsd:string;
+  shacl:datatype rdfs:Literal;
   shacl:description "Free text field containing either curator notes or text generated by tool providing additional informative information."@en;
   shacl:name "comment"@en;
   shacl:path rdfs:comment;
-  <https://data.vlaanderen.be/ns/shacl#message> [<https://semiceu.github.io//doc/application-profile/af-apen> "De range van comment moet van het type <http://www.w3.org/2001/XMLSchema#string> zijn."];
+  <https://data.vlaanderen.be/ns/shacl#message> [<https://semiceu.github.io//doc/application-profile/af-apen> "De range van comment moet van het type <http://www.w3.org/2000/01/rdf-schema#Literal> zijn."];
   <https://data.vlaanderen.be/ns/shacl#rule> "" .
 
 <https://semiceu.github.io//doc/application-profile/af-ap#CellShape/f5c17ca3629cb8846f515d9783807c93edf8e2d0> rdfs:seeAlso "https://semiceu.github.io//doc/application-profile/af-ap#Cell%3AmappingURI";
