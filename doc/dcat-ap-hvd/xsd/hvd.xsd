@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <xs:schema xmlns="https://data.europa.eu/m8g/xml/" xmlns:xs="http://www.w3.org/2001/XMLSchema" targetNamespace="https://data.europa.eu/m8g/xml/" version="2.0.0" elementFormDefault="qualified" attributeFormDefault="unqualified" xmlns:cv="https://data.europa.eu/m8g/xml/">
+  <xs:element name="LegalResource" type="LegalResourceType"/>
   <xs:element name="LicenceDocument" type="LicenceDocumentType"/>
   <xs:element name="MediaType" type="MediaTypeType"/>
   <xs:element name="MediaTypeOrExtent" type="MediaTypeOrExtentType"/>
@@ -18,6 +19,14 @@
   <xs:element name="CataloguedResource" type="CataloguedResourceType"/>
   <xs:element name="Agent" type="AgentType"/>
   <xs:element name="Document" type="DocumentType"/>
+  <xs:complexType name="LegalResourceType">
+    <xs:sequence/>
+    <xs:attribute name="LegalResourceRef" type="xs:IDREF">
+      <xs:annotation>
+        <xs:documentation xml:lang="en">Reference to LegalResource ID</xs:documentation>
+      </xs:annotation>
+    </xs:attribute>
+  </xs:complexType>
   <xs:complexType name="conceptType">
     <xs:simpleContent>
       <xs:extension base="xs:token">
@@ -212,6 +221,7 @@ This property is mandatory in case the licence document is not a member of the N
       </xs:element>
       <xs:element name="LandingPage" type="DocumentType" maxOccurs="unbounded" minOccurs="1">
         <xs:annotation>
+          <xs:documentation xml:lang="en" source="#definition">A web page that provides access to the Data Service and/or additional information. </xs:documentation>
           <xs:documentation xml:lang="en" source="#usage">The landingpage provides information about the Data Services performance, capacity and availability.</xs:documentation>
         </xs:annotation>
       </xs:element>
@@ -220,7 +230,11 @@ This property is mandatory in case the licence document is not a member of the N
           <xs:documentation xml:lang="en" source="#definition">This property refers to a collection of data that this data service can distribute.</xs:documentation>
         </xs:annotation>
       </xs:element>
-      <xs:element name="HvdCategory" type="conceptType" maxOccurs="unbounded" minOccurs="1"/>
+      <xs:element name="HvdCategory" type="conceptType" maxOccurs="unbounded" minOccurs="1">
+        <xs:annotation>
+          <xs:documentation xml:lang="en" source="#definition">The HDV category to which this Data Service belongs.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
       <xs:element name="Licence" type="LicenceDocumentType" maxOccurs="1" minOccurs="1">
         <xs:annotation>
           <xs:documentation xml:lang="en" source="#definition">A licence under which the Data service is made available.</xs:documentation>
@@ -258,7 +272,19 @@ This allows others to find datasets more easily back.</xs:documentation>
           <xs:documentation xml:lang="en" source="#definition">An available Distribution for the Dataset.</xs:documentation>
         </xs:annotation>
       </xs:element>
-      <xs:element name="HvdCategory" type="conceptType" maxOccurs="unbounded" minOccurs="1"/>
+      <xs:element name="ApplicableLegislation" type="LegalResourceType" maxOccurs="unbounded" minOccurs="1">
+        <xs:annotation>
+          <xs:documentation xml:lang="en" source="#definition">the legislation that is applicable to this resource.</xs:documentation>
+          <xs:documentation xml:lang="en" source="#usage">For HVD the value must include the ELI http://data.europa.eu/eli/reg_impl/2023/138/oj. 
+&lt;br/&gt;
+As multiple legislations may apply to the resource the maximum cardinality is not limited.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="HvdCategory" type="conceptType" maxOccurs="unbounded" minOccurs="1">
+        <xs:annotation>
+          <xs:documentation xml:lang="en" source="#definition">The HDV category to which this Dataset belongs.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
       <xs:element name="ConformsTo" type="StandardType" maxOccurs="unbounded" minOccurs="0">
         <xs:annotation>
           <xs:documentation xml:lang="en" source="#definition">An implementing rule or other specification.</xs:documentation>
@@ -296,7 +322,11 @@ This allows others to find datasets more easily back.</xs:documentation>
           <xs:documentation xml:lang="en" source="#usage">The resource at the access URL may contain information about how to get the Dataset.</xs:documentation>
         </xs:annotation>
       </xs:element>
-      <xs:element name="HvdCategory" type="conceptType" maxOccurs="unbounded" minOccurs="1"/>
+      <xs:element name="HvdCategory" type="conceptType" maxOccurs="unbounded" minOccurs="1">
+        <xs:annotation>
+          <xs:documentation xml:lang="en" source="#definition">The HDV category to which this Distribution belongs.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
       <xs:element name="LinkedSchemas" type="StandardType" maxOccurs="unbounded" minOccurs="0">
         <xs:annotation>
           <xs:documentation xml:lang="en" source="#definition">An established schema to which the described Distribution conforms.</xs:documentation>

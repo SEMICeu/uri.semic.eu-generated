@@ -12,14 +12,36 @@
     "documentconfig": {},
     "status": "https://data.vlaanderen.be/id/concept/StandaardStatus/OntwerpStandaard",
     "statuslabel": "Ontwerp Standaard",
-    "repositoryurl": "git@semicthema-DCAT-AP:SEMICeu/Semicthema-DCAT-AP.git/tree/a95c09c9f4b5dd98cb9d0ab938491545452f1f44",
-    "changelogurl": "git@semicthema-DCAT-AP:SEMICeu/Semicthema-DCAT-AP.git/blob/a95c09c9f4b5dd98cb9d0ab938491545452f1f44/CHANGELOG",
+    "repositoryurl": "git@semicthema-DCAT-AP:SEMICeu/Semicthema-DCAT-AP.git/tree/9faf06d6437eb8ddf6db95a06dcdd4d494845595",
+    "changelogurl": "git@semicthema-DCAT-AP:SEMICeu/Semicthema-DCAT-AP.git/blob/9faf06d6437eb8ddf6db95a06dcdd4d494845595/CHANGELOG",
     "feedbackurl": "https://github.com/SEMICeu/DCAT-AP/issues",
     "standaardregisterurl": "https://github.com/SEMICeu/DCAT-AP",
     "usesVocs": [],
     "usesAPs": []
   },
   "classes": [
+    {
+      "uri": "http://data.europa.eu/eli/ontology#LegalResource",
+      "name": "LegalResource",
+      "label": {
+        "en": "Legal Resource"
+      },
+      "sort": "Legal Resource",
+      "description": {
+        "en": "This class represents the legislation, policy or policies that lie behind the Rules that govern the service."
+      },
+      "usage": {
+        "en": "The definition and properties of the Legal Resource class are aligned with the ontology included in \"Council conclusions inviting the introduction of the European Legislation Identifier (ELI)\". For describing the attributes of a Legal Resource (labels, preferred labels, alternative labels, definition, etc.) we refer to the ELI ontology.\r\n\r\nIn this data specification the use is restricted to instances of this class that follow the ELI URI guidelines."
+      },
+      "parents": [],
+      "rawTags": {
+        "label-en": "Legal Resource",
+        "definition-en": "This class represents the legislation, policy or policies that lie behind the Rules that govern the service.",
+        "ap-usageNote-en": "NOTE",
+        "uri": "http://data.europa.eu/eli/ontology#LegalResource"
+      },
+      "properties": []
+    },
     {
       "uri": "http://purl.org/dc/terms/LicenseDocument",
       "name": "LicenceDocument",
@@ -817,7 +839,9 @@
           "label": {
             "en": "landing page"
           },
-          "description": {},
+          "description": {
+            "en": "A web page that provides access to the Data Service and/or additional information. "
+          },
           "usage": {
             "en": "The landingpage provides information about the Data Services performance, capacity and availability."
           },
@@ -847,7 +871,8 @@
           "rawTags": {
             "ap-usageNote-en": "The landingpage provides information about the Data Services performance, capacity and availability.",
             "uri": "http://www.w3.org/ns/dcat#landingPage",
-            "label-en": "landing page"
+            "label-en": "landing page",
+            "ap-definition-en": "A web page that provides access to the Data Service and/or additional information. "
           }
         },
         {
@@ -1034,7 +1059,9 @@
           "label": {
             "en": "HVD Category"
           },
-          "description": {},
+          "description": {
+            "en": "The HDV category to which this Data Service belongs."
+          },
           "usage": {},
           "domain": [
             {
@@ -1061,7 +1088,8 @@
           "codelist_uri": "",
           "rawTags": {
             "uri": "http://data.europa.eu/r5r/hvdCategory",
-            "label-en": "HVD Category"
+            "label-en": "HVD Category",
+            "ap-definition-en": "The HDV category to which this Data Service belongs."
           }
         }
       ]
@@ -1362,7 +1390,9 @@
           "label": {
             "en": "HVD Category"
           },
-          "description": {},
+          "description": {
+            "en": "The HDV category to which this Dataset belongs."
+          },
           "usage": {},
           "domain": [
             {
@@ -1389,7 +1419,51 @@
           "codelist_uri": "",
           "rawTags": {
             "uri": "http://data.europa.eu/r5r/hvdCategory",
-            "label-en": "HVD Category"
+            "label-en": "HVD Category",
+            "ap-definition-en": "The HDV category to which this Dataset belongs."
+          }
+        },
+        {
+          "uri": "http://data.europa.eu/r5r/applicableLegislation",
+          "name": "applicableLegislation",
+          "sort": "applicable legislation",
+          "label": {
+            "en": "applicable legislation"
+          },
+          "description": {
+            "en": "the legislation that is applicable to this resource."
+          },
+          "usage": {
+            "en": "For HVD the value must include the ELI http://data.europa.eu/eli/reg_impl/2023/138/oj. \r\n<br/>\r\nAs multiple legislations may apply to the resource the maximum cardinality is not limited."
+          },
+          "domain": [
+            {
+              "EA-Name": "dcat:Dataset",
+              "uri": "http://www.w3.org/ns/dcat#Dataset"
+            }
+          ],
+          "range": [
+            {
+              "range_label": "eli:LegalResource",
+              "range_uri": "http://data.europa.eu/eli/ontology#LegalResource"
+            }
+          ],
+          "scopedrange": [
+            {
+              "range_uri": "#Legal Resource",
+              "range_puri": "http://data.europa.eu/eli/ontology#LegalResource",
+              "range_label": {
+                "en": "Legal Resource"
+              }
+            }
+          ],
+          "cardinality": "1..n",
+          "codelist_uri": "",
+          "rawTags": {
+            "uri": "http://data.europa.eu/r5r/applicableLegislation",
+            "label-en": "applicable legislation",
+            "definition-en": "the legislation that is applicable to this resource.",
+            "ap-usageNote-en": "NOTE"
           }
         }
       ]
@@ -1595,7 +1669,9 @@
           "label": {
             "en": "HVD Category"
           },
-          "description": {},
+          "description": {
+            "en": "The HDV category to which this Distribution belongs."
+          },
           "usage": {},
           "domain": [
             {
@@ -1622,7 +1698,8 @@
           "codelist_uri": "",
           "rawTags": {
             "uri": "http://data.europa.eu/r5r/hvdCategory",
-            "label-en": "HVD Category"
+            "label-en": "HVD Category",
+            "ap-definition-en": "The HDV category to which this Distribution belongs."
           }
         }
       ]

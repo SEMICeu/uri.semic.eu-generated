@@ -211,10 +211,12 @@ Any improvement of the metadata will immediately flow throughout the European ne
 <section id="specstatus">
     <h2>Status</h2>
         <p>
-            This DCAT-AP HVD has the status <a href="https://data.vlaanderen.be/id/concept/StandaardStatus/OntwerpStandaard">Working Draft</a> published at 2023-02-22.
+            This DCAT-AP HVD has the status <a href="https://data.vlaanderen.be/id/concept/StandaardStatus/OntwerpStandaard">Working Draft</a> published at 2023-02-22. 
         </p>
         <p>
             Information about the process and the decisions involved in the creation of this specification are consultable at the <a href="https://github.com/SEMICeu/DCAT-AP">Changelog</a>.
+        </p>
+        <p>
         </p>
 </section>
 
@@ -298,11 +300,12 @@ DCAT-AP HVD is an annex to DCAT-AP.
 It describes additional usage of the DCAT-AP to satisfy the High-Value Dataset regulation.
 In this document only the additional information that is required for the catalogued resources which are within scope of the regulation, is included.
 In any other case, the guidelines of DCAT-AP are applicable.
+</p>
 
 
 <h3>Application profile diagram</h3>
-
-An overview of DCAT-AP-HVD is shown by the UML diagram below. 
+<p>
+An overview of DCAT-AP HVD is shown by the UML diagram below. 
 The UML diagram illustrates the specification described in this document. 
 For readability purposes the representation has been condensed as follows:
 <ul>
@@ -311,6 +314,9 @@ For readability purposes the representation has been condensed as follows:
 <li> The class dcat:Resource has been included to ease to see the connection with W3C DCAT. DCAT-AP treats it as an abstract notion. </li>
 </ul>
 The cardinalities and qualifications are included in the figure.
+</p><p>
+For readibility of the document are the core relationships between classes included.
+</p>
 
     <div id="overview">
                 
@@ -335,6 +341,7 @@ The cardinalities and qualifications are included in the figure.
 			      <a href="#Concept">Concept</a> |
 			      <a href="#Document">Document</a> |
 			      <a href="#Identifier">Identifier</a> |
+			      <a href="#LegalResource">Legal Resource</a> |
 			      <a href="#Literal">Literal</a> |
 			      <a href="#Resource">Resource</a> |
 			      <a href="#Rightsstatement">Rights statement</a> |
@@ -1118,7 +1125,7 @@ The main entities are those that form the core of the Application Profile.
                                     1..n
                                 </td>
                                 <td property="rdfs:comment">
-                                    
+                                    The HDV category to which this Data Service belongs.
                                 </td>
                                 <td property="skos:scopeNote">
                                     
@@ -1161,7 +1168,7 @@ The main entities are those that form the core of the Application Profile.
                                     1..n
                                 </td>
                                 <td property="rdfs:comment">
-                                    
+                                    A web page that provides access to the Data Service and/or additional information. 
                                 </td>
                                 <td property="skos:scopeNote">
                                     The landingpage provides information about the Data Services performance, capacity and availability.
@@ -1358,7 +1365,8 @@ The main entities are those that form the core of the Application Profile.
                     </dt>
                     
                         <dd>
-                            For this entity the following properties are defined: <a href="#Dataset.conformsto">conforms to</a>
+                            For this entity the following properties are defined: <a href="#Dataset.applicablelegislation">applicable legislation</a>
+                            , <a href="#Dataset.conformsto">conforms to</a>
                             , <a href="#Dataset.contactpoint">contact point</a>
                             , <a href="#Dataset.datasetdistribution">dataset distribution</a>
                             , <a href="#Dataset.HVDCategory">HVD Category</a>
@@ -1403,6 +1411,51 @@ The main entities are those that form the core of the Application Profile.
                         </tr>
                     </thead>
                     <tbody class="supertype">
+                        
+                            <tr id="Dataset.applicablelegislation"
+                                typeof="rdfs:Property"
+                                resource="http://data.europa.eu/r5r/applicableLegislation"
+                                class="class mandatory">
+                                <td>
+				    <a href="https://github.com/SEMICeu/DCAT-AP/issues/new?title=Issue%20for%20applicable legislation%20in%20Dataset&body=Explain%20your%20issue%20for%20https://semiceu.github.io//doc/dcat-ap-hvd%23Dataset.applicablelegislation" target="_blank" rel="noopener noreferrer" >
+					    <!--                                        <i class="icon">[o]</i> -->
+                                        <img src="html/callout.png" loading="lazy" alt="[o]" width="100" height="100"/>
+                                    </a>
+                                </td>
+                                <td>
+                                        <a href="http://data.europa.eu/r5r/applicableLegislation"
+                                           data-toggle="tooltip"
+                                           data-content="http://data.europa.eu/r5r/applicableLegislation"
+                                           data-placement="right">
+                                        applicable legislation</a>
+                                </td>
+                                <td>
+                                    
+                                        
+                                            <a href="#LegalResource" data-placement="right">Legal Resource</a>
+                                        
+                                    
+                                </td>
+                                <td>
+                                    1..n
+                                </td>
+                                <td property="rdfs:comment">
+                                    the legislation that is applicable to this resource.
+                                </td>
+                                <td property="skos:scopeNote">
+                                    For HVD the value must include the ELI http://data.europa.eu/eli/reg_impl/2023/138/oj. 
+<br/>
+As multiple legislations may apply to the resource the maximum cardinality is not limited.
+                                </td>
+				<!--
+                                <td>
+                                    
+                                </td>
+				-->
+                                <td>
+                                    
+                                </td>
+                            </tr>
                         
                             <tr id="Dataset.conformsto"
                                 typeof="rdfs:Property"
@@ -1561,7 +1614,7 @@ The main entities are those that form the core of the Application Profile.
                                     1..n
                                 </td>
                                 <td property="rdfs:comment">
-                                    
+                                    The HDV category to which this Dataset belongs.
                                 </td>
                                 <td property="skos:scopeNote">
                                     
@@ -1917,7 +1970,7 @@ This allows others to find datasets more easily back.
                                     1..n
                                 </td>
                                 <td property="rdfs:comment">
-                                    
+                                    The HDV category to which this Distribution belongs.
                                 </td>
                                 <td property="skos:scopeNote">
                                     
@@ -2202,6 +2255,8 @@ This allows others to find datasets more easily back.
         
     </div>
 </section>
+
+
 
 
 
@@ -2695,6 +2750,56 @@ They are included in the Application Profile because they form the range of prop
 
 
 
+   
+        <section>
+            <h3 id="LegalResource">
+                <a href="http://data.europa.eu/eli/ontology#LegalResource"
+                   data-toggle="tooltip"
+                   data-content="http://data.europa.eu/eli/ontology#LegalResource"
+                   data-placement="right">Legal Resource</a>
+
+            </h3>
+	        <!-- XXX an image in the h3 will break the rendering of the Table Of Contents of Respec -->
+                <a href="https://github.com/SEMICeu/DCAT-AP/issues/new?title=Issue%20for%20LegalResource&body=Explain%20your%20issue"}}>
+                   <img src="html/callout.png" loading="lazy" alt="(create issue)" width="20" height="20"/>
+		</a>
+            <dl>
+                <dt>
+                    Definition
+                </dt>
+                <dd>
+                    This class represents the legislation, policy or policies that lie behind the Rules that govern the service.
+                </dd>
+                
+                
+                    <dt>
+                        Usage Note
+                    </dt>
+                    <dd>
+                        The definition and properties of the Legal Resource class are aligned with the ontology included in "Council conclusions inviting the introduction of the European Legislation Identifier (ELI)". For describing the attributes of a Legal Resource (labels, preferred labels, alternative labels, definition, etc.) we refer to the ELI ontology.
+
+In this data specification the use is restricted to instances of this class that follow the ELI URI guidelines.
+                    </dd>
+                
+                
+                    <dt>
+                        Properties
+                    </dt>
+                    
+                    <dd>
+                        No properties have been defined for this entity.
+                    </dd>
+                
+            </dl>
+        </div>
+        
+    </div>
+</section>
+
+
+
+
+
 
 
    
@@ -3162,16 +3267,47 @@ A contact point is mandatory for HVD DataServices and recommended for HVD Datas
 
 <h3 id="c7">C7. Adhere to specific data requirements</h3>
 <p>
-The HVD regulation often decribes in its Annex precisely the data elements that should be provided for a HVD dataset. In general, any HVD dataset should comply to such a description.
+The HVD regulation decribes in its Annex precisely the data elements that should be provided for a HVD dataset. It is expected that a HVD dataset should comply to such a description.
 <p></p>
+It is recommended to provide a reference to a public document (standard) that describes the internals of the Dataset (or Distribution) using the property conforms to.
+In ensures that the information about the content is made publicly accessible for reusers.
+Additionally it forms input for experts charged with the duty to perform a detailed assessement to verify if the Dataset matches the HVD requirements. 
 
 </p>
 
 
 </section>
 
+  <section id="conformance" class="informative">
+<h2>Conformance Statement</h2>
+
+In order for applications to conform to DCAT-AP HVD, it MUST conform to DCAT-AP. 
+In addition, the application must conform to the mentioned constraints and usage guidelines following similar conformance statements as specifief in DCAT-AP.
+More precisely, these are:
+
+<h3>Provider requirements</h3>
+In order to conform to this Application Profile, an application that provides metadata MUST:
+<ul>
+<li>Provide a description of the Catalogue, including at least the mandatory properties specified for the class <a href="#Catalogue">Catalogue</a>.</li>
+<li>Provide descriptions of Datasets in the Catalogue, including at least the mandatory properties for the class <a href="#Dataset">Dataset</a>.</li>
+<li>Provide descriptions of Distributions, if any, of Datasets in the Catalogue, including at least the mandatory properties for the class <a href="#Distribution">Distribution</a>.</li>
+<li>Provide descriptions of Data Services, if any, in the Catalogue, including at least the mandatory properties for the class <a href="#DataService">Data Service</a>.</li>
+<li>Provide descriptions of all other classes such as Agents, Contact Points,  Licences, etc.
+</ul>
+The application of the controlled vocabularies as described in section [[[#controlled-vocs]]].
+
+
+<h3>Receiver requirements</h3>
+In order to conform to this Application Profile, an application that receives metadata MUST be able to:
+<li>Process information for all classes and properties specified in section [[[#quick-reference]]].</li>
+<li>Process information for all controlled vocabularies specified in section [[[#controlled-vocs]]].</li>
+"Processing" means that receivers must accept incoming data and transparently provide these data to applications and services. 
+It does neither imply nor prescribe what applications and services finally do with the data (parse, convert, store, make searchable, display to users, etc.).
+</section>
+
  
 
+<!--
 <section id="quick-reference" class="appendix">
 
 <h2>Quick Reference of Classes and Properties</h2>
@@ -3506,7 +3642,11 @@ The HVD regulation often decribes in its Annex precisely the data elements that 
         
 	   
         
+	   
+        
         <tr> <td colspan="2">Recommended</td> </tr>
+        
+	   
         
 	   
         
@@ -3547,6 +3687,16 @@ The HVD regulation often decribes in its Annex precisely the data elements that 
 	   
         
         <tr> <td colspan="2">Optional</td> </tr>
+        
+	   
+	   <tr><td>
+	        <a href="#Dataset.applicablelegislation">applicable legislation </a>
+	     </td><td>
+		<div class="shorten">
+	       http://data.europa.eu/r5r/applicableLegislation 
+		</div>
+	   </td></tr>
+           
         
 	   
 	   <tr><td>
@@ -3783,6 +3933,15 @@ The HVD regulation often decribes in its Annex precisely the data elements that 
         
 
 <tr><td>
+		<a href="#LegalResource">Legal Resource</a>
+	</td><td>
+		<div class="shorten">
+		http://data.europa.eu/eli/ontology#LegalResource
+		</div>
+	</td><td>
+        
+
+<tr><td>
 		<a href="#LicenceDocument">Licence Document</a>
 	</td><td>
 		<div class="shorten">
@@ -3871,6 +4030,8 @@ The HVD regulation often decribes in its Annex precisely the data elements that 
 </table>
 
 </section>
+
+-->
 
 <section class="appendix">
 
