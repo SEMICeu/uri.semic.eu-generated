@@ -14,7 +14,7 @@
   <xs:element name="CatalogueRecord" type="CatalogueRecordType"/>
   <xs:element name="DataService" type="DataServiceType"/>
   <xs:element name="Dataset" type="DatasetType"/>
-  <xs:element name="BulkDownloadDistribution" type="BulkDownloadDistributionType"/>
+  <xs:element name="Distribution" type="DistributionType"/>
   <xs:element name="CataloguedResource" type="CataloguedResourceType"/>
   <xs:element name="Agent" type="AgentType"/>
   <xs:element name="Document" type="DocumentType"/>
@@ -207,6 +207,7 @@ This property is mandatory in case the licence document is not a member of the N
       <xs:element name="EndpointUrl" type="ResourceType" maxOccurs="unbounded" minOccurs="1">
         <xs:annotation>
           <xs:documentation xml:lang="en" source="#definition">The root location or primary endpoint of the service (an IRI).</xs:documentation>
+          <xs:documentation xml:lang="en" source="#usage">The endpoint URL should be persistent. This means that publishers should do everything in their power to maintain the value stable and existing.</xs:documentation>
         </xs:annotation>
       </xs:element>
       <xs:element name="LandingPage" type="DocumentType" maxOccurs="unbounded" minOccurs="1">
@@ -220,22 +221,6 @@ This property is mandatory in case the licence document is not a member of the N
         </xs:annotation>
       </xs:element>
       <xs:element name="HvdCategory" type="conceptType" maxOccurs="unbounded" minOccurs="1"/>
-      <xs:element name="AccessRights" type="RightsStatementType" maxOccurs="1" minOccurs="0">
-        <xs:annotation>
-          <xs:documentation xml:lang="en" source="#definition">Information regarding access or restrictions based on privacy, security, or other policies.</xs:documentation>
-        </xs:annotation>
-      </xs:element>
-      <xs:element name="Description" type="xs:string" maxOccurs="unbounded" minOccurs="0">
-        <xs:annotation>
-          <xs:documentation xml:lang="en" source="#definition">A free-text account of the Data Service.</xs:documentation>
-          <xs:documentation xml:lang="en" source="#usage">This property can be repeated for parallel language versions of the description.</xs:documentation>
-        </xs:annotation>
-      </xs:element>
-      <xs:element name="Format" type="MediaTypeOrExtentType" maxOccurs="unbounded" minOccurs="0">
-        <xs:annotation>
-          <xs:documentation xml:lang="en" source="#definition">The structure that can be returned by querying the endpointURL.</xs:documentation>
-        </xs:annotation>
-      </xs:element>
       <xs:element name="Licence" type="LicenceDocumentType" maxOccurs="1" minOccurs="1">
         <xs:annotation>
           <xs:documentation xml:lang="en" source="#definition">A licence under which the Data service is made available.</xs:documentation>
@@ -259,11 +244,8 @@ This property is mandatory in case the licence document is not a member of the N
       <xs:element name="OtherIdentifier" type="IdentifierType" maxOccurs="unbounded" minOccurs="0">
         <xs:annotation>
           <xs:documentation xml:lang="en" source="#definition">A secondary identifier of the Dataset, such as MAST/ADS17, DataCite18, DOI19, EZID20 or W3ID21.</xs:documentation>
-        </xs:annotation>
-      </xs:element>
-      <xs:element name="Sample" type="BulkDownloadDistributionType" maxOccurs="unbounded" minOccurs="0">
-        <xs:annotation>
-          <xs:documentation xml:lang="en" source="#definition">A sample distribution of the dataset</xs:documentation>
+          <xs:documentation xml:lang="en" source="#usage">It is recommended to include all identifiers that the catalogue knows about this dataset.
+This allows others to find datasets more easily back.</xs:documentation>
         </xs:annotation>
       </xs:element>
       <xs:element name="ContactPoint" type="KindType" maxOccurs="unbounded" minOccurs="0">
@@ -271,17 +253,12 @@ This property is mandatory in case the licence document is not a member of the N
           <xs:documentation xml:lang="en" source="#definition">Contact information that can be used for sending comments about the Dataset.</xs:documentation>
         </xs:annotation>
       </xs:element>
-      <xs:element name="DatasetDistribution" type="BulkDownloadDistributionType" maxOccurs="unbounded" minOccurs="1">
+      <xs:element name="DatasetDistribution" type="DistributionType" maxOccurs="unbounded" minOccurs="1">
         <xs:annotation>
           <xs:documentation xml:lang="en" source="#definition">An available Distribution for the Dataset.</xs:documentation>
         </xs:annotation>
       </xs:element>
       <xs:element name="HvdCategory" type="conceptType" maxOccurs="unbounded" minOccurs="1"/>
-      <xs:element name="AccessRights" type="RightsStatementType" maxOccurs="1" minOccurs="0">
-        <xs:annotation>
-          <xs:documentation xml:lang="en" source="#definition">Information that indicates whether the Dataset is open data, has access restrictions or is not public.</xs:documentation>
-        </xs:annotation>
-      </xs:element>
       <xs:element name="ConformsTo" type="StandardType" maxOccurs="unbounded" minOccurs="0">
         <xs:annotation>
           <xs:documentation xml:lang="en" source="#definition">An implementing rule or other specification.</xs:documentation>
@@ -306,7 +283,7 @@ This property is mandatory in case the licence document is not a member of the N
       </xs:annotation>
     </xs:attribute>
   </xs:complexType>
-  <xs:complexType name="BulkDownloadDistributionType">
+  <xs:complexType name="DistributionType">
     <xs:sequence>
       <xs:element name="AccessService" type="DataServiceType" maxOccurs="unbounded" minOccurs="0">
         <xs:annotation>
@@ -331,9 +308,9 @@ This property is mandatory in case the licence document is not a member of the N
         </xs:annotation>
       </xs:element>
     </xs:sequence>
-    <xs:attribute name="BulkDownloadDistributionRef" type="xs:IDREF">
+    <xs:attribute name="DistributionRef" type="xs:IDREF">
       <xs:annotation>
-        <xs:documentation xml:lang="en">Reference to BulkDownloadDistribution ID</xs:documentation>
+        <xs:documentation xml:lang="en">Reference to Distribution ID</xs:documentation>
       </xs:annotation>
     </xs:attribute>
   </xs:complexType>
@@ -346,19 +323,7 @@ This property is mandatory in case the licence document is not a member of the N
     </xs:attribute>
   </xs:complexType>
   <xs:complexType name="AgentType">
-    <xs:sequence>
-      <xs:element name="Type" type="conceptType" maxOccurs="1" minOccurs="0">
-        <xs:annotation>
-          <xs:documentation xml:lang="en" source="#definition">A type of the agent that makes the Catalogue or Dataset available</xs:documentation>
-        </xs:annotation>
-      </xs:element>
-      <xs:element name="Name" type="xs:string" maxOccurs="unbounded" minOccurs="1">
-        <xs:annotation>
-          <xs:documentation xml:lang="en" source="#definition">A name of the agent.</xs:documentation>
-          <xs:documentation xml:lang="en" source="#usage">This property can be repeated for different versions of the name (e.g. the name in different languages)</xs:documentation>
-        </xs:annotation>
-      </xs:element>
-    </xs:sequence>
+    <xs:sequence/>
     <xs:attribute name="AgentRef" type="xs:IDREF">
       <xs:annotation>
         <xs:documentation xml:lang="en">Reference to Agent ID</xs:documentation>
