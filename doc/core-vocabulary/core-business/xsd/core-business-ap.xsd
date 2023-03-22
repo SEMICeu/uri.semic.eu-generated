@@ -8,24 +8,6 @@
   <xs:element name="FormalOrganization" type="FormalOrganizationType"/>
   <xs:element name="Organization" type="OrganizationType"/>
   <xs:element name="Agent" type="AgentType"/>
-  <xs:simpleType name="Literal">
-    <xs:restriction base="xs:string"/>
-  </xs:simpleType>
-  <xs:complexType name="langstring">
-    <xs:simpleContent>
-      <xs:extension base="xs:string">
-        <xs:attribute name="lang" type="xs:language"/>
-      </xs:extension>
-    </xs:simpleContent>
-  </xs:complexType>
-  <xs:complexType name="ConceptType">
-    <xs:simpleContent>
-      <xs:extension base="xs:token">
-        <xs:attribute name="ref" type="xs:IDREF"/>
-        <xs:attribute name="conceptSchemeRef" type="xs:IDREF"/>
-      </xs:extension>
-    </xs:simpleContent>
-  </xs:complexType>
   <xs:complexType name="AccountingDocumentType">
     <xs:sequence/>
     <xs:attribute name="AccountingDocumentRef" type="xs:IDREF">
@@ -36,19 +18,19 @@
   </xs:complexType>
   <xs:complexType name="ContactPointType">
     <xs:sequence>
-      <xs:element name="contactPage" maxOccurs="unbounded" minOccurs="0">
+      <xs:element name="ContactPage" maxOccurs="unbounded" minOccurs="0">
         <xs:annotation>
-          <xs:documentation xml:lang="en">A web page that could be used to reach out the Contact Point.</xs:documentation>
+          <xs:documentation xml:lang="en" source="#definition">A web page that could be used to reach out the Contact Point.</xs:documentation>
         </xs:annotation>
       </xs:element>
-      <xs:element name="hasEmail" type="xs:string" maxOccurs="unbounded" minOccurs="0">
+      <xs:element name="HasEmail" type="xs:string" maxOccurs="unbounded" minOccurs="0">
         <xs:annotation>
-          <xs:documentation xml:lang="en">An electronic address through which the Contact Point can be contacted.</xs:documentation>
+          <xs:documentation xml:lang="en" source="#definition">An electronic address through which the Contact Point can be contacted.</xs:documentation>
         </xs:annotation>
       </xs:element>
-      <xs:element name="hasTelephone" type="xs:string" maxOccurs="unbounded" minOccurs="0">
+      <xs:element name="HasTelephone" type="xs:string" maxOccurs="unbounded" minOccurs="0">
         <xs:annotation>
-          <xs:documentation xml:lang="en">A telephone number through which the Contact Point can be contacted.</xs:documentation>
+          <xs:documentation xml:lang="en" source="#definition">A telephone number through which the Contact Point can be contacted.</xs:documentation>
         </xs:annotation>
       </xs:element>
     </xs:sequence>
@@ -60,34 +42,36 @@
   </xs:complexType>
   <xs:complexType name="IdentifierType">
     <xs:sequence>
-      <xs:element name="dateOfIssue" type="xs:date" maxOccurs="unbounded" minOccurs="0">
+      <xs:element name="DateOfIssue" type="xs:date" maxOccurs="unbounded" minOccurs="0">
         <xs:annotation>
-          <xs:documentation xml:lang="en">The date on which the Identifier was assigned.</xs:documentation>
+          <xs:documentation xml:lang="en" source="#definition">The date on which the Identifier was assigned.</xs:documentation>
         </xs:annotation>
       </xs:element>
-      <xs:element name="identifies" ref="LegalEntityType" maxOccurs="unbounded" minOccurs="0">
+      <xs:element name="Identifies" type="LegalEntityType" maxOccurs="unbounded" minOccurs="0">
         <xs:annotation>
-          <xs:documentation xml:lang="en">The entity that is referenced by the Identifier.</xs:documentation>
+          <xs:documentation xml:lang="en" source="#definition">The entity that is referenced by the Identifier.</xs:documentation>
         </xs:annotation>
       </xs:element>
-      <xs:element name="issuingAuthorityName" type="xs:string" maxOccurs="unbounded" minOccurs="0">
+      <xs:element name="IssuingAuthorityName" type="xs:string" maxOccurs="unbounded" minOccurs="0">
         <xs:annotation>
-          <xs:documentation xml:lang="en">The name of the agency responsible for issuing the Identifier.</xs:documentation>
+          <xs:documentation xml:lang="en" source="#definition">The name of the agency responsible for issuing the Identifier.</xs:documentation>
+          <xs:documentation xml:lang="en" source="#usage">Example: "Federal Public Service Interior"@en.</xs:documentation>
         </xs:annotation>
       </xs:element>
-      <xs:element name="notation" type="xs:string" maxOccurs="unbounded" minOccurs="0">
+      <xs:element name="Notation" type="xs:string" maxOccurs="unbounded" minOccurs="0">
         <xs:annotation>
-          <xs:documentation xml:lang="en">A string of characters to uniquely identify a concept.</xs:documentation>
+          <xs:documentation xml:lang="en" source="#definition">A string of characters to uniquely identify a concept.</xs:documentation>
+          <xs:documentation xml:lang="en" source="#usage">Example: "abc-12345-de"^^https://belgium.be/scheme/nationalIDnumber.</xs:documentation>
         </xs:annotation>
       </xs:element>
-      <xs:element name="schemeName" type="xs:string" maxOccurs="unbounded" minOccurs="0">
+      <xs:element name="SchemeName" type="xs:string" maxOccurs="unbounded" minOccurs="0">
         <xs:annotation>
-          <xs:documentation xml:lang="en">Name of the scheme used to construct the identifier.</xs:documentation>
+          <xs:documentation xml:lang="en" source="#definition">Name of the scheme used to construct the identifier.</xs:documentation>
         </xs:annotation>
       </xs:element>
-      <xs:element name="schemeUri" type="xs:string" maxOccurs="unbounded" minOccurs="0">
+      <xs:element name="SchemeUri" type="xs:string" maxOccurs="unbounded" minOccurs="0">
         <xs:annotation>
-          <xs:documentation xml:lang="en">URI of the scheme used to construct the identifier.</xs:documentation>
+          <xs:documentation xml:lang="en" source="#definition">URI of the scheme used to construct the identifier.</xs:documentation>
         </xs:annotation>
       </xs:element>
     </xs:sequence>
@@ -97,61 +81,81 @@
       </xs:annotation>
     </xs:attribute>
   </xs:complexType>
+  <xs:complexType name="conceptType">
+    <xs:simpleContent>
+      <xs:extension base="xs:token">
+        <xs:attribute name="ref" type="xs:IDREF"/>
+        <xs:attribute name="conceptSchemeRef" type="xs:IDREF"/>
+      </xs:extension>
+    </xs:simpleContent>
+  </xs:complexType>
   <xs:complexType name="LegalEntityType">
     <xs:sequence>
-      <xs:element name="alternativeName" type="xs:string" maxOccurs="unbounded" minOccurs="0">
+      <xs:element name="AlternativeName" type="xs:string" maxOccurs="unbounded" minOccurs="0">
         <xs:annotation>
-          <xs:documentation xml:lang="en">Any name by which a Legal Entity is known, other than their legal name.</xs:documentation>
+          <xs:documentation xml:lang="en" source="#definition">Any name by which a Legal Entity is known, other than their legal name.</xs:documentation>
+          <xs:documentation xml:lang="en" source="#usage">Some jurisdictions recognise concepts such as a trading name or alternative forms of a legal entity's name. The alternative name property can be used to record such names but should not be used to record translations of the primary legal name. Where more than one name exists and where they have equal standing but are expressed in different languages, identify the language used in each of the multiple names.</xs:documentation>
         </xs:annotation>
       </xs:element>
-      <xs:element name="contactPoint" ref="ContactPointType" maxOccurs="unbounded" minOccurs="0">
+      <xs:element name="ContactPoint" type="ContactPointType" maxOccurs="unbounded" minOccurs="0">
         <xs:annotation>
-          <xs:documentation xml:lang="en">The main contact information of the resource.</xs:documentation>
+          <xs:documentation xml:lang="en" source="#definition">The main contact information of the resource.</xs:documentation>
+          <xs:documentation xml:lang="en" source="#usage">Usually a phone number and e-mail address. Other contact methods may be included, including online contact information, but this is conceptually distinct from the organization's homepage that may or may not provide contact information.</xs:documentation>
         </xs:annotation>
       </xs:element>
-      <xs:element name="hasAccountingDocument" ref="AccountingDocumentType" maxOccurs="unbounded" minOccurs="0">
+      <xs:element name="HasAccountingDocument" type="AccountingDocumentType" maxOccurs="unbounded" minOccurs="0">
         <xs:annotation>
-          <xs:documentation xml:lang="en">The accounting document provided by an organisation.</xs:documentation>
+          <xs:documentation xml:lang="en" source="#definition">The accounting document provided by an organisation.</xs:documentation>
         </xs:annotation>
       </xs:element>
-      <xs:element name="identifier" ref="IdentifierType" maxOccurs="unbounded" minOccurs="0">
+      <xs:element name="Identifier" type="IdentifierType" maxOccurs="unbounded" minOccurs="0">
         <xs:annotation>
-          <xs:documentation xml:lang="en">The unambiguous structured reference for the Legal Entity, which is different from the one denoting its legal status.</xs:documentation>
+          <xs:documentation xml:lang="en" source="#definition">The unambiguous structured reference for the Legal Entity, which is different from the one denoting its legal status.</xs:documentation>
+          <xs:documentation xml:lang="en" source="#usage">Legal Entities may have any number of identifiers (but only one legal identifier). For example, in many jurisdictions, a business will have one or more tax numbers associated with them which do not, by themselves, confer legal entity status. An individual may be issued with identifiers for everything from social security to club membership. The identifier relationship must not be used to link to the identifier issued by the authority that conferred legal entity status on a business.</xs:documentation>
         </xs:annotation>
       </xs:element>
-      <xs:element name="legalEntityActivity" type="ConceptType" maxOccurs="unbounded" minOccurs="0">
+      <xs:element name="LegalEntityActivity" type="conceptType" maxOccurs="unbounded" minOccurs="0">
         <xs:annotation>
-          <xs:documentation xml:lang="en">The area of work in which the Legal Entity is engaged.</xs:documentation>
+          <xs:documentation xml:lang="en" source="#definition">The area of work in which the Legal Entity is engaged.</xs:documentation>
+          <xs:documentation xml:lang="en" source="#usage">This is a general term that encompasses all the economic activities carried out by a company during the course of business. The activity of a company should be recorded using a controlled vocabulary. Several such vocabularies exist, many of which map to the UN's &lt;a href="https://unstats.un.org/unsd/classifications/Econ/ISIC.cshtml"&gt;ISIC&lt;/a&gt; codes. Where a particular controlled vocabulary is in use within a given context, such as SIC codes in the UK, it is acceptable to use these, however, the preferred choice for European interoperability is &lt;a href="https://op.europa.eu/en/web/eu-vocabularies/dataset/-/resource?uri=http://publications.europa.eu/resource/dataset/nace2"&gt;NACE&lt;/a&gt;.</xs:documentation>
         </xs:annotation>
       </xs:element>
-      <xs:element name="legalEntityStatus" type="ConceptType" maxOccurs="unbounded" minOccurs="0">
+      <xs:element name="LegalEntityStatus" type="conceptType" maxOccurs="unbounded" minOccurs="0">
         <xs:annotation>
-          <xs:documentation xml:lang="en">Information about the viability of the current position of the legal entity.</xs:documentation>
+          <xs:documentation xml:lang="en" source="#definition">Information about the viability of the current position of the legal entity.</xs:documentation>
+          <xs:documentation xml:lang="en" source="#usage">Recording the status of a company presents the same issues as its type. The terms 'insolvent', 'bankrupt' and 'in receivership,' for example, are likely to mean slightly different things with different legal implications in different jurisdictions. Best practice for recording various other status levels is to use the relevant jurisdiction's terms and to identify the controlled vocabulary used.</xs:documentation>
         </xs:annotation>
       </xs:element>
-      <xs:element name="legalFormType" maxOccurs="unbounded" minOccurs="0">
+      <xs:element name="LegalFormType" maxOccurs="unbounded" minOccurs="0">
         <xs:annotation>
-          <xs:documentation xml:lang="en">The classification of the Legal Entity as a member of a particular group in the context of legal registration.</xs:documentation>
+          <xs:documentation xml:lang="en" source="#definition">The classification of the Legal Entity as a member of a particular group in the context of legal registration.</xs:documentation>
+          <xs:documentation xml:lang="en" source="#usage">Familiar types are Public (Limited) Company (PLC), Private (Limited) Company, One Person Company,  Limited Liability Company (LLC, GmbH), etc. At the time of publication, there is no agreed set of company types that crosses borders. The term 'SA' is used in Poland and France for example although they mean slightly different things. The UK's LLP and Greece's EPE provide another example of close, but not exact, matches. That said, each jurisdiction will have a limited set of recognised company types and these should be used in a consistent manner.</xs:documentation>
         </xs:annotation>
       </xs:element>
-      <xs:element name="legalIdentifier" ref="IdentifierType" maxOccurs="unbounded" minOccurs="0">
+      <xs:element name="LegalIdentifier" type="IdentifierType" maxOccurs="unbounded" minOccurs="0">
         <xs:annotation>
-          <xs:documentation xml:lang="en">The unambiguous structured reference assigned to the Legal Entity by the legal authority that registered it.</xs:documentation>
+          <xs:documentation xml:lang="en" source="#definition">The unambiguous structured reference assigned to the Legal Entity by the legal authority that registered it.</xs:documentation>
+          <xs:documentation xml:lang="en" source="#usage">Legal Entity must have a unique identification number, allowing it to be clearly identified in communication across business registers.
+
+The details of the registration are provided as properties of the Identifier class. The Core vocabulary sets no restriction on the type of legal identifier. In many countries, the business register's identifier is the relevant data point.</xs:documentation>
         </xs:annotation>
       </xs:element>
-      <xs:element name="legalName" type="xs:string" maxOccurs="unbounded" minOccurs="0">
+      <xs:element name="LegalName" type="xs:string" maxOccurs="unbounded" minOccurs="0">
         <xs:annotation>
-          <xs:documentation xml:lang="en">The name under which the Legal Entity is legally registered.</xs:documentation>
+          <xs:documentation xml:lang="en" source="#definition">The name under which the Legal Entity is legally registered.</xs:documentation>
+          <xs:documentation xml:lang="en" source="#usage">The legal name is different from the alternative (trade) name which is a pseudonym used by companies that do not operate under their registered company name.
+A business might have more than one legal name, particularly in countries with more than one official language. In such cases, and where the encoding technology allows, the language of the string should be identified.</xs:documentation>
         </xs:annotation>
       </xs:element>
-      <xs:element name="registeredAddress" ref="AddressType" maxOccurs="unbounded" minOccurs="0">
+      <xs:element name="RegisteredAddress" type="AddressType" maxOccurs="unbounded" minOccurs="0">
         <xs:annotation>
-          <xs:documentation xml:lang="en">The address at which the Legal Entity is legally registered.</xs:documentation>
+          <xs:documentation xml:lang="en" source="#definition">The address at which the Legal Entity is legally registered.</xs:documentation>
+          <xs:documentation xml:lang="en" source="#usage">In almost all jurisdictions, Legal Entities must register a public address. This may or may not be the actual address at which the Legal Entity does its business, it is commonly the address of their lawyer or accountant, but it is the address to which formal communications can be sent. The registered address property points to the Address of the Registered Site. This property can be seen as a shorthand for this property path.</xs:documentation>
         </xs:annotation>
       </xs:element>
-      <xs:element name="registrationDate" type="xs:date" maxOccurs="unbounded" minOccurs="0">
+      <xs:element name="RegistrationDate" type="xs:date" maxOccurs="unbounded" minOccurs="0">
         <xs:annotation>
-          <xs:documentation xml:lang="en">The date on which the legal entity has registered in some jurisdiction for regulatory and / or for tax purposes.</xs:documentation>
+          <xs:documentation xml:lang="en" source="#definition">The date on which the legal entity has registered in some jurisdiction for regulatory and / or for tax purposes.</xs:documentation>
         </xs:annotation>
       </xs:element>
     </xs:sequence>
@@ -163,59 +167,82 @@
   </xs:complexType>
   <xs:complexType name="AddressType">
     <xs:sequence>
-      <xs:element name="addressArea" type="xs:string" maxOccurs="unbounded" minOccurs="0">
+      <xs:element name="AddressArea" type="xs:string" maxOccurs="unbounded" minOccurs="0">
         <xs:annotation>
-          <xs:documentation xml:lang="en">The name of a geographic area that groups Addresses.</xs:documentation>
+          <xs:documentation xml:lang="en" source="#definition">The name of a geographic area that groups Addresses.</xs:documentation>
+          <xs:documentation xml:lang="en" source="#usage">This would typically be part of a city, a neighbourhood or village, e.g. Montmartre. Address area is not an administrative unit.</xs:documentation>
         </xs:annotation>
       </xs:element>
-      <xs:element name="addressId" type="xs:string" maxOccurs="unbounded" minOccurs="0">
+      <xs:element name="AddressId" type="xs:string" maxOccurs="unbounded" minOccurs="0">
         <xs:annotation>
-          <xs:documentation xml:lang="en">A globally unique identifier for each instance of an Address.</xs:documentation>
+          <xs:documentation xml:lang="en" source="#definition">A globally unique identifier for each instance of an Address.</xs:documentation>
+          <xs:documentation xml:lang="en" source="#usage">The concept of adding a globally unique identifier for each instance of an address is a crucial part of the INSPIRE data spec. A number of EU countries have already implemented an ID (a UUID) in their Address Register/gazetteer, among them Denmark. OASIS xAL also includes an address identifier. It is the address Identifier that allows an address to be represented in a format other than INSPIRE whilst remaining conformant to the Core Vocabulary.
+&lt;br/&gt;&lt;br/&gt;
+The INSPIRE method of representing addresses is very detailed, designed primarily for use in databases of addresses. Whilst data that is published in full conformance with the INSPIRE data structure can be made available using the Core  Location Vocabulary the reverse is not true since the Core Vocabulary allows much greater flexibility.
+&lt;br/&gt;&lt;br/&gt;
+Many datasets that include address data as one piece of information about something else are likely to have that data in simpler formats. These might be tailored to the specific need of the dataset, follow a national norm, or make use of a standard like vCard.
+&lt;br/&gt;&lt;br/&gt;
+To provide maximum flexibility in the Core Vocabulary, whilst remaining interoperable with INSPIRE Address Guidelines (which EU Member States are obliged to use), the  Core Location Vocabulary provides the extra property of full address and makes use of INSPIRE's addressID.
+
+</xs:documentation>
         </xs:annotation>
       </xs:element>
-      <xs:element name="administrativeUnitLevel1" type="xs:string" maxOccurs="unbounded" minOccurs="0">
+      <xs:element name="AdministrativeUnitLevel1" type="xs:string" maxOccurs="unbounded" minOccurs="0">
         <xs:annotation>
-          <xs:documentation xml:lang="en">The name of the uppermost level of the address, almost always a country.</xs:documentation>
+          <xs:documentation xml:lang="en" source="#definition">The name of the uppermost level of the address, almost always a country.</xs:documentation>
+          <xs:documentation xml:lang="en" source="#usage">Best practice is to use the ISO 3166-1 code but if this is inappropriate for the context, country names should be provided in a consistent manner to reduce ambiguity. For example, either write 'France' or 'FRA' consistently throughout the dataset and avoid mixing the two. The &lt;a href="https://op.europa.eu/en/web/eu-vocabularies/dataset/-/resource?uri=http://publications.europa.eu/resource/dataset/country"&gt;Country controlled vocabulary&lt;/a&gt; from the Publications Office can be reused for this.</xs:documentation>
         </xs:annotation>
       </xs:element>
-      <xs:element name="administrativeUnitLevel2" type="xs:string" maxOccurs="unbounded" minOccurs="0">
+      <xs:element name="AdministrativeUnitLevel2" type="xs:string" maxOccurs="unbounded" minOccurs="0">
         <xs:annotation>
-          <xs:documentation xml:lang="en">The name of a secondary level/region of the address, usually a county, state or other such area that typically encompasses several localities.</xs:documentation>
+          <xs:documentation xml:lang="en" source="#definition">The name of a secondary level/region of the address, usually a county, state or other such area that typically encompasses several localities.</xs:documentation>
+          <xs:documentation xml:lang="en" source="#usage">Values could be a region or province, more granular than level 1.</xs:documentation>
         </xs:annotation>
       </xs:element>
-      <xs:element name="fullAddress" type="xs:string" maxOccurs="unbounded" minOccurs="0">
+      <xs:element name="FullAddress" type="xs:string" maxOccurs="unbounded" minOccurs="0">
         <xs:annotation>
-          <xs:documentation xml:lang="en">The complete address written as a string.</xs:documentation>
+          <xs:documentation xml:lang="en" source="#definition">The complete address written as a string.</xs:documentation>
+          <xs:documentation xml:lang="en" source="#usage">Use of this property is recommended as it will not suffer any misunderstandings that might arise through the breaking up of an address into its component parts. This property is analogous to vCard's label property but with two important differences: (1) formatting is not assumed so that, unlike vCard label, it may not be suitable to print this on an address label, (2) vCard's label property has a domain of vCard Address; the fullAddress property has no such restriction. An example of a full address is "Champ de Mars, 5 Avenue Anatole France, 75007 Paris, France".</xs:documentation>
         </xs:annotation>
       </xs:element>
-      <xs:element name="locatorDesignator" type="xs:string" maxOccurs="unbounded" minOccurs="0">
+      <xs:element name="LocatorDesignator" type="xs:string" maxOccurs="unbounded" minOccurs="0">
         <xs:annotation>
-          <xs:documentation xml:lang="en">A number or sequence of characters that uniquely identifies the locator within the relevant scope.</xs:documentation>
+          <xs:documentation xml:lang="en" source="#definition">A number or sequence of characters that uniquely identifies the locator within the relevant scope.</xs:documentation>
+          <xs:documentation xml:lang="en" source="#usage">In simpler terms, this is the building number, apartment number, etc. For an address such as "Flat 3, 17 Bridge Street", the locator is "flat 3, 17".
+
+</xs:documentation>
         </xs:annotation>
       </xs:element>
-      <xs:element name="locatorName" type="xs:string" maxOccurs="unbounded" minOccurs="0">
+      <xs:element name="LocatorName" type="xs:string" maxOccurs="unbounded" minOccurs="0">
         <xs:annotation>
-          <xs:documentation xml:lang="en">Proper noun(s) applied to the real world entity identified by the locator.</xs:documentation>
+          <xs:documentation xml:lang="en" source="#definition">Proper noun(s) applied to the real world entity identified by the locator.</xs:documentation>
+          <xs:documentation xml:lang="en" source="#usage">The locator name could be the name of the property or complex, of the building or part of the building, or it could be the name of a room inside a building.
+&lt;br/&gt;&lt;br/&gt;
+The key difference between a locator and a locator name is that the latter is a proper name and is unlikely to include digits. For example, "Shumann, Berlaymont" is a meeting room within the European Commission headquarters for which locator name is more appropriate than locator.</xs:documentation>
         </xs:annotation>
       </xs:element>
-      <xs:element name="postOfficeBox" type="xs:string" maxOccurs="unbounded" minOccurs="0">
+      <xs:element name="PostOfficeBox" type="xs:string" maxOccurs="unbounded" minOccurs="0">
         <xs:annotation>
-          <xs:documentation xml:lang="en">A location designator for a postal delivery point at a post office, usually a number.</xs:documentation>
+          <xs:documentation xml:lang="en" source="#definition">A location designator for a postal delivery point at a post office, usually a number.</xs:documentation>
+          <xs:documentation xml:lang="en" source="#usage">INSPIRE's name for this is "postalDeliveryIdentifier" for which it uses the locator designator property with a type attribute of that name. This vocabulary separates out the Post Office Box for greater independence of technology. An example post office box number is "9383".</xs:documentation>
         </xs:annotation>
       </xs:element>
-      <xs:element name="postCode" type="xs:string" maxOccurs="unbounded" minOccurs="0">
+      <xs:element name="PostCode" type="xs:string" maxOccurs="unbounded" minOccurs="0">
         <xs:annotation>
-          <xs:documentation xml:lang="en">The code created and maintained for postal purposes to identify a subdivision of addresses and postal delivery points.</xs:documentation>
+          <xs:documentation xml:lang="en" source="#definition">The code created and maintained for postal purposes to identify a subdivision of addresses and postal delivery points.</xs:documentation>
+          <xs:documentation xml:lang="en" source="#usage">Post codes are common elements in many countries' postal address systems. One of the many post codes of Paris is for example "75000".</xs:documentation>
         </xs:annotation>
       </xs:element>
-      <xs:element name="postName" type="xs:string" maxOccurs="unbounded" minOccurs="0">
+      <xs:element name="PostName" type="xs:string" maxOccurs="unbounded" minOccurs="0">
         <xs:annotation>
-          <xs:documentation xml:lang="en">A name created and maintained for postal purposes to identify a subdivision of addresses and postal delivery points.</xs:documentation>
+          <xs:documentation xml:lang="en" source="#definition">A name created and maintained for postal purposes to identify a subdivision of addresses and postal delivery points.</xs:documentation>
+          <xs:documentation xml:lang="en" source="#usage">Usually a city, for example "Paris".</xs:documentation>
         </xs:annotation>
       </xs:element>
-      <xs:element name="thoroughfare" type="xs:string" maxOccurs="unbounded" minOccurs="0">
+      <xs:element name="Thoroughfare" type="xs:string" maxOccurs="unbounded" minOccurs="0">
         <xs:annotation>
-          <xs:documentation xml:lang="en">The name of a passage or way through from one location to another.</xs:documentation>
+          <xs:documentation xml:lang="en" source="#definition">The name of a passage or way through from one location to another.</xs:documentation>
+          <xs:documentation xml:lang="en" source="#usage">A thoroughfare is usually a street, but it might be a waterway or some other feature. For example, "Avenue des Champs-Élysées".</xs:documentation>
         </xs:annotation>
       </xs:element>
     </xs:sequence>
@@ -235,19 +262,19 @@
   </xs:complexType>
   <xs:complexType name="OrganizationType">
     <xs:sequence>
-      <xs:element name="hasMember" ref="AgentType" maxOccurs="unbounded" minOccurs="0">
+      <xs:element name="HasMember" type="AgentType" maxOccurs="unbounded" minOccurs="0">
         <xs:annotation>
-          <xs:documentation xml:lang="en">Indicates an agent (person or other organization) who is a member of the subject Organization.</xs:documentation>
+          <xs:documentation xml:lang="en" source="#definition">Indicates an agent (person or other organization) who is a member of the subject Organization.</xs:documentation>
         </xs:annotation>
       </xs:element>
-      <xs:element name="hasSubOrganization" ref="OrganizationType" maxOccurs="unbounded" minOccurs="0">
+      <xs:element name="HasSubOrganization" type="OrganizationType" maxOccurs="unbounded" minOccurs="0">
         <xs:annotation>
-          <xs:documentation xml:lang="en">Represents hierarchical containment of Organizations or OrganizationalUnits; indicates an organization which is a sub-part or child of this organization.</xs:documentation>
+          <xs:documentation xml:lang="en" source="#definition">Represents hierarchical containment of Organizations or OrganizationalUnits; indicates an organization which is a sub-part or child of this organization.</xs:documentation>
         </xs:annotation>
       </xs:element>
-      <xs:element name="subOrganizationOf" ref="OrganizationType" maxOccurs="unbounded" minOccurs="0">
+      <xs:element name="SubOrganizationOf" type="OrganizationType" maxOccurs="unbounded" minOccurs="0">
         <xs:annotation>
-          <xs:documentation xml:lang="en">Represents hierarchical containment of Organizations or OrganizationalUnits; indicates an Organization which contains this Organization.</xs:documentation>
+          <xs:documentation xml:lang="en" source="#definition">Represents hierarchical containment of Organizations or OrganizationalUnits; indicates an Organization which contains this Organization.</xs:documentation>
         </xs:annotation>
       </xs:element>
     </xs:sequence>
@@ -259,24 +286,25 @@
   </xs:complexType>
   <xs:complexType name="AgentType">
     <xs:sequence>
-      <xs:element name="headOf" ref="OrganizationType" maxOccurs="unbounded" minOccurs="0">
+      <xs:element name="HeadOf" type="OrganizationType" maxOccurs="unbounded" minOccurs="0">
         <xs:annotation>
-          <xs:documentation xml:lang="en">Indicates that a person (or other agent) is the leader or formal head of the Organization.</xs:documentation>
+          <xs:documentation xml:lang="en" source="#definition">Indicates that a person (or other agent) is the leader or formal head of the Organization.</xs:documentation>
         </xs:annotation>
       </xs:element>
-      <xs:element name="memberOf" ref="OrganizationType" maxOccurs="unbounded" minOccurs="0">
+      <xs:element name="MemberOf" type="OrganizationType" maxOccurs="unbounded" minOccurs="0">
         <xs:annotation>
-          <xs:documentation xml:lang="en">Indicates that an agent (person or other organization) is a member of the Organization with no indication of the nature of that membership or the role played.</xs:documentation>
+          <xs:documentation xml:lang="en" source="#definition">Indicates that an agent (person or other organization) is a member of the Organization with no indication of the nature of that membership or the role played.</xs:documentation>
+          <xs:documentation xml:lang="en" source="#usage">Note that the choice of property name is not meant to limit the property to only formal membership arrangements, it is also intended to cover related concepts such as affiliation or other involvement in the organization. Extensions can specialize this relationship to indicate particular roles within the organization or more nuanced relationships to the organization.</xs:documentation>
         </xs:annotation>
       </xs:element>
-      <xs:element name="name" type="xs:string" maxOccurs="unbounded" minOccurs="0">
+      <xs:element name="Name" type="xs:string" maxOccurs="unbounded" minOccurs="0">
         <xs:annotation>
-          <xs:documentation xml:lang="en">The noun given to the Agent.</xs:documentation>
+          <xs:documentation xml:lang="en" source="#definition">The noun given to the Agent.</xs:documentation>
         </xs:annotation>
       </xs:element>
-      <xs:element name="type" type="xs:string" maxOccurs="unbounded" minOccurs="0">
+      <xs:element name="Type" type="xs:string" maxOccurs="unbounded" minOccurs="0">
         <xs:annotation>
-          <xs:documentation xml:lang="en">A classification assigned to an Agent.</xs:documentation>
+          <xs:documentation xml:lang="en" source="#definition">A classification assigned to an Agent.</xs:documentation>
         </xs:annotation>
       </xs:element>
     </xs:sequence>
