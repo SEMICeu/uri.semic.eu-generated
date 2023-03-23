@@ -91,6 +91,8 @@
 		]
 
 
+   
+
     var respecConfig = {
       edDraftURI: "https://semiceu.github.io//doc/dcat-ap",
       latestVersion: "",
@@ -127,10 +129,18 @@
           "href":"https://ec.europa.eu/isa2/actions/improving-semantic-interoperability-european-egovernment-systems_en",
           "title":"Interoperability solutions for public administrations, businesses and citizens (ISA²). Improving semantic interoperability in European eGovernment systems",
           "publisher":"European Commission"
-         }
+         },
+        "DEU" : {
+          "href":"https://data.europa.eu",
+          "title":"The official portal for European data",
+          "publisher":"European Commission"
+        }
 
       }
     };
+
+
+
     </script>
     <style>
       .figure img, .sidefigure img, figure img, .figure object, .sidefigure object, figure object, img, .img {
@@ -260,8 +270,7 @@ In order to conform to this Application Profile, an application that provides me
 <li>Provide descriptions of all categories involved in the descriptions of Datasets in the Catalogue, including at least the mandatory properties specified for <a href="#Concept">Concept</a>.</li>
 </ul>
 For the properties listed in the table in section [[[#controlled-vocs]]], the associated controlled vocabularies MUST be used. Additional controlled vocabularies MAY be used.
-In addition to the mandatory properties, any of the recommended and optional properties defined in section 4 MAY be provided.
-Recommended and optional classes may have mandatory properties, but those only apply if and when an instance of such a class is present in a description.
+In addition to the mandatory properties, any of the recommended and optional properties defined in section [[#quick-reference]]] MAY be provided.
 <h3>Receiver requirements</h3>
 In order to conform to this Application Profile, an application that receives metadata MUST be able to:
 <li>Process information for all classes and properties specified in section [[[#quick-reference]]].</li>
@@ -7522,6 +7531,7 @@ They are included in the Application Profile because they form the range of prop
 
 </section>
 
+<!--
 <section class="informative">
     <h2 aria-level="1" role="heading" id="h2_sotd">
         JSON-LD context
@@ -7560,6 +7570,8 @@ They are included in the Application Profile because they form the range of prop
         
     </div>
 </section>
+
+-->
 
  
   <section id="controlled-vocs" class="informative">
@@ -7650,7 +7662,7 @@ In particular it is advised for FAIR data to consider CC BY 4.0 (the minimum lim
 
 <p></p>
 
-An assessment of data.europa.eu in 2023 showed that there are different representations to indicate the same licence.
+An assessment of data.europa.eu [[DEU]] in 2023 showed that there are different representations to indicate the same licence.
 To create a more harmonised experience throughout Europe, it is recommended to use the <a href="http://publications.europa.eu/resource/dataset/licence">NAL licence</a>
 maintained by the Publications Office if allowed by national legislation.
 If local representations are used, then the equivalence with a licence in this NAL should be provided.
@@ -7703,8 +7715,7 @@ In order to conform to this Application Profile, an application that provides me
 <li>Provide descriptions of all categories involved in the descriptions of Datasets in the Catalogue, including at least the mandatory properties specified for <a href="#Concept">Concept</a>.</li>
 </ul>
 For the properties listed in the table in section [[[#controlled-vocs]]], the associated controlled vocabularies MUST be used. Additional controlled vocabularies MAY be used.
-In addition to the mandatory properties, any of the recommended and optional properties defined in section 4 MAY be provided.
-Recommended and optional classes may have mandatory properties, but those only apply if and when an instance of such a class is present in a description.
+In addition to the mandatory properties, any of the recommended and optional properties defined in section [[#quick-reference]]] MAY be provided.
 <h3>Receiver requirements</h3>
 In order to conform to this Application Profile, an application that receives metadata MUST be able to:
 <li>Process information for all classes and properties specified in section [[[#quick-reference]]].</li>
@@ -7738,7 +7749,7 @@ The first possible approach is based on the use of a predicate vocabulary that p
  Other domain-specific sources for additional properties are the INSPIRE Responsible Party roles , the Library of Congress’ MARC relators  and DataCite’s contributor types.
  To enable the use of such properties, they must be defined as RDF properties with URIs in a well-managed namespace. 
 </p><p>
-A second approach is based on the use of W3C’s PROV ontology  which provides a powerful mechanism to express a set of classes, properties, and restrictions that can be used to represent and interchange provenance information generated in different systems and under different contexts. In the context of work on GeoDCAT-AP, a PROV-conformant solution for expressing agent roles was agreed . This solution uses prov:qualifiedAttribution in combination with a dct:type assertion pointing to the code list for Responsible Party Role in the INSPIRE registry. To enable the use of such types, they must be defined with URIs in a well-managed namespace. 
+A second approach is based on the use of W3C’s PROV ontology [[https://www.w3.org/TR/prov-o/]]  which provides a powerful mechanism to express a set of classes, properties, and restrictions that can be used to represent and interchange provenance information generated in different systems and under different contexts. In the context of work on GeoDCAT-AP, a PROV-conformant solution for expressing agent roles was agreed . This solution uses prov:qualifiedAttribution in combination with a dct:type assertion pointing to the code list for Responsible Party Role in the INSPIRE registry. To enable the use of such types, they must be defined with URIs in a well-managed namespace. 
 </p><p>
 Based on the experience gained with the use of domain-specific extensions for additional ‘agent roles’ in the exchange of information about Datasets and on the requests of implementors and stakeholders, the  DCAT Application Profile release 2.0.0 is  extended with additional roles as proposed by DCAT Version 2, W3C Working Draft 28 May 2019  that have proven to be useful across domains. Precisely, properties dct:creator, prov:qualifiedAttribution and dcat:qualifiedRelation have been added to dcat:Dataset class to further facilitate relationships between datasets and agents. 
 </p><p>
@@ -7780,7 +7791,7 @@ How multilingual information is handled in systems, for example in indexing and 
 The introduction of Data Services as first class citizens in DCAT 2.0 raised questions about the usage of Data Services and Distributions. This section provides a guideline for publishers what to consider as a Distribution and what as a Data Service.
 </p><p>
 
-A first distinction between distributions and data services is their dependency on a dataset for their existance. A distribution cannot exist without its dataset. It is a specific representation of a dataset (cfr definition W3C https://w3c.github.io/dxwg/dcat/#Class:Distribution). Whereas a data service is an entity in its own right. It provides access to datasets or it provides data processing functions. The independence also holds between the distributions of a dataset, and the data service which provides access to that dataset. The distributions are not required to be the result of the data service operations. However, they may.
+A first distinction between distributions and data services is their dependency on a dataset for their existance. A distribution cannot exist without its dataset. It is a specific representation of a dataset (cfr definition W3C <a href="https://w3c.github.io/dxwg/dcat/#Class:Distribution">Distribution</a>). Whereas a data service is an entity in its own right. It provides access to datasets or it provides data processing functions. The independence also holds between the distributions of a dataset, and the data service which provides access to that dataset. The distributions are not required to be the result of the data service operations. However, they may.
 
 </p><p>
 Many of the properties of distributions are file oriented (downloadURL, format, byte size, checksum, modification date, ...). The relevance of this information is reduced for data services, related information is present in a very different form and thus under different terminology. For instance, data services do and can provide format transformations, language transformations and schema transformations on request. Also the handling of trust is different. While tampering of downloadable content is detected by e.g. checksums, data services create often a trusted channel using security measures such as authentication and encryption. This reduces the need for additional trust checks on the data.
