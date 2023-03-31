@@ -611,6 +611,11 @@
           <xs:documentation xml:lang="en" source="#usage">A Dataset may be associated with multiple themes.</xs:documentation>
         </xs:annotation>
       </xs:element>
+      <xs:element name="Version" type="xs:string" maxOccurs="unbounded" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation xml:lang="en" source="#definition">The version indicator (name or identifier) of a resource.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
       <xs:element name="AccessRights" type="RightsStatementType" maxOccurs="1" minOccurs="0">
         <xs:annotation>
           <xs:documentation xml:lang="en" source="#definition">Information that indicates whether the Dataset is open data, has access restrictions or is not public.</xs:documentation>
@@ -720,11 +725,6 @@
           <xs:documentation xml:lang="en" source="#definition">A page or document about this Dataset.</xs:documentation>
         </xs:annotation>
       </xs:element>
-      <xs:element name="Version" type="xs:string" maxOccurs="1" minOccurs="0">
-        <xs:annotation>
-          <xs:documentation xml:lang="en" source="#definition">A version number or other version designation of the Dataset.</xs:documentation>
-        </xs:annotation>
-      </xs:element>
       <xs:element name="QualifiedAttribution" type="AtttributionType" maxOccurs="unbounded" minOccurs="0">
         <xs:annotation>
           <xs:documentation xml:lang="en" source="#definition">An Agent having some form of responsibility for the resource</xs:documentation>
@@ -744,25 +744,30 @@
   </xs:complexType>
   <xs:complexType name="DatasetMemberOfADatasetSeriesType">
     <xs:sequence>
-      <xs:element name="First" type="DatasetSeriesType" maxOccurs="unbounded" minOccurs="0">
-        <xs:annotation>
-          <xs:documentation xml:lang="en" source="#definition">The first resource in an ordered collection or series of resources, to which the current resource belongs.</xs:documentation>
-        </xs:annotation>
-      </xs:element>
-      <xs:element name="First" type="DatasetSeriesType" maxOccurs="unbounded" minOccurs="0">
-        <xs:annotation>
-          <xs:documentation xml:lang="en" source="#definition">The first resource in an ordered collection or series of resources, to which the current resource belongs.</xs:documentation>
-        </xs:annotation>
-      </xs:element>
       <xs:element name="InSeries" type="DatasetSeriesType" maxOccurs="unbounded" minOccurs="0">
         <xs:annotation>
           <xs:documentation xml:lang="en" source="#definition">A dataset series of which the dataset is part.</xs:documentation>
         </xs:annotation>
       </xs:element>
-      <xs:element name="Last" type="DatasetSeriesType" maxOccurs="unbounded" minOccurs="0"/>
-      <xs:element name="Last" type="DatasetSeriesType" maxOccurs="unbounded" minOccurs="0"/>
       <xs:element name="Next" type="DatasetMemberOfADatasetSeriesType" maxOccurs="unbounded" minOccurs="0"/>
       <xs:element name="Previous" type="DatasetMemberOfADatasetSeriesType" maxOccurs="unbounded" minOccurs="0"/>
+      <xs:element name="Frequency" type="FrequencyType" maxOccurs="unbounded" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation xml:lang="en" source="#definition">The frequency at which the Dataset is updated.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="Description" type="xs:string" maxOccurs="unbounded" minOccurs="1">
+        <xs:annotation>
+          <xs:documentation xml:lang="en" source="#definition">A free-text account of the Dataset.</xs:documentation>
+          <xs:documentation xml:lang="en" source="#usage">This property can be repeated for parallel language versions of the description.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="Title" type="xs:string" maxOccurs="unbounded" minOccurs="1">
+        <xs:annotation>
+          <xs:documentation xml:lang="en" source="#definition">A name given to the Dataset.</xs:documentation>
+          <xs:documentation xml:lang="en" source="#usage">This property can be repeated for parallel language versions of the name.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
     </xs:sequence>
     <xs:attribute name="DatasetMemberOfADatasetSeriesRef" type="xs:IDREF">
       <xs:annotation>
@@ -772,7 +777,21 @@
   </xs:complexType>
   <xs:complexType name="DatasetSeriesType">
     <xs:sequence>
+      <xs:element name="DcatcontactPoint" type="KindType" maxOccurs="unbounded" minOccurs="0"/>
+      <xs:element name="First" type="DatasetMemberOfADatasetSeriesType" maxOccurs="unbounded" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation xml:lang="en" source="#definition">The first resource in an ordered collection or series of resources, to which the current resource belongs.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="Last" type="DatasetMemberOfADatasetSeriesType" maxOccurs="unbounded" minOccurs="0"/>
       <xs:element name="SeriesMember" type="DatasetMemberOfADatasetSeriesType" maxOccurs="unbounded" minOccurs="1"/>
+      <xs:element name="DctaccrualPeriodicity" type="FrequencyType" maxOccurs="1" minOccurs="0"/>
+      <xs:element name="Dctdescription" type="xs:string" maxOccurs="unbounded" minOccurs="1"/>
+      <xs:element name="Dctissued" type="xs:string" maxOccurs="1" minOccurs="0"/>
+      <xs:element name="Dctmodified" type="xs:string" maxOccurs="1" minOccurs="0"/>
+      <xs:element name="Dctspatial" type="LocationType" maxOccurs="unbounded" minOccurs="0"/>
+      <xs:element name="Dcttemporal" type="PeriodOfTimeType" maxOccurs="unbounded" minOccurs="0"/>
+      <xs:element name="Dcttitle" type="xs:string" maxOccurs="unbounded" minOccurs="1"/>
     </xs:sequence>
     <xs:attribute name="DatasetSeriesRef" type="xs:IDREF">
       <xs:annotation>
