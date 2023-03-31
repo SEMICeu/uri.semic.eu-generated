@@ -777,21 +777,59 @@
   </xs:complexType>
   <xs:complexType name="DatasetSeriesType">
     <xs:sequence>
-      <xs:element name="DcatcontactPoint" type="KindType" maxOccurs="unbounded" minOccurs="0"/>
+      <xs:element name="ContactPoint" type="KindType" maxOccurs="unbounded" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation xml:lang="en" source="#definition">Contact information that can be used for sending comments about the Dataset.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
       <xs:element name="First" type="DatasetMemberOfADatasetSeriesType" maxOccurs="unbounded" minOccurs="0">
         <xs:annotation>
           <xs:documentation xml:lang="en" source="#definition">The first resource in an ordered collection or series of resources, to which the current resource belongs.</xs:documentation>
         </xs:annotation>
       </xs:element>
-      <xs:element name="Last" type="DatasetMemberOfADatasetSeriesType" maxOccurs="unbounded" minOccurs="0"/>
+      <xs:element name="Last" type="DatasetMemberOfADatasetSeriesType" maxOccurs="unbounded" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation xml:lang="en" source="#definition">The last resource in an ordered collection or series</xs:documentation>
+        </xs:annotation>
+      </xs:element>
       <xs:element name="SeriesMember" type="DatasetMemberOfADatasetSeriesType" maxOccurs="unbounded" minOccurs="1"/>
-      <xs:element name="DctaccrualPeriodicity" type="FrequencyType" maxOccurs="1" minOccurs="0"/>
-      <xs:element name="Dctdescription" type="xs:string" maxOccurs="unbounded" minOccurs="1"/>
-      <xs:element name="Dctissued" type="xs:string" maxOccurs="1" minOccurs="0"/>
-      <xs:element name="Dctmodified" type="xs:string" maxOccurs="1" minOccurs="0"/>
-      <xs:element name="Dctspatial" type="LocationType" maxOccurs="unbounded" minOccurs="0"/>
-      <xs:element name="Dcttemporal" type="PeriodOfTimeType" maxOccurs="unbounded" minOccurs="0"/>
-      <xs:element name="Dcttitle" type="xs:string" maxOccurs="unbounded" minOccurs="1"/>
+      <xs:element name="Frequency" type="FrequencyType" maxOccurs="1" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation xml:lang="en" source="#definition">Tthe frequency at which the Dataset is updated.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="Description" type="xs:string" maxOccurs="unbounded" minOccurs="1">
+        <xs:annotation>
+          <xs:documentation xml:lang="en" source="#definition">A free-text account of the Dataset.</xs:documentation>
+          <xs:documentation xml:lang="en" source="#usage">This property can be repeated for parallel language versions of the description.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="ReleaseDate" type="xs:string" maxOccurs="1" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation xml:lang="en" source="#definition">The date of formal issuance (e.g., publication) of the Dataset.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="ModificationDate" type="xs:string" maxOccurs="1" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation xml:lang="en" source="#definition">The most recent date on which the Dataset was changed or modified.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="GeographicalCoverage" type="LocationType" maxOccurs="unbounded" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation xml:lang="en" source="#definition">A geographic region that is covered by the Dataset.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="TemporalCoverage" type="PeriodOfTimeType" maxOccurs="unbounded" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation xml:lang="en" source="#definition">A temporal period that the Dataset covers.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="Title" type="xs:string" maxOccurs="unbounded" minOccurs="1">
+        <xs:annotation>
+          <xs:documentation xml:lang="en" source="#definition">A name given to the Dataset.</xs:documentation>
+          <xs:documentation xml:lang="en" source="#usage">This property can be repeated for parallel language versions of the name.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
     </xs:sequence>
     <xs:attribute name="DatasetSeriesRef" type="xs:IDREF">
       <xs:annotation>
