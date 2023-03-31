@@ -378,40 +378,40 @@ The cardinalities and qualifications are included in the figure.
                             This document describes the usage of the following main entities for a correct usage of the Application Profile:
                             <br />
                             |
+			      <a href="#Agent">Agent</a> |
+			      <a href="#Catalogue">Catalogue</a> |
+			      <a href="#CatalogueRecord">Catalogue Record</a> |
+			      <a href="#CataloguedResource">Catalogued Resource</a> |
+			      <a href="#Checksum">Checksum</a> |
+			      <a href="#DataService">Data Service</a> |
+			      <a href="#Dataset">Dataset</a> |
+			      <a href="#DatasetmemberofaDatasetSeries">Dataset member of a Dataset Series</a> |
+			      <a href="#DatasetSeries">Dataset Series</a> |
+			      <a href="#Distribution">Distribution</a> |
+			      <a href="#Kind">Kind</a> |
+			      <a href="#LicenceDocument">Licence Document</a> |
+			      <a href="#Location">Location</a> |
+			      <a href="#Relationship">Relationship</a> |
                         </p>
                         <p>
                             The main entities are supported by:
                             <br />
                             |
 			      <a href="#Activity">Activity</a> |
-			      <a href="#Agent">Agent</a> |
 			      <a href="#Atttribution">Atttribution</a> |
-			      <a href="#Catalogue">Catalogue</a> |
-			      <a href="#CatalogueRecord">Catalogue Record</a> |
-			      <a href="#CataloguedResource">Catalogued Resource</a> |
-			      <a href="#Checksum">Checksum</a> |
 			      <a href="#ChecksumAlgorithm">Checksum Algorithm</a> |
 			      <a href="#Concept">Concept</a> |
 			      <a href="#Conceptscheme">Conceptscheme</a> |
-			      <a href="#DataService">Data Service</a> |
-			      <a href="#Dataset">Dataset</a> |
-			      <a href="#DatasetmemberofaDatasetSeries">Dataset member of a Dataset Series</a> |
-			      <a href="#DatasetSeries">Dataset Series</a> |
-			      <a href="#Distribution">Distribution</a> |
 			      <a href="#Document">Document</a> |
 			      <a href="#Frequency">Frequency</a> |
 			      <a href="#Geometry">Geometry</a> |
 			      <a href="#Identifier">Identifier</a> |
-			      <a href="#Kind">Kind</a> |
-			      <a href="#LicenceDocument">Licence Document</a> |
 			      <a href="#Linguisticsystem">Linguistic system</a> |
 			      <a href="#Literal">Literal</a> |
-			      <a href="#Location">Location</a> |
 			      <a href="#Mediatype">Media type</a> |
 			      <a href="#Periodoftime">Period of time</a> |
 			      <a href="#Policy">Policy</a> |
 			      <a href="#ProvenanceStatement">Provenance Statement</a> |
-			      <a href="#Relationship">Relationship</a> |
 			      <a href="#Resource">Resource</a> |
 			      <a href="#Rightsstatement">Rights statement</a> |
 			      <a href="#Role">Role</a> |
@@ -4469,6 +4469,8 @@ The main entities are those that form the core of the Application Profile.
                                 </td>
                                 <td property="skos:scopeNote">
                                     This property can be repeated for parallel language versions of the description.
+
+The description may indicate the dimension values.
                                 </td>
 				<!--
                                 <td>
@@ -4511,7 +4513,9 @@ The main entities are those that form the core of the Application Profile.
                                     The frequency at which the Dataset is updated.
                                 </td>
                                 <td property="skos:scopeNote">
-                                    
+                                    The frequency of a dataset belonging to a dataset series  is not equal to the frequency of the dataset series. 
+
+E.g. A dataset budget 2020 with frequency yearly means that this dataset has an update in 2021, 2022, 2023, etc. 
                                 </td>
 				<!--
                                 <td>
@@ -4640,7 +4644,7 @@ The main entities are those that form the core of the Application Profile.
                                     
                                 </td>
                                 <td property="skos:scopeNote">
-                                    
+                                    Unless the dataset is the last in the chain a dataset in a collection must have a previous one.
                                 </td>
 				<!--
                                 <td>
@@ -4684,6 +4688,8 @@ The main entities are those that form the core of the Application Profile.
                                 </td>
                                 <td property="skos:scopeNote">
                                     This property can be repeated for parallel language versions of the name.
+
+The title may indicate the dimension values.
                                 </td>
 				<!--
                                 <td>
@@ -4826,7 +4832,7 @@ The main entities are those that form the core of the Application Profile.
                                     0..n
                                 </td>
                                 <td property="rdfs:comment">
-                                    Contact information that can be used for sending comments about the Dataset.
+                                    contact information that can be used for sending comments about the Dataset Series.
                                 </td>
                                 <td property="skos:scopeNote">
                                     
@@ -4869,10 +4875,12 @@ The main entities are those that form the core of the Application Profile.
                                     1..n
                                 </td>
                                 <td property="rdfs:comment">
-                                    A free-text account of the Dataset.
+                                    A free-text account of the Dataset Series.
                                 </td>
                                 <td property="skos:scopeNote">
-                                    This property can be repeated for parallel language versions of the description.
+                                    This property can be repeated for parallel language versions.
+
+It is recommended to provide an indication about the dimensions the Dataset Series evolves.
                                 </td>
 				<!--
                                 <td>
@@ -4955,10 +4963,10 @@ The main entities are those that form the core of the Application Profile.
                                     0..1
                                 </td>
                                 <td property="rdfs:comment">
-                                    Tthe frequency at which the Dataset is updated.
+                                    Tthe frequency at which the Dataset Series is updated.
                                 </td>
                                 <td property="skos:scopeNote">
-                                    
+                                    The frequency of a dataset series is not equal to the frequency of the dataset in the collection.
                                 </td>
 				<!--
                                 <td>
@@ -4998,10 +5006,10 @@ The main entities are those that form the core of the Application Profile.
                                     0..n
                                 </td>
                                 <td property="rdfs:comment">
-                                    A geographic region that is covered by the Dataset.
+                                    A geographic region that is covered by the Dataset Series.
                                 </td>
                                 <td property="skos:scopeNote">
-                                    
+                                    When spatial coverage is a dimension in the dataset series then the spatial coverage of each dataset in the collection should be part of the spatial coverage. In that case, an open ended value is recommended, e.g. EU or a broad bounding box covering the expected values.
                                 </td>
 				<!--
                                 <td>
@@ -5084,10 +5092,10 @@ The main entities are those that form the core of the Application Profile.
                                     0..1
                                 </td>
                                 <td property="rdfs:comment">
-                                    The most recent date on which the Dataset was changed or modified.
+                                    The most recent date on which the Dataset Series was changed or modified.
                                 </td>
                                 <td property="skos:scopeNote">
-                                    
+                                    This is not equal to the most recent modified dataset in the collection of the dataset series.
                                 </td>
 				<!--
                                 <td>
@@ -5127,10 +5135,12 @@ The main entities are those that form the core of the Application Profile.
                                     0..1
                                 </td>
                                 <td property="rdfs:comment">
-                                    The date of formal issuance (e.g., publication) of the Dataset.
+                                    The date of formal issuance (e.g., publication) of the Dataset Series.
                                 </td>
                                 <td property="skos:scopeNote">
-                                    
+                                    The moment when the dataset series was established as a managed resource.
+
+This is not equal to the release date of the oldest dataset in the collection of the dataset series.
                                 </td>
 				<!--
                                 <td>
@@ -5213,10 +5223,10 @@ The main entities are those that form the core of the Application Profile.
                                     0..n
                                 </td>
                                 <td property="rdfs:comment">
-                                    A temporal period that the Dataset covers.
+                                    A temporal period that the Dataset Series covers.
                                 </td>
                                 <td property="skos:scopeNote">
-                                    
+                                    When temporal coverage is a dimension in the dataset series then the temporal coverage of each dataset in the collection should be part of the temporal coverage. In that case, an open ended value is recommended, e.g. after 2012.
                                 </td>
 				<!--
                                 <td>
@@ -5256,7 +5266,7 @@ The main entities are those that form the core of the Application Profile.
                                     1..n
                                 </td>
                                 <td property="rdfs:comment">
-                                    A name given to the Dataset.
+                                    A name given to the Dataset Series.
                                 </td>
                                 <td property="skos:scopeNote">
                                     This property can be repeated for parallel language versions of the name.
@@ -10147,6 +10157,14 @@ The shacl files are configured in this instance of the Interoperable Europe test
         <tr> <td colspan="2">Mandatory </td> </tr>
         
 	   
+	   <tr><td>
+	        <a href="#DatasetmemberofaDatasetSeries.description">description </a>
+	     </td><td>
+		<div class="shorten">
+	       http://purl.org/dc/terms/description
+		</div>
+	   </td></tr>
+           
         
 	   
         
@@ -10183,14 +10201,6 @@ The shacl files are configured in this instance of the Interoperable Europe test
         <tr> <td colspan="2">Optional</td> </tr>
         
 	   
-	   <tr><td>
-	        <a href="#DatasetmemberofaDatasetSeries.description">description </a>
-	     </td><td>
-		<div class="shorten">
-	       http://purl.org/dc/terms/description 
-		</div>
-	   </td></tr>
-           
         
 	   
 	   <tr><td>

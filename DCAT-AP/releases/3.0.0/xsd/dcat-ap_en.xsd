@@ -750,22 +750,33 @@
         </xs:annotation>
       </xs:element>
       <xs:element name="Next" type="DatasetMemberOfADatasetSeriesType" maxOccurs="unbounded" minOccurs="0"/>
-      <xs:element name="Previous" type="DatasetMemberOfADatasetSeriesType" maxOccurs="unbounded" minOccurs="0"/>
+      <xs:element name="Previous" type="DatasetMemberOfADatasetSeriesType" maxOccurs="unbounded" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation xml:lang="en" source="#usage">Unless the dataset is the last in the chain a dataset in a collection must have a previous one.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
       <xs:element name="Frequency" type="FrequencyType" maxOccurs="unbounded" minOccurs="0">
         <xs:annotation>
           <xs:documentation xml:lang="en" source="#definition">The frequency at which the Dataset is updated.</xs:documentation>
+          <xs:documentation xml:lang="en" source="#usage">The frequency of a dataset belonging to a dataset series  is not equal to the frequency of the dataset series. 
+
+E.g. A dataset budget 2020 with frequency yearly means that this dataset has an update in 2021, 2022, 2023, etc. </xs:documentation>
         </xs:annotation>
       </xs:element>
       <xs:element name="Description" type="xs:string" maxOccurs="unbounded" minOccurs="1">
         <xs:annotation>
           <xs:documentation xml:lang="en" source="#definition">A free-text account of the Dataset.</xs:documentation>
-          <xs:documentation xml:lang="en" source="#usage">This property can be repeated for parallel language versions of the description.</xs:documentation>
+          <xs:documentation xml:lang="en" source="#usage">This property can be repeated for parallel language versions of the description.
+
+The description may indicate the dimension values.</xs:documentation>
         </xs:annotation>
       </xs:element>
       <xs:element name="Title" type="xs:string" maxOccurs="unbounded" minOccurs="1">
         <xs:annotation>
           <xs:documentation xml:lang="en" source="#definition">A name given to the Dataset.</xs:documentation>
-          <xs:documentation xml:lang="en" source="#usage">This property can be repeated for parallel language versions of the name.</xs:documentation>
+          <xs:documentation xml:lang="en" source="#usage">This property can be repeated for parallel language versions of the name.
+
+The title may indicate the dimension values.</xs:documentation>
         </xs:annotation>
       </xs:element>
     </xs:sequence>
@@ -779,7 +790,7 @@
     <xs:sequence>
       <xs:element name="ContactPoint" type="KindType" maxOccurs="unbounded" minOccurs="0">
         <xs:annotation>
-          <xs:documentation xml:lang="en" source="#definition">Contact information that can be used for sending comments about the Dataset.</xs:documentation>
+          <xs:documentation xml:lang="en" source="#definition">contact information that can be used for sending comments about the Dataset Series.</xs:documentation>
         </xs:annotation>
       </xs:element>
       <xs:element name="First" type="DatasetMemberOfADatasetSeriesType" maxOccurs="unbounded" minOccurs="0">
@@ -795,38 +806,47 @@
       <xs:element name="SeriesMember" type="DatasetMemberOfADatasetSeriesType" maxOccurs="unbounded" minOccurs="1"/>
       <xs:element name="Frequency" type="FrequencyType" maxOccurs="1" minOccurs="0">
         <xs:annotation>
-          <xs:documentation xml:lang="en" source="#definition">Tthe frequency at which the Dataset is updated.</xs:documentation>
+          <xs:documentation xml:lang="en" source="#definition">Tthe frequency at which the Dataset Series is updated.</xs:documentation>
+          <xs:documentation xml:lang="en" source="#usage">The frequency of a dataset series is not equal to the frequency of the dataset in the collection.</xs:documentation>
         </xs:annotation>
       </xs:element>
       <xs:element name="Description" type="xs:string" maxOccurs="unbounded" minOccurs="1">
         <xs:annotation>
-          <xs:documentation xml:lang="en" source="#definition">A free-text account of the Dataset.</xs:documentation>
-          <xs:documentation xml:lang="en" source="#usage">This property can be repeated for parallel language versions of the description.</xs:documentation>
+          <xs:documentation xml:lang="en" source="#definition">A free-text account of the Dataset Series.</xs:documentation>
+          <xs:documentation xml:lang="en" source="#usage">This property can be repeated for parallel language versions.
+
+It is recommended to provide an indication about the dimensions the Dataset Series evolves.</xs:documentation>
         </xs:annotation>
       </xs:element>
       <xs:element name="ReleaseDate" type="xs:string" maxOccurs="1" minOccurs="0">
         <xs:annotation>
-          <xs:documentation xml:lang="en" source="#definition">The date of formal issuance (e.g., publication) of the Dataset.</xs:documentation>
+          <xs:documentation xml:lang="en" source="#definition">The date of formal issuance (e.g., publication) of the Dataset Series.</xs:documentation>
+          <xs:documentation xml:lang="en" source="#usage">The moment when the dataset series was established as a managed resource.
+
+This is not equal to the release date of the oldest dataset in the collection of the dataset series.</xs:documentation>
         </xs:annotation>
       </xs:element>
       <xs:element name="ModificationDate" type="xs:string" maxOccurs="1" minOccurs="0">
         <xs:annotation>
-          <xs:documentation xml:lang="en" source="#definition">The most recent date on which the Dataset was changed or modified.</xs:documentation>
+          <xs:documentation xml:lang="en" source="#definition">The most recent date on which the Dataset Series was changed or modified.</xs:documentation>
+          <xs:documentation xml:lang="en" source="#usage">This is not equal to the most recent modified dataset in the collection of the dataset series.</xs:documentation>
         </xs:annotation>
       </xs:element>
       <xs:element name="GeographicalCoverage" type="LocationType" maxOccurs="unbounded" minOccurs="0">
         <xs:annotation>
-          <xs:documentation xml:lang="en" source="#definition">A geographic region that is covered by the Dataset.</xs:documentation>
+          <xs:documentation xml:lang="en" source="#definition">A geographic region that is covered by the Dataset Series.</xs:documentation>
+          <xs:documentation xml:lang="en" source="#usage">When spatial coverage is a dimension in the dataset series then the spatial coverage of each dataset in the collection should be part of the spatial coverage. In that case, an open ended value is recommended, e.g. EU or a broad bounding box covering the expected values.</xs:documentation>
         </xs:annotation>
       </xs:element>
       <xs:element name="TemporalCoverage" type="PeriodOfTimeType" maxOccurs="unbounded" minOccurs="0">
         <xs:annotation>
-          <xs:documentation xml:lang="en" source="#definition">A temporal period that the Dataset covers.</xs:documentation>
+          <xs:documentation xml:lang="en" source="#definition">A temporal period that the Dataset Series covers.</xs:documentation>
+          <xs:documentation xml:lang="en" source="#usage">When temporal coverage is a dimension in the dataset series then the temporal coverage of each dataset in the collection should be part of the temporal coverage. In that case, an open ended value is recommended, e.g. after 2012.</xs:documentation>
         </xs:annotation>
       </xs:element>
       <xs:element name="Title" type="xs:string" maxOccurs="unbounded" minOccurs="1">
         <xs:annotation>
-          <xs:documentation xml:lang="en" source="#definition">A name given to the Dataset.</xs:documentation>
+          <xs:documentation xml:lang="en" source="#definition">A name given to the Dataset Series.</xs:documentation>
           <xs:documentation xml:lang="en" source="#usage">This property can be repeated for parallel language versions of the name.</xs:documentation>
         </xs:annotation>
       </xs:element>

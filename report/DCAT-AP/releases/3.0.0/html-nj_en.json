@@ -12,8 +12,8 @@
     "documentconfig": {},
     "status": "https://data.vlaanderen.be/id/concept/StandaardStatus/OntwerpStandaard",
     "statuslabel": "Ontwerp Standaard",
-    "repositoryurl": "git@semicthema-DCAT-AP:SEMICeu/Semicthema-DCAT-AP.git/tree/995fc698b8455d5ef4b31ac1959b9862a2b951e0",
-    "changelogurl": "git@semicthema-DCAT-AP:SEMICeu/Semicthema-DCAT-AP.git/blob/995fc698b8455d5ef4b31ac1959b9862a2b951e0/CHANGELOG",
+    "repositoryurl": "git@semicthema-DCAT-AP:SEMICeu/Semicthema-DCAT-AP.git/tree/f1e090351992a8e5135132cbaaa992f4ff532489",
+    "changelogurl": "git@semicthema-DCAT-AP:SEMICeu/Semicthema-DCAT-AP.git/blob/f1e090351992a8e5135132cbaaa992f4ff532489/CHANGELOG",
     "feedbackurl": "https://github.com/SEMICeu/DCAT-AP/issues",
     "standaardregisterurl": "https://github.com/SEMICeu/DCAT-AP",
     "usesVocs": [],
@@ -4086,7 +4086,9 @@
             "en": "previous"
           },
           "description": {},
-          "usage": {},
+          "usage": {
+            "en": "Unless the dataset is the last in the chain a dataset in a collection must have a previous one."
+          },
           "domain": [
             {
               "EA-Name": "DatasetInSeries",
@@ -4113,7 +4115,9 @@
           "rawTags": {
             "uri": "NOTE",
             "label-en": "NOTE",
-            "DCAT": "NOTE"
+            "DCAT": "NOTE",
+            "ap-usageNote-en": "NOTE",
+            "property-usage-scope": "NOTE"
           }
         },
         {
@@ -4206,7 +4210,7 @@
             "en": "A name given to the Dataset."
           },
           "usage": {
-            "en": "This property can be repeated for parallel language versions of the name."
+            "en": "This property can be repeated for parallel language versions of the name.\r\n\r\nThe title may indicate the dimension values."
           },
           "domain": [
             {
@@ -4235,7 +4239,7 @@
             "uri": "http://purl.org/dc/terms/title",
             "ap-definition-en": "A name given to the Dataset.",
             "ap-label-en": "title",
-            "ap-usageNote-en": "This property can be repeated for parallel language versions of the name.",
+            "ap-usageNote-en": "NOTE",
             "DCAT": "https://w3c.github.io/dxwg/dcat/#Property:resource_title",
             "property-usage-scope": "mandatory"
           }
@@ -4251,7 +4255,7 @@
             "en": "A free-text account of the Dataset."
           },
           "usage": {
-            "en": "This property can be repeated for parallel language versions of the description."
+            "en": "This property can be repeated for parallel language versions of the description.\r\n\r\nThe description may indicate the dimension values."
           },
           "domain": [
             {
@@ -4280,9 +4284,9 @@
             "uri": "http://purl.org/dc/terms/description",
             "ap-definition-en": "A free-text account of the Dataset.",
             "ap-label-en": "description",
-            "ap-usageNote-en": "This property can be repeated for parallel language versions of the description.",
+            "ap-usageNote-en": "NOTE",
             "DCAT": "https://w3c.github.io/dxwg/dcat/#Property:resource_description",
-            "property-usage-scope": "optional"
+            "property-usage-scope": "mandatory"
           }
         },
         {
@@ -4295,7 +4299,9 @@
           "description": {
             "en": "The frequency at which the Dataset is updated."
           },
-          "usage": {},
+          "usage": {
+            "en": "The frequency of a dataset belonging to a dataset series  is not equal to the frequency of the dataset series. \r\n\r\nE.g. A dataset budget 2020 with frequency yearly means that this dataset has an update in 2021, 2022, 2023, etc. "
+          },
           "domain": [
             {
               "EA-Name": "DatasetInSeries",
@@ -4324,7 +4330,8 @@
             "ap-definition-en": "The frequency at which the Dataset is updated.",
             "ap-label-en": "frequency",
             "DCAT": "https://w3c.github.io/dxwg/dcat/#Property:dataset_frequency",
-            "property-usage-scope": "optional"
+            "property-usage-scope": "optional",
+            "ap-usageNote-en": "NOTE"
           }
         }
       ]
@@ -4487,7 +4494,7 @@
             "en": "contact point"
           },
           "description": {
-            "en": "Contact information that can be used for sending comments about the Dataset."
+            "en": "contact information that can be used for sending comments about the Dataset Series."
           },
           "usage": {},
           "domain": [
@@ -4515,7 +4522,7 @@
           "codelist_uri": "",
           "rawTags": {
             "uri": "http://www.w3.org/ns/dcat#contactPoint",
-            "ap-definition-en": "Contact information that can be used for sending comments about the Dataset.",
+            "ap-definition-en": "contact information that can be used for sending comments about the Dataset Series.",
             "ap-label-en": "contact point",
             "DCAT": "https://w3c.github.io/dxwg/dcat/#Property:resource_contact_point",
             "property-usage-scope": "recommended"
@@ -4529,7 +4536,7 @@
             "en": "title"
           },
           "description": {
-            "en": "A name given to the Dataset."
+            "en": "A name given to the Dataset Series."
           },
           "usage": {
             "en": "This property can be repeated for parallel language versions of the name."
@@ -4559,7 +4566,7 @@
           "codelist_uri": "",
           "rawTags": {
             "uri": "http://purl.org/dc/terms/title",
-            "ap-definition-en": "A name given to the Dataset.",
+            "ap-definition-en": "A name given to the Dataset Series.",
             "ap-label-en": "title",
             "ap-usageNote-en": "This property can be repeated for parallel language versions of the name.",
             "DCAT": "https://w3c.github.io/dxwg/dcat/#Property:resource_title",
@@ -4574,9 +4581,11 @@
             "en": "temporal coverage"
           },
           "description": {
-            "en": "A temporal period that the Dataset covers."
+            "en": "A temporal period that the Dataset Series covers."
           },
-          "usage": {},
+          "usage": {
+            "en": "When temporal coverage is a dimension in the dataset series then the temporal coverage of each dataset in the collection should be part of the temporal coverage. In that case, an open ended value is recommended, e.g. after 2012."
+          },
           "domain": [
             {
               "EA-Name": "dcat:DatasetSeries",
@@ -4602,10 +4611,11 @@
           "codelist_uri": "",
           "rawTags": {
             "uri": "http://purl.org/dc/terms/temporal",
-            "ap-definition-en": "A temporal period that the Dataset covers.",
+            "ap-definition-en": "A temporal period that the Dataset Series covers.",
             "ap-label-en": "temporal coverage",
             "DCAT": "https://w3c.github.io/dxwg/dcat/#Property:dataset_temporal",
-            "property-usage-scope": "recommended"
+            "property-usage-scope": "recommended",
+            "ap-usageNote-en": "NOTE"
           }
         },
         {
@@ -4616,9 +4626,11 @@
             "en": "geographical coverage"
           },
           "description": {
-            "en": "A geographic region that is covered by the Dataset."
+            "en": "A geographic region that is covered by the Dataset Series."
           },
-          "usage": {},
+          "usage": {
+            "en": "When spatial coverage is a dimension in the dataset series then the spatial coverage of each dataset in the collection should be part of the spatial coverage. In that case, an open ended value is recommended, e.g. EU or a broad bounding box covering the expected values."
+          },
           "domain": [
             {
               "EA-Name": "dcat:DatasetSeries",
@@ -4644,10 +4656,11 @@
           "codelist_uri": "",
           "rawTags": {
             "uri": "http://purl.org/dc/terms/spatial",
-            "ap-definition-en": "A geographic region that is covered by the Dataset.",
+            "ap-definition-en": "A geographic region that is covered by the Dataset Series.",
             "ap-label-en": "geographical coverage",
             "DCAT": "https://w3c.github.io/dxwg/dcat/#Property:dataset_spatial",
-            "property-usage-scope": "recommended"
+            "property-usage-scope": "recommended",
+            "ap-usageNote-en": "NOTE"
           }
         },
         {
@@ -4658,9 +4671,11 @@
             "en": "modification date"
           },
           "description": {
-            "en": "The most recent date on which the Dataset was changed or modified."
+            "en": "The most recent date on which the Dataset Series was changed or modified."
           },
-          "usage": {},
+          "usage": {
+            "en": "This is not equal to the most recent modified dataset in the collection of the dataset series."
+          },
           "domain": [
             {
               "EA-Name": "dcat:DatasetSeries",
@@ -4686,10 +4701,11 @@
           "codelist_uri": "",
           "rawTags": {
             "uri": "http://purl.org/dc/terms/modified",
-            "ap-definition-en": "The most recent date on which the Dataset was changed or modified.",
+            "ap-definition-en": "The most recent date on which the Dataset Series was changed or modified.",
             "ap-label-en": "modification date",
             "DCAT": "https://w3c.github.io/dxwg/dcat/#Property:resource_update_date",
-            "property-usage-scope": "optional"
+            "property-usage-scope": "optional",
+            "ap-usageNote-en": "NOTE"
           }
         },
         {
@@ -4700,9 +4716,11 @@
             "en": "release date"
           },
           "description": {
-            "en": "The date of formal issuance (e.g., publication) of the Dataset."
+            "en": "The date of formal issuance (e.g., publication) of the Dataset Series."
           },
-          "usage": {},
+          "usage": {
+            "en": "The moment when the dataset series was established as a managed resource.\r\n\r\nThis is not equal to the release date of the oldest dataset in the collection of the dataset series."
+          },
           "domain": [
             {
               "EA-Name": "dcat:DatasetSeries",
@@ -4728,10 +4746,11 @@
           "codelist_uri": "",
           "rawTags": {
             "uri": "http://purl.org/dc/terms/issued",
-            "ap-definition-en": "The date of formal issuance (e.g., publication) of the Dataset.",
+            "ap-definition-en": "The date of formal issuance (e.g., publication) of the Dataset Series.",
             "ap-label-en": "release date",
             "DCAT": "https://w3c.github.io/dxwg/dcat/#Property:resource_release_date",
-            "property-usage-scope": "optional"
+            "property-usage-scope": "optional",
+            "ap-usageNote-en": "NOTE"
           }
         },
         {
@@ -4742,10 +4761,10 @@
             "en": "description"
           },
           "description": {
-            "en": "A free-text account of the Dataset."
+            "en": "A free-text account of the Dataset Series."
           },
           "usage": {
-            "en": "This property can be repeated for parallel language versions of the description."
+            "en": "This property can be repeated for parallel language versions.\r\n\r\nIt is recommended to provide an indication about the dimensions the Dataset Series evolves."
           },
           "domain": [
             {
@@ -4772,9 +4791,9 @@
           "codelist_uri": "",
           "rawTags": {
             "uri": "http://purl.org/dc/terms/description",
-            "ap-definition-en": "A free-text account of the Dataset.",
+            "ap-definition-en": "A free-text account of the Dataset Series.",
             "ap-label-en": "description",
-            "ap-usageNote-en": "This property can be repeated for parallel language versions of the description.",
+            "ap-usageNote-en": "NOTE",
             "DCAT": "https://w3c.github.io/dxwg/dcat/#Property:resource_description",
             "property-usage-scope": "optional"
           }
@@ -4787,9 +4806,11 @@
             "en": "frequency"
           },
           "description": {
-            "en": "Tthe frequency at which the Dataset is updated."
+            "en": "Tthe frequency at which the Dataset Series is updated."
           },
-          "usage": {},
+          "usage": {
+            "en": "The frequency of a dataset series is not equal to the frequency of the dataset in the collection."
+          },
           "domain": [
             {
               "EA-Name": "dcat:DatasetSeries",
@@ -4815,10 +4836,11 @@
           "codelist_uri": "",
           "rawTags": {
             "uri": "http://purl.org/dc/terms/accrualPeriodicity",
-            "ap-definition-en": "Tthe frequency at which the Dataset is updated.",
+            "ap-definition-en": "Tthe frequency at which the Dataset Series is updated.",
             "ap-label-en": "frequency",
             "DCAT": "https://w3c.github.io/dxwg/dcat/#Property:dataset_frequency",
-            "property-usage-scope": "optional"
+            "property-usage-scope": "optional",
+            "ap-usageNote-en": "NOTE"
           }
         }
       ]
