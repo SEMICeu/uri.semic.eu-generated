@@ -8,11 +8,9 @@
 @prefix skos: <http://www.w3.org/2004/02/skos/core#> .
 @prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
 
-<http://www.w3.org/ns/adms#adms:schemeAgency> a owl:ObjectProperty;
-  rdfs:comment "The name of the agency that issued the identifier."@en;
-  rdfs:domain <http://www.w3.org/ns/adms#identifier>;
-  rdfs:isDefinedBy <http://www.w3.org/ns/adms>;
-  rdfs:range rdfs:Literal .
+<http://www.w3.org/ns/adms#AssetDistribution> a owl:Class;
+  rdfs:comment "A particular physical embodiment of an Asset, which is an example of the FRBR entity manifestation (the physical embodiment of an expression of a work)."@en;
+  rdfs:isDefinedBy <http://www.w3.org/ns/adms> .
 
 <http://www.w3.org/ns/adms#dcat:accessURL> a owl:ObjectProperty;
   rdfs:domain <http://www.w3.org/ns/adms#AssetRepository>;
@@ -44,16 +42,16 @@
   rdfs:range rdfs:Resource .
 
 <http://www.w3.org/ns/adms#sample> a owl:ObjectProperty;
-  rdfs:comment "A sample distribution of the dataset"@en;
+  rdfs:comment "Links to a sample of an Asset (which is itself an Asset)."@en;
   rdfs:domain <http://www.w3.org/ns/adms#Asset>;
   rdfs:isDefinedBy <http://www.w3.org/ns/adms>;
-  rdfs:range <http://www.w3.org/ns/adms#AssetDistribution> .
+  rdfs:range rdfs:Resource .
 
-<http://www.w3.org/ns/adms#status> a owl:ObjectProperty;
-  rdfs:comment "The status of the Asset in the context of a particular workflow process."@en;
-  rdfs:domain <http://www.w3.org/ns/adms#AssetDistribution>;
+<http://www.w3.org/ns/adms#schemaAgency> a owl:ObjectProperty;
+  rdfs:comment "The name of the agency that issued the identifier."@en;
+  rdfs:domain <http://www.w3.org/ns/adms#identifier>;
   rdfs:isDefinedBy <http://www.w3.org/ns/adms>;
-  rdfs:range skos:Concept .
+  rdfs:range rdfs:Literal .
 
 <http://www.w3.org/ns/adms#supportedSchema> a owl:ObjectProperty;
   rdfs:comment "A schema according to which the Asset Repository can provide data about its content, e.g. ADMS."@en;
@@ -82,14 +80,8 @@ dc:creator a rdf:Property;
 dc:description a rdf:Property;
   rdfs:label "description"@en .
 
-dc:format a rdf:Property;
-  rdfs:label "format"@en .
-
 dc:issued a rdf:Property;
   rdfs:label "release date"@en .
-
-dc:language a rdf:Property;
-  rdfs:label "language"@en .
 
 dc:modified a rdf:Property;
   rdfs:label "modification date"@en .
@@ -100,17 +92,14 @@ dc:relation a rdf:Property;
 dc:title a rdf:Property;
   rdfs:label "title"@en .
 
-dc:type a rdf:Property;
-  rdfs:label "type"@en .
+skos:altLabel a rdf:Property;
+  rdfs:label "alternative label"@en .
 
 skos:notation a rdf:Property;
   rdfs:label "notation"@en .
 
 dcat:accessURL a rdf:Property;
   rdfs:label "access URL"@en .
-
-dcat:contactPoint a rdf:Property;
-  rdfs:label "contact point"@en .
 
 dcat:dataset a rdf:Property;
   rdfs:label "dataset"@en .
@@ -123,25 +112,6 @@ dcat:downloadURL a rdf:Property;
 
 dcat:keyword a rdf:Property;
   rdfs:label "keyword"@en .
-
-dcat:landingPage a rdf:Property;
-  rdfs:label "landing page"@en .
-
-dcat:mediaType a rdf:Property;
-  rdfs:label "media type"@en .
-
-dcat:theme a rdf:Property;
-  rdfs:label "theme"@en .
-
-dcat:themeTaxonomy a rdf:Property;
-  rdfs:label "themes"@en .
-
-dcat:version a rdf:Property;
-  rdfs:label "version"@en .
-
-<http://www.w3.org/ns/adms#AssetDistribution> a owl:Class;
-  rdfs:comment "A particular physical embodiment of an Asset, which is an example of the FRBR entity manifestation (the physical embodiment of an expression of a work)."@en;
-  rdfs:isDefinedBy <http://www.w3.org/ns/adms> .
 
 <http://www.w3.org/ns/adms#AssetRepository> a owl:Class;
   rdfs:comment "A system or service that provides facilities for storage and maintenance of descriptions of Assets and Asset Distributions, and functionality that allows users to search and access these descriptions. An Asset Repository will typically contain descriptions of several Assets and related Asset Distributions."@en;
@@ -169,25 +139,17 @@ dcat:version a rdf:Property;
     foaf:homepage <https://semic.eu>;
     foaf:name "Semantic Interoperability Community (SEMIC)"
   ];
-  rdfs:seeAlso dcat:version,
-    dcat:themeTaxonomy,
-    dcat:theme,
-    dcat:mediaType,
-    dcat:landingPage,
-    dcat:keyword,
+  rdfs:seeAlso dcat:keyword,
     dcat:downloadURL,
     dcat:distribution,
     dcat:dataset,
-    dcat:contactPoint,
     dcat:accessURL,
     skos:notation,
-    dc:type,
+    skos:altLabel,
     dc:title,
     dc:relation,
     dc:modified,
-    dc:language,
     dc:issued,
-    dc:format,
     dc:description,
     dc:creator,
     dc::dcat:Dataset;
