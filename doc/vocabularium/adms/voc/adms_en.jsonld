@@ -66,6 +66,14 @@
       "parents": []
     },
     {
+      "@id": "http://www.w3.org/ns/adms#AssetDistribution",
+      "@type": "http://www.w3.org/2002/07/owl#Class",
+      "definition": {
+        "en": "A particular physical embodiment of an Asset, which is an example of the FRBR entity manifestation (the physical embodiment of an expression of a work)."
+      },
+      "parents": []
+    },
+    {
       "@id": "http://www.w3.org/ns/adms#AssetRepository",
       "@type": "http://www.w3.org/2002/07/owl#Class",
       "definition": {
@@ -82,15 +90,7 @@
       "parents": []
     }
   ],
-  "externals": [
-    {
-      "name": {
-        "en": "Distribution"
-      },
-      "@id": "http://www.w3.org/ns/dcat#Distribution",
-      "@type": "rdfs:Class"
-    }
-  ],
+  "externals": [],
   "properties": [
     {
       "@id": "http://www.w3.org/ns/adms#versionNotes",
@@ -141,7 +141,7 @@
         "en": "The status of the Asset in the context of a particular workflow process."
       },
       "domain": [
-        "http://www.w3.org/ns/dcat#Distribution"
+        "http://www.w3.org/ns/adms#AssetDistribution"
       ],
       "range": [
         "http://www.w3.org/2004/02/skos/core#Concept"
@@ -158,7 +158,7 @@
         "http://www.w3.org/ns/adms#Asset"
       ],
       "range": [
-        "http://www.w3.org/ns/dcat#Distribution"
+        "http://www.w3.org/ns/adms#AssetDistribution"
       ],
       "generalization": []
     },
@@ -201,6 +201,20 @@
       ],
       "range": [
         "http://www.w3.org/2000/01/rdf-schema#Resource"
+      ],
+      "generalization": []
+    },
+    {
+      "@id": "http://www.w3.org/ns/adms#includedAsset",
+      "@type": "http://www.w3.org/2002/07/owl#ObjectProperty",
+      "definition": {
+        "en": "An Asset that is contained in the Asset being described, e.g. when there are several vocabularies defined in a single document."
+      },
+      "domain": [
+        "http://www.w3.org/ns/adms#Asset"
+      ],
+      "range": [
+        "http://www.w3.org/ns/adms#Asset"
       ],
       "generalization": []
     },
@@ -254,34 +268,6 @@
       ],
       "range": [
         "http://www.w3.org/2000/01/rdf-schema#Literal"
-      ],
-      "generalization": []
-    },
-    {
-      "@id": "http://www.w3.org/ns/adms#Asset.includedAsset.target",
-      "@type": "http://www.w3.org/2002/07/owl#ObjectProperty",
-      "definition": {
-        "en": "An Asset that is contained in the Asset being described, e.g. when there are several vocabularies defined in a single document."
-      },
-      "domain": [
-        "http://www.w3.org/ns/adms#Asset"
-      ],
-      "range": [
-        "http://www.w3.org/ns/adms#Asset"
-      ],
-      "generalization": []
-    },
-    {
-      "@id": "http://www.w3.org/ns/adms#Asset.includedAsset.target",
-      "@type": "http://www.w3.org/2002/07/owl#ObjectProperty",
-      "definition": {
-        "en": "An Asset that is contained in the Asset being described, e.g. when there are several vocabularies defined in a single document."
-      },
-      "domain": [
-        "http://www.w3.org/ns/adms#Asset"
-      ],
-      "range": [
-        "http://www.w3.org/ns/adms#Asset"
       ],
       "generalization": []
     }
@@ -500,6 +486,8 @@
   ],
   "@context": {
     "m8g": "http://data.europa.eu/m8g/",
+    "r5r": "http://data.europa.eu/r5r/",
+    "adms": "http://www.w3.org/ns/adms#",
     "owl": "http://www.w3.org/2002/07/owl#",
     "void": "http://rdfs.org/ns/void#",
     "dcterms": "http://purl.org/dc/terms/",
@@ -558,6 +546,10 @@
       "@container": "@language"
     },
     "description": {
+      "@id": "rdfs:comment",
+      "@container": "@language"
+    },
+    "definition": {
       "@id": "rdfs:comment",
       "@container": "@language"
     },
