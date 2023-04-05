@@ -1,33 +1,94 @@
 @prefix dc: <http://purl.org/dc/terms/> .
+@prefix dcat: <http://www.w3.org/ns/dcat#> .
 @prefix foaf: <http://xmlns.com/foaf/0.1/> .
 @prefix owl: <http://www.w3.org/2002/07/owl#> .
 @prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
 @prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
 @prefix schemas: <https://schema.org/> .
 @prefix skos: <http://www.w3.org/2004/02/skos/core#> .
-@prefix vcard: <http://www.w3.org/2006/vcard/ns#> .
 @prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
 
-rdfs:Literal a rdfs:Class;
-  rdfs:label "Temporal Literal"@en .
+dcat:Distribution a rdfs:Class;
+  rdfs:label "Distribution"@en .
 
-skos:Concept a rdfs:Class;
-  rdfs:label "Concept"@en .
+<http://www.w3.org/ns/adms#Asset.includedAsset.target> a owl:ObjectProperty;
+  rdfs:domain <http://www.w3.org/ns/adms#Asset>;
+  rdfs:isDefinedBy <http://www.w3.org/ns/adms>;
+  rdfs:range <http://www.w3.org/ns/adms#Asset> .
 
-skos:ConceptScheme a rdfs:Class;
-  rdfs:label "Conceptscheme"@en .
+<http://www.w3.org/ns/adms#adms:schemeAgency> a owl:ObjectProperty;
+  rdfs:domain <http://www.w3.org/ns/adms#identifier>;
+  rdfs:isDefinedBy <http://www.w3.org/ns/adms>;
+  rdfs:range rdfs:Literal .
 
-vcard:Kind a rdfs:Class;
-  rdfs:label "Kind"@en .
+<http://www.w3.org/ns/adms#dcat:accessURL> a owl:ObjectProperty;
+  rdfs:domain <http://www.w3.org/ns/adms#AssetRepository>;
+  rdfs:isDefinedBy <http://www.w3.org/ns/adms>;
+  rdfs:range rdfs:Resource .
 
-foaf:Agent a rdfs:Class;
-  rdfs:label "Agent"@en .
+<http://www.w3.org/ns/adms#last> a owl:ObjectProperty;
+  rdfs:domain <http://www.w3.org/ns/adms#Asset>;
+  rdfs:isDefinedBy <http://www.w3.org/ns/adms>;
+  rdfs:range rdfs:Resource .
 
-foaf:Document a rdfs:Class;
-  rdfs:label "Document"@en .
+<http://www.w3.org/ns/adms#next> a owl:ObjectProperty;
+  rdfs:domain <http://www.w3.org/ns/adms#Asset>;
+  rdfs:isDefinedBy <http://www.w3.org/ns/adms>;
+  rdfs:range rdfs:Resource .
 
-<http://www.w3.org/ns/adms#identifier> a owl:Class;
-  rdfs:isDefinedBy <http://www.w3.org/ns/adms> .
+<http://www.w3.org/ns/adms#prev> a owl:ObjectProperty;
+  rdfs:domain <http://www.w3.org/ns/adms#Asset>;
+  rdfs:isDefinedBy <http://www.w3.org/ns/adms>;
+  rdfs:range rdfs:Resource .
+
+<http://www.w3.org/ns/adms#sample> a owl:ObjectProperty;
+  rdfs:domain <http://www.w3.org/ns/adms#Asset>;
+  rdfs:isDefinedBy <http://www.w3.org/ns/adms>;
+  rdfs:range dcat:Distribution .
+
+<http://www.w3.org/ns/adms#status> a owl:ObjectProperty;
+  rdfs:domain dcat:Distribution;
+  rdfs:isDefinedBy <http://www.w3.org/ns/adms>;
+  rdfs:range skos:Concept .
+
+<http://www.w3.org/ns/adms#supportedSchema> a owl:ObjectProperty;
+  rdfs:domain <http://www.w3.org/ns/adms#AssetRepository>;
+  rdfs:isDefinedBy <http://www.w3.org/ns/adms>;
+  rdfs:range <http://www.w3.org/ns/adms#Asset> .
+
+<http://www.w3.org/ns/adms#translation> a owl:ObjectProperty;
+  rdfs:domain <http://www.w3.org/ns/adms#Asset>;
+  rdfs:isDefinedBy <http://www.w3.org/ns/adms>;
+  rdfs:range rdfs:Resource .
+
+<http://www.w3.org/ns/adms#versionNotes> a owl:ObjectProperty;
+  rdfs:domain <http://www.w3.org/ns/adms#Asset>;
+  rdfs:isDefinedBy <http://www.w3.org/ns/adms>;
+  rdfs:range rdfs:Literal .
+
+dc::dcat:Dataset a rdf:Property;
+  rdfs:label "version"@en .
+
+dc:creator a rdf:Property;
+  rdfs:label "creator"@en .
+
+dc:description a rdf:Property;
+  rdfs:label "description"@en .
+
+dc:format a rdf:Property;
+  rdfs:label "format"@en .
+
+dc:issued a rdf:Property;
+  rdfs:label "release date"@en .
+
+dc:language a rdf:Property;
+  rdfs:label "language"@en .
+
+dc:modified a rdf:Property;
+  rdfs:label "modification date"@en .
+
+dc:relation a rdf:Property;
+  rdfs:label "relation"@en .
 
 dc:title a rdf:Property;
   rdfs:label "title"@en .
@@ -35,11 +96,53 @@ dc:title a rdf:Property;
 dc:type a rdf:Property;
   rdfs:label "type"@en .
 
-skos:inScheme a rdf:Property;
-  rdfs:label "in scheme"@en .
+skos:notation a rdf:Property;
+  rdfs:label "notation"@en .
 
-skos:prefLabel a rdf:Property;
-  rdfs:label "preferred label"@en .
+dcat:accessURL a rdf:Property;
+  rdfs:label "access URL"@en .
+
+dcat:contactPoint a rdf:Property;
+  rdfs:label "contact point"@en .
+
+dcat:dataset a rdf:Property;
+  rdfs:label "dataset"@en .
+
+dcat:distribution a rdf:Property;
+  rdfs:label "dataset distribution"@en .
+
+dcat:downloadURL a rdf:Property;
+  rdfs:label "download URL"@en .
+
+dcat:keyword a rdf:Property;
+  rdfs:label "keyword"@en .
+
+dcat:landingPage a rdf:Property;
+  rdfs:label "landing page"@en .
+
+dcat:mediaType a rdf:Property;
+  rdfs:label "media type"@en .
+
+dcat:theme a rdf:Property;
+  rdfs:label "theme"@en .
+
+dcat:themeTaxonomy a rdf:Property;
+  rdfs:label "themes"@en .
+
+dcat:version a rdf:Property;
+  rdfs:label "version"@en .
+
+<http://www.w3.org/ns/adms#AssetRepository> a owl:Class;
+  rdfs:isDefinedBy <http://www.w3.org/ns/adms> .
+
+<http://www.w3.org/ns/adms#identifier> a owl:Class,
+    owl:ObjectProperty;
+  rdfs:domain <http://www.w3.org/ns/adms#Asset>;
+  rdfs:isDefinedBy <http://www.w3.org/ns/adms>;
+  rdfs:range <http://www.w3.org/ns/adms#identifier> .
+
+<http://www.w3.org/ns/adms#Asset> a owl:Class;
+  rdfs:isDefinedBy <http://www.w3.org/ns/adms> .
 
 <http://www.w3.org/ns/adms> a owl:Ontology;
   rdfs:label "adms"@en,
@@ -51,17 +154,29 @@ skos:prefLabel a rdf:Property;
     foaf:homepage <https://semic.eu>;
     foaf:name "Semantic Interoperability Community (SEMIC)"
   ];
-  rdfs:seeAlso rdfs:Literal,
-    skos:Concept,
-    skos:ConceptScheme,
-    vcard:Kind,
-    foaf:Agent,
-    foaf:Document,
-    foaf:name,
-    skos:prefLabel,
-    skos:inScheme,
+  rdfs:seeAlso dcat:Distribution,
+    dcat:version,
+    dcat:themeTaxonomy,
+    dcat:theme,
+    dcat:mediaType,
+    dcat:landingPage,
+    dcat:keyword,
+    dcat:downloadURL,
+    dcat:distribution,
+    dcat:dataset,
+    dcat:contactPoint,
+    dcat:accessURL,
+    skos:notation,
     dc:type,
-    dc:title;
+    dc:title,
+    dc:relation,
+    dc:modified,
+    dc:language,
+    dc:issued,
+    dc:format,
+    dc:description,
+    dc:creator,
+    dc::dcat:Dataset;
   <http://www.w3.org/2001/02pd/rec54#editor> [
     a foaf:Person;
     foaf:firstName "Bert";
@@ -88,6 +203,3 @@ skos:prefLabel a rdf:Property;
     foaf:lastName "Fragkou";
     schemas:affiliation [foaf:name "SEMIC EU"]
   ] .
-
-foaf:name a rdf:Property;
-  rdfs:label "name"@en .
