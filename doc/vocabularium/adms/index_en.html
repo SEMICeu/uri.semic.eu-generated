@@ -1560,6 +1560,7 @@ This section lists the properties matching the base namespace of this vocabulary
 
 </section>
 
+<!--
 <section>
 <h2>
    External terms
@@ -3529,6 +3530,7 @@ Either these are reused as-is, i.e. with no formal additional constraints compar
 
 
 </section>
+-->
 
 
  
@@ -3563,6 +3565,2012 @@ In order to conform to this Application Profile, an application that receives me
 <li>Process information for all controlled vocabularies specified in section [[[#controlled-vocs]]].</li>
 "Processing" means that receivers must accept incoming data and transparently provide these data to applications and services. 
 It does neither imply nor prescribe what applications and services finally do with the data (parse, convert, store, make searchable, display to users, etc.).
+</section>
+
+  <section class="informative">
+<h2>Motivation for this change</h2>
+
+This new release of ADMS will decouple ADMS from DCAT for the terms in the vocabulary.
+Doing so the lifecycle of ADMS is not anymore bound to the lifecyle of DCAT. 
+With the active development of DCAT and its profiles, the status of ADMS as profile of DCAT becomes unclear.
+The impact of DCAT on the ADMS vocabulary as profile of DCAT is not only on its relationship, but also on how the profile is constructed and on the adoption of some terminology.
+For instance, ADMS has some versioning navigation properties, but those are not adopted by DCAT but replaced by similar properties in the DCAT namespace.
+All these changes to the base vocabulary DCAT, of which ADMS declared itself originally a profile of, force a regular adaption of ADMS.
+
+With this new release ADMS is decoupled to the furtest extend possible from DCAT (no formal ties), while maintaining its original definitions.
+In essence one can consider this as a broadening of the ADMS terms.
+
+While this independence offers new potential for reuse, the goal is not to create a parallell universe to DCAT.
+As such it is high recommended in order to use ADMS in full, to first create a DCAT profile with the ADMS terms included.
+This means that although some ADMS classes and properties are not deprecated, the newly created DCAT profile will adhere first to DCAT, and only use the ADMS terms that are fit for purpose for the profile. 
+The historic depencency should facilitate the creation of such profile easily. 
+
+
+
+
+<h2>ADMS as DCAT profile</h2>
+
+ADMS was originally very tight with DCAT integrated. 
+As explained in the introduction (XXX REF), this version has decoupled ADMS from DCAT.
+
+In this section, the base principles for building an ADMS based profile of DCAT are given.
+
+<ul>
+   <li>The main classes adms:AssetRepository, adms:Asset and adms:AssetDistribution are defined as subclasses of dcat:Catalog, dcat:Dataset and dcat:Distribution. </li>
+   <li>The properties adms:last, adms:next, adms:prev have dcat:last, dcat:next, dcat:prev counterparts. It is recommended to use these. </li>
+   <li>Use the relations dcat:dataset (or the more generic dcat:resource) and dcat:distribution to interconnect adms:AssetRepository, adms:Asset and adms:AssetDistibution. </li>
+</ul>
+
+The last principle is to reflect on the usage of the properties of DCAT. 
+Hereunder is are the properties that were included in the original ADMS with their profile interpretation. 
+
+<h3>
+   Reused terms from DCAT
+</h3>
+This section lists the classes and properties that are mapped on external URIs.
+Either these are reused as-is, i.e. with no formal additional constraints compared to those retrievable via dereferencing the URI, or they are reused with terminological changes, i.e. having additional changes restricting the use to the needs of this vocabulary context.
+
+
+   
+
+    <h3>access URL</h3>
+    <table class="def" id="table-term-accessUrl">
+                    <thead>
+                        <tr >
+                            <th class="" style="width:5%">
+					<a href="https://github.com/SEMICeu/ADMS/issues/new?title=Issue%20for%20accessUrl&body=Explain%20your%20issue"}}>
+					   <img src="html/callout.png" loading="lazy" alt="(create issue)" width="20" height="20"/>
+					</a>
+                            </th>
+                            <th class="" style="width:20%">
+                                Class/Property
+                            </th>
+                            <th class="" style="width:75%">
+				<a href="http://www.w3.org/ns/dcat#accessURL"
+					   data-toggle="tooltip"
+					   data-content="http://www.w3.org/ns/dcat#accessURL"
+					   data-placement="right">access URL</a>
+                            </th> 
+                        </tr>
+                    </thead>
+		    <tbody> 
+                        <tr id="accessURL.uri">
+                                <td></td>
+                                <td>
+				   URI
+				</td>
+				<td>
+				http://www.w3.org/ns/dcat#accessURL
+				</td>
+			</tr>
+                        <tr id="accessURL.label">
+                                <td></td>
+                                <td>
+				   label
+				</td>
+				<td>
+				access URL
+				</td>
+			</tr>
+                        <tr id="accessURL.definition">
+                                <td></td>
+                                <td>
+				   definition
+				</td>
+				<td>
+				A URL that gives access to a Distribution of the Dataset.
+				</td>
+			</tr>
+                        <tr id="accessURL.usage">
+                                <td></td>
+                                <td>
+				   usage 
+				</td>
+				<td>
+				
+				</td>
+			</tr>
+                        <tr id="accessURL.domain">
+                                <td></td>
+                                <td>
+				   domain
+				</td>
+				<td>
+				</td>
+			</tr>
+                        <tr id="accessURL.range">
+                                <td></td>
+                                <td>
+				   range
+				</td>
+				<td>
+				</td>
+			</tr>
+                        <tr id="accessURL.subproperty">
+                                <td></td>
+                                <td>
+				   subproperty of 
+				</td>
+				<td>
+				</td>
+			</tr>
+		    </tbody>
+        </table>
+	<p/>
+
+     
+
+   
+
+    <h3>alternative label</h3>
+    <table class="def" id="table-term-alternativeLabel">
+                    <thead>
+                        <tr >
+                            <th class="" style="width:5%">
+					<a href="https://github.com/SEMICeu/ADMS/issues/new?title=Issue%20for%20alternativeLabel&body=Explain%20your%20issue"}}>
+					   <img src="html/callout.png" loading="lazy" alt="(create issue)" width="20" height="20"/>
+					</a>
+                            </th>
+                            <th class="" style="width:20%">
+                                Class/Property
+                            </th>
+                            <th class="" style="width:75%">
+				<a href="http://www.w3.org/2004/02/skos/core#altLabel"
+					   data-toggle="tooltip"
+					   data-content="http://www.w3.org/2004/02/skos/core#altLabel"
+					   data-placement="right">alternative label</a>
+                            </th> 
+                        </tr>
+                    </thead>
+		    <tbody> 
+                        <tr id="alternativelabel.uri">
+                                <td></td>
+                                <td>
+				   URI
+				</td>
+				<td>
+				http://www.w3.org/2004/02/skos/core#altLabel
+				</td>
+			</tr>
+                        <tr id="alternativelabel.label">
+                                <td></td>
+                                <td>
+				   label
+				</td>
+				<td>
+				alternative label
+				</td>
+			</tr>
+                        <tr id="alternativelabel.definition">
+                                <td></td>
+                                <td>
+				   definition
+				</td>
+				<td>
+				
+				</td>
+			</tr>
+                        <tr id="alternativelabel.usage">
+                                <td></td>
+                                <td>
+				   usage 
+				</td>
+				<td>
+				An alternative name for the Asset.
+				</td>
+			</tr>
+                        <tr id="alternativelabel.domain">
+                                <td></td>
+                                <td>
+				   domain
+				</td>
+				<td>
+				</td>
+			</tr>
+                        <tr id="alternativelabel.range">
+                                <td></td>
+                                <td>
+				   range
+				</td>
+				<td>
+				</td>
+			</tr>
+                        <tr id="alternativelabel.subproperty">
+                                <td></td>
+                                <td>
+				   subproperty of 
+				</td>
+				<td>
+				</td>
+			</tr>
+		    </tbody>
+        </table>
+	<p/>
+
+     
+
+   
+
+    <h3>creator</h3>
+    <table class="def" id="table-term-creator">
+                    <thead>
+                        <tr >
+                            <th class="" style="width:5%">
+					<a href="https://github.com/SEMICeu/ADMS/issues/new?title=Issue%20for%20creator&body=Explain%20your%20issue"}}>
+					   <img src="html/callout.png" loading="lazy" alt="(create issue)" width="20" height="20"/>
+					</a>
+                            </th>
+                            <th class="" style="width:20%">
+                                Class/Property
+                            </th>
+                            <th class="" style="width:75%">
+				<a href="http://purl.org/dc/terms/creator"
+					   data-toggle="tooltip"
+					   data-content="http://purl.org/dc/terms/creator"
+					   data-placement="right">creator</a>
+                            </th> 
+                        </tr>
+                    </thead>
+		    <tbody> 
+                        <tr id="creator.uri">
+                                <td></td>
+                                <td>
+				   URI
+				</td>
+				<td>
+				http://purl.org/dc/terms/creator
+				</td>
+			</tr>
+                        <tr id="creator.label">
+                                <td></td>
+                                <td>
+				   label
+				</td>
+				<td>
+				creator
+				</td>
+			</tr>
+                        <tr id="creator.definition">
+                                <td></td>
+                                <td>
+				   definition
+				</td>
+				<td>
+				An entity responsible for making the resource.
+				</td>
+			</tr>
+                        <tr id="creator.usage">
+                                <td></td>
+                                <td>
+				   usage 
+				</td>
+				<td>
+				
+				</td>
+			</tr>
+                        <tr id="creator.domain">
+                                <td></td>
+                                <td>
+				   domain
+				</td>
+				<td>
+				</td>
+			</tr>
+                        <tr id="creator.range">
+                                <td></td>
+                                <td>
+				   range
+				</td>
+				<td>
+				</td>
+			</tr>
+                        <tr id="creator.subproperty">
+                                <td></td>
+                                <td>
+				   subproperty of 
+				</td>
+				<td>
+				</td>
+			</tr>
+		    </tbody>
+        </table>
+	<p/>
+
+     
+
+   
+
+    <h3>dataset</h3>
+    <table class="def" id="table-term-dataset">
+                    <thead>
+                        <tr >
+                            <th class="" style="width:5%">
+					<a href="https://github.com/SEMICeu/ADMS/issues/new?title=Issue%20for%20dataset&body=Explain%20your%20issue"}}>
+					   <img src="html/callout.png" loading="lazy" alt="(create issue)" width="20" height="20"/>
+					</a>
+                            </th>
+                            <th class="" style="width:20%">
+                                Class/Property
+                            </th>
+                            <th class="" style="width:75%">
+				<a href="http://www.w3.org/ns/dcat#dataset"
+					   data-toggle="tooltip"
+					   data-content="http://www.w3.org/ns/dcat#dataset"
+					   data-placement="right">dataset</a>
+                            </th> 
+                        </tr>
+                    </thead>
+		    <tbody> 
+                        <tr id="dataset.uri">
+                                <td></td>
+                                <td>
+				   URI
+				</td>
+				<td>
+				http://www.w3.org/ns/dcat#dataset
+				</td>
+			</tr>
+                        <tr id="dataset.label">
+                                <td></td>
+                                <td>
+				   label
+				</td>
+				<td>
+				dataset
+				</td>
+			</tr>
+                        <tr id="dataset.definition">
+                                <td></td>
+                                <td>
+				   definition
+				</td>
+				<td>
+				A Dataset that is part of the Catalogue.
+				</td>
+			</tr>
+                        <tr id="dataset.usage">
+                                <td></td>
+                                <td>
+				   usage 
+				</td>
+				<td>
+				
+				</td>
+			</tr>
+                        <tr id="dataset.domain">
+                                <td></td>
+                                <td>
+				   domain
+				</td>
+				<td>
+				</td>
+			</tr>
+                        <tr id="dataset.range">
+                                <td></td>
+                                <td>
+				   range
+				</td>
+				<td>
+				</td>
+			</tr>
+                        <tr id="dataset.subproperty">
+                                <td></td>
+                                <td>
+				   subproperty of 
+				</td>
+				<td>
+				</td>
+			</tr>
+		    </tbody>
+        </table>
+	<p/>
+
+     
+
+   
+
+    <h3>dataset distribution</h3>
+    <table class="def" id="table-term-datasetDistribution">
+                    <thead>
+                        <tr >
+                            <th class="" style="width:5%">
+					<a href="https://github.com/SEMICeu/ADMS/issues/new?title=Issue%20for%20datasetDistribution&body=Explain%20your%20issue"}}>
+					   <img src="html/callout.png" loading="lazy" alt="(create issue)" width="20" height="20"/>
+					</a>
+                            </th>
+                            <th class="" style="width:20%">
+                                Class/Property
+                            </th>
+                            <th class="" style="width:75%">
+				<a href="http://www.w3.org/ns/dcat#distribution"
+					   data-toggle="tooltip"
+					   data-content="http://www.w3.org/ns/dcat#distribution"
+					   data-placement="right">dataset distribution</a>
+                            </th> 
+                        </tr>
+                    </thead>
+		    <tbody> 
+                        <tr id="datasetdistribution.uri">
+                                <td></td>
+                                <td>
+				   URI
+				</td>
+				<td>
+				http://www.w3.org/ns/dcat#distribution
+				</td>
+			</tr>
+                        <tr id="datasetdistribution.label">
+                                <td></td>
+                                <td>
+				   label
+				</td>
+				<td>
+				dataset distribution
+				</td>
+			</tr>
+                        <tr id="datasetdistribution.definition">
+                                <td></td>
+                                <td>
+				   definition
+				</td>
+				<td>
+				An available Distribution for the Dataset.
+				</td>
+			</tr>
+                        <tr id="datasetdistribution.usage">
+                                <td></td>
+                                <td>
+				   usage 
+				</td>
+				<td>
+				
+				</td>
+			</tr>
+                        <tr id="datasetdistribution.domain">
+                                <td></td>
+                                <td>
+				   domain
+				</td>
+				<td>
+				</td>
+			</tr>
+                        <tr id="datasetdistribution.range">
+                                <td></td>
+                                <td>
+				   range
+				</td>
+				<td>
+				</td>
+			</tr>
+                        <tr id="datasetdistribution.subproperty">
+                                <td></td>
+                                <td>
+				   subproperty of 
+				</td>
+				<td>
+				</td>
+			</tr>
+		    </tbody>
+        </table>
+	<p/>
+
+     
+
+   
+
+    <h3>description</h3>
+    <table class="def" id="table-term-description">
+                    <thead>
+                        <tr >
+                            <th class="" style="width:5%">
+					<a href="https://github.com/SEMICeu/ADMS/issues/new?title=Issue%20for%20description&body=Explain%20your%20issue"}}>
+					   <img src="html/callout.png" loading="lazy" alt="(create issue)" width="20" height="20"/>
+					</a>
+                            </th>
+                            <th class="" style="width:20%">
+                                Class/Property
+                            </th>
+                            <th class="" style="width:75%">
+				<a href="http://purl.org/dc/terms/description"
+					   data-toggle="tooltip"
+					   data-content="http://purl.org/dc/terms/description"
+					   data-placement="right">description</a>
+                            </th> 
+                        </tr>
+                    </thead>
+		    <tbody> 
+                        <tr id="description.uri">
+                                <td></td>
+                                <td>
+				   URI
+				</td>
+				<td>
+				http://purl.org/dc/terms/description
+				</td>
+			</tr>
+                        <tr id="description.label">
+                                <td></td>
+                                <td>
+				   label
+				</td>
+				<td>
+				description
+				</td>
+			</tr>
+                        <tr id="description.definition">
+                                <td></td>
+                                <td>
+				   definition
+				</td>
+				<td>
+				An account of the resource.
+				</td>
+			</tr>
+                        <tr id="description.usage">
+                                <td></td>
+                                <td>
+				   usage 
+				</td>
+				<td>
+				
+				</td>
+			</tr>
+                        <tr id="description.domain">
+                                <td></td>
+                                <td>
+				   domain
+				</td>
+				<td>
+				</td>
+			</tr>
+                        <tr id="description.range">
+                                <td></td>
+                                <td>
+				   range
+				</td>
+				<td>
+				</td>
+			</tr>
+                        <tr id="description.subproperty">
+                                <td></td>
+                                <td>
+				   subproperty of 
+				</td>
+				<td>
+				</td>
+			</tr>
+		    </tbody>
+        </table>
+	<p/>
+
+     
+
+   
+
+    <h3>description</h3>
+    <table class="def" id="table-term-description">
+                    <thead>
+                        <tr >
+                            <th class="" style="width:5%">
+					<a href="https://github.com/SEMICeu/ADMS/issues/new?title=Issue%20for%20description&body=Explain%20your%20issue"}}>
+					   <img src="html/callout.png" loading="lazy" alt="(create issue)" width="20" height="20"/>
+					</a>
+                            </th>
+                            <th class="" style="width:20%">
+                                Class/Property
+                            </th>
+                            <th class="" style="width:75%">
+				<a href="http://purl.org/dc/terms/description"
+					   data-toggle="tooltip"
+					   data-content="http://purl.org/dc/terms/description"
+					   data-placement="right">description</a>
+                            </th> 
+                        </tr>
+                    </thead>
+		    <tbody> 
+                        <tr id="description.uri">
+                                <td></td>
+                                <td>
+				   URI
+				</td>
+				<td>
+				http://purl.org/dc/terms/description
+				</td>
+			</tr>
+                        <tr id="description.label">
+                                <td></td>
+                                <td>
+				   label
+				</td>
+				<td>
+				description
+				</td>
+			</tr>
+                        <tr id="description.definition">
+                                <td></td>
+                                <td>
+				   definition
+				</td>
+				<td>
+				An account of the resource.
+				</td>
+			</tr>
+                        <tr id="description.usage">
+                                <td></td>
+                                <td>
+				   usage 
+				</td>
+				<td>
+				
+				</td>
+			</tr>
+                        <tr id="description.domain">
+                                <td></td>
+                                <td>
+				   domain
+				</td>
+				<td>
+				</td>
+			</tr>
+                        <tr id="description.range">
+                                <td></td>
+                                <td>
+				   range
+				</td>
+				<td>
+				</td>
+			</tr>
+                        <tr id="description.subproperty">
+                                <td></td>
+                                <td>
+				   subproperty of 
+				</td>
+				<td>
+				</td>
+			</tr>
+		    </tbody>
+        </table>
+	<p/>
+
+     
+
+   
+
+    <h3>description</h3>
+    <table class="def" id="table-term-description">
+                    <thead>
+                        <tr >
+                            <th class="" style="width:5%">
+					<a href="https://github.com/SEMICeu/ADMS/issues/new?title=Issue%20for%20description&body=Explain%20your%20issue"}}>
+					   <img src="html/callout.png" loading="lazy" alt="(create issue)" width="20" height="20"/>
+					</a>
+                            </th>
+                            <th class="" style="width:20%">
+                                Class/Property
+                            </th>
+                            <th class="" style="width:75%">
+				<a href="http://purl.org/dc/terms/description"
+					   data-toggle="tooltip"
+					   data-content="http://purl.org/dc/terms/description"
+					   data-placement="right">description</a>
+                            </th> 
+                        </tr>
+                    </thead>
+		    <tbody> 
+                        <tr id="description.uri">
+                                <td></td>
+                                <td>
+				   URI
+				</td>
+				<td>
+				http://purl.org/dc/terms/description
+				</td>
+			</tr>
+                        <tr id="description.label">
+                                <td></td>
+                                <td>
+				   label
+				</td>
+				<td>
+				description
+				</td>
+			</tr>
+                        <tr id="description.definition">
+                                <td></td>
+                                <td>
+				   definition
+				</td>
+				<td>
+				An account of the resource.
+				</td>
+			</tr>
+                        <tr id="description.usage">
+                                <td></td>
+                                <td>
+				   usage 
+				</td>
+				<td>
+				
+				</td>
+			</tr>
+                        <tr id="description.domain">
+                                <td></td>
+                                <td>
+				   domain
+				</td>
+				<td>
+				</td>
+			</tr>
+                        <tr id="description.range">
+                                <td></td>
+                                <td>
+				   range
+				</td>
+				<td>
+				</td>
+			</tr>
+                        <tr id="description.subproperty">
+                                <td></td>
+                                <td>
+				   subproperty of 
+				</td>
+				<td>
+				</td>
+			</tr>
+		    </tbody>
+        </table>
+	<p/>
+
+     
+
+   
+
+    <h3>download URL</h3>
+    <table class="def" id="table-term-downloadUrl">
+                    <thead>
+                        <tr >
+                            <th class="" style="width:5%">
+					<a href="https://github.com/SEMICeu/ADMS/issues/new?title=Issue%20for%20downloadUrl&body=Explain%20your%20issue"}}>
+					   <img src="html/callout.png" loading="lazy" alt="(create issue)" width="20" height="20"/>
+					</a>
+                            </th>
+                            <th class="" style="width:20%">
+                                Class/Property
+                            </th>
+                            <th class="" style="width:75%">
+				<a href="http://www.w3.org/ns/dcat#downloadURL"
+					   data-toggle="tooltip"
+					   data-content="http://www.w3.org/ns/dcat#downloadURL"
+					   data-placement="right">download URL</a>
+                            </th> 
+                        </tr>
+                    </thead>
+		    <tbody> 
+                        <tr id="downloadURL.uri">
+                                <td></td>
+                                <td>
+				   URI
+				</td>
+				<td>
+				http://www.w3.org/ns/dcat#downloadURL
+				</td>
+			</tr>
+                        <tr id="downloadURL.label">
+                                <td></td>
+                                <td>
+				   label
+				</td>
+				<td>
+				download URL
+				</td>
+			</tr>
+                        <tr id="downloadURL.definition">
+                                <td></td>
+                                <td>
+				   definition
+				</td>
+				<td>
+				A URL that is a direct link to a downloadable file in a given format.
+				</td>
+			</tr>
+                        <tr id="downloadURL.usage">
+                                <td></td>
+                                <td>
+				   usage 
+				</td>
+				<td>
+				
+				</td>
+			</tr>
+                        <tr id="downloadURL.domain">
+                                <td></td>
+                                <td>
+				   domain
+				</td>
+				<td>
+				</td>
+			</tr>
+                        <tr id="downloadURL.range">
+                                <td></td>
+                                <td>
+				   range
+				</td>
+				<td>
+				</td>
+			</tr>
+                        <tr id="downloadURL.subproperty">
+                                <td></td>
+                                <td>
+				   subproperty of 
+				</td>
+				<td>
+				</td>
+			</tr>
+		    </tbody>
+        </table>
+	<p/>
+
+     
+
+   
+
+    <h3>keyword</h3>
+    <table class="def" id="table-term-keyword">
+                    <thead>
+                        <tr >
+                            <th class="" style="width:5%">
+					<a href="https://github.com/SEMICeu/ADMS/issues/new?title=Issue%20for%20keyword&body=Explain%20your%20issue"}}>
+					   <img src="html/callout.png" loading="lazy" alt="(create issue)" width="20" height="20"/>
+					</a>
+                            </th>
+                            <th class="" style="width:20%">
+                                Class/Property
+                            </th>
+                            <th class="" style="width:75%">
+				<a href="http://www.w3.org/ns/dcat#keyword"
+					   data-toggle="tooltip"
+					   data-content="http://www.w3.org/ns/dcat#keyword"
+					   data-placement="right">keyword</a>
+                            </th> 
+                        </tr>
+                    </thead>
+		    <tbody> 
+                        <tr id="keyword.uri">
+                                <td></td>
+                                <td>
+				   URI
+				</td>
+				<td>
+				http://www.w3.org/ns/dcat#keyword
+				</td>
+			</tr>
+                        <tr id="keyword.label">
+                                <td></td>
+                                <td>
+				   label
+				</td>
+				<td>
+				keyword
+				</td>
+			</tr>
+                        <tr id="keyword.definition">
+                                <td></td>
+                                <td>
+				   definition
+				</td>
+				<td>
+				A keyword or tag describing the Dataset.
+				</td>
+			</tr>
+                        <tr id="keyword.usage">
+                                <td></td>
+                                <td>
+				   usage 
+				</td>
+				<td>
+				
+				</td>
+			</tr>
+                        <tr id="keyword.domain">
+                                <td></td>
+                                <td>
+				   domain
+				</td>
+				<td>
+				</td>
+			</tr>
+                        <tr id="keyword.range">
+                                <td></td>
+                                <td>
+				   range
+				</td>
+				<td>
+				</td>
+			</tr>
+                        <tr id="keyword.subproperty">
+                                <td></td>
+                                <td>
+				   subproperty of 
+				</td>
+				<td>
+				</td>
+			</tr>
+		    </tbody>
+        </table>
+	<p/>
+
+     
+
+   
+
+    <h3>modification date</h3>
+    <table class="def" id="table-term-modificationDate">
+                    <thead>
+                        <tr >
+                            <th class="" style="width:5%">
+					<a href="https://github.com/SEMICeu/ADMS/issues/new?title=Issue%20for%20modificationDate&body=Explain%20your%20issue"}}>
+					   <img src="html/callout.png" loading="lazy" alt="(create issue)" width="20" height="20"/>
+					</a>
+                            </th>
+                            <th class="" style="width:20%">
+                                Class/Property
+                            </th>
+                            <th class="" style="width:75%">
+				<a href="http://purl.org/dc/terms/modified"
+					   data-toggle="tooltip"
+					   data-content="http://purl.org/dc/terms/modified"
+					   data-placement="right">modification date</a>
+                            </th> 
+                        </tr>
+                    </thead>
+		    <tbody> 
+                        <tr id="modificationdate.uri">
+                                <td></td>
+                                <td>
+				   URI
+				</td>
+				<td>
+				http://purl.org/dc/terms/modified
+				</td>
+			</tr>
+                        <tr id="modificationdate.label">
+                                <td></td>
+                                <td>
+				   label
+				</td>
+				<td>
+				modification date
+				</td>
+			</tr>
+                        <tr id="modificationdate.definition">
+                                <td></td>
+                                <td>
+				   definition
+				</td>
+				<td>
+				Date on which the resource was changed.
+				</td>
+			</tr>
+                        <tr id="modificationdate.usage">
+                                <td></td>
+                                <td>
+				   usage 
+				</td>
+				<td>
+				
+				</td>
+			</tr>
+                        <tr id="modificationdate.domain">
+                                <td></td>
+                                <td>
+				   domain
+				</td>
+				<td>
+				</td>
+			</tr>
+                        <tr id="modificationdate.range">
+                                <td></td>
+                                <td>
+				   range
+				</td>
+				<td>
+				</td>
+			</tr>
+                        <tr id="modificationdate.subproperty">
+                                <td></td>
+                                <td>
+				   subproperty of 
+				</td>
+				<td>
+				</td>
+			</tr>
+		    </tbody>
+        </table>
+	<p/>
+
+     
+
+   
+
+    <h3>modification date</h3>
+    <table class="def" id="table-term-modificationDate">
+                    <thead>
+                        <tr >
+                            <th class="" style="width:5%">
+					<a href="https://github.com/SEMICeu/ADMS/issues/new?title=Issue%20for%20modificationDate&body=Explain%20your%20issue"}}>
+					   <img src="html/callout.png" loading="lazy" alt="(create issue)" width="20" height="20"/>
+					</a>
+                            </th>
+                            <th class="" style="width:20%">
+                                Class/Property
+                            </th>
+                            <th class="" style="width:75%">
+				<a href="http://purl.org/dc/terms/modified"
+					   data-toggle="tooltip"
+					   data-content="http://purl.org/dc/terms/modified"
+					   data-placement="right">modification date</a>
+                            </th> 
+                        </tr>
+                    </thead>
+		    <tbody> 
+                        <tr id="modificationdate.uri">
+                                <td></td>
+                                <td>
+				   URI
+				</td>
+				<td>
+				http://purl.org/dc/terms/modified
+				</td>
+			</tr>
+                        <tr id="modificationdate.label">
+                                <td></td>
+                                <td>
+				   label
+				</td>
+				<td>
+				modification date
+				</td>
+			</tr>
+                        <tr id="modificationdate.definition">
+                                <td></td>
+                                <td>
+				   definition
+				</td>
+				<td>
+				Date on which the resource was changed.
+				</td>
+			</tr>
+                        <tr id="modificationdate.usage">
+                                <td></td>
+                                <td>
+				   usage 
+				</td>
+				<td>
+				
+				</td>
+			</tr>
+                        <tr id="modificationdate.domain">
+                                <td></td>
+                                <td>
+				   domain
+				</td>
+				<td>
+				</td>
+			</tr>
+                        <tr id="modificationdate.range">
+                                <td></td>
+                                <td>
+				   range
+				</td>
+				<td>
+				</td>
+			</tr>
+                        <tr id="modificationdate.subproperty">
+                                <td></td>
+                                <td>
+				   subproperty of 
+				</td>
+				<td>
+				</td>
+			</tr>
+		    </tbody>
+        </table>
+	<p/>
+
+     
+
+   
+
+    <h3>modification date</h3>
+    <table class="def" id="table-term-modificationDate">
+                    <thead>
+                        <tr >
+                            <th class="" style="width:5%">
+					<a href="https://github.com/SEMICeu/ADMS/issues/new?title=Issue%20for%20modificationDate&body=Explain%20your%20issue"}}>
+					   <img src="html/callout.png" loading="lazy" alt="(create issue)" width="20" height="20"/>
+					</a>
+                            </th>
+                            <th class="" style="width:20%">
+                                Class/Property
+                            </th>
+                            <th class="" style="width:75%">
+				<a href="http://purl.org/dc/terms/modified"
+					   data-toggle="tooltip"
+					   data-content="http://purl.org/dc/terms/modified"
+					   data-placement="right">modification date</a>
+                            </th> 
+                        </tr>
+                    </thead>
+		    <tbody> 
+                        <tr id="modificationdate.uri">
+                                <td></td>
+                                <td>
+				   URI
+				</td>
+				<td>
+				http://purl.org/dc/terms/modified
+				</td>
+			</tr>
+                        <tr id="modificationdate.label">
+                                <td></td>
+                                <td>
+				   label
+				</td>
+				<td>
+				modification date
+				</td>
+			</tr>
+                        <tr id="modificationdate.definition">
+                                <td></td>
+                                <td>
+				   definition
+				</td>
+				<td>
+				Date on which the resource was changed.
+				</td>
+			</tr>
+                        <tr id="modificationdate.usage">
+                                <td></td>
+                                <td>
+				   usage 
+				</td>
+				<td>
+				
+				</td>
+			</tr>
+                        <tr id="modificationdate.domain">
+                                <td></td>
+                                <td>
+				   domain
+				</td>
+				<td>
+				</td>
+			</tr>
+                        <tr id="modificationdate.range">
+                                <td></td>
+                                <td>
+				   range
+				</td>
+				<td>
+				</td>
+			</tr>
+                        <tr id="modificationdate.subproperty">
+                                <td></td>
+                                <td>
+				   subproperty of 
+				</td>
+				<td>
+				</td>
+			</tr>
+		    </tbody>
+        </table>
+	<p/>
+
+     
+
+   
+
+    <h3>notation</h3>
+    <table class="def" id="table-term-notation">
+                    <thead>
+                        <tr >
+                            <th class="" style="width:5%">
+					<a href="https://github.com/SEMICeu/ADMS/issues/new?title=Issue%20for%20notation&body=Explain%20your%20issue"}}>
+					   <img src="html/callout.png" loading="lazy" alt="(create issue)" width="20" height="20"/>
+					</a>
+                            </th>
+                            <th class="" style="width:20%">
+                                Class/Property
+                            </th>
+                            <th class="" style="width:75%">
+				<a href="http://www.w3.org/2004/02/skos/core#notation"
+					   data-toggle="tooltip"
+					   data-content="http://www.w3.org/2004/02/skos/core#notation"
+					   data-placement="right">notation</a>
+                            </th> 
+                        </tr>
+                    </thead>
+		    <tbody> 
+                        <tr id="notation.uri">
+                                <td></td>
+                                <td>
+				   URI
+				</td>
+				<td>
+				http://www.w3.org/2004/02/skos/core#notation
+				</td>
+			</tr>
+                        <tr id="notation.label">
+                                <td></td>
+                                <td>
+				   label
+				</td>
+				<td>
+				notation
+				</td>
+			</tr>
+                        <tr id="notation.definition">
+                                <td></td>
+                                <td>
+				   definition
+				</td>
+				<td>
+				
+				</td>
+			</tr>
+                        <tr id="notation.usage">
+                                <td></td>
+                                <td>
+				   usage 
+				</td>
+				<td>
+				
+				</td>
+			</tr>
+                        <tr id="notation.domain">
+                                <td></td>
+                                <td>
+				   domain
+				</td>
+				<td>
+				</td>
+			</tr>
+                        <tr id="notation.range">
+                                <td></td>
+                                <td>
+				   range
+				</td>
+				<td>
+				</td>
+			</tr>
+                        <tr id="notation.subproperty">
+                                <td></td>
+                                <td>
+				   subproperty of 
+				</td>
+				<td>
+				</td>
+			</tr>
+		    </tbody>
+        </table>
+	<p/>
+
+     
+
+   
+
+    <h3>relation</h3>
+    <table class="def" id="table-term-relation">
+                    <thead>
+                        <tr >
+                            <th class="" style="width:5%">
+					<a href="https://github.com/SEMICeu/ADMS/issues/new?title=Issue%20for%20relation&body=Explain%20your%20issue"}}>
+					   <img src="html/callout.png" loading="lazy" alt="(create issue)" width="20" height="20"/>
+					</a>
+                            </th>
+                            <th class="" style="width:20%">
+                                Class/Property
+                            </th>
+                            <th class="" style="width:75%">
+				<a href="http://purl.org/dc/terms/relation"
+					   data-toggle="tooltip"
+					   data-content="http://purl.org/dc/terms/relation"
+					   data-placement="right">relation</a>
+                            </th> 
+                        </tr>
+                    </thead>
+		    <tbody> 
+                        <tr id="relation.uri">
+                                <td></td>
+                                <td>
+				   URI
+				</td>
+				<td>
+				http://purl.org/dc/terms/relation
+				</td>
+			</tr>
+                        <tr id="relation.label">
+                                <td></td>
+                                <td>
+				   label
+				</td>
+				<td>
+				relation
+				</td>
+			</tr>
+                        <tr id="relation.definition">
+                                <td></td>
+                                <td>
+				   definition
+				</td>
+				<td>
+				A related resource.
+				</td>
+			</tr>
+                        <tr id="relation.usage">
+                                <td></td>
+                                <td>
+				   usage 
+				</td>
+				<td>
+				
+				</td>
+			</tr>
+                        <tr id="relation.domain">
+                                <td></td>
+                                <td>
+				   domain
+				</td>
+				<td>
+				</td>
+			</tr>
+                        <tr id="relation.range">
+                                <td></td>
+                                <td>
+				   range
+				</td>
+				<td>
+				</td>
+			</tr>
+                        <tr id="relation.subproperty">
+                                <td></td>
+                                <td>
+				   subproperty of 
+				</td>
+				<td>
+				</td>
+			</tr>
+		    </tbody>
+        </table>
+	<p/>
+
+     
+
+   
+
+    <h3>release date</h3>
+    <table class="def" id="table-term-releaseDate">
+                    <thead>
+                        <tr >
+                            <th class="" style="width:5%">
+					<a href="https://github.com/SEMICeu/ADMS/issues/new?title=Issue%20for%20releaseDate&body=Explain%20your%20issue"}}>
+					   <img src="html/callout.png" loading="lazy" alt="(create issue)" width="20" height="20"/>
+					</a>
+                            </th>
+                            <th class="" style="width:20%">
+                                Class/Property
+                            </th>
+                            <th class="" style="width:75%">
+				<a href="http://purl.org/dc/terms/issued"
+					   data-toggle="tooltip"
+					   data-content="http://purl.org/dc/terms/issued"
+					   data-placement="right">release date</a>
+                            </th> 
+                        </tr>
+                    </thead>
+		    <tbody> 
+                        <tr id="releasedate.uri">
+                                <td></td>
+                                <td>
+				   URI
+				</td>
+				<td>
+				http://purl.org/dc/terms/issued
+				</td>
+			</tr>
+                        <tr id="releasedate.label">
+                                <td></td>
+                                <td>
+				   label
+				</td>
+				<td>
+				release date
+				</td>
+			</tr>
+                        <tr id="releasedate.definition">
+                                <td></td>
+                                <td>
+				   definition
+				</td>
+				<td>
+				Date of formal issuance of the resource.
+				</td>
+			</tr>
+                        <tr id="releasedate.usage">
+                                <td></td>
+                                <td>
+				   usage 
+				</td>
+				<td>
+				
+				</td>
+			</tr>
+                        <tr id="releasedate.domain">
+                                <td></td>
+                                <td>
+				   domain
+				</td>
+				<td>
+				</td>
+			</tr>
+                        <tr id="releasedate.range">
+                                <td></td>
+                                <td>
+				   range
+				</td>
+				<td>
+				</td>
+			</tr>
+                        <tr id="releasedate.subproperty">
+                                <td></td>
+                                <td>
+				   subproperty of 
+				</td>
+				<td>
+				</td>
+			</tr>
+		    </tbody>
+        </table>
+	<p/>
+
+     
+
+   
+
+    <h3>release date</h3>
+    <table class="def" id="table-term-releaseDate">
+                    <thead>
+                        <tr >
+                            <th class="" style="width:5%">
+					<a href="https://github.com/SEMICeu/ADMS/issues/new?title=Issue%20for%20releaseDate&body=Explain%20your%20issue"}}>
+					   <img src="html/callout.png" loading="lazy" alt="(create issue)" width="20" height="20"/>
+					</a>
+                            </th>
+                            <th class="" style="width:20%">
+                                Class/Property
+                            </th>
+                            <th class="" style="width:75%">
+				<a href="http://purl.org/dc/terms/issued"
+					   data-toggle="tooltip"
+					   data-content="http://purl.org/dc/terms/issued"
+					   data-placement="right">release date</a>
+                            </th> 
+                        </tr>
+                    </thead>
+		    <tbody> 
+                        <tr id="releasedate.uri">
+                                <td></td>
+                                <td>
+				   URI
+				</td>
+				<td>
+				http://purl.org/dc/terms/issued
+				</td>
+			</tr>
+                        <tr id="releasedate.label">
+                                <td></td>
+                                <td>
+				   label
+				</td>
+				<td>
+				release date
+				</td>
+			</tr>
+                        <tr id="releasedate.definition">
+                                <td></td>
+                                <td>
+				   definition
+				</td>
+				<td>
+				Date of formal issuance of the resource.
+				</td>
+			</tr>
+                        <tr id="releasedate.usage">
+                                <td></td>
+                                <td>
+				   usage 
+				</td>
+				<td>
+				
+				</td>
+			</tr>
+                        <tr id="releasedate.domain">
+                                <td></td>
+                                <td>
+				   domain
+				</td>
+				<td>
+				</td>
+			</tr>
+                        <tr id="releasedate.range">
+                                <td></td>
+                                <td>
+				   range
+				</td>
+				<td>
+				</td>
+			</tr>
+                        <tr id="releasedate.subproperty">
+                                <td></td>
+                                <td>
+				   subproperty of 
+				</td>
+				<td>
+				</td>
+			</tr>
+		    </tbody>
+        </table>
+	<p/>
+
+     
+
+   
+
+    <h3>release date</h3>
+    <table class="def" id="table-term-releaseDate">
+                    <thead>
+                        <tr >
+                            <th class="" style="width:5%">
+					<a href="https://github.com/SEMICeu/ADMS/issues/new?title=Issue%20for%20releaseDate&body=Explain%20your%20issue"}}>
+					   <img src="html/callout.png" loading="lazy" alt="(create issue)" width="20" height="20"/>
+					</a>
+                            </th>
+                            <th class="" style="width:20%">
+                                Class/Property
+                            </th>
+                            <th class="" style="width:75%">
+				<a href="http://purl.org/dc/terms/issued"
+					   data-toggle="tooltip"
+					   data-content="http://purl.org/dc/terms/issued"
+					   data-placement="right">release date</a>
+                            </th> 
+                        </tr>
+                    </thead>
+		    <tbody> 
+                        <tr id="releasedate.uri">
+                                <td></td>
+                                <td>
+				   URI
+				</td>
+				<td>
+				http://purl.org/dc/terms/issued
+				</td>
+			</tr>
+                        <tr id="releasedate.label">
+                                <td></td>
+                                <td>
+				   label
+				</td>
+				<td>
+				release date
+				</td>
+			</tr>
+                        <tr id="releasedate.definition">
+                                <td></td>
+                                <td>
+				   definition
+				</td>
+				<td>
+				Date of formal issuance of the resource.
+				</td>
+			</tr>
+                        <tr id="releasedate.usage">
+                                <td></td>
+                                <td>
+				   usage 
+				</td>
+				<td>
+				
+				</td>
+			</tr>
+                        <tr id="releasedate.domain">
+                                <td></td>
+                                <td>
+				   domain
+				</td>
+				<td>
+				</td>
+			</tr>
+                        <tr id="releasedate.range">
+                                <td></td>
+                                <td>
+				   range
+				</td>
+				<td>
+				</td>
+			</tr>
+                        <tr id="releasedate.subproperty">
+                                <td></td>
+                                <td>
+				   subproperty of 
+				</td>
+				<td>
+				</td>
+			</tr>
+		    </tbody>
+        </table>
+	<p/>
+
+     
+
+   
+
+    <h3>title</h3>
+    <table class="def" id="table-term-title">
+                    <thead>
+                        <tr >
+                            <th class="" style="width:5%">
+					<a href="https://github.com/SEMICeu/ADMS/issues/new?title=Issue%20for%20title&body=Explain%20your%20issue"}}>
+					   <img src="html/callout.png" loading="lazy" alt="(create issue)" width="20" height="20"/>
+					</a>
+                            </th>
+                            <th class="" style="width:20%">
+                                Class/Property
+                            </th>
+                            <th class="" style="width:75%">
+				<a href="http://purl.org/dc/terms/title"
+					   data-toggle="tooltip"
+					   data-content="http://purl.org/dc/terms/title"
+					   data-placement="right">title</a>
+                            </th> 
+                        </tr>
+                    </thead>
+		    <tbody> 
+                        <tr id="title.uri">
+                                <td></td>
+                                <td>
+				   URI
+				</td>
+				<td>
+				http://purl.org/dc/terms/title
+				</td>
+			</tr>
+                        <tr id="title.label">
+                                <td></td>
+                                <td>
+				   label
+				</td>
+				<td>
+				title
+				</td>
+			</tr>
+                        <tr id="title.definition">
+                                <td></td>
+                                <td>
+				   definition
+				</td>
+				<td>
+				A name given to the resource.
+				</td>
+			</tr>
+                        <tr id="title.usage">
+                                <td></td>
+                                <td>
+				   usage 
+				</td>
+				<td>
+				
+				</td>
+			</tr>
+                        <tr id="title.domain">
+                                <td></td>
+                                <td>
+				   domain
+				</td>
+				<td>
+				</td>
+			</tr>
+                        <tr id="title.range">
+                                <td></td>
+                                <td>
+				   range
+				</td>
+				<td>
+				</td>
+			</tr>
+                        <tr id="title.subproperty">
+                                <td></td>
+                                <td>
+				   subproperty of 
+				</td>
+				<td>
+				</td>
+			</tr>
+		    </tbody>
+        </table>
+	<p/>
+
+     
+
+   
+
+    <h3>title</h3>
+    <table class="def" id="table-term-title">
+                    <thead>
+                        <tr >
+                            <th class="" style="width:5%">
+					<a href="https://github.com/SEMICeu/ADMS/issues/new?title=Issue%20for%20title&body=Explain%20your%20issue"}}>
+					   <img src="html/callout.png" loading="lazy" alt="(create issue)" width="20" height="20"/>
+					</a>
+                            </th>
+                            <th class="" style="width:20%">
+                                Class/Property
+                            </th>
+                            <th class="" style="width:75%">
+				<a href="http://purl.org/dc/terms/title"
+					   data-toggle="tooltip"
+					   data-content="http://purl.org/dc/terms/title"
+					   data-placement="right">title</a>
+                            </th> 
+                        </tr>
+                    </thead>
+		    <tbody> 
+                        <tr id="title.uri">
+                                <td></td>
+                                <td>
+				   URI
+				</td>
+				<td>
+				http://purl.org/dc/terms/title
+				</td>
+			</tr>
+                        <tr id="title.label">
+                                <td></td>
+                                <td>
+				   label
+				</td>
+				<td>
+				title
+				</td>
+			</tr>
+                        <tr id="title.definition">
+                                <td></td>
+                                <td>
+				   definition
+				</td>
+				<td>
+				A name given to the resource.
+				</td>
+			</tr>
+                        <tr id="title.usage">
+                                <td></td>
+                                <td>
+				   usage 
+				</td>
+				<td>
+				
+				</td>
+			</tr>
+                        <tr id="title.domain">
+                                <td></td>
+                                <td>
+				   domain
+				</td>
+				<td>
+				</td>
+			</tr>
+                        <tr id="title.range">
+                                <td></td>
+                                <td>
+				   range
+				</td>
+				<td>
+				</td>
+			</tr>
+                        <tr id="title.subproperty">
+                                <td></td>
+                                <td>
+				   subproperty of 
+				</td>
+				<td>
+				</td>
+			</tr>
+		    </tbody>
+        </table>
+	<p/>
+
+     
+
+   
+
+    <h3>title</h3>
+    <table class="def" id="table-term-title">
+                    <thead>
+                        <tr >
+                            <th class="" style="width:5%">
+					<a href="https://github.com/SEMICeu/ADMS/issues/new?title=Issue%20for%20title&body=Explain%20your%20issue"}}>
+					   <img src="html/callout.png" loading="lazy" alt="(create issue)" width="20" height="20"/>
+					</a>
+                            </th>
+                            <th class="" style="width:20%">
+                                Class/Property
+                            </th>
+                            <th class="" style="width:75%">
+				<a href="http://purl.org/dc/terms/title"
+					   data-toggle="tooltip"
+					   data-content="http://purl.org/dc/terms/title"
+					   data-placement="right">title</a>
+                            </th> 
+                        </tr>
+                    </thead>
+		    <tbody> 
+                        <tr id="title.uri">
+                                <td></td>
+                                <td>
+				   URI
+				</td>
+				<td>
+				http://purl.org/dc/terms/title
+				</td>
+			</tr>
+                        <tr id="title.label">
+                                <td></td>
+                                <td>
+				   label
+				</td>
+				<td>
+				title
+				</td>
+			</tr>
+                        <tr id="title.definition">
+                                <td></td>
+                                <td>
+				   definition
+				</td>
+				<td>
+					A name given to the resource.
+				</td>
+			</tr>
+                        <tr id="title.usage">
+                                <td></td>
+                                <td>
+				   usage 
+				</td>
+				<td>
+				
+				</td>
+			</tr>
+                        <tr id="title.domain">
+                                <td></td>
+                                <td>
+				   domain
+				</td>
+				<td>
+				</td>
+			</tr>
+                        <tr id="title.range">
+                                <td></td>
+                                <td>
+				   range
+				</td>
+				<td>
+				</td>
+			</tr>
+                        <tr id="title.subproperty">
+                                <td></td>
+                                <td>
+				   subproperty of 
+				</td>
+				<td>
+				</td>
+			</tr>
+		    </tbody>
+        </table>
+	<p/>
+
+     
+
+   
+
+    <h3>version</h3>
+    <table class="def" id="table-term-version">
+                    <thead>
+                        <tr >
+                            <th class="" style="width:5%">
+					<a href="https://github.com/SEMICeu/ADMS/issues/new?title=Issue%20for%20version&body=Explain%20your%20issue"}}>
+					   <img src="html/callout.png" loading="lazy" alt="(create issue)" width="20" height="20"/>
+					</a>
+                            </th>
+                            <th class="" style="width:20%">
+                                Class/Property
+                            </th>
+                            <th class="" style="width:75%">
+				<a href="http://purl.org/dc/terms/:dcat:Dataset"
+					   data-toggle="tooltip"
+					   data-content="http://purl.org/dc/terms/:dcat:Dataset"
+					   data-placement="right">version</a>
+                            </th> 
+                        </tr>
+                    </thead>
+		    <tbody> 
+                        <tr id="version.uri">
+                                <td></td>
+                                <td>
+				   URI
+				</td>
+				<td>
+				http://purl.org/dc/terms/:dcat:Dataset
+				</td>
+			</tr>
+                        <tr id="version.label">
+                                <td></td>
+                                <td>
+				   label
+				</td>
+				<td>
+				version
+				</td>
+			</tr>
+                        <tr id="version.definition">
+                                <td></td>
+                                <td>
+				   definition
+				</td>
+				<td>
+				A version number or other version designation of the Dataset.
+				</td>
+			</tr>
+                        <tr id="version.usage">
+                                <td></td>
+                                <td>
+				   usage 
+				</td>
+				<td>
+				
+				</td>
+			</tr>
+                        <tr id="version.domain">
+                                <td></td>
+                                <td>
+				   domain
+				</td>
+				<td>
+				</td>
+			</tr>
+                        <tr id="version.range">
+                                <td></td>
+                                <td>
+				   range
+				</td>
+				<td>
+				</td>
+			</tr>
+                        <tr id="version.subproperty">
+                                <td></td>
+                                <td>
+				   subproperty of 
+				</td>
+				<td>
+				</td>
+			</tr>
+		    </tbody>
+        </table>
+	<p/>
+
+     
+
+
+
 </section>
 
  
