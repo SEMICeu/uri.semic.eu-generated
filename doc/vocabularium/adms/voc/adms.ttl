@@ -8,10 +8,6 @@
 @prefix skos: <http://www.w3.org/2004/02/skos/core#> .
 @prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
 
-<http://www.w3.org/ns/adms#AssetDistribution> a owl:Class;
-  rdfs:comment "A particular physical embodiment of an Asset, which is an example of the FRBR entity manifestation (the physical embodiment of an expression of a work)."@en;
-  rdfs:isDefinedBy <http://www.w3.org/ns/adms> .
-
 <http://www.w3.org/ns/adms#dcat:accessURL> a owl:ObjectProperty;
   rdfs:domain <http://www.w3.org/ns/adms#AssetRepository>;
   rdfs:isDefinedBy <http://www.w3.org/ns/adms>;
@@ -47,6 +43,12 @@
   rdfs:isDefinedBy <http://www.w3.org/ns/adms>;
   rdfs:range rdfs:Resource .
 
+<http://www.w3.org/ns/adms#representationTechnique> a owl:ObjectProperty;
+  rdfs:comment "More information about the format in which an Asset Distribution is released. This is different from the file format as, for example, a ZIP file (file format) could contain an XML schema (representation technique)."@en;
+  rdfs:domain <http://www.w3.org/ns/adms#AssetDistribution>;
+  rdfs:isDefinedBy <http://www.w3.org/ns/adms>;
+  rdfs:range skos:Concept .
+
 <http://www.w3.org/ns/adms#sample> a owl:ObjectProperty;
   rdfs:comment "Links to a sample of an Asset (which is itself an Asset)."@en;
   rdfs:domain <http://www.w3.org/ns/adms#Asset>;
@@ -58,6 +60,13 @@
   rdfs:domain <http://www.w3.org/ns/adms#Identifier>;
   rdfs:isDefinedBy <http://www.w3.org/ns/adms>;
   rdfs:range rdfs:Literal .
+
+<http://www.w3.org/ns/adms#status> a owl:ObjectProperty;
+  rdfs:comment "The status of the Asset in the context of a particular workflow process."@en;
+  rdfs:domain <http://www.w3.org/ns/adms#Asset>,
+    <http://www.w3.org/ns/adms#AssetDistribution>;
+  rdfs:isDefinedBy <http://www.w3.org/ns/adms>;
+  rdfs:range skos:Concept .
 
 <http://www.w3.org/ns/adms#supportedSchema> a owl:ObjectProperty;
   rdfs:comment "A schema according to which the Asset Repository can provide data about its content, e.g. ADMS."@en;
@@ -118,6 +127,10 @@ dcat:downloadURL a rdf:Property;
 
 dcat:keyword a rdf:Property;
   rdfs:label "keyword"@en .
+
+<http://www.w3.org/ns/adms#AssetDistribution> a owl:Class;
+  rdfs:comment "A particular physical embodiment of an Asset, which is an example of the FRBR entity manifestation (the physical embodiment of an expression of a work)."@en;
+  rdfs:isDefinedBy <http://www.w3.org/ns/adms> .
 
 <http://www.w3.org/ns/adms#AssetRepository> a owl:Class;
   rdfs:comment "A system or service that provides facilities for storage and maintenance of descriptions of Assets and Asset Distributions, and functionality that allows users to search and access these descriptions. An Asset Repository will typically contain descriptions of several Assets and related Asset Distributions."@en;
