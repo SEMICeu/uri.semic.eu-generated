@@ -1,8 +1,20 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <xs:schema xmlns="https://data.europa.eu/m8g/xml/" xmlns:xs="http://www.w3.org/2001/XMLSchema" targetNamespace="https://data.europa.eu/m8g/xml/" version="2.0.0" elementFormDefault="qualified" attributeFormDefault="unqualified" xmlns:cv="https://data.europa.eu/m8g/xml/">
-  <xs:element name="ElectricVehicle" type="ElectricVehicleType"/>
-  <xs:element name="Alignment" type="AlignmentType"/>
-  <xs:element name="Cell" type="CellType"/>
+  <xs:element name="BatteryManagementSystem" type="BatteryManagementSystemType"/>
+  <xs:element name="BatteryMonitor" type="BatteryMonitorType"/>
+  <xs:element name="CarManufacturer" type="CarManufacturerType"/>
+  <xs:element name="ContactPoint" type="ContactPointType"/>
+  <xs:element name="ElectricCar" type="ElectricCarType"/>
+  <xs:element name="StorageBatteryDevice" type="StorageBatteryDeviceType"/>
+  <xs:element name="VehicleComponent" type="VehicleComponentType"/>
+  <xs:element name="VehicleSensor" type="VehicleSensorType"/>
+  <xs:element name="QuantityValue" type="QuantityValueType"/>
+  <xs:element name="LegalEntity" type="LegalEntityType"/>
+  <xs:element name="Address" type="AddressType"/>
+  <xs:element name="Geometry" type="GeometryType"/>
+  <xs:element name="Person" type="PersonType"/>
+  <xs:element name="StorageBatteryMeasurement" type="StorageBatteryMeasurementType"/>
+  <xs:element name="ChargingStation" type="ChargingStationType"/>
   <xs:simpleType name="Literal">
     <xs:restriction base="xs:string"/>
   </xs:simpleType>
@@ -21,114 +33,457 @@
       </xs:extension>
     </xs:simpleContent>
   </xs:complexType>
-  <xs:complexType name="ElectricVehicleType">
+  <xs:complexType name="BatteryManagementSystemType">
+    <xs:sequence>
+      <xs:element name="generates" ref="StorageBatteryMeasurementType" maxOccurs="unbounded" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation xml:lang="en">It relates to something that is produced or created.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+    </xs:sequence>
+    <xs:attribute name="BatteryManagementSystemRef" type="xs:IDREF">
+      <xs:annotation>
+        <xs:documentation xml:lang="en">Reference to BatteryManagementSystem ID</xs:documentation>
+      </xs:annotation>
+    </xs:attribute>
+  </xs:complexType>
+  <xs:complexType name="BatteryMonitorType">
+    <xs:sequence>
+      <xs:element name="pluggedTo" ref="StorageBatteryDeviceType" maxOccurs="unbounded" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation xml:lang="en">It relates to something physically connected.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="reports" ref="BatteryManagementSystemType" maxOccurs="1" minOccurs="1">
+        <xs:annotation>
+          <xs:documentation xml:lang="en">TODO</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+    </xs:sequence>
+    <xs:attribute name="BatteryMonitorRef" type="xs:IDREF">
+      <xs:annotation>
+        <xs:documentation xml:lang="en">Reference to BatteryMonitor ID</xs:documentation>
+      </xs:annotation>
+    </xs:attribute>
+  </xs:complexType>
+  <xs:complexType name="CarManufacturerType">
+    <xs:sequence>
+      <xs:element name="wmi" type="xs:string" maxOccurs="1" minOccurs="1">
+        <xs:annotation>
+          <xs:documentation xml:lang="en">3-character World Manufacturer Identification (WMI) as defined by ISO 3780</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="businessPartnerNumber" type="xs:string" maxOccurs="1" minOccurs="1">
+        <xs:annotation>
+          <xs:documentation xml:lang="en">A business partner number of this company.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+    </xs:sequence>
+    <xs:attribute name="CarManufacturerRef" type="xs:IDREF">
+      <xs:annotation>
+        <xs:documentation xml:lang="en">Reference to CarManufacturer ID</xs:documentation>
+      </xs:annotation>
+    </xs:attribute>
+  </xs:complexType>
+  <xs:complexType name="ContactPointType">
+    <xs:sequence>
+      <xs:element name="contactPage" maxOccurs="unbounded" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation xml:lang="en">A web page that could be used to reach out the Contact Point.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="hasEmail" type="xs:string" maxOccurs="unbounded" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation xml:lang="en">An electronic address through which the Contact Point can be contacted.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="hasTelephone" type="xs:string" maxOccurs="unbounded" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation xml:lang="en">A telephone number through which the Contact Point can be contacted.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+    </xs:sequence>
+    <xs:attribute name="ContactPointRef" type="xs:IDREF">
+      <xs:annotation>
+        <xs:documentation xml:lang="en">Reference to ContactPoint ID</xs:documentation>
+      </xs:annotation>
+    </xs:attribute>
+  </xs:complexType>
+  <xs:complexType name="ElectricCarType">
+    <xs:sequence>
+      <xs:element name="chargedAt" ref="ChargingStationType" maxOccurs="unbounded" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation xml:lang="en">The source power to which an electric appliance can get energy from.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="fuelConsumption" ref="QuantityValueType" maxOccurs="1" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation xml:lang="en">The fuel used per unit of distance traveled.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="fuelEfficiency" ref="QuantityValueType" maxOccurs="1" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation xml:lang="en">The distance traveled per unit of fuel used.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="hasManufacturer" ref="CarManufacturerType" maxOccurs="1" minOccurs="1">
+        <xs:annotation>
+          <xs:documentation xml:lang="en">The manufacturer of the vehicle.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="hasPart" ref="VehicleComponentType" maxOccurs="unbounded" minOccurs="1">
+        <xs:annotation>
+          <xs:documentation xml:lang="en">A related resource that is included either physically or logically in the described resource.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="inletType" type="ConceptType" maxOccurs="1" minOccurs="1">
+        <xs:annotation>
+          <xs:documentation xml:lang="en">The type of plug this car is equiped with.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="make" type="xs:string" maxOccurs="1" minOccurs="1">
+        <xs:annotation>
+          <xs:documentation xml:lang="en">The make is the brand name used by the car manufacturer.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="model" type="xs:string" maxOccurs="1" minOccurs="1">
+        <xs:annotation>
+          <xs:documentation xml:lang="en">The model of a car is its design, in the context of the manufacturer's range or series of cars.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="modelYear" type="xs:gYear" maxOccurs="1" minOccurs="1">
+        <xs:annotation>
+          <xs:documentation xml:lang="en">The year in which the model has been conceived.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="vehicleIdentificationNumber" type="xs:string" maxOccurs="1" minOccurs="1">
+        <xs:annotation>
+          <xs:documentation xml:lang="en">The Vehicle Identification Number (VIN) is a unique serial number used by the automotive industry to identify individual motor vehicles.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+    </xs:sequence>
+    <xs:attribute name="ElectricCarRef" type="xs:IDREF">
+      <xs:annotation>
+        <xs:documentation xml:lang="en">Reference to ElectricCar ID</xs:documentation>
+      </xs:annotation>
+    </xs:attribute>
+  </xs:complexType>
+  <xs:complexType name="StorageBatteryDeviceType">
+    <xs:sequence>
+      <xs:element name="batteryType" type="ConceptType" maxOccurs="1" minOccurs="1">
+        <xs:annotation>
+          <xs:documentation xml:lang="en">Type of battery used.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="dateLastReported" type="xs:dateTime" maxOccurs="1" minOccurs="1">
+        <xs:annotation>
+          <xs:documentation xml:lang="en">he last time when the device successfully reported data.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="geometry" ref="GeometryType" maxOccurs="1" minOccurs="1">
+        <xs:annotation>
+          <xs:documentation xml:lang="en">Associates any Resource with the corresponding Geometry.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="nominalCapacity" ref="QuantityValueType" maxOccurs="1" minOccurs="1">
+        <xs:annotation>
+          <xs:documentation xml:lang="en">Nominal Energy capacity.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="nominalVoltage" ref="QuantityValueType" maxOccurs="1" minOccurs="1">
+        <xs:annotation>
+          <xs:documentation xml:lang="en">Nominal battery voltage.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="rechargeEnergySource" type="ConceptType" maxOccurs="1" minOccurs="1">
+        <xs:annotation>
+          <xs:documentation xml:lang="en">The type of power source of the battery.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+    </xs:sequence>
+    <xs:attribute name="StorageBatteryDeviceRef" type="xs:IDREF">
+      <xs:annotation>
+        <xs:documentation xml:lang="en">Reference to StorageBatteryDevice ID</xs:documentation>
+      </xs:annotation>
+    </xs:attribute>
+  </xs:complexType>
+  <xs:complexType name="VehicleComponentType">
+    <xs:sequence>
+      <xs:element name="createdOn" type="xs:dateTime" maxOccurs="1" minOccurs="1">
+        <xs:annotation>
+          <xs:documentation xml:lang="en">Timestamp when the relation between the parent part and the child part was created.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="identifier" type="xs:string" maxOccurs="1" minOccurs="1">
+        <xs:annotation>
+          <xs:documentation xml:lang="en">Unique identifier of the entity</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="isPartOf" ref="ElectricCarType" maxOccurs="1" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation xml:lang="en">Relationship between 2 branches where one is a component of the second.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="lifecycleContext" type="ConceptType" maxOccurs="1" minOccurs="1">
+        <xs:annotation>
+          <xs:documentation xml:lang="en">The lifecycle context in which the child part was assembled into the parent part.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="quantity" ref="QuantityValueType" maxOccurs="1" minOccurs="1">
+        <xs:annotation>
+          <xs:documentation xml:lang="en">Quantity of which the child part is assembled into the parent part.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+    </xs:sequence>
+    <xs:attribute name="VehicleComponentRef" type="xs:IDREF">
+      <xs:annotation>
+        <xs:documentation xml:lang="en">Reference to VehicleComponent ID</xs:documentation>
+      </xs:annotation>
+    </xs:attribute>
+  </xs:complexType>
+  <xs:complexType name="VehicleSensorType">
     <xs:sequence/>
-    <xs:attribute name="ElectricVehicleRef" type="xs:IDREF">
+    <xs:attribute name="VehicleSensorRef" type="xs:IDREF">
       <xs:annotation>
-        <xs:documentation xml:lang="en">Reference to ElectricVehicle ID</xs:documentation>
+        <xs:documentation xml:lang="en">Reference to VehicleSensor ID</xs:documentation>
       </xs:annotation>
     </xs:attribute>
   </xs:complexType>
-  <xs:complexType name="AlignmentType">
+  <xs:complexType name="QuantityValueType">
     <xs:sequence>
-      <xs:element name="created" maxOccurs="1" minOccurs="1">
+      <xs:element name="unitOfMeasure" maxOccurs="1" minOccurs="1">
         <xs:annotation>
-          <xs:documentation xml:lang="en">Date of creation of the alignment</xs:documentation>
+          <xs:documentation xml:lang="en">Unit of Measurement for the quantity of serialized objects.</xs:documentation>
         </xs:annotation>
       </xs:element>
-      <xs:element name="description" type="xs:string" maxOccurs="unbounded" minOccurs="1">
+      <xs:element name="value" type="xs:double" maxOccurs="1" minOccurs="1">
         <xs:annotation>
-          <xs:documentation xml:lang="en">A free-text account of the aligment.</xs:documentation>
-        </xs:annotation>
-      </xs:element>
-      <xs:element name="license" maxOccurs="unbounded" minOccurs="1">
-        <xs:annotation>
-          <xs:documentation xml:lang="en">A legal document giving official permission to do something with the alignment</xs:documentation>
-        </xs:annotation>
-      </xs:element>
-      <xs:element name="map" ref="CellType" maxOccurs="unbounded" minOccurs="1">
-        <xs:annotation>
-          <xs:documentation xml:lang="en">A correspondance between entities of the ontologies.</xs:documentation>
-        </xs:annotation>
-      </xs:element>
-      <xs:element name="publisher" maxOccurs="unbounded" minOccurs="1">
-        <xs:annotation>
-          <xs:documentation xml:lang="en">An entity responsible for making the alignment available.</xs:documentation>
-        </xs:annotation>
-      </xs:element>
-      <xs:element name="sourceOntology" maxOccurs="1" minOccurs="1">
-        <xs:annotation>
-          <xs:documentation xml:lang="en">The URI of the first aligned ontology.</xs:documentation>
-        </xs:annotation>
-      </xs:element>
-      <xs:element name="sourceVersion" maxOccurs="1" minOccurs="1">
-        <xs:annotation>
-          <xs:documentation xml:lang="en">Version IRI or version string of the source ontology.</xs:documentation>
-        </xs:annotation>
-      </xs:element>
-      <xs:element name="targetOntology" maxOccurs="1" minOccurs="1">
-        <xs:annotation>
-          <xs:documentation xml:lang="en">The URI of the second aligned ontology.</xs:documentation>
-        </xs:annotation>
-      </xs:element>
-      <xs:element name="targetVersion" maxOccurs="1" minOccurs="1">
-        <xs:annotation>
-          <xs:documentation xml:lang="en">Version IRI or version string of the source ontology.</xs:documentation>
-        </xs:annotation>
-      </xs:element>
-      <xs:element name="title" type="xs:string" maxOccurs="1" minOccurs="1">
-        <xs:annotation>
-          <xs:documentation xml:lang="en">A name given to the alignment.</xs:documentation>
+          <xs:documentation xml:lang="en">A property to relate an observable thing with a value of any kind.</xs:documentation>
         </xs:annotation>
       </xs:element>
     </xs:sequence>
-    <xs:attribute name="AlignmentRef" type="xs:IDREF">
+    <xs:attribute name="QuantityValueRef" type="xs:IDREF">
       <xs:annotation>
-        <xs:documentation xml:lang="en">Reference to Alignment ID</xs:documentation>
+        <xs:documentation xml:lang="en">Reference to QuantityValue ID</xs:documentation>
       </xs:annotation>
     </xs:attribute>
   </xs:complexType>
-  <xs:complexType name="CellType">
+  <xs:complexType name="LegalEntityType">
     <xs:sequence>
-      <xs:element name="uriRelation" maxOccurs="1" minOccurs="1">
+      <xs:element name="contactPoint" ref="ContactPointType" maxOccurs="unbounded" minOccurs="0">
         <xs:annotation>
-          <xs:documentation xml:lang="en">The URI of the relation between the source Entity to the target Entity.</xs:documentation>
+          <xs:documentation xml:lang="en">The main contact information of the resource.</xs:documentation>
         </xs:annotation>
       </xs:element>
-      <xs:element name="relation" maxOccurs="1" minOccurs="1">
+      <xs:element name="legalName" type="xs:string" maxOccurs="1" minOccurs="1">
         <xs:annotation>
-          <xs:documentation xml:lang="en">The relation holding between the two entities.</xs:documentation>
+          <xs:documentation xml:lang="en">The name under which the Legal Entity is legally registered.</xs:documentation>
         </xs:annotation>
       </xs:element>
-      <xs:element name="comment" type="xs:string" maxOccurs="1" minOccurs="0">
+      <xs:element name="registeredAddress" ref="AddressType" maxOccurs="unbounded" minOccurs="1">
         <xs:annotation>
-          <xs:documentation xml:lang="en">Free text field containing either curator notes or text generated by tool providing additional informative information.</xs:documentation>
-        </xs:annotation>
-      </xs:element>
-      <xs:element name="mappingJustification" maxOccurs="1" minOccurs="1">
-        <xs:annotation>
-          <xs:documentation xml:lang="en">A mapping justification is an action (or the written representation of that action) of showing a mapping to be right or reasonable.</xs:documentation>
-        </xs:annotation>
-      </xs:element>
-      <xs:element name="measure" maxOccurs="1" minOccurs="1">
-        <xs:annotation>
-          <xs:documentation xml:lang="en">A confidence of the mapping relation.</xs:documentation>
-        </xs:annotation>
-      </xs:element>
-      <xs:element name="sourceEntity" maxOccurs="1" minOccurs="1">
-        <xs:annotation>
-          <xs:documentation xml:lang="en">The URI of the first aligned ontology entity.</xs:documentation>
-        </xs:annotation>
-      </xs:element>
-      <xs:element name="targetEntity" maxOccurs="1" minOccurs="1">
-        <xs:annotation>
-          <xs:documentation xml:lang="en">The URI of the second aligned ontology entity.</xs:documentation>
+          <xs:documentation xml:lang="en">The address at which the Legal Entity is legally registered.</xs:documentation>
         </xs:annotation>
       </xs:element>
     </xs:sequence>
-    <xs:attribute name="CellRef" type="xs:IDREF">
+    <xs:attribute name="LegalEntityRef" type="xs:IDREF">
       <xs:annotation>
-        <xs:documentation xml:lang="en">Reference to Cell ID</xs:documentation>
+        <xs:documentation xml:lang="en">Reference to LegalEntity ID</xs:documentation>
+      </xs:annotation>
+    </xs:attribute>
+  </xs:complexType>
+  <xs:complexType name="AddressType">
+    <xs:sequence>
+      <xs:element name="addressArea" type="xs:string" maxOccurs="unbounded" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation xml:lang="en">The name of a geographic area that groups Addresses.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="addressId" type="xs:string" maxOccurs="unbounded" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation xml:lang="en">A globally unique identifier for each instance of an Address.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="administrativeUnitLevel1" type="xs:string" maxOccurs="unbounded" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation xml:lang="en">The name of the uppermost level of the address, almost always a country.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="administrativeUnitLevel2" type="xs:string" maxOccurs="unbounded" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation xml:lang="en">The name of a secondary level/region of the address, usually a county, state or other such area that typically encompasses several localities.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="fullAddress" type="xs:string" maxOccurs="unbounded" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation xml:lang="en">The complete address written as a string.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="locatorDesignator" type="xs:string" maxOccurs="unbounded" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation xml:lang="en">A number or sequence of characters that uniquely identifies the locator within the relevant scope.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="locatorName" type="xs:string" maxOccurs="unbounded" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation xml:lang="en">Proper noun(s) applied to the real world entity identified by the locator.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="postOfficeBox" type="xs:string" maxOccurs="unbounded" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation xml:lang="en">A location designator for a postal delivery point at a post office, usually a number.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="postCode" type="xs:string" maxOccurs="unbounded" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation xml:lang="en">The code created and maintained for postal purposes to identify a subdivision of addresses and postal delivery points.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="postName" type="xs:string" maxOccurs="unbounded" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation xml:lang="en">A name created and maintained for postal purposes to identify a subdivision of addresses and postal delivery points.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="thoroughfare" type="xs:string" maxOccurs="unbounded" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation xml:lang="en">The name of a passage or way through from one location to another.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+    </xs:sequence>
+    <xs:attribute name="AddressRef" type="xs:IDREF">
+      <xs:annotation>
+        <xs:documentation xml:lang="en">Reference to Address ID</xs:documentation>
+      </xs:annotation>
+    </xs:attribute>
+  </xs:complexType>
+  <xs:complexType name="GeometryType">
+    <xs:sequence>
+      <xs:element name="coordinates" type="xs:string" maxOccurs="1" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation xml:lang="en">	A list of geographic coordinates that define the extent of the Geometry.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="geometryType" type="ConceptType" maxOccurs="1" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation xml:lang="en">The classification of the Geometry.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="latitude" type="xs:string" maxOccurs="1" minOccurs="1">
+        <xs:annotation>
+          <xs:documentation xml:lang="en">The geographic coordinate that specifies the north / south position of the Geomerty on the Earth's surface.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="longitude" type="xs:string" maxOccurs="1" minOccurs="1">
+        <xs:annotation>
+          <xs:documentation xml:lang="en">The geographic coordinate that specifies the east / west position of the Geometry on the Earth's surface.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+    </xs:sequence>
+    <xs:attribute name="GeometryRef" type="xs:IDREF">
+      <xs:annotation>
+        <xs:documentation xml:lang="en">Reference to Geometry ID</xs:documentation>
+      </xs:annotation>
+    </xs:attribute>
+  </xs:complexType>
+  <xs:complexType name="PersonType">
+    <xs:sequence>
+      <xs:element name="contactPoint" ref="ContactPointType" maxOccurs="unbounded" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation xml:lang="en">The main contact information of the resource.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="domicile" ref="AddressType" maxOccurs="unbounded" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation xml:lang="en">The place that the Person treats as permanent home.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="familyName" type="xs:string" maxOccurs="unbounded" minOccurs="1">
+        <xs:annotation>
+          <xs:documentation xml:lang="en">The hereditary surname of a family.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="givenName" type="xs:string" maxOccurs="unbounded" minOccurs="1">
+        <xs:annotation>
+          <xs:documentation xml:lang="en">The name(s) that identify the Person within a family with a common surname.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="owns" ref="ElectricCarType" maxOccurs="unbounded" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation xml:lang="en">it relates to something belonging to an entity.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+    </xs:sequence>
+    <xs:attribute name="PersonRef" type="xs:IDREF">
+      <xs:annotation>
+        <xs:documentation xml:lang="en">Reference to Person ID</xs:documentation>
+      </xs:annotation>
+    </xs:attribute>
+  </xs:complexType>
+  <xs:complexType name="StorageBatteryMeasurementType">
+    <xs:sequence>
+      <xs:element name="dateObserved" type="xs:dateTime" maxOccurs="1" minOccurs="1">
+        <xs:annotation>
+          <xs:documentation xml:lang="en">The date time in which the measurement was taken. </xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="geometry" ref="GeometryType" maxOccurs="unbounded" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation xml:lang="en">Associates any Resource with the corresponding Geometry.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="stateOfCharge" ref="QuantityValueType" maxOccurs="1" minOccurs="1">
+        <xs:annotation>
+          <xs:documentation xml:lang="en">The ratio between the remaining and the current capacities.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="stateOfHealth" ref="QuantityValueType" maxOccurs="1" minOccurs="1">
+        <xs:annotation>
+          <xs:documentation xml:lang="en">The ratio between the maximum amount of charge that a fully charged battery can provide under its nominal discharge regime, and its nominal capacity.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+    </xs:sequence>
+    <xs:attribute name="StorageBatteryMeasurementRef" type="xs:IDREF">
+      <xs:annotation>
+        <xs:documentation xml:lang="en">Reference to StorageBatteryMeasurement ID</xs:documentation>
+      </xs:annotation>
+    </xs:attribute>
+  </xs:complexType>
+  <xs:complexType name="ChargingStationType">
+    <xs:sequence>
+      <xs:element name="address" ref="AddressType" maxOccurs="1" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation xml:lang="en">Associates any Resource with the corresponding Address.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="allowedVehicleType" type="ConceptType" maxOccurs="unbounded" minOccurs="1">
+        <xs:annotation>
+          <xs:documentation xml:lang="en">Vehicle type(s) which can be charged.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="capacity" type="xs:integer" maxOccurs="1" minOccurs="1">
+        <xs:annotation>
+          <xs:documentation xml:lang="en">The total number of vehicles which can be charged at the same time. The total number of sockets can be higher.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="geometry" ref="GeometryType" maxOccurs="1" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation xml:lang="en">Associates any Resource with the corresponding Geometry.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="name" type="xs:string" maxOccurs="1" minOccurs="1">
+        <xs:annotation>
+          <xs:documentation xml:lang="en">The name of the charging station</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="socketType" type="ConceptType" maxOccurs="unbounded" minOccurs="1">
+        <xs:annotation>
+          <xs:documentation xml:lang="en">The type of sockets offered by this station.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+    </xs:sequence>
+    <xs:attribute name="ChargingStationRef" type="xs:IDREF">
+      <xs:annotation>
+        <xs:documentation xml:lang="en">Reference to ChargingStation ID</xs:documentation>
       </xs:annotation>
     </xs:attribute>
   </xs:complexType>
