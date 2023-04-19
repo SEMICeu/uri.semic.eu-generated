@@ -141,7 +141,17 @@
 	  "href" : "http://www.w3.org/2011/gld/",
           "title" : "Government Linked Data Working Group (Closed community group)",
           "publisher" : "W3C"
-        }
+        },
+       "NAL-FileType" : {
+	  "href" : "http://publications.europa.eu/resource/authority/file-type",
+          "title" : "Named Authority List File Type",
+	  "publisher" : "Publication Office of the EU, EU Vocabularies"
+	},
+       "codelist-adms" : {
+	  "href" : "purl.org/adms/",
+          "title" : "Controlled Vocabularies supporting the ADMS vocabulary.",
+	  "publisher" : "European Commission, Interoperable Europe"
+	}
 
       }
     };
@@ -225,7 +235,7 @@ ADMS was first developed by and published by the European Commission ISA Program
 </p><p>
 Further development and review has been undertaken by the Government Linked Data Working Group [[WG-GLD]]. This version of ADMS builds on the original work in a broader, global context. It also includes some changes to the original version made as a result of implementation experience, particularly on the European Commission's Joinup Platform.
 Under supervision of this Working Group a minor update has been published, which did not include any substantial changes compared to the first published version by the Working Group.
-The latest document was published as a W3C Working Group Note [[vocab-vocab]] at 1 August 2013 and has not been revised since than.
+The latest document was published as a W3C Working Group Note [[vocab-adms]] at 1 August 2013 and has not been revised since than.
 </p>
 
 <h3>Motivation for this version</h3>
@@ -4735,6 +4745,91 @@ Either these are reused as-is, i.e. with no formal additional constraints compar
 	<p/>
 
      
+
+
+
+</section>
+
+  
+<section class="informative">
+<h1>Overview by example</h1>
+<p>
+ADMS is intended as a model that facilitates federation and co-operation. Like DCAT [[vocab-dcat]], ADMS has the concepts of a repository (catalog), assets within the repository that are often conceptual in nature, and accessible realizations of those assets, known as distributions. An asset may have zero or multiple distributions. As an example, a W3C namespace document can be considered to be a Semantic Asset that is typically available in multiple distributions, typically one or more machine processable versions and one in HTML for human consumption. An asset without any distributions is effectively a concept with no tangible realization, such as a planned output of a working group that has not yet been drafted.
+</p>
+
+<h2>Example</h2>
+
+<p>
+This example provides a quick overview of how ADMS might be used to represent a Semantic Asset Repository and its assets.
+Examples in this document are serialized in Turtle [[turtle]].
+
+</p><p>
+First, the repository description:
+<aside class="example" title="">
+  <pre class="nohighlight turtle">
+
+:Repository a adms:AssetRepository ;
+  dcterms:created "1947-02-07"^^xsd:date ;
+  dcterms:description "A complete catalog of code lists and standards created by the Exemplary Standards Body"@en ;
+  dcterms:publisher <http://example.com/data#org> ;
+  dcterms:title "The Exemplary Standards Body Catalog"@en .
+  </pre>
+</aside>
+
+This assumes that the Exemplary Standards Body is described at <code>http://example.com/data#org</code> .
+
+Next, an Asset. We'll create an imaginary code list called <code>'Fruit I like'</code> for our example:
+
+<ul>
+    <li>apples</li>
+    <li>pears</li>
+    <li>oranges</li>
+    <li>peaches</li>
+</ul>
+
+We might describe this Asset thus:
+
+<aside class="example" title="">
+  <pre class="nohighlight turtle">
+  :Fruit_02 a adms:Asset ;
+    dcterms:created "1999-05-24" ;
+    dcterms:description "Fruits that are found to be generally liked by most people." ;
+    dcterms:publisher <http://example.com/data#org> ;
+    dcterms:title "Fruit I like"@en ;
+    adms:status <http://purl.org/adms/status/Completed> ;
+    dcterms:type <http://purl.org/adms/assettype/CodeList> ;
+    adms:previous :Fruit_01 ;
+    adms:last :Fruit ;
+    dcat:distribution :Fruit_02.csv ;
+    dcat:distribution :Fruit_02.xml .
+  </pre>
+</aside>
+
+This provides the creation date (line 2), description (line 3), publisher (line 4) and a title (line 5) for the Asset. 
+The status of the Asset is given in line 6 using one of the values made available in the codelists created in the context of the first version of ADMS [[codelist-adms]] . Likewise the type of Asset in line 7. 
+In line 8 we can see that there was a previous version of this asset <code>(Fruit_01)</code> and that the latest version can be found by appending 'Fruit' to the data's root (line 9).
+
+This Asset has two distributions linked in lines 11 and 12. One of these might be described thus:
+
+<aside class="example" title="">
+  <pre class="nohighlight turtle">
+:Fruit_02.xml a adms:AssetDistribution ;
+  dcterms:description "XML encoding of Fruits that are found to be generally liked by most people." ;
+  dcterms:license <http://creativecommons.org/licenses/by/4.0/> ;
+  dcterms:format <http://publications.europa.eu/resource/authority/file-type/XML> .
+  </pre>
+</aside>
+
+This is a very simple description of the Asset Distribution that just gives its description, format, and license. In this example we've used the NAL File Type [[NAL-FileType]] to provide a URI for the XML MIME type.
+
+The missing triple from this example is the one that includes the Asset in the Repository. This is done with a simple triple:
+
+<aside class="example" title="">
+  <pre class="nohighlight turtle">
+:Repository dcat:dataset :Fruit_02 .
+  </pre>
+</aside>
+
 
 
 
