@@ -315,11 +315,11 @@
   <https://data.vlaanderen.be/ns/shacl#rule> "" .
 
 <https://semiceu.github.io//doc/core-vocabulary/core-business#AgentShape/322371a77364a50f049d46180f6192532eea26dc> rdfs:seeAlso "https://semiceu.github.io//doc/core-vocabulary/core-business#Agent%3Atype";
-  shacl:datatype rdfs:Literal;
+  shacl:class skos:Concept;
   shacl:description "A classification assigned to an Agent."@en;
   shacl:name "type"@en;
   shacl:path dc:type;
-  <https://data.vlaanderen.be/ns/shacl#message> [<https://semiceu.github.io//doc/core-vocabulary/core-businessen> "De range van type moet van het type <http://www.w3.org/2000/01/rdf-schema#Literal> zijn."];
+  <https://data.vlaanderen.be/ns/shacl#message> [<https://semiceu.github.io//doc/core-vocabulary/core-businessen> "De range van type moet van het type <http://www.w3.org/2004/02/skos/core#Concept> zijn."];
   <https://data.vlaanderen.be/ns/shacl#rule> "" .
 
 <https://semiceu.github.io//doc/core-vocabulary/core-business#AgentShape/3fd45972245296a986ad73d13d316ec9d1e5533f> rdfs:seeAlso "https://semiceu.github.io//doc/core-vocabulary/core-business#Agent%3Amember%20of";
@@ -333,9 +333,9 @@
 <https://semiceu.github.io//doc/core-vocabulary/core-business#AgentShape/4f381639bb6e021939f65b4f41409d1edaeade9b> rdfs:seeAlso "https://semiceu.github.io//doc/core-vocabulary/core-business#Agent%3Atype";
   shacl:description "A classification assigned to an Agent."@en;
   shacl:name "type"@en;
-  shacl:nodekind "sh:Literal";
+  shacl:nodekind "sh:BlankNodeOrIRI";
   shacl:path dc:type;
-  <https://data.vlaanderen.be/ns/shacl#message> [<https://semiceu.github.io//doc/core-vocabulary/core-businessen> "De verwachte waarde voor type is een Literal"];
+  <https://data.vlaanderen.be/ns/shacl#message> [<https://semiceu.github.io//doc/core-vocabulary/core-businessen> "De verwachte waarde voor type is een rdfs:Resource (URI of blank node)"];
   <https://data.vlaanderen.be/ns/shacl#rule> "" .
 
 <https://semiceu.github.io//doc/core-vocabulary/core-business#AgentShape/803b12f15a761ac251e073bd57d79d58d35c7186> rdfs:seeAlso "https://semiceu.github.io//doc/core-vocabulary/core-business#Agent%3Ahead%20of";
@@ -573,7 +573,8 @@
 
 <https://semiceu.github.io//doc/core-vocabulary/core-business#LegalEntityShape> a shacl:NodeShape;
   shacl:closed false;
-  shacl:property <https://semiceu.github.io//doc/core-vocabulary/core-business#LegalEntityShape/35a0c5bc0ce5ab144bd063c0f462c983de54579b>,
+  shacl:property <https://semiceu.github.io//doc/core-vocabulary/core-business#LegalEntityShape/16a2ae1bd10ecd1b71a5d7733636716b16dec57b>,
+    <https://semiceu.github.io//doc/core-vocabulary/core-business#LegalEntityShape/35a0c5bc0ce5ab144bd063c0f462c983de54579b>,
     <https://semiceu.github.io//doc/core-vocabulary/core-business#LegalEntityShape/434f52bb8676f1a00f73aac6c7689aa7b812f4fa>,
     <https://semiceu.github.io//doc/core-vocabulary/core-business#LegalEntityShape/45b15ba29c98ac584fc8a034f731f0f0183997ad>,
     <https://semiceu.github.io//doc/core-vocabulary/core-business#LegalEntityShape/48fd2b59954e54cc1eccd6d9ad700094a9348522>,
@@ -583,6 +584,7 @@
     <https://semiceu.github.io//doc/core-vocabulary/core-business#LegalEntityShape/6b95f7afa0acb115254af4469b3de83d9414e899>,
     <https://semiceu.github.io//doc/core-vocabulary/core-business#LegalEntityShape/718ae9bbdedff1ecd80c1da376fb9ece011dd216>,
     <https://semiceu.github.io//doc/core-vocabulary/core-business#LegalEntityShape/7b6713c1f4a52e964f5db57eabef294b6d04e90e>,
+    <https://semiceu.github.io//doc/core-vocabulary/core-business#LegalEntityShape/888031c72afb09e066acb8fcd23afb4db1e22f13>,
     <https://semiceu.github.io//doc/core-vocabulary/core-business#LegalEntityShape/88c7bac3bf428d0c0abcd15cc9806d565ab6e8b4>,
     <https://semiceu.github.io//doc/core-vocabulary/core-business#LegalEntityShape/8a3a5192f0c9731ae0fb58d760e00cc2c338c8a9>,
     <https://semiceu.github.io//doc/core-vocabulary/core-business#LegalEntityShape/9adf9f5890592909cf3e67021ae7ab4f895a7745>,
@@ -596,6 +598,14 @@
     <https://semiceu.github.io//doc/core-vocabulary/core-business#LegalEntityShape/e397ea40389111be56f8ee88be0d4571f77cd3fc>,
     <https://semiceu.github.io//doc/core-vocabulary/core-business#LegalEntityShape/f138612a5fffed0d4daa1a176e0de7d53a99eddd>;
   shacl:targetClass <http://www.w3.org/ns/legal#LegalEntity> .
+
+<https://semiceu.github.io//doc/core-vocabulary/core-business#LegalEntityShape/16a2ae1bd10ecd1b71a5d7733636716b16dec57b> rdfs:seeAlso "https://semiceu.github.io//doc/core-vocabulary/core-business#LegalEntity%3Alegal%20form%20type";
+  shacl:description "The classification of the Legal Entity as a member of a particular group in the context of legal registration."@en;
+  shacl:name "legal form type"@en;
+  shacl:nodekind "sh:BlankNodeOrIRI";
+  shacl:path <http://www.w3.org/ns/legal#companyType>;
+  <https://data.vlaanderen.be/ns/shacl#message> [<https://semiceu.github.io//doc/core-vocabulary/core-businessen> "De verwachte waarde voor legal form type is een rdfs:Resource (URI of blank node)"];
+  <https://data.vlaanderen.be/ns/shacl#rule> "" .
 
 <https://semiceu.github.io//doc/core-vocabulary/core-business#LegalEntityShape/35a0c5bc0ce5ab144bd063c0f462c983de54579b> rdfs:seeAlso "https://semiceu.github.io//doc/core-vocabulary/core-business#LegalEntity%3Alegal%20identifier";
   shacl:class <http://www.w3.org/ns/adms#Identifier>;
@@ -675,6 +685,14 @@
   shacl:name "contact point"@en;
   shacl:path <http://data.europa.eu/m8g/contactPoint>;
   <https://data.vlaanderen.be/ns/shacl#message> [<https://semiceu.github.io//doc/core-vocabulary/core-businessen> "De range van contact point moet van het type <http://data.europa.eu/m8g/ContactPoint> zijn."];
+  <https://data.vlaanderen.be/ns/shacl#rule> "" .
+
+<https://semiceu.github.io//doc/core-vocabulary/core-business#LegalEntityShape/888031c72afb09e066acb8fcd23afb4db1e22f13> rdfs:seeAlso "https://semiceu.github.io//doc/core-vocabulary/core-business#LegalEntity%3Alegal%20form%20type";
+  shacl:class skos:Concept;
+  shacl:description "The classification of the Legal Entity as a member of a particular group in the context of legal registration."@en;
+  shacl:name "legal form type"@en;
+  shacl:path <http://www.w3.org/ns/legal#companyType>;
+  <https://data.vlaanderen.be/ns/shacl#message> [<https://semiceu.github.io//doc/core-vocabulary/core-businessen> "De range van legal form type moet van het type <http://www.w3.org/2004/02/skos/core#Concept> zijn."];
   <https://data.vlaanderen.be/ns/shacl#rule> "" .
 
 <https://semiceu.github.io//doc/core-vocabulary/core-business#LegalEntityShape/88c7bac3bf428d0c0abcd15cc9806d565ab6e8b4> rdfs:seeAlso "https://semiceu.github.io//doc/core-vocabulary/core-business#LegalEntity%3Alegal%20name";
