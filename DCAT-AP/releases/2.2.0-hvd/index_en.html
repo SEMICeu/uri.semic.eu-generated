@@ -3513,6 +3513,120 @@ Additionally it forms input for experts charged with the duty to perform a detai
 
 </section>
 
+  <section class="informative">
+<h2>Example</h2>
+
+In this section we illustrate the recommendations for DCAT-AP for the HVD regulation.
+The examples in this section are fictious; there sole purpose is to illustrate the metadata. 
+
+
+<h3>Dataset in scope of HVD</h3>
+
+Consider that a dataset "The population of bees" is within scope of the HVD while another dataset "The population of wasps" is not.
+Both datasets however are in scope of the INSPIRE directive.
+
+
+<aside class="example" title="">
+  <pre class="nohighlight turtle">
+
+:dataset_bees a dcat:Dataset;
+  dct:title "The population of bees"@en;
+  dct:description "This dataset provides the population of bees based on a yearly inquiry held among beekeepers and farmers in spring."@en;
+  dcatap:applicableLegislation <http://data.europa.eu/eli/reg_impl/2023/138/oj>, <http://data.europa.eu/eli/dir/2007/2/2019-06-26>.
+
+:dataset_wasp a dcat:Dataset;
+  dct:title "The population of wasps"@en;
+  dct:description "This dataset provides the population of wasps based on a yearly inquiry held among beekeepers, farmers, firefighters and catering industry in august."@en;
+  dcatap:applicableLegislation <http://data.europa.eu/eli/dir/2007/2/2019-06-26>.
+  </pre>
+</aside>
+
+
+Both datasets are published by the Environment Agency of the EU Memberstate <ExampleMS> using a persistent identifier.
+
+
+<aside class="example" title="">
+  <pre class="nohighlight turtle">
+
+exampleMS:1T2p3o4B a dcat:Dataset;
+  dct:title "The population of bees"@en;
+  dct:description "This dataset provides the population of bees based on a yearly inquiry held among beekeepers and farmers in spring."@en;
+  dcatap:applicableLegislation <http://data.europa.eu/eli/reg_impl/2023/138/oj>, <http://data.europa.eu/eli/dir/2007/2/2019-06-26>;
+  dct:publisher _:EA-MS;
+  dct:identifier "https://data.exampleMS.gov/id/dataset/1T2p3o4B".
+
+  </pre>
+</aside>
+
+The datasets are published on the EU Memberstates national data portal <code>https://dataportal.exampleMS.gov</code>.
+This portal provides another identifier to the datasets. 
+Because that new identifier is not the master identifier, the portal avoids this by sharing this identifier in its published DCAT-AP catalogue by listing it as an additional identifier.
+
+<aside class="example" title="">
+  <pre class="nohighlight turtle">
+
+exampleMS:1T2p3o4B a dcat:Dataset;
+  dct:title "The population of bees"@en;
+  dct:description "This dataset provides the population of bees based on a yearly inquiry held among beekeepers and farmers in spring."@en;
+  dcatap:applicableLegislation <http://data.europa.eu/eli/reg_impl/2023/138/oj>, <http://data.europa.eu/eli/dir/2007/2/2019-06-26>;
+  dct:publisher _:EA-MS;
+  dct:identifier "https://data.exampleMS.gov/id/dataset/1T2p3o4B";
+  adms:identifier [
+        dct:creator _:EA-MS;
+        skos:notation "https://data.exampleMS.gov/id/dataset/1T2p3o4B"
+        ],
+        [
+        dct:creator <https://dataportal.exampleMS.gov>;
+        skos:notation "https://dataportal.exampleMS.gov/dataset/Thepopulationofbees";
+        ].
+
+  </pre>
+</aside>
+
+
+The datasets are downloadable in various formats and level of detail. In our example, the data is availble in two formats: RDF and ESRI shape format.
+According to the HVD regulation the datasets must be minimally available in bulk download for having the granularity of 50 square km and with a bi-yearly update frequency.
+And it must be in available in an open format for geospatial data.
+Based on these requirements, the publsher of the dataset decides to indicate that the shape based distribution is a HVD bulk download.
+
+<aside class="example" title="">
+  <pre class="nohighlight turtle">
+
+exampleMS:1T2p3o4B a dcat:Dataset;
+  dct:title "The population of bees"@en;
+  dct:description "This dataset provides the population of bees based on a yearly inquiry held among beekeepers and farmers in spring."@en;
+  dcatap:applicableLegislation <http://data.europa.eu/eli/reg_impl/2023/138/oj>, <http://data.europa.eu/eli/dir/2007/2/2019-06-26>;
+  dct:publisher _:EA-MS;
+  dct:identifier "https://data.exampleMS.gov/id/dataset/1T2p3o4B";
+  adms:identifier [
+        dct:creator _:EA-MS;
+        skos:notation "https://data.exampleMS.gov/id/dataset/1T2p3o4B"
+        ],
+        [
+        dct:creator <https://dataportal.exampleMS.gov>;
+        skos:notation "https://dataportal.exampleMS.gov/dataset/Thepopulationofbees";
+        ];
+   dct:accrualPeriodicity <http://publications.europa.eu/resource/authority/frequency/BIENNIAL>;
+   dcat:distribution exampleMS:1T2p3o4B-dist-SHP, exampleMS:1T2p3o4B-dist-RDF.
+
+
+exampleMS:1T2p3o4B-dist-SHP a dcat:Distribution;
+   dcat:accessURL <https://orgea.exampleMS.gov/files/1T2p3o4B.shp> ;
+   dcat:spatialResolutionInMeters "25000"^^xsd:decimal;
+   dct:format <http://publications.europa.eu/resource/authority/file-type/SHP> ;
+   dcatap:applicableLegislation <http://data.europa.eu/eli/reg_impl/2023/138/oj>.
+
+
+exampleMS:1T2p3o4B-dist-RDF a dcat:Distribution;
+   dcat:accessURL <https://orgea.exampleMS.gov/files/1T2p3o4B.ttl>;
+   dcat:spatialResolutionInMeters "25000"^^xsd:decimal;
+   dct:format <http://publications.europa.eu/resource/authority/file-type/RDF_TURTLE> .
+
+  </pre>
+</aside>
+
+
+
   <section id="conformance" class="informative">
 <h2>Conformance Statement</h2>
 
