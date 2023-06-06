@@ -91,11 +91,13 @@
 		]
 
 
+
+
     var respecConfig = {
       edDraftURI: "https://semiceu.github.io/DCAT-AP/releases/2.2.0-hvd",
-      latestVersion: "https://semiceu.github.io/DCAT-AP/releases/2.2.0-hvd",
-      specStatus: "unofficial",
-      publishDate: "2023-03-26",
+      latestVersion: "",
+      specStatus: "LS",
+      publishDate: "2023-06-06",
       editors: myeditors,
       authors: myauthors,
       github: "SEMICeu/DCAT-AP",
@@ -103,7 +105,7 @@
       xref: "web-platform",
       doJsonLd: true,
       logos: [{
-        src: "https://github.com/SEMICeu/Core-Person-Vocabulary/blob/v2.0.0/releases/2.00/html/semic-icon.png",
+        src: "https://semiceu.github.io/CPOV/releases/2.1.0/html/semic-icon.png",
         url: "https://semic.eu",
         alt: "SEMIC",
         width: 154,
@@ -128,13 +130,47 @@
           "title":"Interoperability solutions for public administrations, businesses and citizens (ISA²). Improving semantic interoperability in European eGovernment systems",
           "publisher":"European Commission"
          },
+        "DEU" : {
+          "href":"https://data.europa.eu",
+          "title":"The official portal for European data",
+          "publisher":"European Commission"
+        },
+       "ADMS1" : {
+	  "href" : "https://joinup.ec.europa.eu/collection/support-centre/solution/asset-description-metadata-schema-adms/release/100",
+          "title" : "ADMS 1.00, 1ste version of ADMS as defined by the European Commission ISA Programme",
+	  "publisher" : "European Commission"
+	},
+       "WG-GLD" : {
+	  "href" : "http://www.w3.org/2011/gld/",
+          "title" : "Government Linked Data Working Group (Closed community group)",
+          "publisher" : "W3C"
+        },
+       "NAL-FileType" : {
+	  "href" : "http://publications.europa.eu/resource/authority/file-type",
+          "title" : "Named Authority List File Type",
+	  "publisher" : "Publication Office of the EU, EU Vocabularies"
+	},
+       "codelist-adms" : {
+	  "href" : "purl.org/adms/",
+          "title" : "Controlled Vocabularies supporting the ADMS vocabulary.",
+	  "publisher" : "European Commission, Interoperable Europe"
+	},
         "IdentifierGuidelines":{
           "href":"https://github.com/SEMICeu/DCAT-AP/blob/2.x.y-draft/releases/2.x.y/usageguide-identifiers.md",
           "title":"Guidelines on the management of identifiers",
           "publisher":"European Commission"
-         }
+         },
+        "HVD" : {
+           "href":"https://eur-lex.europa.eu/legal-content/EN/TXT/?uri=CELEX:32023R0138".
+           "title" : "Implementing Regulation for High Value Datasets",
+           "publisher":"European Commission"
+        }
+
       }
     };
+
+
+
     </script>
     <style>
       .figure img, .sidefigure img, figure img, .figure object, .sidefigure object, figure object, img, .img {
@@ -166,7 +202,7 @@
     </h2>
     
 <h3>Context</h3>
-In light of the growing importance of data, the European Commission has adopted an <href="https://eur-lex.europa.eu/legal-content/EN/TXT/?uri=CELEX:32023R0138">implementing act</a> focused on high-value datasets on 21 December 2022. 
+In light of the growing importance of data, the European Commission has adopted an <href="https://eur-lex.europa.eu/legal-content/EN/TXT/?uri=CELEX:32023R0138">implementing act</a> focused on high-value datasets on 21 December 2022 [[HVD]]. 
 The implementing regulation groups the datasets in a list of six high-value datasets thematic categories: geospatial, earth observation and environment, meteorological, statistics, companies and company ownership, and mobility. 
 The <a href="https://data.europa.eu">Portal for European Data</a> has published an easy to read <a href="https://data.europa.eu/en/publications/datastories/high-value-datasets-overview-through-visualisation"> overview</a>.
 
@@ -176,14 +212,14 @@ This document provides the guidelines for how to use DCAT-AP for a dataset that 
 The document is called the "usage guidelines of DCAT-AP for High Value Datasets", in short DCAT-AP HVD.
 
 </p><p>
-To understand these guidelines it is important to realize that the High-Value Dataset implementing regulation applies 
+To understand these guidelines it is important to realise that the High-Value Dataset implementing regulation applies 
 to a subset of all the datasets that are collected by (Open) Data Portals in Europe.
 A single catalogue contains catalogued resources which are within and outside scope of the High-Value Dataset implementing regulation.
 
 </p><p>
 This document supports the need for a common usage of DCAT-AP for catalogued resources within the scope of the High-Value Dataset implementing regulation.
 When conforming to these guidelines a dataset within the scope of the regulation will have satisfied the minimum metadata requirements to be included in the mandatory reporting of the regulation.
-It, however,  does not mean an automated compliance with the regulation because certains aspects are beyond DCAT-AP.
+It, however,  does not mean an automated compliance with the regulation because certain aspects are beyond DCAT-AP.
 For instance, the regulation imposes certain data aspects to be present, or the licencing requires to be more permissive as CC-BY 4.0. 
 Such requirements cannot be verified by just inspecting the DCAT-AP description, but the DCAT-AP description will assist in the assessment.
 
@@ -214,7 +250,7 @@ Any improvement of the metadata will immediately flow throughout the European ne
 <section id="specstatus">
     <h2>Status</h2>
         <p>
-            This DCAT-AP HVD has the status <a href="https://data.vlaanderen.be/id/concept/StandaardStatus/OntwerpStandaard">Working Draft</a> published at 2023-03-26. 
+            This DCAT-AP HVD has the status <a href="https://data.vlaanderen.be/id/concept/StandaardStatus/OntwerpStandaard">Working Draft</a> published at 2023-06-06. 
         </p>
         <p>
             Information about the process and the decisions involved in the creation of this specification are consultable at the <a href="https://github.com/SEMICeu/DCAT-AP">Changelog</a>.
@@ -313,12 +349,12 @@ The UML diagram illustrates the specification described in this document.
 For readability purposes the representation has been condensed as follows:
 <ul>
 <li> no ranges for data properties are shown, because some of them are expressed as unions of XSD types</li>
-<li> The figure contain the key classes with some important supporting classes. Other object properties (relationships) are listed as properties on the UML class with there target range.</li>
+<li> The figure contain the key classes with some important supporting classes. Other object properties (relationships) are listed as properties on the UML class with their target range.</li>
 <li> The class dcat:Resource has been included to ease to see the connection with W3C DCAT. DCAT-AP treats it as an abstract notion. </li>
 </ul>
 The cardinalities and qualifications are included in the figure.
 </p><p>
-For readibility of the document are the core relationships between classes included.
+For readibility of the document the core relationships between classes are included.
 </p>
 
     <div id="overview">
@@ -3757,6 +3793,7 @@ _:EAMS-APIplatform-contactpoint a vcard:Card ;
 <h3>Expressing legal conditions</h3>
 
 
+</section>
 
   <section id="conformance" class="informative">
 <h2>Conformance Statement</h2>
