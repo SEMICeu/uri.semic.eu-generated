@@ -255,7 +255,7 @@ Any improvement of the metadata will immediately flow throughout the European ne
 <section id="specstatus">
     <h2>Status</h2>
         <p>
-            This DCAT-AP HVD has the status <a href="https://data.vlaanderen.be/id/concept/StandaardStatus/OntwerpStandaard">Working Draft</a> published at 2023-06-06. 
+            This DCAT-AP HVD has the status <a href="https://www.w3.org/2021/Process-20211102/#RecsWD">Working Draft</a> published at 2023-06-06. 
         </p>
         <p>
             Information about the process and the decisions involved in the creation of this specification are consultable at the <a href="https://github.com/SEMICeu/DCAT-AP">Changelog</a>.
@@ -290,24 +290,42 @@ Any improvement of the metadata will immediately flow throughout the European ne
 
 
 
+
+<section id="conformance" class="informative">
+<h2>Conformance Statement</h2>
+
+In order for applications to conform to DCAT-AP HVD, it MUST conform to DCAT-AP. 
+In addition, the application must conform to the mentioned constraints and usage guidelines following similar conformance statements as specifief in DCAT-AP.
+More precisely, these are:
+
+<h3>Provider requirements</h3>
+In order to conform to this Application Profile, an application that provides metadata MUST:
+<ul>
+<li>Provide a description of the Catalogue, including at least the mandatory properties specified for the class <a href="#Catalogue">Catalogue</a>.</li>
+<li>Provide descriptions of Datasets in the Catalogue, including at least the mandatory properties for the class <a href="#Dataset">Dataset</a>.</li>
+<li>Provide descriptions of Distributions, if any, of Datasets in the Catalogue, including at least the mandatory properties for the class <a href="#Distribution">Distribution</a>.</li>
+<li>Provide descriptions of Data Services, if any, in the Catalogue, including at least the mandatory properties for the class <a href="#DataService">Data Service</a>.</li>
+<li>Provide descriptions of all other classes such as Agents, Contact Points,  Licences, etc.
+</ul>
+The application of the controlled vocabularies as described in section [[[#controlled-vocs]]].
+
+
+<h3>Receiver requirements</h3>
+In order to conform to this Application Profile, an application that receives metadata MUST be able to:
+<li>Process information for all classes and properties specified in section [[[#quick-reference]]].</li>
+<li>Process information for all controlled vocabularies specified in section [[[#controlled-vocs]]].</li>
+"Processing" means that receivers must accept incoming data and transparently provide these data to applications and services. 
+It does neither imply nor prescribe what applications and services finally do with the data (parse, convert, store, make searchable, display to users, etc.).
+</section>
+
+
 <section id="specterminology">
-    <h2>Terminology</h2>
+<h2>Terminology</h2>
 <p>
 An <strong>Application Profile</strong> is a specification that re-uses terms from one or more base standards, adding more specificity by identifying mandatory, recommended and optional elements to be used for a particular application, as well as recommendations for controlled vocabularies to be used.
-</p><p>
-A <strong>Dataset</strong> is a collection of data, published or curated by a single source, and available for access or download in one or more formats.
-A <strong>Data Portal</strong> is a Web-based system that contains a data catalogue with descriptions of datasets and provides services enabling discovery and re-use of the datasets.
-In the following sections, classes and properties are grouped under headings ‘mandatory’, ‘recommended’ and ‘optional’. These terms have the following meaning.
-<ul>
-<li>Mandatory property: a receiver MUST be able to process the information for that property; a sender MUST provide the information for that property.</li>
-<li>Recommended property: a receiver MUST be able to process the information for that property; a sender SHOULD provide the information for that property if it is available.</li>
-<li>Optional property: a receiver MUST be able to process the information for that property; a sender MAY provide the information for that property but is not obliged to do so.</li>
-<li>Deprecated property: a receiver SHOULD be able to process information about instances of that property; a sender SHOULD NOT provide the information about instances of that property.</li>
-</ul>
-The meaning of the terms MUST, MUST NOT, SHOULD and MAY in this section and in the following sections are as defined in RFC 2119 [rfc2119].
-In the given context, the term "processing" means that receivers must accept incoming data and transparently provide these data to applications and services. It does neither imply nor prescribe what applications and services finally do with the data (parse, convert, store, make searchable, display to users, etc.).
+An <strong>Annex to an Application Profile</strong> is a specification that precises the use of some aspects of the Application Profile for a specific context.
 
-<h3>Used Prefixes</h3>
+This specification uses the following prefixes to shorten the URIs for readibility.
 
 
         <table id="table-namespaces" class="simple">
@@ -320,14 +338,10 @@ In the given context, the term "processing" means that receivers must accept inc
             <tr><td><code>dctype</code></td><td><code>http://purl.org/dc/dcmitype/</code></td></tr>
             <tr><td><code>foaf</code></td><td><code>http://xmlns.com/foaf/0.1/</code></td></tr>
             <tr><td><code>locn</code></td><td><code>http://www.w3.org/ns/locn#</code></td></tr>
-            <tr><td><code>odrl</code></td><td><code>http://www.w3.org/ns/odrl/2/</code></td></tr>
             <tr><td><code>owl</code></td><td><code>http://www.w3.org/2002/07/owl#</code></td></tr>
-            <tr><td><code>prov</code></td><td><code>http://www.w3.org/ns/prov#</code></td></tr>
             <tr><td><code>rdf</code></td><td><code>http://www.w3.org/1999/02/22-rdf-syntax-ns#</code></td></tr>
             <tr><td><code>rdfs</code></td><td><code>http://www.w3.org/2000/01/rdf-schema#</code></td></tr>
             <tr><td><code>skos</code></td><td><code>http://www.w3.org/2004/02/skos/core#</code></td></tr>
-            <tr><td><code>spdx</code></td><td><code>http://spdx.org/rdf/terms#</code></td></tr>
-            <tr><td><code>time</code></td><td><code>http://www.w3.org/2006/time#</code></td></tr>
             <tr><td><code>vcard</code></td><td><code>http://www.w3.org/2006/vcard/ns#</code></td></tr>
             <tr><td><code>xsd</code></td><td><code>http://www.w3.org/2001/XMLSchema#</code></td></tr>
             </tbody>
@@ -359,7 +373,7 @@ For readability purposes the representation has been condensed as follows:
 </ul>
 The cardinalities and qualifications are included in the figure.
 </p><p>
-For readibility of the document the core relationships between classes are included.
+For readibility of this document as annex to DCAT-AP the core relationships between classes are included.
 </p>
 
     <div id="overview">
@@ -424,9 +438,11 @@ The main entities are those that form the core of the Application Profile.
 
             </h3>
 	        <!-- XXX an image in the h3 will break the rendering of the Table Of Contents of Respec -->
+		<!-- outcomment github feedback possibility
                 <a href="https://github.com/SEMICeu/DCAT-AP/issues/new?title=Issue%20for%20Agent&body=Explain%20your%20issue"}}>
                    <img src="html/callout.png" loading="lazy" alt="(create issue)" width="20" height="20"/>
 		</a>
+		-->
             <dl>
                 <dt>
                     Definition
@@ -456,7 +472,7 @@ The main entities are those that form the core of the Application Profile.
                     </dt>
                     
                     <dd>
-                        No properties have been defined for this entity.
+                        This specification does not impose any additional requirements to properties for this entity.
                     </dd>
                 
             </dl>
@@ -479,9 +495,11 @@ The main entities are those that form the core of the Application Profile.
 
             </h3>
 	        <!-- XXX an image in the h3 will break the rendering of the Table Of Contents of Respec -->
+		<!-- outcomment github feedback possibility
                 <a href="https://github.com/SEMICeu/DCAT-AP/issues/new?title=Issue%20for%20Catalogue&body=Explain%20your%20issue"}}>
                    <img src="html/callout.png" loading="lazy" alt="(create issue)" width="20" height="20"/>
 		</a>
+		-->
             <dl>
                 <dt>
                     Definition
@@ -828,9 +846,11 @@ The main entities are those that form the core of the Application Profile.
 
             </h3>
 	        <!-- XXX an image in the h3 will break the rendering of the Table Of Contents of Respec -->
+		<!-- outcomment github feedback possibility
                 <a href="https://github.com/SEMICeu/DCAT-AP/issues/new?title=Issue%20for%20CatalogueRecord&body=Explain%20your%20issue"}}>
                    <img src="html/callout.png" loading="lazy" alt="(create issue)" width="20" height="20"/>
 		</a>
+		-->
             <dl>
                 <dt>
                     Definition
@@ -957,9 +977,11 @@ The main entities are those that form the core of the Application Profile.
 
             </h3>
 	        <!-- XXX an image in the h3 will break the rendering of the Table Of Contents of Respec -->
+		<!-- outcomment github feedback possibility
                 <a href="https://github.com/SEMICeu/DCAT-AP/issues/new?title=Issue%20for%20CataloguedResource&body=Explain%20your%20issue"}}>
                    <img src="html/callout.png" loading="lazy" alt="(create issue)" width="20" height="20"/>
 		</a>
+		-->
             <dl>
                 <dt>
                     Definition
@@ -989,7 +1011,7 @@ The main entities are those that form the core of the Application Profile.
                     </dt>
                     
                     <dd>
-                        No properties have been defined for this entity.
+                        This specification does not impose any additional requirements to properties for this entity.
                     </dd>
                 
             </dl>
@@ -1014,9 +1036,11 @@ The main entities are those that form the core of the Application Profile.
 
             </h3>
 	        <!-- XXX an image in the h3 will break the rendering of the Table Of Contents of Respec -->
+		<!-- outcomment github feedback possibility
                 <a href="https://github.com/SEMICeu/DCAT-AP/issues/new?title=Issue%20for%20DataService&body=Explain%20your%20issue"}}>
                    <img src="html/callout.png" loading="lazy" alt="(create issue)" width="20" height="20"/>
 		</a>
+		-->
             <dl>
                 <dt>
                     Definition
@@ -1546,9 +1570,11 @@ The main entities are those that form the core of the Application Profile.
 
             </h3>
 	        <!-- XXX an image in the h3 will break the rendering of the Table Of Contents of Respec -->
+		<!-- outcomment github feedback possibility
                 <a href="https://github.com/SEMICeu/DCAT-AP/issues/new?title=Issue%20for%20Dataset&body=Explain%20your%20issue"}}>
                    <img src="html/callout.png" loading="lazy" alt="(create issue)" width="20" height="20"/>
 		</a>
+		-->
             <dl>
                 <dt>
                     Definition
@@ -1945,9 +1971,11 @@ This allows others to find datasets more easily back.
 
             </h3>
 	        <!-- XXX an image in the h3 will break the rendering of the Table Of Contents of Respec -->
+		<!-- outcomment github feedback possibility
                 <a href="https://github.com/SEMICeu/DCAT-AP/issues/new?title=Issue%20for%20Distribution&body=Explain%20your%20issue"}}>
                    <img src="html/callout.png" loading="lazy" alt="(create issue)" width="20" height="20"/>
 		</a>
+		-->
             <dl>
                 <dt>
                     Definition
@@ -2303,9 +2331,11 @@ This allows others to find datasets more easily back.
 
             </h3>
 	        <!-- XXX an image in the h3 will break the rendering of the Table Of Contents of Respec -->
+		<!-- outcomment github feedback possibility
                 <a href="https://github.com/SEMICeu/DCAT-AP/issues/new?title=Issue%20for%20Kind&body=Explain%20your%20issue"}}>
                    <img src="html/callout.png" loading="lazy" alt="(create issue)" width="20" height="20"/>
 		</a>
+		-->
             <dl>
                 <dt>
                     Definition
@@ -2479,9 +2509,11 @@ This allows others to find datasets more easily back.
 
             </h3>
 	        <!-- XXX an image in the h3 will break the rendering of the Table Of Contents of Respec -->
+		<!-- outcomment github feedback possibility
                 <a href="https://github.com/SEMICeu/DCAT-AP/issues/new?title=Issue%20for%20LicenceDocument&body=Explain%20your%20issue"}}>
                    <img src="html/callout.png" loading="lazy" alt="(create issue)" width="20" height="20"/>
 		</a>
+		-->
             <dl>
                 <dt>
                     Definition
@@ -2504,7 +2536,7 @@ This allows others to find datasets more easily back.
                     </dt>
                     
                     <dd>
-                        No properties have been defined for this entity.
+                        This specification does not impose any additional requirements to properties for this entity.
                     </dd>
                 
             </dl>
@@ -2554,9 +2586,11 @@ They are included in the Application Profile because they form the range of prop
 
             </h3>
 	        <!-- XXX an image in the h3 will break the rendering of the Table Of Contents of Respec -->
+		<!-- outcomment github feedback possibility
                 <a href="https://github.com/SEMICeu/DCAT-AP/issues/new?title=Issue%20for%20Concept&body=Explain%20your%20issue"}}>
                    <img src="html/callout.png" loading="lazy" alt="(create issue)" width="20" height="20"/>
 		</a>
+		-->
             <dl>
                 <dt>
                     Definition
@@ -2572,7 +2606,7 @@ They are included in the Application Profile because they form the range of prop
                     </dt>
                     
                     <dd>
-                        No properties have been defined for this entity.
+                        This specification does not impose any additional requirements to properties for this entity.
                     </dd>
                 
             </dl>
@@ -2601,9 +2635,11 @@ They are included in the Application Profile because they form the range of prop
 
             </h3>
 	        <!-- XXX an image in the h3 will break the rendering of the Table Of Contents of Respec -->
+		<!-- outcomment github feedback possibility
                 <a href="https://github.com/SEMICeu/DCAT-AP/issues/new?title=Issue%20for%20Document&body=Explain%20your%20issue"}}>
                    <img src="html/callout.png" loading="lazy" alt="(create issue)" width="20" height="20"/>
 		</a>
+		-->
             <dl>
                 <dt>
                     Definition
@@ -2619,7 +2655,7 @@ They are included in the Application Profile because they form the range of prop
                     </dt>
                     
                     <dd>
-                        No properties have been defined for this entity.
+                        This specification does not impose any additional requirements to properties for this entity.
                     </dd>
                 
             </dl>
@@ -2644,9 +2680,11 @@ They are included in the Application Profile because they form the range of prop
 
             </h3>
 	        <!-- XXX an image in the h3 will break the rendering of the Table Of Contents of Respec -->
+		<!-- outcomment github feedback possibility
                 <a href="https://github.com/SEMICeu/DCAT-AP/issues/new?title=Issue%20for%20LegalResource&body=Explain%20your%20issue"}}>
                    <img src="html/callout.png" loading="lazy" alt="(create issue)" width="20" height="20"/>
 		</a>
+		-->
             <dl>
                 <dt>
                     Definition
@@ -2671,7 +2709,7 @@ In this data specification the use is restricted to instances of this class that
                     </dt>
                     
                     <dd>
-                        No properties have been defined for this entity.
+                        This specification does not impose any additional requirements to properties for this entity.
                     </dd>
                 
             </dl>
@@ -2696,9 +2734,11 @@ In this data specification the use is restricted to instances of this class that
 
             </h3>
 	        <!-- XXX an image in the h3 will break the rendering of the Table Of Contents of Respec -->
+		<!-- outcomment github feedback possibility
                 <a href="https://github.com/SEMICeu/DCAT-AP/issues/new?title=Issue%20for%20Literal&body=Explain%20your%20issue"}}>
                    <img src="html/callout.png" loading="lazy" alt="(create issue)" width="20" height="20"/>
 		</a>
+		-->
             <dl>
                 <dt>
                     Definition
@@ -2714,7 +2754,7 @@ In this data specification the use is restricted to instances of this class that
                     </dt>
                     
                     <dd>
-                        No properties have been defined for this entity.
+                        This specification does not impose any additional requirements to properties for this entity.
                     </dd>
                 
             </dl>
@@ -2737,9 +2777,11 @@ In this data specification the use is restricted to instances of this class that
 
             </h3>
 	        <!-- XXX an image in the h3 will break the rendering of the Table Of Contents of Respec -->
+		<!-- outcomment github feedback possibility
                 <a href="https://github.com/SEMICeu/DCAT-AP/issues/new?title=Issue%20for%20Resource&body=Explain%20your%20issue"}}>
                    <img src="html/callout.png" loading="lazy" alt="(create issue)" width="20" height="20"/>
 		</a>
+		-->
             <dl>
                 <dt>
                     Definition
@@ -2755,7 +2797,7 @@ In this data specification the use is restricted to instances of this class that
                     </dt>
                     
                     <dd>
-                        No properties have been defined for this entity.
+                        This specification does not impose any additional requirements to properties for this entity.
                     </dd>
                 
             </dl>
@@ -2778,9 +2820,11 @@ In this data specification the use is restricted to instances of this class that
 
             </h3>
 	        <!-- XXX an image in the h3 will break the rendering of the Table Of Contents of Respec -->
+		<!-- outcomment github feedback possibility
                 <a href="https://github.com/SEMICeu/DCAT-AP/issues/new?title=Issue%20for%20RightsStatement&body=Explain%20your%20issue"}}>
                    <img src="html/callout.png" loading="lazy" alt="(create issue)" width="20" height="20"/>
 		</a>
+		-->
             <dl>
                 <dt>
                     Definition
@@ -2796,7 +2840,7 @@ In this data specification the use is restricted to instances of this class that
                     </dt>
                     
                     <dd>
-                        No properties have been defined for this entity.
+                        This specification does not impose any additional requirements to properties for this entity.
                     </dd>
                 
             </dl>
@@ -2819,9 +2863,11 @@ In this data specification the use is restricted to instances of this class that
 
             </h3>
 	        <!-- XXX an image in the h3 will break the rendering of the Table Of Contents of Respec -->
+		<!-- outcomment github feedback possibility
                 <a href="https://github.com/SEMICeu/DCAT-AP/issues/new?title=Issue%20for%20Standard&body=Explain%20your%20issue"}}>
                    <img src="html/callout.png" loading="lazy" alt="(create issue)" width="20" height="20"/>
 		</a>
+		-->
             <dl>
                 <dt>
                     Definition
@@ -2837,7 +2883,7 @@ In this data specification the use is restricted to instances of this class that
                     </dt>
                     
                     <dd>
-                        No properties have been defined for this entity.
+                        This specification does not impose any additional requirements to properties for this entity.
                     </dd>
                 
             </dl>
@@ -3249,40 +3295,20 @@ To provide information about the use of the API platform, the publisher provides
 </div>
 </section>
 
-  <section id="conformance" class="informative">
-<h2>Conformance Statement</h2>
-
-In order for applications to conform to DCAT-AP HVD, it MUST conform to DCAT-AP. 
-In addition, the application must conform to the mentioned constraints and usage guidelines following similar conformance statements as specifief in DCAT-AP.
-More precisely, these are:
-
-<h3>Provider requirements</h3>
-In order to conform to this Application Profile, an application that provides metadata MUST:
-<ul>
-<li>Provide a description of the Catalogue, including at least the mandatory properties specified for the class <a href="#Catalogue">Catalogue</a>.</li>
-<li>Provide descriptions of Datasets in the Catalogue, including at least the mandatory properties for the class <a href="#Dataset">Dataset</a>.</li>
-<li>Provide descriptions of Distributions, if any, of Datasets in the Catalogue, including at least the mandatory properties for the class <a href="#Distribution">Distribution</a>.</li>
-<li>Provide descriptions of Data Services, if any, in the Catalogue, including at least the mandatory properties for the class <a href="#DataService">Data Service</a>.</li>
-<li>Provide descriptions of all other classes such as Agents, Contact Points,  Licences, etc.
-</ul>
-The application of the controlled vocabularies as described in section [[[#controlled-vocs]]].
-
-
-<h3>Receiver requirements</h3>
-In order to conform to this Application Profile, an application that receives metadata MUST be able to:
-<li>Process information for all classes and properties specified in section [[[#quick-reference]]].</li>
-<li>Process information for all controlled vocabularies specified in section [[[#controlled-vocs]]].</li>
-"Processing" means that receivers must accept incoming data and transparently provide these data to applications and services. 
-It does neither imply nor prescribe what applications and services finally do with the data (parse, convert, store, make searchable, display to users, etc.).
-</section>
-
  
 
-<!--
 <section id="quick-reference" class="appendix">
 
 <h2>Quick Reference of Classes and Properties</h2>
 
+This section provides a condensed tabular overview of the mentioned classes and properties in this specification.
+The properties are grouped under headings <it>mandatory, recommended, optional</it> and <it>deprecated</it>. These terms have the following meaning.
+<ul>
+<li>Mandatory property: a receiver MUST be able to process the information for that property; a sender MUST provide the information for that property.</li>
+<li>Recommended property: a receiver MUST be able to process the information for that property; a sender SHOULD provide the information for that property if it is available.</li>
+<li>Optional property: a receiver MUST be able to process the information for that property; a sender MAY provide the information for that property but is not obliged to do so.</li>
+<li>Deprecated property: a receiver SHOULD be able to process information about instances of that property; a sender SHOULD NOT provide the information about instances of that property.</li>
+</ul>
 
 <table id="table-quickoverview" class="simple">
 <thead><tr><th>Class</th><th>Class IRI</th><th>Properties</th></tr></thead>
@@ -3957,7 +3983,6 @@ It does neither imply nor prescribe what applications and services finally do wi
 
 </section>
 
--->
 
 <section class="appendix">
 
