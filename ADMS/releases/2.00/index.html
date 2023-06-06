@@ -3896,11 +3896,14 @@ Additionally the editors and authors like to thank the assistence of W3C, especi
 			};
 
 		$(window).scroll(function(){
-			if (elementInView($('.CodeMirror'))) {
-				$('.CodeMirror').each(function(i, el){
-					el.CodeMirror.refresh();
-				});
-			}
+			$('.CodeMirror').each(function(){
+				if (elementInView($(this))){
+					$(this).each(function(i, el){
+						el.CodeMirror.refresh();
+					});
+				}
+			});
+			
 		});
 	</script>
 	<style>
