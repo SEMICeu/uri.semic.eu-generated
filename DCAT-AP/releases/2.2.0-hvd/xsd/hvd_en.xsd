@@ -2,15 +2,12 @@
 <xs:schema xmlns="https://data.europa.eu/m8g/xml/" xmlns:xs="http://www.w3.org/2001/XMLSchema" targetNamespace="https://data.europa.eu/m8g/xml/" version="2.0.0" elementFormDefault="qualified" attributeFormDefault="unqualified" xmlns:cv="https://data.europa.eu/m8g/xml/">
   <xs:element name="LegalResource" type="LegalResourceType"/>
   <xs:element name="LicenceDocument" type="LicenceDocumentType"/>
-  <xs:element name="MediaType" type="MediaTypeType"/>
-  <xs:element name="MediaTypeOrExtent" type="MediaTypeOrExtentType"/>
   <xs:element name="RightsStatement" type="RightsStatementType"/>
   <xs:element name="Standard" type="StandardType"/>
   <xs:element name="Literal" type="LiteralType"/>
   <xs:element name="Resource" type="ResourceType"/>
   <xs:element name="Concept" type="ConceptType"/>
   <xs:element name="Kind" type="KindType"/>
-  <xs:element name="Identifier" type="IdentifierType"/>
   <xs:element name="Catalogue" type="CatalogueType"/>
   <xs:element name="CatalogueRecord" type="CatalogueRecordType"/>
   <xs:element name="DataService" type="DataServiceType"/>
@@ -27,49 +24,11 @@
       </xs:annotation>
     </xs:attribute>
   </xs:complexType>
-  <xs:complexType name="conceptType">
-    <xs:simpleContent>
-      <xs:extension base="xs:token">
-        <xs:attribute name="ref" type="xs:IDREF"/>
-        <xs:attribute name="conceptSchemeRef" type="xs:IDREF"/>
-      </xs:extension>
-    </xs:simpleContent>
-  </xs:complexType>
   <xs:complexType name="LicenceDocumentType">
-    <xs:sequence>
-      <xs:element name="Type" type="conceptType" maxOccurs="unbounded" minOccurs="0">
-        <xs:annotation>
-          <xs:documentation xml:lang="en" source="#definition">A type of licence, e.g. indicating public domain or royalties required.</xs:documentation>
-        </xs:annotation>
-      </xs:element>
-      <xs:element name="SameAs" type="LicenceDocumentType" maxOccurs="1" minOccurs="1">
-        <xs:annotation>
-          <xs:documentation xml:lang="en" source="#definition">The corresponding licence in the NAL licence.</xs:documentation>
-          <xs:documentation xml:lang="en" source="#usage">This property supports the assessment of the reuse conditions of the licence. 
-
-This property is mandatory in case the licence document is not a member of the NAL licence.</xs:documentation>
-        </xs:annotation>
-      </xs:element>
-    </xs:sequence>
+    <xs:sequence/>
     <xs:attribute name="LicenceDocumentRef" type="xs:IDREF">
       <xs:annotation>
         <xs:documentation xml:lang="en">Reference to LicenceDocument ID</xs:documentation>
-      </xs:annotation>
-    </xs:attribute>
-  </xs:complexType>
-  <xs:complexType name="MediaTypeType">
-    <xs:sequence/>
-    <xs:attribute name="MediaTypeRef" type="xs:IDREF">
-      <xs:annotation>
-        <xs:documentation xml:lang="en">Reference to MediaType ID</xs:documentation>
-      </xs:annotation>
-    </xs:attribute>
-  </xs:complexType>
-  <xs:complexType name="MediaTypeOrExtentType">
-    <xs:sequence/>
-    <xs:attribute name="MediaTypeOrExtentRef" type="xs:IDREF">
-      <xs:annotation>
-        <xs:documentation xml:lang="en">Reference to MediaTypeOrExtent ID</xs:documentation>
       </xs:annotation>
     </xs:attribute>
   </xs:complexType>
@@ -106,14 +65,7 @@ This property is mandatory in case the licence document is not a member of the N
     </xs:attribute>
   </xs:complexType>
   <xs:complexType name="ConceptType">
-    <xs:sequence>
-      <xs:element name="PreferredLabel" type="xs:string" maxOccurs="unbounded" minOccurs="1">
-        <xs:annotation>
-          <xs:documentation xml:lang="en" source="#definition">A preferred label of the category.</xs:documentation>
-          <xs:documentation xml:lang="en" source="#usage">This property can be repeated for parallel language versions of the label.</xs:documentation>
-        </xs:annotation>
-      </xs:element>
-    </xs:sequence>
+    <xs:sequence/>
     <xs:attribute name="ConceptRef" type="xs:IDREF">
       <xs:annotation>
         <xs:documentation xml:lang="en">Reference to Concept ID</xs:documentation>
@@ -137,20 +89,6 @@ This property is mandatory in case the licence document is not a member of the N
     <xs:attribute name="KindRef" type="xs:IDREF">
       <xs:annotation>
         <xs:documentation xml:lang="en">Reference to Kind ID</xs:documentation>
-      </xs:annotation>
-    </xs:attribute>
-  </xs:complexType>
-  <xs:complexType name="IdentifierType">
-    <xs:sequence>
-      <xs:element name="Notation" type="xs:string" maxOccurs="1" minOccurs="0">
-        <xs:annotation>
-          <xs:documentation xml:lang="en" source="#definition">A string that is an identifier in the context of the identifier scheme referenced by its datatype.</xs:documentation>
-        </xs:annotation>
-      </xs:element>
-    </xs:sequence>
-    <xs:attribute name="IdentifierRef" type="xs:IDREF">
-      <xs:annotation>
-        <xs:documentation xml:lang="en">Reference to Identifier ID</xs:documentation>
       </xs:annotation>
     </xs:attribute>
   </xs:complexType>
@@ -209,6 +147,14 @@ This property is mandatory in case the licence document is not a member of the N
         <xs:documentation xml:lang="en">Reference to CatalogueRecord ID</xs:documentation>
       </xs:annotation>
     </xs:attribute>
+  </xs:complexType>
+  <xs:complexType name="conceptType">
+    <xs:simpleContent>
+      <xs:extension base="xs:token">
+        <xs:attribute name="ref" type="xs:IDREF"/>
+        <xs:attribute name="conceptSchemeRef" type="xs:IDREF"/>
+      </xs:extension>
+    </xs:simpleContent>
   </xs:complexType>
   <xs:complexType name="DataServiceType">
     <xs:sequence>
@@ -275,7 +221,7 @@ This property is mandatory in case the licence document is not a member of the N
   </xs:complexType>
   <xs:complexType name="DatasetType">
     <xs:sequence>
-      <xs:element name="OtherIdentifier" type="IdentifierType" maxOccurs="unbounded" minOccurs="0">
+      <xs:element name="OtherIdentifier" maxOccurs="unbounded" minOccurs="0">
         <xs:annotation>
           <xs:documentation xml:lang="en" source="#definition">A secondary identifier of the Dataset, such as MAST/ADS17, DataCite18, DOI19, EZID20 or W3ID21.</xs:documentation>
           <xs:documentation xml:lang="en" source="#usage">It is recommended to include all identifiers that the catalogue knows about this dataset.
@@ -314,12 +260,6 @@ As multiple legislations may apply to the resource the maximum cardinality is no
       <xs:element name="Publisher" type="AgentType" maxOccurs="1" minOccurs="0">
         <xs:annotation>
           <xs:documentation xml:lang="en" source="#definition">An entity (organisation) responsible for making the Dataset available.</xs:documentation>
-        </xs:annotation>
-      </xs:element>
-      <xs:element name="Type" type="conceptType" maxOccurs="1" minOccurs="0">
-        <xs:annotation>
-          <xs:documentation xml:lang="en" source="#definition">A type of the Dataset.</xs:documentation>
-          <xs:documentation xml:lang="en" source="#usage">A recommended controlled vocabulary data-type is foreseen.</xs:documentation>
         </xs:annotation>
       </xs:element>
     </xs:sequence>
