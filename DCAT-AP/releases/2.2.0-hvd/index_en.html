@@ -3606,7 +3606,7 @@ Because that new identifier is not the master identifier, the portal avoids this
 
 <h3>Bulk downloads for HVD datasets</h3>
 
-<p>The datasets are downloadable in various formats and level of detail. In our example, the data is availble in two formats: RDF and ESRI shape format.
+<p>The datasets are downloadable in various formats and level of detail. In our example, the data is available in two formats: RDF and ESRI shape format.
 According to the HVD regulation the datasets must be minimally available in bulk download for having the granularity of 50 square km and with a bi-yearly update frequency.
 And it must be in available in an open format for geospatial data.
 Based on these requirements, the publsher of the dataset decides to indicate that the shape based distribution is a HVD bulk download.</p>
@@ -3616,123 +3616,28 @@ Based on these requirements, the publsher of the dataset decides to indicate tha
 <p>The HVD regulation also specifies that the dataset should at least provide information about the number of bees, the calculation method, the amount of honey being harvested and the number of beekeepers active in the area.
 The publisher describes the data semantically by an application profile, and provides for each distribution a detailed data schema documentation.</p>
 
-
-<aside class="example" title="">
-  <pre class="nohighlight turtle">
-
-exampleMS:1T2p3o4B a dcat:Dataset;
-  dct:title "The population of bees"@en;
-  dct:description "This dataset provides the population of bees based on 
-                   a yearly inquiry held among beekeepers and farmers in spring."@en;
-  dcatap:applicableLegislation <http://data.europa.eu/eli/reg_impl/2023/138/oj>, 
-                               <http://data.europa.eu/eli/dir/2007/2/2019-06-26> ;
-  dct:publisher _:EA-MS;
-  dct:identifier "https://data.exampleMS.gov/id/dataset/1T2p3o4B";
-  adms:identifier [
-        dct:creator _:EA-MS;
-        skos:notation "https://data.exampleMS.gov/id/dataset/1T2p3o4B"
-        ],
-        [
-        dct:creator <https://dataportal.exampleMS.gov>;
-        skos:notation "https://dataportal.exampleMS.gov/dataset/Thepopulationofbees";
-        ];
-   dct:accrualPeriodicity <http://publications.europa.eu/resource/authority/frequency/BIENNIAL>;
-   dct:conformsTo <https://orgea.exampleMS.gov/applicationprofile/populationOfInsects>;
-   dcat:distribution exampleMS:1T2p3o4B-dist-SHP, exampleMS:1T2p3o4B-dist-RDF.
-
-
-exampleMS:1T2p3o4B-dist-SHP a dcat:Distribution;
-   dcat:accessURL <https://orgea.exampleMS.gov/files/1T2p3o4B.shp> ;
-   dct:conformsTo <https://orgea.exampleMS.gov/dataset/1T2p3o4B/schema/shp>;
-   dcat:spatialResolutionInMeters "25000"^^xsd:decimal;
-   dct:format <http://publications.europa.eu/resource/authority/file-type/SHP> ;
-   dcatap:applicableLegislation <http://data.europa.eu/eli/reg_impl/2023/138/oj>.
-
-
-exampleMS:1T2p3o4B-dist-RDF a dcat:Distribution;
-   dcat:accessURL <https://orgea.exampleMS.gov/files/1T2p3o4B.ttl>;
-   dct:conformsTo <https://orgea.exampleMS.gov/dataset/1T2p3o4B/schema/SHACL>;
-   dcat:spatialResolutionInMeters "25000"^^xsd:decimal;
-   dct:format <http://publications.europa.eu/resource/authority/file-type/RDF_TURTLE> .
-
-  </pre>
-</aside>
-
+<div class="h3" id="example-ms_dataset_hvd_profile">Example 5 - MS dataset conform to a profile </div>
 
 <h3>The HVD dataset is accessible via an API</h3>
 
-According to the HVD regulation, the bee population dataset must be made available via an API. 
+<p>According to the HVD regulation, the bee population dataset must be made available via an API. 
 The dataset publisher has a API platform deployed via which data users have access to realtime data.
-This API platform supports all datasets of the publisher.
+This API platform supports all datasets of the publisher.</p>
 
-<aside class="example" title="">
-  <pre class="nohighlight turtle">
+<div class="h3" id="example-ms_dataset_data_service">Example 6 - MS dataset with data service </div>
 
-exampleMS:1T2p3o4B a dcat:Dataset;
-   dct:title "The population of bees"@en;
-   dcatap:applicableLegislation <http://data.europa.eu/eli/reg_impl/2023/138/oj>, <http://data.europa.eu/eli/dir/2007/2/2019-06-26> ;
-   dcat:distribution exampleMS:1T2p3o4B-dist-SHP, exampleMS:1T2p3o4B-dist-RDF.
-
-exampleMS:1W2o3p4T a dcat:Dataset;
-  dct:title "The population of wasps"@en.
-
-exampleMS:1T2p3o4B-dist-SHP a dcat:Distribution;
-   dcatap:applicableLegislation <http://data.europa.eu/eli/reg_impl/2023/138/oj>.
-
-exampleMS:1T2p3o4B-dist-RDF a dcat:Distribution.
-
-exampleMS:EAMS-APIplatform a dcat:DataService;
-   dct:title "EA API platform"@en;
-   dct:description "The EA API platform provides a uniform access to the real-time data collected by EA"@en;
-   dcat:endpointURL <https://orgea.exampleMS.gov/api/v2/> ;
-   dcatap:applicableLegislation <http://data.europa.eu/eli/reg_impl/2023/138/oj>;
-   dcat:servesDataset exampleMS:1T2p3o4B, example:1W2o3p4T ;
-
-  </pre>
-</aside>
-
-Because the API platform is provided as the API for the bee population dataset, the HVD regulation requirements apply.
+<p>Because the API platform is provided as the API for the bee population dataset, the HVD regulation requirements apply.
 This means that the endpoint URL must be persistent. The publisher should perform maximal effort to keep the endpoint URL stable. 
 For instance, deploying a new API platform or changing organisation names should not impact the endpointURL.
-<p/>
-To provide information about the use of the API platform, the publisher provides openAPI technical documentation and an SLA to document the quality of service.
+</p>
+<p>
+To provide information about the use of the API platform, the publisher provides OpenAPI technical documentation and an SLA to document the quality of service.</p>
 
-<aside class="example" title="">
-  <pre class="nohighlight turtle">
-
-exampleMS:EAMS-APIplatform a dcat:DataService;
-   dct:title "EA API platform"@en;
-   dct:description "The EA API platform provides a uniform access to the real-time data collected by EA"@en;
-   dcat:endpointURL <https://orgea.exampleMS.gov/api/v2/> ;
-   dcat:endpointDescription <https://orgea.exampleMS.gov/api/openAPI/index.html>;
-   foaf:page <https://orgea.exampleMS.gov/api/sla.html> ;
-   dcatap:applicableLegislation <http://data.europa.eu/eli/reg_impl/2023/138/oj>;
-   dcat:servesDataset exampleMS:1T2p3o4B, example:1W2o3p4T .
-
-  </pre>
-</aside>
+<div class="h3" id="example-data_service_openapi_sla">Example 7 - MS data service with OpenAPI and SLA</div>
 
 To address any questions by the users the publisher operates a service desk.
 
-<aside class="example" title="">
-  <pre class="nohighlight turtle">
-
-exampleMS:EAMS-APIplatform a dcat:DataService;
-   dct:title "EA API platform"@en;
-   dct:description "The EA API platform provides a uniform access to the real-time data collected by EA"@en;
-   dcat:endpointURL <https://orgea.exampleMS.gov/api/v2/> ;
-   dcat:endpointDescription <https://orgea.exampleMS.gov/api/openAPI/index.html> ;
-   foaf:page <https://orgea.exampleMS.gov/api/sla.html> ;
-   dcatap:applicableLegislation <http://data.europa.eu/eli/reg_impl/2023/138/oj> ;
-   dcat:contactPoint _:EAMS-APIplatform-contactpoint ;
-   dcat:servesDataset exampleMS:1T2p3o4B, example:1W2o3p4T .
-
-_:EAMS-APIplatform-contactpoint a vcard:Card ;
-   vcard:hasURL <https://eams.jira.net/servicedesk> .
-
-  </pre>
-</aside>
-
+<div class="h3" id="example-data_service_service_desk">Example 8 - MS data service with publisher service desk</div>
 
 <h3>Expressing legal conditions</h3>
 
