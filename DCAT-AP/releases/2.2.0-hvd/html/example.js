@@ -125,7 +125,7 @@ $(document).ready(function () {
 		var toSelectP = toSelect.parent();
 		var tabs = $examples.children(".tabs");
 		var indexOld = $examples.children(".tabs").index(toSelect);
-		var index = $this.tabIndex;
+		var index = $(this).tabIndex;
 
 
 		newUrl = "https://json-ld.org/playground/#startTab=tab-expand&json-ld=" + editors[index].CM1.getValue(); 
