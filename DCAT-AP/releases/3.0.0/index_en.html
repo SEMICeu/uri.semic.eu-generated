@@ -11231,71 +11231,12 @@ Past and current contributors are :
 			}
     </script>
 	<link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.13.4/css/jquery.dataTables.min.css">
-	<link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/fixedheader/3.3.2/css/fixedHeader.dataTables.min.css">
 	<script type="text/javascript" language="javascript" src="https://code.jquery.com/jquery-3.5.1.js"></script>
 	<script type="text/javascript" language="javascript" src="https://cdn.datatables.net/1.13.4/js/jquery.dataTables.min.js"></script>
-	<script type="text/javascript" language="javascript" src="https://cdn.datatables.net/fixedheader/3.3.2/js/dataTables.fixedHeader.min.js"></script>
 	<script type="text/javascript" class="init">
-		$(document).ready(function () {
-		
-				$('#table-quickoverview thead tr')
-				.clone(true)
-				.addClass('filters')
-				.appendTo('#table-quickoverview thead');
-		 
-				var table = $('#table-quickoverview').DataTable({
-				orderCellsTop: true,
-				fixedHeader: true,
-				initComplete: function () {
-					var api = this.api();
-		 
-					// For each column
-					api
-						.columns()
-						.eq(0)
-						.each(function (colIdx) {
-							// Set the header cell to contain the input element
-							var cell = $('.filters th').eq(
-								$(api.column(colIdx).header()).index()
-							);
-							var title = $(cell).text();
-							$(cell).html('<input type="text" placeholder="' + title + '" style="width:100px" />');
-		 
-							// On every keypress in this input
-							$(
-								'input',
-								$('.filters th').eq($(api.column(colIdx).header()).index())
-							)
-								.off('keyup change')
-								.on('change', function (e) {
-									// Get the search value
-									$(this).attr('title', $(this).val());
-									var regexr = '({search})'; //$(this).parents('th').find('select').val();
-		 
-									var cursorPosition = this.selectionStart;
-									// Search the column for that value
-									api
-										.column(colIdx)
-										.search(
-											this.value != ''
-												? regexr.replace('{search}', '(((' + this.value + ')))')
-												: '',
-											this.value != '',
-											this.value == ''
-										)
-										.draw();
-								})
-								.on('keyup', function (e) {
-									e.stopPropagation();
-		 
-									$(this).trigger('change');
-									$(this)
-										.focus()[0]
-										.setSelectionRange(cursorPosition, cursorPosition);
-								});
-						});
-				},
-			});
+		$(document).ready(function () { 
+
+			var table = $('#table-quickoverview').DataTable();
 		});
 	</script>
 </html>
