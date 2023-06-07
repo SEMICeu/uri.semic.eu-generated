@@ -68,7 +68,8 @@ $(document).ready(function () {
 	var folder = "./html/examples/";
 	var $examples = $(examples_id);
 
-	$examples.children(examples_class).each(function(index){
+//	$examples.children(examples_class).each(function(index){
+	$examples.each(function(index){
 		exampleid = this.id;
 		examples.push(exampleid); 
 		var text = example_structure(exampleid);
