@@ -121,7 +121,10 @@ $(document).ready(function () {
 		}
 	});
 	$("button.openinplayground").on('click', function(e) {
-		var index = $examples.children(".tabs").index($(this).parent().parent());
+		var toSelect = $(this).parent();
+		var toSelectP = toSelect.parent();
+		var tabs = $examples.children(".tabs");
+		var index = $examples.children(".tabs").index(toSelect);
 		newUrl = "https://json-ld.org/playground/#startTab=tab-expand&json-ld=" + editors[index].CM1.getValue(); 
 		window.open(encodeURI(newUrl), '_blank');
 		return false;
