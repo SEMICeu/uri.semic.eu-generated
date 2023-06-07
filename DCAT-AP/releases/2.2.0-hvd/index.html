@@ -3012,21 +3012,19 @@ In line with the generic DCAT-AP guidelines for publishing controlled vocabulari
   <section class="informative">
 <h2>Mapping the HVD regulation to DCAT-AP</h2>
 
-This section provides general insights in how the HVD regulation is encoded as a DCAT-AP metadata structure.
-Each topic is introduced first from the perspective of the HVD regulation, followed by an assessment of the topic on the use of DCAT-AP.
-The selected interpretation is where appropriate further elaborated with for instance implementation guidelines.
+This section provides recommendations how to encode descriptions required by the HVD implementation regulation (HVD IR) as a DCAT-AP metadata structure. Each topic is introduced first from the perspective of the HVD IR, followed by an assessment of the topic on the use of DCAT-AP. The selected interpretation is further elaborated, where appropriate, with implementation guidelines. 
 
 <h3 id="c-terminology">Alignment of terminology</h3>
 
 <p>
-The HVD regulation uses the terms Dataset, Bulk Download and API.
+The HVD implementation regulation uses the terms Dataset, Bulk Download and API.
 
 </p><p>
 In the context of DCAT-AP, a HVD Dataset is mapped on a Dataset, Bulk Download on a Distribution and API on a Data Service.
 To be conformant with the use of DCAT-AP in the context of the HVD regulation, this mapping MUST be followed.
 
 </p><p>
-To make the text easier to read, we mean with <strong>a HVD Dataset</strong> a Dataset in scope of the HVD implementing regulation.
+To make the text easier to read, with <strong>a HVD Dataset</strong> we mean a Dataset in scope of the HVD implementing regulation.
 The same pattern is applied to other entities.
 
 </p>
@@ -3035,25 +3033,24 @@ The same pattern is applied to other entities.
 <h3 id="c1">In scope of HVD regulation</h3>
 
 <p>
-A Dataset is a HVD dataset if and only if a MS has included it in its reporting.
-The HVD regulation circumscribes HVD datasets. 
-It may be possible that the same circumscription applies to multiple entities. 
-In that case a MS should select according to the rules in the regulation the most appropriate one. 
-If the MS decides to include multiple entities in the reporting, then for all the HVD regulation requirements will apply.
-Also, if a MS decides to include a dataset in the HVD reporting despite this one is not mandatory to include, then the HVD regulation requirements will apply.
-The report is an engagement of the MS to the European data community to provide all means to sustain those datasets. 
+A Dataset is a HVD dataset if and only if a MS has included it in its reporting. 
+The HVD IR defines high-value datasets. It may be possible that the same definition applies to multiple entities. 
+In that case, a Member State should select the most appropriate one, according to the rules in the regulation. 
+If the Member State decides to include multiple entities in the reporting, the requirements set out in the HVD regulation will apply to all these entities.
+Also, if a Member State decides to include a dataset in the HVD reporting for which inclusion is not mandatory, then the requirements of the HVD regulation will apply. 
+The report is an engagement of the Member State to the European data community to sustain those datasets. 
 
 </p><p>
-If a re-user discovers a dataset that seems to be in scope of the HVD regulation, then the responsible MS should be able to provide an explanation why it is not included in the reporting.
-One response to this question could be by providing the relevant HVD corresponding to that dataset.
+If a re-user discovers a dataset that seems to be in scope of the HVD regulation, then the responsible MS should be able to provide an explanation why it is not included in the reporting. 
+One response to this question could be by providing the relevant HVD corresponding to that dataset. 
 
 </p>
 
 <h4>Denoting a HVD dataset</h4>
-Each entity, i.e. Dataset, Data Service, Distribution, Catalogue, etc., that is identified by a MS in scope of the HVD regulation should provide for the property <a href="">applicable legislation</a> the HVD regulation ELI <code>http://data.europa.eu/eli/reg_impl/2023/138/oj</code>. 
+Each entity, i.e. Dataset, Data Service, Distribution, Catalogue, etc., that is identified by a MS in scope of the HVD IR should provide the European Legislation Identifier (ELI) <code>http://data.europa.eu/eli/reg_impl/2023/138/oj</code> of the HVD regulation for the property <a href="">applicable legislation</a>.
 
-For the reporting, a MS can provide a catalogue containing all elements that are within scope for the reporting of the HVD. 
-In that case the catalogue should also set the value for the property applicable legislation to the HVD ELI.
+For the reporting, a Member State can provide a catalogue containing all elements that are within scope for the reporting of the HVD IR. 
+In that case the catalogue should also set the value for the property applicable legislation to the ELI of the HVD.
 
 
 <h4>Special cases</h4>
@@ -3061,92 +3058,90 @@ In that case the catalogue should also set the value for the property applicable
 <p>
 <B>When a Dataset is within scope of HVD, it is not mandatory that all distributions are within scope of HVD.</B>
 
-The HVD implementing regulation does not impose the view that all distributions of a dataset in scope of HVD are also in scope of HVD. 
-This implementing guideline ensures that existing metadata (specified in DCAT-AP or other frameworks like INSPIRE) remains valid.
-Becoming a Dataset in scope of HVD is according to this an additive operation. 
+<B>Existing metadata remains valid.</B> 
+Our recommendations ensure that existing metadata (specified in DCAT-AP or other frameworks like INSPIRE) remains valid. 
+Becoming a Dataset in scope of HVD is an additional operation. 
 
 </p><p>
 
 <B>When a Data Service offers access to multiple datasets and this Data Service fulfils the HVD requirements (e.g. the HVD API for that dataset) for a HVD then the HVD requirements apply only to that HVD.</B>
 
-It is common that the same API service endpoint (denoted by a dcat:DataService) is used to provide access to the different datasets. 
-As such its to be expected that only some of the datasets are within scope of HVD. 
-Similarly as for Distributions, the HVD does not enforce that all Datasets associated with a DataService must be a in scope of HVD. 
-By this implementing rule again the choice for a minimal impact on existing metadata is realised.
-Nevertheless, it must be noted that the HVD requirements on a DataService might indirectly impact the other associated Datasets, because a DataService will sharee.g. the operational and service level requirements for all it's associated datasets.
+It is common that the same API service endpoint (denoted by a dcat:DataService) provides access to multiple datasets. 
+As such, it is to be expected that only some of the datasets are within scope of HVD. 
+Like for Distributions, the HVD does not enforce that all Datasets associated with a DataService must be in scope of HVD. 
+Nevertheless, it must be noted that the HVD requirements on a DataService might indirectly impact the other associated Datasets, because a DataService will shareethe operational and service level requirements for all its associated datasets. 
 
 </p>
 
 <h3 id="c2">HVD data category</h3>
-The HVD regulation defines six thematic data categories: geospatial, earth observation and environment, meteorological, statistics, companies and company ownership, and mobility. 
+The HVD IR defines six thematic data categories: geospatial, earth observation and environment, meteorological, statistics, companies and company ownership, and mobility. 
 A new property <a href="">HVD category</a> is introduced to indicate the HDV category to which an entity belongs.
-The codelist will be created and maintained by the Publications Office.
+The code list will be created and maintained by the Publications Office.
 An entity may belong to more than one data category.
 
 
 
 <h3 id="c2">Identifiers</h3>
 <p>
-In general by following the best practices of DCAT-AP on identifiers the requirements of the HVD regulation are satisfied.
-According to HVD regulation the identifiers provided in the report should be an online reference to the metadata.
+In general, the requirements of the HVD IR are satisfied when the best practices of DCAT-AP on identifiers are followed. 
+According to HVD regulation the identifiers provided in the report should be an online reference to the metadata. 
 
 </p><p>
 In short these are:
 <ul>
-  <li>Use managed URIs are identifiers for the main entities (Catalogue, Dataset, Data Service and Distribution). </li>
-  <li>These URIs are <b>dereferenceable</b>, i.e. users are redirected to the metadata describing the entity. </li>
-  <li>URIs are well defined, i.e. follow the 10 principles for good URIs. </li>
-  <li>Data portals and harvesters implement the identifier guidelines to not loose information of alternative identifiers. </li> 
-  <li>When the metadata in DCAT-AP originates from other metadata (e.g. INSPIRE) then a cross reference to that representation is included. This can be via using the same identifiers, but also via some relation like source.</li>
+  <li>Identifiers for the main entities (Catalogue, Dataset, Data Service and Distribution) are managed URIs.</li>
+  <li>These URIs are dereferenceable, i.e. users are redirected to the metadata describing the entity.</li>
+  <li>URIs are well defined, i.e. follow the 10 principles for good URIs.</li>
+  <li>Data portals and harvesters implement the identifier guidelines in order not to lose information of alternative identifiers.</li> 
+  <li>When the metadata in DCAT-AP originates from other metadata (e.g. INSPIRE) then a cross-reference to that original metadata is included. This can be done by using the same identifiers, but also using another relation like the one expressed using dct:source.</li>
 </ul>
 
-In the practice it occurs that multiple identifiers have been assigned to a Dataset. 
-It is recommended to select a master identifier and use this one to implement the HVD regulation.
-In general, harvesters and portals are advised to use and promote this identifier as the identifier for the HVD Dataset.
-And furthermore, in addition it is recommended to augment the list of alternative identifiers (adms:identifier) with the encountered identifiers.
-These identifier processing recommendations are made to ensure that the information in usages like the HVD reporting (i.e. a reference to a dataset) is interconnected with the real data.
+In practice, multiple identifiers may have been assigned to a Dataset. 
+It is recommended to select a master identifier and use this one to implement the HVD regulation. 
+In general, harvesters and portals are advised to use and promote this identifier as the identifier for the HVD Dataset. 
+In addition it is recommended to augment the list of alternative identifiers (adms:identifier) with the encountered identifiers. 
+These identifier processing recommendations are made to ensure that the information in usages like the HVD reporting (i.e. a reference to a dataset) is interconnected with the real data. 
 
 
 </p>
 <h4 id="c5">Persistent identifiers</h4>
 <p>
-The HVD regulation requires as part of the reporting requirements (article 5.3) that Licensing Conditions and APIs have a persistent link.
+The HVD regulation requires as part of the reporting requirements (article 5.3), that Licensing Conditions and APIs have persistent links.
 
 </p><p>
-Persistency means that for these entities Member States take the responsibility to maintain the real world entity indefinitely and additionally reduce the accessibility challenge by maintaining the same name for that real world entity indefinitely.
-Thus for the entities that MSs include in the reporting and for which the reporting requires a persistent link, a MS takes an engagement and commitment.
+Persistence means that, for these entities, Member States take the responsibility to maintain the real world entity indefinitely and additionally reduce the accessibility challenge by maintaining the same name for that real world entity indefinitely.
+Thus for the entities that MSs include in the reporting and for which the reporting requires a persistent link, a MS makes a persistent commitment.
 
 </p><p>
-As DCAT-AP is a Semantic Web data specification, persistency has been associated with the use persistent URIs (PURIs) for the metadata descriptions.
-A general advice for DCAT-AP implementers is the use of PURIs for all entities, but in particular for Datasets and Data Services.
-The practice, though, shows that this is not commonly applied, and therefore guidelines on identifiers have proposed which mitigate the existing practice and the ultimate situation [[IdentifierGuidelines]].
-Implementers of the HVD regulation are advised to read these guidelines to understand how identity might or might not be preserved from one data portal to another.
-And based on this take the appropriate actions.
+As DCAT-AP is a Semantic Web data specification, persistence is associated with the use persistent URIs (PURIs) for the metadata descriptions. 
+A general advice for DCAT-AP implementers is to use PURIs for all entities, but in particular for Datasets and Data Services. 
+The practice, though, shows that this is not commonly applied, and therefore we have proposed guidelines on identifiers [[IdentifierGuidelines]]. 
+Implementers of the HVD regulation are advised to read these guidelines to understand how identity might or might not be preserved from one data portal to another,  and take the appropriate actions. 
 
 
 </p><p>
-In article 5.3 the broad term Licensing Conditions is used, while in the other parts of the regulation the term Licence is used.
+In article 5.3 of the HVD IR, the broad term Licensing Conditions is used, while in the other parts of the regulation the term Licence is used. 
 DCAT-AP provides several means to express legal information, notably the properties licence (dct:license) and rights (dct:rights). 
-This may lead to considerations whether or not <strong>rights</strong> are included by the reporting requirement.
-As the final objective is to provide a trusted legal statement it is considered that the requirement  for a persistent link applies to rights too.
+This may lead to questions whether <strong>rights</strong> are included by the reporting requirement. 
+As the final objective is to provide a trusted legal statement, it is considered that the requirement for a persistent link applies to rights too. 
 
 </p><p>
-The reporting requirement for a persistent link for APIs is from DCAT-AP perspective ambiguous. 
-In DCAT-AP there is the identifier for the Data Service, i.e. the description about the API, and the property endpoint URL, which is the technical endpoint via which the data exchange will happen.
+The reporting requirement for a persistent link for APIs is ambiguous from the perspective of DCAT-AP. 
+In DCAT-AP, there is the identifier for the Data Service, i.e. the description about the API, and the property endpoint URL, which is the technical endpoint via which the data exchange will happen. 
 As the HVD regulation does not specify precisely which case it covers, both are considered in scope. 
 That means that each Dataset Service has a PURI and that the endpoint URL is persistent. 
-Thus when an API is shifted on a new platform (e.g. from a local API gateway to an organisation wide one), the original endpoint URL must be maintained, and also the metadata management must be maintained.
+Thus when an API is moved to a new platform (e.g. from a local API gateway to an organisation-wide one), the original endpoint URL must be maintained, and also the metadata management must be maintained. 
 
 </p><p>
-In general neither DCAT-AP nor DCAT do impose endpoint URL persistency. 
-They, however, expect a life cycle management of the API through meta data. 
-For that DCAT-AP includes a few properties for life cycle management.  
+DCAT-AP does not impose persistent identification of an endpoint URL. 
+It, however, expects a life cycle management of the API through metadata. 
+For that, DCAT-AP includes a few properties for life cycle management.   
 
 </p><p>
-For example, consider an API which is end-of-life. 
-According to the general DCAT-AP the PURI of the Data Service could get the status deprecated/out-of-service and the endpoint URL could me made void when the endpoint URL is taken offline. 
-Any data portal user would understand that this Data Service is not to be used anymore. 
-If the meta data is augmented with the information about the successor of the Data Service, the data portal owner could be guided to the new Data Service.
+For example, consider an API which is at the end of its lifecycle. 
+According to DCAT-AP, the PURI of the Data Service could get the status ‘deprecated’ and the endpoint URL could be made void when it is taken offline. 
+Any data portal user would understand that this Data Service should not to used anymore. 
+If the metadata is augmented with the information about the successor of the Data Service, the data portal owner can be guided to the new Data Service. 
 
 </p><p>
 The impact for an user of the endpoint URL is higher: it may face a sudden inaccessibility and systems might get broken when the endpoint URL is taken offline.
@@ -3293,6 +3288,290 @@ To provide information about the use of the API platform, the publisher provides
 <div class="h3" id="example-data_service_service_desk">Example 8 - MS data service with publisher service desk</div>
 
 <h3>Expressing legal conditions</h3>
+
+The MS imposes via its legislation to use national data licences for public bodies.
+Therefore the dataset publisher is required to use one of them. 
+As support to the community, the MS has published the data licences as a SKOS taxonomy using persistent URIs.
+
+For the Wasp population dataset a restrictive licence is chosen because the data is based on information that has commercial rights including fees.
+The Bee population dataset is shared with a very permissive licence.
+
+<aside class="example" title="">
+  <pre class="nohighlight turtle">
+
+
+exampleMS:1T2p3o4B a dcat:Dataset;
+   dct:title "The population of bees"@en;
+   dcatap:applicableLegislation <http://data.europa.eu/eli/reg_impl/2023/138/oj>, <http://data.europa.eu/eli/dir/2007/2/2019-06-26> ;
+   dcat:distribution exampleMS:1T2p3o4B-dist-SHP, exampleMS:1T2p3o4B-dist-RDF.
+
+exampleMS:1W2o3p4T a dcat:Dataset;
+  dct:title "The population of wasps"@en.
+   dcat:distribution exampleMS:1W2o3p4T-dist-SHP.
+
+exampleMS:1T2p3o4B-dist-SHP a dcat:Distribution;
+   dct:license <https://data.exampleMS.gov/resource/FreeAndOpen>;
+   dcatap:applicableLegislation <http://data.europa.eu/eli/reg_impl/2023/138/oj>.
+
+exampleMS:1T2p3o4B-dist-RDF a dcat:Distribution;
+   dct:license <https://data.exampleMS.gov/resource/FreeAndOpen>.
+
+exampleMS:1W2o3p4T-dist-SHP a dcat:Distribution;
+   dct:license <https://data.exampleMS.gov/resource/NoCommercialUseWithFees>;
+
+exampleMS:EAMS-APIplatform a dcat:DataService;
+   dct:title "EA API platform"@en;
+   dct:description "The EA API platform provides a uniform access to the real-time data collected by EA"@en;
+   dcat:endpointURL <https://orgea.exampleMS.gov/api/v2/> ;
+   dcatap:applicableLegislation <http://data.europa.eu/eli/reg_impl/2023/138/oj>;
+   dcat:servesDataset exampleMS:1T2p3o4B, exampleMS:1W2o3p4T ;
+
+  </pre>
+</aside>
+
+In order to support the assessment of the used licences, the MS maps the licences to the NAL Licences [[NAL-Licence]].
+
+
+<aside class="example" title="">
+  <pre class="nohighlight turtle">
+
+<https://data.exampleMS.gov/resource/FreeAndOpen> a dct:LicenseDocument ;
+   skos:exactMatch <http://publications.europa.eu/resource/authority/licence/CC0>.
+
+<https://data.exampleMS.gov/resource/NoCommercialUseWithFees> a dct:LicenseDocument ;
+   skos:broadMatch <http://publications.europa.eu/resource/authority/licence/CC_BYNC_4_0>
+
+  </pre>
+</aside>
+<p>
+The HVD regulation requires the licence for the Bee population dataset is at least as permissive as CC-BY 4.0.
+Since the Bee population licence is <code>https://data.exampleMS.gov/resource/FreeAndOpen</code> and it is an exact match with <code>http://publications.europa.eu/resource/authority/licence/CC0</code>, and this CC0 licence is more permissive than CC-BY-4.0, the HVD requirement is met.
+</p><p>
+Because in producing the RDF representation additional provenance information is included that is sensitive, the publisher changes the licence for that distribution to a more restrictive one.
+</p>
+
+<aside class="example" title="">
+  <pre class="nohighlight turtle">
+exampleMS:1T2p3o4B a dcat:Dataset;
+   dct:title "The population of bees"@en;
+   dcatap:applicableLegislation <http://data.europa.eu/eli/reg_impl/2023/138/oj>, <http://data.europa.eu/eli/dir/2007/2/2019-06-26> ;
+   dcat:distribution exampleMS:1T2p3o4B-dist-SHP, exampleMS:1T2p3o4B-dist-RDF.
+
+exampleMS:1W2o3p4T a dcat:Dataset;
+  dct:title "The population of wasps"@en.
+   dcat:distribution exampleMS:1W2o3p4T-dist-SHP.
+
+exampleMS:1T2p3o4B-dist-SHP a dcat:Distribution;
+   dct:license <https://data.exampleMS.gov/resource/FreeAndOpen>;
+   dcatap:applicableLegislation <http://data.europa.eu/eli/reg_impl/2023/138/oj>.
+
+exampleMS:1T2p3o4B-dist-RDF a dcat:Distribution;
+   dct:license <https://data.exampleMS.gov/resource/NoCommercialUseWithFees>.
+  </pre>
+</aside>
+<p>
+Although this restricted licence <code>https://data.exampleMS.gov/resource/NoCommercialUseWithFees</code> does not meet the HVD requirements for the Bee population dataset, the Bee population dataset is still conformant to the HVD regulation as the RDF distribution was not within scope of the HVD. 
+The same reasoning holds for the Wasp population dataset.
+This illustrates the flexibility the DCAT-AP HVD specification offers to address complex and rare scenarios data publishers might face.
+</p><p>
+The Data Service <code>exampleMS:EAMS-APIplatform</code> provides access to both datasets. 
+The legal conditions on the usage of the platform for the bee population dataset is a combination of the API platform conditions (e.g. no misuse by triggering DDOS activities, no sharing of access tokens to third parties, etc. ) and the dataset conditions.
+The API request <code>https://orgea.exampleMS.gov/api/v2/beepopulation/</code> has thus different conditions than <code>https://orgea.exampleMS.gov/api/v2/wasppopulation/</code>.
+Therefore the nature of the licence document associated with a Data Service is usually more oriented to the use of the API platform rather than to the use of the data it provides access too.
+In the example the 'Terms of Use' for the API platform are mentioned as the license.
+In addition, the API platform can also the SLA it offers. 
+</p>
+<aside class="example" title="">
+  <pre class="nohighlight turtle">
+
+
+exampleMS:1T2p3o4B a dcat:Dataset;
+   dct:title "The population of bees"@en;
+   dcatap:applicableLegislation <http://data.europa.eu/eli/reg_impl/2023/138/oj>, <http://data.europa.eu/eli/dir/2007/2/2019-06-26> ;
+   dcat:distribution exampleMS:1T2p3o4B-dist-SHP, exampleMS:1T2p3o4B-dist-RDF.
+
+exampleMS:1W2o3p4T a dcat:Dataset;
+  dct:title "The population of wasps"@en.
+   dcat:distribution exampleMS:1W2o3p4T-dist-SHP.
+
+exampleMS:1T2p3o4B-dist-SHP a dcat:Distribution;
+   dct:license <https://data.exampleMS.gov/resource/FreeAndOpen>;
+   dcatap:applicableLegislation <http://data.europa.eu/eli/reg_impl/2023/138/oj>.
+
+exampleMS:1T2p3o4B-dist-RDF a dcat:Distribution;
+   dct:license <https://data.exampleMS.gov/resource/NoCommercialUseWithFees>.
+
+exampleMS:1W2o3p4T-dist-SHP a dcat:Distribution;
+   dct:license <https://data.exampleMS.gov/resource/NoCommercialUseWithFees>;
+
+exampleMS:EAMS-APIplatform a dcat:DataService;
+   dct:title "EA API platform"@en;
+   dct:description "The EA API platform provides a uniform access to the real-time data collected by EA"@en;
+   dcat:endpointURL <https://orgea.exampleMS.gov/api/v2/> ;
+   dcat:endpointDescription <https://orgea.exampleMS.gov/api/openAPI/index.html>;
+   dcatap:applicableLegislation <http://data.europa.eu/eli/reg_impl/2023/138/oj>;
+   dct:license <https://orgea.exampleMS.gov/api/documentation/TermsOfUse> ;
+   foaf:page <https://orgea.exampleMS.gov/api/sla.html> ;
+   dcat:servesDataset exampleMS:1T2p3o4B, exampleMS:1W2o3p4T ;
+  </pre>
+</aside>
+
+
+<h3>Reporting</h3>
+
+The MS reports its HVD conformance status by providing a catalogue containing all metadata in scope of HVD.
+To facilitate the conformance assessment it will only include the Datasets, Data Services and Distributions that are in scope of HVD.
+The catalogue will also contain any additional supportive information such a ContactPoints, Agents and the mapping for the licences to the EU Licences.
+
+<aside class="example" title="">
+  <pre class="nohighlight turtle">
+
+exampleMS:HVD-reporting-2023  a dcat:Catalogue;
+  dct:title "MS HVD Reporting 2023"@en;
+  dct:description "All information to provide the HVD conformance assessment for MS"@en;
+  dcat:dataset exampleMS:1T2p3o4B ;
+  dcat:service exampleMS:EAMS-APIplatform.
+  
+
+exampleMS:1T2p3o4B a dcat:Dataset;
+  dct:title "The population of bees"@en;
+  dct:description "This dataset provides the population of bees based on a yearly inquiry held among beekeepers and farmers in spring."@en;
+  dcatap:applicableLegislation <http://data.europa.eu/eli/reg_impl/2023/138/oj>, <http://data.europa.eu/eli/dir/2007/2/2019-06-26> ;
+  dct:publisher _:EA-MS;
+  dct:identifier "https://data.exampleMS.gov/id/dataset/1T2p3o4B";
+  adms:identifier [
+        dct:creator _:EA-MS;
+        skos:notation "https://data.exampleMS.gov/id/dataset/1T2p3o4B"
+        ],
+        [
+        dct:creator <https://dataportal.exampleMS.gov>;
+        skos:notation "https://dataportal.exampleMS.gov/dataset/Thepopulationofbees";
+        ];
+   dct:accrualPeriodicity <http://publications.europa.eu/resource/authority/frequency/BIENNIAL>;
+   dct:conformsTo <https://orgea.exampleMS.gov/applicationprofile/populationOfInsects>;
+   dcat:distribution exampleMS:1T2p3o4B-dist-SHP, exampleMS:1T2p3o4B-dist-RDF.
+
+
+exampleMS:1T2p3o4B-dist-SHP a dcat:Distribution;
+   dcat:accessURL <https://orgea.exampleMS.gov/files/1T2p3o4B.shp> ;
+   dct:conformsTo <https://orgea.exampleMS.gov/dataset/1T2p3o4B/schema/shp>;
+   dcat:spatialResolutionInMeters "25000"^^xsd:decimal;
+   dct:format <http://publications.europa.eu/resource/authority/file-type/SHP> ;
+   dct:license <https://data.exampleMS.gov/resource/FreeAndOpen>;
+   dcatap:applicableLegislation <http://data.europa.eu/eli/reg_impl/2023/138/oj>.
+
+exampleMS:EAMS-APIplatform a dcat:DataService;
+   dct:title "EA API platform"@en;
+   dct:description "The EA API platform provides a uniform access to the real-time data collected by EA"@en;
+   dcat:endpointURL <https://orgea.exampleMS.gov/api/v2/> ;
+   dcat:endpointDescription <https://orgea.exampleMS.gov/api/openAPI/index.html> ;
+   foaf:page <https://orgea.exampleMS.gov/api/sla.html> ;
+   dct:license <https://orgea.exampleMS.gov/api/documentation/TermsOfUse> ;
+   dcatap:applicableLegislation <http://data.europa.eu/eli/reg_impl/2023/138/oj> ;
+   dcat:contactPoint _:EAMS-APIplatform-contactpoint ;
+   dcat:servesDataset exampleMS:1T2p3o4B, exampleMS:1W2o3p4T .
+
+_:EAMS-APIplatform-contactpoint a vcard:Card ;
+   vcard:hasURL <https://eams.jira.net/servicedesk> .
+
+_:EA-MS a foaf:Agent;
+    foaf:name "MS Environmental Agency".
+
+<https://data.exampleMS.gov/resource/FreeAndOpen> a dct:LicenseDocument ;
+   skos:exactMatch <http://publications.europa.eu/resource/authority/licence/CC0>.
+
+  </pre>
+</aside>
+
+To reduce the risk of misinterpretation, the Catalogue Resource connecting properties such as <code>dcat:servesDataset</code> and <code>dcat:distribution</code> should be inspected to not refer to Catalogued Resources outside the scope of HVD. In the example below the reference to the RDF distribution for the bee population and the Wasp population dataset are removed from the reporting catalogue.
+
+<aside class="example" title="">
+  <pre class="nohighlight turtle">
+
+exampleMS:HVD-reporting-2023  a dcat:Catalogue;
+  dct:title "MS HVD Reporting 2023"@en;
+  dct:description "All information to provide the HVD conformance assessment for MS"@en;
+  dcat:dataset exampleMS:1T2p3o4B ;
+  dcat:service exampleMS:EAMS-APIplatform.
+  
+
+exampleMS:1T2p3o4B a dcat:Dataset;
+  dct:title "The population of bees"@en;
+  dct:description "This dataset provides the population of bees based on a yearly inquiry held among beekeepers and farmers in spring."@en;
+  dcatap:applicableLegislation <http://data.europa.eu/eli/reg_impl/2023/138/oj>, <http://data.europa.eu/eli/dir/2007/2/2019-06-26> ;
+  dct:publisher _:EA-MS;
+  dct:identifier "https://data.exampleMS.gov/id/dataset/1T2p3o4B";
+  adms:identifier [
+        dct:creator _:EA-MS;
+        skos:notation "https://data.exampleMS.gov/id/dataset/1T2p3o4B"
+        ],
+        [
+        dct:creator <https://dataportal.exampleMS.gov>;
+        skos:notation "https://dataportal.exampleMS.gov/dataset/Thepopulationofbees";
+        ];
+   dct:accrualPeriodicity <http://publications.europa.eu/resource/authority/frequency/BIENNIAL>;
+   dct:conformsTo <https://orgea.exampleMS.gov/applicationprofile/populationOfInsects>;
+   dcat:distribution exampleMS:1T2p3o4B-dist-SHP.
+
+
+exampleMS:1T2p3o4B-dist-SHP a dcat:Distribution;
+   dcat:accessURL <https://orgea.exampleMS.gov/files/1T2p3o4B.shp> ;
+   dct:conformsTo <https://orgea.exampleMS.gov/dataset/1T2p3o4B/schema/shp>;
+   dcat:spatialResolutionInMeters "25000"^^xsd:decimal;
+   dct:format <http://publications.europa.eu/resource/authority/file-type/SHP> ;
+   dct:license <https://data.exampleMS.gov/resource/FreeAndOpen>;
+   dcatap:applicableLegislation <http://data.europa.eu/eli/reg_impl/2023/138/oj>.
+
+exampleMS:EAMS-APIplatform a dcat:DataService;
+   dct:title "EA API platform"@en;
+   dct:description "The EA API platform provides a uniform access to the real-time data collected by EA"@en;
+   dcat:endpointURL <https://orgea.exampleMS.gov/api/v2/> ;
+   dcat:endpointDescription <https://orgea.exampleMS.gov/api/openAPI/index.html> ;
+   foaf:page <https://orgea.exampleMS.gov/api/sla.html> ;
+   dct:license <https://orgea.exampleMS.gov/api/documentation/TermsOfUse> ;
+   dcatap:applicableLegislation <http://data.europa.eu/eli/reg_impl/2023/138/oj> ;
+   dcat:contactPoint _:EAMS-APIplatform-contactpoint ;
+   dcat:servesDataset exampleMS:1T2p3o4B. 
+
+_:EAMS-APIplatform-contactpoint a vcard:Card ;
+   vcard:hasURL <https://eams.jira.net/servicedesk> .
+
+_:EA-MS a foaf:Agent;
+    foaf:name "MS Environmental Agency".
+
+<https://data.exampleMS.gov/resource/FreeAndOpen> a dct:LicenseDocument ;
+   skos:exactMatch <http://publications.europa.eu/resource/authority/licence/CC0>.
+
+  </pre>
+</aside>
+
+Based on this catalogue the MS can be audited for it conformance. During the assessment it might occur that the supplied information is not sufficient, and that the assesement must follow the references outside the supplied catalogue. E.g. when assessing the permissiveness of the licences the details of the referenced EU Licence must be consulted.
+Crossing this bounderaries is natural and it can be done during the assessment without impacting the results when the supplied data is based on persistent identifiers (PURIs).
+The use of dereferenceable persistent identifiers could also lead to another agreemnent to supply a more condensed representation of the reporting catalogue.
+Under the condition that all catalogued resources in scope of HVD are in the Portal for European Data [[DEU]], then the MS could simply supply the reduced catalogue as 
+
+
+<aside class="example" title="">
+  <pre class="nohighlight turtle">
+
+exampleMS:HVD-reporting-2023  a dcat:Catalogue;
+  dct:title "MS HVD Reporting 2023"@en;
+  dct:description "All information to provide the HVD conformance assessment for MS"@en;
+  dcat:dataset exampleMS:1T2p3o4B ;
+  dcat:service exampleMS:EAMS-APIplatform.
+  
+
+  </pre>
+</aside>
+
+This illustrates that when the dataset publishers provide the necessary information and this is well integrated in the network of sharing metadata through the MS to the Portal for European Data, the data exhange for the reporting can be reduced to the minimum.
+
+
+
+
+
+
+
 
 </div>
 </section>
