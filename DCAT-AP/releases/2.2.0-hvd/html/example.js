@@ -121,7 +121,9 @@ $(document).ready(function () {
 
 	$("button.copyturtletoclipboard").on({
 		"click": function() {
-			var index = $examples.children(".tabs").index($(this).parent().parent());
+			var exampleid = $(this).parent().parent().attr("exampleid");
+			var indexValues = $examples.map(function() { return this.id; }) ;
+			var index = myIndexOf(indexValues, exampleid);
 			texttocopy = editors[index].CM0.getValue()
 			navigator.clipboard.writeText(texttocopy);
 			$(this).tooltip({ items: "#" + this.id, content: "Copied !"});
@@ -133,7 +135,9 @@ $(document).ready(function () {
 	});
 	$("button.copyjsonldtoclipboard").on({
 		"click": function() {
-			var index = $examples.children(".tabs").index($(this).parent().parent());
+			var exampleid = $(this).parent().parent().attr("exampleid");
+			var indexValues = $examples.map(function() { return this.id; }) ;
+			var index = myIndexOf(indexValues, exampleid);
 			texttocopy = editors[index].CM1.getValue();
 			navigator.clipboard.writeText(texttocopy);
 			$(this).tooltip({ items: "#" + this.id, content: "Copied !"});
@@ -144,12 +148,9 @@ $(document).ready(function () {
 		}
 	});
 	$("button.openinplayground").on('click', function(e) {
-		var toSelectP = $(this).parent();
-		var toSelectPP = toSelectP.parent();
 		var exampleid = $(this).parent().parent().attr("exampleid");
 		var indexValues = $examples.map(function() { return this.id; }) ;
 		var index = myIndexOf(indexValues, exampleid);
-
 
 		newUrl = "https://json-ld.org/playground/#startTab=tab-expand&json-ld=" + editors[index].CM1.getValue(); 
 		window.open(encodeURI(newUrl), '_blank');
