@@ -18,6 +18,29 @@ function example_structure(exampleid){
 	return structure;
 }
 
+
+/**
+ * auxiliary function to get around the issue that indexOf() is not working with jquery.
+ */
+
+function myIndexOf(list, val) {
+	var myindex  = -1;
+	var i = 0;
+
+	var elem = list[0];
+        
+	while ( i < list.length ) {
+		if ( elem == val ) return i;
+		i = i+1;
+		elem = list[i];
+
+	}
+	
+	return -1;
+
+}
+
+
 /**
  * Fills in the direct input area with some samples
  * @param {string} file - file containing the sample
@@ -123,12 +146,9 @@ $(document).ready(function () {
 	$("button.openinplayground").on('click', function(e) {
 		var toSelectP = $(this).parent();
 		var toSelectPP = toSelectP.parent();
-		var tabs = $examples.children(".tabs");
-		var indexOld = $examples.children(".tabs").index(toSelectPP);
-		var exampleid = toSelectPP.attr("exampleid");
-		var indexValues = $examples.attr("id")
-//		var index = $examples.index(indexValue);
-		var index = indexValues.index(exampleid);
+		var exampleid = $(this).parent().parent().attr("exampleid");
+		var indexValues = $examples.map(function() { return this.id; }) ;
+		var index = myIndexOf(indexValues, exampleid);
 
 
 		newUrl = "https://json-ld.org/playground/#startTab=tab-expand&json-ld=" + editors[index].CM1.getValue(); 
