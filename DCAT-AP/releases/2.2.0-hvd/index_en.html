@@ -3322,7 +3322,7 @@ This illustrates the flexibility the DCAT-AP HVD specification offers to address
 The Data Service <code>exampleMS:EAMS-APIplatform</code> provides access to both datasets. 
 The legal conditions on the usage of the platform for the "bee population" dataset is a combination of the API platform conditions (e.g. no misuse by triggering DDOS activities, no sharing of access tokens to third parties, etc. ) and the dataset conditions.
 The API request <code>https://orgea.exampleMS.gov/api/v2/beepopulation/</code> has thus different conditions than <code>https://orgea.exampleMS.gov/api/v2/wasppopulation/</code>.
-Therefore, the nature of the licence document, associated with a Data Service, is usually more oriented to the use of the API platform rather than to the use of the data it provides access too.
+Therefore, the nature of the licence document, associated with a Data Service, is usually more oriented to the use of the API platform rather than to the use of the data it provides access too.</p><p>
 In the example the 'Terms of Use' for the API platform are mentioned as the license.
 In addition, the API platform can also indicate the SLA it offers. 
 </p>
@@ -3331,101 +3331,24 @@ In addition, the API platform can also indicate the SLA it offers.
 
 <h3>Reporting</h3>
 
-The MS reports its HVD conformance status by providing a catalogue containing all metadata in scope of HVD.
+<p>The MS reports its HVD conformance status by providing a catalogue containing all metadata in scope of HVD.
 To facilitate the conformance assessment, it will only include the Datasets, Data Services and Distributions that are in scope of HVD.
-The catalogue will also contain any additional supportive information such as ContactPoints, Agents and the mapping for the licences to the EU Licences.
+The catalogue will also contain any additional supportive information such as ContactPoints, Agents and the mapping for the licences to the EU Licences.</p>
 
 <div class="h3 examples" id="example-ms_catalogue">Example 13 - MS Catalogue</div>
 
-To reduce the risk of misinterpretation, the Catalogue Resource connecting properties such as <code>dcat:servesDataset</code> and <code>dcat:distribution</code> should be inspected to not refer to Catalogued Resources outside the scope of HVD. In the example below, the reference to the RDF distribution for the "bee population" and the "wasp population" dataset are removed from the reporting catalogue.
+<p>To reduce the risk of misinterpretation, the Catalogue Resource connecting properties such as <code>dcat:servesDataset</code> and <code>dcat:distribution</code> should be inspected to not refer to Catalogued Resources outside the scope of HVD. In the example below, the reference to the RDF distribution for the "bee population" and the "wasp population" dataset are removed from the reporting catalogue.</p>
 
-<aside class="example" title="">
-  <pre class="nohighlight turtle">
+<div class="h3 examples" id="example-ms_catalogue">Example 14 - MS Catalogue in HVD scope</div>
 
-exampleMS:HVD-reporting-2023  a dcat:Catalogue;
-  dct:title "MS HVD Reporting 2023"@en;
-  dct:description "All information to provide the HVD conformance assessment for MS"@en;
-  dcat:dataset exampleMS:1T2p3o4B ;
-  dcat:service exampleMS:EAMS-APIplatform.
-  
-
-exampleMS:1T2p3o4B a dcat:Dataset;
-  dct:title "The population of bees"@en;
-  dct:description "This dataset provides the population of bees based on a yearly inquiry held among beekeepers and farmers in spring."@en;
-  dcatap:applicableLegislation <http://data.europa.eu/eli/reg_impl/2023/138/oj>, <http://data.europa.eu/eli/dir/2007/2/2019-06-26> ;
-  dct:publisher _:EA-MS;
-  dct:identifier "https://data.exampleMS.gov/id/dataset/1T2p3o4B";
-  adms:identifier [
-        dct:creator _:EA-MS;
-        skos:notation "https://data.exampleMS.gov/id/dataset/1T2p3o4B"
-        ],
-        [
-        dct:creator <https://dataportal.exampleMS.gov>;
-        skos:notation "https://dataportal.exampleMS.gov/dataset/Thepopulationofbees";
-        ];
-   dct:accrualPeriodicity <http://publications.europa.eu/resource/authority/frequency/BIENNIAL>;
-   dct:conformsTo <https://orgea.exampleMS.gov/applicationprofile/populationOfInsects>;
-   dcat:distribution exampleMS:1T2p3o4B-dist-SHP.
-
-
-exampleMS:1T2p3o4B-dist-SHP a dcat:Distribution;
-   dcat:accessURL <https://orgea.exampleMS.gov/files/1T2p3o4B.shp> ;
-   dct:conformsTo <https://orgea.exampleMS.gov/dataset/1T2p3o4B/schema/shp>;
-   dcat:spatialResolutionInMeters "25000"^^xsd:decimal;
-   dct:format <http://publications.europa.eu/resource/authority/file-type/SHP> ;
-   dct:license <https://data.exampleMS.gov/resource/FreeAndOpen>;
-   dcatap:applicableLegislation <http://data.europa.eu/eli/reg_impl/2023/138/oj>.
-
-exampleMS:EAMS-APIplatform a dcat:DataService;
-   dct:title "EA API platform"@en;
-   dct:description "The EA API platform provides a uniform access to the real-time data collected by EA"@en;
-   dcat:endpointURL <https://orgea.exampleMS.gov/api/v2/> ;
-   dcat:endpointDescription <https://orgea.exampleMS.gov/api/openAPI/index.html> ;
-   foaf:page <https://orgea.exampleMS.gov/api/sla.html> ;
-   dct:license <https://orgea.exampleMS.gov/api/documentation/TermsOfUse> ;
-   dcatap:applicableLegislation <http://data.europa.eu/eli/reg_impl/2023/138/oj> ;
-   dcat:contactPoint _:EAMS-APIplatform-contactpoint ;
-   dcat:servesDataset exampleMS:1T2p3o4B. 
-
-_:EAMS-APIplatform-contactpoint a vcard:Card ;
-   vcard:hasURL <https://eams.jira.net/servicedesk> .
-
-_:EA-MS a foaf:Agent;
-    foaf:name "MS Environmental Agency".
-
-<https://data.exampleMS.gov/resource/FreeAndOpen> a dct:LicenseDocument ;
-   skos:exactMatch <http://publications.europa.eu/resource/authority/licence/CC0>.
-
-  </pre>
-</aside>
-
-Based on this catalogue the MS can be audited for its conformance. During the assessment it might occur that the supplied information is not sufficient, and that the assesement must follow the references outside the supplied catalogue. E.g., when assessing the permissiveness of the licences the details of the referenced EU Licence must be consulted.
-Crossing these bounderaries is a regular occurnce and it can be done during the assessment without impacting the results when the supplied data is based on persistent identifiers (PURIs).
+<p>Based on this catalogue the MS can be audited for its conformance. During the assessment it might occur that the supplied information is not sufficient, and that the assesement must follow the references outside the supplied catalogue. E.g., when assessing the permissiveness of the licences the details of the referenced EU Licence must be consulted.
+Crossing these bounderaries is a regular occurnce and it can be done during the assessment without impacting the results when the supplied data is based on persistent identifiers (PURIs).</p><p>
 The use of dereferenceable persistent identifiers could also lead to another agreemnent to supply a more condensed representation of the reporting catalogue.
-Under the condition that all catalogued resources in scope of HVD are in the Portal for European Data [[DEU]], then the MS could simply supply the reduced catalogue as: 
+Under the condition that all catalogued resources in scope of HVD are in the Portal for European Data [[DEU]], then the MS could simply supply the reduced catalogue as:</p>
 
-
-<aside class="example" title="">
-  <pre class="nohighlight turtle">
-
-exampleMS:HVD-reporting-2023  a dcat:Catalogue;
-  dct:title "MS HVD Reporting 2023"@en;
-  dct:description "All information to provide the HVD conformance assessment for MS"@en;
-  dcat:dataset exampleMS:1T2p3o4B ;
-  dcat:service exampleMS:EAMS-APIplatform.
-  
-
-  </pre>
-</aside>
+<div class="h3 examples" id="example-ms_catalogue_simple">Example 15 - MS Catalogue reduced</div>
 
 This illustrates that when the dataset publishers provide the necessary information and this is well integrated in the network of sharing metadata through the MS to the Portal for European Data, the data exhange for the reporting can be reduced to a minimum.
-
-
-
-
-
-
-
 
 </section>
 
