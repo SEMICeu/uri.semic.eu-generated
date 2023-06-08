@@ -122,7 +122,7 @@ $(document).ready(function () {
 	});
 	$("button.openinplayground").on('click', function(e) {
 		var toSelectP = $(this).parent();
-		var toSelectPP = toSelect.parent();
+		var toSelectPP = toSelectP.parent();
 		var tabs = $examples.children(".tabs");
 		var indexOld = $examples.children(".tabs").index(toSelectPP);
 		var indexValue = toSelectPP.attr("exampleid");
