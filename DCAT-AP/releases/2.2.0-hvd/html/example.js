@@ -1,6 +1,6 @@
 function example_structure(exampleid){
 	structure=`
-	<div id="` + exampleid + `-tabs" class="tabs tabsstyle">
+	<div id="` + exampleid + `-tabs" exampleid="` + exampleid + `"  class="tabs tabsstyle">
 		<ul>
 			<li><a href="#` + exampleid + `-tabs-1">Turtle</a></li>
 			<li><a href="#` + exampleid + `-tabs-2">JSON-LD</a></li>
@@ -90,7 +90,7 @@ $(document).ready(function () {
 			});
 		});
 
-        path_to_file = folder + exampleid;
+                path_to_file = folder + exampleid;
 		loadFile(editors[index].CM0, path_to_file + ".ttl");
 		loadFile(editors[index].CM1, path_to_file + ".jsonld");
 		
@@ -121,11 +121,12 @@ $(document).ready(function () {
 		}
 	});
 	$("button.openinplayground").on('click', function(e) {
-		var toSelect = $(this).parent();
-		var toSelectP = toSelect.parent();
+		var toSelectP = $(this).parent();
+		var toSelectPP = toSelect.parent();
 		var tabs = $examples.children(".tabs");
-		var indexOld = $examples.children(".tabs").index(toSelect);
-		var index = $(this).tabIndex;
+		var indexOld = $examples.children(".tabs").index(toSelectPP);
+		var indexValue = toSelectPP.attr("exampleid");
+		var index = $examples.index(indexValue);
 
 
 		newUrl = "https://json-ld.org/playground/#startTab=tab-expand&json-ld=" + editors[index].CM1.getValue(); 
