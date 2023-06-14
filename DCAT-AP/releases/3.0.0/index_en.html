@@ -253,7 +253,7 @@ The DCAT Application Profile defined in this document is based on the specificat
 		  This specification </span> of <a rel="cc:attributionURL" property="cc:attributionName" href="ORGANISATION" xmlns:cc="http://creativecommons.org/ns#">ORGANISATION </a> 
 	          is published under <a href="https://creativecommons.org/licenses/by/4.0/" rel="license">"CC0"</a>.
 	-->
-             Copyright © 2021 European Union. All material in this repository is published under the license CC-BY 4.0, unless explicitly otherwise mentioned.
+             Copyright © 2023 European Union. All material in this repository is published under the license CC-BY 4.0, unless explicitly otherwise mentioned.
         </p>
     
 </section>
@@ -261,12 +261,6 @@ The DCAT Application Profile defined in this document is based on the specificat
 
   <section id="conformance" class="informative">
 <h2>Conformance Statement</h2>
-
-
-<p class="ednote" title="To Be investigated">
-The bullet points on the categories must be reflected on as they are referring in business terminology to dataset themes (or wider categories) while mappingwise they are SKOS. 
-It is thus unclear if these requirements apply to a subset or to all codelists.
-</p>
 
 <h3>Provider requirements</h3>
 In order to conform to this Application Profile, an application that provides metadata MUST:
@@ -279,9 +273,9 @@ In order to conform to this Application Profile, an application that provides me
 <li>Provide descriptions of Data Services, if any, of Datasets in the Catalogue, including at least the mandatory properties for the class <a href="#DataService">Data Service</a>.</li>
 
 <li>Provide descriptions of all organisations involved in the descriptions of Catalogue and Datasets, including at least the mandatory properties for the class <a href="#Agent">Agent</a>.</li>
-<li>Provide descriptions of all category schemes that contain the categories that are asserted in any of the descriptions of Datasets in the Catalogue, including at least the mandatory properties specified for <a href="#Conceptscheme">Conceptscheme</a>.</li>
-<li>Provide descriptions of all categories involved in the descriptions of Datasets in the Catalogue, including at least the mandatory properties specified for <a href="#Concept">Concept</a>.</li>
+<li>Apply the publication requirements for the controlled vocabularies as mentioned in section [[[#controlled-vocs]]]. </li>
 </ul>
+
 For the properties listed in the table in section [[[#controlled-vocs]]], the associated controlled vocabularies MUST be used. Additional controlled vocabularies MAY be used.
 In addition to the mandatory properties, any of the recommended and optional properties defined in section [[[#quick-reference]]] MAY be provided.
 <h3>Receiver requirements</h3>
@@ -290,6 +284,8 @@ In order to conform to this Application Profile, an application that receives me
 <li>Process information for all controlled vocabularies specified in section [[[#controlled-vocs]]].</li>
 "Processing" means that receivers must accept incoming data and transparently provide these data to applications and services. 
 It does neither imply nor prescribe what applications and services finally do with the data (parse, convert, store, make searchable, display to users, etc.).
+
+
 </section>
 
 
@@ -302,15 +298,6 @@ An <strong>Application Profile</strong> is a specification that re-uses terms fr
 </p><p>
 A <strong>Dataset</strong> is a collection of data, published or curated by a single source, and available for access or download in one or more formats.
 A <strong>Data Portal</strong> is a Web-based system that contains a data catalogue with descriptions of datasets and provides services enabling discovery and re-use of the datasets.
-In the following sections, classes and properties are grouped under headings ‘mandatory’, ‘recommended’ and ‘optional’. These terms have the following meaning.
-<ul>
-<li>Mandatory property: a receiver MUST be able to process the information for that property; a sender MUST provide the information for that property.</li>
-<li>Recommended property: a receiver MUST be able to process the information for that property; a sender SHOULD provide the information for that property if it is available.</li>
-<li>Optional property: a receiver MUST be able to process the information for that property; a sender MAY provide the information for that property but is not obliged to do so.</li>
-<li>Deprecated property: a receiver SHOULD be able to process information about instances of that property; a sender SHOULD NOT provide the information about instances of that property.</li>
-</ul>
-The meaning of the terms MUST, MUST NOT, SHOULD and MAY in this section and in the following sections are as defined in RFC 2119 [rfc2119].
-In the given context, the term "processing" means that receivers must accept incoming data and transparently provide these data to applications and services. It does neither imply nor prescribe what applications and services finally do with the data (parse, convert, store, make searchable, display to users, etc.).
 
 <h3>Used Prefixes</h3>
 
@@ -8660,20 +8647,6 @@ Further activities in this area are undertaken by the Open Data Institute with t
 </section>
 
   <section class="informative">
-  <h2>Deprecated properties and classes</h2>
-<p>
-The following properties have been deprecated in DCAT-AP 3.0. 
-<ul>
-<li>dct:hasVersion is replaced by dcat:hasVersion.</li>
-<li>dct:isVersionOf is replaced by dcat:isVersionOf. </li>
-<li>owl:versionInfo is replaced by dcat:version. </li>
-</ul>
-</p><p>
-To identify these deprecations a SHACL shape is provided.
-</p>
-</section>
-
-  <section class="informative">
   <h2>Legal information</h2>
 
 <p>
@@ -8744,22 +8717,25 @@ E.g. the Data Governance Act requires to provide sufficient legal reuse informat
  
 
 <p>
-The DCAT Application Profile specified in this document has a single property to relate an Agent (typically, an organisation) to a Dataset.
- The only such ‘agent role’ that can be expressed in the current version of the profile is through the property <a href="#Dataset.publisher">publisher</a>, defined as “An entity responsible for making the dataset available”.
-A second property is available in the DCAT recommendation,<a href="#Dataset.contactpoint">contact point</a>, defined as “Link a dataset to relevant contact information which is provided using VCard”, but this is not an agent role as the value of this property is contact data, rather than a representation of the organisation as such.
+The first version of DCAT Application Profile [[vocab-dcat-1]] had a single property to relate an Agent (typically, an organisation) to a Dataset.
+The only such ‘agent role’ that could be expressed in that version of the profile is through the property <a href="#Dataset.publisher">publisher</a>, defined as “An entity responsible for making the dataset available”.
+A second property is available in that DCAT recommendation [[vocab-dcat-1]], <a href="#Dataset.contactpoint">contact point</a>, defined as “Link a dataset to relevant contact information which is provided using VCard”, but this is not an agent role as the value of this property is contact data, rather than a representation of the organisation as such.
 In specific cases, for example in exchanging data among domain-specific portals, it may be useful to express other, more specific agent roles.
-In such cases, extensions to the base profile may be defined using additional properties with more specific meanings.
+In such cases, extensions to DCAT-AP may be defined using additional properties with more specific meanings.
 </p><p>
-Two possible approaches have been discussed, particular in the context of the development of the domain-specific GeoDCAT Application Profile, an extension of the base DCAT Application Profile. 
+Two possible approaches have been discussed, particular in the context of the development of the domain-specific GeoDCAT Application Profile [[geodcat-ap]].
 The first possible approach is based on the use of a predicate vocabulary that provides a set of properties that represent additional types of relationships between Datasets and Agents.
- For example, properties could be defined, such as foo:owner, foo:curator or foo:responsibleParty, in addition to the use of existing well-known properties, such as dct:creator and dct:rightsHolder.
- A possible source for such additional properties is the Roles Named Authority List  maintained by the Publications Office of the EU.
- Other domain-specific sources for additional properties are the INSPIRE Responsible Party roles , the Library of Congress’ MARC relators  and DataCite’s contributor types.
- To enable the use of such properties, they must be defined as RDF properties with URIs in a well-managed namespace. 
+For example, properties could be defined, such as foo:owner, foo:curator or foo:responsibleParty, in addition to the use of existing well-known properties, such as dct:creator and dct:rightsHolder.
+A possible source for such additional properties is the Roles Named Authority List  maintained by the Publications Office of the EU.
+Other domain-specific sources for additional properties are the INSPIRE Responsible Party roles , the Library of Congress’ MARC relators  and DataCite’s contributor types.
+To enable the use of such properties, they must be defined as RDF properties with URIs in a well-managed namespace. 
 </p><p>
 A second approach is based on the use of W3C’s PROV ontology [[prov-o]]  which provides a powerful mechanism to express a set of classes, properties, and restrictions that can be used to represent and interchange provenance information generated in different systems and under different contexts. In the context of work on GeoDCAT-AP, a PROV-conformant solution for expressing agent roles was agreed . This solution uses prov:qualifiedAttribution in combination with a dct:type assertion pointing to the code list for Responsible Party Role in the INSPIRE registry. To enable the use of such types, they must be defined with URIs in a well-managed namespace. 
 </p><p>
-Based on the experience gained with the use of domain-specific extensions for additional ‘agent roles’ in the exchange of information about Datasets and on the requests of implementors and stakeholders, the  DCAT Application Profile release 2.0.0 is  extended with additional roles as proposed by DCAT Version 2, W3C Working Draft 28 May 2019  that have proven to be useful across domains. Precisely, properties dct:creator, prov:qualifiedAttribution and dcat:qualifiedRelation have been added to dcat:Dataset class to further facilitate relationships between datasets and agents. 
+Based on the experience gained with the use of domain-specific extensions for additional ‘agent roles’ in the exchange of information about Datasets and on the requests of implementors and stakeholders, the DCAT Application Profile release 2.0.0  is extended with additional roles as proposed by DCAT Version 2 [[vocab-dcat-2]] that have proven to be useful across domains. Precisely, properties <a href="#Dataset.creator">creator</a>, <a href="#Dataset.qualifiedattribution">qualified attribution</a> and <a href="#Dataset.qualifiedrelation">qualified relation</a> have been added to <a href="#Dataset">Dataset</a> class to further facilitate relationships between datasets and agents. 
+</p><p>
+In the most recent DCAT Version 3 [[vocab-dcat-3]] a dedicated <a href="https://w3c.github.io/dxwg/dcat/#qualified-forms">section on the relationship with Agents</a> is provided.
+The DCAT-AP guidelines for Agents Roles are conformant to this.
 </p><p>
 It should be noted that, even if a more expressive approach is used in a particular implementation, the provision of information using dct:publisher for the Catalogue is still mandatory under the rules laid down in the Conformance Statement in section [[[#conformance]]], while the provision of information using dct:publisher is strongly recommended for Dataset. The provision of such information using dct:publisher will ensure interoperability with implementations that use the basic approach of DCAT-AP.
 </p>
@@ -9071,7 +9047,7 @@ Publisher are advised to verify the properties title and description to match an
 <h2>Quick Reference of Classes and Properties</h2>
 
 This section provides a condensed tabular overview of the mentioned classes and properties in this specification.
-The properties are grouped under headings <it>mandatory, recommended, optional</it> and <it>deprecated</it>. These terms have the following meaning.
+The properties are indicated as <it>mandatory, recommended, optional</it> and <it>deprecated</it>. These terms have the following meaning.
 <ul>
 <li>Mandatory property: a receiver MUST be able to process the information for that property; a sender MUST provide the information for that property.</li>
 <li>Recommended property: a receiver MUST be able to process the information for that property; a sender SHOULD provide the information for that property if it is available.</li>
@@ -11192,6 +11168,22 @@ The properties are grouped under headings <it>mandatory, recommended, optional</
 		
 	<tbody>
 </table>
+
+   
+  <h3>Deprecated properties and classes</h3>
+<p>
+The following URIs used in DCAT-AP release 2.x for properties have been deprecated in DCAT-AP 3.0 [[vocab-dcat-3]] in favor for the URIs within the DCAT namespace.
+<ul>
+<li>idct:hasVersion is replaced by dcat:hasVersion.</li>
+<li>dct:isVersionOf is replaced by dcat:isVersionOf. </li>
+<li>owl:versionInfo is replaced by dcat:version. </li>
+</ul>
+</p><p>
+To identify these deprecations a SHACL shape is provided.
+</p>
+
+
+
 
 </section>
 
