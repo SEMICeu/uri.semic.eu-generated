@@ -8937,55 +8937,17 @@ Namely the geographical coverage of a dataset series will cover the union of all
 <p>A similar coherency concern applies to the temporal coverage of datasets.
 Publisher are advised to verify the properties title and description to match any reference to temporal and geographical coverage information with the properties.</p>
 
-<data.gov.gr/id/datasetseries/BeePopulation> a dcat:DatasetSeries;
-   dct:title "Bee population"@en ;
-   dcat:last <data.gov.gr/id/dataset/BeePopulation2022> ;
-   dct:spatial <Thessaloniki>, <Athens>
-
-
-<data.gov.gr/id/dataset/BeePopulation2022> a dcat:Dataset ;
-   dct:title "Bee population 2022 in the region of Thessaloniki"@en ;
-   dcat:inSeries <data.gov.gr/id/datasetseries/BeePopulation>;
-   dct:spatial <Thessaloniki>
-
-<data.gov.gr/id/dataset/BeePopulation2023> a dcat:Dataset ;
-   dct:title "Bee population 2023 in the region of Thessaloniki and Athens"@en ;
-   dcat:inSeries <data.gov.gr/id/datasetseries/BeePopulation>;
-   dcat:previous <data.gov.gr/id/dataset/BeePopulation2022> ;
-   dct:spatial <Thessaloniki>, <Athens>
-
-
-The metadata descriptions of a Dataset Series provide thus insight in how this collection of datasets evolves.
+<p>The metadata descriptions of a Dataset Series provide thus insight in how this collection of datasets evolves.
 Thus the release date of the Dataset Series <code>BeePopulation</code> correspond to the moment the collection has been issued for the first time.
 In many cases this moment corresponds to the earliest release date of the dataset in the collection.
-In the example first the Dataset <code>BeePopulation2022</code> was issued on <code>2022-04-01</code> while shortly after the Dataset Series was created.
+In the example first the Dataset <code>BeePopulation2022</code> was issued on <code>2022-04-01</code> while shortly after the Dataset Series was created.</p>
 
+<div class="h3 examples" id="example-bee-population-dataset-series-issued">Example 9 - Bee population dataset series issuing</div>
 
-<data.gov.gr/id/datasetseries/BeePopulation> a dcat:DatasetSeries;
-   dct:title "Bee population"@en ;
-   dcat:last <data.gov.gr/id/dataset/BeePopulation2022> ;
-   dct:issued "2022-04-01"^^xsd:date;
-   dct:spatial <Thessaloniki>, <Athens>
-
-
-<data.gov.gr/id/dataset/BeePopulation2022> a dcat:Dataset ;
-   dct:title "Bee population 2022 in the region of Thessaloniki"@en ;
-   dcat:inSeries <data.gov.gr/id/datasetseries/BeePopulation>;
-   dct:issued "2022-03-01"^^xsd:date;
-   dct:spatial <Thessaloniki>
-
-<data.gov.gr/id/dataset/BeePopulation2023> a dcat:Dataset ;
-   dct:title "Bee population 2023 in the region of Thessaloniki and Athens"@en ;
-   dcat:inSeries <data.gov.gr/id/datasetseries/BeePopulation>;
-   dcat:previous <data.gov.gr/id/dataset/BeePopulation2022> ;
-   dct:issued "2023-03-21"^^xsd:date;
-   dct:spatial <Thessaloniki>, <Athens>
-
-
-This relationship between the issueing date and the oldest dataset in the collection can reduce over time.
+<p>This relationship between the issueing date and the oldest dataset in the collection can reduce over time.
 The Greek Environment Agency and the National History Archives start to collaborate on the use and production of honey.
 That project results in new datasets on bee populations predating 2022. 
-To make that information visible, the Dataset Series collection is updated with these historic datasets.
+To make that information visible, the Dataset Series collection is updated with these historic datasets.</p>
 
 
 <data.gov.gr/id/datasetseries/BeePopulation> a dcat:DatasetSeries;
@@ -9070,14 +9032,36 @@ As such the use of a new API platform has not changed the data denoted by the da
 Similarly adding or removing distributions to a dataset did not affected the membership of dataset <code>BeePopulation2023</code> in the Dataset Series. 
 And thus the modication date of the Dataset Series is not adapated.
 
+<p/>
+To support the users even more, the API platform is extended with a possibility to get life counts of the bee population.
+This means that there is a dataset which data is updated very frequently, eg. every second.
+In that case the modification date at the level of metadata looses it value. 
+Namely one gets the data at query time.
+
+
+<data.gov.gr/id/dataset/BeePopulationLive> a dcat:Dataset ;
+   dct:title "life counts of the Bee population in Greece"@en ;
+   dcat:inSeries <data.gov.gr/id/datasetseries/BeePopulation>;
+   dcat:previous <data.gov.gr/id/dataset/BeePopulation2023> ;
+   dct:issued "2023-03-21"^^xsd:date;
+   dct:spatial <Greece>;
+
+
+<data.gov.gr/id/service/EA-API-Platform> a dcat:DataService;
+   dct:title "API platform for biodiversity data"@en;
+   dct:description "This data platform offers access to data related to biodiversity collected and published by the Greek Environment Agency"@en;
+   dcat:endpointURL <https://ea.gov.gr/api/v2/biodiversity>;
+   dcat:servesDataset <data.gov.gr/id/dataset/BeePopulationLive>;
 
 
 
 
 
-    The creation date (dcterms:created) of the dataset series should correspond to the earliest creation date of the child datasets.
-    The publication date (dcterms:issued) of the dataset series should correspond to the earliest publication date of the child datasets.
-    The update date (dcterms:modified) of the dataset series should correspond to the latest publication or update date of the child datasets.
+
+
+
+
+
 
 
 
