@@ -2067,7 +2067,7 @@ The main entities are those that form the core of the Application Profile.
                         Usage Note
                     </dt>
                     <dd>
-                        For DCAT-AP, the class is considered an abstract notion.
+                        Anything described by RDF.
                     </dd>
                 
                 
@@ -6879,7 +6879,7 @@ This is not equal to the release date of the oldest dataset in the collection of
                     Definition
                 </dt>
                 <dd>
-                    An association class for attaching additional information to a relationship between DCAT Resources
+                    An association class for attaching additional information to a relationship between DCAT Resources.
                 </dd>
                 
 		<dt>
@@ -7582,9 +7582,9 @@ They are included in the Application Profile because they form the range of prop
    
         <section>
             <h3 id="Identifier">
-                <a href="http://www.w3.org/ns/adms#identifier"
+                <a href="http://www.w3.org/ns/adms#Identifier"
                    data-toggle="tooltip"
-                   data-content="http://www.w3.org/ns/adms#identifier"
+                   data-content="http://www.w3.org/ns/adms#Identifier"
                    data-placement="right">Identifier</a>
 
             </h3>
@@ -7599,7 +7599,7 @@ They are included in the Application Profile because they form the range of prop
                     Definition
                 </dt>
                 <dd>
-                    An identifier in a particular context, consisting of the string that is the identifier; an optional identifier for the identifier scheme; an optional identifier for the version of the identifier scheme; an optional identifier for the agency that manages t
+                    An identifier in a particular context, consisting of the string that is the identifier; an optional identifier for the identifier scheme; an optional identifier for the version of the identifier scheme; an optional identifier for the agency that manages the identifier scheme.
                 </dd>
                 
                 
@@ -8860,7 +8860,10 @@ The shacl files are configured in this instance of the Interoperable Europe test
   <section class="informative">
 <h2>Example Dataset Series</h2>
 
-<p>This section describes the use of Dataset Series via examples.</p>
+<p>This section describes the use of Dataset Series via examples.
+All examples are fictious and are created to support the explanation.
+This section complements the usage explained in section <a href="https://w3c.github.io/dxwg/dcat/#dataset-series">Dataset series</a> in DCAT 3 [[vocab-dcat-3]].
+</p>
 
 <p>Consider the dataset 'Bee population in Greece" published by the Greek Environment Agency.
 Users can download the data as a CSV or an RDF file.</p>
@@ -8919,26 +8922,10 @@ In case of a single dataset description, the statement, in the example below, me
 <p>However when the publisher will introduces each year a new dataset description, then the update frequency of an existing dataset is none. Namely it will not be updated. 
 Without a Dataset Series notion the information of the yearly update is lost.</p>
 
+<div class="h3 examples" id="example-bee-population-dataset-series-frequency">Example 6 - Bee population dataset series frequency</div>
 
-<data.gov.gr/id/datasetseries/BeePopulation> a dcat:DatasetSeries;
-   dct:title "Bee population"@en ;
-   dcat:last <data.gov.gr/id/dataset/BeePopulation2022> ;
-   dct:frequency <YEARLY>
-
-   
-<data.gov.gr/id/dataset/BeePopulation2022> a dcat:Dataset ;
-   dcat:inSeries <data.gov.gr/id/datasetseries/BeePopulation>;
-   dct:frequency <NONE>
-
-<data.gov.gr/id/dataset/BeePopulation2023> a dcat:Dataset ;
-   dcat:inSeries <data.gov.gr/id/datasetseries/BeePopulation>;
-   dcat:previous <data.gov.gr/id/dataset/BeePopulation2022> ;
-   dct:frequency <NONE>
-
-
-
-Users expect that metadata of Dataset Series is coherent with the collection of datasets it refers to. 
-Up to 2022, the Greek Environment Agency has only the ability to provide the information for the region of Thessaloniki, and shared that via the spatial coverage.
+<p>Users expect that metadata of Dataset Series is coherent with the collection of datasets it refers to. 
+Up to 2022, the Greek Environment Agency has only the ability to provide the information for the region of Thessaloniki, and shared that via the spatial coverage.</p>
 
 <data.gov.gr/id/datasetseries/BeePopulation> a dcat:DatasetSeries;
    dct:title "Bee population"@en ;
@@ -8992,6 +8979,129 @@ Publisher are advised to verify the properties title and description to match an
    dct:spatial <Thessaloniki>, <Athens>
 
 
+The metadata descriptions of a Dataset Series provide thus insight in how this collection of datasets evolves.
+Thus the release date of the Dataset Series <code>BeePopulation</code> correspond to the moment the collection has been issued for the first time.
+In many cases this moment corresponds to the earliest release date of the dataset in the collection.
+In the example first the Dataset <code>BeePopulation2022</code> was issued on <code>2022-04-01</code> while shortly after the Dataset Series was created.
+
+
+<data.gov.gr/id/datasetseries/BeePopulation> a dcat:DatasetSeries;
+   dct:title "Bee population"@en ;
+   dcat:last <data.gov.gr/id/dataset/BeePopulation2022> ;
+   dct:issued "2022-04-01"^^xsd:date;
+   dct:spatial <Thessaloniki>, <Athens>
+
+
+<data.gov.gr/id/dataset/BeePopulation2022> a dcat:Dataset ;
+   dct:title "Bee population 2022 in the region of Thessaloniki"@en ;
+   dcat:inSeries <data.gov.gr/id/datasetseries/BeePopulation>;
+   dct:issued "2022-03-01"^^xsd:date;
+   dct:spatial <Thessaloniki>
+
+<data.gov.gr/id/dataset/BeePopulation2023> a dcat:Dataset ;
+   dct:title "Bee population 2023 in the region of Thessaloniki and Athens"@en ;
+   dcat:inSeries <data.gov.gr/id/datasetseries/BeePopulation>;
+   dcat:previous <data.gov.gr/id/dataset/BeePopulation2022> ;
+   dct:issued "2023-03-21"^^xsd:date;
+   dct:spatial <Thessaloniki>, <Athens>
+
+
+This relationship between the issueing date and the oldest dataset in the collection can reduce over time.
+The Greek Environment Agency and the National History Archives start to collaborate on the use and production of honey.
+That project results in new datasets on bee populations predating 2022. 
+To make that information visible, the Dataset Series collection is updated with these historic datasets.
+
+
+<data.gov.gr/id/datasetseries/BeePopulation> a dcat:DatasetSeries;
+   dct:title "Bee population"@en ;
+   dcat:last <data.gov.gr/id/dataset/BeePopulation2022> ;
+   dct:issued "2022-04-01"^^xsd:date;
+   dct:spatial <Greece>;
+
+<data.gov.gr/id/dataset/BeePopulation2000> a dcat:Dataset ;
+   dct:title "Bee population 2000 in Greece"@en ;
+   dcat:inSeries <data.gov.gr/id/datasetseries/BeePopulation>;
+   dct:issued "2023-06-01"^^xsd:date;
+   dct:spatial <Greece>
+
+<data.gov.gr/id/dataset/BeePopulation2022> a dcat:Dataset ;
+   dct:title "Bee population 2022 in the region of Thessaloniki"@en ;
+   dcat:inSeries <data.gov.gr/id/datasetseries/BeePopulation>;
+   dct:issued "2022-03-01"^^xsd:date;
+   dcat:previous <data.gov.gr/id/dataset/BeePopulation2000> ;
+   dct:spatial <Thessaloniki>
+
+<data.gov.gr/id/dataset/BeePopulation2023> a dcat:Dataset ;
+   dct:title "Bee population 2023 in the region of Thessaloniki and Athens"@en ;
+   dcat:inSeries <data.gov.gr/id/datasetseries/BeePopulation>;
+   dcat:previous <data.gov.gr/id/dataset/BeePopulation2022> ;
+   dct:issued "2023-03-21"^^xsd:date;
+   dct:spatial <Thessaloniki>, <Athens>
+
+
+The modification date of the Dataset Series is the moment the collection has changed. 
+The addition of the historic datasets changes the collection, and thus the modification date of the Dataset Series is set to <code>2023-06-01</code>.
+
+<data.gov.gr/id/datasetseries/BeePopulation> a dcat:DatasetSeries;
+   dct:title "Bee population"@en ;
+   dcat:last <data.gov.gr/id/dataset/BeePopulation2022> ;
+   dct:issued "2022-04-01"^^xsd:date;
+   dct:modified "2023-06-01"^^xsd:date;
+   dct:spatial <Greece>;
+
+<data.gov.gr/id/dataset/BeePopulation2000> a dcat:Dataset ;
+   dct:title "Bee population 2000 in Greece"@en ;
+   dcat:inSeries <data.gov.gr/id/datasetseries/BeePopulation>;
+   dct:issued "2023-06-01"^^xsd:date;
+   dct:modified "2023-06-01"^^xsd:date;
+   dct:spatial <Greece>
+
+<data.gov.gr/id/dataset/BeePopulation2022> a dcat:Dataset ;
+   dct:title "Bee population 2022 in the region of Thessaloniki"@en ;
+   dcat:inSeries <data.gov.gr/id/datasetseries/BeePopulation>;
+   dct:issued "2022-03-01"^^xsd:date;
+   dct:modified "2022-03-20"^^xsd:date;
+   dcat:previous <data.gov.gr/id/dataset/BeePopulation2000> ;
+   dct:spatial <Thessaloniki>
+
+<data.gov.gr/id/dataset/BeePopulation2023> a dcat:Dataset ;
+   dct:title "Bee population 2023 in the region of Thessaloniki and Athens"@en ;
+   dcat:inSeries <data.gov.gr/id/datasetseries/BeePopulation>;
+   dcat:previous <data.gov.gr/id/dataset/BeePopulation2022> ;
+   dct:issued "2023-03-21"^^xsd:date;
+   dct:modified "2023-03-21"^^xsd:date;
+   dct:spatial <Thessaloniki>, <Athens>
+
+
+To make the datasets easier to use, the Greek Environment Agency introduces a new API platform. Via this API platform the datasets are not downloadable in tabular format, but also in international Biodiversity  json format.
+
+
+<data.gov.gr/id/dataset/BeePopulation2023> a dcat:Dataset ;
+   dct:title "Bee population 2023 in the region of Thessaloniki and Athens"@en ;
+   dcat:inSeries <data.gov.gr/id/datasetseries/BeePopulation>;
+   dcat:previous <data.gov.gr/id/dataset/BeePopulation2022> ;
+   dct:issued "2023-03-21"^^xsd:date;
+   dct:modified "2023-03-21"^^xsd:date;
+   dct:spatial <Thessaloniki>, <Athens>;
+   dcat:distribution <data.gov.gr/id/distribution/BeePopulation2023/csv>,
+                     <data.gov.gr/id/distribution/BeePopulation2023/biojson>;
+
+<data.gov.gr/id/distribution/BeePopulation2023/csv> a dcat:Distribution;
+
+<data.gov.gr/id/distribution/BeePopulation2023/biojson> a dcat:Distribution;
+
+As such the use of a new API platform has not changed the data denoted by the dataset <code>BeePopulation2023</code>, and thus it is not necessary to adapt the modification date of the dataset.
+Similarly adding or removing distributions to a dataset did not affected the membership of dataset <code>BeePopulation2023</code> in the Dataset Series. 
+And thus the modication date of the Dataset Series is not adapated.
+
+
+
+
+
+
+    The creation date (dcterms:created) of the dataset series should correspond to the earliest creation date of the child datasets.
+    The publication date (dcterms:issued) of the dataset series should correspond to the earliest publication date of the child datasets.
+    The update date (dcterms:modified) of the dataset series should correspond to the latest publication or update date of the child datasets.
 
 
 
@@ -10833,7 +10943,7 @@ The properties are indicated as <it>mandatory, recommended, optional</it> and <i
 						
 							<tr>
 								<td><a href="#Identifier">Identifier</a></td>
-								<td><div class="shorten">http://www.w3.org/ns/adms#identifier</div></td>
+								<td><div class="shorten">http://www.w3.org/ns/adms#Identifier</div></td>
 								<td>Mandatory</td>
 								<td><a href="#Identifier.notation">notation </a></td>
 								<td><div class="shorten">http://www.w3.org/2004/02/skos/core#notation</div></td>
