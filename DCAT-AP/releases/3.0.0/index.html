@@ -119,6 +119,11 @@
       generatedSubtitle: "",
       additionalCopyrightHolders: "",
       localBiblio: {
+        "DXWG": {
+          "href" : "https://www.w3.org/2017/dxwg/wiki/Main_Page"
+          "title" : "Dataset Exchange Working Group",
+          "publisher" : "W3C"
+          }
         "ISA":{
            "href":"https://ec.europa.eu/isa/",
            "title":"Interoperability Solutions for European Public Administrations (ISA)",
@@ -185,40 +190,60 @@
     </h2>
     
 <h3>Context</h3>
+
+Around 2010, on behalf of the European Commission the access to public sector information was studied. These studies showed that businesses and citizens faced many difficulties in finding and re-using public sector information. 
+The studies indicated that the availability of the information in a machine-readable format as well as a thin layer of commonly agreed metadata could facilitate data cross-reference and interoperability and therefore considerably enhance its value for reuse.
+Therefore, to overcome these hurdles, the European Commission invested in policies [[PSI]], data interoperability[[SEMIC]]  and infrastructure [[DEU]]. 
+
+<p/>
+Interoperable Europe, within its mission to stimulate the data interoperability in Europe, manages this specification on the metadata agreements for sharing dataset descriptions bewteen data portals. 
+The governance is taken care by the SEMIC action within Interoperable Europe. 
+Initially, the scope of the specification was the exchange between Open Data Portals in Europa.
+Although this is still at the core of the specification, DCAT-AP is not limited to public accessible Open Data, but can be applied to any kind of datasets.
+In the past decade, DCAT-AP has grown from a single specification to a whole ecosystem of related and interconnected specifications.
+
+
+
+
+
+<h3>Scope of the Application Profile</h3>
 <p>
-This document has been prepared in the context of Action 1.1 – Improving semantic interoperability in European eGovernment systems  of the European Commission’s Interoperability Solutions for European Public Administrations (ISA) programme [[ISA]].
+The Application Profile specified in this document is based on the specification of the Data Catalog Vocabulary (DCAT) [[vocab-dcat-3]] developed under the responsibility of the Dataset Exchange Working Group (DXWG) at W3C [[[DXWG]]]. 
 </p><p>
-Studies conducted on behalf of the European Commission  show that businesses and citizens still face difficulties in finding and re-using public sector information. In its communication on Open Data  of 12 December 2011, the European Commission states that the availability of the information in a machine-readable format as well as a thin layer of commonly agreed metadata could facilitate data cross-reference and interoperability and therefore considerably enhance its value for reuse.
-</p><p>
-Much of the public sector information that would benefit from interoperability is published as datasets in data portals. Therefore, an agreement on a common format for data exchange would support the sharing, discovery and re-use of this data.
-</p><p>
-This document is the result of the major semantic change release process described in the Change and Release Management Policy for DCAT-AP  and was built starting from DCAT-AP version 1.2.1 [[dcat-ap-20190528]]. 
-</p>
-
-<p class="ednote" title="Editorial changes">
-This html document is based on the orginal text provided by DCAT-AP version 2.1.1 expressed as a PDF document. 
-This transition also included the additional information residing as documents in the GitHub respository on the validation and usage guidelines on Datasets, Distributions and Data Services.
-So that a single document is created with all the information and guidelines available for DCAT-AP.
-<br/>
-From that basis, the changes that were agreed during webinar of 23 Nov 2023 are being applied. This results in a version 2.1.2 with minor updates.
-<br/>
-In addition to these changes, editorial changes have been applied to take benefit from the HTML representation to improve the readibility.
-</p>
-
-
-<h3>Scope of the revision</h3>
-<p>
-The objective of this work is to produce an updated release of the DCAT Application Profile based on numerous requests for change coming from real-world implementations of the specification listed on github since the previous release.  
-</p><p>
-The Application Profile specified in this document is based on the specification of the Data Catalog Vocabulary (DCAT) [[vocab-dcat-2]] developed under the responsibility of the Government Linked Data Working Group  at W3C. DCAT is an RDF  vocabulary designed to facilitate interoperability between data catalogues published on the Web. Additional classes and properties from other well-known vocabularies are re-used where necessary.
+The objective of this work is to produce a profile of DCAT based on numerous requests for change coming from real-world implementations of the specification listed on github since the previous release. For that the DCAT specification is extended with improved definitions, usage notes and usages constraints such as cardinalities for properties and the usage of controlled vocabularies.  Additional classes and properties from other well-known vocabularies are re-used where necessary.
 </p><p>
 The work does not cover implementation issues like mechanisms for exchange of data and expected behaviour of systems implementing the Application Profile other than what is defined in the Conformance Statement in section [[[#conformance]]].
+The section [[[#validation-of-dcat-ap]]] provides SHACL templates and references to the Interoperability Testbed tool for validating a catalogue for compliance with DCAT-AP.
 </p><p>
 The Application Profile is intended to facilitate data exchange and therefore the classes and properties defined in this document are only relevant for the data to be exchanged; there are no requirements for communicating systems to implement specific technical environments. The only requirement is that the systems can export and import data in RDF in conformance with this Application Profile.
 </p>
 
-<h3>The DCAT specification</h3>
-The DCAT Application Profile defined in this document is based on the specification of the Data Catalog Vocabulary (DCAT) of 16 January 2014 , and the Data Catalog Vocabulary (DCAT) - Version 2, W3C Recommendation 04 February 2020 [[vocab-dcat-2]].
+<h3>Revision history</h3>
+The first DCAT-AP specification was released in september 2013. The subsequent releases 1.1, 1.2 and 1.2.1 improved the specification. These specifications are in line with the first release of the W3C DCAT 1 recommendation [[vocab-dcat-1]]. They express DCAT-AP in terms of Catalogue, Datasets and Distributions.
+With the adoption of the W3C DCAT 2 recommendation [[vocab-dcat-2]], an alignment process for DCAT-AP was initiated. This resulted in a new release DCAT-AP 2.0.0.
+The years after this specification was further elaborated in new release 2.0.1, 2.1.0 and 2.1.1.
+W3C DCAT 2 restructered DCAT by introducing the notions of a generic Catalogued Resource of which Datasets and Data Services are special cases.
+In 2023, the adoption of W3C DCAT 3 [[vocab-dcat-3]] triggered a new alignment for DCAT-AP.
+W3C DCAT 3 extends the profile with the Dataset Series notion.
+This document is the combination of addressing issues raised by the community and this alignement.
+<p/>
+
+<!--
+DCAT is an RDF vocabulary designed to facilitate interoperability between data catalogues published on the Web. 
+
+<p>
+This document has been prepared in the context of Action 1.1 – Improving semantic interoperability in European eGovernment systems  of the European Commission’s Interoperability Solutions for European Public Administrations (ISA) programme [[ISA]].
+</p><p>
+</p><p>
+Much of the public sector information that would benefit from interoperability is published as datasets in data portals. Therefore, an agreement on a common format for data exchange would support the sharing, discovery and re-use of this data.
+</p><p>
+This document is the result of the major semantic change release process described in the Change and Release Management Policy for DCAT-AP  and was built starting from DCAT-AP version 1.2.1 [[dcat-ap-20190528]]. 
+
+-->
+</p>
+
+
+
 
 </section>
 
@@ -11108,7 +11133,7 @@ The properties are indicated as <it>mandatory, recommended, optional</it> and <i
 <p>
 The following URIs used in DCAT-AP release 2.x for properties have been deprecated in DCAT-AP 3.0 [[vocab-dcat-3]] in favor for the URIs within the DCAT namespace.
 <ul>
-<li>idct:hasVersion is replaced by dcat:hasVersion.</li>
+<li>dct:hasVersion is replaced by dcat:hasVersion.</li>
 <li>dct:isVersionOf is replaced by dcat:isVersionOf. </li>
 <li>owl:versionInfo is replaced by dcat:version. </li>
 </ul>
