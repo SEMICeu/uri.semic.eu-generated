@@ -8,6 +8,7 @@
   <xs:element name="Resource" type="ResourceType"/>
   <xs:element name="Concept" type="ConceptType"/>
   <xs:element name="Kind" type="KindType"/>
+  <xs:element name="Identifier" type="IdentifierType"/>
   <xs:element name="Catalogue" type="CatalogueType"/>
   <xs:element name="CatalogueRecord" type="CatalogueRecordType"/>
   <xs:element name="DataService" type="DataServiceType"/>
@@ -89,6 +90,20 @@
     <xs:attribute name="KindRef" type="xs:IDREF">
       <xs:annotation>
         <xs:documentation xml:lang="en">Reference to Kind ID</xs:documentation>
+      </xs:annotation>
+    </xs:attribute>
+  </xs:complexType>
+  <xs:complexType name="IdentifierType">
+    <xs:sequence>
+      <xs:element name="Notation" type="xs:string" maxOccurs="1" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation xml:lang="en" source="#definition">A string that is an identifier in the context of the identifier scheme referenced by its datatype.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+    </xs:sequence>
+    <xs:attribute name="IdentifierRef" type="xs:IDREF">
+      <xs:annotation>
+        <xs:documentation xml:lang="en">Reference to Identifier ID</xs:documentation>
       </xs:annotation>
     </xs:attribute>
   </xs:complexType>
@@ -227,7 +242,7 @@ As multiple legislations may apply to the resource the maximum cardinality is no
   </xs:complexType>
   <xs:complexType name="DatasetType">
     <xs:sequence>
-      <xs:element name="OtherIdentifier" maxOccurs="unbounded" minOccurs="0">
+      <xs:element name="OtherIdentifier" type="IdentifierType" maxOccurs="unbounded" minOccurs="0">
         <xs:annotation>
           <xs:documentation xml:lang="en" source="#definition">A secondary identifier of the Dataset, such as MAST/ADS17, DataCite18, DOI19, EZID20 or W3ID21.</xs:documentation>
           <xs:documentation xml:lang="en" source="#usage">It is recommended to include all identifiers that the catalogue knows about this dataset.
