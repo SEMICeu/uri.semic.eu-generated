@@ -368,16 +368,17 @@ voaf: http://purl.org/vocommons/voaf#
     <h2>Overview</h2>
     
 <p>
-DCAT-AP is a DCAT profile for sharing information about Catalogues containing Datasets and Data Services descriptions in Europe. The core classes of the Application Profile are thus the classes Catalogue, Dataset, Distribution and Data Service. DCAT-AP allows Catalogues of only Datasets, but also Catalogues of only Data Services, but usually it will be a mixture of both.
+DCAT-AP is a DCAT profile for sharing information about Catalogues containing Datasets and Data Services descriptions in Europe. The core classes of the Application Profile are thus the classes Catalogue, Dataset, Distribution and Data Service. DCAT-AP allows Catalogues of only Datasets, but also Catalogues of only Data Services, but usually it will be a mixture of both. To further organise the Datasets within a Catalogue Dataset Series are introduces. Datasets that are a member of a Dataset Series have additional constraints beyond those applicable for Dataset.
+These constraints are expressed in the class Dataset member of Dataset Series.
 </p><p>
 The properties of the core classes may enforce the existence of other classes. One such important class is the class Agent. However in contrast to the core classes, DCAT-AP leaves a lot of freedom to the implementors to shape them to their needs. Only minimal expectations are expressed by DCAT-AP.
 </p><p>
 Elaborated statements about the expectations are found in section [[[#conformance]]] describing DCAT-AP conformance.
 </p><p>
-To improve the coherency between shared Dataset, Distribution and Data Service, DCAT-AP provides additional guidelines found in this document. 
+To improve the coherency between shared Dataset, Distribution and Data Service, section [[[##usage-guide-on-datasets-distributions-and-data-services]]] provides additional guidelines.
 
 </p><p>
-The list of included properties contain a selection of the properties from the W3C DCAT 2.0 specification [[vocab-dcat-2]]  on which DCAT-AP expresses additional constraints or on which DCAT-AP wants to emphasize their usage. Any property that is mentioned in DCAT applicable to a class but not explicitly is listed DCAT-AP is considered an optional field for DCAT-AP for that class. It means that for these properties DCAT-AP has no use cases that require additional usage considerations beyond ‘use the property as DCAT specifies’.
+The list of included properties contain a selection of the properties from the W3C DCAT 3 specification [[vocab-dcat-3]]  on which DCAT-AP expresses additional constraints or on which DCAT-AP wants to emphasize their usage. Any property that is mentioned in DCAT applicable to a class but not explicitly is listed DCAT-AP is considered an optional field for DCAT-AP for that class. It means that for these properties DCAT-AP has no use cases that require additional usage considerations beyond ‘use the property as DCAT specifies’.
 </p>
 
 <h3>Application profile diagram</h3>
@@ -4629,10 +4630,10 @@ E.g. A dataset budget 2020 with frequency yearly means that this dataset has an 
                                     
                                 </td>
                                 <td>
-                                    
+                                    0..n
                                 </td>
                                 <td property="rdfs:comment">
-                                    
+                                    The following resource (after the current one) in an ordered collection or series of resources.
                                 </td>
                                 <td property="skos:scopeNote">
                                     
@@ -4672,10 +4673,10 @@ E.g. A dataset budget 2020 with frequency yearly means that this dataset has an 
                                     
                                 </td>
                                 <td>
-                                    
+                                    0..n
                                 </td>
                                 <td property="rdfs:comment">
-                                    
+                                    The previous resource (before the current one) in an ordered collection or series of resources.
                                 </td>
                                 <td property="skos:scopeNote">
                                     Unless the dataset is the last in the chain a dataset in a collection must have a previous one.
@@ -10268,7 +10269,7 @@ The properties are indicated as <it>mandatory, recommended, optional</it> and <i
 							<tr>
 								<td><a href="#DatasetmemberofaDatasetSeries">Dataset member of a Dataset Series</a></td>
 								<td><div class="shorten">http://www.w3.org/ns/dcat#Dataset</div></td>
-								<td></td>
+								<td>Note</td>
 								<td><a href="#DatasetmemberofaDatasetSeries.next">next </a></td>
 								<td><div class="shorten">http://www.w3.org/ns/dcat#next</div></td>
 							</tr>
