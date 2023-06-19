@@ -486,6 +486,14 @@
           <xs:documentation xml:lang="en" source="#usage">This property can be repeated for parallel language versions of the name.</xs:documentation>
         </xs:annotation>
       </xs:element>
+      <xs:element name="PrimaryTopic" type="DatasetType" maxOccurs="1" minOccurs="1">
+        <xs:annotation>
+          <xs:documentation xml:lang="en" source="#definition">The foaf:primaryTopic property relates a document to the main thing that the document is about.</xs:documentation>
+          <xs:documentation xml:lang="en" source="#usage">The foaf:primaryTopic property is functional: for any document it applies to, it can have at most one value. This is useful, as it allows for data merging. In many cases it may be difficult for third parties to determine the primary topic of a document, but in a useful number of cases (eg. descriptions of movies, restaurants, politicians, ...) it should be reasonably obvious. Documents are very often the most authoritative source of information about their own primary topics, although this cannot be guaranteed since documents cannot be assumed to be accurate, honest etc.
+
+Note that there is no inverse of foaf:primaryTopic. We could have created a more general super-property of foaf:homepage to serve this purpose, but there is little obvious value in doing so.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
       <xs:element name="PrimaryTopic" type="CataloguedResourceType" maxOccurs="1" minOccurs="1">
         <xs:annotation>
           <xs:documentation xml:lang="en" source="#definition">A link to the Dataset, Data service or Catalog described in the record.</xs:documentation>
@@ -841,6 +849,13 @@ This is not equal to the release date of the oldest dataset in the collection of
           <xs:documentation xml:lang="en" source="#usage">This is not equal to the most recent modified dataset in the collection of the dataset series.</xs:documentation>
         </xs:annotation>
       </xs:element>
+      <xs:element name="Publisher" type="AgentType" maxOccurs="1" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation xml:lang="en" source="#definition">An entity (organisation) responsible for ensuring the coherency of the Dataset Series </xs:documentation>
+          <xs:documentation xml:lang="en" source="#usage">The publisher of the dataset series may not be the publisher of all datasets. 
+E.g. a digital archive could take over the publishing of older datasets in the series. </xs:documentation>
+        </xs:annotation>
+      </xs:element>
       <xs:element name="GeographicalCoverage" type="LocationType" maxOccurs="unbounded" minOccurs="0">
         <xs:annotation>
           <xs:documentation xml:lang="en" source="#definition">A geographic region that is covered by the Dataset Series.</xs:documentation>
@@ -1072,6 +1087,8 @@ This is not equal to the release date of the oldest dataset in the collection of
   </xs:complexType>
   <xs:complexType name="AgentType">
     <xs:sequence>
+      <xs:element name="Test" type="DatasetSeriesType" maxOccurs="unbounded" minOccurs="0"/>
+      <xs:element name="Test" type="DatasetSeriesType" maxOccurs="unbounded" minOccurs="0"/>
       <xs:element name="Type" type="conceptType" maxOccurs="1" minOccurs="0">
         <xs:annotation>
           <xs:documentation xml:lang="en" source="#definition">A type of the agent that makes the Catalogue or Dataset available.</xs:documentation>
