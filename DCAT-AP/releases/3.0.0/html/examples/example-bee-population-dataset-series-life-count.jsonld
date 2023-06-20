@@ -3,47 +3,138 @@
     "dcat": "http://www.w3.org/ns/dcat#",
     "xsd": "http://www.w3.org/2001/XMLSchema#",
     "dcterms": "http://purl.org/dc/terms/",
-    "rdf": "http://www.w3.org/1999/02/22-rdf-syntax-ns#"
-  },
+    "rdf": "http://www.w3.org/1999/02/22-rdf-syntax-ns#",
+
+    "example": "https://data.gov.gr/",
+    "example-ds": "https://data.gov.gr/id/dataset/",
+    "example-cat": "https://data.gov.gr/id/catalog/",
+    "example-ser": "https://data.gov.gr/id/datasetseries/",
+    "example-api": "https://data.gov.gr/id/service/",
+    "example-ag": "https://agencies.gov.gr/id/",
+
+    "DatasetMemberOfADatasetSeries": {
+      "@context": {
+        "description": {
+          "@container": "@set",
+          "@id": "http://purl.org/dc/terms/description"
+        },
+        "frequency": {
+          "@container": "@set",
+          "@id": "http://purl.org/dc/terms/accrualPeriodicity",
+          "@type": "@id"
+        },
+        "inSeries": {
+          "@container": "@set",
+          "@id": "http://www.w3.org/ns/dcat#inSeries",
+          "@type": "@id"
+        },
+        "next": {
+          "@container": "@set",
+          "@id": "http://www.w3.org/ns/dcat#next",
+          "@type": "@id"
+        },
+        "previous": {
+          "@container": "@set",
+          "@id": "http://www.w3.org/ns/dcat#prev",
+          "@type": "@id"
+        },
+        "title": {
+          "@container": "@set",
+          "@id": "http://purl.org/dc/terms/title"
+        }
+      },
+      "@id": "http://www.w3.org/ns/dcat#Dataset"
+    },
+  "Dataset": {
+      "@context": {
+        "frequency": {
+          "@container": "@set",
+          "@id": "http://purl.org/dc/terms/accrualPeriodicity",
+          "@type": "@id"
+        },
+        "geographicalCoverage": {
+          "@container": "@set",
+          "@id": "http://purl.org/dc/terms/spatial",
+          "@type": "@id"
+        },
+        "modificationDate": {
+          "@id": "http://purl.org/dc/terms/modified",
+          "@type": "xsd:date"
+        },
+        "releaseDate": {
+          "@id": "http://purl.org/dc/terms/issued",
+          "@type": "xsd:date"
+        }
+      },
+      "@id": "http://www.w3.org/ns/dcat#Dataset"
+    },
+
+    "DataService":  {
+      "@context": {
+        "accessRights": {
+          "@id": "http://purl.org/dc/terms/accessRights",
+          "@type": "@id"
+        },
+        "description": {
+          "@container": ["@set","@language"],
+          "@id": "http://purl.org/dc/terms/description"
+        },
+        "endpointDescription": {
+          "@container": "@set",
+          "@id": "http://www.w3.org/ns/dcat#endpointDescription",
+          "@type": "@id"
+        },
+        "endpointUrl": {
+          "@container": "@set",
+          "@id": "http://www.w3.org/ns/dcat#endpointURL",
+          "@type": "@id"
+        },
+        "format": {
+          "@container": "@set",
+          "@id": "http://purl.org/dc/terms/format",
+          "@type": "@id"
+        },
+        "licence": {
+          "@id": "http://purl.org/dc/terms/license",
+          "@type": "@id"
+        },
+        "servesDataset": {
+          "@container": "@set",
+          "@id": "http://www.w3.org/ns/dcat#servesDataset",
+          "@type": "@id"
+        },
+        "title": {
+          "@container": ["@set","@language"],
+          "@id": "http://purl.org/dc/terms/title"
+        }
+      },
+      "@id": "http://www.w3.org/ns/dcat#DataService"
+    }
+},
+
   "@graph": [
     {
-      "@id": "data.gov.gr/id/dataset/BeePopulationLive",
-      "@type": "dcat:Dataset",
-      "dcterms:issued": {
-        "@type": "xsd:date",
-        "@value": "2023-03-21"
+      "@id": "example-ds:BeePopulationLive",
+      "@type": ["Dataset", "DatasetMemberOfADatasetSeries"],
+      "releaseDate": "2023-03-21",
+      "geographicalCoverage": "https://www.geonames.org/390903",
+      "title": {
+        "en": "life counts of the Bee population in Greece"
       },
-      "dcterms:spatial": {
-        "@id": "https://www.geonames.org/390903"
-      },
-      "dcterms:title": {
-        "@language": "en",
-        "@value": "life counts of the Bee population in Greece"
-      },
-      "dcat:inSeries": {
-        "@id": "data.gov.gr/id/datasetseries/BeePopulation"
-      },
-      "dcat:previous": {
-        "@id": "data.gov.gr/id/dataset/BeePopulation2023"
-      }
+      "inSeries": "example-ser:BeePopulation",
+      "previous": "example-ds:BeePopulation2023"
     },
     {
-      "@id": "data.gov.gr/id/service/EA-API-Platform",
-      "@type": "dcat:DataService",
-      "dcterms:description": {
-        "@language": "en",
-        "@value": "This data platform offers access to data related to biodiversity collected and published by the Greek Environment Agency"
+      "@id": "example-api:EA-API-Platform",
+      "@type": "DataService",
+      "description": {
+        "en": "This data platform offers access to data related to biodiversity collected and published by the Greek Environment Agency"
       },
-      "dcterms:title": {
-        "@language": "en",
-        "@value": "API platform for biodiversity data"
+      "title": {
+        "en": "API platform for biodiversity data"
       },
-      "dcat:endpointURL": {
-        "@id": "https://ea.gov.gr/api/v2/biodiversity"
-      },
-      "dcat:servesDataset": {
-        "@id": "data.gov.gr/id/dataset/BeePopulationLive"
-      }
+      "endpointUrl": "https://ea.gov.gr/api/v2/biodiversity",
+      "servesDataset": "example-ds:BeePopulationLive"
     }
   ]
 }

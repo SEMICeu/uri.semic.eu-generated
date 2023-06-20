@@ -1,77 +1,168 @@
 {
   "@context": {
     "dcat": "http://www.w3.org/ns/dcat#",
-    "xsd": "http://www.w3.org/2001/XMLSchema#",
     "dcterms": "http://purl.org/dc/terms/",
-    "rdf": "http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+    "rdf": "http://www.w3.org/1999/02/22-rdf-syntax-ns#",
+    "nal-frequency": "http://publications.europa.eu/resource/authority/frequency/",
+
+    "example": "https://data.gov.gr/",
+    "example-ds": "https://data.gov.gr/id/dataset/",
+    "example-cat": "https://data.gov.gr/id/catalog/",
+    "example-ser": "https://data.gov.gr/id/datasetseries/",
+    "example-ag": "https://agencies.gov.gr/id/",
+
+    "DatasetMemberOfADatasetSeries": {
+      "@context": {
+        "description": {
+          "@container": "@set",
+          "@id": "http://purl.org/dc/terms/description"
+        },
+        "frequency": {
+          "@container": "@set",
+          "@id": "http://purl.org/dc/terms/accrualPeriodicity",
+          "@type": "@id"
+        },
+        "inSeries": {
+          "@container": "@set",
+          "@id": "http://www.w3.org/ns/dcat#inSeries",
+          "@type": "@id"
+        },
+        "next": {
+          "@container": "@set",
+          "@id": "http://www.w3.org/ns/dcat#next",
+          "@type": "@id"
+        },
+        "previous": {
+          "@container": "@set",
+          "@id": "http://www.w3.org/ns/dcat#prev",
+          "@type": "@id"
+        },
+        "title": {
+          "@container": "@set",
+          "@id": "http://purl.org/dc/terms/title"
+        }
+      },
+      "@id": "http://www.w3.org/ns/dcat#Dataset"
+    },
+  "Dataset": {
+      "@context": {
+        "frequency": {
+          "@container": "@set",
+          "@id": "http://purl.org/dc/terms/accrualPeriodicity",
+          "@type": "@id"
+        },
+        "geographicalCoverage": {
+          "@container": "@set",
+          "@id": "http://purl.org/dc/terms/spatial",
+          "@type": "@id"
+        },
+        "modificationDate": {
+          "@id": "http://purl.org/dc/terms/modified",
+          "@type": "xsd:date"
+        },
+        "releaseDate": {
+          "@id": "http://purl.org/dc/terms/issued",
+          "@type": "xsd:date"
+        }
+      },
+      "@id": "http://www.w3.org/ns/dcat#Dataset"
+    },
+    "DatasetSeries": {
+      "@context": {
+        "contactPoint": {
+          "@container": "@set",
+          "@id": "http://www.w3.org/ns/dcat#contactPoint",
+          "@type": "@id"
+        },
+        "description": {
+          "@container": "@set",
+          "@id": "http://purl.org/dc/terms/description"
+        },
+        "first": {
+          "@id": "http://www.w3.org/ns/dcat#first",
+          "@type": "@id"
+        },
+        "frequency": {
+          "@id": "http://purl.org/dc/terms/accrualPeriodicity",
+          "@type": "@id"
+        },
+        "geographicalCoverage": {
+          "@container": "@set",
+          "@id": "http://purl.org/dc/terms/spatial",
+          "@type": "@id"
+        },
+        "last": {
+          "@id": "http://www.w3.org/ns/dcat#last",
+          "@type": "@id"
+        },
+        "modificationDate": {
+          "@id": "http://purl.org/dc/terms/modified",
+          "@type": "xsd:date"
+        },
+        "publisher": {
+          "@id": "http://purl.org/dc/terms/publisher",
+          "@type": "@id"
+        },
+        "releaseDate": {
+          "@id": "http://purl.org/dc/terms/issued",
+          "@type": "xsd:date"
+        },
+        "seriesMember": {
+          "@container": "@set",
+          "@id": "http://www.w3.org/ns/dcat#seriesMember",
+          "@type": "@id"
+        },
+        "temporalCoverage": {
+          "@container": "@set",
+          "@id": "http://purl.org/dc/terms/temporal",
+          "@type": "@id"
+        },
+        "title": {
+          "@container": "@set",
+          "@id": "http://purl.org/dc/terms/title"
+        }
+      },
+      "@id": "http://www.w3.org/ns/dcat#DatasetSeries"
+    }
   },
   "@graph": [
     {
-      "@id": "data.gov.gr/id/dataset/BeePopulation2022",
-      "@type": "dcat:Dataset",
-      "dcterms:issued": {
-        "@type": "xsd:date",
-        "@value": "2022-03-01"
+      "@id": "example-ds:BeePopulation2022",
+      "@type": ["Dataset", "DatasetMemberOfADatasetSeries"],
+      "releaseDate": "2022-03-01",
+      "geographicalCoverage": "http://sws.geonames.org/734077",
+      "title": {
+        "en": "Bee population 2022 in the region of Thessaloniki"
       },
-      "dcterms:spatial": {
-        "@id": "http://sws.geonames.org/734077"
-      },
-      "dcterms:title": {
-        "@language": "en",
-        "@value": "Bee population 2022 in the region of Thessaloniki"
-      },
-      "dcat:inSeries": {
-        "@id": "data.gov.gr/id/datasetseries/BeePopulation"
-      }
+      "inSeries": "example-ser:BeePopulation",
+      "previous": "example-ds:BeePopulation2000"
     },
     {
-      "@id": "data.gov.gr/id/dataset/BeePopulation2023",
-      "@type": "dcat:Dataset",
-      "dcterms:issued": {
-        "@type": "xsd:date",
-        "@value": "2023-03-21"
-      },
-      "dcterms:spatial": [
-        {
-          "@id": "http://sws.geonames.org/734077"
-        },
-        {
-          "@id": "http://www.geonames.org/264371"
-        }
+      "@id": "example-ds:BeePopulation2023",
+      "@type": ["Dataset", "DatasetMemberOfADatasetSeries"],
+      "releaseDate": "2023-03-21",
+      "geographicalCoverage": [
+          "http://sws.geonames.org/734077",
+          "http://www.geonames.org/264371"
       ],
-      "dcterms:title": {
-        "@language": "en",
-        "@value": "Bee population 2023 in the region of Thessaloniki and Athens"
+      "title": {
+        "en": "Bee population 2023 in the region of Thessaloniki and Athens"
       },
-      "dcat:inSeries": {
-        "@id": "data.gov.gr/id/datasetseries/BeePopulation"
-      },
-      "dcat:previous": {
-        "@id": "data.gov.gr/id/dataset/BeePopulation2022"
-      }
+      "inSeries": "example-ser:BeePopulation",
+      "previous": "example-ds:BeePopulation2022"
     },
     {
-      "@id": "data.gov.gr/id/datasetseries/BeePopulation",
-      "@type": "dcat:DatasetSeries",
-      "dcterms:issued": {
-        "@type": "xsd:date",
-        "@value": "2022-04-01"
-      },
-      "dcterms:spatial": [
-        {
-          "@id": "http://sws.geonames.org/734077"
-        },
-        {
-          "@id": "http://www.geonames.org/264371"
-        }
+      "@id": "example-ser:BeePopulation",
+      "@type": "DatasetSeries",
+      "releaseDate": "2022-04-01",
+      "geographicalCoverage": [
+          "http://sws.geonames.org/734077",
+          "http://www.geonames.org/264371"
       ],
-      "dcterms:title": {
-        "@language": "en",
-        "@value": "Bee population"
+      "title": {
+        "en" : "Bee population"
       },
-      "dcat:last": {
-        "@id": "data.gov.gr/id/dataset/BeePopulation2022"
-      }
+      "last": "example-ds:BeePopulation2022"
     }
   ]
 }
