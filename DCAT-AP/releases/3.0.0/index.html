@@ -136,7 +136,7 @@
         },
         "SEMIC":{
           "href":"https://joinup.ec.europa.eu/",
-          "title":"Joinup welcomes Interoperable Europe",
+          "title":"JoinUp welcomes Interoperable Europe",
           "publisher":"European Commission"
          },
         "DEU" : {
@@ -230,16 +230,20 @@ The work does not cover implementation issues like mechanisms for exchange of da
 The section [[[#validation-of-dcat-ap]]] provides SHACL templates and references to the Interoperability Testbed tool for validating a catalogue for compliance with DCAT-AP.
 </p><p>
 The Application Profile is intended to facilitate data exchange and therefore the classes and properties defined in this document are only relevant for the data to be exchanged; there are no requirements for communicating systems to implement specific technical environments. The only requirement is that the systems can export and import data in RDF in conformance with this Application Profile.
-</p><p>
-The objective of the DCAT application profile is to enhance data findability and promote reusability. To achieve this goal, several essential requirements must be considered, including:
+</p>
+
+<p>
+As mentioned in the context, the prime objective of the Application Profile is to enhance data findability and promote reusability. 
+To achieve this goal, datasets should be coherently documented. 
+For that the Application Profile considers several essential aspects, including among others:
 <ul>
-	<li>License information</li>
-	<li>Understanding the data or service structure</li>
-	<li>Knowledge of trustworthy data publishers</li>
-	<li>Information on data availability</li>
-	<li>Knowledge of versioning and change policies to track data structure changes</li>
+	<li>Understanding the data or service structure, and how to get access to the data</li>
+	<li>Information on scope or purpose of the data</li>
+	<li>Legal information</li>
+	<li>Knowledge on data publishers, and any other agents involved</li>
+	<li>Knowledge of data availibility and change policies</li>
 </ul>
-By addressing these requirements the aim is to facilitate effective data reuse, allowing users to locate, understand and utilise the available data resources more efficiently.
+These are addressed with the aim to facilitate effective data reuse, allowing users to locate, understand and utilise the available data resources more efficiently.
 </p>
 
 <h3>Revision history</h3>
@@ -248,18 +252,34 @@ With the adoption of the W3C DCAT 2 recommendation [[vocab-dcat-2]], an alignmen
 The years after this specification was further elaborated in new release 2.0.1, 2.1.0 and 2.1.1.
 W3C DCAT 2 restructured DCAT by introducing the notions of a generic Catalogued Resource of which Datasets and Data Services are special cases.
 In 2023, the adoption of W3C DCAT 3 [[vocab-dcat-3]] triggered a new alignment for DCAT-AP.
-W3C DCAT 3 extends the profile with the Dataset Series notion.
+W3C DCAT 3 extends the profile with the Dataset Series notion. 
 This document is the combination of addressing issues raised by the community and this alignment.
+
+<h4>Notes on alignment with DCAT 3</h4>
+The introduction of Dataset Series in DCAT is from semantical, data modeling perspective an additive operation. 
+Therefore the impact on exsting DCAT-AP 2.x exchanges is limited. 
+Nevertheless, publishers may face substantial impact on the existing catalogues as the new terminology for Dataset Series may require to revisit the publisher's metadata guidelines.
+For instance, if the publisher had chosen to document a Dataset Series as a Dataset with multiple Distributions, then the alignment with Dataset Series as expressed in this specification will require a substantial effort. 
+This impact is beyond the specification and dependent on the usage of the shared information.
+In the context of DCAT-AP and in line with the conformance expectations, a dataset series will be resources that are explicitly identified by the class Dataset Series. 
+The situation, as mentioned, where a Dataset has multiple Distributions, will be considered as a Dataset with multiple Distributions and not as a Dataset Series. 
+In this way recievers of DCAT-AP metadata can rely on the classes to process the metadata.
 <p/>
+The sole data model impact DCAT 3 creates, is by deprecating the use of some URIs and introducing new URIs in the DCAT namespace for the use case of dataset versioning.
+As these properties are optional and there is an equivalence between the deprecated and the new ones, catalogue owners can realign that quickly.
+
+
 
 <h3>Meeting minutes</h3>
 The following webinars have been held for the creation of this release
     <ul>
 	<li>Webinar 25 November 2022 (<a href="https://joinup.ec.europa.eu/sites/default/files/inline-files/MeetingMinutes.pdf">Meeting Minutes</a>, <a href="https://www.youtube.com/watch?v=vpCu3wrBeso">recording</a>, <a href="https://joinup.ec.europa.eu/sites/default/files/inline-files/Slides.pdf">slides</a>) </li>
-    <li>Webinar 30 March 2023 (<a href="https://joinup.ec.europa.eu/sites/default/files/inline-files/20230330%20Webinar%20DCAT-AP%20for%20HVD.pdf">Meeting Minutes</a>, <a href="https://www.youtube.com/watch?v=mBXLW2jOA3I">recording</a>, <a href="https://joinup.ec.europa.eu/sites/default/files/inline-files/webinar_30_mar_2022_HVD_finalpdf.pdf">slides</a>) </li>
-    <li>Webinar 24 February 2023 (<a href="https://joinup.ec.europa.eu/sites/default/files/event/attachment/2023-03/20230224%20Webinar%20DCAT-AP%20for%20HVD.pdf">Meeting Minutes</a>, <a href="https://www.youtube.com/watch?v=koJKgjyfIWc">recording</a>, <a href="https://joinup.ec.europa.eu/sites/default/files/inline-files/webinar_24_Feb_2022_HVD_v3.1.pdf">slides</a>) </li>
-    <li>Webinar 2 February 2023 (<a href="https://joinup.ec.europa.eu/sites/default/files/inline-files/20230202%20Webinar%20DCAT-AP.pdf">Meeting Minutes</a>, <a href="https://www.youtube.com/watch?v=teUeMLwv4Ks">recording</a>, <a href="https://joinup.ec.europa.eu/sites/default/files/inline-files/webinar_2_feb_2022_DCAT-AP_v.0.3.pdf">slides</a>) </li>
-	</ul>
+       <li>Webinar 2 February 2023 (<a href="https://joinup.ec.europa.eu/sites/default/files/inline-files/20230202%20Webinar%20DCAT-AP.pdf">Meeting Minutes</a>, <a href="https://www.youtube.com/watch?v=teUeMLwv4Ks">recording</a>, <a href="https://joinup.ec.europa.eu/sites/default/files/inline-files/webinar_2_feb_2022_DCAT-AP_v.0.3.pdf">slides</a>) </li>
+   </ul>
+
+
+
+
 <!--
 DCAT is an RDF vocabulary designed to facilitate interoperability between data catalogues published on the Web. 
 
@@ -884,7 +904,7 @@ The main entities are those that form the core of the Application Profile.
                                     A Dataset that is part of the Catalogue.
                                 </td>
                                 <td property="skos:scopeNote">
-                                    As empty Catalogues are usually indications of problems, this property should be combined with the property <a href="#Catalogue.service ">service</a> to implement an empty Catalogue check.
+                                    As empty Catalogues are usually indications of problems, this property should be combined with the property <a href="#Catalogue.service">service</a> to implement an empty Catalogue check.
                                 </td>
 				<!--
                                 <td>
@@ -1443,7 +1463,7 @@ The main entities are those that form the core of the Application Profile.
                                     A site or end-point (Data Service) that is listed in the Catalogue.
                                 </td>
                                 <td property="skos:scopeNote">
-                                    As empty Catalogues are usually indications of problems, this property should be combined with the property <a href="#Catalogue.dataset ">dataset</a> to implement an empty Catalogue check.
+                                    As empty Catalogues are usually indications of problems, this property should be combined with the property <a href="#Catalogue.dataset">dataset</a> to implement an empty Catalogue check.
                                 </td>
 				<!--
                                 <td>
