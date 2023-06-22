@@ -8861,6 +8861,49 @@ Orthogonal to the nature clarification of distributions and data services, there
 </p><p>
 These guidelines will be able to capture many access patterns, corresponding to most users' expectations. However there might be cases that are more vague. In that case the DCAT(-AP) community can be questioned for a recommended approach.
 </p>
+
+
+<h3>Usage guide on Dataset Series</h3>
+Dataset Series can be considered as message from the publisher that the data of a dataset evolves according to one or more dimensions and that this evolution is available via a collection of independent, yet closely related, datasets.
+<p/>
+The need for sharing this grouping explicitly is strongly use case dependent, and therefore as this will require additional metadata management effort by the publisher, the use of Dataset Series is optional.
+It should fit the objectives.
+For instance, if a publisher is sharing an active updated dataset accessible via an API, that provides current as historic data, then it is not mandatory to created metadata records for each snapshot per year. Only if these snapshots are created intentionally and the publisher wants to share the life cycle of them with the public, then Dataset Series come into the picture.
+<p/>
+In order to harmonise the use of Dataset Series, the following guidelines are to be considered:
+<ul>
+<li>To introduce a Dataset Series only if the publisher has the intend to manage a collection of datasets. Dataset Series with a single dataset in the collection should be avoided.
+</li>
+<li>Dataset Series without a dataset in the collection should be avoided. In that case, publishers should ensure that the metadata, in particular, the life cycle metadata is up to date. 
+For instance, if dataset get retracted and as consequence the collection becomes empty, then publishers should consider to retract also the Dataset Series.
+In case, publishers use persistent identifiers, then this should be reflected in the status of the Dataset Series.
+</li>
+<li>A Dataset Series is an conceptual dataset without distributions.
+When interpreting a Dataset Series as a Dataset, then it is expected that the directly associated Distributions contain the data that is the union of all Datasets in the collection. 
+But the presence of these Distributions raise semantical conflicts such as whether the property of the Dataset Series <code>frequency</code> refers to the update frequency of the associated Distributions or the update frequency of the collection. To avoid these semantical conflicts, it is recommended not to associate distributions with a Dataset Series.
+</li>
+<li>The members of a Dataset Series should be described in such a way that without the knowledge of the Dataset Series, the metadata is interpreted correctly. The existance of a dataset should not be based on the membership in a Dataset Series. The interpretation of a member with its associated Distributions and Data Services is conform the above guidelines.
+</ul>
+
+<p/>
+In general it is expected that the members of Dataset Series are strongly connected. 
+However, there are no common criteria or rules how this connection should be determined.
+Usually, the shared characteristics are expressed as a data domain, e.g. the population of bees, and some evolution in space and time, e.g. in Greece for the period of 2019-2023, and published by a single publisher.
+Nevertheless, other characteristics could give raise to the creation of a Dataset Series.
+<p/>
+In case the connection is very strong or the result of an automated process, versioning terminology is a natural way to express the connection between the Datasets in the Dataset Series collection.
+For guidelines on expressing versioning information in DCAT-AP, consult the <a href="https://w3c.github.io/dxwg/dcat/#version-history">DCAT guidelines on versioning</a>.
+As versioning is not always the most appropriate terminology, DCAT introduces properties <a href="https://w3c.github.io/dxwg/dcat/#ex-dataset-series-containment">(e.g. next, previous, inSeries, last, etc.)</a> to interconnect the Dataset Series with its members and among the members themselves. 
+It is recommended to use always these properties in combination with Dataset Series, and versioning when appropriate.
+<p/>
+The membership in a Dataset Series may influence the (descriptive) metadata to highlight differences from other Datasets in the collection. 
+For instance, a usual adaption is the addition of the release data in the title.
+
+
+
+
+
+
 </section>
 
   <section class="informative">
