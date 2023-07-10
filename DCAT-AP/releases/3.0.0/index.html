@@ -261,18 +261,18 @@ Therefore the impact on existing DCAT-AP 2.x exchanges is limited.
 Nevertheless, publishers may face substantial impact on the existing catalogues as the new terminology for Dataset Series may require to revisit the publisher's metadata guidelines.
 For instance, if the publisher had chosen to document a Dataset Series as a Dataset with multiple Distributions, then the alignment with Dataset Series as expressed in this specification will require a substantial effort. 
 This impact goes beyond the specification and dependent on the usage of the shared information.
-In the context of DCAT-AP and in line with the conformance expectations, dataset series will be resources that are explicitly identified by the class Dataset Series. 
+In the context of DCAT-AP and in line with the conformance expectations, the term Dataset Series will be solely used for resources that are explicitly identified by the class Dataset Series. 
 The situation, as mentioned, where a Dataset has multiple Distributions, will be considered as a Dataset with multiple Distributions and not as a Dataset Series. 
 This way, receivers of DCAT-AP metadata can rely on the classes to process the metadata.
 <p/>
-The sole data model impact DCAT 3 creates, is by deprecating the use of some URIs and introducing new URIs in the DCAT namespace for the use case of dataset versioning.
-As these properties are optional and there is an equivalence between the deprecated and the new ones, catalogue owners can realign this easily.
+The sole data model impact DCAT 3 creates, is by deprecating the use of some URIs and introducing new URIs in the DCAT namespace for the use case of Dataset versioning.
+As these properties are optional and since there is an equivalence between the deprecated and the new ones, catalogue owners can easily realign.
 
 <p class="ednote" title="Data model adaptations">
 <ul>
 <li>Added class Dataset Series, alignment with DCAT 3.0</li>
-<li>Added class Dataset member of a Dataset Series, to support the special case of datasets that are a member of a Dataset Series</li>
-<li>Replaced the URI mapping for the dataset properties hasVersion, isVersionOf and version, alignment with DCAT 3.0</li>
+<li>Added class Dataset member of a Dataset Series, to support the special case of Datasets that are a member of a Dataset Series</li>
+<li>Replaced the URI mapping for the Dataset properties hasVersion, isVersionOf and version, alignment with DCAT 3.0</li>
 <li>fix range for Distribution bytesize, alignment with DCAT 3.0</li>
 <li>change range for Location geometry, alignment with DCAT 3.0</li>
 <li>add property Data Service format
@@ -9002,12 +9002,9 @@ This update can be reflected in the DCAT-AP description in various ways.</p>
 <p>The first option is to update and renew the metadata each update.
 For instance, the temporal coverage changes from the period "2020 - 2022" to "2020 - 2023".</p>
 
-
 <p>This solution has as benefit that new information is shared with a minimal effort of publisher.
 However, this approach removes the previous state of affairs from the metadata and also does not reflect the aggregation and publishing effort for the dataset in the metadata.
 In some cases this is a desired outcome.</p>
-
-<h2> Balance between updating existing datasets or creating a new one </h2>
 
 <p>The alternative option is the creation of a new dataset description.
 Often this choice is a voluntary decision, however it might be enforced by legislation. 
@@ -9082,9 +9079,9 @@ The addition of the historic datasets changes the collection, and thus the modif
 
 <div class="h3 examples" id="example-bee-population-dataset-series-modified">Example 11 - Bee population dataset series with modification date</div>
 
-<p>To make the datasets easier to use, the Greek Environment Agency introduces a new API platform. Via this API platform the datasets are not downloadable in tabular format, but also in international Biodiversity  JSON format.</p>
+<p>To make the datasets easier to use, the Greek Environment Agency introduces a new API platform. Via this API platform the datasets are not only downloadable in tabular format, but also in the international Biodiversity JSON format.</p>
 
-<div class="h3 examples" id="example-bee-population-dataset-series-api">Example 11 - Bee population dataset series API</div>
+<div class="h3 examples" id="example-bee-population-dataset-series-api">Example 11 - Bee population available in new format</div>
 
 As such the use of a new API platform has not changed the data denoted by the dataset <code>BeePopulation2023</code>, and so it is not necessary to adapt the modification date of the dataset.
 Similarly adding or removing distributions to a dataset did not affected the membership of dataset <code>BeePopulation2023</code> in the Dataset Series. 
@@ -9093,10 +9090,22 @@ And thus the modification date of the Dataset Series is not adapted.
 <p/>
 To support the users even more, the API platform is extended with a possibility to get life counts of the bee population.
 This means that there is a dataset which data is updated very frequently, eg. every second.
-In that case the modification date at the level of metadata looses it value. 
+In that case providing a modification date for the dataset becomes a technical challenge, but also it reduces it value.
 Namely one gets the data at query time.</p>
 
 <div class="h3 examples" id="example-bee-population-dataset-series-life-count">Example 12 - Bee population dataset series API life count</div>
+
+All this can be combined in one dataset series about the Bee population. Doing so, the Bee population dataset series becomes 
+less a structured sequence of yearly snapshots of the Bee population data, but more a collection of datasets around the same topic.
+Likewise DCAT, DCAT-AP does not limit the use of dataset series to a strict interpretation. Making this approach acceptable. 
+Nevertheless users usually expect that the datasets of a Dataset Series are strongly related, and the notion of a series or sequence is somehow present in the collection.
+Diverging too far from this interpretion is not recommended.
+The alternative for dataset series for grouping datasets are catalogues. 
+
+<div class="h3 examples" id="combined-bee-population-dataset-series">Example 13 - Bee population dataset series</div>
+
+
+
 
 </section>
 
