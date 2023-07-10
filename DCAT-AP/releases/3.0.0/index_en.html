@@ -8935,6 +8935,54 @@ These requirements can be expressed as additional constraints and usage notes on
 </section>
 
   <section class="informative">
+  <h2>Support for implementation</h2>
+
+Implementing the DCAT-AP data specification in a data exchange between two systems raises also technical questions.
+<p/>
+
+A basic technical question is the format in which the data is being exchanged. 
+For DCAT-AP conformance, it is not mandatory that this happens in a RDF serialisation, but the exhanged format SHOULD be unambigously be transformable into RDF.
+For the format JSON, a popular format to exchange data between systems, DCAT-AP provides a JSON-LD context file. 
+JSON-LD is a W3C Recommendation that provided a standard appproach to interpret JSON structures as RDF.
+The provided JSON-LD context file can be used by implementers to base their data exchange upon, and so create a DCAT-AP conformant data exchange.
+This JSON-LD context is not normative, i.e. other JSON-LD contexts are allowed to create a a conformant DCAT-AP data exchange.
+
+<p/>
+For implementers, the requirement to being able to exchange data as RDF impacts the design of the echange format and the data management. 
+One aspect, the use of identifiers,  needs special attention as it influences the interpretation by others. 
+DCAT-AP is used mostly in a harvesting network: where one catalogue harvests from other. 
+By this process, the DCAT-AP metadata descriptions spread through the harvesting network. 
+In contrast to "classical" data exchange patterns where by default identifiers are locally scoped to the exchange context, the RDF format implicitely assumes global, public accessible identifiers (URIs).
+Harvesting enforces the latter. 
+More on this identifier challenge and possible solution approaches are found in [[XXX]].
+
+
+<p/>
+To verify if the data exchange is (technically) conformant to DCAT-AP, the exchanged data can be validated using the provided SHACL shapes. 
+SHACL is a W3C Recommendation to express contraints on a RDF knowledge graph. 
+The provided SHACL shapes allow to check whether an DCAT-AP catalogue expressed in a RDF serialization is valid.
+As it should be possible for DCAT-AP conformance to transform the data exchange in RDF, these SHACL shapes can be used in any data exchange context.
+However, likewise the use of the JSON-LD context, the provided SHACL shapes provide only a start point for implementers. 
+<p/>
+On the one hand, the shapes may check situations that never occur in the implemented data exchange and result in messages that confuse publishers, or they are to general and more detailed checks should be implenented. 
+For example, the nature of a licence is recommended by DCAT-AP, but most DCAT-AP exchanges assume that based on the URI of the licence this information is known. 
+Thus the check that a licence should have a licence type is considered often not relevant for the individual publishers, but more for the catalogue maintainers to ensure they guide individual publishers to use licence URIs that a qualityfull documented..
+The case that a title cannot be an empty string and must have a value is a specific language are examples of more detailed constraints that are not present in the provided DCAT-AP SHACL shapes.
+The provided SHACL shapes assist thus implementers in the creation of the SHACL shape fit for purpose.
+<p/>
+More on the validation and the provided SHACL shapes can be found in section [[[#validation-of-dcat-ap]]].
+<p/>
+
+
+
+
+
+
+
+
+</section>
+
+  <section class="informative">
   <h2>Validation of DCAT-AP</h2>
 
 <p>
@@ -9101,9 +9149,8 @@ Likewise DCAT, DCAT-AP does not limit the use of dataset series to a strict inte
 Nevertheless users usually expect that the datasets of a Dataset Series are strongly related, and the notion of a series or sequence is somehow present in the collection.
 Diverging too far from this interpretion is not recommended.
 The alternative for dataset series for grouping datasets are catalogues. 
-
-<div class="h3 examples" id="combined-bee-population-dataset-series">Example 13 - Bee population dataset series</div>
-
+<p/>
+<div class="h3 examples" id="example-bee-population-dataset-series-combined">Example 13 - Bee population dataset series</div>
 
 
 
