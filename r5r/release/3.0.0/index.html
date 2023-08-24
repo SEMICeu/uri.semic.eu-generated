@@ -150,6 +150,11 @@
 		  "title":"Usage Guidelines of DCAT-AP for High-Value Datasets",
 		  "publisher":"European Commission"
 		},
+		"DCAT-AP" : {
+		  "href":"https://semiceu.github.io/DCAT-AP/releases/3.0.0/",
+		  "title":"DCAT-AP, a DCAT profile for European data portals",
+		  "publisher":"European Commission"
+		},
                 "PSI" : {
                   "href": "https://eur-lex.europa.eu/eli/dir/2019/1024/oj",
                   "title" :  "Directive on open data and the re-use of public sector information (recast)",
@@ -192,91 +197,20 @@
     
 <h3>Context</h3>
 
-Around 2010, on behalf of the European Commission the access to public sector information was studied. These studies showed that businesses and citizens faced many difficulties in finding and reusing public sector information. 
-The studies indicated that the availability of the information in a machine-readable format as well as a thin layer of commonly agreed metadata could facilitate data cross-reference and interoperability and therefore considerably enhance its value for reuse.
-Therefore, to overcome these hurdles, the European Commission invested in policies [[PSI]], data interoperability [[SEMIC]]  and infrastructure [[DEU]]. 
-
+This vocabulary is <strong>supporting</strong> DCAT-AP, the DCAT application profile for European data portals [[DCAT-AP]]. 
+The terms defined in this namespace are defined as broad as possible for wider reuse but are scoped to the needs of DCAT-AP. 
+All terms in this vocabulary have therefore a strong connection with DCAT-AP.
 <p/>
-Interoperable Europe, within its mission to stimulate the data interoperability in Europe, manages this specification on the metadata agreements for sharing dataset descriptions between data portals. 
-The governance is taken care by the SEMIC action within Interoperable Europe. 
-Initially, the scope of the specification was the exchange between Open Data Portals in Europa.
-Although this is still at the core of the specification, DCAT-AP is not limited to public accessible Open Data, but can be applied to any kind of datasets.
-In the past decade, DCAT-AP has grown from a single specification to a whole ecosystem of related and interconnected specifications.
 
-
-
-
-
-<h3>Scope of the Application Profile</h3>
-<p>
-The Application Profile specified in this document is based on the specification of the Data Catalog Vocabulary (DCAT) [[vocab-dcat-3]] developed under the responsibility of the Dataset Exchange Working Group (DXWG) at W3C [[[DXWG]]]. 
-</p><p>
-The objective of this work is to produce a profile of DCAT based on numerous requests for change coming from real-world implementations of the specification listed on GitHub since the previous release. For that the DCAT specification is extended with improved definitions, usage notes and usages constraints such as cardinalities for properties and the usage of controlled vocabularies.  Additional classes and properties from other well-known vocabularies are re-used where necessary.
-</p><p>
-The work does not cover implementation issues like mechanisms for exchange of data and expected behaviour of systems implementing the Application Profile other than what is defined in the Conformance Statement in section [[[#conformance]]].
-The section [[[#validation-of-dcat-ap]]] provides SHACL templates and references to the Interoperability Testbed tool for validating a catalogue for compliance with DCAT-AP.
-</p><p>
-The Application Profile is intended to facilitate data exchange and therefore the classes and properties defined in this document are only relevant for the data to be exchanged; there are no requirements for communicating systems to implement specific technical environments. The only requirement is that the systems can export and import data in RDF in conformance with this Application Profile.
-</p>
-
-<p>
-As mentioned in the context, the prime objective of the Application Profile is to enhance data findability and promote reusability. 
-To achieve this goal, datasets should be coherently documented. 
-To enable this, the Application Profile considers several essential aspects, including among others:
-<ul>
-	<li>Understanding the data or service structure, and how to get access to the data</li>
-	<li>Information on scope or purpose of the data</li>
-	<li>Legal information</li>
-	<li>Knowledge on data publishers, and any other agents involved</li>
-	<li>Knowledge of data availability and change policies</li>
-</ul>
-These are addressed with the aim to facilitate effective data reuse, allowing users to locate, understand and utilise the available data resources more efficiently.
-</p>
 
 <h3>Revision history</h3>
-The first DCAT-AP specification was released in September 2013. The subsequent releases 1.1, 1.2 and 1.2.1 improved the specification. These specifications are in line with the first release of the W3C DCAT 1 recommendation [[vocab-dcat-1]]. They express DCAT-AP in terms of Catalogue, Datasets and Distributions.
-With the adoption of the W3C DCAT 2 recommendation [[vocab-dcat-2]], an alignment process for DCAT-AP was initiated. This resulted in a new release DCAT-AP 2.0.0.
-The years after this specification was further elaborated in new release 2.0.1, 2.1.0 and 2.1.1.
-W3C DCAT 2 restructured DCAT by introducing the notions of a generic Catalogued Resource of which Datasets and Data Services are special cases.
-In 2023, the adoption of W3C DCAT 3 [[vocab-dcat-3]] triggered a new alignment for DCAT-AP.
-W3C DCAT 3 extends the profile with the Dataset Series notion.
-This document is the combination of addressing issues raised by the community and this alignment.
+The property <div class="shorten">http://data.europa.eu/r5r/availability</div> has been introduced in DCAT-AP release 2.x.
 
-<h4>Notes on alignment with DCAT 3</h4>
-The introduction of Dataset Series in DCAT is an additive operation from semantical, data modeling perspective. 
-Therefore the impact on existing DCAT-AP 2.x exchanges is limited. 
-Nevertheless, publishers may face substantial impact on the existing catalogues as the new terminology for Dataset Series may require to revisit the publisher's metadata guidelines.
-For instance, if the publisher had chosen to document a Dataset Series as a Dataset with multiple Distributions, then the alignment with Dataset Series as expressed in this specification will require a substantial effort. 
-This impact goes beyond the specification and dependent on the usage of the shared information.
-In the context of DCAT-AP and in line with the conformance expectations, the term Dataset Series will be solely used for resources that are explicitly identified by the class Dataset Series. 
-The situation, as mentioned, where a Dataset has multiple Distributions, will be considered as a Dataset with multiple Distributions and not as a Dataset Series. 
-This way, receivers of DCAT-AP metadata can rely on the classes to process the metadata.
-<p/>
-The sole data model impact DCAT 3 creates, is by deprecating the use of some URIs and introducing new URIs in the DCAT namespace for the use case of Dataset versioning.
-As these properties are optional and since there is an equivalence between the deprecated and the new ones, catalogue owners can easily realign.
-
-<div class="ednote" title="Data model adaptations">
+The creation of an annex of DCAT-AP for High Value Datasets, DCAT-AP HVD [[DCAT-AP-HVD]], introduced 2 new properties 
 <ul>
-<li>Added class Dataset Series, alignment with DCAT 3.0</li>
-<li>Added class Dataset member of a Dataset Series, to support the special case of Datasets that are a member of a Dataset Series</li>
-<li>Replaced the URI mapping for the Dataset properties hasVersion, isVersionOf and version, alignment with DCAT 3.0</li>
-<li>Fixed the range for Distribution bytesize, alignment with DCAT 3.0</li>
-<li>Changed the range for Location geometry, alignment with DCAT 3.0</li>
-<li>Add the property Data Service format</li>
-<li>Replaced mandatory Distribution status controlled vocabulary</li>
+<li><div class="shorten">http://data.europa.eu/r5r/applicableLegislation</div></li>
+<li><div class="shorten">http://data.europa.eu/r5r/hvdCategory</div></li>
 </ul>
-
-To support the review, the changes are also highlighted on the diagram below.
-
-    <div>
-        <a href="https://semiceu.github.io/DCAT-AP/releases/3.0.0/html/overview-annotated.jpg"
-           target="_blank">
-            <img src="https://semiceu.github.io/DCAT-AP/releases/3.0.0/html/overview-annotated.jpg"/>
-        </a>
-    </div>
-</div>
-
-
 
 
 <h3>Meeting minutes</h3>
@@ -287,18 +221,6 @@ The following webinars have been held for the creation of this release
    </ul>
 
 
-<!--
-DCAT is an RDF vocabulary designed to facilitate interoperability between data catalogues published on the Web. 
-
-<p>
-This document has been prepared in the context of Action 1.1 – Improving semantic interoperability in European eGovernment systems  of the European Commission’s Interoperability Solutions for European Public Administrations (ISA) programme [[ISA]].
-</p><p>
-</p><p>
-Much of the public sector information that would benefit from interoperability is published as datasets in data portals. Therefore, an agreement on a common format for data exchange would support the sharing, discovery and re-use of this data.
-</p><p>
-This document is the result of the major semantic change release process described in the Change and Release Management Policy for DCAT-AP  and was built starting from DCAT-AP version 1.2.1 [[dcat-ap-20190528]]. 
-
--->
 </p>
 
 
@@ -309,9 +231,7 @@ This document is the result of the major semantic change release process describ
 
 <section id="abstract">
     <h2>Abstract</h2>
-DCAT-AP is a DCAT profile for sharing information about Catalogues containing Datasets and Data Services descriptions in Europe, under maintenance by the SEMIC action, Interoperable Europe.
-<p/>
-This Application Profile provides a minimal common basis within Europe to share Dataset and Data Services cross-border and cross-domain.
+The vocabulary identified by the namespace http://data.europa.eu/r5r supports the DCAT-AP profile. It is under maintenance by the SEMIC action, Interoperable Europe.
 </section>
 
 
@@ -350,68 +270,24 @@ This Application Profile provides a minimal common basis within Europe to share 
 </section>
 
 
-  <section id="conformance" class="informative">
-<h2>Conformance Statement</h2>
-
-<h3>Provider requirements</h3>
-In order to conform to this Application Profile, an application that provides metadata MUST:
-<ul>
-<li>Provide a description of the Catalogue, including at least the mandatory properties specified for the class <a href="#Catalogue">Catalogue</a>.</li>
-<li>Provide information for the mandatory properties for <a href="#CatalogueRecord">Catalogue Records</a>, if descriptions of Catalogue Records are provided – please note that the provision of descriptions of Catalogue Records is optional.</li>
-<li>Provide descriptions of Datasets in the Catalogue, including at least the mandatory properties for the class <a href="#Dataset">Dataset</a>.</li>
-<li>Provide descriptions of Distributions, if any, of Datasets in the Catalogue, including at least the mandatory properties for the class <a href="#Distribution">Distribution</a>.</li>
-
-<li>Provide descriptions of Data Services, if any, of Datasets in the Catalogue, including at least the mandatory properties for the class <a href="#DataService">Data Service</a>.</li>
-
-<li>Provide descriptions of all organisations involved in the descriptions of Catalogue and Datasets, including at least the mandatory properties for the class <a href="#Agent">Agent</a>.</li>
-<li>Apply the publication requirements for the controlled vocabularies as mentioned in section [[[#controlled-vocs]]]. </li>
-</ul>
-
-For the properties listed in the table in section [[[#controlled-vocs]]], the associated controlled vocabularies MUST be used. Additional controlled vocabularies MAY be used.
-In addition to the mandatory properties, any of the recommended and optional properties defined in section [[[#quick-reference]]] MAY be provided.
-<h3>Receiver requirements</h3>
-In order to conform to this Application Profile, an application that receives metadata MUST be able to:
-<li>Process information for all classes and properties specified in section [[[#quick-reference]]].</li>
-<li>Process information for all controlled vocabularies specified in section [[[#controlled-vocs]]].</li>
-"Processing" means that receivers must accept incoming data and transparently provide these data to applications and services. 
-It does neither imply nor prescribe what applications and services finally do with the data (parse, convert, store, make searchable, display to users, etc.).
-
-
-</section>
-
+  
 
 
 
 <section id="specterminology">
     <h2>Terminology</h2>
 <p>
-An <strong>Application Profile</strong> is a specification that reuses terms from one or more base standards, adding more specificity by identifying mandatory, recommended and optional elements to be used for a particular application, as well as recommendations for controlled vocabularies to be used.
-</p><p>
-A <strong>Dataset</strong> is a collection of data, published or curated by a single source, and available for access or download in one or more formats.
-A <strong>Data Portal</strong> is a Web-based system that contains a data catalogue with descriptions of datasets and provides services enabling discovery and reuse of the datasets.
-
 <h3>Used Prefixes</h3>
 
 
         <table id="table-namespaces" class="simple">
             <thead><tr><th>Prefix</th><th>Namespace IRI</th></tr></thead>
             <tbody>
-            <tr><td><code>adms</code></td><td><code>http://www.w3.org/ns/adms#</code></td></tr>
             <tr><td><code>dcat</code></td><td><code>http://www.w3.org/ns/dcat#</code></td></tr>
             <tr><td><code>dcatap</code></td><td><code>http://data.europa.eu/r5r/</code></td></tr>
-            <tr><td><code>dct</code></td><td><code>http://purl.org/dc/terms/</code></td></tr>
-            <tr><td><code>dctype</code></td><td><code>http://purl.org/dc/dcmitype/</code></td></tr>
-            <tr><td><code>foaf</code></td><td><code>http://xmlns.com/foaf/0.1/</code></td></tr>
-            <tr><td><code>locn</code></td><td><code>http://www.w3.org/ns/locn#</code></td></tr>
-            <tr><td><code>odrl</code></td><td><code>http://www.w3.org/ns/odrl/2/</code></td></tr>
-            <tr><td><code>owl</code></td><td><code>http://www.w3.org/2002/07/owl#</code></td></tr>
-            <tr><td><code>prov</code></td><td><code>http://www.w3.org/ns/prov#</code></td></tr>
             <tr><td><code>rdf</code></td><td><code>http://www.w3.org/1999/02/22-rdf-syntax-ns#</code></td></tr>
             <tr><td><code>rdfs</code></td><td><code>http://www.w3.org/2000/01/rdf-schema#</code></td></tr>
             <tr><td><code>skos</code></td><td><code>http://www.w3.org/2004/02/skos/core#</code></td></tr>
-            <tr><td><code>spdx</code></td><td><code>http://spdx.org/rdf/terms#</code></td></tr>
-            <tr><td><code>time</code></td><td><code>http://www.w3.org/2006/time#</code></td></tr>
-            <tr><td><code>vcard</code></td><td><code>http://www.w3.org/2006/vcard/ns#</code></td></tr>
             <tr><td><code>xsd</code></td><td><code>http://www.w3.org/2001/XMLSchema#</code></td></tr>
             </tbody>
         </table>
