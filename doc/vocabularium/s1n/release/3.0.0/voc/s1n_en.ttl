@@ -4,6 +4,7 @@
 @prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
 @prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
 @prefix schemas: <https://schema.org/> .
+@prefix skos: <http://www.w3.org/2004/02/skos/core#> .
 @prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
 
 <http://data.europa.eu/s1n/attribute> a owl:ObjectProperty;
@@ -12,7 +13,7 @@
 Attribute is a conceptual entity that applies to all distribution formats, e.g. in case a dataset is provided both in SDMX and in DataCube."""@en;
   rdfs:domain rdfs:Resource;
   rdfs:isDefinedBy <http://data.europa.eu/s1n>;
-  rdfs:range <http://fixme.com#qb:AttributeProperty> .
+  rdfs:range <http://purl.org/linked-data/cube#AttributeProperty> .
 
 <http://data.europa.eu/s1n/dimension> a owl:ObjectProperty;
   rdfs:label "dimension"@en;
@@ -21,13 +22,23 @@ Attribute is a conceptual entity that applies to all distribution formats, e
 Dimension is a conceptual entity that applies to all distribution formats, e.g. in case a dataset is provided both in SDMX and in DataCube. """@en;
   rdfs:domain rdfs:Resource;
   rdfs:isDefinedBy <http://data.europa.eu/s1n>;
-  rdfs:range <http://fixme.com#qb:DimensionProperty> .
+  rdfs:range <http://purl.org/linked-data/cube#DimensionProperty> .
 
 <http://data.europa.eu/s1n/numSeries> a rdf:Property;
   rdfs:label "number of data series"@en;
   rdfs:comment "number of data series contained in the dataset"@en;
   rdfs:domain rdfs:Resource;
   rdfs:isDefinedBy <http://data.europa.eu/s1n> .
+
+<http://data.europa.eu/s1n/statUnitMeasure> a owl:ObjectProperty;
+  rdfs:label "unit of measurement"@en;
+  rdfs:comment """a unit of measurement of the observations in the dataset, for example Euro, square kilometre,
+purchasing power standard (PPS), full-time equivalent, percentage. 
+Unit of measurement is a conceptual entity that applies to all distribution formats,
+e.g. in the case when a dataset is provided both in SDMX and in Data Cube."""@en;
+  rdfs:domain rdfs:Resource;
+  rdfs:isDefinedBy <http://data.europa.eu/s1n>;
+  rdfs:range skos:Concept .
 
 <http://data.europa.eu/s1n> a owl:Ontology;
   rdfs:label "s1n"@en,
