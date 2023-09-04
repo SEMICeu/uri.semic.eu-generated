@@ -1,42 +1,21 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <xs:schema xmlns="https://data.europa.eu/m8g/xml/" xmlns:xs="http://www.w3.org/2001/XMLSchema" targetNamespace="https://data.europa.eu/m8g/xml/" version="2.0.0" elementFormDefault="qualified" attributeFormDefault="unqualified" xmlns:cv="https://data.europa.eu/m8g/xml/">
   <xs:element name="LegalResource" type="LegalResourceType"/>
-  <xs:element name="RightsStatement" type="RightsStatementType"/>
-  <xs:element name="Standard" type="StandardType"/>
   <xs:element name="Literal" type="LiteralType"/>
   <xs:element name="Resource" type="ResourceType"/>
   <xs:element name="Concept" type="ConceptType"/>
-  <xs:element name="Kind" type="KindType"/>
-  <xs:element name="Identifier" type="IdentifierType"/>
   <xs:element name="Catalogue" type="CatalogueType"/>
   <xs:element name="CatalogueRecord" type="CatalogueRecordType"/>
   <xs:element name="DataService" type="DataServiceType"/>
   <xs:element name="Dataset" type="DatasetType"/>
   <xs:element name="Distribution" type="DistributionType"/>
   <xs:element name="CataloguedResource" type="CataloguedResourceType"/>
-  <xs:element name="Document" type="DocumentType"/>
   <xs:element name="PublicRegistryService" type="PublicRegistryServiceType"/>
   <xs:complexType name="LegalResourceType">
     <xs:sequence/>
     <xs:attribute name="LegalResourceRef" type="xs:IDREF">
       <xs:annotation>
         <xs:documentation xml:lang="en">Reference to LegalResource ID</xs:documentation>
-      </xs:annotation>
-    </xs:attribute>
-  </xs:complexType>
-  <xs:complexType name="RightsStatementType">
-    <xs:sequence/>
-    <xs:attribute name="RightsStatementRef" type="xs:IDREF">
-      <xs:annotation>
-        <xs:documentation xml:lang="en">Reference to RightsStatement ID</xs:documentation>
-      </xs:annotation>
-    </xs:attribute>
-  </xs:complexType>
-  <xs:complexType name="StandardType">
-    <xs:sequence/>
-    <xs:attribute name="StandardRef" type="xs:IDREF">
-      <xs:annotation>
-        <xs:documentation xml:lang="en">Reference to Standard ID</xs:documentation>
       </xs:annotation>
     </xs:attribute>
   </xs:complexType>
@@ -61,34 +40,6 @@
     <xs:attribute name="ConceptRef" type="xs:IDREF">
       <xs:annotation>
         <xs:documentation xml:lang="en">Reference to Concept ID</xs:documentation>
-      </xs:annotation>
-    </xs:attribute>
-  </xs:complexType>
-  <xs:complexType name="KindType">
-    <xs:sequence>
-      <xs:element name="Email" type="ResourceType" maxOccurs="1" minOccurs="1">
-        <xs:annotation>
-          <xs:documentation xml:lang="en" source="#definition">A email address via which contact can be made.
-</xs:documentation>
-        </xs:annotation>
-      </xs:element>
-      <xs:element name="ContactPage" type="ResourceType" maxOccurs="1" minOccurs="1">
-        <xs:annotation>
-          <xs:documentation xml:lang="en" source="#definition">A webpage that either allows to make contact (i.e. a webform) or the information contains how to get into contact. </xs:documentation>
-        </xs:annotation>
-      </xs:element>
-    </xs:sequence>
-    <xs:attribute name="KindRef" type="xs:IDREF">
-      <xs:annotation>
-        <xs:documentation xml:lang="en">Reference to Kind ID</xs:documentation>
-      </xs:annotation>
-    </xs:attribute>
-  </xs:complexType>
-  <xs:complexType name="IdentifierType">
-    <xs:sequence/>
-    <xs:attribute name="IdentifierRef" type="xs:IDREF">
-      <xs:annotation>
-        <xs:documentation xml:lang="en">Reference to Identifier ID</xs:documentation>
       </xs:annotation>
     </xs:attribute>
   </xs:complexType>
@@ -133,54 +84,11 @@
       </xs:annotation>
     </xs:attribute>
   </xs:complexType>
-  <xs:complexType name="conceptType">
-    <xs:simpleContent>
-      <xs:extension base="xs:token">
-        <xs:attribute name="ref" type="xs:IDREF"/>
-        <xs:attribute name="conceptSchemeRef" type="xs:IDREF"/>
-      </xs:extension>
-    </xs:simpleContent>
-  </xs:complexType>
   <xs:complexType name="DataServiceType">
     <xs:sequence>
-      <xs:element name="ContactPoint" type="KindType" maxOccurs="unbounded" minOccurs="0">
-        <xs:annotation>
-          <xs:documentation xml:lang="en" source="#definition">Contact information that can be used for sending comments about the Dataset.</xs:documentation>
-        </xs:annotation>
-      </xs:element>
-      <xs:element name="EndpointDescription" type="ResourceType" maxOccurs="unbounded" minOccurs="0">
-        <xs:annotation>
-          <xs:documentation xml:lang="en" source="#definition">A description of the services available via the end-points, including their operations, parameters etc.</xs:documentation>
-          <xs:documentation xml:lang="en" source="#usage">The property gives specific details of the actual endpoint instances, while dct:conformsTo is used to indicate the general standard or specification that the endpoints implement.</xs:documentation>
-        </xs:annotation>
-      </xs:element>
       <xs:element name="ServesDataset" type="DatasetType" maxOccurs="unbounded" minOccurs="0">
         <xs:annotation>
           <xs:documentation xml:lang="en" source="#definition">This property refers to a collection of data that this data service can distribute.</xs:documentation>
-        </xs:annotation>
-      </xs:element>
-      <xs:element name="ApplicableLegislation" type="LegalResourceType" maxOccurs="unbounded" minOccurs="0">
-        <xs:annotation>
-          <xs:documentation xml:lang="en" source="#definition">The legislation that mandates the creation or management of the Data Service.</xs:documentation>
-          <xs:documentation xml:lang="en" source="#usage">For HVD the value must include the ELI &lt;a href="http://data.europa.eu/eli/reg_impl/2023/138/oj"&gt;http://data.europa.eu/eli/reg_impl/2023/138/oj&lt;/a&gt;. 
-&lt;br/&gt;
-As multiple legislations may apply to the resource the maximum cardinality is not limited.</xs:documentation>
-        </xs:annotation>
-      </xs:element>
-      <xs:element name="HvdCategory" type="conceptType" maxOccurs="unbounded" minOccurs="0">
-        <xs:annotation>
-          <xs:documentation xml:lang="en" source="#definition">The HVD category to which this Data Service belongs.</xs:documentation>
-        </xs:annotation>
-      </xs:element>
-      <xs:element name="Rights" type="RightsStatementType" maxOccurs="unbounded" minOccurs="0">
-        <xs:annotation>
-          <xs:documentation xml:lang="en" source="#definition">A statement that specifies rights associated with the Distribution.</xs:documentation>
-        </xs:annotation>
-      </xs:element>
-      <xs:element name="QualityOfService" type="DocumentType" maxOccurs="unbounded" minOccurs="0">
-        <xs:annotation>
-          <xs:documentation xml:lang="en" source="#definition">A web page that provides details the quality of service the Data Service provides and/or additional information.</xs:documentation>
-          <xs:documentation xml:lang="en" source="#usage">Quality of service covers a broad spectrum of aspects. The HVD regulation does not list any mandatory topic.</xs:documentation>
         </xs:annotation>
       </xs:element>
     </xs:sequence>
@@ -195,11 +103,6 @@ As multiple legislations may apply to the resource the maximum cardinality is no
       <xs:element name="DatasetDistribution" type="DistributionType" maxOccurs="unbounded" minOccurs="0">
         <xs:annotation>
           <xs:documentation xml:lang="en" source="#definition">An available Distribution for the Dataset.</xs:documentation>
-        </xs:annotation>
-      </xs:element>
-      <xs:element name="HvdCategory" type="conceptType" maxOccurs="unbounded" minOccurs="0">
-        <xs:annotation>
-          <xs:documentation xml:lang="en" source="#definition">The HVD category to which this Dataset belongs.</xs:documentation>
         </xs:annotation>
       </xs:element>
     </xs:sequence>
@@ -228,14 +131,6 @@ As multiple legislations may apply to the resource the maximum cardinality is no
     <xs:attribute name="CataloguedResourceRef" type="xs:IDREF">
       <xs:annotation>
         <xs:documentation xml:lang="en">Reference to CataloguedResource ID</xs:documentation>
-      </xs:annotation>
-    </xs:attribute>
-  </xs:complexType>
-  <xs:complexType name="DocumentType">
-    <xs:sequence/>
-    <xs:attribute name="DocumentRef" type="xs:IDREF">
-      <xs:annotation>
-        <xs:documentation xml:lang="en">Reference to Document ID</xs:documentation>
       </xs:annotation>
     </xs:attribute>
   </xs:complexType>
