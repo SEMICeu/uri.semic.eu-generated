@@ -174,8 +174,22 @@
            "href":"https://eur-lex.europa.eu/legal-content/EN/TXT/?uri=CELEX:32023R0138",
            "title" : "Implementing Regulation for High Value Datasets",
            "publisher":"European Commission"
-        }
-
+        },
+        "EU-DIGI-STRAT" : {
+	   "href"  : "https://commission.europa.eu/strategy-and-policy/priorities-2019-2024/europe-fit-digital-age_en",
+           "title"  : "Digital Strategy for Europe",
+           "publisher": "European Commission"
+        },
+        "SDG" : {
+           "href" : "https://eur-lex.europa.eu/eli/reg_impl/2020/1121/oj",
+           "title" : "Single Digital Gateway Implementing Regulation",
+           "publisher" : "European Commission"
+        },
+        "OOTS" : {
+           "href" : "https://ec.europa.eu/digital-building-blocks/wikis/display/OOTS/About+OOTS#",
+           "title" : "Once-Only Technical System, the EU hub for the Single Digital Gateway",
+           "publisher" : "European Commision"
+       }
       }
     };
 
@@ -212,32 +226,51 @@
     </h2>
     
 <h3>Context</h3>
-In light of the growing importance of data, the European Commission has adopted an <href="https://eur-lex.europa.eu/legal-content/EN/TXT/?uri=CELEX:32023R0138">implementing act</a> focused on High-Value Datasets on 21 December 2022 [[HVD]]. 
-The implementing regulation groups the datasets in a list of six high-value datasets thematic categories: geospatial, earth observation and environment, meteorological, statistics, companies and company ownership, and mobility. 
-The <a href="https://data.europa.eu">Portal for European Data</a> [[DEU]] has published an easy-to-read <a href="https://data.europa.eu/en/publications/datastories/high-value-datasets-overview-through-visualisation"> overview</a>.
+<p>
+One of the targets of the Digital Single Market [[EU-DIGI-STRAT]] is to deliver cross-border and crosssector
+public services in Europe. Thus, in order to succeed with this objective, Member
+States’ base registries need to be interconnected. Base registries are trusted and
+reliable sources of basic information on data items such as citizens, corporations,
+vehicles, driver licences, buildings, and locations. They are the cornerstone of public
+services and essential entities for public administration management.
+</p><p>
+The interoperability of base registries is key for the development of the EU Single Digital
+Gateway (or just Gateway) [[SDG]], a platform that aims to be the single point of access to
+public EU Member States’ services, facilitating digital public services among public
+administrations and citizens. The implementation of the Gateway [[OOTS]] relies on the once-only
+principle, ensuring data that is submitted at least once to an EU Member State,
+could be reused by any public authority across the EU.
+</p><p>
+To interconnect European base registries it is of interest to have a European wide insight 
+in the connection potential of these.
+The development of a European Registry of Base Registries (ERBR), a pan-European
+registry of base registries, will improve the interoperability of individual base registries
+and harmonise the existing registries of base registries, enabling a one-stop-platform for
+citizens, business and public bodies to access and manage base registries across the
+European Union and across different domains.
+</p><p>
+This specification, BRegDCAT-AP, facilitates the creation of ERBR. 
+It interconnects public services with base registries the and their associated services.
+By conforming to this specification Base Registries will becomes easier to find. 
+And subsequently together with the provision through the Once Only Hub [[OOTS]] make them more interoperable by .
+This set of recommendations will enable a mechanism for the update of EU reducing technical, organisational and multilingual barriers.
+</p><p>
+
+
+
+
+
+
 
 <h3>Scope</h3>
 <p>
-This document provides the guidelines on how to use DCAT-AP for a dataset that is subject to the requirements imposed by the High-Value dataset implementing regulation (HVD IR).
-The document is called the "usage guidelines of DCAT-AP for High-Value Datasets", in short DCAT-AP HVD.
+This document provides the guidelines on how to use DCAT-AP to make Base Registries well documented.
+The document is called the "usage guidelines of DCAT-AP for Base Registries", in short BRegDCAT-AP.
 
 </p><p>
-To understand these guidelines, it is important to realise that the HVD IR applies 
+To understand these guidelines, it is important to realise that the BRegDCAT-AP applies 
 to a subset of all the datasets that are collected by (Open) Data Portals in Europe.
-A single catalogue contains catalogued resources which are within and outside scope of the HVD IR.
-
-</p><p>
-This document supports the need for a common usage of DCAT-AP for catalogued resources within the scope of the High-Value Dataset implementing regulation.
-When conforming to these guidelines, a dataset within the scope of the regulation will have satisfied the minimum metadata requirements to be included in the mandatory reporting of the regulation.
-It, however,  does not mean an automated compliance with the regulation because certain aspects are beyond DCAT-AP.
-For instance, the regulation imposes certain data aspects to be present, or the licencing requires to be more permissive than CC-BY 4.0. 
-Such requirements cannot be verified by just inspecting the DCAT-AP description, but the DCAT-AP description will assist in the assessment.
-
-</p><p>
-DCAT-AP HVD supports the implementers of the regulation in their assessment of their state of play. 
-When applying the guidelines to the metadata of their datasets, which are in scope of the regulation, the necessary attention will be raised to drive towards conformance.
-At the same time, this effort will create an immediate benefit for the European citizens and businesses.
-Any improvement of the metadata will immediately flow throughout the European network of (Open) Data Portals and thus increase the level of metadata quality.
+A single catalogue may contain catalogued resources which are within and outside scope of BRegDCAT-AP.
 
 </p>
 
@@ -295,6 +328,31 @@ Any improvement of the metadata will immediately flow throughout the European ne
 
 
 
+<section id="conformance" class="informative">
+<h2>Conformance Statement</h2>
+
+In order for applications to conform to DCAT-AP HVD, it MUST conform to DCAT-AP. 
+In addition, the application must conform to the mentioned constraints and usage guidelines following similar conformance statements as specifief in DCAT-AP.
+
+<h3>Provider requirements</h3>
+In order to conform to this Application Profile, an application that provides metadata MUST:
+<ul>
+<li>Provide a description of the Catalogue, including at least the mandatory properties specified for the class <a href="#Catalogue">Catalogue</a>.</li>
+<li>Provide descriptions of Datasets in the Catalogue, including at least the mandatory properties for the class <a href="#Dataset">Dataset</a>.</li>
+<li>Provide descriptions of Distributions, if any, of Datasets in the Catalogue, including at least the mandatory properties for the class <a href="#Distribution">Distribution</a>.</li>
+<li>Provide descriptions of Data Services, if any, in the Catalogue, including at least the mandatory properties for the class <a href="#DataService">Data Service</a>.</li>
+<li>Provide descriptions of all other classes such as Agents, Contact Points,  Licences, etc.
+</ul>
+The application of the controlled vocabularies as described in section [[[#controlled-vocs]]].
+
+
+<h3>Receiver requirements</h3>
+In order to conform to this Application Profile, an application that receives metadata MUST be able to:
+<li>Process information for all classes and properties specified in section [[[#quick-reference]]].</li>
+<li>Process information for all controlled vocabularies specified in section [[[#controlled-vocs]]].</li>
+"Processing" means that receivers must accept incoming data and transparently provide these data to applications and services. 
+It does neither imply nor prescribe what applications and services finally do with the data (parse, convert, store, make searchable, display to users, etc.).
+</section>
 
 
 <section id="specterminology">
@@ -303,6 +361,15 @@ Any improvement of the metadata will immediately flow throughout the European ne
 An <strong>Application Profile</strong> is a specification that reuses terms from one or more base standards, adding more specificity by identifying mandatory, recommended and optional elements to be used for a particular application, as well as recommendations for controlled vocabularies to be used.
 </p><p>
 An <strong>Annex to an Application Profile</strong> is a specification that precises the use of some aspects of the Application Profile for a specific context.
+</p><p>
+A <strong>Base Registry</strong> is a web-based system that contains an inventory of descriptions of
+Master datasets and provides services enabling discovery and re-use of the datasets.
+The mandate of a Base Registry is given by specific legislation. 
+</p><p>
+At EU level, National
+Registers aggregate information about Base Registries in Registries of Base Registries. A
+<strong>Registry of Base Registries</strong> is considered as a Catalogue of collections of metadata about datasets or
+data services.
 </p>
 
 This specification uses the following prefixes to shorten the URIs for readibility.
@@ -334,8 +401,8 @@ This specification uses the following prefixes to shorten the URIs for readibili
     <h2>Overview</h2>
     
 <p>
-DCAT-AP HVD is an annex to DCAT-AP. 
-It describes additional usage of the DCAT-AP to satisfy the High-Value Dataset implementing regulation (HVD IR).
+BRegDCAT-AP is an annex to DCAT-AP. 
+It describes additional usage of the DCAT-AP for Base Registries.
 In this document only the additional information, that is required for the catalogued resources which are within scope of the regulation, is included.
 In any other case, the guidelines of DCAT-AP itself are applicable.
 </p>
@@ -343,7 +410,7 @@ In any other case, the guidelines of DCAT-AP itself are applicable.
 
 <h3>Application profile diagram</h3>
 <p>
-An overview of DCAT-AP HVD is shown by the UML diagram below. 
+An overview of BRegDCAT-AP is shown by the UML diagram below. 
 The UML diagram illustrates the specification described in this document. 
 For readability purposes the representation has been condensed as follows:
 <ul>
@@ -2318,9 +2385,42 @@ described as a dcat:Catalog, a dcat:Dataset or a dcat:DataService.
 -->
 
  
-  
-  
-  
+  <section id="controlled-vocs" class="informative">
+  <h2>Controlled Vocabularies</h2>
+
+
+The usage of controlled vocabularies in DCAT-AP HVD conforms and extends the usage defined by DCAT-AP.
+In addition, the following controlled vocabularies are defined to be used:
+
+<h3>Controlled vocabularies to be used</h3>
+In the table below, a number of properties are listed with controlled vocabularies that MUST be used for the listed properties. The declaration of the following controlled vocabularies as mandatory ensures a minimum level of interoperability.
+        <table id="table-cv" class="simple">
+            <thead><tr><th>Property URI</th><th>Used for Class</th><th>Vocabulary name</th><th>Vocabulary URI</th><th>Usage note</th></tr></thead>
+            <tbody>
+<tr><td>dcatap:hvdCategory</td><td><a href="#Dataset">Dataset</a></td><td>EU Vocabularies HVD Categories</td><td>TBD </td><td></td></tr>
+            </tbody>
+            </table>
+
+
+
+<h3>Licence controlled vocabularies</h3>
+The HVD regulation imposes quality requirements on the published legal conditions. 
+In line with the generic DCAT-AP guidelines for publishing controlled vocabularies, a licence controlled vocabulary SHOULD:
+<ul>
+<li>Be published under an open licence.</li>
+<li>Be operated and/or maintained by an institution of the European Union, by a recognised standards organisation or another trusted organisation.</li>
+<li>Be properly documented.</li>
+<li>Have labels in multiple languages, ideally in all official languages of the European Union.</li>
+<li>Have terms that are identified by URIs with each URI resolving to documentation about the term.</li>
+<li>Have associated persistence and versioning policies.</li>
+<li>Provide a human readable representation</li>
+<li>Provide a machine readable representation</li>
+<li>Include in the machine readable representation a mapping to the EU Vocabularies Licences [[NAL-Licence]]</li>
+</ul>
+
+
+</section>
+
  
 
 <section id="quick-reference" class="appendix">
