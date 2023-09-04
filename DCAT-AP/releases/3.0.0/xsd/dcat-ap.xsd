@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <xs:schema xmlns="https://data.europa.eu/m8g/xml/" xmlns:xs="http://www.w3.org/2001/XMLSchema" targetNamespace="https://data.europa.eu/m8g/xml/" version="2.0.0" elementFormDefault="qualified" attributeFormDefault="unqualified" xmlns:cv="https://data.europa.eu/m8g/xml/">
+  <xs:element name="LegalResource" type="LegalResourceType"/>
   <xs:element name="Frequency" type="FrequencyType"/>
   <xs:element name="LicenceDocument" type="LicenceDocumentType"/>
   <xs:element name="LinguisticSystem" type="LinguisticSystemType"/>
@@ -42,6 +43,14 @@
   <xs:element name="Attribution" type="AttributionType"/>
   <xs:element name="Agent" type="AgentType"/>
   <xs:element name="Document" type="DocumentType"/>
+  <xs:complexType name="LegalResourceType">
+    <xs:sequence/>
+    <xs:attribute name="LegalResourceRef" type="xs:IDREF">
+      <xs:annotation>
+        <xs:documentation xml:lang="en">Reference to LegalResource ID</xs:documentation>
+      </xs:annotation>
+    </xs:attribute>
+  </xs:complexType>
   <xs:complexType name="FrequencyType">
     <xs:sequence/>
     <xs:attribute name="FrequencyRef" type="xs:IDREF">
@@ -362,7 +371,7 @@
           <xs:documentation xml:lang="en" source="#usage">This property refers to a knowledge organization system used to classify the Catalogue's Datasets. It must have at least the value NAL:data-theme as this is the manatory controlled vocabulary for dcat:theme.</xs:documentation>
         </xs:annotation>
       </xs:element>
-      <xs:element name="ApplicableLegislation" maxOccurs="unbounded" minOccurs="0">
+      <xs:element name="ApplicableLegislation" type="LegalResourceType" maxOccurs="unbounded" minOccurs="0">
         <xs:annotation>
           <xs:documentation xml:lang="en" source="#definition">The legislation that mandates the creation or management of the Catalog.</xs:documentation>
         </xs:annotation>
@@ -522,6 +531,11 @@
           <xs:documentation xml:lang="en" source="#definition">This property refers to a collection of data that this data service can distribute.</xs:documentation>
         </xs:annotation>
       </xs:element>
+      <xs:element name="ApplicableLegislation" type="LegalResourceType" maxOccurs="unbounded" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation xml:lang="en" source="#definition">The legislation that mandates the creation or management of the Data Service.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
       <xs:element name="AccessRights" type="RightsStatementType" maxOccurs="1" minOccurs="0">
         <xs:annotation>
           <xs:documentation xml:lang="en" source="#definition">Information regarding access or restrictions based on privacy, security, or other policies.</xs:documentation>
@@ -631,7 +645,7 @@
           <xs:documentation xml:lang="en" source="#definition">The version indicator (name or identifier) of a resource.</xs:documentation>
         </xs:annotation>
       </xs:element>
-      <xs:element name="ApplicableLegislation" maxOccurs="unbounded" minOccurs="0">
+      <xs:element name="ApplicableLegislation" type="LegalResourceType" maxOccurs="unbounded" minOccurs="0">
         <xs:annotation>
           <xs:documentation xml:lang="en" source="#definition">The legislation that mandates the creation or management of the Dataset.</xs:documentation>
         </xs:annotation>
@@ -823,7 +837,7 @@ The title may indicate the dimension values.</xs:documentation>
           <xs:documentation xml:lang="en" source="#definition">A member of the Dataset Series.</xs:documentation>
         </xs:annotation>
       </xs:element>
-      <xs:element name="ApplicableLegislation" maxOccurs="unbounded" minOccurs="0">
+      <xs:element name="ApplicableLegislation" type="LegalResourceType" maxOccurs="unbounded" minOccurs="0">
         <xs:annotation>
           <xs:documentation xml:lang="en" source="#definition">The legislation that mandates the creation or management of the Dataset Series.</xs:documentation>
         </xs:annotation>
@@ -944,7 +958,7 @@ E.g. a digital archive could take over the publishing of older datasets in the 
           <xs:documentation xml:lang="en" source="#definition">The minimum time period resolvable in the dataset distribution.</xs:documentation>
         </xs:annotation>
       </xs:element>
-      <xs:element name="ApplicableLegislation" maxOccurs="unbounded" minOccurs="0">
+      <xs:element name="ApplicableLegislation" type="LegalResourceType" maxOccurs="unbounded" minOccurs="0">
         <xs:annotation>
           <xs:documentation xml:lang="en" source="#definition">The legislation that mandates the creation or management of the Distribution.</xs:documentation>
         </xs:annotation>
