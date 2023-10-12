@@ -21,10 +21,6 @@
   rdfs:isDefinedBy <http://data.europa.eu/m8g>;
   rdfs:subClassOf <http://data.europa.eu/m8g/Requirement> .
 
-<http://data.europa.eu/m8g/ReferenceFramework> a owl:Class;
-  <http://purl.org/vocab/vann/usageNote> "Usual Reference Frameworks are legal and non-legal specifications. Examples include procedures, tendering legislation, etc."@en;
-  rdfs:isDefinedBy <http://data.europa.eu/m8g> .
-
 <http://data.europa.eu/m8g/bias> a owl:DatatypeProperty;
   <http://purl.org/vocab/vann/usageNote> """The bias parameter tries to correct a systematic error. For example in procurement, a home bias corresponds to the \"presence of local preferences distorting international specialisation and resource allocation\". [https://trade.ec.europa.eu/doclib/docs/2018/september/tradoc_157319.pdf]
 When quantified, this systematic error can be removed."""@en;
@@ -70,6 +66,12 @@ Because of this freedom, implementers are recommended to well-document their usa
   rdfs:domain <http://data.europa.eu/m8g/Requirement>;
   rdfs:isDefinedBy <http://data.europa.eu/m8g>;
   rdfs:range <http://data.europa.eu/m8g/Requirement> .
+
+<http://data.europa.eu/m8g/isDerivedFrom> a owl:ObjectProperty;
+  <http://purl.org/vocab/vann/usageNote> "Note that a Requirement can have several Reference Frameworks from which it is derived."@en;
+  rdfs:domain <http://data.europa.eu/m8g/Requirement>;
+  rdfs:isDefinedBy <http://data.europa.eu/m8g>;
+  rdfs:range <http://data.europa.eu/m8g/ReferenceFramework> .
 
 <http://data.europa.eu/m8g/isRequirementOf> a owl:ObjectProperty;
   <http://purl.org/vocab/vann/usageNote> """The relation between a parent Requirement and a sub-Requirement can be complex. Therefore, qualified relations (see hasQualifiedRelation) can be used to represent this relationship on its own and qualify it with additional information such as a date, a place. This is left to implementers.
@@ -145,6 +147,10 @@ Example see: https://docs.ted.europa.eu/eforms/0.3.0/index.html#awardCriteriaSec
   rdfs:isDefinedBy <http://data.europa.eu/m8g>;
   rdfs:range skos:Concept .
 
+<http://data.europa.eu/m8g/ReferenceFramework> a owl:Class;
+  <http://purl.org/vocab/vann/usageNote> "Usual Reference Frameworks are legal and non-legal specifications. Examples include procedures, tendering legislation, etc."@en;
+  rdfs:isDefinedBy <http://data.europa.eu/m8g> .
+
 <http://data.europa.eu/m8g/constrains> a rdf:Property;
   rdfs:label "constrains"@en .
 
@@ -156,9 +162,6 @@ Example see: https://docs.ted.europa.eu/eforms/0.3.0/index.html#awardCriteriaSec
 
 <http://data.europa.eu/m8g/hasSupportingEvidence> a rdf:Property;
   rdfs:label "has supporting evidence"@en .
-
-<http://data.europa.eu/m8g/isDerivedFrom> a rdf:Property;
-  rdfs:label "is derived from"@en .
 
 <http://data.europa.eu/m8g/supportsConcept> a rdf:Property;
   rdfs:label "supports concept"@en .
@@ -253,7 +256,6 @@ Implementers are free to choose their language. It is recommended to document th
     <http://data.europa.eu/m8g/hasConcept>,
     <http://data.europa.eu/m8g/hasEvidenceTypeList>,
     <http://data.europa.eu/m8g/hasSupportingEvidence>,
-    <http://data.europa.eu/m8g/isDerivedFrom>,
     <http://data.europa.eu/m8g/supportsConcept>,
     dc:conformsTo,
     dc:description,
