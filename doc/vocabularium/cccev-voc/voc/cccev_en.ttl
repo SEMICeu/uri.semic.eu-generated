@@ -8,13 +8,6 @@
 @prefix skos: <http://www.w3.org/2004/02/skos/core#> .
 @prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
 
-<http://data.europa.eu/m8g/Constraint> a owl:Class;
-  rdfs:label "Constraint"@en;
-  <http://purl.org/vocab/vann/usageNote> "Constraints are requirements in themselves, since they impose prerequisites which influence the definition, use and/or fulfilment of the requirement. They represent hard conditions such as minimum or maximum expressions which can be used to evaluate pieces of information, the required age, income, involvement in activities, etc. An example from the eProcurement domain is a threshold as the minimum turnover required by the buying organisation to select the candidates. Note that CCCEV does not provide any specific guidance on when which kind of Requirement should be used. Users of this vocabulary should make decisions on this topic in their specific context."@en;
-  rdfs:comment "Limitation applied to an Information Concept."@en;
-  rdfs:isDefinedBy <http://data.europa.eu/m8g>;
-  rdfs:subClassOf <http://data.europa.eu/m8g/Requirement> .
-
 <http://data.europa.eu/m8g/InformationRequirement> a owl:Class;
   rdfs:label "Information Requirement"@en;
   <http://purl.org/vocab/vann/usageNote> "Information Requirements are the most neutral kind of Requirements. They aim to request information in any form, e.g. a person's date of birth or a company's turnover. They represent requests for data that prove one or more facts of the real world in a formal manner, or that leads to the source of such a proof. They can be understood as 'requests for Evidences'. The response to an Information Requirement is an Evidence when the issuer of the response is an authoritative source (e.g. a Civil Registry providing data about a natural person for the provision of public service through the Single Digital Gateway). In other cases, the responses might not be issued by an authoritative source, but the issuer supports the responses with Evidences (or commits to support them timely, e.g. a self-declaration or a declaration of oath). The Information Requirement can require structured data or documents of any form. For structured data, the Requirement can use 'Concepts' to specify the structure and type of the data expected in the response. For both structured and unstructured data, the Information Requirement can indicate the expected Type of Evidence, its format, source, and other properties related to the Evidence."@en;
@@ -38,6 +31,14 @@ When quantified, this systematic error can be removed."""@en;
   rdfs:domain <http://data.europa.eu/m8g/Evidence>;
   rdfs:isDefinedBy <http://data.europa.eu/m8g>;
   rdfs:range skos:Concept .
+
+<http://data.europa.eu/m8g/constrains> a owl:ObjectProperty;
+  rdfs:label "constrains"@en;
+  <http://purl.org/vocab/vann/usageNote> "Information Concepts are tools to make Requirements more machine processable: they allow to provide more detail about a Requirement. This way, Constraints can be made very precise, namely the limit that must be achieved, is a limit on the value for the associated Information Concept. For example, the Information Concept would be the age of a person and the Constraint would be the required age in the context of a specific evaluation."@en;
+  rdfs:comment "Information Concept about which a Constraint expresses a limitation."@en;
+  rdfs:domain <http://data.europa.eu/m8g/Constraint>;
+  rdfs:isDefinedBy <http://data.europa.eu/m8g>;
+  rdfs:range <http://data.europa.eu/m8g/InformationConcept> .
 
 <http://data.europa.eu/m8g/evidenceTypeClassification> a owl:ObjectProperty;
   rdfs:label "evidence type classification"@en;
@@ -65,6 +66,22 @@ Because of this freedom, implementers are recommended to well-document their usa
   rdfs:isDefinedBy <http://data.europa.eu/m8g>;
   rdfs:range rdfs:Literal .
 
+<http://data.europa.eu/m8g/hasConcept> a owl:ObjectProperty;
+  rdfs:label "has concept"@en;
+  <http://purl.org/vocab/vann/usageNote> "Information Concepts defined for specific Requirements also represent the basis for specifying the Supported Value an Evidence should provide."@en;
+  rdfs:comment "Information Concept for which a value is expected by the Requirement."@en;
+  rdfs:domain <http://data.europa.eu/m8g/Requirement>;
+  rdfs:isDefinedBy <http://data.europa.eu/m8g>;
+  rdfs:range <http://data.europa.eu/m8g/InformationConcept> .
+
+<http://data.europa.eu/m8g/hasEvidenceTypeList> a owl:ObjectProperty;
+  rdfs:label "has evidence type list"@en;
+  <http://purl.org/vocab/vann/usageNote> "One or several Lists of Evidence Types can support a Requirement. At least  one of them must be satisfied by the response to the Requirement."@en;
+  rdfs:comment "Evidence Type List that specifies the Evidence Types that are needed to meet the Requirement."@en;
+  rdfs:domain <http://data.europa.eu/m8g/Requirement>;
+  rdfs:isDefinedBy <http://data.europa.eu/m8g>;
+  rdfs:range <http://data.europa.eu/m8g/EvidenceTypeList> .
+
 <http://data.europa.eu/m8g/hasQualifiedRelation> a owl:ObjectProperty;
   rdfs:label "has qualified relation"@en;
   <http://purl.org/vocab/vann/usageNote> "This property leaves the possiblity to define a qualified relation from Requirement to Information Requirement or Constraint as well as a qualified relation from Requirement to Requirement.  A use case would be to specialize an EU requirement in Member States' specific requirements."@en;
@@ -79,6 +96,13 @@ Because of this freedom, implementers are recommended to well-document their usa
   rdfs:domain <http://data.europa.eu/m8g/Requirement>;
   rdfs:isDefinedBy <http://data.europa.eu/m8g>;
   rdfs:range <http://data.europa.eu/m8g/Requirement> .
+
+<http://data.europa.eu/m8g/hasSupportingEvidence> a owl:ObjectProperty;
+  rdfs:label "has supporting evidence"@en;
+  rdfs:comment "Evidence that supplies information, proof or support for the Requirement."@en;
+  rdfs:domain <http://data.europa.eu/m8g/Requirement>;
+  rdfs:isDefinedBy <http://data.europa.eu/m8g>;
+  rdfs:range <http://data.europa.eu/m8g/Evidence> .
 
 <http://data.europa.eu/m8g/isDerivedFrom> a owl:ObjectProperty;
   rdfs:label "is derived from"@en;
@@ -126,6 +150,14 @@ In the case where the purpose is to link the two Requirements without additional
   rdfs:domain <http://data.europa.eu/m8g/EvidenceTypeList>;
   rdfs:isDefinedBy <http://data.europa.eu/m8g>;
   rdfs:range <http://data.europa.eu/m8g/EvidenceType> .
+
+<http://data.europa.eu/m8g/supportsConcept> a owl:ObjectProperty;
+  rdfs:label "supports concept"@en;
+  <http://purl.org/vocab/vann/usageNote> "Examples of Information Concepts are values found explictly in the evidence such as a birth date or information derived from the Evidence such as \"I am older that 18 years\"."@en;
+  rdfs:comment "Information Concept providing facts found/inferred from the Evidence."@en;
+  rdfs:domain <http://data.europa.eu/m8g/Evidence>;
+  rdfs:isDefinedBy <http://data.europa.eu/m8g>;
+  rdfs:range <http://data.europa.eu/m8g/InformationConcept> .
 
 <http://data.europa.eu/m8g/supportsRequirement> a owl:ObjectProperty;
   rdfs:label "supports requirement"@en;
@@ -188,6 +220,13 @@ Example see: https://docs.ted.europa.eu/eforms/0.3.0/index.html#awardCriteriaSec
   rdfs:isDefinedBy <http://data.europa.eu/m8g>;
   rdfs:range skos:Concept .
 
+<http://data.europa.eu/m8g/Constraint> a owl:Class;
+  rdfs:label "Constraint"@en;
+  <http://purl.org/vocab/vann/usageNote> "Constraints are requirements in themselves, since they impose prerequisites which influence the definition, use and/or fulfilment of the requirement. They represent hard conditions such as minimum or maximum expressions which can be used to evaluate pieces of information, the required age, income, involvement in activities, etc. An example from the eProcurement domain is a threshold as the minimum turnover required by the buying organisation to select the candidates. Note that CCCEV does not provide any specific guidance on when which kind of Requirement should be used. Users of this vocabulary should make decisions on this topic in their specific context."@en;
+  rdfs:comment "Limitation applied to an Information Concept."@en;
+  rdfs:isDefinedBy <http://data.europa.eu/m8g>;
+  rdfs:subClassOf <http://data.europa.eu/m8g/Requirement> .
+
 <http://data.europa.eu/m8g/ReferenceFramework> a owl:Class;
   rdfs:label "Reference Framework"@en;
   <http://purl.org/vocab/vann/usageNote> "Usual Reference Frameworks are legal and non-legal specifications. Examples include procedures, tendering legislation, etc."@en;
@@ -202,12 +241,6 @@ The Evidence Type List describes thus an AND condition on the different Evidence
   rdfs:comment "Group of Evidence Types for conforming to a Requirement."@en;
   rdfs:isDefinedBy <http://data.europa.eu/m8g> .
 
-<http://data.europa.eu/m8g/InformationConcept> a owl:Class;
-  rdfs:label "Information Concept"@en;
-  <http://purl.org/vocab/vann/usageNote> "The Information Concept class offers the ability to describe conceptually the Requirements and provided facts in Evidences. In complementarity with the Supported Value class, this is a (first) step towards facilitating the assessment of the requirements in an automated way based on the Evidence provided."@en;
-  rdfs:comment "Piece of information that the Evidence provides or the Requirement needs."@en;
-  rdfs:isDefinedBy <http://data.europa.eu/m8g> .
-
 <http://data.europa.eu/m8g/Criterion> a owl:Class;
   rdfs:label "Criterion"@en;
   <http://purl.org/vocab/vann/usageNote> """In general, Criteria are used for comparison, filtering or selection purposes. Criteria usually set minimum conditions (e.g. limits, intervals, thresholds, etc.) that need to be met in order to pass the requirements or to fulfil them to a certain degree or quality. The concept of Criteria is broader than the concept of Constraint since it covers more usages. The evaluation of the fulfilment is usually supported by the provision of Evidence. 
@@ -215,16 +248,6 @@ For example in the eProcurement domain, the eProcurement Ontology defines differ
   rdfs:comment "Condition for evaluation or assessment."@en;
   rdfs:isDefinedBy <http://data.europa.eu/m8g>;
   rdfs:subClassOf <http://data.europa.eu/m8g/Requirement> .
-
-<http://data.europa.eu/m8g/Evidence> a owl:Class;
-  rdfs:label "Evidence"@en;
-  <http://purl.org/vocab/vann/usageNote> """The class Evidence provides the means to support responses to Criteria or to a concrete Information Requirement or to an Information Concept inside an Information Requirement. 
-
-The proof described by an Evidence can [1] verify a claim (i.e. is it true that John is 25, yes/no), [2] prove a condition (i.e. is John 18+, yes/no), or [3] simply provide data (i.e. the age of a person, namely 25).
-The proof can be given through documents or extracts of base registries, independently from its structure, format or medium used to exchange it: a pdf document, a video, a recording, etc."""@en;
-  rdfs:comment "Proof that a Requirement is met."@en;
-  rdfs:isDefinedBy <http://data.europa.eu/m8g>;
-  rdfs:subClassOf dcat:Dataset .
 
 <http://data.europa.eu/m8g/EvidenceType> a owl:Class;
   rdfs:label "Evidence Type"@en;
@@ -246,6 +269,22 @@ Implementers are free to choose their language. It is recommended to document th
 """@en;
   rdfs:comment "Value for an Information Concept that is provided by an Evidence."@en;
   rdfs:isDefinedBy <http://data.europa.eu/m8g> .
+
+<http://data.europa.eu/m8g/InformationConcept> a owl:Class;
+  rdfs:label "Information Concept"@en;
+  <http://purl.org/vocab/vann/usageNote> "The Information Concept class offers the ability to describe conceptually the Requirements and provided facts in Evidences. In complementarity with the Supported Value class, this is a (first) step towards facilitating the assessment of the requirements in an automated way based on the Evidence provided."@en;
+  rdfs:comment "Piece of information that the Evidence provides or the Requirement needs."@en;
+  rdfs:isDefinedBy <http://data.europa.eu/m8g> .
+
+<http://data.europa.eu/m8g/Evidence> a owl:Class;
+  rdfs:label "Evidence"@en;
+  <http://purl.org/vocab/vann/usageNote> """The class Evidence provides the means to support responses to Criteria or to a concrete Information Requirement or to an Information Concept inside an Information Requirement. 
+
+The proof described by an Evidence can [1] verify a claim (i.e. is it true that John is 25, yes/no), [2] prove a condition (i.e. is John 18+, yes/no), or [3] simply provide data (i.e. the age of a person, namely 25).
+The proof can be given through documents or extracts of base registries, independently from its structure, format or medium used to exchange it: a pdf document, a video, a recording, etc."""@en;
+  rdfs:comment "Proof that a Requirement is met."@en;
+  rdfs:isDefinedBy <http://data.europa.eu/m8g>;
+  rdfs:subClassOf dcat:Dataset .
 
 <http://data.europa.eu/m8g/Requirement> a owl:Class;
   rdfs:label "Requirement"@en;

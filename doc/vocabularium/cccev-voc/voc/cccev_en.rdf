@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:owl="http://www.w3.org/2002/07/owl#" xmlns:dc="http://purl.org/dc/terms/" xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#" xmlns:foaf="http://xmlns.com/foaf/0.1/" xmlns:ns0="http://www.w3.org/2001/02pd/rec54#" xmlns:ns1="http://purl.org/vocab/vann/" xmlns:dcat="http://www.w3.org/ns/dcat#" xmlns:xsd="http://www.w3.org/2001/XMLSchema#" xmlns:skos="http://www.w3.org/2004/02/skos/core#" xmlns:schemas="https://schema.org/">
-  <owl:Class rdf:about="http://data.europa.eu/m8g/Constraint">
+  <owl:Class rdf:about="http://data.europa.eu/m8g/InformationRequirement">
     <rdfs:isDefinedBy>
       <owl:Ontology rdf:about="http://data.europa.eu/m8g">
         <dc:mediator>
@@ -97,9 +97,9 @@
         <dc:issued>2021-06-30</dc:issued>
       </owl:Ontology>
     </rdfs:isDefinedBy>
-    <rdfs:label xml:lang="en">Constraint</rdfs:label>
-    <rdfs:comment xml:lang="en">Limitation applied to an Information Concept.</rdfs:comment>
-    <ns1:usageNote xml:lang="en">Constraints are requirements in themselves, since they impose prerequisites which influence the definition, use and/or fulfilment of the requirement. They represent hard conditions such as minimum or maximum expressions which can be used to evaluate pieces of information, the required age, income, involvement in activities, etc. An example from the eProcurement domain is a threshold as the minimum turnover required by the buying organisation to select the candidates. Note that CCCEV does not provide any specific guidance on when which kind of Requirement should be used. Users of this vocabulary should make decisions on this topic in their specific context.</ns1:usageNote>
+    <rdfs:label xml:lang="en">Information Requirement</rdfs:label>
+    <rdfs:comment xml:lang="en">Requested data that is to be proven by Evidence.</rdfs:comment>
+    <ns1:usageNote xml:lang="en">Information Requirements are the most neutral kind of Requirements. They aim to request information in any form, e.g. a person's date of birth or a company's turnover. They represent requests for data that prove one or more facts of the real world in a formal manner, or that leads to the source of such a proof. They can be understood as 'requests for Evidences'. The response to an Information Requirement is an Evidence when the issuer of the response is an authoritative source (e.g. a Civil Registry providing data about a natural person for the provision of public service through the Single Digital Gateway). In other cases, the responses might not be issued by an authoritative source, but the issuer supports the responses with Evidences (or commits to support them timely, e.g. a self-declaration or a declaration of oath). The Information Requirement can require structured data or documents of any form. For structured data, the Requirement can use 'Concepts' to specify the structure and type of the data expected in the response. For both structured and unstructured data, the Information Requirement can indicate the expected Type of Evidence, its format, source, and other properties related to the Evidence.</ns1:usageNote>
     <rdfs:subClassOf>
       <owl:Class rdf:about="http://data.europa.eu/m8g/Requirement">
         <rdfs:isDefinedBy rdf:resource="http://data.europa.eu/m8g"/>
@@ -108,13 +108,6 @@
         <ns1:usageNote xml:lang="en">Requirement is a generic class representing any type of prerequisite that may be desired, needed or imposed as an obligation. CCCEV recommends to not use the Requirement class directly, but rather a more semantically-enriched subclass such as Criterion, Information Requirement or Constraint. Also note that the Requirement class is specified at a more abstract level and is not to be used as the instantiation of a Requirement for a specific Agent.   The European Directive on services in the internal market  defines requirement as any obligation, prohibition, condition or limit provided for in the laws, regulations or administrative provisions of the Member States or in consequence of case-law, administrative practice, the rules of professional bodies, or the collective rules of professional associations or other professional organisations, adopted in the exercise of their legal autonomy.</ns1:usageNote>
       </owl:Class>
     </rdfs:subClassOf>
-  </owl:Class>
-  <owl:Class rdf:about="http://data.europa.eu/m8g/InformationRequirement">
-    <rdfs:isDefinedBy rdf:resource="http://data.europa.eu/m8g"/>
-    <rdfs:label xml:lang="en">Information Requirement</rdfs:label>
-    <rdfs:comment xml:lang="en">Requested data that is to be proven by Evidence.</rdfs:comment>
-    <ns1:usageNote xml:lang="en">Information Requirements are the most neutral kind of Requirements. They aim to request information in any form, e.g. a person's date of birth or a company's turnover. They represent requests for data that prove one or more facts of the real world in a formal manner, or that leads to the source of such a proof. They can be understood as 'requests for Evidences'. The response to an Information Requirement is an Evidence when the issuer of the response is an authoritative source (e.g. a Civil Registry providing data about a natural person for the provision of public service through the Single Digital Gateway). In other cases, the responses might not be issued by an authoritative source, but the issuer supports the responses with Evidences (or commits to support them timely, e.g. a self-declaration or a declaration of oath). The Information Requirement can require structured data or documents of any form. For structured data, the Requirement can use 'Concepts' to specify the structure and type of the data expected in the response. For both structured and unstructured data, the Information Requirement can indicate the expected Type of Evidence, its format, source, and other properties related to the Evidence.</ns1:usageNote>
-    <rdfs:subClassOf rdf:resource="http://data.europa.eu/m8g/Requirement"/>
   </owl:Class>
   <owl:DatatypeProperty rdf:about="http://data.europa.eu/m8g/bias">
     <rdfs:isDefinedBy rdf:resource="http://data.europa.eu/m8g"/>
@@ -153,6 +146,29 @@ The proof can be given through documents or extracts of base registries, indepen
     </rdfs:domain>
     <rdfs:range rdf:resource="http://www.w3.org/2004/02/skos/core#Concept"/>
   </owl:ObjectProperty>
+  <owl:ObjectProperty rdf:about="http://data.europa.eu/m8g/constrains">
+    <rdfs:isDefinedBy rdf:resource="http://data.europa.eu/m8g"/>
+    <rdfs:label xml:lang="en">constrains</rdfs:label>
+    <rdfs:comment xml:lang="en">Information Concept about which a Constraint expresses a limitation.</rdfs:comment>
+    <ns1:usageNote xml:lang="en">Information Concepts are tools to make Requirements more machine processable: they allow to provide more detail about a Requirement. This way, Constraints can be made very precise, namely the limit that must be achieved, is a limit on the value for the associated Information Concept. For example, the Information Concept would be the age of a person and the Constraint would be the required age in the context of a specific evaluation.</ns1:usageNote>
+    <rdfs:domain>
+      <owl:Class rdf:about="http://data.europa.eu/m8g/Constraint">
+        <rdfs:isDefinedBy rdf:resource="http://data.europa.eu/m8g"/>
+        <rdfs:label xml:lang="en">Constraint</rdfs:label>
+        <rdfs:comment xml:lang="en">Limitation applied to an Information Concept.</rdfs:comment>
+        <ns1:usageNote xml:lang="en">Constraints are requirements in themselves, since they impose prerequisites which influence the definition, use and/or fulfilment of the requirement. They represent hard conditions such as minimum or maximum expressions which can be used to evaluate pieces of information, the required age, income, involvement in activities, etc. An example from the eProcurement domain is a threshold as the minimum turnover required by the buying organisation to select the candidates. Note that CCCEV does not provide any specific guidance on when which kind of Requirement should be used. Users of this vocabulary should make decisions on this topic in their specific context.</ns1:usageNote>
+        <rdfs:subClassOf rdf:resource="http://data.europa.eu/m8g/Requirement"/>
+      </owl:Class>
+    </rdfs:domain>
+    <rdfs:range>
+      <owl:Class rdf:about="http://data.europa.eu/m8g/InformationConcept">
+        <rdfs:isDefinedBy rdf:resource="http://data.europa.eu/m8g"/>
+        <rdfs:label xml:lang="en">Information Concept</rdfs:label>
+        <rdfs:comment xml:lang="en">Piece of information that the Evidence provides or the Requirement needs.</rdfs:comment>
+        <ns1:usageNote xml:lang="en">The Information Concept class offers the ability to describe conceptually the Requirements and provided facts in Evidences. In complementarity with the Supported Value class, this is a (first) step towards facilitating the assessment of the requirements in an automated way based on the Evidence provided.</ns1:usageNote>
+      </owl:Class>
+    </rdfs:range>
+  </owl:ObjectProperty>
   <owl:ObjectProperty rdf:about="http://data.europa.eu/m8g/evidenceTypeClassification">
     <rdfs:isDefinedBy rdf:resource="http://data.europa.eu/m8g"/>
     <rdfs:label xml:lang="en">evidence type classification</rdfs:label>
@@ -183,16 +199,34 @@ Because of this freedom, implementers are recommended to well-document their usa
   
 
 </ns1:usageNote>
-    <rdfs:domain>
-      <owl:Class rdf:about="http://data.europa.eu/m8g/InformationConcept">
-        <rdfs:isDefinedBy rdf:resource="http://data.europa.eu/m8g"/>
-        <rdfs:label xml:lang="en">Information Concept</rdfs:label>
-        <rdfs:comment xml:lang="en">Piece of information that the Evidence provides or the Requirement needs.</rdfs:comment>
-        <ns1:usageNote xml:lang="en">The Information Concept class offers the ability to describe conceptually the Requirements and provided facts in Evidences. In complementarity with the Supported Value class, this is a (first) step towards facilitating the assessment of the requirements in an automated way based on the Evidence provided.</ns1:usageNote>
-      </owl:Class>
-    </rdfs:domain>
+    <rdfs:domain rdf:resource="http://data.europa.eu/m8g/InformationConcept"/>
     <rdfs:range rdf:resource="http://www.w3.org/2000/01/rdf-schema#Literal"/>
   </owl:DatatypeProperty>
+  <owl:ObjectProperty rdf:about="http://data.europa.eu/m8g/hasConcept">
+    <rdfs:isDefinedBy rdf:resource="http://data.europa.eu/m8g"/>
+    <rdfs:label xml:lang="en">has concept</rdfs:label>
+    <rdfs:comment xml:lang="en">Information Concept for which a value is expected by the Requirement.</rdfs:comment>
+    <ns1:usageNote xml:lang="en">Information Concepts defined for specific Requirements also represent the basis for specifying the Supported Value an Evidence should provide.</ns1:usageNote>
+    <rdfs:domain rdf:resource="http://data.europa.eu/m8g/Requirement"/>
+    <rdfs:range rdf:resource="http://data.europa.eu/m8g/InformationConcept"/>
+  </owl:ObjectProperty>
+  <owl:ObjectProperty rdf:about="http://data.europa.eu/m8g/hasEvidenceTypeList">
+    <rdfs:isDefinedBy rdf:resource="http://data.europa.eu/m8g"/>
+    <rdfs:label xml:lang="en">has evidence type list</rdfs:label>
+    <rdfs:comment xml:lang="en">Evidence Type List that specifies the Evidence Types that are needed to meet the Requirement.</rdfs:comment>
+    <ns1:usageNote xml:lang="en">One or several Lists of Evidence Types can support a Requirement. At least  one of them must be satisfied by the response to the Requirement.</ns1:usageNote>
+    <rdfs:domain rdf:resource="http://data.europa.eu/m8g/Requirement"/>
+    <rdfs:range>
+      <owl:Class rdf:about="http://data.europa.eu/m8g/EvidenceTypeList">
+        <rdfs:isDefinedBy rdf:resource="http://data.europa.eu/m8g"/>
+        <rdfs:label xml:lang="en">Evidence Type List</rdfs:label>
+        <rdfs:comment xml:lang="en">Group of Evidence Types for conforming to a Requirement.</rdfs:comment>
+        <ns1:usageNote xml:lang="en">An Evidence Type List is satisfied, if and only if, for all included Evidence Types in this List, corresponding conformant Evidence(s) are supporting the Requirement having this List. 
+
+The Evidence Type List describes thus an AND condition on the different Evidence Types within the list and an OR condition between two or more Evidence Type Lists. Combinations of alternative Lists can be provided for a respondent of a Requirement to choose amongst them.</ns1:usageNote>
+      </owl:Class>
+    </rdfs:range>
+  </owl:ObjectProperty>
   <owl:ObjectProperty rdf:about="http://data.europa.eu/m8g/hasQualifiedRelation">
     <rdfs:isDefinedBy rdf:resource="http://data.europa.eu/m8g"/>
     <rdfs:label xml:lang="en">has qualified relation</rdfs:label>
@@ -207,6 +241,13 @@ Because of this freedom, implementers are recommended to well-document their usa
     <rdfs:comment xml:lang="en">A more specific Requirement that is part of the Requirement.</rdfs:comment>
     <rdfs:domain rdf:resource="http://data.europa.eu/m8g/Requirement"/>
     <rdfs:range rdf:resource="http://data.europa.eu/m8g/Requirement"/>
+  </owl:ObjectProperty>
+  <owl:ObjectProperty rdf:about="http://data.europa.eu/m8g/hasSupportingEvidence">
+    <rdfs:isDefinedBy rdf:resource="http://data.europa.eu/m8g"/>
+    <rdfs:label xml:lang="en">has supporting evidence</rdfs:label>
+    <rdfs:comment xml:lang="en">Evidence that supplies information, proof or support for the Requirement.</rdfs:comment>
+    <rdfs:domain rdf:resource="http://data.europa.eu/m8g/Requirement"/>
+    <rdfs:range rdf:resource="http://data.europa.eu/m8g/Evidence"/>
   </owl:ObjectProperty>
   <owl:ObjectProperty rdf:about="http://data.europa.eu/m8g/isDerivedFrom">
     <rdfs:isDefinedBy rdf:resource="http://data.europa.eu/m8g"/>
@@ -238,16 +279,7 @@ In the case where the purpose is to link the two Requirements without additional
     <rdfs:label xml:lang="en">is specified in</rdfs:label>
     <rdfs:comment xml:lang="en">Evidence Type List in which the Evidence Type is included.</rdfs:comment>
     <rdfs:domain rdf:resource="http://data.europa.eu/m8g/EvidenceType"/>
-    <rdfs:range>
-      <owl:Class rdf:about="http://data.europa.eu/m8g/EvidenceTypeList">
-        <rdfs:isDefinedBy rdf:resource="http://data.europa.eu/m8g"/>
-        <rdfs:label xml:lang="en">Evidence Type List</rdfs:label>
-        <rdfs:comment xml:lang="en">Group of Evidence Types for conforming to a Requirement.</rdfs:comment>
-        <ns1:usageNote xml:lang="en">An Evidence Type List is satisfied, if and only if, for all included Evidence Types in this List, corresponding conformant Evidence(s) are supporting the Requirement having this List. 
-
-The Evidence Type List describes thus an AND condition on the different Evidence Types within the list and an OR condition between two or more Evidence Type Lists. Combinations of alternative Lists can be provided for a respondent of a Requirement to choose amongst them.</ns1:usageNote>
-      </owl:Class>
-    </rdfs:range>
+    <rdfs:range rdf:resource="http://data.europa.eu/m8g/EvidenceTypeList"/>
   </owl:ObjectProperty>
   <owl:ObjectProperty rdf:about="http://data.europa.eu/m8g/providesValueFor">
     <rdfs:isDefinedBy rdf:resource="http://data.europa.eu/m8g"/>
@@ -286,6 +318,14 @@ Implementers are free to choose their language. It is recommended to document th
     <rdfs:comment xml:lang="en">Evidence Type included in this Evidence Type List.</rdfs:comment>
     <rdfs:domain rdf:resource="http://data.europa.eu/m8g/EvidenceTypeList"/>
     <rdfs:range rdf:resource="http://data.europa.eu/m8g/EvidenceType"/>
+  </owl:ObjectProperty>
+  <owl:ObjectProperty rdf:about="http://data.europa.eu/m8g/supportsConcept">
+    <rdfs:isDefinedBy rdf:resource="http://data.europa.eu/m8g"/>
+    <rdfs:label xml:lang="en">supports concept</rdfs:label>
+    <rdfs:comment xml:lang="en">Information Concept providing facts found/inferred from the Evidence.</rdfs:comment>
+    <ns1:usageNote xml:lang="en">Examples of Information Concepts are values found explictly in the evidence such as a birth date or information derived from the Evidence such as "I am older that 18 years".</ns1:usageNote>
+    <rdfs:domain rdf:resource="http://data.europa.eu/m8g/Evidence"/>
+    <rdfs:range rdf:resource="http://data.europa.eu/m8g/InformationConcept"/>
   </owl:ObjectProperty>
   <owl:ObjectProperty rdf:about="http://data.europa.eu/m8g/supportsRequirement">
     <rdfs:isDefinedBy rdf:resource="http://data.europa.eu/m8g"/>
