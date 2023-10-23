@@ -100,7 +100,7 @@
     var respecConfig = {
       postProcess: [quickreference],
       edDraftURI: "https://semiceu.github.io//BRegDCAT-AP/releases/3.0.0",
-      latestVersion: "https://github.com/SEMICeu/DCAT-AP/tree/master/releases/2.1.1",
+      latestVersion: "https://github.com/SEMICeu/BregDCAT-AP/tree/main/releases/2.1.0",
       specStatus: "LS",
       publishDate: "2023-09-04",
       editors: myeditors,
@@ -250,7 +250,7 @@ citizens, business and public bodies to access and manage base registries across
 European Union and across different domains.
 </p><p>
 This specification, BRegDCAT-AP, facilitates the creation of ERBR. 
-It interconnects public services with base registries the and their associated services.
+It interconnects public services with base registries and their associated services.
 By conforming to this specification Base Registries will becomes easier to find. 
 And subsequently together with the provision through the Once Only Hub [[OOTS]] make them more interoperable by .
 This set of recommendations will enable a mechanism for the update of EU reducing technical, organisational and multilingual barriers.
@@ -283,12 +283,11 @@ A single catalogue may contain catalogued resources which are within and outside
 <section id="abstract">
     <h2>Meeting minutes</h2>
     <ul>
-    <li>Webinar 21 March 2023 (<a href="https://joinup.ec.europa.eu/sites/default/files/inline-files/Report_Meeting%20Minutes_%20Webinar%20on%20BRegDCAT-AP.pdf">Meeting Minutes</a>, i
+    <li>Webinar 21 March 2023 (<a href="https://joinup.ec.europa.eu/sites/default/files/inline-files/Report_Meeting%20Minutes_%20Webinar%20on%20BRegDCAT-AP.pdf">Meeting Minutes</a>, 
                                <a href="https://www.youtube.com/watch?v=-LJ-eX6flSo">recording</a>, 
                                <a href="https://joinup.ec.europa.eu/sites/default/files/inline-files/Slides%20Webinar%20on%20BRegDCATAP%2021March2023.pdf">slides</a>) </li>
 
     </ul>
--->
 </section>
 
 
@@ -300,7 +299,7 @@ A single catalogue may contain catalogued resources which are within and outside
             This application profile has the status <a href="https://www.w3.org/2021/Process-20211102/#RecsWD">Working Draft</a> published at 2023-09-04.
         </p>
         <p>
-            Information about the process and the decisions involved in the creation of this specification are consultable at the <a href="https://github.com/SEMICeu/DCAT-AP/blob/gh-pages/releases/2.2.0-bregdcatap/CHANGELOG">Changelog</a>.
+            Information about the process and the decisions involved in the creation of this specification are consultable at the <a href="">Changelog</a>.
         </p>
 </section>
 
@@ -334,11 +333,11 @@ A single catalogue may contain catalogued resources which are within and outside
 <section id="conformance" class="informative">
 <h2>Conformance Statement</h2>
 
-In order for applications to conform to DCAT-AP HVD, it MUST conform to DCAT-AP. 
+In order for applications to conform to BregDCAT-AP, it MUST conform to DCAT-AP. 
 In addition, the application must conform to the mentioned constraints and usage guidelines following similar conformance statements as specifief in DCAT-AP.
 
 <h3>Provider requirements</h3>
-In order to conform to this Application Profile, an application that provides metadata MUST:
+In order to conform to this Annex to the Application Profile of DCAT-AP, an application that provides metadata MUST:
 <ul>
 <li>Provide a description of the Catalogue, including at least the mandatory properties specified for the class <a href="#Catalogue">Catalogue</a>.</li>
 <li>Provide descriptions of Datasets in the Catalogue, including at least the mandatory properties for the class <a href="#Dataset">Dataset</a>.</li>
@@ -350,7 +349,7 @@ The application of the controlled vocabularies as described in section [[[#contr
 
 
 <h3>Receiver requirements</h3>
-In order to conform to this Application Profile, an application that receives metadata MUST be able to:
+In order to conform to this Annex to the Application Profile, an application that receives metadata MUST be able to:
 <li>Process information for all classes and properties specified in section [[[#quick-reference]]].</li>
 <li>Process information for all controlled vocabularies specified in section [[[#controlled-vocs]]].</li>
 "Processing" means that receivers must accept incoming data and transparently provide these data to applications and services. 
@@ -382,10 +381,12 @@ This specification uses the following prefixes to shorten the URIs for readibili
             <thead><tr><th>Prefix</th><th>Namespace IRI</th></tr></thead>
             <tbody>
             <tr><td><code>adms</code></td><td><code>http://www.w3.org/ns/adms#</code></td></tr>
+            <tr><td><code>cpsv</code></td><td><code>http://purl.org/vocab/cpsv#</code></td></tr>
             <tr><td><code>dcat</code></td><td><code>http://www.w3.org/ns/dcat#</code></td></tr>
             <tr><td><code>dcatap</code></td><td><code>http://data.europa.eu/r5r/</code></td></tr>
             <tr><td><code>dct</code></td><td><code>http://purl.org/dc/terms/</code></td></tr>
             <tr><td><code>dctype</code></td><td><code>http://purl.org/dc/dcmitype/</code></td></tr>
+            <tr><td><code>eli</code></td><td><code>http://data.europa.eu/eli/ontology#</code></td></tr>
             <tr><td><code>foaf</code></td><td><code>http://xmlns.com/foaf/0.1/</code></td></tr>
             <tr><td><code>locn</code></td><td><code>http://www.w3.org/ns/locn#</code></td></tr>
             <tr><td><code>owl</code></td><td><code>http://www.w3.org/2002/07/owl#</code></td></tr>
@@ -410,6 +411,10 @@ In this document only the additional information, that is required for the catal
 In any other case, the guidelines of DCAT-AP itself are applicable.
 </p>
 
+<p class="ednote" title="BRegDCAT-ap additions">
+   As shown in the profile diagram below: the sole addition to DCAT-AP is the relationship with a public service.
+   As such the Annex can be even further reduced to a simple case of relating a public service with a catalogued resource.
+</p>
 
 <h3>Application profile diagram</h3>
 <p>
@@ -483,7 +488,7 @@ The main entities are those that form the core of the Application Profile.
             </h3>
 	        <!-- XXX an image in the h3 will break the rendering of the Table Of Contents of Respec -->
 		<!-- outcomment github feedback possibility
-                <a href="https://github.com/SEMICeu/DCAT-AP/issues/new?title=Issue%20for%20Catalogue&body=Explain%20your%20issue"}}>
+                <a href="https://github.com/SEMICeu/BregDCAT-AP/issues/new?title=Issue%20for%20Catalogue&body=Explain%20your%20issue"}}>
                    <img src="html/callout.png" loading="lazy" alt="(create issue)" width="20" height="20"/>
 		</a>
 		-->
@@ -556,7 +561,7 @@ The main entities are those that form the core of the Application Profile.
                                 resource="http://www.w3.org/ns/dcat#dataset"
                                 class="class mandatory">
                                 <td>
-				    <a href="https://github.com/SEMICeu/DCAT-AP/issues/new?title=Issue%20for%20dataset%20in%20Catalogue&body=Explain%20your%20issue%20for%20https://semiceu.github.io//BRegDCAT-AP/releases/3.0.0%23Catalogue.dataset" target="_blank" rel="noopener noreferrer" >
+				    <a href="https://github.com/SEMICeu/BregDCAT-AP/issues/new?title=Issue%20for%20dataset%20in%20Catalogue&body=Explain%20your%20issue%20for%20https://semiceu.github.io//BRegDCAT-AP/releases/3.0.0%23Catalogue.dataset" target="_blank" rel="noopener noreferrer" >
 					    <!--                                        <i class="icon">[o]</i> -->
                                         <img src="html/callout.png" loading="lazy" alt="[o]" width="100" height="100"/>
                                     </a>
@@ -599,7 +604,7 @@ The main entities are those that form the core of the Application Profile.
                                 resource="http://www.w3.org/ns/dcat#record"
                                 class="class mandatory">
                                 <td>
-				    <a href="https://github.com/SEMICeu/DCAT-AP/issues/new?title=Issue%20for%20record%20in%20Catalogue&body=Explain%20your%20issue%20for%20https://semiceu.github.io//BRegDCAT-AP/releases/3.0.0%23Catalogue.record" target="_blank" rel="noopener noreferrer" >
+				    <a href="https://github.com/SEMICeu/BregDCAT-AP/issues/new?title=Issue%20for%20record%20in%20Catalogue&body=Explain%20your%20issue%20for%20https://semiceu.github.io//BRegDCAT-AP/releases/3.0.0%23Catalogue.record" target="_blank" rel="noopener noreferrer" >
 					    <!--                                        <i class="icon">[o]</i> -->
                                         <img src="html/callout.png" loading="lazy" alt="[o]" width="100" height="100"/>
                                     </a>
@@ -622,7 +627,7 @@ The main entities are those that form the core of the Application Profile.
                                     0..*
                                 </td>
                                 <td property="rdfs:comment">
-                                    A Catalogue Record that is part of the Catalogue
+                                    A Catalogue Record that is part of the Catalogue.
                                 </td>
                                 <td property="skos:scopeNote">
                                     
@@ -642,7 +647,7 @@ The main entities are those that form the core of the Application Profile.
                                 resource="http://www.w3.org/ns/dcat#service"
                                 class="class mandatory">
                                 <td>
-				    <a href="https://github.com/SEMICeu/DCAT-AP/issues/new?title=Issue%20for%20service%20in%20Catalogue&body=Explain%20your%20issue%20for%20https://semiceu.github.io//BRegDCAT-AP/releases/3.0.0%23Catalogue.service" target="_blank" rel="noopener noreferrer" >
+				    <a href="https://github.com/SEMICeu/BregDCAT-AP/issues/new?title=Issue%20for%20service%20in%20Catalogue&body=Explain%20your%20issue%20for%20https://semiceu.github.io//BRegDCAT-AP/releases/3.0.0%23Catalogue.service" target="_blank" rel="noopener noreferrer" >
 					    <!--                                        <i class="icon">[o]</i> -->
                                         <img src="html/callout.png" loading="lazy" alt="[o]" width="100" height="100"/>
                                     </a>
@@ -702,7 +707,7 @@ The main entities are those that form the core of the Application Profile.
             </h3>
 	        <!-- XXX an image in the h3 will break the rendering of the Table Of Contents of Respec -->
 		<!-- outcomment github feedback possibility
-                <a href="https://github.com/SEMICeu/DCAT-AP/issues/new?title=Issue%20for%20CatalogueRecord&body=Explain%20your%20issue"}}>
+                <a href="https://github.com/SEMICeu/BregDCAT-AP/issues/new?title=Issue%20for%20CatalogueRecord&body=Explain%20your%20issue"}}>
                    <img src="html/callout.png" loading="lazy" alt="(create issue)" width="20" height="20"/>
 		</a>
 		-->
@@ -773,7 +778,7 @@ The main entities are those that form the core of the Application Profile.
                                 resource="http://xmlns.com/foaf/0.1/primaryTopic"
                                 class="class mandatory">
                                 <td>
-				    <a href="https://github.com/SEMICeu/DCAT-AP/issues/new?title=Issue%20for%20primary topic%20in%20Catalogue Record&body=Explain%20your%20issue%20for%20https://semiceu.github.io//BRegDCAT-AP/releases/3.0.0%23CatalogueRecord.primarytopic" target="_blank" rel="noopener noreferrer" >
+				    <a href="https://github.com/SEMICeu/BregDCAT-AP/issues/new?title=Issue%20for%20primary topic%20in%20Catalogue Record&body=Explain%20your%20issue%20for%20https://semiceu.github.io//BRegDCAT-AP/releases/3.0.0%23CatalogueRecord.primarytopic" target="_blank" rel="noopener noreferrer" >
 					    <!--                                        <i class="icon">[o]</i> -->
                                         <img src="html/callout.png" loading="lazy" alt="[o]" width="100" height="100"/>
                                     </a>
@@ -833,7 +838,7 @@ The main entities are those that form the core of the Application Profile.
             </h3>
 	        <!-- XXX an image in the h3 will break the rendering of the Table Of Contents of Respec -->
 		<!-- outcomment github feedback possibility
-                <a href="https://github.com/SEMICeu/DCAT-AP/issues/new?title=Issue%20for%20CataloguedResource&body=Explain%20your%20issue"}}>
+                <a href="https://github.com/SEMICeu/BregDCAT-AP/issues/new?title=Issue%20for%20CataloguedResource&body=Explain%20your%20issue"}}>
                    <img src="html/callout.png" loading="lazy" alt="(create issue)" width="20" height="20"/>
 		</a>
 		-->
@@ -892,7 +897,7 @@ The main entities are those that form the core of the Application Profile.
             </h3>
 	        <!-- XXX an image in the h3 will break the rendering of the Table Of Contents of Respec -->
 		<!-- outcomment github feedback possibility
-                <a href="https://github.com/SEMICeu/DCAT-AP/issues/new?title=Issue%20for%20DataService&body=Explain%20your%20issue"}}>
+                <a href="https://github.com/SEMICeu/BregDCAT-AP/issues/new?title=Issue%20for%20DataService&body=Explain%20your%20issue"}}>
                    <img src="html/callout.png" loading="lazy" alt="(create issue)" width="20" height="20"/>
 		</a>
 		-->
@@ -970,7 +975,7 @@ The main entities are those that form the core of the Application Profile.
                                 resource="http://www.w3.org/ns/dcat#servesDataset"
                                 class="class mandatory">
                                 <td>
-				    <a href="https://github.com/SEMICeu/DCAT-AP/issues/new?title=Issue%20for%20serves dataset%20in%20Data Service&body=Explain%20your%20issue%20for%20https://semiceu.github.io//BRegDCAT-AP/releases/3.0.0%23DataService.servesdataset" target="_blank" rel="noopener noreferrer" >
+				    <a href="https://github.com/SEMICeu/BregDCAT-AP/issues/new?title=Issue%20for%20serves dataset%20in%20Data Service&body=Explain%20your%20issue%20for%20https://semiceu.github.io//BRegDCAT-AP/releases/3.0.0%23DataService.servesdataset" target="_blank" rel="noopener noreferrer" >
 					    <!--                                        <i class="icon">[o]</i> -->
                                         <img src="html/callout.png" loading="lazy" alt="[o]" width="100" height="100"/>
                                     </a>
@@ -1030,7 +1035,7 @@ The main entities are those that form the core of the Application Profile.
             </h3>
 	        <!-- XXX an image in the h3 will break the rendering of the Table Of Contents of Respec -->
 		<!-- outcomment github feedback possibility
-                <a href="https://github.com/SEMICeu/DCAT-AP/issues/new?title=Issue%20for%20Dataset&body=Explain%20your%20issue"}}>
+                <a href="https://github.com/SEMICeu/BregDCAT-AP/issues/new?title=Issue%20for%20Dataset&body=Explain%20your%20issue"}}>
                    <img src="html/callout.png" loading="lazy" alt="(create issue)" width="20" height="20"/>
 		</a>
 		-->
@@ -1108,7 +1113,7 @@ The main entities are those that form the core of the Application Profile.
                                 resource="http://www.w3.org/ns/dcat#distribution"
                                 class="class mandatory">
                                 <td>
-				    <a href="https://github.com/SEMICeu/DCAT-AP/issues/new?title=Issue%20for%20dataset distribution%20in%20Dataset&body=Explain%20your%20issue%20for%20https://semiceu.github.io//BRegDCAT-AP/releases/3.0.0%23Dataset.datasetdistribution" target="_blank" rel="noopener noreferrer" >
+				    <a href="https://github.com/SEMICeu/BregDCAT-AP/issues/new?title=Issue%20for%20dataset distribution%20in%20Dataset&body=Explain%20your%20issue%20for%20https://semiceu.github.io//BRegDCAT-AP/releases/3.0.0%23Dataset.datasetdistribution" target="_blank" rel="noopener noreferrer" >
 					    <!--                                        <i class="icon">[o]</i> -->
                                         <img src="html/callout.png" loading="lazy" alt="[o]" width="100" height="100"/>
                                     </a>
@@ -1168,7 +1173,7 @@ The main entities are those that form the core of the Application Profile.
             </h3>
 	        <!-- XXX an image in the h3 will break the rendering of the Table Of Contents of Respec -->
 		<!-- outcomment github feedback possibility
-                <a href="https://github.com/SEMICeu/DCAT-AP/issues/new?title=Issue%20for%20Distribution&body=Explain%20your%20issue"}}>
+                <a href="https://github.com/SEMICeu/BregDCAT-AP/issues/new?title=Issue%20for%20Distribution&body=Explain%20your%20issue"}}>
                    <img src="html/callout.png" loading="lazy" alt="(create issue)" width="20" height="20"/>
 		</a>
 		-->
@@ -1246,7 +1251,7 @@ The main entities are those that form the core of the Application Profile.
                                 resource="http://www.w3.org/ns/dcat#accessService"
                                 class="class mandatory">
                                 <td>
-				    <a href="https://github.com/SEMICeu/DCAT-AP/issues/new?title=Issue%20for%20access service%20in%20Distribution&body=Explain%20your%20issue%20for%20https://semiceu.github.io//BRegDCAT-AP/releases/3.0.0%23Distribution.accessservice" target="_blank" rel="noopener noreferrer" >
+				    <a href="https://github.com/SEMICeu/BregDCAT-AP/issues/new?title=Issue%20for%20access service%20in%20Distribution&body=Explain%20your%20issue%20for%20https://semiceu.github.io//BRegDCAT-AP/releases/3.0.0%23Distribution.accessservice" target="_blank" rel="noopener noreferrer" >
 					    <!--                                        <i class="icon">[o]</i> -->
                                         <img src="html/callout.png" loading="lazy" alt="[o]" width="100" height="100"/>
                                     </a>
@@ -1269,7 +1274,7 @@ The main entities are those that form the core of the Application Profile.
                                     0..*
                                 </td>
                                 <td property="rdfs:comment">
-                                    A data service that gives access to the distribution of the dataset
+                                    A data service that gives access to the distribution of the dataset.
                                 </td>
                                 <td property="skos:scopeNote">
                                     
@@ -1310,7 +1315,7 @@ The main entities are those that form the core of the Application Profile.
             </h3>
 	        <!-- XXX an image in the h3 will break the rendering of the Table Of Contents of Respec -->
 		<!-- outcomment github feedback possibility
-                <a href="https://github.com/SEMICeu/DCAT-AP/issues/new?title=Issue%20for%20PublicRegistryService&body=Explain%20your%20issue"}}>
+                <a href="https://github.com/SEMICeu/BregDCAT-AP/issues/new?title=Issue%20for%20PublicRegistryService&body=Explain%20your%20issue"}}>
                    <img src="html/callout.png" loading="lazy" alt="(create issue)" width="20" height="20"/>
 		</a>
 		-->
@@ -1379,7 +1384,7 @@ companies, vehicles, licences, buildings, locations and roads.
                                 resource="http://purl.org/vocab/cpsv#produces"
                                 class="class mandatory">
                                 <td>
-				    <a href="https://github.com/SEMICeu/DCAT-AP/issues/new?title=Issue%20for%20produces%20in%20Public Registry Service&body=Explain%20your%20issue%20for%20https://semiceu.github.io//BRegDCAT-AP/releases/3.0.0%23PublicRegistryService.produces" target="_blank" rel="noopener noreferrer" >
+				    <a href="https://github.com/SEMICeu/BregDCAT-AP/issues/new?title=Issue%20for%20produces%20in%20Public Registry Service&body=Explain%20your%20issue%20for%20https://semiceu.github.io//BRegDCAT-AP/releases/3.0.0%23PublicRegistryService.produces" target="_blank" rel="noopener noreferrer" >
 					    <!--                                        <i class="icon">[o]</i> -->
                                         <img src="html/callout.png" loading="lazy" alt="[o]" width="100" height="100"/>
                                     </a>
@@ -1460,7 +1465,7 @@ They are included in the Application Profile because they form the range of prop
             </h3>
 	        <!-- XXX an image in the h3 will break the rendering of the Table Of Contents of Respec -->
 		<!-- outcomment github feedback possibility
-                <a href="https://github.com/SEMICeu/DCAT-AP/issues/new?title=Issue%20for%20Concept&body=Explain%20your%20issue"}}>
+                <a href="https://github.com/SEMICeu/BregDCAT-AP/issues/new?title=Issue%20for%20Concept&body=Explain%20your%20issue"}}>
                    <img src="html/callout.png" loading="lazy" alt="(create issue)" width="20" height="20"/>
 		</a>
 		-->
@@ -1469,7 +1474,7 @@ They are included in the Application Profile because they form the range of prop
                     Definition
                 </dt>
                 <dd>
-                    
+                    A concept can be viewed as an idea or notion; a unit of thought. However, what constitutes a unit of thought is subjective, and this definition is meant to be suggestive, rather than restrictive. 
                 </dd>
                 
                 
@@ -1509,7 +1514,7 @@ They are included in the Application Profile because they form the range of prop
             </h3>
 	        <!-- XXX an image in the h3 will break the rendering of the Table Of Contents of Respec -->
 		<!-- outcomment github feedback possibility
-                <a href="https://github.com/SEMICeu/DCAT-AP/issues/new?title=Issue%20for%20LegalResource&body=Explain%20your%20issue"}}>
+                <a href="https://github.com/SEMICeu/BregDCAT-AP/issues/new?title=Issue%20for%20LegalResource&body=Explain%20your%20issue"}}>
                    <img src="html/callout.png" loading="lazy" alt="(create issue)" width="20" height="20"/>
 		</a>
 		-->
@@ -1561,7 +1566,7 @@ In this data specification the use is restricted to instances of this class that
             </h3>
 	        <!-- XXX an image in the h3 will break the rendering of the Table Of Contents of Respec -->
 		<!-- outcomment github feedback possibility
-                <a href="https://github.com/SEMICeu/DCAT-AP/issues/new?title=Issue%20for%20Literal&body=Explain%20your%20issue"}}>
+                <a href="https://github.com/SEMICeu/BregDCAT-AP/issues/new?title=Issue%20for%20Literal&body=Explain%20your%20issue"}}>
                    <img src="html/callout.png" loading="lazy" alt="(create issue)" width="20" height="20"/>
 		</a>
 		-->
@@ -1606,7 +1611,7 @@ In this data specification the use is restricted to instances of this class that
             </h3>
 	        <!-- XXX an image in the h3 will break the rendering of the Table Of Contents of Respec -->
 		<!-- outcomment github feedback possibility
-                <a href="https://github.com/SEMICeu/DCAT-AP/issues/new?title=Issue%20for%20Resource&body=Explain%20your%20issue"}}>
+                <a href="https://github.com/SEMICeu/BregDCAT-AP/issues/new?title=Issue%20for%20Resource&body=Explain%20your%20issue"}}>
                    <img src="html/callout.png" loading="lazy" alt="(create issue)" width="20" height="20"/>
 		</a>
 		-->
@@ -1716,7 +1721,14 @@ In this data specification the use is restricted to instances of this class that
 
  
   <section id="controlled-vocs" class="informative">
+
   <h2>Controlled Vocabularies</h2>
+
+<p class="ednote" title="No controlled vocabularies imposed">
+  According to the latest BRegDCAT-AP specification no requirements for controlled vocabularies have been set. 
+  Therefore this section contains at the moment only template text. 
+  Proposal to be removed.
+</p>
 
 
 The usage of controlled vocabularies in BRegDCAT-AP conforms and extends the usage defined by DCAT-AP.
@@ -2314,6 +2326,7 @@ Past and current contributors are :
 {'pref':'time:', 'ns': 'http://www.w3.org/2006/time#'},
 {'pref':'vcard:', 'ns': 'http://www.w3.org/2006/vcard/ns#'},
 {'pref':'eli:', 'ns' : 'http://data.europa.eu/eli/ontology#'},
+{'pref':'cpsv:', 'ns' : 'http://purl.org/vocab/cpsv#'},
 {'pref':'xsd:', 'ns': 'http://www.w3.org/2001/XMLSchema#'}
 				];
 
