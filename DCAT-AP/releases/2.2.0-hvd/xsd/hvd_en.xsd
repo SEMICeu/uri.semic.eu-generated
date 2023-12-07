@@ -203,12 +203,6 @@ As multiple legislations may apply to the resource the maximum cardinality is no
           <xs:documentation xml:lang="en" source="#usage">Article 3.3 specifies that the terms of use should be provided. According to the guidelines for &lt;a href="#c3"&gt;legal Information&lt;/a&gt; in DCAT-AP HVD this is fullfilled by providing by preference a licence. As alternative rights can be used.</xs:documentation>
         </xs:annotation>
       </xs:element>
-      <xs:element name="Title" type="xs:string" maxOccurs="unbounded" minOccurs="1">
-        <xs:annotation>
-          <xs:documentation xml:lang="en" source="#definition">A name given to the Data Service.</xs:documentation>
-          <xs:documentation xml:lang="en" source="#usage">This property can be repeated for parallel language versions of the name.</xs:documentation>
-        </xs:annotation>
-      </xs:element>
       <xs:element name="Documentation" type="DocumentType" maxOccurs="unbounded" minOccurs="1">
         <xs:annotation>
           <xs:documentation xml:lang="en" source="#definition">A page that provides additional information about the Data Service.</xs:documentation>
@@ -224,13 +218,6 @@ As multiple legislations may apply to the resource the maximum cardinality is no
   </xs:complexType>
   <xs:complexType name="DatasetType">
     <xs:sequence>
-      <xs:element name="OtherIdentifier" type="IdentifierType" maxOccurs="unbounded" minOccurs="0">
-        <xs:annotation>
-          <xs:documentation xml:lang="en" source="#definition">A secondary identifier of the Dataset, such as MAST/ADS17, DataCite18, DOI19, EZID20 or W3ID21.</xs:documentation>
-          <xs:documentation xml:lang="en" source="#usage">It is recommended to include all identifiers that the catalogue knows about this dataset.
-This allows others to find datasets more easily back.</xs:documentation>
-        </xs:annotation>
-      </xs:element>
       <xs:element name="ContactPoint" type="KindType" maxOccurs="unbounded" minOccurs="0">
         <xs:annotation>
           <xs:documentation xml:lang="en" source="#definition">Contact information that can be used for sending comments about the Dataset.</xs:documentation>
@@ -261,11 +248,6 @@ As multiple legislations may apply to the resource the maximum cardinality is no
           <xs:documentation xml:lang="en" source="#usage">The provided information should enable to the verification whether the detailed information requirements by the HVD is satisfied. For more usage suggestions see section on &lt;a href="#c7"&gt;specific data requirements&lt;/a&gt;.</xs:documentation>
         </xs:annotation>
       </xs:element>
-      <xs:element name="Identifier" type="xs:string" maxOccurs="unbounded" minOccurs="0">
-        <xs:annotation>
-          <xs:documentation xml:lang="en" source="#definition">The main identifier for the Dataset, e.g. the URI or other unique identifier in the context of the Catalogue.</xs:documentation>
-        </xs:annotation>
-      </xs:element>
       <xs:element name="Publisher" type="AgentType" maxOccurs="1" minOccurs="0">
         <xs:annotation>
           <xs:documentation xml:lang="en" source="#definition">An entity (organisation) responsible for making the Dataset available.</xs:documentation>
@@ -288,7 +270,8 @@ As multiple legislations may apply to the resource the maximum cardinality is no
       <xs:element name="AccessUrl" type="ResourceType" maxOccurs="unbounded" minOccurs="1">
         <xs:annotation>
           <xs:documentation xml:lang="en" source="#definition">A URL that gives access to a Distribution of the Dataset.</xs:documentation>
-          <xs:documentation xml:lang="en" source="#usage">The resource at the access URL may contain information about how to get the Dataset.</xs:documentation>
+          <xs:documentation xml:lang="en" source="#usage">The resource at the access URL  contains information about how to get the Dataset.
+In accordance to the DCAT guidelines it is preferred to also set the downloadURL property if the URL is a reference to a downloadable resource.</xs:documentation>
         </xs:annotation>
       </xs:element>
       <xs:element name="ApplicableLegislation" type="LegalResourceType" maxOccurs="unbounded" minOccurs="1">
