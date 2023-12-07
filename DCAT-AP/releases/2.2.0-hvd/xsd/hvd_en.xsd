@@ -75,13 +75,13 @@
   </xs:complexType>
   <xs:complexType name="KindType">
     <xs:sequence>
-      <xs:element name="Email" type="ResourceType" maxOccurs="1" minOccurs="1">
+      <xs:element name="Email" type="ResourceType" maxOccurs="1" minOccurs="0">
         <xs:annotation>
           <xs:documentation xml:lang="en" source="#definition">A email address via which contact can be made.
 </xs:documentation>
         </xs:annotation>
       </xs:element>
-      <xs:element name="ContactPage" type="ResourceType" maxOccurs="1" minOccurs="1">
+      <xs:element name="ContactPage" type="ResourceType" maxOccurs="1" minOccurs="0">
         <xs:annotation>
           <xs:documentation xml:lang="en" source="#definition">A webpage that either allows to make contact (i.e. a webform) or the information contains how to get into contact. </xs:documentation>
         </xs:annotation>
@@ -165,29 +165,33 @@
       <xs:element name="ContactPoint" type="KindType" maxOccurs="unbounded" minOccurs="1">
         <xs:annotation>
           <xs:documentation xml:lang="en" source="#definition">Contact information that can be used for sending comments about the Data Service.</xs:documentation>
+          <xs:documentation xml:lang="en" source="#usage">Article 3.4 requires the designation of a point of contact for an API. </xs:documentation>
         </xs:annotation>
       </xs:element>
       <xs:element name="EndpointDescription" type="ResourceType" maxOccurs="unbounded" minOccurs="0">
         <xs:annotation>
           <xs:documentation xml:lang="en" source="#definition">A description of the services available via the end-points, including their operations, parameters etc.</xs:documentation>
-          <xs:documentation xml:lang="en" source="#usage">The property gives specific details of the actual endpoint instances, while dct:conformsTo is used to indicate the general standard or specification that the endpoints implement.</xs:documentation>
+          <xs:documentation xml:lang="en" source="#usage">The property gives specific details of the actual endpoint instances, while dct:conformsTo is used to indicate the general standard or specification that the endpoints implement.
+&lt;br/&gt;
+Article 3.3 requires to provide API documentation in a Union or internationally recognised open, human-readable and machine-readable format.</xs:documentation>
         </xs:annotation>
       </xs:element>
       <xs:element name="EndpointUrl" type="ResourceType" maxOccurs="unbounded" minOccurs="1">
         <xs:annotation>
           <xs:documentation xml:lang="en" source="#definition">The root location or primary endpoint of the service (an IRI).</xs:documentation>
-          <xs:documentation xml:lang="en" source="#usage">The endpoint URL should be persistent. This means that publishers should do everything in their power to maintain the value stable and existing.</xs:documentation>
+          <xs:documentation xml:lang="en" source="#usage">The endpoint URL SHOULD be persistent. This means that publishers should do everything in their power to maintain the value stable and existing.</xs:documentation>
         </xs:annotation>
       </xs:element>
       <xs:element name="ServesDataset" type="DatasetType" maxOccurs="unbounded" minOccurs="1">
         <xs:annotation>
           <xs:documentation xml:lang="en" source="#definition">This property refers to a collection of data that this data service can distribute.</xs:documentation>
+          <xs:documentation xml:lang="en" source="#usage">An API in the context of HVD is not a standalone resource. It is used to open up HVD datasets. Therefore each Data Service is at least tightly connected with a Dataset.</xs:documentation>
         </xs:annotation>
       </xs:element>
       <xs:element name="ApplicableLegislation" type="LegalResourceType" maxOccurs="unbounded" minOccurs="1">
         <xs:annotation>
           <xs:documentation xml:lang="en" source="#definition">The legislation that mandates the creation or management of the Data Service.</xs:documentation>
-          <xs:documentation xml:lang="en" source="#usage">For HVD the value must include the ELI &lt;a href="http://data.europa.eu/eli/reg_impl/2023/138/oj"&gt;http://data.europa.eu/eli/reg_impl/2023/138/oj&lt;/a&gt;. 
+          <xs:documentation xml:lang="en" source="#usage">For HVD the value MUST include the ELI &lt;a href="http://data.europa.eu/eli/reg_impl/2023/138/oj"&gt;http://data.europa.eu/eli/reg_impl/2023/138/oj&lt;/a&gt;. 
 &lt;br/&gt;
 As multiple legislations may apply to the resource the maximum cardinality is not limited.</xs:documentation>
         </xs:annotation>
@@ -197,14 +201,16 @@ As multiple legislations may apply to the resource the maximum cardinality is no
           <xs:documentation xml:lang="en" source="#definition">The HVD category to which this Data Service belongs.</xs:documentation>
         </xs:annotation>
       </xs:element>
-      <xs:element name="Licence" type="LicenceDocumentType" maxOccurs="1" minOccurs="1">
+      <xs:element name="Licence" type="LicenceDocumentType" maxOccurs="1" minOccurs="0">
         <xs:annotation>
           <xs:documentation xml:lang="en" source="#definition">A licence under which the Data service is made available.</xs:documentation>
+          <xs:documentation xml:lang="en" source="#usage">Article 3.3 specifies that the terms of use should be provided. According to the guidelines for &lt;a href="#c3"&gt;legal Information&lt;/a&gt; in DCAT-AP HVD this is fullfilled by providing by preference a licence. As alternative rights can be used.</xs:documentation>
         </xs:annotation>
       </xs:element>
       <xs:element name="Rights" type="RightsStatementType" maxOccurs="unbounded" minOccurs="0">
         <xs:annotation>
           <xs:documentation xml:lang="en" source="#definition">A statement that specifies rights associated with the Distribution.</xs:documentation>
+          <xs:documentation xml:lang="en" source="#usage">Article 3.3 specifies that the terms of use should be provided. According to the guidelines for &lt;a href="#c3"&gt;legal Information&lt;/a&gt; in DCAT-AP HVD this is fullfilled by providing by preference a licence. As alternative rights can be used.</xs:documentation>
         </xs:annotation>
       </xs:element>
       <xs:element name="Title" type="xs:string" maxOccurs="unbounded" minOccurs="1">
@@ -215,7 +221,7 @@ As multiple legislations may apply to the resource the maximum cardinality is no
       </xs:element>
       <xs:element name="Documentation" type="DocumentType" maxOccurs="unbounded" minOccurs="1">
         <xs:annotation>
-          <xs:documentation xml:lang="en" source="#definition">A web page that provides details the quality of service the Data Service provides and/or additional information.</xs:documentation>
+          <xs:documentation xml:lang="en" source="#definition">A page that provides additional information about the Data Service.</xs:documentation>
           <xs:documentation xml:lang="en" source="#usage">Quality of service covers a broad spectrum of aspects. The HVD regulation does not list any mandatory topic. Therefore quality of service information is considered part of the generic documentation of a Data Service.</xs:documentation>
         </xs:annotation>
       </xs:element>
@@ -243,6 +249,7 @@ This allows others to find datasets more easily back.</xs:documentation>
       <xs:element name="DatasetDistribution" type="DistributionType" maxOccurs="unbounded" minOccurs="1">
         <xs:annotation>
           <xs:documentation xml:lang="en" source="#definition">An available Distribution for the Dataset.</xs:documentation>
+          <xs:documentation xml:lang="en" source="#usage">The HVD IR is a quality improvement of existing datasets. The intention is that HVD datasets are publicly and open accessible. Therefore a Distribution is expected to be present. (Article 3.1)</xs:documentation>
         </xs:annotation>
       </xs:element>
       <xs:element name="ApplicableLegislation" type="LegalResourceType" maxOccurs="unbounded" minOccurs="1">
@@ -262,6 +269,11 @@ As multiple legislations may apply to the resource the maximum cardinality is no
         <xs:annotation>
           <xs:documentation xml:lang="en" source="#definition">An implementing rule or other specification.</xs:documentation>
           <xs:documentation xml:lang="en" source="#usage">The provided information should enable to the verification whether the detailed information requirements by the HVD is satisfied.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="Identifier" type="xs:string" maxOccurs="unbounded" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation xml:lang="en" source="#definition">The main identifier for the Dataset, e.g. the URI or other unique identifier in the context of the Catalogue.</xs:documentation>
         </xs:annotation>
       </xs:element>
       <xs:element name="Publisher" type="AgentType" maxOccurs="1" minOccurs="0">

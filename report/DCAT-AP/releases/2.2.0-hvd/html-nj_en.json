@@ -17,8 +17,8 @@
     },
     "status": "https://www.w3.org/2021/Process-20211102/#RecsW3C",
     "statuslabel": "Onbekend",
-    "repositoryurl": "git@semicthema-DCAT-AP:SEMICeu/Semicthema-DCAT-AP.git/tree/f0a62e1882528196150271faf31e0e845535b8ee",
-    "changelogurl": "git@semicthema-DCAT-AP:SEMICeu/Semicthema-DCAT-AP.git/blob/f0a62e1882528196150271faf31e0e845535b8ee/CHANGELOG",
+    "repositoryurl": "git@semicthema-DCAT-AP:SEMICeu/Semicthema-DCAT-AP.git/tree/d48ae46c712d021cfdf39c92f6243bd13bd80be3",
+    "changelogurl": "git@semicthema-DCAT-AP:SEMICeu/Semicthema-DCAT-AP.git/blob/d48ae46c712d021cfdf39c92f6243bd13bd80be3/CHANGELOG",
     "feedbackurl": "https://github.com/SEMICeu/DCAT-AP/issues",
     "standaardregisterurl": "https://github.com/SEMICeu/DCAT-AP/blob/gh-pages/releases/2.2.0-hvd/CHANGELOG",
     "usesVocs": [],
@@ -193,14 +193,14 @@
         "en": "A description following the vCard specification, e.g. to provide telephone number and e-mail address for a contact point."
       },
       "usage": {
-        "en": "Note that the class Kind is the parent class for the four explicit types of vCards (Individual, Organization, Location, Group)."
+        "en": "Article3.4 requires to designate a point of contact for an API. It is recommended to provide  at least either an email or a contact form from e.g. a service desk. "
       },
       "parents": [],
       "rawTags": {
         "ap-label-en": "Kind",
         "ap-definition-en": "A description following the vCard specification, e.g. to provide telephone number and e-mail address for a contact point.",
         "uri": "http://www.w3.org/2006/vcard/ns#Kind",
-        "ap-usageNote-en": "Note that the class Kind is the parent class for the four explicit types of vCards (Individual, Organization, Location, Group).",
+        "ap-usageNote-en": "Article3.4 requires to designate a point of contact for an API. It is recommended to provide  at least either an email or a contact form from e.g. a service desk. ",
         "class-usage-scope": "main",
         "DCAT-AP": "https://semiceu.github.io/DCAT-AP/releases/3.0.0/#Kind",
         "reuse": "asis"
@@ -238,13 +238,13 @@
               }
             }
           ],
-          "cardinality": "1",
+          "cardinality": "0..1",
           "codelist_uri": "",
           "rawTags": {
             "uri": "http://www.w3.org/2006/vcard/ns#hasEmail",
             "label-en": "email",
             "ap-definition-en": "A email address via which contact can be made.\r\n",
-            "property-usage-scope": "mandatory",
+            "property-usage-scope": "recommended",
             "reuse": "additional"
           }
         },
@@ -280,13 +280,13 @@
               }
             }
           ],
-          "cardinality": "1",
+          "cardinality": "0..1",
           "codelist_uri": "",
           "rawTags": {
             "label-en": "contact page",
             "uri": "http://www.w3.org/2006/vcard/ns#hasURL",
             "ap-definition-en": "A webpage that either allows to make contact (i.e. a webform) or the information contains how to get into contact. ",
-            "property-usage-scope": "mandatory",
+            "property-usage-scope": "recommended",
             "reuse": "additional"
           }
         }
@@ -677,7 +677,7 @@
             "en": "The legislation that mandates the creation or management of the Data Service."
           },
           "usage": {
-            "en": "For HVD the value must include the ELI <a href=\"http://data.europa.eu/eli/reg_impl/2023/138/oj\">http://data.europa.eu/eli/reg_impl/2023/138/oj</a>. \r\n<br/>\r\nAs multiple legislations may apply to the resource the maximum cardinality is not limited."
+            "en": "For HVD the value MUST include the ELI <a href=\"http://data.europa.eu/eli/reg_impl/2023/138/oj\">http://data.europa.eu/eli/reg_impl/2023/138/oj</a>. \r\n<br/>\r\nAs multiple legislations may apply to the resource the maximum cardinality is not limited."
           },
           "domain": [
             {
@@ -707,7 +707,7 @@
             "ap-definition-en": "The legislation that mandates the creation or management of the Data Service.",
             "ap-label-en": "applicable legislation",
             "property-usage-scope": "mandatory",
-            "ap-usageNote-en": "For HVD the value must include the ELI <a href=\"http://data.europa.eu/eli/reg_impl/2023/138/oj\">http://data.europa.eu/eli/reg_impl/2023/138/oj</a>. \r\n<br/>\r\nAs multiple legislations may apply to the resource the maximum cardinality is not limited.",
+            "ap-usageNote-en": "For HVD the value MUST include the ELI <a href=\"http://data.europa.eu/eli/reg_impl/2023/138/oj\">http://data.europa.eu/eli/reg_impl/2023/138/oj</a>. \r\n<br/>\r\nAs multiple legislations may apply to the resource the maximum cardinality is not limited.",
             "reuse": "additional"
           }
         },
@@ -764,7 +764,9 @@
           "description": {
             "en": "A licence under which the Data service is made available."
           },
-          "usage": {},
+          "usage": {
+            "en": "Article 3.3 specifies that the terms of use should be provided. According to the guidelines for <a href=\"#c3\">legal Information</a> in DCAT-AP HVD this is fullfilled by providing by preference a licence. As alternative rights can be used."
+          },
           "domain": [
             {
               "EA-Name": "dcat:DataService",
@@ -786,7 +788,7 @@
               }
             }
           ],
-          "cardinality": "1",
+          "cardinality": "0..1",
           "codelist_uri": "",
           "rawTags": {
             "ap-label-en": "licence",
@@ -795,7 +797,8 @@
             "property-usage-scope": "optional",
             "DCAT": "https://w3c.github.io/dxwg/dcat/#Property:resource_license",
             "DCAT-AP": "https://semiceu.github.io/DCAT-AP/releases/3.0.0/#DataService.licence",
-            "reuse": "asis"
+            "reuse": "asis",
+            "ap-usageNote-en": "Article 3.3 specifies that the terms of use should be provided. According to the guidelines for <a href=\"#c3\">legal Information</a> in DCAT-AP HVD this is fullfilled by providing by preference a licence. As alternative rights can be used."
           }
         },
         {
@@ -808,7 +811,9 @@
           "description": {
             "en": "A statement that specifies rights associated with the Distribution."
           },
-          "usage": {},
+          "usage": {
+            "en": "Article 3.3 specifies that the terms of use should be provided. According to the guidelines for <a href=\"#c3\">legal Information</a> in DCAT-AP HVD this is fullfilled by providing by preference a licence. As alternative rights can be used."
+          },
           "domain": [
             {
               "EA-Name": "dcat:DataService",
@@ -837,7 +842,8 @@
             "ap-definition-en": "A statement that specifies rights associated with the Distribution.",
             "ap-label-en": "rights",
             "property-usage-scope": "optional",
-            "reuse": "additional"
+            "reuse": "additional",
+            "ap-usageNote-en": "Article 3.3 specifies that the terms of use should be provided. According to the guidelines for <a href=\"#c3\">legal Information</a> in DCAT-AP HVD this is fullfilled by providing by preference a licence. As alternative rights can be used."
           }
         },
         {
@@ -897,7 +903,9 @@
           "description": {
             "en": "Contact information that can be used for sending comments about the Data Service."
           },
-          "usage": {},
+          "usage": {
+            "en": "Article 3.4 requires the designation of a point of contact for an API. "
+          },
           "domain": [
             {
               "EA-Name": "dcat:DataService",
@@ -927,7 +935,8 @@
             "ap-label-en": "contact point",
             "DCAT": "https://w3c.github.io/dxwg/dcat/#Property:resource_contact_point",
             "property-usage-scope": "mandatory",
-            "reuse": "additional"
+            "reuse": "additional",
+            "ap-usageNote-en": "Article 3.4 requires the designation of a point of contact for an API. "
           }
         },
         {
@@ -941,7 +950,7 @@
             "en": "A description of the services available via the end-points, including their operations, parameters etc."
           },
           "usage": {
-            "en": "The property gives specific details of the actual endpoint instances, while dct:conformsTo is used to indicate the general standard or specification that the endpoints implement."
+            "en": "The property gives specific details of the actual endpoint instances, while dct:conformsTo is used to indicate the general standard or specification that the endpoints implement.\r\n<br/>\r\nArticle 3.3 requires to provide API documentation in a Union or internationally recognised open, human-readable and machine-readable format."
           },
           "domain": [
             {
@@ -970,7 +979,7 @@
             "ap-label-en": "endpoint description",
             "uri": "http://www.w3.org/ns/dcat#endpointDescription",
             "ap-definition-en": "A description of the services available via the end-points, including their operations, parameters etc.",
-            "ap-usageNote-en": "The property gives specific details of the actual endpoint instances, while dct:conformsTo is used to indicate the general standard or specification that the endpoints implement.",
+            "ap-usageNote-en": "The property gives specific details of the actual endpoint instances, while dct:conformsTo is used to indicate the general standard or specification that the endpoints implement.\r\n<br/>\r\nArticle 3.3 requires to provide API documentation in a Union or internationally recognised open, human-readable and machine-readable format.",
             "property-usage-scope": "recommended",
             "DCAT": "https://w3c.github.io/dxwg/dcat/#Property:data_service_endpoint_description",
             "DCAT-AP": "https://semiceu.github.io/DCAT-AP/releases/3.0.0/#DataService.endpointdescription",
@@ -988,7 +997,7 @@
             "en": "The root location or primary endpoint of the service (an IRI)."
           },
           "usage": {
-            "en": "The endpoint URL should be persistent. This means that publishers should do everything in their power to maintain the value stable and existing."
+            "en": "The endpoint URL SHOULD be persistent. This means that publishers should do everything in their power to maintain the value stable and existing."
           },
           "domain": [
             {
@@ -1019,7 +1028,7 @@
             "ap-definition-en": "The root location or primary endpoint of the service (an IRI).",
             "property-usage-scope": "mandatory",
             "DCAT": "https://w3c.github.io/dxwg/dcat/#Property:data_service_endpoint_url",
-            "ap-usageNote-en": "The endpoint URL should be persistent. This means that publishers should do everything in their power to maintain the value stable and existing.",
+            "ap-usageNote-en": "The endpoint URL SHOULD be persistent. This means that publishers should do everything in their power to maintain the value stable and existing.",
             "DCAT-AP": "https://semiceu.github.io/DCAT-AP/releases/3.0.0/#DataService.endpointURL",
             "reuse": "asis"
           }
@@ -1034,7 +1043,9 @@
           "description": {
             "en": "This property refers to a collection of data that this data service can distribute."
           },
-          "usage": {},
+          "usage": {
+            "en": "An API in the context of HVD is not a standalone resource. It is used to open up HVD datasets. Therefore each Data Service is at least tightly connected with a Dataset."
+          },
           "domain": [
             {
               "EA-Name": "dcat:DataService",
@@ -1065,7 +1076,8 @@
             "property-usage-scope": "recommended",
             "DCAT": "https://w3c.github.io/dxwg/dcat/#Property:data_service_serves_dataset",
             "DCAT-AP": "https://semiceu.github.io/DCAT-AP/releases/3.0.0/#DataService.servesdataset",
-            "reuse": "asis"
+            "reuse": "additional",
+            "ap-usageNote-en": "An API in the context of HVD is not a standalone resource. It is used to open up HVD datasets. Therefore each Data Service is at least tightly connected with a Dataset."
           }
         },
         {
@@ -1076,7 +1088,7 @@
             "en": "documentation"
           },
           "description": {
-            "en": "A web page that provides details the quality of service the Data Service provides and/or additional information."
+            "en": "A page that provides additional information about the Data Service."
           },
           "usage": {
             "en": "Quality of service covers a broad spectrum of aspects. The HVD regulation does not list any mandatory topic. Therefore quality of service information is considered part of the generic documentation of a Data Service."
@@ -1108,7 +1120,7 @@
             "ap-usageNote-en": "Quality of service covers a broad spectrum of aspects. The HVD regulation does not list any mandatory topic. Therefore quality of service information is considered part of the generic documentation of a Data Service.",
             "uri": "http://xmlns.com/foaf/0.1/Page",
             "label-en": "documentation",
-            "ap-definition-en": "A web page that provides details the quality of service the Data Service provides and/or additional information.",
+            "ap-definition-en": "A page that provides additional information about the Data Service.",
             "property-usage-scope": "mandatory",
             "reuse": "additional"
           }
@@ -1283,6 +1295,48 @@
           }
         },
         {
+          "uri": "http://purl.org/dc/terms/identifier",
+          "name": "identifier",
+          "sort": "identifier",
+          "label": {
+            "en": "identifier"
+          },
+          "description": {
+            "en": "The main identifier for the Dataset, e.g. the URI or other unique identifier in the context of the Catalogue."
+          },
+          "usage": {},
+          "domain": [
+            {
+              "EA-Name": "dcat:Dataset",
+              "uri": "http://www.w3.org/ns/dcat#Dataset"
+            }
+          ],
+          "range": [
+            {
+              "range_label": "rdfs:Literal",
+              "range_uri": "http://www.w3.org/2000/01/rdf-schema#Literal"
+            }
+          ],
+          "scopedrange": [
+            {
+              "range_uri": "#Literal",
+              "range_puri": "http://www.w3.org/2000/01/rdf-schema#Literal",
+              "range_label": {
+                "en": "Literal"
+              }
+            }
+          ],
+          "cardinality": "0..*",
+          "codelist_uri": "",
+          "rawTags": {
+            "ap-label-en": "identifier",
+            "uri": "http://purl.org/dc/terms/identifier",
+            "ap-definition-en": "The main identifier for the Dataset, e.g. the URI or other unique identifier in the context of the Catalogue.",
+            "property-usage-scope": "optional",
+            "DCAT": "https://w3c.github.io/dxwg/dcat/#Property:resource_identifier"
+          }
+        },
+        {
           "uri": "http://purl.org/dc/terms/publisher",
           "name": "publisher",
           "sort": "publisher",
@@ -1427,7 +1481,9 @@
           "description": {
             "en": "An available Distribution for the Dataset."
           },
-          "usage": {},
+          "usage": {
+            "en": "The HVD IR is a quality improvement of existing datasets. The intention is that HVD datasets are publicly and open accessible. Therefore a Distribution is expected to be present. (Article 3.1)"
+          },
           "domain": [
             {
               "EA-Name": "dcat:Dataset",
@@ -1458,7 +1514,8 @@
             "property-usage-scope": "recommended",
             "DCAT": "https://w3c.github.io/dxwg/dcat/#Property:dataset_distribution",
             "DCAT-AP": "https://semiceu.github.io/DCAT-AP/releases/3.0.0/#Dataset.datasetdistribution",
-            "reuse": "asis"
+            "reuse": "asis",
+            "ap-usageNote-en": "The HVD IR is a quality improvement of existing datasets. The intention is that HVD datasets are publicly and open accessible. Therefore a Distribution is expected to be present. (Article 3.1)"
           }
         }
       ]
