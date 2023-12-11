@@ -2,7 +2,10 @@
 <xs:schema xmlns="https://data.europa.eu/m8g/xml/" xmlns:xs="http://www.w3.org/2001/XMLSchema" targetNamespace="https://data.europa.eu/m8g/xml/" version="2.0.0" elementFormDefault="qualified" attributeFormDefault="unqualified" xmlns:cv="https://data.europa.eu/m8g/xml/">
   <xs:element name="AdministrativeUnit" type="AdministrativeUnitType"/>
   <xs:element name="Location" type="LocationType"/>
+  <xs:element name="Text" type="TextType"/>
+  <xs:element name="Literal" type="LiteralType"/>
   <xs:element name="Resource" type="ResourceType"/>
+  <xs:element name="Code" type="CodeType"/>
   <xs:element name="Address" type="AddressType"/>
   <xs:element name="Geometry" type="GeometryType"/>
   <xs:complexType name="conceptType">
@@ -76,6 +79,22 @@ Where a country has changed its name or no longer exists (such as Czechoslovakia
       </xs:annotation>
     </xs:attribute>
   </xs:complexType>
+  <xs:complexType name="TextType">
+    <xs:sequence/>
+    <xs:attribute name="TextRef" type="xs:IDREF">
+      <xs:annotation>
+        <xs:documentation xml:lang="en">Reference to Text ID</xs:documentation>
+      </xs:annotation>
+    </xs:attribute>
+  </xs:complexType>
+  <xs:complexType name="LiteralType">
+    <xs:sequence/>
+    <xs:attribute name="LiteralRef" type="xs:IDREF">
+      <xs:annotation>
+        <xs:documentation xml:lang="en">Reference to Literal ID</xs:documentation>
+      </xs:annotation>
+    </xs:attribute>
+  </xs:complexType>
   <xs:complexType name="ResourceType">
     <xs:sequence>
       <xs:element name="Address" type="AddressType" maxOccurs="unbounded" minOccurs="0">
@@ -133,6 +152,14 @@ For interoperability reasons, it is recommended using one of the following:
     <xs:attribute name="ResourceRef" type="xs:IDREF">
       <xs:annotation>
         <xs:documentation xml:lang="en">Reference to Resource ID</xs:documentation>
+      </xs:annotation>
+    </xs:attribute>
+  </xs:complexType>
+  <xs:complexType name="CodeType">
+    <xs:sequence/>
+    <xs:attribute name="CodeRef" type="xs:IDREF">
+      <xs:annotation>
+        <xs:documentation xml:lang="en">Reference to Code ID</xs:documentation>
       </xs:annotation>
     </xs:attribute>
   </xs:complexType>

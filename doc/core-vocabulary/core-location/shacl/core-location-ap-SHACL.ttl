@@ -7,7 +7,10 @@
 
 <https://semiceu.github.io//doc/core-vocabulary/core-location> rdfs:member <https://semiceu.github.io//doc/core-vocabulary/core-location#AdministrativeUnitShape>,
     <https://semiceu.github.io//doc/core-vocabulary/core-location#LocationShape>,
+    <https://semiceu.github.io//doc/core-vocabulary/core-location#TextShape>,
+    <https://semiceu.github.io//doc/core-vocabulary/core-location#LiteralShape>,
     <https://semiceu.github.io//doc/core-vocabulary/core-location#ResourceShape>,
+    <https://semiceu.github.io//doc/core-vocabulary/core-location#CodeShape>,
     <https://semiceu.github.io//doc/core-vocabulary/core-location#AddressShape>,
     <https://semiceu.github.io//doc/core-vocabulary/core-location#GeometryShape> .
 
@@ -291,6 +294,10 @@
   shacl:uniqueLang true;
   <https://purl.eu/ns/shacl#message> "Only 1 value for each language is allowed for name"@en .
 
+<https://semiceu.github.io//doc/core-vocabulary/core-location#CodeShape> a shacl:NodeShape;
+  shacl:closed false;
+  shacl:targetClass skos:Concept .
+
 <https://semiceu.github.io//doc/core-vocabulary/core-location#GeometryShape> a shacl:NodeShape;
   shacl:closed false;
   shacl:property <https://semiceu.github.io//doc/core-vocabulary/core-location#GeometryShape/03e8e047dceaf1c615ca9dcd51ef5a662ce2a535>,
@@ -390,6 +397,10 @@
   shacl:name "geometry type"@en;
   shacl:path <http://data.europa.eu/m8g/geometryType>;
   <https://purl.eu/ns/shacl#message> "The range of geometry type must be of type <http://www.w3.org/2004/02/skos/core#Concept>."@en .
+
+<https://semiceu.github.io//doc/core-vocabulary/core-location#LiteralShape> a shacl:NodeShape;
+  shacl:closed false;
+  shacl:targetClass rdfs:Literal .
 
 <https://semiceu.github.io//doc/core-vocabulary/core-location#LocationShape> a shacl:NodeShape;
   shacl:closed false;
@@ -502,3 +513,7 @@
   shacl:nodeKind shacl:BlankNodeOrIRI;
   shacl:path <http://www.w3.org/ns/locn#geometry>;
   <https://purl.eu/ns/shacl#message> "The expected value for geometry is a rdfs:Resource (URI or blank node)"@en .
+
+<https://semiceu.github.io//doc/core-vocabulary/core-location#TextShape> a shacl:NodeShape;
+  shacl:closed false;
+  shacl:targetClass rdf:langString .
