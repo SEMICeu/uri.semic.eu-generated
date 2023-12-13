@@ -172,7 +172,12 @@
            "href":"https://eur-lex.europa.eu/legal-content/EN/TXT/?uri=CELEX:32023R0138",
            "title" : "Implementing Regulation for High Value Datasets",
            "publisher":"European Commission"
-        }
+        },
+        "BCP4715" : {
+          "href" : "https://www.rfc-editor.org/info/bcp47",
+          "title" : "Tags for Identifying Languages, BCP 47, RFC 5646, DOI 10.17487/RFC5646, September 2009", 
+          "publisher" : "Phillips, A., Ed., and M. Davis, Ed."
+	}
 
       }
     };
@@ -2623,7 +2628,7 @@ They are included in the Application Profile because they form the range of prop
                         Usage Note
                     </dt>
                     <dd>
-                        The definition and properties of the Legal Resource class are aligned with the ontology included in "Council conclusions inviting the introduction of the European Legislation Identifier (ELI)". For describing the attributes of a Legal Resource (labels, preferred labels, alternative labels, definition, etc.) we refer to the ELI ontology.
+                        The definition and properties of the Legal Resource class are aligned with the ontology included in "Council conclusions inviting the introduction of the European Legislation Identifier (<a href="https://eur-lex.europa.eu/legal-content/EN/TXT/?uri=celex%3A52012XG1026%2801%29">ELI</a>)". For describing the attributes of a Legal Resource (labels, preferred labels, alternative labels, definition, etc.) we refer to the ELI ontology.
 
 In this data specification the use is restricted to instances of this class that follow the ELI URI guidelines.
                     </dd>
@@ -2973,7 +2978,7 @@ One response to this question could be by providing the relevant HVD Dataset cor
 </p>
 
 <h4>Denoting a HVD Dataset</h4>
-Each entity (Dataset, Data Service, Distribution, Catalogue) that is identified by a MS in scope of the HVD IR should provide the European Legislation Identifier (ELI) <code>http://data.europa.eu/eli/reg_impl/2023/138/oj</code> of the HVD IR for the property <a href="">applicable legislation</a>.
+Each entity (Dataset, Data Service, Distribution, Catalogue) that is identified by a MS in scope of the HVD IR should provide the European Legislation Identifier (ELI) <code>http://data.europa.eu/eli/reg_impl/2023/138/oj</code> of the HVD IR for the property <a href="http://data.europa.eu/r5r/applicableLegislation">applicable legislation</a>.
 
 For the reporting, a Member State can provide a catalogue containing all elements that are within scope for the reporting of the HVD IR. 
 In that case the catalogue should also set the value for the property applicable legislation to the ELI of the HVD.
@@ -3025,7 +3030,7 @@ In short these are:
 In practice, multiple identifiers may have been assigned to a Dataset. 
 It is recommended to select a master identifier and use this one to implement the HVD IR. 
 In general, harvesters and portals are advised to use and promote this master identifier as the identifier for the HVD Dataset. 
-In addition it is recommended to augment the list of other identifiers (<a href="https://semiceu.github.io/DCAT-AP/releases/3.0.0/#Dataset.otheridentifier">adms:identifier</a>) with the encountered identifiers. 
+In addition it is recommended to augment the list of  <a href="https://semiceu.github.io/DCAT-AP/releases/3.0.0/#Dataset.otheridentifier">other identifiers</a> with the encountered identifiers. 
 These identifier processing recommendations are made to ensure that the information in usages like the HVD reporting (i.e. a reference to a dataset) is with the published metadata on data portals. 
 
 
@@ -3054,7 +3059,7 @@ As the final objective is to provide a trusted legal statement, it is considered
 
 </p><p>
 The reporting requirement for a persistent link for APIs is ambiguous from the perspective of DCAT-AP. 
-In DCAT-AP, there is the identifier for the <a href="#DataService">Data Service</a>, i.e. the description about the API, and the property <a href="DataService.endpointURL">endpoint URL</a>, which is the technical endpoint via which the data exchange will happen. 
+In DCAT-AP, there is the identifier for the <a href="#DataService">Data Service</a>, i.e. the description about the API, and the property <a href="#DataService.endpointURL">endpoint URL</a>, which is the technical endpoint via which the data exchange will happen. 
 The impact that the persistency requirement has on each is different and requires special attention from the HVD Dataset publisher.
 As the HVD IR does not specify precisely which case it covers, both are considered in scope. 
 That means that a Data Service has a PURI and that its endpoint URL is persistent. 
@@ -3192,7 +3197,7 @@ Because that new identifier is not the master identifier, the portal avoids this
 <h3>Bulk downloads for HVD Datasets</h3>
 
 <p>The datasets are downloadable in various formats and level of detail. In our example, the data is available in two formats: RDF and ESRI shapefile format.
-According to the HVD IR the datasets must minimally be available in bulk download with the granularity of 50 square kilometers and with a bi-yearly update frequency.
+According to the HVD IR the datasets must minimally be available in bulk download with the granularity of 50 square kilometres and with a bi-yearly update frequency.
 It must also be available in an open format for geospatial data.
 Based on these requirements, the publisher of the dataset decides to indicate that the shape-based distribution is a HVD bulk download.</p>
 
@@ -3213,7 +3218,7 @@ This API platform supports all datasets of the publisher.</p>
 
 <p>Because the API platform is provided as the API for the "bee population" dataset, the HVD implementing regulation requirements apply.
 This means that the endpoint URL must be persistent. The publisher should perform maximal effort to keep the endpoint URL stable. 
-For instance, deploying a new API platform or changing organisation names should not impact the endpointURL.
+For instance, deploying a new API platform or changing organisation names should not impact the endpoint URL.
 </p>
 <p>
 To provide information about the use of the API platform, the publisher provides OpenAPI technical documentation and an SLA to document the quality of service.</p>
@@ -3277,7 +3282,7 @@ The catalogue will also contain any additional supportive information such as Co
 <div class="h3 examples" id="example-ms_catalogue_hvd">Example 14 - MS Catalogue in HVD scope</div>
 
 <p>Based on this catalogue the MS can be audited for its conformance. During the assessment it might occur that the supplied information is not sufficient, and that the assessment must follow the references outside the supplied catalogue. E.g., when assessing the permissiveness of the licences the details of the referenced EU Licence must be consulted.
-Crossing these boundaries is a regular occurnce and it can be done during the assessment without impacting the results when the supplied data is based on persistent identifiers (PURIs).</p><p>
+Crossing these boundaries is a regular occurrence and it can be done during the assessment without impacting the results when the supplied data is based on persistent identifiers (PURIs).</p><p>
 The use of dereferenceable persistent identifiers could also lead to another agreement to supply a more condensed representation of the reporting catalogue.
 Under the condition that all catalogued resources in scope of HVD are in the Portal for European Data [[DEU]], then the MS could simply supply the reduced catalogue as:</p>
 
