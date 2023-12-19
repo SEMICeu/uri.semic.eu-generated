@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <xs:schema xmlns="https://data.europa.eu/m8g/xml/" xmlns:xs="http://www.w3.org/2001/XMLSchema" targetNamespace="https://data.europa.eu/m8g/xml/" version="2.0.0" elementFormDefault="qualified" attributeFormDefault="unqualified" xmlns:cv="https://data.europa.eu/m8g/xml/">
   <xs:element name="AdministrativeUnit" type="AdministrativeUnitType"/>
+  <xs:element name="LocatorDesignator" type="LocatorDesignatorType"/>
   <xs:element name="Location" type="LocationType"/>
   <xs:element name="Text" type="TextType"/>
   <xs:element name="Literal" type="LiteralType"/>
@@ -40,6 +41,28 @@
     <xs:attribute name="AdministrativeUnitRef" type="xs:IDREF">
       <xs:annotation>
         <xs:documentation xml:lang="en">Reference to AdministrativeUnit ID</xs:documentation>
+      </xs:annotation>
+    </xs:attribute>
+  </xs:complexType>
+  <xs:complexType name="LocatorDesignatorType">
+    <xs:sequence>
+      <xs:element name="Designator" type="xs:string" maxOccurs="unbounded" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation xml:lang="en" source="#definition">The identifying part of the locator designator composed by one or more digits or other characters.</xs:documentation>
+          <xs:documentation xml:lang="en" source="#usage">NOTE The value is often a descriptive code assigned according to certain well known rules e.g. like ascending odd and even address numbers along the thoroughfare, or like floor identifiers: 0, 1, 2, 3. &lt;br/&gt;
+EXAMPLE Address number "2065", Address number suffix "B", Floor identifier "7" door identifier "B707" are all locator attribute values.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="Type" type="conceptType" maxOccurs="unbounded" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation xml:lang="en" source="#definition">The type of locator value, which enables an application to interpret, parse or format it according to certain rules.</xs:documentation>
+          <xs:documentation xml:lang="en" source="#usage">The type enables a user or an application to understand if the value "A" is e.g. an identifier of a specific building, door, staircase or dwelling.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+    </xs:sequence>
+    <xs:attribute name="LocatorDesignatorRef" type="xs:IDREF">
+      <xs:annotation>
+        <xs:documentation xml:lang="en">Reference to LocatorDesignator ID</xs:documentation>
       </xs:annotation>
     </xs:attribute>
   </xs:complexType>
@@ -218,6 +241,11 @@ To provide maximum flexibility in the Core Vocabulary, whilst remaining interope
           <xs:documentation xml:lang="en" source="#usage">Use of this property is recommended as it will not suffer any misunderstandings that might arise through the breaking up of an address into its component parts. This property is analogous to vCard's label property but with two important differences: (1) formatting is not assumed so that, unlike vCard label, it may not be suitable to print this on an address label, (2) vCard's label property has a domain of vCard Address; the fullAddress property has no such restriction. An example of a full address is "Champ de Mars, 5 Avenue Anatole France, 75007 Paris, France".</xs:documentation>
         </xs:annotation>
       </xs:element>
+      <xs:element name="LocatorDesignator" type="LocatorDesignatorType" maxOccurs="unbounded" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation xml:lang="en" source="#definition">A number or a sequence of characters that uniquely identifies the locator within the relevant scope(s).</xs:documentation>
+        </xs:annotation>
+      </xs:element>
       <xs:element name="LocatorDesignator" type="xs:string" maxOccurs="unbounded" minOccurs="0">
         <xs:annotation>
           <xs:documentation xml:lang="en" source="#definition">A number or sequence of characters that uniquely identifies the locator within the relevant scope.</xs:documentation>
@@ -226,7 +254,6 @@ To provide maximum flexibility in the Core Vocabulary, whilst remaining interope
       </xs:element>
       <xs:element name="LocatorName" type="xs:string" maxOccurs="unbounded" minOccurs="0">
         <xs:annotation>
-          <xs:documentation xml:lang="en" source="#definition">Proper noun(s) applied to the real world entity identified by the locator.</xs:documentation>
           <xs:documentation xml:lang="en" source="#usage">The locator name could be the name of the property or complex, of the building or part of the building, or it could be the name of a room inside a building.
 &lt;br/&gt;&lt;br/&gt;
 The key difference between a locator designator and a locator name is that the latter is a proper name and is unlikely to include digits. For example, "Shumann, Berlaymont" is a meeting room within the European Commission headquarters for which locator name is more appropriate than locator.</xs:documentation>
