@@ -6,6 +6,7 @@
 @prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
 
 <https://semiceu.github.io//doc/core-vocabulary/core-location> rdfs:member <https://semiceu.github.io//doc/core-vocabulary/core-location#AdministrativeUnitShape>,
+    <https://semiceu.github.io//doc/core-vocabulary/core-location#LocatorDesignatorShape>,
     <https://semiceu.github.io//doc/core-vocabulary/core-location#LocationShape>,
     <https://semiceu.github.io//doc/core-vocabulary/core-location#TextShape>,
     <https://semiceu.github.io//doc/core-vocabulary/core-location#LiteralShape>,
@@ -27,6 +28,7 @@
     <https://semiceu.github.io//doc/core-vocabulary/core-location#AddressShape/470060a15e97aeacd56fcc5beb701e647a6aa56e>,
     <https://semiceu.github.io//doc/core-vocabulary/core-location#AddressShape/5d7f103641a62a590c3c6d874d2a14987e054924>,
     <https://semiceu.github.io//doc/core-vocabulary/core-location#AddressShape/60bff98f6076f0828e3b73d73fefc7b1eb56b93a>,
+    <https://semiceu.github.io//doc/core-vocabulary/core-location#AddressShape/6e68b263ff6691874a96806549be459766bcdd21>,
     <https://semiceu.github.io//doc/core-vocabulary/core-location#AddressShape/6f98d6d917a0e0b73d8614923f953e1ee2533918>,
     <https://semiceu.github.io//doc/core-vocabulary/core-location#AddressShape/854a17171901a9c000eff34a7ccd77814891e3d5>,
     <https://semiceu.github.io//doc/core-vocabulary/core-location#AddressShape/8b4c4bdd61e921f78483a3141338773693d4b2ef>,
@@ -48,7 +50,6 @@
   shacl:targetClass <http://www.w3.org/ns/locn#Address> .
 
 <https://semiceu.github.io//doc/core-vocabulary/core-location#AddressShape/006de06965023999963c4307153479c8629991d9> rdfs:seeAlso "https://semiceu.github.io//doc/core-vocabulary/core-location#Address.locatorname";
-  shacl:description "Proper noun(s) applied to the real world entity identified by the locator."@en;
   shacl:name "locator name"@en;
   shacl:nodeKind shacl:Literal;
   shacl:path <http://www.w3.org/ns/locn#locatorName>;
@@ -110,8 +111,14 @@
   shacl:path <http://data.europa.eu/m8g/adminUnit>;
   <https://purl.eu/ns/shacl#message> "The range of administrative unit must be of type <http://data.europa.eu/m8g/AdminUnit>."@en .
 
+<https://semiceu.github.io//doc/core-vocabulary/core-location#AddressShape/6e68b263ff6691874a96806549be459766bcdd21> rdfs:seeAlso "https://semiceu.github.io//doc/core-vocabulary/core-location#Address.locatordesignator";
+  shacl:class <http://inspire.ec.europa.eu/ont/ad#LocatorDesignator>;
+  shacl:description "A number or a sequence of characters that uniquely identifies the locator within the relevant scope(s)."@en;
+  shacl:name "locator designator"@en;
+  shacl:path <http://data.europa.eu/m8g/locatorDesignator>;
+  <https://purl.eu/ns/shacl#message> "The range of locator designator must be of type <http://inspire.ec.europa.eu/ont/ad#LocatorDesignator>."@en .
+
 <https://semiceu.github.io//doc/core-vocabulary/core-location#AddressShape/6f98d6d917a0e0b73d8614923f953e1ee2533918> rdfs:seeAlso "https://semiceu.github.io//doc/core-vocabulary/core-location#Address.locatorname";
-  shacl:description "Proper noun(s) applied to the real world entity identified by the locator."@en;
   shacl:name "locator name"@en;
   shacl:path <http://www.w3.org/ns/locn#locatorName>;
   shacl:uniqueLang true;
@@ -132,11 +139,15 @@
   <https://purl.eu/ns/shacl#message> "The expected value for address ID is a Literal"@en .
 
 <https://semiceu.github.io//doc/core-vocabulary/core-location#AddressShape/9097b947404def8604330ec2fc5a0bd405128b35> rdfs:seeAlso "https://semiceu.github.io//doc/core-vocabulary/core-location#Address.locatordesignator";
-  shacl:description "A number or sequence of characters that uniquely identifies the locator within the relevant scope."@en;
+  shacl:description "A number or a sequence of characters that uniquely identifies the locator within the relevant scope(s)."@en,
+    "A number or sequence of characters that uniquely identifies the locator within the relevant scope."@en;
   shacl:name "locator designator"@en;
-  shacl:nodeKind shacl:Literal;
-  shacl:path <http://www.w3.org/ns/locn#locatorDesignator>;
-  <https://purl.eu/ns/shacl#message> "The expected value for locator designator is a Literal"@en .
+  shacl:nodeKind shacl:BlankNodeOrIRI,
+    shacl:Literal;
+  shacl:path <http://data.europa.eu/m8g/locatorDesignator>,
+    <http://www.w3.org/ns/locn#locatorDesignator>;
+  <https://purl.eu/ns/shacl#message> "The expected value for locator designator is a rdfs:Resource (URI or blank node)"@en,
+    "The expected value for locator designator is a Literal"@en .
 
 <https://semiceu.github.io//doc/core-vocabulary/core-location#AddressShape/98016263ed1fd03fc2066e397f3ae3343ce3bf79> rdfs:seeAlso "https://semiceu.github.io//doc/core-vocabulary/core-location#Address.postname";
   shacl:datatype rdf:langString;
@@ -210,7 +221,6 @@
 
 <https://semiceu.github.io//doc/core-vocabulary/core-location#AddressShape/d75b5d4c221e6b0bf47c853c0be92d078c39e391> rdfs:seeAlso "https://semiceu.github.io//doc/core-vocabulary/core-location#Address.locatorname";
   shacl:datatype rdf:langString;
-  shacl:description "Proper noun(s) applied to the real world entity identified by the locator."@en;
   shacl:name "locator name"@en;
   shacl:path <http://www.w3.org/ns/locn#locatorName>;
   <https://purl.eu/ns/shacl#message> "The range of locator name must be of type <http://www.w3.org/1999/02/22-rdf-syntax-ns#langString>."@en .
@@ -447,6 +457,34 @@
   shacl:path <http://www.w3.org/ns/locn#geographicName>;
   shacl:uniqueLang true;
   <https://purl.eu/ns/shacl#message> "Only 1 value for each language is allowed for geographic name"@en .
+
+<https://semiceu.github.io//doc/core-vocabulary/core-location#LocatorDesignatorShape> a shacl:NodeShape;
+  shacl:closed false;
+  shacl:property <https://semiceu.github.io//doc/core-vocabulary/core-location#LocatorDesignatorShape/322371a77364a50f049d46180f6192532eea26dc>,
+    <https://semiceu.github.io//doc/core-vocabulary/core-location#LocatorDesignatorShape/4f381639bb6e021939f65b4f41409d1edaeade9b>,
+    <https://semiceu.github.io//doc/core-vocabulary/core-location#LocatorDesignatorShape/c6ec682458a8b29626393e1c827312f353e35944>;
+  shacl:targetClass <http://inspire.ec.europa.eu/ont/ad#LocatorDesignator> .
+
+<https://semiceu.github.io//doc/core-vocabulary/core-location#LocatorDesignatorShape/322371a77364a50f049d46180f6192532eea26dc> rdfs:seeAlso "https://semiceu.github.io//doc/core-vocabulary/core-location#LocatorDesignator.type";
+  shacl:class skos:Concept;
+  shacl:description "The type of locator value, which enables an application to interpret, parse or format it according to certain rules."@en;
+  shacl:name "type"@en;
+  shacl:path <http://inspire.ec.europa.eu/ont/ad#LocatorDesignator.type>;
+  <https://purl.eu/ns/shacl#message> "The range of type must be of type <http://www.w3.org/2004/02/skos/core#Concept>."@en .
+
+<https://semiceu.github.io//doc/core-vocabulary/core-location#LocatorDesignatorShape/4f381639bb6e021939f65b4f41409d1edaeade9b> rdfs:seeAlso "https://semiceu.github.io//doc/core-vocabulary/core-location#LocatorDesignator.type";
+  shacl:description "The type of locator value, which enables an application to interpret, parse or format it according to certain rules."@en;
+  shacl:name "type"@en;
+  shacl:nodeKind shacl:BlankNodeOrIRI;
+  shacl:path <http://inspire.ec.europa.eu/ont/ad#LocatorDesignator.type>;
+  <https://purl.eu/ns/shacl#message> "The expected value for type is a rdfs:Resource (URI or blank node)"@en .
+
+<https://semiceu.github.io//doc/core-vocabulary/core-location#LocatorDesignatorShape/c6ec682458a8b29626393e1c827312f353e35944> rdfs:seeAlso "https://semiceu.github.io//doc/core-vocabulary/core-location#LocatorDesignator.designator";
+  shacl:description "The identifying part of the locator designator composed by one or more digits or other characters."@en;
+  shacl:name "designator"@en;
+  shacl:nodeKind shacl:Literal;
+  shacl:path <http://inspire.ec.europa.eu/ont/ad#LocatorDesignator.designator>;
+  <https://purl.eu/ns/shacl#message> "The expected value for designator is a Literal"@en .
 
 <https://semiceu.github.io//doc/core-vocabulary/core-location#ResourceShape> a shacl:NodeShape;
   shacl:closed false;
