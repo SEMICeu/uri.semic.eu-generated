@@ -3,6 +3,26 @@
   "classes": [],
   "properties": [
     {
+      "EA-Guid": "{F5556406-259F-4465-BB21-9AEF10D5807C}",
+      "name": "hvdCategory",
+      "label": {
+        "en": "HVD Category"
+      },
+      "definition": {
+        "en": "The HVD category to which this Dataset belongs."
+      }
+    },
+    {
+      "EA-Guid": "{E3296779-0091-49bf-B20B-F68F62205966}",
+      "name": "hvdCategory",
+      "label": {
+        "en": "HVD category"
+      },
+      "definition": {
+        "en": "The HVD category to which this Data Service belongs."
+      }
+    },
+    {
       "EA-Guid": "{9BEFE1D8-200C-4159-AD9D-81319CD0E3A2}",
       "name": "applicableLegislation",
       "label": {
@@ -39,26 +59,6 @@
       },
       "usage": {
         "en": "For HVD the value MUST include the ELI <a href=\"http://data.europa.eu/eli/reg_impl/2023/138/oj\">http://data.europa.eu/eli/reg_impl/2023/138/oj</a>. \r\n<br/>\r\nAs multiple legislations may apply to the resource the maximum cardinality is not limited."
-      }
-    },
-    {
-      "EA-Guid": "{F5556406-259F-4465-BB21-9AEF10D5807C}",
-      "name": "hvdCategory",
-      "label": {
-        "en": "HVD Category"
-      },
-      "definition": {
-        "en": "The HVD category to which this Dataset belongs."
-      }
-    },
-    {
-      "EA-Guid": "{E3296779-0091-49bf-B20B-F68F62205966}",
-      "name": "hvdCategory",
-      "label": {
-        "en": "HVD category"
-      },
-      "definition": {
-        "en": "The HVD category to which this Data Service belongs."
       }
     }
   ],
@@ -228,55 +228,183 @@
   ],
   "externalproperties": [
     {
-      "EA-Guid": "{5B28E5FE-D7A2-431f-BC35-5DA9863F32A3}",
-      "name": "conformsTo",
+      "EA-Guid": "{F8401444-5EB9-4db6-A3F7-19041486E89E}",
+      "name": "primaryTopic",
       "label": {
-        "en": "conforms to"
+        "en": "primary topic"
       },
       "definition": {
-        "en": "An implementing rule or other specification."
+        "en": "A link to the Dataset, Data service or Catalog described in the record."
       },
       "usage": {
-        "en": "The provided information should enable to the verification whether the detailed information requirements by the HVD is satisfied. For more usage suggestions see section on <a href=\"#c7\">specific data requirements</a>."
+        "en": "A catalogue record will refer to one entity in a catalogue. This can be either a Dataset or a Data Service. To ensure an unambigous reading of the cardinality the range is set to Catalogued Resource. However it is not the intend with this range to require the explicit use of the class Catalogued Record. As abstract class, an subclass should be used."
       }
     },
     {
-      "EA-Guid": "{0B6DD035-2D32-4abf-92BC-9889D539A10D}",
-      "name": "linkedSchemas",
+      "EA-Guid": "{996454D6-40B2-4410-8444-8A03F16EDBCE}",
+      "name": "documentation",
       "label": {
-        "en": "linked schemas"
+        "en": "documentation"
       },
       "definition": {
-        "en": "An established schema to which the described Distribution conforms."
+        "en": "A page that provides additional information about the Data Service."
       },
       "usage": {
-        "en": "The provided information should enable to the verification whether the detailed information requirements by the HVD is satisfied. For more usage suggestions see section on <a href=\"#c7\">specific data requirements</a>."
+        "en": "Quality of service covers a broad spectrum of aspects. The HVD regulation does not list any mandatory topic. Therefore quality of service information is considered part of the generic documentation of a Data Service."
       }
     },
     {
-      "EA-Guid": "{FACDCD7B-6F67-4e2b-A8E9-70A00DE6A6B7}",
-      "name": "licence",
+      "EA-Guid": "{E92356FD-011E-4a86-BF88-5989C793B22D}",
+      "name": "service",
       "label": {
-        "en": "licence"
+        "en": "service"
       },
       "definition": {
-        "en": "A licence under which the Distribution is made available."
+        "en": "A site or end-point (Data Service) that is listed in the Catalogue."
       },
       "usage": {
-        "en": "Article 4.3 specifies that High-value datasets should be made available for reuse. According to the guidelines for <a href=\"#c3\">legal Information</a> in DCAT-AP HVD this is fullfilled by providing by preference a licence. As alternative rights can be used."
+        "en": "As empty Catalogues are usually indications of problems, this property should be combined with the previous property dataset to implement an empty Catalogue check."
       }
     },
     {
-      "EA-Guid": "{AC3DA10B-4D7F-4532-946F-08F1DF77E717}",
-      "name": "licence",
+      "EA-Guid": "{946511D8-1CC2-46f1-A676-997C0038811F}",
+      "name": "servesDataset",
       "label": {
-        "en": "licence"
+        "en": "serves dataset"
       },
       "definition": {
-        "en": "A licence under which the Data service is made available."
+        "en": "This property refers to a collection of data that this data service can distribute."
       },
       "usage": {
-        "en": "Article 3.3 specifies that the terms of use should be provided. According to the guidelines for <a href=\"#c3\">legal Information</a> in DCAT-AP HVD this is fullfilled by providing by preference a licence. As alternative rights can be used."
+        "en": "An API in the context of HVD is not a standalone resource. It is used to open up HVD datasets. Therefore each Data Service is at least tightly connected with a Dataset."
+      }
+    },
+    {
+      "EA-Guid": "{A3AF1814-6AA5-4959-A3AA-716C5E8DEA8B}",
+      "name": "record",
+      "label": {
+        "en": "record"
+      },
+      "definition": {
+        "en": "A Catalogue Record that is part of the Catalogue"
+      }
+    },
+    {
+      "EA-Guid": "{4347C0CA-54EB-4741-ADFB-A53D6EBE3D26}",
+      "name": "endpointUrl",
+      "label": {
+        "en": "endpoint URL"
+      },
+      "definition": {
+        "en": "The root location or primary endpoint of the service (an IRI)."
+      },
+      "usage": {
+        "en": "The endpoint URL SHOULD be persistent. This means that publishers should do everything in their power to maintain the value stable and existing."
+      }
+    },
+    {
+      "EA-Guid": "{2F6D967C-E6C6-4192-B110-09D96FC0236E}",
+      "name": "endpointDescription",
+      "label": {
+        "en": "endpoint description"
+      },
+      "definition": {
+        "en": "A description of the services available via the end-points, including their operations, parameters etc."
+      },
+      "usage": {
+        "en": "The property gives specific details of the actual endpoint instances, while dct:conformsTo is used to indicate the general standard or specification that the endpoints implement.\r\n<br/>\r\nArticle 3.3 requires to provide API documentation in a Union or internationally recognised open, human-readable and machine-readable format."
+      }
+    },
+    {
+      "EA-Guid": "{12D2E7EA-4517-4f27-BD0B-C19590D7F903}",
+      "name": "datasetDistribution",
+      "label": {
+        "en": "dataset distribution"
+      },
+      "definition": {
+        "en": "An available Distribution for the Dataset."
+      },
+      "usage": {
+        "en": "The HVD IR is a quality improvement of existing datasets. The intention is that HVD datasets are publicly and open accessible. Therefore a Distribution is expected to be present. (Article 3.1)"
+      }
+    },
+    {
+      "EA-Guid": "{9784BB1E-368D-4295-A998-629C61E83D14}",
+      "name": "dataset",
+      "label": {
+        "en": "dataset"
+      },
+      "definition": {
+        "en": "A Dataset that is part of the Catalogue."
+      },
+      "usage": {
+        "en": "As empty Catalogues are usually indications of problems, this property should be combined with the next property service to implement an empty Catalogue check."
+      }
+    },
+    {
+      "EA-Guid": "{EF85E5E2-14E8-4981-9558-39EDA770F332}",
+      "name": "contactPoint",
+      "label": {
+        "en": "contact point"
+      },
+      "definition": {
+        "en": "Contact information that can be used for sending comments about the Dataset."
+      }
+    },
+    {
+      "EA-Guid": "{D4757EA0-D7A7-46e0-96AB-EA806E7C66BC}",
+      "name": "contactPoint",
+      "label": {
+        "en": "contact point"
+      },
+      "definition": {
+        "en": "Contact information that can be used for sending comments about the Data Service."
+      },
+      "usage": {
+        "en": "Article 3.4 requires the designation of a point of contact for an API. "
+      }
+    },
+    {
+      "EA-Guid": "{1EFEE259-F46C-4a44-A504-F98445890312}",
+      "name": "accessUrl",
+      "label": {
+        "en": "access URL"
+      },
+      "definition": {
+        "en": "A URL that gives access to a Distribution of the Dataset."
+      },
+      "usage": {
+        "en": "The resource at the access URL  contains information about how to get the Dataset.\r\nIn accordance to the DCAT guidelines it is preferred to also set the downloadURL property if the URL is a reference to a downloadable resource."
+      }
+    },
+    {
+      "EA-Guid": "{39D72350-3572-4cc5-984E-D4D0F4C0A854}",
+      "name": "accessService",
+      "label": {
+        "en": "access service"
+      },
+      "definition": {
+        "en": "A data service that gives access to the distribution of the dataset"
+      }
+    },
+    {
+      "EA-Guid": "{91FD2621-4BF4-4924-8D2E-B3D4E0528107}",
+      "name": "contactPage",
+      "label": {
+        "en": "contact page"
+      },
+      "definition": {
+        "en": "A webpage that either allows to make contact (i.e. a webform) or the information contains how to get into contact. "
+      }
+    },
+    {
+      "EA-Guid": "{26D3A875-B2D4-439e-8533-F3A0287B99C7}",
+      "name": "email",
+      "label": {
+        "en": "email"
+      },
+      "definition": {
+        "en": "A email address via which contact can be made.\r\n"
       }
     },
     {
@@ -306,183 +434,55 @@
       }
     },
     {
-      "EA-Guid": "{26D3A875-B2D4-439e-8533-F3A0287B99C7}",
-      "name": "email",
+      "EA-Guid": "{AC3DA10B-4D7F-4532-946F-08F1DF77E717}",
+      "name": "licence",
       "label": {
-        "en": "email"
+        "en": "licence"
       },
       "definition": {
-        "en": "A email address via which contact can be made.\r\n"
-      }
-    },
-    {
-      "EA-Guid": "{91FD2621-4BF4-4924-8D2E-B3D4E0528107}",
-      "name": "contactPage",
-      "label": {
-        "en": "contact page"
-      },
-      "definition": {
-        "en": "A webpage that either allows to make contact (i.e. a webform) or the information contains how to get into contact. "
-      }
-    },
-    {
-      "EA-Guid": "{39D72350-3572-4cc5-984E-D4D0F4C0A854}",
-      "name": "accessService",
-      "label": {
-        "en": "access service"
-      },
-      "definition": {
-        "en": "A data service that gives access to the distribution of the dataset"
-      }
-    },
-    {
-      "EA-Guid": "{1EFEE259-F46C-4a44-A504-F98445890312}",
-      "name": "accessUrl",
-      "label": {
-        "en": "access URL"
-      },
-      "definition": {
-        "en": "A URL that gives access to a Distribution of the Dataset."
+        "en": "A licence under which the Data service is made available."
       },
       "usage": {
-        "en": "The resource at the access URL  contains information about how to get the Dataset.\r\nIn accordance to the DCAT guidelines it is preferred to also set the downloadURL property if the URL is a reference to a downloadable resource."
+        "en": "Article 3.3 specifies that the terms of use should be provided. According to the guidelines for <a href=\"#c3\">legal Information</a> in DCAT-AP HVD this is fullfilled by providing by preference a licence. As alternative rights can be used."
       }
     },
     {
-      "EA-Guid": "{EF85E5E2-14E8-4981-9558-39EDA770F332}",
-      "name": "contactPoint",
+      "EA-Guid": "{FACDCD7B-6F67-4e2b-A8E9-70A00DE6A6B7}",
+      "name": "licence",
       "label": {
-        "en": "contact point"
+        "en": "licence"
       },
       "definition": {
-        "en": "Contact information that can be used for sending comments about the Dataset."
-      }
-    },
-    {
-      "EA-Guid": "{D4757EA0-D7A7-46e0-96AB-EA806E7C66BC}",
-      "name": "contactPoint",
-      "label": {
-        "en": "contact point"
-      },
-      "definition": {
-        "en": "Contact information that can be used for sending comments about the Data Service."
+        "en": "A licence under which the Distribution is made available."
       },
       "usage": {
-        "en": "Article 3.4 requires the designation of a point of contact for an API. "
+        "en": "Article 4.3 specifies that High-value datasets should be made available for reuse. According to the guidelines for <a href=\"#c3\">legal Information</a> in DCAT-AP HVD this is fullfilled by providing by preference a licence. As alternative rights can be used."
       }
     },
     {
-      "EA-Guid": "{9784BB1E-368D-4295-A998-629C61E83D14}",
-      "name": "dataset",
+      "EA-Guid": "{0B6DD035-2D32-4abf-92BC-9889D539A10D}",
+      "name": "linkedSchemas",
       "label": {
-        "en": "dataset"
+        "en": "linked schemas"
       },
       "definition": {
-        "en": "A Dataset that is part of the Catalogue."
+        "en": "An established schema to which the described Distribution conforms."
       },
       "usage": {
-        "en": "As empty Catalogues are usually indications of problems, this property should be combined with the next property service to implement an empty Catalogue check."
+        "en": "The provided information should enable to the verification whether the detailed information requirements by the HVD is satisfied. For more usage suggestions see section on <a href=\"#c7\">specific data requirements</a>."
       }
     },
     {
-      "EA-Guid": "{12D2E7EA-4517-4f27-BD0B-C19590D7F903}",
-      "name": "datasetDistribution",
+      "EA-Guid": "{5B28E5FE-D7A2-431f-BC35-5DA9863F32A3}",
+      "name": "conformsTo",
       "label": {
-        "en": "dataset distribution"
+        "en": "conforms to"
       },
       "definition": {
-        "en": "An available Distribution for the Dataset."
+        "en": "An implementing rule or other specification."
       },
       "usage": {
-        "en": "The HVD IR is a quality improvement of existing datasets. The intention is that HVD datasets are publicly and open accessible. Therefore a Distribution is expected to be present. (Article 3.1)"
-      }
-    },
-    {
-      "EA-Guid": "{2F6D967C-E6C6-4192-B110-09D96FC0236E}",
-      "name": "endpointDescription",
-      "label": {
-        "en": "endpoint description"
-      },
-      "definition": {
-        "en": "A description of the services available via the end-points, including their operations, parameters etc."
-      },
-      "usage": {
-        "en": "The property gives specific details of the actual endpoint instances, while dct:conformsTo is used to indicate the general standard or specification that the endpoints implement.\r\n<br/>\r\nArticle 3.3 requires to provide API documentation in a Union or internationally recognised open, human-readable and machine-readable format."
-      }
-    },
-    {
-      "EA-Guid": "{4347C0CA-54EB-4741-ADFB-A53D6EBE3D26}",
-      "name": "endpointUrl",
-      "label": {
-        "en": "endpoint URL"
-      },
-      "definition": {
-        "en": "The root location or primary endpoint of the service (an IRI)."
-      },
-      "usage": {
-        "en": "The endpoint URL SHOULD be persistent. This means that publishers should do everything in their power to maintain the value stable and existing."
-      }
-    },
-    {
-      "EA-Guid": "{A3AF1814-6AA5-4959-A3AA-716C5E8DEA8B}",
-      "name": "record",
-      "label": {
-        "en": "record"
-      },
-      "definition": {
-        "en": "A Catalogue Record that is part of the Catalogue"
-      }
-    },
-    {
-      "EA-Guid": "{946511D8-1CC2-46f1-A676-997C0038811F}",
-      "name": "servesDataset",
-      "label": {
-        "en": "serves dataset"
-      },
-      "definition": {
-        "en": "This property refers to a collection of data that this data service can distribute."
-      },
-      "usage": {
-        "en": "An API in the context of HVD is not a standalone resource. It is used to open up HVD datasets. Therefore each Data Service is at least tightly connected with a Dataset."
-      }
-    },
-    {
-      "EA-Guid": "{E92356FD-011E-4a86-BF88-5989C793B22D}",
-      "name": "service",
-      "label": {
-        "en": "service"
-      },
-      "definition": {
-        "en": "A site or end-point (Data Service) that is listed in the Catalogue."
-      },
-      "usage": {
-        "en": "As empty Catalogues are usually indications of problems, this property should be combined with the previous property dataset to implement an empty Catalogue check."
-      }
-    },
-    {
-      "EA-Guid": "{996454D6-40B2-4410-8444-8A03F16EDBCE}",
-      "name": "documentation",
-      "label": {
-        "en": "documentation"
-      },
-      "definition": {
-        "en": "A page that provides additional information about the Data Service."
-      },
-      "usage": {
-        "en": "Quality of service covers a broad spectrum of aspects. The HVD regulation does not list any mandatory topic. Therefore quality of service information is considered part of the generic documentation of a Data Service."
-      }
-    },
-    {
-      "EA-Guid": "{F8401444-5EB9-4db6-A3F7-19041486E89E}",
-      "name": "primaryTopic",
-      "label": {
-        "en": "primary topic"
-      },
-      "definition": {
-        "en": "A link to the Dataset, Data service or Catalog described in the record."
-      },
-      "usage": {
-        "en": "A catalogue record will refer to one entity in a catalogue. This can be either a Dataset or a Data Service. To ensure an unambigous reading of the cardinality the range is set to Catalogued Resource. However it is not the intend with this range to require the explicit use of the class Catalogued Record. As abstract class, an subclass should be used."
+        "en": "The provided information should enable to the verification whether the detailed information requirements by the HVD is satisfied. For more usage suggestions see section on <a href=\"#c7\">specific data requirements</a>."
       }
     }
   ]

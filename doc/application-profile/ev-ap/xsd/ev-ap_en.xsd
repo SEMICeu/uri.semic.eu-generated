@@ -15,16 +15,34 @@
   <xs:element name="VehiclePart" type="VehiclePartType"/>
   <xs:element name="BatterySensor" type="BatterySensorType"/>
   <xs:element name="VehicleSensor" type="VehicleSensorType"/>
+  <xs:simpleType name="Literal">
+    <xs:restriction base="xs:string"/>
+  </xs:simpleType>
+  <xs:complexType name="langstring">
+    <xs:simpleContent>
+      <xs:extension base="xs:string">
+        <xs:attribute name="lang" type="xs:language"/>
+      </xs:extension>
+    </xs:simpleContent>
+  </xs:complexType>
+  <xs:complexType name="ConceptType">
+    <xs:simpleContent>
+      <xs:extension base="xs:token">
+        <xs:attribute name="ref" type="xs:IDREF"/>
+        <xs:attribute name="conceptSchemeRef" type="xs:IDREF"/>
+      </xs:extension>
+    </xs:simpleContent>
+  </xs:complexType>
   <xs:complexType name="CarManufacturerType">
     <xs:sequence>
-      <xs:element name="Wmi" type="xs:string" maxOccurs="1" minOccurs="1">
+      <xs:element name="wmi" type="xs:string" maxOccurs="1" minOccurs="1">
         <xs:annotation>
-          <xs:documentation xml:lang="en" source="#definition">3-character World Manufacturer Identification (WMI) as defined by ISO 3780</xs:documentation>
+          <xs:documentation xml:lang="en">3-character World Manufacturer Identification (WMI) as defined by ISO 3780</xs:documentation>
         </xs:annotation>
       </xs:element>
-      <xs:element name="BusinessPartnerNumber" type="xs:string" maxOccurs="1" minOccurs="1">
+      <xs:element name="businessPartnerNumber" type="xs:string" maxOccurs="1" minOccurs="1">
         <xs:annotation>
-          <xs:documentation xml:lang="en" source="#definition">A business partner number of this company.</xs:documentation>
+          <xs:documentation xml:lang="en">A business partner number of this company.</xs:documentation>
         </xs:annotation>
       </xs:element>
     </xs:sequence>
@@ -36,19 +54,19 @@
   </xs:complexType>
   <xs:complexType name="ContactPointType">
     <xs:sequence>
-      <xs:element name="ContactPage" maxOccurs="unbounded" minOccurs="0">
+      <xs:element name="contactPage" maxOccurs="unbounded" minOccurs="0">
         <xs:annotation>
-          <xs:documentation xml:lang="en" source="#definition">A web page that could be used to reach out the Contact Point.</xs:documentation>
+          <xs:documentation xml:lang="en">A web page that could be used to reach out the Contact Point.</xs:documentation>
         </xs:annotation>
       </xs:element>
-      <xs:element name="HasEmail" type="xs:string" maxOccurs="unbounded" minOccurs="0">
+      <xs:element name="hasEmail" type="xs:string" maxOccurs="unbounded" minOccurs="0">
         <xs:annotation>
-          <xs:documentation xml:lang="en" source="#definition">An electronic address through which the Contact Point can be contacted.</xs:documentation>
+          <xs:documentation xml:lang="en">An electronic address through which the Contact Point can be contacted.</xs:documentation>
         </xs:annotation>
       </xs:element>
-      <xs:element name="HasTelephone" type="xs:string" maxOccurs="unbounded" minOccurs="0">
+      <xs:element name="hasTelephone" type="xs:string" maxOccurs="unbounded" minOccurs="0">
         <xs:annotation>
-          <xs:documentation xml:lang="en" source="#definition">A telephone number through which the Contact Point can be contacted.</xs:documentation>
+          <xs:documentation xml:lang="en">A telephone number through which the Contact Point can be contacted.</xs:documentation>
         </xs:annotation>
       </xs:element>
     </xs:sequence>
@@ -58,64 +76,56 @@
       </xs:annotation>
     </xs:attribute>
   </xs:complexType>
-  <xs:complexType name="conceptType">
-    <xs:simpleContent>
-      <xs:extension base="xs:token">
-        <xs:attribute name="ref" type="xs:IDREF"/>
-        <xs:attribute name="conceptSchemeRef" type="xs:IDREF"/>
-      </xs:extension>
-    </xs:simpleContent>
-  </xs:complexType>
   <xs:complexType name="ElectricCarType">
     <xs:sequence>
-      <xs:element name="ChargedAt" type="ChargingStationType" maxOccurs="unbounded" minOccurs="0">
+      <xs:element name="chargedAt" ref="ChargingStationType" maxOccurs="unbounded" minOccurs="0">
         <xs:annotation>
-          <xs:documentation xml:lang="en" source="#definition">The source power to which an electric appliance can get energy from.</xs:documentation>
+          <xs:documentation xml:lang="en">The source power to which an electric appliance can get energy from.</xs:documentation>
         </xs:annotation>
       </xs:element>
-      <xs:element name="FuelConsumption" type="QuantityValueType" maxOccurs="1" minOccurs="0">
+      <xs:element name="fuelConsumption" ref="QuantityValueType" maxOccurs="1" minOccurs="0">
         <xs:annotation>
-          <xs:documentation xml:lang="en" source="#definition">The fuel used per unit of distance traveled.</xs:documentation>
+          <xs:documentation xml:lang="en">The fuel used per unit of distance traveled.</xs:documentation>
         </xs:annotation>
       </xs:element>
-      <xs:element name="FuelEfficiency" type="QuantityValueType" maxOccurs="1" minOccurs="0">
+      <xs:element name="fuelEfficiency" ref="QuantityValueType" maxOccurs="1" minOccurs="0">
         <xs:annotation>
-          <xs:documentation xml:lang="en" source="#definition">The distance traveled per unit of fuel used.</xs:documentation>
+          <xs:documentation xml:lang="en">The distance traveled per unit of fuel used.</xs:documentation>
         </xs:annotation>
       </xs:element>
-      <xs:element name="HasManufacturer" type="CarManufacturerType" maxOccurs="1" minOccurs="1">
+      <xs:element name="hasManufacturer" ref="CarManufacturerType" maxOccurs="1" minOccurs="1">
         <xs:annotation>
-          <xs:documentation xml:lang="en" source="#definition">The manufacturer of the vehicle.</xs:documentation>
+          <xs:documentation xml:lang="en">The manufacturer of the vehicle.</xs:documentation>
         </xs:annotation>
       </xs:element>
-      <xs:element name="HasPart" type="VehiclePartType" maxOccurs="unbounded" minOccurs="1">
+      <xs:element name="hasPart" ref="VehiclePartType" maxOccurs="unbounded" minOccurs="1">
         <xs:annotation>
-          <xs:documentation xml:lang="en" source="#definition">A related resource that is included either physically or logically in the described resource.</xs:documentation>
+          <xs:documentation xml:lang="en">A related resource that is included either physically or logically in the described resource.</xs:documentation>
         </xs:annotation>
       </xs:element>
-      <xs:element name="InletType" type="conceptType" maxOccurs="1" minOccurs="1">
+      <xs:element name="inletType" type="ConceptType" maxOccurs="1" minOccurs="1">
         <xs:annotation>
-          <xs:documentation xml:lang="en" source="#definition">The type of plug this car is equiped with.</xs:documentation>
+          <xs:documentation xml:lang="en">The type of plug this car is equiped with.</xs:documentation>
         </xs:annotation>
       </xs:element>
-      <xs:element name="Make" type="xs:string" maxOccurs="1" minOccurs="1">
+      <xs:element name="make" type="xs:string" maxOccurs="1" minOccurs="1">
         <xs:annotation>
-          <xs:documentation xml:lang="en" source="#definition">The make is the brand name used by the car manufacturer.</xs:documentation>
+          <xs:documentation xml:lang="en">The make is the brand name used by the car manufacturer.</xs:documentation>
         </xs:annotation>
       </xs:element>
-      <xs:element name="Model" type="xs:string" maxOccurs="1" minOccurs="1">
+      <xs:element name="model" type="xs:string" maxOccurs="1" minOccurs="1">
         <xs:annotation>
-          <xs:documentation xml:lang="en" source="#definition">The model of a car is its design, in the context of the manufacturer's range or series of cars.</xs:documentation>
+          <xs:documentation xml:lang="en">The model of a car is its design, in the context of the manufacturer's range or series of cars.</xs:documentation>
         </xs:annotation>
       </xs:element>
-      <xs:element name="ModelYear" type="xs:gYear" maxOccurs="1" minOccurs="1">
+      <xs:element name="modelYear" type="xs:gYear" maxOccurs="1" minOccurs="1">
         <xs:annotation>
-          <xs:documentation xml:lang="en" source="#definition">The year in which the model has been conceived.</xs:documentation>
+          <xs:documentation xml:lang="en">The year in which the model has been conceived.</xs:documentation>
         </xs:annotation>
       </xs:element>
-      <xs:element name="VehicleIdentificationNumber" type="xs:string" maxOccurs="1" minOccurs="1">
+      <xs:element name="vehicleIdentificationNumber" type="xs:string" maxOccurs="1" minOccurs="1">
         <xs:annotation>
-          <xs:documentation xml:lang="en" source="#definition">The Vehicle Identification Number (VIN) is a unique serial number used by the automotive industry to identify individual motor vehicles.</xs:documentation>
+          <xs:documentation xml:lang="en">The Vehicle Identification Number (VIN) is a unique serial number used by the automotive industry to identify individual motor vehicles.</xs:documentation>
         </xs:annotation>
       </xs:element>
     </xs:sequence>
@@ -127,60 +137,34 @@
   </xs:complexType>
   <xs:complexType name="StorageBatteryDeviceType">
     <xs:sequence>
-      <xs:element name="BatteryType" type="conceptType" maxOccurs="1" minOccurs="1">
+      <xs:element name="batteryType" type="ConceptType" maxOccurs="1" minOccurs="1">
         <xs:annotation>
-          <xs:documentation xml:lang="en" source="#definition">Type of battery used.</xs:documentation>
+          <xs:documentation xml:lang="en">Type of battery used.</xs:documentation>
         </xs:annotation>
       </xs:element>
-      <xs:element name="DateLastReported" type="xs:dateTime" maxOccurs="1" minOccurs="1">
+      <xs:element name="dateLastReported" type="xs:dateTime" maxOccurs="1" minOccurs="1">
         <xs:annotation>
-          <xs:documentation xml:lang="en" source="#definition">he last time when the device successfully reported data.</xs:documentation>
+          <xs:documentation xml:lang="en">he last time when the device successfully reported data.</xs:documentation>
         </xs:annotation>
       </xs:element>
-      <xs:element name="Geometry" type="GeometryType" maxOccurs="1" minOccurs="1">
+      <xs:element name="geometry" ref="GeometryType" maxOccurs="1" minOccurs="1">
         <xs:annotation>
-          <xs:documentation xml:lang="en" source="#definition">Associates any Resource with the corresponding Geometry.</xs:documentation>
-          <xs:documentation xml:lang="en" source="#usage">&lt;p&gt;Depending on how a geometry is encoded, the range of this property may be one of the following:
-&lt;ul&gt;
-  &lt;li&gt;- a literal (e.g., WKT - string literal -, GML, KML - XML literal)&lt;/li&gt;
-  &lt;li&gt;- a geometry class, as those defined in the OGC's GeoSPARQL specification, in the W3C's Basic Geo (WGS84 lat/long) vocabulary, and at schema.org;&lt;/li&gt;
-  &lt;li&gt;- geocoded URIs, as geo or GeoHash URIs, treated as URI references.&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;
-For interoperability reasons, it is recommended using one of the following:
-&lt;ul&gt;
-  &lt;li&gt;- Any geometry:
-    &lt;ul&gt;
-      &lt;li&gt;  - WKT, GML, and RDF+WKT/GML, as per the GeoSPARQL specification.&lt;/li&gt;
-      &lt;li&gt;  - KML (Keyhole Markup Language) - note that KML supports the following geometries only: point, line string, linear ring, and polygon.
-      &lt;li&gt;  - RDF as per the schema.org vocabulary (see classes schema:GeoCoordinates and schema:GeoShape).
-    &lt;/ul&gt;
-  &lt;/li&gt;
-  &lt;li&gt;- Points: one of the above, or:
-    &lt;ul&gt;
-      &lt;li&gt;  - RDF as per the W3C Basic Geo (WGS84 lat/long) vocabulary.&lt;/li&gt;
-      &lt;li&gt;  - GeoHash URIs.&lt;/li&gt;
-      &lt;li&gt;  - geo URIs.&lt;/li&gt;
-    &lt;/ul&gt;
-  &lt;/li&gt;
-&lt;/ul&gt;
-&lt;/p&gt;</xs:documentation>
+          <xs:documentation xml:lang="en">Associates any Resource with the corresponding Geometry.</xs:documentation>
         </xs:annotation>
       </xs:element>
-      <xs:element name="NominalCapacity" type="QuantityValueType" maxOccurs="1" minOccurs="1">
+      <xs:element name="nominalCapacity" ref="QuantityValueType" maxOccurs="1" minOccurs="1">
         <xs:annotation>
-          <xs:documentation xml:lang="en" source="#definition">Nominal Energy capacity.</xs:documentation>
+          <xs:documentation xml:lang="en">Nominal Energy capacity.</xs:documentation>
         </xs:annotation>
       </xs:element>
-      <xs:element name="NominalVoltage" type="QuantityValueType" maxOccurs="1" minOccurs="1">
+      <xs:element name="nominalVoltage" ref="QuantityValueType" maxOccurs="1" minOccurs="1">
         <xs:annotation>
-          <xs:documentation xml:lang="en" source="#definition">Nominal battery voltage.</xs:documentation>
+          <xs:documentation xml:lang="en">Nominal battery voltage.</xs:documentation>
         </xs:annotation>
       </xs:element>
-      <xs:element name="RechargeEnergySource" type="conceptType" maxOccurs="1" minOccurs="1">
+      <xs:element name="rechargeEnergySource" type="ConceptType" maxOccurs="1" minOccurs="1">
         <xs:annotation>
-          <xs:documentation xml:lang="en" source="#definition">The type of power source of the battery.</xs:documentation>
+          <xs:documentation xml:lang="en">The type of power source of the battery.</xs:documentation>
         </xs:annotation>
       </xs:element>
     </xs:sequence>
@@ -192,14 +176,14 @@ For interoperability reasons, it is recommended using one of the following:
   </xs:complexType>
   <xs:complexType name="QuantityValueType">
     <xs:sequence>
-      <xs:element name="UnitOfMeasure" maxOccurs="1" minOccurs="1">
+      <xs:element name="unitOfMeasure" maxOccurs="1" minOccurs="1">
         <xs:annotation>
-          <xs:documentation xml:lang="en" source="#definition">Unit of Measurement for the quantity of serialized objects.</xs:documentation>
+          <xs:documentation xml:lang="en">Unit of Measurement for the quantity of serialized objects.</xs:documentation>
         </xs:annotation>
       </xs:element>
-      <xs:element name="Value" type="xs:double" maxOccurs="1" minOccurs="1">
+      <xs:element name="value" type="xs:double" maxOccurs="1" minOccurs="1">
         <xs:annotation>
-          <xs:documentation xml:lang="en" source="#definition">A property to relate an observable thing with a value of any kind.</xs:documentation>
+          <xs:documentation xml:lang="en">A property to relate an observable thing with a value of any kind.</xs:documentation>
         </xs:annotation>
       </xs:element>
     </xs:sequence>
@@ -211,23 +195,19 @@ For interoperability reasons, it is recommended using one of the following:
   </xs:complexType>
   <xs:complexType name="LegalEntityType">
     <xs:sequence>
-      <xs:element name="ContactPoint" type="ContactPointType" maxOccurs="unbounded" minOccurs="0">
+      <xs:element name="contactPoint" ref="ContactPointType" maxOccurs="unbounded" minOccurs="0">
         <xs:annotation>
-          <xs:documentation xml:lang="en" source="#definition">The main contact information of the resource.</xs:documentation>
-          <xs:documentation xml:lang="en" source="#usage">Usually a phone number and e-mail address. Other contact methods may be included, including online contact information, but this is conceptually distinct from the organization's homepage that may or may not provide contact information.</xs:documentation>
+          <xs:documentation xml:lang="en">The main contact information of the resource.</xs:documentation>
         </xs:annotation>
       </xs:element>
-      <xs:element name="LegalName" type="xs:string" maxOccurs="1" minOccurs="1">
+      <xs:element name="legalName" type="xs:string" maxOccurs="1" minOccurs="1">
         <xs:annotation>
-          <xs:documentation xml:lang="en" source="#definition">The name under which the Legal Entity is legally registered.</xs:documentation>
-          <xs:documentation xml:lang="en" source="#usage">The legal name is different from the alternative (trade) name which is a pseudonym used by companies that do not operate under their registered company name.
-A business might have more than one legal name, particularly in countries with more than one official language. In such cases, and where the encoding technology allows, the language of the string should be identified.</xs:documentation>
+          <xs:documentation xml:lang="en">The name under which the Legal Entity is legally registered.</xs:documentation>
         </xs:annotation>
       </xs:element>
-      <xs:element name="RegisteredAddress" type="AddressType" maxOccurs="unbounded" minOccurs="1">
+      <xs:element name="registeredAddress" ref="AddressType" maxOccurs="unbounded" minOccurs="1">
         <xs:annotation>
-          <xs:documentation xml:lang="en" source="#definition">The address at which the Legal Entity is legally registered.</xs:documentation>
-          <xs:documentation xml:lang="en" source="#usage">In almost all jurisdictions, Legal Entities must register a public address. This may or may not be the actual address at which the Legal Entity does its business, it is commonly the address of their lawyer or accountant, but it is the address to which formal communications can be sent. The registered address property points to the Address of the Registered Site. This property can be seen as a shorthand for this property path.</xs:documentation>
+          <xs:documentation xml:lang="en">The address at which the Legal Entity is legally registered.</xs:documentation>
         </xs:annotation>
       </xs:element>
     </xs:sequence>
@@ -239,87 +219,59 @@ A business might have more than one legal name, particularly in countries with m
   </xs:complexType>
   <xs:complexType name="AddressType">
     <xs:sequence>
-      <xs:element name="AddressArea" type="xs:string" maxOccurs="unbounded" minOccurs="0">
+      <xs:element name="addressArea" type="xs:string" maxOccurs="unbounded" minOccurs="0">
         <xs:annotation>
-          <xs:documentation xml:lang="en" source="#definition">The name of a geographic area that groups Addresses.</xs:documentation>
-          <xs:documentation xml:lang="en" source="#usage">This would typically be part of a city, a neighbourhood or village, e.g. Montmartre. Address area is not an administrative unit.</xs:documentation>
+          <xs:documentation xml:lang="en">The name of a geographic area that groups Addresses.</xs:documentation>
         </xs:annotation>
       </xs:element>
-      <xs:element name="AddressId" type="xs:string" maxOccurs="unbounded" minOccurs="0">
+      <xs:element name="addressId" type="xs:string" maxOccurs="unbounded" minOccurs="0">
         <xs:annotation>
-          <xs:documentation xml:lang="en" source="#definition">A globally unique identifier for each instance of an Address.</xs:documentation>
-          <xs:documentation xml:lang="en" source="#usage">The concept of adding a globally unique identifier for each instance of an address is a crucial part of the INSPIRE data spec. A number of EU countries have already implemented an ID (a UUID) in their Address Register/gazetteer, among them Denmark. OASIS xAL also includes an address identifier. It is the address Identifier that allows an address to be represented in a format other than INSPIRE whilst remaining conformant to the Core Vocabulary.
-&lt;br/&gt;&lt;br/&gt;
-The INSPIRE method of representing addresses is very detailed, designed primarily for use in databases of addresses. Whilst data that is published in full conformance with the INSPIRE data structure can be made available using the Core  Location Vocabulary the reverse is not true since the Core Vocabulary allows much greater flexibility.
-&lt;br/&gt;&lt;br/&gt;
-Many datasets that include address data as one piece of information about something else are likely to have that data in simpler formats. These might be tailored to the specific need of the dataset, follow a national norm, or make use of a standard like vCard.
-&lt;br/&gt;&lt;br/&gt;
-To provide maximum flexibility in the Core Vocabulary, whilst remaining interoperable with INSPIRE Address Guidelines (which EU Member States are obliged to use), the  Core Location Vocabulary provides the extra property of full address and makes use of INSPIRE's addressID.
-&lt;br/&gt;&lt;br/&gt;
-The datatype of addressID is indicated as Literal (keeping backward compatibility with the old W3C specification) that can be typed differently, see &lt;a href="https://www.w3.org/TR/rdf11-concepts/#section-Graph-Literal"&gt;more&lt;/a&gt;.
-</xs:documentation>
+          <xs:documentation xml:lang="en">A globally unique identifier for each instance of an Address.</xs:documentation>
         </xs:annotation>
       </xs:element>
-      <xs:element name="AdministrativeUnitLevel1" type="xs:string" maxOccurs="unbounded" minOccurs="0">
+      <xs:element name="administrativeUnitLevel1" type="xs:string" maxOccurs="unbounded" minOccurs="0">
         <xs:annotation>
-          <xs:documentation xml:lang="en" source="#definition">The name of the uppermost level of the address, almost always a country.</xs:documentation>
-          <xs:documentation xml:lang="en" source="#usage">Best practice is to use the ISO 3166-1 code but if this is inappropriate for the context, country names should be provided in a consistent manner to reduce ambiguity. For example, either write 'France' or 'FRA' consistently throughout the dataset and avoid mixing the two. The &lt;a href="https://op.europa.eu/en/web/eu-vocabularies/dataset/-/resource?uri=http://publications.europa.eu/resource/dataset/country"&gt;Country controlled vocabulary&lt;/a&gt; from the Publications Office can be reused for this.</xs:documentation>
+          <xs:documentation xml:lang="en">The name of the uppermost level of the address, almost always a country.</xs:documentation>
         </xs:annotation>
       </xs:element>
-      <xs:element name="AdministrativeUnitLevel2" type="xs:string" maxOccurs="unbounded" minOccurs="0">
+      <xs:element name="administrativeUnitLevel2" type="xs:string" maxOccurs="unbounded" minOccurs="0">
         <xs:annotation>
-          <xs:documentation xml:lang="en" source="#definition">The name of a secondary level/region of the address, usually a county, state or other such area that typically encompasses several localities.</xs:documentation>
-          <xs:documentation xml:lang="en" source="#usage">Values could be a region or province, more granular than level 1.</xs:documentation>
+          <xs:documentation xml:lang="en">The name of a secondary level/region of the address, usually a county, state or other such area that typically encompasses several localities.</xs:documentation>
         </xs:annotation>
       </xs:element>
-      <xs:element name="FullAddress" type="xs:string" maxOccurs="unbounded" minOccurs="0">
+      <xs:element name="fullAddress" type="xs:string" maxOccurs="unbounded" minOccurs="0">
         <xs:annotation>
-          <xs:documentation xml:lang="en" source="#definition">The complete address written as a string.</xs:documentation>
-          <xs:documentation xml:lang="en" source="#usage">Use of this property is recommended as it will not suffer any misunderstandings that might arise through the breaking up of an address into its component parts. This property is analogous to vCard's label property but with two important differences: (1) formatting is not assumed so that, unlike vCard label, it may not be suitable to print this on an address label, (2) vCard's label property has a domain of vCard Address; the fullAddress property has no such restriction. An example of a full address is "Champ de Mars, 5 Avenue Anatole France, 75007 Paris, France".</xs:documentation>
+          <xs:documentation xml:lang="en">The complete address written as a string.</xs:documentation>
         </xs:annotation>
       </xs:element>
-      <xs:element name="LocatorDesignator" type="xs:string" maxOccurs="unbounded" minOccurs="0">
+      <xs:element name="locatorDesignator" type="xs:string" maxOccurs="unbounded" minOccurs="0">
         <xs:annotation>
-          <xs:documentation xml:lang="en" source="#definition">A number or sequence of characters that uniquely identifies the locator within the relevant scope.</xs:documentation>
-          <xs:documentation xml:lang="en" source="#usage">In simpler terms, this is the building number, apartment number, etc. For an address such as "Flat 3, 17 Bridge Street", the locator is "flat 3, 17".
-&lt;br/&gt;&lt;br/&gt;
-The datatype of locatorDesignator is indicated as Literal (keeping backward compatibility with the old W3C specification) that can be typed differently, see &lt;a href="https://www.w3.org/TR/rdf11-concepts/#section-Graph-Literal"&gt;more&lt;/a&gt;.</xs:documentation>
+          <xs:documentation xml:lang="en">A number or sequence of characters that uniquely identifies the locator within the relevant scope.</xs:documentation>
         </xs:annotation>
       </xs:element>
-      <xs:element name="LocatorName" type="xs:string" maxOccurs="unbounded" minOccurs="0">
+      <xs:element name="locatorName" type="xs:string" maxOccurs="unbounded" minOccurs="0">
         <xs:annotation>
-          <xs:documentation xml:lang="en" source="#definition">Proper noun(s) applied to the real world entity identified by the locator.</xs:documentation>
-          <xs:documentation xml:lang="en" source="#usage">The locator name could be the name of the property or complex, of the building or part of the building, or it could be the name of a room inside a building.
-&lt;br/&gt;&lt;br/&gt;
-The key difference between a locator and a locator name is that the latter is a proper name and is unlikely to include digits. For example, "Shumann, Berlaymont" is a meeting room within the European Commission headquarters for which locator name is more appropriate than locator.</xs:documentation>
+          <xs:documentation xml:lang="en">Proper noun(s) applied to the real world entity identified by the locator.</xs:documentation>
         </xs:annotation>
       </xs:element>
-      <xs:element name="PostOfficeBox" type="xs:string" maxOccurs="unbounded" minOccurs="0">
+      <xs:element name="postOfficeBox" type="xs:string" maxOccurs="unbounded" minOccurs="0">
         <xs:annotation>
-          <xs:documentation xml:lang="en" source="#definition">A location designator for a postal delivery point at a post office, usually a number.</xs:documentation>
-          <xs:documentation xml:lang="en" source="#usage">INSPIRE's name for this is "postalDeliveryIdentifier" for which it uses the locator designator property with a type attribute of that name. This vocabulary separates out the Post Office Box for greater independence of technology. An example post office box number is "9383".
-&lt;br/&gt;&lt;br/&gt;
-The datatype of poBox is indicated as Literal (keeping backward compatibility with the old W3C specification) that can be typed differently, see &lt;a href="https://www.w3.org/TR/rdf11-concepts/#section-Graph-Literal"&gt;more&lt;/a&gt;.</xs:documentation>
+          <xs:documentation xml:lang="en">A location designator for a postal delivery point at a post office, usually a number.</xs:documentation>
         </xs:annotation>
       </xs:element>
-      <xs:element name="PostCode" type="xs:string" maxOccurs="unbounded" minOccurs="0">
+      <xs:element name="postCode" type="xs:string" maxOccurs="unbounded" minOccurs="0">
         <xs:annotation>
-          <xs:documentation xml:lang="en" source="#definition">The code created and maintained for postal purposes to identify a subdivision of addresses and postal delivery points.</xs:documentation>
-          <xs:documentation xml:lang="en" source="#usage">Post codes are common elements in many countries' postal address systems. One of the many post codes of Paris is for example "75000".
-
-The datatype of addressID is indicated as Literal (keeping backward compatibility with the old W3C specification) that can be typed differently, see &lt;a href="https://www.w3.org/TR/rdf11-concepts/#section-Graph-Literal"&gt;more&lt;/a&gt;.</xs:documentation>
+          <xs:documentation xml:lang="en">The code created and maintained for postal purposes to identify a subdivision of addresses and postal delivery points.</xs:documentation>
         </xs:annotation>
       </xs:element>
-      <xs:element name="PostName" type="xs:string" maxOccurs="unbounded" minOccurs="0">
+      <xs:element name="postName" type="xs:string" maxOccurs="unbounded" minOccurs="0">
         <xs:annotation>
-          <xs:documentation xml:lang="en" source="#definition">A name created and maintained for postal purposes to identify a subdivision of addresses and postal delivery points.</xs:documentation>
-          <xs:documentation xml:lang="en" source="#usage">Usually a city, for example "Paris".</xs:documentation>
+          <xs:documentation xml:lang="en">A name created and maintained for postal purposes to identify a subdivision of addresses and postal delivery points.</xs:documentation>
         </xs:annotation>
       </xs:element>
-      <xs:element name="Thoroughfare" type="xs:string" maxOccurs="unbounded" minOccurs="0">
+      <xs:element name="thoroughfare" type="xs:string" maxOccurs="unbounded" minOccurs="0">
         <xs:annotation>
-          <xs:documentation xml:lang="en" source="#definition">The name of a passage or way through from one location to another.</xs:documentation>
-          <xs:documentation xml:lang="en" source="#usage">A thoroughfare is usually a street, but it might be a waterway or some other feature. For example, "Avenue des Champs-Élysées".</xs:documentation>
+          <xs:documentation xml:lang="en">The name of a passage or way through from one location to another.</xs:documentation>
         </xs:annotation>
       </xs:element>
     </xs:sequence>
@@ -331,26 +283,24 @@ The datatype of addressID is indicated as Literal (keeping backward compatibilit
   </xs:complexType>
   <xs:complexType name="GeometryType">
     <xs:sequence>
-      <xs:element name="Coordinates" type="xs:string" maxOccurs="1" minOccurs="0">
+      <xs:element name="coordinates" type="xs:string" maxOccurs="1" minOccurs="0">
         <xs:annotation>
-          <xs:documentation xml:lang="en" source="#definition">	A list of geographic coordinates that define the extent of the Geometry.</xs:documentation>
-          <xs:documentation xml:lang="en" source="#usage">Can be expressed as longitude, latitude, elevation.</xs:documentation>
+          <xs:documentation xml:lang="en">	A list of geographic coordinates that define the extent of the Geometry.</xs:documentation>
         </xs:annotation>
       </xs:element>
-      <xs:element name="GeometryType" type="conceptType" maxOccurs="1" minOccurs="0">
+      <xs:element name="geometryType" type="ConceptType" maxOccurs="1" minOccurs="0">
         <xs:annotation>
-          <xs:documentation xml:lang="en" source="#definition">The classification of the Geometry.</xs:documentation>
-          <xs:documentation xml:lang="en" source="#usage">Can be a point, line or polygon.</xs:documentation>
+          <xs:documentation xml:lang="en">The classification of the Geometry.</xs:documentation>
         </xs:annotation>
       </xs:element>
-      <xs:element name="Latitude" type="xs:string" maxOccurs="1" minOccurs="1">
+      <xs:element name="latitude" type="xs:string" maxOccurs="1" minOccurs="1">
         <xs:annotation>
-          <xs:documentation xml:lang="en" source="#definition">The geographic coordinate that specifies the north / south position of the Geomerty on the Earth's surface.</xs:documentation>
+          <xs:documentation xml:lang="en">The geographic coordinate that specifies the north / south position of the Geomerty on the Earth's surface.</xs:documentation>
         </xs:annotation>
       </xs:element>
-      <xs:element name="Longitude" type="xs:string" maxOccurs="1" minOccurs="1">
+      <xs:element name="longitude" type="xs:string" maxOccurs="1" minOccurs="1">
         <xs:annotation>
-          <xs:documentation xml:lang="en" source="#definition">The geographic coordinate that specifies the east / west position of the Geometry on the Earth's surface.</xs:documentation>
+          <xs:documentation xml:lang="en">The geographic coordinate that specifies the east / west position of the Geometry on the Earth's surface.</xs:documentation>
         </xs:annotation>
       </xs:element>
     </xs:sequence>
@@ -362,31 +312,29 @@ The datatype of addressID is indicated as Literal (keeping backward compatibilit
   </xs:complexType>
   <xs:complexType name="PersonType">
     <xs:sequence>
-      <xs:element name="ContactPoint" type="ContactPointType" maxOccurs="unbounded" minOccurs="0">
+      <xs:element name="contactPoint" ref="ContactPointType" maxOccurs="unbounded" minOccurs="0">
         <xs:annotation>
-          <xs:documentation xml:lang="en" source="#definition">The main contact information of the resource.</xs:documentation>
+          <xs:documentation xml:lang="en">The main contact information of the resource.</xs:documentation>
         </xs:annotation>
       </xs:element>
-      <xs:element name="Domicile" type="AddressType" maxOccurs="unbounded" minOccurs="0">
+      <xs:element name="domicile" ref="AddressType" maxOccurs="unbounded" minOccurs="0">
         <xs:annotation>
-          <xs:documentation xml:lang="en" source="#definition">The place that the Person treats as permanent home.</xs:documentation>
+          <xs:documentation xml:lang="en">The place that the Person treats as permanent home.</xs:documentation>
         </xs:annotation>
       </xs:element>
-      <xs:element name="FamilyName" type="xs:string" maxOccurs="unbounded" minOccurs="1">
+      <xs:element name="familyName" type="xs:string" maxOccurs="unbounded" minOccurs="1">
         <xs:annotation>
-          <xs:documentation xml:lang="en" source="#definition">The hereditary surname of a family.</xs:documentation>
-          <xs:documentation xml:lang="en" source="#usage">Usually referring to a group of people related by blood, marriage or adoption. This attribute also carries prefixes or suffixes which are part of the family name, e.g. "de Boer", "van de Putte", "von und zu Orlow". Multiple family names, such as are commonly found in Hispanic countries, are recorded in the single family name property so that, for example, Miguel de Cervantes Saavedra's family name would be recorded as "de Cervantes Saavedra".</xs:documentation>
+          <xs:documentation xml:lang="en">The hereditary surname of a family.</xs:documentation>
         </xs:annotation>
       </xs:element>
-      <xs:element name="GivenName" type="xs:string" maxOccurs="unbounded" minOccurs="1">
+      <xs:element name="givenName" type="xs:string" maxOccurs="unbounded" minOccurs="1">
         <xs:annotation>
-          <xs:documentation xml:lang="en" source="#definition">The name(s) that identify the Person within a family with a common surname.</xs:documentation>
-          <xs:documentation xml:lang="en" source="#usage">Usually a first name. Given to a person by his or her parents at birth or legally recognised as 'given names' through a formal process. All given names are ordered in one property so that, for example, the given name for Johann Sebastian Bach is "Johann Sebastian".</xs:documentation>
+          <xs:documentation xml:lang="en">The name(s) that identify the Person within a family with a common surname.</xs:documentation>
         </xs:annotation>
       </xs:element>
-      <xs:element name="Owns" type="ElectricCarType" maxOccurs="unbounded" minOccurs="0">
+      <xs:element name="owns" ref="ElectricCarType" maxOccurs="unbounded" minOccurs="0">
         <xs:annotation>
-          <xs:documentation xml:lang="en" source="#definition">it relates to something belonging to an entity.</xs:documentation>
+          <xs:documentation xml:lang="en">it relates to something belonging to an entity.</xs:documentation>
         </xs:annotation>
       </xs:element>
     </xs:sequence>
@@ -398,50 +346,24 @@ The datatype of addressID is indicated as Literal (keeping backward compatibilit
   </xs:complexType>
   <xs:complexType name="StorageBatteryMeasurementType">
     <xs:sequence>
-      <xs:element name="DateObserved" type="xs:dateTime" maxOccurs="1" minOccurs="1">
+      <xs:element name="dateObserved" type="xs:dateTime" maxOccurs="1" minOccurs="1">
         <xs:annotation>
-          <xs:documentation xml:lang="en" source="#definition">The date time in which the measurement was taken. </xs:documentation>
+          <xs:documentation xml:lang="en">The date time in which the measurement was taken. </xs:documentation>
         </xs:annotation>
       </xs:element>
-      <xs:element name="Geometry" type="GeometryType" maxOccurs="unbounded" minOccurs="0">
+      <xs:element name="geometry" ref="GeometryType" maxOccurs="unbounded" minOccurs="0">
         <xs:annotation>
-          <xs:documentation xml:lang="en" source="#definition">Associates any Resource with the corresponding Geometry.</xs:documentation>
-          <xs:documentation xml:lang="en" source="#usage">&lt;p&gt;Depending on how a geometry is encoded, the range of this property may be one of the following:
-&lt;ul&gt;
-  &lt;li&gt;- a literal (e.g., WKT - string literal -, GML, KML - XML literal)&lt;/li&gt;
-  &lt;li&gt;- a geometry class, as those defined in the OGC's GeoSPARQL specification, in the W3C's Basic Geo (WGS84 lat/long) vocabulary, and at schema.org;&lt;/li&gt;
-  &lt;li&gt;- geocoded URIs, as geo or GeoHash URIs, treated as URI references.&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;
-For interoperability reasons, it is recommended using one of the following:
-&lt;ul&gt;
-  &lt;li&gt;- Any geometry:
-    &lt;ul&gt;
-      &lt;li&gt;  - WKT, GML, and RDF+WKT/GML, as per the GeoSPARQL specification.&lt;/li&gt;
-      &lt;li&gt;  - KML (Keyhole Markup Language) - note that KML supports the following geometries only: point, line string, linear ring, and polygon.
-      &lt;li&gt;  - RDF as per the schema.org vocabulary (see classes schema:GeoCoordinates and schema:GeoShape).
-    &lt;/ul&gt;
-  &lt;/li&gt;
-  &lt;li&gt;- Points: one of the above, or:
-    &lt;ul&gt;
-      &lt;li&gt;  - RDF as per the W3C Basic Geo (WGS84 lat/long) vocabulary.&lt;/li&gt;
-      &lt;li&gt;  - GeoHash URIs.&lt;/li&gt;
-      &lt;li&gt;  - geo URIs.&lt;/li&gt;
-    &lt;/ul&gt;
-  &lt;/li&gt;
-&lt;/ul&gt;
-&lt;/p&gt;</xs:documentation>
+          <xs:documentation xml:lang="en">Associates any Resource with the corresponding Geometry.</xs:documentation>
         </xs:annotation>
       </xs:element>
-      <xs:element name="StateOfCharge" type="QuantityValueType" maxOccurs="1" minOccurs="1">
+      <xs:element name="stateOfCharge" ref="QuantityValueType" maxOccurs="1" minOccurs="1">
         <xs:annotation>
-          <xs:documentation xml:lang="en" source="#definition">The ratio between the remaining and the current capacities.</xs:documentation>
+          <xs:documentation xml:lang="en">The ratio between the remaining and the current capacities.</xs:documentation>
         </xs:annotation>
       </xs:element>
-      <xs:element name="StateOfHealth" type="QuantityValueType" maxOccurs="1" minOccurs="1">
+      <xs:element name="stateOfHealth" ref="QuantityValueType" maxOccurs="1" minOccurs="1">
         <xs:annotation>
-          <xs:documentation xml:lang="en" source="#definition">The ratio between the maximum amount of charge that a fully charged battery can provide under its nominal discharge regime, and its nominal capacity.</xs:documentation>
+          <xs:documentation xml:lang="en">The ratio between the maximum amount of charge that a fully charged battery can provide under its nominal discharge regime, and its nominal capacity.</xs:documentation>
         </xs:annotation>
       </xs:element>
     </xs:sequence>
@@ -453,61 +375,34 @@ For interoperability reasons, it is recommended using one of the following:
   </xs:complexType>
   <xs:complexType name="ChargingStationType">
     <xs:sequence>
-      <xs:element name="Address" type="AddressType" maxOccurs="1" minOccurs="0">
+      <xs:element name="address" ref="AddressType" maxOccurs="1" minOccurs="0">
         <xs:annotation>
-          <xs:documentation xml:lang="en" source="#definition">Associates any Resource with the corresponding Address.</xs:documentation>
-          <xs:documentation xml:lang="en" source="#usage">Asserting the address relationship implies that the Resource has an Address.</xs:documentation>
+          <xs:documentation xml:lang="en">Associates any Resource with the corresponding Address.</xs:documentation>
         </xs:annotation>
       </xs:element>
-      <xs:element name="AllowedVehicleType" type="conceptType" maxOccurs="unbounded" minOccurs="1">
+      <xs:element name="allowedVehicleType" type="ConceptType" maxOccurs="unbounded" minOccurs="1">
         <xs:annotation>
-          <xs:documentation xml:lang="en" source="#definition">Vehicle type(s) which can be charged.</xs:documentation>
+          <xs:documentation xml:lang="en">Vehicle type(s) which can be charged.</xs:documentation>
         </xs:annotation>
       </xs:element>
-      <xs:element name="Capacity" type="xs:integer" maxOccurs="1" minOccurs="1">
+      <xs:element name="capacity" type="xs:integer" maxOccurs="1" minOccurs="1">
         <xs:annotation>
-          <xs:documentation xml:lang="en" source="#definition">The total number of vehicles which can be charged at the same time. The total number of sockets can be higher.</xs:documentation>
+          <xs:documentation xml:lang="en">The total number of vehicles which can be charged at the same time. The total number of sockets can be higher.</xs:documentation>
         </xs:annotation>
       </xs:element>
-      <xs:element name="Geometry" type="GeometryType" maxOccurs="1" minOccurs="0">
+      <xs:element name="geometry" ref="GeometryType" maxOccurs="1" minOccurs="0">
         <xs:annotation>
-          <xs:documentation xml:lang="en" source="#definition">Associates any Resource with the corresponding Geometry.</xs:documentation>
-          <xs:documentation xml:lang="en" source="#usage">&lt;p&gt;Depending on how a geometry is encoded, the range of this property may be one of the following:
-&lt;ul&gt;
-  &lt;li&gt;- a literal (e.g., WKT - string literal -, GML, KML - XML literal)&lt;/li&gt;
-  &lt;li&gt;- a geometry class, as those defined in the OGC's GeoSPARQL specification, in the W3C's Basic Geo (WGS84 lat/long) vocabulary, and at schema.org;&lt;/li&gt;
-  &lt;li&gt;- geocoded URIs, as geo or GeoHash URIs, treated as URI references.&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;
-For interoperability reasons, it is recommended using one of the following:
-&lt;ul&gt;
-  &lt;li&gt;- Any geometry:
-    &lt;ul&gt;
-      &lt;li&gt;  - WKT, GML, and RDF+WKT/GML, as per the GeoSPARQL specification.&lt;/li&gt;
-      &lt;li&gt;  - KML (Keyhole Markup Language) - note that KML supports the following geometries only: point, line string, linear ring, and polygon.
-      &lt;li&gt;  - RDF as per the schema.org vocabulary (see classes schema:GeoCoordinates and schema:GeoShape).
-    &lt;/ul&gt;
-  &lt;/li&gt;
-  &lt;li&gt;- Points: one of the above, or:
-    &lt;ul&gt;
-      &lt;li&gt;  - RDF as per the W3C Basic Geo (WGS84 lat/long) vocabulary.&lt;/li&gt;
-      &lt;li&gt;  - GeoHash URIs.&lt;/li&gt;
-      &lt;li&gt;  - geo URIs.&lt;/li&gt;
-    &lt;/ul&gt;
-  &lt;/li&gt;
-&lt;/ul&gt;
-&lt;/p&gt;</xs:documentation>
+          <xs:documentation xml:lang="en">Associates any Resource with the corresponding Geometry.</xs:documentation>
         </xs:annotation>
       </xs:element>
-      <xs:element name="Name" type="xs:string" maxOccurs="1" minOccurs="1">
+      <xs:element name="name" type="xs:string" maxOccurs="1" minOccurs="1">
         <xs:annotation>
-          <xs:documentation xml:lang="en" source="#definition">The name of the charging station</xs:documentation>
+          <xs:documentation xml:lang="en">The name of the charging station</xs:documentation>
         </xs:annotation>
       </xs:element>
-      <xs:element name="SocketType" type="conceptType" maxOccurs="unbounded" minOccurs="1">
+      <xs:element name="socketType" type="ConceptType" maxOccurs="unbounded" minOccurs="1">
         <xs:annotation>
-          <xs:documentation xml:lang="en" source="#definition">The type of sockets offered by this station.</xs:documentation>
+          <xs:documentation xml:lang="en">The type of sockets offered by this station.</xs:documentation>
         </xs:annotation>
       </xs:element>
     </xs:sequence>
@@ -519,9 +414,9 @@ For interoperability reasons, it is recommended using one of the following:
   </xs:complexType>
   <xs:complexType name="BatteryManagementType">
     <xs:sequence>
-      <xs:element name="Generates" type="StorageBatteryMeasurementType" maxOccurs="unbounded" minOccurs="0">
+      <xs:element name="generates" ref="StorageBatteryMeasurementType" maxOccurs="unbounded" minOccurs="0">
         <xs:annotation>
-          <xs:documentation xml:lang="en" source="#definition">It relates to something that is produced or created.</xs:documentation>
+          <xs:documentation xml:lang="en">It relates to something that is produced or created.</xs:documentation>
         </xs:annotation>
       </xs:element>
     </xs:sequence>
@@ -533,29 +428,29 @@ For interoperability reasons, it is recommended using one of the following:
   </xs:complexType>
   <xs:complexType name="VehiclePartType">
     <xs:sequence>
-      <xs:element name="CreatedOn" type="xs:dateTime" maxOccurs="1" minOccurs="1">
+      <xs:element name="createdOn" type="xs:dateTime" maxOccurs="1" minOccurs="1">
         <xs:annotation>
-          <xs:documentation xml:lang="en" source="#definition">Timestamp when the relation between the parent part and the child part was created.</xs:documentation>
+          <xs:documentation xml:lang="en">Timestamp when the relation between the parent part and the child part was created.</xs:documentation>
         </xs:annotation>
       </xs:element>
-      <xs:element name="Identifier" type="xs:string" maxOccurs="1" minOccurs="1">
+      <xs:element name="identifier" type="xs:string" maxOccurs="1" minOccurs="1">
         <xs:annotation>
-          <xs:documentation xml:lang="en" source="#definition">Unique identifier of the entity</xs:documentation>
+          <xs:documentation xml:lang="en">Unique identifier of the entity</xs:documentation>
         </xs:annotation>
       </xs:element>
-      <xs:element name="IsPartOf" type="ElectricCarType" maxOccurs="1" minOccurs="0">
+      <xs:element name="isPartOf" ref="ElectricCarType" maxOccurs="1" minOccurs="0">
         <xs:annotation>
-          <xs:documentation xml:lang="en" source="#definition">Relationship between 2 branches where one is a component of the second.</xs:documentation>
+          <xs:documentation xml:lang="en">Relationship between 2 branches where one is a component of the second.</xs:documentation>
         </xs:annotation>
       </xs:element>
-      <xs:element name="LifecycleContext" type="conceptType" maxOccurs="1" minOccurs="1">
+      <xs:element name="lifecycleContext" type="ConceptType" maxOccurs="1" minOccurs="1">
         <xs:annotation>
-          <xs:documentation xml:lang="en" source="#definition">The lifecycle context in which the child part was assembled into the parent part.</xs:documentation>
+          <xs:documentation xml:lang="en">The lifecycle context in which the child part was assembled into the parent part.</xs:documentation>
         </xs:annotation>
       </xs:element>
-      <xs:element name="Quantity" type="QuantityValueType" maxOccurs="1" minOccurs="1">
+      <xs:element name="quantity" ref="QuantityValueType" maxOccurs="1" minOccurs="1">
         <xs:annotation>
-          <xs:documentation xml:lang="en" source="#definition">Quantity of which the child part is assembled into the parent part.</xs:documentation>
+          <xs:documentation xml:lang="en">Quantity of which the child part is assembled into the parent part.</xs:documentation>
         </xs:annotation>
       </xs:element>
     </xs:sequence>
@@ -567,14 +462,14 @@ For interoperability reasons, it is recommended using one of the following:
   </xs:complexType>
   <xs:complexType name="BatterySensorType">
     <xs:sequence>
-      <xs:element name="PluggedTo" type="StorageBatteryDeviceType" maxOccurs="unbounded" minOccurs="0">
+      <xs:element name="pluggedTo" ref="StorageBatteryDeviceType" maxOccurs="unbounded" minOccurs="0">
         <xs:annotation>
-          <xs:documentation xml:lang="en" source="#definition">It relates to something physically connected.</xs:documentation>
+          <xs:documentation xml:lang="en">It relates to something physically connected.</xs:documentation>
         </xs:annotation>
       </xs:element>
-      <xs:element name="Reports" type="BatteryManagementType" maxOccurs="1" minOccurs="1">
+      <xs:element name="reports" ref="BatteryManagementType" maxOccurs="1" minOccurs="1">
         <xs:annotation>
-          <xs:documentation xml:lang="en" source="#definition">it relates to something to which information is provided to.</xs:documentation>
+          <xs:documentation xml:lang="en">it relates to something to which information is provided to.</xs:documentation>
         </xs:annotation>
       </xs:element>
     </xs:sequence>

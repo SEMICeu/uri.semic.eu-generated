@@ -6,31 +6,49 @@
   <xs:element name="TemporalEntity" type="TemporalEntityType"/>
   <xs:element name="Address" type="AddressType"/>
   <xs:element name="Agent" type="AgentType"/>
+  <xs:simpleType name="Literal">
+    <xs:restriction base="xs:string"/>
+  </xs:simpleType>
+  <xs:complexType name="langstring">
+    <xs:simpleContent>
+      <xs:extension base="xs:string">
+        <xs:attribute name="lang" type="xs:language"/>
+      </xs:extension>
+    </xs:simpleContent>
+  </xs:complexType>
+  <xs:complexType name="ConceptType">
+    <xs:simpleContent>
+      <xs:extension base="xs:token">
+        <xs:attribute name="ref" type="xs:IDREF"/>
+        <xs:attribute name="conceptSchemeRef" type="xs:IDREF"/>
+      </xs:extension>
+    </xs:simpleContent>
+  </xs:complexType>
   <xs:complexType name="ContactPointType">
     <xs:sequence>
-      <xs:element name="AvailabilityRestriction" type="TemporalEntityType" maxOccurs="unbounded" minOccurs="0">
+      <xs:element name="availabilityRestriction" ref="TemporalEntityType" maxOccurs="unbounded" minOccurs="0">
         <xs:annotation>
-          <xs:documentation xml:lang="en" source="#definition">The time during which the Contact Point is not available.</xs:documentation>
+          <xs:documentation xml:lang="en">The time during which the Contact Point is not available.</xs:documentation>
         </xs:annotation>
       </xs:element>
-      <xs:element name="ContactPage" maxOccurs="unbounded" minOccurs="0">
+      <xs:element name="contactPage" maxOccurs="unbounded" minOccurs="0">
         <xs:annotation>
-          <xs:documentation xml:lang="en" source="#definition">A web page that could be used to reach out the Contact Point.</xs:documentation>
+          <xs:documentation xml:lang="en">A web page that could be used to reach out the Contact Point.</xs:documentation>
         </xs:annotation>
       </xs:element>
-      <xs:element name="HasEmail" type="xs:string" maxOccurs="unbounded" minOccurs="0">
+      <xs:element name="hasEmail" type="xs:string" maxOccurs="unbounded" minOccurs="0">
         <xs:annotation>
-          <xs:documentation xml:lang="en" source="#definition">An electronic address through which the Contact Point can be contacted.</xs:documentation>
+          <xs:documentation xml:lang="en">An electronic address through which the Contact Point can be contacted.</xs:documentation>
         </xs:annotation>
       </xs:element>
-      <xs:element name="HasTelephone" type="xs:string" maxOccurs="unbounded" minOccurs="0">
+      <xs:element name="hasTelephone" type="xs:string" maxOccurs="unbounded" minOccurs="0">
         <xs:annotation>
-          <xs:documentation xml:lang="en" source="#definition">A telephone number through which the Contact Point can be contacted.</xs:documentation>
+          <xs:documentation xml:lang="en">A telephone number through which the Contact Point can be contacted.</xs:documentation>
         </xs:annotation>
       </xs:element>
-      <xs:element name="OpeningHours" type="TemporalEntityType" maxOccurs="unbounded" minOccurs="0">
+      <xs:element name="openingHours" ref="TemporalEntityType" maxOccurs="unbounded" minOccurs="0">
         <xs:annotation>
-          <xs:documentation xml:lang="en" source="#definition">The time at which the Contact Point is normally available.</xs:documentation>
+          <xs:documentation xml:lang="en">The time at which the Contact Point is normally available.</xs:documentation>
         </xs:annotation>
       </xs:element>
     </xs:sequence>
@@ -40,39 +58,31 @@
       </xs:annotation>
     </xs:attribute>
   </xs:complexType>
-  <xs:complexType name="conceptType">
-    <xs:simpleContent>
-      <xs:extension base="xs:token">
-        <xs:attribute name="ref" type="xs:IDREF"/>
-        <xs:attribute name="conceptSchemeRef" type="xs:IDREF"/>
-      </xs:extension>
-    </xs:simpleContent>
-  </xs:complexType>
   <xs:complexType name="ParticipationType">
     <xs:sequence>
-      <xs:element name="Description" type="xs:string" maxOccurs="unbounded" minOccurs="0">
+      <xs:element name="description" type="xs:string" maxOccurs="unbounded" minOccurs="0">
         <xs:annotation>
-          <xs:documentation xml:lang="en" source="#definition">A textual explanation of the Participation.</xs:documentation>
+          <xs:documentation xml:lang="en">A textual explanation of the Participation.</xs:documentation>
         </xs:annotation>
       </xs:element>
-      <xs:element name="HasParticipant" type="AgentType" maxOccurs="unbounded" minOccurs="0">
+      <xs:element name="hasParticipant" ref="AgentType" maxOccurs="unbounded" minOccurs="0">
         <xs:annotation>
-          <xs:documentation xml:lang="en" source="#definition">The Agent involved in the Participation.</xs:documentation>
+          <xs:documentation xml:lang="en">The Agent involved in the Participation.</xs:documentation>
         </xs:annotation>
       </xs:element>
-      <xs:element name="HasTime" type="TemporalEntityType" maxOccurs="unbounded" minOccurs="0">
+      <xs:element name="hasTime" ref="TemporalEntityType" maxOccurs="unbounded" minOccurs="0">
         <xs:annotation>
-          <xs:documentation xml:lang="en" source="#definition">The association of a temporal entity (instant or interval) to any thing.</xs:documentation>
+          <xs:documentation xml:lang="en">The association of a temporal entity (instant or interval) to any thing.</xs:documentation>
         </xs:annotation>
       </xs:element>
-      <xs:element name="Identifier" type="xs:string" maxOccurs="unbounded" minOccurs="0">
+      <xs:element name="identifier" type="xs:string" maxOccurs="unbounded" minOccurs="0">
         <xs:annotation>
-          <xs:documentation xml:lang="en" source="#definition">The unambiguous structured reference for the Participation.</xs:documentation>
+          <xs:documentation xml:lang="en">The unambiguous structured reference for the Participation.</xs:documentation>
         </xs:annotation>
       </xs:element>
-      <xs:element name="Role" type="conceptType" maxOccurs="unbounded" minOccurs="0">
+      <xs:element name="role" type="ConceptType" maxOccurs="unbounded" minOccurs="0">
         <xs:annotation>
-          <xs:documentation xml:lang="en" source="#definition">The function of an Agent within a Participation.</xs:documentation>
+          <xs:documentation xml:lang="en">The function of an Agent within a Participation.</xs:documentation>
         </xs:annotation>
       </xs:element>
     </xs:sequence>
@@ -84,120 +94,104 @@
   </xs:complexType>
   <xs:complexType name="PublicEventType">
     <xs:sequence>
-      <xs:element name="Accessibility" type="xs:string" maxOccurs="unbounded" minOccurs="0">
+      <xs:element name="accessibility" type="xs:string" maxOccurs="unbounded" minOccurs="0">
         <xs:annotation>
-          <xs:documentation xml:lang="en" source="#definition">Information about how the Public Event can be approached, reached or entered, in particular for people with special needs.</xs:documentation>
-          <xs:documentation xml:lang="en" source="#usage">This property may be provided in multiple languages with multiple instances of the accessibility property.</xs:documentation>
+          <xs:documentation xml:lang="en">Information about how the Public Event can be approached, reached or entered, in particular for people with special needs.</xs:documentation>
         </xs:annotation>
       </xs:element>
-      <xs:element name="Address" type="AddressType" maxOccurs="unbounded" minOccurs="0">
+      <xs:element name="address" ref="AddressType" maxOccurs="unbounded" minOccurs="0">
         <xs:annotation>
-          <xs:documentation xml:lang="en" source="#definition">Associates any Resource with the corresponding Address.</xs:documentation>
-          <xs:documentation xml:lang="en" source="#usage">Asserting the address relationship implies that the
- Resource has an Address.</xs:documentation>
+          <xs:documentation xml:lang="en">Associates any Resource with the corresponding Address.</xs:documentation>
         </xs:annotation>
       </xs:element>
-      <xs:element name="Audience" type="conceptType" maxOccurs="unbounded" minOccurs="0">
+      <xs:element name="audience" type="ConceptType" maxOccurs="unbounded" minOccurs="0">
         <xs:annotation>
-          <xs:documentation xml:lang="en" source="#definition">The target group of people for whom the Public Event is created.</xs:documentation>
+          <xs:documentation xml:lang="en">The target group of people for whom the Public Event is created.</xs:documentation>
         </xs:annotation>
       </xs:element>
-      <xs:element name="ContactPoint" type="ContactPointType" maxOccurs="unbounded" minOccurs="0">
+      <xs:element name="contactPoint" ref="ContactPointType" maxOccurs="unbounded" minOccurs="0">
         <xs:annotation>
-          <xs:documentation xml:lang="en" source="#definition">The main contact information of the resource.</xs:documentation>
-          <xs:documentation xml:lang="en" source="#usage">Usually a phone number and e-mail address. Other contact methods may be included, including online contact information, but this is conceptually distinct from the organization's homepage that may or may not provide contact information.</xs:documentation>
+          <xs:documentation xml:lang="en">The main contact information of the resource.</xs:documentation>
         </xs:annotation>
       </xs:element>
-      <xs:element name="Description" type="xs:string" maxOccurs="unbounded" minOccurs="0">
+      <xs:element name="description" type="xs:string" maxOccurs="unbounded" minOccurs="0">
         <xs:annotation>
-          <xs:documentation xml:lang="en" source="#definition">A textual explanation of the Pulblic Event.</xs:documentation>
-          <xs:documentation xml:lang="en" source="#usage">Descriptions may be provided in multiple languages with multiple instances of the description property.</xs:documentation>
+          <xs:documentation xml:lang="en">A textual explanation of the Pulblic Event.</xs:documentation>
         </xs:annotation>
       </xs:element>
-      <xs:element name="EventNumber" type="xs:string" maxOccurs="unbounded" minOccurs="0">
+      <xs:element name="eventNumber" type="xs:string" maxOccurs="unbounded" minOccurs="0">
         <xs:annotation>
-          <xs:documentation xml:lang="en" source="#definition">The sequence position of the Public Event.</xs:documentation>
-          <xs:documentation xml:lang="en" source="#usage">Examples could be the ''4th" or "2022".</xs:documentation>
+          <xs:documentation xml:lang="en">The sequence position of the Public Event.</xs:documentation>
         </xs:annotation>
       </xs:element>
-      <xs:element name="EventType" type="conceptType" maxOccurs="unbounded" minOccurs="0">
+      <xs:element name="eventType" type="ConceptType" maxOccurs="unbounded" minOccurs="0">
         <xs:annotation>
-          <xs:documentation xml:lang="en" source="#definition">The nature or genre of the Public Event. </xs:documentation>
-          <xs:documentation xml:lang="en" source="#usage">Examples include festivals, conferences, city council meetings and public consultations. The eventType property links the event to a SKOS Concept that provides a classification.
-
-An existing classification from Publications Office could be used, see &lt;a href="
-https://op.europa.eu/en/web/eu-vocabularies/dataset/-/resource?uri=http://publications.europa.eu/resource/dataset/public-event-type"&gt;Public Event Type&lt;/a&gt;.</xs:documentation>
+          <xs:documentation xml:lang="en">The nature or genre of the Public Event. </xs:documentation>
         </xs:annotation>
       </xs:element>
-      <xs:element name="Format" type="conceptType" maxOccurs="unbounded" minOccurs="0">
+      <xs:element name="format" type="ConceptType" maxOccurs="unbounded" minOccurs="0">
         <xs:annotation>
-          <xs:documentation xml:lang="en" source="#definition">A plan of organisation or arrangement of the Public Event.</xs:documentation>
-          <xs:documentation xml:lang="en" source="#usage">Examples include conference call, physical meeting or hybrid.</xs:documentation>
+          <xs:documentation xml:lang="en">A plan of organisation or arrangement of the Public Event.</xs:documentation>
         </xs:annotation>
       </xs:element>
-      <xs:element name="HasNextEvent" type="PublicEventType" maxOccurs="unbounded" minOccurs="0">
+      <xs:element name="hasNextEvent" ref="PublicEventType" maxOccurs="unbounded" minOccurs="0">
         <xs:annotation>
-          <xs:documentation xml:lang="en" source="#definition">The Public Event that comes after this one.</xs:documentation>
+          <xs:documentation xml:lang="en">The Public Event that comes after this one.</xs:documentation>
         </xs:annotation>
       </xs:element>
-      <xs:element name="HasParticipation" type="ParticipationType" maxOccurs="unbounded" minOccurs="0">
+      <xs:element name="hasParticipation" ref="ParticipationType" maxOccurs="unbounded" minOccurs="0">
         <xs:annotation>
-          <xs:documentation xml:lang="en" source="#definition">The way how a resource is organized.</xs:documentation>
+          <xs:documentation xml:lang="en">The way how a resource is organized.</xs:documentation>
         </xs:annotation>
       </xs:element>
-      <xs:element name="HasPreviousEvent" type="PublicEventType" maxOccurs="unbounded" minOccurs="0">
+      <xs:element name="hasPreviousEvent" ref="PublicEventType" maxOccurs="unbounded" minOccurs="0">
         <xs:annotation>
-          <xs:documentation xml:lang="en" source="#definition">The Public Event that comes before this one.</xs:documentation>
+          <xs:documentation xml:lang="en">The Public Event that comes before this one.</xs:documentation>
         </xs:annotation>
       </xs:element>
-      <xs:element name="HasTime" type="TemporalEntityType" maxOccurs="unbounded" minOccurs="0">
+      <xs:element name="hasTime" ref="TemporalEntityType" maxOccurs="unbounded" minOccurs="0">
         <xs:annotation>
-          <xs:documentation xml:lang="en" source="#definition">The association of a temporal entity (instant or interval) to any thing.</xs:documentation>
-          <xs:documentation xml:lang="en" source="#usage">This property can be used to specify date or time of a Public Event via the Temporal Entity class, see the &lt;a href="https://www.w3.org/TR/owl-time/#dtd-vs-dt"&gt;date time&lt;/a&gt; example from the Time ontology.</xs:documentation>
+          <xs:documentation xml:lang="en">The association of a temporal entity (instant or interval) to any thing.</xs:documentation>
         </xs:annotation>
       </xs:element>
-      <xs:element name="Homepage" maxOccurs="unbounded" minOccurs="0">
+      <xs:element name="homepage" maxOccurs="unbounded" minOccurs="0">
         <xs:annotation>
-          <xs:documentation xml:lang="en" source="#definition">The website of the Public Event.</xs:documentation>
-          <xs:documentation xml:lang="en" source="#usage">The value of this property is a URL.</xs:documentation>
+          <xs:documentation xml:lang="en">The website of the Public Event.</xs:documentation>
         </xs:annotation>
       </xs:element>
-      <xs:element name="Identifier" type="xs:string" maxOccurs="unbounded" minOccurs="0">
+      <xs:element name="identifier" type="xs:string" maxOccurs="unbounded" minOccurs="0">
         <xs:annotation>
-          <xs:documentation xml:lang="en" source="#definition">The unambiguous structured reference for the Public Event.</xs:documentation>
+          <xs:documentation xml:lang="en">The unambiguous structured reference for the Public Event.</xs:documentation>
         </xs:annotation>
       </xs:element>
-      <xs:element name="Language" maxOccurs="unbounded" minOccurs="0">
+      <xs:element name="language" maxOccurs="unbounded" minOccurs="0">
         <xs:annotation>
-          <xs:documentation xml:lang="en" source="#definition">The language in which the Public Event is given.</xs:documentation>
-          <xs:documentation xml:lang="en" source="#usage">The recommended controlled vocabularies for this property is the &lt;a href=" https://op.europa.eu/en/web/eu-vocabularies/concept-scheme/-/resource?uri=http://publications.europa.eu/resource/authority/language"&gt;Language&lt;/a&gt; Authority Table of the Publications Office.</xs:documentation>
+          <xs:documentation xml:lang="en">The language in which the Public Event is given.</xs:documentation>
         </xs:annotation>
       </xs:element>
-      <xs:element name="ParentEvent" type="PublicEventType" maxOccurs="unbounded" minOccurs="0">
+      <xs:element name="parentEvent" ref="PublicEventType" maxOccurs="unbounded" minOccurs="0">
         <xs:annotation>
-          <xs:documentation xml:lang="en" source="#definition">A relation to another Public Event that encompasses it.</xs:documentation>
+          <xs:documentation xml:lang="en">A relation to another Public Event that encompasses it.</xs:documentation>
         </xs:annotation>
       </xs:element>
-      <xs:element name="RegistrationPage" maxOccurs="unbounded" minOccurs="0">
+      <xs:element name="registrationPage" maxOccurs="unbounded" minOccurs="0">
         <xs:annotation>
-          <xs:documentation xml:lang="en" source="#definition">A web page that provides means to attend the Public Event.</xs:documentation>
+          <xs:documentation xml:lang="en">A web page that provides means to attend the Public Event.</xs:documentation>
         </xs:annotation>
       </xs:element>
-      <xs:element name="SubEvent" type="PublicEventType" maxOccurs="unbounded" minOccurs="0">
+      <xs:element name="subEvent" ref="PublicEventType" maxOccurs="unbounded" minOccurs="0">
         <xs:annotation>
-          <xs:documentation xml:lang="en" source="#definition">A relation towards another Public Event that belong to it.</xs:documentation>
+          <xs:documentation xml:lang="en">A relation towards another Public Event that belong to it.</xs:documentation>
         </xs:annotation>
       </xs:element>
-      <xs:element name="Title" type="xs:string" maxOccurs="unbounded" minOccurs="0">
+      <xs:element name="title" type="xs:string" maxOccurs="unbounded" minOccurs="0">
         <xs:annotation>
-          <xs:documentation xml:lang="en" source="#definition">The name given to the Public Event.</xs:documentation>
-          <xs:documentation xml:lang="en" source="#usage">Titles may be provided in multiple languages with multiple instances of the title property.</xs:documentation>
+          <xs:documentation xml:lang="en">The name given to the Public Event.</xs:documentation>
         </xs:annotation>
       </xs:element>
-      <xs:element name="Topic" type="conceptType" maxOccurs="unbounded" minOccurs="0">
+      <xs:element name="topic" type="ConceptType" maxOccurs="unbounded" minOccurs="0">
         <xs:annotation>
-          <xs:documentation xml:lang="en" source="#definition">The subject of the Public Event.</xs:documentation>
-          <xs:documentation xml:lang="en" source="#usage">Examples include culture, sport or tourism.</xs:documentation>
+          <xs:documentation xml:lang="en">The subject of the Public Event.</xs:documentation>
         </xs:annotation>
       </xs:element>
     </xs:sequence>
@@ -209,15 +203,14 @@ https://op.europa.eu/en/web/eu-vocabularies/dataset/-/resource?uri=http://public
   </xs:complexType>
   <xs:complexType name="TemporalEntityType">
     <xs:sequence>
-      <xs:element name="Description" type="xs:string" maxOccurs="unbounded" minOccurs="0">
+      <xs:element name="description" type="xs:string" maxOccurs="unbounded" minOccurs="0">
         <xs:annotation>
-          <xs:documentation xml:lang="en" source="#definition">A  textual representation of the Temporal Entity.</xs:documentation>
+          <xs:documentation xml:lang="en">A  textual representation of the Temporal Entity.</xs:documentation>
         </xs:annotation>
       </xs:element>
-      <xs:element name="Frequency" type="conceptType" maxOccurs="unbounded" minOccurs="0">
+      <xs:element name="frequency" type="ConceptType" maxOccurs="unbounded" minOccurs="0">
         <xs:annotation>
-          <xs:documentation xml:lang="en" source="#definition">The recurrence of an instant or period.</xs:documentation>
-          <xs:documentation xml:lang="en" source="#usage">It is recommended to use the frequency from an existing vocabulary like the &lt;a href="https://op.europa.eu/en/web/eu-vocabularies/concept-scheme/-/resource?uri=http://publications.europa.eu/resource/authority/frequency"&gt;Frequency&lt;/a&gt; from the Publications Office.</xs:documentation>
+          <xs:documentation xml:lang="en">The recurrence of an instant or period.</xs:documentation>
         </xs:annotation>
       </xs:element>
     </xs:sequence>
@@ -229,82 +222,59 @@ https://op.europa.eu/en/web/eu-vocabularies/dataset/-/resource?uri=http://public
   </xs:complexType>
   <xs:complexType name="AddressType">
     <xs:sequence>
-      <xs:element name="AddressArea" type="xs:string" maxOccurs="unbounded" minOccurs="0">
+      <xs:element name="addressArea" type="xs:string" maxOccurs="unbounded" minOccurs="0">
         <xs:annotation>
-          <xs:documentation xml:lang="en" source="#definition">The name of a geographic area that groups Addresses.</xs:documentation>
-          <xs:documentation xml:lang="en" source="#usage">This would typically be part of a city, a neighbourhood or village, e.g. Montmartre. Address area is not an administrative unit.</xs:documentation>
+          <xs:documentation xml:lang="en">The name of a geographic area that groups Addresses.</xs:documentation>
         </xs:annotation>
       </xs:element>
-      <xs:element name="AddressId" type="xs:string" maxOccurs="unbounded" minOccurs="0">
+      <xs:element name="addressId" type="xs:string" maxOccurs="unbounded" minOccurs="0">
         <xs:annotation>
-          <xs:documentation xml:lang="en" source="#definition">A globally unique identifier for each instance of an Address.</xs:documentation>
-          <xs:documentation xml:lang="en" source="#usage">The concept of adding a globally unique identifier for each instance of an address is a crucial part of the INSPIRE data spec. A number of EU countries have already implemented an ID (a UUID) in their Address Register/gazetteer, among them Denmark. OASIS xAL also includes an address identifier. It is the address Identifier that allows an address to be represented in a format other than INSPIRE whilst remaining conformant to the Core Vocabulary.
-&lt;br/&gt;&lt;br/&gt;
-The INSPIRE method of representing addresses is very detailed, designed primarily for use in databases of addresses. Whilst data that is published in full conformance with the INSPIRE data structure can be made available using the Core  Location Vocabulary the reverse is not true since the Core Vocabulary allows much greater flexibility.
-&lt;br/&gt;&lt;br/&gt;
-Many datasets that include address data as one piece of information about something else are likely to have that data in simpler formats. These might be tailored to the specific need of the dataset, follow a national norm, or make use of a standard like vCard.
-&lt;br/&gt;&lt;br/&gt;
-To provide maximum flexibility in the Core Vocabulary, whilst remaining interoperable with INSPIRE Address Guidelines (which EU Member States are obliged to use), the  Core Location Vocabulary provides the extra property of full address and makes use of INSPIRE's addressID.
-
-</xs:documentation>
+          <xs:documentation xml:lang="en">A globally unique identifier for each instance of an Address.</xs:documentation>
         </xs:annotation>
       </xs:element>
-      <xs:element name="AdministrativeUnitLevel1" type="xs:string" maxOccurs="unbounded" minOccurs="0">
+      <xs:element name="administrativeUnitLevel1" type="xs:string" maxOccurs="unbounded" minOccurs="0">
         <xs:annotation>
-          <xs:documentation xml:lang="en" source="#definition">The name of the uppermost level of the address, almost always a country.</xs:documentation>
-          <xs:documentation xml:lang="en" source="#usage">Best practice is to use the ISO 3166-1 code but if this is inappropriate for the context, country names should be provided in a consistent manner to reduce ambiguity. For example, either write 'France' or 'FRA' consistently throughout the dataset and avoid mixing the two. The &lt;a href="https://op.europa.eu/en/web/eu-vocabularies/dataset/-/resource?uri=http://publications.europa.eu/resource/dataset/country"&gt;Country controlled vocabulary&lt;/a&gt; from the Publications Office can be reused for this.</xs:documentation>
+          <xs:documentation xml:lang="en">The name of the uppermost level of the address, almost always a country.</xs:documentation>
         </xs:annotation>
       </xs:element>
-      <xs:element name="AdministrativeUnitLevel2" type="xs:string" maxOccurs="unbounded" minOccurs="0">
+      <xs:element name="administrativeUnitLevel2" type="xs:string" maxOccurs="unbounded" minOccurs="0">
         <xs:annotation>
-          <xs:documentation xml:lang="en" source="#definition">The name of a secondary level/region of the address, usually a county, state or other such area that typically encompasses several localities.</xs:documentation>
-          <xs:documentation xml:lang="en" source="#usage">Values could be a region or province, more granular than level 1.</xs:documentation>
+          <xs:documentation xml:lang="en">The name of a secondary level/region of the address, usually a county, state or other such area that typically encompasses several localities.</xs:documentation>
         </xs:annotation>
       </xs:element>
-      <xs:element name="FullAddress" type="xs:string" maxOccurs="unbounded" minOccurs="0">
+      <xs:element name="fullAddress" type="xs:string" maxOccurs="unbounded" minOccurs="0">
         <xs:annotation>
-          <xs:documentation xml:lang="en" source="#definition">The complete address written as a string.</xs:documentation>
-          <xs:documentation xml:lang="en" source="#usage">Use of this property is recommended as it will not suffer any misunderstandings that might arise through the breaking up of an address into its component parts. This property is analogous to vCard's label property but with two important differences: (1) formatting is not assumed so that, unlike vCard label, it may not be suitable to print this on an address label, (2) vCard's label property has a domain of vCard Address; the fullAddress property has no such restriction. An example of a full address is "Champ de Mars, 5 Avenue Anatole France, 75007 Paris, France".</xs:documentation>
+          <xs:documentation xml:lang="en">The complete address written as a string.</xs:documentation>
         </xs:annotation>
       </xs:element>
-      <xs:element name="LocatorDesignator" type="xs:string" maxOccurs="unbounded" minOccurs="0">
+      <xs:element name="locatorDesignator" type="xs:string" maxOccurs="unbounded" minOccurs="0">
         <xs:annotation>
-          <xs:documentation xml:lang="en" source="#definition">A number or sequence of characters that uniquely identifies the locator within the relevant scope.</xs:documentation>
-          <xs:documentation xml:lang="en" source="#usage">In simpler terms, this is the building number, apartment number, etc. For an address such as "Flat 3, 17 Bridge Street", the locator is "flat 3, 17".
-
-</xs:documentation>
+          <xs:documentation xml:lang="en">A number or sequence of characters that uniquely identifies the locator within the relevant scope.</xs:documentation>
         </xs:annotation>
       </xs:element>
-      <xs:element name="LocatorName" type="xs:string" maxOccurs="unbounded" minOccurs="0">
+      <xs:element name="locatorName" type="xs:string" maxOccurs="unbounded" minOccurs="0">
         <xs:annotation>
-          <xs:documentation xml:lang="en" source="#definition">Proper noun(s) applied to the real world entity identified by the locator.</xs:documentation>
-          <xs:documentation xml:lang="en" source="#usage">The locator name could be the name of the property or complex, of the building or part of the building, or it could be the name of a room inside a building.
-&lt;br/&gt;&lt;br/&gt;
-The key difference between a locator designator and a locator name is that the latter is a proper name and is unlikely to include digits. For example, "Shumann, Berlaymont" is a meeting room within the European Commission headquarters for which locator name is more appropriate than locator.</xs:documentation>
+          <xs:documentation xml:lang="en">Proper noun(s) applied to the real world entity identified by the locator.</xs:documentation>
         </xs:annotation>
       </xs:element>
-      <xs:element name="PostOfficeBox" type="xs:string" maxOccurs="unbounded" minOccurs="0">
+      <xs:element name="postOfficeBox" type="xs:string" maxOccurs="unbounded" minOccurs="0">
         <xs:annotation>
-          <xs:documentation xml:lang="en" source="#definition">A location designator for a postal delivery point at a post office, usually a number.</xs:documentation>
-          <xs:documentation xml:lang="en" source="#usage">INSPIRE's name for this is "postalDeliveryIdentifier" for which it uses the locator designator property with a type attribute of that name. This vocabulary separates out the Post Office Box for greater independence of technology. An example post office box number is "9383".</xs:documentation>
+          <xs:documentation xml:lang="en">A location designator for a postal delivery point at a post office, usually a number.</xs:documentation>
         </xs:annotation>
       </xs:element>
-      <xs:element name="PostCode" type="xs:string" maxOccurs="unbounded" minOccurs="0">
+      <xs:element name="postCode" type="xs:string" maxOccurs="unbounded" minOccurs="0">
         <xs:annotation>
-          <xs:documentation xml:lang="en" source="#definition">The code created and maintained for postal purposes to identify a subdivision of addresses and postal delivery points.</xs:documentation>
-          <xs:documentation xml:lang="en" source="#usage">Post codes are common elements in many countries' postal address systems. One of the many post codes of Paris is for example "75000".</xs:documentation>
+          <xs:documentation xml:lang="en">The code created and maintained for postal purposes to identify a subdivision of addresses and postal delivery points.</xs:documentation>
         </xs:annotation>
       </xs:element>
-      <xs:element name="PostName" type="xs:string" maxOccurs="unbounded" minOccurs="0">
+      <xs:element name="postName" type="xs:string" maxOccurs="unbounded" minOccurs="0">
         <xs:annotation>
-          <xs:documentation xml:lang="en" source="#definition">A name created and maintained for postal purposes to identify a subdivision of addresses and postal delivery points.</xs:documentation>
-          <xs:documentation xml:lang="en" source="#usage">Usually a city, for example "Paris".</xs:documentation>
+          <xs:documentation xml:lang="en">A name created and maintained for postal purposes to identify a subdivision of addresses and postal delivery points.</xs:documentation>
         </xs:annotation>
       </xs:element>
-      <xs:element name="Thoroughfare" type="xs:string" maxOccurs="unbounded" minOccurs="0">
+      <xs:element name="thoroughfare" type="xs:string" maxOccurs="unbounded" minOccurs="0">
         <xs:annotation>
-          <xs:documentation xml:lang="en" source="#definition">The name of a passage or way through from one location to another.</xs:documentation>
-          <xs:documentation xml:lang="en" source="#usage">A thoroughfare is usually a street, but it might be a waterway or some other feature. For example, "Avenue des Champs-Élysées".</xs:documentation>
+          <xs:documentation xml:lang="en">The name of a passage or way through from one location to another.</xs:documentation>
         </xs:annotation>
       </xs:element>
     </xs:sequence>
@@ -316,24 +286,24 @@ The key difference between a locator designator and a locator name is that the l
   </xs:complexType>
   <xs:complexType name="AgentType">
     <xs:sequence>
-      <xs:element name="Address" type="AddressType" maxOccurs="unbounded" minOccurs="0">
+      <xs:element name="address" ref="AddressType" maxOccurs="unbounded" minOccurs="0">
         <xs:annotation>
-          <xs:documentation xml:lang="en" source="#definition">Associates any Resource with the corresponding Address.</xs:documentation>
+          <xs:documentation xml:lang="en">Associates any Resource with the corresponding Address.</xs:documentation>
         </xs:annotation>
       </xs:element>
-      <xs:element name="Name" type="xs:string" maxOccurs="unbounded" minOccurs="0">
+      <xs:element name="name" type="xs:string" maxOccurs="unbounded" minOccurs="0">
         <xs:annotation>
-          <xs:documentation xml:lang="en" source="#definition">The noun given to the Agent.</xs:documentation>
+          <xs:documentation xml:lang="en">The noun given to the Agent.</xs:documentation>
         </xs:annotation>
       </xs:element>
-      <xs:element name="Participates" type="ParticipationType" maxOccurs="unbounded" minOccurs="0">
+      <xs:element name="participates" ref="ParticipationType" maxOccurs="unbounded" minOccurs="0">
         <xs:annotation>
-          <xs:documentation xml:lang="en" source="#definition">The participation in which an Agent is involved.</xs:documentation>
+          <xs:documentation xml:lang="en">The participation in which an Agent is involved.</xs:documentation>
         </xs:annotation>
       </xs:element>
-      <xs:element name="Type" type="conceptType" maxOccurs="unbounded" minOccurs="0">
+      <xs:element name="type" type="ConceptType" maxOccurs="unbounded" minOccurs="0">
         <xs:annotation>
-          <xs:documentation xml:lang="en" source="#definition">A classification assigned to an Agent.</xs:documentation>
+          <xs:documentation xml:lang="en">A classification assigned to an Agent.</xs:documentation>
         </xs:annotation>
       </xs:element>
     </xs:sequence>

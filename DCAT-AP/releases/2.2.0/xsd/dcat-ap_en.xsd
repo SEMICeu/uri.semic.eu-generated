@@ -40,6 +40,24 @@
   <xs:element name="Atttribution" type="AtttributionType"/>
   <xs:element name="Agent" type="AgentType"/>
   <xs:element name="Document" type="DocumentType"/>
+  <xs:simpleType name="Literal">
+    <xs:restriction base="xs:string"/>
+  </xs:simpleType>
+  <xs:complexType name="langstring">
+    <xs:simpleContent>
+      <xs:extension base="xs:string">
+        <xs:attribute name="lang" type="xs:language"/>
+      </xs:extension>
+    </xs:simpleContent>
+  </xs:complexType>
+  <xs:complexType name="ConceptType">
+    <xs:simpleContent>
+      <xs:extension base="xs:token">
+        <xs:attribute name="ref" type="xs:IDREF"/>
+        <xs:attribute name="conceptSchemeRef" type="xs:IDREF"/>
+      </xs:extension>
+    </xs:simpleContent>
+  </xs:complexType>
   <xs:complexType name="FrequencyType">
     <xs:sequence/>
     <xs:attribute name="FrequencyRef" type="xs:IDREF">
@@ -48,19 +66,11 @@
       </xs:annotation>
     </xs:attribute>
   </xs:complexType>
-  <xs:complexType name="conceptType">
-    <xs:simpleContent>
-      <xs:extension base="xs:token">
-        <xs:attribute name="ref" type="xs:IDREF"/>
-        <xs:attribute name="conceptSchemeRef" type="xs:IDREF"/>
-      </xs:extension>
-    </xs:simpleContent>
-  </xs:complexType>
   <xs:complexType name="LicenceDocumentType">
     <xs:sequence>
-      <xs:element name="Type" type="conceptType" maxOccurs="unbounded" minOccurs="0">
+      <xs:element name="type" type="ConceptType" maxOccurs="unbounded" minOccurs="0">
         <xs:annotation>
-          <xs:documentation xml:lang="en" source="#definition">A type of licence, e.g. indicating public domain or royalties required.</xs:documentation>
+          <xs:documentation xml:lang="en">A type of licence, e.g. indicating public domain or royalties required.</xs:documentation>
         </xs:annotation>
       </xs:element>
     </xs:sequence>
@@ -80,19 +90,19 @@
   </xs:complexType>
   <xs:complexType name="LocationType">
     <xs:sequence>
-      <xs:element name="Bbox" type="xs:string" maxOccurs="1" minOccurs="0">
+      <xs:element name="bbox" type="xs:string" maxOccurs="1" minOccurs="0">
         <xs:annotation>
-          <xs:documentation xml:lang="en" source="#definition">The geographic bounding box of a resource.</xs:documentation>
+          <xs:documentation xml:lang="en">The geographic bounding box of a resource.</xs:documentation>
         </xs:annotation>
       </xs:element>
-      <xs:element name="Centroid" type="xs:string" maxOccurs="1" minOccurs="0">
+      <xs:element name="centroid" type="xs:string" maxOccurs="1" minOccurs="0">
         <xs:annotation>
-          <xs:documentation xml:lang="en" source="#definition">The geographic center (centroid) of a resource.</xs:documentation>
+          <xs:documentation xml:lang="en">The geographic center (centroid) of a resource.</xs:documentation>
         </xs:annotation>
       </xs:element>
-      <xs:element name="Geometry" type="GeometryType" maxOccurs="1" minOccurs="0">
+      <xs:element name="geometry" ref="GeometryType" maxOccurs="1" minOccurs="0">
         <xs:annotation>
-          <xs:documentation xml:lang="en" source="#definition">The corresponding geometry for a resource</xs:documentation>
+          <xs:documentation xml:lang="en">The corresponding geometry for a resource</xs:documentation>
         </xs:annotation>
       </xs:element>
     </xs:sequence>
@@ -128,24 +138,24 @@
   </xs:complexType>
   <xs:complexType name="PeriodOfTimeType">
     <xs:sequence>
-      <xs:element name="EndDate" type="xs:string" maxOccurs="1" minOccurs="0">
+      <xs:element name="endDate" type="xs:string" maxOccurs="1" minOccurs="0">
         <xs:annotation>
-          <xs:documentation xml:lang="en" source="#definition">The end of the period</xs:documentation>
+          <xs:documentation xml:lang="en">The end of the period</xs:documentation>
         </xs:annotation>
       </xs:element>
-      <xs:element name="StartDate" type="xs:string" maxOccurs="1" minOccurs="0">
+      <xs:element name="startDate" type="xs:string" maxOccurs="1" minOccurs="0">
         <xs:annotation>
-          <xs:documentation xml:lang="en" source="#definition">The start of the period</xs:documentation>
+          <xs:documentation xml:lang="en">The start of the period</xs:documentation>
         </xs:annotation>
       </xs:element>
-      <xs:element name="Beginning" type="TimeInstantType" maxOccurs="1" minOccurs="0">
+      <xs:element name="beginning" ref="TimeInstantType" maxOccurs="1" minOccurs="0">
         <xs:annotation>
-          <xs:documentation xml:lang="en" source="#definition">The beginning of a period or interval.</xs:documentation>
+          <xs:documentation xml:lang="en">The beginning of a period or interval.</xs:documentation>
         </xs:annotation>
       </xs:element>
-      <xs:element name="End" type="TimeInstantType" maxOccurs="1" minOccurs="0">
+      <xs:element name="end" ref="TimeInstantType" maxOccurs="1" minOccurs="0">
         <xs:annotation>
-          <xs:documentation xml:lang="en" source="#definition">The end of a period or interval</xs:documentation>
+          <xs:documentation xml:lang="en">The end of a period or interval</xs:documentation>
         </xs:annotation>
       </xs:element>
     </xs:sequence>
@@ -181,14 +191,14 @@
   </xs:complexType>
   <xs:complexType name="ChecksumType">
     <xs:sequence>
-      <xs:element name="Algorithm" type="ChecksumAlgorithmType" maxOccurs="1" minOccurs="1">
+      <xs:element name="algorithm" ref="ChecksumAlgorithmType" maxOccurs="1" minOccurs="1">
         <xs:annotation>
-          <xs:documentation xml:lang="en" source="#definition">The algorithm used to produce the subject Checksum.</xs:documentation>
+          <xs:documentation xml:lang="en">The algorithm used to produce the subject Checksum.</xs:documentation>
         </xs:annotation>
       </xs:element>
-      <xs:element name="ChecksumValue" type="xs:hexBinary" maxOccurs="1" minOccurs="1">
+      <xs:element name="checksumValue" type="xs:hexBinary" maxOccurs="1" minOccurs="1">
         <xs:annotation>
-          <xs:documentation xml:lang="en" source="#definition">A lower case hexadecimal encoded digest value produced using a specific algorithm.</xs:documentation>
+          <xs:documentation xml:lang="en">A lower case hexadecimal encoded digest value produced using a specific algorithm.</xs:documentation>
         </xs:annotation>
       </xs:element>
     </xs:sequence>
@@ -272,10 +282,9 @@
   </xs:complexType>
   <xs:complexType name="ConceptType">
     <xs:sequence>
-      <xs:element name="PreferredLabel" type="xs:string" maxOccurs="unbounded" minOccurs="1">
+      <xs:element name="preferredLabel" type="xs:string" maxOccurs="unbounded" minOccurs="1">
         <xs:annotation>
-          <xs:documentation xml:lang="en" source="#definition">A preferred label of the category.</xs:documentation>
-          <xs:documentation xml:lang="en" source="#usage">This property can be repeated for parallel language versions of the label.</xs:documentation>
+          <xs:documentation xml:lang="en">A preferred label of the category.</xs:documentation>
         </xs:annotation>
       </xs:element>
     </xs:sequence>
@@ -287,10 +296,9 @@
   </xs:complexType>
   <xs:complexType name="ConceptschemeType">
     <xs:sequence>
-      <xs:element name="Title" type="xs:string" maxOccurs="unbounded" minOccurs="1">
+      <xs:element name="title" type="xs:string" maxOccurs="unbounded" minOccurs="1">
         <xs:annotation>
-          <xs:documentation xml:lang="en" source="#definition">A name of the category scheme.</xs:documentation>
-          <xs:documentation xml:lang="en" source="#usage">May be repeated for different versions of the name</xs:documentation>
+          <xs:documentation xml:lang="en">A name of the category scheme.</xs:documentation>
         </xs:annotation>
       </xs:element>
     </xs:sequence>
@@ -318,9 +326,9 @@
   </xs:complexType>
   <xs:complexType name="IdentifierType">
     <xs:sequence>
-      <xs:element name="Notation" type="xs:string" maxOccurs="1" minOccurs="0">
+      <xs:element name="notation" type="xs:string" maxOccurs="1" minOccurs="0">
         <xs:annotation>
-          <xs:documentation xml:lang="en" source="#definition">A string that is an identifier in the context of the identifier scheme referenced by its datatype.</xs:documentation>
+          <xs:documentation xml:lang="en">A string that is an identifier in the context of the identifier scheme referenced by its datatype.</xs:documentation>
         </xs:annotation>
       </xs:element>
     </xs:sequence>
@@ -332,105 +340,99 @@
   </xs:complexType>
   <xs:complexType name="CatalogueType">
     <xs:sequence>
-      <xs:element name="Catalogue" type="CatalogueType" maxOccurs="unbounded" minOccurs="0">
+      <xs:element name="catalogue" ref="CatalogueType" maxOccurs="unbounded" minOccurs="0">
         <xs:annotation>
-          <xs:documentation xml:lang="en" source="#definition">A catalogue whose contents are of interest in the context of this catalogue</xs:documentation>
+          <xs:documentation xml:lang="en">A catalogue whose contents are of interest in the context of this catalogue</xs:documentation>
         </xs:annotation>
       </xs:element>
-      <xs:element name="Dataset" type="DatasetType" maxOccurs="unbounded" minOccurs="0">
+      <xs:element name="dataset" ref="DatasetType" maxOccurs="unbounded" minOccurs="0">
         <xs:annotation>
-          <xs:documentation xml:lang="en" source="#definition">A Dataset that is part of the Catalogue.</xs:documentation>
-          <xs:documentation xml:lang="en" source="#usage">As empty Catalogues are usually indications of problems, this property should be combined with the next property service to implement an empty Catalogue check.</xs:documentation>
+          <xs:documentation xml:lang="en">A Dataset that is part of the Catalogue.</xs:documentation>
         </xs:annotation>
       </xs:element>
-      <xs:element name="Record" type="CatalogueRecordType" maxOccurs="unbounded" minOccurs="0">
+      <xs:element name="record" ref="CatalogueRecordType" maxOccurs="unbounded" minOccurs="0">
         <xs:annotation>
-          <xs:documentation xml:lang="en" source="#definition">A Catalogue Record that is part of the Catalogue</xs:documentation>
+          <xs:documentation xml:lang="en">A Catalogue Record that is part of the Catalogue</xs:documentation>
         </xs:annotation>
       </xs:element>
-      <xs:element name="Service" type="DataServiceType" maxOccurs="unbounded" minOccurs="0">
+      <xs:element name="service" ref="DataServiceType" maxOccurs="unbounded" minOccurs="0">
         <xs:annotation>
-          <xs:documentation xml:lang="en" source="#definition">A site or end-point (Data Service) that is listed in the Catalogue.</xs:documentation>
-          <xs:documentation xml:lang="en" source="#usage">As empty Catalogues are usually indications of problems, this property should be combined with the previous property dataset to implement an empty Catalogue check.</xs:documentation>
+          <xs:documentation xml:lang="en">A site or end-point (Data Service) that is listed in the Catalogue.</xs:documentation>
         </xs:annotation>
       </xs:element>
-      <xs:element name="Themes" type="ConceptschemeType" maxOccurs="unbounded" minOccurs="0">
+      <xs:element name="themes" ref="ConceptschemeType" maxOccurs="unbounded" minOccurs="0">
         <xs:annotation>
-          <xs:documentation xml:lang="en" source="#definition">A knowledge organization system used to classify the Catalogue's Datasets.</xs:documentation>
-          <xs:documentation xml:lang="en" source="#usage">This property refers to a knowledge organization system used to classify the Catalogue's Datasets. It must have at least the value NAL:data-theme as this is the manatory controlled vocabulary for dcat:theme.</xs:documentation>
+          <xs:documentation xml:lang="en">A knowledge organization system used to classify the Catalogue's Datasets.</xs:documentation>
         </xs:annotation>
       </xs:element>
-      <xs:element name="Creator" type="AgentType" maxOccurs="1" minOccurs="0">
+      <xs:element name="creator" ref="AgentType" maxOccurs="1" minOccurs="0">
         <xs:annotation>
-          <xs:documentation xml:lang="en" source="#definition">An entity responsible for the creation of the catalogue</xs:documentation>
+          <xs:documentation xml:lang="en">An entity responsible for the creation of the catalogue</xs:documentation>
         </xs:annotation>
       </xs:element>
-      <xs:element name="Description" type="xs:string" maxOccurs="unbounded" minOccurs="1">
+      <xs:element name="description" type="xs:string" maxOccurs="unbounded" minOccurs="1">
         <xs:annotation>
-          <xs:documentation xml:lang="en" source="#definition">A free-text account of the Catalogue.</xs:documentation>
-          <xs:documentation xml:lang="en" source="#usage">This property can be repeated for parallel language versions of the description.</xs:documentation>
+          <xs:documentation xml:lang="en">A free-text account of the Catalogue.</xs:documentation>
         </xs:annotation>
       </xs:element>
-      <xs:element name="HasPart" type="CatalogueType" maxOccurs="unbounded" minOccurs="0">
+      <xs:element name="hasPart" ref="CatalogueType" maxOccurs="unbounded" minOccurs="0">
         <xs:annotation>
-          <xs:documentation xml:lang="en" source="#definition">A related Catalogue that is part of the described Catalogue</xs:documentation>
+          <xs:documentation xml:lang="en">A related Catalogue that is part of the described Catalogue</xs:documentation>
         </xs:annotation>
       </xs:element>
-      <xs:element name="IsPartOf" type="CatalogueType" maxOccurs="1" minOccurs="0">
+      <xs:element name="isPartOf" ref="CatalogueType" maxOccurs="1" minOccurs="0">
         <xs:annotation>
-          <xs:documentation xml:lang="en" source="#definition">A related Catalogue in which the described Catalogue is physically or logically included.</xs:documentation>
+          <xs:documentation xml:lang="en">A related Catalogue in which the described Catalogue is physically or logically included.</xs:documentation>
         </xs:annotation>
       </xs:element>
-      <xs:element name="ReleaseDate" type="xs:string" maxOccurs="1" minOccurs="0">
+      <xs:element name="releaseDate" type="xs:string" maxOccurs="1" minOccurs="0">
         <xs:annotation>
-          <xs:documentation xml:lang="en" source="#definition">The date of formal issuance (e.g., publication) of the Catalogue.</xs:documentation>
+          <xs:documentation xml:lang="en">The date of formal issuance (e.g., publication) of the Catalogue.</xs:documentation>
         </xs:annotation>
       </xs:element>
-      <xs:element name="Language" type="LinguisticSystemType" maxOccurs="unbounded" minOccurs="0">
+      <xs:element name="language" ref="LinguisticSystemType" maxOccurs="unbounded" minOccurs="0">
         <xs:annotation>
-          <xs:documentation xml:lang="en" source="#definition">A language used in the textual metadata describing titles, descriptions, etc. of the Datasets in the Catalogue.</xs:documentation>
-          <xs:documentation xml:lang="en" source="#usage">This property can be repeated if the metadata is provided in multiple languages.</xs:documentation>
+          <xs:documentation xml:lang="en">A language used in the textual metadata describing titles, descriptions, etc. of the Datasets in the Catalogue.</xs:documentation>
         </xs:annotation>
       </xs:element>
-      <xs:element name="Licence" type="LicenceDocumentType" maxOccurs="1" minOccurs="0">
+      <xs:element name="licence" ref="LicenceDocumentType" maxOccurs="1" minOccurs="0">
         <xs:annotation>
-          <xs:documentation xml:lang="en" source="#definition">A licence under which the Catalogue can be used or reused.</xs:documentation>
+          <xs:documentation xml:lang="en">A licence under which the Catalogue can be used or reused.</xs:documentation>
         </xs:annotation>
       </xs:element>
-      <xs:element name="ModificationDate" type="xs:string" maxOccurs="1" minOccurs="0">
+      <xs:element name="modificationDate" type="xs:string" maxOccurs="1" minOccurs="0">
         <xs:annotation>
-          <xs:documentation xml:lang="en" source="#definition">The most recent date on which the Catalogue was modified.</xs:documentation>
+          <xs:documentation xml:lang="en">The most recent date on which the Catalogue was modified.</xs:documentation>
         </xs:annotation>
       </xs:element>
-      <xs:element name="Publisher" type="AgentType" maxOccurs="1" minOccurs="1">
+      <xs:element name="publisher" ref="AgentType" maxOccurs="1" minOccurs="1">
         <xs:annotation>
-          <xs:documentation xml:lang="en" source="#definition">An entity (organisation) responsible for making the Catalogue available.</xs:documentation>
+          <xs:documentation xml:lang="en">An entity (organisation) responsible for making the Catalogue available.</xs:documentation>
         </xs:annotation>
       </xs:element>
-      <xs:element name="Rights" type="RightsStatementType" maxOccurs="1" minOccurs="0">
+      <xs:element name="rights" ref="RightsStatementType" maxOccurs="1" minOccurs="0">
         <xs:annotation>
-          <xs:documentation xml:lang="en" source="#definition">A statement that specifies rights associated with the Catalogue.</xs:documentation>
+          <xs:documentation xml:lang="en">A statement that specifies rights associated with the Catalogue.</xs:documentation>
         </xs:annotation>
       </xs:element>
-      <xs:element name="GeographicalCoverage" type="LocationType" maxOccurs="unbounded" minOccurs="0">
+      <xs:element name="geographicalCoverage" ref="LocationType" maxOccurs="unbounded" minOccurs="0">
         <xs:annotation>
-          <xs:documentation xml:lang="en" source="#definition">A geographical area covered by the Catalogue.</xs:documentation>
+          <xs:documentation xml:lang="en">A geographical area covered by the Catalogue.</xs:documentation>
         </xs:annotation>
       </xs:element>
-      <xs:element name="TemporalCoverage" type="PeriodOfTimeType" maxOccurs="unbounded" minOccurs="0">
+      <xs:element name="temporalCoverage" ref="PeriodOfTimeType" maxOccurs="unbounded" minOccurs="0">
         <xs:annotation>
-          <xs:documentation xml:lang="en" source="#definition">A temporal period that the Catalogue covers.</xs:documentation>
+          <xs:documentation xml:lang="en">A temporal period that the Catalogue covers.</xs:documentation>
         </xs:annotation>
       </xs:element>
-      <xs:element name="Title" type="xs:string" maxOccurs="unbounded" minOccurs="1">
+      <xs:element name="title" type="xs:string" maxOccurs="unbounded" minOccurs="1">
         <xs:annotation>
-          <xs:documentation xml:lang="en" source="#definition">A name given to the Catalogue.</xs:documentation>
-          <xs:documentation xml:lang="en" source="#usage">This property can be repeated for parallel language versions of the name.</xs:documentation>
+          <xs:documentation xml:lang="en">A name given to the Catalogue.</xs:documentation>
         </xs:annotation>
       </xs:element>
-      <xs:element name="Homepage" type="DocumentType" maxOccurs="1" minOccurs="0">
+      <xs:element name="homepage" ref="DocumentType" maxOccurs="1" minOccurs="0">
         <xs:annotation>
-          <xs:documentation xml:lang="en" source="#definition">A web page that acts as the main page for the Catalogue.</xs:documentation>
+          <xs:documentation xml:lang="en">A web page that acts as the main page for the Catalogue.</xs:documentation>
         </xs:annotation>
       </xs:element>
     </xs:sequence>
@@ -442,52 +444,49 @@
   </xs:complexType>
   <xs:complexType name="CatalogueRecordType">
     <xs:sequence>
-      <xs:element name="ChangeType" type="conceptType" maxOccurs="1" minOccurs="0">
+      <xs:element name="changeType" type="ConceptType" maxOccurs="1" minOccurs="0">
         <xs:annotation>
-          <xs:documentation xml:lang="en" source="#definition">The status of the catalogue record in the context of editorial flow of the dataset and data service descriptions</xs:documentation>
+          <xs:documentation xml:lang="en">The status of the catalogue record in the context of editorial flow of the dataset and data service descriptions</xs:documentation>
         </xs:annotation>
       </xs:element>
-      <xs:element name="ApplicationProfile" type="StandardType" maxOccurs="1" minOccurs="0">
+      <xs:element name="applicationProfile" ref="StandardType" maxOccurs="1" minOccurs="0">
         <xs:annotation>
-          <xs:documentation xml:lang="en" source="#definition">An Application Profile that the Datasets metadata conforms to</xs:documentation>
+          <xs:documentation xml:lang="en">An Application Profile that the Datasets metadata conforms to</xs:documentation>
         </xs:annotation>
       </xs:element>
-      <xs:element name="Description" type="xs:string" maxOccurs="unbounded" minOccurs="0">
+      <xs:element name="description" type="xs:string" maxOccurs="unbounded" minOccurs="0">
         <xs:annotation>
-          <xs:documentation xml:lang="en" source="#definition">A free-text account of the record. This property can be repeated for parallel language versions of the description.</xs:documentation>
+          <xs:documentation xml:lang="en">A free-text account of the record. This property can be repeated for parallel language versions of the description.</xs:documentation>
         </xs:annotation>
       </xs:element>
-      <xs:element name="ListingDate" type="xs:string" maxOccurs="1" minOccurs="0">
+      <xs:element name="listingDate" type="xs:string" maxOccurs="1" minOccurs="0">
         <xs:annotation>
-          <xs:documentation xml:lang="en" source="#definition">The date on which the description of the Dataset was included in the Catalogue.</xs:documentation>
+          <xs:documentation xml:lang="en">The date on which the description of the Dataset was included in the Catalogue.</xs:documentation>
         </xs:annotation>
       </xs:element>
-      <xs:element name="Language" type="LinguisticSystemType" maxOccurs="unbounded" minOccurs="0">
+      <xs:element name="language" ref="LinguisticSystemType" maxOccurs="unbounded" minOccurs="0">
         <xs:annotation>
-          <xs:documentation xml:lang="en" source="#definition">A language used in the textual metadata describing titles, descriptions, etc. of the Dataset.</xs:documentation>
-          <xs:documentation xml:lang="en" source="#usage">This property can be repeated if the metadata is provided in multiple languages.</xs:documentation>
+          <xs:documentation xml:lang="en">A language used in the textual metadata describing titles, descriptions, etc. of the Dataset.</xs:documentation>
         </xs:annotation>
       </xs:element>
-      <xs:element name="ModificationDate" type="xs:string" maxOccurs="1" minOccurs="1">
+      <xs:element name="modificationDate" type="xs:string" maxOccurs="1" minOccurs="1">
         <xs:annotation>
-          <xs:documentation xml:lang="en" source="#definition">The most recent date on which the Catalogue entry was changed or modified.</xs:documentation>
+          <xs:documentation xml:lang="en">The most recent date on which the Catalogue entry was changed or modified.</xs:documentation>
         </xs:annotation>
       </xs:element>
-      <xs:element name="SourceMetadata" type="CatalogueRecordType" maxOccurs="1" minOccurs="0">
+      <xs:element name="sourceMetadata" ref="CatalogueRecordType" maxOccurs="1" minOccurs="0">
         <xs:annotation>
-          <xs:documentation xml:lang="en" source="#definition">The original metadata that was used in creating metadata for the Dataset</xs:documentation>
+          <xs:documentation xml:lang="en">The original metadata that was used in creating metadata for the Dataset</xs:documentation>
         </xs:annotation>
       </xs:element>
-      <xs:element name="Title" type="xs:string" maxOccurs="unbounded" minOccurs="0">
+      <xs:element name="title" type="xs:string" maxOccurs="unbounded" minOccurs="0">
         <xs:annotation>
-          <xs:documentation xml:lang="en" source="#definition">A name given to the Catalogue Record.</xs:documentation>
-          <xs:documentation xml:lang="en" source="#usage">This property can be repeated for parallel language versions of the name.</xs:documentation>
+          <xs:documentation xml:lang="en">A name given to the Catalogue Record.</xs:documentation>
         </xs:annotation>
       </xs:element>
-      <xs:element name="PrimaryTopic" type="CataloguedResourceType" maxOccurs="1" minOccurs="1">
+      <xs:element name="primaryTopic" ref="CataloguedResourceType" maxOccurs="1" minOccurs="1">
         <xs:annotation>
-          <xs:documentation xml:lang="en" source="#definition">A link to the Dataset, Data service or Catalog described in the record.</xs:documentation>
-          <xs:documentation xml:lang="en" source="#usage">A catalogue record will refer to one entity in a catalogue. This can be either a Dataset or a Data Service. To ensure an unambigous reading of the cardinality the range is set to Catalogued Resource. However it is not the intend with this range to require the explicit use of the class Catalogued Record. As abstract class, an subclass should be used.</xs:documentation>
+          <xs:documentation xml:lang="en">A link to the Dataset, Data service or Catalog described in the record.</xs:documentation>
         </xs:annotation>
       </xs:element>
     </xs:sequence>
@@ -499,47 +498,44 @@
   </xs:complexType>
   <xs:complexType name="DataServiceType">
     <xs:sequence>
-      <xs:element name="EndpointDescription" type="ResourceType" maxOccurs="unbounded" minOccurs="0">
+      <xs:element name="endpointDescription" ref="ResourceType" maxOccurs="unbounded" minOccurs="0">
         <xs:annotation>
-          <xs:documentation xml:lang="en" source="#definition">A description of the services available via the end-points, including their operations, parameters etc.</xs:documentation>
-          <xs:documentation xml:lang="en" source="#usage">The property gives specific details of the actual endpoint instances, while dct:conformsTo is used to indicate the general standard or specification that the endpoints implement.</xs:documentation>
+          <xs:documentation xml:lang="en">A description of the services available via the end-points, including their operations, parameters etc.</xs:documentation>
         </xs:annotation>
       </xs:element>
-      <xs:element name="EndpointUrl" type="ResourceType" maxOccurs="unbounded" minOccurs="1">
+      <xs:element name="endpointUrl" ref="ResourceType" maxOccurs="unbounded" minOccurs="1">
         <xs:annotation>
-          <xs:documentation xml:lang="en" source="#definition">The root location or primary endpoint of the service (an IRI).</xs:documentation>
+          <xs:documentation xml:lang="en">The root location or primary endpoint of the service (an IRI).</xs:documentation>
         </xs:annotation>
       </xs:element>
-      <xs:element name="ServesDataset" type="DatasetType" maxOccurs="unbounded" minOccurs="0">
+      <xs:element name="servesDataset" ref="DatasetType" maxOccurs="unbounded" minOccurs="0">
         <xs:annotation>
-          <xs:documentation xml:lang="en" source="#definition">This property refers to a collection of data that this data service can distribute.</xs:documentation>
+          <xs:documentation xml:lang="en">This property refers to a collection of data that this data service can distribute.</xs:documentation>
         </xs:annotation>
       </xs:element>
-      <xs:element name="AccessRights" type="RightsStatementType" maxOccurs="1" minOccurs="0">
+      <xs:element name="accessRights" ref="RightsStatementType" maxOccurs="1" minOccurs="0">
         <xs:annotation>
-          <xs:documentation xml:lang="en" source="#definition">Information regarding access or restrictions based on privacy, security, or other policies.</xs:documentation>
+          <xs:documentation xml:lang="en">Information regarding access or restrictions based on privacy, security, or other policies.</xs:documentation>
         </xs:annotation>
       </xs:element>
-      <xs:element name="Description" type="xs:string" maxOccurs="unbounded" minOccurs="0">
+      <xs:element name="description" type="xs:string" maxOccurs="unbounded" minOccurs="0">
         <xs:annotation>
-          <xs:documentation xml:lang="en" source="#definition">A free-text account of the Data Service.</xs:documentation>
-          <xs:documentation xml:lang="en" source="#usage">This property can be repeated for parallel language versions of the description.</xs:documentation>
+          <xs:documentation xml:lang="en">A free-text account of the Data Service.</xs:documentation>
         </xs:annotation>
       </xs:element>
-      <xs:element name="Format" type="MediaTypeOrExtentType" maxOccurs="unbounded" minOccurs="0">
+      <xs:element name="format" ref="MediaTypeOrExtentType" maxOccurs="unbounded" minOccurs="0">
         <xs:annotation>
-          <xs:documentation xml:lang="en" source="#definition">The structure that can be returned by querying the endpointURL.</xs:documentation>
+          <xs:documentation xml:lang="en">The structure that can be returned by querying the endpointURL.</xs:documentation>
         </xs:annotation>
       </xs:element>
-      <xs:element name="Licence" type="LicenceDocumentType" maxOccurs="1" minOccurs="0">
+      <xs:element name="licence" ref="LicenceDocumentType" maxOccurs="1" minOccurs="0">
         <xs:annotation>
-          <xs:documentation xml:lang="en" source="#definition">A licence under which the Data service is made available.</xs:documentation>
+          <xs:documentation xml:lang="en">A licence under which the Data service is made available.</xs:documentation>
         </xs:annotation>
       </xs:element>
-      <xs:element name="Title" type="xs:string" maxOccurs="unbounded" minOccurs="1">
+      <xs:element name="title" type="xs:string" maxOccurs="unbounded" minOccurs="1">
         <xs:annotation>
-          <xs:documentation xml:lang="en" source="#definition">A name given to the Data Service.</xs:documentation>
-          <xs:documentation xml:lang="en" source="#usage">This property can be repeated for parallel language versions of the name.</xs:documentation>
+          <xs:documentation xml:lang="en">A name given to the Data Service.</xs:documentation>
         </xs:annotation>
       </xs:element>
     </xs:sequence>
@@ -551,186 +547,179 @@
   </xs:complexType>
   <xs:complexType name="DatasetType">
     <xs:sequence>
-      <xs:element name="OtherIdentifier" type="IdentifierType" maxOccurs="unbounded" minOccurs="0">
+      <xs:element name="otherIdentifier" ref="IdentifierType" maxOccurs="unbounded" minOccurs="0">
         <xs:annotation>
-          <xs:documentation xml:lang="en" source="#definition">A secondary identifier of the Dataset, such as MAST/ADS17, DataCite18, DOI19, EZID20 or W3ID21.</xs:documentation>
+          <xs:documentation xml:lang="en">A secondary identifier of the Dataset, such as MAST/ADS17, DataCite18, DOI19, EZID20 or W3ID21.</xs:documentation>
         </xs:annotation>
       </xs:element>
-      <xs:element name="Sample" type="DistributionType" maxOccurs="unbounded" minOccurs="0">
+      <xs:element name="sample" ref="DistributionType" maxOccurs="unbounded" minOccurs="0">
         <xs:annotation>
-          <xs:documentation xml:lang="en" source="#definition">A sample distribution of the dataset</xs:documentation>
+          <xs:documentation xml:lang="en">A sample distribution of the dataset</xs:documentation>
         </xs:annotation>
       </xs:element>
-      <xs:element name="VersionNotes" type="xs:string" maxOccurs="unbounded" minOccurs="0">
+      <xs:element name="versionNotes" type="xs:string" maxOccurs="unbounded" minOccurs="0">
         <xs:annotation>
-          <xs:documentation xml:lang="en" source="#definition">A description of the differences between this version and a previous version of the Dataset.</xs:documentation>
-          <xs:documentation xml:lang="en" source="#usage">This property can be repeated for parallel language versions of the version notes.</xs:documentation>
+          <xs:documentation xml:lang="en">A description of the differences between this version and a previous version of the Dataset.</xs:documentation>
         </xs:annotation>
       </xs:element>
-      <xs:element name="ContactPoint" type="KindType" maxOccurs="unbounded" minOccurs="0">
+      <xs:element name="contactPoint" ref="KindType" maxOccurs="unbounded" minOccurs="0">
         <xs:annotation>
-          <xs:documentation xml:lang="en" source="#definition">Contact information that can be used for sending comments about the Dataset.</xs:documentation>
+          <xs:documentation xml:lang="en">Contact information that can be used for sending comments about the Dataset.</xs:documentation>
         </xs:annotation>
       </xs:element>
-      <xs:element name="DatasetDistribution" type="DistributionType" maxOccurs="unbounded" minOccurs="0">
+      <xs:element name="datasetDistribution" ref="DistributionType" maxOccurs="unbounded" minOccurs="0">
         <xs:annotation>
-          <xs:documentation xml:lang="en" source="#definition">An available Distribution for the Dataset.</xs:documentation>
+          <xs:documentation xml:lang="en">An available Distribution for the Dataset.</xs:documentation>
         </xs:annotation>
       </xs:element>
-      <xs:element name="Keyword" type="xs:string" maxOccurs="unbounded" minOccurs="0">
+      <xs:element name="keyword" type="xs:string" maxOccurs="unbounded" minOccurs="0">
         <xs:annotation>
-          <xs:documentation xml:lang="en" source="#definition">A keyword or tag describing the Dataset.</xs:documentation>
+          <xs:documentation xml:lang="en">A keyword or tag describing the Dataset.</xs:documentation>
         </xs:annotation>
       </xs:element>
-      <xs:element name="LandingPage" type="DocumentType" maxOccurs="unbounded" minOccurs="0">
+      <xs:element name="landingPage" ref="DocumentType" maxOccurs="unbounded" minOccurs="0">
         <xs:annotation>
-          <xs:documentation xml:lang="en" source="#definition">A web page that provides access to the Dataset, its Distributions and/or additional information.</xs:documentation>
-          <xs:documentation xml:lang="en" source="#usage">It is intended to point to a landing page at the original data provider, not to a page on a site of a third party, such as an aggregator.</xs:documentation>
+          <xs:documentation xml:lang="en">A web page that provides access to the Dataset, its Distributions and/or additional information.</xs:documentation>
         </xs:annotation>
       </xs:element>
-      <xs:element name="QualifiedRelation" type="RelationshipType" maxOccurs="unbounded" minOccurs="0">
+      <xs:element name="qualifiedRelation" ref="RelationshipType" maxOccurs="unbounded" minOccurs="0">
         <xs:annotation>
-          <xs:documentation xml:lang="en" source="#definition">A description of a relationship with another resource</xs:documentation>
+          <xs:documentation xml:lang="en">A description of a relationship with another resource</xs:documentation>
         </xs:annotation>
       </xs:element>
-      <xs:element name="SpatialResolution" type="xs:decimal" maxOccurs="unbounded" minOccurs="0">
+      <xs:element name="spatialResolution" type="xs:decimal" maxOccurs="unbounded" minOccurs="0">
         <xs:annotation>
-          <xs:documentation xml:lang="en" source="#definition">The minimum spatial separation resolvable in a dataset, measured in meters.</xs:documentation>
+          <xs:documentation xml:lang="en">The minimum spatial separation resolvable in a dataset, measured in meters.</xs:documentation>
         </xs:annotation>
       </xs:element>
-      <xs:element name="TemporalResolution" type="xs:duration" maxOccurs="unbounded" minOccurs="0">
+      <xs:element name="temporalResolution" type="xs:duration" maxOccurs="unbounded" minOccurs="0">
         <xs:annotation>
-          <xs:documentation xml:lang="en" source="#definition">The minimum time period resolvable in the dataset.</xs:documentation>
+          <xs:documentation xml:lang="en">The minimum time period resolvable in the dataset.</xs:documentation>
         </xs:annotation>
       </xs:element>
-      <xs:element name="Theme" type="conceptType" maxOccurs="unbounded" minOccurs="0">
+      <xs:element name="theme" type="ConceptType" maxOccurs="unbounded" minOccurs="0">
         <xs:annotation>
-          <xs:documentation xml:lang="en" source="#definition">A category of the Dataset.</xs:documentation>
-          <xs:documentation xml:lang="en" source="#usage">A Dataset may be associated with multiple themes.</xs:documentation>
+          <xs:documentation xml:lang="en">A category of the Dataset.</xs:documentation>
         </xs:annotation>
       </xs:element>
-      <xs:element name="AccessRights" type="RightsStatementType" maxOccurs="1" minOccurs="0">
+      <xs:element name="accessRights" ref="RightsStatementType" maxOccurs="1" minOccurs="0">
         <xs:annotation>
-          <xs:documentation xml:lang="en" source="#definition">Information that indicates whether the Dataset is open data, has access restrictions or is not public.</xs:documentation>
+          <xs:documentation xml:lang="en">Information that indicates whether the Dataset is open data, has access restrictions or is not public.</xs:documentation>
         </xs:annotation>
       </xs:element>
-      <xs:element name="Frequency" type="FrequencyType" maxOccurs="1" minOccurs="0">
+      <xs:element name="frequency" ref="FrequencyType" maxOccurs="1" minOccurs="0">
         <xs:annotation>
-          <xs:documentation xml:lang="en" source="#definition">The frequency at which the Dataset is updated.</xs:documentation>
+          <xs:documentation xml:lang="en">The frequency at which the Dataset is updated.</xs:documentation>
         </xs:annotation>
       </xs:element>
-      <xs:element name="ConformsTo" type="StandardType" maxOccurs="unbounded" minOccurs="0">
+      <xs:element name="conformsTo" ref="StandardType" maxOccurs="unbounded" minOccurs="0">
         <xs:annotation>
-          <xs:documentation xml:lang="en" source="#definition">An implementing rule or other specification.</xs:documentation>
+          <xs:documentation xml:lang="en">An implementing rule or other specification.</xs:documentation>
         </xs:annotation>
       </xs:element>
-      <xs:element name="Creator" type="AgentType" maxOccurs="1" minOccurs="0">
+      <xs:element name="creator" ref="AgentType" maxOccurs="1" minOccurs="0">
         <xs:annotation>
-          <xs:documentation xml:lang="en" source="#definition">Ae entity responsible for producing the dataset</xs:documentation>
+          <xs:documentation xml:lang="en">Ae entity responsible for producing the dataset</xs:documentation>
         </xs:annotation>
       </xs:element>
-      <xs:element name="Description" type="xs:string" maxOccurs="unbounded" minOccurs="1">
+      <xs:element name="description" type="xs:string" maxOccurs="unbounded" minOccurs="1">
         <xs:annotation>
-          <xs:documentation xml:lang="en" source="#definition">A free-text account of the Dataset.</xs:documentation>
-          <xs:documentation xml:lang="en" source="#usage">This property can be repeated for parallel language versions of the description.</xs:documentation>
+          <xs:documentation xml:lang="en">A free-text account of the Dataset.</xs:documentation>
         </xs:annotation>
       </xs:element>
-      <xs:element name="HasVersion" type="DatasetType" maxOccurs="unbounded" minOccurs="0">
+      <xs:element name="hasVersion" ref="DatasetType" maxOccurs="unbounded" minOccurs="0">
         <xs:annotation>
-          <xs:documentation xml:lang="en" source="#definition">A related Dataset that is a version, edition, or adaptation of the described Dataset.</xs:documentation>
+          <xs:documentation xml:lang="en">A related Dataset that is a version, edition, or adaptation of the described Dataset.</xs:documentation>
         </xs:annotation>
       </xs:element>
-      <xs:element name="Identifier" type="xs:string" maxOccurs="unbounded" minOccurs="0">
+      <xs:element name="identifier" type="xs:string" maxOccurs="unbounded" minOccurs="0">
         <xs:annotation>
-          <xs:documentation xml:lang="en" source="#definition">The main identifier for the Dataset, e.g. the URI or other unique identifier in the context of the Catalogue.</xs:documentation>
+          <xs:documentation xml:lang="en">The main identifier for the Dataset, e.g. the URI or other unique identifier in the context of the Catalogue.</xs:documentation>
         </xs:annotation>
       </xs:element>
-      <xs:element name="IsReferencedBy" type="ResourceType" maxOccurs="unbounded" minOccurs="0">
+      <xs:element name="isReferencedBy" ref="ResourceType" maxOccurs="unbounded" minOccurs="0">
         <xs:annotation>
-          <xs:documentation xml:lang="en" source="#definition">A related resource, such as a publication, that references, cites, or otherwise points to the dataset.</xs:documentation>
+          <xs:documentation xml:lang="en">A related resource, such as a publication, that references, cites, or otherwise points to the dataset.</xs:documentation>
         </xs:annotation>
       </xs:element>
-      <xs:element name="IsVersionOf" type="DatasetType" maxOccurs="unbounded" minOccurs="0">
+      <xs:element name="isVersionOf" ref="DatasetType" maxOccurs="unbounded" minOccurs="0">
         <xs:annotation>
-          <xs:documentation xml:lang="en" source="#definition">A related Dataset of which the described Dataset is a version, edition, or adaptation.</xs:documentation>
+          <xs:documentation xml:lang="en">A related Dataset of which the described Dataset is a version, edition, or adaptation.</xs:documentation>
         </xs:annotation>
       </xs:element>
-      <xs:element name="ReleaseDate" type="xs:string" maxOccurs="1" minOccurs="0">
+      <xs:element name="releaseDate" type="xs:string" maxOccurs="1" minOccurs="0">
         <xs:annotation>
-          <xs:documentation xml:lang="en" source="#definition">The date of formal issuance (e.g., publication) of the Dataset.</xs:documentation>
+          <xs:documentation xml:lang="en">The date of formal issuance (e.g., publication) of the Dataset.</xs:documentation>
         </xs:annotation>
       </xs:element>
-      <xs:element name="Language" type="LinguisticSystemType" maxOccurs="unbounded" minOccurs="0">
+      <xs:element name="language" ref="LinguisticSystemType" maxOccurs="unbounded" minOccurs="0">
         <xs:annotation>
-          <xs:documentation xml:lang="en" source="#definition">A language of the Dataset.</xs:documentation>
-          <xs:documentation xml:lang="en" source="#usage">This property can be repeated if there are multiple languages in the Dataset.</xs:documentation>
+          <xs:documentation xml:lang="en">A language of the Dataset.</xs:documentation>
         </xs:annotation>
       </xs:element>
-      <xs:element name="ModificationDate" type="xs:string" maxOccurs="1" minOccurs="0">
+      <xs:element name="modificationDate" type="xs:string" maxOccurs="1" minOccurs="0">
         <xs:annotation>
-          <xs:documentation xml:lang="en" source="#definition">The most recent date on which the Dataset was changed or modified.</xs:documentation>
+          <xs:documentation xml:lang="en">The most recent date on which the Dataset was changed or modified.</xs:documentation>
         </xs:annotation>
       </xs:element>
-      <xs:element name="Provenance" type="ProvenanceStatementType" maxOccurs="unbounded" minOccurs="0">
+      <xs:element name="provenance" ref="ProvenanceStatementType" maxOccurs="unbounded" minOccurs="0">
         <xs:annotation>
-          <xs:documentation xml:lang="en" source="#definition">A statement about the lineage of a Dataset.</xs:documentation>
+          <xs:documentation xml:lang="en">A statement about the lineage of a Dataset.</xs:documentation>
         </xs:annotation>
       </xs:element>
-      <xs:element name="Publisher" type="AgentType" maxOccurs="1" minOccurs="0">
+      <xs:element name="publisher" ref="AgentType" maxOccurs="1" minOccurs="0">
         <xs:annotation>
-          <xs:documentation xml:lang="en" source="#definition">An entity (organisation) responsible for making the Dataset available.</xs:documentation>
+          <xs:documentation xml:lang="en">An entity (organisation) responsible for making the Dataset available.</xs:documentation>
         </xs:annotation>
       </xs:element>
-      <xs:element name="RelatedResource" type="ResourceType" maxOccurs="unbounded" minOccurs="0">
+      <xs:element name="relatedResource" ref="ResourceType" maxOccurs="unbounded" minOccurs="0">
         <xs:annotation>
-          <xs:documentation xml:lang="en" source="#definition">A related resource.</xs:documentation>
+          <xs:documentation xml:lang="en">A related resource.</xs:documentation>
         </xs:annotation>
       </xs:element>
-      <xs:element name="Source" type="DatasetType" maxOccurs="unbounded" minOccurs="0">
+      <xs:element name="source" ref="DatasetType" maxOccurs="unbounded" minOccurs="0">
         <xs:annotation>
-          <xs:documentation xml:lang="en" source="#definition">A related Dataset from which the described Dataset is derived.</xs:documentation>
+          <xs:documentation xml:lang="en">A related Dataset from which the described Dataset is derived.</xs:documentation>
         </xs:annotation>
       </xs:element>
-      <xs:element name="GeographicalCoverage" type="LocationType" maxOccurs="unbounded" minOccurs="0">
+      <xs:element name="geographicalCoverage" ref="LocationType" maxOccurs="unbounded" minOccurs="0">
         <xs:annotation>
-          <xs:documentation xml:lang="en" source="#definition">A geographic region that is covered by the Dataset.</xs:documentation>
+          <xs:documentation xml:lang="en">A geographic region that is covered by the Dataset.</xs:documentation>
         </xs:annotation>
       </xs:element>
-      <xs:element name="TemporalCoverage" type="PeriodOfTimeType" maxOccurs="unbounded" minOccurs="0">
+      <xs:element name="temporalCoverage" ref="PeriodOfTimeType" maxOccurs="unbounded" minOccurs="0">
         <xs:annotation>
-          <xs:documentation xml:lang="en" source="#definition">A temporal period that the Dataset covers.</xs:documentation>
+          <xs:documentation xml:lang="en">A temporal period that the Dataset covers.</xs:documentation>
         </xs:annotation>
       </xs:element>
-      <xs:element name="Title" type="xs:string" maxOccurs="unbounded" minOccurs="1">
+      <xs:element name="title" type="xs:string" maxOccurs="unbounded" minOccurs="1">
         <xs:annotation>
-          <xs:documentation xml:lang="en" source="#definition">A name given to the Dataset.</xs:documentation>
-          <xs:documentation xml:lang="en" source="#usage">This property can be repeated for parallel language versions of the name.</xs:documentation>
+          <xs:documentation xml:lang="en">A name given to the Dataset.</xs:documentation>
         </xs:annotation>
       </xs:element>
-      <xs:element name="Type" type="conceptType" maxOccurs="1" minOccurs="0">
+      <xs:element name="type" type="ConceptType" maxOccurs="1" minOccurs="0">
         <xs:annotation>
-          <xs:documentation xml:lang="en" source="#definition">A type of the Dataset.</xs:documentation>
-          <xs:documentation xml:lang="en" source="#usage">A recommended controlled vocabulary data-type is foreseen.</xs:documentation>
+          <xs:documentation xml:lang="en">A type of the Dataset.</xs:documentation>
         </xs:annotation>
       </xs:element>
-      <xs:element name="Documentation" type="DocumentType" maxOccurs="unbounded" minOccurs="0">
+      <xs:element name="documentation" ref="DocumentType" maxOccurs="unbounded" minOccurs="0">
         <xs:annotation>
-          <xs:documentation xml:lang="en" source="#definition">A page or document about this Dataset.</xs:documentation>
+          <xs:documentation xml:lang="en">A page or document about this Dataset.</xs:documentation>
         </xs:annotation>
       </xs:element>
-      <xs:element name="Version" type="xs:string" maxOccurs="1" minOccurs="0">
+      <xs:element name="version" type="xs:string" maxOccurs="1" minOccurs="0">
         <xs:annotation>
-          <xs:documentation xml:lang="en" source="#definition">A version number or other version designation of the Dataset.</xs:documentation>
+          <xs:documentation xml:lang="en">A version number or other version designation of the Dataset.</xs:documentation>
         </xs:annotation>
       </xs:element>
-      <xs:element name="QualifiedAttribution" type="AtttributionType" maxOccurs="unbounded" minOccurs="0">
+      <xs:element name="qualifiedAttribution" ref="AtttributionType" maxOccurs="unbounded" minOccurs="0">
         <xs:annotation>
-          <xs:documentation xml:lang="en" source="#definition">An Agent having some form of responsibility for the resource</xs:documentation>
+          <xs:documentation xml:lang="en">An Agent having some form of responsibility for the resource</xs:documentation>
         </xs:annotation>
       </xs:element>
-      <xs:element name="WasGeneratedBy" type="ActivityType" maxOccurs="unbounded" minOccurs="0">
+      <xs:element name="wasGeneratedBy" ref="ActivityType" maxOccurs="unbounded" minOccurs="0">
         <xs:annotation>
-          <xs:documentation xml:lang="en" source="#definition">An activity that generated, or provides the business context for, the creation of the dataset.</xs:documentation>
+          <xs:documentation xml:lang="en">An activity that generated, or provides the business context for, the creation of the dataset.</xs:documentation>
         </xs:annotation>
       </xs:element>
     </xs:sequence>
@@ -742,132 +731,124 @@
   </xs:complexType>
   <xs:complexType name="DistributionType">
     <xs:sequence>
-      <xs:element name="Status" type="conceptType" maxOccurs="1" minOccurs="0">
+      <xs:element name="status" type="ConceptType" maxOccurs="1" minOccurs="0">
         <xs:annotation>
-          <xs:documentation xml:lang="en" source="#definition">The status of the distribution in the context of maturity lifecycle.</xs:documentation>
-          <xs:documentation xml:lang="en" source="#usage">It MUST take one of the values Completed, Deprecated, Under Development, Withdrawn.</xs:documentation>
+          <xs:documentation xml:lang="en">The status of the distribution in the context of maturity lifecycle.</xs:documentation>
         </xs:annotation>
       </xs:element>
-      <xs:element name="AccessService" type="DataServiceType" maxOccurs="unbounded" minOccurs="0">
+      <xs:element name="accessService" ref="DataServiceType" maxOccurs="unbounded" minOccurs="0">
         <xs:annotation>
-          <xs:documentation xml:lang="en" source="#definition">A data service that gives access to the distribution of the dataset</xs:documentation>
+          <xs:documentation xml:lang="en">A data service that gives access to the distribution of the dataset</xs:documentation>
         </xs:annotation>
       </xs:element>
-      <xs:element name="AccessUrl" type="ResourceType" maxOccurs="unbounded" minOccurs="1">
+      <xs:element name="accessUrl" ref="ResourceType" maxOccurs="unbounded" minOccurs="1">
         <xs:annotation>
-          <xs:documentation xml:lang="en" source="#definition">A URL that gives access to a Distribution of the Dataset.</xs:documentation>
-          <xs:documentation xml:lang="en" source="#usage">The resource at the access URL may contain information about how to get the Dataset.</xs:documentation>
+          <xs:documentation xml:lang="en">A URL that gives access to a Distribution of the Dataset.</xs:documentation>
         </xs:annotation>
       </xs:element>
-      <xs:element name="ByteSize" type="xs:hexBinary" maxOccurs="1" minOccurs="0">
+      <xs:element name="byteSize" type="xs:hexBinary" maxOccurs="1" minOccurs="0">
         <xs:annotation>
-          <xs:documentation xml:lang="en" source="#definition">The size of a Distribution in bytes.</xs:documentation>
+          <xs:documentation xml:lang="en">The size of a Distribution in bytes.</xs:documentation>
         </xs:annotation>
       </xs:element>
-      <xs:element name="CompressionFormat" type="MediaTypeType" maxOccurs="1" minOccurs="0">
+      <xs:element name="compressionFormat" ref="MediaTypeType" maxOccurs="1" minOccurs="0">
         <xs:annotation>
-          <xs:documentation xml:lang="en" source="#definition">The format of the file in which the data is contained in a compressed form, e.g. to reduce the size of the downloadable file.</xs:documentation>
-          <xs:documentation xml:lang="en" source="#usage">It SHOULD be expressed using a media type as defined in the official register of media types managed by IANA.</xs:documentation>
+          <xs:documentation xml:lang="en">The format of the file in which the data is contained in a compressed form, e.g. to reduce the size of the downloadable file.</xs:documentation>
         </xs:annotation>
       </xs:element>
-      <xs:element name="DownloadUrl" type="ResourceType" maxOccurs="unbounded" minOccurs="0">
+      <xs:element name="downloadUrl" ref="ResourceType" maxOccurs="unbounded" minOccurs="0">
         <xs:annotation>
-          <xs:documentation xml:lang="en" source="#definition">A URL that is a direct link to a downloadable file in a given format.</xs:documentation>
+          <xs:documentation xml:lang="en">A URL that is a direct link to a downloadable file in a given format.</xs:documentation>
         </xs:annotation>
       </xs:element>
-      <xs:element name="MediaType" type="MediaTypeType" maxOccurs="1" minOccurs="0">
+      <xs:element name="mediaType" ref="MediaTypeType" maxOccurs="1" minOccurs="0">
         <xs:annotation>
-          <xs:documentation xml:lang="en" source="#definition">The media type of the Distribution as defined in the official register of media types managed by IANA.</xs:documentation>
+          <xs:documentation xml:lang="en">The media type of the Distribution as defined in the official register of media types managed by IANA.</xs:documentation>
         </xs:annotation>
       </xs:element>
-      <xs:element name="MediaType" type="MediaTypeType" maxOccurs="1" minOccurs="0">
+      <xs:element name="mediaType" ref="MediaTypeType" maxOccurs="1" minOccurs="0">
         <xs:annotation>
-          <xs:documentation xml:lang="en" source="#definition">The media type of the Distribution as defined in the official register of media types managed by IANA.</xs:documentation>
+          <xs:documentation xml:lang="en">The media type of the Distribution as defined in the official register of media types managed by IANA.</xs:documentation>
         </xs:annotation>
       </xs:element>
-      <xs:element name="PackagingFormat" type="MediaTypeType" maxOccurs="1" minOccurs="0">
+      <xs:element name="packagingFormat" ref="MediaTypeType" maxOccurs="1" minOccurs="0">
         <xs:annotation>
-          <xs:documentation xml:lang="en" source="#definition">The format of the file in which one or more data files are grouped together, e.g. to enable a set of related files to be downloaded together.</xs:documentation>
-          <xs:documentation xml:lang="en" source="#usage">It SHOULD be expressed using a media type as defined in the official register of media types managed by IANA.</xs:documentation>
+          <xs:documentation xml:lang="en">The format of the file in which one or more data files are grouped together, e.g. to enable a set of related files to be downloaded together.</xs:documentation>
         </xs:annotation>
       </xs:element>
-      <xs:element name="SpatialResolution" type="xs:decimal" maxOccurs="unbounded" minOccurs="0">
+      <xs:element name="spatialResolution" type="xs:decimal" maxOccurs="unbounded" minOccurs="0">
         <xs:annotation>
-          <xs:documentation xml:lang="en" source="#definition">The minimum spatial separation resolvable in a dataset distribution, measured in meters.</xs:documentation>
+          <xs:documentation xml:lang="en">The minimum spatial separation resolvable in a dataset distribution, measured in meters.</xs:documentation>
         </xs:annotation>
       </xs:element>
-      <xs:element name="TemporalResolution" type="xs:duration" maxOccurs="unbounded" minOccurs="0">
+      <xs:element name="temporalResolution" type="xs:duration" maxOccurs="unbounded" minOccurs="0">
         <xs:annotation>
-          <xs:documentation xml:lang="en" source="#definition">The minimum time period resolvable in the dataset distribution.</xs:documentation>
+          <xs:documentation xml:lang="en">The minimum time period resolvable in the dataset distribution.</xs:documentation>
         </xs:annotation>
       </xs:element>
-      <xs:element name="Availability" type="conceptType" maxOccurs="1" minOccurs="0">
+      <xs:element name="availability" type="ConceptType" maxOccurs="1" minOccurs="0">
         <xs:annotation>
-          <xs:documentation xml:lang="en" source="#definition">An indication how long it is planned to keep the Distribution of the Dataset available.</xs:documentation>
+          <xs:documentation xml:lang="en">An indication how long it is planned to keep the Distribution of the Dataset available.</xs:documentation>
         </xs:annotation>
       </xs:element>
-      <xs:element name="LinkedSchemas" type="StandardType" maxOccurs="unbounded" minOccurs="0">
+      <xs:element name="linkedSchemas" ref="StandardType" maxOccurs="unbounded" minOccurs="0">
         <xs:annotation>
-          <xs:documentation xml:lang="en" source="#definition">An established schema to which the described Distribution conforms.</xs:documentation>
+          <xs:documentation xml:lang="en">An established schema to which the described Distribution conforms.</xs:documentation>
         </xs:annotation>
       </xs:element>
-      <xs:element name="Description" type="xs:string" maxOccurs="unbounded" minOccurs="0">
+      <xs:element name="description" type="xs:string" maxOccurs="unbounded" minOccurs="0">
         <xs:annotation>
-          <xs:documentation xml:lang="en" source="#definition">A free-text account of the Distribution.</xs:documentation>
-          <xs:documentation xml:lang="en" source="#usage">This property can be repeated for parallel language versions of the description.</xs:documentation>
+          <xs:documentation xml:lang="en">A free-text account of the Distribution.</xs:documentation>
         </xs:annotation>
       </xs:element>
-      <xs:element name="Format" type="MediaTypeOrExtentType" maxOccurs="1" minOccurs="0">
+      <xs:element name="format" ref="MediaTypeOrExtentType" maxOccurs="1" minOccurs="0">
         <xs:annotation>
-          <xs:documentation xml:lang="en" source="#definition">The file format of the Distribution.</xs:documentation>
+          <xs:documentation xml:lang="en">The file format of the Distribution.</xs:documentation>
         </xs:annotation>
       </xs:element>
-      <xs:element name="ReleaseDate" type="xs:string" maxOccurs="1" minOccurs="0">
+      <xs:element name="releaseDate" type="xs:string" maxOccurs="1" minOccurs="0">
         <xs:annotation>
-          <xs:documentation xml:lang="en" source="#definition">The date of formal issuance (e.g., publication) of the Distribution.</xs:documentation>
+          <xs:documentation xml:lang="en">The date of formal issuance (e.g., publication) of the Distribution.</xs:documentation>
         </xs:annotation>
       </xs:element>
-      <xs:element name="Language" type="LinguisticSystemType" maxOccurs="unbounded" minOccurs="0">
+      <xs:element name="language" ref="LinguisticSystemType" maxOccurs="unbounded" minOccurs="0">
         <xs:annotation>
-          <xs:documentation xml:lang="en" source="#definition">A language used in the Distribution.</xs:documentation>
-          <xs:documentation xml:lang="en" source="#usage">This property can be repeated if the metadata is provided in multiple languages.</xs:documentation>
+          <xs:documentation xml:lang="en">A language used in the Distribution.</xs:documentation>
         </xs:annotation>
       </xs:element>
-      <xs:element name="Licence" type="LicenceDocumentType" maxOccurs="1" minOccurs="0">
+      <xs:element name="licence" ref="LicenceDocumentType" maxOccurs="1" minOccurs="0">
         <xs:annotation>
-          <xs:documentation xml:lang="en" source="#definition">A licence under which the Distribution is made available.</xs:documentation>
+          <xs:documentation xml:lang="en">A licence under which the Distribution is made available.</xs:documentation>
         </xs:annotation>
       </xs:element>
-      <xs:element name="ModificationDate" type="xs:string" maxOccurs="1" minOccurs="0">
+      <xs:element name="modificationDate" type="xs:string" maxOccurs="1" minOccurs="0">
         <xs:annotation>
-          <xs:documentation xml:lang="en" source="#definition">The most recent date on which the Distribution was changed or modified.</xs:documentation>
+          <xs:documentation xml:lang="en">The most recent date on which the Distribution was changed or modified.</xs:documentation>
         </xs:annotation>
       </xs:element>
-      <xs:element name="Rights" type="RightsStatementType" maxOccurs="1" minOccurs="0">
+      <xs:element name="rights" ref="RightsStatementType" maxOccurs="1" minOccurs="0">
         <xs:annotation>
-          <xs:documentation xml:lang="en" source="#definition">A statement that specifies rights associated with the Distribution.</xs:documentation>
+          <xs:documentation xml:lang="en">A statement that specifies rights associated with the Distribution.</xs:documentation>
         </xs:annotation>
       </xs:element>
-      <xs:element name="Title" type="xs:string" maxOccurs="unbounded" minOccurs="0">
+      <xs:element name="title" type="xs:string" maxOccurs="unbounded" minOccurs="0">
         <xs:annotation>
-          <xs:documentation xml:lang="en" source="#definition">A name given to the Distribution.</xs:documentation>
-          <xs:documentation xml:lang="en" source="#usage">This property can be repeated for parallel language versions of the description.</xs:documentation>
+          <xs:documentation xml:lang="en">A name given to the Distribution.</xs:documentation>
         </xs:annotation>
       </xs:element>
-      <xs:element name="Documentation" type="DocumentType" maxOccurs="unbounded" minOccurs="0">
+      <xs:element name="documentation" ref="DocumentType" maxOccurs="unbounded" minOccurs="0">
         <xs:annotation>
-          <xs:documentation xml:lang="en" source="#definition">A page or document about this Distribution.</xs:documentation>
+          <xs:documentation xml:lang="en">A page or document about this Distribution.</xs:documentation>
         </xs:annotation>
       </xs:element>
-      <xs:element name="HasPolicy" type="PolicyType" maxOccurs="1" minOccurs="0">
+      <xs:element name="hasPolicy" ref="PolicyType" maxOccurs="1" minOccurs="0">
         <xs:annotation>
-          <xs:documentation xml:lang="en" source="#definition">The policy expressing the rights associated with the distribution if using the ODRL vocabulary</xs:documentation>
+          <xs:documentation xml:lang="en">The policy expressing the rights associated with the distribution if using the ODRL vocabulary</xs:documentation>
         </xs:annotation>
       </xs:element>
-      <xs:element name="Checksum" type="ChecksumType" maxOccurs="1" minOccurs="0">
+      <xs:element name="checksum" ref="ChecksumType" maxOccurs="1" minOccurs="0">
         <xs:annotation>
-          <xs:documentation xml:lang="en" source="#definition">A mechanism that can be used to verify that the contents of a distribution have not changed.</xs:documentation>
-          <xs:documentation xml:lang="en" source="#usage">The checksum is related to the downloadURL.</xs:documentation>
+          <xs:documentation xml:lang="en">A mechanism that can be used to verify that the contents of a distribution have not changed.</xs:documentation>
         </xs:annotation>
       </xs:element>
     </xs:sequence>
@@ -879,14 +860,14 @@
   </xs:complexType>
   <xs:complexType name="RelationshipType">
     <xs:sequence>
-      <xs:element name="HadRole" type="RoleType" maxOccurs="unbounded" minOccurs="1">
+      <xs:element name="hadRole" ref="RoleType" maxOccurs="unbounded" minOccurs="1">
         <xs:annotation>
-          <xs:documentation xml:lang="en" source="#definition">A function of an entity or agent with respect to another entity or resource.</xs:documentation>
+          <xs:documentation xml:lang="en">A function of an entity or agent with respect to another entity or resource.</xs:documentation>
         </xs:annotation>
       </xs:element>
-      <xs:element name="Relation" type="ResourceType" maxOccurs="unbounded" minOccurs="1">
+      <xs:element name="relation" ref="ResourceType" maxOccurs="unbounded" minOccurs="1">
         <xs:annotation>
-          <xs:documentation xml:lang="en" source="#definition">A resource related to the source resource.</xs:documentation>
+          <xs:documentation xml:lang="en">A resource related to the source resource.</xs:documentation>
         </xs:annotation>
       </xs:element>
     </xs:sequence>
@@ -946,15 +927,14 @@
   </xs:complexType>
   <xs:complexType name="AgentType">
     <xs:sequence>
-      <xs:element name="Type" type="conceptType" maxOccurs="1" minOccurs="0">
+      <xs:element name="type" type="ConceptType" maxOccurs="1" minOccurs="0">
         <xs:annotation>
-          <xs:documentation xml:lang="en" source="#definition">A type of the agent that makes the Catalogue or Dataset available</xs:documentation>
+          <xs:documentation xml:lang="en">A type of the agent that makes the Catalogue or Dataset available</xs:documentation>
         </xs:annotation>
       </xs:element>
-      <xs:element name="Name" type="xs:string" maxOccurs="unbounded" minOccurs="1">
+      <xs:element name="name" type="xs:string" maxOccurs="unbounded" minOccurs="1">
         <xs:annotation>
-          <xs:documentation xml:lang="en" source="#definition">A name of the agent.</xs:documentation>
-          <xs:documentation xml:lang="en" source="#usage">This property can be repeated for different versions of the name (e.g. the name in different languages)</xs:documentation>
+          <xs:documentation xml:lang="en">A name of the agent.</xs:documentation>
         </xs:annotation>
       </xs:element>
     </xs:sequence>
