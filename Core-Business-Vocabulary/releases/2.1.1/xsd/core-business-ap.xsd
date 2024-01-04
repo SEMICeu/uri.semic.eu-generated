@@ -2,6 +2,10 @@
 <xs:schema xmlns="https://data.europa.eu/m8g/xml/" xmlns:xs="http://www.w3.org/2001/XMLSchema" targetNamespace="https://data.europa.eu/m8g/xml/" version="2.0.0" elementFormDefault="qualified" attributeFormDefault="unqualified" xmlns:cv="https://data.europa.eu/m8g/xml/">
   <xs:element name="AccountingDocument" type="AccountingDocumentType"/>
   <xs:element name="ContactPoint" type="ContactPointType"/>
+  <xs:element name="Text" type="TextType"/>
+  <xs:element name="Literal" type="LiteralType"/>
+  <xs:element name="Date" type="DateType"/>
+  <xs:element name="Code" type="CodeType"/>
   <xs:element name="Identifier" type="IdentifierType"/>
   <xs:element name="LegalEntity" type="LegalEntityType"/>
   <xs:element name="Address" type="AddressType"/>
@@ -37,6 +41,38 @@
     <xs:attribute name="ContactPointRef" type="xs:IDREF">
       <xs:annotation>
         <xs:documentation xml:lang="en">Reference to ContactPoint ID</xs:documentation>
+      </xs:annotation>
+    </xs:attribute>
+  </xs:complexType>
+  <xs:complexType name="TextType">
+    <xs:sequence/>
+    <xs:attribute name="TextRef" type="xs:IDREF">
+      <xs:annotation>
+        <xs:documentation xml:lang="en">Reference to Text ID</xs:documentation>
+      </xs:annotation>
+    </xs:attribute>
+  </xs:complexType>
+  <xs:complexType name="LiteralType">
+    <xs:sequence/>
+    <xs:attribute name="LiteralRef" type="xs:IDREF">
+      <xs:annotation>
+        <xs:documentation xml:lang="en">Reference to Literal ID</xs:documentation>
+      </xs:annotation>
+    </xs:attribute>
+  </xs:complexType>
+  <xs:complexType name="DateType">
+    <xs:sequence/>
+    <xs:attribute name="DateRef" type="xs:IDREF">
+      <xs:annotation>
+        <xs:documentation xml:lang="en">Reference to Date ID</xs:documentation>
+      </xs:annotation>
+    </xs:attribute>
+  </xs:complexType>
+  <xs:complexType name="CodeType">
+    <xs:sequence/>
+    <xs:attribute name="CodeRef" type="xs:IDREF">
+      <xs:annotation>
+        <xs:documentation xml:lang="en">Reference to Code ID</xs:documentation>
       </xs:annotation>
     </xs:attribute>
   </xs:complexType>
@@ -129,7 +165,7 @@
       <xs:element name="LegalFormType" type="conceptType" maxOccurs="unbounded" minOccurs="0">
         <xs:annotation>
           <xs:documentation xml:lang="en" source="#definition">The classification of the Legal Entity as a member of a particular group in the context of legal registration.</xs:documentation>
-          <xs:documentation xml:lang="en" source="#usage">Familiar types are Public (Limited) Company (PLC), Private (Limited) Company, One Person Company,  Limited Liability Company (LLC, GmbH), etc. At the time of publication, there is no agreed set of company types that crosses borders. The term 'SA' is used in Poland and France for example although they mean slightly different things. The UK's LLP and Greece's EPE provide another example of close, but not exact, matches. That said, each jurisdiction will have a limited set of recognised company types and these should be used in a consistent manner.</xs:documentation>
+          <xs:documentation xml:lang="en" source="#usage">To indicate the legal form type of a Legal Entity the &lt;a href="https://op.europa.eu/en/web/eu-vocabularies/dataset/-/resource?uri=http://publications.europa.eu/resource/dataset/entity-legal-form"&gt;Entity Legal Form code list&lt;/a&gt; published by the Publications Office of the EU and maintained by &lt;a href="https://www.gleif.org/en/about-lei/code-lists/iso-20275-entity-legal-forms-code-list"&gt;GLEIF&lt;/a&gt; can be used.</xs:documentation>
         </xs:annotation>
       </xs:element>
       <xs:element name="LegalIdentifier" type="IdentifierType" maxOccurs="unbounded" minOccurs="0">
@@ -208,14 +244,11 @@ To provide maximum flexibility in the Core Vocabulary, whilst remaining interope
       <xs:element name="LocatorDesignator" type="xs:string" maxOccurs="unbounded" minOccurs="0">
         <xs:annotation>
           <xs:documentation xml:lang="en" source="#definition">A number or sequence of characters that uniquely identifies the locator within the relevant scope.</xs:documentation>
-          <xs:documentation xml:lang="en" source="#usage">In simpler terms, this is the building number, apartment number, etc. For an address such as "Flat 3, 17 Bridge Street", the locator is "flat 3, 17".
-
-</xs:documentation>
+          <xs:documentation xml:lang="en" source="#usage">In simpler terms, this is the building number, apartment number, etc. For an address such as "Flat 3, 17 Bridge Street", the locator is "flat 3, 17".</xs:documentation>
         </xs:annotation>
       </xs:element>
       <xs:element name="LocatorName" type="xs:string" maxOccurs="unbounded" minOccurs="0">
         <xs:annotation>
-          <xs:documentation xml:lang="en" source="#definition">Proper noun(s) applied to the real world entity identified by the locator.</xs:documentation>
           <xs:documentation xml:lang="en" source="#usage">The locator name could be the name of the property or complex, of the building or part of the building, or it could be the name of a room inside a building.
 &lt;br/&gt;&lt;br/&gt;
 The key difference between a locator designator and a locator name is that the latter is a proper name and is unlikely to include digits. For example, "Shumann, Berlaymont" is a meeting room within the European Commission headquarters for which locator name is more appropriate than locator.</xs:documentation>
