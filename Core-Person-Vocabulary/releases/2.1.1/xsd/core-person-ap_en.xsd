@@ -4,10 +4,16 @@
   <xs:element name="GenericDate" type="GenericDateType"/>
   <xs:element name="Jurisdiction" type="JurisdictionType"/>
   <xs:element name="Location" type="LocationType"/>
+  <xs:element name="Text" type="TextType"/>
+  <xs:element name="Literal" type="LiteralType"/>
+  <xs:element name="Uri" type="UriType"/>
+  <xs:element name="Date" type="DateType"/>
+  <xs:element name="Code" type="CodeType"/>
   <xs:element name="Identifier" type="IdentifierType"/>
   <xs:element name="Address" type="AddressType"/>
   <xs:element name="Person" type="PersonType"/>
   <xs:element name="Agent" type="AgentType"/>
+  <xs:element name="Document" type="DocumentType"/>
   <xs:complexType name="ContactPointType">
     <xs:sequence>
       <xs:element name="ContactPage" maxOccurs="unbounded" minOccurs="0">
@@ -77,9 +83,9 @@ even when the geographic name is given as EL or UK.</xs:documentation>
       <xs:element name="GeographicName" type="xs:string" maxOccurs="unbounded" minOccurs="0">
         <xs:annotation>
           <xs:documentation xml:lang="en" source="#definition">A textual description for a Location.</xs:documentation>
-          <xs:documentation xml:lang="en" source="#usage">The &lt;a href="https://inspire.ec.europa.eu/Themes/132/2892"&gt;INSPIRE Data Specification on Geographical Names&lt;/a&gt; provides a detailed model for describing a 'named place', including methods for providing multiple names in multiple scripts. INSPIRE's definition is the following: Names of areas, regions, localities, cities, suburbs, towns or settlements, or any geographical or topographical feature of public or historical interest. This is beyond what is necessary for the Core Location Vocabulary but, importantly, the concept of a geographic name used here is consistent.
+          <xs:documentation xml:lang="en" source="#usage">The &lt;a href="https://knowledge-base.inspire.ec.europa.eu/geographical-names_en"&gt;INSPIRE Data Specification on Geographical Names&lt;/a&gt; provides a detailed model for describing a 'named place', including methods for providing multiple names in multiple scripts. INSPIRE's definition is the following: Names of areas, regions, localities, cities, suburbs, towns or settlements, or any geographical or topographical feature of public or historical interest. This is beyond what is necessary for the Core Location Vocabulary but, importantly, the concept of a geographic name used here is consistent.
 &lt;br/&gt;&lt;br/&gt;
-A geographic name is a proper noun applied to a spatial object. Taking the example used in the &lt;a href="https://inspire.ec.europa.eu/documents/Data_Specifications/INSPIRE_DataSpecification_GN_v3.0.1.pdf"&gt;INSPIRE document&lt;/a&gt; (page 18), the following are all valid geographic names for the Greek capital:
+A geographic name is a proper noun applied to a spatial object. Taking the example used in the &lt;a href="https://knowledge-base.inspire.ec.europa.eu/publications/inspire-data-specification-geographical-names-technical-guidelines_en"&gt;INSPIRE document&lt;/a&gt; (page 18), the following are all valid geographic names for the Greek capital:
 - "A&theta;n&nu;a"@gr-Grek (the Greek endonym written in the Greek script)
 - "Athína"@gr-Latn (the standard Romanisation of the endonym)
 - "Athens"@en (the English language exonym)
@@ -95,6 +101,46 @@ Where a country has changed its name or no longer exists (such as Czechoslovakia
     <xs:attribute name="LocationRef" type="xs:IDREF">
       <xs:annotation>
         <xs:documentation xml:lang="en">Reference to Location ID</xs:documentation>
+      </xs:annotation>
+    </xs:attribute>
+  </xs:complexType>
+  <xs:complexType name="TextType">
+    <xs:sequence/>
+    <xs:attribute name="TextRef" type="xs:IDREF">
+      <xs:annotation>
+        <xs:documentation xml:lang="en">Reference to Text ID</xs:documentation>
+      </xs:annotation>
+    </xs:attribute>
+  </xs:complexType>
+  <xs:complexType name="LiteralType">
+    <xs:sequence/>
+    <xs:attribute name="LiteralRef" type="xs:IDREF">
+      <xs:annotation>
+        <xs:documentation xml:lang="en">Reference to Literal ID</xs:documentation>
+      </xs:annotation>
+    </xs:attribute>
+  </xs:complexType>
+  <xs:complexType name="UriType">
+    <xs:sequence/>
+    <xs:attribute name="UriRef" type="xs:IDREF">
+      <xs:annotation>
+        <xs:documentation xml:lang="en">Reference to Uri ID</xs:documentation>
+      </xs:annotation>
+    </xs:attribute>
+  </xs:complexType>
+  <xs:complexType name="DateType">
+    <xs:sequence/>
+    <xs:attribute name="DateRef" type="xs:IDREF">
+      <xs:annotation>
+        <xs:documentation xml:lang="en">Reference to Date ID</xs:documentation>
+      </xs:annotation>
+    </xs:attribute>
+  </xs:complexType>
+  <xs:complexType name="CodeType">
+    <xs:sequence/>
+    <xs:attribute name="CodeRef" type="xs:IDREF">
+      <xs:annotation>
+        <xs:documentation xml:lang="en">Reference to Code ID</xs:documentation>
       </xs:annotation>
     </xs:attribute>
   </xs:complexType>
@@ -188,14 +234,11 @@ To provide maximum flexibility in the Core Vocabulary, whilst remaining interope
       <xs:element name="LocatorDesignator" type="xs:string" maxOccurs="unbounded" minOccurs="0">
         <xs:annotation>
           <xs:documentation xml:lang="en" source="#definition">A number or sequence of characters that uniquely identifies the locator within the relevant scope.</xs:documentation>
-          <xs:documentation xml:lang="en" source="#usage">In simpler terms, this is the building number, apartment number, etc. For an address such as "Flat 3, 17 Bridge Street", the locator is "flat 3, 17".
-
-</xs:documentation>
+          <xs:documentation xml:lang="en" source="#usage">In simpler terms, this is the building number, apartment number, etc. For an address such as "Flat 3, 17 Bridge Street", the locator is "flat 3, 17".</xs:documentation>
         </xs:annotation>
       </xs:element>
       <xs:element name="LocatorName" type="xs:string" maxOccurs="unbounded" minOccurs="0">
         <xs:annotation>
-          <xs:documentation xml:lang="en" source="#definition">Proper noun(s) applied to the real world entity identified by the locator.</xs:documentation>
           <xs:documentation xml:lang="en" source="#usage">The locator name could be the name of the property or complex, of the building or part of the building, or it could be the name of a room inside a building.
 &lt;br/&gt;&lt;br/&gt;
 The key difference between a locator designator and a locator name is that the latter is a proper name and is unlikely to include digits. For example, "Shumann, Berlaymont" is a meeting room within the European Commission headquarters for which locator name is more appropriate than locator.</xs:documentation>
@@ -402,6 +445,14 @@ A name usually sticks with a person for a long time period. In some European cou
     <xs:attribute name="AgentRef" type="xs:IDREF">
       <xs:annotation>
         <xs:documentation xml:lang="en">Reference to Agent ID</xs:documentation>
+      </xs:annotation>
+    </xs:attribute>
+  </xs:complexType>
+  <xs:complexType name="DocumentType">
+    <xs:sequence/>
+    <xs:attribute name="DocumentRef" type="xs:IDREF">
+      <xs:annotation>
+        <xs:documentation xml:lang="en">Reference to Document ID</xs:documentation>
       </xs:annotation>
     </xs:attribute>
   </xs:complexType>
