@@ -3,9 +3,15 @@
   <xs:element name="ContactPoint" type="ContactPointType"/>
   <xs:element name="Participation" type="ParticipationType"/>
   <xs:element name="PublicEvent" type="PublicEventType"/>
+  <xs:element name="LinguisticSystem" type="LinguisticSystemType"/>
+  <xs:element name="Text" type="TextType"/>
+  <xs:element name="Literal" type="LiteralType"/>
+  <xs:element name="Integer" type="IntegerType"/>
+  <xs:element name="Code" type="CodeType"/>
   <xs:element name="TemporalEntity" type="TemporalEntityType"/>
   <xs:element name="Address" type="AddressType"/>
   <xs:element name="Agent" type="AgentType"/>
+  <xs:element name="Document" type="DocumentType"/>
   <xs:complexType name="ContactPointType">
     <xs:sequence>
       <xs:element name="AvailabilityRestriction" type="TemporalEntityType" maxOccurs="unbounded" minOccurs="0">
@@ -13,7 +19,7 @@
           <xs:documentation xml:lang="en" source="#definition">The time during which the Contact Point is not available.</xs:documentation>
         </xs:annotation>
       </xs:element>
-      <xs:element name="ContactPage" maxOccurs="unbounded" minOccurs="0">
+      <xs:element name="ContactPage" type="DocumentType" maxOccurs="unbounded" minOccurs="0">
         <xs:annotation>
           <xs:documentation xml:lang="en" source="#definition">A web page that could be used to reach out the Contact Point.</xs:documentation>
         </xs:annotation>
@@ -120,6 +126,12 @@
           <xs:documentation xml:lang="en" source="#usage">Examples could be the ''4th" or "2022".</xs:documentation>
         </xs:annotation>
       </xs:element>
+      <xs:element name="EventStatus" type="conceptType" maxOccurs="unbounded" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation xml:lang="en" source="#definition"> This property defines the overall status of the event.</xs:documentation>
+          <xs:documentation xml:lang="en" source="#usage">The recomended code list is the &lt;a href="http://publications.europa.eu/resource/dataset/event-status"&gt;  Event Status Controlled vocabulary &lt;/a&gt; maintained by the Publications Office of the EU.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
       <xs:element name="EventType" type="conceptType" maxOccurs="unbounded" minOccurs="0">
         <xs:annotation>
           <xs:documentation xml:lang="en" source="#definition">The nature or genre of the Public Event. </xs:documentation>
@@ -127,6 +139,11 @@
 
 An existing classification from Publications Office could be used, see &lt;a href="
 https://op.europa.eu/en/web/eu-vocabularies/dataset/-/resource?uri=http://publications.europa.eu/resource/dataset/public-event-type"&gt;Public Event Type&lt;/a&gt;.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="ExpectedNumberOfParticipants" type="xs:integer" maxOccurs="unbounded" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation xml:lang="en" source="#definition">The number of participants expected to participate in the event.</xs:documentation>
         </xs:annotation>
       </xs:element>
       <xs:element name="Format" type="conceptType" maxOccurs="unbounded" minOccurs="0">
@@ -156,7 +173,7 @@ https://op.europa.eu/en/web/eu-vocabularies/dataset/-/resource?uri=http://public
           <xs:documentation xml:lang="en" source="#usage">This property can be used to specify date or time of a Public Event via the Temporal Entity class, see the &lt;a href="https://www.w3.org/TR/owl-time/#dtd-vs-dt"&gt;date time&lt;/a&gt; example from the Time ontology.</xs:documentation>
         </xs:annotation>
       </xs:element>
-      <xs:element name="Homepage" maxOccurs="unbounded" minOccurs="0">
+      <xs:element name="Homepage" type="DocumentType" maxOccurs="unbounded" minOccurs="0">
         <xs:annotation>
           <xs:documentation xml:lang="en" source="#definition">The website of the Public Event.</xs:documentation>
           <xs:documentation xml:lang="en" source="#usage">The value of this property is a URL.</xs:documentation>
@@ -167,7 +184,7 @@ https://op.europa.eu/en/web/eu-vocabularies/dataset/-/resource?uri=http://public
           <xs:documentation xml:lang="en" source="#definition">The unambiguous structured reference for the Public Event.</xs:documentation>
         </xs:annotation>
       </xs:element>
-      <xs:element name="Language" maxOccurs="unbounded" minOccurs="0">
+      <xs:element name="Language" type="LinguisticSystemType" maxOccurs="unbounded" minOccurs="0">
         <xs:annotation>
           <xs:documentation xml:lang="en" source="#definition">The language in which the Public Event is given.</xs:documentation>
           <xs:documentation xml:lang="en" source="#usage">The recommended controlled vocabularies for this property is the &lt;a href=" https://op.europa.eu/en/web/eu-vocabularies/concept-scheme/-/resource?uri=http://publications.europa.eu/resource/authority/language"&gt;Language&lt;/a&gt; Authority Table of the Publications Office.</xs:documentation>
@@ -178,7 +195,7 @@ https://op.europa.eu/en/web/eu-vocabularies/dataset/-/resource?uri=http://public
           <xs:documentation xml:lang="en" source="#definition">A relation to another Public Event that encompasses it.</xs:documentation>
         </xs:annotation>
       </xs:element>
-      <xs:element name="RegistrationPage" maxOccurs="unbounded" minOccurs="0">
+      <xs:element name="RegistrationPage" type="DocumentType" maxOccurs="unbounded" minOccurs="0">
         <xs:annotation>
           <xs:documentation xml:lang="en" source="#definition">A web page that provides means to attend the Public Event.</xs:documentation>
         </xs:annotation>
@@ -204,6 +221,46 @@ https://op.europa.eu/en/web/eu-vocabularies/dataset/-/resource?uri=http://public
     <xs:attribute name="PublicEventRef" type="xs:IDREF">
       <xs:annotation>
         <xs:documentation xml:lang="en">Reference to PublicEvent ID</xs:documentation>
+      </xs:annotation>
+    </xs:attribute>
+  </xs:complexType>
+  <xs:complexType name="LinguisticSystemType">
+    <xs:sequence/>
+    <xs:attribute name="LinguisticSystemRef" type="xs:IDREF">
+      <xs:annotation>
+        <xs:documentation xml:lang="en">Reference to LinguisticSystem ID</xs:documentation>
+      </xs:annotation>
+    </xs:attribute>
+  </xs:complexType>
+  <xs:complexType name="TextType">
+    <xs:sequence/>
+    <xs:attribute name="TextRef" type="xs:IDREF">
+      <xs:annotation>
+        <xs:documentation xml:lang="en">Reference to Text ID</xs:documentation>
+      </xs:annotation>
+    </xs:attribute>
+  </xs:complexType>
+  <xs:complexType name="LiteralType">
+    <xs:sequence/>
+    <xs:attribute name="LiteralRef" type="xs:IDREF">
+      <xs:annotation>
+        <xs:documentation xml:lang="en">Reference to Literal ID</xs:documentation>
+      </xs:annotation>
+    </xs:attribute>
+  </xs:complexType>
+  <xs:complexType name="IntegerType">
+    <xs:sequence/>
+    <xs:attribute name="IntegerRef" type="xs:IDREF">
+      <xs:annotation>
+        <xs:documentation xml:lang="en">Reference to Integer ID</xs:documentation>
+      </xs:annotation>
+    </xs:attribute>
+  </xs:complexType>
+  <xs:complexType name="CodeType">
+    <xs:sequence/>
+    <xs:attribute name="CodeRef" type="xs:IDREF">
+      <xs:annotation>
+        <xs:documentation xml:lang="en">Reference to Code ID</xs:documentation>
       </xs:annotation>
     </xs:attribute>
   </xs:complexType>
@@ -270,14 +327,11 @@ To provide maximum flexibility in the Core Vocabulary, whilst remaining interope
       <xs:element name="LocatorDesignator" type="xs:string" maxOccurs="unbounded" minOccurs="0">
         <xs:annotation>
           <xs:documentation xml:lang="en" source="#definition">A number or sequence of characters that uniquely identifies the locator within the relevant scope.</xs:documentation>
-          <xs:documentation xml:lang="en" source="#usage">In simpler terms, this is the building number, apartment number, etc. For an address such as "Flat 3, 17 Bridge Street", the locator is "flat 3, 17".
-
-</xs:documentation>
+          <xs:documentation xml:lang="en" source="#usage">In simpler terms, this is the building number, apartment number, etc. For an address such as "Flat 3, 17 Bridge Street", the locator is "flat 3, 17".</xs:documentation>
         </xs:annotation>
       </xs:element>
       <xs:element name="LocatorName" type="xs:string" maxOccurs="unbounded" minOccurs="0">
         <xs:annotation>
-          <xs:documentation xml:lang="en" source="#definition">Proper noun(s) applied to the real world entity identified by the locator.</xs:documentation>
           <xs:documentation xml:lang="en" source="#usage">The locator name could be the name of the property or complex, of the building or part of the building, or it could be the name of a room inside a building.
 &lt;br/&gt;&lt;br/&gt;
 The key difference between a locator designator and a locator name is that the latter is a proper name and is unlikely to include digits. For example, "Shumann, Berlaymont" is a meeting room within the European Commission headquarters for which locator name is more appropriate than locator.</xs:documentation>
@@ -340,6 +394,14 @@ The key difference between a locator designator and a locator name is that the l
     <xs:attribute name="AgentRef" type="xs:IDREF">
       <xs:annotation>
         <xs:documentation xml:lang="en">Reference to Agent ID</xs:documentation>
+      </xs:annotation>
+    </xs:attribute>
+  </xs:complexType>
+  <xs:complexType name="DocumentType">
+    <xs:sequence/>
+    <xs:attribute name="DocumentRef" type="xs:IDREF">
+      <xs:annotation>
+        <xs:documentation xml:lang="en">Reference to Document ID</xs:documentation>
       </xs:annotation>
     </xs:attribute>
   </xs:complexType>
