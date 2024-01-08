@@ -11,9 +11,14 @@
   <xs:element name="Requirement" type="RequirementType"/>
   <xs:element name="SupportedValue" type="SupportedValueType"/>
   <xs:element name="Location" type="LocationType"/>
+  <xs:element name="Literal" type="LiteralType"/>
+  <xs:element name="Decimal" type="DecimalType"/>
+  <xs:element name="Duration" type="DurationType"/>
+  <xs:element name="Code" type="CodeType"/>
   <xs:element name="PeriodOfTime" type="PeriodOfTimeType"/>
-  <xs:element name="Dataset" type="DatasetType"/>
   <xs:element name="Agent" type="AgentType"/>
+  <xs:element name="String" type="StringType"/>
+  <xs:element name="Instant" type="InstantType"/>
   <xs:complexType name="ConstraintType">
     <xs:sequence>
       <xs:element name="Constrains" type="InformationConceptType" maxOccurs="unbounded" minOccurs="0">
@@ -383,6 +388,38 @@ In the case where the purpose is to link the two Requirements without additional
       </xs:annotation>
     </xs:attribute>
   </xs:complexType>
+  <xs:complexType name="LiteralType">
+    <xs:sequence/>
+    <xs:attribute name="LiteralRef" type="xs:IDREF">
+      <xs:annotation>
+        <xs:documentation xml:lang="en">Reference to Literal ID</xs:documentation>
+      </xs:annotation>
+    </xs:attribute>
+  </xs:complexType>
+  <xs:complexType name="DecimalType">
+    <xs:sequence/>
+    <xs:attribute name="DecimalRef" type="xs:IDREF">
+      <xs:annotation>
+        <xs:documentation xml:lang="en">Reference to Decimal ID</xs:documentation>
+      </xs:annotation>
+    </xs:attribute>
+  </xs:complexType>
+  <xs:complexType name="DurationType">
+    <xs:sequence/>
+    <xs:attribute name="DurationRef" type="xs:IDREF">
+      <xs:annotation>
+        <xs:documentation xml:lang="en">Reference to Duration ID</xs:documentation>
+      </xs:annotation>
+    </xs:attribute>
+  </xs:complexType>
+  <xs:complexType name="CodeType">
+    <xs:sequence/>
+    <xs:attribute name="CodeRef" type="xs:IDREF">
+      <xs:annotation>
+        <xs:documentation xml:lang="en">Reference to Code ID</xs:documentation>
+      </xs:annotation>
+    </xs:attribute>
+  </xs:complexType>
   <xs:complexType name="PeriodOfTimeType">
     <xs:sequence>
       <xs:element name="Duration" type="xs:duration" maxOccurs="1" minOccurs="1">
@@ -391,13 +428,13 @@ In the case where the purpose is to link the two Requirements without additional
           <xs:documentation xml:lang="en" source="#usage">Amount of time between start time and end time.</xs:documentation>
         </xs:annotation>
       </xs:element>
-      <xs:element name="Endtime" type="xs:dateTime" maxOccurs="1" minOccurs="1">
+      <xs:element name="Endtime" type="InstantType" maxOccurs="1" minOccurs="1">
         <xs:annotation>
           <xs:documentation xml:lang="en" source="#definition">Time instant at which the Period was terminated.</xs:documentation>
           <xs:documentation xml:lang="en" source="#usage">For example, the property ends the duration during which an Evidence Type or an Evidence is considered valid. The duration must be equal to the time between the starttime and endtime.</xs:documentation>
         </xs:annotation>
       </xs:element>
-      <xs:element name="Starttime" type="xs:dateTime" maxOccurs="1" minOccurs="1">
+      <xs:element name="Starttime" type="InstantType" maxOccurs="1" minOccurs="1">
         <xs:annotation>
           <xs:documentation xml:lang="en" source="#definition">Time instant at which the Period was initiated.</xs:documentation>
           <xs:documentation xml:lang="en" source="#usage">For example, the property starts the duration during which an Evidence Type or an Evidence is considered valid. The duration must be equal to the time between the starttime and endtime.</xs:documentation>
@@ -410,25 +447,27 @@ In the case where the purpose is to link the two Requirements without additional
       </xs:annotation>
     </xs:attribute>
   </xs:complexType>
-  <xs:complexType name="DatasetType">
-    <xs:sequence>
-      <xs:element name="Identifier" type="xs:string" maxOccurs="1" minOccurs="1">
-        <xs:annotation>
-          <xs:documentation xml:lang="en" source="#definition">Unambiguous reference to the Dataset.</xs:documentation>
-        </xs:annotation>
-      </xs:element>
-    </xs:sequence>
-    <xs:attribute name="DatasetRef" type="xs:IDREF">
-      <xs:annotation>
-        <xs:documentation xml:lang="en">Reference to Dataset ID</xs:documentation>
-      </xs:annotation>
-    </xs:attribute>
-  </xs:complexType>
   <xs:complexType name="AgentType">
     <xs:sequence/>
     <xs:attribute name="AgentRef" type="xs:IDREF">
       <xs:annotation>
         <xs:documentation xml:lang="en">Reference to Agent ID</xs:documentation>
+      </xs:annotation>
+    </xs:attribute>
+  </xs:complexType>
+  <xs:complexType name="StringType">
+    <xs:sequence/>
+    <xs:attribute name="StringRef" type="xs:IDREF">
+      <xs:annotation>
+        <xs:documentation xml:lang="en">Reference to String ID</xs:documentation>
+      </xs:annotation>
+    </xs:attribute>
+  </xs:complexType>
+  <xs:complexType name="InstantType">
+    <xs:sequence/>
+    <xs:attribute name="InstantRef" type="xs:IDREF">
+      <xs:annotation>
+        <xs:documentation xml:lang="en">Reference to Instant ID</xs:documentation>
       </xs:annotation>
     </xs:attribute>
   </xs:complexType>
