@@ -549,7 +549,7 @@ The main entities are those that form the core of the Application Profile.
                     Definition
                 </dt>
                 <dd>
-                    Any entity carrying out actions with respect to the (Core) entities Catalogue, Datasets, Data Services and Distributions.
+                    Any entity carrying out actions with respect to the entities Catalogue and the Catalogued Resources.
                 </dd>
                 
 		<dt>
@@ -685,7 +685,7 @@ The main entities are those that form the core of the Application Profile.
                                     0..1
                                 </td>
                                 <td property="rdfs:comment">
-                                    A type of the agent that makes the Catalogue or Dataset available.
+                                    The nature of the agent.
                                 </td>
                                 <td property="skos:scopeNote">
                                     
@@ -1611,7 +1611,7 @@ The main entities are those that form the core of the Application Profile.
                                     0..*
                                 </td>
                                 <td property="rdfs:comment">
-                                    A knowledge organization system used to classify the Catalogue&#39;s Datasets.
+                                    A knowledge organization system used to classify the Resources that are in the Catalogue.
                                 </td>
                                 <td property="skos:scopeNote">
                                     This property refers to a knowledge organization system used to classify the Catalogue's Datasets. It must have at least the value NAL:data-theme as this is the manatory controlled vocabulary for dcat:theme.
@@ -1700,7 +1700,7 @@ The main entities are those that form the core of the Application Profile.
                     Definition
                 </dt>
                 <dd>
-                    A description of a Dataset&#39;s entry in the Catalogue.
+                    A description of a Catalogued Resources entry in the Catalogue.
                 </dd>
                 
 		<dt>
@@ -1790,10 +1790,10 @@ The main entities are those that form the core of the Application Profile.
                                     
                                 </td>
                                 <td>
-                                    0..1
+                                    0..*
                                 </td>
                                 <td property="rdfs:comment">
-                                    An Application Profile that the Dataset&#39;s metadata conforms to.
+                                    An Application Profile that the Catalogued Resources metadata conforms to.
                                 </td>
                                 <td property="skos:scopeNote">
                                     
@@ -1922,7 +1922,7 @@ The main entities are those that form the core of the Application Profile.
                                     0..*
                                 </td>
                                 <td property="rdfs:comment">
-                                    A language used in the textual metadata describing titles, descriptions, etc. of the Dataset.
+                                    A language used in the textual metadata describing titles, descriptions, etc. of the Catalogued Resource.
                                 </td>
                                 <td property="skos:scopeNote">
                                     This property can be repeated if the metadata is provided in multiple languages.
@@ -1965,7 +1965,7 @@ The main entities are those that form the core of the Application Profile.
                                     0..1
                                 </td>
                                 <td property="rdfs:comment">
-                                    The date on which the description of the Dataset was included in the Catalogue.
+                                    The date on which the description of the Resource was included in the Catalogue.
                                 </td>
                                 <td property="skos:scopeNote">
                                     
@@ -2454,6 +2454,7 @@ The main entities are those that form the core of the Application Profile.
                         <dd>
                             For this entity the following properties are defined: <a href="#DataService.accessrights">access rights</a>
                             , <a href="#DataService.applicablelegislation">applicable legislation</a>
+                            , <a href="#DataService.applicationprofile">application profile</a>
                             , <a href="#DataService.description">description</a>
                             , <a href="#DataService.endpointdescription">endpoint description</a>
                             , <a href="#DataService.endpointURL">endpoint URL</a>
@@ -2583,6 +2584,49 @@ The main entities are those that form the core of the Application Profile.
 				-->
                                 <td>
                                     
+                                </td>
+                            </tr>
+                        
+                            <tr id="DataService.applicationprofile"
+                                typeof="rdfs:Property"
+                                resource="http://purl.org/dc/terms/conformsTo"
+                                class="class mandatory">
+                                <td>
+				    <a href="https://github.com/SEMICeu/DCAT-AP/issues/new?title=Issue%20for%20application profile%20in%20Data Service&body=Explain%20your%20issue%20for%20https://semiceu.github.io//DCAT-AP/releases/3.0.0%23DataService.applicationprofile" target="_blank" rel="noopener noreferrer" >
+					    <!--                                        <i class="icon">[o]</i> -->
+                                        <img src="html/callout.png" loading="lazy" alt="[o]" width="100" height="100"/>
+                                    </a>
+                                </td>
+                                <td>
+                                        <a href="http://purl.org/dc/terms/conformsTo"
+                                           data-toggle="tooltip"
+                                           data-content="http://purl.org/dc/terms/conformsTo"
+                                           data-placement="right">
+                                        application profile</a>
+                                </td>
+                                <td>
+                                    
+                                        
+                                            <a href="#Standard" data-placement="right">Standard</a>
+                                        
+                                    
+                                </td>
+                                <td>
+                                    1
+                                </td>
+                                <td property="rdfs:comment">
+                                    An Application Profile that the Catalogued Resources metadata conforms to.
+                                </td>
+                                <td property="skos:scopeNote">
+                                    
+                                </td>
+				<!--
+                                <td>
+                                    
+                                </td>
+				-->
+                                <td>
+                                    <a href="https://www.w3.org/TR/vocab-dcat-3/#Property:record_conforms_to">Link</a>
                                 </td>
                             </tr>
                         
@@ -3214,10 +3258,10 @@ The main entities are those that form the core of the Application Profile.
                                     
                                 </td>
                                 <td>
-                                    0..1
+                                    0..*
                                 </td>
                                 <td property="rdfs:comment">
-                                    Ae entity responsible for producing the dataset.
+                                    An entity responsible for producing the dataset.
                                 </td>
                                 <td property="skos:scopeNote">
                                     
@@ -9151,7 +9195,7 @@ The difference between downloading a file or accessing the data through a servic
 </ul>
 
 </p><p>
-Orthogonal to the nature clarification of distributions and data services, there might be need for a granularity clarification between datasets and distributions. Commonly, at first sight, it is expected that all distributions of a dataset are identical in content, only differing in the representation of the data. But the when considering dataset series, this interpretation seems not valid anymore. In the upcoming release of DCAT 3.0, dataset series and dataset versioning are addressed. Implementors are advised to already take this proposal into account when creating guidelines for distributions. Note that this is less an issue between datasets and data services as both are independent entities. Data services usually address the granularity by providing the necessary query interface language so that the user can get the data according its needs.
+Orthogonal to the nature clarification of distributions and data services, there might be need for a granularity clarification between datasets and distributions. Commonly, at first sight, it is expected that all distributions of a dataset are identical in content, only differing in the representation of the data. But when considering dataset series, this interpretation seems not valid anymore. In the upcoming release of DCAT 3.0, dataset series and dataset versioning are addressed. Implementors are advised to already take this proposal into account when creating guidelines for distributions. Note that this is less an issue between datasets and data services as both are independent entities. Data services usually address the granularity by providing the necessary query interface language so that the user can get the data according its needs.
 
 </p><p>
 These guidelines will be able to capture many access patterns, corresponding to most users' expectations. However there might be cases that are more vague. In that case the DCAT(-AP) community can be questioned for a recommended approach.
@@ -9231,7 +9275,7 @@ Implementing the DCAT-AP data specification in a data exchange between two syste
 <h4>JSON-LD context file</h4>
 
 One common technical question is the format in which the data is being exchanged. 
-For DCAT-AP conformance, it is not mandatory that this happens in a RDF serialisation, but the exhanged format SHOULD be unambiguously be transformable into RDF.
+For DCAT-AP conformance, it is not mandatory that this happens in a RDF serialisation, but the exchanged format SHOULD be unambiguously be transformable into RDF.
 For the format JSON, a popular format to exchange data between systems, DCAT-AP provides a <a href="./context/dcat-ap.jsonld">JSON-LD context file</a>. 
 JSON-LD is a W3C Recommendation [[[json-ld11]]] that provided a standard approach to interpret JSON structures as RDF.
 The provided JSON-LD context file can be used by implementers to base their data exchange upon, and so create a DCAT-AP conformant data exchange.
@@ -9259,11 +9303,11 @@ As it should be possible for DCAT-AP conformance to transform the data exchange 
 However, likewise the use of the JSON-LD context, the provided SHACL shapes provide only a start point for implementers. 
 <p/>
 The shapes that can be derived from the DCAT-AP specification have the following usage limitations.
-Shapes may check situations that never occur in the implemented data exchange and result in messages that confuse publishers, or they are to general and more detailed checks should be implemented. 
+Shapes may check situations that never occur in the implemented data exchange and result in messages that confuse publishers, or they are too general and more detailed checks should be implemented. 
 For example, the nature of a licence is recommended by DCAT-AP, but most DCAT-AP exchanges assume that based on the URI of the licence this information is known. 
 Thus the check that a licence should have a licence type is considered often not relevant for the individual publishers. 
 However they might support catalogue maintainers to guide individual publishers to use well-documented licence URIs.
-The case that a title cannot be an empty string and must have a value is a specific language are examples of more detailed constraints that are not present in the provided DCAT-AP SHACL shapes.
+The case that a title cannot be an empty string and must have a value in a specific language are examples of more detailed constraints that are not present in the provided DCAT-AP SHACL shapes.
 <p/>
 More on the validation and the provided SHACL shapes can be found in section [[[#validation-of-dcat-ap]]].
 
@@ -9448,7 +9492,7 @@ All this can be combined in one dataset series about the Bee population. Doing s
 less a structured sequence of yearly snapshots of the Bee population data, but more a collection of datasets around the same topic.
 Likewise DCAT, DCAT-AP does not limit the use of dataset series to a strict interpretation. Making this approach acceptable. 
 Nevertheless users usually expect that the datasets of a Dataset Series are strongly related, and the notion of a series or sequence is somehow present in the collection.
-Diverging too far from this interpretion is not recommended.
+Diverging too far from this interpretation is not recommended.
 The alternative for dataset series for grouping datasets are catalogues. 
 <p/>
 Thus to conclude the example of maintaining a Dataset Series, the Greek Environment Agency has created a Dataset Series about the Bee population in Greece.
@@ -10067,6 +10111,8 @@ The properties are indicated as <it>mandatory, recommended, optional</it> and <i
 						
 					
 						
+					
+						
 							<tr>
 								<td><a href="#DataService">Data Service</a></td>
 								<td><div class="shorten">http://www.w3.org/ns/dcat#DataService</div></td>
@@ -10095,6 +10141,16 @@ The properties are indicated as <it>mandatory, recommended, optional</it> and <i
 					
 						
 					
+						
+					
+						
+							<tr>
+								<td><a href="#DataService">Data Service</a></td>
+								<td><div class="shorten">http://www.w3.org/ns/dcat#DataService</div></td>
+								<td>Recommended</td>
+								<td><a href="#DataService.applicationprofile">application profile </a></td>
+								<td><div class="shorten">http://purl.org/dc/terms/conformsTo</div></td>
+							</tr>
 						
 					
 						
@@ -10146,6 +10202,8 @@ The properties are indicated as <it>mandatory, recommended, optional</it> and <i
 								<td><a href="#DataService.applicablelegislation">applicable legislation </a></td>
 								<td><div class="shorten">http://data.europa.eu/r5r/applicableLegislation</div></td>
 							</tr>
+						
+					
 						
 					
 						

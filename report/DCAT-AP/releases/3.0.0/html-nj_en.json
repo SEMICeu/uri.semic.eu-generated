@@ -16,8 +16,8 @@
     },
     "status": "https://www.w3.org/2021/Process-20211102/#RecsCR",
     "statuslabel": "Onbekend",
-    "repositoryurl": "git@semicthema-DCAT-AP:SEMICeu/Semicthema-DCAT-AP.git/tree/96fee5c99b7f001c4e5fec5ffdcc5e38d9f472aa",
-    "changelogurl": "git@semicthema-DCAT-AP:SEMICeu/Semicthema-DCAT-AP.git/blob/96fee5c99b7f001c4e5fec5ffdcc5e38d9f472aa/CHANGELOG",
+    "repositoryurl": "git@semicthema-DCAT-AP:SEMICeu/Semicthema-DCAT-AP.git/tree/39445afc865138556a24075bc2997bc88eded2e2",
+    "changelogurl": "git@semicthema-DCAT-AP:SEMICeu/Semicthema-DCAT-AP.git/blob/39445afc865138556a24075bc2997bc88eded2e2/CHANGELOG",
     "feedbackurl": "https://github.com/SEMICeu/DCAT-AP/issues",
     "standaardregisterurl": "https://semiceu.github.io/DCAT-AP/releases/3.0.0/CHANGELOG.html",
     "usesVocs": [],
@@ -1746,7 +1746,7 @@
             "en": "themes"
           },
           "description": {
-            "en": "A knowledge organization system used to classify the Catalogue's Datasets."
+            "en": "A knowledge organization system used to classify the Resources that are in the Catalogue."
           },
           "usage": {
             "en": "This property refers to a knowledge organization system used to classify the Catalogue's Datasets. It must have at least the value NAL:data-theme as this is the manatory controlled vocabulary for dcat:theme."
@@ -1776,7 +1776,7 @@
           "codelist_uri": "",
           "rawTags": {
             "ap-label-en": "themes",
-            "ap-definition-en": "A knowledge organization system used to classify the Catalogue's Datasets.",
+            "ap-definition-en": "A knowledge organization system used to classify the Resources that are in the Catalogue.",
             "uri": "http://www.w3.org/ns/dcat#themeTaxonomy",
             "property-usage-scope": "recommended",
             "DCAT": "https://www.w3.org/TR/vocab-dcat-3/#Property:catalog_themes",
@@ -1835,14 +1835,14 @@
       },
       "sort": "Catalogue Record",
       "description": {
-        "en": "A description of a Dataset's entry in the Catalogue."
+        "en": "A description of a Catalogued Resources entry in the Catalogue."
       },
       "usage": {},
       "parents": [],
       "rawTags": {
         "ap-label-en": "Catalogue Record",
         "uri": "http://www.w3.org/ns/dcat#CatalogRecord",
-        "ap-definition-en": "A description of a Dataset's entry in the Catalogue.",
+        "ap-definition-en": "A description of a Catalogued Resources entry in the Catalogue.",
         "DCAT": "https://www.w3.org/TR/vocab-dcat-3/#Class:Catalog_Record",
         "class-usage-scope": "main"
       },
@@ -1855,7 +1855,7 @@
             "en": "application profile"
           },
           "description": {
-            "en": "An Application Profile that the Dataset's metadata conforms to."
+            "en": "An Application Profile that the Catalogued Resources metadata conforms to."
           },
           "usage": {},
           "domain": [
@@ -1879,12 +1879,12 @@
               }
             }
           ],
-          "cardinality": "0..1",
+          "cardinality": "0..*",
           "codelist_uri": "",
           "rawTags": {
             "ap-label-en": "application profile",
             "uri": "http://purl.org/dc/terms/conformsTo",
-            "ap-definition-en": "An Application Profile that the Dataset's metadata conforms to.",
+            "ap-definition-en": "An Application Profile that the Catalogued Resources metadata conforms to.",
             "property-usage-scope": "recommended",
             "DCAT": "https://www.w3.org/TR/vocab-dcat-3/#Property:record_conforms_to"
           }
@@ -1939,7 +1939,7 @@
             "en": "listing date"
           },
           "description": {
-            "en": "The date on which the description of the Dataset was included in the Catalogue."
+            "en": "The date on which the description of the Resource was included in the Catalogue."
           },
           "usage": {},
           "domain": [
@@ -1968,7 +1968,7 @@
           "rawTags": {
             "ap-label-en": "listing date",
             "uri": "http://purl.org/dc/terms/issued",
-            "ap-definition-en": "The date on which the description of the Dataset was included in the Catalogue.",
+            "ap-definition-en": "The date on which the description of the Resource was included in the Catalogue.",
             "property-usage-scope": "recommended",
             "DCAT": "https://www.w3.org/TR/vocab-dcat-3/#Property:record_listing_date"
           }
@@ -1981,7 +1981,7 @@
             "en": "language"
           },
           "description": {
-            "en": "A language used in the textual metadata describing titles, descriptions, etc. of the Dataset."
+            "en": "A language used in the textual metadata describing titles, descriptions, etc. of the Catalogued Resource."
           },
           "usage": {
             "en": "This property can be repeated if the metadata is provided in multiple languages."
@@ -2012,7 +2012,7 @@
           "rawTags": {
             "ap-label-en": "language",
             "uri": "http://purl.org/dc/terms/language",
-            "ap-definition-en": "A language used in the textual metadata describing titles, descriptions, etc. of the Dataset.",
+            "ap-definition-en": "A language used in the textual metadata describing titles, descriptions, etc. of the Catalogued Resource.",
             "ap-usageNote-en": "This property can be repeated if the metadata is provided in multiple languages.",
             "property-usage-scope": "optional"
           }
@@ -2342,6 +2342,48 @@
             "ap-definition-en": "Information regarding access or restrictions based on privacy, security, or other policies.",
             "property-usage-scope": "optional",
             "DCAT": "https://www.w3.org/TR/vocab-dcat-3/#Property:resource_access_rights"
+          }
+        },
+        {
+          "uri": "http://purl.org/dc/terms/conformsTo",
+          "name": "applicationProfile",
+          "sort": "application profile",
+          "label": {
+            "en": "application profile"
+          },
+          "description": {
+            "en": "An Application Profile that the Catalogued Resources metadata conforms to."
+          },
+          "usage": {},
+          "domain": [
+            {
+              "EA-Name": "dcat:DataService",
+              "uri": "http://www.w3.org/ns/dcat#DataService"
+            }
+          ],
+          "range": [
+            {
+              "range_label": "dct:Standard",
+              "range_uri": "http://purl.org/dc/terms/Standard"
+            }
+          ],
+          "scopedrange": [
+            {
+              "range_uri": "#Standard",
+              "range_puri": "http://purl.org/dc/terms/Standard",
+              "range_label": {
+                "en": "Standard"
+              }
+            }
+          ],
+          "cardinality": "1",
+          "codelist_uri": "",
+          "rawTags": {
+            "property-usage-scope": "recommended",
+            "ap-definition-en": "An Application Profile that the Catalogued Resources metadata conforms to.",
+            "uri": "http://purl.org/dc/terms/conformsTo",
+            "ap-label-en": "application profile",
+            "DCAT": "https://www.w3.org/TR/vocab-dcat-3/#Property:record_conforms_to"
           }
         },
         {
@@ -2851,7 +2893,7 @@
             "en": "creator"
           },
           "description": {
-            "en": "Ae entity responsible for producing the dataset."
+            "en": "An entity responsible for producing the dataset."
           },
           "usage": {},
           "domain": [
@@ -2875,12 +2917,12 @@
               }
             }
           ],
-          "cardinality": "0..1",
+          "cardinality": "0..*",
           "codelist_uri": "",
           "rawTags": {
             "ap-label-en": "creator",
             "uri": "http://purl.org/dc/terms/creator",
-            "ap-definition-en": "Ae entity responsible for producing the dataset.",
+            "ap-definition-en": "An entity responsible for producing the dataset.",
             "property-usage-scope": "optional",
             "DCAT": "https://www.w3.org/TR/vocab-dcat-3/#Property:resource_creator"
           }
@@ -6390,7 +6432,7 @@
       },
       "sort": "Agent",
       "description": {
-        "en": "Any entity carrying out actions with respect to the (Core) entities Catalogue, Datasets, Data Services and Distributions."
+        "en": "Any entity carrying out actions with respect to the entities Catalogue and the Catalogued Resources."
       },
       "usage": {
         "en": "If the Agent is an organisation, the use of the <a href=\"https://www.w3.org/TR/vocab-org/\">Organization Ontology</a> is recommended."
@@ -6399,7 +6441,7 @@
       "rawTags": {
         "ap-label-en": "Agent",
         "uri": "http://xmlns.com/foaf/0.1/Agent",
-        "ap-definition-en": "Any entity carrying out actions with respect to the (Core) entities Catalogue, Datasets, Data Services and Distributions.",
+        "ap-definition-en": "Any entity carrying out actions with respect to the entities Catalogue and the Catalogued Resources.",
         "ap-usageNote-en": "If the Agent is an organisation, the use of the <a href=\"https://www.w3.org/TR/vocab-org/\">Organization Ontology</a> is recommended.",
         "DCAT": "https://www.w3.org/TR/vocab-dcat-3/#Class:Organization_Person",
         "class-usage-scope": "main"
@@ -6413,7 +6455,7 @@
             "en": "type"
           },
           "description": {
-            "en": "A type of the agent that makes the Catalogue or Dataset available."
+            "en": "The nature of the agent."
           },
           "usage": {},
           "domain": [
@@ -6442,7 +6484,7 @@
           "rawTags": {
             "ap-label-en": "type",
             "uri": "http://purl.org/dc/terms/type",
-            "ap-definition-en": "A type of the agent that makes the Catalogue or Dataset available.",
+            "ap-definition-en": "The nature of the agent.",
             "property-usage-scope": "recommended"
           }
         },
