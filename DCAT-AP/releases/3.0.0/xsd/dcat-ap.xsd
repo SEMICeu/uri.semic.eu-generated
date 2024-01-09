@@ -515,6 +515,11 @@
   </xs:complexType>
   <xs:complexType name="DataServiceType">
     <xs:sequence>
+      <xs:element name="ContactPoint" type="KindType" maxOccurs="unbounded" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation xml:lang="en" source="#definition">Contact information that can be used for sending comments about the Data Service.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
       <xs:element name="EndpointDescription" type="ResourceType" maxOccurs="unbounded" minOccurs="0">
         <xs:annotation>
           <xs:documentation xml:lang="en" source="#definition">A description of the services available via the end-points, including their operations, parameters etc.</xs:documentation>
@@ -526,9 +531,26 @@
           <xs:documentation xml:lang="en" source="#definition">The root location or primary endpoint of the service (an IRI).</xs:documentation>
         </xs:annotation>
       </xs:element>
+      <xs:element name="Keyword" type="xs:string" maxOccurs="unbounded" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation xml:lang="en" source="#definition">A keyword or tag describing the Data Service.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="LandingPage" type="DocumentType" maxOccurs="unbounded" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation xml:lang="en" source="#definition">A web page that provides access to the Data Service and/or additional information.</xs:documentation>
+          <xs:documentation xml:lang="en" source="#usage">It is intended to point to a landing page at the original data service provider, not to a page on a site of a third party, such as an aggregator.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
       <xs:element name="ServesDataset" type="DatasetType" maxOccurs="unbounded" minOccurs="0">
         <xs:annotation>
           <xs:documentation xml:lang="en" source="#definition">This property refers to a collection of data that this data service can distribute.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="Theme" type="conceptType" maxOccurs="unbounded" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation xml:lang="en" source="#definition">A category of the Data Service.</xs:documentation>
+          <xs:documentation xml:lang="en" source="#usage">A Data Service may be associated with multiple themes.</xs:documentation>
         </xs:annotation>
       </xs:element>
       <xs:element name="ApplicableLegislation" type="LegalResourceType" maxOccurs="unbounded" minOccurs="0">
@@ -541,7 +563,7 @@
           <xs:documentation xml:lang="en" source="#definition">Information regarding access or restrictions based on privacy, security, or other policies.</xs:documentation>
         </xs:annotation>
       </xs:element>
-      <xs:element name="ApplicationProfile" type="StandardType" maxOccurs="1" minOccurs="1">
+      <xs:element name="ApplicationProfile" type="StandardType" maxOccurs="unbounded" minOccurs="0">
         <xs:annotation>
           <xs:documentation xml:lang="en" source="#definition">An Application Profile that the Catalogued Resources metadata conforms to.</xs:documentation>
         </xs:annotation>
