@@ -1,36 +1,39 @@
-@prefix adms: <http://www.w3.org/ns/adms#> .
 @prefix cv: <http://data.europa.eu/m8g/> .
+@prefix dct: <http://purl.org/dc/terms/> .
 @prefix ex: <http://example.com/> .
-@prefix legal: <http://www.w3.org/ns/legal#> .
-@prefix legal-form: <http://data.europa.eu/ih3/legal-form/> .
-@prefix locn: <http://w3.org/ns/locn#> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+@prefix locn: <http://www.w3.org/ns/locn#> .
+@prefix person: <http://www.w3.org/ns/person#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
 @prefix skos: <http://www.w3.org/2004/02/skos/core#> .
 @prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
 
-ex:a a legal:LegalEntity ;
-  cv:contactPoint ex:contact ;
-  cv:hasAccountingDocument <https://consult.cbso.nbb.be/api/external/broker/public/deposits/pdf/cc971deb-e4e6-11ed-aeda-4b1195f209e0> ;
-  legal:companyActivity <http://data.europa.eu/ux2/nace2.1/9499> ;
-  legal:companyType legal-form:gl-c-3d9a96e91d2af17bc2d4ca176bb53938 ;
-  legal:legalIdentifier ex:id ;
-  legal:legalName "Comité belge pour l'UNICEF"@fr ;
-  legal:legalName "Belgisch Comite voor UNICEF"@nl ;
-  cv:registeredAddress ex:address ;
-  cv:registrationDate "1952-09-27"^^xsd:date .
-  
-
-ex:id a adms:Identifier ;
-  skos:notation "0407.562.029" .
+ex:person a person:Person ;
+  person:birthName "René François Ghislain Magritte"@fr ;
+  cv:birthDate "1898-11-21"^^xsd:date ;
+  cv:deathDate "1967-08-15"^^xsd:date ;
+  cv:domicile ex:address ;
+  foaf:familyName "Magritte"@fr ;
+  foaf:name "René François Ghislain Magritte"@fr ;
+  foaf:givenName "René François Ghislain"@fr ;
+  person:placeOfBirth ex:location1 ;
+  person:placeOfDeath ex:location2 ;
+  cv:sex <http://publications.europa.eu/resource/authority/human-sex/MALE> .
 
 ex:address a locn:Address ;
   locn:adminUnitL1 "Belgique"@fr ;
   locn:adminUnitL2 "Région de Bruxelles-Capitale"@fr ;
-  locn:fullAddress "Rue Picard 7/306, 1000 Bruxelles, Belgique"@fr ;
-  locn:locatorDesignator "7/306" ;
-  locn:postCode "1000" ;
+  locn:fullAddress "Rue Esseghem 135, 1090 Bruxelles, Belgique"@fr ;
+  locn:locatorDesignator "135" ;
+  locn:postCode "1090" ;
   locn:postName "Bruxelles"@fr ;
-  locn:thoroughfare "Rue Picard" .
+  locn:thoroughfare "Rue Esseghem" .
 
-ex:contact a cv:ContactPoint ;
-  cv:telephone "+32 2 230 59 70" ;
-  cv:email "info@unicef.be" .
+ex:location1 a dct:Location ;
+  rdfs:seeAlso <https://www.geonames.org/2792567> ;
+  locn:geographicName "Lessines"@fr .
+
+ex:location2 a dct:Location ;
+  rdfs:seeAlso <https://www.geonames.org/2800866> ;
+  locn:geographicName "Bruxelles"@fr .
