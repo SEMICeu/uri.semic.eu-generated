@@ -44,26 +44,26 @@
   </xs:complexType>
   <xs:complexType name="CriterionType">
     <xs:sequence>
-      <xs:element name="Bias" type="xs:decimal" maxOccurs="1" minOccurs="1">
+      <xs:element name="Bias" type="xs:decimal" maxOccurs="unbounded" minOccurs="0">
         <xs:annotation>
           <xs:documentation xml:lang="en" source="#definition">Parameter used to adjust the evaluation of the Criterion.</xs:documentation>
           <xs:documentation xml:lang="en" source="#usage">The bias parameter tries to correct a systematic error. For example in procurement, a home bias corresponds to the "presence of local preferences distorting international specialisation and resource allocation". [https://trade.ec.europa.eu/doclib/docs/2018/september/tradoc_157319.pdf]
 When quantified, this systematic error can be removed.</xs:documentation>
         </xs:annotation>
       </xs:element>
-      <xs:element name="Weight" type="xs:decimal" maxOccurs="1" minOccurs="1">
+      <xs:element name="Weight" type="xs:decimal" maxOccurs="unbounded" minOccurs="0">
         <xs:annotation>
           <xs:documentation xml:lang="en" source="#definition">Relative importance of the Criterion.</xs:documentation>
           <xs:documentation xml:lang="en" source="#usage">The weight must be between 0 and 1. Usually, all Criteria can be integrated within a weighted sum equal to 1.</xs:documentation>
         </xs:annotation>
       </xs:element>
-      <xs:element name="WeightingConsiderationDescription" type="xs:string" maxOccurs="1" minOccurs="1">
+      <xs:element name="WeightingConsiderationDescription" type="xs:string" maxOccurs="unbounded" minOccurs="0">
         <xs:annotation>
           <xs:documentation xml:lang="en" source="#definition">Explanation of how the weighting of a Criterion is to be used.</xs:documentation>
           <xs:documentation xml:lang="en" source="#usage">This description gives the view of the creator of the Criterion weights on how to interpret and use them during the evaluation process.</xs:documentation>
         </xs:annotation>
       </xs:element>
-      <xs:element name="WeightingType" type="conceptType" maxOccurs="1" minOccurs="1">
+      <xs:element name="WeightingType" type="conceptType" maxOccurs="unbounded" minOccurs="0">
         <xs:annotation>
           <xs:documentation xml:lang="en" source="#definition">Indication of how the weight should be interpreted in a complex evaluation expression, e.g. as a percentage in an evaluation expression.</xs:documentation>
           <xs:documentation xml:lang="en" source="#usage">An existing codelist http://publications.europa.eu/resource/authority/number-weight
@@ -79,7 +79,7 @@ Example see: https://docs.ted.europa.eu/eforms/0.3.0/index.html#awardCriteriaSec
   </xs:complexType>
   <xs:complexType name="EvidenceType">
     <xs:sequence>
-      <xs:element name="ConfidentialityLevelType" type="conceptType" maxOccurs="1" minOccurs="1">
+      <xs:element name="ConfidentialityLevelType" type="conceptType" maxOccurs="unbounded" minOccurs="0">
         <xs:annotation>
           <xs:documentation xml:lang="en" source="#definition">Security classification assigned to an Evidence e.g. classified, sensitive, public.</xs:documentation>
           <xs:documentation xml:lang="en" source="#usage">Classifications should be defined by an organisation/country as an outcome of a security assessment.</xs:documentation>
@@ -144,13 +144,13 @@ Example see: https://docs.ted.europa.eu/eforms/0.3.0/index.html#awardCriteriaSec
   </xs:complexType>
   <xs:complexType name="EvidenceTypeType">
     <xs:sequence>
-      <xs:element name="EvidenceTypeClassification" type="conceptType" maxOccurs="1" minOccurs="1">
+      <xs:element name="EvidenceTypeClassification" type="conceptType" maxOccurs="unbounded" minOccurs="0">
         <xs:annotation>
           <xs:documentation xml:lang="en" source="#definition">Category to which the Evidence Type belongs.</xs:documentation>
           <xs:documentation xml:lang="en" source="#usage">The categories agreed are left open but could for example specify the layout and content expected for an Evidence.</xs:documentation>
         </xs:annotation>
       </xs:element>
-      <xs:element name="Identifier" type="xs:string" maxOccurs="1" minOccurs="1">
+      <xs:element name="Identifier" type="xs:string" maxOccurs="unbounded" minOccurs="0">
         <xs:annotation>
           <xs:documentation xml:lang="en" source="#definition">Unambiguous reference to the Evidence Type.</xs:documentation>
         </xs:annotation>
@@ -181,18 +181,18 @@ Example see: https://docs.ted.europa.eu/eforms/0.3.0/index.html#awardCriteriaSec
   </xs:complexType>
   <xs:complexType name="EvidenceTypeListType">
     <xs:sequence>
-      <xs:element name="Description" type="xs:string" maxOccurs="1" minOccurs="1">
+      <xs:element name="Description" type="xs:string" maxOccurs="unbounded" minOccurs="0">
         <xs:annotation>
           <xs:documentation xml:lang="en" source="#definition">Short explanation supporting the understanding of the Evidence Type List.</xs:documentation>
           <xs:documentation xml:lang="en" source="#usage">The explanation can include information about the nature, attributes, uses or any other additional information about the Evidence Type List.</xs:documentation>
         </xs:annotation>
       </xs:element>
-      <xs:element name="Identifier" type="xs:string" maxOccurs="1" minOccurs="1">
+      <xs:element name="Identifier" type="xs:string" maxOccurs="unbounded" minOccurs="0">
         <xs:annotation>
           <xs:documentation xml:lang="en" source="#definition">Unambiguous reference to the Evidence Type List.</xs:documentation>
         </xs:annotation>
       </xs:element>
-      <xs:element name="Name" type="xs:string" maxOccurs="1" minOccurs="1">
+      <xs:element name="Name" type="xs:string" maxOccurs="unbounded" minOccurs="0">
         <xs:annotation>
           <xs:documentation xml:lang="en" source="#definition">Name of the Evidence Type List.</xs:documentation>
         </xs:annotation>
@@ -211,13 +211,13 @@ Example see: https://docs.ted.europa.eu/eforms/0.3.0/index.html#awardCriteriaSec
   </xs:complexType>
   <xs:complexType name="InformationConceptType">
     <xs:sequence>
-      <xs:element name="Description" type="xs:string" maxOccurs="1" minOccurs="1">
+      <xs:element name="Description" type="xs:string" maxOccurs="unbounded" minOccurs="0">
         <xs:annotation>
           <xs:documentation xml:lang="en" source="#definition">Short explanation supporting the understanding of the Information Concept.</xs:documentation>
           <xs:documentation xml:lang="en" source="#usage">The explanation can include information about the nature, attributes, uses or any other additional information about the Information Concept.</xs:documentation>
         </xs:annotation>
       </xs:element>
-      <xs:element name="ExpressionOfExpectedValue" type="xs:string" maxOccurs="1" minOccurs="1">
+      <xs:element name="ExpressionOfExpectedValue" type="xs:string" maxOccurs="unbounded" minOccurs="0">
         <xs:annotation>
           <xs:documentation xml:lang="en" source="#definition">Formulation in a formal language of the expected value(s) for the Information Concept which is aligned with the concepts from the Requirements defined and must be respected by the supplied Supported Values .</xs:documentation>
           <xs:documentation xml:lang="en" source="#usage">The property encapsulates all kind of expectations on the required and provided values one could have. 
@@ -233,17 +233,17 @@ Because of this freedom, implementers are recommended to well-document their usa
 </xs:documentation>
         </xs:annotation>
       </xs:element>
-      <xs:element name="Identifier" type="xs:string" maxOccurs="1" minOccurs="1">
+      <xs:element name="Identifier" type="xs:string" maxOccurs="unbounded" minOccurs="0">
         <xs:annotation>
           <xs:documentation xml:lang="en" source="#definition">Unambiguous reference to the Information Concept.</xs:documentation>
         </xs:annotation>
       </xs:element>
-      <xs:element name="Name" type="xs:string" maxOccurs="1" minOccurs="1">
+      <xs:element name="Name" type="xs:string" maxOccurs="unbounded" minOccurs="0">
         <xs:annotation>
           <xs:documentation xml:lang="en" source="#definition">Name of the Information Concept.</xs:documentation>
         </xs:annotation>
       </xs:element>
-      <xs:element name="Type" type="conceptType" maxOccurs="1" minOccurs="1">
+      <xs:element name="Type" type="conceptType" maxOccurs="unbounded" minOccurs="0">
         <xs:annotation>
           <xs:documentation xml:lang="en" source="#definition">Category to which the Information Concept belongs.</xs:documentation>
           <xs:documentation xml:lang="en" source="#usage">In addition to the expression of the expected value, the type classification can be used to express the kind of value the information concept is processing. This can be primitive tupes such as a date or a string, but also more business domain terminology such as age or number of employees. It is recommended to well-document the usage of the property. </xs:documentation>
@@ -266,7 +266,7 @@ Because of this freedom, implementers are recommended to well-document their usa
   </xs:complexType>
   <xs:complexType name="ReferenceFrameworkType">
     <xs:sequence>
-      <xs:element name="Identifier" type="xs:string" maxOccurs="1" minOccurs="1">
+      <xs:element name="Identifier" type="xs:string" maxOccurs="unbounded" minOccurs="0">
         <xs:annotation>
           <xs:documentation xml:lang="en" source="#definition">An unambiguous reference to a Reference Framework.</xs:documentation>
         </xs:annotation>
@@ -280,7 +280,7 @@ Because of this freedom, implementers are recommended to well-document their usa
   </xs:complexType>
   <xs:complexType name="RequirementType">
     <xs:sequence>
-      <xs:element name="Description" type="xs:string" maxOccurs="1" minOccurs="1">
+      <xs:element name="Description" type="xs:string" maxOccurs="unbounded" minOccurs="0">
         <xs:annotation>
           <xs:documentation xml:lang="en" source="#definition">A short explanation supporting the understanding of the Requirement.</xs:documentation>
           <xs:documentation xml:lang="en" source="#usage">The explanation can include information about the nature, attributes, uses or any other additional information about the Requirement.</xs:documentation>
@@ -314,7 +314,7 @@ Because of this freedom, implementers are recommended to well-document their usa
           <xs:documentation xml:lang="en" source="#definition">Evidence that supplies information, proof or support for the Requirement.</xs:documentation>
         </xs:annotation>
       </xs:element>
-      <xs:element name="Identifier" type="xs:string" maxOccurs="1" minOccurs="1">
+      <xs:element name="Identifier" type="xs:string" maxOccurs="unbounded" minOccurs="0">
         <xs:annotation>
           <xs:documentation xml:lang="en" source="#definition">Unambiguous reference to a Requirement.</xs:documentation>
         </xs:annotation>
@@ -338,12 +338,12 @@ Because of this freedom, implementers are recommended to well-document their usa
 In the case where the purpose is to link the two Requirements without additional information, the simple relationship as proposed here can be directly used.</xs:documentation>
         </xs:annotation>
       </xs:element>
-      <xs:element name="Name" type="xs:string" maxOccurs="1" minOccurs="1">
+      <xs:element name="Name" type="xs:string" maxOccurs="unbounded" minOccurs="0">
         <xs:annotation>
           <xs:documentation xml:lang="en" source="#definition">Name of the Requirement.</xs:documentation>
         </xs:annotation>
       </xs:element>
-      <xs:element name="Type" type="conceptType" maxOccurs="1" minOccurs="1">
+      <xs:element name="Type" type="conceptType" maxOccurs="unbounded" minOccurs="0">
         <xs:annotation>
           <xs:documentation xml:lang="en" source="#definition">Category to which the Requirement belongs.</xs:documentation>
         </xs:annotation>
@@ -362,13 +362,13 @@ In the case where the purpose is to link the two Requirements without additional
           <xs:documentation xml:lang="en" source="#definition">Information Concept for which the Supported Value provides a value.</xs:documentation>
         </xs:annotation>
       </xs:element>
-      <xs:element name="Query" type="xs:string" maxOccurs="1" minOccurs="1">
+      <xs:element name="Query" type="xs:string" maxOccurs="unbounded" minOccurs="0">
         <xs:annotation>
           <xs:documentation xml:lang="en" source="#definition">Search statement that allows the value for the Information Concept to be retrieved from the Evidence data.</xs:documentation>
           <xs:documentation xml:lang="en" source="#usage">The query must be executed on the business data provided by the supporting Evidence. In order to be able to evaluate the query on the provided data, the format of the provided data must be aligned with the query expression. For instance if the provided data is XML, a query in XPath could be expected. This alignment is part of the implementation agreements that implementors must make.</xs:documentation>
         </xs:annotation>
       </xs:element>
-      <xs:element name="Value" type="xs:string" maxOccurs="1" minOccurs="1">
+      <xs:element name="Value" type="xs:string" maxOccurs="unbounded" minOccurs="0">
         <xs:annotation>
           <xs:documentation xml:lang="en" source="#definition">Value for the Information Concept that the Evidence supports.</xs:documentation>
         </xs:annotation>
@@ -422,19 +422,19 @@ In the case where the purpose is to link the two Requirements without additional
   </xs:complexType>
   <xs:complexType name="PeriodOfTimeType">
     <xs:sequence>
-      <xs:element name="Duration" type="xs:duration" maxOccurs="1" minOccurs="1">
+      <xs:element name="Duration" type="xs:duration" maxOccurs="unbounded" minOccurs="0">
         <xs:annotation>
           <xs:documentation xml:lang="en" source="#definition">Extent of the Period of Time.</xs:documentation>
           <xs:documentation xml:lang="en" source="#usage">Amount of time between start time and end time.</xs:documentation>
         </xs:annotation>
       </xs:element>
-      <xs:element name="Endtime" type="InstantType" maxOccurs="1" minOccurs="1">
+      <xs:element name="Endtime" type="InstantType" maxOccurs="unbounded" minOccurs="0">
         <xs:annotation>
           <xs:documentation xml:lang="en" source="#definition">Time instant at which the Period was terminated.</xs:documentation>
           <xs:documentation xml:lang="en" source="#usage">For example, the property ends the duration during which an Evidence Type or an Evidence is considered valid. The duration must be equal to the time between the starttime and endtime.</xs:documentation>
         </xs:annotation>
       </xs:element>
-      <xs:element name="Starttime" type="InstantType" maxOccurs="1" minOccurs="1">
+      <xs:element name="Starttime" type="InstantType" maxOccurs="unbounded" minOccurs="0">
         <xs:annotation>
           <xs:documentation xml:lang="en" source="#definition">Time instant at which the Period was initiated.</xs:documentation>
           <xs:documentation xml:lang="en" source="#usage">For example, the property starts the duration during which an Evidence Type or an Evidence is considered valid. The duration must be equal to the time between the starttime and endtime.</xs:documentation>
