@@ -316,7 +316,7 @@ The Core Location Vocabulary is a simplified, reusable and extensible data model
 		  This specification </span> of <a rel="cc:attributionURL" property="cc:attributionName" href="ORGANISATION" xmlns:cc="http://creativecommons.org/ns#">ORGANISATION </a> 
 	          is published under <a href="https://creativecommons.org/licenses/by/4.0/" rel="license">"CC0"</a>.
 	-->
-             Copyright © 2023 European Union. All material in this repository is published under the license CC-BY 4.0, unless explicitly otherwise mentioned.
+             Copyright © 2024 European Union. All material in this repository is published under the license CC-BY 4.0, unless explicitly otherwise mentioned.
         </p>
     
 </section>
@@ -917,7 +917,7 @@ To provide maximum flexibility in the Core Vocabulary, whilst remaining interope
                                     0..*
                                 </td>
                                 <td property="rdfs:comment">
-                                    
+                                    Proper noun(s) applied to the real world entity identified by the locator. The locator name could be the name of the property or complex, of the building or part of the building, or it could be the name of a room inside a building.
                                 </td>
                                 <td property="skos:scopeNote">
                                     The locator name could be the name of the property or complex, of the building or part of the building, or it could be the name of a room inside a building.
@@ -2532,11 +2532,12 @@ For interoperability reasons, it is recommended using one of the following:
 <section class="informative">
     <h2> Examples </h2>
         
-<div class="h3 examples" id="example-rdf_wkt">Example 1 - RDF+WKT (GeoSPARQL)</div>
-<div class="h3 examples" id="example-rdf_gml">Example 2 - RDF+GML (GeoSPARQL)</div>
-<div class="h3 examples" id="example-rdf_wgs">Example 3 - RDF (WGS84 lat/long)</div>
-<div class="h3 examples" id="example-rdf_schema">Example 4 - RDF (schema.org)</div>
-<div class="h3 examples" id="example-rdf_geohash">Example 5 - URI reference (GeoHash)</div>
+<div class="h3 examples" id="example-rdf_wkt">Example 1 - Location WKT (GeoSPARQL)</div>
+<div class="h3 examples" id="example-rdf_gml">Example 2 - Location GML (GeoSPARQL)</div>
+<div class="h3 examples" id="example-rdf_wgs">Example 3 - Location WGS84 lat/long</div>
+<div class="h3 examples" id="example-rdf_schema">Example 4 - Location schema.org</div>
+<div class="h3 examples" id="example-rdf_geohash">Example 5 - Location GeoHash</div>
+<div class="h3 examples" id="example-rdf_address">Example 6 - Address</div>
 
 </section>
 
@@ -2551,7 +2552,7 @@ For interoperability reasons, it is recommended using one of the following:
 The following section provides support for implementing the Core Location Vocabulary.
 <p/>
 
-<h4>JSON-LD context file</h4>
+<h3>JSON-LD context file</h3>
 
 One common technical question is the format in which the data is being exchanged. 
 For conformance with the Core Location Vocabulary, it is not mandatory that this happens in a RDF serialisation, but the exhanged format SHOULD be unambiguously be transformable into RDF.
@@ -2563,7 +2564,7 @@ This JSON-LD context is not normative, i.e. other JSON-LD contexts are allowed.
 The JSON-LD context file downloadable <a href="./context/core-location-ap.jsonld">here</a>.
 <p/>
 
-<h4>Validation</h4>
+<h3>Validation</h3>
 
 To verify if the data is (technically) conformant to the Core Location Vocabulary, the exchanged data can be validated using the provided SHACL shapes. 
 SHACL is a W3C Recommendation to express constraints on a RDF knowledge graph. 
@@ -2578,7 +2579,7 @@ Each implementation happens within a context, and that context is beyond the SHA
 The shapes can be found <a href="./shacl/core-location-ap-SHACL.ttl">here</a>.
 
 <!--
-<h4>Mapping</h4>
+<h3>Mapping</h3>
 A mapping towards Schema.org can be found <a href="https://github.com/SEMICeu/Semantic-Mappings/tree/main/Core%20Location">here</a>
 <p/>
 -->
@@ -2587,7 +2588,7 @@ A mapping towards Schema.org can be found <a href="https://github.com/SEMICeu/Se
     <section class="informative">
 <h2>Governance</h2>
 
-<h4>Versioning governance</h4>
+<h3>Versioning governance</h3>
 All specifications produced in SEMIC will follow the versioning rule described by the SEMIC Style Guide rule 
 <a href="https://semiceu.github.io/style-guide/1.0.0/gc-publication-conventions.html#sec:pc-r3">PC-R3</a>.
 In case a SEMIC asset is deprecated the asset will remain available through its PURI.
@@ -2595,11 +2596,11 @@ In case a SEMIC asset is deprecated the asset will remain available through its 
 The serialisation will have:
 <ul>
 <li>a dct:isReplacedBy referencing the new assets used instead and</li>
-<li> an adms:status  indicating its deprecated status: http://publications.europa.eu/resource/authority/concept-status/DEPRECATED.</li>
+<li> an adms:status  indicating its deprecated <a href="http://publications.europa.eu/resource/authority/concept-status/DEPRECATED">status</a>.</li>
 </ul>
 <p/>
 
-<h4>Governance requirements for re-used assets</h4>
+<h3>Governance requirements for re-used assets</h3>
 In order to adhere to the SEMIC Style Guide rule <a href="https://semiceu.github.io/style-guide/1.0.0/gc-general-conventions.html#sec:gc-r2">GC-R2</a>
  a specification should have quality and governance standards for the assets that are being reused.
 <p/>
@@ -2619,7 +2620,7 @@ After being taken into consideration the asset will be validated in three steps:
 Once considered and validated an asset can be adopted if it is approved by the community.
 <p/>
 
-<h4>Lexicalisation rules</h4>
+<h3>Lexicalisation rules</h3>
 
 In order to adhere to the SEMIC Style Guide rule <a href="https://semiceu.github.io/style-guide/1.0.0/gc-semantic-conventions.html#sec:sc-r3">SC-R3</a> a specification requires formal lexicalisation rules.
 The Style Guide proposes two options either by using RDFS or SKOS lexicalisation.
@@ -3155,6 +3156,7 @@ The properties are indicated as <it>mandatory, recommended, optional</it> and <i
 {'pref':'dcatap:', 'ns': 'http://data.europa.eu/r5r/'},
 {'pref':'dct:', 'ns': 'http://purl.org/dc/terms/'},
 {'pref':'dctype:', 'ns': 'http://purl.org/dc/dcmitype/'},
+{'pref':'cpsv:', 'ns': 'http://purl.org/vocab/cpsv#'},
 {'pref':'foaf:', 'ns': 'http://xmlns.com/foaf/0.1/'},
 {'pref':'locn:', 'ns': 'http://www.w3.org/ns/locn#'},
 {'pref':'odrl:', 'ns': 'http://www.w3.org/ns/odrl/2/'},
@@ -3173,7 +3175,11 @@ The properties are indicated as <it>mandatory, recommended, optional</it> and <i
 {'pref':'geo:', 'ns': 'http://www.opengis.net/ont/geosparql#'},
 {'pref':'schemas:', 'ns': 'https://schema.org/'},
 {'pref':'org:', 'ns': 'http://www.w3.org/ns/org#'},
+{'pref':'person:', 'ns': 'http://www.w3.org/ns/person#'},
 {'pref':'legal:', 'ns': 'http://www.w3.org/ns/legal#'},
+{'pref':'OP:', 'ns': 'http://data.europa.eu/88u/dataset/'},
+{'pref':'xhv:', 'ns': 'https://www.w3.org/1999/xhtml/vocab#'},
+
 
 				];
 
