@@ -7,6 +7,7 @@
   <xs:element name="AdministrativeTerritorialUnit" type="AdministrativeTerritorialUnitType"/>
   <xs:element name="Text" type="TextType"/>
   <xs:element name="Literal" type="LiteralType"/>
+  <xs:element name="Uri" type="UriType"/>
   <xs:element name="Date" type="DateType"/>
   <xs:element name="Code" type="CodeType"/>
   <xs:element name="TemporalEntity" type="TemporalEntityType"/>
@@ -131,7 +132,7 @@ An example of memberships are the EU member states and other partners which coul
       </xs:element>
       <xs:element name="Logo" type="ImageObjectType" maxOccurs="unbounded" minOccurs="0">
         <xs:annotation>
-          <xs:documentation xml:lang="en" source="#definition">A graphic symbol to represent the Public Oorganization.</xs:documentation>
+          <xs:documentation xml:lang="en" source="#definition">A graphic symbol to represent the Public Organization.</xs:documentation>
           <xs:documentation xml:lang="en" source="#usage">The value of this property can simply be the URL of the logo but it is better for developers if it links to an object that provides the URL of the image and essential metadata about it, notably its dimensions.</xs:documentation>
         </xs:annotation>
       </xs:element>
@@ -157,7 +158,7 @@ An example of memberships are the EU member states and other partners which coul
       </xs:element>
       <xs:element name="Prev" type="PublicOrganisationType" maxOccurs="unbounded" minOccurs="0">
         <xs:annotation>
-          <xs:documentation xml:lang="en" source="#definition">In some cases, it is necessary to be able to create an ordered sequence of an organization that precede and succeed each other. To support this, the CPOV includes the well-known relationships of previous and next to allow such sequences to be captured and computed</xs:documentation>
+          <xs:documentation xml:lang="en" source="#definition">In some cases, it is necessary to be able to create an ordered sequence of an organization that precede and succeed each other. To support this, the CPOV includes the well-known relationships of previous and next to allow such sequences to be captured and computed.</xs:documentation>
           <xs:documentation xml:lang="en" source="#usage">Examples of events leading to sequences could be renaming, splitting or merging of public organizations.</xs:documentation>
         </xs:annotation>
       </xs:element>
@@ -238,6 +239,14 @@ property.</xs:documentation>
       </xs:annotation>
     </xs:attribute>
   </xs:complexType>
+  <xs:complexType name="UriType">
+    <xs:sequence/>
+    <xs:attribute name="UriRef" type="xs:IDREF">
+      <xs:annotation>
+        <xs:documentation xml:lang="en">Reference to Uri ID</xs:documentation>
+      </xs:annotation>
+    </xs:attribute>
+  </xs:complexType>
   <xs:complexType name="DateType">
     <xs:sequence/>
     <xs:attribute name="DateRef" type="xs:IDREF">
@@ -296,7 +305,7 @@ property.</xs:documentation>
           <xs:documentation xml:lang="en" source="#definition">Name of the scheme used to construct the identifier.</xs:documentation>
         </xs:annotation>
       </xs:element>
-      <xs:element name="SchemeUri" type="xs:string" maxOccurs="unbounded" minOccurs="0">
+      <xs:element name="SchemeUri" type="xs:anyURI" maxOccurs="unbounded" minOccurs="0">
         <xs:annotation>
           <xs:documentation xml:lang="en" source="#definition">URI of the scheme used to construct the identifier.</xs:documentation>
         </xs:annotation>
