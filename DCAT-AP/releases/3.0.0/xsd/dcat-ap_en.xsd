@@ -373,7 +373,7 @@
       </xs:element>
       <xs:element name="themes" ref="ConceptSchemeType" maxOccurs="unbounded" minOccurs="0">
         <xs:annotation>
-          <xs:documentation xml:lang="en">A knowledge organization system used to classify the Catalogue's Datasets.</xs:documentation>
+          <xs:documentation xml:lang="en">A knowledge organization system used to classify the Resources that are in the Catalogue.</xs:documentation>
         </xs:annotation>
       </xs:element>
       <xs:element name="applicableLegislation" ref="LegalResourceType" maxOccurs="unbounded" minOccurs="0">
@@ -465,9 +465,9 @@
           <xs:documentation xml:lang="en">The status of the catalogue record in the context of editorial flow of the dataset and data service descriptions.</xs:documentation>
         </xs:annotation>
       </xs:element>
-      <xs:element name="applicationProfile" ref="StandardType" maxOccurs="1" minOccurs="0">
+      <xs:element name="applicationProfile" ref="StandardType" maxOccurs="unbounded" minOccurs="0">
         <xs:annotation>
-          <xs:documentation xml:lang="en">An Application Profile that the Dataset's metadata conforms to.</xs:documentation>
+          <xs:documentation xml:lang="en">An Application Profile that the Catalogued Resources metadata conforms to.</xs:documentation>
         </xs:annotation>
       </xs:element>
       <xs:element name="description" type="xs:string" maxOccurs="unbounded" minOccurs="0">
@@ -477,12 +477,12 @@
       </xs:element>
       <xs:element name="listingDate" type="xs:string" maxOccurs="1" minOccurs="0">
         <xs:annotation>
-          <xs:documentation xml:lang="en">The date on which the description of the Dataset was included in the Catalogue.</xs:documentation>
+          <xs:documentation xml:lang="en">The date on which the description of the Resource was included in the Catalogue.</xs:documentation>
         </xs:annotation>
       </xs:element>
       <xs:element name="language" ref="LinguisticSystemType" maxOccurs="unbounded" minOccurs="0">
         <xs:annotation>
-          <xs:documentation xml:lang="en">A language used in the textual metadata describing titles, descriptions, etc. of the Dataset.</xs:documentation>
+          <xs:documentation xml:lang="en">A language used in the textual metadata describing titles, descriptions, etc. of the Catalogued Resource.</xs:documentation>
         </xs:annotation>
       </xs:element>
       <xs:element name="modificationDate" type="xs:string" maxOccurs="1" minOccurs="1">
@@ -514,6 +514,11 @@
   </xs:complexType>
   <xs:complexType name="DataServiceType">
     <xs:sequence>
+      <xs:element name="contactPoint" ref="KindType" maxOccurs="unbounded" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation xml:lang="en">Contact information that can be used for sending comments about the Data Service.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
       <xs:element name="endpointDescription" ref="ResourceType" maxOccurs="unbounded" minOccurs="0">
         <xs:annotation>
           <xs:documentation xml:lang="en">A description of the services available via the end-points, including their operations, parameters etc.</xs:documentation>
@@ -524,9 +529,24 @@
           <xs:documentation xml:lang="en">The root location or primary endpoint of the service (an IRI).</xs:documentation>
         </xs:annotation>
       </xs:element>
+      <xs:element name="keyword" type="xs:string" maxOccurs="unbounded" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation xml:lang="en">A keyword or tag describing the Data Service.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="landingPage" ref="DocumentType" maxOccurs="unbounded" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation xml:lang="en">A web page that provides access to the Data Service and/or additional information.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
       <xs:element name="servesDataset" ref="DatasetType" maxOccurs="unbounded" minOccurs="0">
         <xs:annotation>
           <xs:documentation xml:lang="en">This property refers to a collection of data that this data service can distribute.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="theme" type="ConceptType" maxOccurs="unbounded" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation xml:lang="en">A category of the Data Service.</xs:documentation>
         </xs:annotation>
       </xs:element>
       <xs:element name="applicableLegislation" ref="LegalResourceType" maxOccurs="unbounded" minOccurs="0">
@@ -537,6 +557,11 @@
       <xs:element name="accessRights" ref="RightsStatementType" maxOccurs="1" minOccurs="0">
         <xs:annotation>
           <xs:documentation xml:lang="en">Information regarding access or restrictions based on privacy, security, or other policies.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="applicationProfile" ref="StandardType" maxOccurs="unbounded" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation xml:lang="en">An Application Profile that the Catalogued Resources metadata conforms to.</xs:documentation>
         </xs:annotation>
       </xs:element>
       <xs:element name="description" type="xs:string" maxOccurs="unbounded" minOccurs="0">
@@ -552,6 +577,11 @@
       <xs:element name="licence" ref="LicenceDocumentType" maxOccurs="1" minOccurs="0">
         <xs:annotation>
           <xs:documentation xml:lang="en">A licence under which the Data service is made available.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="publisher" ref="AgentType" maxOccurs="1" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation xml:lang="en">An entity (organisation) responsible for making the Data Service available.</xs:documentation>
         </xs:annotation>
       </xs:element>
       <xs:element name="title" type="xs:string" maxOccurs="unbounded" minOccurs="1">
@@ -658,9 +688,9 @@
           <xs:documentation xml:lang="en">An implementing rule or other specification.</xs:documentation>
         </xs:annotation>
       </xs:element>
-      <xs:element name="creator" ref="AgentType" maxOccurs="1" minOccurs="0">
+      <xs:element name="creator" ref="AgentType" maxOccurs="unbounded" minOccurs="0">
         <xs:annotation>
-          <xs:documentation xml:lang="en">Ae entity responsible for producing the dataset.</xs:documentation>
+          <xs:documentation xml:lang="en">An entity responsible for producing the dataset.</xs:documentation>
         </xs:annotation>
       </xs:element>
       <xs:element name="description" type="xs:string" maxOccurs="unbounded" minOccurs="1">
@@ -1068,7 +1098,7 @@
     <xs:sequence>
       <xs:element name="type" type="ConceptType" maxOccurs="1" minOccurs="0">
         <xs:annotation>
-          <xs:documentation xml:lang="en">A type of the agent that makes the Catalogue or Dataset available.</xs:documentation>
+          <xs:documentation xml:lang="en">The nature of the agent.</xs:documentation>
         </xs:annotation>
       </xs:element>
       <xs:element name="name" type="xs:string" maxOccurs="unbounded" minOccurs="1">
