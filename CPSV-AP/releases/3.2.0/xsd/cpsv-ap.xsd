@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <xs:schema xmlns="https://data.europa.eu/m8g/xml/" xmlns:xs="http://www.w3.org/2001/XMLSchema" targetNamespace="https://data.europa.eu/m8g/xml/" version="2.0.0" elementFormDefault="qualified" attributeFormDefault="unqualified" xmlns:cv="https://data.europa.eu/m8g/xml/">
+  <xs:element name="AdministrativeTerritorialUnit" type="AdministrativeTerritorialUnitType"/>
   <xs:element name="ConcessionContract" type="ConcessionContractType"/>
   <xs:element name="LegalResource" type="LegalResourceType"/>
   <xs:element name="BusinessEvent" type="BusinessEventType"/>
@@ -15,15 +16,29 @@
   <xs:element name="PublicOrganization" type="PublicOrganizationType"/>
   <xs:element name="Requirement" type="RequirementType"/>
   <xs:element name="ServiceConcessionContract" type="ServiceConcessionContractType"/>
+  <xs:element name="Duration" type="DurationType"/>
+  <xs:element name="LinguisticSystem" type="LinguisticSystemType"/>
   <xs:element name="PublicService" type="PublicServiceType"/>
   <xs:element name="Rule" type="RuleType"/>
+  <xs:element name="Text" type="TextType"/>
+  <xs:element name="Literal" type="LiteralType"/>
   <xs:element name="Collection" type="CollectionType"/>
   <xs:element name="Concept" type="ConceptType"/>
+  <xs:element name="Code" type="CodeType"/>
   <xs:element name="TemporalEntity" type="TemporalEntityType"/>
   <xs:element name="Dataset" type="DatasetType"/>
   <xs:element name="Address" type="AddressType"/>
   <xs:element name="Organization" type="OrganizationType"/>
   <xs:element name="Agent" type="AgentType"/>
+  <xs:element name="Document" type="DocumentType"/>
+  <xs:complexType name="AdministrativeTerritorialUnitType">
+    <xs:sequence/>
+    <xs:attribute name="AdministrativeTerritorialUnitRef" type="xs:IDREF">
+      <xs:annotation>
+        <xs:documentation xml:lang="en">Reference to AdministrativeTerritorialUnit ID</xs:documentation>
+      </xs:annotation>
+    </xs:attribute>
+  </xs:complexType>
   <xs:complexType name="ConcessionContractType">
     <xs:sequence/>
     <xs:attribute name="ConcessionContractRef" type="xs:IDREF">
@@ -46,14 +61,6 @@
       </xs:annotation>
     </xs:attribute>
   </xs:complexType>
-  <xs:complexType name="BusinessEventType">
-    <xs:sequence/>
-    <xs:attribute name="BusinessEventRef" type="xs:IDREF">
-      <xs:annotation>
-        <xs:documentation xml:lang="en">Reference to BusinessEvent ID</xs:documentation>
-      </xs:annotation>
-    </xs:attribute>
-  </xs:complexType>
   <xs:complexType name="conceptType">
     <xs:simpleContent>
       <xs:extension base="xs:token">
@@ -61,6 +68,21 @@
         <xs:attribute name="conceptSchemeRef" type="xs:IDREF"/>
       </xs:extension>
     </xs:simpleContent>
+  </xs:complexType>
+  <xs:complexType name="BusinessEventType">
+    <xs:sequence>
+      <xs:element name="Type" type="conceptType" maxOccurs="unbounded" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation xml:lang="en" source="#definition">It links an Event to a controlled vocabulary of event types.</xs:documentation>
+          <xs:documentation xml:lang="en" source="#usage">The recommended Controlled vocabulary to be used is the &lt;a href="http://publications.europa.eu/resource/dataset/business-event"&gt;Business event&lt;/a&gt; Vocabulary maintained by the Publications Office of the EU.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+    </xs:sequence>
+    <xs:attribute name="BusinessEventRef" type="xs:IDREF">
+      <xs:annotation>
+        <xs:documentation xml:lang="en">Reference to BusinessEvent ID</xs:documentation>
+      </xs:annotation>
+    </xs:attribute>
   </xs:complexType>
   <xs:complexType name="ChannelType">
     <xs:sequence>
@@ -133,10 +155,12 @@ Member States could create subclasses of Channel by adding a e-mail address or a
           <xs:documentation xml:lang="en" source="#definition">A time during which the resource is not available.</xs:documentation>
           <xs:documentation xml:lang="en" source="#usage">For a simple description of the time use the description property of TemporalEntity.
 
-For more structured data use the model in Time Ontology, see an &lt;a href="https://www.w3.org/TR/owl-time/#dtd-vs-dt"&gt;example&lt;/a&gt;.</xs:documentation>
+For more structured data use the model in Time Ontology, see an &lt;a href="https://www.w3.org/TR/owl-time/#dtd-vs-dt"&gt;example&lt;/a&gt;.
+
+This relation can be used to indicate exceptional closures such as being closed on public holidays.</xs:documentation>
         </xs:annotation>
       </xs:element>
-      <xs:element name="ContactPage" maxOccurs="unbounded" minOccurs="0">
+      <xs:element name="ContactPage" type="DocumentType" maxOccurs="unbounded" minOccurs="0">
         <xs:annotation>
           <xs:documentation xml:lang="en" source="#definition">A web page that could be used to reach out the Contact Point.</xs:documentation>
         </xs:annotation>
@@ -232,12 +256,6 @@ For more structured data use the model in Time Ontology, see an &lt;a href="http
           <xs:documentation xml:lang="en" source="#definition">The Name (or title) of the Event.</xs:documentation>
         </xs:annotation>
       </xs:element>
-      <xs:element name="Type" type="conceptType" maxOccurs="unbounded" minOccurs="0">
-        <xs:annotation>
-          <xs:documentation xml:lang="en" source="#definition">It links an Event to a controlled vocabulary of event types.</xs:documentation>
-          <xs:documentation xml:lang="en" source="#usage">It is the nature of those controlled vocabularies that is the major difference between a business event, such as creating the business in the first place and a life event, such as the birth of a child.</xs:documentation>
-        </xs:annotation>
-      </xs:element>
     </xs:sequence>
     <xs:attribute name="EventRef" type="xs:IDREF">
       <xs:annotation>
@@ -263,7 +281,7 @@ For more structured data use the model in Time Ontology, see an &lt;a href="http
           <xs:documentation xml:lang="en" source="#usage">Examples of characteristics could be the layout or the configuration of the Evidence.</xs:documentation>
         </xs:annotation>
       </xs:element>
-      <xs:element name="Language" maxOccurs="unbounded" minOccurs="0">
+      <xs:element name="Language" type="LinguisticSystemType" maxOccurs="unbounded" minOccurs="0">
         <xs:annotation>
           <xs:documentation xml:lang="en" source="#definition">The language(s) in which the Evidence must be provided.</xs:documentation>
           <xs:documentation xml:lang="en" source="#usage">The recommended controlled vocabularies for this property is the &lt;a href="https://op.europa.eu/en/web/eu-vocabularies/dataset/-/resource?uri=http://publications.europa.eu/resource/dataset/language"&gt;Language&lt;/a&gt; Authority Table of the Publications Office.</xs:documentation>
@@ -274,7 +292,7 @@ For more structured data use the model in Time Ontology, see an &lt;a href="http
           <xs:documentation xml:lang="en" source="#definition">The official Name of the piece of Evidence.</xs:documentation>
         </xs:annotation>
       </xs:element>
-      <xs:element name="RelatedDocumentation" maxOccurs="unbounded" minOccurs="0">
+      <xs:element name="RelatedDocumentation" type="DocumentType" maxOccurs="unbounded" minOccurs="0">
         <xs:annotation>
           <xs:documentation xml:lang="en" source="#definition">The documentation that contains information.</xs:documentation>
           <xs:documentation xml:lang="en" source="#usage">For instance, a particular template for an administrative document, an application or a guide on formatting the Evidence.</xs:documentation>
@@ -318,7 +336,14 @@ For more structured data use the model in Time Ontology, see an &lt;a href="http
     </xs:attribute>
   </xs:complexType>
   <xs:complexType name="LifeEventType">
-    <xs:sequence/>
+    <xs:sequence>
+      <xs:element name="Type" type="conceptType" maxOccurs="unbounded" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation xml:lang="en" source="#definition">It links an Event to a controlled vocabulary of event types.</xs:documentation>
+          <xs:documentation xml:lang="en" source="#usage">The recommended Controlled vocabulary to be used is the &lt;a href="http://publications.europa.eu/resource/dataset/life-event"&gt;Life Events&lt;/a&gt; Vocabulary maintained by the Publications Office of the EU.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+    </xs:sequence>
     <xs:attribute name="LifeEventRef" type="xs:IDREF">
       <xs:annotation>
         <xs:documentation xml:lang="en">Reference to LifeEvent ID</xs:documentation>
@@ -337,7 +362,7 @@ For more structured data use the model in Time Ontology, see an &lt;a href="http
           <xs:documentation xml:lang="en" source="#definition">An Identifier for the Output.</xs:documentation>
         </xs:annotation>
       </xs:element>
-      <xs:element name="Language" maxOccurs="unbounded" minOccurs="0">
+      <xs:element name="Language" type="LinguisticSystemType" maxOccurs="unbounded" minOccurs="0">
         <xs:annotation>
           <xs:documentation xml:lang="en" source="#definition">The language(s) in which the Output is available. </xs:documentation>
           <xs:documentation xml:lang="en" source="#usage">This could be one or multiple languages, for instance in countries with more than one official language. The recommended controlled vocabularies for this property is the &lt;a href=" https://op.europa.eu/en/web/eu-vocabularies/concept-scheme/-/resource?uri=http://publications.europa.eu/resource/authority/language"&gt;Language&lt;/a&gt; Authority Table of the Publications Office.</xs:documentation>
@@ -400,7 +425,7 @@ Since this is an extension mechanism for the CSPV-AP, the controlled vocabulary 
           <xs:documentation xml:lang="en" source="#usage">Refers to the official or legal name of a Public Organization. An organization may only have one such name in any given language. Primary names may be provided in multiple languages with multiple instances of the preferred label property. This allowed in SKOS for skos:prefLabel, see &lt;a href="https://www.w3.org/TR/skos-reference/#L1567"&gt;integrity conditions and subsequent example&lt;/a&gt;.</xs:documentation>
         </xs:annotation>
       </xs:element>
-      <xs:element name="Spatial" maxOccurs="unbounded" minOccurs="1">
+      <xs:element name="Spatial" type="AdministrativeTerritorialUnitType" maxOccurs="unbounded" minOccurs="1">
         <xs:annotation>
           <xs:documentation xml:lang="en" source="#definition">It links an Organization to the Administrative Region(s) that it covers.</xs:documentation>
           <xs:documentation xml:lang="en" source="#usage">The value of the properly should be the URI of the region as defined in an authoritative list of regions. In Europe, this is likely to be the Administrative Territorial Units Named Authority List maintained by the Publications Office's Metadata Registry.
@@ -486,6 +511,22 @@ the Legal Resource under which the Service Concession Contracts are being define
     <xs:attribute name="ServiceConcessionContractRef" type="xs:IDREF">
       <xs:annotation>
         <xs:documentation xml:lang="en">Reference to ServiceConcessionContract ID</xs:documentation>
+      </xs:annotation>
+    </xs:attribute>
+  </xs:complexType>
+  <xs:complexType name="DurationType">
+    <xs:sequence/>
+    <xs:attribute name="DurationRef" type="xs:IDREF">
+      <xs:annotation>
+        <xs:documentation xml:lang="en">Reference to Duration ID</xs:documentation>
+      </xs:annotation>
+    </xs:attribute>
+  </xs:complexType>
+  <xs:complexType name="LinguisticSystemType">
+    <xs:sequence/>
+    <xs:attribute name="LinguisticSystemRef" type="xs:IDREF">
+      <xs:annotation>
+        <xs:documentation xml:lang="en">Reference to LinguisticSystem ID</xs:documentation>
       </xs:annotation>
     </xs:attribute>
   </xs:complexType>
@@ -578,15 +619,16 @@ the Legal Resource under which the Service Concession Contracts are being define
 type of audience, etc. The Concept is at its turn related to a Collection, which groups the different concepts into a controlled vocabulary.</xs:documentation>
         </xs:annotation>
       </xs:element>
-      <xs:element name="IsDescribedAt" type="DatasetType" maxOccurs="unbounded" minOccurs="0">
-        <xs:annotation>
-          <xs:documentation xml:lang="en" source="#definition">It links a Public Service to the Dataset(s) in which it is being described.</xs:documentation>
-        </xs:annotation>
-      </xs:element>
       <xs:element name="IsGroupedBy" type="EventType" maxOccurs="unbounded" minOccurs="0">
         <xs:annotation>
           <xs:documentation xml:lang="en" source="#definition">It links the Public Service to the Event class.</xs:documentation>
           <xs:documentation xml:lang="en" source="#usage">Several Public Services may be associated with a particular Event and, likewise, the same Public Service may be associated with several different Events.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="IsPartOf" type="DatasetType" maxOccurs="unbounded" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation xml:lang="en" source="#definition">A related resource in which the described resource is physically or logically included.</xs:documentation>
+          <xs:documentation xml:lang="en" source="#usage">It links a Public Service to the Dataset(s) in which it is being described.</xs:documentation>
         </xs:annotation>
       </xs:element>
       <xs:element name="Keyword" type="xs:string" maxOccurs="unbounded" minOccurs="0">
@@ -594,7 +636,7 @@ type of audience, etc. The Concept is at its turn related to a Collection, which
           <xs:documentation xml:lang="en" source="#definition">A keyword, term or phrase to describe the Public Service.</xs:documentation>
         </xs:annotation>
       </xs:element>
-      <xs:element name="Language" maxOccurs="unbounded" minOccurs="0">
+      <xs:element name="Language" type="LinguisticSystemType" maxOccurs="unbounded" minOccurs="0">
         <xs:annotation>
           <xs:documentation xml:lang="en" source="#definition">The language(s) in which the Public Service is available.</xs:documentation>
           <xs:documentation xml:lang="en" source="#usage">This could be one language or multiple languages, for instance in countries with more than one official language.
@@ -692,7 +734,7 @@ N.B. The spatial restriction is not meant to be used to describe eligibility or 
 the Legal Resource under which the Rules are being defined.</xs:documentation>
         </xs:annotation>
       </xs:element>
-      <xs:element name="Language" maxOccurs="unbounded" minOccurs="0">
+      <xs:element name="Language" type="LinguisticSystemType" maxOccurs="unbounded" minOccurs="0">
         <xs:annotation>
           <xs:documentation xml:lang="en" source="#definition">The language(s) in which the Rule is available.</xs:documentation>
           <xs:documentation xml:lang="en" source="#usage">This could be one or multiple languages, for instance in countries with more than one official language. The recommended controlled vocabularies for this property is the &lt;a href=" https://op.europa.eu/en/web/eu-vocabularies/concept-scheme/-/resource?uri=http://publications.europa.eu/resource/authority/language"&gt;Language&lt;/a&gt; Authority Table of the Publications Office.</xs:documentation>
@@ -716,6 +758,22 @@ the Legal Resource under which the Rules are being defined.</xs:documentation>
       </xs:annotation>
     </xs:attribute>
   </xs:complexType>
+  <xs:complexType name="TextType">
+    <xs:sequence/>
+    <xs:attribute name="TextRef" type="xs:IDREF">
+      <xs:annotation>
+        <xs:documentation xml:lang="en">Reference to Text ID</xs:documentation>
+      </xs:annotation>
+    </xs:attribute>
+  </xs:complexType>
+  <xs:complexType name="LiteralType">
+    <xs:sequence/>
+    <xs:attribute name="LiteralRef" type="xs:IDREF">
+      <xs:annotation>
+        <xs:documentation xml:lang="en">Reference to Literal ID</xs:documentation>
+      </xs:annotation>
+    </xs:attribute>
+  </xs:complexType>
   <xs:complexType name="CollectionType">
     <xs:sequence>
       <xs:element name="Member" type="conceptType" maxOccurs="unbounded" minOccurs="0">
@@ -735,6 +793,14 @@ the Legal Resource under which the Rules are being defined.</xs:documentation>
     <xs:attribute name="ConceptRef" type="xs:IDREF">
       <xs:annotation>
         <xs:documentation xml:lang="en">Reference to Concept ID</xs:documentation>
+      </xs:annotation>
+    </xs:attribute>
+  </xs:complexType>
+  <xs:complexType name="CodeType">
+    <xs:sequence/>
+    <xs:attribute name="CodeRef" type="xs:IDREF">
+      <xs:annotation>
+        <xs:documentation xml:lang="en">Reference to Code ID</xs:documentation>
       </xs:annotation>
     </xs:attribute>
   </xs:complexType>
@@ -767,7 +833,8 @@ the Legal Resource under which the Rules are being defined.</xs:documentation>
       </xs:element>
       <xs:element name="HasPart" type="PublicServiceType" maxOccurs="unbounded" minOccurs="0">
         <xs:annotation>
-          <xs:documentation xml:lang="en" source="#definition">It links a Dataset to the Public Service.</xs:documentation>
+          <xs:documentation xml:lang="en" source="#definition">A related resource that is included either physically or logically in the described resource.</xs:documentation>
+          <xs:documentation xml:lang="en" source="#usage">It links a Dataset to the Public Service.</xs:documentation>
         </xs:annotation>
       </xs:element>
       <xs:element name="Identifier" type="xs:string" maxOccurs="unbounded" minOccurs="0">
@@ -775,7 +842,7 @@ the Legal Resource under which the Rules are being defined.</xs:documentation>
           <xs:documentation xml:lang="en" source="#definition">The main identifier for the Dataset, e.g. the URI or other unique identifier in the context of the Catalogue.</xs:documentation>
         </xs:annotation>
       </xs:element>
-      <xs:element name="LandingPage" maxOccurs="unbounded" minOccurs="0">
+      <xs:element name="LandingPage" type="DocumentType" maxOccurs="unbounded" minOccurs="0">
         <xs:annotation>
           <xs:documentation xml:lang="en" source="#definition">A web page that provides access to the Dataset, its Distributions and/or additional information.</xs:documentation>
           <xs:documentation xml:lang="en" source="#usage">It is intended to point to a landing page at the original data provider, not to a page on a site of a third party, such as an aggregator.</xs:documentation>
@@ -917,6 +984,14 @@ The key difference between a locator and a locator name is that the latter is a 
     <xs:attribute name="AgentRef" type="xs:IDREF">
       <xs:annotation>
         <xs:documentation xml:lang="en">Reference to Agent ID</xs:documentation>
+      </xs:annotation>
+    </xs:attribute>
+  </xs:complexType>
+  <xs:complexType name="DocumentType">
+    <xs:sequence/>
+    <xs:attribute name="DocumentRef" type="xs:IDREF">
+      <xs:annotation>
+        <xs:documentation xml:lang="en">Reference to Document ID</xs:documentation>
       </xs:annotation>
     </xs:attribute>
   </xs:complexType>
