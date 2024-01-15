@@ -18,10 +18,12 @@
   <xs:element name="ServiceConcessionContract" type="ServiceConcessionContractType"/>
   <xs:element name="Duration" type="DurationType"/>
   <xs:element name="LinguisticSystem" type="LinguisticSystemType"/>
+  <xs:element name="Location" type="LocationType"/>
   <xs:element name="PublicService" type="PublicServiceType"/>
   <xs:element name="Rule" type="RuleType"/>
   <xs:element name="Text" type="TextType"/>
   <xs:element name="Literal" type="LiteralType"/>
+  <xs:element name="Double" type="DoubleType"/>
   <xs:element name="Collection" type="CollectionType"/>
   <xs:element name="Concept" type="ConceptType"/>
   <xs:element name="Code" type="CodeType"/>
@@ -530,6 +532,14 @@ the Legal Resource under which the Service Concession Contracts are being define
       </xs:annotation>
     </xs:attribute>
   </xs:complexType>
+  <xs:complexType name="LocationType">
+    <xs:sequence/>
+    <xs:attribute name="LocationRef" type="xs:IDREF">
+      <xs:annotation>
+        <xs:documentation xml:lang="en">Reference to Location ID</xs:documentation>
+      </xs:annotation>
+    </xs:attribute>
+  </xs:complexType>
   <xs:complexType name="PublicServiceType">
     <xs:sequence>
       <xs:element name="Addressee" type="conceptType" maxOccurs="unbounded" minOccurs="0">
@@ -690,7 +700,7 @@ This approach is consistent with both schema.org and the W3C OWL Time Ontology.<
           <xs:documentation xml:lang="en" source="#usage">For example: environment, safety, housing. Note that a single Public Service may relate to multiple sectors. The possible values for this property are provided as a controlled vocabulary. The possible values for this property are described in the controlled vocabulary &lt;a href=" https://op.europa.eu/en/web/eu-vocabularies/concept-scheme/-/resource?uri=http://publications.europa.eu/resource/authority/data-theme"&gt;Data theme&lt;/a&gt; Authority Table of the Publications Office. </xs:documentation>
         </xs:annotation>
       </xs:element>
-      <xs:element name="Spatial" maxOccurs="unbounded" minOccurs="0">
+      <xs:element name="Spatial" type="LocationType" maxOccurs="unbounded" minOccurs="0">
         <xs:annotation>
           <xs:documentation xml:lang="en" source="#definition">A Public Service is likely to be available only within a given area, typically the area covered by a particular public authority.</xs:documentation>
           <xs:documentation xml:lang="en" source="#usage">A common usage of the spatial property will be to define the Administrative Territorial Unit(s) - typically a country or region - in which a Public Service is available. The Publications Office of the European Union offers &lt;a href="https://op.europa.eu/en/web/eu-vocabularies/dataset/-/resource?uri=http://publications.europa.eu/resource/dataset/atu"&gt;a URI set&lt;/a&gt; that is suitable for this purpose. In case the ATU code list is not suitable, &lt;a href="https://op.europa.eu/en/web/eu-vocabularies/dataset/-/resource?uri=http://publications.europa.eu/resource/dataset/nuts"&gt;NUTS&lt;/a&gt; or &lt;a href="https://ec.europa.eu/eurostat/web/nuts/local-administrative-units"&gt;LAU&lt;/a&gt;, &lt;a href="https://op.europa.eu/en/web/eu-vocabularies/dataset/-/resource?uri=http://publications.europa.eu/resource/dataset/place"&gt;NAL Place&lt;/a&gt; or &lt;a href="http://www.geonames.org"&gt;Geonames&lt;/a&gt; are recommended to use, in that order. If those are still not sufficient, we recommend to define your own code list.
@@ -771,6 +781,14 @@ the Legal Resource under which the Rules are being defined.</xs:documentation>
     <xs:attribute name="LiteralRef" type="xs:IDREF">
       <xs:annotation>
         <xs:documentation xml:lang="en">Reference to Literal ID</xs:documentation>
+      </xs:annotation>
+    </xs:attribute>
+  </xs:complexType>
+  <xs:complexType name="DoubleType">
+    <xs:sequence/>
+    <xs:attribute name="DoubleRef" type="xs:IDREF">
+      <xs:annotation>
+        <xs:documentation xml:lang="en">Reference to Double ID</xs:documentation>
       </xs:annotation>
     </xs:attribute>
   </xs:complexType>
