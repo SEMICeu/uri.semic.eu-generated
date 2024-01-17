@@ -1,0 +1,626 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<xs:schema xmlns="https://data.europa.eu/m8g/xml/" xmlns:xs="http://www.w3.org/2001/XMLSchema" targetNamespace="https://data.europa.eu/m8g/xml/" version="2.0.0" elementFormDefault="qualified" attributeFormDefault="unqualified" xmlns:cv="https://data.europa.eu/m8g/xml/">
+  <xs:element name="Cost" type="CostType"/>
+  <xs:element name="LocatorDesignator" type="LocatorDesignatorType"/>
+  <xs:element name="FoafGroup" type="FoafGroupType"/>
+  <xs:element name="StrActivityData" type="StrActivityDataType"/>
+  <xs:element name="StrCoordinationGroup" type="StrCoordinationGroupType"/>
+  <xs:element name="StrOnlineSTRentalPlatform" type="StrOnlineSTRentalPlatformType"/>
+  <xs:element name="StrOrder" type="StrOrderType"/>
+  <xs:element name="StrRegistrationNumber" type="StrRegistrationNumberType"/>
+  <xs:element name="StrRegistrationProcedure" type="StrRegistrationProcedureType"/>
+  <xs:element name="StrSTAccomodationRentalService" type="StrSTAccomodationRentalServiceType"/>
+  <xs:element name="StrSingleDigitalEntryPoint" type="StrSingleDigitalEntryPointType"/>
+  <xs:element name="StrUnit" type="StrUnitType"/>
+  <xs:element name="LegalResource" type="LegalResourceType"/>
+  <xs:element name="ContactPoint" type="ContactPointType"/>
+  <xs:element name="PublicOrganisation" type="PublicOrganisationType"/>
+  <xs:element name="PeriodOfTime" type="PeriodOfTimeType"/>
+  <xs:element name="PublicRegistryService" type="PublicRegistryServiceType"/>
+  <xs:element name="Literal" type="LiteralType"/>
+  <xs:element name="Resource" type="ResourceType"/>
+  <xs:element name="Concept" type="ConceptType"/>
+  <xs:element name="Identifier" type="IdentifierType"/>
+  <xs:element name="Catalogue" type="CatalogueType"/>
+  <xs:element name="CatalogueRecord" type="CatalogueRecordType"/>
+  <xs:element name="DataService" type="DataServiceType"/>
+  <xs:element name="Dataset" type="DatasetType"/>
+  <xs:element name="Distribution" type="DistributionType"/>
+  <xs:element name="CataloguedResource" type="CataloguedResourceType"/>
+  <xs:element name="LegalEntity" type="LegalEntityType"/>
+  <xs:element name="Address" type="AddressType"/>
+  <xs:element name="Person" type="PersonType"/>
+  <xs:element name="Document" type="DocumentType"/>
+  <xs:complexType name="conceptType">
+    <xs:simpleContent>
+      <xs:extension base="xs:token">
+        <xs:attribute name="ref" type="xs:IDREF"/>
+        <xs:attribute name="conceptSchemeRef" type="xs:IDREF"/>
+      </xs:extension>
+    </xs:simpleContent>
+  </xs:complexType>
+  <xs:complexType name="CostType">
+    <xs:sequence>
+      <xs:element name="Currency" type="conceptType" maxOccurs="1" minOccurs="1"/>
+      <xs:element name="Identifier" type="xs:string" maxOccurs="1" minOccurs="1"/>
+      <xs:element name="Value" maxOccurs="1" minOccurs="1"/>
+    </xs:sequence>
+    <xs:attribute name="CostRef" type="xs:IDREF">
+      <xs:annotation>
+        <xs:documentation xml:lang="en">Reference to Cost ID</xs:documentation>
+      </xs:annotation>
+    </xs:attribute>
+  </xs:complexType>
+  <xs:complexType name="LocatorDesignatorType">
+    <xs:sequence>
+      <xs:element name="Designator" type="xs:string" maxOccurs="1" minOccurs="1"/>
+      <xs:element name="Type" type="conceptType" maxOccurs="1" minOccurs="1"/>
+    </xs:sequence>
+    <xs:attribute name="LocatorDesignatorRef" type="xs:IDREF">
+      <xs:annotation>
+        <xs:documentation xml:lang="en">Reference to LocatorDesignator ID</xs:documentation>
+      </xs:annotation>
+    </xs:attribute>
+  </xs:complexType>
+  <xs:complexType name="FoafGroupType">
+    <xs:sequence/>
+    <xs:attribute name="FoafGroupRef" type="xs:IDREF">
+      <xs:annotation>
+        <xs:documentation xml:lang="en">Reference to FoafGroup ID</xs:documentation>
+      </xs:annotation>
+    </xs:attribute>
+  </xs:complexType>
+  <xs:complexType name="StrActivityDataType">
+    <xs:sequence>
+      <xs:element name="Dcttemporal" type="PeriodOfTimeType" maxOccurs="1" minOccurs="1"/>
+      <xs:element name="NumberOfGuests" maxOccurs="1" minOccurs="1"/>
+    </xs:sequence>
+    <xs:attribute name="StrActivityDataRef" type="xs:IDREF">
+      <xs:annotation>
+        <xs:documentation xml:lang="en">Reference to StrActivityData ID</xs:documentation>
+      </xs:annotation>
+    </xs:attribute>
+  </xs:complexType>
+  <xs:complexType name="StrCoordinationGroupType">
+    <xs:sequence>
+      <xs:element name="Member" type="PersonType" maxOccurs="unbounded" minOccurs="1"/>
+    </xs:sequence>
+    <xs:attribute name="StrCoordinationGroupRef" type="xs:IDREF">
+      <xs:annotation>
+        <xs:documentation xml:lang="en">Reference to StrCoordinationGroup ID</xs:documentation>
+      </xs:annotation>
+    </xs:attribute>
+  </xs:complexType>
+  <xs:complexType name="StrOnlineSTRentalPlatformType">
+    <xs:sequence>
+      <xs:element name="Checks" type="StrSingleDigitalEntryPointType" maxOccurs="unbounded" minOccurs="0"/>
+      <xs:element name="ProvidesInformationTo" type="StrSingleDigitalEntryPointType" maxOccurs="unbounded" minOccurs="0"/>
+      <xs:element name="Publishes" type="CataloguedResourceType" maxOccurs="unbounded" minOccurs="1"/>
+      <xs:element name="Type" type="conceptType" maxOccurs="1" minOccurs="1"/>
+    </xs:sequence>
+    <xs:attribute name="StrOnlineSTRentalPlatformRef" type="xs:IDREF">
+      <xs:annotation>
+        <xs:documentation xml:lang="en">Reference to StrOnlineSTRentalPlatform ID</xs:documentation>
+      </xs:annotation>
+    </xs:attribute>
+  </xs:complexType>
+  <xs:complexType name="StrOrderType">
+    <xs:sequence>
+      <xs:element name="Concerns" type="StrRegistrationNumberType" maxOccurs="1" minOccurs="1"/>
+      <xs:element name="IsAbout" type="LegalEntityType" maxOccurs="1" minOccurs="1"/>
+      <xs:element name="IsAbout" type="PersonType" maxOccurs="1" minOccurs="1"/>
+      <xs:element name="Reason" type="xs:string" maxOccurs="1" minOccurs="1"/>
+      <xs:element name="SentTo" type="StrOnlineSTRentalPlatformType" maxOccurs="1" minOccurs="1"/>
+    </xs:sequence>
+    <xs:attribute name="StrOrderRef" type="xs:IDREF">
+      <xs:annotation>
+        <xs:documentation xml:lang="en">Reference to StrOrder ID</xs:documentation>
+      </xs:annotation>
+    </xs:attribute>
+  </xs:complexType>
+  <xs:complexType name="StrRegistrationNumberType">
+    <xs:sequence>
+      <xs:element name="HasValidityPeriod" type="PeriodOfTimeType" maxOccurs="unbounded" minOccurs="0"/>
+      <xs:element name="Identifies" type="StrUnitType" maxOccurs="1" minOccurs="1"/>
+      <xs:element name="Identifies" type="StrUnitType" maxOccurs="1" minOccurs="1"/>
+      <xs:element name="IssueDate" type="xs:dateTime" maxOccurs="1" minOccurs="1"/>
+      <xs:element name="Status" type="conceptType" maxOccurs="1" minOccurs="1"/>
+    </xs:sequence>
+    <xs:attribute name="StrRegistrationNumberRef" type="xs:IDREF">
+      <xs:annotation>
+        <xs:documentation xml:lang="en">Reference to StrRegistrationNumber ID</xs:documentation>
+      </xs:annotation>
+    </xs:attribute>
+  </xs:complexType>
+  <xs:complexType name="StrRegistrationProcedureType">
+    <xs:sequence>
+      <xs:element name="AppliesTo" type="AddressType" maxOccurs="1" minOccurs="1"/>
+      <xs:element name="HasCost" type="CostType" maxOccurs="unbounded" minOccurs="0"/>
+      <xs:element name="HasInput" type="DocumentType" maxOccurs="unbounded" minOccurs="0"/>
+      <xs:element name="Identifier" type="xs:string" maxOccurs="1" minOccurs="1"/>
+      <xs:element name="Produces" type="StrRegistrationNumberType" maxOccurs="1" minOccurs="1"/>
+    </xs:sequence>
+    <xs:attribute name="StrRegistrationProcedureRef" type="xs:IDREF">
+      <xs:annotation>
+        <xs:documentation xml:lang="en">Reference to StrRegistrationProcedure ID</xs:documentation>
+      </xs:annotation>
+    </xs:attribute>
+  </xs:complexType>
+  <xs:complexType name="StrSTAccomodationRentalServiceType">
+    <xs:sequence>
+      <xs:element name="ProvidesAccessTo" type="StrOnlineSTRentalPlatformType" maxOccurs="unbounded" minOccurs="1"/>
+    </xs:sequence>
+    <xs:attribute name="StrSTAccomodationRentalServiceRef" type="xs:IDREF">
+      <xs:annotation>
+        <xs:documentation xml:lang="en">Reference to StrSTAccomodationRentalService ID</xs:documentation>
+      </xs:annotation>
+    </xs:attribute>
+  </xs:complexType>
+  <xs:complexType name="StrSingleDigitalEntryPointType">
+    <xs:sequence>
+      <xs:element name="HasNationalCoordinator" type="PersonType" maxOccurs="1" minOccurs="1"/>
+    </xs:sequence>
+    <xs:attribute name="StrSingleDigitalEntryPointRef" type="xs:IDREF">
+      <xs:annotation>
+        <xs:documentation xml:lang="en">Reference to StrSingleDigitalEntryPoint ID</xs:documentation>
+      </xs:annotation>
+    </xs:attribute>
+  </xs:complexType>
+  <xs:complexType name="StrUnitType">
+    <xs:sequence>
+      <xs:element name="Description" type="xs:string" maxOccurs="1" minOccurs="1"/>
+      <xs:element name="FloorLevel" type="xs:string" maxOccurs="1" minOccurs="1"/>
+      <xs:element name="HasActivityData" type="StrActivityDataType" maxOccurs="unbounded" minOccurs="0"/>
+      <xs:element name="HasAuthorization" type="DocumentType" maxOccurs="1" minOccurs="0"/>
+      <xs:element name="IsAuthorizationObtained" maxOccurs="1" minOccurs="1"/>
+      <xs:element name="IsSubjectToAuthorization" maxOccurs="1" minOccurs="1"/>
+      <xs:element name="NumberOfBedrooms" maxOccurs="1" minOccurs="1"/>
+      <xs:element name="Occupancy" maxOccurs="1" minOccurs="1"/>
+      <xs:element name="Purpose" type="xs:string" maxOccurs="1" minOccurs="1"/>
+      <xs:element name="RegisteredAddress" type="AddressType" maxOccurs="1" minOccurs="1"/>
+      <xs:element name="Type" type="conceptType" maxOccurs="1" minOccurs="1"/>
+    </xs:sequence>
+    <xs:attribute name="StrUnitRef" type="xs:IDREF">
+      <xs:annotation>
+        <xs:documentation xml:lang="en">Reference to StrUnit ID</xs:documentation>
+      </xs:annotation>
+    </xs:attribute>
+  </xs:complexType>
+  <xs:complexType name="LegalResourceType">
+    <xs:sequence/>
+    <xs:attribute name="LegalResourceRef" type="xs:IDREF">
+      <xs:annotation>
+        <xs:documentation xml:lang="en">Reference to LegalResource ID</xs:documentation>
+      </xs:annotation>
+    </xs:attribute>
+  </xs:complexType>
+  <xs:complexType name="ContactPointType">
+    <xs:sequence>
+      <xs:element name="HasEmail" type="xs:string" maxOccurs="1" minOccurs="1">
+        <xs:annotation>
+          <xs:documentation xml:lang="en" source="#definition">An electronic address through which the Contact Point can be contacted.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="HasTelephone" type="xs:string" maxOccurs="1" minOccurs="1">
+        <xs:annotation>
+          <xs:documentation xml:lang="en" source="#definition">A telephone number through which the Contact Point can be contacted.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+    </xs:sequence>
+    <xs:attribute name="ContactPointRef" type="xs:IDREF">
+      <xs:annotation>
+        <xs:documentation xml:lang="en">Reference to ContactPoint ID</xs:documentation>
+      </xs:annotation>
+    </xs:attribute>
+  </xs:complexType>
+  <xs:complexType name="PublicOrganisationType">
+    <xs:sequence>
+      <xs:element name="IsResponsibleFor" type="StrSingleDigitalEntryPointType" maxOccurs="1" minOccurs="0"/>
+      <xs:element name="AlternativeLabel" maxOccurs="unbounded" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation xml:lang="en" source="#definition">An alternative or informal name(s) of a Public Organization, irrespective of language.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="Classification" maxOccurs="unbounded" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation xml:lang="en" source="#definition">The categorisation of the Public Organization.</xs:documentation>
+          <xs:documentation xml:lang="en" source="#usage">As an example, the Publications Office of the European Union provides a Named Authority list of Organization Types which is appropriate for European institutions. Other classification schemes should be used at other levels of Public Organization.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="Description" maxOccurs="unbounded" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation xml:lang="en" source="#definition">The textual description of the Public Organization.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="HasMember" type="PublicOrganisationType" maxOccurs="unbounded" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation xml:lang="en" source="#definition">An Organization which is a member of another without being a sub organization, they are independent entities.</xs:documentation>
+          <xs:documentation xml:lang="en" source="#usage">The memberOf and hasMember properties are very simple and don't support statements describing the nature of the membership. The &lt;a href="https://www.w3.org/TR/vocab-org/"&gt;W3C Organization Ontology&lt;/a&gt; provides both this simple method and a more sophisticated model that does make it possible to, for example, provide information about the period of time in which one Organization was a member of another, the level of membership etc. That more sophisticated model should be used where necessary and may be used in addition to the simple memberOf/hasMember properties.
+
+An example of memberships are the EU member states and other partners which could be represented via different legal entities as members of EFSA, the &lt;a href="https://www.efsa.europa.eu/en/partnersnetworks/euinstitutions"&gt;European Food Safety Agency&lt;/a&gt;  </xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="HasSubOrganization" type="PublicOrganisationType" maxOccurs="unbounded" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation xml:lang="en" source="#definition">An Organization which is a sub-part or child of the Pulic Organization.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="Issues" type="StrOrderType" maxOccurs="unbounded" minOccurs="0"/>
+      <xs:element name="MemberOf" type="PublicOrganisationType" maxOccurs="unbounded" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation xml:lang="en" source="#definition">An Organization of which the Public Organisation is a member without being a sub organization, they are independent entities.</xs:documentation>
+          <xs:documentation xml:lang="en" source="#usage">The memberOf and hasMember properties are very simple and don't support statements describing the nature of the membership. The &lt;a href="https://www.w3.org/TR/vocab-org/"&gt;W3C Organization Ontology&lt;/a&gt; provides both this simple method and a more sophisticated model that does make it possible to, for example, provide information about the period of time in which one Organization was a member of another, the level of membership etc. That more sophisticated model should be used where necessary and may be used in addition to the simple memberOf/hasMember properties.
+
+An example of memberships are the EU member states and other partners which could be represented via different legal entities as members of EFSA, the &lt;a href="https://www.efsa.europa.eu/en/partnersnetworks/euinstitutions"&gt; European Food Safety Agency&lt;/a&gt;</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="Next" type="PublicOrganisationType" maxOccurs="unbounded" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation xml:lang="en" source="#definition">In some cases, it is necessary to be able to create an ordered sequence of organizations that precede and succeed each other. To support this, the CPOV includes the well-known relationships of previous and next to allow such sequences to be captured and computed.</xs:documentation>
+          <xs:documentation xml:lang="en" source="#usage">Examples of events leading to sequences could be renaming, splitting or merging of public organizations.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="PreferredLabel" maxOccurs="unbounded" minOccurs="1">
+        <xs:annotation>
+          <xs:documentation xml:lang="en" source="#definition">A preferred label is used to provide the primary, legally recognised name of the Public Organization, as defined in the ORG Ontology.</xs:documentation>
+          <xs:documentation xml:lang="en" source="#usage">Refers to the official or legal name of a Public Organization. An organization may only have one such name in any given language. Primary names may be provided in multiple languages with multiple instances of the preferred label property.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="Prev" type="PublicOrganisationType" maxOccurs="unbounded" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation xml:lang="en" source="#definition">In some cases, it is necessary to be able to create an ordered sequence of an organization that precede and succeed each other. To support this, the CPOV includes the well-known relationships of previous and next to allow such sequences to be captured and computed</xs:documentation>
+          <xs:documentation xml:lang="en" source="#usage">Examples of events leading to sequences could be renaming, splitting or merging of public organizations.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="Purpose" maxOccurs="unbounded" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation xml:lang="en" source="#definition">This property describes the reasons of existence of an Organization.</xs:documentation>
+          <xs:documentation xml:lang="en" source="#usage">The ORG ontology suggests that this property can also be thought of as meaning 'remit' or 'responsibility.' Ideally this will link to a COFOG code but where this isn't possible or appropriate, other controlled vocabularies may be used.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="SubOrganizationOf" type="PublicOrganisationType" maxOccurs="unbounded" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation xml:lang="en" source="#definition">An Organization of which the Public Organization is a sub organization.</xs:documentation>
+          <xs:documentation xml:lang="en" source="#usage">Public Organizations are often large and complex and may be a collection of smaller Organizations, each of which has a specific identity that may be legally defined. The hasSubOrganization and subOrganizationOf properties express the relationships between Organizations in a hierarchical structure.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="Verifies" type="DocumentType" maxOccurs="unbounded" minOccurs="0"/>
+    </xs:sequence>
+    <xs:attribute name="PublicOrganisationRef" type="xs:IDREF">
+      <xs:annotation>
+        <xs:documentation xml:lang="en">Reference to PublicOrganisation ID</xs:documentation>
+      </xs:annotation>
+    </xs:attribute>
+  </xs:complexType>
+  <xs:complexType name="PeriodOfTimeType">
+    <xs:sequence>
+      <xs:element name="EndDate" type="xs:string" maxOccurs="1" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation xml:lang="en" source="#definition">The end of the period</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="StartDate" type="xs:string" maxOccurs="1" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation xml:lang="en" source="#definition">The start of the period</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="Beginning" maxOccurs="1" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation xml:lang="en" source="#definition">The beginning of a period or interval.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="End" maxOccurs="1" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation xml:lang="en" source="#definition">The end of a period or interval</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+    </xs:sequence>
+    <xs:attribute name="PeriodOfTimeRef" type="xs:IDREF">
+      <xs:annotation>
+        <xs:documentation xml:lang="en">Reference to PeriodOfTime ID</xs:documentation>
+      </xs:annotation>
+    </xs:attribute>
+  </xs:complexType>
+  <xs:complexType name="PublicRegistryServiceType">
+    <xs:sequence>
+      <xs:element name="Produces" type="CataloguedResourceType" maxOccurs="unbounded" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation xml:lang="en" source="#definition">This property defines the output of the service as a data resource available
+and managed by a Base Registry Service.</xs:documentation>
+          <xs:documentation xml:lang="en" source="#usage">The output must be also
+described as a dcat:Catalog, a dcat:Dataset or a dcat:DataService.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="Description" type="xs:string" maxOccurs="unbounded" minOccurs="1"/>
+      <xs:element name="HasCompetentAuthority" type="PublicOrganisationType" maxOccurs="1" minOccurs="1"/>
+      <xs:element name="Identifier" type="xs:string" maxOccurs="1" minOccurs="1"/>
+      <xs:element name="Name" type="xs:string" maxOccurs="unbounded" minOccurs="1"/>
+    </xs:sequence>
+    <xs:attribute name="PublicRegistryServiceRef" type="xs:IDREF">
+      <xs:annotation>
+        <xs:documentation xml:lang="en">Reference to PublicRegistryService ID</xs:documentation>
+      </xs:annotation>
+    </xs:attribute>
+  </xs:complexType>
+  <xs:complexType name="LiteralType">
+    <xs:sequence/>
+    <xs:attribute name="LiteralRef" type="xs:IDREF">
+      <xs:annotation>
+        <xs:documentation xml:lang="en">Reference to Literal ID</xs:documentation>
+      </xs:annotation>
+    </xs:attribute>
+  </xs:complexType>
+  <xs:complexType name="ResourceType">
+    <xs:sequence/>
+    <xs:attribute name="ResourceRef" type="xs:IDREF">
+      <xs:annotation>
+        <xs:documentation xml:lang="en">Reference to Resource ID</xs:documentation>
+      </xs:annotation>
+    </xs:attribute>
+  </xs:complexType>
+  <xs:complexType name="ConceptType">
+    <xs:sequence/>
+    <xs:attribute name="ConceptRef" type="xs:IDREF">
+      <xs:annotation>
+        <xs:documentation xml:lang="en">Reference to Concept ID</xs:documentation>
+      </xs:annotation>
+    </xs:attribute>
+  </xs:complexType>
+  <xs:complexType name="IdentifierType">
+    <xs:sequence>
+      <xs:element name="Identifies" type="PersonType" maxOccurs="1" minOccurs="1"/>
+      <xs:element name="Identifies" type="LegalEntityType" maxOccurs="1" minOccurs="1"/>
+    </xs:sequence>
+    <xs:attribute name="IdentifierRef" type="xs:IDREF">
+      <xs:annotation>
+        <xs:documentation xml:lang="en">Reference to Identifier ID</xs:documentation>
+      </xs:annotation>
+    </xs:attribute>
+  </xs:complexType>
+  <xs:complexType name="CatalogueType">
+    <xs:sequence>
+      <xs:element name="Dataset" type="DatasetType" maxOccurs="unbounded" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation xml:lang="en" source="#definition">A Dataset that is part of the Catalogue.</xs:documentation>
+          <xs:documentation xml:lang="en" source="#usage">As empty Catalogues are usually indications of problems, this property should be combined with the next property service to implement an empty Catalogue check.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="Record" type="CatalogueRecordType" maxOccurs="unbounded" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation xml:lang="en" source="#definition">A Catalogue Record that is part of the Catalogue.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="Service" type="DataServiceType" maxOccurs="unbounded" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation xml:lang="en" source="#definition">A site or end-point (Data Service) that is listed in the Catalogue.</xs:documentation>
+          <xs:documentation xml:lang="en" source="#usage">As empty Catalogues are usually indications of problems, this property should be combined with the previous property dataset to implement an empty Catalogue check.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+    </xs:sequence>
+    <xs:attribute name="CatalogueRef" type="xs:IDREF">
+      <xs:annotation>
+        <xs:documentation xml:lang="en">Reference to Catalogue ID</xs:documentation>
+      </xs:annotation>
+    </xs:attribute>
+  </xs:complexType>
+  <xs:complexType name="CatalogueRecordType">
+    <xs:sequence>
+      <xs:element name="PrimaryTopic" type="CataloguedResourceType" maxOccurs="1" minOccurs="1">
+        <xs:annotation>
+          <xs:documentation xml:lang="en" source="#definition">A link to the Dataset, Data service or Catalog described in the record.</xs:documentation>
+          <xs:documentation xml:lang="en" source="#usage">A catalogue record will refer to one entity in a catalogue. This can be either a Dataset or a Data Service. To ensure an unambigous reading of the cardinality the range is set to Catalogued Resource. However it is not the intend with this range to require the explicit use of the class Catalogued Record. As abstract class, an subclass should be used.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+    </xs:sequence>
+    <xs:attribute name="CatalogueRecordRef" type="xs:IDREF">
+      <xs:annotation>
+        <xs:documentation xml:lang="en">Reference to CatalogueRecord ID</xs:documentation>
+      </xs:annotation>
+    </xs:attribute>
+  </xs:complexType>
+  <xs:complexType name="DataServiceType">
+    <xs:sequence>
+      <xs:element name="ServesDataset" type="DatasetType" maxOccurs="unbounded" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation xml:lang="en" source="#definition">This property refers to a collection of data that this data service can distribute.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+    </xs:sequence>
+    <xs:attribute name="DataServiceRef" type="xs:IDREF">
+      <xs:annotation>
+        <xs:documentation xml:lang="en">Reference to DataService ID</xs:documentation>
+      </xs:annotation>
+    </xs:attribute>
+  </xs:complexType>
+  <xs:complexType name="DatasetType">
+    <xs:sequence>
+      <xs:element name="DatasetDistribution" type="DistributionType" maxOccurs="unbounded" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation xml:lang="en" source="#definition">An available Distribution for the Dataset.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+    </xs:sequence>
+    <xs:attribute name="DatasetRef" type="xs:IDREF">
+      <xs:annotation>
+        <xs:documentation xml:lang="en">Reference to Dataset ID</xs:documentation>
+      </xs:annotation>
+    </xs:attribute>
+  </xs:complexType>
+  <xs:complexType name="DistributionType">
+    <xs:sequence>
+      <xs:element name="AccessService" type="DataServiceType" maxOccurs="unbounded" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation xml:lang="en" source="#definition">A data service that gives access to the distribution of the dataset.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="HasListing" type="StrUnitType" maxOccurs="unbounded" minOccurs="0"/>
+    </xs:sequence>
+    <xs:attribute name="DistributionRef" type="xs:IDREF">
+      <xs:annotation>
+        <xs:documentation xml:lang="en">Reference to Distribution ID</xs:documentation>
+      </xs:annotation>
+    </xs:attribute>
+  </xs:complexType>
+  <xs:complexType name="CataloguedResourceType">
+    <xs:sequence/>
+    <xs:attribute name="CataloguedResourceRef" type="xs:IDREF">
+      <xs:annotation>
+        <xs:documentation xml:lang="en">Reference to CataloguedResource ID</xs:documentation>
+      </xs:annotation>
+    </xs:attribute>
+  </xs:complexType>
+  <xs:complexType name="LegalEntityType">
+    <xs:sequence>
+      <xs:element name="HasLegalRepresentative" type="PersonType" maxOccurs="unbounded" minOccurs="1"/>
+      <xs:element name="LegalIdentifier" type="IdentifierType" maxOccurs="1" minOccurs="1"/>
+      <xs:element name="LegalName" maxOccurs="unbounded" minOccurs="1">
+        <xs:annotation>
+          <xs:documentation xml:lang="en" source="#definition">The name under which the Legal Entity is legally registered.</xs:documentation>
+          <xs:documentation xml:lang="en" source="#usage">The legal name is different from the alternative (trade) name which is a pseudonym used by companies that do not operate under their registered company name.
+A business might have more than one legal name, particularly in countries with more than one official language. In such cases, and where the encoding technology allows, the language of the string should be identified.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="Offers" type="StrSTAccomodationRentalServiceType" maxOccurs="unbounded" minOccurs="0"/>
+      <xs:element name="Provides" type="DocumentType" maxOccurs="unbounded" minOccurs="0"/>
+      <xs:element name="RegisteredAddress" type="AddressType" maxOccurs="1" minOccurs="1"/>
+    </xs:sequence>
+    <xs:attribute name="LegalEntityRef" type="xs:IDREF">
+      <xs:annotation>
+        <xs:documentation xml:lang="en">Reference to LegalEntity ID</xs:documentation>
+      </xs:annotation>
+    </xs:attribute>
+  </xs:complexType>
+  <xs:complexType name="AddressType">
+    <xs:sequence>
+      <xs:element name="AddressArea" maxOccurs="1" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation xml:lang="en" source="#definition">The name of a geographic area that groups Addresses.</xs:documentation>
+          <xs:documentation xml:lang="en" source="#usage">This would typically be part of a city, a neighbourhood or village, e.g. Montmartre. Address area is not an administrative unit.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="AddressId" type="xs:string" maxOccurs="1" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation xml:lang="en" source="#definition">A globally unique identifier for each instance of an Address.</xs:documentation>
+          <xs:documentation xml:lang="en" source="#usage">The concept of adding a globally unique identifier for each instance of an address is a crucial part of the INSPIRE data spec. A number of EU countries have already implemented an ID (a UUID) in their Address Register/gazetteer, among them Denmark. OASIS xAL also includes an address identifier. It is the address Identifier that allows an address to be represented in a format other than INSPIRE whilst remaining conformant to the Core Vocabulary.
+&lt;br/&gt;&lt;br/&gt;
+The INSPIRE method of representing addresses is very detailed, designed primarily for use in databases of addresses. Whilst data that is published in full conformance with the INSPIRE data structure can be made available using the Core  Location Vocabulary the reverse is not true since the Core Vocabulary allows much greater flexibility.
+&lt;br/&gt;&lt;br/&gt;
+Many datasets that include address data as one piece of information about something else are likely to have that data in simpler formats. These might be tailored to the specific need of the dataset, follow a national norm, or make use of a standard like vCard.
+&lt;br/&gt;&lt;br/&gt;
+To provide maximum flexibility in the Core Vocabulary, whilst remaining interoperable with INSPIRE Address Guidelines (which EU Member States are obliged to use), the  Core Location Vocabulary provides the extra property of full address and makes use of INSPIRE's addressID.
+&lt;br/&gt;&lt;br/&gt;
+The datatype of addressID is indicated as Literal (keeping backward compatibility with the old W3C specification) that can be typed differently, see &lt;a href="https://www.w3.org/TR/rdf11-concepts/#section-Graph-Literal"&gt;more&lt;/a&gt;.
+</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="AdministrativeUnitLevel1" maxOccurs="1" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation xml:lang="en" source="#definition">The name of the uppermost level of the address, almost always a country.</xs:documentation>
+          <xs:documentation xml:lang="en" source="#usage">Best practice is to use the ISO 3166-1 code but if this is inappropriate for the context, country names should be provided in a consistent manner to reduce ambiguity. For example, either write 'France' or 'FRA' consistently throughout the dataset and avoid mixing the two. The &lt;a href="https://op.europa.eu/en/web/eu-vocabularies/dataset/-/resource?uri=http://publications.europa.eu/resource/dataset/country"&gt;Country controlled vocabulary&lt;/a&gt; from the Publications Office can be reused for this.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="AdministrativeUnitLevel2" maxOccurs="1" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation xml:lang="en" source="#definition">The name of a secondary level/region of the address, usually a county, state or other such area that typically encompasses several localities.</xs:documentation>
+          <xs:documentation xml:lang="en" source="#usage">Values could be a region or province, more granular than level 1.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="FullAddress" maxOccurs="1" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation xml:lang="en" source="#definition">The complete address written as a string.</xs:documentation>
+          <xs:documentation xml:lang="en" source="#usage">Use of this property is recommended as it will not suffer any misunderstandings that might arise through the breaking up of an address into its component parts. This property is analogous to vCard's label property but with two important differences: (1) formatting is not assumed so that, unlike vCard label, it may not be suitable to print this on an address label, (2) vCard's label property has a domain of vCard Address; the fullAddress property has no such restriction. An example of a full address is "Champ de Mars, 5 Avenue Anatole France, 75007 Paris, France".</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="LandRegister" type="CataloguedResourceType" maxOccurs="1" minOccurs="0"/>
+      <xs:element name="LocatorDesignator" type="LocatorDesignatorType" maxOccurs="1" minOccurs="0"/>
+      <xs:element name="LocatorDesignator" type="xs:string" maxOccurs="1" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation xml:lang="en" source="#definition">A number or sequence of characters that uniquely identifies the locator within the relevant scope.</xs:documentation>
+          <xs:documentation xml:lang="en" source="#usage">In simpler terms, this is the building number, apartment number, etc. For an address such as "Flat 3, 17 Bridge Street", the locator is "flat 3, 17".
+&lt;br/&gt;&lt;br/&gt;
+The datatype of locatorDesignator is indicated as Literal (keeping backward compatibility with the old W3C specification) that can be typed differently, see &lt;a href="https://www.w3.org/TR/rdf11-concepts/#section-Graph-Literal"&gt;more&lt;/a&gt;.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="LocatorName" maxOccurs="1" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation xml:lang="en" source="#definition">Proper noun(s) applied to the real world entity identified by the locator.</xs:documentation>
+          <xs:documentation xml:lang="en" source="#usage">The locator name could be the name of the property or complex, of the building or part of the building, or it could be the name of a room inside a building.
+&lt;br/&gt;&lt;br/&gt;
+The key difference between a locator and a locator name is that the latter is a proper name and is unlikely to include digits. For example, "Shumann, Berlaymont" is a meeting room within the European Commission headquarters for which locator name is more appropriate than locator.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="PostOfficeBox" type="xs:string" maxOccurs="1" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation xml:lang="en" source="#definition">A location designator for a postal delivery point at a post office, usually a number.</xs:documentation>
+          <xs:documentation xml:lang="en" source="#usage">INSPIRE's name for this is "postalDeliveryIdentifier" for which it uses the locator designator property with a type attribute of that name. This vocabulary separates out the Post Office Box for greater independence of technology. An example post office box number is "9383".
+&lt;br/&gt;&lt;br/&gt;
+The datatype of poBox is indicated as Literal (keeping backward compatibility with the old W3C specification) that can be typed differently, see &lt;a href="https://www.w3.org/TR/rdf11-concepts/#section-Graph-Literal"&gt;more&lt;/a&gt;.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="PostCode" type="xs:string" maxOccurs="1" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation xml:lang="en" source="#definition">The code created and maintained for postal purposes to identify a subdivision of addresses and postal delivery points.</xs:documentation>
+          <xs:documentation xml:lang="en" source="#usage">Post codes are common elements in many countries' postal address systems. One of the many post codes of Paris is for example "75000".
+
+The datatype of addressID is indicated as Literal (keeping backward compatibility with the old W3C specification) that can be typed differently, see &lt;a href="https://www.w3.org/TR/rdf11-concepts/#section-Graph-Literal"&gt;more&lt;/a&gt;.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="PostName" maxOccurs="1" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation xml:lang="en" source="#definition">A name created and maintained for postal purposes to identify a subdivision of addresses and postal delivery points.</xs:documentation>
+          <xs:documentation xml:lang="en" source="#usage">Usually a city, for example "Paris".</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="Thoroughfare" maxOccurs="1" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation xml:lang="en" source="#definition">The name of a passage or way through from one location to another.</xs:documentation>
+          <xs:documentation xml:lang="en" source="#usage">A thoroughfare is usually a street, but it might be a waterway or some other feature. For example, "Avenue des Champs-Élysées".</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+    </xs:sequence>
+    <xs:attribute name="AddressRef" type="xs:IDREF">
+      <xs:annotation>
+        <xs:documentation xml:lang="en">Reference to Address ID</xs:documentation>
+      </xs:annotation>
+    </xs:attribute>
+  </xs:complexType>
+  <xs:complexType name="PersonType">
+    <xs:sequence>
+      <xs:element name="ContactPoint" type="ContactPointType" maxOccurs="unbounded" minOccurs="0"/>
+      <xs:element name="Domicile" type="AddressType" maxOccurs="unbounded" minOccurs="1"/>
+      <xs:element name="FamilyNamesurname" maxOccurs="1" minOccurs="1">
+        <xs:annotation>
+          <xs:documentation xml:lang="en" source="#definition">The hereditary surname of a family.</xs:documentation>
+          <xs:documentation xml:lang="en" source="#usage">Usually referring to a group of people related by blood, marriage or adoption. This attribute also carries prefixes or suffixes which are part of the family name, e.g. "de Boer", "van de Putte", "von und zu Orlow". Multiple family names, such as are commonly found in Hispanic countries, are recorded in the single family name property so that, for example, Miguel de Cervantes Saavedra's family name would be recorded as "de Cervantes Saavedra".</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="GivenNameforename" maxOccurs="1" minOccurs="1">
+        <xs:annotation>
+          <xs:documentation xml:lang="en" source="#definition">The name(s) that identify the Person within a family with a common surname.</xs:documentation>
+          <xs:documentation xml:lang="en" source="#usage">Usually a first name. Given to a person by his or her parents at birth or legally recognised as 'given names' through a formal process. All given names are ordered in one property so that, for example, the given name for Johann Sebastian Bach is "Johann Sebastian".</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="Identifier" type="IdentifierType" maxOccurs="1" minOccurs="1"/>
+      <xs:element name="Offers" type="StrSTAccomodationRentalServiceType" maxOccurs="unbounded" minOccurs="0"/>
+      <xs:element name="Provides" type="DocumentType" maxOccurs="unbounded" minOccurs="0"/>
+    </xs:sequence>
+    <xs:attribute name="PersonRef" type="xs:IDREF">
+      <xs:annotation>
+        <xs:documentation xml:lang="en">Reference to Person ID</xs:documentation>
+      </xs:annotation>
+    </xs:attribute>
+  </xs:complexType>
+  <xs:complexType name="DocumentType">
+    <xs:sequence>
+      <xs:element name="Describes" type="StrUnitType" maxOccurs="1" minOccurs="1"/>
+      <xs:element name="HasValidityPeriod" type="PeriodOfTimeType" maxOccurs="unbounded" minOccurs="0"/>
+      <xs:element name="SubmissionDate" type="xs:dateTime" maxOccurs="1" minOccurs="1"/>
+      <xs:element name="UpdateDate" type="xs:dateTime" maxOccurs="1" minOccurs="1"/>
+    </xs:sequence>
+    <xs:attribute name="DocumentRef" type="xs:IDREF">
+      <xs:annotation>
+        <xs:documentation xml:lang="en">Reference to Document ID</xs:documentation>
+      </xs:annotation>
+    </xs:attribute>
+  </xs:complexType>
+</xs:schema>
