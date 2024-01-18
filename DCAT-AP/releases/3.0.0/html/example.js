@@ -258,7 +258,7 @@ $(document).ready(function () {
 		var exampleid = $(this).parent().parent().attr("exampleid");
 		var indexValues = $examples.map(function() { return this.id; }) ;
 		var index = myIndexOf(indexValues, exampleid);
-		var shapes = validate("v2.0", editors[index].CM1.getValue(), "application/ld+json");
+		var shapes = loadShape(shaclfilepath, editors[index].CM1.getValue(), "application%2Fld%2Bjson");
 		return false;
 	});
 	$("div.CodeMirror pre").on('click', function(e) {
