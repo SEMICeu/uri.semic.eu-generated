@@ -95,7 +95,7 @@ var dialog = $("<div>", {
     title: "Validation Result"
   }).dialog({
     autoOpen: false,
-    height: 400,
+    height: 700,
     width: 350,
     modal: true
   });
