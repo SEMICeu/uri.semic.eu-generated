@@ -95,8 +95,8 @@ var dialog = $("<div>", {
     title: "Validation Result"
   }).dialog({
     autoOpen: false,
-    height: 700,
-    width: 350,
+    height: 400,
+    width: 700,
     modal: true
   });
 
@@ -122,11 +122,8 @@ function validate(version, content, format) {
 			reg = /sh:conforms\s+true/g
 			if(response.search(reg) >=0 )
 				dialog.closest(".ui-dialog").children(".ui-dialog-titlebar").css("background", "darkgreen");
-		else
-			dialog.closest(".ui-dialog").children(".ui-dialog-titlebar").css("background", "red");
-		
-		
-		//alert(data);// write success in " "
+			else
+				dialog.closest(".ui-dialog").children(".ui-dialog-titlebar").css("background", "red");
 		},
 
 		error: function (jqXHR, status) {
