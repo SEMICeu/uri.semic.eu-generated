@@ -255,7 +255,7 @@ $(document).ready(function () {
 		var exampleid = $(this).parent().parent().attr("exampleid");
 		var indexValues = $examples.map(function() { return this.id; }) ;
 		var index = myIndexOf(indexValues, exampleid);
-		var shaclfilepath = "./shacl/shapes.ttl" ;
+		var shaclfilepath = "./html/shacl/shapes.ttl" ;
 		var shapes = loadShape(shaclfilepath, editors[index].CM1.getValue(), "application%2Fld%2Bjson");
 		return false;
 	});
