@@ -144,10 +144,10 @@ function validate(model, version, content, format) {
 		} else if (exception === 'abort') {
 			msg = 'Ajax request aborted.';
 		} else {
-			msg = 'Uncaught Error.\n' + jqXHR.responseText;
+			msg = 'Uncaught Error.\n';
 		}
 		
-		alert('It was not possible to validate, error:' + msg);
+		alert('It was not possible to validate, msg:' + msg + ' error:' + jqXHR.responseText);
 		}
 		});
 }
