@@ -97,10 +97,11 @@ var dialog = $("<div>", {
     autoOpen: false,
     height: 400,
     width: 700,
-    modal: true
+    modal: true,
+	show: { effect: "blind", duration: 400 }
   });
 
-function validate(version, content, format) {
+function validate(model, version, content, format) {
 	request = {
 	"contentToValidate": btoa(content),
     "contentSyntax": format,
@@ -108,9 +109,10 @@ function validate(version, content, format) {
    "validationType": version,
    "reportSyntax": "text/turtle"
 	};
+	var itbapi = "https://www.itb.ec.europa.eu/shacl/" + model + "/api/validate" ;
 	$.ajax({
 		type: "POST",
-		url: "https://www.itb.ec.europa.eu/shacl/dcat-ap/api/validate",
+		url: itbapi,
 		data: JSON.stringify(request),// now data come in this function
 		contentType: "application/json; charset=utf-8",
 		crossDomain: true,
@@ -121,9 +123,9 @@ function validate(version, content, format) {
 		    dialog.dialog("open");
 			reg = /sh:conforms\s+true/g
 			if(response.search(reg) >=0 )
-				dialog.closest(".ui-dialog").children(".ui-dialog-titlebar").css("background", "darkgreen");
+				dialog.closest(".ui-dialog").children(".ui-dialog-titlebar").css({"background": "darkgreen", "background-image": "linear-gradient(to bottom,#6a996a,#006400)","color":"white"});
 			else
-				dialog.closest(".ui-dialog").children(".ui-dialog-titlebar").css("background", "red");
+				dialog.closest(".ui-dialog").children(".ui-dialog-titlebar").css({"background": "red", "background-image": "linear-gradient(to bottom,#ac6464,#b31c1c)","color":"white"});
 		},
 
 		error: function (jqXHR, status) {
@@ -248,7 +250,7 @@ $(document).ready(function () {
 		var exampleid = $(this).parent().parent().attr("exampleid");
 		var indexValues = $examples.map(function() { return this.id; }) ;
 		var index = myIndexOf(indexValues, exampleid);
-		var shapes = validate("v2.0", editors[index].CM0.getValue(), "text/turtle");
+		var shapes = validate("dcat-ap", "v2.0", editors[index].CM0.getValue(), "text/turtle");
 		return false;
 	});
 	$("button.validateJsonld").on('click', function(e) {
@@ -256,7 +258,8 @@ $(document).ready(function () {
 		var indexValues = $examples.map(function() { return this.id; }) ;
 		var index = myIndexOf(indexValues, exampleid);
 		var shaclfilepath = "./html/shacl/shapes.ttl" ;
-		var shapes = loadShape(shaclfilepath, editors[index].CM1.getValue(), "application%2Fld%2Bjson");
+		//var shapes = loadShape(shaclfilepath, editors[index].CM1.getValue(), "application%2Fld%2Bjson");
+		var shapes = validate("dcat-ap", "v2.0", editors[index].CM1.getValue(), "application/ld+json");
 		return false;
 	});
 	$("div.CodeMirror pre").on('click', function(e) {
