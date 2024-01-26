@@ -1,5 +1,4 @@
 @prefix dc: <http://purl.org/dc/terms/> .
-@prefix dcat: <http://www.w3.org/ns/dcat#> .
 @prefix foaf: <http://xmlns.com/foaf/0.1/> .
 @prefix owl: <http://www.w3.org/2002/07/owl#> .
 @prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
@@ -17,8 +16,7 @@
 
 <http://data.europa.eu/m8g/bias> a owl:DatatypeProperty;
   rdfs:label "bias"@en;
-  <http://purl.org/vocab/vann/usageNote> """The bias parameter tries to correct a systematic error. For example in procurement, a home bias corresponds to the \"presence of local preferences distorting international specialisation and resource allocation\". [https://trade.ec.europa.eu/doclib/docs/2018/september/tradoc_157319.pdf]
-When quantified, this systematic error can be removed."""@en;
+  <http://purl.org/vocab/vann/usageNote> "The bias parameter tries to correct a systematic error. For example in procurement, a home bias corresponds to the \"presence of local preferences distorting international specialisation and resource allocation\". When quantified, this systematic error can be removed."@en;
   rdfs:comment "Parameter used to adjust the evaluation of the Criterion."@en;
   rdfs:domain <http://data.europa.eu/m8g/Criterion>;
   rdfs:isDefinedBy <http://data.europa.eu/m8g>;
@@ -54,7 +52,7 @@ When quantified, this systematic error can be removed."""@en;
 This may range from representational expectations such as the type (e.g. the value is expected to be a xsd:decimal) to expectations that reduce the allowed value range. Commonly this is done using min or max bounderary expressions (e.g. the maximum value is 1 Million Euro).
 Other usage could be to harmonise the supplied values (e.g. rounding, turning to percentages) to facilitate further processing.
 
-Implementers are free to use their own approach for defining the expected values in more details. For instance, this can be by defining their own datatypes extending or encapsulating common xsd datatypes. But also by using more complex languages such as XPath, Object Constraint Language (OCL), JavaScript and Rule Interchange Format (RIF).
+Implementers are free to use their own approach for defining the expected values in more details. For instance, this can be by defining their own datatypes extending or encapsulating common xsd datatypes. But also by using more complex languages such as <a href=\"https://www.w3.org/TR/xpath-31/\">XPath</a>, <a href=\"https://www.omg.org/spec/OCL/\">Object Constraint Language</a> (OCL), <a href=\"https://www.javascript.com/\">JavaScript</a> and <a href=\"https://www.w3.org/TR/rif-overview/\">Rule Interchange Format</a> (RIF).
 Because of this freedom, implementers are recommended to well-document their usage of this property (and related information). 
 
 
@@ -138,7 +136,7 @@ In the case where the purpose is to link the two Requirements without additional
 
 <http://data.europa.eu/m8g/query> a owl:DatatypeProperty;
   rdfs:label "query"@en;
-  <http://purl.org/vocab/vann/usageNote> "The query must be executed on the business data provided by the supporting Evidence. In order to be able to evaluate the query on the provided data, the format of the provided data must be aligned with the query expression. For instance if the provided data is XML, a query in XPath could be expected. This alignment is part of the implementation agreements that implementors must make."@en;
+  <http://purl.org/vocab/vann/usageNote> "The query must be executed on the business data provided by the supporting Evidence. In order to be able to evaluate the query on the provided data, the format of the provided data must be aligned with the query expression. For instance if the provided data is XML, a query in <a href=\"https://www.w3.org/TR/xpath-31/\">XPath</a> could be expected. This alignment is part of the implementation agreements that implementors must make."@en;
   rdfs:comment "Search statement that allows the value for the Information Concept to be retrieved from the Evidence data."@en;
   rdfs:domain <http://data.europa.eu/m8g/SupportedValue>;
   rdfs:isDefinedBy <http://data.europa.eu/m8g>;
@@ -213,8 +211,7 @@ In the case where the purpose is to link the two Requirements without additional
 
 <http://data.europa.eu/m8g/weightingType> a owl:ObjectProperty;
   rdfs:label "weighting type"@en;
-  <http://purl.org/vocab/vann/usageNote> """An existing codelist http://publications.europa.eu/resource/authority/number-weight
-Example see: https://docs.ted.europa.eu/eforms/0.3.0/index.html#awardCriteriaSection"""@en;
+  <http://purl.org/vocab/vann/usageNote> "An existing codelist which can be used is <a href=\"https://op.europa.eu/en/web/eu-vocabularies/dataset/-/resource?uri=http://publications.europa.eu/resource/dataset/number-weight\" >OP's Number weigth controlled vocabulary</a>"@en;
   rdfs:comment "Indication of how the weight should be interpreted in a complex evaluation expression, e.g. as a percentage in an evaluation expression."@en;
   rdfs:domain <http://data.europa.eu/m8g/Criterion>;
   rdfs:isDefinedBy <http://data.europa.eu/m8g>;
@@ -283,8 +280,7 @@ Implementers are free to choose their language. It is recommended to document th
 The proof described by an Evidence can [1] verify a claim (i.e. is it true that John is 25, yes/no), [2] prove a condition (i.e. is John 18+, yes/no), or [3] simply provide data (i.e. the age of a person, namely 25).
 The proof can be given through documents or extracts of base registries, independently from its structure, format or medium used to exchange it: a pdf document, a video, a recording, etc."""@en;
   rdfs:comment "Proof that a Requirement is met."@en;
-  rdfs:isDefinedBy <http://data.europa.eu/m8g>;
-  rdfs:subClassOf dcat:Dataset .
+  rdfs:isDefinedBy <http://data.europa.eu/m8g> .
 
 <http://data.europa.eu/m8g/Requirement> a owl:Class;
   rdfs:label "Requirement"@en;
@@ -295,14 +291,8 @@ The proof can be given through documents or extracts of base registries, indepen
 <http://data.europa.eu/m8g> a owl:Ontology;
   rdfs:label "cccev"@en,
     "cccev"@nl;
-  dc:contributor [
-    a foaf:Person;
-    foaf:firstName "Seth";
-    foaf:lastName "van Hooland";
-    schemas:affiliation [foaf:name "European Commission"]
-  ];
-  dc:issued "2021-06-30";
-  dc:license <https://joinup.ec.europa.eu/collection/semantic-interoperability-community-semic>;
+  dc:issued "2024-01-31";
+  dc:license <https://creativecommons.org/licenses/by/4.0/>;
   dc:mediator [
     foaf:homepage <https://semic.eu>;
     foaf:name "Semantic Interoperability Community (SEMIC)"
@@ -314,8 +304,13 @@ The proof can be given through documents or extracts of base registries, indepen
     schemas:affiliation [foaf:name "PwC EU Services"]
   ], [
     a foaf:Person;
-    foaf:firstName "Michiel";
-    foaf:lastName "De Keyzer";
+    foaf:firstName "Jitse";
+    foaf:lastName "De Cock";
+    schemas:affiliation [foaf:name "PwC EU Services"]
+  ], [
+    a foaf:Person;
+    foaf:firstName "Emiel";
+    foaf:lastName "Dhondt";
     schemas:affiliation [foaf:name "PwC EU Services"]
   ], [
     a foaf:Person;
@@ -324,9 +319,14 @@ The proof can be given through documents or extracts of base registries, indepen
     schemas:affiliation [foaf:name "European Commission"]
   ], [
     a foaf:Person;
-    foaf:firstName "Dimitri";
-    foaf:lastName "Schepers";
+    foaf:firstName "Arthur";
+    foaf:lastName "Schiltz";
     schemas:affiliation [foaf:name "PwC EU Services"]
+  ], [
+    a foaf:Person;
+    foaf:firstName "Anastasia";
+    foaf:lastName "Sofou";
+    schemas:affiliation [foaf:name "Trasys International"]
   ], [
     a foaf:Person;
     foaf:firstName "Emidio";
@@ -335,8 +335,7 @@ The proof can be given through documents or extracts of base registries, indepen
   ], [
     a foaf:Person;
     foaf:firstName "Bert";
-    foaf:lastName "Van Nuffelen";
-    schemas:affiliation [foaf:name "TenForce"]
+    foaf:lastName "Van Nuffelen"
   ];
   foaf:maker [
     a foaf:Person;
