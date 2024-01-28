@@ -319,14 +319,19 @@ described as a dcat:Catalog, a dcat:Dataset or a dcat:DataService.</xs:documenta
   </xs:complexType>
   <xs:complexType name="IdentifierType">
     <xs:sequence>
-      <xs:element name="Identifies" type="LegalEntityType" maxOccurs="1" minOccurs="1">
+      <xs:element name="Identifies" type="PersonType" maxOccurs="1" minOccurs="0">
         <xs:annotation>
           <xs:documentation xml:lang="en" source="#definition">The entity that is referenced by the Identifier.</xs:documentation>
         </xs:annotation>
       </xs:element>
-      <xs:element name="Identifies" type="PersonType" maxOccurs="1" minOccurs="1">
+      <xs:element name="Identifies" type="LegalEntityType" maxOccurs="1" minOccurs="0">
         <xs:annotation>
           <xs:documentation xml:lang="en" source="#definition">The entity that is referenced by the Identifier.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="Notation" type="xs:string" maxOccurs="1" minOccurs="1">
+        <xs:annotation>
+          <xs:documentation xml:lang="en" source="#definition">A string that is an identifier in the context of the identifier scheme referenced by its datatype.</xs:documentation>
         </xs:annotation>
       </xs:element>
     </xs:sequence>
@@ -631,14 +636,14 @@ The datatype of addressID is indicated as Literal (keeping backward compatibilit
           <xs:documentation xml:lang="en" source="#definition">It indicates the Unit described.</xs:documentation>
         </xs:annotation>
       </xs:element>
-      <xs:element name="HasValidityPeriod" type="PeriodOfTimeType" maxOccurs="unbounded" minOccurs="0">
+      <xs:element name="HasValidityPeriod" type="PeriodOfTimeType" maxOccurs="1" minOccurs="0">
         <xs:annotation>
           <xs:documentation xml:lang="en" source="#definition">It indicates the Period of Time in which the resource is valid.</xs:documentation>
         </xs:annotation>
       </xs:element>
       <xs:element name="SubmissionDate" type="xs:dateTime" maxOccurs="1" minOccurs="1">
         <xs:annotation>
-          <xs:documentation xml:lang="en" source="#definition">The data in which the Document has been submitted.</xs:documentation>
+          <xs:documentation xml:lang="en" source="#definition">The date in which the Document has been submitted.</xs:documentation>
         </xs:annotation>
       </xs:element>
       <xs:element name="UpdateDate" type="xs:dateTime" maxOccurs="1" minOccurs="0">
@@ -765,7 +770,7 @@ The datatype of addressID is indicated as Literal (keeping backward compatibilit
   </xs:complexType>
   <xs:complexType name="RegistrationNumberType">
     <xs:sequence>
-      <xs:element name="HasValidityPeriod" type="PeriodOfTimeType" maxOccurs="unbounded" minOccurs="0">
+      <xs:element name="HasValidityPeriod" type="PeriodOfTimeType" maxOccurs="1" minOccurs="0">
         <xs:annotation>
           <xs:documentation xml:lang="en" source="#definition">It indicates the Period of Time in which the resource is valid.</xs:documentation>
         </xs:annotation>
@@ -805,12 +810,7 @@ The datatype of addressID is indicated as Literal (keeping backward compatibilit
           <xs:documentation xml:lang="en" source="#definition">It indicated the Document provided as input.</xs:documentation>
         </xs:annotation>
       </xs:element>
-      <xs:element name="Identifier" type="xs:string" maxOccurs="1" minOccurs="1">
-        <xs:annotation>
-          <xs:documentation xml:lang="en" source="#definition">An Identifier for the Registration Procedure.</xs:documentation>
-        </xs:annotation>
-      </xs:element>
-      <xs:element name="Produces" type="RegistrationNumberType" maxOccurs="1" minOccurs="1">
+      <xs:element name="Produces" type="RegistrationNumberType" maxOccurs="1" minOccurs="0">
         <xs:annotation>
           <xs:documentation xml:lang="en" source="#definition">It indicates the Registration Number produced.</xs:documentation>
         </xs:annotation>
@@ -852,13 +852,13 @@ The datatype of addressID is indicated as Literal (keeping backward compatibilit
   </xs:complexType>
   <xs:complexType name="UnitType">
     <xs:sequence>
-      <xs:element name="Description" type="xs:string" maxOccurs="1" minOccurs="1">
+      <xs:element name="Description" type="xs:string" maxOccurs="1" minOccurs="0">
         <xs:annotation>
           <xs:documentation xml:lang="en" source="#definition">An account of the resource.</xs:documentation>
           <xs:documentation xml:lang="en" source="#usage">A textual description of the Unit.</xs:documentation>
         </xs:annotation>
       </xs:element>
-      <xs:element name="FloorLevel" type="xs:string" maxOccurs="1" minOccurs="1">
+      <xs:element name="FloorLevel" type="xs:string" maxOccurs="1" minOccurs="0">
         <xs:annotation>
           <xs:documentation xml:lang="en" source="#definition">The level of the floor of the Unit as textual description.</xs:documentation>
         </xs:annotation>
@@ -873,7 +873,7 @@ The datatype of addressID is indicated as Literal (keeping backward compatibilit
           <xs:documentation xml:lang="en" source="#definition">It indicated the document attesting the authorization.</xs:documentation>
         </xs:annotation>
       </xs:element>
-      <xs:element name="HasRegisteredAddress" type="AddressType" maxOccurs="1" minOccurs="1">
+      <xs:element name="HasUnitAddress" type="AddressType" maxOccurs="1" minOccurs="1">
         <xs:annotation>
           <xs:documentation xml:lang="en" source="#definition">The specific address of the Unit.</xs:documentation>
         </xs:annotation>
@@ -883,12 +883,12 @@ The datatype of addressID is indicated as Literal (keeping backward compatibilit
           <xs:documentation xml:lang="en" source="#definition">Links a resource to an adms:Identifier class.</xs:documentation>
         </xs:annotation>
       </xs:element>
-      <xs:element name="IsAuthorizationObtained" type="xs:boolean" maxOccurs="1" minOccurs="1">
+      <xs:element name="IsAuthorizationObtained" type="xs:boolean" maxOccurs="1" minOccurs="0">
         <xs:annotation>
           <xs:documentation xml:lang="en" source="#definition">it indicates whether the host has obtained an authorisation for the Unit.</xs:documentation>
         </xs:annotation>
       </xs:element>
-      <xs:element name="IsSubjectToAuthorization" type="xs:boolean" maxOccurs="1" minOccurs="1">
+      <xs:element name="IsSubjectToAuthorization" type="xs:boolean" maxOccurs="1" minOccurs="0">
         <xs:annotation>
           <xs:documentation xml:lang="en" source="#definition">It indicates whether the Unit is subject to authorization.</xs:documentation>
         </xs:annotation>

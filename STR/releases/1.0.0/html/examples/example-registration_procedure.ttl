@@ -1,69 +1,76 @@
-@prefix cv: <http://data.europa.eu/m8g/> .
-@prefix dct: <http://purl.org/dc/terms/> .
-@prefix ex: <http://example.com/> .
+@prefix dcat: <http://www.w3.org/ns/dcat#> .
 @prefix foaf: <http://xmlns.com/foaf/0.1/> .
-@prefix locn: <http://w3.org/ns/locn#> .
+@prefix locn: <http://www.w3.org/ns/locn#> .
 @prefix org: <http://www.w3.org/ns/org#> .
-@prefix org-type: <http://publications.europa.eu/resource/authority/organization-type/> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
 @prefix skos: <http://www.w3.org/2004/02/skos/core#> .
 @prefix time: <http://www.w3.org/2006/time#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix dcterms: <http://purl.org/dc/terms/> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix adms: <http://www.w3.org/ns/adms#> .
+@prefix cv: <http://data.europa.eu/m8g/> .
+@prefix ex: <http://example.com/> .
+@prefix person: <http://www.w3.org/ns/person#> .
+@prefix str: <https://w3id.org/str/> .
 
-ex:po a cv:PublicOrganisation ;
-  locn:address ex:ad ;
-  org:classification org-type:GOV, org-type:AGENCY ;
-  cv:contactPoint ex:cp ;
-  foaf:homepage <https://finances.belgium.be/> ;
-  foaf:homepage <https://financien.belgium.be> ;
-  foaf:homepage <https://finance.belgium.be/> ;
-  foaf:homepage <https://finanzen.belgium.be/> ;
-  skos:prefLabel "Service Public Fédéral FINANCES"@fr ;
-  skos:prefLabel "Federale Overheidsdiesnt FINANCIEN"@nl ;
-  skos:prefLabel "Federal Public Service FINANCE"@en ;
-  skos:prefLabel "Foderaler Offentlicher Dienst FINANZEN"@de ;
-  dct:spatial <http://publications.europa.eu/resource/authority/atu/BEL> .
+ex:person1 foaf:familyName "Magritte"@fr ;
+	foaf:givenName "René François Ghislain"@fr ;
+	cv:contactPoint ex:contactPoint1 ;
+	cv:domicile ex:address1 ;
+	adms:identifier ex:identifier1 ;
+	str:provides ex:document1 ;
+	str:offers ex:STRentalservice1 ;
+	a person:Person .
 
-ex:ad a locn:Address ;
-  locn:addressArea "Quartier Nord"@fr ;
-  locn:adminUnitL1 "Belgique"@fr ;
-  locn:adminUnitL2 "Région de Bruxelles-Capitale"@fr ;
-  locn:fullAddress "Boulevard du Roi Albert II 33 1030 Bruxelles, Belgique"@fr ;
-  locn:locatorDesignator "33" ;
-  locn:postCode "1030" ;
-  locn:postName "Bruxelles"@fr ;
-  locn:thoroughfare "Boulevard du Roi Albert II"@fr .
+ex:contactPoint1 cv:email "rene@magritte.be" ;
+	cv:telephone "+32 012 345 678" ;
+	a cv:ContactPoint .
 
-ex:cp a cv:ContactPoint ;
-  cv:telephone "+32 257 25757" ;
-  cv:openingHours ex:oh ;
-  cv:specialOpeningHoursSpecification ex:sohs .
+ex:address1 locn:fullAddress "Rue Esseghem 135, 1090 Bruxelles, Belgique"@fr ;
+	a locn:Address .
 
-ex:oh a time:TemporalEntity ;
-  dct:description "Every working day from 9 a.m. to 5 p.m."@en ;
-  cv:frequency <http://publications.europa.eu/resource/authority/frequency/DAILY>;
-  time:hasBeginning [  a time:Instant ;
-    time:inDateTime [ a time:DateTimeDescription ;
-      time:unitType time:unitMinute ;
-      time:hour 9 ;
-      time:minute 0 ;
-    ] ;
-  ] ;
-  time:hasEnd [ a time:Instant;
-    time:inDateTime [ a time:DateTimeDescription ;
-      time:unitType time:unitMinute;
-      time:hour 17;
-      time:minute 0;
-    ];
-  ] .
+ex:identifier1 skos:notation "123.456.789" ;
+	a adms:identifier .
 
-ex:sohs a time:TemporalEntity ;
-  dct:description "closed on weekend"@en;
-  time:hasBeginning [ a time:Instant;
-    time:inDateTime [ a time:DateTimeDescription;
-      time:dayOfWeek time:Saturday;
-    ];
-  ];
-  time:hasEnd [ a time:Instant;
-    time:inDateTime [ a time:DateTimeDescription;
-      time:dayOfWeek time:Sunday;
-    ];
-  ] .
+ex:document1 str:submissionDate "2024-01-28T09:00:00"^^xsd:dateTime ;
+	str:describes ex:unit1 ;
+	a foaf:Document .
+
+ex:unit1 str:numberOfBedrooms "1" ;
+	str:occupancy "2" ;
+	str:floorLevel "2eme étage"@fr ;
+	str:purpose "Maison partagée avec étage privé"@fr ;
+	dcterms:type ex:logementPartage ;
+	adms:identifier ex:registrationNumber1 ;
+	str:hasUnitAddress ex:address1 ;
+	a str:Unit .
+
+ex:registrationNumber1 skos:notation "2025-01-28_12345" ;
+	cv:identifies ex:unit1 ;
+	dcterms:issued "2024-01-28T12:00:00"^^xsd:dateTime ;
+	adms:status ex:validStatus ;
+	a str:RegistrationNumber .
+
+ex:registrationProcedure1 dcterms:identifier "2015-01-28-09-00-00-123" ;
+	dcterms:description "Provision of registration number for Rene Magritte for shared house"@en ;
+	dcterms:title "Registration number service 123"@en ;
+	str:produces ex:registrationNumber1 ;
+	cv:hasCompetentAuthority ex:publicOrganisation1 ;
+	a str:RegistrationProcedure .
+
+ex:publicOrganisation1 skos:prefLabel "Jette municipality"@en ;
+	a cv:PublicOrganisation .
+
+ex:STRentalservice1 str:providesAccessTo ex:onlineSTRentalPlatform1 ;
+	a str:STAccomondationRentalService .
+
+ex:onlineSTRentalPlatform1 str:publishes ex:dataset1 ;
+	dcterms:type ex:micro ;
+	a str:OnlineSTRentalPlatform .
+
+ex:dataset1 dcat:distribution ex:distribution1 ;
+	a dcat:Dataset .
+
+ex:distribution1 str:hasListing ex:unit1 ;
+	a dcat:Distribution .

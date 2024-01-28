@@ -1,216 +1,176 @@
 {
   "@context": [
-  "https://semiceu.github.io/uri.semic.eu-generated/CPOV/releases/2.1.1/context/core-public-organisation-ap.jsonld",
+  "https://semiceu.github.io/uri.semic.eu-generated/STR/releases/1.0.0/context/str.jsonld",
    {
+    "adms": "http://www.w3.org/ns/adms#",
     "cv": "http://data.europa.eu/m8g/",
+    "dcat": "http://www.w3.org/ns/dcat#",
     "dct": "http://purl.org/dc/terms/",
     "ex": "http://example.com/",
     "foaf": "http://xmlns.com/foaf/0.1/",
     "locn": "http://www.w3.org/ns/locn#",
     "org": "http://www.w3.org/ns/org#",
-    "org-type": "http://publications.europa.eu/resource/authority/organization-type/",
+    "person": "http://www.w3.org/ns/person#",
+    "rdfs": "http://www.w3.org/2000/01/rdf-schema#",
     "skos": "http://www.w3.org/2004/02/skos/core#",
+    "str": "https://w3id.org/str/",
     "time": "http://www.w3.org/2006/time#",
     "xsd": "http://www.w3.org/2001/XMLSchema#"
    }
   ],
   "@graph": [
     {
-      "@id": "ex:po",
-      "@type": "PublicOrganisation",
-      "locn:address": {
-        "@id": "ex:ad"
-      },
-      "org:classification": [
-        {
-          "@id": "org-type:GOV"
-        },
-        {
-          "@id": "org-type:AGENCY"
-        }
-      ],
-      "cv:contactPoint": {
-        "@id": "ex:cp"
-      },
-      "foaf:homepage": [
-        {
-          "@id": "https://finances.belgium.be/"
-        },
-        {
-          "@id": "https://financien.belgium.be"
-        },
-        {
-          "@id": "https://finance.belgium.be/"
-        },
-        {
-          "@id": "https://finanzen.belgium.be/"
-        }
-      ],
-      "skos:prefLabel": [
-        {
-          "@language": "fr",
-          "@value": "Service Public Fédéral FINANCES"
-        },
-        {
-          "@language": "nl",
-          "@value": "Federale Overheidsdiesnt FINANCIEN"
-        },
-        {
-          "@language": "en",
-          "@value": "Federal Public Service FINANCE"
-        },
-        {
-          "@language": "de",
-          "@value": "Foderaler Offentlicher Dienst FINANZEN"
-        }
-      ],
-      "dct:spatial": {
-        "@id": "http://publications.europa.eu/resource/authority/atu/BEL"
-      }
+     "@id": "ex:person1",
+     "@type": "Person",
+     "foaf:familyName" : {
+       "@language": "fr",
+       "@value": "Magritte"
+     },
+     "foaf:givenName" : {
+       "@language": "fr",
+       "@value": "René François Ghislain"
+     },
+     "cv:contactPoint" : {
+       "@id": "ex:contactPoint1"
+     },
+     "cv:domicile" : {
+       "@id": "ex:address1"
+     },
+     "adms:identifier" : {
+       "@id": "ex:identifier1"
+     },
+     "str:provides" : {
+       "@id": "ex:document1"
+     },
+     "str:offers" : {
+       "@id": "ex:STRentalservice1"
+     }
     },
     {
-      "@id": "ex:ad",
+      "@id": "ex:contactPoint1",
+      "@type": "ContactPoint",
+      "cv:email": "rene@magritte.be",
+      "cv:telephone": "+32 012 345 678"
+    },
+    {
+      "@id": "ex:address1",
       "@type": "Address",
-      "locn:addressArea": {
-        "@language": "fr",
-        "@value": "Quartier Nord"
-      },
-      "locn:adminUnitL1": {
-        "@language": "fr",
-        "@value": "Belgique"
-      },
-      "locn:adminUnitL2": {
-        "@language": "fr",
-        "@value": "Région de Bruxelles-Capitale"
-      },
       "locn:fullAddress": {
         "@language": "fr",
-        "@value": "Boulevard du Roi Albert II 33 1030 Bruxelles, Belgique"
-      },
-      "locn:locatorDesignator": "33",
-      "locn:postCode": "1030",
-      "locn:postName": {
-        "@language": "fr",
-        "@value": "Bruxelles"
-      },
-      "locn:thoroughfare": {
-        "@language": "fr",
-        "@value": "Boulevard du Roi Albert II"
+        "@value": "Rue Esseghem 135, 1090 Bruxelles, Belgique"
       }
     },
     {
-      "@id": "ex:cp",
-      "@type": "ContactPoint",
-      "cv:openingHours": {
-        "@id": "ex:oh"
-      },
-      "cv:specialOpeningHoursSpecification": {
-        "@id": "ex:sohs"
-      },
-      "cv:telephone": "+32 257 25757"
+      "@id": "ex:identifier1",
+      "@type": "Identifier",
+      "skos:notation": "123.456.789"
     },
     {
-      "@id": "ex:oh",
-      "@type": "TemporalEntity",
-      "cv:frequency": {
-        "@id": "http://publications.europa.eu/resource/authority/frequency/DAILY"
+      "@id": "ex:document1",
+      "@type": "Document",
+      "str:submissionDate": {
+        "@type": "xsd:dateTime",
+        "@value": "2024-01-28T09:00:00"
       },
+      "str:describes": {
+        "@id": "ex:unit1"
+      }
+    },
+    {
+      "@id": "ex:unit1",
+      "@type": "Unit",
+      "str:numberOfBedrooms": "1",
+      "str:occupancy": "2",
+      "str:floorLevel": {
+        "@language": "fr",
+        "@value": "2eme étage"
+      },
+      "str:purpose" : {
+        "@language": "fr",
+        "@value": "Maison partagée avec étage privé"
+      },
+      "dct:type" : {
+        "@id": "ex:logementPartage"
+      },
+      "adms:identifier" : {
+        "@id": "ex:registrationNumber1"
+      },
+      "str:hasUnitAddress" : {
+        "@id": "ex:address1"
+      }
+     },
+    {
+      "@id": "ex:registrationNumber1",
+      "@type": "RegistrationNumber",
+      "skos:notation": "2025-01-28_12345",
+      "cv:identifies": {
+       "@id": "ex:unit1"
+      },
+      "dct:issued": {
+        "@type": "xsd:dateTime",
+        "@value": "2024-01-28T12:00:00"
+      },
+      "adms:status": {
+        "@id": "ex:validStatus"
+      }
+    },
+    {
+      "@id": "ex:registrationProcedure1",
+      "@type": "RegistrationProcedure",
+      "dct:identifier": "2015-01-28-09-00-00-123",
       "dct:description": {
         "@language": "en",
-        "@value": "Every working day from 9 a.m. to 5 p.m."
+        "@value": "Provision of registration number for Rene Magritte for shared house"
       },
-      "time:hasBeginning": {
-        "@id": "_:g0"
-      },
-      "time:hasEnd": {
-        "@id": "_:g2"
-      }
-    },
-    {
-      "@id": "_:g0",
-      "@type": "time:Instant",
-      "time:inDateTime": {
-        "@id": "_:g1"
-      }
-    },
-    {
-      "@id": "_:g1",
-      "@type": "time:DateTimeDescription",
-      "time:hour": {
-        "@type": "xsd:integer",
-        "@value": "9"
-      },
-      "time:minute": {
-        "@type": "xsd:integer",
-        "@value": "0"
-      },
-      "time:unitType": {
-        "@id": "time:unitMinute"
-      }
-    },
-    {
-      "@id": "_:g2",
-      "@type": "time:Instant",
-      "time:inDateTime": {
-        "@id": "_:g3"
-      }
-    },
-    {
-      "@id": "_:g3",
-      "@type": "time:DateTimeDescription",
-      "time:hour": {
-        "@type": "xsd:integer",
-        "@value": "17"
-      },
-      "time:minute": {
-        "@type": "xsd:integer",
-        "@value": "0"
-      },
-      "time:unitType": {
-        "@id": "time:unitMinute"
-      }
-    },
-    {
-      "@id": "ex:sohs",
-      "@type": "TemporalEntity",
-      "dct:description": {
+      "dct:title": {
         "@language": "en",
-        "@value": "closed on weekend"
+        "@value": "Registration number service 123"
       },
-      "time:hasBeginning": {
-        "@id": "_:g4"
+      "str:produces": {
+       "@id": "ex:registrationNumber1"
       },
-      "time:hasEnd": {
-        "@id": "_:g6"
+      "cv:hasCompetentAuthority": {
+       "@id": "ex:publicOrganisation1"
       }
     },
     {
-      "@id": "_:g4",
-      "@type": "time:Instant",
-      "time:inDateTime": {
-        "@id": "_:g5"
+      "@id": "ex:publicOrganisation1",
+      "@type": "PublicOrganisation",
+      "skos:prefLabel": {
+        "@language": "en",
+        "@value": "Jette municipality"
       }
     },
     {
-      "@id": "_:g5",
-      "@type": "time:DateTimeDescription",
-      "time:dayOfWeek": {
-        "@id": "time:Saturday"
-      }
+      "@id": "ex:STRentalservice1",
+      "@type": "ShortTermAccomodationRentalService",
+      "str:providesAccessTo": {
+       "@id": "ex:onlineSTRentalPlatform1"
+     }
     },
     {
-      "@id": "_:g6",
-      "@type": "time:Instant",
-      "time:inDateTime": {
-        "@id": "_:g7"
-      }
+      "@id": "ex:onlineSTRentalPlatform1",
+      "@type": "OnlineShortTermRentalPlatform",
+      "str:publishes": {
+       "@id": "ex:dataset1"
+     },
+      "dct:type": {
+       "@id": "ex:micro"
+     }
     },
     {
-      "@id": "_:g7",
-      "@type": "time:DateTimeDescription",
-      "time:dayOfWeek": {
-        "@id": "time:Sunday"
-      }
+      "@id": "ex:dataset1",
+      "@type": "Dataset",
+      "dcat:distribution": {
+       "@id": "ex:distribution1"
+     }
+    },
+    {
+      "@id": "ex:distribution1",
+      "@type": "Distribution",
+      "str:hasListing": {
+       "@id": "ex:unit1"
+     }
     }
   ]
 }
