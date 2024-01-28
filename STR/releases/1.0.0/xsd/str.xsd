@@ -3,14 +3,15 @@
   <xs:element name="ContactPoint" type="ContactPointType"/>
   <xs:element name="Cost" type="CostType"/>
   <xs:element name="PublicOrganisation" type="PublicOrganisationType"/>
+  <xs:element name="Location" type="LocationType"/>
   <xs:element name="PeriodOfTime" type="PeriodOfTimeType"/>
   <xs:element name="PublicRegistryService" type="PublicRegistryServiceType"/>
   <xs:element name="LangString" type="LangStringType"/>
   <xs:element name="Literal" type="LiteralType"/>
   <xs:element name="TemporalLiteral" type="TemporalLiteralType"/>
-  <xs:element name="XsddateTime" type="XsddateTimeType"/>
+  <xs:element name="DateTime" type="DateTimeType"/>
   <xs:element name="Double" type="DoubleType"/>
-  <xs:element name="XsdnonNegativeInteger" type="XsdnonNegativeIntegerType"/>
+  <xs:element name="NonNegativeInteger" type="NonNegativeIntegerType"/>
   <xs:element name="Concept" type="ConceptType"/>
   <xs:element name="TimeInstant" type="TimeInstantType"/>
   <xs:element name="Identifier" type="IdentifierType"/>
@@ -22,10 +23,11 @@
   <xs:element name="CataloguedResource" type="CataloguedResourceType"/>
   <xs:element name="LegalEntity" type="LegalEntityType"/>
   <xs:element name="Address" type="AddressType"/>
+  <xs:element name="Geometry" type="GeometryType"/>
   <xs:element name="Person" type="PersonType"/>
   <xs:element name="Document" type="DocumentType"/>
   <xs:element name="Group" type="GroupType"/>
-  <xs:element name="ActicityData" type="ActicityDataType"/>
+  <xs:element name="ActivityData" type="ActivityDataType"/>
   <xs:element name="CoordinationGroup" type="CoordinationGroupType"/>
   <xs:element name="OnlineShortTermRentalPlatform" type="OnlineShortTermRentalPlatformType"/>
   <xs:element name="Order" type="OrderType"/>
@@ -73,7 +75,7 @@
           <xs:documentation xml:lang="en" source="#definition">An Identifier for the Cost.</xs:documentation>
         </xs:annotation>
       </xs:element>
-      <xs:element name="HasValue" type="DoubleType" maxOccurs="1" minOccurs="1">
+      <xs:element name="HasValue" type="xs:double" maxOccurs="1" minOccurs="1">
         <xs:annotation>
           <xs:documentation xml:lang="en" source="#definition">A numeric value indicating the amount of the Cost.	</xs:documentation>
         </xs:annotation>
@@ -191,6 +193,30 @@ An example of memberships are the EU member states and other partners which coul
       </xs:annotation>
     </xs:attribute>
   </xs:complexType>
+  <xs:complexType name="LocationType">
+    <xs:sequence>
+      <xs:element name="Bbox" type="xs:string" maxOccurs="1" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation xml:lang="en" source="#definition">The geographic bounding box of a resource.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="Centroid" type="xs:string" maxOccurs="1" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation xml:lang="en" source="#definition">The geographic center (centroid) of a resource.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="Geometry" type="GeometryType" maxOccurs="1" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation xml:lang="en" source="#definition">The corresponding geometry for a resource</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+    </xs:sequence>
+    <xs:attribute name="LocationRef" type="xs:IDREF">
+      <xs:annotation>
+        <xs:documentation xml:lang="en">Reference to Location ID</xs:documentation>
+      </xs:annotation>
+    </xs:attribute>
+  </xs:complexType>
   <xs:complexType name="PeriodOfTimeType">
     <xs:sequence>
       <xs:element name="EndDate" type="xs:string" maxOccurs="1" minOccurs="0">
@@ -281,11 +307,11 @@ described as a dcat:Catalog, a dcat:Dataset or a dcat:DataService.</xs:documenta
       </xs:annotation>
     </xs:attribute>
   </xs:complexType>
-  <xs:complexType name="XsddateTimeType">
+  <xs:complexType name="DateTimeType">
     <xs:sequence/>
-    <xs:attribute name="XsddateTimeRef" type="xs:IDREF">
+    <xs:attribute name="DateTimeRef" type="xs:IDREF">
       <xs:annotation>
-        <xs:documentation xml:lang="en">Reference to XsddateTime ID</xs:documentation>
+        <xs:documentation xml:lang="en">Reference to DateTime ID</xs:documentation>
       </xs:annotation>
     </xs:attribute>
   </xs:complexType>
@@ -297,11 +323,11 @@ described as a dcat:Catalog, a dcat:Dataset or a dcat:DataService.</xs:documenta
       </xs:annotation>
     </xs:attribute>
   </xs:complexType>
-  <xs:complexType name="XsdnonNegativeIntegerType">
+  <xs:complexType name="NonNegativeIntegerType">
     <xs:sequence/>
-    <xs:attribute name="XsdnonNegativeIntegerRef" type="xs:IDREF">
+    <xs:attribute name="NonNegativeIntegerRef" type="xs:IDREF">
       <xs:annotation>
-        <xs:documentation xml:lang="en">Reference to XsdnonNegativeInteger ID</xs:documentation>
+        <xs:documentation xml:lang="en">Reference to NonNegativeInteger ID</xs:documentation>
       </xs:annotation>
     </xs:attribute>
   </xs:complexType>
@@ -574,6 +600,14 @@ The datatype of addressID is indicated as Literal (keeping backward compatibilit
       </xs:annotation>
     </xs:attribute>
   </xs:complexType>
+  <xs:complexType name="GeometryType">
+    <xs:sequence/>
+    <xs:attribute name="GeometryRef" type="xs:IDREF">
+      <xs:annotation>
+        <xs:documentation xml:lang="en">Reference to Geometry ID</xs:documentation>
+      </xs:annotation>
+    </xs:attribute>
+  </xs:complexType>
   <xs:complexType name="PersonType">
     <xs:sequence>
       <xs:element name="ContactPoint" type="ContactPointType" maxOccurs="unbounded" minOccurs="0">
@@ -657,9 +691,9 @@ The datatype of addressID is indicated as Literal (keeping backward compatibilit
       </xs:annotation>
     </xs:attribute>
   </xs:complexType>
-  <xs:complexType name="ActicityDataType">
+  <xs:complexType name="ActivityDataType">
     <xs:sequence>
-      <xs:element name="CountryOfResidence" maxOccurs="1" minOccurs="1">
+      <xs:element name="CountryOfResidence" type="LocationType" maxOccurs="1" minOccurs="1">
         <xs:annotation>
           <xs:documentation xml:lang="en" source="#definition">The country of residence of the guests.</xs:documentation>
         </xs:annotation>
@@ -669,15 +703,15 @@ The datatype of addressID is indicated as Literal (keeping backward compatibilit
           <xs:documentation xml:lang="en" source="#definition">It indicates the period of time associated.</xs:documentation>
         </xs:annotation>
       </xs:element>
-      <xs:element name="NumberOfGuests" type="xs:hexBinary" maxOccurs="1" minOccurs="1">
+      <xs:element name="NumberOfGuests" type="xs:nonNegativeInteger " maxOccurs="1" minOccurs="1">
         <xs:annotation>
           <xs:documentation xml:lang="en" source="#definition">The number of guest that the unit was rented to per night.</xs:documentation>
         </xs:annotation>
       </xs:element>
     </xs:sequence>
-    <xs:attribute name="ActicityDataRef" type="xs:IDREF">
+    <xs:attribute name="ActivityDataRef" type="xs:IDREF">
       <xs:annotation>
-        <xs:documentation xml:lang="en">Reference to ActicityData ID</xs:documentation>
+        <xs:documentation xml:lang="en">Reference to ActivityData ID</xs:documentation>
       </xs:annotation>
     </xs:attribute>
   </xs:complexType>
@@ -732,12 +766,12 @@ The datatype of addressID is indicated as Literal (keeping backward compatibilit
           <xs:documentation xml:lang="en" source="#definition">It indicated the Registration Number concerned.</xs:documentation>
         </xs:annotation>
       </xs:element>
-      <xs:element name="IsAbout" type="PersonType" maxOccurs="1" minOccurs="1">
+      <xs:element name="IsAbout" type="LegalEntityType" maxOccurs="1" minOccurs="1">
         <xs:annotation>
           <xs:documentation xml:lang="en" source="#definition">It indicates the host reference.</xs:documentation>
         </xs:annotation>
       </xs:element>
-      <xs:element name="IsAbout" type="LegalEntityType" maxOccurs="1" minOccurs="1">
+      <xs:element name="IsAbout" type="PersonType" maxOccurs="1" minOccurs="1">
         <xs:annotation>
           <xs:documentation xml:lang="en" source="#definition">It indicates the host reference.</xs:documentation>
         </xs:annotation>
@@ -855,7 +889,7 @@ The datatype of addressID is indicated as Literal (keeping backward compatibilit
           <xs:documentation xml:lang="en" source="#definition">The level of the floor of the Unit as textual description.</xs:documentation>
         </xs:annotation>
       </xs:element>
-      <xs:element name="HasActivityData" type="ActicityDataType" maxOccurs="unbounded" minOccurs="0">
+      <xs:element name="HasActivityData" type="ActivityDataType" maxOccurs="unbounded" minOccurs="0">
         <xs:annotation>
           <xs:documentation xml:lang="en" source="#definition">The activity data associated to the Unit.</xs:documentation>
         </xs:annotation>
@@ -885,12 +919,12 @@ The datatype of addressID is indicated as Literal (keeping backward compatibilit
           <xs:documentation xml:lang="en" source="#definition">It indicates whether the Unit is subject to authorization.</xs:documentation>
         </xs:annotation>
       </xs:element>
-      <xs:element name="NumberOfBedrooms" type="xs:hexBinary" maxOccurs="1" minOccurs="1">
+      <xs:element name="NumberOfBedrooms" type="xs:nonNegativeInteger " maxOccurs="1" minOccurs="1">
         <xs:annotation>
           <xs:documentation xml:lang="en" source="#definition">The maximum number of available bed places.</xs:documentation>
         </xs:annotation>
       </xs:element>
-      <xs:element name="Occupancy" type="xs:hexBinary" maxOccurs="1" minOccurs="1">
+      <xs:element name="Occupancy" type="xs:nonNegativeInteger " maxOccurs="1" minOccurs="1">
         <xs:annotation>
           <xs:documentation xml:lang="en" source="#definition">The maximum number of guests that the unit accommodates.</xs:documentation>
         </xs:annotation>
