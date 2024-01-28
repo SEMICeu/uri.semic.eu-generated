@@ -319,12 +319,12 @@ described as a dcat:Catalog, a dcat:Dataset or a dcat:DataService.</xs:documenta
   </xs:complexType>
   <xs:complexType name="IdentifierType">
     <xs:sequence>
-      <xs:element name="Identifies" type="PersonType" maxOccurs="1" minOccurs="1">
+      <xs:element name="Identifies" type="LegalEntityType" maxOccurs="1" minOccurs="1">
         <xs:annotation>
           <xs:documentation xml:lang="en" source="#definition">The entity that is referenced by the Identifier.</xs:documentation>
         </xs:annotation>
       </xs:element>
-      <xs:element name="Identifies" type="LegalEntityType" maxOccurs="1" minOccurs="1">
+      <xs:element name="Identifies" type="PersonType" maxOccurs="1" minOccurs="1">
         <xs:annotation>
           <xs:documentation xml:lang="en" source="#definition">The entity that is referenced by the Identifier.</xs:documentation>
         </xs:annotation>
@@ -580,7 +580,7 @@ The datatype of addressID is indicated as Literal (keeping backward compatibilit
   </xs:complexType>
   <xs:complexType name="PersonType">
     <xs:sequence>
-      <xs:element name="ContactPoint" type="ContactPointType" maxOccurs="unbounded" minOccurs="0">
+      <xs:element name="ContactPoint" type="ContactPointType" maxOccurs="unbounded" minOccurs="1">
         <xs:annotation>
           <xs:documentation xml:lang="en" source="#definition">The main contact information of the resource.	</xs:documentation>
         </xs:annotation>
@@ -810,7 +810,11 @@ The datatype of addressID is indicated as Literal (keeping backward compatibilit
           <xs:documentation xml:lang="en" source="#definition">An Identifier for the Registration Procedure.</xs:documentation>
         </xs:annotation>
       </xs:element>
-      <xs:element name="Produces" type="RegistrationNumberType" maxOccurs="1" minOccurs="1"/>
+      <xs:element name="Produces" type="RegistrationNumberType" maxOccurs="1" minOccurs="1">
+        <xs:annotation>
+          <xs:documentation xml:lang="en" source="#definition">It indicates the Registration Number produced.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
     </xs:sequence>
     <xs:attribute name="RegistrationProcedureRef" type="xs:IDREF">
       <xs:annotation>
