@@ -7,7 +7,7 @@
     
 	
     <meta charset="utf-8" />
-    <title>DCAT-AP for Base Registries (BRegDCAT-AP)</title>
+    <title>STR Application Profile (STR-AP)</title>
     <script src="https://www.w3.org/Tools/respec/respec-w3c" class="remove" defer></script>
     <script class="remove">
     // All config options at https://respec.org/docs/
@@ -40,24 +40,24 @@
 	
 	
 		]
+		
+	function quickreference() {
+		$('#table-quickoverview').DataTable();
+	};
+	var shaclfilepath = "./shacl/str-SHACL.ttl" ;
 
-  function quickreference() {
-	$('#table-quickoverview').DataTable();
-		};
-
-
-
+   
 
     var respecConfig = {
       postProcess: [quickreference],
       edDraftURI: "https://semiceu.github.io/STR/releases/1.0.0",
       latestVersion: "",
-      specStatus: "LS",
+      specStatus: "LD",
       publishDate: "2024-01-16",
       editors: myeditors,
       authors: myauthors,
-      github: "SEMICeu/BregDCAT-AP",
-      shortName: "DCAT-AP for Base Registries (BRegDCAT-AP)",
+      github: "SEMICeu/STR",
+      shortName: "STR Application Profile (STR-AP)",
       xref: "web-platform",
       doJsonLd: true,
       logos: [{
@@ -71,6 +71,11 @@
       generatedSubtitle: "",
       additionalCopyrightHolders: "",
       localBiblio: {
+        "DXWG": {
+          "href" : "https://www.w3.org/2017/dxwg/wiki/Main_Page",
+          "title" : "Dataset Exchange Working Group",
+          "publisher" : "W3C"
+          },
         "ISA":{
            "href":"https://ec.europa.eu/isa/",
            "title":"Interoperability Solutions for European Public Administrations (ISA)",
@@ -82,8 +87,8 @@
           "publisher":"European Commission"
         },
         "SEMIC":{
-          "href":"https://ec.europa.eu/isa2/actions/improving-semantic-interoperability-european-egovernment-systems_en",
-          "title":"Interoperability solutions for public administrations, businesses and citizens (ISA²). Improving semantic interoperability in European eGovernment systems",
+          "href":"https://joinup.ec.europa.eu/",
+          "title":"JoinUp welcomes Interoperable Europe",
           "publisher":"European Commission"
          },
         "DEU" : {
@@ -91,56 +96,21 @@
           "title":"The official portal for European data",
           "publisher":"European Commission"
         },
-       "ADMS1" : {
-	  "href" : "https://joinup.ec.europa.eu/collection/support-centre/solution/asset-description-metadata-schema-adms/release/100",
-          "title" : "ADMS 1.00, 1ste version of ADMS as defined by the European Commission ISA Programme",
-	  "publisher" : "European Commission"
-	},
-       "WG-GLD" : {
-	  "href" : "http://www.w3.org/2011/gld/",
-          "title" : "Government Linked Data Working Group (Closed community group)",
-          "publisher" : "W3C"
-        },
-       "NAL-FileType" : {
-	  "href" : "http://publications.europa.eu/resource/authority/file-type",
-          "title" : "Named Authority List File Type",
-	  "publisher" : "Publication Office of the EU, EU Vocabularies"
-	},
-       "NAL-Licence" : {
-	  "href" : "http://publications.europa.eu/resource/authority/licence",
-          "title" : "Named Authority List Licence", 
-	  "publisher" : "Publication Office of the EU, EU Vocabularies"
-	},
-       "codelist-adms" : {
-	  "href" : "purl.org/adms/",
-          "title" : "Controlled Vocabularies supporting the ADMS vocabulary.",
-	  "publisher" : "European Commission, Interoperable Europe"
-	},
-        "IdentifierGuidelines":{
-          "href":"https://github.com/SEMICeu/DCAT-AP/blob/2.x.y-draft/releases/2.x.y/usageguide-identifiers.md",
-          "title":"Guidelines on the management of identifiers",
-          "publisher":"European Commission"
-         },
-        "HVD" : {
-           "href":"https://eur-lex.europa.eu/legal-content/EN/TXT/?uri=CELEX:32023R0138",
-           "title" : "Implementing Regulation for High Value Datasets",
-           "publisher":"European Commission"
-        },
-        "EU-DIGI-STRAT" : {
-	   "href"  : "https://commission.europa.eu/strategy-and-policy/priorities-2019-2024/europe-fit-digital-age_en",
-           "title"  : "Digital Strategy for Europe",
-           "publisher": "European Commission"
-        },
-        "SDG" : {
-           "href" : "https://eur-lex.europa.eu/eli/reg_impl/2020/1121/oj",
-           "title" : "Single Digital Gateway Implementing Regulation",
-           "publisher" : "European Commission"
-        },
-        "OOTS" : {
-           "href" : "https://ec.europa.eu/digital-building-blocks/wikis/display/OOTS/About+OOTS#",
-           "title" : "Once-Only Technical System, the EU hub for the Single Digital Gateway",
-           "publisher" : "European Commision"
-       }
+		"HVD" : {
+		  "href":"https://eur-lex.europa.eu/legal-content/EN/TXT/?uri=CELEX:32023R0138",
+		  "title":"Implementing Regulation for High Value Datasets",
+		  "publisher":"European Union"
+		},
+		"DCAT-AP-HVD" : {
+		  "href":"https://semiceu.github.io/uri.semic.eu-generated/DCAT-AP/releases/2.2.0-hvd/",
+		  "title":"Usage Guidelines of DCAT-AP for High-Value Datasets",
+		  "publisher":"European Commission"
+		},
+                "PSI" : {
+                  "href": "https://eur-lex.europa.eu/eli/dir/2019/1024/oj",
+                  "title" :  "Directive on open data and the re-use of public sector information (recast)",
+                  "publisher" : "European Union"
+                }
       }
     };
 
@@ -156,7 +126,7 @@
     </style>
      
     <p class="copyright">
-        Copyright © 2022
+        Copyright © 2024
     </p>
     
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
@@ -171,74 +141,41 @@
 
 
 
+
+<section id="abstract">
+    <h2>Abstract</h2>
+The Core Location Vocabulary is a simplified, reusable and extensible data model that captures the fundamental characteristics of a location, represented as an address, a geographic name, or a geometry.
+
+
 <section id="specintro">
     <h2>
         Introduction
     </h2>
     
-<h3>Context</h3>
+	Locations can be described in three principal ways: by using a place name, a geometry or an
+    address. The specific context will determine which method of describing a location is most
+    appropriate. The Core Location Vocabulary provides structure for all three.
+</p>
 <p>
-One of the targets of the Digital Single Market [[EU-DIGI-STRAT]] is to deliver cross-border and crosssector
-public services in Europe. Thus, in order to succeed with this objective, Member
-States’ base registries need to be interconnected. Base registries are trusted and
-reliable sources of basic information on data items such as citizens, corporations,
-vehicles, driver licences, buildings, and locations. They are the cornerstone of public
-services and essential entities for public administration management.
-</p><p>
-The interoperability of base registries is key for the development of the EU Single Digital
-Gateway (or just Gateway) [[SDG]], a platform that aims to be the single point of access to
-public EU Member States’ services, facilitating digital public services among public
-administrations and citizens. The implementation of the Gateway [[OOTS]] relies on the once-only
-principle, ensuring data that is submitted at least once to an EU Member State,
-could be reused by any public authority across the EU.
-</p><p>
-To interconnect European base registries it is of interest to have a European wide insight 
-in the connection potential of these.
-The development of a European Registry of Base Registries (ERBR), a pan-European
-registry of base registries, will improve the interoperability of individual base registries
-and harmonise the existing registries of base registries, enabling a one-stop-platform for
-citizens, business and public bodies to access and manage base registries across the
-European Union and across different domains.
-</p><p>
-This specification, BRegDCAT-AP, facilitates the creation of ERBR. 
-It interconnects public services with base registries and their associated services.
-By conforming to this specification Base Registries will becomes easier to find. 
-And subsequently together with the provision through the Once Only Hub [[OOTS]] make them more interoperable by .
-This set of recommendations will enable a mechanism for the update of EU reducing technical, organisational and multilingual barriers.
-</p><p>
-
-
-
-
-
-
-
-<h3>Scope</h3>
+    ISO 19112 defines a location as "an identifiable geographic place." With this in mind, "Eiffel
+    Tower", "Madrid" and "California" are all locations and this is a common way of representing
+    locations in public sector data, i.e. simply by using a recognised name. Such identifiers are
+    common although they can be highly ambiguous as many places share the same or similar names.
+</p>
 <p>
-This document provides the guidelines on how to use DCAT-AP to make Base Registries well documented.
-The document is called the "usage guidelines of DCAT-AP for Base Registries", in short BRegDCAT-AP.
-
-</p><p>
-To understand these guidelines, it is important to realise that the BRegDCAT-AP applies 
-to a subset of all the datasets that are collected by (Open) Data Portals in Europe.
-A single catalogue may contain catalogued resources which are within and outside scope of BRegDCAT-AP.
-
+    In addition to a simple (string) label or name for a Location, this vocabulary defines a property
+    that allows a Location to be defined by a URI, such as a GeoNames or DBpedia URI.
+</p>
+<p>
+    No cardinality constraints are placed on any property of the Location, Address or Geometry
+    classes in order to maximise flexibility. A single address may be defined in different ways, a
+    geometry may be defined using different coordinate reference systems and a single place may
+    have no recognised name or multiple names. The Core Location Vocabulary makes a minimum
+    number of assumptions about what data will be encoded. However, it clearly makes no sense to
+    define any of the location classes without any properties or to provide multiple instances of the
+    same property with conflicting values.
 </p>
 
-
-</section>
-
-</section>
-
-
-<section id="abstract">
-    <h2>Meeting minutes</h2>
-    <ul>
-    <li>Webinar 21 March 2023 (<a href="https://joinup.ec.europa.eu/sites/default/files/inline-files/Report_Meeting%20Minutes_%20Webinar%20on%20BRegDCAT-AP.pdf">Meeting Minutes</a>, 
-                               <a href="https://www.youtube.com/watch?v=-LJ-eX6flSo">recording</a>, 
-                               <a href="https://joinup.ec.europa.eu/sites/default/files/inline-files/Slides%20Webinar%20on%20BRegDCATAP%2021March2023.pdf">slides</a>) </li>
-
-    </ul>
 </section>
 
 
@@ -247,7 +184,7 @@ A single catalogue may contain catalogued resources which are within and outside
 <section id="specstatus">
     <h2>Status</h2>
         <p>
-            This application profile has the status <a href="https://www.w3.org/2021/Process-20211102/#RecsWD">Working Draft</a> published at 2024-01-16.
+            This Core Vocabulary has the status Working Draft published at 2024-01-16.
         </p>
         <p>
             Information about the process and the decisions involved in the creation of this specification are consultable at the <a href="https://github.com/SEMICeu/STR/blob/master/releases/1.0.0/Changelog.md">Changelog</a>.
@@ -271,118 +208,58 @@ A single catalogue may contain catalogued resources which are within and outside
 		  This specification </span> of <a rel="cc:attributionURL" property="cc:attributionName" href="ORGANISATION" xmlns:cc="http://creativecommons.org/ns#">ORGANISATION </a> 
 	          is published under <a href="https://creativecommons.org/licenses/by/4.0/" rel="license">"CC0"</a>.
 	-->
-             Copyright © 2023 European Union. All material in this repository is published under the license CC-BY 4.0, unless explicitly otherwise mentioned.
+             Copyright © 2024 European Union. All material in this repository is published under the license CC-BY 4.0, unless explicitly otherwise mentioned.
         </p>
     
 </section>
 
 
 
-
-
-
 <section id="conformance" class="informative">
-<h2>Conformance Statement</h2>
-
-In order for applications to conform to BregDCAT-AP, it MUST conform to DCAT-AP. 
-In addition, the application must conform to the mentioned constraints and usage guidelines following similar conformance statements as specifief in DCAT-AP.
-
-<h3>Provider requirements</h3>
-In order to conform to this Annex to the Application Profile of DCAT-AP, an application that provides metadata MUST:
-<ul>
-<li>Provide a description of the Catalogue, including at least the mandatory properties specified for the class <a href="#Catalogue">Catalogue</a>.</li>
-<li>Provide descriptions of Datasets in the Catalogue, including at least the mandatory properties for the class <a href="#Dataset">Dataset</a>.</li>
-<li>Provide descriptions of Distributions, if any, of Datasets in the Catalogue, including at least the mandatory properties for the class <a href="#Distribution">Distribution</a>.</li>
-<li>Provide descriptions of Data Services, if any, in the Catalogue, including at least the mandatory properties for the class <a href="#DataService">Data Service</a>.</li>
-<li>Provide descriptions of all other classes such as Agents, Contact Points,  Licences, etc.
-</ul>
-
-
-<h3>Receiver requirements</h3>
-In order to conform to this Annex to the Application Profile, an application that receives metadata MUST be able to:
-<li>Process information for all classes and properties specified in section [[[#quick-reference]]].</li>
-"Processing" means that receivers must accept incoming data and transparently provide these data to applications and services. 
-It does neither imply nor prescribe what applications and services finally do with the data (parse, convert, store, make searchable, display to users, etc.).
 </section>
 
 
+
+
 <section id="specterminology">
-<h2>Terminology</h2>
-<p>
-An <strong>Application Profile</strong> is a specification that reuses terms from one or more base standards, adding more specificity by identifying mandatory, recommended and optional elements to be used for a particular application, as well as recommendations for controlled vocabularies to be used.
-</p><p>
-An <strong>Annex to an Application Profile</strong> is a specification that precises the use of some aspects of the Application Profile for a specific context.
-</p><p>
-A <strong>Base Registry</strong> is a web-based system that contains an inventory of descriptions of
-Master datasets and provides services enabling discovery and re-use of the datasets.
-The mandate of a Base Registry is given by specific legislation. 
-</p><p>
-At EU level, National
-Registers aggregate information about Base Registries in Registries of Base Registries. A
-<strong>Registry of Base Registries</strong> is considered as a Catalogue of collections of metadata about datasets or
-data services.
-</p>
-
+    <h2>
+        Terminology
+    </h2>
+        <p>
+            A Core Vocabulary (CV) is a basic, reusable and extensible data specification that captures the fundamental characteristics of an entity in a context-neutral fashion. Its main objective is to provide terms to be reused in the broadest possible context.
+            More information can be found on the <a href="https://semiceu.github.io/style-guide/1.0.0/terminological-clarifications.html#sec:what-is-a-cv-specification">SEMIC Style Guide</a>.
+        </p>
+        
 This specification uses the following prefixes to shorten the URIs for readibility.
-
 
         <table id="table-namespaces" class="simple">
             <thead><tr><th>Prefix</th><th>Namespace IRI</th></tr></thead>
             <tbody>
-            <tr><td><code>adms</code></td><td><code>http://www.w3.org/ns/adms#</code></td></tr>
-            <tr><td><code>cpsv</code></td><td><code>http://purl.org/vocab/cpsv#</code></td></tr>
-            <tr><td><code>dcat</code></td><td><code>http://www.w3.org/ns/dcat#</code></td></tr>
-            <tr><td><code>dcatap</code></td><td><code>http://data.europa.eu/r5r/</code></td></tr>
+            <tr><td><code>ad</code></td><td><code>http://inspire.ec.europa.eu/ont/ad#</code></td></tr>
+            <tr><td><code>cv</code></td><td><code>http://data.europa.eu/m8g/</code></td></tr>           
             <tr><td><code>dct</code></td><td><code>http://purl.org/dc/terms/</code></td></tr>
-            <tr><td><code>dctype</code></td><td><code>http://purl.org/dc/dcmitype/</code></td></tr>
-            <tr><td><code>eli</code></td><td><code>http://data.europa.eu/eli/ontology#</code></td></tr>
-            <tr><td><code>foaf</code></td><td><code>http://xmlns.com/foaf/0.1/</code></td></tr>
+            <tr><td><code>geo</code></td><td><code>http://www.opengis.net/ont/geosparql#</code></td></tr>
             <tr><td><code>locn</code></td><td><code>http://www.w3.org/ns/locn#</code></td></tr>
-            <tr><td><code>owl</code></td><td><code>http://www.w3.org/2002/07/owl#</code></td></tr>
             <tr><td><code>rdf</code></td><td><code>http://www.w3.org/1999/02/22-rdf-syntax-ns#</code></td></tr>
             <tr><td><code>rdfs</code></td><td><code>http://www.w3.org/2000/01/rdf-schema#</code></td></tr>
             <tr><td><code>skos</code></td><td><code>http://www.w3.org/2004/02/skos/core#</code></td></tr>
-            <tr><td><code>vcard</code></td><td><code>http://www.w3.org/2006/vcard/ns#</code></td></tr>
             <tr><td><code>xsd</code></td><td><code>http://www.w3.org/2001/XMLSchema#</code></td></tr>
             </tbody>
         </table>
 
+
 </section>
+
 
 
 <section id="specoverview">
     <h2>Overview</h2>
     
-<p>
-BRegDCAT-AP is an annex to DCAT-AP. 
-It describes additional usage of the DCAT-AP for Base Registries.
-In this document only the additional information, that is required for the catalogued resources which are within scope of the regulation, is included.
-In any other case, the guidelines of DCAT-AP itself are applicable.
-</p>
-
-<p class="ednote" title="BRegDCAT-ap additions">
-   As shown in the profile diagram below: the sole addition to DCAT-AP is the relationship with a public service.
-   As such the Annex can be even further reduced to a simple case of relating a public service with a catalogued resource.
-</p>
-
-<h3>Application profile diagram</h3>
-<p>
-An overview of BRegDCAT-AP is shown by the UML diagram below. 
-The UML diagram illustrates the specification described in this document. 
-For readability purposes the representation has been condensed as follows:
-<ul>
-<li> The figure contains the key classes with some important supporting classes. Other object properties (relationships) are listed as properties on the UML class with their target range.</li>
-<li> The class dcat:Resource has been included more easily see the connection with W3C DCAT. DCAT-AP treats it as an abstract notion. </li>
-</ul>
-The cardinalities and qualifications are included in the figure.
-</p><p>
-For readibility of this document as an annex to DCAT-AP, the core relationships between classes are included.
-</p>
-
+    
     <div id="overview">
                 
                         <p>
-                            This document describes the usage of the following main entities for a correct usage of the Application Profile:
+                            This document describes the usage of the following main entities for a correct usage of the Core Vocabulary:
                             <br />
                             |
 			      <a href="#Catalogue">Catalogue</a> |
@@ -447,7 +324,7 @@ For readibility of this document as an annex to DCAT-AP, the core relationships 
 <h2>
    Main Entities
 </h2>
-The main entities are those that form the core of the Application Profile.
+The main entities are those that form the core of the Core Vocabulary.
 
 
 
@@ -505,12 +382,12 @@ The main entities are those that form the core of the Application Profile.
                 <table class="data-table simple" id="table-mandatory-classes">
                     <thead>
                         <tr class="data-table__header">
-                            <th class="data-table__header-title--sortable" style="width:5%">
+                            <th class="data-table__header-title--sortable" style="width:6%">
                             </th>
-                            <th class="data-table__header-title--sortable data-table__header-title--sortable-active" style="width:12%">
+                            <th class="data-table__header-title--sortable data-table__header-title--sortable-active" style="width:14%">
                                 Property
                             </th>
-                            <th class="data-table__header-title--sortable" style="width:12%">
+                            <th class="data-table__header-title--sortable" style="width:14%">
                                 Range
                             </th>
                             <th class="data-table__header-title--sortable" style="width:6%">
@@ -526,10 +403,10 @@ The main entities are those that form the core of the Application Profile.
                             <th class="data-table__header-title--sortable" style="width:3%">
                                 Codelist
                             </th>
-			    -->
                             <th class="data-table__header-title--sortable" style="width:5%">
                                 DCAT
                             </th>
+			    -->
                         </tr>
                     </thead>
                     <tbody class="supertype">
@@ -722,12 +599,12 @@ The main entities are those that form the core of the Application Profile.
                 <table class="data-table simple" id="table-mandatory-classes">
                     <thead>
                         <tr class="data-table__header">
-                            <th class="data-table__header-title--sortable" style="width:5%">
+                            <th class="data-table__header-title--sortable" style="width:6%">
                             </th>
-                            <th class="data-table__header-title--sortable data-table__header-title--sortable-active" style="width:12%">
+                            <th class="data-table__header-title--sortable data-table__header-title--sortable-active" style="width:14%">
                                 Property
                             </th>
-                            <th class="data-table__header-title--sortable" style="width:12%">
+                            <th class="data-table__header-title--sortable" style="width:14%">
                                 Range
                             </th>
                             <th class="data-table__header-title--sortable" style="width:6%">
@@ -743,10 +620,10 @@ The main entities are those that form the core of the Application Profile.
                             <th class="data-table__header-title--sortable" style="width:3%">
                                 Codelist
                             </th>
-			    -->
                             <th class="data-table__header-title--sortable" style="width:5%">
                                 DCAT
                             </th>
+			    -->
                         </tr>
                     </thead>
                     <tbody class="supertype">
@@ -925,12 +802,12 @@ The main entities are those that form the core of the Application Profile.
                 <table class="data-table simple" id="table-mandatory-classes">
                     <thead>
                         <tr class="data-table__header">
-                            <th class="data-table__header-title--sortable" style="width:5%">
+                            <th class="data-table__header-title--sortable" style="width:6%">
                             </th>
-                            <th class="data-table__header-title--sortable data-table__header-title--sortable-active" style="width:12%">
+                            <th class="data-table__header-title--sortable data-table__header-title--sortable-active" style="width:14%">
                                 Property
                             </th>
-                            <th class="data-table__header-title--sortable" style="width:12%">
+                            <th class="data-table__header-title--sortable" style="width:14%">
                                 Range
                             </th>
                             <th class="data-table__header-title--sortable" style="width:6%">
@@ -946,10 +823,10 @@ The main entities are those that form the core of the Application Profile.
                             <th class="data-table__header-title--sortable" style="width:3%">
                                 Codelist
                             </th>
-			    -->
                             <th class="data-table__header-title--sortable" style="width:5%">
                                 DCAT
                             </th>
+			    -->
                         </tr>
                     </thead>
                     <tbody class="supertype">
@@ -1063,12 +940,12 @@ The main entities are those that form the core of the Application Profile.
                 <table class="data-table simple" id="table-mandatory-classes">
                     <thead>
                         <tr class="data-table__header">
-                            <th class="data-table__header-title--sortable" style="width:5%">
+                            <th class="data-table__header-title--sortable" style="width:6%">
                             </th>
-                            <th class="data-table__header-title--sortable data-table__header-title--sortable-active" style="width:12%">
+                            <th class="data-table__header-title--sortable data-table__header-title--sortable-active" style="width:14%">
                                 Property
                             </th>
-                            <th class="data-table__header-title--sortable" style="width:12%">
+                            <th class="data-table__header-title--sortable" style="width:14%">
                                 Range
                             </th>
                             <th class="data-table__header-title--sortable" style="width:6%">
@@ -1084,10 +961,10 @@ The main entities are those that form the core of the Application Profile.
                             <th class="data-table__header-title--sortable" style="width:3%">
                                 Codelist
                             </th>
-			    -->
                             <th class="data-table__header-title--sortable" style="width:5%">
                                 DCAT
                             </th>
+			    -->
                         </tr>
                     </thead>
                     <tbody class="supertype">
@@ -1202,12 +1079,12 @@ The main entities are those that form the core of the Application Profile.
                 <table class="data-table simple" id="table-mandatory-classes">
                     <thead>
                         <tr class="data-table__header">
-                            <th class="data-table__header-title--sortable" style="width:5%">
+                            <th class="data-table__header-title--sortable" style="width:6%">
                             </th>
-                            <th class="data-table__header-title--sortable data-table__header-title--sortable-active" style="width:12%">
+                            <th class="data-table__header-title--sortable data-table__header-title--sortable-active" style="width:14%">
                                 Property
                             </th>
-                            <th class="data-table__header-title--sortable" style="width:12%">
+                            <th class="data-table__header-title--sortable" style="width:14%">
                                 Range
                             </th>
                             <th class="data-table__header-title--sortable" style="width:6%">
@@ -1223,10 +1100,10 @@ The main entities are those that form the core of the Application Profile.
                             <th class="data-table__header-title--sortable" style="width:3%">
                                 Codelist
                             </th>
-			    -->
                             <th class="data-table__header-title--sortable" style="width:5%">
                                 DCAT
                             </th>
+			    -->
                         </tr>
                     </thead>
                     <tbody class="supertype">
@@ -1402,12 +1279,12 @@ companies, vehicles, licences, buildings, locations and roads.
                 <table class="data-table simple" id="table-mandatory-classes">
                     <thead>
                         <tr class="data-table__header">
-                            <th class="data-table__header-title--sortable" style="width:5%">
+                            <th class="data-table__header-title--sortable" style="width:6%">
                             </th>
-                            <th class="data-table__header-title--sortable data-table__header-title--sortable-active" style="width:12%">
+                            <th class="data-table__header-title--sortable data-table__header-title--sortable-active" style="width:14%">
                                 Property
                             </th>
-                            <th class="data-table__header-title--sortable" style="width:12%">
+                            <th class="data-table__header-title--sortable" style="width:14%">
                                 Range
                             </th>
                             <th class="data-table__header-title--sortable" style="width:6%">
@@ -1423,10 +1300,10 @@ companies, vehicles, licences, buildings, locations and roads.
                             <th class="data-table__header-title--sortable" style="width:3%">
                                 Codelist
                             </th>
-			    -->
                             <th class="data-table__header-title--sortable" style="width:5%">
                                 DCAT
                             </th>
+			    -->
                         </tr>
                     </thead>
                     <tbody class="supertype">
@@ -1674,8 +1551,8 @@ described as a dcat:Catalog, a dcat:Dataset or a dcat:DataService.
 <h2>
    Supportive Entities
 </h2>
-The supportive entities are supporting the main entities in the Application Profile. 
-They are included in the Application Profile because they form the range of properties.
+The supportive entities are supporting the main entities in the Core Vocabulary. 
+They are included in the Core Vocabulary because they form the range of properties.
 
 
 
@@ -1723,12 +1600,12 @@ They are included in the Application Profile because they form the range of prop
                 <table class="data-table simple" id="table-mandatory-classes">
                     <thead>
                         <tr class="data-table__header">
-                            <th class="data-table__header-title--sortable" style="width:5%">
+                            <th class="data-table__header-title--sortable" style="width:6%">
                             </th>
-                            <th class="data-table__header-title--sortable data-table__header-title--sortable-active" style="width:12%">
+                            <th class="data-table__header-title--sortable data-table__header-title--sortable-active" style="width:14%">
                                 Property
                             </th>
-                            <th class="data-table__header-title--sortable" style="width:12%">
+                            <th class="data-table__header-title--sortable" style="width:14%">
                                 Range
                             </th>
                             <th class="data-table__header-title--sortable" style="width:6%">
@@ -1744,10 +1621,10 @@ They are included in the Application Profile because they form the range of prop
                             <th class="data-table__header-title--sortable" style="width:3%">
                                 Codelist
                             </th>
-			    -->
                             <th class="data-table__header-title--sortable" style="width:5%">
                                 DCAT
                             </th>
+			    -->
                         </tr>
                     </thead>
                     <tbody class="supertype">
@@ -1963,12 +1840,12 @@ This class belongs to <a href="https://semiceu.github.io/Core-Location-Vocabular
                 <table class="data-table simple" id="table-mandatory-classes">
                     <thead>
                         <tr class="data-table__header">
-                            <th class="data-table__header-title--sortable" style="width:5%">
+                            <th class="data-table__header-title--sortable" style="width:6%">
                             </th>
-                            <th class="data-table__header-title--sortable data-table__header-title--sortable-active" style="width:12%">
+                            <th class="data-table__header-title--sortable data-table__header-title--sortable-active" style="width:14%">
                                 Property
                             </th>
-                            <th class="data-table__header-title--sortable" style="width:12%">
+                            <th class="data-table__header-title--sortable" style="width:14%">
                                 Range
                             </th>
                             <th class="data-table__header-title--sortable" style="width:6%">
@@ -1984,10 +1861,10 @@ This class belongs to <a href="https://semiceu.github.io/Core-Location-Vocabular
                             <th class="data-table__header-title--sortable" style="width:3%">
                                 Codelist
                             </th>
-			    -->
                             <th class="data-table__header-title--sortable" style="width:5%">
                                 DCAT
                             </th>
+			    -->
                         </tr>
                     </thead>
                     <tbody class="supertype">
@@ -2634,12 +2511,12 @@ The datatype of poBox is indicated as Literal (keeping backward compatibility wi
                 <table class="data-table simple" id="table-mandatory-classes">
                     <thead>
                         <tr class="data-table__header">
-                            <th class="data-table__header-title--sortable" style="width:5%">
+                            <th class="data-table__header-title--sortable" style="width:6%">
                             </th>
-                            <th class="data-table__header-title--sortable data-table__header-title--sortable-active" style="width:12%">
+                            <th class="data-table__header-title--sortable data-table__header-title--sortable-active" style="width:14%">
                                 Property
                             </th>
-                            <th class="data-table__header-title--sortable" style="width:12%">
+                            <th class="data-table__header-title--sortable" style="width:14%">
                                 Range
                             </th>
                             <th class="data-table__header-title--sortable" style="width:6%">
@@ -2655,10 +2532,10 @@ The datatype of poBox is indicated as Literal (keeping backward compatibility wi
                             <th class="data-table__header-title--sortable" style="width:3%">
                                 Codelist
                             </th>
-			    -->
                             <th class="data-table__header-title--sortable" style="width:5%">
                                 DCAT
                             </th>
+			    -->
                         </tr>
                     </thead>
                     <tbody class="supertype">
@@ -2808,12 +2685,12 @@ The datatype of poBox is indicated as Literal (keeping backward compatibility wi
                 <table class="data-table simple" id="table-mandatory-classes">
                     <thead>
                         <tr class="data-table__header">
-                            <th class="data-table__header-title--sortable" style="width:5%">
+                            <th class="data-table__header-title--sortable" style="width:6%">
                             </th>
-                            <th class="data-table__header-title--sortable data-table__header-title--sortable-active" style="width:12%">
+                            <th class="data-table__header-title--sortable data-table__header-title--sortable-active" style="width:14%">
                                 Property
                             </th>
-                            <th class="data-table__header-title--sortable" style="width:12%">
+                            <th class="data-table__header-title--sortable" style="width:14%">
                                 Range
                             </th>
                             <th class="data-table__header-title--sortable" style="width:6%">
@@ -2829,10 +2706,10 @@ The datatype of poBox is indicated as Literal (keeping backward compatibility wi
                             <th class="data-table__header-title--sortable" style="width:3%">
                                 Codelist
                             </th>
-			    -->
                             <th class="data-table__header-title--sortable" style="width:5%">
                                 DCAT
                             </th>
+			    -->
                         </tr>
                     </thead>
                     <tbody class="supertype">
@@ -2934,12 +2811,12 @@ The datatype of poBox is indicated as Literal (keeping backward compatibility wi
                 <table class="data-table simple" id="table-mandatory-classes">
                     <thead>
                         <tr class="data-table__header">
-                            <th class="data-table__header-title--sortable" style="width:5%">
+                            <th class="data-table__header-title--sortable" style="width:6%">
                             </th>
-                            <th class="data-table__header-title--sortable data-table__header-title--sortable-active" style="width:12%">
+                            <th class="data-table__header-title--sortable data-table__header-title--sortable-active" style="width:14%">
                                 Property
                             </th>
-                            <th class="data-table__header-title--sortable" style="width:12%">
+                            <th class="data-table__header-title--sortable" style="width:14%">
                                 Range
                             </th>
                             <th class="data-table__header-title--sortable" style="width:6%">
@@ -2955,10 +2832,10 @@ The datatype of poBox is indicated as Literal (keeping backward compatibility wi
                             <th class="data-table__header-title--sortable" style="width:3%">
                                 Codelist
                             </th>
-			    -->
                             <th class="data-table__header-title--sortable" style="width:5%">
                                 DCAT
                             </th>
+			    -->
                         </tr>
                     </thead>
                     <tbody class="supertype">
@@ -3153,12 +3030,12 @@ The datatype of poBox is indicated as Literal (keeping backward compatibility wi
                 <table class="data-table simple" id="table-mandatory-classes">
                     <thead>
                         <tr class="data-table__header">
-                            <th class="data-table__header-title--sortable" style="width:5%">
+                            <th class="data-table__header-title--sortable" style="width:6%">
                             </th>
-                            <th class="data-table__header-title--sortable data-table__header-title--sortable-active" style="width:12%">
+                            <th class="data-table__header-title--sortable data-table__header-title--sortable-active" style="width:14%">
                                 Property
                             </th>
-                            <th class="data-table__header-title--sortable" style="width:12%">
+                            <th class="data-table__header-title--sortable" style="width:14%">
                                 Range
                             </th>
                             <th class="data-table__header-title--sortable" style="width:6%">
@@ -3174,10 +3051,10 @@ The datatype of poBox is indicated as Literal (keeping backward compatibility wi
                             <th class="data-table__header-title--sortable" style="width:3%">
                                 Codelist
                             </th>
-			    -->
                             <th class="data-table__header-title--sortable" style="width:5%">
                                 DCAT
                             </th>
+			    -->
                         </tr>
                     </thead>
                     <tbody class="supertype">
@@ -3493,12 +3370,12 @@ The datatype of poBox is indicated as Literal (keeping backward compatibility wi
                 <table class="data-table simple" id="table-mandatory-classes">
                     <thead>
                         <tr class="data-table__header">
-                            <th class="data-table__header-title--sortable" style="width:5%">
+                            <th class="data-table__header-title--sortable" style="width:6%">
                             </th>
-                            <th class="data-table__header-title--sortable data-table__header-title--sortable-active" style="width:12%">
+                            <th class="data-table__header-title--sortable data-table__header-title--sortable-active" style="width:14%">
                                 Property
                             </th>
-                            <th class="data-table__header-title--sortable" style="width:12%">
+                            <th class="data-table__header-title--sortable" style="width:14%">
                                 Range
                             </th>
                             <th class="data-table__header-title--sortable" style="width:6%">
@@ -3514,10 +3391,10 @@ The datatype of poBox is indicated as Literal (keeping backward compatibility wi
                             <th class="data-table__header-title--sortable" style="width:3%">
                                 Codelist
                             </th>
-			    -->
                             <th class="data-table__header-title--sortable" style="width:5%">
                                 DCAT
                             </th>
+			    -->
                         </tr>
                     </thead>
                     <tbody class="supertype">
@@ -3672,12 +3549,12 @@ The datatype of poBox is indicated as Literal (keeping backward compatibility wi
                 <table class="data-table simple" id="table-mandatory-classes">
                     <thead>
                         <tr class="data-table__header">
-                            <th class="data-table__header-title--sortable" style="width:5%">
+                            <th class="data-table__header-title--sortable" style="width:6%">
                             </th>
-                            <th class="data-table__header-title--sortable data-table__header-title--sortable-active" style="width:12%">
+                            <th class="data-table__header-title--sortable data-table__header-title--sortable-active" style="width:14%">
                                 Property
                             </th>
-                            <th class="data-table__header-title--sortable" style="width:12%">
+                            <th class="data-table__header-title--sortable" style="width:14%">
                                 Range
                             </th>
                             <th class="data-table__header-title--sortable" style="width:6%">
@@ -3693,10 +3570,10 @@ The datatype of poBox is indicated as Literal (keeping backward compatibility wi
                             <th class="data-table__header-title--sortable" style="width:3%">
                                 Codelist
                             </th>
-			    -->
                             <th class="data-table__header-title--sortable" style="width:5%">
                                 DCAT
                             </th>
+			    -->
                         </tr>
                     </thead>
                     <tbody class="supertype">
@@ -4064,12 +3941,12 @@ A business might have more than one legal name, particularly in countries with m
                 <table class="data-table simple" id="table-mandatory-classes">
                     <thead>
                         <tr class="data-table__header">
-                            <th class="data-table__header-title--sortable" style="width:5%">
+                            <th class="data-table__header-title--sortable" style="width:6%">
                             </th>
-                            <th class="data-table__header-title--sortable data-table__header-title--sortable-active" style="width:12%">
+                            <th class="data-table__header-title--sortable data-table__header-title--sortable-active" style="width:14%">
                                 Property
                             </th>
-                            <th class="data-table__header-title--sortable" style="width:12%">
+                            <th class="data-table__header-title--sortable" style="width:14%">
                                 Range
                             </th>
                             <th class="data-table__header-title--sortable" style="width:6%">
@@ -4085,10 +3962,10 @@ A business might have more than one legal name, particularly in countries with m
                             <th class="data-table__header-title--sortable" style="width:3%">
                                 Codelist
                             </th>
-			    -->
                             <th class="data-table__header-title--sortable" style="width:5%">
                                 DCAT
                             </th>
+			    -->
                         </tr>
                     </thead>
                     <tbody class="supertype">
@@ -4277,12 +4154,12 @@ A business might have more than one legal name, particularly in countries with m
                 <table class="data-table simple" id="table-mandatory-classes">
                     <thead>
                         <tr class="data-table__header">
-                            <th class="data-table__header-title--sortable" style="width:5%">
+                            <th class="data-table__header-title--sortable" style="width:6%">
                             </th>
-                            <th class="data-table__header-title--sortable data-table__header-title--sortable-active" style="width:12%">
+                            <th class="data-table__header-title--sortable data-table__header-title--sortable-active" style="width:14%">
                                 Property
                             </th>
-                            <th class="data-table__header-title--sortable" style="width:12%">
+                            <th class="data-table__header-title--sortable" style="width:14%">
                                 Range
                             </th>
                             <th class="data-table__header-title--sortable" style="width:6%">
@@ -4298,10 +4175,10 @@ A business might have more than one legal name, particularly in countries with m
                             <th class="data-table__header-title--sortable" style="width:3%">
                                 Codelist
                             </th>
-			    -->
                             <th class="data-table__header-title--sortable" style="width:5%">
                                 DCAT
                             </th>
+			    -->
                         </tr>
                     </thead>
                     <tbody class="supertype">
@@ -4534,12 +4411,12 @@ A business might have more than one legal name, particularly in countries with m
                 <table class="data-table simple" id="table-mandatory-classes">
                     <thead>
                         <tr class="data-table__header">
-                            <th class="data-table__header-title--sortable" style="width:5%">
+                            <th class="data-table__header-title--sortable" style="width:6%">
                             </th>
-                            <th class="data-table__header-title--sortable data-table__header-title--sortable-active" style="width:12%">
+                            <th class="data-table__header-title--sortable data-table__header-title--sortable-active" style="width:14%">
                                 Property
                             </th>
-                            <th class="data-table__header-title--sortable" style="width:12%">
+                            <th class="data-table__header-title--sortable" style="width:14%">
                                 Range
                             </th>
                             <th class="data-table__header-title--sortable" style="width:6%">
@@ -4555,10 +4432,10 @@ A business might have more than one legal name, particularly in countries with m
                             <th class="data-table__header-title--sortable" style="width:3%">
                                 Codelist
                             </th>
-			    -->
                             <th class="data-table__header-title--sortable" style="width:5%">
                                 DCAT
                             </th>
+			    -->
                         </tr>
                     </thead>
                     <tbody class="supertype">
@@ -4626,7 +4503,7 @@ A business might have more than one legal name, particularly in countries with m
                                 <td>
                                     
                                         
-                                            <a href="#LegalEntity" data-placement="right">Legal Entity</a>
+                                            <a href="#Person" data-placement="right">Person</a>
                                         
                                     
                                 </td>
@@ -4669,7 +4546,7 @@ A business might have more than one legal name, particularly in countries with m
                                 <td>
                                     
                                         
-                                            <a href="#Person" data-placement="right">Person</a>
+                                            <a href="#LegalEntity" data-placement="right">Legal Entity</a>
                                         
                                     
                                 </td>
@@ -4840,12 +4717,12 @@ A business might have more than one legal name, particularly in countries with m
                 <table class="data-table simple" id="table-mandatory-classes">
                     <thead>
                         <tr class="data-table__header">
-                            <th class="data-table__header-title--sortable" style="width:5%">
+                            <th class="data-table__header-title--sortable" style="width:6%">
                             </th>
-                            <th class="data-table__header-title--sortable data-table__header-title--sortable-active" style="width:12%">
+                            <th class="data-table__header-title--sortable data-table__header-title--sortable-active" style="width:14%">
                                 Property
                             </th>
-                            <th class="data-table__header-title--sortable" style="width:12%">
+                            <th class="data-table__header-title--sortable" style="width:14%">
                                 Range
                             </th>
                             <th class="data-table__header-title--sortable" style="width:6%">
@@ -4861,10 +4738,10 @@ A business might have more than one legal name, particularly in countries with m
                             <th class="data-table__header-title--sortable" style="width:3%">
                                 Codelist
                             </th>
-			    -->
                             <th class="data-table__header-title--sortable" style="width:5%">
                                 DCAT
                             </th>
+			    -->
                         </tr>
                     </thead>
                     <tbody class="supertype">
@@ -5106,12 +4983,12 @@ A business might have more than one legal name, particularly in countries with m
                 <table class="data-table simple" id="table-mandatory-classes">
                     <thead>
                         <tr class="data-table__header">
-                            <th class="data-table__header-title--sortable" style="width:5%">
+                            <th class="data-table__header-title--sortable" style="width:6%">
                             </th>
-                            <th class="data-table__header-title--sortable data-table__header-title--sortable-active" style="width:12%">
+                            <th class="data-table__header-title--sortable data-table__header-title--sortable-active" style="width:14%">
                                 Property
                             </th>
-                            <th class="data-table__header-title--sortable" style="width:12%">
+                            <th class="data-table__header-title--sortable" style="width:14%">
                                 Range
                             </th>
                             <th class="data-table__header-title--sortable" style="width:6%">
@@ -5127,10 +5004,10 @@ A business might have more than one legal name, particularly in countries with m
                             <th class="data-table__header-title--sortable" style="width:3%">
                                 Codelist
                             </th>
-			    -->
                             <th class="data-table__header-title--sortable" style="width:5%">
                                 DCAT
                             </th>
+			    -->
                         </tr>
                     </thead>
                     <tbody class="supertype">
@@ -5513,12 +5390,12 @@ This definition is consistent with the more detailed definition of a "public sec
                 <table class="data-table simple" id="table-mandatory-classes">
                     <thead>
                         <tr class="data-table__header">
-                            <th class="data-table__header-title--sortable" style="width:5%">
+                            <th class="data-table__header-title--sortable" style="width:6%">
                             </th>
-                            <th class="data-table__header-title--sortable data-table__header-title--sortable-active" style="width:12%">
+                            <th class="data-table__header-title--sortable data-table__header-title--sortable-active" style="width:14%">
                                 Property
                             </th>
-                            <th class="data-table__header-title--sortable" style="width:12%">
+                            <th class="data-table__header-title--sortable" style="width:14%">
                                 Range
                             </th>
                             <th class="data-table__header-title--sortable" style="width:6%">
@@ -5534,10 +5411,10 @@ This definition is consistent with the more detailed definition of a "public sec
                             <th class="data-table__header-title--sortable" style="width:3%">
                                 Codelist
                             </th>
-			    -->
                             <th class="data-table__header-title--sortable" style="width:5%">
                                 DCAT
                             </th>
+			    -->
                         </tr>
                     </thead>
                     <tbody class="supertype">
@@ -5996,7 +5873,7 @@ An example of memberships are the EU member states and other partners which coul
                                 <td>
                                     
                                         
-                                            <a href="#Person" data-placement="right">Person</a>
+                                            <a href="#LegalEntity" data-placement="right">Legal Entity</a>
                                         
                                     
                                 </td>
@@ -6039,7 +5916,7 @@ An example of memberships are the EU member states and other partners which coul
                                 <td>
                                     
                                         
-                                            <a href="#LegalEntity" data-placement="right">Legal Entity</a>
+                                            <a href="#Person" data-placement="right">Person</a>
                                         
                                     
                                 </td>
@@ -6341,12 +6218,12 @@ An example of memberships are the EU member states and other partners which coul
                 <table class="data-table simple" id="table-mandatory-classes">
                     <thead>
                         <tr class="data-table__header">
-                            <th class="data-table__header-title--sortable" style="width:5%">
+                            <th class="data-table__header-title--sortable" style="width:6%">
                             </th>
-                            <th class="data-table__header-title--sortable data-table__header-title--sortable-active" style="width:12%">
+                            <th class="data-table__header-title--sortable data-table__header-title--sortable-active" style="width:14%">
                                 Property
                             </th>
-                            <th class="data-table__header-title--sortable" style="width:12%">
+                            <th class="data-table__header-title--sortable" style="width:14%">
                                 Range
                             </th>
                             <th class="data-table__header-title--sortable" style="width:6%">
@@ -6362,10 +6239,10 @@ An example of memberships are the EU member states and other partners which coul
                             <th class="data-table__header-title--sortable" style="width:3%">
                                 Codelist
                             </th>
-			    -->
                             <th class="data-table__header-title--sortable" style="width:5%">
                                 DCAT
                             </th>
+			    -->
                         </tr>
                     </thead>
                     <tbody class="supertype">
@@ -6604,12 +6481,12 @@ An example of memberships are the EU member states and other partners which coul
                 <table class="data-table simple" id="table-mandatory-classes">
                     <thead>
                         <tr class="data-table__header">
-                            <th class="data-table__header-title--sortable" style="width:5%">
+                            <th class="data-table__header-title--sortable" style="width:6%">
                             </th>
-                            <th class="data-table__header-title--sortable data-table__header-title--sortable-active" style="width:12%">
+                            <th class="data-table__header-title--sortable data-table__header-title--sortable-active" style="width:14%">
                                 Property
                             </th>
-                            <th class="data-table__header-title--sortable" style="width:12%">
+                            <th class="data-table__header-title--sortable" style="width:14%">
                                 Range
                             </th>
                             <th class="data-table__header-title--sortable" style="width:6%">
@@ -6625,10 +6502,10 @@ An example of memberships are the EU member states and other partners which coul
                             <th class="data-table__header-title--sortable" style="width:3%">
                                 Codelist
                             </th>
-			    -->
                             <th class="data-table__header-title--sortable" style="width:5%">
                                 DCAT
                             </th>
+			    -->
                         </tr>
                     </thead>
                     <tbody class="supertype">
@@ -6857,12 +6734,12 @@ An example of memberships are the EU member states and other partners which coul
                 <table class="data-table simple" id="table-mandatory-classes">
                     <thead>
                         <tr class="data-table__header">
-                            <th class="data-table__header-title--sortable" style="width:5%">
+                            <th class="data-table__header-title--sortable" style="width:6%">
                             </th>
-                            <th class="data-table__header-title--sortable data-table__header-title--sortable-active" style="width:12%">
+                            <th class="data-table__header-title--sortable data-table__header-title--sortable-active" style="width:14%">
                                 Property
                             </th>
-                            <th class="data-table__header-title--sortable" style="width:12%">
+                            <th class="data-table__header-title--sortable" style="width:14%">
                                 Range
                             </th>
                             <th class="data-table__header-title--sortable" style="width:6%">
@@ -6878,10 +6755,10 @@ An example of memberships are the EU member states and other partners which coul
                             <th class="data-table__header-title--sortable" style="width:3%">
                                 Codelist
                             </th>
-			    -->
                             <th class="data-table__header-title--sortable" style="width:5%">
                                 DCAT
                             </th>
+			    -->
                         </tr>
                     </thead>
                     <tbody class="supertype">
@@ -6981,12 +6858,12 @@ An example of memberships are the EU member states and other partners which coul
                 <table class="data-table simple" id="table-mandatory-classes">
                     <thead>
                         <tr class="data-table__header">
-                            <th class="data-table__header-title--sortable" style="width:5%">
+                            <th class="data-table__header-title--sortable" style="width:6%">
                             </th>
-                            <th class="data-table__header-title--sortable data-table__header-title--sortable-active" style="width:12%">
+                            <th class="data-table__header-title--sortable data-table__header-title--sortable-active" style="width:14%">
                                 Property
                             </th>
-                            <th class="data-table__header-title--sortable" style="width:12%">
+                            <th class="data-table__header-title--sortable" style="width:14%">
                                 Range
                             </th>
                             <th class="data-table__header-title--sortable" style="width:6%">
@@ -7002,10 +6879,10 @@ An example of memberships are the EU member states and other partners which coul
                             <th class="data-table__header-title--sortable" style="width:3%">
                                 Codelist
                             </th>
-			    -->
                             <th class="data-table__header-title--sortable" style="width:5%">
                                 DCAT
                             </th>
+			    -->
                         </tr>
                     </thead>
                     <tbody class="supertype">
@@ -7116,12 +6993,12 @@ An example of memberships are the EU member states and other partners which coul
                 <table class="data-table simple" id="table-mandatory-classes">
                     <thead>
                         <tr class="data-table__header">
-                            <th class="data-table__header-title--sortable" style="width:5%">
+                            <th class="data-table__header-title--sortable" style="width:6%">
                             </th>
-                            <th class="data-table__header-title--sortable data-table__header-title--sortable-active" style="width:12%">
+                            <th class="data-table__header-title--sortable data-table__header-title--sortable-active" style="width:14%">
                                 Property
                             </th>
-                            <th class="data-table__header-title--sortable" style="width:12%">
+                            <th class="data-table__header-title--sortable" style="width:14%">
                                 Range
                             </th>
                             <th class="data-table__header-title--sortable" style="width:6%">
@@ -7137,10 +7014,10 @@ An example of memberships are the EU member states and other partners which coul
                             <th class="data-table__header-title--sortable" style="width:3%">
                                 Codelist
                             </th>
-			    -->
                             <th class="data-table__header-title--sortable" style="width:5%">
                                 DCAT
                             </th>
+			    -->
                         </tr>
                     </thead>
                     <tbody class="supertype">
@@ -7680,7 +7557,6 @@ An example of memberships are the EU member states and other partners which coul
 
 </section>
 
-<!-- outcommented Datatypes as there are none in the HVD specification 
     <section>
         <h2>
             Datatypes
@@ -7804,7 +7680,6 @@ An example of memberships are the EU member states and other partners which coul
 
 
 </section>
--->
 
 <!--
 <section class="informative">
@@ -7815,7 +7690,7 @@ An example of memberships are the EU member states and other partners which coul
          (non normative)
         
             <p>
-                A reusable JSON-LD context definition for this application profile is retrievable at: <a href="/STR/releases/1.0.0/context/str.jsonld"
+                A reusable JSON-LD context definition for this Core Vocabulary is retrievable at: <a href="/STR/releases/1.0.0/context/str.jsonld"
     target="_blank">/STR/releases/1.0.0/context/str.jsonld</a>
             </p>
         
@@ -7829,36 +7704,51 @@ An example of memberships are the EU member states and other partners which coul
          (non normative)
         
             <p>
-                A reusable SHACL template for this application profile is retrievable at: <a href="/STR/releases/1.0.0/shacl/str-SHACL.ttl"
+                A reusable SHACL template for this Core Vocabulary is retrievable at: <a href="/STR/releases/1.0.0/shacl/str-SHACL.ttl"
     target="_blank">/STR/releases/1.0.0/shacl/str-SHACL.ttl</a>
             </p>
         
     </div>
 </section>
+-->
+
+<section class="informative">
+    <h2> Examples </h2>
+        
+<div class="h3 examples" id="example-rdf_wkt">Example 1 - Location WKT (GeoSPARQL)</div>
+<div class="h3 examples" id="example-rdf_gml">Example 2 - Location GML (GeoSPARQL)</div>
+<div class="h3 examples" id="example-rdf_wgs">Example 3 - Location WGS84 lat/long</div>
+<div class="h3 examples" id="example-rdf_schema">Example 4 - Location schema.org</div>
+<div class="h3 examples" id="example-rdf_geohash">Example 5 - Location GeoHash</div>
+<div class="h3 examples" id="example-rdf_address">Example 6 - Address</div>
+
+</section>
+
+
 
 
 <section class="informative">
-    <h2 aria-level="1" role="heading" id="h2_sotd">
-        Examples
-    </h2>
-    <div class="region region--no-space-top" id="examples">
-        
-	<p> No examples defined </p>
-        
-    </div>
+	<h2>Usage Guidelines</h2>
+    
+    
 </section>
-
--->
-
  
+
+
+<section class="informative">
+	<h2>Mappings</h2>
+    A mapping towards Schema.org can be found <a href="https://github.com/SEMICeu/Semantic-Mappings/tree/main/Core%20Location">here</a>
+</section>
  
+
+
 
 <section id="quick-reference" class="appendix">
 
 <h2>Quick Reference of Classes and Properties</h2>
 
 This section provides a condensed tabular overview of the mentioned classes and properties in this specification.
-The properties are grouped under headings <it>mandatory, recommended, optional</it> and <it>deprecated</it>. These terms have the following meaning.
+The properties are indicated as <it>mandatory, recommended, optional</it> and <it>deprecated</it>. These terms have the following meaning.
 <ul>
 <li>Mandatory property: a receiver MUST be able to process the information for that property; a sender MUST provide the information for that property.</li>
 <li>Recommended property: a receiver MUST be able to process the information for that property; a sender SHOULD provide the information for that property if it is available.</li>
@@ -9617,36 +9507,9 @@ The properties are grouped under headings <it>mandatory, recommended, optional</
 	<tbody>
 </table>
 
-</section>
+   
+   
 
-
-<section class="appendix">
-
-<h2>Acknowledgments</h2>
-
-The editors gratefully acknowledge the contributions made to this document by all members of the working group.
-
-This work was elaborated by a Working Group under SEMIC by Interoperable Europe.
-Interoperable Europe of the European Commission was represented by Pavlina Fragkou and Seth Van Hooland.
-Natasa Sofou, Makx Dekkers and Bert Van Nuffelen were the editors of the specification.
-
-Past and current contributors are :
-
-
-
-
-     
-     
-           
-	 	Joeri Robbrecht
-		
-          
-     
-
-.
-</section>
-<!-- End page content -->
-</body>
 
 <!-- This must be at the end of the template, to ensure that the iterator properly works -->
     <script defer>
@@ -9658,6 +9521,7 @@ Past and current contributors are :
 {'pref':'dcatap:', 'ns': 'http://data.europa.eu/r5r/'},
 {'pref':'dct:', 'ns': 'http://purl.org/dc/terms/'},
 {'pref':'dctype:', 'ns': 'http://purl.org/dc/dcmitype/'},
+{'pref':'cpsv:', 'ns': 'http://purl.org/vocab/cpsv#'},
 {'pref':'foaf:', 'ns': 'http://xmlns.com/foaf/0.1/'},
 {'pref':'locn:', 'ns': 'http://www.w3.org/ns/locn#'},
 {'pref':'odrl:', 'ns': 'http://www.w3.org/ns/odrl/2/'},
@@ -9670,8 +9534,18 @@ Past and current contributors are :
 {'pref':'time:', 'ns': 'http://www.w3.org/2006/time#'},
 {'pref':'vcard:', 'ns': 'http://www.w3.org/2006/vcard/ns#'},
 {'pref':'eli:', 'ns' : 'http://data.europa.eu/eli/ontology#'},
-{'pref':'cpsv:', 'ns' : 'http://purl.org/vocab/cpsv#'},
-{'pref':'xsd:', 'ns': 'http://www.w3.org/2001/XMLSchema#'}
+{'pref':'xsd:', 'ns': 'http://www.w3.org/2001/XMLSchema#'},
+{'pref':'ad:', 'ns': 'http://inspire.ec.europa.eu/ont/ad#'},
+{'pref':'cv:', 'ns': 'http://data.europa.eu/m8g/'},
+{'pref':'geo:', 'ns': 'http://www.opengis.net/ont/geosparql#'},
+{'pref':'schema:', 'ns': 'https://schema.org/'},
+{'pref':'org:', 'ns': 'http://www.w3.org/ns/org#'},
+{'pref':'person:', 'ns': 'http://www.w3.org/ns/person#'},
+{'pref':'legal:', 'ns': 'http://www.w3.org/ns/legal#'},
+{'pref':'atu:', 'ns': 'http://data.europa.eu/88u/dataset/'},
+{'pref':'xhv:', 'ns': 'http://www.w3.org/1999/xhtml/vocab#'},
+
+
 				];
 
 	    function shorturl (url) {
