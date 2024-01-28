@@ -9,6 +9,7 @@
   <xs:element name="LangString" type="LangStringType"/>
   <xs:element name="Literal" type="LiteralType"/>
   <xs:element name="TemporalLiteral" type="TemporalLiteralType"/>
+  <xs:element name="Boolean" type="BooleanType"/>
   <xs:element name="DateTime" type="DateTimeType"/>
   <xs:element name="Double" type="DoubleType"/>
   <xs:element name="NonNegativeInteger" type="NonNegativeIntegerType"/>
@@ -304,6 +305,14 @@ described as a dcat:Catalog, a dcat:Dataset or a dcat:DataService.</xs:documenta
     <xs:attribute name="TemporalLiteralRef" type="xs:IDREF">
       <xs:annotation>
         <xs:documentation xml:lang="en">Reference to TemporalLiteral ID</xs:documentation>
+      </xs:annotation>
+    </xs:attribute>
+  </xs:complexType>
+  <xs:complexType name="BooleanType">
+    <xs:sequence/>
+    <xs:attribute name="BooleanRef" type="xs:IDREF">
+      <xs:annotation>
+        <xs:documentation xml:lang="en">Reference to Boolean ID</xs:documentation>
       </xs:annotation>
     </xs:attribute>
   </xs:complexType>
@@ -766,12 +775,12 @@ The datatype of addressID is indicated as Literal (keeping backward compatibilit
           <xs:documentation xml:lang="en" source="#definition">It indicated the Registration Number concerned.</xs:documentation>
         </xs:annotation>
       </xs:element>
-      <xs:element name="IsAbout" type="PersonType" maxOccurs="1" minOccurs="1">
+      <xs:element name="IsAbout" type="LegalEntityType" maxOccurs="1" minOccurs="1">
         <xs:annotation>
           <xs:documentation xml:lang="en" source="#definition">It indicates the host reference.</xs:documentation>
         </xs:annotation>
       </xs:element>
-      <xs:element name="IsAbout" type="LegalEntityType" maxOccurs="1" minOccurs="1">
+      <xs:element name="IsAbout" type="PersonType" maxOccurs="1" minOccurs="1">
         <xs:annotation>
           <xs:documentation xml:lang="en" source="#definition">It indicates the host reference.</xs:documentation>
         </xs:annotation>
@@ -909,12 +918,12 @@ The datatype of addressID is indicated as Literal (keeping backward compatibilit
           <xs:documentation xml:lang="en" source="#definition">Links a resource to an adms:Identifier class.</xs:documentation>
         </xs:annotation>
       </xs:element>
-      <xs:element name="IsAuthorizationObtained" maxOccurs="1" minOccurs="1">
+      <xs:element name="IsAuthorizationObtained" type="xs:boolean" maxOccurs="1" minOccurs="1">
         <xs:annotation>
           <xs:documentation xml:lang="en" source="#definition">it indicates whether the host has obtained an authorisation for the Unit.</xs:documentation>
         </xs:annotation>
       </xs:element>
-      <xs:element name="IsSubjectToAuthorization" maxOccurs="1" minOccurs="1">
+      <xs:element name="IsSubjectToAuthorization" type="xs:boolean" maxOccurs="1" minOccurs="1">
         <xs:annotation>
           <xs:documentation xml:lang="en" source="#definition">It indicates whether the Unit is subject to authorization.</xs:documentation>
         </xs:annotation>

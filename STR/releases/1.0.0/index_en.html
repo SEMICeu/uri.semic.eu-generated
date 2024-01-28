@@ -53,7 +53,7 @@
       edDraftURI: "https://semiceu.github.io/STR/releases/1.0.0",
       latestVersion: "",
       specStatus: "LD",
-      publishDate: "2024-01-16",
+      publishDate: "2024-01-28",
       editors: myeditors,
       authors: myauthors,
       github: "SEMICeu/STR",
@@ -144,7 +144,8 @@
 
 <section id="abstract">
     <h2>Abstract</h2>
-The Core Location Vocabulary is a simplified, reusable and extensible data model that captures the fundamental characteristics of a location, represented as an address, a geographic name, or a geometry.
+The STR AP (Short Term Rental Application Profile) is a  data model that captures the concepts expressed in the current proposed Regulation on short-term accommodation rental services.
+
 
 
 <section id="specintro">
@@ -152,28 +153,19 @@ The Core Location Vocabulary is a simplified, reusable and extensible data model
         Introduction
     </h2>
     
-	Locations can be described in three principal ways: by using a place name, a geometry or an
-    address. The specific context will determine which method of describing a location is most
-    appropriate. The Core Location Vocabulary provides structure for all three.
+On 7 November 2022, the Commission submitted to the European Parliament and to the
+Council a proposal for a Regulation on data collection and sharing relating to short-term
+accommodation rental services and amending Regulation (EU) 2018/1724, accompanied by
+an impact assessment.
 </p>
+<p>The proposal seeks to harmonise and streamline the framework for data generation and data sharing on short-term accommodation rental services across the EU.
 <p>
-    ISO 19112 defines a location as "an identifiable geographic place." With this in mind, "Eiffel
-    Tower", "Madrid" and "California" are all locations and this is a common way of representing
-    locations in public sector data, i.e. simply by using a recognised name. Such identifiers are
-    common although they can be highly ambiguous as many places share the same or similar names.
-</p>
-<p>
-    In addition to a simple (string) label or name for a Location, this vocabulary defines a property
-    that allows a Location to be defined by a URI, such as a GeoNames or DBpedia URI.
-</p>
-<p>
-    No cardinality constraints are placed on any property of the Location, Address or Geometry
-    classes in order to maximise flexibility. A single address may be defined in different ways, a
-    geometry may be defined using different coordinate reference systems and a single place may
-    have no recognised name or multiple names. The Core Location Vocabulary makes a minimum
-    number of assumptions about what data will be encoded. However, it clearly makes no sense to
-    define any of the location classes without any properties or to provide multiple instances of the
-    same property with conflicting values.
+More specifically, the proposal seeks to establish:
+<ul>
+<li>a harmonised approach to registration schemes for hosts, with an obligation for public authorities to maintain appropriately designed registration schemes if they want to obtain data for policymaking and enforcement purposes;</li>
+<li>obligations for online platforms to enable hosts to display registration numbers and to share specific data about hosts’ activities and their listings with public authorities, and</li>
+<li>specific tools and procedures to ensure that data sharing is safe, compliant with the General Data Protection Regulation, and cost-effective for all parties involved.</li>
+</ul>
 </p>
 
 </section>
@@ -184,7 +176,7 @@ The Core Location Vocabulary is a simplified, reusable and extensible data model
 <section id="specstatus">
     <h2>Status</h2>
         <p>
-            This Core Vocabulary has the status Working Draft published at 2024-01-16.
+            This Core Vocabulary has the status Working Draft published at 2024-01-28.
         </p>
         <p>
             Information about the process and the decisions involved in the creation of this specification are consultable at the <a href="https://github.com/SEMICeu/STR/blob/master/releases/1.0.0/Changelog.md">Changelog</a>.
@@ -232,20 +224,27 @@ The Core Location Vocabulary is a simplified, reusable and extensible data model
         
 This specification uses the following prefixes to shorten the URIs for readibility.
 
-        <table id="table-namespaces" class="simple">
-            <thead><tr><th>Prefix</th><th>Namespace IRI</th></tr></thead>
-            <tbody>
-            <tr><td><code>ad</code></td><td><code>http://inspire.ec.europa.eu/ont/ad#</code></td></tr>
-            <tr><td><code>cv</code></td><td><code>http://data.europa.eu/m8g/</code></td></tr>           
-            <tr><td><code>dct</code></td><td><code>http://purl.org/dc/terms/</code></td></tr>
-            <tr><td><code>geo</code></td><td><code>http://www.opengis.net/ont/geosparql#</code></td></tr>
-            <tr><td><code>locn</code></td><td><code>http://www.w3.org/ns/locn#</code></td></tr>
-            <tr><td><code>rdf</code></td><td><code>http://www.w3.org/1999/02/22-rdf-syntax-ns#</code></td></tr>
-            <tr><td><code>rdfs</code></td><td><code>http://www.w3.org/2000/01/rdf-schema#</code></td></tr>
-            <tr><td><code>skos</code></td><td><code>http://www.w3.org/2004/02/skos/core#</code></td></tr>
-            <tr><td><code>xsd</code></td><td><code>http://www.w3.org/2001/XMLSchema#</code></td></tr>
-            </tbody>
-        </table>
+<table id="table-namespaces" class="simple">
+	<thead><tr><th>Prefix</th><th>Namespace IRI</th></tr></thead>
+	<tbody>
+	<tr><td><code>adms</code></td><td><code>http://www.w3.org/ns/adms#</code></td></tr>
+	<tr><td><code>cpsv</code></td><td><code>http://purl.org/vocab/cpsv#</code></td></tr>
+	<tr><td><code>cv</code></td><td><code>http://data.europa.eu/m8g/</code></td></tr>
+	<tr><td><code>dcat</code></td><td><code>http://www.w3.org/ns/dcat#</code></td></tr>
+	<tr><td><code>dct</code></td><td><code>http://purl.org/dc/terms/</code></td></tr>
+	<tr><td><code>dctype</code></td><td><code>http://purl.org/dc/dcmitype/</code></td></tr>
+	<tr><td><code>foaf</code></td><td><code>http://xmlns.com/foaf/0.1/</code></td></tr>
+	<tr><td><code>legal</code></td><td><code>http://www.w3.org/ns/legal#</code></td></tr>
+	<tr><td><code>locn</code></td><td><code>http://www.w3.org/ns/locn#</code></td></tr>
+	<tr><td><code>person</code></td><td><code>http://www.w3.org/ns/person#</code></td></tr>
+	<tr><td><code>rdf</code></td><td><code>http://www.w3.org/1999/02/22-rdf-syntax-ns#</code></td></tr>
+	<tr><td><code>rdfs</code></td><td><code>http://www.w3.org/2000/01/rdf-schema#</code></td></tr>
+	<tr><td><code>skos</code></td><td><code>http://www.w3.org/2004/02/skos/core#</code></td></tr>
+	<tr><td><code>str</code></td><td><code>https://w3id.org/str/</code></td></tr>
+	<tr><td><code>time</code></td><td><code>http://www.w3.org/2006/time#</code></td></tr>
+	<tr><td><code>xsd</code></td><td><code>http://www.w3.org/2001/XMLSchema#</code></td></tr>
+	</tbody>
+</table>
 
 
 </section>
@@ -303,7 +302,7 @@ This specification uses the following prefixes to shorten the URIs for readibili
                         <p>
                             And supported by these datatypes:
                             <br />
-                            | <a href="#dateTime">dateTime</a> | <a href="#double">double</a> | <a href="#langString">langString</a> | <a href="#nonNegativeInteger">nonNegativeInteger</a> | <a href="#TemporalLiteral">Temporal Literal</a> | <a href="#Timeinstant">Time instant</a> |
+                            | <a href="#boolean">boolean</a> | <a href="#dateTime">dateTime</a> | <a href="#double">double</a> | <a href="#langString">langString</a> | <a href="#nonNegativeInteger">nonNegativeInteger</a> | <a href="#TemporalLiteral">Temporal Literal</a> | <a href="#Timeinstant">Time instant</a> |
                         </p>
                 
     </div>
@@ -4503,7 +4502,7 @@ A business might have more than one legal name, particularly in countries with m
                                 <td>
                                     
                                         
-                                            <a href="#Person" data-placement="right">Person</a>
+                                            <a href="#LegalEntity" data-placement="right">Legal Entity</a>
                                         
                                     
                                 </td>
@@ -4546,7 +4545,7 @@ A business might have more than one legal name, particularly in countries with m
                                 <td>
                                     
                                         
-                                            <a href="#LegalEntity" data-placement="right">Legal Entity</a>
+                                            <a href="#Person" data-placement="right">Person</a>
                                         
                                     
                                 </td>
@@ -4957,7 +4956,7 @@ A business might have more than one legal name, particularly in countries with m
                         Usage Note
                     </dt>
                     <dd>
-                        The fact that a person in the context of Core Person Vocabulary cannot be imaginary makes person:Person a subclass of both foaf:Person and schema:Person which both cover imaginary characters as well as real people. The Person Class is a subclass of the more general <a href="#Agent">'Agent' class</a>.
+                        The fact that a person in the context of Core Person Vocabulary cannot be imaginary makes person:Person a subclass of both foaf:Person and schema:Person which both cover imaginary characters as well as real people.
                     </dd>
                 
                 
@@ -5873,7 +5872,7 @@ An example of memberships are the EU member states and other partners which coul
                                 <td>
                                     
                                         
-                                            <a href="#LegalEntity" data-placement="right">Legal Entity</a>
+                                            <a href="#Person" data-placement="right">Person</a>
                                         
                                     
                                 </td>
@@ -5916,7 +5915,7 @@ An example of memberships are the EU member states and other partners which coul
                                 <td>
                                     
                                         
-                                            <a href="#Person" data-placement="right">Person</a>
+                                            <a href="#LegalEntity" data-placement="right">Legal Entity</a>
                                         
                                     
                                 </td>
@@ -7300,10 +7299,7 @@ An example of memberships are the EU member states and other partners which coul
                                 <td>
                                     
                                         
-                                            <a href="#boolean"
-                                               data-toggle="tooltip"
-                                               data-content="http://www.w3.org/2001/XMLSchema#boolean"
-                                               data-placement="right">boolean</a>
+                                            <a href="#boolean" data-placement="right">boolean</a>
                                         
                                     
                                 </td>
@@ -7346,10 +7342,7 @@ An example of memberships are the EU member states and other partners which coul
                                 <td>
                                     
                                         
-                                            <a href="#boolean"
-                                               data-toggle="tooltip"
-                                               data-content="http://www.w3.org/2001/XMLSchema#boolean"
-                                               data-placement="right">boolean</a>
+                                            <a href="#boolean" data-placement="right">boolean</a>
                                         
                                     
                                 </td>
@@ -7580,6 +7573,22 @@ An example of memberships are the EU member states and other partners which coul
 	    <tbody class="supertype">
             
 		<tr><td>
+                   <a href="https://github.com/SEMICeu/STR/issues/new?title=Issue%20for%20Boolean&body=Explain%20your%20issue"}}>
+                     <img src="html/callout.png" loading="lazy" alt="(create issue)" width="50" height="50"/>
+		   </a>
+		</td><td>
+                
+                    <div id="boolean">
+                        <a href="http://www.w3.org/2001/XMLSchema#boolean"
+                           data-toggle="tooltip"
+                           data-content="http://www.w3.org/2001/XMLSchema#boolean"
+                           data-placement="right">boolean</a>
+                    </div>
+                
+		</td><td>
+                    Boolean has the value space required to support the mathematical concept of binary-valued logic: {true, false}
+		</td></tr>
+		<tr><td>
                    <a href="https://github.com/SEMICeu/STR/issues/new?title=Issue%20for%20Datetime&body=Explain%20your%20issue"}}>
                      <img src="html/callout.png" loading="lazy" alt="(create issue)" width="50" height="50"/>
 		   </a>
@@ -7593,7 +7602,7 @@ An example of memberships are the EU member states and other partners which coul
                     </div>
                 
 		</td><td>
-                    
+                    Object with integer-valued year, month, day, hour and minute properties, a decimal-valued second property, and a boolean timezoned property.
 		</td></tr>
 		<tr><td>
                    <a href="https://github.com/SEMICeu/STR/issues/new?title=Issue%20for%20Double&body=Explain%20your%20issue"}}>
@@ -7609,7 +7618,7 @@ An example of memberships are the EU member states and other partners which coul
                     </div>
                 
 		</td><td>
-                    
+                    The double datatype is patterned after the IEEE double-precision 64-bit floating point type [IEEE 754-1985].
 		</td></tr>
 		<tr><td>
                    <a href="https://github.com/SEMICeu/STR/issues/new?title=Issue%20for%20Langstring&body=Explain%20your%20issue"}}>
@@ -7625,7 +7634,7 @@ An example of memberships are the EU member states and other partners which coul
                     </div>
                 
 		</td><td>
-                    
+                    The class rdf:langString is the class of language-tagged string values. rdf:langString is an instance of rdfs:Datatype and a subclass of rdfs:Literal .
 		</td></tr>
 		<tr><td>
                    <a href="https://github.com/SEMICeu/STR/issues/new?title=Issue%20for%20Nonnegativeinteger&body=Explain%20your%20issue"}}>
@@ -7641,7 +7650,7 @@ An example of memberships are the EU member states and other partners which coul
                     </div>
                 
 		</td><td>
-                    
+                    Number derived from integer by setting the value of minInclusive to be 0.
 		</td></tr>
 		<tr><td>
                    <a href="https://github.com/SEMICeu/STR/issues/new?title=Issue%20for%20TemporalLiteral&body=Explain%20your%20issue"}}>
@@ -7715,12 +7724,7 @@ An example of memberships are the EU member states and other partners which coul
 <section class="informative">
     <h2> Examples </h2>
         
-<div class="h3 examples" id="example-rdf_wkt">Example 1 - Location WKT (GeoSPARQL)</div>
-<div class="h3 examples" id="example-rdf_gml">Example 2 - Location GML (GeoSPARQL)</div>
-<div class="h3 examples" id="example-rdf_wgs">Example 3 - Location WGS84 lat/long</div>
-<div class="h3 examples" id="example-rdf_schema">Example 4 - Location schema.org</div>
-<div class="h3 examples" id="example-rdf_geohash">Example 5 - Location GeoHash</div>
-<div class="h3 examples" id="example-rdf_address">Example 6 - Address</div>
+<div class="h3 examples" id="example-registration_procedure">Example 1 - Registration Procedure</div>
 
 </section>
 
@@ -9516,37 +9520,23 @@ The properties are indicated as <it>mandatory, recommended, optional</it> and <i
 
 
 	    var prefixes = [ 
-{'pref':'adms:', 'ns': 'http://www.w3.org/ns/adms#'},
-{'pref':'dcat:', 'ns': 'http://www.w3.org/ns/dcat#'},
-{'pref':'dcatap:', 'ns': 'http://data.europa.eu/r5r/'},
-{'pref':'dct:', 'ns': 'http://purl.org/dc/terms/'},
-{'pref':'dctype:', 'ns': 'http://purl.org/dc/dcmitype/'},
-{'pref':'cpsv:', 'ns': 'http://purl.org/vocab/cpsv#'},
-{'pref':'foaf:', 'ns': 'http://xmlns.com/foaf/0.1/'},
-{'pref':'locn:', 'ns': 'http://www.w3.org/ns/locn#'},
-{'pref':'odrl:', 'ns': 'http://www.w3.org/ns/odrl/2/'},
-{'pref':'owl:', 'ns': 'http://www.w3.org/2002/07/owl#'},
-{'pref':'prov:', 'ns': 'http://www.w3.org/ns/prov#'},
-{'pref':'rdf:', 'ns': 'http://www.w3.org/1999/02/22-rdf-syntax-ns#'},
-{'pref':'rdfs:', 'ns': 'http://www.w3.org/2000/01/rdf-schema#'},
-{'pref':'skos:', 'ns': 'http://www.w3.org/2004/02/skos/core#'},
-{'pref':'spdx:', 'ns': 'http://spdx.org/rdf/terms#'},
-{'pref':'time:', 'ns': 'http://www.w3.org/2006/time#'},
-{'pref':'vcard:', 'ns': 'http://www.w3.org/2006/vcard/ns#'},
-{'pref':'eli:', 'ns' : 'http://data.europa.eu/eli/ontology#'},
-{'pref':'xsd:', 'ns': 'http://www.w3.org/2001/XMLSchema#'},
-{'pref':'ad:', 'ns': 'http://inspire.ec.europa.eu/ont/ad#'},
-{'pref':'cv:', 'ns': 'http://data.europa.eu/m8g/'},
-{'pref':'geo:', 'ns': 'http://www.opengis.net/ont/geosparql#'},
-{'pref':'schema:', 'ns': 'https://schema.org/'},
-{'pref':'org:', 'ns': 'http://www.w3.org/ns/org#'},
-{'pref':'person:', 'ns': 'http://www.w3.org/ns/person#'},
-{'pref':'legal:', 'ns': 'http://www.w3.org/ns/legal#'},
-{'pref':'atu:', 'ns': 'http://data.europa.eu/88u/dataset/'},
-{'pref':'xhv:', 'ns': 'http://www.w3.org/1999/xhtml/vocab#'},
-
-
-				];
+			{'pref':'adms:', 'ns': 'http://www.w3.org/ns/adms#'},
+			{'pref':'cpsv:', 'ns': 'http://purl.org/vocab/cpsv#'},
+			{'pref':'cv:', 'ns': 'http://data.europa.eu/m8g/'},
+			{'pref':'dcat:', 'ns': 'http://www.w3.org/ns/dcat#'},
+			{'pref':'dct:', 'ns': 'http://purl.org/dc/terms/'},
+			{'pref':'dctype:', 'ns': 'http://purl.org/dc/dcmitype/'},
+			{'pref':'foaf:', 'ns': 'http://xmlns.com/foaf/0.1/'},
+			{'pref':'legal:', 'ns': 'http://www.w3.org/ns/legal#'},
+			{'pref':'locn:', 'ns': 'http://www.w3.org/ns/locn#'},
+			{'pref':'person:', 'ns': 'http://www.w3.org/ns/person#'},
+			{'pref':'rdf:', 'ns': 'http://www.w3.org/1999/02/22-rdf-syntax-ns#'},
+			{'pref':'rdfs:', 'ns': 'http://www.w3.org/2000/01/rdf-schema#'},
+			{'pref':'skos:', 'ns': 'http://www.w3.org/2004/02/skos/core#'},
+			{'pref':'str:', 'ns': 'https://w3id.org/str/'},
+			{'pref':'time:', 'ns': 'http://www.w3.org/2006/time#'},
+			{'pref':'xsd:', 'ns': 'http://www.w3.org/2001/XMLSchema#'}
+		];
 
 	    function shorturl (url) {
 				var short = url;
