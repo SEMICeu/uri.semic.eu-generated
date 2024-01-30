@@ -18,31 +18,49 @@
   <xs:element name="OrganizationalUnit" type="OrganizationalUnitType"/>
   <xs:element name="Document" type="DocumentType"/>
   <xs:element name="DateTime" type="DateTimeType"/>
+  <xs:simpleType name="Literal">
+    <xs:restriction base="xs:string"/>
+  </xs:simpleType>
+  <xs:complexType name="langstring">
+    <xs:simpleContent>
+      <xs:extension base="xs:string">
+        <xs:attribute name="lang" type="xs:language"/>
+      </xs:extension>
+    </xs:simpleContent>
+  </xs:complexType>
+  <xs:complexType name="ConceptType">
+    <xs:simpleContent>
+      <xs:extension base="xs:token">
+        <xs:attribute name="ref" type="xs:IDREF"/>
+        <xs:attribute name="conceptSchemeRef" type="xs:IDREF"/>
+      </xs:extension>
+    </xs:simpleContent>
+  </xs:complexType>
   <xs:complexType name="ContactPointType">
     <xs:sequence>
-      <xs:element name="AvailabilityRestriction" type="TemporalEntityType" maxOccurs="unbounded" minOccurs="0">
+      <xs:element name="availabilityRestriction" ref="TemporalEntityType" maxOccurs="unbounded" minOccurs="0">
         <xs:annotation>
-          <xs:documentation xml:lang="en" source="#definition">The time during which the Contact Point is not available.</xs:documentation>
+          <xs:documentation xml:lang="en">The time during which the Contact Point is not available.</xs:documentation>
         </xs:annotation>
       </xs:element>
-      <xs:element name="ContactPage" type="DocumentType" maxOccurs="unbounded" minOccurs="0">
+      <xs:element name="contactPage" ref="DocumentType" maxOccurs="unbounded" minOccurs="0">
         <xs:annotation>
-          <xs:documentation xml:lang="en" source="#definition">A web page that could be used to reach out the Contact Point.</xs:documentation>
+          <xs:documentation xml:lang="en">A web page that could be used to reach out the Contact Point.</xs:documentation>
         </xs:annotation>
       </xs:element>
-      <xs:element name="HasEmail" type="xs:string" maxOccurs="unbounded" minOccurs="0">
+      <xs:element name="hasEmail" type="xs:string" maxOccurs="unbounded" minOccurs="0">
         <xs:annotation>
-          <xs:documentation xml:lang="en" source="#definition">An electronic address through which the Contact Point can be contacted.</xs:documentation>
+          <xs:documentation xml:lang="en">An electronic address through which the Contact Point can be contacted.</xs:documentation>
         </xs:annotation>
       </xs:element>
-      <xs:element name="HasTelephone" type="xs:string" maxOccurs="unbounded" minOccurs="0">
+      <xs:element name="hasTelephone" type="xs:string" maxOccurs="unbounded" minOccurs="0">
         <xs:annotation>
-          <xs:documentation xml:lang="en" source="#definition">A telephone number through which the Contact Point can be contacted.</xs:documentation>
+          <xs:documentation xml:lang="en">A telephone number through which the Contact Point can be contacted.</xs:documentation>
         </xs:annotation>
       </xs:element>
-      <xs:element name="OpeningHours" type="TemporalEntityType" maxOccurs="unbounded" minOccurs="0">
+      <xs:element name="openingHours" ref="TemporalEntityType" maxOccurs="unbounded" minOccurs="0">
         <xs:annotation>
-          <xs:documentation xml:lang="en" source="#definition">The time at which the Contact Point is normally available.</xs:documentation>
+          <xs:documentation xml:lang="en">The time at which the Contact Point is normally available.</xs:documentation>
         </xs:annotation>
       </xs:element>
     </xs:sequence>
@@ -60,132 +78,96 @@
       </xs:annotation>
     </xs:attribute>
   </xs:complexType>
-  <xs:complexType name="conceptType">
-    <xs:simpleContent>
-      <xs:extension base="xs:token">
-        <xs:attribute name="ref" type="xs:IDREF"/>
-        <xs:attribute name="conceptSchemeRef" type="xs:IDREF"/>
-      </xs:extension>
-    </xs:simpleContent>
-  </xs:complexType>
   <xs:complexType name="PublicOrganisationType">
     <xs:sequence>
-      <xs:element name="Address" type="AddressType" maxOccurs="unbounded" minOccurs="0">
+      <xs:element name="address" ref="AddressType" maxOccurs="unbounded" minOccurs="0">
         <xs:annotation>
-          <xs:documentation xml:lang="en" source="#definition">The Address of a Public Organization.</xs:documentation>
-          <xs:documentation xml:lang="en" source="#usage">For consistency with INSPIRE, the Location Core Vocabulary's Address class should be used.</xs:documentation>
+          <xs:documentation xml:lang="en">The Address of a Public Organization.</xs:documentation>
         </xs:annotation>
       </xs:element>
-      <xs:element name="AlternativeLabel" type="xs:string" maxOccurs="unbounded" minOccurs="0">
+      <xs:element name="alternativeLabel" type="xs:string" maxOccurs="unbounded" minOccurs="0">
         <xs:annotation>
-          <xs:documentation xml:lang="en" source="#definition">An alternative or informal name(s) of a Public Organization, irrespective of language.</xs:documentation>
+          <xs:documentation xml:lang="en">An alternative or informal name(s) of a Public Organization, irrespective of language.</xs:documentation>
         </xs:annotation>
       </xs:element>
-      <xs:element name="ChangedBy" type="ChangeEventType" maxOccurs="unbounded" minOccurs="0">
+      <xs:element name="changedBy" ref="ChangeEventType" maxOccurs="unbounded" minOccurs="0">
         <xs:annotation>
-          <xs:documentation xml:lang="en" source="#definition">The Change Event that changed the Organization.</xs:documentation>
-          <xs:documentation xml:lang="en" source="#usage">Usually a change in the legal framework that is linked with the existence and operation of the organisation.</xs:documentation>
+          <xs:documentation xml:lang="en">The Change Event that changed the Organization.</xs:documentation>
         </xs:annotation>
       </xs:element>
-      <xs:element name="Classification" type="conceptType" maxOccurs="unbounded" minOccurs="0">
+      <xs:element name="classification" type="ConceptType" maxOccurs="unbounded" minOccurs="0">
         <xs:annotation>
-          <xs:documentation xml:lang="en" source="#definition">The categorisation of the Public Organization.</xs:documentation>
-          <xs:documentation xml:lang="en" source="#usage">As an example, the Publications Office of the European Union provides a Named Authority list of &lt;a href="https://op.europa.eu/en/web/eu-vocabularies/dataset/-/resource?uri=http://publications.europa.eu/resource/dataset/organization-type"&gt;Organization Types&lt;/a&gt; which is appropriate for European institutions. Other classification schemes should be used at other levels of Public Organization.</xs:documentation>
+          <xs:documentation xml:lang="en">The categorisation of the Public Organization.</xs:documentation>
         </xs:annotation>
       </xs:element>
-      <xs:element name="ContactPoint" type="ContactPointType" maxOccurs="unbounded" minOccurs="0">
+      <xs:element name="contactPoint" ref="ContactPointType" maxOccurs="unbounded" minOccurs="0">
         <xs:annotation>
-          <xs:documentation xml:lang="en" source="#definition">The main contact information of the resource.</xs:documentation>
-          <xs:documentation xml:lang="en" source="#usage">Usually a phone number and e-mail address. Other contact methods may be included, including online contact information, but this is conceptually distinct from the organization's homepage that may or may not provide contact information.</xs:documentation>
+          <xs:documentation xml:lang="en">The main contact information of the resource.</xs:documentation>
         </xs:annotation>
       </xs:element>
-      <xs:element name="Description" type="xs:string" maxOccurs="unbounded" minOccurs="0">
+      <xs:element name="description" type="xs:string" maxOccurs="unbounded" minOccurs="0">
         <xs:annotation>
-          <xs:documentation xml:lang="en" source="#definition">The textual description of the Public Organization.</xs:documentation>
+          <xs:documentation xml:lang="en">The textual description of the Public Organization.</xs:documentation>
         </xs:annotation>
       </xs:element>
-      <xs:element name="HasMember" type="PublicOrganisationType" maxOccurs="unbounded" minOccurs="0">
+      <xs:element name="hasMember" ref="PublicOrganisationType" maxOccurs="unbounded" minOccurs="0">
         <xs:annotation>
-          <xs:documentation xml:lang="en" source="#definition">An Organization which is a member of another without being a sub organization, they are independent entities.</xs:documentation>
-          <xs:documentation xml:lang="en" source="#usage">The memberOf and hasMember properties are very simple and don't support statements describing the nature of the membership. The &lt;a href="https://www.w3.org/TR/vocab-org/"&gt;W3C Organization Ontology&lt;/a&gt; provides both this simple method and a more sophisticated model that does make it possible to, for example, provide information about the period of time in which one Organization was a member of another, the level of membership etc. That more sophisticated model should be used where necessary and may be used in addition to the simple memberOf/hasMember properties.
-
-An example of memberships are the EU member states and other partners which could be represented via different legal entities as members of EFSA, the &lt;a href="https://www.efsa.europa.eu/en/partnersnetworks/euinstitutions"&gt;European Food Safety Agency&lt;/a&gt;.</xs:documentation>
+          <xs:documentation xml:lang="en">An Organization which is a member of another without being a sub organization, they are independent entities.</xs:documentation>
         </xs:annotation>
       </xs:element>
-      <xs:element name="HasUnit" type="OrganizationalUnitType" maxOccurs="unbounded" minOccurs="0">
+      <xs:element name="hasUnit" ref="OrganizationalUnitType" maxOccurs="unbounded" minOccurs="0">
         <xs:annotation>
-          <xs:documentation xml:lang="en" source="#definition">An operational department within the Public Organization.</xs:documentation>
-          <xs:documentation xml:lang="en" source="#usage">Organizations typically comprise many departments, units, teams etc. Each of these is modelled in the CPOV as a unit that is linked from the parent Organization with hasUnit and to the parent with unitOf.</xs:documentation>
+          <xs:documentation xml:lang="en">An operational department within the Public Organization.</xs:documentation>
         </xs:annotation>
       </xs:element>
-      <xs:element name="Homepage" type="DocumentType" maxOccurs="unbounded" minOccurs="0">
+      <xs:element name="homepage" ref="DocumentType" maxOccurs="unbounded" minOccurs="0">
         <xs:annotation>
-          <xs:documentation xml:lang="en" source="#definition">The official home page of the Public Organization.</xs:documentation>
-          <xs:documentation xml:lang="en" source="#usage">The value of this property is a URL irrespective of the serialisation of the data.</xs:documentation>
+          <xs:documentation xml:lang="en">The official home page of the Public Organization.</xs:documentation>
         </xs:annotation>
       </xs:element>
-      <xs:element name="Identifier" type="IdentifierType" maxOccurs="unbounded" minOccurs="0">
+      <xs:element name="identifier" ref="IdentifierType" maxOccurs="unbounded" minOccurs="0">
         <xs:annotation>
-          <xs:documentation xml:lang="en" source="#definition">The unambiguous structured reference for the Public Organization.</xs:documentation>
-          <xs:documentation xml:lang="en" source="#usage">Public organizations identifiers are often using (but not limited to) acronyms. For example, among the EU institutions, the ECB is the identifier for the &lt;a href="https://www.ecb.europa.eu/home/html/index.en.html"&gt;European Central Bank&lt;/a&gt;, OLAF for the &lt;a href="https://anti-fraud.ec.europa.eu/index_en"&gt;European Anti-Fraud Office&lt;/a&gt;, and so on. These are formally recognised by the European Commission which provides a &lt;a href="https://ec.europa.eu/eurostat/ramon/cybernews/abbreviations.htm"&gt; list&lt;/a&gt; of such acronyms.</xs:documentation>
+          <xs:documentation xml:lang="en">The unambiguous structured reference for the Public Organization.</xs:documentation>
         </xs:annotation>
       </xs:element>
-      <xs:element name="Logo" type="ImageObjectType" maxOccurs="unbounded" minOccurs="0">
+      <xs:element name="logo" ref="ImageObjectType" maxOccurs="unbounded" minOccurs="0">
         <xs:annotation>
-          <xs:documentation xml:lang="en" source="#definition">A graphic symbol to represent the Public Organization.</xs:documentation>
-          <xs:documentation xml:lang="en" source="#usage">The value of this property can simply be the URL of the logo but it is better for developers if it links to an object that provides the URL of the image and essential metadata about it, notably its dimensions.</xs:documentation>
+          <xs:documentation xml:lang="en">A graphic symbol to represent the Public Organization.</xs:documentation>
         </xs:annotation>
       </xs:element>
-      <xs:element name="MemberOf" type="PublicOrganisationType" maxOccurs="unbounded" minOccurs="0">
+      <xs:element name="memberOf" ref="PublicOrganisationType" maxOccurs="unbounded" minOccurs="0">
         <xs:annotation>
-          <xs:documentation xml:lang="en" source="#definition">An Organization of which the Public Organisation is a member without being a sub organization, they are independent entities.</xs:documentation>
-          <xs:documentation xml:lang="en" source="#usage">The memberOf and hasMember properties are very simple and don't support statements describing the nature of the membership. The &lt;a href="https://www.w3.org/TR/vocab-org/"&gt;W3C Organization Ontology&lt;/a&gt; provides both this simple method and a more sophisticated model that does make it possible to, for example, provide information about the period of time in which one Organization was a member of another, the level of membership etc. That more sophisticated model should be used where necessary and may be used in addition to the simple memberOf/hasMember properties.
-
-An example of memberships are the EU member states and other partners which could be represented via different legal entities as members of EFSA, the &lt;a href="https://www.efsa.europa.eu/en/partnersnetworks/euinstitutions"&gt; European Food Safety Agency&lt;/a&gt;.</xs:documentation>
+          <xs:documentation xml:lang="en">An Organization of which the Public Organisation is a member without being a sub organization, they are independent entities.</xs:documentation>
         </xs:annotation>
       </xs:element>
-      <xs:element name="Next" type="PublicOrganisationType" maxOccurs="unbounded" minOccurs="0">
+      <xs:element name="next" ref="PublicOrganisationType" maxOccurs="unbounded" minOccurs="0">
         <xs:annotation>
-          <xs:documentation xml:lang="en" source="#definition">In some cases, it is necessary to be able to create an ordered sequence of organizations that precede and succeed each other. To support this, the CPOV includes the well-known relationships of previous and next to allow such sequences to be captured and computed.</xs:documentation>
-          <xs:documentation xml:lang="en" source="#usage">Examples of events leading to sequences could be renaming, splitting or merging of public organizations.</xs:documentation>
+          <xs:documentation xml:lang="en">In some cases, it is necessary to be able to create an ordered sequence of organizations that precede and succeed each other. To support this, the CPOV includes the well-known relationships of previous and next to allow such sequences to be captured and computed.</xs:documentation>
         </xs:annotation>
       </xs:element>
-      <xs:element name="PreferredLabel" type="xs:string" maxOccurs="unbounded" minOccurs="0">
+      <xs:element name="preferredLabel" type="xs:string" maxOccurs="unbounded" minOccurs="0">
         <xs:annotation>
-          <xs:documentation xml:lang="en" source="#definition">A preferred label is used to provide the primary, legally recognised name of the Public Organization, as defined in the ORG Ontology.</xs:documentation>
-          <xs:documentation xml:lang="en" source="#usage">Refers to the official or legal name of a Public Organization. An organization may only have one such name in any given language. Primary names may be provided in multiple languages with multiple instances of the preferred label property.</xs:documentation>
+          <xs:documentation xml:lang="en">A preferred label is used to provide the primary, legally recognised name of the Public Organization, as defined in the ORG Ontology.</xs:documentation>
         </xs:annotation>
       </xs:element>
-      <xs:element name="Prev" type="PublicOrganisationType" maxOccurs="unbounded" minOccurs="0">
+      <xs:element name="prev" ref="PublicOrganisationType" maxOccurs="unbounded" minOccurs="0">
         <xs:annotation>
-          <xs:documentation xml:lang="en" source="#definition">In some cases, it is necessary to be able to create an ordered sequence of an organization that precede and succeed each other. To support this, the CPOV includes the well-known relationships of previous and next to allow such sequences to be captured and computed.</xs:documentation>
-          <xs:documentation xml:lang="en" source="#usage">Examples of events leading to sequences could be renaming, splitting or merging of public organizations.</xs:documentation>
+          <xs:documentation xml:lang="en">In some cases, it is necessary to be able to create an ordered sequence of an organization that precede and succeed each other. To support this, the CPOV includes the well-known relationships of previous and next to allow such sequences to be captured and computed.</xs:documentation>
         </xs:annotation>
       </xs:element>
-      <xs:element name="Purpose" type="conceptType" maxOccurs="unbounded" minOccurs="0">
+      <xs:element name="purpose" type="ConceptType" maxOccurs="unbounded" minOccurs="0">
         <xs:annotation>
-          <xs:documentation xml:lang="en" source="#definition">This property describes the reasons of existence of an Organization.</xs:documentation>
-          <xs:documentation xml:lang="en" source="#usage">The ORG ontology suggests that this property can also be thought of as meaning 'remit' or 'responsibility.' Ideally this will link to a &lt;a href="https://www.oecd.org/gov/48250728.pdf"&gt;COFOG&lt;/a&gt; code but where this isn't possible or appropriate, other controlled vocabularies may be used.</xs:documentation>
+          <xs:documentation xml:lang="en">This property describes the reasons of existence of an Organization.</xs:documentation>
         </xs:annotation>
       </xs:element>
-      <xs:element name="ResultedFrom" type="ChangeEventType" maxOccurs="unbounded" minOccurs="0">
+      <xs:element name="resultedFrom" ref="ChangeEventType" maxOccurs="unbounded" minOccurs="0">
         <xs:annotation>
-          <xs:documentation xml:lang="en" source="#definition">A Change Event from which the Public Organisation resulted.</xs:documentation>
-          <xs:documentation xml:lang="en" source="#usage">Usually a change in the legal framework that is linked with the existence and operation of the organisation.</xs:documentation>
+          <xs:documentation xml:lang="en">A Change Event from which the Public Organisation resulted.</xs:documentation>
         </xs:annotation>
       </xs:element>
-      <xs:element name="Spatial" type="AdministrativeTerritorialUnitType" maxOccurs="unbounded" minOccurs="0">
+      <xs:element name="spatial" ref="AdministrativeTerritorialUnitType" maxOccurs="unbounded" minOccurs="0">
         <xs:annotation>
-          <xs:documentation xml:lang="en" source="#definition">This property links an Organization to the Administrative Region(s) that it covers.</xs:documentation>
-          <xs:documentation xml:lang="en" source="#usage">The value of the properly should be the URI of the region as defined in an authoritative
-list of regions. In Europe, this is likely to be the &lt;a href="https://op.europa.eu/en/web/eu-vocabularies/dataset/-/resource?uri=http://publications.europa.eu/resource/dataset/atu"&gt;Administrative Territorial Units&lt;/a&gt;
-Named Authority List maintained by the Publications Office's Metadata Registry.
-&lt;br/&gt;&lt;br/&gt;
-The &lt;a href="https://op.europa.eu/en/web/eu-vocabularies/dataset/-/resource?uri=http://publications.europa.eu/resource/dataset/atu"&gt;ATU&lt;/a&gt; list does not include a geometry. That is, the territory is only identified by
-its name not its spatial coordinates. This is likely to be the case for similar lists. If
-geometries are available for the Public Organization's territory, they can be linked
-from the territorial unit using the &lt;a href="https://semiceu.github.io/Core-Location-Vocabulary/"&gt;Core Location Vocabulary&lt;/a&gt;'s &lt;a href="http://www.w3.org/ns/locn#geometry"&gt;locn:geometry&lt;/a&gt;
-property.</xs:documentation>
+          <xs:documentation xml:lang="en">This property links an Organization to the Administrative Region(s) that it covers.</xs:documentation>
         </xs:annotation>
       </xs:element>
     </xs:sequence>
@@ -197,15 +179,14 @@ property.</xs:documentation>
   </xs:complexType>
   <xs:complexType name="ReferenceFrameworkType">
     <xs:sequence>
-      <xs:element name="Identifier" type="xs:string" maxOccurs="unbounded" minOccurs="0">
+      <xs:element name="identifier" type="xs:string" maxOccurs="unbounded" minOccurs="0">
         <xs:annotation>
-          <xs:documentation xml:lang="en" source="#definition">An unambiguous reference to a Reference Framework.</xs:documentation>
+          <xs:documentation xml:lang="en">An unambiguous reference to a Reference Framework.</xs:documentation>
         </xs:annotation>
       </xs:element>
-      <xs:element name="Implements" type="ChangeEventType" maxOccurs="unbounded" minOccurs="0">
+      <xs:element name="implements" ref="ChangeEventType" maxOccurs="unbounded" minOccurs="0">
         <xs:annotation>
-          <xs:documentation xml:lang="en" source="#definition">A Change Event linked to relevant legislation or policy documents.</xs:documentation>
-          <xs:documentation xml:lang="en" source="#usage">An example is the reference framework under which the Change Event is defined.</xs:documentation>
+          <xs:documentation xml:lang="en">A Change Event linked to relevant legislation or policy documents.</xs:documentation>
         </xs:annotation>
       </xs:element>
     </xs:sequence>
@@ -265,15 +246,14 @@ property.</xs:documentation>
   </xs:complexType>
   <xs:complexType name="TemporalEntityType">
     <xs:sequence>
-      <xs:element name="Description" type="xs:string" maxOccurs="unbounded" minOccurs="0">
+      <xs:element name="description" type="xs:string" maxOccurs="unbounded" minOccurs="0">
         <xs:annotation>
-          <xs:documentation xml:lang="en" source="#definition">A  textual representation of the Temporal Entity.</xs:documentation>
+          <xs:documentation xml:lang="en">A  textual representation of the Temporal Entity.</xs:documentation>
         </xs:annotation>
       </xs:element>
-      <xs:element name="Frequency" type="conceptType" maxOccurs="unbounded" minOccurs="0">
+      <xs:element name="frequency" type="ConceptType" maxOccurs="unbounded" minOccurs="0">
         <xs:annotation>
-          <xs:documentation xml:lang="en" source="#definition">The recurrence of an instant or period.</xs:documentation>
-          <xs:documentation xml:lang="en" source="#usage">It is recommended to use the frequency from an existing vocabulary like the &lt;a href="https://op.europa.eu/en/web/eu-vocabularies/concept-scheme/-/resource?uri=http://publications.europa.eu/resource/authority/frequency"&gt;Frequency&lt;/a&gt; from the Publications Office.</xs:documentation>
+          <xs:documentation xml:lang="en">The recurrence of an instant or period.</xs:documentation>
         </xs:annotation>
       </xs:element>
     </xs:sequence>
@@ -285,29 +265,29 @@ property.</xs:documentation>
   </xs:complexType>
   <xs:complexType name="IdentifierType">
     <xs:sequence>
-      <xs:element name="DateOfIssue" type="xs:date" maxOccurs="unbounded" minOccurs="0">
+      <xs:element name="dateOfIssue" type="xs:date" maxOccurs="unbounded" minOccurs="0">
         <xs:annotation>
-          <xs:documentation xml:lang="en" source="#definition">The date on which the Identifier was assigned.</xs:documentation>
+          <xs:documentation xml:lang="en">The date on which the Identifier was assigned.</xs:documentation>
         </xs:annotation>
       </xs:element>
-      <xs:element name="SchemaAgency" type="xs:string" maxOccurs="unbounded" minOccurs="0">
+      <xs:element name="schemaAgency" type="xs:string" maxOccurs="unbounded" minOccurs="0">
         <xs:annotation>
-          <xs:documentation xml:lang="en" source="#definition">The name of the agency that issued the identifier.</xs:documentation>
+          <xs:documentation xml:lang="en">The name of the agency that issued the identifier.</xs:documentation>
         </xs:annotation>
       </xs:element>
-      <xs:element name="Notation" type="xs:string" maxOccurs="unbounded" minOccurs="0">
+      <xs:element name="notation" type="xs:string" maxOccurs="unbounded" minOccurs="0">
         <xs:annotation>
-          <xs:documentation xml:lang="en" source="#definition">A string of characters to uniquely identify a concept.</xs:documentation>
+          <xs:documentation xml:lang="en">A string of characters to uniquely identify a concept.</xs:documentation>
         </xs:annotation>
       </xs:element>
-      <xs:element name="SchemeName" type="xs:string" maxOccurs="unbounded" minOccurs="0">
+      <xs:element name="schemeName" type="xs:string" maxOccurs="unbounded" minOccurs="0">
         <xs:annotation>
-          <xs:documentation xml:lang="en" source="#definition">Name of the scheme used to construct the identifier.</xs:documentation>
+          <xs:documentation xml:lang="en">Name of the scheme used to construct the identifier.</xs:documentation>
         </xs:annotation>
       </xs:element>
-      <xs:element name="SchemeUri" type="xs:anyURI" maxOccurs="unbounded" minOccurs="0">
+      <xs:element name="schemeUri" type="xs:anyURI" maxOccurs="unbounded" minOccurs="0">
         <xs:annotation>
-          <xs:documentation xml:lang="en" source="#definition">URI of the scheme used to construct the identifier.</xs:documentation>
+          <xs:documentation xml:lang="en">URI of the scheme used to construct the identifier.</xs:documentation>
         </xs:annotation>
       </xs:element>
     </xs:sequence>
@@ -319,80 +299,59 @@ property.</xs:documentation>
   </xs:complexType>
   <xs:complexType name="AddressType">
     <xs:sequence>
-      <xs:element name="AddressArea" type="xs:string" maxOccurs="unbounded" minOccurs="0">
+      <xs:element name="addressArea" type="xs:string" maxOccurs="unbounded" minOccurs="0">
         <xs:annotation>
-          <xs:documentation xml:lang="en" source="#definition">The name of a geographic area that groups Addresses.</xs:documentation>
-          <xs:documentation xml:lang="en" source="#usage">This would typically be part of a city, a neighbourhood or village, e.g. Montmartre. Address area is not an administrative unit.</xs:documentation>
+          <xs:documentation xml:lang="en">The name of a geographic area that groups Addresses.</xs:documentation>
         </xs:annotation>
       </xs:element>
-      <xs:element name="AddressId" type="xs:string" maxOccurs="unbounded" minOccurs="0">
+      <xs:element name="addressId" type="xs:string" maxOccurs="unbounded" minOccurs="0">
         <xs:annotation>
-          <xs:documentation xml:lang="en" source="#definition">A globally unique identifier for each instance of an Address.</xs:documentation>
-          <xs:documentation xml:lang="en" source="#usage">The concept of adding a globally unique identifier for each instance of an address is a crucial part of the INSPIRE data spec. A number of EU countries have already implemented an ID (a UUID) in their Address Register/gazetteer, among them Denmark. OASIS xAL also includes an address identifier. It is the address Identifier that allows an address to be represented in a format other than INSPIRE whilst remaining conformant to the Core Vocabulary.
-&lt;br/&gt;&lt;br/&gt;
-The &lt;a href="https://knowledge-base.inspire.ec.europa.eu/index_en"&gt;INSPIRE&lt;/a&gt; method of representing addresses is very detailed, designed primarily for use in databases of addresses. Whilst data that is published in full conformance with the INSPIRE data structure can be made available using the&lt;a href="https://semiceu.github.io/Core-Location-Vocabulary/"&gt;Core Location Vocabulary&lt;/a&gt; the reverse is not true since the Core Vocabulary allows much greater flexibility.
-&lt;br/&gt;&lt;br/&gt;
-Many datasets that include address data as one piece of information about something else are likely to have that data in simpler formats. These might be tailored to the specific need of the dataset, follow a national norm, or make use of a standard like vCard.
-&lt;br/&gt;&lt;br/&gt;
-To provide maximum flexibility in the Core Vocabulary, whilst remaining interoperable with INSPIRE Address Guidelines (which EU Member States are obliged to use), the  Core Location Vocabulary provides the extra property of full address and makes use of INSPIRE's addressID.
-
-</xs:documentation>
+          <xs:documentation xml:lang="en">A globally unique identifier for each instance of an Address.</xs:documentation>
         </xs:annotation>
       </xs:element>
-      <xs:element name="AdministrativeUnitLevel1" type="xs:string" maxOccurs="unbounded" minOccurs="0">
+      <xs:element name="administrativeUnitLevel1" type="xs:string" maxOccurs="unbounded" minOccurs="0">
         <xs:annotation>
-          <xs:documentation xml:lang="en" source="#definition">The name of the uppermost level of the address, almost always a country.</xs:documentation>
-          <xs:documentation xml:lang="en" source="#usage">Best practice is to use the &lt;a href="https://www.iso.org/standard/72482.html"&gt;ISO 3166-1 code&lt;/a&gt; but if this is inappropriate for the context, country names should be provided in a consistent manner to reduce ambiguity. For example, either write 'France' or 'FRA' consistently throughout the dataset and avoid mixing the two. The &lt;a href="https://op.europa.eu/en/web/eu-vocabularies/dataset/-/resource?uri=http://publications.europa.eu/resource/dataset/country"&gt;Country controlled vocabulary&lt;/a&gt; from the Publications Office can be reused for this.</xs:documentation>
+          <xs:documentation xml:lang="en">The name of the uppermost level of the address, almost always a country.</xs:documentation>
         </xs:annotation>
       </xs:element>
-      <xs:element name="AdministrativeUnitLevel2" type="xs:string" maxOccurs="unbounded" minOccurs="0">
+      <xs:element name="administrativeUnitLevel2" type="xs:string" maxOccurs="unbounded" minOccurs="0">
         <xs:annotation>
-          <xs:documentation xml:lang="en" source="#definition">The name of a secondary level/region of the address, usually a county, state or other such area that typically encompasses several localities.</xs:documentation>
-          <xs:documentation xml:lang="en" source="#usage">Values could be a region or province, more granular than level 1.</xs:documentation>
+          <xs:documentation xml:lang="en">The name of a secondary level/region of the address, usually a county, state or other such area that typically encompasses several localities.</xs:documentation>
         </xs:annotation>
       </xs:element>
-      <xs:element name="FullAddress" type="xs:string" maxOccurs="unbounded" minOccurs="0">
+      <xs:element name="fullAddress" type="xs:string" maxOccurs="unbounded" minOccurs="0">
         <xs:annotation>
-          <xs:documentation xml:lang="en" source="#definition">The complete address written as a string.</xs:documentation>
-          <xs:documentation xml:lang="en" source="#usage">Use of this property is recommended as it will not suffer any misunderstandings that might arise through the breaking up of an address into its component parts. This property is analogous to vCard's label property but with two important differences: (1) formatting is not assumed so that, unlike vCard label, it may not be suitable to print this on an address label, (2) vCard's label property has a domain of vCard Address; the fullAddress property has no such restriction. An example of a full address is "Champ de Mars, 5 Avenue Anatole France, 75007 Paris, France".</xs:documentation>
+          <xs:documentation xml:lang="en">The complete address written as a string.</xs:documentation>
         </xs:annotation>
       </xs:element>
-      <xs:element name="LocatorDesignator" type="xs:string" maxOccurs="unbounded" minOccurs="0">
+      <xs:element name="locatorDesignator" type="xs:string" maxOccurs="unbounded" minOccurs="0">
         <xs:annotation>
-          <xs:documentation xml:lang="en" source="#definition">A number or sequence of characters that uniquely identifies the locator within the relevant scope.</xs:documentation>
-          <xs:documentation xml:lang="en" source="#usage">In simpler terms, this is the building number, apartment number, etc. For an address such as "Flat 3, 17 Bridge Street", the locator is "flat 3, 17".</xs:documentation>
+          <xs:documentation xml:lang="en">A number or sequence of characters that uniquely identifies the locator within the relevant scope.</xs:documentation>
         </xs:annotation>
       </xs:element>
-      <xs:element name="LocatorName" type="xs:string" maxOccurs="unbounded" minOccurs="0">
+      <xs:element name="locatorName" type="xs:string" maxOccurs="unbounded" minOccurs="0">
         <xs:annotation>
-          <xs:documentation xml:lang="en" source="#definition">Proper noun(s) applied to the real world entity identified by the locator. The locator name could be the name of the property or complex, of the building or part of the building, or it could be the name of a room inside a building.</xs:documentation>
-          <xs:documentation xml:lang="en" source="#usage">The locator name could be the name of the property or complex, of the building or part of the building, or it could be the name of a room inside a building.
-&lt;br/&gt;&lt;br/&gt;
-The key difference between a locator designator and a locator name is that the latter is a proper name and is unlikely to include digits. For example, "Shumann, Berlaymont" is a meeting room within the European Commission headquarters for which locator name is more appropriate than locator.</xs:documentation>
+          <xs:documentation xml:lang="en">Proper noun(s) applied to the real world entity identified by the locator. The locator name could be the name of the property or complex, of the building or part of the building, or it could be the name of a room inside a building.</xs:documentation>
         </xs:annotation>
       </xs:element>
-      <xs:element name="PostOfficeBox" type="xs:string" maxOccurs="unbounded" minOccurs="0">
+      <xs:element name="postOfficeBox" type="xs:string" maxOccurs="unbounded" minOccurs="0">
         <xs:annotation>
-          <xs:documentation xml:lang="en" source="#definition">A location designator for a postal delivery point at a post office, usually a number.</xs:documentation>
-          <xs:documentation xml:lang="en" source="#usage">INSPIRE's name for this is "postalDeliveryIdentifier" for which it uses the locator designator property with a type attribute of that name. This vocabulary separates out the Post Office Box for greater independence of technology. An example post office box number is "9383".</xs:documentation>
+          <xs:documentation xml:lang="en">A location designator for a postal delivery point at a post office, usually a number.</xs:documentation>
         </xs:annotation>
       </xs:element>
-      <xs:element name="PostCode" type="xs:string" maxOccurs="unbounded" minOccurs="0">
+      <xs:element name="postCode" type="xs:string" maxOccurs="unbounded" minOccurs="0">
         <xs:annotation>
-          <xs:documentation xml:lang="en" source="#definition">The code created and maintained for postal purposes to identify a subdivision of addresses and postal delivery points.</xs:documentation>
-          <xs:documentation xml:lang="en" source="#usage">Post codes are common elements in many countries' postal address systems. One of the many post codes of Paris is for example "75000".</xs:documentation>
+          <xs:documentation xml:lang="en">The code created and maintained for postal purposes to identify a subdivision of addresses and postal delivery points.</xs:documentation>
         </xs:annotation>
       </xs:element>
-      <xs:element name="PostName" type="xs:string" maxOccurs="unbounded" minOccurs="0">
+      <xs:element name="postName" type="xs:string" maxOccurs="unbounded" minOccurs="0">
         <xs:annotation>
-          <xs:documentation xml:lang="en" source="#definition">A name created and maintained for postal purposes to identify a subdivision of addresses and postal delivery points.</xs:documentation>
-          <xs:documentation xml:lang="en" source="#usage">Usually a city, for example "Paris".</xs:documentation>
+          <xs:documentation xml:lang="en">A name created and maintained for postal purposes to identify a subdivision of addresses and postal delivery points.</xs:documentation>
         </xs:annotation>
       </xs:element>
-      <xs:element name="Thoroughfare" type="xs:string" maxOccurs="unbounded" minOccurs="0">
+      <xs:element name="thoroughfare" type="xs:string" maxOccurs="unbounded" minOccurs="0">
         <xs:annotation>
-          <xs:documentation xml:lang="en" source="#definition">The name of a passage or way through from one location to another.</xs:documentation>
-          <xs:documentation xml:lang="en" source="#usage">A thoroughfare is usually a street, but it might be a waterway or some other feature. For example, "Avenue des Champs-Élysées".</xs:documentation>
+          <xs:documentation xml:lang="en">The name of a passage or way through from one location to another.</xs:documentation>
         </xs:annotation>
       </xs:element>
     </xs:sequence>
@@ -404,36 +363,34 @@ The key difference between a locator designator and a locator name is that the l
   </xs:complexType>
   <xs:complexType name="ChangeEventType">
     <xs:sequence>
-      <xs:element name="Description" type="xs:string" maxOccurs="unbounded" minOccurs="0">
+      <xs:element name="description" type="xs:string" maxOccurs="unbounded" minOccurs="0">
         <xs:annotation>
-          <xs:documentation xml:lang="en" source="#definition">A textual explanation of the event.</xs:documentation>
+          <xs:documentation xml:lang="en">A textual explanation of the event.</xs:documentation>
         </xs:annotation>
       </xs:element>
-      <xs:element name="EndedAtTime" type="xs:dateTime" maxOccurs="unbounded" minOccurs="0">
+      <xs:element name="endedAtTime" type="xs:dateTime" maxOccurs="unbounded" minOccurs="0">
         <xs:annotation>
-          <xs:documentation xml:lang="en" source="#definition">The time instant when the state of the organisation update was terminated.</xs:documentation>
+          <xs:documentation xml:lang="en">The time instant when the state of the organisation update was terminated.</xs:documentation>
         </xs:annotation>
       </xs:element>
-      <xs:element name="HasFormalFramework" type="ReferenceFrameworkType" maxOccurs="unbounded" minOccurs="0">
+      <xs:element name="hasFormalFramework" ref="ReferenceFrameworkType" maxOccurs="unbounded" minOccurs="0">
         <xs:annotation>
-          <xs:documentation xml:lang="en" source="#definition">A piece of legislation or a policy document that prompted the change.</xs:documentation>
-          <xs:documentation xml:lang="en" source="#usage">The property hasFormalFramework links a Change Event or Foundation Event to a piece of legislation or a policy document that prompted the change.</xs:documentation>
+          <xs:documentation xml:lang="en">A piece of legislation or a policy document that prompted the change.</xs:documentation>
         </xs:annotation>
       </xs:element>
-      <xs:element name="OriginalOrganization" type="PublicOrganisationType" maxOccurs="unbounded" minOccurs="0">
+      <xs:element name="originalOrganization" ref="PublicOrganisationType" maxOccurs="unbounded" minOccurs="0">
         <xs:annotation>
-          <xs:documentation xml:lang="en" source="#definition">The Organization that existed before the change.</xs:documentation>
-          <xs:documentation xml:lang="en" source="#usage">Although the Foundation Event class is defined as a subclass of Change Event, it is inappropriate to use the original organization property with the Foundation Event class.</xs:documentation>
+          <xs:documentation xml:lang="en">The Organization that existed before the change.</xs:documentation>
         </xs:annotation>
       </xs:element>
-      <xs:element name="ResultingOrganization" type="PublicOrganisationType" maxOccurs="unbounded" minOccurs="0">
+      <xs:element name="resultingOrganization" ref="PublicOrganisationType" maxOccurs="unbounded" minOccurs="0">
         <xs:annotation>
-          <xs:documentation xml:lang="en" source="#definition">This property links a Change Event or a Foundation Event to the Organization that resulted from it.</xs:documentation>
+          <xs:documentation xml:lang="en">This property links a Change Event or a Foundation Event to the Organization that resulted from it.</xs:documentation>
         </xs:annotation>
       </xs:element>
-      <xs:element name="StartedAtTime" type="xs:dateTime" maxOccurs="unbounded" minOccurs="0">
+      <xs:element name="startedAtTime" type="xs:dateTime" maxOccurs="unbounded" minOccurs="0">
         <xs:annotation>
-          <xs:documentation xml:lang="en" source="#definition">The time instant when the state of the organisation update was initiated.</xs:documentation>
+          <xs:documentation xml:lang="en">The time instant when the state of the organisation update was initiated.</xs:documentation>
         </xs:annotation>
       </xs:element>
     </xs:sequence>
@@ -445,14 +402,14 @@ The key difference between a locator designator and a locator name is that the l
   </xs:complexType>
   <xs:complexType name="OrganizationType">
     <xs:sequence>
-      <xs:element name="HasSubOrganization" type="OrganizationType" maxOccurs="unbounded" minOccurs="0">
+      <xs:element name="hasSubOrganization" ref="OrganizationType" maxOccurs="unbounded" minOccurs="0">
         <xs:annotation>
-          <xs:documentation xml:lang="en" source="#definition">Represents hierarchical containment of Organizations or OrganizationalUnits; indicates an organization which is a sub-part or child of this organization.</xs:documentation>
+          <xs:documentation xml:lang="en">Represents hierarchical containment of Organizations or OrganizationalUnits; indicates an organization which is a sub-part or child of this organization.</xs:documentation>
         </xs:annotation>
       </xs:element>
-      <xs:element name="SubOrganizationOf" type="OrganizationType" maxOccurs="unbounded" minOccurs="0">
+      <xs:element name="subOrganizationOf" ref="OrganizationType" maxOccurs="unbounded" minOccurs="0">
         <xs:annotation>
-          <xs:documentation xml:lang="en" source="#definition">Represents hierarchical containment of Organizations or OrganizationalUnits; indicates an Organization which contains this Organization.</xs:documentation>
+          <xs:documentation xml:lang="en">Represents hierarchical containment of Organizations or OrganizationalUnits; indicates an Organization which contains this Organization.</xs:documentation>
         </xs:annotation>
       </xs:element>
     </xs:sequence>
@@ -464,10 +421,9 @@ The key difference between a locator designator and a locator name is that the l
   </xs:complexType>
   <xs:complexType name="OrganizationalUnitType">
     <xs:sequence>
-      <xs:element name="UnitOf" type="PublicOrganisationType" maxOccurs="unbounded" minOccurs="0">
+      <xs:element name="unitOf" ref="PublicOrganisationType" maxOccurs="unbounded" minOccurs="0">
         <xs:annotation>
-          <xs:documentation xml:lang="en" source="#definition">The Public Organisation of which the Organizational Unit is an operational department.</xs:documentation>
-          <xs:documentation xml:lang="en" source="#usage">Organizations typically comprise many departments, units, teams etc. Each of these is modelled in the CPOV as a unit that is linked from the parent Organization with hasUnit and to the parent with unitOf.</xs:documentation>
+          <xs:documentation xml:lang="en">The Public Organisation of which the Organizational Unit is an operational department.</xs:documentation>
         </xs:annotation>
       </xs:element>
     </xs:sequence>

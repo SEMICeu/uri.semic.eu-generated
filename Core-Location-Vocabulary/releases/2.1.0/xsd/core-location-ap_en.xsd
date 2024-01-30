@@ -11,7 +11,17 @@
   <xs:element name="Address" type="AddressType"/>
   <xs:element name="Geometry" type="GeometryType"/>
   <xs:element name="String" type="StringType"/>
-  <xs:complexType name="conceptType">
+  <xs:simpleType name="Literal">
+    <xs:restriction base="xs:string"/>
+  </xs:simpleType>
+  <xs:complexType name="langstring">
+    <xs:simpleContent>
+      <xs:extension base="xs:string">
+        <xs:attribute name="lang" type="xs:language"/>
+      </xs:extension>
+    </xs:simpleContent>
+  </xs:complexType>
+  <xs:complexType name="ConceptType">
     <xs:simpleContent>
       <xs:extension base="xs:token">
         <xs:attribute name="ref" type="xs:IDREF"/>
@@ -21,20 +31,19 @@
   </xs:complexType>
   <xs:complexType name="AdministrativeUnitType">
     <xs:sequence>
-      <xs:element name="Code" type="conceptType" maxOccurs="unbounded" minOccurs="0">
+      <xs:element name="code" type="ConceptType" maxOccurs="unbounded" minOccurs="0">
         <xs:annotation>
-          <xs:documentation xml:lang="en" source="#definition">The classification of the administrative unit.</xs:documentation>
+          <xs:documentation xml:lang="en">The classification of the administrative unit.</xs:documentation>
         </xs:annotation>
       </xs:element>
-      <xs:element name="Level" type="conceptType" maxOccurs="unbounded" minOccurs="0">
+      <xs:element name="level" type="ConceptType" maxOccurs="unbounded" minOccurs="0">
         <xs:annotation>
-          <xs:documentation xml:lang="en" source="#definition">The level of the administrative unit in the hierarchy.</xs:documentation>
-          <xs:documentation xml:lang="en" source="#usage">The recommended code list to indicate the level of an Admin Unit is the &lt;a href=https://op.europa.eu/en/web/eu-vocabularies/dataset/-/resource?uri=http://publications.europa.eu/resource/dataset/atu-type&gt;Administrative territorial unit type&lt;/a&gt; Controlled Vocabulary maintained by the Publications Office of the EU. </xs:documentation>
+          <xs:documentation xml:lang="en">The level of the administrative unit in the hierarchy.</xs:documentation>
         </xs:annotation>
       </xs:element>
-      <xs:element name="Name" type="xs:string" maxOccurs="unbounded" minOccurs="0">
+      <xs:element name="name" type="xs:string" maxOccurs="unbounded" minOccurs="0">
         <xs:annotation>
-          <xs:documentation xml:lang="en" source="#definition">Official, geographical name of the administrative unit, given in different languages where required.</xs:documentation>
+          <xs:documentation xml:lang="en">Official, geographical name of the administrative unit, given in different languages where required.</xs:documentation>
         </xs:annotation>
       </xs:element>
     </xs:sequence>
@@ -46,17 +55,14 @@
   </xs:complexType>
   <xs:complexType name="LocatorDesignatorType">
     <xs:sequence>
-      <xs:element name="Designator" type="xs:string" maxOccurs="unbounded" minOccurs="0">
+      <xs:element name="designator" type="xs:string" maxOccurs="unbounded" minOccurs="0">
         <xs:annotation>
-          <xs:documentation xml:lang="en" source="#definition">The identifying part of the locator designator composed by one or more digits or other characters.</xs:documentation>
-          <xs:documentation xml:lang="en" source="#usage">NOTE The value is often a descriptive code assigned according to certain well known rules e.g. like ascending odd and even address numbers along the thoroughfare, or like floor identifiers: 0, 1, 2, 3. &lt;br/&gt;
-EXAMPLE Address number "2065", Address number suffix "B", Floor identifier "7" door identifier "B707" are all locator attribute values.</xs:documentation>
+          <xs:documentation xml:lang="en">The identifying part of the locator designator composed by one or more digits or other characters.</xs:documentation>
         </xs:annotation>
       </xs:element>
-      <xs:element name="Type" type="conceptType" maxOccurs="unbounded" minOccurs="0">
+      <xs:element name="type" type="ConceptType" maxOccurs="unbounded" minOccurs="0">
         <xs:annotation>
-          <xs:documentation xml:lang="en" source="#definition">The type of locator value, which enables an application to interpret, parse or format it according to certain rules.</xs:documentation>
-          <xs:documentation xml:lang="en" source="#usage">The type enables a user or an application to understand if the value "A" is e.g. an identifier of a specific building, door, staircase or dwelling. The usage of INSPIRES' &lt;a href=https://inspire.ec.europa.eu/codelist/LocatorDesignatorTypeValue&gt;Locator Designator Type&lt;/a&gt; code list is recommended.</xs:documentation>
+          <xs:documentation xml:lang="en">The type of locator value, which enables an application to interpret, parse or format it according to certain rules.</xs:documentation>
         </xs:annotation>
       </xs:element>
     </xs:sequence>
@@ -68,33 +74,14 @@ EXAMPLE Address number "2065", Address number suffix "B", Floor identifier "7" d
   </xs:complexType>
   <xs:complexType name="LocationType">
     <xs:sequence>
-      <xs:element name="GeographicIdentifier" type="xs:anyURI" maxOccurs="unbounded" minOccurs="0">
+      <xs:element name="geographicIdentifier" type="xs:anyURI" maxOccurs="unbounded" minOccurs="0">
         <xs:annotation>
-          <xs:documentation xml:lang="en" source="#definition">A reference in the form of a Uniform Resource Identifier to the Location.</xs:documentation>
-          <xs:documentation xml:lang="en" source="#usage">&lt;a href="https://www.geonames.org/"&gt;GeoNames.org&lt;/a&gt; provides stable, widely recognised identifiers for more than 10 million geographical names that can be used as links to further information. For example, http://sws.geonames.org/593116/ identifies the Lithuanian capital Vilnius. Unfortunately these URIs cannot easily be automatically deduced since the URI scheme uses simple numeric codes. Finding a GeoNames identifier for a Location is almost always a manual process. Where such identifiers are known or can be found, however, it is recommended that they be used.
-Where the Location Class is used to identify a country, if the geonames URI is not known, the recommendation is to use &lt;a href="https://www.dbpedia.org"&gt;DBpedia&lt;/a&gt; URIs of the form http://dbpedia.org/resource/ISO\_3166-1:XX where XX is the ISO 3166 two character code for the country.
-&lt;br/&gt;&lt;br/&gt;
-The EU's Publication Office diverges from &lt;a href="https://www.iso.org/standard/72482.html"&gt;ISO 3166-1&lt;/a&gt; and uses EL and UK for Greece and the United Kingdom respectively. DBpedia sticks to the ISO codes and so the correct URIs for these countries are:
-- http://dbpedia.org/resource/ISO\_3166-1:GR
-- http://dbpedia.org/resource/ISO\_3166-1:GB
-even when the geographic name is given as EL or UK.</xs:documentation>
+          <xs:documentation xml:lang="en">A reference in the form of a Uniform Resource Identifier to the Location.</xs:documentation>
         </xs:annotation>
       </xs:element>
-      <xs:element name="GeographicName" type="xs:string" maxOccurs="unbounded" minOccurs="0">
+      <xs:element name="geographicName" type="xs:string" maxOccurs="unbounded" minOccurs="0">
         <xs:annotation>
-          <xs:documentation xml:lang="en" source="#definition">A textual description for a Location.</xs:documentation>
-          <xs:documentation xml:lang="en" source="#usage">The &lt;a href="https://knowledge-base.inspire.ec.europa.eu/geographical-names_en"&gt;INSPIRE Data Specification on Geographical Names&lt;/a&gt; provides a detailed model for describing a 'named place', including methods for providing multiple names in multiple scripts. INSPIRE's definition is the following: Names of areas, regions, localities, cities, suburbs, towns or settlements, or any geographical or topographical feature of public or historical interest. This is beyond what is necessary for the Core Location Vocabulary but, importantly, the concept of a geographic name used here is consistent.
-&lt;br/&gt;&lt;br/&gt;
-A geographic name is a proper noun applied to a spatial object. Taking the example used in the &lt;a href="https://knowledge-base.inspire.ec.europa.eu/publications/inspire-data-specification-geographical-names-technical-guidelines_en"&gt;INSPIRE document&lt;/a&gt; (page 18), the following are all valid geographic names for the Greek capital:
-- "A&theta;n&nu;a"@gr-Grek (the Greek endonym written in the Greek script)
-- "Athína"@gr-Latn (the standard Romanisation of the endonym)
-- "Athens"@en (the English language exonym)
-INSPIRE has a detailed (XML-based) method of providing metadata about a geographic name and in XML-data sets that may be the most appropriate method to follow. When using the Core Location Vocabulary in data sets that are not focussed on environmental/geographical data (the use case for INSPIRE), the Code datatype or a simple language identifier may be used to provide such metadata.
-&lt;br/&gt;&lt;br/&gt;
-The country codes defined in &lt;a href="https://www.iso.org/iso-3166-country-codes.html"&gt;ISO 3166&lt;/a&gt; may be used as geographic names and these are generally preferred over either the long form or short form of a country's name (as they are less error prone). The Publications Office of the European Union recommends the use of &lt;a href="https://www.iso.org/standard/72482.html"&gt;ISO 3166-1&lt;/a&gt; codes for countries in all cases except two:
-- use 'UK' in preference to the ISO 3166 code GB for the United Kingdom;
-- use 'EL' in preference to the ISO 3166 code GR for Greece.
-Where a country has changed its name or no longer exists (such as Czechoslovakia, Yugoslavia etc.) use the ISO 3166-3 code.</xs:documentation>
+          <xs:documentation xml:lang="en">A textual description for a Location.</xs:documentation>
         </xs:annotation>
       </xs:element>
     </xs:sequence>
@@ -122,55 +109,24 @@ Where a country has changed its name or no longer exists (such as Czechoslovakia
   </xs:complexType>
   <xs:complexType name="ResourceType">
     <xs:sequence>
-      <xs:element name="Address" type="AddressType" maxOccurs="unbounded" minOccurs="0">
+      <xs:element name="address" ref="AddressType" maxOccurs="unbounded" minOccurs="0">
         <xs:annotation>
-          <xs:documentation xml:lang="en" source="#definition">Associates any Resource with the corresponding Address.</xs:documentation>
-          <xs:documentation xml:lang="en" source="#usage">Asserting the address relationship implies that the
- Resource has an Address.</xs:documentation>
+          <xs:documentation xml:lang="en">Associates any Resource with the corresponding Address.</xs:documentation>
         </xs:annotation>
       </xs:element>
-      <xs:element name="Geometry" type="GeometryType" maxOccurs="unbounded" minOccurs="0">
+      <xs:element name="geometry" ref="GeometryType" maxOccurs="unbounded" minOccurs="0">
         <xs:annotation>
-          <xs:documentation xml:lang="en" source="#definition">Associates any Resource with the corresponding Geometry.</xs:documentation>
-          <xs:documentation xml:lang="en" source="#usage">&lt;p&gt;Depending on how a geometry is encoded, the range of this property may be one of the following:
-&lt;ul&gt;
-  &lt;li&gt;a literal (e.g., &lt;a href="https://libgeos.org/specifications/wkt/"&gt;WKT&lt;/a&gt; - string literal -, &lt;a href="https://www.ogc.org/standard/gml/"&gt;GML&lt;/a&gt;, &lt;a href="https://www.ogc.org/standard/kml/"&gt;KML&lt;/a&gt; - XML literal)&lt;/li&gt;
-  &lt;li&gt;a geometry class, as those defined in the OGC's &lt;a href="https://www.ogc.org/standard/geosparql/"&gt;GeoSPARQL specification&lt;/a&gt;, in the W3C's &lt;a href="https://www.w3.org/2003/01/geo/"&gt;Basic Geo (WGS84 lat/long) vocabulary&lt;/a&gt;, and at &lt;a href="https://schema.org/"&gt;schema.org&lt;/a&gt;;&lt;/li&gt;
-  &lt;li&gt;geocoded URIs, as geo or GeoHash URIs, treated as URI references.&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;
-For interoperability reasons, it is recommended using one of the following:
-&lt;ul&gt;
-  &lt;li&gt;Any geometry:
-    &lt;ul&gt;
-      &lt;li&gt;  &lt;a href="https://libgeos.org/specifications/wkt/"&gt;WKT&lt;/a&gt;, &lt;a href="https://www.ogc.org/standard/gml/"&gt;GML&lt;/a&gt;, and RDF+WKT/GML, as per the  &lt;a href="https://www.ogc.org/standard/geosparql/"&gt;GeoSPARQL specification&lt;/a&gt;.&lt;/li&gt;
-      &lt;li&gt;  &lt;a href="https://www.ogc.org/standard/kml/"&gt;KML&lt;/a&gt; (Keyhole Markup Language) - note that KML supports the following geometries only: point, line string, linear ring, and polygon.
-      &lt;li&gt;  RDF as per the &lt;a href="https://schema.org/"&gt;schema.org&lt;/a&gt; vocabulary (see classes &lt;a href="https://schema.org/GeoCoordinates"&gt;schema:GeoCoordinates&lt;/a&gt; and &lt;a href="https://schema.org/GeoShape"&gt;schema:GeoShape&lt;/a&gt;).
-    &lt;/ul&gt;
-  &lt;/li&gt;
-  &lt;li&gt;Points: one of the above, or:
-    &lt;ul&gt;
-      &lt;li&gt;  RDF as per the W3C &lt;a href="https://www.w3.org/2003/01/geo/"&gt;Basic Geo (WGS84 lat/long) vocabulary&lt;/a&gt;.&lt;/li&gt;
-      &lt;li&gt;  GeoHash URIs.&lt;/li&gt;
-      &lt;li&gt;  geo URIs.&lt;/li&gt;
-    &lt;/ul&gt;
-  &lt;/li&gt;
-&lt;/ul&gt;
-&lt;/p&gt;</xs:documentation>
+          <xs:documentation xml:lang="en">Associates any Resource with the corresponding Geometry.</xs:documentation>
         </xs:annotation>
       </xs:element>
-      <xs:element name="Location" type="LocationType" maxOccurs="unbounded" minOccurs="0">
+      <xs:element name="location" ref="LocationType" maxOccurs="unbounded" minOccurs="0">
         <xs:annotation>
-          <xs:documentation xml:lang="en" source="#definition">Associates any Resource with the corresponding Location.</xs:documentation>
-          <xs:documentation xml:lang="en" source="#usage">Asserting the location relationship implies only that the domain has some connection to a Location in time or space. It does not imply that the Resource is necessarily at that Location at the time when the assertion is made.</xs:documentation>
+          <xs:documentation xml:lang="en">Associates any Resource with the corresponding Location.</xs:documentation>
         </xs:annotation>
       </xs:element>
-      <xs:element name="RegisteredAddress" type="AddressType" maxOccurs="unbounded" minOccurs="0">
+      <xs:element name="registeredAddress" ref="AddressType" maxOccurs="unbounded" minOccurs="0">
         <xs:annotation>
-          <xs:documentation xml:lang="en" source="#definition">The registered address relationship links a Resource with the legally registered Address.</xs:documentation>
-          <xs:documentation xml:lang="en" source="#usage">It is the address to which formal communications can be sent, such as the postal address.
-</xs:documentation>
+          <xs:documentation xml:lang="en">The registered address relationship links a Resource with the legally registered Address.</xs:documentation>
         </xs:annotation>
       </xs:element>
     </xs:sequence>
@@ -198,91 +154,69 @@ For interoperability reasons, it is recommended using one of the following:
   </xs:complexType>
   <xs:complexType name="AddressType">
     <xs:sequence>
-      <xs:element name="AddressArea" type="xs:string" maxOccurs="unbounded" minOccurs="0">
+      <xs:element name="addressArea" type="xs:string" maxOccurs="unbounded" minOccurs="0">
         <xs:annotation>
-          <xs:documentation xml:lang="en" source="#definition">The name of a geographic area that groups Addresses.</xs:documentation>
-          <xs:documentation xml:lang="en" source="#usage">This would typically be part of a city, a neighbourhood or village, e.g. Montmartre. Address area is not an administrative unit.</xs:documentation>
+          <xs:documentation xml:lang="en">The name of a geographic area that groups Addresses.</xs:documentation>
         </xs:annotation>
       </xs:element>
-      <xs:element name="AddressId" type="xs:string" maxOccurs="unbounded" minOccurs="0">
+      <xs:element name="addressId" type="xs:string" maxOccurs="unbounded" minOccurs="0">
         <xs:annotation>
-          <xs:documentation xml:lang="en" source="#definition">A globally unique identifier for each instance of an Address.</xs:documentation>
-          <xs:documentation xml:lang="en" source="#usage">The concept of adding a globally unique identifier for each instance of an address is a crucial part of the INSPIRE data spec. A number of EU countries have already implemented an ID (a UUID) in their Address Register/gazetteer, among them Denmark. OASIS xAL also includes an address identifier. It is the address Identifier that allows an address to be represented in a format other than INSPIRE whilst remaining conformant to the Core Vocabulary.
-&lt;br/&gt;&lt;br/&gt;
-The &lt;a href="https://knowledge-base.inspire.ec.europa.eu/index_en"&gt;INSPIRE&lt;/a&gt; method of representing addresses is very detailed, designed primarily for use in databases of addresses. Whilst data that is published in full conformance with the INSPIRE data structure can be made available using the&lt;a href="https://semiceu.github.io/Core-Location-Vocabulary/"&gt;Core Location Vocabulary&lt;/a&gt; the reverse is not true since the Core Vocabulary allows much greater flexibility.
-&lt;br/&gt;&lt;br/&gt;
-Many datasets that include address data as one piece of information about something else are likely to have that data in simpler formats. These might be tailored to the specific need of the dataset, follow a national norm, or make use of a standard like vCard.
-&lt;br/&gt;&lt;br/&gt;
-To provide maximum flexibility in the Core Vocabulary, whilst remaining interoperable with INSPIRE Address Guidelines (which EU Member States are obliged to use), the  Core Location Vocabulary provides the extra property of full address and makes use of INSPIRE's addressID.
-
-</xs:documentation>
+          <xs:documentation xml:lang="en">A globally unique identifier for each instance of an Address.</xs:documentation>
         </xs:annotation>
       </xs:element>
-      <xs:element name="AdministrativeUnit" type="AdministrativeUnitType" maxOccurs="unbounded" minOccurs="0">
+      <xs:element name="administrativeUnit" ref="AdministrativeUnitType" maxOccurs="unbounded" minOccurs="0">
         <xs:annotation>
-          <xs:documentation xml:lang="en" source="#definition">The adminUnit relationship links an Address with the Administrative Unit class.</xs:documentation>
+          <xs:documentation xml:lang="en">The adminUnit relationship links an Address with the Administrative Unit class.</xs:documentation>
         </xs:annotation>
       </xs:element>
-      <xs:element name="AdministrativeUnitLevel1" type="xs:string" maxOccurs="unbounded" minOccurs="0">
+      <xs:element name="administrativeUnitLevel1" type="xs:string" maxOccurs="unbounded" minOccurs="0">
         <xs:annotation>
-          <xs:documentation xml:lang="en" source="#definition">The name of the uppermost level of the address, almost always a country.</xs:documentation>
-          <xs:documentation xml:lang="en" source="#usage">Best practice is to use the &lt;a href="https://www.iso.org/standard/72482.html"&gt;ISO 3166-1 code&lt;/a&gt; but if this is inappropriate for the context, country names should be provided in a consistent manner to reduce ambiguity. For example, either write 'France' or 'FRA' consistently throughout the dataset and avoid mixing the two. The &lt;a href="https://op.europa.eu/en/web/eu-vocabularies/dataset/-/resource?uri=http://publications.europa.eu/resource/dataset/country"&gt;Country controlled vocabulary&lt;/a&gt; from the Publications Office can be reused for this.</xs:documentation>
+          <xs:documentation xml:lang="en">The name of the uppermost level of the address, almost always a country.</xs:documentation>
         </xs:annotation>
       </xs:element>
-      <xs:element name="AdministrativeUnitLevel2" type="xs:string" maxOccurs="unbounded" minOccurs="0">
+      <xs:element name="administrativeUnitLevel2" type="xs:string" maxOccurs="unbounded" minOccurs="0">
         <xs:annotation>
-          <xs:documentation xml:lang="en" source="#definition">The name of a secondary level/region of the address, usually a county, state or other such area that typically encompasses several localities.</xs:documentation>
-          <xs:documentation xml:lang="en" source="#usage">Values could be a region or province, more granular than level 1.</xs:documentation>
+          <xs:documentation xml:lang="en">The name of a secondary level/region of the address, usually a county, state or other such area that typically encompasses several localities.</xs:documentation>
         </xs:annotation>
       </xs:element>
-      <xs:element name="FullAddress" type="xs:string" maxOccurs="unbounded" minOccurs="0">
+      <xs:element name="fullAddress" type="xs:string" maxOccurs="unbounded" minOccurs="0">
         <xs:annotation>
-          <xs:documentation xml:lang="en" source="#definition">The complete address written as a string.</xs:documentation>
-          <xs:documentation xml:lang="en" source="#usage">Use of this property is recommended as it will not suffer any misunderstandings that might arise through the breaking up of an address into its component parts. This property is analogous to vCard's label property but with two important differences: (1) formatting is not assumed so that, unlike vCard label, it may not be suitable to print this on an address label, (2) vCard's label property has a domain of vCard Address; the fullAddress property has no such restriction. An example of a full address is "Champ de Mars, 5 Avenue Anatole France, 75007 Paris, France".</xs:documentation>
+          <xs:documentation xml:lang="en">The complete address written as a string.</xs:documentation>
         </xs:annotation>
       </xs:element>
-      <xs:element name="HasLocatorDesignator" type="LocatorDesignatorType" maxOccurs="unbounded" minOccurs="0">
+      <xs:element name="hasLocatorDesignator" ref="LocatorDesignatorType" maxOccurs="unbounded" minOccurs="0">
         <xs:annotation>
-          <xs:documentation xml:lang="en" source="#definition">A number or a sequence of characters that uniquely identifies the locator within the relevant scope(s).</xs:documentation>
-          <xs:documentation xml:lang="en" source="#usage">This relation can be used instead of Address.locatorDesignator if a structured representation is preferred over a Literal.</xs:documentation>
+          <xs:documentation xml:lang="en">A number or a sequence of characters that uniquely identifies the locator within the relevant scope(s).</xs:documentation>
         </xs:annotation>
       </xs:element>
-      <xs:element name="LocatorDesignator" type="xs:string" maxOccurs="unbounded" minOccurs="0">
+      <xs:element name="locatorDesignator" type="xs:string" maxOccurs="unbounded" minOccurs="0">
         <xs:annotation>
-          <xs:documentation xml:lang="en" source="#definition">A number or sequence of characters that uniquely identifies the locator within the relevant scope.</xs:documentation>
-          <xs:documentation xml:lang="en" source="#usage">In simpler terms, this is the building number, apartment number, etc. For an address such as "Flat 3, 17 Bridge Street", the locator is "flat 3, 17".</xs:documentation>
+          <xs:documentation xml:lang="en">A number or sequence of characters that uniquely identifies the locator within the relevant scope.</xs:documentation>
         </xs:annotation>
       </xs:element>
-      <xs:element name="LocatorName" type="xs:string" maxOccurs="unbounded" minOccurs="0">
+      <xs:element name="locatorName" type="xs:string" maxOccurs="unbounded" minOccurs="0">
         <xs:annotation>
-          <xs:documentation xml:lang="en" source="#definition">Proper noun(s) applied to the real world entity identified by the locator. The locator name could be the name of the property or complex, of the building or part of the building, or it could be the name of a room inside a building.</xs:documentation>
-          <xs:documentation xml:lang="en" source="#usage">The locator name could be the name of the property or complex, of the building or part of the building, or it could be the name of a room inside a building.
-&lt;br/&gt;&lt;br/&gt;
-The key difference between a locator designator and a locator name is that the latter is a proper name and is unlikely to include digits. For example, "Shumann, Berlaymont" is a meeting room within the European Commission headquarters for which locator name is more appropriate than locator.</xs:documentation>
+          <xs:documentation xml:lang="en">Proper noun(s) applied to the real world entity identified by the locator. The locator name could be the name of the property or complex, of the building or part of the building, or it could be the name of a room inside a building.</xs:documentation>
         </xs:annotation>
       </xs:element>
-      <xs:element name="PostOfficeBox" type="xs:string" maxOccurs="unbounded" minOccurs="0">
+      <xs:element name="postOfficeBox" type="xs:string" maxOccurs="unbounded" minOccurs="0">
         <xs:annotation>
-          <xs:documentation xml:lang="en" source="#definition">A location designator for a postal delivery point at a post office, usually a number.</xs:documentation>
-          <xs:documentation xml:lang="en" source="#usage">INSPIRE's name for this is "postalDeliveryIdentifier" for which it uses the locator designator property with a type attribute of that name. This vocabulary separates out the Post Office Box for greater independence of technology. An example post office box number is "9383".</xs:documentation>
+          <xs:documentation xml:lang="en">A location designator for a postal delivery point at a post office, usually a number.</xs:documentation>
         </xs:annotation>
       </xs:element>
-      <xs:element name="PostCode" type="xs:string" maxOccurs="unbounded" minOccurs="0">
+      <xs:element name="postCode" type="xs:string" maxOccurs="unbounded" minOccurs="0">
         <xs:annotation>
-          <xs:documentation xml:lang="en" source="#definition">The code created and maintained for postal purposes to identify a subdivision of addresses and postal delivery points.</xs:documentation>
-          <xs:documentation xml:lang="en" source="#usage">Post codes are common elements in many countries' postal address systems. One of the many post codes of Paris is for example "75000".</xs:documentation>
+          <xs:documentation xml:lang="en">The code created and maintained for postal purposes to identify a subdivision of addresses and postal delivery points.</xs:documentation>
         </xs:annotation>
       </xs:element>
-      <xs:element name="PostName" type="xs:string" maxOccurs="unbounded" minOccurs="0">
+      <xs:element name="postName" type="xs:string" maxOccurs="unbounded" minOccurs="0">
         <xs:annotation>
-          <xs:documentation xml:lang="en" source="#definition">A name created and maintained for postal purposes to identify a subdivision of addresses and postal delivery points.</xs:documentation>
-          <xs:documentation xml:lang="en" source="#usage">Usually a city, for example "Paris".</xs:documentation>
+          <xs:documentation xml:lang="en">A name created and maintained for postal purposes to identify a subdivision of addresses and postal delivery points.</xs:documentation>
         </xs:annotation>
       </xs:element>
-      <xs:element name="Thoroughfare" type="xs:string" maxOccurs="unbounded" minOccurs="0">
+      <xs:element name="thoroughfare" type="xs:string" maxOccurs="unbounded" minOccurs="0">
         <xs:annotation>
-          <xs:documentation xml:lang="en" source="#definition">The name of a passage or way through from one location to another.</xs:documentation>
-          <xs:documentation xml:lang="en" source="#usage">A thoroughfare is usually a street, but it might be a waterway or some other feature. For example, "Avenue des Champs-Élysées".</xs:documentation>
+          <xs:documentation xml:lang="en">The name of a passage or way through from one location to another.</xs:documentation>
         </xs:annotation>
       </xs:element>
     </xs:sequence>
@@ -294,44 +228,39 @@ The key difference between a locator designator and a locator name is that the l
   </xs:complexType>
   <xs:complexType name="GeometryType">
     <xs:sequence>
-      <xs:element name="Coordinates" type="xs:string" maxOccurs="unbounded" minOccurs="0">
+      <xs:element name="coordinates" type="xs:string" maxOccurs="unbounded" minOccurs="0">
         <xs:annotation>
-          <xs:documentation xml:lang="en" source="#definition">	A list of geographic coordinates that define the extent of the Geometry.</xs:documentation>
-          <xs:documentation xml:lang="en" source="#usage">Can be expressed as longitude, latitude, elevation.</xs:documentation>
+          <xs:documentation xml:lang="en">	A list of geographic coordinates that define the extent of the Geometry.</xs:documentation>
         </xs:annotation>
       </xs:element>
-      <xs:element name="Crs" type="xs:anyURI" maxOccurs="unbounded" minOccurs="0">
+      <xs:element name="crs" type="xs:anyURI" maxOccurs="unbounded" minOccurs="0">
         <xs:annotation>
-          <xs:documentation xml:lang="en" source="#definition">An identifier for the coordinate reference system.</xs:documentation>
-          <xs:documentation xml:lang="en" source="#usage">Can be a coordinate-based local, regional or global system used to locate geographical entities.</xs:documentation>
+          <xs:documentation xml:lang="en">An identifier for the coordinate reference system.</xs:documentation>
         </xs:annotation>
       </xs:element>
-      <xs:element name="GeometryType" type="conceptType" maxOccurs="unbounded" minOccurs="0">
+      <xs:element name="geometryType" type="ConceptType" maxOccurs="unbounded" minOccurs="0">
         <xs:annotation>
-          <xs:documentation xml:lang="en" source="#definition">The classification of the Geometry.</xs:documentation>
-          <xs:documentation xml:lang="en" source="#usage">Can be a point, line or polygon.</xs:documentation>
+          <xs:documentation xml:lang="en">The classification of the Geometry.</xs:documentation>
         </xs:annotation>
       </xs:element>
-      <xs:element name="Gml" type="xs:string" maxOccurs="unbounded" minOccurs="0">
+      <xs:element name="gml" type="xs:string" maxOccurs="unbounded" minOccurs="0">
         <xs:annotation>
-          <xs:documentation xml:lang="en" source="#definition">The expression of the Geometry in Geography Markup Language.</xs:documentation>
-          <xs:documentation xml:lang="en" source="#usage">Use &lt;a href="http://www.opengis.net/ont/geosparql#gmlLiteral"&gt;geo:gmlLiteral&lt;/a&gt; as type for the literal.</xs:documentation>
+          <xs:documentation xml:lang="en">The expression of the Geometry in Geography Markup Language.</xs:documentation>
         </xs:annotation>
       </xs:element>
-      <xs:element name="Latitude" type="xs:string" maxOccurs="unbounded" minOccurs="0">
+      <xs:element name="latitude" type="xs:string" maxOccurs="unbounded" minOccurs="0">
         <xs:annotation>
-          <xs:documentation xml:lang="en" source="#definition">The geographic coordinate that specifies the north / south position of the Geomerty on the Earth's surface.</xs:documentation>
+          <xs:documentation xml:lang="en">The geographic coordinate that specifies the north / south position of the Geomerty on the Earth's surface.</xs:documentation>
         </xs:annotation>
       </xs:element>
-      <xs:element name="Longitude" type="xs:string" maxOccurs="unbounded" minOccurs="0">
+      <xs:element name="longitude" type="xs:string" maxOccurs="unbounded" minOccurs="0">
         <xs:annotation>
-          <xs:documentation xml:lang="en" source="#definition">The geographic coordinate that specifies the east / west position of the Geometry on the Earth's surface.</xs:documentation>
+          <xs:documentation xml:lang="en">The geographic coordinate that specifies the east / west position of the Geometry on the Earth's surface.</xs:documentation>
         </xs:annotation>
       </xs:element>
-      <xs:element name="Wkt" type="xs:string" maxOccurs="unbounded" minOccurs="0">
+      <xs:element name="wkt" type="xs:string" maxOccurs="unbounded" minOccurs="0">
         <xs:annotation>
-          <xs:documentation xml:lang="en" source="#definition">An expression of the Geometry in WKT, the Well-Known Text markup language.</xs:documentation>
-          <xs:documentation xml:lang="en" source="#usage">Use &lt;a href="http://www.opengis.net/ont/geosparql#wktLiteral"&gt;geo:wktLiteral&lt;/a&gt; as type for the literal.</xs:documentation>
+          <xs:documentation xml:lang="en">An expression of the Geometry in WKT, the Well-Known Text markup language.</xs:documentation>
         </xs:annotation>
       </xs:element>
     </xs:sequence>
