@@ -2,6 +2,8 @@
 <xs:schema xmlns="https://data.europa.eu/m8g/xml/" xmlns:xs="http://www.w3.org/2001/XMLSchema" targetNamespace="https://data.europa.eu/m8g/xml/" version="2.0.0" elementFormDefault="qualified" attributeFormDefault="unqualified" xmlns:cv="https://data.europa.eu/m8g/xml/">
   <xs:element name="ContactPoint" type="ContactPointType"/>
   <xs:element name="Cost" type="CostType"/>
+  <xs:element name="Evidence" type="EvidenceType"/>
+  <xs:element name="Output" type="OutputType"/>
   <xs:element name="PublicOrganisation" type="PublicOrganisationType"/>
   <xs:element name="Location" type="LocationType"/>
   <xs:element name="PeriodOfTime" type="PeriodOfTimeType"/>
@@ -12,7 +14,7 @@
   <xs:element name="Boolean" type="BooleanType"/>
   <xs:element name="DateTime" type="DateTimeType"/>
   <xs:element name="Double" type="DoubleType"/>
-  <xs:element name="NonNegativeInteger" type="NonNegativeIntegerType"/>
+  <xs:element name="Integer" type="IntegerType"/>
   <xs:element name="Concept" type="ConceptType"/>
   <xs:element name="TimeInstant" type="TimeInstantType"/>
   <xs:element name="Identifier" type="IdentifierType"/>
@@ -98,13 +100,81 @@
       </xs:annotation>
     </xs:attribute>
   </xs:complexType>
-  <xs:complexType name="PublicOrganisationType">
+  <xs:complexType name="EvidenceType">
     <xs:sequence>
-      <xs:element name="isResponsibleFor" ref="SingleDigitalEntryPointType" maxOccurs="1" minOccurs="0">
+      <xs:element name="describes" ref="UnitType" maxOccurs="1" minOccurs="0">
         <xs:annotation>
-          <xs:documentation xml:lang="en">It indicates the Single Digital Entry Point being managed.</xs:documentation>
+          <xs:documentation xml:lang="en">It indicates the Unit described.</xs:documentation>
         </xs:annotation>
       </xs:element>
+      <xs:element name="validityPeriod" ref="PeriodOfTimeType" maxOccurs="1" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation xml:lang="en">Period of Time during which the Evidence holds true or has force.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="identifier" type="xs:string" maxOccurs="1" minOccurs="1">
+        <xs:annotation>
+          <xs:documentation xml:lang="en">An Identifier for the piece of Evidence.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="isProvidedBy" ref="LegalEntityType" maxOccurs="1" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation xml:lang="en">Agent that transmits the Evidence.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="isProvidedBy" ref="PersonType" maxOccurs="1" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation xml:lang="en">Agent that transmits the Evidence.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="name" type="xs:string" maxOccurs="unbounded" minOccurs="1">
+        <xs:annotation>
+          <xs:documentation xml:lang="en">The official Name of the piece of Evidence.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="relatedDocumentation" ref="DocumentType" maxOccurs="unbounded" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation xml:lang="en">The documentation that contains information.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="submissionDate" type="xs:dateTime" maxOccurs="1" minOccurs="1">
+        <xs:annotation>
+          <xs:documentation xml:lang="en">The date in which the Document has been submitted.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="updateDate" type="xs:dateTime" maxOccurs="1" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation xml:lang="en">The date in which the Document has been updated.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+    </xs:sequence>
+    <xs:attribute name="EvidenceRef" type="xs:IDREF">
+      <xs:annotation>
+        <xs:documentation xml:lang="en">Reference to Evidence ID</xs:documentation>
+      </xs:annotation>
+    </xs:attribute>
+  </xs:complexType>
+  <xs:complexType name="OutputType">
+    <xs:sequence>
+      <xs:element name="identifier" type="xs:string" maxOccurs="1" minOccurs="1">
+        <xs:annotation>
+          <xs:documentation xml:lang="en">An Identifier for the Output.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="name" type="xs:string" maxOccurs="unbounded" minOccurs="1">
+        <xs:annotation>
+          <xs:documentation xml:lang="en">The official Name of the Output.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+    </xs:sequence>
+    <xs:attribute name="OutputRef" type="xs:IDREF">
+      <xs:annotation>
+        <xs:documentation xml:lang="en">Reference to Output ID</xs:documentation>
+      </xs:annotation>
+    </xs:attribute>
+  </xs:complexType>
+  <xs:complexType name="PublicOrganisationType">
+    <xs:sequence>
       <xs:element name="address" ref="AddressType" maxOccurs="1" minOccurs="1">
         <xs:annotation>
           <xs:documentation xml:lang="en">The Address of a Public Organization.</xs:documentation>
@@ -123,6 +193,16 @@
       <xs:element name="description" type="xs:string" maxOccurs="unbounded" minOccurs="0">
         <xs:annotation>
           <xs:documentation xml:lang="en">The textual description of the Public Organization.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="establishes" ref="SingleDigitalEntryPointType" maxOccurs="1" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation xml:lang="en">It indicates the Single Digital Entry Point being managed.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="hasNationalCoordinator" ref="PersonType" maxOccurs="1" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation xml:lang="en">It indicates the Person appointed as national coordinator.</xs:documentation>
         </xs:annotation>
       </xs:element>
       <xs:element name="issues" ref="OrderType" maxOccurs="unbounded" minOccurs="0">
@@ -150,9 +230,9 @@
           <xs:documentation xml:lang="en">This property describes the reasons of existence of an Organization.</xs:documentation>
         </xs:annotation>
       </xs:element>
-      <xs:element name="verifies" ref="DocumentType" maxOccurs="unbounded" minOccurs="0">
+      <xs:element name="verifies" ref="EvidenceType" maxOccurs="unbounded" minOccurs="0">
         <xs:annotation>
-          <xs:documentation xml:lang="en">It indicates the Document verified.</xs:documentation>
+          <xs:documentation xml:lang="en">It indicates the Evidence verified.</xs:documentation>
         </xs:annotation>
       </xs:element>
     </xs:sequence>
@@ -227,6 +307,11 @@
           <xs:documentation xml:lang="en">It links a Public Service to a Public Organization, which is the responsible Agent for the delivery of the Public Service.</xs:documentation>
         </xs:annotation>
       </xs:element>
+      <xs:element name="hasInput" ref="EvidenceType" maxOccurs="unbounded" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation xml:lang="en">It links a Public Service to one or more instances of the Evidence class.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
       <xs:element name="identifier" type="xs:string" maxOccurs="1" minOccurs="1">
         <xs:annotation>
           <xs:documentation xml:lang="en">A formally-issued Identifier for the Public Service.</xs:documentation>
@@ -235,6 +320,11 @@
       <xs:element name="name" type="xs:string" maxOccurs="unbounded" minOccurs="1">
         <xs:annotation>
           <xs:documentation xml:lang="en">The official Name of the Public Service.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="produces" ref="OutputType" maxOccurs="1" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation xml:lang="en">It links a Public Service to one or more instances of the Output class, describing the actual result of executing a given Public Service.</xs:documentation>
         </xs:annotation>
       </xs:element>
       <xs:element name="produces" ref="CataloguedResourceType" maxOccurs="unbounded" minOccurs="0">
@@ -298,11 +388,11 @@ and managed by a Base Registry Service.</xs:documentation>
       </xs:annotation>
     </xs:attribute>
   </xs:complexType>
-  <xs:complexType name="NonNegativeIntegerType">
+  <xs:complexType name="IntegerType">
     <xs:sequence/>
-    <xs:attribute name="NonNegativeIntegerRef" type="xs:IDREF">
+    <xs:attribute name="IntegerRef" type="xs:IDREF">
       <xs:annotation>
-        <xs:documentation xml:lang="en">Reference to NonNegativeInteger ID</xs:documentation>
+        <xs:documentation xml:lang="en">Reference to Integer ID</xs:documentation>
       </xs:annotation>
     </xs:attribute>
   </xs:complexType>
@@ -461,11 +551,6 @@ and managed by a Base Registry Service.</xs:documentation>
           <xs:documentation xml:lang="en">It indicates the rental service offered.</xs:documentation>
         </xs:annotation>
       </xs:element>
-      <xs:element name="provides" ref="DocumentType" maxOccurs="unbounded" minOccurs="0">
-        <xs:annotation>
-          <xs:documentation xml:lang="en">It indicates the Document provided.</xs:documentation>
-        </xs:annotation>
-      </xs:element>
       <xs:element name="registeredAddress" ref="AddressType" maxOccurs="1" minOccurs="1">
         <xs:annotation>
           <xs:documentation xml:lang="en">The address at which the Legal Entity is legally registered.</xs:documentation>
@@ -582,14 +667,14 @@ and managed by a Base Registry Service.</xs:documentation>
           <xs:documentation xml:lang="en">Links a resource to an adms:Identifier class.</xs:documentation>
         </xs:annotation>
       </xs:element>
+      <xs:element name="isPointOfContactFor" ref="SingleDigitalEntryPointType" maxOccurs="unbounded" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation xml:lang="en">The Single Digital Entry point for which the person acts as contact point for all matters related.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
       <xs:element name="offers" ref="ShortTermAccomodationRentalServiceType" maxOccurs="unbounded" minOccurs="0">
         <xs:annotation>
           <xs:documentation xml:lang="en">It indicates the rental service offered.</xs:documentation>
-        </xs:annotation>
-      </xs:element>
-      <xs:element name="provides" ref="DocumentType" maxOccurs="unbounded" minOccurs="0">
-        <xs:annotation>
-          <xs:documentation xml:lang="en">It indicates the Document provided.</xs:documentation>
         </xs:annotation>
       </xs:element>
     </xs:sequence>
@@ -600,28 +685,7 @@ and managed by a Base Registry Service.</xs:documentation>
     </xs:attribute>
   </xs:complexType>
   <xs:complexType name="DocumentType">
-    <xs:sequence>
-      <xs:element name="describes" ref="UnitType" maxOccurs="1" minOccurs="0">
-        <xs:annotation>
-          <xs:documentation xml:lang="en">It indicates the Unit described.</xs:documentation>
-        </xs:annotation>
-      </xs:element>
-      <xs:element name="hasValidityPeriod" ref="PeriodOfTimeType" maxOccurs="1" minOccurs="0">
-        <xs:annotation>
-          <xs:documentation xml:lang="en">It indicates the Period of Time in which the resource is valid.</xs:documentation>
-        </xs:annotation>
-      </xs:element>
-      <xs:element name="submissionDate" type="xs:dateTime" maxOccurs="1" minOccurs="1">
-        <xs:annotation>
-          <xs:documentation xml:lang="en">The date in which the Document has been submitted.</xs:documentation>
-        </xs:annotation>
-      </xs:element>
-      <xs:element name="updateDate" type="xs:dateTime" maxOccurs="1" minOccurs="0">
-        <xs:annotation>
-          <xs:documentation xml:lang="en">The date in which the Document has been updated.</xs:documentation>
-        </xs:annotation>
-      </xs:element>
-    </xs:sequence>
+    <xs:sequence/>
     <xs:attribute name="DocumentRef" type="xs:IDREF">
       <xs:annotation>
         <xs:documentation xml:lang="en">Reference to Document ID</xs:documentation>
@@ -643,14 +707,14 @@ and managed by a Base Registry Service.</xs:documentation>
           <xs:documentation xml:lang="en">The country of residence of the guests.</xs:documentation>
         </xs:annotation>
       </xs:element>
+      <xs:element name="numberOfGuests" type="xs:integer" maxOccurs="1" minOccurs="1">
+        <xs:annotation>
+          <xs:documentation xml:lang="en">The number of guest that the unit was rented to per night.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
       <xs:element name="temporal" ref="PeriodOfTimeType" maxOccurs="1" minOccurs="1">
         <xs:annotation>
           <xs:documentation xml:lang="en">It indicates the period of time associated.</xs:documentation>
-        </xs:annotation>
-      </xs:element>
-      <xs:element name="numberOfGuests" type="xs:nonNegativeInteger" maxOccurs="1" minOccurs="1">
-        <xs:annotation>
-          <xs:documentation xml:lang="en">The number of guest that the unit was rented to per night.</xs:documentation>
         </xs:annotation>
       </xs:element>
     </xs:sequence>
@@ -710,12 +774,12 @@ and managed by a Base Registry Service.</xs:documentation>
           <xs:documentation xml:lang="en">It indicated the Registration Number concerned.</xs:documentation>
         </xs:annotation>
       </xs:element>
-      <xs:element name="isAbout" ref="PersonType" maxOccurs="1" minOccurs="0">
+      <xs:element name="isAbout" ref="LegalEntityType" maxOccurs="1" minOccurs="0">
         <xs:annotation>
           <xs:documentation xml:lang="en">It indicates the host reference.</xs:documentation>
         </xs:annotation>
       </xs:element>
-      <xs:element name="isAbout" ref="LegalEntityType" maxOccurs="1" minOccurs="0">
+      <xs:element name="isAbout" ref="PersonType" maxOccurs="1" minOccurs="0">
         <xs:annotation>
           <xs:documentation xml:lang="en">It indicates the host reference.</xs:documentation>
         </xs:annotation>
@@ -739,14 +803,9 @@ and managed by a Base Registry Service.</xs:documentation>
   </xs:complexType>
   <xs:complexType name="RegistrationNumberType">
     <xs:sequence>
-      <xs:element name="hasValidityPeriod" ref="PeriodOfTimeType" maxOccurs="1" minOccurs="0">
-        <xs:annotation>
-          <xs:documentation xml:lang="en">It indicates the Period of Time in which the resource is valid.</xs:documentation>
-        </xs:annotation>
-      </xs:element>
       <xs:element name="identifies" ref="UnitType" maxOccurs="1" minOccurs="1">
         <xs:annotation>
-          <xs:documentation xml:lang="en">The entity that is referenced by the Identifier.</xs:documentation>
+          <xs:documentation xml:lang="en">The Unit identified by the Registration Number</xs:documentation>
         </xs:annotation>
       </xs:element>
       <xs:element name="issueDate" type="xs:dateTime" maxOccurs="1" minOccurs="1">
@@ -757,6 +816,11 @@ and managed by a Base Registry Service.</xs:documentation>
       <xs:element name="status" type="ConceptType" maxOccurs="1" minOccurs="1">
         <xs:annotation>
           <xs:documentation xml:lang="en">The status of the Asset in the context of a particular workflow process.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="temporal" ref="PeriodOfTimeType" maxOccurs="1" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation xml:lang="en">It indicates the period of time associated.</xs:documentation>
         </xs:annotation>
       </xs:element>
     </xs:sequence>
@@ -771,16 +835,6 @@ and managed by a Base Registry Service.</xs:documentation>
       <xs:element name="hasCost" ref="CostType" maxOccurs="unbounded" minOccurs="0">
         <xs:annotation>
           <xs:documentation xml:lang="en">	It indicates the costs related to the execution of a Public Service for the citizen or business related to the execution of the particular Public Service.</xs:documentation>
-        </xs:annotation>
-      </xs:element>
-      <xs:element name="hasInput" ref="DocumentType" maxOccurs="unbounded" minOccurs="0">
-        <xs:annotation>
-          <xs:documentation xml:lang="en">It indicated the Document provided as input.</xs:documentation>
-        </xs:annotation>
-      </xs:element>
-      <xs:element name="produces" ref="RegistrationNumberType" maxOccurs="1" minOccurs="0">
-        <xs:annotation>
-          <xs:documentation xml:lang="en">It indicates the Registration Number produced.</xs:documentation>
         </xs:annotation>
       </xs:element>
     </xs:sequence>
@@ -805,13 +859,7 @@ and managed by a Base Registry Service.</xs:documentation>
     </xs:attribute>
   </xs:complexType>
   <xs:complexType name="SingleDigitalEntryPointType">
-    <xs:sequence>
-      <xs:element name="hasNationalCoordinator" ref="PersonType" maxOccurs="1" minOccurs="1">
-        <xs:annotation>
-          <xs:documentation xml:lang="en">It indicates the Person appointed as national coordinator.</xs:documentation>
-        </xs:annotation>
-      </xs:element>
-    </xs:sequence>
+    <xs:sequence/>
     <xs:attribute name="SingleDigitalEntryPointRef" type="xs:IDREF">
       <xs:annotation>
         <xs:documentation xml:lang="en">Reference to SingleDigitalEntryPoint ID</xs:documentation>
@@ -845,11 +893,6 @@ and managed by a Base Registry Service.</xs:documentation>
           <xs:documentation xml:lang="en">The specific address of the Unit.</xs:documentation>
         </xs:annotation>
       </xs:element>
-      <xs:element name="identifier" ref="RegistrationNumberType" maxOccurs="unbounded" minOccurs="0">
-        <xs:annotation>
-          <xs:documentation xml:lang="en">Links a resource to an adms:Identifier class.</xs:documentation>
-        </xs:annotation>
-      </xs:element>
       <xs:element name="isAuthorizationObtained" type="xs:boolean" maxOccurs="1" minOccurs="0">
         <xs:annotation>
           <xs:documentation xml:lang="en">it indicates whether the host has obtained an authorisation for the Unit.</xs:documentation>
@@ -860,12 +903,12 @@ and managed by a Base Registry Service.</xs:documentation>
           <xs:documentation xml:lang="en">It indicates whether the Unit is subject to authorization.</xs:documentation>
         </xs:annotation>
       </xs:element>
-      <xs:element name="numberOfBedrooms" type="xs:nonNegativeInteger" maxOccurs="1" minOccurs="1">
+      <xs:element name="numberOfBedrooms" type="xs:integer" maxOccurs="1" minOccurs="1">
         <xs:annotation>
           <xs:documentation xml:lang="en">The maximum number of available bed places.</xs:documentation>
         </xs:annotation>
       </xs:element>
-      <xs:element name="occupancy" type="xs:nonNegativeInteger" maxOccurs="1" minOccurs="1">
+      <xs:element name="occupancy" type="xs:integer" maxOccurs="1" minOccurs="1">
         <xs:annotation>
           <xs:documentation xml:lang="en">The maximum number of guests that the unit accommodates.</xs:documentation>
         </xs:annotation>
