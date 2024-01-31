@@ -311,20 +311,39 @@
   ],
   "properties": [
     {
-      "uri": "http://data.europa.eu/m8g/weightingType",
-      "name": "weightingType",
+      "uri": "http://data.europa.eu/m8g/accessibility",
+      "name": "accessibility",
       "label": {
-        "en": "weighting type"
+        "en": "accessibility"
       },
-      "sort": "weighting type",
+      "sort": "accessibility",
       "description": {
-        "en": "Indication of how the weight should be interpreted in a complex evaluation expression, e.g. as a percentage in an evaluation expression."
+        "en": "Information about how the Public Event can be approached, reached or entered, in particular for people with special needs."
       },
       "usage": {
-        "en": "An existing codelist http://publications.europa.eu/resource/authority/number-weight\nExample see: https://docs.ted.europa.eu/eforms/0.3.0/index.html#awardCriteriaSection"
+        "en": "This property may be provided in multiple languages with multiple instances of the accessibility property."
       },
       "domain": [
-        "http://data.europa.eu/m8g/Criterion"
+        "http://data.europa.eu/m8g/PublicEvent"
+      ],
+      "range": [
+        "http://www.w3.org/1999/02/22-rdf-syntax-ns#langString"
+      ],
+      "parents": []
+    },
+    {
+      "uri": "http://data.europa.eu/m8g/audience",
+      "name": "audience",
+      "label": {
+        "en": "audience"
+      },
+      "sort": "audience",
+      "description": {
+        "en": "The target group of people for whom the Public Event is created."
+      },
+      "usage": {},
+      "domain": [
+        "http://data.europa.eu/m8g/PublicEvent"
       ],
       "range": [
         "http://www.w3.org/2004/02/skos/core#Concept"
@@ -332,38 +351,17 @@
       "parents": []
     },
     {
-      "uri": "http://data.europa.eu/m8g/weightingConsiderationDescription",
-      "name": "weightingConsiderationDescription",
+      "uri": "http://data.europa.eu/m8g/bias",
+      "name": "bias",
       "label": {
-        "en": "weighting consideration description"
+        "en": "bias"
       },
-      "sort": "weighting consideration description",
+      "sort": "bias",
       "description": {
-        "en": "Explanation of how the weighting of a Criterion is to be used."
+        "en": "Parameter used to adjust the evaluation of the Criterion."
       },
       "usage": {
-        "en": "This description gives the view of the creator of the Criterion weights on how to interpret and use them during the evaluation process."
-      },
-      "domain": [
-        "http://data.europa.eu/m8g/Criterion"
-      ],
-      "range": [
-        "http://www.w3.org/2001/XMLSchema#string"
-      ],
-      "parents": []
-    },
-    {
-      "uri": "http://data.europa.eu/m8g/weight",
-      "name": "weight",
-      "label": {
-        "en": "weight"
-      },
-      "sort": "weight",
-      "description": {
-        "en": "Relative importance of the Criterion."
-      },
-      "usage": {
-        "en": "The weight must be between 0 and 1. Usually, all Criteria can be integrated within a weighted sum equal to 1."
+        "en": "The bias parameter tries to correct a systematic error. For example in procurement, a home bias corresponds to the \"presence of local preferences distorting international specialisation and resource allocation\". [https://trade.ec.europa.eu/doclib/docs/2018/september/tradoc_157319.pdf]\r\nWhen quantified, this systematic error can be removed."
       },
       "domain": [
         "http://data.europa.eu/m8g/Criterion"
@@ -374,73 +372,157 @@
       "parents": []
     },
     {
-      "uri": "http://data.europa.eu/m8g/value",
-      "name": "value",
+      "uri": "http://data.europa.eu/m8g/birthDate",
+      "name": "dateOfBirth",
       "label": {
-        "en": "value"
+        "en": "date of birth"
       },
-      "sort": "value",
+      "sort": "date of birth",
       "description": {
-        "en": "Value for the Information Concept that the Evidence supports."
-      },
-      "usage": {},
-      "domain": [
-        "http://data.europa.eu/m8g/SupportedValue"
-      ],
-      "range": [
-        "http://www.w3.org/2000/01/rdf-schema#Literal"
-      ],
-      "parents": []
-    },
-    {
-      "uri": "http://data.europa.eu/m8g/validThrough",
-      "name": "validThrough",
-      "label": {
-        "en": "valid through"
-      },
-      "sort": "valid through",
-      "description": {
-        "en": "The date after when the Opening Hours Specification is not valid."
+        "en": "The point in time on which the Person was born."
       },
       "usage": {
-        "en": "For example the end of an offer, salary period, or a period of opening hours."
+        "en": "The date of birth could be expressed as date, gYearMonth or gYear, example:\r\n<ul>\r\n<li>- 1980-09-16^^xs:date</li>\r\n<li>- 1980-09^^xs:gYearMonth</li>\r\n<li>- 1980^^xs:gYear</li>\r\n</ul>"
       },
       "domain": [
-        "http://data.europa.eu/m8g/OpeningHoursSpecification"
+        "http://www.w3.org/ns/person#Person"
       ],
       "range": [
-        "http://www.w3.org/2001/XMLSchema#dateTime"
+        "http://data.europa.eu/m8g/GenericDate"
       ],
       "parents": []
     },
     {
-      "uri": "http://data.europa.eu/m8g/validFrom",
-      "name": "validFrom",
+      "uri": "http://data.europa.eu/m8g/confidentialityLevelType",
+      "name": "confidentialityLevelType",
       "label": {
-        "en": "valid from"
+        "en": "confidentiality level type"
       },
-      "sort": "valid from",
+      "sort": "confidentiality level type",
       "description": {
-        "en": "The date when the Opening Hours Specification becomes valid."
+        "en": "Security classification assigned to an Evidence e.g. classified, sensitive, public."
+      },
+      "usage": {
+        "en": "Classifications should be defined by an organisation/country as an outcome of a security assessment."
+      },
+      "domain": [
+        "http://data.europa.eu/m8g/Evidence"
+      ],
+      "range": [
+        "http://www.w3.org/2004/02/skos/core#Concept"
+      ],
+      "parents": []
+    },
+    {
+      "uri": "http://data.europa.eu/m8g/contactPage",
+      "name": "contactPage",
+      "label": {
+        "en": "contact page"
+      },
+      "sort": "contact page",
+      "description": {
+        "en": "A web page that could be used to reach out the Contact Point."
+      },
+      "usage": {},
+      "domain": [
+        "http://data.europa.eu/m8g/ContactPoint"
+      ],
+      "range": [
+        "http://xmlns.com/foaf/0.1/Document"
+      ],
+      "parents": []
+    },
+    {
+      "uri": "http://data.europa.eu/m8g/coordinates",
+      "name": "coordinates",
+      "label": {
+        "en": "coordinates"
+      },
+      "sort": "coordinates",
+      "description": {
+        "en": "\tA list of geographic coordinates that define the extent of the Geometry."
+      },
+      "usage": {
+        "en": "Can be expressed as longitude, latitude, elevation."
+      },
+      "domain": [
+        "http://www.w3.org/ns/locn#Geometry"
+      ],
+      "range": [
+        "http://www.w3.org/2001/XMLSchema#string"
+      ],
+      "parents": []
+    },
+    {
+      "uri": "http://data.europa.eu/m8g/crs",
+      "name": "crs",
+      "label": {
+        "en": "crs"
+      },
+      "sort": "crs",
+      "description": {
+        "en": "An identifier for the coordinate reference system."
+      },
+      "usage": {
+        "en": "Can be a coordinate-based local, regional or global system used to locate geographical entities."
+      },
+      "domain": [
+        "http://www.w3.org/ns/locn#Geometry"
+      ],
+      "range": [
+        "http://www.w3.org/2001/XMLSchema#anyURI"
+      ],
+      "parents": []
+    },
+    {
+      "uri": "http://data.europa.eu/m8g/dayOfWeek",
+      "name": "dayOfWeek",
+      "label": {
+        "en": "day of week"
+      },
+      "sort": "day of week",
+      "description": {
+        "en": "The day of the week for which these opening hours are valid."
       },
       "usage": {},
       "domain": [
         "http://data.europa.eu/m8g/OpeningHoursSpecification"
       ],
       "range": [
-        "http://www.w3.org/2001/XMLSchema#dateTime"
+        "http://www.w3.org/2001/XMLSchema#anyURI"
       ],
       "parents": []
     },
     {
-      "uri": "http://data.europa.eu/m8g/telephone",
-      "name": "hasTelephone",
+      "uri": "http://data.europa.eu/m8g/deathDate",
+      "name": "dateOfDeath",
       "label": {
-        "en": "has telephone"
+        "en": "date of death"
       },
-      "sort": "has telephone",
+      "sort": "date of death",
       "description": {
-        "en": "A telephone number through which the Contact Point can be contacted."
+        "en": "The point in time on which the Person died."
+      },
+      "usage": {
+        "en": "The date of birth could be expressed as date, gYearMonth or gYear, example:\r\n<ul>\r\n<li>- 1980-09-16^^xs:date</li>\r\n<li>- 1980-09^^xs:gYearMonth</li>\r\n<li>- 1980^^xs:gYear</li>\r\n</ul>"
+      },
+      "domain": [
+        "http://www.w3.org/ns/person#Person"
+      ],
+      "range": [
+        "http://data.europa.eu/m8g/GenericDate"
+      ],
+      "parents": []
+    },
+    {
+      "uri": "http://data.europa.eu/m8g/email",
+      "name": "hasEmail",
+      "label": {
+        "en": "has email"
+      },
+      "sort": "has email",
+      "description": {
+        "en": "An electronic address through which the Contact Point can be contacted."
       },
       "usage": {},
       "domain": [
@@ -452,98 +534,20 @@
       "parents": []
     },
     {
-      "uri": "http://data.europa.eu/m8g/sex",
-      "name": "sex",
+      "uri": "http://data.europa.eu/m8g/eventNumber",
+      "name": "eventNumber",
       "label": {
-        "en": "sex"
+        "en": "event number"
       },
-      "sort": "sex",
+      "sort": "event number",
       "description": {
-        "en": "The organism's biological sex."
+        "en": "The sequence position of the Public Event."
       },
       "usage": {
-        "en": "The recommended controlled vocabulary for this property is <a href=\"https://op.europa.eu/en/web/eu-vocabularies/concept-scheme/-/resource?uri=http://publications.europa.eu/resource/authority/human-sex\">the sex authority table of the Publications Office.</a>"
+        "en": "Examples could be the ''4th\" or \"2022\"."
       },
-      "domain": [
-        "http://www.w3.org/ns/person#Person"
-      ],
-      "range": [
-        "http://www.w3.org/2004/02/skos/core#Concept"
-      ],
-      "parents": []
-    },
-    {
-      "uri": "http://data.europa.eu/m8g/role",
-      "name": "role",
-      "label": {
-        "en": "role"
-      },
-      "sort": "role",
-      "description": {
-        "en": "The function of an Agent within a Participation."
-      },
-      "usage": {},
-      "domain": [
-        "http://data.europa.eu/m8g/Participation"
-      ],
-      "range": [
-        "http://www.w3.org/2004/02/skos/core#Concept"
-      ],
-      "parents": []
-    },
-    {
-      "uri": "http://data.europa.eu/m8g/registrationPage",
-      "name": "registrationPage",
-      "label": {
-        "en": "registration page"
-      },
-      "sort": "registration page",
-      "description": {
-        "en": "A web page that provides means to attend the Public Event."
-      },
-      "usage": {},
       "domain": [
         "http://data.europa.eu/m8g/PublicEvent"
-      ],
-      "range": [
-        "http://xmlns.com/foaf/0.1/Document"
-      ],
-      "parents": []
-    },
-    {
-      "uri": "http://data.europa.eu/m8g/query",
-      "name": "query",
-      "label": {
-        "en": "query"
-      },
-      "sort": "query",
-      "description": {
-        "en": "Search statement that allows the value for the Information Concept to be retrieved from the Evidence data."
-      },
-      "usage": {
-        "en": "The query must be executed on the business data provided by the supporting Evidence. In order to be able to evaluate the query on the provided data, the format of the provided data must be aligned with the query expression. For instance if the provided data is XML, a query in XPath could be expected. This alignment is part of the implementation agreements that implementors must make."
-      },
-      "domain": [
-        "http://data.europa.eu/m8g/SupportedValue"
-      ],
-      "range": [
-        "http://www.w3.org/2000/01/rdf-schema#Literal"
-      ],
-      "parents": []
-    },
-    {
-      "uri": "http://data.europa.eu/m8g/matronymicName",
-      "name": "matronymicName",
-      "label": {
-        "en": "matronymic name"
-      },
-      "sort": "matronymic name",
-      "description": {
-        "en": "Name based on the given name of the Person's mother."
-      },
-      "usage": {},
-      "domain": [
-        "http://www.w3.org/ns/person#Person"
       ],
       "range": [
         "http://www.w3.org/1999/02/22-rdf-syntax-ns#langString"
@@ -551,100 +555,20 @@
       "parents": []
     },
     {
-      "uri": "http://data.europa.eu/m8g/longitude",
-      "name": "longitude",
+      "uri": "http://data.europa.eu/m8g/evidenceTypeClassification",
+      "name": "evidenceTypeClassication",
       "label": {
-        "en": "longitude"
+        "en": "evidence type classication"
       },
-      "sort": "longitude",
+      "sort": "evidence type classication",
       "description": {
-        "en": "The geographic coordinate that specifies the east / west position of the Geometry on the Earth's surface."
-      },
-      "usage": {},
-      "domain": [
-        "http://www.w3.org/ns/locn#Geometry"
-      ],
-      "range": [
-        "http://www.w3.org/2001/XMLSchema#string"
-      ],
-      "parents": []
-    },
-    {
-      "uri": "http://data.europa.eu/m8g/latitude",
-      "name": "latitude",
-      "label": {
-        "en": "latitude"
-      },
-      "sort": "latitude",
-      "description": {
-        "en": "The geographic coordinate that specifies the north / south position of the Geomerty on the Earth's surface."
-      },
-      "usage": {},
-      "domain": [
-        "http://www.w3.org/ns/locn#Geometry"
-      ],
-      "range": [
-        "http://www.w3.org/2001/XMLSchema#string"
-      ],
-      "parents": []
-    },
-    {
-      "uri": "http://data.europa.eu/m8g/geometryType",
-      "name": "geometryType",
-      "label": {
-        "en": "geometry type"
-      },
-      "sort": "geometry type",
-      "description": {
-        "en": "The classification of the Geometry."
+        "en": "Category to which the Evidence Type belongs."
       },
       "usage": {
-        "en": "Can be a point, line or polygon."
+        "en": "The categories agreed are left open but could for example specify the layout and content expected for an Evidence."
       },
       "domain": [
-        "http://www.w3.org/ns/locn#Geometry"
-      ],
-      "range": [
-        "http://www.w3.org/2004/02/skos/core#Concept"
-      ],
-      "parents": []
-    },
-    {
-      "uri": "http://data.europa.eu/m8g/gender",
-      "name": "gender",
-      "label": {
-        "en": "gender"
-      },
-      "sort": "gender",
-      "description": {
-        "en": "The identities, expressions and societal roles of the Person."
-      },
-      "usage": {
-        "en": "The gender of an individual should be recorded using a controlled vocabulary that is appropriate for the specific context. In some cases, the chromosomal or physical state of an individual will be more important than the gender that they express, in others the reverse will be true. What is always important is that the controlled vocabulary used to describe an individual's gender is stated explicitly."
-      },
-      "domain": [
-        "http://www.w3.org/ns/person#Person"
-      ],
-      "range": [
-        "http://www.w3.org/2004/02/skos/core#Concept"
-      ],
-      "parents": []
-    },
-    {
-      "uri": "http://data.europa.eu/m8g/format",
-      "name": "format",
-      "label": {
-        "en": "format"
-      },
-      "sort": "format",
-      "description": {
-        "en": "A plan of organisation or arrangement of the Public Event."
-      },
-      "usage": {
-        "en": "Examples include conference call, physical meeting or hybrid."
-      },
-      "domain": [
-        "http://data.europa.eu/m8g/PublicEvent"
+        "http://data.europa.eu/m8g/EvidenceType"
       ],
       "range": [
         "http://www.w3.org/2004/02/skos/core#Concept"
@@ -673,20 +597,20 @@
       "parents": []
     },
     {
-      "uri": "http://data.europa.eu/m8g/evidenceTypeClassification",
-      "name": "evidenceTypeClassication",
+      "uri": "http://data.europa.eu/m8g/format",
+      "name": "format",
       "label": {
-        "en": "evidence type classication"
+        "en": "format"
       },
-      "sort": "evidence type classication",
+      "sort": "format",
       "description": {
-        "en": "Category to which the Evidence Type belongs."
+        "en": "A plan of organisation or arrangement of the Public Event."
       },
       "usage": {
-        "en": "The categories agreed are left open but could for example specify the layout and content expected for an Evidence."
+        "en": "Examples include conference call, physical meeting or hybrid."
       },
       "domain": [
-        "http://data.europa.eu/m8g/EvidenceType"
+        "http://data.europa.eu/m8g/PublicEvent"
       ],
       "range": [
         "http://www.w3.org/2004/02/skos/core#Concept"
@@ -694,20 +618,98 @@
       "parents": []
     },
     {
-      "uri": "http://data.europa.eu/m8g/eventNumber",
-      "name": "eventNumber",
+      "uri": "http://data.europa.eu/m8g/gender",
+      "name": "gender",
       "label": {
-        "en": "event number"
+        "en": "gender"
       },
-      "sort": "event number",
+      "sort": "gender",
       "description": {
-        "en": "The sequence position of the Public Event."
+        "en": "The identities, expressions and societal roles of the Person."
       },
       "usage": {
-        "en": "Examples could be the ''4th\" or \"2022\"."
+        "en": "The gender of an individual should be recorded using a controlled vocabulary that is appropriate for the specific context. In some cases, the chromosomal or physical state of an individual will be more important than the gender that they express, in others the reverse will be true. What is always important is that the controlled vocabulary used to describe an individual's gender is stated explicitly."
       },
       "domain": [
-        "http://data.europa.eu/m8g/PublicEvent"
+        "http://www.w3.org/ns/person#Person"
+      ],
+      "range": [
+        "http://www.w3.org/2004/02/skos/core#Concept"
+      ],
+      "parents": []
+    },
+    {
+      "uri": "http://data.europa.eu/m8g/geometryType",
+      "name": "geometryType",
+      "label": {
+        "en": "geometry type"
+      },
+      "sort": "geometry type",
+      "description": {
+        "en": "The classification of the Geometry."
+      },
+      "usage": {
+        "en": "Can be a point, line or polygon."
+      },
+      "domain": [
+        "http://www.w3.org/ns/locn#Geometry"
+      ],
+      "range": [
+        "http://www.w3.org/2004/02/skos/core#Concept"
+      ],
+      "parents": []
+    },
+    {
+      "uri": "http://data.europa.eu/m8g/latitude",
+      "name": "latitude",
+      "label": {
+        "en": "latitude"
+      },
+      "sort": "latitude",
+      "description": {
+        "en": "The geographic coordinate that specifies the north / south position of the Geomerty on the Earth's surface."
+      },
+      "usage": {},
+      "domain": [
+        "http://www.w3.org/ns/locn#Geometry"
+      ],
+      "range": [
+        "http://www.w3.org/2001/XMLSchema#string"
+      ],
+      "parents": []
+    },
+    {
+      "uri": "http://data.europa.eu/m8g/longitude",
+      "name": "longitude",
+      "label": {
+        "en": "longitude"
+      },
+      "sort": "longitude",
+      "description": {
+        "en": "The geographic coordinate that specifies the east / west position of the Geometry on the Earth's surface."
+      },
+      "usage": {},
+      "domain": [
+        "http://www.w3.org/ns/locn#Geometry"
+      ],
+      "range": [
+        "http://www.w3.org/2001/XMLSchema#string"
+      ],
+      "parents": []
+    },
+    {
+      "uri": "http://data.europa.eu/m8g/matronymicName",
+      "name": "matronymicName",
+      "label": {
+        "en": "matronymic name"
+      },
+      "sort": "matronymic name",
+      "description": {
+        "en": "Name based on the given name of the Person's mother."
+      },
+      "usage": {},
+      "domain": [
+        "http://www.w3.org/ns/person#Person"
       ],
       "range": [
         "http://www.w3.org/1999/02/22-rdf-syntax-ns#langString"
@@ -715,14 +717,94 @@
       "parents": []
     },
     {
-      "uri": "http://data.europa.eu/m8g/email",
-      "name": "hasEmail",
+      "uri": "http://data.europa.eu/m8g/query",
+      "name": "query",
       "label": {
-        "en": "has email"
+        "en": "query"
       },
-      "sort": "has email",
+      "sort": "query",
       "description": {
-        "en": "An electronic address through which the Contact Point can be contacted."
+        "en": "Search statement that allows the value for the Information Concept to be retrieved from the Evidence data."
+      },
+      "usage": {
+        "en": "The query must be executed on the business data provided by the supporting Evidence. In order to be able to evaluate the query on the provided data, the format of the provided data must be aligned with the query expression. For instance if the provided data is XML, a query in XPath could be expected. This alignment is part of the implementation agreements that implementors must make."
+      },
+      "domain": [
+        "http://data.europa.eu/m8g/SupportedValue"
+      ],
+      "range": [
+        "http://www.w3.org/2000/01/rdf-schema#Literal"
+      ],
+      "parents": []
+    },
+    {
+      "uri": "http://data.europa.eu/m8g/registrationPage",
+      "name": "registrationPage",
+      "label": {
+        "en": "registration page"
+      },
+      "sort": "registration page",
+      "description": {
+        "en": "A web page that provides means to attend the Public Event."
+      },
+      "usage": {},
+      "domain": [
+        "http://data.europa.eu/m8g/PublicEvent"
+      ],
+      "range": [
+        "http://xmlns.com/foaf/0.1/Document"
+      ],
+      "parents": []
+    },
+    {
+      "uri": "http://data.europa.eu/m8g/role",
+      "name": "role",
+      "label": {
+        "en": "role"
+      },
+      "sort": "role",
+      "description": {
+        "en": "The function of an Agent within a Participation."
+      },
+      "usage": {},
+      "domain": [
+        "http://data.europa.eu/m8g/Participation"
+      ],
+      "range": [
+        "http://www.w3.org/2004/02/skos/core#Concept"
+      ],
+      "parents": []
+    },
+    {
+      "uri": "http://data.europa.eu/m8g/sex",
+      "name": "sex",
+      "label": {
+        "en": "sex"
+      },
+      "sort": "sex",
+      "description": {
+        "en": "The organism's biological sex."
+      },
+      "usage": {
+        "en": "The recommended controlled vocabulary for this property is <a href=\"https://op.europa.eu/en/web/eu-vocabularies/concept-scheme/-/resource?uri=http://publications.europa.eu/resource/authority/human-sex\">the sex authority table of the Publications Office.</a>"
+      },
+      "domain": [
+        "http://www.w3.org/ns/person#Person"
+      ],
+      "range": [
+        "http://www.w3.org/2004/02/skos/core#Concept"
+      ],
+      "parents": []
+    },
+    {
+      "uri": "http://data.europa.eu/m8g/telephone",
+      "name": "hasTelephone",
+      "label": {
+        "en": "has telephone"
+      },
+      "sort": "has telephone",
+      "description": {
+        "en": "A telephone number through which the Contact Point can be contacted."
       },
       "usage": {},
       "domain": [
@@ -734,160 +816,76 @@
       "parents": []
     },
     {
-      "uri": "http://data.europa.eu/m8g/deathDate",
-      "name": "dateOfDeath",
+      "uri": "http://data.europa.eu/m8g/validFrom",
+      "name": "validFrom",
       "label": {
-        "en": "date of death"
+        "en": "valid from"
       },
-      "sort": "date of death",
+      "sort": "valid from",
       "description": {
-        "en": "The point in time on which the Person died."
-      },
-      "usage": {
-        "en": "The date of birth could be expressed as date, gYearMonth or gYear, example:\r\n<ul>\r\n<li>- 1980-09-16^^xs:date</li>\r\n<li>- 1980-09^^xs:gYearMonth</li>\r\n<li>- 1980^^xs:gYear</li>\r\n</ul>"
-      },
-      "domain": [
-        "http://www.w3.org/ns/person#Person"
-      ],
-      "range": [
-        "http://data.europa.eu/m8g/GenericDate"
-      ],
-      "parents": []
-    },
-    {
-      "uri": "http://data.europa.eu/m8g/dayOfWeek",
-      "name": "dayOfWeek",
-      "label": {
-        "en": "day of week"
-      },
-      "sort": "day of week",
-      "description": {
-        "en": "The day of the week for which these opening hours are valid."
+        "en": "The date when the Opening Hours Specification becomes valid."
       },
       "usage": {},
       "domain": [
         "http://data.europa.eu/m8g/OpeningHoursSpecification"
       ],
       "range": [
-        "http://www.w3.org/2001/XMLSchema#anyURI"
+        "http://www.w3.org/2001/XMLSchema#dateTime"
       ],
       "parents": []
     },
     {
-      "uri": "http://data.europa.eu/m8g/crs",
-      "name": "crs",
+      "uri": "http://data.europa.eu/m8g/validThrough",
+      "name": "validThrough",
       "label": {
-        "en": "crs"
+        "en": "valid through"
       },
-      "sort": "crs",
+      "sort": "valid through",
       "description": {
-        "en": "An identifier for the coordinate reference system."
+        "en": "The date after when the Opening Hours Specification is not valid."
       },
       "usage": {
-        "en": "Can be a coordinate-based local, regional or global system used to locate geographical entities."
+        "en": "For example the end of an offer, salary period, or a period of opening hours."
       },
       "domain": [
-        "http://www.w3.org/ns/locn#Geometry"
+        "http://data.europa.eu/m8g/OpeningHoursSpecification"
       ],
       "range": [
-        "http://www.w3.org/2001/XMLSchema#anyURI"
+        "http://www.w3.org/2001/XMLSchema#dateTime"
       ],
       "parents": []
     },
     {
-      "uri": "http://data.europa.eu/m8g/coordinates",
-      "name": "coordinates",
+      "uri": "http://data.europa.eu/m8g/value",
+      "name": "value",
       "label": {
-        "en": "coordinates"
+        "en": "value"
       },
-      "sort": "coordinates",
+      "sort": "value",
       "description": {
-        "en": "\tA list of geographic coordinates that define the extent of the Geometry."
-      },
-      "usage": {
-        "en": "Can be expressed as longitude, latitude, elevation."
-      },
-      "domain": [
-        "http://www.w3.org/ns/locn#Geometry"
-      ],
-      "range": [
-        "http://www.w3.org/2001/XMLSchema#string"
-      ],
-      "parents": []
-    },
-    {
-      "uri": "http://data.europa.eu/m8g/contactPage",
-      "name": "contactPage",
-      "label": {
-        "en": "contact page"
-      },
-      "sort": "contact page",
-      "description": {
-        "en": "A web page that could be used to reach out the Contact Point."
+        "en": "Value for the Information Concept that the Evidence supports."
       },
       "usage": {},
       "domain": [
-        "http://data.europa.eu/m8g/ContactPoint"
+        "http://data.europa.eu/m8g/SupportedValue"
       ],
       "range": [
-        "http://xmlns.com/foaf/0.1/Document"
+        "http://www.w3.org/2000/01/rdf-schema#Literal"
       ],
       "parents": []
     },
     {
-      "uri": "http://data.europa.eu/m8g/confidentialityLevelType",
-      "name": "confidentialityLevelType",
+      "uri": "http://data.europa.eu/m8g/weight",
+      "name": "weight",
       "label": {
-        "en": "confidentiality level type"
+        "en": "weight"
       },
-      "sort": "confidentiality level type",
+      "sort": "weight",
       "description": {
-        "en": "Security classification assigned to an Evidence e.g. classified, sensitive, public."
+        "en": "Relative importance of the Criterion."
       },
       "usage": {
-        "en": "Classifications should be defined by an organisation/country as an outcome of a security assessment."
-      },
-      "domain": [
-        "http://data.europa.eu/m8g/Evidence"
-      ],
-      "range": [
-        "http://www.w3.org/2004/02/skos/core#Concept"
-      ],
-      "parents": []
-    },
-    {
-      "uri": "http://data.europa.eu/m8g/birthDate",
-      "name": "dateOfBirth",
-      "label": {
-        "en": "date of birth"
-      },
-      "sort": "date of birth",
-      "description": {
-        "en": "The point in time on which the Person was born."
-      },
-      "usage": {
-        "en": "The date of birth could be expressed as date, gYearMonth or gYear, example:\r\n<ul>\r\n<li>- 1980-09-16^^xs:date</li>\r\n<li>- 1980-09^^xs:gYearMonth</li>\r\n<li>- 1980^^xs:gYear</li>\r\n</ul>"
-      },
-      "domain": [
-        "http://www.w3.org/ns/person#Person"
-      ],
-      "range": [
-        "http://data.europa.eu/m8g/GenericDate"
-      ],
-      "parents": []
-    },
-    {
-      "uri": "http://data.europa.eu/m8g/bias",
-      "name": "bias",
-      "label": {
-        "en": "bias"
-      },
-      "sort": "bias",
-      "description": {
-        "en": "Parameter used to adjust the evaluation of the Criterion."
-      },
-      "usage": {
-        "en": "The bias parameter tries to correct a systematic error. For example in procurement, a home bias corresponds to the \"presence of local preferences distorting international specialisation and resource allocation\". [https://trade.ec.europa.eu/doclib/docs/2018/september/tradoc_157319.pdf]\r\nWhen quantified, this systematic error can be removed."
+        "en": "The weight must be between 0 and 1. Usually, all Criteria can be integrated within a weighted sum equal to 1."
       },
       "domain": [
         "http://data.europa.eu/m8g/Criterion"
@@ -898,42 +896,44 @@
       "parents": []
     },
     {
-      "uri": "http://data.europa.eu/m8g/audience",
-      "name": "audience",
+      "uri": "http://data.europa.eu/m8g/weightingConsiderationDescription",
+      "name": "weightingConsiderationDescription",
       "label": {
-        "en": "audience"
+        "en": "weighting consideration description"
       },
-      "sort": "audience",
+      "sort": "weighting consideration description",
       "description": {
-        "en": "The target group of people for whom the Public Event is created."
+        "en": "Explanation of how the weighting of a Criterion is to be used."
       },
-      "usage": {},
+      "usage": {
+        "en": "This description gives the view of the creator of the Criterion weights on how to interpret and use them during the evaluation process."
+      },
       "domain": [
-        "http://data.europa.eu/m8g/PublicEvent"
+        "http://data.europa.eu/m8g/Criterion"
       ],
       "range": [
-        "http://www.w3.org/2004/02/skos/core#Concept"
+        "http://www.w3.org/2001/XMLSchema#string"
       ],
       "parents": []
     },
     {
-      "uri": "http://data.europa.eu/m8g/accessibility",
-      "name": "accessibility",
+      "uri": "http://data.europa.eu/m8g/weightingType",
+      "name": "weightingType",
       "label": {
-        "en": "accessibility"
+        "en": "weighting type"
       },
-      "sort": "accessibility",
+      "sort": "weighting type",
       "description": {
-        "en": "Information about how the Public Event can be approached, reached or entered, in particular for people with special needs."
+        "en": "Indication of how the weight should be interpreted in a complex evaluation expression, e.g. as a percentage in an evaluation expression."
       },
       "usage": {
-        "en": "This property may be provided in multiple languages with multiple instances of the accessibility property."
+        "en": "An existing codelist http://publications.europa.eu/resource/authority/number-weight\nExample see: https://docs.ted.europa.eu/eforms/0.3.0/index.html#awardCriteriaSection"
       },
       "domain": [
-        "http://data.europa.eu/m8g/PublicEvent"
+        "http://data.europa.eu/m8g/Criterion"
       ],
       "range": [
-        "http://www.w3.org/1999/02/22-rdf-syntax-ns#langString"
+        "http://www.w3.org/2004/02/skos/core#Concept"
       ],
       "parents": []
     }
@@ -946,40 +946,8 @@
     },
     {
       "role": "E",
-      "first_name": "Bert",
-      "last_name": "Van Nuffelen",
-      "affiliation": {
-        "name": "TenForce"
-      }
-    },
-    {
-      "role": "E",
-      "first_name": "Emidio",
-      "last_name": "Stani",
-      "affiliation": {
-        "name": "PwC EU Services"
-      }
-    },
-    {
-      "role": "E",
-      "first_name": "Dimitri",
-      "last_name": "Schepers",
-      "affiliation": {
-        "name": "PwC EU Services"
-      }
-    },
-    {
-      "role": "E",
-      "first_name": "Pavlina",
-      "last_name": "Fragkou",
-      "affiliation": {
-        "name": "European Commission"
-      }
-    },
-    {
-      "role": "E",
-      "first_name": "Michiel",
-      "last_name": "De Keyzer",
+      "first_name": "Florian",
+      "last_name": "Barthelemy",
       "affiliation": {
         "name": "PwC EU Services"
       }
@@ -994,10 +962,42 @@
     },
     {
       "role": "E",
-      "first_name": "Florian",
-      "last_name": "Barthelemy",
+      "first_name": "Michiel",
+      "last_name": "De Keyzer",
       "affiliation": {
         "name": "PwC EU Services"
+      }
+    },
+    {
+      "role": "E",
+      "first_name": "Pavlina",
+      "last_name": "Fragkou",
+      "affiliation": {
+        "name": "European Commission"
+      }
+    },
+    {
+      "role": "E",
+      "first_name": "Dimitri",
+      "last_name": "Schepers",
+      "affiliation": {
+        "name": "PwC EU Services"
+      }
+    },
+    {
+      "role": "E",
+      "first_name": "Emidio",
+      "last_name": "Stani",
+      "affiliation": {
+        "name": "PwC EU Services"
+      }
+    },
+    {
+      "role": "E",
+      "first_name": "Bert",
+      "last_name": "Van Nuffelen",
+      "affiliation": {
+        "name": "TenForce"
       }
     },
     {
@@ -1011,472 +1011,390 @@
   ],
   "external_terms": [
     {
-      "uri": "http://xmlns.com/foaf/0.1/name",
-      "name": "name",
+      "uri": "http://data.europa.eu/m8g/contactPoint",
+      "name": "contactPoint",
       "label": {
-        "en": "name"
+        "en": "contact point"
       },
       "description": {
-        "en": "This property represents the Name (or title) of the Event."
-      },
-      "usage": {},
-      "sort": "name",
-      "inscope": true,
-      "indvl": false,
-      "inpackage": false,
-      "show": true
-    },
-    {
-      "uri": "http://xmlns.com/foaf/0.1/homepage",
-      "name": "homepage",
-      "label": {
-        "en": "homepage"
-      },
-      "description": {
-        "en": "The website of the Public Event."
+        "en": "The main contact information of the resource."
       },
       "usage": {
-        "en": "The value of this property is a URL."
+        "en": "Usually a phone number and e-mail address. Other contact methods may be included, including online contact information, but this is conceptually distinct from the organization's homepage that may or may not provide contact information."
       },
-      "sort": "homepage",
+      "sort": "contact point",
       "inscope": true,
       "indvl": false,
       "inpackage": false,
       "show": true
     },
     {
-      "uri": "http://www.w3.org/ns/org#purpose",
-      "name": "purpose",
+      "uri": "http://data.europa.eu/m8g/contactPoint",
+      "name": "contactPoint",
       "label": {
-        "en": "purpose"
+        "en": "contact point"
       },
       "description": {
-        "en": "This property describes the reasons of existence of an Organization."
+        "en": "The main contact information of the resource."
       },
       "usage": {
-        "en": "The ORG ontology suggests that this property can also be thought of as meaning 'remit' or 'responsibility.' Ideally this will link to a COFOG code but where this isn't possible or appropriate, other controlled vocabularies may be used."
+        "en": "Usually a phone number and e-mail address. Other contact methods may be included, including online contact information, but this is conceptually distinct from the organization's homepage that may or may not provide contact information."
       },
-      "sort": "purpose",
+      "sort": "contact point",
       "inscope": true,
       "indvl": false,
       "inpackage": false,
       "show": true
     },
     {
-      "uri": "http://www.w3.org/ns/org#memberOf",
-      "name": "memberOf",
+      "uri": "http://data.europa.eu/m8g/domicile",
+      "name": "domicile",
       "label": {
-        "en": "member of"
+        "en": "domicile"
       },
       "description": {
-        "en": "An Organization of which the Public Organisation is a member without being a sub organization, they are independent entities."
+        "en": "The place that the Person treats as permanent home."
+      },
+      "usage": {},
+      "sort": "domicile",
+      "inscope": true,
+      "indvl": false,
+      "inpackage": false,
+      "show": true
+    },
+    {
+      "uri": "http://data.europa.eu/m8g/hasConcept",
+      "name": "hasConcept",
+      "label": {
+        "en": "has concept"
+      },
+      "description": {
+        "en": "Information Concept for which a value is expected by the Requirement."
       },
       "usage": {
-        "en": "The memberOf and hasMember properties are very simple and don't support statements describing the nature of the membership. The <a href=\"https://www.w3.org/TR/vocab-org/\">W3C Organization Ontology</a> provides both this simple method and a more sophisticated model that does make it possible to, for example, provide information about the period of time in which one Organization was a member of another, the level of membership etc. That more sophisticated model should be used where necessary and may be used in addition to the simple memberOf/hasMember properties.\r\n\r\nAn example of memberships are the EU member states and other partners which could be represented via different legal entities as members of EFSA, the <a href=\"https://www.efsa.europa.eu/en/partnersnetworks/euinstitutions\"> European Food Safety Agency</a>"
+        "en": "Information Concepts defined for specific Requirements also represent the basis for specifying the Supported Value an Evidence should provide."
       },
-      "sort": "member of",
+      "sort": "has concept",
       "inscope": true,
       "indvl": false,
       "inpackage": false,
       "show": true
     },
     {
-      "uri": "http://www.w3.org/ns/org#identifier",
-      "name": "identifier",
+      "uri": "http://data.europa.eu/m8g/hasEvidenceTypeList",
+      "name": "hasEvidenceTypeList",
       "label": {
-        "en": "identifier"
+        "en": "has evidence type list"
       },
       "description": {
-        "en": "This property represents an Identifier for the Event."
-      },
-      "usage": {},
-      "sort": "identifier",
-      "inscope": true,
-      "indvl": false,
-      "inpackage": false,
-      "show": true
-    },
-    {
-      "uri": "http://www.w3.org/ns/org#identifier",
-      "name": "identifier",
-      "label": {
-        "en": "identifier"
-      },
-      "description": {
-        "en": "The unambiguous structured reference for the Participation."
-      },
-      "usage": {},
-      "sort": "identifier",
-      "inscope": true,
-      "indvl": false,
-      "inpackage": false,
-      "show": true
-    },
-    {
-      "uri": "http://www.w3.org/ns/org#hasMember",
-      "name": "hasMember",
-      "label": {
-        "en": "has member"
-      },
-      "description": {
-        "en": "An Organization which is a member of another without being a sub organization, they are independent entities."
+        "en": "Evidence Type List that specifies the Evidence Types that are needed to meet the Requirement."
       },
       "usage": {
-        "en": "The memberOf and hasMember properties are very simple and don't support statements describing the nature of the membership. The <a href=\"https://www.w3.org/TR/vocab-org/\">W3C Organization Ontology</a> provides both this simple method and a more sophisticated model that does make it possible to, for example, provide information about the period of time in which one Organization was a member of another, the level of membership etc. That more sophisticated model should be used where necessary and may be used in addition to the simple memberOf/hasMember properties.\r\n\r\nAn example of memberships are the EU member states and other partners which could be represented via different legal entities as members of EFSA, the <a href=\"https://www.efsa.europa.eu/en/partnersnetworks/euinstitutions\">European Food Safety Agency</a>"
+        "en": "One or several Lists of Evidence Types can support a Requirement. At least  one of them must be satisfied by the response to the Requirement."
       },
-      "sort": "has member",
+      "sort": "has evidence type list",
       "inscope": true,
       "indvl": false,
       "inpackage": false,
       "show": true
     },
     {
-      "uri": "http://www.w3.org/ns/org#classification",
-      "name": "classification",
+      "uri": "http://data.europa.eu/m8g/hasFormalFramework",
+      "name": "hasFormalFramework",
       "label": {
-        "en": "classification"
+        "en": "has formal framework"
       },
       "description": {
-        "en": "The categorisation of the Public Organization."
+        "en": "A piece of legislation or a policy document that prompted the change."
       },
       "usage": {
-        "en": "As an example, the Publications Office of the European Union provides a Named Authority list of Organization Types which is appropriate for European institutions. Other classification schemes should be used at other levels of Public Organization."
+        "en": "The property hasFormalFramework links a Change Event or Foundation Event to a piece of legislation or a policy document that prompted the change."
       },
-      "sort": "classification",
+      "sort": "has formal framework",
       "inscope": true,
       "indvl": false,
       "inpackage": false,
       "show": true
     },
     {
-      "uri": "http://www.w3.org/2004/02/skos/core#prefLabel",
-      "name": "preferredLabel",
+      "uri": "http://data.europa.eu/m8g/hasNextEvent",
+      "name": "hasNextEvent",
       "label": {
-        "en": "preferred label"
+        "en": "has next event"
       },
       "description": {
-        "en": "A preferred label is used to provide the primary, legally recognised name of the Public Organization, as defined in the ORG Ontology."
+        "en": "The Public Event that comes after this one."
+      },
+      "usage": {},
+      "sort": "has next event",
+      "inscope": true,
+      "indvl": false,
+      "inpackage": false,
+      "show": true
+    },
+    {
+      "uri": "http://data.europa.eu/m8g/hasParticipation",
+      "name": "hasParticipation",
+      "label": {
+        "en": "has participation"
+      },
+      "description": {
+        "en": "The way how a resource is organized."
+      },
+      "usage": {},
+      "sort": "has participation",
+      "inscope": true,
+      "indvl": false,
+      "inpackage": false,
+      "show": true
+    },
+    {
+      "uri": "http://data.europa.eu/m8g/hasPreviousEvent",
+      "name": "hasPreviousEvent",
+      "label": {
+        "en": "has previous event"
+      },
+      "description": {
+        "en": "The Public Event that comes before this one."
+      },
+      "usage": {},
+      "sort": "has previous event",
+      "inscope": true,
+      "indvl": false,
+      "inpackage": false,
+      "show": true
+    },
+    {
+      "uri": "http://data.europa.eu/m8g/hasQualifiedRelation",
+      "name": "hasQualifiedRelation",
+      "label": {
+        "en": "has qualified relation"
+      },
+      "description": {
+        "en": "Described and/or categorised relation to another Requirement."
       },
       "usage": {
-        "en": "Refers to the official or legal name of a Public Organization. An organization may only have one such name in any given language. Primary names may be provided in multiple languages with multiple instances of the preferred label property."
+        "en": "This property leaves the possiblity to define a qualified relation from Requirement to Information Requirement or Constraint as well as a qualified relation from Requirement to Requirement.  A use case would be to specialize an EU requirement in Member States' specific requirements."
       },
-      "sort": "preferred label",
+      "sort": "has qualified relation",
       "inscope": true,
       "indvl": false,
       "inpackage": false,
       "show": true
     },
     {
-      "uri": "http://www.w3.org/2004/02/skos/core#prefLabel",
-      "name": "name",
+      "uri": "http://data.europa.eu/m8g/hasRequirement",
+      "name": "hasRequirement",
       "label": {
-        "en": "name"
+        "en": "has requirement"
       },
       "description": {
-        "en": "Name of the Evidence Type List."
+        "en": "A more specific Requirement that is part of the Requirement."
       },
       "usage": {},
-      "sort": "name",
+      "sort": "has requirement",
       "inscope": true,
       "indvl": false,
       "inpackage": false,
       "show": true
     },
     {
-      "uri": "http://www.w3.org/2004/02/skos/core#prefLabel",
-      "name": "name",
+      "uri": "http://data.europa.eu/m8g/hasSupportingEvidence",
+      "name": "hasSupportingEvidence",
       "label": {
-        "en": "name"
+        "en": "has supporting evidence"
       },
       "description": {
-        "en": "Name of the Information Concept."
+        "en": "Evidence that supplies information, proof or support for the Requirement."
       },
       "usage": {},
-      "sort": "name",
+      "sort": "has supporting evidence",
       "inscope": true,
       "indvl": false,
       "inpackage": false,
       "show": true
     },
     {
-      "uri": "http://www.w3.org/2004/02/skos/core#prefLabel",
-      "name": "name",
+      "uri": "http://data.europa.eu/m8g/isDerivedFrom",
+      "name": "isDerivedFrom",
       "label": {
-        "en": "name"
+        "en": "is derived from"
       },
       "description": {
-        "en": "Name of the Requirement."
-      },
-      "usage": {},
-      "sort": "name",
-      "inscope": true,
-      "indvl": false,
-      "inpackage": false,
-      "show": true
-    },
-    {
-      "uri": "http://www.w3.org/2004/02/skos/core#altLabel",
-      "name": "alternativeLabel",
-      "label": {
-        "en": "alternative label"
-      },
-      "description": {
-        "en": "An alternative or informal name(s) of a Public Organization, irrespective of language."
-      },
-      "usage": {},
-      "sort": "alternative label",
-      "inscope": true,
-      "indvl": false,
-      "inpackage": false,
-      "show": true
-    },
-    {
-      "uri": "http://www.w3.org/1999/xhtml/vocab#prev",
-      "name": "prev",
-      "label": {
-        "en": "prev"
-      },
-      "description": {
-        "en": "In some cases, it is necessary to be able to create an ordered sequence of an organization that precede and succeed each other. To support this, the CPOV includes the well-known relationships of previous and next to allow such sequences to be captured and computed"
+        "en": "Reference Framework on which the Requirement is based, such as a law or regulation."
       },
       "usage": {
-        "en": "Examples of events leading to sequences could be renaming, splitting or merging of public organizations."
+        "en": "Note that a Requirement can have several Reference Frameworks from which it is derived."
       },
-      "sort": "prev",
+      "sort": "is derived from",
       "inscope": true,
       "indvl": false,
       "inpackage": false,
       "show": true
     },
     {
-      "uri": "http://www.w3.org/1999/xhtml/vocab#next",
-      "name": "next",
+      "uri": "http://data.europa.eu/m8g/isRequirementOf",
+      "name": "isRequirementOf",
       "label": {
-        "en": "next"
+        "en": "is requirement of"
       },
       "description": {
-        "en": "In some cases, it is necessary to be able to create an ordered sequence of organizations that precede and succeed each other. To support this, the CPOV includes the well-known relationships of previous and next to allow such sequences to be captured and computed."
+        "en": "A reference between a sub-Requirement and its parent Requirement."
       },
       "usage": {
-        "en": "Examples of events leading to sequences could be renaming, splitting or merging of public organizations."
+        "en": "\"The relation between a parent Requirement and a sub-Requirement can be complex. Therefore, qualified relations can be used to represent this relationship on its own and qualify it with additional information such as a date, a place. This is left to implementers.\n\nIn the case where the purpose is to link the two Requirements without additional information, the simple relationship as proposed here can be directly used.\""
       },
-      "sort": "next",
+      "sort": "is requirement of",
       "inscope": true,
       "indvl": false,
       "inpackage": false,
       "show": true
     },
     {
-      "uri": "http://purl.org/dc/terms/type",
-      "name": "type",
+      "uri": "http://data.europa.eu/m8g/isSpecifiedIn",
+      "name": "isSpecifiedIn",
       "label": {
-        "en": "type"
+        "en": "is specified in"
       },
       "description": {
-        "en": "The type property links an Event to a controlled vocabulary of event types and it is the nature of those controlled vocabularies that is the major difference between a business event, such as creating the business in the first place and a life event, such as the birth of a child."
+        "en": "Evidence Type List in which the Evidence Type is included."
       },
       "usage": {},
-      "sort": "type",
+      "sort": "is specified in",
       "inscope": true,
       "indvl": false,
       "inpackage": false,
       "show": true
     },
     {
-      "uri": "http://purl.org/dc/terms/type",
-      "name": "type",
+      "uri": "http://data.europa.eu/m8g/logo",
+      "name": "logo",
       "label": {
-        "en": "type"
+        "en": "logo"
       },
       "description": {
-        "en": "Category to which the Information Concept belongs."
-      },
-      "usage": {},
-      "sort": "type",
-      "inscope": true,
-      "indvl": false,
-      "inpackage": false,
-      "show": true
-    },
-    {
-      "uri": "http://purl.org/dc/terms/type",
-      "name": "type",
-      "label": {
-        "en": "type"
-      },
-      "description": {
-        "en": "Category to which the Requirement belongs."
-      },
-      "usage": {},
-      "sort": "type",
-      "inscope": true,
-      "indvl": false,
-      "inpackage": false,
-      "show": true
-    },
-    {
-      "uri": "http://purl.org/dc/terms/type",
-      "name": "eventType",
-      "label": {
-        "en": "event type"
-      },
-      "description": {
-        "en": "The nature or genre of the Public Event."
+        "en": "A graphic symbol to represent the Public Oorganization."
       },
       "usage": {
-        "en": "Examples include festivals, conferences, city council meetings and public consultations. The eventType property links the event to a SKOS Concept that provides a classification.\r\n\r\nAn existing classification from Publications Office could be used, see <a href=\"\r\nhttps://op.europa.eu/en/web/eu-vocabularies/dataset/-/resource?uri=http://publications.europa.eu/resource/dataset/public-event-type\">Public Event Type</a>."
+        "en": "The value of this property can simply be the URL of the logo but it is better for developers if it links to an object that provides the URL of the image and essential metadata about it, notably its dimensions."
       },
-      "sort": "event type",
+      "sort": "logo",
       "inscope": true,
       "indvl": false,
       "inpackage": false,
       "show": true
     },
     {
-      "uri": "http://purl.org/dc/terms/title",
-      "name": "title",
+      "uri": "http://data.europa.eu/m8g/parentEvent",
+      "name": "parentEvent",
       "label": {
-        "en": "title"
+        "en": "parent event"
       },
       "description": {
-        "en": "The name given to the Public Event."
+        "en": "A relation to another Public Event that encompasses it."
+      },
+      "usage": {},
+      "sort": "parent event",
+      "inscope": true,
+      "indvl": false,
+      "inpackage": false,
+      "show": true
+    },
+    {
+      "uri": "http://data.europa.eu/m8g/specifiesEvidenceType",
+      "name": "evidenceTypeListInWhichTheEvidenceTypeIsIncluded.",
+      "label": {
+        "en": "Evidence Type List in which the Evidence Type is included."
+      },
+      "description": {
+        "en": "Evidence Type included in this Evidence Type List."
+      },
+      "usage": {},
+      "sort": "Evidence Type List in which the Evidence Type is included.",
+      "inscope": true,
+      "indvl": false,
+      "inpackage": false,
+      "show": true
+    },
+    {
+      "uri": "http://data.europa.eu/m8g/subEvent",
+      "name": "subEvent",
+      "label": {
+        "en": "sub event"
+      },
+      "description": {
+        "en": "A relation towards another Public Event that belong to it."
+      },
+      "usage": {},
+      "sort": "sub event",
+      "inscope": true,
+      "indvl": false,
+      "inpackage": false,
+      "show": true
+    },
+    {
+      "uri": "http://data.europa.eu/m8g/supportsConcept",
+      "name": "supportsConcept",
+      "label": {
+        "en": "supports concept"
+      },
+      "description": {
+        "en": "Information Concept providing facts found/inferred from the Evidence."
       },
       "usage": {
-        "en": "Titles may be provided in multiple languages with multiple instances of the title property."
+        "en": "Examples of Information Concepts are values found explictly in the evidence such as a birth date or information derived from the Evidence such as \"I am older that 18 years\"."
       },
-      "sort": "title",
+      "sort": "supports concept",
       "inscope": true,
       "indvl": false,
       "inpackage": false,
       "show": true
     },
     {
-      "uri": "http://purl.org/dc/terms/subject",
-      "name": "topic",
+      "uri": "http://data.europa.eu/m8g/supportsRequirement",
+      "name": "supportsRequirement",
       "label": {
-        "en": "topic"
+        "en": "supports requirement"
       },
       "description": {
-        "en": "The subject of the Public Event."
+        "en": "Requirement for which the Evidence provides proof."
+      },
+      "usage": {},
+      "sort": "supports requirement",
+      "inscope": true,
+      "indvl": false,
+      "inpackage": false,
+      "show": true
+    },
+    {
+      "uri": "http://data.europa.eu/m8g/supportsValue",
+      "name": "supportsValue",
+      "label": {
+        "en": "supports value"
+      },
+      "description": {
+        "en": "Supported Value that the Evidence contains."
+      },
+      "usage": {},
+      "sort": "supports value",
+      "inscope": true,
+      "indvl": false,
+      "inpackage": false,
+      "show": true
+    },
+    {
+      "uri": "http://purl.org/dc/terms/conformsTo",
+      "name": "isConformantTo",
+      "label": {
+        "en": "is conformant to"
+      },
+      "description": {
+        "en": "Evidence Type that specifies characteristics of the Evidence."
       },
       "usage": {
-        "en": "Examples include culture, sport or tourism."
+        "en": "Examples of characteristics could be the layout or the configuration of the Evidence."
       },
-      "sort": "topic",
-      "inscope": true,
-      "indvl": false,
-      "inpackage": false,
-      "show": true
-    },
-    {
-      "uri": "http://purl.org/dc/terms/language",
-      "name": "language",
-      "label": {
-        "en": "language"
-      },
-      "description": {
-        "en": "The language in which the Public Event is given."
-      },
-      "usage": {
-        "en": "The recommended controlled vocabularies for this property is the <a href=\" https://op.europa.eu/en/web/eu-vocabularies/concept-scheme/-/resource?uri=http://publications.europa.eu/resource/authority/language\">Language</a> Authority Table of the Publications Office."
-      },
-      "sort": "language",
-      "inscope": true,
-      "indvl": false,
-      "inpackage": false,
-      "show": true
-    },
-    {
-      "uri": "http://purl.org/dc/terms/identifier",
-      "name": "identifier",
-      "label": {
-        "en": "identifier"
-      },
-      "description": {
-        "en": "Unambiguous reference to the Evidence Type."
-      },
-      "usage": {},
-      "sort": "identifier",
-      "inscope": true,
-      "indvl": false,
-      "inpackage": false,
-      "show": true
-    },
-    {
-      "uri": "http://purl.org/dc/terms/identifier",
-      "name": "identifier",
-      "label": {
-        "en": "identifier"
-      },
-      "description": {
-        "en": "Unambiguous reference to the Evidence Type List."
-      },
-      "usage": {},
-      "sort": "identifier",
-      "inscope": true,
-      "indvl": false,
-      "inpackage": false,
-      "show": true
-    },
-    {
-      "uri": "http://purl.org/dc/terms/identifier",
-      "name": "identifier",
-      "label": {
-        "en": "identifier"
-      },
-      "description": {
-        "en": "Unambiguous reference to the Information Concept."
-      },
-      "usage": {},
-      "sort": "identifier",
-      "inscope": true,
-      "indvl": false,
-      "inpackage": false,
-      "show": true
-    },
-    {
-      "uri": "http://purl.org/dc/terms/identifier",
-      "name": "identifier",
-      "label": {
-        "en": "identifier"
-      },
-      "description": {
-        "en": "An unambiguous reference to a Reference Framework."
-      },
-      "usage": {},
-      "sort": "identifier",
-      "inscope": true,
-      "indvl": false,
-      "inpackage": false,
-      "show": true
-    },
-    {
-      "uri": "http://purl.org/dc/terms/identifier",
-      "name": "identifier",
-      "label": {
-        "en": "identifier"
-      },
-      "description": {
-        "en": "Unambiguous reference to a Requirement."
-      },
-      "usage": {},
-      "sort": "identifier",
-      "inscope": true,
-      "indvl": false,
-      "inpackage": false,
-      "show": true
-    },
-    {
-      "uri": "http://purl.org/dc/terms/identifier",
-      "name": "identifier",
-      "label": {
-        "en": "identifier"
-      },
-      "description": {
-        "en": "The unambiguous structured reference for the Public Event."
-      },
-      "usage": {},
-      "sort": "identifier",
+      "sort": "is conformant to",
       "inscope": true,
       "indvl": false,
       "inpackage": false,
@@ -1603,390 +1521,472 @@
       "show": true
     },
     {
-      "uri": "http://purl.org/dc/terms/conformsTo",
-      "name": "isConformantTo",
+      "uri": "http://purl.org/dc/terms/identifier",
+      "name": "identifier",
       "label": {
-        "en": "is conformant to"
+        "en": "identifier"
       },
       "description": {
-        "en": "Evidence Type that specifies characteristics of the Evidence."
+        "en": "Unambiguous reference to the Evidence Type."
+      },
+      "usage": {},
+      "sort": "identifier",
+      "inscope": true,
+      "indvl": false,
+      "inpackage": false,
+      "show": true
+    },
+    {
+      "uri": "http://purl.org/dc/terms/identifier",
+      "name": "identifier",
+      "label": {
+        "en": "identifier"
+      },
+      "description": {
+        "en": "Unambiguous reference to the Evidence Type List."
+      },
+      "usage": {},
+      "sort": "identifier",
+      "inscope": true,
+      "indvl": false,
+      "inpackage": false,
+      "show": true
+    },
+    {
+      "uri": "http://purl.org/dc/terms/identifier",
+      "name": "identifier",
+      "label": {
+        "en": "identifier"
+      },
+      "description": {
+        "en": "Unambiguous reference to the Information Concept."
+      },
+      "usage": {},
+      "sort": "identifier",
+      "inscope": true,
+      "indvl": false,
+      "inpackage": false,
+      "show": true
+    },
+    {
+      "uri": "http://purl.org/dc/terms/identifier",
+      "name": "identifier",
+      "label": {
+        "en": "identifier"
+      },
+      "description": {
+        "en": "An unambiguous reference to a Reference Framework."
+      },
+      "usage": {},
+      "sort": "identifier",
+      "inscope": true,
+      "indvl": false,
+      "inpackage": false,
+      "show": true
+    },
+    {
+      "uri": "http://purl.org/dc/terms/identifier",
+      "name": "identifier",
+      "label": {
+        "en": "identifier"
+      },
+      "description": {
+        "en": "Unambiguous reference to a Requirement."
+      },
+      "usage": {},
+      "sort": "identifier",
+      "inscope": true,
+      "indvl": false,
+      "inpackage": false,
+      "show": true
+    },
+    {
+      "uri": "http://purl.org/dc/terms/identifier",
+      "name": "identifier",
+      "label": {
+        "en": "identifier"
+      },
+      "description": {
+        "en": "The unambiguous structured reference for the Public Event."
+      },
+      "usage": {},
+      "sort": "identifier",
+      "inscope": true,
+      "indvl": false,
+      "inpackage": false,
+      "show": true
+    },
+    {
+      "uri": "http://purl.org/dc/terms/language",
+      "name": "language",
+      "label": {
+        "en": "language"
+      },
+      "description": {
+        "en": "The language in which the Public Event is given."
       },
       "usage": {
-        "en": "Examples of characteristics could be the layout or the configuration of the Evidence."
+        "en": "The recommended controlled vocabularies for this property is the <a href=\" https://op.europa.eu/en/web/eu-vocabularies/concept-scheme/-/resource?uri=http://publications.europa.eu/resource/authority/language\">Language</a> Authority Table of the Publications Office."
       },
-      "sort": "is conformant to",
+      "sort": "language",
       "inscope": true,
       "indvl": false,
       "inpackage": false,
       "show": true
     },
     {
-      "uri": "http://data.europa.eu/m8g/supportsValue",
-      "name": "supportsValue",
+      "uri": "http://purl.org/dc/terms/subject",
+      "name": "topic",
       "label": {
-        "en": "supports value"
+        "en": "topic"
       },
       "description": {
-        "en": "Supported Value that the Evidence contains."
-      },
-      "usage": {},
-      "sort": "supports value",
-      "inscope": true,
-      "indvl": false,
-      "inpackage": false,
-      "show": true
-    },
-    {
-      "uri": "http://data.europa.eu/m8g/supportsRequirement",
-      "name": "supportsRequirement",
-      "label": {
-        "en": "supports requirement"
-      },
-      "description": {
-        "en": "Requirement for which the Evidence provides proof."
-      },
-      "usage": {},
-      "sort": "supports requirement",
-      "inscope": true,
-      "indvl": false,
-      "inpackage": false,
-      "show": true
-    },
-    {
-      "uri": "http://data.europa.eu/m8g/supportsConcept",
-      "name": "supportsConcept",
-      "label": {
-        "en": "supports concept"
-      },
-      "description": {
-        "en": "Information Concept providing facts found/inferred from the Evidence."
+        "en": "The subject of the Public Event."
       },
       "usage": {
-        "en": "Examples of Information Concepts are values found explictly in the evidence such as a birth date or information derived from the Evidence such as \"I am older that 18 years\"."
+        "en": "Examples include culture, sport or tourism."
       },
-      "sort": "supports concept",
+      "sort": "topic",
       "inscope": true,
       "indvl": false,
       "inpackage": false,
       "show": true
     },
     {
-      "uri": "http://data.europa.eu/m8g/subEvent",
-      "name": "subEvent",
+      "uri": "http://purl.org/dc/terms/title",
+      "name": "title",
       "label": {
-        "en": "sub event"
+        "en": "title"
       },
       "description": {
-        "en": "A relation towards another Public Event that belong to it."
-      },
-      "usage": {},
-      "sort": "sub event",
-      "inscope": true,
-      "indvl": false,
-      "inpackage": false,
-      "show": true
-    },
-    {
-      "uri": "http://data.europa.eu/m8g/specifiesEvidenceType",
-      "name": "evidenceTypeListInWhichTheEvidenceTypeIsIncluded.",
-      "label": {
-        "en": "Evidence Type List in which the Evidence Type is included."
-      },
-      "description": {
-        "en": "Evidence Type included in this Evidence Type List."
-      },
-      "usage": {},
-      "sort": "Evidence Type List in which the Evidence Type is included.",
-      "inscope": true,
-      "indvl": false,
-      "inpackage": false,
-      "show": true
-    },
-    {
-      "uri": "http://data.europa.eu/m8g/parentEvent",
-      "name": "parentEvent",
-      "label": {
-        "en": "parent event"
-      },
-      "description": {
-        "en": "A relation to another Public Event that encompasses it."
-      },
-      "usage": {},
-      "sort": "parent event",
-      "inscope": true,
-      "indvl": false,
-      "inpackage": false,
-      "show": true
-    },
-    {
-      "uri": "http://data.europa.eu/m8g/logo",
-      "name": "logo",
-      "label": {
-        "en": "logo"
-      },
-      "description": {
-        "en": "A graphic symbol to represent the Public Oorganization."
+        "en": "The name given to the Public Event."
       },
       "usage": {
-        "en": "The value of this property can simply be the URL of the logo but it is better for developers if it links to an object that provides the URL of the image and essential metadata about it, notably its dimensions."
+        "en": "Titles may be provided in multiple languages with multiple instances of the title property."
       },
-      "sort": "logo",
+      "sort": "title",
       "inscope": true,
       "indvl": false,
       "inpackage": false,
       "show": true
     },
     {
-      "uri": "http://data.europa.eu/m8g/isSpecifiedIn",
-      "name": "isSpecifiedIn",
+      "uri": "http://purl.org/dc/terms/type",
+      "name": "type",
       "label": {
-        "en": "is specified in"
+        "en": "type"
       },
       "description": {
-        "en": "Evidence Type List in which the Evidence Type is included."
+        "en": "The type property links an Event to a controlled vocabulary of event types and it is the nature of those controlled vocabularies that is the major difference between a business event, such as creating the business in the first place and a life event, such as the birth of a child."
       },
       "usage": {},
-      "sort": "is specified in",
+      "sort": "type",
       "inscope": true,
       "indvl": false,
       "inpackage": false,
       "show": true
     },
     {
-      "uri": "http://data.europa.eu/m8g/isRequirementOf",
-      "name": "isRequirementOf",
+      "uri": "http://purl.org/dc/terms/type",
+      "name": "type",
       "label": {
-        "en": "is requirement of"
+        "en": "type"
       },
       "description": {
-        "en": "A reference between a sub-Requirement and its parent Requirement."
-      },
-      "usage": {
-        "en": "\"The relation between a parent Requirement and a sub-Requirement can be complex. Therefore, qualified relations can be used to represent this relationship on its own and qualify it with additional information such as a date, a place. This is left to implementers.\n\nIn the case where the purpose is to link the two Requirements without additional information, the simple relationship as proposed here can be directly used.\""
-      },
-      "sort": "is requirement of",
-      "inscope": true,
-      "indvl": false,
-      "inpackage": false,
-      "show": true
-    },
-    {
-      "uri": "http://data.europa.eu/m8g/isDerivedFrom",
-      "name": "isDerivedFrom",
-      "label": {
-        "en": "is derived from"
-      },
-      "description": {
-        "en": "Reference Framework on which the Requirement is based, such as a law or regulation."
-      },
-      "usage": {
-        "en": "Note that a Requirement can have several Reference Frameworks from which it is derived."
-      },
-      "sort": "is derived from",
-      "inscope": true,
-      "indvl": false,
-      "inpackage": false,
-      "show": true
-    },
-    {
-      "uri": "http://data.europa.eu/m8g/hasSupportingEvidence",
-      "name": "hasSupportingEvidence",
-      "label": {
-        "en": "has supporting evidence"
-      },
-      "description": {
-        "en": "Evidence that supplies information, proof or support for the Requirement."
+        "en": "Category to which the Information Concept belongs."
       },
       "usage": {},
-      "sort": "has supporting evidence",
+      "sort": "type",
       "inscope": true,
       "indvl": false,
       "inpackage": false,
       "show": true
     },
     {
-      "uri": "http://data.europa.eu/m8g/hasRequirement",
-      "name": "hasRequirement",
+      "uri": "http://purl.org/dc/terms/type",
+      "name": "type",
       "label": {
-        "en": "has requirement"
+        "en": "type"
       },
       "description": {
-        "en": "A more specific Requirement that is part of the Requirement."
+        "en": "Category to which the Requirement belongs."
       },
       "usage": {},
-      "sort": "has requirement",
+      "sort": "type",
       "inscope": true,
       "indvl": false,
       "inpackage": false,
       "show": true
     },
     {
-      "uri": "http://data.europa.eu/m8g/hasQualifiedRelation",
-      "name": "hasQualifiedRelation",
+      "uri": "http://purl.org/dc/terms/type",
+      "name": "eventType",
       "label": {
-        "en": "has qualified relation"
+        "en": "event type"
       },
       "description": {
-        "en": "Described and/or categorised relation to another Requirement."
+        "en": "The nature or genre of the Public Event."
       },
       "usage": {
-        "en": "This property leaves the possiblity to define a qualified relation from Requirement to Information Requirement or Constraint as well as a qualified relation from Requirement to Requirement.  A use case would be to specialize an EU requirement in Member States' specific requirements."
+        "en": "Examples include festivals, conferences, city council meetings and public consultations. The eventType property links the event to a SKOS Concept that provides a classification.\r\n\r\nAn existing classification from Publications Office could be used, see <a href=\"\r\nhttps://op.europa.eu/en/web/eu-vocabularies/dataset/-/resource?uri=http://publications.europa.eu/resource/dataset/public-event-type\">Public Event Type</a>."
       },
-      "sort": "has qualified relation",
+      "sort": "event type",
       "inscope": true,
       "indvl": false,
       "inpackage": false,
       "show": true
     },
     {
-      "uri": "http://data.europa.eu/m8g/hasPreviousEvent",
-      "name": "hasPreviousEvent",
+      "uri": "http://www.w3.org/1999/xhtml/vocab#next",
+      "name": "next",
       "label": {
-        "en": "has previous event"
+        "en": "next"
       },
       "description": {
-        "en": "The Public Event that comes before this one."
+        "en": "In some cases, it is necessary to be able to create an ordered sequence of organizations that precede and succeed each other. To support this, the CPOV includes the well-known relationships of previous and next to allow such sequences to be captured and computed."
+      },
+      "usage": {
+        "en": "Examples of events leading to sequences could be renaming, splitting or merging of public organizations."
+      },
+      "sort": "next",
+      "inscope": true,
+      "indvl": false,
+      "inpackage": false,
+      "show": true
+    },
+    {
+      "uri": "http://www.w3.org/1999/xhtml/vocab#prev",
+      "name": "prev",
+      "label": {
+        "en": "prev"
+      },
+      "description": {
+        "en": "In some cases, it is necessary to be able to create an ordered sequence of an organization that precede and succeed each other. To support this, the CPOV includes the well-known relationships of previous and next to allow such sequences to be captured and computed"
+      },
+      "usage": {
+        "en": "Examples of events leading to sequences could be renaming, splitting or merging of public organizations."
+      },
+      "sort": "prev",
+      "inscope": true,
+      "indvl": false,
+      "inpackage": false,
+      "show": true
+    },
+    {
+      "uri": "http://www.w3.org/2004/02/skos/core#altLabel",
+      "name": "alternativeLabel",
+      "label": {
+        "en": "alternative label"
+      },
+      "description": {
+        "en": "An alternative or informal name(s) of a Public Organization, irrespective of language."
       },
       "usage": {},
-      "sort": "has previous event",
+      "sort": "alternative label",
       "inscope": true,
       "indvl": false,
       "inpackage": false,
       "show": true
     },
     {
-      "uri": "http://data.europa.eu/m8g/hasParticipation",
-      "name": "hasParticipation",
+      "uri": "http://www.w3.org/2004/02/skos/core#prefLabel",
+      "name": "preferredLabel",
       "label": {
-        "en": "has participation"
+        "en": "preferred label"
       },
       "description": {
-        "en": "The way how a resource is organized."
+        "en": "A preferred label is used to provide the primary, legally recognised name of the Public Organization, as defined in the ORG Ontology."
+      },
+      "usage": {
+        "en": "Refers to the official or legal name of a Public Organization. An organization may only have one such name in any given language. Primary names may be provided in multiple languages with multiple instances of the preferred label property."
+      },
+      "sort": "preferred label",
+      "inscope": true,
+      "indvl": false,
+      "inpackage": false,
+      "show": true
+    },
+    {
+      "uri": "http://www.w3.org/2004/02/skos/core#prefLabel",
+      "name": "name",
+      "label": {
+        "en": "name"
+      },
+      "description": {
+        "en": "Name of the Evidence Type List."
       },
       "usage": {},
-      "sort": "has participation",
+      "sort": "name",
       "inscope": true,
       "indvl": false,
       "inpackage": false,
       "show": true
     },
     {
-      "uri": "http://data.europa.eu/m8g/hasNextEvent",
-      "name": "hasNextEvent",
+      "uri": "http://www.w3.org/2004/02/skos/core#prefLabel",
+      "name": "name",
       "label": {
-        "en": "has next event"
+        "en": "name"
       },
       "description": {
-        "en": "The Public Event that comes after this one."
+        "en": "Name of the Information Concept."
       },
       "usage": {},
-      "sort": "has next event",
+      "sort": "name",
       "inscope": true,
       "indvl": false,
       "inpackage": false,
       "show": true
     },
     {
-      "uri": "http://data.europa.eu/m8g/hasFormalFramework",
-      "name": "hasFormalFramework",
+      "uri": "http://www.w3.org/2004/02/skos/core#prefLabel",
+      "name": "name",
       "label": {
-        "en": "has formal framework"
+        "en": "name"
       },
       "description": {
-        "en": "A piece of legislation or a policy document that prompted the change."
-      },
-      "usage": {
-        "en": "The property hasFormalFramework links a Change Event or Foundation Event to a piece of legislation or a policy document that prompted the change."
-      },
-      "sort": "has formal framework",
-      "inscope": true,
-      "indvl": false,
-      "inpackage": false,
-      "show": true
-    },
-    {
-      "uri": "http://data.europa.eu/m8g/hasEvidenceTypeList",
-      "name": "hasEvidenceTypeList",
-      "label": {
-        "en": "has evidence type list"
-      },
-      "description": {
-        "en": "Evidence Type List that specifies the Evidence Types that are needed to meet the Requirement."
-      },
-      "usage": {
-        "en": "One or several Lists of Evidence Types can support a Requirement. At least  one of them must be satisfied by the response to the Requirement."
-      },
-      "sort": "has evidence type list",
-      "inscope": true,
-      "indvl": false,
-      "inpackage": false,
-      "show": true
-    },
-    {
-      "uri": "http://data.europa.eu/m8g/hasConcept",
-      "name": "hasConcept",
-      "label": {
-        "en": "has concept"
-      },
-      "description": {
-        "en": "Information Concept for which a value is expected by the Requirement."
-      },
-      "usage": {
-        "en": "Information Concepts defined for specific Requirements also represent the basis for specifying the Supported Value an Evidence should provide."
-      },
-      "sort": "has concept",
-      "inscope": true,
-      "indvl": false,
-      "inpackage": false,
-      "show": true
-    },
-    {
-      "uri": "http://data.europa.eu/m8g/domicile",
-      "name": "domicile",
-      "label": {
-        "en": "domicile"
-      },
-      "description": {
-        "en": "The place that the Person treats as permanent home."
+        "en": "Name of the Requirement."
       },
       "usage": {},
-      "sort": "domicile",
+      "sort": "name",
       "inscope": true,
       "indvl": false,
       "inpackage": false,
       "show": true
     },
     {
-      "uri": "http://data.europa.eu/m8g/contactPoint",
-      "name": "contactPoint",
+      "uri": "http://www.w3.org/ns/org#classification",
+      "name": "classification",
       "label": {
-        "en": "contact point"
+        "en": "classification"
       },
       "description": {
-        "en": "The main contact information of the resource."
+        "en": "The categorisation of the Public Organization."
       },
       "usage": {
-        "en": "Usually a phone number and e-mail address. Other contact methods may be included, including online contact information, but this is conceptually distinct from the organization's homepage that may or may not provide contact information."
+        "en": "As an example, the Publications Office of the European Union provides a Named Authority list of Organization Types which is appropriate for European institutions. Other classification schemes should be used at other levels of Public Organization."
       },
-      "sort": "contact point",
+      "sort": "classification",
       "inscope": true,
       "indvl": false,
       "inpackage": false,
       "show": true
     },
     {
-      "uri": "http://data.europa.eu/m8g/contactPoint",
-      "name": "contactPoint",
+      "uri": "http://www.w3.org/ns/org#hasMember",
+      "name": "hasMember",
       "label": {
-        "en": "contact point"
+        "en": "has member"
       },
       "description": {
-        "en": "The main contact information of the resource."
+        "en": "An Organization which is a member of another without being a sub organization, they are independent entities."
       },
       "usage": {
-        "en": "Usually a phone number and e-mail address. Other contact methods may be included, including online contact information, but this is conceptually distinct from the organization's homepage that may or may not provide contact information."
+        "en": "The memberOf and hasMember properties are very simple and don't support statements describing the nature of the membership. The <a href=\"https://www.w3.org/TR/vocab-org/\">W3C Organization Ontology</a> provides both this simple method and a more sophisticated model that does make it possible to, for example, provide information about the period of time in which one Organization was a member of another, the level of membership etc. That more sophisticated model should be used where necessary and may be used in addition to the simple memberOf/hasMember properties.\r\n\r\nAn example of memberships are the EU member states and other partners which could be represented via different legal entities as members of EFSA, the <a href=\"https://www.efsa.europa.eu/en/partnersnetworks/euinstitutions\">European Food Safety Agency</a>"
       },
-      "sort": "contact point",
+      "sort": "has member",
+      "inscope": true,
+      "indvl": false,
+      "inpackage": false,
+      "show": true
+    },
+    {
+      "uri": "http://www.w3.org/ns/org#identifier",
+      "name": "identifier",
+      "label": {
+        "en": "identifier"
+      },
+      "description": {
+        "en": "This property represents an Identifier for the Event."
+      },
+      "usage": {},
+      "sort": "identifier",
+      "inscope": true,
+      "indvl": false,
+      "inpackage": false,
+      "show": true
+    },
+    {
+      "uri": "http://www.w3.org/ns/org#identifier",
+      "name": "identifier",
+      "label": {
+        "en": "identifier"
+      },
+      "description": {
+        "en": "The unambiguous structured reference for the Participation."
+      },
+      "usage": {},
+      "sort": "identifier",
+      "inscope": true,
+      "indvl": false,
+      "inpackage": false,
+      "show": true
+    },
+    {
+      "uri": "http://www.w3.org/ns/org#memberOf",
+      "name": "memberOf",
+      "label": {
+        "en": "member of"
+      },
+      "description": {
+        "en": "An Organization of which the Public Organisation is a member without being a sub organization, they are independent entities."
+      },
+      "usage": {
+        "en": "The memberOf and hasMember properties are very simple and don't support statements describing the nature of the membership. The <a href=\"https://www.w3.org/TR/vocab-org/\">W3C Organization Ontology</a> provides both this simple method and a more sophisticated model that does make it possible to, for example, provide information about the period of time in which one Organization was a member of another, the level of membership etc. That more sophisticated model should be used where necessary and may be used in addition to the simple memberOf/hasMember properties.\r\n\r\nAn example of memberships are the EU member states and other partners which could be represented via different legal entities as members of EFSA, the <a href=\"https://www.efsa.europa.eu/en/partnersnetworks/euinstitutions\"> European Food Safety Agency</a>"
+      },
+      "sort": "member of",
+      "inscope": true,
+      "indvl": false,
+      "inpackage": false,
+      "show": true
+    },
+    {
+      "uri": "http://www.w3.org/ns/org#purpose",
+      "name": "purpose",
+      "label": {
+        "en": "purpose"
+      },
+      "description": {
+        "en": "This property describes the reasons of existence of an Organization."
+      },
+      "usage": {
+        "en": "The ORG ontology suggests that this property can also be thought of as meaning 'remit' or 'responsibility.' Ideally this will link to a COFOG code but where this isn't possible or appropriate, other controlled vocabularies may be used."
+      },
+      "sort": "purpose",
+      "inscope": true,
+      "indvl": false,
+      "inpackage": false,
+      "show": true
+    },
+    {
+      "uri": "http://xmlns.com/foaf/0.1/homepage",
+      "name": "homepage",
+      "label": {
+        "en": "homepage"
+      },
+      "description": {
+        "en": "The website of the Public Event."
+      },
+      "usage": {
+        "en": "The value of this property is a URL."
+      },
+      "sort": "homepage",
+      "inscope": true,
+      "indvl": false,
+      "inpackage": false,
+      "show": true
+    },
+    {
+      "uri": "http://xmlns.com/foaf/0.1/name",
+      "name": "name",
+      "label": {
+        "en": "name"
+      },
+      "description": {
+        "en": "This property represents the Name (or title) of the Event."
+      },
+      "usage": {},
+      "sort": "name",
       "inscope": true,
       "indvl": false,
       "inpackage": false,
