@@ -554,13 +554,13 @@ The cardinalities and qualifications are included in the figure.
 The main entities are those that form the core of the Application Profile. 
 The properties and their associated constraints that apply in the context of this profile are listed in a tabular form.
 Each row corresponds to one property. 
-In addition to the constraints also cross-references are provided to DCAT and DCAT-AP. For the last, to save space, the following abbreviations are used:
+In addition to the constraints also cross-references are provided to DCAT. To save space, the following abbreviations are used to indicate in short the difference with DCAT:
 <ul>
-	<li>A: reused as-is defined and expressed in DCAT-AP</li>
-	<li>E: reused with additional usage notes or additional restrictions compared to DCAT-AP</li>
-	<li>P: profile specific extension where DCAT-AP had no requirements earlier on specified</li>
+	<li>A: reused as-is defined and expressed in DCAT</li>
+	<li>E: reused with additional usage notes or additional restrictions compared to DCAT</li>
+	<li>P: DCAT-AP profile specific extension where DCAT had no requirements earlier on specified</li>
 </ul>
-This reuse qualification assessement is w.r.t. a specific version of DCAT-AP. 
+This reuse qualification assessement is w.r.t. a specific version of DCAT. 
 Therefore it may vary over time when new versions of DCAT-AP are created.
 
 
@@ -814,7 +814,6 @@ Therefore it may vary over time when new versions of DCAT-AP are created.
                             , <a href="#Catalogue.geographicalcoverage">geographical coverage</a>
                             , <a href="#Catalogue.haspart">has part</a>
                             , <a href="#Catalogue.homepage">homepage</a>
-                            , <a href="#Catalogue.ispartof">is part of</a>
                             , <a href="#Catalogue.language">language</a>
                             , <a href="#Catalogue.licence">licence</a>
                             , <a href="#Catalogue.modificationdate">modification date</a>
@@ -1262,55 +1261,6 @@ Therefore it may vary over time when new versions of DCAT-AP are created.
                                 </td>
                             </tr>
                         
-                            <tr id="Catalogue.ispartof"
-                                typeof="rdfs:Property"
-                                resource="http://purl.org/dc/terms/isPartOf"
-                                class="class mandatory">
-<!--
-                                <td>
-				    <a href="https://github.com/SEMICeu/DCAT-AP/issues/new?title=Issue%20for%20is part of%20in%20Catalogue&body=Explain%20your%20issue%20for%20https://semiceu.github.io/DCAT-AP/releases/3.0.0%23Catalogue.ispartof" target="_blank" rel="noopener noreferrer" >
-                                        <img src="html/callout.png" loading="lazy" alt="[o]" width="100" height="100"/>
-                                    </a>
-                                </td>
---->
-                                <td>
-                                        <a href="http://purl.org/dc/terms/isPartOf"
-                                           data-toggle="tooltip"
-                                           data-content="http://purl.org/dc/terms/isPartOf"
-                                           data-placement="right">
-                                        is part of</a>
-                                </td>
-                                <td>
-                                    
-                                        
-                                            <a href="#Catalogue" data-placement="right">Catalogue</a>
-                                        
-                                    
-                                </td>
-                                <td>
-                                    0..1
-                                </td>
-                                <td property="rdfs:comment">
-                                    A related Catalogue in which the described Catalogue is physically or logically included.
-                                </td>
-                                <td property="skos:scopeNote">
-                                    
-                                </td>
-				<!--
-                                <td>
-                                    
-                                </td>
-				-->
-                                <td>
-                                    
-                                </td>
-                                <td>
-                                    
-				       P
-				    
-                                </td>
-                            </tr>
-                        
                             <tr id="Catalogue.language"
                                 typeof="rdfs:Property"
                                 resource="http://purl.org/dc/terms/language"
@@ -1340,7 +1290,7 @@ Therefore it may vary over time when new versions of DCAT-AP are created.
                                     0..*
                                 </td>
                                 <td property="rdfs:comment">
-                                    A language used in the textual metadata describing titles, descriptions, etc. of the resources in the Catalogue.
+                                    A language used in the textual metadata describing titles, descriptions, etc. of the Datasets in the Catalogue.
                                 </td>
                                 <td property="skos:scopeNote">
                                     This property can be repeated if the metadata is provided in multiple languages.
@@ -4549,7 +4499,7 @@ Therefore it may vary over time when new versions of DCAT-AP are created.
                                     0..*
                                 </td>
                                 <td property="rdfs:comment">
-                                    A secondary identifier of the Dataset, such as MAST/ADS, DataCite, DOI, EZID or W3ID.
+                                    A secondary identifier of the Dataset, such as MAST/ADS17, DataCite18, DOI19, EZID20 or W3ID21.
                                 </td>
                                 <td property="skos:scopeNote">
                                     
@@ -10888,8 +10838,6 @@ The properties are grouped under headings <it>mandatory, recommended, optional</
 						
 					
 						
-					
-						
 							<tr>
 								<td><a href="#Catalogue">Catalogue</a></td>
 								<td><div class="shorten">http://www.w3.org/ns/dcat#Catalog</div></td>
@@ -10960,8 +10908,6 @@ The properties are grouped under headings <it>mandatory, recommended, optional</
 								<td><a href="#Catalogue.homepage">homepage </a></td>
 								<td><div class="shorten">http://xmlns.com/foaf/0.1/homepage</div></td>
 							</tr>
-						
-					
 						
 					
 						
@@ -11081,16 +11027,6 @@ The properties are grouped under headings <it>mandatory, recommended, optional</
 							</tr>
 						
 					
-						
-					
-						
-							<tr>
-								<td><a href="#Catalogue">Catalogue</a></td>
-								<td><div class="shorten">http://www.w3.org/ns/dcat#Catalog</div></td>
-								<td>Optional</td>
-								<td><a href="#Catalogue.ispartof">is part of </a></td>
-								<td><div class="shorten">http://purl.org/dc/terms/isPartOf</div></td>
-							</tr>
 						
 					
 						
@@ -11606,6 +11542,14 @@ The properties are grouped under headings <it>mandatory, recommended, optional</
 						
 					
 						
+							<tr>
+								<td><a href="#Dataset">Dataset</a></td>
+								<td><div class="shorten">http://www.w3.org/ns/dcat#Dataset</div></td>
+								<td>Mandatory</td>
+								<td><a href="#Dataset.description">description </a></td>
+								<td><div class="shorten">http://purl.org/dc/terms/description</div></td>
+							</tr>
+						
 					
 						
 					
@@ -11847,14 +11791,6 @@ The properties are grouped under headings <it>mandatory, recommended, optional</
 					
 						
 					
-						
-							<tr>
-								<td><a href="#Dataset">Dataset</a></td>
-								<td><div class="shorten">http://www.w3.org/ns/dcat#Dataset</div></td>
-								<td>Optional</td>
-								<td><a href="#Dataset.description">description </a></td>
-								<td><div class="shorten">http://purl.org/dc/terms/description</div></td>
-							</tr>
 						
 					
 						
@@ -12138,14 +12074,6 @@ The properties are grouped under headings <it>mandatory, recommended, optional</
 						
 					
 						
-							<tr>
-								<td><a href="#DatasetmemberofaDatasetSeries">Dataset member of a Dataset Series</a></td>
-								<td><div class="shorten">http://www.w3.org/ns/dcat#Dataset</div></td>
-								<td>Recommended</td>
-								<td><a href="#DatasetmemberofaDatasetSeries.inseries">in series </a></td>
-								<td><div class="shorten">http://www.w3.org/ns/dcat#inSeries</div></td>
-							</tr>
-						
 					
 						
 					
@@ -12174,6 +12102,14 @@ The properties are grouped under headings <it>mandatory, recommended, optional</
 							</tr>
 						
 					
+						
+							<tr>
+								<td><a href="#DatasetmemberofaDatasetSeries">Dataset member of a Dataset Series</a></td>
+								<td><div class="shorten">http://www.w3.org/ns/dcat#Dataset</div></td>
+								<td>Optional</td>
+								<td><a href="#DatasetmemberofaDatasetSeries.inseries">in series </a></td>
+								<td><div class="shorten">http://www.w3.org/ns/dcat#inSeries</div></td>
+							</tr>
 						
 					
 						
