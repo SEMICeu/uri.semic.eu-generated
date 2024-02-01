@@ -16,8 +16,8 @@
     },
     "status": "https://www.w3.org/2021/Process-20211102/#RecsCR",
     "statuslabel": "Onbekend",
-    "repositoryurl": "git@semicthema-DCAT-AP:SEMICeu/Semicthema-DCAT-AP.git/tree/c8889557f6ff8091e2b88239ba8e9bd15ebc6976",
-    "changelogurl": "git@semicthema-DCAT-AP:SEMICeu/Semicthema-DCAT-AP.git/blob/c8889557f6ff8091e2b88239ba8e9bd15ebc6976/CHANGELOG",
+    "repositoryurl": "git@semicthema-DCAT-AP:SEMICeu/Semicthema-DCAT-AP.git/tree/dc3461e92029b955f15ba121cc3e1455811d1ce0",
+    "changelogurl": "git@semicthema-DCAT-AP:SEMICeu/Semicthema-DCAT-AP.git/blob/dc3461e92029b955f15ba121cc3e1455811d1ce0/CHANGELOG",
     "feedbackurl": "https://github.com/SEMICeu/DCAT-AP/issues",
     "standaardregisterurl": "https://semiceu.github.io/DCAT-AP/releases/3.0.0/CHANGELOG.html",
     "usesVocs": [],
@@ -905,15 +905,16 @@
       },
       "sort": "Identifier",
       "description": {
-        "en": "An identifier in a particular context, consisting of the string that is the identifier; an optional identifier for the identifier scheme; an optional identifier for the version of the identifier scheme; an optional identifier for the agency that manages the identifier scheme."
+        "en": "\r\nThis is based on the UN/CEFACT Identifier class. "
       },
       "usage": {},
       "parents": [],
       "rawTags": {
-        "ap-definition-en": "An identifier in a particular context, consisting of the string that is the identifier; an optional identifier for the identifier scheme; an optional identifier for the version of the identifier scheme; an optional identifier for the agency that manages the identifier scheme.",
+        "ap-definition-en": "\r\nThis is based on the UN/CEFACT Identifier class. ",
         "ap-label-en": "Identifier",
         "uri": "http://www.w3.org/ns/adms#Identifier",
-        "class-usage-scope": "supportive"
+        "class-usage-scope": "supportive",
+        "ap-usageNote-ne": "An identifier in a particular context, consisting of the\r\n<ul>\r\n<li>content string that is the identifier;</li>\r\n<li>an optional identifier for the identifier scheme;</li>\r\n<li>an optional identifier for the version of the identifier scheme;</li>\r\n<li>an optional identifier for the agency that manages the identifier scheme.</li>\r\n</ul>"
       },
       "properties": [
         {
@@ -948,7 +949,7 @@
               }
             }
           ],
-          "cardinality": "0..1",
+          "cardinality": "1",
           "codelist_uri": "",
           "rawTags": {
             "uri": "http://www.w3.org/2004/02/skos/core#notation",
@@ -3005,7 +3006,7 @@
             "en": "access rights"
           },
           "description": {
-            "en": "Information that indicates whether the Dataset is open data, has access restrictions or is not public."
+            "en": "Information that indicates whether the Dataset is publicly accessible, has access restrictions or is not public."
           },
           "usage": {},
           "domain": [
@@ -3034,7 +3035,7 @@
           "rawTags": {
             "ap-label-en": "access rights",
             "uri": "http://purl.org/dc/terms/accessRights",
-            "ap-definition-en": "Information that indicates whether the Dataset is open data, has access restrictions or is not public.",
+            "ap-definition-en": "Information that indicates whether the Dataset is publicly accessible, has access restrictions or is not public.",
             "property-usage-scope": "optional",
             "DCAT": "https://www.w3.org/TR/vocab-dcat-3/#Property:resource_access_rights",
             "reuse": "extended"
@@ -3789,9 +3790,11 @@
             "en": "other identifier"
           },
           "description": {
-            "en": "A secondary identifier of the Dataset, such as MAST/ADS17, DataCite18, DOI19, EZID20 or W3ID21."
+            "en": "A secondary identifier of the Dataset"
           },
-          "usage": {},
+          "usage": {
+            "en": "Examples are  MAST/ADS [[MASTADS]], DataCite [[DATACITE]], DOI [[DOI]], EZID [[EZID]] or W3ID [[W3ID]]."
+          },
           "domain": [
             {
               "EA-Name": "dcat:Dataset",
@@ -3818,10 +3821,11 @@
           "rawTags": {
             "ap-label-en": "other identifier",
             "uri": "http://www.w3.org/ns/adms#identifier",
-            "ap-definition-en": "A secondary identifier of the Dataset, such as MAST/ADS17, DataCite18, DOI19, EZID20 or W3ID21.",
+            "ap-definition-en": "A secondary identifier of the Dataset",
             "property-usage-scope": "optional",
             "DCAT": "https://www.w3.org/TR/vocab-dcat-3/#dereferenceable-identifiers",
-            "reuse": "profile"
+            "reuse": "profile",
+            "ap-usageNote-en": "Examples are  MAST/ADS [[MASTADS]], DataCite [[DATACITE]], DOI [[DOI]], EZID [[EZID]] or W3ID [[W3ID]]."
           }
         },
         {
@@ -4038,6 +4042,46 @@
             "property-usage-scope": "optional",
             "parentURI": "http://purl.org/dc/terms/hasVersion",
             "reuse": "asis"
+          }
+        },
+        {
+          "uri": "http://www.w3.org/ns/dcat#inSeries",
+          "name": "",
+          "sort": "",
+          "label": {},
+          "description": {
+            "en": "A dataset series of which the dataset is part."
+          },
+          "usage": {},
+          "domain": [
+            {
+              "EA-Name": "dcat:Dataset",
+              "uri": "http://www.w3.org/ns/dcat#Dataset"
+            }
+          ],
+          "range": [
+            {
+              "range_label": "dcat:DatasetSeries",
+              "range_uri": "http://www.w3.org/ns/dcat#DatasetSeries"
+            }
+          ],
+          "scopedrange": [
+            {
+              "range_uri": "#Dataset Series",
+              "range_puri": "http://www.w3.org/ns/dcat#DatasetSeries",
+              "range_label": {
+                "en": "Dataset Series"
+              }
+            }
+          ],
+          "cardinality": "",
+          "codelist_uri": "",
+          "rawTags": {
+            "definition-en": "A dataset series of which the dataset is part.",
+            "uri": "http://www.w3.org/ns/dcat#inSeries",
+            "DCAT": "https://www.w3.org/TR/vocab-dcat-3/#Property:dataset_in_series",
+            "property-usage-scope": "optional",
+            "reuse": "extended"
           }
         },
         {
@@ -4516,299 +4560,6 @@
             "ap-definition-en": "A page or document about this Dataset.",
             "property-usage-scope": "optional",
             "reuse": "profile"
-          }
-        }
-      ]
-    },
-    {
-      "uri": "http://www.w3.org/ns/dcat#Dataset",
-      "name": "DatasetMemberOfADatasetSeries",
-      "label": {
-        "en": "Dataset member of a Dataset Series"
-      },
-      "sort": "Dataset member of a Dataset Series",
-      "description": {},
-      "usage": {
-        "en": "This class is introduced to capture the case when a Dataset is a member of a Dataset Series.\r\nTherefore this Dataset must be a member of a Dataset Series."
-      },
-      "parents": [
-        {
-          "label": "Dataset",
-          "name": "dcat:Dataset",
-          "package": "Domain Model",
-          "uri": "http://www.w3.org/ns/dcat#Dataset",
-          "scoped_uri": "#Dataset"
-        }
-      ],
-      "rawTags": {
-        "uri": "http://www.w3.org/ns/dcat#Dataset",
-        "ap-label-en": "Dataset member of a Dataset Series",
-        "ap-usageNote-en": "This class is introduced to capture the case when a Dataset is a member of a Dataset Series.\r\nTherefore this Dataset must be a member of a Dataset Series.",
-        "class-usage-scope": "main"
-      },
-      "properties": [
-        {
-          "uri": "http://purl.org/dc/terms/accrualPeriodicity",
-          "name": "frequency",
-          "sort": "frequency",
-          "label": {
-            "en": "frequency"
-          },
-          "description": {
-            "en": "The frequency at which the Dataset is updated."
-          },
-          "usage": {
-            "en": "The frequency of a dataset belonging to a dataset series  is not equal to the frequency of the dataset series. \r\n\r\nE.g. A dataset budget 2020 with frequency yearly means that this dataset has an update in 2021, 2022, 2023, etc. "
-          },
-          "domain": [
-            {
-              "EA-Name": "DatasetInSeries",
-              "uri": "http://www.w3.org/ns/dcat#Dataset"
-            }
-          ],
-          "range": [
-            {
-              "range_label": "dct:Frequency",
-              "range_uri": "http://purl.org/dc/terms/Frequency"
-            }
-          ],
-          "scopedrange": [
-            {
-              "range_uri": "#Frequency",
-              "range_puri": "http://purl.org/dc/terms/Frequency",
-              "range_label": {
-                "en": "Frequency"
-              }
-            }
-          ],
-          "cardinality": "0..n",
-          "codelist_uri": "",
-          "rawTags": {
-            "uri": "http://purl.org/dc/terms/accrualPeriodicity",
-            "ap-definition-en": "The frequency at which the Dataset is updated.",
-            "ap-label-en": "frequency",
-            "DCAT": "https://www.w3.org/TR/vocab-dcat-3/#Property:dataset_frequency",
-            "property-usage-scope": "optional",
-            "ap-usageNote-en": "The frequency of a dataset belonging to a dataset series  is not equal to the frequency of the dataset series. \r\n\r\nE.g. A dataset budget 2020 with frequency yearly means that this dataset has an update in 2021, 2022, 2023, etc. "
-          }
-        },
-        {
-          "uri": "http://purl.org/dc/terms/description",
-          "name": "description",
-          "sort": "description",
-          "label": {
-            "en": "description"
-          },
-          "description": {
-            "en": "A free-text account of the Dataset."
-          },
-          "usage": {
-            "en": "This property can be repeated for parallel language versions of the description.\r\n\r\nThe description may indicate the dimension values."
-          },
-          "domain": [
-            {
-              "EA-Name": "DatasetInSeries",
-              "uri": "http://www.w3.org/ns/dcat#Dataset"
-            }
-          ],
-          "range": [
-            {
-              "range_label": "rdfs:Literal",
-              "range_uri": "http://www.w3.org/2000/01/rdf-schema#Literal"
-            }
-          ],
-          "scopedrange": [
-            {
-              "range_uri": "#Literal",
-              "range_puri": "http://www.w3.org/2000/01/rdf-schema#Literal",
-              "range_label": {
-                "en": "Literal"
-              }
-            }
-          ],
-          "cardinality": "1..n",
-          "codelist_uri": "",
-          "rawTags": {
-            "uri": "http://purl.org/dc/terms/description",
-            "ap-definition-en": "A free-text account of the Dataset.",
-            "ap-label-en": "description",
-            "ap-usageNote-en": "This property can be repeated for parallel language versions of the description.\r\n\r\nThe description may indicate the dimension values.",
-            "DCAT": "https://www.w3.org/TR/vocab-dcat-3/#Property:resource_description",
-            "property-usage-scope": "mandatory"
-          }
-        },
-        {
-          "uri": "http://purl.org/dc/terms/title",
-          "name": "title",
-          "sort": "title",
-          "label": {
-            "en": "title"
-          },
-          "description": {
-            "en": "A name given to the Dataset."
-          },
-          "usage": {
-            "en": "This property can be repeated for parallel language versions of the name.\r\n\r\nThe title may indicate the dimension values."
-          },
-          "domain": [
-            {
-              "EA-Name": "DatasetInSeries",
-              "uri": "http://www.w3.org/ns/dcat#Dataset"
-            }
-          ],
-          "range": [
-            {
-              "range_label": "rdfs:Literal",
-              "range_uri": "http://www.w3.org/2000/01/rdf-schema#Literal"
-            }
-          ],
-          "scopedrange": [
-            {
-              "range_uri": "#Literal",
-              "range_puri": "http://www.w3.org/2000/01/rdf-schema#Literal",
-              "range_label": {
-                "en": "Literal"
-              }
-            }
-          ],
-          "cardinality": "1..n",
-          "codelist_uri": "",
-          "rawTags": {
-            "uri": "http://purl.org/dc/terms/title",
-            "ap-definition-en": "A name given to the Dataset.",
-            "ap-label-en": "title",
-            "ap-usageNote-en": "This property can be repeated for parallel language versions of the name.\r\n\r\nThe title may indicate the dimension values.",
-            "DCAT": "https://www.w3.org/TR/vocab-dcat-3/#Property:resource_title",
-            "property-usage-scope": "mandatory"
-          }
-        },
-        {
-          "uri": "http://www.w3.org/ns/dcat#inSeries",
-          "name": "inSeries",
-          "sort": "in series",
-          "label": {
-            "en": "in series"
-          },
-          "description": {
-            "en": "A dataset series of which the dataset is part."
-          },
-          "usage": {},
-          "domain": [
-            {
-              "EA-Name": "DatasetInSeries",
-              "uri": "http://www.w3.org/ns/dcat#Dataset"
-            }
-          ],
-          "range": [
-            {
-              "range_label": "dcat:DatasetSeries",
-              "range_uri": "http://www.w3.org/ns/dcat#DatasetSeries"
-            }
-          ],
-          "scopedrange": [
-            {
-              "range_uri": "#Dataset Series",
-              "range_puri": "http://www.w3.org/ns/dcat#DatasetSeries",
-              "range_label": {
-                "en": "Dataset Series"
-              }
-            }
-          ],
-          "cardinality": "0..*",
-          "codelist_uri": "",
-          "rawTags": {
-            "definition-en": "A dataset series of which the dataset is part.",
-            "label-en": "in series",
-            "reuse": "asis",
-            "DCAT": "https://www.w3.org/TR/vocab-dcat-3/#Property:dataset_in_series",
-            "uri": "http://www.w3.org/ns/dcat#inSeries",
-            "property-usage-scope": "optional"
-          }
-        },
-        {
-          "uri": "http://www.w3.org/ns/dcat#next",
-          "name": "next",
-          "sort": "next",
-          "label": {
-            "en": "next"
-          },
-          "description": {
-            "en": "The following resource (after the current one) in an ordered collection or series of resources."
-          },
-          "usage": {},
-          "domain": [
-            {
-              "EA-Name": "DatasetInSeries",
-              "uri": "http://www.w3.org/ns/dcat#Dataset"
-            }
-          ],
-          "range": [
-            {
-              "range_label": "DatasetInSeries",
-              "range_uri": "http://www.w3.org/ns/dcat#Dataset"
-            }
-          ],
-          "scopedrange": [
-            {
-              "range_uri": "#Dataset member of a Dataset Series",
-              "range_puri": "http://www.w3.org/ns/dcat#Dataset",
-              "range_label": {
-                "en": "Dataset member of a Dataset Series"
-              }
-            }
-          ],
-          "cardinality": "0..*",
-          "codelist_uri": "",
-          "rawTags": {
-            "definition-en": "The following resource (after the current one) in an ordered collection or series of resources.",
-            "uri": "http://www.w3.org/ns/dcat#next",
-            "label-en": "next",
-            "property-usage-scope": "optional"
-          }
-        },
-        {
-          "uri": "http://www.w3.org/ns/dcat#prev",
-          "name": "previous",
-          "sort": "previous",
-          "label": {
-            "en": "previous"
-          },
-          "description": {
-            "en": "The previous resource (before the current one) in an ordered collection or series of resources."
-          },
-          "usage": {
-            "en": "Unless the dataset is the last in the chain a dataset in a collection must have a previous one."
-          },
-          "domain": [
-            {
-              "EA-Name": "DatasetInSeries",
-              "uri": "http://www.w3.org/ns/dcat#Dataset"
-            }
-          ],
-          "range": [
-            {
-              "range_label": "DatasetInSeries",
-              "range_uri": "http://www.w3.org/ns/dcat#Dataset"
-            }
-          ],
-          "scopedrange": [
-            {
-              "range_uri": "#Dataset member of a Dataset Series",
-              "range_puri": "http://www.w3.org/ns/dcat#Dataset",
-              "range_label": {
-                "en": "Dataset member of a Dataset Series"
-              }
-            }
-          ],
-          "cardinality": "0..*",
-          "codelist_uri": "",
-          "rawTags": {
-            "uri": "http://www.w3.org/ns/dcat#prev",
-            "label-en": "previous",
-            "definition-en": "The previous resource (before the current one) in an ordered collection or series of resources.",
-            "DCAT": "https://www.w3.org/TR/vocab-dcat-3/#Property:resource_previous",
-            "ap-usageNote-en": "NOTE$ea_notes=Unless the dataset is the last in the chain a dataset in a collection must have a previous one.",
-            "property-usage-scope": "recommended"
           }
         }
       ]
@@ -5297,49 +5048,6 @@
           }
         },
         {
-          "uri": "http://www.w3.org/ns/dcat#first",
-          "name": "first",
-          "sort": "first",
-          "label": {
-            "en": "first"
-          },
-          "description": {
-            "en": "The first resource in an ordered collection or series of resources, to which the current resource belongs."
-          },
-          "usage": {},
-          "domain": [
-            {
-              "EA-Name": "dcat:DatasetSeries",
-              "uri": "http://www.w3.org/ns/dcat#DatasetSeries"
-            }
-          ],
-          "range": [
-            {
-              "range_label": "DatasetInSeries",
-              "range_uri": "http://www.w3.org/ns/dcat#Dataset"
-            }
-          ],
-          "scopedrange": [
-            {
-              "range_uri": "#Dataset member of a Dataset Series",
-              "range_puri": "http://www.w3.org/ns/dcat#Dataset",
-              "range_label": {
-                "en": "Dataset member of a Dataset Series"
-              }
-            }
-          ],
-          "cardinality": "0..1",
-          "codelist_uri": "",
-          "rawTags": {
-            "uri": "http://www.w3.org/ns/dcat#first",
-            "label-en": "first",
-            "DCAT": "https://www.w3.org/TR/vocab-dcat-3/#Property:resource_first",
-            "definition-en": "The first resource in an ordered collection or series of resources, to which the current resource belongs.",
-            "property-usage-scope": "optional",
-            "reuse": "asis"
-          }
-        },
-        {
           "uri": "http://www.w3.org/ns/dcat#last",
           "name": "last",
           "sort": "last",
@@ -5358,16 +5066,16 @@
           ],
           "range": [
             {
-              "range_label": "DatasetInSeries",
+              "range_label": "dcat:Dataset",
               "range_uri": "http://www.w3.org/ns/dcat#Dataset"
             }
           ],
           "scopedrange": [
             {
-              "range_uri": "#Dataset member of a Dataset Series",
+              "range_uri": "#Dataset",
               "range_puri": "http://www.w3.org/ns/dcat#Dataset",
               "range_label": {
-                "en": "Dataset member of a Dataset Series"
+                "en": "Dataset"
               }
             }
           ],
@@ -5380,48 +5088,6 @@
             "property-usage-scope": "optional",
             "definition-en": "The last resource in an ordered collection or series.",
             "reuse": "asis"
-          }
-        },
-        {
-          "uri": "http://www.w3.org/ns/dcat#seriesMember",
-          "name": "seriesMember",
-          "sort": "series member",
-          "label": {
-            "en": "series member"
-          },
-          "description": {
-            "en": "A member of the Dataset Series."
-          },
-          "usage": {},
-          "domain": [
-            {
-              "EA-Name": "dcat:DatasetSeries",
-              "uri": "http://www.w3.org/ns/dcat#DatasetSeries"
-            }
-          ],
-          "range": [
-            {
-              "range_label": "DatasetInSeries",
-              "range_uri": "http://www.w3.org/ns/dcat#Dataset"
-            }
-          ],
-          "scopedrange": [
-            {
-              "range_uri": "#Dataset member of a Dataset Series",
-              "range_puri": "http://www.w3.org/ns/dcat#Dataset",
-              "range_label": {
-                "en": "Dataset member of a Dataset Series"
-              }
-            }
-          ],
-          "cardinality": "0..*",
-          "codelist_uri": "",
-          "rawTags": {
-            "reuse": "extended",
-            "uri": "http://www.w3.org/ns/dcat#seriesMember",
-            "property-usage-scope": "optional",
-            "definition-en": "A member of the Dataset Series.",
-            "label-en": "series member"
           }
         }
       ]

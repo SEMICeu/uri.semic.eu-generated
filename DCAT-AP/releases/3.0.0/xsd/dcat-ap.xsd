@@ -31,7 +31,6 @@
   <xs:element name="CatalogueRecord" type="CatalogueRecordType"/>
   <xs:element name="DataService" type="DataServiceType"/>
   <xs:element name="Dataset" type="DatasetType"/>
-  <xs:element name="DatasetMemberOfADatasetSeries" type="DatasetMemberOfADatasetSeriesType"/>
   <xs:element name="DatasetSeries" type="DatasetSeriesType"/>
   <xs:element name="Distribution" type="DistributionType"/>
   <xs:element name="Relationship" type="RelationshipType"/>
@@ -337,7 +336,7 @@
   </xs:complexType>
   <xs:complexType name="IdentifierType">
     <xs:sequence>
-      <xs:element name="notation" type="xs:string" maxOccurs="1" minOccurs="0">
+      <xs:element name="notation" type="xs:string" maxOccurs="1" minOccurs="1">
         <xs:annotation>
           <xs:documentation xml:lang="en">A string that is an identifier in the context of the identifier scheme referenced by its datatype.</xs:documentation>
         </xs:annotation>
@@ -595,7 +594,7 @@
     <xs:sequence>
       <xs:element name="otherIdentifier" ref="IdentifierType" maxOccurs="unbounded" minOccurs="0">
         <xs:annotation>
-          <xs:documentation xml:lang="en">A secondary identifier of the Dataset, such as MAST/ADS17, DataCite18, DOI19, EZID20 or W3ID21.</xs:documentation>
+          <xs:documentation xml:lang="en">A secondary identifier of the Dataset</xs:documentation>
         </xs:annotation>
       </xs:element>
       <xs:element name="sample" ref="DistributionType" maxOccurs="unbounded" minOccurs="0">
@@ -621,6 +620,11 @@
       <xs:element name="hasVersion" ref="DatasetType" maxOccurs="unbounded" minOccurs="0">
         <xs:annotation>
           <xs:documentation xml:lang="en">A related Dataset that is a version, edition, or adaptation of the described Dataset.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="dcatinSeries" ref="DatasetSeriesType" maxOccurs="unbounded" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation xml:lang="en">A dataset series of which the dataset is part.</xs:documentation>
         </xs:annotation>
       </xs:element>
       <xs:element name="isVersionOf" ref="DatasetType" maxOccurs="unbounded" minOccurs="0">
@@ -670,7 +674,7 @@
       </xs:element>
       <xs:element name="accessRights" ref="RightsStatementType" maxOccurs="1" minOccurs="0">
         <xs:annotation>
-          <xs:documentation xml:lang="en">Information that indicates whether the Dataset is open data, has access restrictions or is not public.</xs:documentation>
+          <xs:documentation xml:lang="en">Information that indicates whether the Dataset is publicly accessible, has access restrictions or is not public.</xs:documentation>
         </xs:annotation>
       </xs:element>
       <xs:element name="frequency" ref="FrequencyType" maxOccurs="1" minOccurs="0">
@@ -780,45 +784,6 @@
       </xs:annotation>
     </xs:attribute>
   </xs:complexType>
-  <xs:complexType name="DatasetMemberOfADatasetSeriesType">
-    <xs:sequence>
-      <xs:element name="inSeries" ref="DatasetSeriesType" maxOccurs="unbounded" minOccurs="0">
-        <xs:annotation>
-          <xs:documentation xml:lang="en">A dataset series of which the dataset is part.</xs:documentation>
-        </xs:annotation>
-      </xs:element>
-      <xs:element name="next" ref="DatasetMemberOfADatasetSeriesType" maxOccurs="unbounded" minOccurs="0">
-        <xs:annotation>
-          <xs:documentation xml:lang="en">The following resource (after the current one) in an ordered collection or series of resources.</xs:documentation>
-        </xs:annotation>
-      </xs:element>
-      <xs:element name="previous" ref="DatasetMemberOfADatasetSeriesType" maxOccurs="unbounded" minOccurs="0">
-        <xs:annotation>
-          <xs:documentation xml:lang="en">The previous resource (before the current one) in an ordered collection or series of resources.</xs:documentation>
-        </xs:annotation>
-      </xs:element>
-      <xs:element name="frequency" ref="FrequencyType" maxOccurs="unbounded" minOccurs="0">
-        <xs:annotation>
-          <xs:documentation xml:lang="en">The frequency at which the Dataset is updated.</xs:documentation>
-        </xs:annotation>
-      </xs:element>
-      <xs:element name="description" type="xs:string" maxOccurs="unbounded" minOccurs="1">
-        <xs:annotation>
-          <xs:documentation xml:lang="en">A free-text account of the Dataset.</xs:documentation>
-        </xs:annotation>
-      </xs:element>
-      <xs:element name="title" type="xs:string" maxOccurs="unbounded" minOccurs="1">
-        <xs:annotation>
-          <xs:documentation xml:lang="en">A name given to the Dataset.</xs:documentation>
-        </xs:annotation>
-      </xs:element>
-    </xs:sequence>
-    <xs:attribute name="DatasetMemberOfADatasetSeriesRef" type="xs:IDREF">
-      <xs:annotation>
-        <xs:documentation xml:lang="en">Reference to DatasetMemberOfADatasetSeries ID</xs:documentation>
-      </xs:annotation>
-    </xs:attribute>
-  </xs:complexType>
   <xs:complexType name="DatasetSeriesType">
     <xs:sequence>
       <xs:element name="contactPoint" ref="KindType" maxOccurs="unbounded" minOccurs="0">
@@ -826,19 +791,9 @@
           <xs:documentation xml:lang="en">Contact information that can be used for sending comments about the Dataset Series.</xs:documentation>
         </xs:annotation>
       </xs:element>
-      <xs:element name="first" ref="DatasetMemberOfADatasetSeriesType" maxOccurs="1" minOccurs="0">
-        <xs:annotation>
-          <xs:documentation xml:lang="en">The first resource in an ordered collection or series of resources, to which the current resource belongs.</xs:documentation>
-        </xs:annotation>
-      </xs:element>
-      <xs:element name="last" ref="DatasetMemberOfADatasetSeriesType" maxOccurs="1" minOccurs="0">
+      <xs:element name="last" ref="DatasetType" maxOccurs="1" minOccurs="0">
         <xs:annotation>
           <xs:documentation xml:lang="en">The last resource in an ordered collection or series.</xs:documentation>
-        </xs:annotation>
-      </xs:element>
-      <xs:element name="seriesMember" ref="DatasetMemberOfADatasetSeriesType" maxOccurs="unbounded" minOccurs="0">
-        <xs:annotation>
-          <xs:documentation xml:lang="en">A member of the Dataset Series.</xs:documentation>
         </xs:annotation>
       </xs:element>
       <xs:element name="applicableLegislation" ref="LegalResourceType" maxOccurs="unbounded" minOccurs="0">
