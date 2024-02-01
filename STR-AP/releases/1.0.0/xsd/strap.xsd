@@ -102,11 +102,6 @@
   </xs:complexType>
   <xs:complexType name="EvidenceType">
     <xs:sequence>
-      <xs:element name="describes" ref="UnitType" maxOccurs="1" minOccurs="0">
-        <xs:annotation>
-          <xs:documentation xml:lang="en">It indicates the Unit described.</xs:documentation>
-        </xs:annotation>
-      </xs:element>
       <xs:element name="validityPeriod" ref="PeriodOfTimeType" maxOccurs="1" minOccurs="0">
         <xs:annotation>
           <xs:documentation xml:lang="en">Period of Time during which the Evidence holds true or has force.</xs:documentation>
@@ -117,16 +112,6 @@
           <xs:documentation xml:lang="en">An Identifier for the piece of Evidence.</xs:documentation>
         </xs:annotation>
       </xs:element>
-      <xs:element name="isProvidedBy" ref="PersonType" maxOccurs="1" minOccurs="0">
-        <xs:annotation>
-          <xs:documentation xml:lang="en">Agent that transmits the Evidence.</xs:documentation>
-        </xs:annotation>
-      </xs:element>
-      <xs:element name="isProvidedBy" ref="LegalEntityType" maxOccurs="1" minOccurs="0">
-        <xs:annotation>
-          <xs:documentation xml:lang="en">Agent that transmits the Evidence.</xs:documentation>
-        </xs:annotation>
-      </xs:element>
       <xs:element name="name" type="xs:string" maxOccurs="unbounded" minOccurs="1">
         <xs:annotation>
           <xs:documentation xml:lang="en">The official Name of the piece of Evidence.</xs:documentation>
@@ -135,16 +120,6 @@
       <xs:element name="relatedDocumentation" ref="DocumentType" maxOccurs="unbounded" minOccurs="0">
         <xs:annotation>
           <xs:documentation xml:lang="en">The documentation that contains information.</xs:documentation>
-        </xs:annotation>
-      </xs:element>
-      <xs:element name="submissionDate" type="xs:dateTime" maxOccurs="1" minOccurs="1">
-        <xs:annotation>
-          <xs:documentation xml:lang="en">The date in which the Document has been submitted.</xs:documentation>
-        </xs:annotation>
-      </xs:element>
-      <xs:element name="updateDate" type="xs:dateTime" maxOccurs="1" minOccurs="0">
-        <xs:annotation>
-          <xs:documentation xml:lang="en">The date in which the Document has been updated.</xs:documentation>
         </xs:annotation>
       </xs:element>
     </xs:sequence>
@@ -208,16 +183,6 @@
       <xs:element name="issues" ref="OrderType" maxOccurs="unbounded" minOccurs="0">
         <xs:annotation>
           <xs:documentation xml:lang="en">It indicates ther Order issued.</xs:documentation>
-        </xs:annotation>
-      </xs:element>
-      <xs:element name="notifies" ref="LegalEntityType" maxOccurs="unbounded" minOccurs="0">
-        <xs:annotation>
-          <xs:documentation xml:lang="en">It indicates the host notified.</xs:documentation>
-        </xs:annotation>
-      </xs:element>
-      <xs:element name="notifies" ref="PersonType" maxOccurs="unbounded" minOccurs="0">
-        <xs:annotation>
-          <xs:documentation xml:lang="en">It indicates the host notified.</xs:documentation>
         </xs:annotation>
       </xs:element>
       <xs:element name="preferredLabel" type="xs:string" maxOccurs="unbounded" minOccurs="1">
@@ -322,15 +287,15 @@
           <xs:documentation xml:lang="en">The official Name of the Public Service.</xs:documentation>
         </xs:annotation>
       </xs:element>
-      <xs:element name="produces" ref="OutputType" maxOccurs="1" minOccurs="0">
-        <xs:annotation>
-          <xs:documentation xml:lang="en">It links a Public Service to one or more instances of the Output class, describing the actual result of executing a given Public Service.</xs:documentation>
-        </xs:annotation>
-      </xs:element>
       <xs:element name="produces" ref="CataloguedResourceType" maxOccurs="unbounded" minOccurs="0">
         <xs:annotation>
           <xs:documentation xml:lang="en">This property defines the output of the service as a data resource available
 and managed by a Base Registry Service.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="produces" ref="OutputType" maxOccurs="1" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation xml:lang="en">It links a Public Service to one or more instances of the Output class, describing the actual result of executing a given Public Service.</xs:documentation>
         </xs:annotation>
       </xs:element>
     </xs:sequence>
@@ -414,16 +379,6 @@ and managed by a Base Registry Service.</xs:documentation>
   </xs:complexType>
   <xs:complexType name="IdentifierType">
     <xs:sequence>
-      <xs:element name="identifies" ref="PersonType" maxOccurs="1" minOccurs="0">
-        <xs:annotation>
-          <xs:documentation xml:lang="en">The entity that is referenced by the Identifier.</xs:documentation>
-        </xs:annotation>
-      </xs:element>
-      <xs:element name="identifies" ref="LegalEntityType" maxOccurs="1" minOccurs="0">
-        <xs:annotation>
-          <xs:documentation xml:lang="en">The entity that is referenced by the Identifier.</xs:documentation>
-        </xs:annotation>
-      </xs:element>
       <xs:element name="notation" type="xs:string" maxOccurs="1" minOccurs="1">
         <xs:annotation>
           <xs:documentation xml:lang="en">A string that is an identifier in the context of the identifier scheme referenced by its datatype.</xs:documentation>
@@ -536,6 +491,16 @@ and managed by a Base Registry Service.</xs:documentation>
           <xs:documentation xml:lang="en">It indicates the Person that can represent legally an organization.</xs:documentation>
         </xs:annotation>
       </xs:element>
+      <xs:element name="isNotifiedBy" ref="PublicOrganisationType" maxOccurs="unbounded" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation xml:lang="en">It indicates the host notified.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="isReferredIn" ref="OrderType" maxOccurs="unbounded" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation xml:lang="en">It indicates the Order in which the host is referred.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
       <xs:element name="legalIdentifier" ref="IdentifierType" maxOccurs="1" minOccurs="1">
         <xs:annotation>
           <xs:documentation xml:lang="en">The unambiguous structured reference assigned to the Legal Entity by the legal authority that registered it.</xs:documentation>
@@ -549,6 +514,11 @@ and managed by a Base Registry Service.</xs:documentation>
       <xs:element name="offers" ref="ShortTermAccomodationRentalServiceType" maxOccurs="unbounded" minOccurs="0">
         <xs:annotation>
           <xs:documentation xml:lang="en">It indicates the rental service offered.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="provides" ref="DocumentType" maxOccurs="unbounded" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation xml:lang="en">It indicates the Document provided.</xs:documentation>
         </xs:annotation>
       </xs:element>
       <xs:element name="registeredAddress" ref="AddressType" maxOccurs="1" minOccurs="1">
@@ -667,14 +637,29 @@ and managed by a Base Registry Service.</xs:documentation>
           <xs:documentation xml:lang="en">Links a resource to an adms:Identifier class.</xs:documentation>
         </xs:annotation>
       </xs:element>
+      <xs:element name="notifies" ref="PublicOrganisationType" maxOccurs="unbounded" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation xml:lang="en">It indicates the host notified.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
       <xs:element name="isPointOfContactFor" ref="SingleDigitalEntryPointType" maxOccurs="unbounded" minOccurs="0">
         <xs:annotation>
           <xs:documentation xml:lang="en">The Single Digital Entry point for which the person acts as contact point for all matters related.</xs:documentation>
         </xs:annotation>
       </xs:element>
+      <xs:element name="isReferredIn" ref="OrderType" maxOccurs="unbounded" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation xml:lang="en">It indicates the Order in which the host is referred.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
       <xs:element name="offers" ref="ShortTermAccomodationRentalServiceType" maxOccurs="unbounded" minOccurs="0">
         <xs:annotation>
           <xs:documentation xml:lang="en">It indicates the rental service offered.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="provides" ref="DocumentType" maxOccurs="unbounded" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation xml:lang="en">It indicates the Document provided.</xs:documentation>
         </xs:annotation>
       </xs:element>
     </xs:sequence>
@@ -685,7 +670,23 @@ and managed by a Base Registry Service.</xs:documentation>
     </xs:attribute>
   </xs:complexType>
   <xs:complexType name="DocumentType">
-    <xs:sequence/>
+    <xs:sequence>
+      <xs:element name="describes" ref="UnitType" maxOccurs="1" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation xml:lang="en">It indicates the Unit described.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="submissionDate" type="xs:dateTime" maxOccurs="1" minOccurs="1">
+        <xs:annotation>
+          <xs:documentation xml:lang="en">The date in which the Document has been submitted.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="updateDate" type="xs:dateTime" maxOccurs="1" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation xml:lang="en">The date in which the Document has been updated.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+    </xs:sequence>
     <xs:attribute name="DocumentRef" type="xs:IDREF">
       <xs:annotation>
         <xs:documentation xml:lang="en">Reference to Document ID</xs:documentation>
@@ -772,16 +773,6 @@ and managed by a Base Registry Service.</xs:documentation>
       <xs:element name="concerns" ref="RegistrationNumberType" maxOccurs="1" minOccurs="1">
         <xs:annotation>
           <xs:documentation xml:lang="en">It indicated the Registration Number concerned.</xs:documentation>
-        </xs:annotation>
-      </xs:element>
-      <xs:element name="isAbout" ref="PersonType" maxOccurs="1" minOccurs="0">
-        <xs:annotation>
-          <xs:documentation xml:lang="en">It indicates the host reference.</xs:documentation>
-        </xs:annotation>
-      </xs:element>
-      <xs:element name="isAbout" ref="LegalEntityType" maxOccurs="1" minOccurs="0">
-        <xs:annotation>
-          <xs:documentation xml:lang="en">It indicates the host reference.</xs:documentation>
         </xs:annotation>
       </xs:element>
       <xs:element name="reason" type="xs:string" maxOccurs="1" minOccurs="1">
