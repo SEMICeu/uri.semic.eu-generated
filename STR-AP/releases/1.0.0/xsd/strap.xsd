@@ -102,6 +102,11 @@
   </xs:complexType>
   <xs:complexType name="EvidenceType">
     <xs:sequence>
+      <xs:element name="describes" ref="UnitType" maxOccurs="1" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation xml:lang="en">It indicates the Unit described.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
       <xs:element name="validityPeriod" ref="PeriodOfTimeType" maxOccurs="1" minOccurs="0">
         <xs:annotation>
           <xs:documentation xml:lang="en">Period of Time during which the Evidence holds true or has force.</xs:documentation>
@@ -120,6 +125,16 @@
       <xs:element name="relatedDocumentation" ref="DocumentType" maxOccurs="unbounded" minOccurs="0">
         <xs:annotation>
           <xs:documentation xml:lang="en">The documentation that contains information.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="submissionDate" type="xs:dateTime" maxOccurs="1" minOccurs="1">
+        <xs:annotation>
+          <xs:documentation xml:lang="en">The date in which the Document has been submitted.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="updateDate" type="xs:dateTime" maxOccurs="1" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation xml:lang="en">The date in which the Document has been updated.</xs:documentation>
         </xs:annotation>
       </xs:element>
     </xs:sequence>
@@ -287,15 +302,15 @@
           <xs:documentation xml:lang="en">The official Name of the Public Service.</xs:documentation>
         </xs:annotation>
       </xs:element>
-      <xs:element name="produces" ref="OutputType" maxOccurs="1" minOccurs="0">
-        <xs:annotation>
-          <xs:documentation xml:lang="en">It links a Public Service to one or more instances of the Output class, describing the actual result of executing a given Public Service.</xs:documentation>
-        </xs:annotation>
-      </xs:element>
       <xs:element name="produces" ref="CataloguedResourceType" maxOccurs="unbounded" minOccurs="0">
         <xs:annotation>
           <xs:documentation xml:lang="en">This property defines the output of the service as a data resource available
 and managed by a Base Registry Service.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="produces" ref="OutputType" maxOccurs="1" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation xml:lang="en">It links a Public Service to one or more instances of the Output class, describing the actual result of executing a given Public Service.</xs:documentation>
         </xs:annotation>
       </xs:element>
     </xs:sequence>
@@ -516,9 +531,9 @@ and managed by a Base Registry Service.</xs:documentation>
           <xs:documentation xml:lang="en">It indicates the rental service offered.</xs:documentation>
         </xs:annotation>
       </xs:element>
-      <xs:element name="provides" ref="DocumentType" maxOccurs="unbounded" minOccurs="0">
+      <xs:element name="provides" ref="EvidenceType" maxOccurs="unbounded" minOccurs="0">
         <xs:annotation>
-          <xs:documentation xml:lang="en">It indicates the Document provided by the Legal Entity.</xs:documentation>
+          <xs:documentation xml:lang="en">It indicates the Evidence provided.</xs:documentation>
         </xs:annotation>
       </xs:element>
       <xs:element name="registeredAddress" ref="AddressType" maxOccurs="1" minOccurs="1">
@@ -657,9 +672,9 @@ and managed by a Base Registry Service.</xs:documentation>
           <xs:documentation xml:lang="en">It indicates the rental service offered.</xs:documentation>
         </xs:annotation>
       </xs:element>
-      <xs:element name="provides" ref="DocumentType" maxOccurs="unbounded" minOccurs="0">
+      <xs:element name="provides" ref="EvidenceType" maxOccurs="unbounded" minOccurs="0">
         <xs:annotation>
-          <xs:documentation xml:lang="en">It indicates the Document provided by the person.</xs:documentation>
+          <xs:documentation xml:lang="en">It indicates the Evidence provided.</xs:documentation>
         </xs:annotation>
       </xs:element>
     </xs:sequence>
@@ -670,23 +685,7 @@ and managed by a Base Registry Service.</xs:documentation>
     </xs:attribute>
   </xs:complexType>
   <xs:complexType name="DocumentType">
-    <xs:sequence>
-      <xs:element name="describes" ref="UnitType" maxOccurs="1" minOccurs="0">
-        <xs:annotation>
-          <xs:documentation xml:lang="en">It indicates the Unit described.</xs:documentation>
-        </xs:annotation>
-      </xs:element>
-      <xs:element name="submissionDate" type="xs:dateTime" maxOccurs="1" minOccurs="1">
-        <xs:annotation>
-          <xs:documentation xml:lang="en">The date in which the Document has been submitted.</xs:documentation>
-        </xs:annotation>
-      </xs:element>
-      <xs:element name="updateDate" type="xs:dateTime" maxOccurs="1" minOccurs="0">
-        <xs:annotation>
-          <xs:documentation xml:lang="en">The date in which the Document has been updated.</xs:documentation>
-        </xs:annotation>
-      </xs:element>
-    </xs:sequence>
+    <xs:sequence/>
     <xs:attribute name="DocumentRef" type="xs:IDREF">
       <xs:annotation>
         <xs:documentation xml:lang="en">Reference to Document ID</xs:documentation>
