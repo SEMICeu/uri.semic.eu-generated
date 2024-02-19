@@ -30,6 +30,7 @@
   <xs:element name="Person" type="PersonType"/>
   <xs:element name="Document" type="DocumentType"/>
   <xs:element name="Group" type="GroupType"/>
+  <xs:element name="Url" type="UrlType"/>
   <xs:element name="ActivityData" type="ActivityDataType"/>
   <xs:element name="CoordinationGroup" type="CoordinationGroupType"/>
   <xs:element name="OnlineShortTermRentalPlatform" type="OnlineShortTermRentalPlatformType"/>
@@ -481,7 +482,7 @@ and managed by a Base Registry Service.</xs:documentation>
       </xs:element>
       <xs:element name="hasListing" ref="UnitType" maxOccurs="unbounded" minOccurs="0">
         <xs:annotation>
-          <xs:documentation xml:lang="en">It indicates the Unit listed.</xs:documentation>
+          <xs:documentation xml:lang="en">The reference to a unit offered for short-term accommodation rental services and published on an online short-term rental platforms website.</xs:documentation>
         </xs:annotation>
       </xs:element>
     </xs:sequence>
@@ -700,11 +701,24 @@ and managed by a Base Registry Service.</xs:documentation>
       </xs:annotation>
     </xs:attribute>
   </xs:complexType>
+  <xs:complexType name="UrlType">
+    <xs:sequence/>
+    <xs:attribute name="UrlRef" type="xs:IDREF">
+      <xs:annotation>
+        <xs:documentation xml:lang="en">Reference to Url ID</xs:documentation>
+      </xs:annotation>
+    </xs:attribute>
+  </xs:complexType>
   <xs:complexType name="ActivityDataType">
     <xs:sequence>
       <xs:element name="countryOfResidence" ref="LocationType" maxOccurs="1" minOccurs="1">
         <xs:annotation>
           <xs:documentation xml:lang="en">The country of residence of the guests.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="isAbout" ref="UnitType" maxOccurs="1" minOccurs="1">
+        <xs:annotation>
+          <xs:documentation xml:lang="en">The Unit associated to the activity data.</xs:documentation>
         </xs:annotation>
       </xs:element>
       <xs:element name="numberOfGuests" type="xs:integer" maxOccurs="1" minOccurs="1">
@@ -772,6 +786,11 @@ and managed by a Base Registry Service.</xs:documentation>
       <xs:element name="concerns" ref="RegistrationNumberType" maxOccurs="1" minOccurs="1">
         <xs:annotation>
           <xs:documentation xml:lang="en">It indicated the Registration Number concerned.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="identifier" type="xs:string" maxOccurs="1" minOccurs="1">
+        <xs:annotation>
+          <xs:documentation xml:lang="en">An Identifier for the Order.</xs:documentation>
         </xs:annotation>
       </xs:element>
       <xs:element name="reason" type="xs:string" maxOccurs="1" minOccurs="1">
@@ -868,11 +887,6 @@ and managed by a Base Registry Service.</xs:documentation>
           <xs:documentation xml:lang="en">The level of the floor of the Unit as textual description.</xs:documentation>
         </xs:annotation>
       </xs:element>
-      <xs:element name="hasActivityData" ref="ActivityDataType" maxOccurs="unbounded" minOccurs="0">
-        <xs:annotation>
-          <xs:documentation xml:lang="en">The activity data associated to the Unit.</xs:documentation>
-        </xs:annotation>
-      </xs:element>
       <xs:element name="hasAuthorization" ref="DocumentType" maxOccurs="1" minOccurs="0">
         <xs:annotation>
           <xs:documentation xml:lang="en">It indicated the document attesting the authorization.</xs:documentation>
@@ -916,6 +930,11 @@ and managed by a Base Registry Service.</xs:documentation>
       <xs:element name="type" type="ConceptType" maxOccurs="1" minOccurs="1">
         <xs:annotation>
           <xs:documentation xml:lang="en">A classification of the unit.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="url" ref="UrlType" maxOccurs="1" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation xml:lang="en">URL of the item.</xs:documentation>
         </xs:annotation>
       </xs:element>
     </xs:sequence>
