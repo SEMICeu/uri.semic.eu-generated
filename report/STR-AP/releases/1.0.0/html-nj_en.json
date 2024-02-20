@@ -2,7 +2,7 @@
   "metadata": {
     "title": "STR Application Profile (STR-AP)",
     "uri": "http://data.europa.eu/r5r",
-    "issued": "2024-02-19",
+    "issued": "2024-02-20",
     "baseURI": "http://data.europa.eu/r5r/",
     "filename": "strap",
     "navigation": {
@@ -17,8 +17,8 @@
     },
     "status": "Working Draft",
     "statuslabel": "Onbekend",
-    "repositoryurl": "git@semicthema-DCAT-AP:SEMICeu/Semicthema-DCAT-AP.git/tree/ed5ab4d649ed775ad6081dae23aa0e8f13919fe9",
-    "changelogurl": "git@semicthema-DCAT-AP:SEMICeu/Semicthema-DCAT-AP.git/blob/ed5ab4d649ed775ad6081dae23aa0e8f13919fe9/CHANGELOG",
+    "repositoryurl": "git@semicthema-DCAT-AP:SEMICeu/Semicthema-DCAT-AP.git/tree/b86405c782fc3beaaa34549a74cb2e34b9bd627d",
+    "changelogurl": "git@semicthema-DCAT-AP:SEMICeu/Semicthema-DCAT-AP.git/blob/b86405c782fc3beaaa34549a74cb2e34b9bd627d/CHANGELOG",
     "feedbackurl": "https://github.com/SEMICeu/STR-AP/issues",
     "standaardregisterurl": "https://github.com/SEMICeu/STR-AP/blob/master/releases/1.0.0/Changelog.md",
     "usesVocs": [],
@@ -1682,6 +1682,49 @@
             "en": "produces"
           },
           "description": {
+            "en": "It links a Public Service to one or more instances of the Output class, describing the actual result of executing a given Public Service."
+          },
+          "usage": {
+            "en": "Outputs can be any resource, for instance a document, artefact or anything else being produced as a result of executing the Public Service."
+          },
+          "domain": [
+            {
+              "EA-Name": "PublicService",
+              "uri": "http://purl.org/vocab/cpsv#PublicService"
+            }
+          ],
+          "range": [
+            {
+              "range_label": "Output",
+              "range_uri": "http://data.europa.eu/m8g/Output"
+            }
+          ],
+          "scopedrange": [
+            {
+              "range_uri": "#Output",
+              "range_puri": "http://data.europa.eu/m8g/Output",
+              "range_label": {
+                "en": "Output"
+              }
+            }
+          ],
+          "cardinality": "0..1",
+          "codelist_uri": "",
+          "rawTags": {
+            "definition-en": "It links a Public Service to one or more instances of the Output class, describing the actual result of executing a given Public Service.",
+            "usageNote-en": "NOTE$ea_notes=Outputs can be any resource, for instance a document, artefact or anything else being produced as a result of executing the Public Service.",
+            "label-en": "produces",
+            "uri": "http://purl.org/vocab/cpsv#produces"
+          }
+        },
+        {
+          "uri": "http://purl.org/vocab/cpsv#produces",
+          "name": "produces",
+          "sort": "produces",
+          "label": {
+            "en": "produces"
+          },
+          "description": {
             "en": "This property defines the output of the service as a data resource available\r\nand managed by a Base Registry Service."
           },
           "usage": {
@@ -1716,49 +1759,6 @@
             "ap-usageNote-en": "The output must be also\r\ndescribed as a dcat:Catalog, a dcat:Dataset or a dcat:DataService.",
             "uri": "http://purl.org/vocab/cpsv#produces",
             "property-usage-scope": "optional"
-          }
-        },
-        {
-          "uri": "http://purl.org/vocab/cpsv#produces",
-          "name": "produces",
-          "sort": "produces",
-          "label": {
-            "en": "produces"
-          },
-          "description": {
-            "en": "It links a Public Service to one or more instances of the Output class, describing the actual result of executing a given Public Service."
-          },
-          "usage": {
-            "en": "Outputs can be any resource, for instance a document, artefact or anything else being produced as a result of executing the Public Service."
-          },
-          "domain": [
-            {
-              "EA-Name": "PublicService",
-              "uri": "http://purl.org/vocab/cpsv#PublicService"
-            }
-          ],
-          "range": [
-            {
-              "range_label": "Output",
-              "range_uri": "http://data.europa.eu/m8g/Output"
-            }
-          ],
-          "scopedrange": [
-            {
-              "range_uri": "#Output",
-              "range_puri": "http://data.europa.eu/m8g/Output",
-              "range_label": {
-                "en": "Output"
-              }
-            }
-          ],
-          "cardinality": "0..1",
-          "codelist_uri": "",
-          "rawTags": {
-            "definition-en": "It links a Public Service to one or more instances of the Output class, describing the actual result of executing a given Public Service.",
-            "usageNote-en": "NOTE$ea_notes=Outputs can be any resource, for instance a document, artefact or anything else being produced as a result of executing the Public Service.",
-            "label-en": "produces",
-            "uri": "http://purl.org/vocab/cpsv#produces"
           }
         }
       ]
@@ -3814,7 +3814,9 @@
           "description": {
             "en": "The country of residence of the guests."
           },
-          "usage": {},
+          "usage": {
+            "en": "The recommended values are those from the <a href=\"https://op.europa.eu/en/web/eu-vocabularies/concept-scheme/-/resource?uri=http://publications.europa.eu/resource/authority/country\">Country authority table</a> of the Publications Office."
+          },
           "domain": [
             {
               "EA-Name": "ActivityData",
@@ -3823,16 +3825,16 @@
           ],
           "range": [
             {
-              "range_label": "Location",
-              "range_uri": "http://purl.org/dc/terms/Location"
+              "range_label": "Concept",
+              "range_uri": "http://www.w3.org/2004/02/skos/core#Concept"
             }
           ],
           "scopedrange": [
             {
-              "range_uri": "#Location",
-              "range_puri": "http://purl.org/dc/terms/Location",
+              "range_uri": "#Concept",
+              "range_puri": "http://www.w3.org/2004/02/skos/core#Concept",
               "range_label": {
-                "en": "Location"
+                "en": "Concept"
               }
             }
           ],
@@ -3841,7 +3843,8 @@
           "rawTags": {
             "uri": "https://w3id.org/str/countryOfResidence",
             "label-en": "country of residence",
-            "definition-en": "The country of residence of the guests."
+            "definition-en": "The country of residence of the guests.",
+            "usageNote-en": "The recommended values are those from the <a href=\"https://op.europa.eu/en/web/eu-vocabularies/concept-scheme/-/resource?uri=http://publications.europa.eu/resource/authority/country\">Country authority table</a> of the Publications Office."
           }
         },
         {
