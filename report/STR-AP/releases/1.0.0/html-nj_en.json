@@ -2,7 +2,7 @@
   "metadata": {
     "title": "STR Application Profile (STR-AP)",
     "uri": "http://data.europa.eu/r5r",
-    "issued": "2024-02-20",
+    "issued": "2024-02-22",
     "baseURI": "http://data.europa.eu/r5r/",
     "filename": "strap",
     "navigation": {
@@ -17,8 +17,8 @@
     },
     "status": "Working Draft",
     "statuslabel": "Onbekend",
-    "repositoryurl": "git@semicthema-DCAT-AP:SEMICeu/Semicthema-DCAT-AP.git/tree/007e81bf6bbee1e0c0b4e32e116dd2aca685bd3f",
-    "changelogurl": "git@semicthema-DCAT-AP:SEMICeu/Semicthema-DCAT-AP.git/blob/007e81bf6bbee1e0c0b4e32e116dd2aca685bd3f/CHANGELOG",
+    "repositoryurl": "git@semicthema-DCAT-AP:SEMICeu/Semicthema-DCAT-AP.git/tree/78472dadcea52b0aed140e35dc2b2d34b8462393",
+    "changelogurl": "git@semicthema-DCAT-AP:SEMICeu/Semicthema-DCAT-AP.git/blob/78472dadcea52b0aed140e35dc2b2d34b8462393/CHANGELOG",
     "feedbackurl": "https://github.com/SEMICeu/STR-AP/issues",
     "standaardregisterurl": "https://github.com/SEMICeu/STR-AP/blob/master/releases/1.0.0/Changelog.md",
     "usesVocs": [],
@@ -3260,17 +3260,187 @@
       },
       "sort": "Geometry",
       "description": {
-        "en": "The locn:Geometry class provides the means to identify a location as a point, line, polygon, etc. expressed using coordinates in some coordinate reference system."
+        "en": "A shape or form of a Location."
       },
-      "usage": {},
+      "usage": {
+        "en": "This class defines the notion of \"geometry\" at the conceptual level, and it shall be encoded by using different formats (see usage note of the locn:geometry property). Can be a point, line or polygon, expressed using coordinates in some coordinate reference system. "
+      },
       "parents": [],
       "rawTags": {
         "uri": "http://www.w3.org/ns/locn#Geometry",
         "label-en": "Geometry",
-        "definition-en": "The locn:Geometry class provides the means to identify a location as a point, line, polygon, etc. expressed using coordinates in some coordinate reference system.",
-        "class-usage-scope": "supportive"
+        "definition-en": "A shape or form of a Location.",
+        "class-usage-scope": "supportive",
+        "usageNote-en": "This class defines the notion of \"geometry\" at the conceptual level, and it shall be encoded by using different formats (see usage note of the locn:geometry property). Can be a point, line or polygon, expressed using coordinates in some coordinate reference system. "
       },
-      "properties": []
+      "properties": [
+        {
+          "uri": "http://data.europa.eu/m8g/coordinates",
+          "name": "coordinates",
+          "sort": "coordinates",
+          "label": {
+            "en": "coordinates"
+          },
+          "description": {
+            "en": "A list of geographic coordinates that define the extent of the Geometry."
+          },
+          "usage": {
+            "en": "Can be expressed as longitude, latitude, elevation."
+          },
+          "domain": [
+            {
+              "EA-Name": "Geometry",
+              "uri": "http://www.w3.org/ns/locn#Geometry"
+            }
+          ],
+          "range": [
+            {
+              "range_label": "string",
+              "range_uri": "https://www.w3.org/2001/XMLSchema#string"
+            }
+          ],
+          "scopedrange": [
+            {
+              "range_uri": "https://www.w3.org/2001/XMLSchema#string",
+              "range_puri": "https://www.w3.org/2001/XMLSchema#string",
+              "range_label": {
+                "en": "string"
+              }
+            }
+          ],
+          "cardinality": "0..1",
+          "codelist_uri": "",
+          "rawTags": {
+            "label-en": "coordinates",
+            "uri": "http://data.europa.eu/m8g/coordinates",
+            "definition-en": "A list of geographic coordinates that define the extent of the Geometry.",
+            "usageNote-en": "Can be expressed as longitude, latitude, elevation."
+          }
+        },
+        {
+          "uri": "http://data.europa.eu/m8g/geometryType",
+          "name": "geometryType",
+          "sort": "geometry type",
+          "label": {
+            "en": "geometry type"
+          },
+          "description": {
+            "en": "The classification of the Geometry."
+          },
+          "usage": {
+            "en": "Can be a point, line or polygon."
+          },
+          "domain": [
+            {
+              "EA-Name": "Geometry",
+              "uri": "http://www.w3.org/ns/locn#Geometry"
+            }
+          ],
+          "range": [
+            {
+              "range_label": "Concept",
+              "range_uri": "http://www.w3.org/2004/02/skos/core#Concept"
+            }
+          ],
+          "scopedrange": [
+            {
+              "range_uri": "#Concept",
+              "range_puri": "http://www.w3.org/2004/02/skos/core#Concept",
+              "range_label": {
+                "en": "Concept"
+              }
+            }
+          ],
+          "cardinality": "1",
+          "codelist_uri": "",
+          "rawTags": {
+            "uri": "http://data.europa.eu/m8g/geometryType",
+            "label-en": "geometry type",
+            "definition-en": "The classification of the Geometry.",
+            "usageNote-en": "Can be a point, line or polygon."
+          }
+        },
+        {
+          "uri": "http://data.europa.eu/m8g/latitude",
+          "name": "latitude",
+          "sort": "latitude",
+          "label": {
+            "en": "latitude"
+          },
+          "description": {
+            "en": "The geographic coordinate that specifies the north / south position of the Geomerty on the Earth's surface."
+          },
+          "usage": {},
+          "domain": [
+            {
+              "EA-Name": "Geometry",
+              "uri": "http://www.w3.org/ns/locn#Geometry"
+            }
+          ],
+          "range": [
+            {
+              "range_label": "string",
+              "range_uri": "https://www.w3.org/2001/XMLSchema#string"
+            }
+          ],
+          "scopedrange": [
+            {
+              "range_uri": "https://www.w3.org/2001/XMLSchema#string",
+              "range_puri": "https://www.w3.org/2001/XMLSchema#string",
+              "range_label": {
+                "en": "string"
+              }
+            }
+          ],
+          "cardinality": "0..1",
+          "codelist_uri": "",
+          "rawTags": {
+            "uri": "http://data.europa.eu/m8g/latitude",
+            "label-en": "latitude",
+            "definition-en": "The geographic coordinate that specifies the north / south position of the Geomerty on the Earth's surface."
+          }
+        },
+        {
+          "uri": "http://data.europa.eu/m8g/longitude",
+          "name": "longitude",
+          "sort": "longitude",
+          "label": {
+            "en": "longitude"
+          },
+          "description": {
+            "en": "The geographic coordinate that specifies the east / west position of the Geometry on the Earth's surface."
+          },
+          "usage": {},
+          "domain": [
+            {
+              "EA-Name": "Geometry",
+              "uri": "http://www.w3.org/ns/locn#Geometry"
+            }
+          ],
+          "range": [
+            {
+              "range_label": "string",
+              "range_uri": "https://www.w3.org/2001/XMLSchema#string"
+            }
+          ],
+          "scopedrange": [
+            {
+              "range_uri": "https://www.w3.org/2001/XMLSchema#string",
+              "range_puri": "https://www.w3.org/2001/XMLSchema#string",
+              "range_label": {
+                "en": "string"
+              }
+            }
+          ],
+          "cardinality": "0..1",
+          "codelist_uri": "",
+          "rawTags": {
+            "uri": "http://data.europa.eu/m8g/longitude",
+            "label-en": "longitude",
+            "definition-en": "The geographic coordinate that specifies the east / west position of the Geometry on the Earth's surface."
+          }
+        }
+      ]
     },
     {
       "uri": "http://www.w3.org/ns/person#Person",
@@ -3805,11 +3975,11 @@
           }
         },
         {
-          "uri": "https://w3id.org/str/countryOfResidence",
-          "name": "countryOfResidence",
-          "sort": "country of residence",
+          "uri": "https://w3id.org/str/countryOfGuests",
+          "name": "countryOfTheGuests",
+          "sort": "country of the guests",
           "label": {
-            "en": "country of residence"
+            "en": "country of the guests"
           },
           "description": {
             "en": "The country of residence of the guests."
@@ -3841,8 +4011,8 @@
           "cardinality": "1",
           "codelist_uri": "",
           "rawTags": {
-            "uri": "https://w3id.org/str/countryOfResidence",
-            "label-en": "country of residence",
+            "uri": "https://w3id.org/str/countryOfGuests",
+            "label-en": "country of the guests",
             "definition-en": "The country of residence of the guests.",
             "usageNote-en": "The recommended values are those from the <a href=\"https://op.europa.eu/en/web/eu-vocabularies/concept-scheme/-/resource?uri=http://publications.europa.eu/resource/authority/country\">Country authority table</a> of the Publications Office."
           }
@@ -4219,6 +4389,46 @@
             "label-en": "publishes",
             "uri": "https://w3id.org/str/publishes"
           }
+        },
+        {
+          "uri": "https://w3id.org/str/requestsArea",
+          "name": "requestsArea",
+          "sort": "requests area",
+          "label": {
+            "en": "requests area"
+          },
+          "description": {
+            "en": "The area requested by the Online Short Term Rental Platform."
+          },
+          "usage": {},
+          "domain": [
+            {
+              "EA-Name": "OnlineShortTermRentalPlatform",
+              "uri": "https://w3id.org/str/OnlineShortTermRentalPlatform"
+            }
+          ],
+          "range": [
+            {
+              "range_label": "Geometry",
+              "range_uri": "http://www.w3.org/ns/locn#Geometry"
+            }
+          ],
+          "scopedrange": [
+            {
+              "range_uri": "#Geometry",
+              "range_puri": "http://www.w3.org/ns/locn#Geometry",
+              "range_label": {
+                "en": "Geometry"
+              }
+            }
+          ],
+          "cardinality": "0..*",
+          "codelist_uri": "",
+          "rawTags": {
+            "uri": "https://w3id.org/str/requestsArea",
+            "label-en": "requests area",
+            "definition-en": "The area requested by the Online Short Term Rental Platform."
+          }
         }
       ]
     },
@@ -4319,6 +4529,46 @@
             "definition-en": "It indicated the Registration Number concerned.",
             "label-en": "concerns",
             "uri": "https://w3id.org/str/concerns"
+          }
+        },
+        {
+          "uri": "https://w3id.org/str/hasListing",
+          "name": "hasListing",
+          "sort": "has listing",
+          "label": {
+            "en": "has listing"
+          },
+          "description": {
+            "en": "The reference to a unit offered for short-term accommodation rental services and published on an online short-term rental platforms website."
+          },
+          "usage": {},
+          "domain": [
+            {
+              "EA-Name": "Order",
+              "uri": "https://w3id.org/str/Order"
+            }
+          ],
+          "range": [
+            {
+              "range_label": "Unit",
+              "range_uri": "https://w3id.org/str/Unit"
+            }
+          ],
+          "scopedrange": [
+            {
+              "range_uri": "#Unit",
+              "range_puri": "https://w3id.org/str/Unit",
+              "range_label": {
+                "en": "Unit"
+              }
+            }
+          ],
+          "cardinality": "1",
+          "codelist_uri": "",
+          "rawTags": {
+            "definition-en": "The reference to a unit offered for short-term accommodation rental services and published on an online short-term rental platforms website.",
+            "uri": "https://w3id.org/str/hasListing",
+            "label-en": "has listing"
           }
         },
         {
