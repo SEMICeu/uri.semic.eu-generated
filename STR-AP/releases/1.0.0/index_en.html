@@ -8109,20 +8109,18 @@ companies, vehicles, licences, buildings, locations and roads.
                                 <td>
                                     
                                         
-                                            <a href="#CataloguedResource" data-placement="right">Catalogued Resource</a>
+                                            <a href="#Output" data-placement="right">Output</a>
                                         
                                     
                                 </td>
                                 <td>
-                                    0..*
+                                    0..1
                                 </td>
                                 <td property="rdfs:comment">
-                                    This property defines the output of the service as a data resource available
-and managed by a Base Registry Service.
+                                    It links a Public Service to one or more instances of the Output class, describing the actual result of executing a given Public Service.
                                 </td>
                                 <td property="skos:scopeNote">
-                                    The output must be also
-described as a dcat:Catalog, a dcat:Dataset or a dcat:DataService.
+                                    Outputs can be any resource, for instance a document, artefact or anything else being produced as a result of executing the Public Service.
                                 </td>
 				<!--
                                 <td>
@@ -8155,18 +8153,20 @@ described as a dcat:Catalog, a dcat:Dataset or a dcat:DataService.
                                 <td>
                                     
                                         
-                                            <a href="#Output" data-placement="right">Output</a>
+                                            <a href="#CataloguedResource" data-placement="right">Catalogued Resource</a>
                                         
                                     
                                 </td>
                                 <td>
-                                    0..1
+                                    0..*
                                 </td>
                                 <td property="rdfs:comment">
-                                    It links a Public Service to one or more instances of the Output class, describing the actual result of executing a given Public Service.
+                                    This property defines the output of the service as a data resource available
+and managed by a Base Registry Service.
                                 </td>
                                 <td property="skos:scopeNote">
-                                    Outputs can be any resource, for instance a document, artefact or anything else being produced as a result of executing the Public Service.
+                                    The output must be also
+described as a dcat:Catalog, a dcat:Dataset or a dcat:DataService.
                                 </td>
 				<!--
                                 <td>
@@ -8428,10 +8428,17 @@ The sequence diagram is then divided in use cases described below.
 
 <div><a href="./html/sequence.png" target="_blank"><img src="./html/sequence.png"/></a></div>
 
-<h3 id="UseCase1">Use Case 1 - Host requests a registration number to the Competent Authority</h3>
-<p>Description of use case 1</p>
+<h3 id="UseCase1">Use Case 1 - Host requests a Registration Number to the Competent Authority</h3>
+<p>In this use case, the host (as <a href="#Person">Person</a> or <a href="#LegalEntity">Legal Entity</a>) provides information, used as <a href="#Evidence">Evidence</a> for the <a href="#RegistrationProcedure">Registration Procedure</a>, about:
+	<ul>
+		<li>the <a href="#Unit">Unit</a>: <a href="#Address">Address</a> details, type of unit, the purpose of the unit, the max number of beds and guests, authorisations</li>
+		<li>the host : name, <a href="#Identifier">Identifier</a>, <a href="#Address">Address</a> details and <a href="#ContactPoint">Contact Point</a>(email and phone)</li>
+	</ul>
+The <a href="#PublicOrganisation">Competent Authority</a> provides, as <a href="#Output">Ouput</a> of the <a href="#RegistrationProcedure">Registration Procedure</a>, the <a href="#RegistrationNumber">Registration Number</a> associated to the Unit.
+</p>
+
 <h3 id="UseCase2">Use Case 2 - Host provides a description of the unit to the STR Platform.</h3>
-<p>Description of use case 2</p>
+<p>In this use case, the host (as <a href="#Person">Person</a> or <a href="#LegalEntity">Legal Entity</a>) provides the description of the <a href="#Unit">Unit</a>, including the <a href="#RegistrationNumber">Registration Number</a>, to the <a href="#OnlineShortTermRentalPlatform">STR Platform</a>.</p>
 <h3 id="UseCase3">Use Case 3 - The STR Platform get a list of the area from the Competent Authority</h3>
 <p>Description of use case 3</p>
 <h3 id="UseCase4">Use Case 4 - The STR Platform provides the new listing to the Competent Authority</h3>
@@ -10102,7 +10109,7 @@ The properties are indicated as <it>mandatory, recommended, optional</it> and <i
 							<tr>
 								<td><a href="#PublicRegistryService">Public Registry Service</a></td>
 								<td><div class="shorten">http://purl.org/vocab/cpsv#PublicService</div></td>
-								<td>Optional</td>
+								<td></td>
 								<td><a href="#PublicRegistryService.produces">produces </a></td>
 								<td><div class="shorten">http://purl.org/vocab/cpsv#produces</div></td>
 							</tr>
@@ -10112,7 +10119,7 @@ The properties are indicated as <it>mandatory, recommended, optional</it> and <i
 							<tr>
 								<td><a href="#PublicRegistryService">Public Registry Service</a></td>
 								<td><div class="shorten">http://purl.org/vocab/cpsv#PublicService</div></td>
-								<td></td>
+								<td>Optional</td>
 								<td><a href="#PublicRegistryService.produces">produces </a></td>
 								<td><div class="shorten">http://purl.org/vocab/cpsv#produces</div></td>
 							</tr>
