@@ -8109,18 +8109,20 @@ companies, vehicles, licences, buildings, locations and roads.
                                 <td>
                                     
                                         
-                                            <a href="#Output" data-placement="right">Output</a>
+                                            <a href="#CataloguedResource" data-placement="right">Catalogued Resource</a>
                                         
                                     
                                 </td>
                                 <td>
-                                    0..1
+                                    0..*
                                 </td>
                                 <td property="rdfs:comment">
-                                    It links a Public Service to one or more instances of the Output class, describing the actual result of executing a given Public Service.
+                                    This property defines the output of the service as a data resource available
+and managed by a Base Registry Service.
                                 </td>
                                 <td property="skos:scopeNote">
-                                    Outputs can be any resource, for instance a document, artefact or anything else being produced as a result of executing the Public Service.
+                                    The output must be also
+described as a dcat:Catalog, a dcat:Dataset or a dcat:DataService.
                                 </td>
 				<!--
                                 <td>
@@ -8153,20 +8155,18 @@ companies, vehicles, licences, buildings, locations and roads.
                                 <td>
                                     
                                         
-                                            <a href="#CataloguedResource" data-placement="right">Catalogued Resource</a>
+                                            <a href="#Output" data-placement="right">Output</a>
                                         
                                     
                                 </td>
                                 <td>
-                                    0..*
+                                    0..1
                                 </td>
                                 <td property="rdfs:comment">
-                                    This property defines the output of the service as a data resource available
-and managed by a Base Registry Service.
+                                    It links a Public Service to one or more instances of the Output class, describing the actual result of executing a given Public Service.
                                 </td>
                                 <td property="skos:scopeNote">
-                                    The output must be also
-described as a dcat:Catalog, a dcat:Dataset or a dcat:DataService.
+                                    Outputs can be any resource, for instance a document, artefact or anything else being produced as a result of executing the Public Service.
                                 </td>
 				<!--
                                 <td>
@@ -8428,25 +8428,62 @@ The sequence diagram is then divided in use cases described below.
 
 <div><a href="./html/sequence.png" target="_blank"><img src="./html/sequence.png"/></a></div>
 
-<h3 id="UseCase1">Use Case 1 - Host requests a Registration Number to the Competent Authority</h3>
-<p>In this use case, the host (as <a href="#Person">Person</a> or <a href="#LegalEntity">Legal Entity</a>) provides information, used as <a href="#Evidence">Evidence</a> for the <a href="#RegistrationProcedure">Registration Procedure</a>, about:
-	<ul>
-		<li>the <a href="#Unit">Unit</a>: <a href="#Address">Address</a> details, type of unit, the purpose of the unit, the max number of beds and guests, authorisations</li>
-		<li>the host : name, <a href="#Identifier">Identifier</a>, <a href="#Address">Address</a> details and <a href="#ContactPoint">Contact Point</a>(email and phone)</li>
-	</ul>
-The <a href="#PublicOrganisation">Competent Authority</a> provides, as <a href="#Output">Ouput</a> of the <a href="#RegistrationProcedure">Registration Procedure</a>, the <a href="#RegistrationNumber">Registration Number</a> associated to the Unit.
+<h3 id="UseCase1">Use Case 1 - Host requests a rgistration number to the Competent Authority</h3>
+<p>In this use case:
+<ul>
+	<li>[step 1] The host (as <a href="#Person">person</a> or <a href="#LegalEntity">legal entity</a>) provides information (step 1), used as <a href="#Evidence">evidence</a> for the <a href="#RegistrationProcedure">registration procedure</a>, about:
+		<ul>
+			<li>the <a href="#Unit">unit</a>: <a href="#Address">address</a> details, type of unit, the purpose of the unit, the max number of beds and guests, authorisations</li>
+			<li>the host : name, <a href="#Identifier">identifier</a>, <a href="#Address">address</a> details and <a href="#ContactPoint">contact point</a>(email and phone)</li>
+		</ul>
+	</li>
+	<li>[step 2] The <a href="#PublicOrganisation">Competent Authority</a> provides, as <a href="#Output">Ouput</a> of the <a href="#RegistrationProcedure">Registration Procedure</a>, the <a href="#RegistrationNumber">Registration Number</a> associated to the Unit.</li>
+</ul>
 </p>
 
 <h3 id="UseCase2">Use Case 2 - Host provides a description of the unit to the STR Platform.</h3>
-<p>In this use case, the host (as <a href="#Person">Person</a> or <a href="#LegalEntity">Legal Entity</a>) provides the description of the <a href="#Unit">Unit</a>, including the <a href="#RegistrationNumber">Registration Number</a>, to the <a href="#OnlineShortTermRentalPlatform">STR Platform</a>.</p>
+<p>In this use case:
+<ul>
+	<li>[step 3] The host (as <a href="#Person">Person</a> or <a href="#LegalEntity">legal entity</a>) provides the description of the <a href="#Unit">unit</a>, including the <a href="#RegistrationNumber">registration number</a>, to the <a href="#OnlineShortTermRentalPlatform">STR Platform</a>.</li>
+</ul>
+</p>
+
 <h3 id="UseCase3">Use Case 3 - The STR Platform get a list of the area from the Competent Authority</h3>
-<p>Description of use case 3</p>
-<h3 id="UseCase4">Use Case 4 - The STR Platform provides the new listing to the Competent Authority</h3>
-<p>Description of use case 4</p>
+<p>In this case:
+<ul>
+	<li>[step 4] The <a href="#OnlineShortTermRentalPlatform">STR Platform</a> requests the list of the area in which a <a href="#RegistrationNumber">Registration Number</a> is required to the <a href="#SingleDigitalEntryPoint">Single Digital Entry Point</a></li>
+	<li>[step 5] The <a href="#SingleDigitalEntryPoint">Single Digital Entry Point</a> forwards the request to the <a href="#PublicOrganisation">Competent Authority</a></li>
+	<li>[step 6] The <a href="#PublicOrganisation">Competent Authority</a> provides the list to the <a href="#SingleDigitalEntryPoint">Single Digital Entry Point</a></li>
+	<li>[step 7] The <a href="#SingleDigitalEntryPoint">Single Digital Entry Point</a> provides the list to the <a href="#OnlineShortTermRentalPlatform">STR Platform</a></li>
+</ul>
+</p>
+<h3 id="UseCase4">Use Case 4 - The STR Platform publishes the new listing and provides it the to the Competent Authority</h3>
+<p>In this use case:
+<ul>
+	<li>[step 8]</li>
+	<li>[step 9]</li>
+	<li>[step 10]</li>
+	<li>[step 11]</li>
+	<li>[step 12]</li>
+</ul>
+</p>
 <h3 id="UseCase5">Use Case 5 - The STR Platform get a list of orders from the Single Digital Entry Point</h3>
-<p>Description of use case 5</p>
+<p>In this use case:
+<ul>
+	<li>[step 13]</li>
+	<li>[step 14]</li>
+	<li>[step 15]</li>
+	<li>[step 16]</li>
+	<li>[step 17]</li>
+</ul>
+</p>
 <h3 id="UseCase6">Use Case 6 - The STR Platform provides activity data to the Competent Authority</h3>
-<p>Description of use case 6</p>
+<p>In this use case:
+<ul>
+	<li>[step 18]</li>
+	<li>[step 19]</li>
+</ul>
+</p>
 
 </section>
 
@@ -10109,7 +10146,7 @@ The properties are indicated as <it>mandatory, recommended, optional</it> and <i
 							<tr>
 								<td><a href="#PublicRegistryService">Public Registry Service</a></td>
 								<td><div class="shorten">http://purl.org/vocab/cpsv#PublicService</div></td>
-								<td></td>
+								<td>Optional</td>
 								<td><a href="#PublicRegistryService.produces">produces </a></td>
 								<td><div class="shorten">http://purl.org/vocab/cpsv#produces</div></td>
 							</tr>
@@ -10119,7 +10156,7 @@ The properties are indicated as <it>mandatory, recommended, optional</it> and <i
 							<tr>
 								<td><a href="#PublicRegistryService">Public Registry Service</a></td>
 								<td><div class="shorten">http://purl.org/vocab/cpsv#PublicService</div></td>
-								<td>Optional</td>
+								<td></td>
 								<td><a href="#PublicRegistryService.produces">produces </a></td>
 								<td><div class="shorten">http://purl.org/vocab/cpsv#produces</div></td>
 							</tr>
