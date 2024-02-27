@@ -8429,36 +8429,64 @@ The sequence diagram is then divided in use cases described below.
 <div><a href="./html/sequence.png" target="_blank"><img src="./html/sequence.png"/></a></div>
 
 <h3 id="UseCase1">Use Case 1 - Host requests a rgistration number to the Competent Authority</h3>
-<p>In this use case:
+<p>
+Actors:
 <ul>
-	<li id="UseCase1-step1">[step 1] The host (as <a href="#Person">person</a> or <a href="#LegalEntity">legal entity</a>) provides information, used as <a href="#Evidence">evidence</a> for the <a href="#RegistrationProcedure">registration procedure</a>, about:
+	<li>Host (as <a href="#Person">person</a> or <a href="#LegalEntity">legal entity</a>)</li>
+	<li><a href="#PublicOrganisation">Competent Authority</a></li>
+</ul>
+</p>
+<p>The use case is divided in the below steps:
+<ul>
+	<li id="UseCase1-step1">[step 1] The host provides information, used as <a href="#Evidence">evidence</a> for the <a href="#RegistrationProcedure">registration procedure</a>, about:
 		<ul>
 			<li>the <a href="#Unit">unit</a>: <a href="#Address">address</a> details, type of unit, the purpose of the unit, the max number of beds and guests, authorisations</li>
 			<li>the host : name, <a href="#Identifier">identifier</a>, <a href="#Address">address</a> details and <a href="#ContactPoint">contact point</a> (email and phone)</li>
 		</ul>
 	</li>
-	<li id="UseCase1-step2">[step 2] The <a href="#PublicOrganisation">Competent Authority</a> provides, as <a href="#Output">Ouput</a> of the <a href="#RegistrationProcedure">Registration Procedure</a>, the <a href="#RegistrationNumber">Registration Number</a> associated to the Unit.</li>
+	<li id="UseCase1-step2">[step 2] The Competent Authority provides, as <a href="#Output">ouput</a> of the <a href="#RegistrationProcedure">registration procedure</a>, the <a href="#RegistrationNumber">registration number</a> associated to the Unit.</li>
 </ul>
 </p>
 
 <h3 id="UseCase2">Use Case 2 - Host provides a description of the unit to the STR Platform.</h3>
-<p>In this use case:
+<p>
+Actors:
 <ul>
-	<li id="UseCase2-step3">[step 3] The host (as <a href="#Person">person</a> or <a href="#LegalEntity">legal entity</a>) provides the description of the <a href="#Unit">unit</a>, including the <a href="#RegistrationNumber">registration number</a>, to the <a href="#OnlineShortTermRentalPlatform">STR Platform</a>.</li>
+	<li>Host (as <a href="#Person">person</a> or <a href="#LegalEntity">legal entity</a>)</li>
+	<li><a href="#OnlineShortTermRentalPlatform">STR Platform</a></li>
+</ul>
+</p>
+<p>The use case is divided in the below steps:
+<ul>
+	<li id="UseCase2-step3">[step 3] The host provides the description of the <a href="#Unit">unit</a>, including the <a href="#RegistrationNumber">registration number</a>, to the STR Platform.</li>
 </ul>
 </p>
 
 <h3 id="UseCase3">Use Case 3 - The STR Platform get a list of the area from the Competent Authority</h3>
+<p>
+Actors:
+<ul>
+	<li><a href="#PublicOrganisation">Competent Authority</a></li>
+	<li><a href="#OnlineShortTermRentalPlatform">STR Platform</a></li>
+	<li><a href="#SingleDigitalEntryPoint">Single Digital Entry Point</a></li>
+</ul>
+</p>
 <p>In this case:
 <ul>
-	<li id="UseCase3-step4">[step 4] The <a href="#OnlineShortTermRentalPlatform">STR Platform</a> requests the list of the area in which a <a href="#RegistrationNumber">Registration Number</a> is required to the <a href="#SingleDigitalEntryPoint">Single Digital Entry Point</a></li>
-	<li id="UseCase3-step5">[step 5] The <a href="#SingleDigitalEntryPoint">Single Digital Entry Point</a> forwards the request to the <a href="#PublicOrganisation">Competent Authority</a></li>
-	<li id="UseCase3-step6">[step 6] The <a href="#PublicOrganisation">Competent Authority</a> provides the list to the <a href="#SingleDigitalEntryPoint">Single Digital Entry Point</a></li>
-	<li id="UseCase3-step7">[step 7] The <a href="#SingleDigitalEntryPoint">Single Digital Entry Point</a> provides the list to the <a href="#OnlineShortTermRentalPlatform">STR Platform</a></li>
+	<li id="UseCase3-step4">
+	[step 4] The STR Platform requests the list of the <a href="#Geometry">area</a> in which a <a href="#RegistrationNumber">registration number</a> is required to the Single Digital Entry Point.</li>
+	<li id="UseCase3-step5">[step 5] The Single Digital Entry Point forwards the request to the Competent Authority</li>
+	<li id="UseCase3-step6">[step 6] The Competent Authority provides the list to the Single Digital Entry Point</li>
+	<li id="UseCase3-step7">[step 7] The Single Digital Entry Point provides the list to the STR Platform
+	<p>
+		This step could be implemented as API that provides such area in the form of GeoJSON.
+		<div><a href="./html/area.jpg" target="_blank"><img src="./html/area.jpg"/></a></div>
+	</p>
+	</li>
 </ul>
 </p>
 <h3 id="UseCase4">Use Case 4 - The STR Platform publishes the new listing and provides it the to the Competent Authority</h3>
-<p>In this use case:
+<p>The use case is divided in the below steps:
 <ul>
 	<li id="UseCase4-step8">[step 8] The <a href="#OnlineShortTermRentalPlatform">STR Platform</a> publishes the unit in a listing.</li>
 	<li id="UseCase4-step9">[step 9]</li>
@@ -8468,7 +8496,7 @@ The sequence diagram is then divided in use cases described below.
 </ul>
 </p>
 <h3 id="UseCase5">Use Case 5 - The STR Platform get a list of orders from the Single Digital Entry Point</h3>
-<p>In this use case:
+<p>The use case is divided in the below steps:
 <ul>
 	<li id="UseCase5-step13">[step 13]</li>
 	<li id="UseCase5-step14">[step 14]</li>
@@ -8478,7 +8506,7 @@ The sequence diagram is then divided in use cases described below.
 </ul>
 </p>
 <h3 id="UseCase6">Use Case 6 - The STR Platform provides activity data to the Competent Authority</h3>
-<p>In this use case:
+<p>The use case is divided in the below steps:
 <ul>
 	<li id="UseCase6-step18">[step 18]</li>
 	<li id="UseCase6-step19">[step 19]</li>
