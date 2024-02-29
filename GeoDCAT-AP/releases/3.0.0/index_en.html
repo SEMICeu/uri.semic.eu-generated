@@ -991,7 +991,47 @@ This Application Profile provides a minimal common basis within Europe to share 
         Introduction
     </h2>
     
+  <p>This document contains version 3.0.0 of the specification for GeoDCAT-AP, an extension of the DCAT application profile for data portals in Europe (DCAT-AP) [[DCAT-AP]] for describing geospatial datasets, dataset series, and services.</p>
+
+<p>Its basic use case is to make spatial datasets, dataset series, and services searchable on general data portals, thereby making geospatial information better findable across borders and sectors. For this purpose, GeoDCAT-AP provides an RDF vocabulary and the corresponding RDF syntax binding for the union of metadata elements of the core profile of ISO 19115:2003 [[ISO-19115]] and those defined in the framework of the INSPIRE Directive [[INSPIRE-DIR]].</p>
+
+<p><strong>The GeoDCAT-AP specification does not replace the INSPIRE Metadata Regulation</strong> [[?INSPIRE-MD-REG]] <strong>nor the INSPIRE Metadata technical guidelines</strong> [[INSPIRE-MD]] <strong>based on ISO 19115 and ISO 19119.</strong> Its purpose is to give owners of geospatial metadata the possibility to achieve more by providing the means of an <em>additional</em> implementation through harmonised RDF syntax bindings. Conversion rules to RDF syntax would allow Member States to maintain their collections of INSPIRE-relevant datasets following the INSPIRE Metadata technical guidelines based on [[ISO-19115]] and [[ISO-19119]], while at the same time publishing these collections on [[DCAT-AP]]-conformant data portals. A conversion to an RDF representation allows additional metadata elements to be displayed on general-purposed data portals, provided that such data portals are capable of displaying additional metadata elements. Additionally, data portals may be capable of providing machine-to-machine interfaces where additional metadata could be provided.</p>
+
+<section id="context">
+
 <h3>Context</h3>
+
+<p>With a view to fostering Europe's digital transformation, the European Commission is investing in frameworks and agreements to provide governments and businesses with the appropriate resources to digitalise their services. There are, for instance, building blocks available for creating a single market for data, where data flows freely within the EU and across sectors for the benefit of businesses, researchers and public administrations.</p>
+
+<p>To this direction, the European Commission launched the European Data Strategy [[DataStrategy]], as part of the European Commission's priorities for 2019-2024 in order to make the EU a leader in a data-driven society.</p>
+
+<p>Studies previously conducted on behalf of the European Commission (e.g., [[Vickery]]) shed light on the importance of having data findable and available in machine readable format in order to stimulate its reuse. This vision led to several legislative actions to reduce barriers and promote data sharing, such as the Open Data Directive [[OPENDATA-DIR]], which turned out to be a driving force towards a more transparent and fair access to government data.</p>
+
+<p>With this regard, the wide range of (open) data portals developed by European public administrations is the result of this mission. These Web-based interfaces allow access to data by providing users means to explore a catalogue of datasets. To facilitate the sharing, discovery and re-use of the data beyond the (open) data portal, common agreements for the exchange of catalogues of datasets are needed. These interoperability agreements enable to connect (open) data catalogues into a pan-european catalogue of datasets.</p>
+
+<p>The DCAT-AP application profile specifies the generic agreements for (open) data portals operated by public administrations in Europe. This specification extends DCAT-AP with additional requirements for geospatial data.</p>
+
+<p>The current document is the result of the major semantic change release process described in the Change and Release Management Policy for DCAT-AP [[DCAT-AP-CRMP]] and was built starting from GeoDCAT-AP version 2.0.0 [[GeoDCAT-AP-20201223]], with the purpose of aligning it with DCAT-AP version 3.x.x [[DCAT-AP-3]] and with version 2.1.3 of the INSPIRE Metadata Technical Guidelines [[INSPIRE-MD-20230731]].</p>
+
+<p>This work has been carried out in the context of the European Commission’s <q>Interoperable Europe</q> initiative [[INTEROPERABLE-EUROPE]].</p>
+
+</section>
+
+<section id="scope-of-the-revision">
+
+<h3>Scope of the revision</h3>
+
+<p>The objective of this work is to produce an updated release of GeoDCAT-AP based on requests for change coming from real-world implementations of the specification and an alignment with [[DCAT-AP-3]] and [[INSPIRE-MD-20230731]].</p> 
+
+<p>As [[DCAT-AP-3]], the Application Profile specified in this document is based on the specification of the <strong>Data Catalog Vocabulary</strong> (DCAT), originally  developed under the responsibility of the Government Linked Data Working Group [[GLD]] at W3C, and significantly revised in 2020 by the W3C Dataset Exchange Working Group [[DXWG]]. DCAT is an RDF [[RDF11-CONCEPTS]] vocabulary designed to facilitate interoperability between data catalogues published on the Web. Additional classes and properties from other well-known vocabularies are re-used where necessary.</p> 
+
+<p>The work does not cover implementation issues like mechanisms for exchange of data and expected behaviour of systems implementing the Application Profile other than what is defined in the Conformance Statement in <a class="no-sectionRef" href="#conformance"></a>.</p> 
+
+<p>The Application Profile is intended to facilitate data exchange and therefore the classes and properties defined in this document are only relevant for the data to be exchanged; there are no requirements for communicating systems to implement specific technical environments. The only requirement is that the systems can export and import data in RDF in conformance with this Application Profile.</p> 
+
+</section>
+
+<h3>DCAT-AP Context</h3>
 
 Around 2010, on behalf of the European Commission the access to public sector information was studied. These studies showed that businesses and citizens faced many difficulties in finding and reusing public sector information. 
 The studies indicated that the availability of the information in a machine-readable format as well as a thin layer of commonly agreed metadata could facilitate data cross-reference and interoperability and therefore considerably enhance its value for reuse.
@@ -1059,15 +1099,6 @@ As these properties are optional and since there is an equivalence between the d
 <div class="ednote" title="Data model adaptations">
 <ul>
 <li>Added class Dataset Series, alignment with DCAT 3.0</li>
-<li>Replaced the URI mapping for the Dataset properties hasVersion, isVersionOf and version, alignment with DCAT 3.0</li>
-<li>Fixed the range for Distribution bytesize, alignment with DCAT 3.0</li>
-<li>Changed the range for Location geometry, alignment with DCAT 3.0</li>
-<li>Add the properties publisher and format to Data Service</li>
-<li>Replaced mandatory Distribution status controlled vocabulary</li>
-<li>Adapted the definition for property type of Agent</li>
-<li>Adapted the definition for property access rights for Dataset</li>
-<li>Lift the max cardinality for property application profile for Catalogue Record</li>
-<li>Add new property applicable legislation as generic approach to indicate the legislation under which a dataset is made available.</li>
 </ul>
 
 To support the review, the changes are also highlighted on the diagram below.
@@ -1086,28 +1117,12 @@ To support the review, the changes are also highlighted on the diagram below.
 <h3>Meeting minutes</h3>
 The following webinars have been held for the creation of this release
     <ul>
-	    <li>Webinar 25 November 2022 (<a href="https://joinup.ec.europa.eu/sites/default/files/inline-files/MeetingMinutes.pdf">Meeting Minutes</a>, <a href="https://www.youtube.com/watch?v=vpCu3wrBeso">recording</a>, <a href="https://joinup.ec.europa.eu/sites/default/files/inline-files/Slides.pdf">slides</a>) </li>
-      <li>Webinar 2 February 2023 (<a href="https://joinup.ec.europa.eu/sites/default/files/inline-files/20230202%20Webinar%20DCAT-AP.pdf">Meeting Minutes</a>, <a href="https://www.youtube.com/watch?v=teUeMLwv4Ks">recording</a>, <a href="https://joinup.ec.europa.eu/sites/default/files/inline-files/webinar_2_feb_2022_DCAT-AP_v.0.3.pdf">slides</a>) </li>
-      <li>Webinar 4 October 2023 (<a href="https://joinup.ec.europa.eu/sites/default/files/inline-files/20231004%20Webinar%20DCAT-AP%20for%20Data%20Spaces_Incorporated_Comments.pdf">Meeting Minutes</a>, <a href="https://youtu.be/HIQ-xFtZcxY">recording</a>, <a href="https://joinup.ec.europa.eu/sites/default/files/event/attachment/2023-10/DCAT-AP%20for%20Data%20Spaces%20Webinar.pdf">slides</a>) </li>
-      <li>Webinar 7 November 2023 (<a href="https://joinup.ec.europa.eu/sites/default/files/event/attachment/2023-12/20231107%20Webinar%20dedicated%20to%20the%20status%20and%20governance%20of%20DCAT-AP%20%281%29.pdf">Meeting Minutes</a>, <a href="https://www.youtube.com/watch?v=lMMaUa4mrQE">recording</a>, <a href="https://joinup.ec.europa.eu/sites/default/files/event/attachment/2023-11/Webinar%20DCAT-AP%20Status%20%26%20Governance_0.pdf">slides</a>) </li>
-      <li>Webinar 21 November 2023 (<a href="https://joinup.ec.europa.eu/sites/default/files/event/attachment/2023-12/20231121%20Webinar%20DCAT-AP%20Technical%20Issues.pdf">Meeting Minutes</a>, <a href="https://www.youtube.com/watch?v=X2rw2HWm23w">recording</a>, <a href="https://joinup.ec.europa.eu/sites/default/files/event/attachment/2023-11/Webinar%20DCAT-AP%2020231121%20v1.0.pdf">slides</a>) </li>
       <li>Webinar 16 January 2024 (<a href="https://joinup.ec.europa.eu/sites/default/files/event/attachment/2023-12/20231107%20Webinar%20dedicated%20to%20the%20status%20and%20governance%20of%20DCAT-AP%20%281%29.pdf">Meeting Minutes</a>, <a href="https://www.youtube.com/watch?v=lMMaUa4mrQE">recording</a>, <a href="https://joinup.ec.europa.eu/sites/default/files/event/attachment/2023-11/Webinar%20DCAT-AP%20Status%20%26%20Governance_0.pdf">slides</a>) </li>
    </ul>
 
 
-<!--
-DCAT is an RDF vocabulary designed to facilitate interoperability between data catalogues published on the Web. 
-
-<p>
-This document has been prepared in the context of Action 1.1 – Improving semantic interoperability in European eGovernment systems  of the European Commission’s Interoperability Solutions for European Public Administrations (ISA) programme [[ISA]].
-</p><p>
-</p><p>
-Much of the public sector information that would benefit from interoperability is published as datasets in data portals. Therefore, an agreement on a common format for data exchange would support the sharing, discovery and re-use of this data.
-</p><p>
-This document is the result of the major semantic change release process described in the Change and Release Management Policy for DCAT-AP  and was built starting from DCAT-AP version 1.2.1 [[dcat-ap-20190528]]. 
-
--->
 </p>
+
 
 
 
@@ -10733,9 +10748,6 @@ How multilingual information is handled in systems, for example in indexing and 
   <section id="inspire-and-iso-19115-mappings" class="appendix">
 
 <h2>INSPIRE and ISO 19115 Mappings</h2>
-
-<div data-include-format="html" data-include-replace="true" data-include="./appendices/inspire-and-iso-19115-mappings.html"></div>
-
 
 <section id="objectives">
 
