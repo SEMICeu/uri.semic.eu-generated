@@ -10640,15 +10640,104 @@ In this data specification the use is restricted to instances of this class that
 </section>
 
   
+  <section class="informative">
+  <h2>Agent Roles</h2>
+
+<p>GeoDCAT-AP supports the 11 agent roles defined in [[INSPIRE-MD-REG]] and [[ISO-19115]] by using two different but not mutually exclusive approaches.</p>
+
+<p>In the first approach, roles are mapped to specific properties. In particular, GeoDCAT-AP makes use of the relevant properties from [[DCAT-AP-3]] and [[DCTERMS]], which overall cover 4 of the relevant roles - namely, <code>dcat:contactPoint</code>, <code>dct:creator</code>, <code>dct:publisher</code>, and <code>dct:rightsHolder</code> (not supported in [[DCAT-AP-3]]). The remaining 7 are covered by the corresponding properties defined in the GeoDCAT-AP namespace - namely, <code>geodcat:custodian</code>, <code>geodcat:distributor</code>, <code>geodcat:originator</code>, <code>geodcat:principalInvestigator</code>, <code>geodcat:processor</code>, <code>geodcat:resourceProvider</code>, and <code>geodcat:user</code>.</p>
+
+<p>It is important to note that, following [[INSPIRE-MD-REG]] and [[ISO-19115]], in GeoDCAT-AP all these agent roles can be specified on Catalogues, Catalogue Records, Datasets, and Data Services.</p>
+
+<p>The second and more general approach is based on [[PROV-O]], where agent roles are specified via a &ldquo;qualified attribution&rdquo; (<code>prov:qualifiedAttribution</code>). More precisely, the relevant Agent is specified via property <code>prov:agent</code>, whereas the role is specified with property <code>dcat:hadRole</code>, which takes as value a <code>skos:Concept</code> describing that role - as those included in the relevant code list operated by the INSPIRE Registry [[INSPIRE-RPR]]. This pattern is illustrated in <a href="#ex-attribution"></a>.</p>
+
+<p>The [[PROV-O]]-based approach is meant to give data providers an extension mechanism to specify, in a harmonised way, any kind of role, and, possibly, to attach additional information to the role and the associated Agent. As such, it MAY be used in combination with or to complement the property-based approach, but it MUST NOT replace it. For instance, it can be used to specify roles not covered by the agent role properties used in GeoDCAT-AP, and/or to specify additional information that cannot be expressed via a property (as the period during which an Agent covered a given role).</p>
+
+<p>More details on these solutions are available in <a class="no-sectionRef" href="#responsible-party-and-metadata-point-of-contact---dataset-responsible-party-and-metadata-point-of-contact"></a>.</p>
+
+
+<div class="issue" data-number="39"></div>
+
+<div class="issue" data-number="57"></div>
+
+</section>
+
+  <section id="accessibility-and-multilingual-aspects" class="informative">
+<h2>Accessibility and Multilingual Aspects</h2>
+
+<strong>Accessibility</strong> in the context of this Application Profile is limited to information about the technical format of distributions of datasets. The properties <code>dcat:mediaType</code> and <code>dct:format</code> provide information that can be used to determine what software can be deployed to process the data. The accessibility of the data within the datasets needs to be taken care of by the software that processes the data and is outside of the scope of this Application Profile.
+
+</p><p>
+<strong>Multilingual aspects</strong> related to this Application Profile concern all properties whose contents are expressed as strings (i.e. <code>rdfs:Literal</code>) with human-readable text. Wherever such properties are used, the string values are of one of two types:
+
+<ul>
+<li>The string is free text. Examples are descriptions and labels. Such text may be translated into several languages.</li>
+<li>The string is an appellation of a ‘named entity’. Examples are names of organisations or persons. These names may have parallel versions in other languages but those versions don’t need to be literal translations.</li>
+</ul>
+
+</p><p>
+Wherever values of properties are expressed with either type of string, the property can be repeated with translations in the case of free text and with parallel versions in case of named entities. For free text, e.g. in the cases of titles, descriptions and keywords, the <strong>language tag</strong> is mandatory. 
+
+</p><p>
+Language tags to be used with <code>rdfs:Literal</code> are defined by [[BCP47]], which allows the use of the "t" extension for text transformations defined in [[RFC6497]] with the field "t0" [[CLDR]] indicating a machine translation.
+
+</p><p>
+A language tag will look like: "en-t-es-t0-abcd", which conveys the information that the string is in English, translated from Spanish by machine translation using a tool named "abcd".
+
+</p><p>
+For named entities, the language tag is optional and should only be provided if the parallel version of the name is strictly associated with a particular language. For example, the name ‘European Union’ has parallel versions in all official languages of the union, while a name like ‘W3C’ is not associated with a particular language and has no parallel versions.
+
+</p><p>
+For linking to different language versions of associated web pages (e.g. landing pages) or documentation, a content negotiation [[CONNEG]] mechanism may be used whereby different content is served based on the Accept-Languages indicated by the browser. Using such a mechanism, the link to the page or document can resolve to different language versions of the page or document.
+
+</p><p>
+All the occurrences of the property <code>dct:language</code>, which can be repeated if the metadata is provided in multiple languages, must have a URI as their object, not a literal string from the [[ISO-639]] code list.
+
+</p><p>
+How multilingual information is handled in systems, for example in indexing and user interfaces, is outside of the scope of this Application Profile.
+</p>
+
+</section>
+
+  <section id='privsec'>
+
+<h2>Privacy and security considerations </h2>
+
+<p>GeoDCAT-AP supports the attribution of data and metadata to various participants such as resource creators, publishers and other parties or agents, and as such defines terms that may be related to personal information. In addition, it also supports the association of rights and licenses with catalogued Resources and Distributions. These rights and licenses could potentially include or reference sensitive information such as user and asset identifiers as <a data-cite="VOCAB-ODRL#privacy-consideration">described</a> in [[VOCAB-ODRL]].</p>
+
+<p>Implementations that produce, maintain, publish or consume such vocabulary terms must take steps to ensure security and privacy considerations are addressed at the application level.</p>
+
+</section>
+
+  <section id="conformance-test-results" class="informative">
+
+<h2>Conformance Test Results</h2>
+
+<p>Following [[INSPIRE-MD-REG]] and [[ISO-19115]], GeoDCAT-AP supports the specification of test results to assess the degree of conformity of a resource (i.e., a Catalogue, a Dataset, a Data Service) with a given specification (e.g., a standard, a set of implementing rules, a set of data quality or interoperability criteria).</p>
+
+<p>For this purpose, GeoDCAT-AP makes use of two different but not mutually exclusive approaches. More precisely, property <code>dct:conformsTo</code> is used when the test result states that a resource is conformant with a given specification. The more general approach is based on [[PROV-O]], and it specifies conformance test results as a testing activity (<code>prov:Activity</code>) that generates a result (specified with property <code>prov:generated</code>), corresponding to one of the degrees of conformity defined in [[INSPIRE-MD-REG]], and available from the INSPIRE Registry [[INSPIRE-DoC]]. The specification against which the testing activity is carried out is specified via a &ldquo;qualified association&rdquo; (<code>prov:qualifiedAssociation</code>), linked to a &ldquo;plan&rdquo; (<code>prov:hadPlan</code>) derived from (<code>prov:wasDerivedFrom</code>) the specification itself.</p> 
+
+<p>This pattern is illustrated in <a href="#ex-activity"></a>.</p>
+
+<p>More details on these solutions are available in <a class="no-sectionRef" href="#conformity-and-data-quality---not-in-iso19115-core"></a>.</p>
+
+</section>
+
+
   
   
   
   
   
   
-  
-  
-  <section id="objectives">
+  <section id="inspire-and-iso-19115-mappings" class="appendix">
+
+<h2>INSPIRE and ISO 19115 Mappings</h2>
+
+<div data-include-format="html" data-include-replace="true" data-include="./appendices/inspire-and-iso-19115-mappings.html"></div>
+
+
+<section id="objectives">
 
 <h2>Objectives</h2>
 
@@ -15483,6 +15572,8 @@ prov:wasUsedBy [
 
 </tbody>
 </table>
+
+</section>
 
 </section>
 
