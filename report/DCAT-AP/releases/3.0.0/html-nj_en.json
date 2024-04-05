@@ -16,8 +16,8 @@
     },
     "status": "https://www.w3.org/2021/Process-20211102/#RecsCR",
     "statuslabel": "Onbekend",
-    "repositoryurl": "git@semicthema-DCAT-AP:SEMICeu/Semicthema-DCAT-AP.git/tree/d97900f7ca86fe4c61fbfaf7abeb79e70b0c11b6",
-    "changelogurl": "git@semicthema-DCAT-AP:SEMICeu/Semicthema-DCAT-AP.git/blob/d97900f7ca86fe4c61fbfaf7abeb79e70b0c11b6/CHANGELOG",
+    "repositoryurl": "git@semicthema-DCAT-AP:SEMICeu/Semicthema-DCAT-AP.git/tree/f92a8c63c44f7726b902b7702a93eec2f590ccab",
+    "changelogurl": "git@semicthema-DCAT-AP:SEMICeu/Semicthema-DCAT-AP.git/blob/f92a8c63c44f7726b902b7702a93eec2f590ccab/CHANGELOG",
     "feedbackurl": "https://github.com/SEMICeu/DCAT-AP/issues",
     "standaardregisterurl": "https://semiceu.github.io/DCAT-AP/releases/3.0.0/CHANGELOG.html",
     "usesVocs": [],
@@ -570,15 +570,16 @@
       },
       "sort": "Standard",
       "description": {
-        "en": "A standard or other specification to which a Dataset or Distribution conforms."
+        "en": "A standard or other specification to which a resource conforms."
       },
       "usage": {},
       "parents": [],
       "rawTags": {
         "ap-label-en": "Standard",
-        "ap-definition-en": "A standard or other specification to which a Dataset or Distribution conforms.",
+        "ap-definition-en": "A standard or other specification to which a resource conforms.",
         "uri": "http://purl.org/dc/terms/Standard",
-        "class-usage-scope": "supportive"
+        "class-usage-scope": "supportive",
+        "definition-en": "A reference point against which other things can be evaluated or compared."
       },
       "properties": []
     },
@@ -2069,7 +2070,7 @@
             "en": "source metadata"
           },
           "description": {
-            "en": "The original metadata that was used in creating metadata for the Dataset."
+            "en": "The original metadata that was used in creating metadata for the Dataset, Data Service or Dataset Series."
           },
           "usage": {},
           "domain": [
@@ -2098,7 +2099,7 @@
           "rawTags": {
             "ap-label-en": "source metadata",
             "uri": "http://purl.org/dc/terms/source",
-            "ap-definition-en": "The original metadata that was used in creating metadata for the Dataset.",
+            "ap-definition-en": "The original metadata that was used in creating metadata for the Dataset, Data Service or Dataset Series.",
             "property-usage-scope": "optional",
             "reuse": "profile"
           }
@@ -2930,6 +2931,47 @@
             "ap-usageNote-en": "A Data Service may be associated with multiple themes.",
             "reuse": "extended"
           }
+        },
+        {
+          "uri": "http://xmlns.com/foaf/0.1/page",
+          "name": "documentation",
+          "sort": "documentation",
+          "label": {
+            "en": "documentation"
+          },
+          "description": {
+            "en": "A page or document about this Data Service"
+          },
+          "usage": {},
+          "domain": [
+            {
+              "EA-Name": "dcat:DataService",
+              "uri": "http://www.w3.org/ns/dcat#DataService"
+            }
+          ],
+          "range": [
+            {
+              "range_label": "foaf:Document",
+              "range_uri": "http://xmlns.com/foaf/0.1/Document"
+            }
+          ],
+          "scopedrange": [
+            {
+              "range_uri": "#Document",
+              "range_puri": "http://xmlns.com/foaf/0.1/Document",
+              "range_label": {
+                "en": "Document"
+              }
+            }
+          ],
+          "cardinality": "1",
+          "codelist_uri": "",
+          "rawTags": {
+            "ap-label-en": "documentation",
+            "ap-definition-en": "A page or document about this Data Service",
+            "uri": "http://xmlns.com/foaf/0.1/page",
+            "property-usage-scope": "optional"
+          }
         }
       ]
     },
@@ -2944,7 +2986,7 @@
         "en": "A conceptual entity that represents the information published."
       },
       "usage": {
-        "en": "If a Dataset is used as part of a Dataset Series, the properties listed below can be used additionally, or slightly differently to those listed for the Dataset outside of a Dataset Series.\r\nFor this usage, consult the guidelines in section [[[#UsageGuidelines]]]."
+        "en": "If a Dataset is used as part of a Dataset Series, the usage of the properties listed below must be coherent with the associated Dataset Series.\r\nFor this usage, consult the guidelines in section [[[#UsageGuidelines]]]."
       },
       "parents": [
         {
@@ -2962,7 +3004,7 @@
         "DCAT": "https://www.w3.org/TR/vocab-dcat-3/#Class:Dataset",
         "class-usage-scope": "main",
         "reuse": "extended",
-        "ap-usageNote-en": "If a Dataset is used as part of a Dataset Series, the properties listed below can be used additionally, or slightly differently to those listed for the Dataset outside of a Dataset Series.\r\nFor this usage, consult the guidelines in section [[[#UsageGuidelines]]]."
+        "ap-usageNote-en": "If a Dataset is used as part of a Dataset Series, the usage of the properties listed below must be coherent with the associated Dataset Series.\r\nFor this usage, consult the guidelines in section [[[#UsageGuidelines]]]."
       },
       "properties": [
         {
@@ -3779,7 +3821,7 @@
               }
             }
           ],
-          "cardinality": "0..1",
+          "cardinality": "0..*",
           "codelist_uri": "",
           "rawTags": {
             "ap-label-en": "type",
