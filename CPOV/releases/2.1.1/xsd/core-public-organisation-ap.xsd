@@ -4,6 +4,7 @@
   <xs:element name="ImageObject" type="ImageObjectType"/>
   <xs:element name="PublicOrganisation" type="PublicOrganisationType"/>
   <xs:element name="ReferenceFramework" type="ReferenceFrameworkType"/>
+  <xs:element name="Location" type="LocationType"/>
   <xs:element name="Text" type="TextType"/>
   <xs:element name="Literal" type="LiteralType"/>
   <xs:element name="Uri" type="UriType"/>
@@ -164,7 +165,7 @@
           <xs:documentation xml:lang="en">A Change Event from which the Public Organisation resulted.</xs:documentation>
         </xs:annotation>
       </xs:element>
-      <xs:element name="spatial" maxOccurs="unbounded" minOccurs="0">
+      <xs:element name="spatial" ref="LocationType" maxOccurs="unbounded" minOccurs="0">
         <xs:annotation>
           <xs:documentation xml:lang="en">This property links an Organization to the Administrative Region(s) that it covers.</xs:documentation>
         </xs:annotation>
@@ -192,6 +193,14 @@
     <xs:attribute name="ReferenceFrameworkRef" type="xs:IDREF">
       <xs:annotation>
         <xs:documentation xml:lang="en">Reference to ReferenceFramework ID</xs:documentation>
+      </xs:annotation>
+    </xs:attribute>
+  </xs:complexType>
+  <xs:complexType name="LocationType">
+    <xs:sequence/>
+    <xs:attribute name="LocationRef" type="xs:IDREF">
+      <xs:annotation>
+        <xs:documentation xml:lang="en">Reference to Location ID</xs:documentation>
       </xs:annotation>
     </xs:attribute>
   </xs:complexType>
