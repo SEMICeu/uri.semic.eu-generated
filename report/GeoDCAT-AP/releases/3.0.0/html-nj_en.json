@@ -16,8 +16,8 @@
     },
     "status": "https://www.w3.org/2021/Process-20211102/#RecsCR",
     "statuslabel": "Onbekend",
-    "repositoryurl": "git@semicthema-DCAT-AP:SEMICeu/Semicthema-DCAT-AP.git/tree/f5999f965a09c34e651054709692539c5ec3fa52",
-    "changelogurl": "git@semicthema-DCAT-AP:SEMICeu/Semicthema-DCAT-AP.git/blob/f5999f965a09c34e651054709692539c5ec3fa52/CHANGELOG",
+    "repositoryurl": "git@semicthema-DCAT-AP:SEMICeu/Semicthema-DCAT-AP.git/tree/6f70723521ec40b53e919f459234e591866ab614",
+    "changelogurl": "git@semicthema-DCAT-AP:SEMICeu/Semicthema-DCAT-AP.git/blob/6f70723521ec40b53e919f459234e591866ab614/CHANGELOG",
     "feedbackurl": "https://github.com/SEMICeu/GeoDCAT-AP/issues",
     "standaardregisterurl": "https://semiceu.github.io/GeoDCAT-AP/releases/3.0.0/CHANGELOG.html",
     "usesVocs": [],
@@ -1604,18 +1604,19 @@
       },
       "sort": "Catalogue",
       "description": {
-        "en": "A catalogue or repository that hosts the Datasets,Data Services or Dataset Series being described."
+        "en": "A catalogue or repository that hosts the Datasets, Data Services or Dataset Series being described."
       },
       "usage": {},
       "parents": [],
       "rawTags": {
-        "ap-definition-en": "A catalogue or repository that hosts the Datasets,Data Services or Dataset Series being described.",
+        "ap-definition-en": "A catalogue or repository that hosts the Datasets, Data Services or Dataset Series being described.",
         "ap-label-en": "Catalogue",
         "class-usage-scope": "main",
         "DCAT": "https://www.w3.org/TR/vocab-dcat-3/#Class:Catalog",
         "label-en": "Catalogue",
-        "reuse": "extended",
-        "uri": "http://www.w3.org/ns/dcat#Catalog"
+        "reuse": "asis",
+        "uri": "http://www.w3.org/ns/dcat#Catalog",
+        "DCAT-AP": "https://semiceu.github.io/DCAT-AP/releases/3.0.0/#Catalogue"
       },
       "properties": [
         {
@@ -1656,7 +1657,8 @@
             "uri": "http://data.europa.eu/930/custodian",
             "ap-definition-en": "Party that accepts accountability and responsibility for the data and ensures appropriate care and maintenance of the resource [[ISO-19115]].",
             "ap-label-en": "custodian",
-            "property-usage-scope": "optional"
+            "property-usage-scope": "optional",
+            "reuse": "profile"
           }
         },
         {
@@ -1697,7 +1699,8 @@
             "uri": "http://data.europa.eu/930/distributor",
             "ap-definition-en": "Party who distributes the resource [[ISO-19115]].",
             "ap-label-en": "distributor",
-            "property-usage-scope": "optional"
+            "property-usage-scope": "optional",
+            "reuse": "profile"
           }
         },
         {
@@ -1738,7 +1741,8 @@
             "uri": "http://data.europa.eu/930/originator",
             "ap-definition-en": "Party who created the resource [[ISO-19115]].",
             "ap-label-en": "orginator",
-            "property-usage-scope": "optional"
+            "property-usage-scope": "optional",
+            "reuse": "profile"
           }
         },
         {
@@ -1779,7 +1783,8 @@
             "uri": "http://data.europa.eu/930/principalInvestigator",
             "ap-definition-en": "Key party responsible for gathering information and conducting research [[ISO-19115]].",
             "ap-label-en": "principal investigator",
-            "property-usage-scope": "optional"
+            "property-usage-scope": "optional",
+            "reuse": "profile"
           }
         },
         {
@@ -1820,6 +1825,52 @@
             "uri": "http://data.europa.eu/930/processor",
             "ap-definition-en": "Party who has processed the data in a manner such that the resource has been modified [[ISO-19115]].",
             "ap-label-en": "processor",
+            "property-usage-scope": "optional",
+            "reuse": "profile"
+          }
+        },
+        {
+          "uri": "http://data.europa.eu/930/referenceSystem",
+          "name": "referenceSystem",
+          "sort": "reference system",
+          "label": {
+            "en": "reference system"
+          },
+          "description": {
+            "en": "The reference system used in the Catalogue."
+          },
+          "usage": {
+            "en": "Spatial reference systems SHOULD be specified by using the corresponding URIs from the \"EPSG coordinate reference systems\" register operated by OGC [[OGC-EPSG]]."
+          },
+          "domain": [
+            {
+              "EA-Name": "dcat:Catalog",
+              "uri": "http://www.w3.org/ns/dcat#Catalog"
+            }
+          ],
+          "range": [
+            {
+              "range_label": "dct:Standard",
+              "range_uri": "http://purl.org/dc/terms/Standard"
+            }
+          ],
+          "scopedrange": [
+            {
+              "range_uri": "#Standard",
+              "range_puri": "http://purl.org/dc/terms/Standard",
+              "range_label": {
+                "en": "Standard"
+              }
+            }
+          ],
+          "cardinality": "0..*",
+          "codelist_uri": "",
+          "rawTags": {
+            "ap-definition-en": "The reference system used in the Catalogue.",
+            "ap-label-en": "reference system",
+            "ap-usageNote-en": "Spatial reference systems SHOULD be specified by using the corresponding URIs from the \"EPSG coordinate reference systems\" register operated by OGC [[OGC-EPSG]].",
+            "uri": "http://data.europa.eu/930/referenceSystem",
+            "reuse": "profile",
             "property-usage-scope": "optional"
           }
         },
@@ -1862,7 +1913,53 @@
             "ap-label-nl": "http://data.europa.eu/930/resourceProvider",
             "ap-definition-en": "\t\n\nParty that supplies the resource [[ISO-19115]].",
             "ap-label-en": "resource provider",
-            "property-usage-scope": "optional"
+            "property-usage-scope": "optional",
+            "reuse": "profile"
+          }
+        },
+        {
+          "uri": "http://data.europa.eu/930/topicCategory",
+          "name": "topicCategory",
+          "sort": "topic category",
+          "label": {
+            "en": "topic category"
+          },
+          "description": {
+            "en": "Topic category in accordance with EN ISO 19115."
+          },
+          "usage": {
+            "en": "The URIs of the \"Topic categories in accordance with EN ISO 19115\" code list operated by the INSPIRE Registry [[INSPIRE-TC]]."
+          },
+          "domain": [
+            {
+              "EA-Name": "dcat:Catalog",
+              "uri": "http://www.w3.org/ns/dcat#Catalog"
+            }
+          ],
+          "range": [
+            {
+              "range_label": "skos:Concept",
+              "range_uri": "http://www.w3.org/2004/02/skos/core#Concept"
+            }
+          ],
+          "scopedrange": [
+            {
+              "range_uri": "#Concept",
+              "range_puri": "http://www.w3.org/2004/02/skos/core#Concept",
+              "range_label": {
+                "en": "Concept"
+              }
+            }
+          ],
+          "cardinality": "0..*",
+          "codelist_uri": "",
+          "rawTags": {
+            "ap-label-en": "topic category",
+            "ap-usageNote-en": "The URIs of the \"Topic categories in accordance with EN ISO 19115\" code list operated by the INSPIRE Registry [[INSPIRE-TC]].",
+            "uri": "http://data.europa.eu/930/topicCategory",
+            "reuse": "profile",
+            "property-usage-scope": "optional",
+            "ap-definition-en": "Topic category in accordance with EN ISO 19115."
           }
         },
         {
@@ -1903,7 +2000,8 @@
             "uri": "http://data.europa.eu/930/user",
             "ap-definition-en": "Party who uses the resource [[ISO-19115]].",
             "ap-label-en": "user",
-            "property-usage-scope": "optional"
+            "property-usage-scope": "optional",
+            "reuse": "profile"
           }
         },
         {
@@ -1945,7 +2043,8 @@
             "ap-definition-en": "The legislation that mandates the creation or management of the Catalog.",
             "property-usage-scope": "optional",
             "uri": "http://data.europa.eu/r5r/applicableLegislation",
-            "reuse": "profile"
+            "reuse": "asis",
+            "DCAT-AP": "https://semiceu.github.io/DCAT-AP/releases/3.0.0/#Catalogue.applicablelegislation"
           }
         },
         {
@@ -1989,8 +2088,9 @@
             "ap-label-en": "access rights",
             "ap-usageNote-en": "For INSPIRE metadata, this property SHOULD be used with the URIs of the \"Limitations on public access\" code list operated by the INSPIRE Registry [[INSPIRE-LPA]].",
             "uri": "http://purl.org/dc/terms/accessRights",
-            "reuse": "profile",
-            "property-usage-scope": "optional"
+            "reuse": "extension",
+            "property-usage-scope": "optional",
+            "DCAT": "https://www.w3.org/TR/vocab-dcat-3/#Property:resource_access_rights"
           }
         },
         {
@@ -2001,7 +2101,7 @@
             "en": "conforms to"
           },
           "description": {
-            "en": "Refers to an implementing rule or other specification."
+            "en": "An established standard to which the described Catalogue conforms."
           },
           "usage": {},
           "domain": [
@@ -2028,56 +2128,12 @@
           "cardinality": "0..*",
           "codelist_uri": "",
           "rawTags": {
-            "ap-definition-en": "Refers to an implementing rule or other specification.",
+            "ap-definition-en": "An established standard to which the described Catalogue conforms.",
             "ap-label-en": "conforms to",
             "uri": "http://purl.org/dc/terms/conformsTo",
-            "reuse": "profile",
-            "property-usage-scope": "optional"
-          }
-        },
-        {
-          "uri": "http://purl.org/dc/terms/conformsTo",
-          "name": "referenceSystem",
-          "sort": "reference system",
-          "label": {
-            "en": "reference system"
-          },
-          "description": {
-            "en": "The reference system used in the Catalogue."
-          },
-          "usage": {
-            "en": "Spatial reference systems SHOULD be specified by using the corresponding URIs from the \"EPSG coordinate reference systems\" register operated by OGC [[OGC-EPSG]]."
-          },
-          "domain": [
-            {
-              "EA-Name": "dcat:Catalog",
-              "uri": "http://www.w3.org/ns/dcat#Catalog"
-            }
-          ],
-          "range": [
-            {
-              "range_label": "dct:Standard",
-              "range_uri": "http://purl.org/dc/terms/Standard"
-            }
-          ],
-          "scopedrange": [
-            {
-              "range_uri": "#Standard",
-              "range_puri": "http://purl.org/dc/terms/Standard",
-              "range_label": {
-                "en": "Standard"
-              }
-            }
-          ],
-          "cardinality": "0..*",
-          "codelist_uri": "",
-          "rawTags": {
-            "ap-definition-en": "The reference system used in the Catalogue.",
-            "ap-label-en": "reference system",
-            "ap-usageNote-en": "Spatial reference systems SHOULD be specified by using the corresponding URIs from the \"EPSG coordinate reference systems\" register operated by OGC [[OGC-EPSG]].",
-            "uri": "http://purl.org/dc/terms/conformsTo",
-            "reuse": "profile",
-            "property-usage-scope": "optional"
+            "reuse": "asis",
+            "property-usage-scope": "optional",
+            "DCAT": "https://www.w3.org/TR/vocab-dcat-3/#Property:resource_conforms_to"
           }
         },
         {
@@ -2130,7 +2186,7 @@
             "en": "creator"
           },
           "description": {
-            "en": "An Agent primarily responsible for producing the Data Service."
+            "en": "An entity responsible for the creation of the Catalogue."
           },
           "usage": {},
           "domain": [
@@ -2158,9 +2214,12 @@
           "codelist_uri": "",
           "rawTags": {
             "uri": "http://purl.org/dc/terms/creator",
-            "ap-definition-en": "An Agent primarily responsible for producing the Data Service.",
+            "ap-definition-en": "An entity responsible for the creation of the Catalogue.",
             "ap-label-en": "creator",
-            "property-usage-scope": "optional"
+            "property-usage-scope": "optional",
+            "DCAT": "https://www.w3.org/TR/vocab-dcat-3/#Property:resource_creator",
+            "reuse": "asis",
+            "DCAT-AP": "https://semiceu.github.io/DCAT-AP/releases/3.0.0/#Catalogue.creator"
           }
         },
         {
@@ -2200,13 +2259,14 @@
           "cardinality": "1..*",
           "codelist_uri": "",
           "rawTags": {
-            "reuse": "extended",
+            "reuse": "asis",
             "ap-usageNote-en": "This property can be repeated for parallel language versions of the description.",
             "ap-label-en": "description",
             "ap-definition-en": "A free-text account of the Catalogue.",
             "uri": "http://purl.org/dc/terms/description",
             "DCAT": "https://www.w3.org/TR/vocab-dcat-3/#Property:resource_description",
-            "property-usage-scope": "mandatory"
+            "property-usage-scope": "mandatory",
+            "DCAT-AP": "https://semiceu.github.io/DCAT-AP/releases/3.0.0/#Catalogue.description"
           }
         },
         {
@@ -2247,9 +2307,10 @@
             "ap-label-en": "has part",
             "DCAT": "https://www.w3.org/TR/vocab-dcat-3/#Property:resource_has_part",
             "ap-definition-en": "A related Catalogue that is part of the described Catalogue.",
-            "reuse": "extended",
+            "reuse": "asis",
             "uri": "http://purl.org/dc/terms/hasPart",
-            "property-usage-scope": "optional"
+            "property-usage-scope": "optional",
+            "DCAT-AP": "https://semiceu.github.io/DCAT-AP/releases/3.0.0/#Catalogue.haspart"
           }
         },
         {
@@ -2290,8 +2351,9 @@
             "ap-definition-en": "The main identifier for the Catalogue, e.g. the URI or other unique identifier.",
             "ap-label-en": "identifier",
             "uri": "http://purl.org/dc/terms/identifier",
-            "reuse": "profile",
-            "property-usage-scope": "optional"
+            "reuse": "asis",
+            "property-usage-scope": "optional",
+            "DCAT": "https://www.w3.org/TR/vocab-dcat-3/#Property:resource_identifier"
           }
         },
         {
@@ -2330,11 +2392,12 @@
           "codelist_uri": "",
           "rawTags": {
             "uri": "http://purl.org/dc/terms/issued",
-            "reuse": "extended",
+            "reuse": "asis",
             "DCAT": "https://www.w3.org/TR/vocab-dcat-3/#Property:resource_release_date",
             "property-usage-scope": "recommended",
             "ap-label-en": "release date",
-            "ap-definition-en": "The date of formal issuance (e.g., publication) of the Catalogue."
+            "ap-definition-en": "The date of formal issuance (e.g., publication) of the Catalogue.",
+            "DCAT-AP": "https://semiceu.github.io/DCAT-AP/releases/3.0.0/#Catalogue.releasedate"
           }
         },
         {
@@ -2377,10 +2440,11 @@
             "property-usage-scope": "recommended",
             "ap-label-en": "language",
             "DCAT": "https://www.w3.org/TR/vocab-dcat-3/#Property:resource_language",
-            "reuse": "extended",
+            "reuse": "asis",
             "ap-usageNote-en": "This property can be repeated if the metadata is provided in multiple languages.",
             "uri": "http://purl.org/dc/terms/language",
-            "ap-definition-en": "A language used in the textual metadata describing titles, descriptions, etc. of the Datasets, Data Services and Dataset Series in the Catalogue."
+            "ap-definition-en": "A language used in the textual metadata describing titles, descriptions, etc. of the Datasets, Data Services and Dataset Series in the Catalogue.",
+            "DCAT-AP": "https://semiceu.github.io/DCAT-AP/releases/3.0.0/#Catalogue.language"
           }
         },
         {
@@ -2422,8 +2486,9 @@
             "ap-definition-en": "A licence under which the Catalogue can be used or reused.",
             "ap-label-en": "licence",
             "property-usage-scope": "recommended",
-            "reuse": "extended",
-            "DCAT": "https://www.w3.org/TR/vocab-dcat-3/#Property:resource_license"
+            "reuse": "asis",
+            "DCAT": "https://www.w3.org/TR/vocab-dcat-3/#Property:resource_license",
+            "DCAT-AP": "https://semiceu.github.io/DCAT-AP/releases/3.0.0/#Catalogue.licence"
           }
         },
         {
@@ -2463,10 +2528,11 @@
           "rawTags": {
             "ap-label-en": "modification date",
             "uri": "http://purl.org/dc/terms/modified",
-            "reuse": "extended",
+            "reuse": "asis",
             "DCAT": "https://www.w3.org/TR/vocab-dcat-3/#Property:resource_update_date",
             "ap-definition-en": "The most recent date on which the Catalogue was modified.",
-            "property-usage-scope": "recommended"
+            "property-usage-scope": "recommended",
+            "DCAT-AP": "https://semiceu.github.io/DCAT-AP/releases/3.0.0/#Catalogue.modificationdate"
           }
         },
         {
@@ -2507,7 +2573,10 @@
             "uri": "http://purl.org/dc/terms/publisher",
             "ap-definition-en": "An entity (organisation) responsible for making the Catalogue available.",
             "ap-label-en": "publisher",
-            "property-usage-scope": "mandatory"
+            "property-usage-scope": "mandatory",
+            "DCAT": "https://www.w3.org/TR/vocab-dcat-3/#Property:resource_publisher",
+            "reuse": "asis",
+            "DCAT-AP": "https://semiceu.github.io/DCAT-AP/releases/3.0.0/#Catalogue.publisher"
           }
         },
         {
@@ -2547,10 +2616,11 @@
           "rawTags": {
             "property-usage-scope": "optional",
             "uri": "http://purl.org/dc/terms/rights",
-            "reuse": "extended",
+            "reuse": "asis",
             "ap-label-en": "rights",
             "ap-definition-en": "A statement that specifies rights associated with the Catalogue.",
-            "DCAT": "https://www.w3.org/TR/vocab-dcat-3/#Property:resource_rights"
+            "DCAT": "https://www.w3.org/TR/vocab-dcat-3/#Property:resource_rights",
+            "DCAT-AP": "https://semiceu.github.io/DCAT-AP/releases/3.0.0/#Catalogue.rights"
           }
         },
         {
@@ -2591,52 +2661,8 @@
             "uri": "http://purl.org/dc/terms/rightsHolder",
             "ap-definition-en": "An Agent (organisation) holding rights on the Catalogued Resource.",
             "ap-label-en": "rights holder",
-            "property-usage-scope": "optional"
-          }
-        },
-        {
-          "uri": "http://purl.org/dc/terms/subject",
-          "name": "topicCategory",
-          "sort": "topic category",
-          "label": {
-            "en": "topic category"
-          },
-          "description": {
-            "en": "TODO"
-          },
-          "usage": {
-            "en": "The URIs of the \"Topic categories in accordance with EN ISO 19115\" code list operated by the INSPIRE Registry [[INSPIRE-TC]]."
-          },
-          "domain": [
-            {
-              "EA-Name": "dcat:Catalog",
-              "uri": "http://www.w3.org/ns/dcat#Catalog"
-            }
-          ],
-          "range": [
-            {
-              "range_label": "skos:Concept",
-              "range_uri": "http://www.w3.org/2004/02/skos/core#Concept"
-            }
-          ],
-          "scopedrange": [
-            {
-              "range_uri": "#Concept",
-              "range_puri": "http://www.w3.org/2004/02/skos/core#Concept",
-              "range_label": {
-                "en": "Concept"
-              }
-            }
-          ],
-          "cardinality": "0..*",
-          "codelist_uri": "",
-          "rawTags": {
-            "ap-label-en": "topic category",
-            "ap-usageNote-en": "The URIs of the \"Topic categories in accordance with EN ISO 19115\" code list operated by the INSPIRE Registry [[INSPIRE-TC]].",
-            "uri": "http://purl.org/dc/terms/subject",
-            "reuse": "profile",
             "property-usage-scope": "optional",
-            "ap-definition-en": "TODO"
+            "reuse": "profile"
           }
         },
         {
@@ -2677,8 +2703,10 @@
             "ap-definition-en": "A temporal period that the Catalogue covers.",
             "ap-label-en": "temporal coverage",
             "uri": "http://purl.org/dc/terms/temporal",
-            "reuse": "profile",
-            "property-usage-scope": "optional"
+            "reuse": "asis",
+            "property-usage-scope": "optional",
+            "DCAT": "https://www.w3.org/TR/vocab-dcat-3/#Property:dataset_temporal",
+            "DCAT-AP": "https://semiceu.github.io/DCAT-AP/releases/3.0.0/#Catalogue.temporalcoverage"
           }
         },
         {
@@ -2721,10 +2749,11 @@
             "ap-definition-en": "A name given to the Catalogue.",
             "ap-label-en": "title",
             "property-usage-scope": "mandatory",
-            "reuse": "extended",
+            "reuse": "asis",
             "ap-usageNote-en": "This property can be repeated for parallel language versions of the name.",
             "DCAT": "https://www.w3.org/TR/vocab-dcat-3/#Property:resource_title",
-            "uri": "http://purl.org/dc/terms/title"
+            "uri": "http://purl.org/dc/terms/title",
+            "DCAT-AP": "https://semiceu.github.io/DCAT-AP/releases/3.0.0/#Catalogue.title"
           }
         },
         {
@@ -2767,7 +2796,8 @@
             "property-usage-scope": "optional",
             "reuse": "asis",
             "uri": "http://www.w3.org/ns/dcat#catalog",
-            "ap-definition-en": "A catalogue whose contents are of interest in the context of this catalogue."
+            "ap-definition-en": "A catalogue whose contents are of interest in the context of this catalogue.",
+            "DCAT-AP": "https://semiceu.github.io/DCAT-AP/releases/3.0.0/#Catalogue.catalogue"
           }
         },
         {
@@ -2808,8 +2838,9 @@
             "ap-definition-en": "Contact information that can be used for sending comments about the Catalogue.",
             "ap-label-en": "contact point",
             "uri": "http://www.w3.org/ns/dcat#contactPoint",
-            "reuse": "profile",
-            "property-usage-scope": "optional"
+            "reuse": "asis",
+            "property-usage-scope": "optional",
+            "DCAT": "https://www.w3.org/TR/vocab-dcat-3/#Property:resource_contact_point"
           }
         },
         {
@@ -2849,7 +2880,10 @@
           "rawTags": {
             "uri": "http://www.w3.org/ns/dcat#dataset",
             "ap-definition-en": "A Dataset that is part of the Catalogue.",
-            "ap-label-en": "dataset"
+            "ap-label-en": "dataset",
+            "DCAT": "https://www.w3.org/TR/vocab-dcat-3/#Property:catalog_dataset",
+            "reuse": "asis",
+            "DCAT-AP": "https://semiceu.github.io/DCAT-AP/releases/3.0.0/#Catalogue.dataset"
           }
         },
         {
@@ -2890,8 +2924,9 @@
             "ap-definition-en": "A keyword or tag describing the Catalogue.",
             "ap-label-en": "keyword",
             "uri": "http://www.w3.org/ns/dcat#keyword",
-            "reuse": "profile",
-            "property-usage-scope": "optional"
+            "reuse": "asis",
+            "property-usage-scope": "optional",
+            "DCAT": "https://www.w3.org/TR/vocab-dcat-3/#Property:resource_keyword"
           }
         },
         {
@@ -2931,7 +2966,10 @@
           "rawTags": {
             "uri": "http://www.w3.org/ns/dcat#record",
             "ap-definition-en": "A Catalogue Record that is part of the Catalogue.",
-            "ap-label-en": "record"
+            "ap-label-en": "record",
+            "DCAT": "https://www.w3.org/TR/vocab-dcat-3/#Property:catalog_catalog_record",
+            "reuse": "asis",
+            "DCAT-AP": "https://semiceu.github.io/DCAT-AP/releases/3.0.0/#Catalogue.record"
           }
         },
         {
@@ -2971,7 +3009,10 @@
           "rawTags": {
             "uri": "http://www.w3.org/ns/dcat#service",
             "ap-definition-en": "A site or end-point (Data Service) that is listed in the Catalogue.",
-            "ap-label-en": "service"
+            "ap-label-en": "service",
+            "DCAT": "https://www.w3.org/TR/vocab-dcat-3/#Property:catalog_service",
+            "reuse": "asis",
+            "DCAT-AP": "https://semiceu.github.io/DCAT-AP/releases/3.0.0/#Catalogue.service"
           }
         },
         {
@@ -2982,7 +3023,7 @@
             "en": "theme/category"
           },
           "description": {
-            "en": "A Category of the Catalogue."
+            "en": "A main category of the Catalogue. A Catalogue can have multiple categories."
           },
           "usage": {
             "en": "A Catalogue may be associated with multiple Categories."
@@ -3011,12 +3052,13 @@
           "cardinality": "0..*",
           "codelist_uri": "",
           "rawTags": {
-            "ap-definition-en": "A Category of the Catalogue.",
+            "ap-definition-en": "A main category of the Catalogue. A Catalogue can have multiple categories.",
             "ap-label-en": "theme/category",
             "ap-usageNote-en": "A Catalogue may be associated with multiple Categories.",
             "uri": "http://www.w3.org/ns/dcat#theme",
-            "reuse": "profile",
-            "property-usage-scope": "optional"
+            "reuse": "asis",
+            "property-usage-scope": "optional",
+            "DCAT": "https://www.w3.org/TR/vocab-dcat-3/#Property:resource_theme"
           }
         },
         {
@@ -3057,12 +3099,13 @@
           "codelist_uri": "",
           "rawTags": {
             "uri": "http://www.w3.org/ns/dcat#themeTaxonomy",
-            "reuse": "extended",
+            "reuse": "asis",
             "ap-label-en": "themes",
             "property-usage-scope": "recommended",
             "ap-usageNote-en": "This property refers to a knowledge organization system used to classify the Catalogue's Datasets. It must have at least the value NAL:data-theme as this is the manatory controlled vocabulary for dcat:theme.",
             "DCAT": "https://www.w3.org/TR/vocab-dcat-3/#Property:catalog_themes",
-            "ap-definition-en": "A knowledge organization system used to classify the Resources that are in the Catalogue."
+            "ap-definition-en": "A knowledge organization system used to classify the Resources that are in the Catalogue.",
+            "DCAT-AP": "https://semiceu.github.io/DCAT-AP/releases/3.0.0/#Catalogue.themes"
           }
         },
         {
@@ -3103,8 +3146,9 @@
             "ap-definition-en": "A link to an Agent having some form of responsibility for the Catalogue.",
             "ap-label-en": "qualified attribution",
             "uri": "http://www.w3.org/ns/prov#qualifiedAttribution",
-            "reuse": "profile",
-            "property-usage-scope": "optional"
+            "reuse": "asis",
+            "property-usage-scope": "optional",
+            "DCAT": "https://www.w3.org/TR/vocab-dcat-3/#Property:resource_qualified_attribution"
           }
         },
         {
@@ -3187,12 +3231,13 @@
           "cardinality": "0..1",
           "codelist_uri": "",
           "rawTags": {
-            "reuse": "extended",
+            "reuse": "asis",
             "DCAT": "https://www.w3.org/TR/vocab-dcat-3/#Property:catalog_homepage",
             "property-usage-scope": "recommended",
             "ap-label-en": "homepage",
             "uri": "http://xmlns.com/foaf/0.1/homepage",
-            "ap-definition-en": "A web page that acts as the main page for the Catalogue."
+            "ap-definition-en": "A web page that acts as the main page for the Catalogue.",
+            "DCAT-AP": "https://semiceu.github.io/DCAT-AP/releases/3.0.0/#Catalogue.homepage"
           }
         }
       ]
