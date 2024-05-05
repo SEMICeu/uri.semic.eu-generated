@@ -16,8 +16,8 @@
     },
     "status": "https://www.w3.org/2021/Process-20211102/#RecsCR",
     "statuslabel": "Onbekend",
-    "repositoryurl": "git@semicthema-DCAT-AP:SEMICeu/Semicthema-DCAT-AP.git/tree/73b30f32ad6d9b7a9d3fa57c40fb19c641ce09a5",
-    "changelogurl": "git@semicthema-DCAT-AP:SEMICeu/Semicthema-DCAT-AP.git/blob/73b30f32ad6d9b7a9d3fa57c40fb19c641ce09a5/CHANGELOG",
+    "repositoryurl": "git@semicthema-DCAT-AP:SEMICeu/Semicthema-DCAT-AP.git/tree/f99559d144e11b3f933ea6f0ec6ca71a5789c97d",
+    "changelogurl": "git@semicthema-DCAT-AP:SEMICeu/Semicthema-DCAT-AP.git/blob/f99559d144e11b3f933ea6f0ec6ca71a5789c97d/CHANGELOG",
     "feedbackurl": "https://github.com/SEMICeu/GeoDCAT-AP/issues",
     "standaardregisterurl": "https://semiceu.github.io/GeoDCAT-AP/releases/3.0.0/CHANGELOG.html",
     "usesVocs": [],
@@ -711,7 +711,8 @@
         "uri": "http://spdx.org/rdf/terms#Checksum",
         "ap-usageNote-en": "This class allows the results of a variety of checksum and cryptographic message digest algorithms to be represented.",
         "DCAT": "https://w3c.github.io/dxwg/dcat/#Class:Checksum",
-        "class-usage-scope": "main"
+        "class-usage-scope": "main",
+        "DCAT-AP": "https://semiceu.github.io/DCAT-AP/releases/3.0.0/#Checksum"
       },
       "properties": [
         {
@@ -3303,7 +3304,8 @@
         "class-usage-scope": "main",
         "DCAT": "https://www.w3.org/TR/vocab-dcat-3/#Class:Catalog_Record",
         "reuse": "extended",
-        "uri": "http://www.w3.org/ns/dcat#CatalogRecord"
+        "uri": "http://www.w3.org/ns/dcat#CatalogRecord",
+        "DCAT-AP": "https://semiceu.github.io/DCAT-AP/releases/3.0.0/#CatalogueRecord"
       },
       "properties": [
         {
@@ -3354,7 +3356,9 @@
           "label": {
             "en": "distributor"
           },
-          "description": {},
+          "description": {
+            "en": "Party who distributes the resource [[ISO-19115]]."
+          },
           "usage": {},
           "domain": [
             {
@@ -3382,8 +3386,8 @@
           "rawTags": {
             "uri": "http://data.europa.eu/930/distributor",
             "ap-label-en": "distributor",
-            "ap-description-en": "Party who distributes the resource [[ISO-19115]].",
-            "property-usage-scope": "optional"
+            "property-usage-scope": "optional",
+            "ap-definition-en": "Party who distributes the resource [[ISO-19115]]."
           }
         },
         {
@@ -4317,7 +4321,8 @@
         "class-usage-scope": "main",
         "DCAT": "https://www.w3.org/TR/vocab-dcat-3/#Class:Data_Service",
         "reuse": "extended",
-        "uri": "http://www.w3.org/ns/dcat#DataService"
+        "uri": "http://www.w3.org/ns/dcat#DataService",
+        "DCAT-AP": "https://semiceu.github.io/DCAT-AP/releases/3.0.0/#DataService"
       },
       "properties": [
         {
@@ -4526,6 +4531,51 @@
           }
         },
         {
+          "uri": "http://data.europa.eu/930/referenceSystem",
+          "name": "referenceSystem",
+          "sort": "reference system",
+          "label": {
+            "en": "reference system"
+          },
+          "description": {
+            "en": "The reference system used in the Data Service."
+          },
+          "usage": {
+            "en": "Spatial reference systems SHOULD be specified by using the corresponding URIs from the \"EPSG coordinate reference systems\" register operated by OGC [[OGC-EPSG]]."
+          },
+          "domain": [
+            {
+              "EA-Name": "dcat:DataService",
+              "uri": "http://www.w3.org/ns/dcat#DataService"
+            }
+          ],
+          "range": [
+            {
+              "range_label": "skos:Concept",
+              "range_uri": "http://www.w3.org/2004/02/skos/core#Concept"
+            }
+          ],
+          "scopedrange": [
+            {
+              "range_uri": "#Concept",
+              "range_puri": "http://www.w3.org/2004/02/skos/core#Concept",
+              "range_label": {
+                "en": "Concept"
+              }
+            }
+          ],
+          "cardinality": "0..*",
+          "codelist_uri": "",
+          "rawTags": {
+            "ap-definition-en": "The reference system used in the Data Service.",
+            "ap-label-en": "reference system",
+            "ap-usageNote-en": "Spatial reference systems SHOULD be specified by using the corresponding URIs from the \"EPSG coordinate reference systems\" register operated by OGC [[OGC-EPSG]].",
+            "uri": "http://data.europa.eu/930/referenceSystem",
+            "reuse": "profile",
+            "property-usage-scope": "optional"
+          }
+        },
+        {
           "uri": "http://data.europa.eu/930/resourceProvider",
           "name": "resourceProvider",
           "sort": "resource provider",
@@ -4565,6 +4615,135 @@
             "ap-definition-en": "\t\r\n\r\nParty that supplies the resource [[ISO-19115]].",
             "ap-label-en": "resource provider",
             "property-usage-scope": "optional"
+          }
+        },
+        {
+          "uri": "http://data.europa.eu/930/resourceType",
+          "name": "type",
+          "sort": "type",
+          "label": {
+            "en": "type"
+          },
+          "description": {
+            "en": "Resource type in accordance with INSPIRE Resource Types [[INSPIRE-RT]]."
+          },
+          "usage": {
+            "en": "URIs of the \"Resource types\" code list operated by the INSPIRE Registry [[INSPIRE-RT]] - namely the one corresponding to \"Spatial data service\"."
+          },
+          "domain": [
+            {
+              "EA-Name": "dcat:DataService",
+              "uri": "http://www.w3.org/ns/dcat#DataService"
+            }
+          ],
+          "range": [
+            {
+              "range_label": "skos:Concept",
+              "range_uri": "http://www.w3.org/2004/02/skos/core#Concept"
+            }
+          ],
+          "scopedrange": [
+            {
+              "range_uri": "#Concept",
+              "range_puri": "http://www.w3.org/2004/02/skos/core#Concept",
+              "range_label": {
+                "en": "Concept"
+              }
+            }
+          ],
+          "cardinality": "0..1",
+          "codelist_uri": "",
+          "rawTags": {
+            "ap-label-en": "type",
+            "ap-usageNote-en": "URIs of the \"Resource types\" code list operated by the INSPIRE Registry [[INSPIRE-RT]] - namely the one corresponding to \"Spatial data service\".",
+            "uri": "http://data.europa.eu/930/resourceType",
+            "reuse": "profile",
+            "property-usage-scope": "optional",
+            "ap-definition-en": "Resource type in accordance with INSPIRE Resource Types [[INSPIRE-RT]]."
+          }
+        },
+        {
+          "uri": "http://data.europa.eu/930/serviceCategory",
+          "name": "serviceCategory",
+          "sort": "service category",
+          "label": {
+            "en": "service category"
+          },
+          "description": {
+            "en": "Service category in accordance with INSPIRE Spatial Data Service Categories [[INSPIRE-SDSC]]."
+          },
+          "usage": {
+            "en": "The URIs of the \"Classification of spatial data services\" code list operated by the INSPIRE Registry [[INSPIRE-SDSC]]."
+          },
+          "domain": [
+            {
+              "EA-Name": "dcat:DataService",
+              "uri": "http://www.w3.org/ns/dcat#DataService"
+            }
+          ],
+          "range": [
+            {
+              "range_label": "skos:Concept",
+              "range_uri": "http://www.w3.org/2004/02/skos/core#Concept"
+            }
+          ],
+          "scopedrange": [
+            {
+              "range_uri": "#Concept",
+              "range_puri": "http://www.w3.org/2004/02/skos/core#Concept",
+              "range_label": {
+                "en": "Concept"
+              }
+            }
+          ],
+          "cardinality": "0..1",
+          "codelist_uri": "",
+          "rawTags": {
+            "ap-label-en": "service category",
+            "ap-usageNote-en": "The URIs of the \"Classification of spatial data services\" code list operated by the INSPIRE Registry [[INSPIRE-SDSC]].",
+            "uri": "http://data.europa.eu/930/serviceCategory",
+            "reuse": "profile",
+            "property-usage-scope": "optional",
+            "ap-definition-en": "Service category in accordance with INSPIRE Spatial Data Service Categories [[INSPIRE-SDSC]]."
+          }
+        },
+        {
+          "uri": "http://data.europa.eu/930/serviceType",
+          "name": "serviceType",
+          "sort": "service type",
+          "label": {
+            "en": "service type"
+          },
+          "description": {},
+          "usage": {},
+          "domain": [
+            {
+              "EA-Name": "dcat:DataService",
+              "uri": "http://www.w3.org/ns/dcat#DataService"
+            }
+          ],
+          "range": [
+            {
+              "range_label": "skos:Concept",
+              "range_uri": "http://www.w3.org/2004/02/skos/core#Concept"
+            }
+          ],
+          "scopedrange": [
+            {
+              "range_uri": "#Concept",
+              "range_puri": "http://www.w3.org/2004/02/skos/core#Concept",
+              "range_label": {
+                "en": "Concept"
+              }
+            }
+          ],
+          "cardinality": "0..1",
+          "codelist_uri": "",
+          "rawTags": {
+            "uri": "http://data.europa.eu/930/serviceType",
+            "reuse": "profile",
+            "ap-label-en": "service type",
+            "ap-label-definition": "Service type in accordance with INSPIRE Spatial Data Service Types [[INSPIRE-SDST]]."
           }
         },
         {
@@ -4610,6 +4789,51 @@
             "property-usage-scope": "optional",
             "ap-definition-en": "Textual description of spatial resolution.",
             "uri": "http://data.europa.eu/930/spatialResolutionAsText"
+          }
+        },
+        {
+          "uri": "http://data.europa.eu/930/topicCategory",
+          "name": "topicCategory",
+          "sort": "topic category",
+          "label": {
+            "en": "topic category"
+          },
+          "description": {
+            "en": "Topic category in accordance with ISO-19115 [[INSPIRE-TC]]."
+          },
+          "usage": {
+            "en": "One of the URIs of the \"Topic categories in accordance with EN ISO 19115\" code list operated by the INSPIRE Registry [[INSPIRE-TC]]."
+          },
+          "domain": [
+            {
+              "EA-Name": "dcat:DataService",
+              "uri": "http://www.w3.org/ns/dcat#DataService"
+            }
+          ],
+          "range": [
+            {
+              "range_label": "skos:Concept",
+              "range_uri": "http://www.w3.org/2004/02/skos/core#Concept"
+            }
+          ],
+          "scopedrange": [
+            {
+              "range_uri": "#Concept",
+              "range_puri": "http://www.w3.org/2004/02/skos/core#Concept",
+              "range_label": {
+                "en": "Concept"
+              }
+            }
+          ],
+          "cardinality": "0..*",
+          "codelist_uri": "",
+          "rawTags": {
+            "ap-label-en": "topic category",
+            "ap-usageNote-en": "One of the URIs of the \"Topic categories in accordance with EN ISO 19115\" code list operated by the INSPIRE Registry [[INSPIRE-TC]].",
+            "uri": "http://data.europa.eu/930/topicCategory",
+            "reuse": "profile",
+            "property-usage-scope": "optional",
+            "ap-definition-en": "Topic category in accordance with ISO-19115 [[INSPIRE-TC]]."
           }
         },
         {
@@ -4738,7 +4962,8 @@
             "property-usage-scope": "optional",
             "DCAT": "https://www.w3.org/TR/vocab-dcat-3/#Property:resource_access_rights",
             "ap-usageNote-en": "For INSPIRE metadata, this property SHOULD be used with the URIs of the \"Limitations on public access\" code list operated by the INSPIRE Registry [[INSPIRE-LPA]].",
-            "reuse": "extended"
+            "reuse": "asis",
+            "DCAT-AP": "https://semiceu.github.io/DCAT-AP/releases/3.0.0/#DataService.accessrights"
           }
         },
         {
@@ -4787,51 +5012,6 @@
             "definition-en": "An established standard to which the described resource conforms.",
             "ap-usageNote-en": "The standards referred here SHOULD describe the Data Service and not the data it serves. The latter is provided by the dataset with which this Data Service is connected.\r\n\r\nFor instance the data service adheres to the OGC WFS API standard, while the associated dataset adheres to the <a href=\"https://knowledge-base.inspire.ec.europa.eu/index_en\">INSPIRE</a> Address data model.",
             "DCAT-AP": "https://semiceu.github.io/DCAT-AP/releases/3.0.0/#DataService.conformsto"
-          }
-        },
-        {
-          "uri": "http://purl.org/dc/terms/conformsTo",
-          "name": "referenceSystem",
-          "sort": "reference system",
-          "label": {
-            "en": "reference system"
-          },
-          "description": {
-            "en": "The reference system used in the Data Service."
-          },
-          "usage": {
-            "en": "Spatial reference systems SHOULD be specified by using the corresponding URIs from the \"EPSG coordinate reference systems\" register operated by OGC [[OGC-EPSG]]."
-          },
-          "domain": [
-            {
-              "EA-Name": "dcat:DataService",
-              "uri": "http://www.w3.org/ns/dcat#DataService"
-            }
-          ],
-          "range": [
-            {
-              "range_label": "dct:Standard",
-              "range_uri": "http://purl.org/dc/terms/Standard"
-            }
-          ],
-          "scopedrange": [
-            {
-              "range_uri": "#Standard",
-              "range_puri": "http://purl.org/dc/terms/Standard",
-              "range_label": {
-                "en": "Standard"
-              }
-            }
-          ],
-          "cardinality": "0..*",
-          "codelist_uri": "",
-          "rawTags": {
-            "ap-definition-en": "The reference system used in the Data Service.",
-            "ap-label-en": "reference system",
-            "ap-usageNote-en": "Spatial reference systems SHOULD be specified by using the corresponding URIs from the \"EPSG coordinate reference systems\" register operated by OGC [[OGC-EPSG]].",
-            "uri": "http://purl.org/dc/terms/conformsTo",
-            "reuse": "profile",
-            "property-usage-scope": "optional"
           }
         },
         {
@@ -4914,7 +5094,9 @@
             "uri": "http://purl.org/dc/terms/creator",
             "ap-definition-en": "An Agent primarily responsible for producing the Data Service.",
             "ap-label-en": "creator",
-            "property-usage-scope": "optional"
+            "property-usage-scope": "optional",
+            "DCAT": "https://www.w3.org/TR/vocab-dcat-3/#Property:resource_creator",
+            "reuse": "asis"
           }
         },
         {
@@ -4960,7 +5142,8 @@
             "ap-usageNote-en": "This property can be repeated for parallel language versions of the description.",
             "property-usage-scope": "optional",
             "DCAT": "https://www.w3.org/TR/vocab-dcat-3/#Property:resource_description",
-            "reuse": "extended"
+            "reuse": "asis",
+            "DCAT-AP": "https://semiceu.github.io/DCAT-AP/releases/3.0.0/#DataService.description"
           }
         },
         {
@@ -5043,8 +5226,9 @@
             "ap-definition-en": "The main identifier for the Data Service, e.g. the URI or other unique identifier in the context of the Catalogue.",
             "ap-label-en": "identifier",
             "uri": "http://purl.org/dc/terms/identifier",
-            "reuse": "profile",
-            "property-usage-scope": "optional"
+            "reuse": "extended",
+            "property-usage-scope": "optional",
+            "DCAT": "https://www.w3.org/TR/vocab-dcat-3/#Property:resource_identifier"
           }
         },
         {
@@ -5085,8 +5269,9 @@
             "ap-definition-en": "The date of formal issuance (e.g., publication) of the Data Service.",
             "ap-label-en": "release date",
             "uri": "http://purl.org/dc/terms/issued",
-            "reuse": "profile",
-            "property-usage-scope": "optional"
+            "reuse": "asis",
+            "property-usage-scope": "optional",
+            "DCAT": "https://www.w3.org/TR/vocab-dcat-3/#Property:resource_release_date"
           }
         },
         {
@@ -5130,7 +5315,52 @@
             "ap-label-en": "language",
             "ap-usageNote-en": "This property can be repeated if multiple languages are supported in the Data Service - see <a href=\"https://semiceu.github.io/uri.semic.eu-generated/GeoDCAT-AP/releases/3.0.0/#accessibility-and-multilingual-aspects\">§ 11. Accessibility and Multilingual Aspects</a>.",
             "uri": "http://purl.org/dc/terms/language",
-            "reuse": "profile",
+            "reuse": "extended",
+            "property-usage-scope": "optional",
+            "DCAT": "https://www.w3.org/TR/vocab-dcat-3/#Property:resource_language"
+          }
+        },
+        {
+          "uri": "http://purl.org/dc/terms/license",
+          "name": "licence",
+          "sort": "licence",
+          "label": {
+            "en": "licence"
+          },
+          "description": {
+            "en": "A licence under which the Data service is made available."
+          },
+          "usage": {},
+          "domain": [
+            {
+              "EA-Name": "dcat:DataService",
+              "uri": "http://www.w3.org/ns/dcat#DataService"
+            }
+          ],
+          "range": [
+            {
+              "range_label": "dct:LicenseDocument",
+              "range_uri": "http://purl.org/dc/terms/LicenseDocument"
+            }
+          ],
+          "scopedrange": [
+            {
+              "range_uri": "#Licence Document",
+              "range_puri": "http://purl.org/dc/terms/LicenseDocument",
+              "range_label": {
+                "en": "Licence Document"
+              }
+            }
+          ],
+          "cardinality": "0..1",
+          "codelist_uri": "",
+          "rawTags": {
+            "ap-label-en": "licence",
+            "uri": "http://purl.org/dc/terms/license",
+            "ap-definition-en": "A licence under which the Data service is made available.",
+            "DCAT-AP": "https://semiceu.github.io/DCAT-AP/releases/3.0.0/#DataService.licence",
+            "DCAT": "https://www.w3.org/TR/vocab-dcat-3/#Property:resource_license",
+            "reuse": "asis",
             "property-usage-scope": "optional"
           }
         },
@@ -5171,9 +5401,10 @@
           "rawTags": {
             "ap-label-en": "modification date",
             "uri": "http://purl.org/dc/terms/modified",
-            "reuse": "profile",
+            "reuse": "asis",
             "property-usage-scope": "optional",
-            "ap-definition-en": "The most recent date on which the Data Service was changed or modified."
+            "ap-definition-en": "The most recent date on which the Data Service was changed or modified.",
+            "DCAT": "https://www.w3.org/TR/vocab-dcat-3/#Property:resource_update_date"
           }
         },
         {
@@ -5214,7 +5445,9 @@
             "uri": "http://purl.org/dc/terms/publisher",
             "ap-definition-en": "An entity (organisation) responsible for making the Data Service available.",
             "ap-label-en": "publisher",
-            "property-usage-scope": "recommended"
+            "property-usage-scope": "recommended",
+            "DCAT-AP": "https://semiceu.github.io/DCAT-AP/releases/3.0.0/#DataService.publisher",
+            "reuse": "asis"
           }
         },
         {
@@ -5300,22 +5533,20 @@
             "ap-definition-en": "A geographic region that is covered by the Data Service.",
             "ap-usageNote-en": "This property refers to a geographic region that is covered by the Data Service.",
             "reuse": "profile",
-            "property-usage-scope": "recommended"
+            "property-usage-scope": "optional"
           }
         },
         {
-          "uri": "http://purl.org/dc/terms/subject",
-          "name": "serviceCategory",
-          "sort": "service category",
+          "uri": "http://purl.org/dc/terms/temporal",
+          "name": "temporalCoverage",
+          "sort": "temporal coverage",
           "label": {
-            "en": "service category"
+            "en": "temporal coverage"
           },
           "description": {
-            "en": "TODO"
+            "en": "A temporal period that the Data Service covers."
           },
-          "usage": {
-            "en": "The URIs of the \"Classification of spatial data services\" code list operated by the INSPIRE Registry [[INSPIRE-SDSC]]."
-          },
+          "usage": {},
           "domain": [
             {
               "EA-Name": "dcat:DataService",
@@ -5324,73 +5555,27 @@
           ],
           "range": [
             {
-              "range_label": "skos:Concept",
-              "range_uri": "http://www.w3.org/2004/02/skos/core#Concept"
+              "range_label": "dct:PeriodOfTime",
+              "range_uri": "http://purl.org/dc/terms/PeriodOfTime"
             }
           ],
           "scopedrange": [
             {
-              "range_uri": "#Concept",
-              "range_puri": "http://www.w3.org/2004/02/skos/core#Concept",
+              "range_uri": "#Period of time",
+              "range_puri": "http://purl.org/dc/terms/PeriodOfTime",
               "range_label": {
-                "en": "Concept"
-              }
-            }
-          ],
-          "cardinality": "0..1",
-          "codelist_uri": "",
-          "rawTags": {
-            "ap-label-en": "service category",
-            "ap-usageNote-en": "The URIs of the \"Classification of spatial data services\" code list operated by the INSPIRE Registry [[INSPIRE-SDSC]].",
-            "uri": "http://purl.org/dc/terms/subject",
-            "reuse": "profile",
-            "property-usage-scope": "optional",
-            "ap-definition-en": "TODO"
-          }
-        },
-        {
-          "uri": "http://purl.org/dc/terms/subject",
-          "name": "topicCategory",
-          "sort": "topic category",
-          "label": {
-            "en": "topic category"
-          },
-          "description": {
-            "en": "TODO"
-          },
-          "usage": {
-            "en": "One of the URIs of the \"Topic categories in accordance with EN ISO 19115\" code list operated by the INSPIRE Registry [[INSPIRE-TC]]."
-          },
-          "domain": [
-            {
-              "EA-Name": "dcat:DataService",
-              "uri": "http://www.w3.org/ns/dcat#DataService"
-            }
-          ],
-          "range": [
-            {
-              "range_label": "skos:Concept",
-              "range_uri": "http://www.w3.org/2004/02/skos/core#Concept"
-            }
-          ],
-          "scopedrange": [
-            {
-              "range_uri": "#Concept",
-              "range_puri": "http://www.w3.org/2004/02/skos/core#Concept",
-              "range_label": {
-                "en": "Concept"
+                "en": "Period of time"
               }
             }
           ],
           "cardinality": "0..*",
           "codelist_uri": "",
           "rawTags": {
-            "ap-label-en": "topic category",
-            "ap-usageNote-en": "One of the URIs of the \"Topic categories in accordance with EN ISO 19115\" code list operated by the INSPIRE Registry [[INSPIRE-TC]].",
-            "uri": "http://purl.org/dc/terms/subject",
             "reuse": "profile",
-            "property-usage-scope": "optional",
-            "ap-definition-en": "TODO"
+            "uri": "http://purl.org/dc/terms/temporal",
+            "ap-label-en": "temporal coverage",
+            "ap-definition-en": "A temporal period that the Data Service covers.",
+            "property-usage-scope": "optional"
           }
         },
         {
@@ -5436,52 +5621,8 @@
             "ap-usageNote-en": "This property can be repeated for parallel language versions of the name.",
             "property-usage-scope": "mandatory",
             "DCAT": "https://www.w3.org/TR/vocab-dcat-3/#Property:resource_title",
-            "reuse": "extended"
-          }
-        },
-        {
-          "uri": "http://purl.org/dc/terms/type",
-          "name": "type",
-          "sort": "type",
-          "label": {
-            "en": "type"
-          },
-          "description": {
-            "en": "TODO"
-          },
-          "usage": {
-            "en": "URIs of the \"Resource types\" code list operated by the INSPIRE Registry [[INSPIRE-RT]] - namely the one corresponding to \"Spatial data service\"."
-          },
-          "domain": [
-            {
-              "EA-Name": "dcat:DataService",
-              "uri": "http://www.w3.org/ns/dcat#DataService"
-            }
-          ],
-          "range": [
-            {
-              "range_label": "skos:Concept",
-              "range_uri": "http://www.w3.org/2004/02/skos/core#Concept"
-            }
-          ],
-          "scopedrange": [
-            {
-              "range_uri": "#Concept",
-              "range_puri": "http://www.w3.org/2004/02/skos/core#Concept",
-              "range_label": {
-                "en": "Concept"
-              }
-            }
-          ],
-          "cardinality": "0..1",
-          "codelist_uri": "",
-          "rawTags": {
-            "ap-label-en": "type",
-            "ap-usageNote-en": "URIs of the \"Resource types\" code list operated by the INSPIRE Registry [[INSPIRE-RT]] - namely the one corresponding to \"Spatial data service\".",
-            "uri": "http://purl.org/dc/terms/type",
-            "reuse": "profile",
-            "property-usage-scope": "optional",
-            "ap-definition-en": "TODO"
+            "reuse": "asis",
+            "DCAT-AP": "https://semiceu.github.io/DCAT-AP/releases/3.0.0/#DataService.title"
           }
         },
         {
@@ -5524,7 +5665,8 @@
             "ap-definition-en": "Contact information that can be used for sending comments about the Data Service.",
             "property-usage-scope": "recommended",
             "DCAT": "https://www.w3.org/TR/vocab-dcat-3/#Property:resource_contact_point",
-            "reuse": "asis"
+            "reuse": "asis",
+            "DCAT-AP": "https://semiceu.github.io/DCAT-AP/releases/3.0.0/#DataService.contactpoint"
           }
         },
         {
@@ -5570,7 +5712,8 @@
             "ap-usageNote-en": "The property gives specific details of the actual endpoint instances, while the property application profile (dct:conformsTo) is used to indicate the general standard or specification that the endpoints implement.",
             "property-usage-scope": "recommended",
             "DCAT": "https://www.w3.org/TR/vocab-dcat-3/#Property:data_service_endpoint_description",
-            "reuse": "asis"
+            "reuse": "asis",
+            "DCAT-AP": "https://semiceu.github.io/DCAT-AP/releases/3.0.0/#DataService.endpointdescription"
           }
         },
         {
@@ -5613,7 +5756,8 @@
             "ap-definition-en": "The root location or primary endpoint of the service (an IRI).",
             "property-usage-scope": "mandatory",
             "DCAT": "https://www.w3.org/TR/vocab-dcat-3/#Property:data_service_endpoint_url",
-            "reuse": "extended"
+            "reuse": "asis",
+            "DCAT-AP": "https://semiceu.github.io/DCAT-AP/releases/3.0.0/#DataService.endpointURL"
           }
         },
         {
@@ -5656,7 +5800,8 @@
             "ap-definition-en": "A keyword or tag describing the Data Service.",
             "property-usage-scope": "recommended",
             "DCAT": "https://www.w3.org/TR/vocab-dcat-3/#Property:resource_keyword",
-            "reuse": "asis"
+            "reuse": "asis",
+            "DCAT-AP": "https://semiceu.github.io/DCAT-AP/releases/3.0.0/#DataService.keyword"
           }
         },
         {
@@ -5702,7 +5847,8 @@
             "ap-usageNote-en": "It is intended to point to a landing page at the original data service provider, not to a page on a site of a third party, such as an aggregator.",
             "property-usage-scope": "optional",
             "DCAT": "https://www.w3.org/TR/vocab-dcat-3/#Property:resource_landing_page",
-            "reuse": "extended"
+            "reuse": "asis",
+            "DCAT-AP": "https://semiceu.github.io/DCAT-AP/releases/3.0.0/#DataService.landingpage"
           }
         },
         {
@@ -5742,49 +5888,9 @@
           "rawTags": {
             "uri": "http://www.w3.org/ns/dcat#servesDataset",
             "ap-definition-en": "This property refers to a collection of data that this data service can distribute.",
-            "ap-label-en": "serves dataset"
-          }
-        },
-        {
-          "uri": "http://www.w3.org/ns/dcat#spatialResolutionInMeters",
-          "name": "spatialResolutionInMetres",
-          "sort": "spatial resolution in metres",
-          "label": {
-            "en": "spatial resolution in metres"
-          },
-          "description": {
-            "en": "The minimum spatial separation resolvable in a Data Service, measured in metres."
-          },
-          "usage": {},
-          "domain": [
-            {
-              "EA-Name": "dcat:DataService",
-              "uri": "http://www.w3.org/ns/dcat#DataService"
-            }
-          ],
-          "range": [
-            {
-              "range_label": "xsd:decimal",
-              "range_uri": "http://www.w3.org/2001/XMLSchema#decimal"
-            }
-          ],
-          "scopedrange": [
-            {
-              "range_uri": "#xsd:decimal",
-              "range_puri": "http://www.w3.org/2001/XMLSchema#decimal",
-              "range_label": {
-                "en": "xsd:decimal"
-              }
-            }
-          ],
-          "cardinality": "0..*",
-          "codelist_uri": "",
-          "rawTags": {
-            "ap-definition-en": "The minimum spatial separation resolvable in a Data Service, measured in metres.",
-            "ap-label-en": "spatial resolution in metres",
-            "reuse": "profile",
-            "property-usage-scope": "optional",
-            "uri": "http://www.w3.org/ns/dcat#spatialResolutionInMeters"
+            "ap-label-en": "serves dataset",
+            "DCAT-AP": "https://semiceu.github.io/DCAT-AP/releases/3.0.0/#DataService.servesdataset",
+            "reuse": "asis"
           }
         },
         {
@@ -5825,8 +5931,9 @@
             "ap-definition-en": "The minimum time period resolvable in the Data Service.",
             "ap-label-en": "temporal resolution",
             "uri": "http://www.w3.org/ns/dcat#temporalResolution",
-            "reuse": "profile",
-            "property-usage-scope": "optional"
+            "reuse": "extended",
+            "property-usage-scope": "optional",
+            "DCAT": "https://www.w3.org/TR/vocab-dcat-3/#Property:dataset_temporal_resolution"
           }
         },
         {
@@ -5872,7 +5979,49 @@
             "property-usage-scope": "recommended",
             "DCAT": "https://www.w3.org/TR/vocab-dcat-3/#Property:resource_theme",
             "ap-usageNote-en": "A Data Service may be associated with multiple themes.",
-            "reuse": "extended"
+            "reuse": "asis",
+            "DCAT-AP": "https://semiceu.github.io/DCAT-AP/releases/3.0.0/#DataService.theme"
+          }
+        },
+        {
+          "uri": "http://www.w3.org/ns/dqv#hasQualityMeasurement",
+          "name": "spatialResolution",
+          "sort": "spatial resolution",
+          "label": {
+            "en": "spatial resolution"
+          },
+          "description": {
+            "en": "Spatial resolution, as defined in [[INSPIRE-MD-REG]], [[ISO-19115]], and [[ISO-19115-1]]."
+          },
+          "usage": {},
+          "domain": [
+            {
+              "EA-Name": "dcat:DataService",
+              "uri": "http://www.w3.org/ns/dcat#DataService"
+            }
+          ],
+          "range": [
+            {
+              "range_label": "dqv:QualityMeasurement",
+              "range_uri": "http://www.w3.org/ns/dqv#QualityMeasurement"
+            }
+          ],
+          "scopedrange": [
+            {
+              "range_uri": "#Quality Measurement",
+              "range_puri": "http://www.w3.org/ns/dqv#QualityMeasurement",
+              "range_label": {
+                "en": "Quality Measurement"
+              }
+            }
+          ],
+          "cardinality": "0..*",
+          "codelist_uri": "",
+          "rawTags": {
+            "uri": "http://www.w3.org/ns/dqv#hasQualityMeasurement",
+            "reuse": "profile",
+            "ap-label-en": "spatial resolution",
+            "ap-definition-en": "Spatial resolution, as defined in [[INSPIRE-MD-REG]], [[ISO-19115]], and [[ISO-19115-1]]."
           }
         },
         {
@@ -5913,8 +6062,9 @@
             "ap-definition-en": "Link to an Agent having some form of responsibility for the Data Service.",
             "ap-label-en": "qualified attribution",
             "uri": "http://www.w3.org/ns/prov#qualifiedAttribution",
-            "reuse": "profile",
-            "property-usage-scope": "optional"
+            "reuse": "asis",
+            "property-usage-scope": "optional",
+            "DCAT": "https://www.w3.org/TR/vocab-dcat-3/#Property:resource_qualified_attribution"
           }
         },
         {
@@ -5960,6 +6110,48 @@
             "uri": "http://www.w3.org/ns/prov#wasUsedBy",
             "reuse": "profile",
             "property-usage-scope": "optional"
+          }
+        },
+        {
+          "uri": "https://www.w3.org/TR/vocab-dcat-3/#Property:dataset_spatial_resolution",
+          "name": "spatialResolutionInMetres",
+          "sort": "spatial resolution in metres",
+          "label": {
+            "en": "spatial resolution in metres"
+          },
+          "description": {
+            "en": "The minimum spatial separation resolvable in a Data Service, measured in metres."
+          },
+          "usage": {},
+          "domain": [
+            {
+              "EA-Name": "dcat:DataService",
+              "uri": "http://www.w3.org/ns/dcat#DataService"
+            }
+          ],
+          "range": [
+            {
+              "range_label": "xsd:decimal",
+              "range_uri": "http://www.w3.org/2001/XMLSchema#decimal"
+            }
+          ],
+          "scopedrange": [
+            {
+              "range_uri": "#xsd:decimal",
+              "range_puri": "http://www.w3.org/2001/XMLSchema#decimal",
+              "range_label": {
+                "en": "xsd:decimal"
+              }
+            }
+          ],
+          "cardinality": "0..*",
+          "codelist_uri": "",
+          "rawTags": {
+            "ap-definition-en": "The minimum spatial separation resolvable in a Data Service, measured in metres.",
+            "ap-label-en": "spatial resolution in metres",
+            "reuse": "extended",
+            "property-usage-scope": "optional",
+            "uri": "https://www.w3.org/TR/vocab-dcat-3/#Property:dataset_spatial_resolution"
           }
         }
       ]
@@ -10036,7 +10228,8 @@
         "DCAT": "https://www.w3.org/TR/vocab-dcat-3/#Class:Resource",
         "ap-usageNote-en": "This class Catalogued Record is an abstract class for DCAT-AP. Therefore only subclasses should be used in a data exchange.",
         "class-usage-scope": "main",
-        "reuse": "asis"
+        "reuse": "asis",
+        "DCAT-AP": "https://semiceu.github.io/DCAT-AP/releases/3.0.0/#CataloguedResource"
       },
       "properties": []
     },
@@ -10677,7 +10870,8 @@
         "class-usage-scope": "main",
         "DCAT": "https://www.w3.org/TR/vocab-dcat-3/#Class:Organization_Person",
         "reuse": "extended",
-        "uri": "http://xmlns.com/foaf/0.1/Agent"
+        "uri": "http://xmlns.com/foaf/0.1/Agent",
+        "DCAT-AP": "https://semiceu.github.io/DCAT-AP/releases/3.0.0/#Agent"
       },
       "properties": [
         {
