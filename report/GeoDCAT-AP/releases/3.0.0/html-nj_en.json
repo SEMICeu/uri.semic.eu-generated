@@ -16,8 +16,8 @@
     },
     "status": "https://www.w3.org/2021/Process-20211102/#RecsCR",
     "statuslabel": "Onbekend",
-    "repositoryurl": "git@semicthema-DCAT-AP:SEMICeu/Semicthema-DCAT-AP.git/tree/f99559d144e11b3f933ea6f0ec6ca71a5789c97d",
-    "changelogurl": "git@semicthema-DCAT-AP:SEMICeu/Semicthema-DCAT-AP.git/blob/f99559d144e11b3f933ea6f0ec6ca71a5789c97d/CHANGELOG",
+    "repositoryurl": "git@semicthema-DCAT-AP:SEMICeu/Semicthema-DCAT-AP.git/tree/49fa1c84d306403ecf38b6d8f137767cb4ec635b",
+    "changelogurl": "git@semicthema-DCAT-AP:SEMICeu/Semicthema-DCAT-AP.git/blob/49fa1c84d306403ecf38b6d8f137767cb4ec635b/CHANGELOG",
     "feedbackurl": "https://github.com/SEMICeu/GeoDCAT-AP/issues",
     "standaardregisterurl": "https://semiceu.github.io/GeoDCAT-AP/releases/3.0.0/CHANGELOG.html",
     "usesVocs": [],
@@ -3061,10 +3061,10 @@
         },
         {
           "uri": "http://www.w3.org/ns/dcat#theme",
-          "name": "theme/category",
-          "sort": "theme/category",
+          "name": "theme",
+          "sort": "theme",
           "label": {
-            "en": "theme/category"
+            "en": "theme"
           },
           "description": {
             "en": "A main category of the Catalogue. A Catalogue can have multiple categories."
@@ -3097,7 +3097,7 @@
           "codelist_uri": "",
           "rawTags": {
             "ap-definition-en": "A main category of the Catalogue. A Catalogue can have multiple categories.",
-            "ap-label-en": "theme/category",
+            "ap-label-en": "theme",
             "ap-usageNote-en": "A Catalogue may be associated with multiple Categories.",
             "uri": "http://www.w3.org/ns/dcat#theme",
             "reuse": "asis",
@@ -6232,11 +6232,52 @@
           }
         },
         {
-          "uri": "http://data.europa.eu/930/originator",
-          "name": "orginator",
-          "sort": "orginator",
+          "uri": "http://data.europa.eu/930/distributor",
+          "name": "distributor",
+          "sort": "distributor",
           "label": {
-            "en": "orginator"
+            "en": "distributor"
+          },
+          "description": {
+            "en": "Party who distributes the resource [[ISO-19115]]."
+          },
+          "usage": {},
+          "domain": [
+            {
+              "EA-Name": "dcat:Dataset",
+              "uri": "http://www.w3.org/ns/dcat#Dataset"
+            }
+          ],
+          "range": [
+            {
+              "range_label": "foaf: Agent",
+              "range_uri": "http://xmlns.com/foaf/0.1/Agent"
+            }
+          ],
+          "scopedrange": [
+            {
+              "range_uri": "#Agent",
+              "range_puri": "http://xmlns.com/foaf/0.1/Agent",
+              "range_label": {
+                "en": "Agent"
+              }
+            }
+          ],
+          "cardinality": "0..*",
+          "codelist_uri": "",
+          "rawTags": {
+            "uri": "http://data.europa.eu/930/distributor",
+            "reuse": "profile",
+            "ap-label-en": "distributor",
+            "ap-definition-en": "Party who distributes the resource [[ISO-19115]]."
+          }
+        },
+        {
+          "uri": "http://data.europa.eu/930/originator",
+          "name": "originator",
+          "sort": "originator",
+          "label": {
+            "en": "originator"
           },
           "description": {
             "en": "\t\r\n\r\nParty who created the resource [[ISO-19115]]."
@@ -6268,7 +6309,7 @@
           "rawTags": {
             "uri": "http://data.europa.eu/930/originator",
             "ap-definition-en": "\t\r\n\r\nParty who created the resource [[ISO-19115]].",
-            "ap-label-en": "orginator",
+            "ap-label-en": "originator",
             "reuse": "profile",
             "property-usage-scope": "optional"
           }
@@ -6358,6 +6399,51 @@
           }
         },
         {
+          "uri": "http://data.europa.eu/930/referenceSystem",
+          "name": "referenceSystem",
+          "sort": "reference system",
+          "label": {
+            "en": "reference system"
+          },
+          "description": {
+            "en": "The reference system used in the Dataset."
+          },
+          "usage": {
+            "en": "Spatial reference systems SHOULD be specified by using the corresponding URIs from the \"EPSG coordinate reference systems\" register operated by OGC [[OGC-EPSG]]."
+          },
+          "domain": [
+            {
+              "EA-Name": "dcat:Dataset",
+              "uri": "http://www.w3.org/ns/dcat#Dataset"
+            }
+          ],
+          "range": [
+            {
+              "range_label": "skos:Concept",
+              "range_uri": "http://www.w3.org/2004/02/skos/core#Concept"
+            }
+          ],
+          "scopedrange": [
+            {
+              "range_uri": "#Concept",
+              "range_puri": "http://www.w3.org/2004/02/skos/core#Concept",
+              "range_label": {
+                "en": "Concept"
+              }
+            }
+          ],
+          "cardinality": "0..*",
+          "codelist_uri": "",
+          "rawTags": {
+            "ap-definition-en": "The reference system used in the Dataset.",
+            "ap-label-en": "reference system",
+            "ap-usageNote-en": "Spatial reference systems SHOULD be specified by using the corresponding URIs from the \"EPSG coordinate reference systems\" register operated by OGC [[OGC-EPSG]].",
+            "uri": "http://data.europa.eu/930/referenceSystem",
+            "reuse": "profile",
+            "property-usage-scope": "optional"
+          }
+        },
+        {
           "uri": "http://data.europa.eu/930/resourceProvider",
           "name": "resourceProvider",
           "sort": "resource provider",
@@ -6398,6 +6484,50 @@
             "ap-label-en": "resource provider",
             "reuse": "profile",
             "property-usage-scope": "optional"
+          }
+        },
+        {
+          "uri": "http://data.europa.eu/930/resourceType",
+          "name": "type",
+          "sort": "type",
+          "label": {
+            "en": "type"
+          },
+          "description": {
+            "en": "Resource type in accordance with INSPIRE Resource Types [[INSPIRE-RT]]."
+          },
+          "usage": {},
+          "domain": [
+            {
+              "EA-Name": "dcat:Dataset",
+              "uri": "http://www.w3.org/ns/dcat#Dataset"
+            }
+          ],
+          "range": [
+            {
+              "range_label": "skos:Concept",
+              "range_uri": "http://www.w3.org/2004/02/skos/core#Concept"
+            }
+          ],
+          "scopedrange": [
+            {
+              "range_uri": "#Concept",
+              "range_puri": "http://www.w3.org/2004/02/skos/core#Concept",
+              "range_label": {
+                "en": "Concept"
+              }
+            }
+          ],
+          "cardinality": "0..1",
+          "codelist_uri": "",
+          "rawTags": {
+            "ap-label-en": "type",
+            "uri": "http://data.europa.eu/930/resourceType",
+            "ap-definition-en": "Resource type in accordance with INSPIRE Resource Types [[INSPIRE-RT]].",
+            "property-usage-scope": "optional",
+            "DCAT": "https://www.w3.org/TR/vocab-dcat-3/#Property:resource_type",
+            "reuse": "extended",
+            "DCAT-AP": "https://semiceu.github.io/DCAT-AP/releases/3.0.0/#Dataset.type"
           }
         },
         {
@@ -6443,6 +6573,48 @@
             "property-usage-scope": "optional",
             "ap-definition-en": "Textual description of spatial resolution.",
             "uri": "http://data.europa.eu/930/spatialResolutionAsText"
+          }
+        },
+        {
+          "uri": "http://data.europa.eu/930/topicCategory",
+          "name": "topicCategory",
+          "sort": "topic category",
+          "label": {
+            "en": "topic category"
+          },
+          "description": {
+            "en": "Topic category in accordance with ISO-19115 [[INSPIRE-TC]]."
+          },
+          "usage": {},
+          "domain": [
+            {
+              "EA-Name": "dcat:Dataset",
+              "uri": "http://www.w3.org/ns/dcat#Dataset"
+            }
+          ],
+          "range": [
+            {
+              "range_label": "skos:Concept",
+              "range_uri": "http://www.w3.org/2004/02/skos/core#Concept"
+            }
+          ],
+          "scopedrange": [
+            {
+              "range_uri": "#Concept",
+              "range_puri": "http://www.w3.org/2004/02/skos/core#Concept",
+              "range_label": {
+                "en": "Concept"
+              }
+            }
+          ],
+          "cardinality": "0..*",
+          "codelist_uri": "",
+          "rawTags": {
+            "ap-label-en": "topic category",
+            "uri": "http://data.europa.eu/930/topicCategory",
+            "reuse": "profile",
+            "property-usage-scope": "optional",
+            "ap-definition-en": "Topic category in accordance with ISO-19115 [[INSPIRE-TC]]."
           }
         },
         {
@@ -6540,7 +6712,9 @@
           "description": {
             "en": "Information that indicates whether the Dataset is publicly accessible, has access restrictions or is not public."
           },
-          "usage": {},
+          "usage": {
+            "en": "For INSPIRE metadata, this property SHOULD be used with the URIs of the \"Limitations on public access\" code list operated by the INSPIRE Registry [[INSPIRE-LPA]]."
+          },
           "domain": [
             {
               "EA-Name": "dcat:Dataset",
@@ -6571,7 +6745,8 @@
             "property-usage-scope": "optional",
             "DCAT": "https://www.w3.org/TR/vocab-dcat-3/#Property:resource_access_rights",
             "reuse": "asis",
-            "DCAT-AP": "https://semiceu.github.io/DCAT-AP/releases/3.0.0/#Dataset.accessrights"
+            "DCAT-AP": "https://semiceu.github.io/DCAT-AP/releases/3.0.0/#Dataset.accessrights",
+            "ap-usageNote-en": "For INSPIRE metadata, this property SHOULD be used with the URIs of the \"Limitations on public access\" code list operated by the INSPIRE Registry [[INSPIRE-LPA]]."
           }
         },
         {
@@ -6660,51 +6835,6 @@
             "DCAT": "https://www.w3.org/TR/vocab-dcat-3/#Property:resource_conforms_to",
             "reuse": "asis",
             "DCAT-AP": "https://semiceu.github.io/DCAT-AP/releases/3.0.0/#Dataset.conformsto"
-          }
-        },
-        {
-          "uri": "http://purl.org/dc/terms/conformsTo",
-          "name": "referenceSystem",
-          "sort": "reference system",
-          "label": {
-            "en": "reference system"
-          },
-          "description": {
-            "en": "The reference system used in the Dataset."
-          },
-          "usage": {
-            "en": "Spatial reference systems SHOULD be specified by using the corresponding URIs from the \"EPSG coordinate reference systems\" register operated by OGC [[OGC-EPSG]]."
-          },
-          "domain": [
-            {
-              "EA-Name": "dcat:Dataset",
-              "uri": "http://www.w3.org/ns/dcat#Dataset"
-            }
-          ],
-          "range": [
-            {
-              "range_label": "dct:Standard",
-              "range_uri": "http://purl.org/dc/terms/Standard"
-            }
-          ],
-          "scopedrange": [
-            {
-              "range_uri": "#Standard",
-              "range_puri": "http://purl.org/dc/terms/Standard",
-              "range_label": {
-                "en": "Standard"
-              }
-            }
-          ],
-          "cardinality": "0..*",
-          "codelist_uri": "",
-          "rawTags": {
-            "ap-definition-en": "The reference system used in the Dataset.",
-            "ap-label-en": "reference system",
-            "ap-usageNote-en": "Spatial reference systems SHOULD be specified by using the corresponding URIs from the \"EPSG coordinate reference systems\" register operated by OGC [[OGC-EPSG]].",
-            "uri": "http://purl.org/dc/terms/conformsTo",
-            "reuse": "profile",
-            "property-usage-scope": "optional"
           }
         },
         {
@@ -7325,18 +7455,16 @@
           }
         },
         {
-          "uri": "http://purl.org/dc/terms/subject",
-          "name": "topicCategory",
-          "sort": "topic category",
+          "uri": "http://purl.org/dc/terms/temporal",
+          "name": "temporalCoverage",
+          "sort": "temporal coverage",
           "label": {
-            "en": "topic category"
+            "en": "temporal coverage"
           },
           "description": {
-            "en": "TODO"
+            "en": "A temporal period that the Dataset covers."
           },
-          "usage": {
-            "en": "The URIs of the \"Topic categories in accordance with EN ISO 19115\" code list operated by the INSPIRE Registry [[INSPIRE-TC]]."
-          },
+          "usage": {},
           "domain": [
             {
               "EA-Name": "dcat:Dataset",
@@ -7345,28 +7473,28 @@
           ],
           "range": [
             {
-              "range_label": "skos:Concept",
-              "range_uri": "http://www.w3.org/2004/02/skos/core#Concept"
+              "range_label": "dct:PeriodOfTime",
+              "range_uri": "http://purl.org/dc/terms/PeriodOfTime"
             }
           ],
           "scopedrange": [
             {
-              "range_uri": "#Concept",
-              "range_puri": "http://www.w3.org/2004/02/skos/core#Concept",
+              "range_uri": "#Period of time",
+              "range_puri": "http://purl.org/dc/terms/PeriodOfTime",
               "range_label": {
-                "en": "Concept"
+                "en": "Period of time"
               }
             }
           ],
           "cardinality": "0..*",
           "codelist_uri": "",
           "rawTags": {
-            "ap-label-en": "topic category",
-            "ap-usageNote-en": "The URIs of the \"Topic categories in accordance with EN ISO 19115\" code list operated by the INSPIRE Registry [[INSPIRE-TC]].",
-            "uri": "http://purl.org/dc/terms/subject",
-            "reuse": "profile",
-            "property-usage-scope": "optional",
-            "ap-definition-en": "TODO"
+            "uri": "http://purl.org/dc/terms/temporal",
+            "DCAT-AP": "https://semiceu.github.io/DCAT-AP/releases/3.0.0/#Dataset.temporalcoverage",
+            "reuse": "asis",
+            "property-usage-scope": "recommended",
+            "ap-label-en": "temporal coverage",
+            "ap-definition-en": "A temporal period that the Dataset covers."
           }
         },
         {
@@ -7417,53 +7545,6 @@
           }
         },
         {
-          "uri": "http://purl.org/dc/terms/type",
-          "name": "type",
-          "sort": "type",
-          "label": {
-            "en": "type"
-          },
-          "description": {
-            "en": "A type of the Dataset."
-          },
-          "usage": {
-            "en": "A recommended controlled vocabulary data-type is foreseen."
-          },
-          "domain": [
-            {
-              "EA-Name": "dcat:Dataset",
-              "uri": "http://www.w3.org/ns/dcat#Dataset"
-            }
-          ],
-          "range": [
-            {
-              "range_label": "skos:Concept",
-              "range_uri": "http://www.w3.org/2004/02/skos/core#Concept"
-            }
-          ],
-          "scopedrange": [
-            {
-              "range_uri": "#Concept",
-              "range_puri": "http://www.w3.org/2004/02/skos/core#Concept",
-              "range_label": {
-                "en": "Concept"
-              }
-            }
-          ],
-          "cardinality": "0..1",
-          "codelist_uri": "",
-          "rawTags": {
-            "ap-label-en": "type",
-            "uri": "http://purl.org/dc/terms/type",
-            "ap-definition-en": "A type of the Dataset.",
-            "ap-usageNote-en": "A recommended controlled vocabulary data-type is foreseen.",
-            "property-usage-scope": "optional",
-            "DCAT": "https://www.w3.org/TR/vocab-dcat-3/#Property:resource_type",
-            "reuse": "extended",
-            "DCAT-AP": "https://semiceu.github.io/DCAT-AP/releases/3.0.0/#Dataset.type"
-          }
-        },
-        {
           "uri": "http://www.w3.org/ns/adms#identifier",
           "name": "otherIdentifier",
           "sort": "other identifier",
@@ -7508,6 +7589,49 @@
             "reuse": "asis",
             "ap-usageNote-en": "Examples are  MAST/ADS [[MASTADS]], DOI [[DOI]], EZID [[EZID]] or W3ID [[W3ID]].",
             "DCAT-AP": "https://semiceu.github.io/DCAT-AP/releases/3.0.0/#Dataset.otheridentifier"
+          }
+        },
+        {
+          "uri": "http://www.w3.org/ns/adms#sample",
+          "name": "sample",
+          "sort": "sample",
+          "label": {
+            "en": "sample"
+          },
+          "description": {
+            "en": "A sample distribution of the dataset."
+          },
+          "usage": {},
+          "domain": [
+            {
+              "EA-Name": "dcat:Dataset",
+              "uri": "http://www.w3.org/ns/dcat#Dataset"
+            }
+          ],
+          "range": [
+            {
+              "range_label": "dcat:Distribution",
+              "range_uri": "http://www.w3.org/ns/dcat#Distribution"
+            }
+          ],
+          "scopedrange": [
+            {
+              "range_uri": "#Distribution",
+              "range_puri": "http://www.w3.org/ns/dcat#Distribution",
+              "range_label": {
+                "en": "Distribution"
+              }
+            }
+          ],
+          "cardinality": "0..*",
+          "codelist_uri": "",
+          "rawTags": {
+            "uri": "http://www.w3.org/ns/adms#sample",
+            "DCAT-AP": "https://semiceu.github.io/DCAT-AP/releases/3.0.0/#Dataset.sample",
+            "reuse": "asis",
+            "ap-label-en": "sample",
+            "ap-definition-en": "A sample distribution of the dataset.",
+            "property-reuse-scope": "optional"
           }
         },
         {
@@ -7640,7 +7764,7 @@
             "ap-label-en": "dataset distrtibution",
             "DCAT-AP": "https://semiceu.github.io/DCAT-AP/releases/3.0.0/#Dataset.datasetdistribution",
             "reuse": "asis",
-            "property-usage-scope": "optional"
+            "property-usage-scope": "recommended"
           }
         },
         {
@@ -7690,9 +7814,9 @@
         {
           "uri": "http://www.w3.org/ns/dcat#inSeries",
           "name": "inSeries",
-          "sort": "in Series",
+          "sort": "in series",
           "label": {
-            "en": "in Series"
+            "en": "in series"
           },
           "description": {
             "en": "A dataset series of which the dataset is part."
@@ -7724,11 +7848,11 @@
           "rawTags": {
             "uri": "http://www.w3.org/ns/dcat#inSeries",
             "property-usage-scope": "optional",
-            "reuse": "extended",
+            "reuse": "asis",
             "DCAT": "https://www.w3.org/TR/vocab-dcat-3/#Property:dataset_in_series",
             "definition-en": "A dataset series of which the dataset is part.",
             "label-en": "in series",
-            "ap-label-en": "in Series",
+            "ap-label-en": "in series",
             "DCAT-AP": "https://semiceu.github.io/DCAT-AP/releases/3.0.0/#Dataset.inseries"
           }
         },
