@@ -6,8 +6,7 @@
 @prefix skos: <http://www.w3.org/2004/02/skos/core#> .
 @prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
 
-<https://semiceu.github.io/rrmv/releases/0.0.1/shacl/rrmv-SHACL.ttl> rdfs:member <https://semiceu.github.io/rrmv/releases/0.0.1/shacl/rrmv-SHACL.ttl#eli:LegalResourceShape>,
-    <https://semiceu.github.io/rrmv/releases/0.0.1/shacl/rrmv-SHACL.ttl#ActionShape>,
+<https://semiceu.github.io/rrmv/releases/0.0.1/shacl/rrmv-SHACL.ttl> rdfs:member <https://semiceu.github.io/rrmv/releases/0.0.1/shacl/rrmv-SHACL.ttl#ActionShape>,
     <https://semiceu.github.io/rrmv/releases/0.0.1/shacl/rrmv-SHACL.ttl#ActionResultShape>,
     <https://semiceu.github.io/rrmv/releases/0.0.1/shacl/rrmv-SHACL.ttl#ActionResultTypeShape>,
     <https://semiceu.github.io/rrmv/releases/0.0.1/shacl/rrmv-SHACL.ttl#AgentKindShape>,
@@ -18,8 +17,9 @@
     <https://semiceu.github.io/rrmv/releases/0.0.1/shacl/rrmv-SHACL.ttl#RequestShape>,
     <https://semiceu.github.io/rrmv/releases/0.0.1/shacl/rrmv-SHACL.ttl#RoleShape>,
     <https://semiceu.github.io/rrmv/releases/0.0.1/shacl/rrmv-SHACL.ttl#RoleKindShape>,
+    <https://semiceu.github.io/rrmv/releases/0.0.1/shacl/rrmv-SHACL.ttl#LegalResourceShape>,
     <https://semiceu.github.io/rrmv/releases/0.0.1/shacl/rrmv-SHACL.ttl#TimeInstantShape>,
-    <https://semiceu.github.io/rrmv/releases/0.0.1/shacl/rrmv-SHACL.ttl#foaf:AgentShape> .
+    <https://semiceu.github.io/rrmv/releases/0.0.1/shacl/rrmv-SHACL.ttl#AgentShape> .
 
 <https://semiceu.github.io/rrmv/releases/0.0.1/shacl/rrmv-SHACL.ttl#ActionResultShape> a shacl:NodeShape;
   shacl:closed false;
@@ -117,6 +117,17 @@
   shacl:description "The property linking a Agent to Role."@en;
   shacl:name "with role"@en;
   shacl:path <http://example.com/rrmv/withRole> .
+
+<https://semiceu.github.io/rrmv/releases/0.0.1/shacl/rrmv-SHACL.ttl#AgentShape> a shacl:NodeShape;
+  shacl:closed false;
+  shacl:property <https://semiceu.github.io/rrmv/releases/0.0.1/shacl/rrmv-SHACL.ttl#AgentShape/7d86aa545f7da67b1727c65f6970d4ddc5b08430>;
+  shacl:targetClass foaf:Agent .
+
+<https://semiceu.github.io/rrmv/releases/0.0.1/shacl/rrmv-SHACL.ttl#AgentShape/7d86aa545f7da67b1727c65f6970d4ddc5b08430> rdfs:seeAlso "https://semiceu.github.io/rrmv/releases/0.0.1#Agent.ofkind";
+  shacl:class <http://example.com/rrmv/AgentKind>;
+  shacl:description "This property links an Agent to the kind of an Agent."@en;
+  shacl:name "of kind"@en;
+  shacl:path <http://example.com/rrmv/ofKind> .
 
 <https://semiceu.github.io/rrmv/releases/0.0.1/shacl/rrmv-SHACL.ttl#ExecutionActionResultShape> a shacl:NodeShape;
   shacl:closed false;
@@ -248,6 +259,28 @@
   shacl:name "initiated at"@en;
   shacl:path <http://example.com/rrmv/initiatedAt> .
 
+<https://semiceu.github.io/rrmv/releases/0.0.1/shacl/rrmv-SHACL.ttl#LegalResourceShape> a shacl:NodeShape;
+  shacl:closed false;
+  shacl:property <https://semiceu.github.io/rrmv/releases/0.0.1/shacl/rrmv-SHACL.ttl#LegalResourceShape/0c2f1ebdbaf105d73a0a1a6d978bba7f5184d75d>,
+    <https://semiceu.github.io/rrmv/releases/0.0.1/shacl/rrmv-SHACL.ttl#LegalResourceShape/4d55af37dbbb6a42088d917caa1ca25428ec42c9>,
+    <https://semiceu.github.io/rrmv/releases/0.0.1/shacl/rrmv-SHACL.ttl#LegalResourceShape/ce012334c76fbb8723d52324457cb619f53f2527>;
+  shacl:targetClass <http://data.europa.eu/eli/ontology#LegalResource> .
+
+<https://semiceu.github.io/rrmv/releases/0.0.1/shacl/rrmv-SHACL.ttl#LegalResourceShape/0c2f1ebdbaf105d73a0a1a6d978bba7f5184d75d> rdfs:seeAlso "https://semiceu.github.io/rrmv/releases/0.0.1#LegalResource.";
+  shacl:description "";
+  shacl:minCount 1;
+  shacl:path <http://example.com/rrmv/hasURI> .
+
+<https://semiceu.github.io/rrmv/releases/0.0.1/shacl/rrmv-SHACL.ttl#LegalResourceShape/4d55af37dbbb6a42088d917caa1ca25428ec42c9> rdfs:seeAlso "https://semiceu.github.io/rrmv/releases/0.0.1#LegalResource.";
+  shacl:class rdfs:Resource;
+  shacl:description "";
+  shacl:path <http://example.com/rrmv/hasURI> .
+
+<https://semiceu.github.io/rrmv/releases/0.0.1/shacl/rrmv-SHACL.ttl#LegalResourceShape/ce012334c76fbb8723d52324457cb619f53f2527> rdfs:seeAlso "https://semiceu.github.io/rrmv/releases/0.0.1#LegalResource.";
+  shacl:description "";
+  shacl:maxCount 1;
+  shacl:path <http://example.com/rrmv/hasURI> .
+
 <https://semiceu.github.io/rrmv/releases/0.0.1/shacl/rrmv-SHACL.ttl#RequestShape> a shacl:NodeShape;
   shacl:closed false;
   shacl:property <https://semiceu.github.io/rrmv/releases/0.0.1/shacl/rrmv-SHACL.ttl#RequestShape/1b985546f308cffd31c56410dc5d8bdc383f3baa>,
@@ -315,36 +348,3 @@
 <https://semiceu.github.io/rrmv/releases/0.0.1/shacl/rrmv-SHACL.ttl#TimeInstantShape> a shacl:NodeShape;
   shacl:closed false;
   shacl:targetClass <http://www.w3.org/2006/time#Instant> .
-
-<https://semiceu.github.io/rrmv/releases/0.0.1/shacl/rrmv-SHACL.ttl#eli:LegalResourceShape> a shacl:NodeShape;
-  shacl:closed false;
-  shacl:property <https://semiceu.github.io/rrmv/releases/0.0.1/shacl/rrmv-SHACL.ttl#eli:LegalResourceShape/0c2f1ebdbaf105d73a0a1a6d978bba7f5184d75d>,
-    <https://semiceu.github.io/rrmv/releases/0.0.1/shacl/rrmv-SHACL.ttl#eli:LegalResourceShape/4d55af37dbbb6a42088d917caa1ca25428ec42c9>,
-    <https://semiceu.github.io/rrmv/releases/0.0.1/shacl/rrmv-SHACL.ttl#eli:LegalResourceShape/ce012334c76fbb8723d52324457cb619f53f2527>;
-  shacl:targetClass <http://data.europa.eu/eli/ontology#LegalResource> .
-
-<https://semiceu.github.io/rrmv/releases/0.0.1/shacl/rrmv-SHACL.ttl#eli:LegalResourceShape/0c2f1ebdbaf105d73a0a1a6d978bba7f5184d75d> rdfs:seeAlso "https://semiceu.github.io/rrmv/releases/0.0.1#LegalResource.";
-  shacl:description "";
-  shacl:minCount 1;
-  shacl:path <http://data.europa.eu/eli/ontology#hasURI> .
-
-<https://semiceu.github.io/rrmv/releases/0.0.1/shacl/rrmv-SHACL.ttl#eli:LegalResourceShape/4d55af37dbbb6a42088d917caa1ca25428ec42c9> rdfs:seeAlso "https://semiceu.github.io/rrmv/releases/0.0.1#LegalResource.";
-  shacl:class rdfs:Resource;
-  shacl:description "";
-  shacl:path <http://data.europa.eu/eli/ontology#hasURI> .
-
-<https://semiceu.github.io/rrmv/releases/0.0.1/shacl/rrmv-SHACL.ttl#eli:LegalResourceShape/ce012334c76fbb8723d52324457cb619f53f2527> rdfs:seeAlso "https://semiceu.github.io/rrmv/releases/0.0.1#LegalResource.";
-  shacl:description "";
-  shacl:maxCount 1;
-  shacl:path <http://data.europa.eu/eli/ontology#hasURI> .
-
-<https://semiceu.github.io/rrmv/releases/0.0.1/shacl/rrmv-SHACL.ttl#foaf:AgentShape> a shacl:NodeShape;
-  shacl:closed false;
-  shacl:property <https://semiceu.github.io/rrmv/releases/0.0.1/shacl/rrmv-SHACL.ttl#foaf:AgentShape/7d86aa545f7da67b1727c65f6970d4ddc5b08430>;
-  shacl:targetClass foaf:Agent .
-
-<https://semiceu.github.io/rrmv/releases/0.0.1/shacl/rrmv-SHACL.ttl#foaf:AgentShape/7d86aa545f7da67b1727c65f6970d4ddc5b08430> rdfs:seeAlso "https://semiceu.github.io/rrmv/releases/0.0.1#Agent.ofkind";
-  shacl:class <http://example.com/rrmv/AgentKind>;
-  shacl:description "This property links an Agent to the kind of an Agent."@en;
-  shacl:name "of kind"@en;
-  shacl:path <http://example.com/rrmv/ofKind> .
