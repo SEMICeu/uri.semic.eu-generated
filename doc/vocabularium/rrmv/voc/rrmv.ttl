@@ -3,9 +3,106 @@
 @prefix owl: <http://www.w3.org/2002/07/owl#> .
 @prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
 @prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix skos: <http://www.w3.org/2004/02/skos/core#> .
 @prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
 
-<http://data.europa.eu/rrmv> a owl:Ontology;
+<http://example.com/rrmv/ActionResult> a owl:Class;
+  rdfs:label "Action Result"@en;
+  rdfs:comment "The Result of an Action. It could be an activity (e.g., to do something) or an output (e.g., report)."@en;
+  rdfs:isDefinedBy <http://example.com/rrmv> .
+
+<http://example.com/rrmv/ActionResultType> a owl:Class;
+  rdfs:label "Action Result Type"@en;
+  rdfs:comment "The type of the Action Result."@en;
+  rdfs:isDefinedBy <http://example.com/rrmv>;
+  rdfs:subClassOf skos:Concept .
+
+<http://example.com/rrmv/AgentKind> a owl:Class;
+  rdfs:label "Agent Kind"@en;
+  rdfs:comment "The kind of agent."@en;
+  rdfs:isDefinedBy <http://example.com/rrmv> .
+
+<http://example.com/rrmv/AgentRole> a owl:Class;
+  rdfs:label "Agent Role"@en;
+  rdfs:comment "A role played by an agent."@en;
+  rdfs:isDefinedBy <http://example.com/rrmv> .
+
+<http://example.com/rrmv/Request> a owl:Class;
+  rdfs:label "Request"@en;
+  rdfs:comment "A portion of legal source expression including a mandate that produces at least one Action."@en;
+  rdfs:isDefinedBy <http://example.com/rrmv> .
+
+<http://example.com/rrmv/Role> a owl:Class;
+  rdfs:label "Role"@en;
+  rdfs:comment "Role is played by and Agent involved in the Request."@en;
+  rdfs:isDefinedBy <http://example.com/rrmv> .
+
+<http://example.com/rrmv/RoleKind> a owl:Class;
+  rdfs:label "for kind"@en;
+  rdfs:comment "The kind of role of the agent as is described in the legal resource."@en;
+  rdfs:isDefinedBy <http://example.com/rrmv> .
+
+<http://example.com/rrmv/acceptedAt> a owl:ObjectProperty;
+  rdfs:label "accepted at"@en;
+  rdfs:comment "The time at which the Result of an executed Action is or was accepted."@en;
+  rdfs:domain <http://example.com/rrmv/ExecutionActionResult>;
+  rdfs:isDefinedBy <http://example.com/rrmv>;
+  rdfs:range <http://www.w3.org/2006/time#Instant> .
+
+<http://example.com/rrmv/deliveredAt> a owl:ObjectProperty;
+  rdfs:label "delivered at"@en;
+  rdfs:comment "The time at which the Result of an executed Action is or was delivered."@en;
+  rdfs:domain <http://example.com/rrmv/ExecutionActionResult>;
+  rdfs:isDefinedBy <http://example.com/rrmv>;
+  rdfs:range <http://www.w3.org/2006/time#Instant> .
+
+<http://example.com/rrmv/executed> a owl:ObjectProperty;
+  rdfs:label "executed at time"@en;
+  rdfs:comment "The time at which the action is exectued."@en;
+  rdfs:domain <http://example.com/rrmv/ExecutionAction>;
+  rdfs:isDefinedBy <http://example.com/rrmv>;
+  rdfs:range <http://www.w3.org/2006/time#Instant> .
+
+<http://example.com/rrmv/hasURI> a owl:ObjectProperty;
+  rdfs:domain <http://data.europa.eu/eli/ontology#LegalResource>;
+  rdfs:isDefinedBy <http://example.com/rrmv>;
+  rdfs:range rdfs:Resource .
+
+<http://example.com/rrmv/initiatedAt> a owl:ObjectProperty;
+  rdfs:label "initiated at"@en;
+  rdfs:comment "The time at which the Execution of the Request is or was initiated."@en;
+  rdfs:domain <http://example.com/rrmv/ExectionRequest>;
+  rdfs:isDefinedBy <http://example.com/rrmv>;
+  rdfs:range <http://www.w3.org/2006/time#Instant> .
+
+<http://example.com/rrmv/withFrequency> a owl:ObjectProperty;
+  rdfs:label "Frequency"@en;
+  rdfs:comment "The frequency of an Request over time (e.g., every 6 months, each quarter)."@en;
+  rdfs:domain <http://example.com/rrmv/Action>;
+  rdfs:isDefinedBy <http://example.com/rrmv>;
+  rdfs:range skos:Concept .
+
+<http://example.com/rrmv/Action> a owl:Class;
+  rdfs:label "Action"@en;
+  rdfs:comment "An event with at least one agent that is participant in it in a given time."@en;
+  rdfs:isDefinedBy <http://example.com/rrmv> .
+
+<http://example.com/rrmv/ExectionRequest> a owl:Class;
+  rdfs:label "Execution Request"@en;
+  rdfs:comment "A portion of legal source expression including a mandate that produces at least one Action that is being executed."@en;
+  rdfs:isDefinedBy <http://example.com/rrmv> .
+
+<http://example.com/rrmv/ExecutionAction> a owl:Class;
+  rdfs:label "Execution Action"@en;
+  rdfs:comment "The exection of the Action."@en;
+  rdfs:isDefinedBy <http://example.com/rrmv> .
+
+<http://example.com/rrmv/ExecutionActionResult> a owl:Class;
+  rdfs:label "Exectution Action Result"@en;
+  rdfs:comment "The Result from the execution of an Action."@en;
+  rdfs:isDefinedBy <http://example.com/rrmv> .
+
+<http://example.com/rrmv> a owl:Ontology;
   rdfs:label "rrmv"@en,
     "rrmv"@nl;
   dc:issued "2024-05-31";

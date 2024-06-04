@@ -1,15 +1,116 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:owl="http://www.w3.org/2002/07/owl#" xmlns:dc="http://purl.org/dc/terms/" xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#" xmlns:foaf="http://xmlns.com/foaf/0.1/">
-  <owl:Ontology rdf:about="http://data.europa.eu/rrmv">
-    <dc:mediator>
-      <rdf:Description rdf:nodeID="g457360">
-        <foaf:homepage rdf:resource="https://semic.eu"/>
-        <foaf:name>Semantic Interoperability Community (SEMIC)</foaf:name>
-      </rdf:Description>
-    </dc:mediator>
-    <rdfs:label xml:lang="en">rrmv</rdfs:label>
-    <rdfs:label xml:lang="nl">rrmv</rdfs:label>
-    <dc:license rdf:resource="https://creativecommons.org/licenses/by/4.0/"/>
-    <dc:issued>2024-05-31</dc:issued>
-  </owl:Ontology>
+<rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:owl="http://www.w3.org/2002/07/owl#" xmlns:dc="http://purl.org/dc/terms/" xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#" xmlns:skos="http://www.w3.org/2004/02/skos/core#" xmlns:foaf="http://xmlns.com/foaf/0.1/">
+  <owl:Class rdf:about="http://example.com/rrmv/ActionResult">
+    <rdfs:isDefinedBy>
+      <owl:Ontology rdf:about="http://example.com/rrmv">
+        <dc:mediator>
+          <rdf:Description rdf:nodeID="g457360">
+            <foaf:homepage rdf:resource="https://semic.eu"/>
+            <foaf:name>Semantic Interoperability Community (SEMIC)</foaf:name>
+          </rdf:Description>
+        </dc:mediator>
+        <rdfs:label xml:lang="en">rrmv</rdfs:label>
+        <rdfs:label xml:lang="nl">rrmv</rdfs:label>
+        <dc:license rdf:resource="https://creativecommons.org/licenses/by/4.0/"/>
+        <dc:issued>2024-05-31</dc:issued>
+      </owl:Ontology>
+    </rdfs:isDefinedBy>
+    <rdfs:label xml:lang="en">Action Result</rdfs:label>
+    <rdfs:comment xml:lang="en">The Result of an Action. It could be an activity (e.g., to do something) or an output (e.g., report).</rdfs:comment>
+  </owl:Class>
+  <owl:Class rdf:about="http://example.com/rrmv/ActionResultType">
+    <rdfs:isDefinedBy rdf:resource="http://example.com/rrmv"/>
+    <rdfs:label xml:lang="en">Action Result Type</rdfs:label>
+    <rdfs:comment xml:lang="en">The type of the Action Result.</rdfs:comment>
+    <rdfs:subClassOf rdf:resource="http://www.w3.org/2004/02/skos/core#Concept"/>
+  </owl:Class>
+  <owl:Class rdf:about="http://example.com/rrmv/AgentKind">
+    <rdfs:isDefinedBy rdf:resource="http://example.com/rrmv"/>
+    <rdfs:label xml:lang="en">Agent Kind</rdfs:label>
+    <rdfs:comment xml:lang="en">The kind of agent.</rdfs:comment>
+  </owl:Class>
+  <owl:Class rdf:about="http://example.com/rrmv/AgentRole">
+    <rdfs:isDefinedBy rdf:resource="http://example.com/rrmv"/>
+    <rdfs:label xml:lang="en">Agent Role</rdfs:label>
+    <rdfs:comment xml:lang="en">A role played by an agent.</rdfs:comment>
+  </owl:Class>
+  <owl:Class rdf:about="http://example.com/rrmv/Request">
+    <rdfs:isDefinedBy rdf:resource="http://example.com/rrmv"/>
+    <rdfs:label xml:lang="en">Request</rdfs:label>
+    <rdfs:comment xml:lang="en">A portion of legal source expression including a mandate that produces at least one Action.</rdfs:comment>
+  </owl:Class>
+  <owl:Class rdf:about="http://example.com/rrmv/Role">
+    <rdfs:isDefinedBy rdf:resource="http://example.com/rrmv"/>
+    <rdfs:label xml:lang="en">Role</rdfs:label>
+    <rdfs:comment xml:lang="en">Role is played by and Agent involved in the Request.</rdfs:comment>
+  </owl:Class>
+  <owl:Class rdf:about="http://example.com/rrmv/RoleKind">
+    <rdfs:isDefinedBy rdf:resource="http://example.com/rrmv"/>
+    <rdfs:label xml:lang="en">for kind</rdfs:label>
+    <rdfs:comment xml:lang="en">The kind of role of the agent as is described in the legal resource.</rdfs:comment>
+  </owl:Class>
+  <owl:ObjectProperty rdf:about="http://example.com/rrmv/acceptedAt">
+    <rdfs:isDefinedBy rdf:resource="http://example.com/rrmv"/>
+    <rdfs:label xml:lang="en">accepted at</rdfs:label>
+    <rdfs:comment xml:lang="en">The time at which the Result of an executed Action is or was accepted.</rdfs:comment>
+    <rdfs:domain>
+      <owl:Class rdf:about="http://example.com/rrmv/ExecutionActionResult">
+        <rdfs:isDefinedBy rdf:resource="http://example.com/rrmv"/>
+        <rdfs:label xml:lang="en">Exectution Action Result</rdfs:label>
+        <rdfs:comment xml:lang="en">The Result from the execution of an Action.</rdfs:comment>
+      </owl:Class>
+    </rdfs:domain>
+    <rdfs:range rdf:resource="http://www.w3.org/2006/time#Instant"/>
+  </owl:ObjectProperty>
+  <owl:ObjectProperty rdf:about="http://example.com/rrmv/deliveredAt">
+    <rdfs:isDefinedBy rdf:resource="http://example.com/rrmv"/>
+    <rdfs:label xml:lang="en">delivered at</rdfs:label>
+    <rdfs:comment xml:lang="en">The time at which the Result of an executed Action is or was delivered.</rdfs:comment>
+    <rdfs:domain rdf:resource="http://example.com/rrmv/ExecutionActionResult"/>
+    <rdfs:range rdf:resource="http://www.w3.org/2006/time#Instant"/>
+  </owl:ObjectProperty>
+  <owl:ObjectProperty rdf:about="http://example.com/rrmv/executed">
+    <rdfs:isDefinedBy rdf:resource="http://example.com/rrmv"/>
+    <rdfs:label xml:lang="en">executed at time</rdfs:label>
+    <rdfs:comment xml:lang="en">The time at which the action is exectued.</rdfs:comment>
+    <rdfs:domain>
+      <owl:Class rdf:about="http://example.com/rrmv/ExecutionAction">
+        <rdfs:isDefinedBy rdf:resource="http://example.com/rrmv"/>
+        <rdfs:label xml:lang="en">Execution Action</rdfs:label>
+        <rdfs:comment xml:lang="en">The exection of the Action.</rdfs:comment>
+      </owl:Class>
+    </rdfs:domain>
+    <rdfs:range rdf:resource="http://www.w3.org/2006/time#Instant"/>
+  </owl:ObjectProperty>
+  <owl:ObjectProperty rdf:about="http://example.com/rrmv/hasURI">
+    <rdfs:isDefinedBy rdf:resource="http://example.com/rrmv"/>
+    <rdfs:domain rdf:resource="http://data.europa.eu/eli/ontology#LegalResource"/>
+    <rdfs:range rdf:resource="http://www.w3.org/2000/01/rdf-schema#Resource"/>
+  </owl:ObjectProperty>
+  <owl:ObjectProperty rdf:about="http://example.com/rrmv/initiatedAt">
+    <rdfs:isDefinedBy rdf:resource="http://example.com/rrmv"/>
+    <rdfs:label xml:lang="en">initiated at</rdfs:label>
+    <rdfs:comment xml:lang="en">The time at which the Execution of the Request is or was initiated.</rdfs:comment>
+    <rdfs:domain>
+      <owl:Class rdf:about="http://example.com/rrmv/ExectionRequest">
+        <rdfs:isDefinedBy rdf:resource="http://example.com/rrmv"/>
+        <rdfs:label xml:lang="en">Execution Request</rdfs:label>
+        <rdfs:comment xml:lang="en">A portion of legal source expression including a mandate that produces at least one Action that is being executed.</rdfs:comment>
+      </owl:Class>
+    </rdfs:domain>
+    <rdfs:range rdf:resource="http://www.w3.org/2006/time#Instant"/>
+  </owl:ObjectProperty>
+  <owl:ObjectProperty rdf:about="http://example.com/rrmv/withFrequency">
+    <rdfs:isDefinedBy rdf:resource="http://example.com/rrmv"/>
+    <rdfs:label xml:lang="en">Frequency</rdfs:label>
+    <rdfs:comment xml:lang="en">The frequency of an Request over time (e.g., every 6 months, each quarter).</rdfs:comment>
+    <rdfs:domain>
+      <owl:Class rdf:about="http://example.com/rrmv/Action">
+        <rdfs:isDefinedBy rdf:resource="http://example.com/rrmv"/>
+        <rdfs:label xml:lang="en">Action</rdfs:label>
+        <rdfs:comment xml:lang="en">An event with at least one agent that is participant in it in a given time.</rdfs:comment>
+      </owl:Class>
+    </rdfs:domain>
+    <rdfs:range rdf:resource="http://www.w3.org/2004/02/skos/core#Concept"/>
+  </owl:ObjectProperty>
 </rdf:RDF>
