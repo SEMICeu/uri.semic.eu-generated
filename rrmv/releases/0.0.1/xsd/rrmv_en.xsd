@@ -1,0 +1,287 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<xs:schema xmlns="https://data.europa.eu/m8g/xml/" xmlns:xs="http://www.w3.org/2001/XMLSchema" targetNamespace="https://data.europa.eu/m8g/xml/" version="2.0.0" elementFormDefault="qualified" attributeFormDefault="unqualified" xmlns:cv="https://data.europa.eu/m8g/xml/">
+  <xs:element name="Action" type="ActionType"/>
+  <xs:element name="ActionResult" type="ActionResultType"/>
+  <xs:element name="ActionResultType" type="ActionResultTypeType"/>
+  <xs:element name="AgentKind" type="AgentKindType"/>
+  <xs:element name="AgentRole" type="AgentRoleType"/>
+  <xs:element name="ExecutionRequest" type="ExecutionRequestType"/>
+  <xs:element name="ExecutionAction" type="ExecutionActionType"/>
+  <xs:element name="ExectutionActionResult" type="ExectutionActionResultType"/>
+  <xs:element name="Request" type="RequestType"/>
+  <xs:element name="Role" type="RoleType"/>
+  <xs:element name="ForKind" type="ForKindType"/>
+  <xs:element name="LegalResource" type="LegalResourceType"/>
+  <xs:element name="TimeInstant" type="TimeInstantType"/>
+  <xs:element name="Agent" type="AgentType"/>
+  <xs:simpleType name="Literal">
+    <xs:restriction base="xs:string"/>
+  </xs:simpleType>
+  <xs:complexType name="langstring">
+    <xs:simpleContent>
+      <xs:extension base="xs:string">
+        <xs:attribute name="lang" type="xs:language"/>
+      </xs:extension>
+    </xs:simpleContent>
+  </xs:complexType>
+  <xs:complexType name="ConceptType">
+    <xs:simpleContent>
+      <xs:extension base="xs:token">
+        <xs:attribute name="ref" type="xs:IDREF"/>
+        <xs:attribute name="conceptSchemeRef" type="xs:IDREF"/>
+      </xs:extension>
+    </xs:simpleContent>
+  </xs:complexType>
+  <xs:complexType name="ActionType">
+    <xs:sequence>
+      <xs:element name="hasResult" ref="ActionResultType" maxOccurs="unbounded" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation xml:lang="en">A property that links an Action with the Result of this action.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="involvesRole" ref="ForKindType" maxOccurs="unbounded" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation xml:lang="en">The property linking an Action to Role involved in the Action.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="atTime" ref="TimeInstantType" maxOccurs="unbounded" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation xml:lang="en">The time at which an action takes place or has to take place.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="relatedTo" ref="ActionType" maxOccurs="unbounded" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation xml:lang="en">Indicates a somehow related other document, not necessarily a legal resource.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="frequency" type="ConceptType" maxOccurs="1" minOccurs="1">
+        <xs:annotation>
+          <xs:documentation xml:lang="en">The frequency of an Request over time (e.g., every 6 months, each quarter).</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+    </xs:sequence>
+    <xs:attribute name="ActionRef" type="xs:IDREF">
+      <xs:annotation>
+        <xs:documentation xml:lang="en">Reference to Action ID</xs:documentation>
+      </xs:annotation>
+    </xs:attribute>
+  </xs:complexType>
+  <xs:complexType name="ActionResultType">
+    <xs:sequence>
+      <xs:element name="describedIn" ref="LegalResourceType" maxOccurs="unbounded" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation xml:lang="en">This property connects an Action Result to the Legal Resource in which it is described.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="hasType" ref="ActionResultTypeType" maxOccurs="unbounded" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation xml:lang="en">This property connects the Action Result to the Action Result Type to which it belongs.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+    </xs:sequence>
+    <xs:attribute name="ActionResultRef" type="xs:IDREF">
+      <xs:annotation>
+        <xs:documentation xml:lang="en">Reference to ActionResult ID</xs:documentation>
+      </xs:annotation>
+    </xs:attribute>
+  </xs:complexType>
+  <xs:complexType name="ActionResultTypeType">
+    <xs:sequence/>
+    <xs:attribute name="ActionResultTypeRef" type="xs:IDREF">
+      <xs:annotation>
+        <xs:documentation xml:lang="en">Reference to ActionResultType ID</xs:documentation>
+      </xs:annotation>
+    </xs:attribute>
+  </xs:complexType>
+  <xs:complexType name="AgentKindType">
+    <xs:sequence/>
+    <xs:attribute name="AgentKindRef" type="xs:IDREF">
+      <xs:annotation>
+        <xs:documentation xml:lang="en">Reference to AgentKind ID</xs:documentation>
+      </xs:annotation>
+    </xs:attribute>
+  </xs:complexType>
+  <xs:complexType name="AgentRoleType">
+    <xs:sequence>
+      <xs:element name="forAgent" ref="AgentType" maxOccurs="unbounded" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation xml:lang="en">The property linking a particular Role to Agent.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="withRole" ref="ForKindType" maxOccurs="unbounded" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation xml:lang="en">The property linking a Agent to Role.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+    </xs:sequence>
+    <xs:attribute name="AgentRoleRef" type="xs:IDREF">
+      <xs:annotation>
+        <xs:documentation xml:lang="en">Reference to AgentRole ID</xs:documentation>
+      </xs:annotation>
+    </xs:attribute>
+  </xs:complexType>
+  <xs:complexType name="ExecutionRequestType">
+    <xs:sequence>
+      <xs:element name="initiatedAt" ref="TimeInstantType" maxOccurs="1" minOccurs="1">
+        <xs:annotation>
+          <xs:documentation xml:lang="en">The time at which the Execution of the Request is or was initiated.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="initiates" ref="ExecutionActionType" maxOccurs="unbounded" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation xml:lang="en">This property links an Execution Request with an Execution Action.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="isExecutionOf" ref="RequestType" maxOccurs="unbounded" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation xml:lang="en">This property links the Execution Request with the Request.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+    </xs:sequence>
+    <xs:attribute name="ExecutionRequestRef" type="xs:IDREF">
+      <xs:annotation>
+        <xs:documentation xml:lang="en">Reference to ExecutionRequest ID</xs:documentation>
+      </xs:annotation>
+    </xs:attribute>
+  </xs:complexType>
+  <xs:complexType name="ExecutionActionType">
+    <xs:sequence>
+      <xs:element name="executedAtTime" ref="TimeInstantType" maxOccurs="1" minOccurs="1">
+        <xs:annotation>
+          <xs:documentation xml:lang="en">The time at which the action is exectued.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="hadResult" ref="ExectutionActionResultType" maxOccurs="unbounded" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation xml:lang="en">The result of the executed Action.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="hasAgentRole" ref="AgentRoleType" maxOccurs="unbounded" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation xml:lang="en">This property connects the executed Action to the Agent that was involved in its exectuion.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+    </xs:sequence>
+    <xs:attribute name="ExecutionActionRef" type="xs:IDREF">
+      <xs:annotation>
+        <xs:documentation xml:lang="en">Reference to ExecutionAction ID</xs:documentation>
+      </xs:annotation>
+    </xs:attribute>
+  </xs:complexType>
+  <xs:complexType name="ExectutionActionResultType">
+    <xs:sequence>
+      <xs:element name="acceptedAt" ref="TimeInstantType" maxOccurs="1" minOccurs="1">
+        <xs:annotation>
+          <xs:documentation xml:lang="en">The time at which the Result of an executed Action is or was accepted.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="conformsTo" ref="ActionResultType" maxOccurs="unbounded" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation xml:lang="en">An established standard to which the described resource conforms.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="deliveredAt" ref="TimeInstantType" maxOccurs="1" minOccurs="1">
+        <xs:annotation>
+          <xs:documentation xml:lang="en">The time at which the Result of an executed Action is or was delivered.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+    </xs:sequence>
+    <xs:attribute name="ExectutionActionResultRef" type="xs:IDREF">
+      <xs:annotation>
+        <xs:documentation xml:lang="en">Reference to ExectutionActionResult ID</xs:documentation>
+      </xs:annotation>
+    </xs:attribute>
+  </xs:complexType>
+  <xs:complexType name="RequestType">
+    <xs:sequence>
+      <xs:element name="derivedFrom" ref="LegalResourceType" maxOccurs="unbounded" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation xml:lang="en">The legal resource or legal document from which the Request is derived.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="produces" ref="ActionType" maxOccurs="unbounded" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation xml:lang="en">A Request produces one or many Action.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="relatedTo" ref="RequestType" maxOccurs="unbounded" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation xml:lang="en">Indicates a somehow related other document, not necessarily a legal resource.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="topic" type="ConceptType" maxOccurs="1" minOccurs="1">
+        <xs:annotation>
+          <xs:documentation xml:lang="en">The topic of the request.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+    </xs:sequence>
+    <xs:attribute name="RequestRef" type="xs:IDREF">
+      <xs:annotation>
+        <xs:documentation xml:lang="en">Reference to Request ID</xs:documentation>
+      </xs:annotation>
+    </xs:attribute>
+  </xs:complexType>
+  <xs:complexType name="RoleType">
+    <xs:sequence/>
+    <xs:attribute name="RoleRef" type="xs:IDREF">
+      <xs:annotation>
+        <xs:documentation xml:lang="en">Reference to Role ID</xs:documentation>
+      </xs:annotation>
+    </xs:attribute>
+  </xs:complexType>
+  <xs:complexType name="ForKindType">
+    <xs:sequence>
+      <xs:element name="forRole" ref="AgentKindType" maxOccurs="unbounded" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation xml:lang="en">This property links the kind of a Role with the kind of an Agent.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="forRole" ref="RoleType" maxOccurs="unbounded" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation xml:lang="en">This property links the kind of a Role to a Role.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+    </xs:sequence>
+    <xs:attribute name="ForKindRef" type="xs:IDREF">
+      <xs:annotation>
+        <xs:documentation xml:lang="en">Reference to ForKind ID</xs:documentation>
+      </xs:annotation>
+    </xs:attribute>
+  </xs:complexType>
+  <xs:complexType name="LegalResourceType">
+    <xs:sequence>
+      <xs:element name="hasUri" maxOccurs="1" minOccurs="1">
+        <xs:annotation>
+          <xs:documentation xml:lang="en">URI of the Legal Source Expression where the Request is expressed.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+    </xs:sequence>
+    <xs:attribute name="LegalResourceRef" type="xs:IDREF">
+      <xs:annotation>
+        <xs:documentation xml:lang="en">Reference to LegalResource ID</xs:documentation>
+      </xs:annotation>
+    </xs:attribute>
+  </xs:complexType>
+  <xs:complexType name="TimeInstantType">
+    <xs:sequence/>
+    <xs:attribute name="TimeInstantRef" type="xs:IDREF">
+      <xs:annotation>
+        <xs:documentation xml:lang="en">Reference to TimeInstant ID</xs:documentation>
+      </xs:annotation>
+    </xs:attribute>
+  </xs:complexType>
+  <xs:complexType name="AgentType">
+    <xs:sequence>
+      <xs:element name="ofKind" ref="AgentKindType" maxOccurs="unbounded" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation xml:lang="en">This property links an Agent to the kind of an Agent.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+    </xs:sequence>
+    <xs:attribute name="AgentRef" type="xs:IDREF">
+      <xs:annotation>
+        <xs:documentation xml:lang="en">Reference to Agent ID</xs:documentation>
+      </xs:annotation>
+    </xs:attribute>
+  </xs:complexType>
+</xs:schema>
