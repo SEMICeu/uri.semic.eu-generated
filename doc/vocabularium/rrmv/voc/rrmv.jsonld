@@ -42,70 +42,37 @@
       "parents": []
     },
     {
-      "@id": "http://example.com/rrmv/ActionResultType",
-      "@type": "http://www.w3.org/2002/07/owl#Class",
-      "label": {
-        "en": "Action Result Type"
-      },
-      "definition": {
-        "en": "The type of the Action Result."
-      },
-      "parents": [
-        "http://www.w3.org/2004/02/skos/core#Concept"
-      ]
-    },
-    {
-      "@id": "http://example.com/rrmv/AgentKind",
-      "@type": "http://www.w3.org/2002/07/owl#Class",
-      "label": {
-        "en": "Agent Kind"
-      },
-      "definition": {
-        "en": "The kind of agent."
-      },
-      "parents": []
-    },
-    {
       "@id": "http://example.com/rrmv/AgentRole",
       "@type": "http://www.w3.org/2002/07/owl#Class",
       "label": {
         "en": "Agent Role"
       },
       "definition": {
-        "en": "A role played by an agent."
+        "en": "The property linking a Agent to Role."
       },
       "parents": []
     },
     {
-      "@id": "http://example.com/rrmv/ExectionRequest",
+      "@id": "http://example.com/rrmv/AgentType",
       "@type": "http://www.w3.org/2002/07/owl#Class",
       "label": {
-        "en": "Execution Request"
+        "en": "Agent Type"
       },
       "definition": {
-        "en": "A portion of legal source expression including a mandate that produces at least one Action that is being executed."
+        "en": "The type of Agent."
       },
-      "parents": []
+      "parents": [
+        "http://www.w3.org/2004/02/skos/core#Concept"
+      ]
     },
     {
-      "@id": "http://example.com/rrmv/ExecutionAction",
+      "@id": "http://example.com/rrmv/Frequency",
       "@type": "http://www.w3.org/2002/07/owl#Class",
       "label": {
-        "en": "Execution Action"
+        "en": "Frequency"
       },
       "definition": {
-        "en": "The exection of the Action."
-      },
-      "parents": []
-    },
-    {
-      "@id": "http://example.com/rrmv/ExecutionActionResult",
-      "@type": "http://www.w3.org/2002/07/owl#Class",
-      "label": {
-        "en": "Exectution Action Result"
-      },
-      "definition": {
-        "en": "The Result from the execution of an Action."
+        "en": "Frequency of an Request over time (e.g., every 6 months, each quarter)."
       },
       "parents": []
     },
@@ -121,6 +88,19 @@
       "parents": []
     },
     {
+      "@id": "http://example.com/rrmv/ResultType",
+      "@type": "http://www.w3.org/2002/07/owl#Class",
+      "label": {
+        "en": "Result Type"
+      },
+      "definition": {
+        "en": "Result Type. SKOS Concept."
+      },
+      "parents": [
+        "http://www.w3.org/2004/02/skos/core#Concept"
+      ]
+    },
+    {
       "@id": "http://example.com/rrmv/Role",
       "@type": "http://www.w3.org/2002/07/owl#Class",
       "label": {
@@ -132,50 +112,92 @@
       "parents": []
     },
     {
-      "@id": "http://example.com/rrmv/RoleKind",
+      "@id": "http://example.com/rrmv/RoleType",
       "@type": "http://www.w3.org/2002/07/owl#Class",
       "label": {
-        "en": "for kind"
+        "en": "Role Type"
       },
       "definition": {
         "en": "The kind of role of the agent as is described in the legal resource."
       },
-      "parents": []
-    }
-  ],
-  "externals": [
-    {
-      "name": {
-        "en": "Legal Resource"
-      },
-      "@id": "http://data.europa.eu/eli/ontology#LegalResource",
-      "@type": "rdfs:Class"
+      "parents": [
+        "http://www.w3.org/2004/02/skos/core#Concept"
+      ]
     },
     {
-      "name": {
-        "en": "Time instant"
-      },
-      "@id": "http://www.w3.org/2006/time#Instant",
-      "@type": "rdfs:Class"
-    },
-    {
-      "name": {},
-      "@id": "http://xmlns.com/foaf/0.1/Agent",
-      "@type": "rdfs:Class"
-    }
-  ],
-  "properties": [
-    {
-      "@id": "http://example.com/rrmv/withFrequency",
-      "@type": "http://www.w3.org/2002/07/owl#ObjectProperty",
+      "@id": "http://example.com/rrmv/Status",
+      "@type": "http://www.w3.org/2002/07/owl#Class",
       "label": {
-        "en": "Frequency"
+        "en": "Status"
       },
       "definition": {
-        "en": "The frequency of an Request over time (e.g., every 6 months, each quarter)."
+        "en": "Status of Action."
+      },
+      "parents": [
+        "http://www.w3.org/2004/02/skos/core#Concept"
+      ]
+    },
+    {
+      "@id": "http://example.com/rrmv/TemporalFunction",
+      "@type": "http://www.w3.org/2002/07/owl#Class",
+      "label": {
+        "en": "Temporal Function"
+      },
+      "definition": {
+        "en": "Function of the temporal parameter."
+      },
+      "parents": [
+        "http://www.w3.org/2004/02/skos/core#Concept"
+      ]
+    }
+  ],
+  "externals": [],
+  "properties": [
+    {
+      "@id": "http://example.com/rrmv/isIncomplete",
+      "@type": "http://www.w3.org/2002/07/owl#DatatypeProperty",
+      "label": {
+        "en": "is incomplete"
+      },
+      "definition": {
+        "en": "Data property that track the incompleteness of the temporal parameters."
       },
       "domain": [
-        "http://example.com/rrmv/Action"
+        "http://www.w3.org/2006/time#ProperInterval"
+      ],
+      "range": [
+        "http://www.w3.org/2001/XMLSchema#boolean"
+      ],
+      "generalization": []
+    },
+    {
+      "@id": "http://example.com/rrmv/hasURI",
+      "@type": "http://www.w3.org/2002/07/owl#DatatypeProperty",
+      "label": {
+        "en": "has URI"
+      },
+      "definition": {
+        "en": "URI of the Request."
+      },
+      "domain": [
+        "http://example.com/rrmv/Request"
+      ],
+      "range": [
+        "http://www.w3.org/2001/XMLSchema#anyURI"
+      ],
+      "generalization": []
+    },
+    {
+      "@id": "http://example.com/rrmv/hasTopic",
+      "@type": "http://www.w3.org/2002/07/owl#ObjectProperty",
+      "label": {
+        "en": "has topic"
+      },
+      "definition": {
+        "en": "The topic of the request."
+      },
+      "domain": [
+        "http://example.com/rrmv/Request"
       ],
       "range": [
         "http://www.w3.org/2004/02/skos/core#Concept"
@@ -183,83 +205,41 @@
       "generalization": []
     },
     {
-      "@id": "http://example.com/rrmv/initiatedAt",
-      "@type": "http://www.w3.org/2002/07/owl#ObjectProperty",
+      "@id": "http://example.com/rrmv/hasAnnotation",
+      "@type": "http://www.w3.org/2002/07/owl#DatatypeProperty",
       "label": {
-        "en": "initiated at"
+        "en": "has annotation"
       },
       "definition": {
-        "en": "The time at which the Execution of the Request is or was initiated."
+        "en": "Annotation related to the Action or Request made by the domain expert."
       },
       "domain": [
-        "http://example.com/rrmv/ExectionRequest"
+        "http://example.com/rrmv/Request"
       ],
       "range": [
-        "http://www.w3.org/2006/time#Instant"
+        "http://www.w3.org/2001/XMLSchema#string"
       ],
       "generalization": []
     },
     {
-      "@id": "http://example.com/rrmv/executed",
-      "@type": "http://www.w3.org/2002/07/owl#ObjectProperty",
+      "@id": "http://example.com/rrmv/hasAnnotation",
+      "@type": "http://www.w3.org/2002/07/owl#DatatypeProperty",
       "label": {
-        "en": "executed at time"
+        "en": "has annotation"
       },
       "definition": {
-        "en": "The time at which the action is exectued."
+        "en": "Annotation related to the Action or Request made by the domain expert."
       },
       "domain": [
-        "http://example.com/rrmv/ExecutionAction"
+        "http://example.com/rrmv/Action"
       ],
       "range": [
-        "http://www.w3.org/2006/time#Instant"
-      ],
-      "generalization": []
-    },
-    {
-      "@id": "http://example.com/rrmv/deliveredAt",
-      "@type": "http://www.w3.org/2002/07/owl#ObjectProperty",
-      "label": {
-        "en": "delivered at"
-      },
-      "definition": {
-        "en": "The time at which the Result of an executed Action is or was delivered."
-      },
-      "domain": [
-        "http://example.com/rrmv/ExecutionActionResult"
-      ],
-      "range": [
-        "http://www.w3.org/2006/time#Instant"
-      ],
-      "generalization": []
-    },
-    {
-      "@id": "http://example.com/rrmv/acceptedAt",
-      "@type": "http://www.w3.org/2002/07/owl#ObjectProperty",
-      "label": {
-        "en": "accepted at"
-      },
-      "definition": {
-        "en": "The time at which the Result of an executed Action is or was accepted."
-      },
-      "domain": [
-        "http://example.com/rrmv/ExecutionActionResult"
-      ],
-      "range": [
-        "http://www.w3.org/2006/time#Instant"
+        "http://www.w3.org/2001/XMLSchema#string"
       ],
       "generalization": []
     }
   ],
-  "externalproperties": [
-    {
-      "name": {
-        "en": "has URI"
-      },
-      "@id": "http:/example.com/rrmv/hasURI",
-      "@type": "rdf:Property"
-    }
-  ],
+  "externalproperties": [],
   "@context": {
     "m8g": "http://data.europa.eu/m8g/",
     "r5r": "http://data.europa.eu/r5r/",
