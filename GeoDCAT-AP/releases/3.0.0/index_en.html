@@ -1001,7 +1001,7 @@ GeoDCAT-AP is an extension of the DCAT application profile for data portals in E
 
 <section id="scope-of-the-revision">
 
-<h3>Scope of the revision</h3>
+<h3>Scope of the Application Profile</h3>
 
 <p>The objective of this work is to produce an updated release of GeoDCAT-AP based on requests for change coming from real-world implementations of the specification and an alignment with [[DCAT-AP-3]] and [[INSPIRE-MD-20230731]].</p> 
 
@@ -1012,7 +1012,7 @@ GeoDCAT-AP is an extension of the DCAT application profile for data portals in E
 </p>
 
 <p>The work does not cover implementation issues like mechanisms for exchange of data and expected behaviour of systems implementing the Application Profile other than what is defined in the Conformance Statement in section [[[#conformance]]].
-The section [[[#validation-of-dcat-ap]]] provides SHACL templates and references to the Interoperability Testbed tool for validating a catalogue for compliance with DCAT-AP.
+
 </p>
 
 <p>The Application Profile is intended to facilitate data exchange and therefore the classes and properties defined in this document are only relevant for the data to be exchanged; there are no requirements for communicating systems to implement specific technical environments. The only requirement is that the systems can export and import data in RDF in conformance with this Application Profile.
@@ -21289,7 +21289,7 @@ In this data specification the use is restricted to instances of this class that
 
 <p>It is important to note that, following [[INSPIRE-MD-REG]] and [[ISO-19115]], in GeoDCAT-AP all these agent roles can be specified on Catalogues, Catalogue Records, Datasets, and Data Services.</p>
 
-<p>The second and more general approach is based on [[PROV-O]], where agent roles are specified via a &ldquo;qualified attribution&rdquo; (<code>prov:qualifiedAttribution</code>). More precisely, the relevant Agent is specified via property <code>prov:agent</code>, whereas the role is specified with property <code>dcat:hadRole</code>, which takes as value a <code>skos:Concept</code> describing that role - as those included in the relevant code list operated by the INSPIRE Registry [[INSPIRE-RPR]]. This pattern is illustrated in <a href="#ex-attribution"></a>.</p>
+<p>The second and more general approach is based on [[PROV-O]], where agent roles are specified via a &ldquo;qualified attribution&rdquo; (<code>prov:qualifiedAttribution</code>). More precisely, the relevant Agent is specified via property <code>prov:agent</code>, whereas the role is specified with property <code>dcat:hadRole</code>, which takes as value a <code>skos:Concept</code> describing that role - as those included in the relevant code list operated by the INSPIRE Registry [[INSPIRE-RPR]]. </a>.</p>
 
 <p>The [[PROV-O]]-based approach is meant to give data providers an extension mechanism to specify, in a harmonised way, any kind of role, and, possibly, to attach additional information to the role and the associated Agent. As such, it MAY be used in combination with or to complement the property-based approach, but it MUST NOT replace it. For instance, it can be used to specify roles not covered by the agent role properties used in GeoDCAT-AP, and/or to specify additional information that cannot be expressed via a property (as the period during which an Agent covered a given role).</p>
 
@@ -21370,7 +21370,7 @@ The requirements as expressed in the annex, DCAT-AP HVD [[DCAT-AP-HVD]] can be d
 
 <p>For this purpose, GeoDCAT-AP makes use of two different but not mutually exclusive approaches. More precisely, property <code>dct:conformsTo</code> is used when the test result states that a resource is conformant with a given specification. The more general approach is based on [[PROV-O]], and it specifies conformance test results as a testing activity (<code>prov:Activity</code>) that generates a result (specified with property <code>prov:generated</code>), corresponding to one of the degrees of conformity defined in [[INSPIRE-MD-REG]], and available from the INSPIRE Registry [[INSPIRE-DoC]]. The specification against which the testing activity is carried out is specified via a &ldquo;qualified association&rdquo; (<code>prov:qualifiedAssociation</code>), linked to a &ldquo;plan&rdquo; (<code>prov:hadPlan</code>) derived from (<code>prov:wasDerivedFrom</code>) the specification itself.</p> 
 
-<p>This pattern is illustrated in <a href="#ex-activity"></a>.</p>
+
 
 <p>More details on these solutions are available in <a class="no-sectionRef" href="#conformity-and-data-quality---not-in-iso19115-core"></a>.</p>
 
@@ -21378,57 +21378,7 @@ The requirements as expressed in the annex, DCAT-AP HVD [[DCAT-AP-HVD]] can be d
 
 
   
-  <section class="informative">
-  <h2>Validation of GeoDCAT-AP</h2>
-
-<p>
-To support the check whether or not a catalogue satisfies the expressed constraints in this Application Profile, the constraints in this specification are expressed using SHACL [[shacl]].
-Each constraint in this specification that could be converted into a SHACL expression has been included.
-As such this collection of SHACL expressions that can be used to build a validation check for a data exchange between two systems. 
-A typical use case is the harvesting of one catalogue into another.
-</p><p>
-It is up to the implementers of the data exchange to define the validation they expect.
-Each data exchange happens within a context, and that context is beyond the SHACL expressions here.
-</p><p>
-For instance, it might be known that the exchanged data does not contain the details of the organisations, as they are all uniquely identified by a deferenceable URI.
-In such case, the rules regarding the check of the mandatory existence of a name for each organisation is probably not relevant. 
-A strict execution of the GeoDCAT-AP SHACL expressions will raise errors, although the data is available through a different channel.
-In this example, it is valid to not include this check in this validation step. 
-</p><p>
-The example illustrates that in order to get the right user experience of a validation process, one has to consider what is actually transferred between the systems.
-And use the constraints that are in scope of the data exchange.
-To assist this process the SHACL expressions are grouped in distinct files, matching already typical validation setups.
-</p>
-
-<ul>
-    <li><a href="./html/shacl/shapes.ttl">shapes.ttl</a>: constraints concerning existence, domain and literal range, and cardinalities. </li>
-    <li><a href="./html/shacl/range.ttl">range.ttl</a>: constraints concerning object range. </li>
-    <li><a href="./html/shacl/mdr-vocabularies.shape.ttl">mdr-vocabularies.shape.ttl</a>: constraints concerning the usage of controlled vocabularies.</li>
-</ul>
-
-The first file provides for each class mentioned in GeoDCAT-AP, and having additional properties defined, a template with the corresponding constraints. 
-Class membership constraints are not present in the first file. 
-These are collected in the second file.
-
-<ul>
-   <li><a href="./html/shacl/shapes_recommended.ttl">shapes_recommended.ttl</a>: constraints concerning existence of recommended properties.</li>
-</ul>
-
-In order to validate a catalogue additional data might be required to import into the validator, such as the controlled vocabularies. These have to be retrieved from the appropriate places. As support, the following files express the imports (not transitive) according to the SHACL specification.
-
-<ul>
-    <li><a href="./html/shacl/imports.ttl">imports.ttl</a>: imports the vocabulary knowledge.</li>
-    <li><a href="./html/shacl/mdr_imports.ttl">mdr_imports.ttl</a>: imports the recommended codelists.</li>
-</ul>
-
-<p/>
-In addition to these SHACL shapes extending the approach from DCAT-AP 2.x, the constraints are also provided in a new design where each constraint has got a unique identifier.
-This new shape is addressing the request for having a design in which GeoDCAT-AP implementers could cherry pick the constraints they want.
-The shape is downloadable <a href="./shacl/geodcat-ap-SHACL.ttl">here</a>.
-
-
-</section>
-
+  
   
   
   <section id="inspire-and-iso-19115-mappings" class="appendix">
@@ -21485,6 +21435,12 @@ The shape is downloadable <a href="./shacl/geodcat-ap-SHACL.ttl">here</a>.
 <p>Conversion rules to RDF syntax would allow Member States to maintain their collections of INSPIRE-relevant datasets following the INSPIRE Metadata Technical Guidelines [[INSPIRE-MD]], while at the same time publishing these collections on [[DCAT-AP]]-conformant data portals. A conversion to RDF syntax – using for example the GeoDCAT-AP XSLT script [[GeoDCAT-XSLT]] - allows additional metadata elements to be displayed on general-purposed data portals, provided that such data portals are capable of displaying additional metadata elements. Furthermore, data portals are frequently complemented by a triple store, making the full set of GeoDCAT-AP metadata queryable through a SPARQL endpoint [[SPARQL11-QUERY]].</p>
 
 </section>
+
+<section id="supported tooling">
+
+<h2>Supported tooling</h2>
+
+<p> To be completed with text on the XSLT</p>
 
 <section id="methodology-and-summary-of-results" class="informative">
 
