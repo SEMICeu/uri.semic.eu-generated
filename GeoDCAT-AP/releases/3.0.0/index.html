@@ -21610,11 +21610,11 @@ When the guidelines become available a reference implementation will be shared h
 
 </section>
 
-<section id="supported tooling">
+<section id="supported-tooling">
 
 <h2>Supported tooling</h2>
 
-<p> To support the trasnformation from INSPIRE metadata to GeoDCAT-AP compliant metadata an XSLT tool was developed. This tool has been updated to trasnform data to be compliant with GeoDCAT-AP 3.0.0. The GeoDCAT-AP XSLT can be found on <a href="https://github.com/SEMICeu/iso-19139-to-dcat-ap/tree/master">this GitHub repository</a>. The XSLT can be run directly on the ouput of a CSW or on single metadata records, by using any of the programming languages supporting XSLT conversion. Additionally, a proof-of-concept API has been developed to facilitate the testing of the XSLT on single metadata records or on top of a CSW endpoint. </p>
+<p>To support the transformation from INSPIRE metadata to GeoDCAT-AP compliant metadata an XSLT tool was developed. This tool has been updated to transform data to be compliant with GeoDCAT-AP 3.0.0. The GeoDCAT-AP XSLT can be found on <a href="https://github.com/SEMICeu/iso-19139-to-dcat-ap/tree/dev">the <code>dev</code> branch of the GitHub repository</a>. The XSLT can be run directly on the output of a CSW or on single metadata records, by using any of the programming languages supporting XSLT conversion. Additionally, a proof-of-concept API has been developed to facilitate the testing of the XSLT on single metadata records or on top of a CSW endpoint.</p>
 
 </section>
 
@@ -24659,9 +24659,9 @@ prov:wasUsedBy [
 <p>In particular, the mapping has been aligned with [[INSPIRE-MD-20170302]], which defined new encoding rules for use and access limitations.</p>
 </aside>
 -->
-<p>In [[DCAT-AP-3]], licensing information is specified on (a) data catalogues (services) and on (b) the distribution(s) of a dataset, and not on the dataset itself. The principle is that different dataset distributions may be associated with different licensing terms. Moreover, [[DCAT-AP-3]] recommends the use of <code>dct:accessRights</code> for specifying access conditions.</p>
+<p>In [[DCAT-AP-3]], licensing information is specified on (a) data catalogues (services) and on (b) the distribution(s) of a dataset, and not on the dataset itself. The principle is that different dataset distributions may be associated with different licensing terms. Moreover, [[DCAT-AP-3]] recommends the use of <code>dct:accessRights</code> for specifying access conditions. Both licenses and access rights should be indicated by their corresponding URIs.</p>
 
-<p>Based on this, GeoDCAT-AP specifies use and access limitations by using, respectively, <code>dct:license</code> and <code>dct:accessRights</code>. These properties take as value the URI of the use / access limitations, when available. Otherwise, since the range of these properties is not a literal, but, respectively, classes <code>dct:LicenseDocument</code> and <code>dct:RightsStatement</code>, the free-text content of the corresponding ISO 19115 / INSPIRE metadata elements can be expressed by using <code>dct:description</code>.</p>
+<p>Based on this, GeoDCAT-AP specifies use and access limitations by using, respectively, <code>dct:license</code> and <code>dct:accessRights</code> whenever the value is available as a URI. Otherwise, since the range of these properties is not a literal, but, respectively, classes <code>dct:LicenseDocument</code> and <code>dct:RightsStatement</code>, the free-text content of the corresponding ISO 19115 / INSPIRE metadata elements can be expressed using <code>dct:description</code> on the <code>dct:RightsStatement</code> instance, connected using the <code>dct:rights</code> property.</p>
 <!--
 <aside class="note">
 <p>It is worth noting that, for specifying use and access limitations, [[INSPIRE-MD-20170302]] recommends the use of the relevant URI sets operated by the INSPIRE Registry - namely, [[INSPIRE-CAU]], for two cases of use limitations (&ldquo;no conditions apply&rdquo; and &ldquo;conditions unknown&rdquo;), and [[INSPIRE-LPA]], for access limitations.</p>
@@ -24675,10 +24675,17 @@ prov:wasUsedBy [
 -->
 <aside class="example" id="ex-mapping-conditions-for-access-and-use" title="Conditions for access and use">
 
-<p>Resource metadata in GeoDCAT-AP:</p>
+<p>Resource metadata in GeoDCAT-AP (using URIs for use and access limitations):</p>
 
 <pre>[] dcat:distribution [ a dcat:Distribution ;
-  dct:license [ a dct:LicenseDocument ;
+  dct:license &lt;https://creativecommons.org/licenses/by/4.0/&gt; ;
+  dct:accessRights &lt;https://inspire.ec.europa.eu/metadata-codelist/LimitationsOnPublicAccess/noLimitations&gt; ;
+] .</pre>
+
+<p>Resource metadata in GeoDCAT-AP, free-text version:</p>
+
+<pre>[] dcat:distribution [ a dcat:Distribution ;
+  dct:rights [ a dct:RightsStatement ;
     dct:description &quot;&quot;&quot;
         The dataset contains parts which are restricted 
         by the data providers and not to be made public. 
@@ -24687,18 +24694,43 @@ prov:wasUsedBy [
         the file WISE_WFD_ReferenceSpatialDataSets_2020-04-02.pdf 
         which is provided together with the data.    
       &quot;&quot;&quot;@en ] ;
-  dct:accessRights [ a dct:RightsStatement ;
+  dct:rights [ a dct:RightsStatement ;
     dct:description &quot;&quot;&quot;
         public access limited according to Article 13(1)(b) 
 	of the INSPIRE Directive
       &quot;&quot;&quot;@en ] ] .</pre>
 
-<p>Resource metadata in GeoDCAT-AP (using URIs for use and access limitations):</p>
+<p>Resource metadata in ISO 19139 (using URIs for use and access limitations):</p>
 
-<pre>[] dcat:distribution [ a dcat:Distribution ;
-  dct:license &lt;https://creativecommons.org/licenses/by/4.0/&gt; ;
-  dct:accessRights &lt;https://inspire.ec.europa.eu/metadata-codelist/LimitationsOnPublicAccess/noLimitations&gt; ;
-] .</pre>
+<pre>&lt;gmd:MD_Metadata&gt;
+  ...
+  &lt;gmd:MD_LegalConstraints&gt;
+    &lt;gmd:useConstraints&gt;
+      &lt;gmd:MD_RestrictionCode
+        codeList=&quot;http://standards.iso.org/ittf/PubliclyAvailableStandards/ISO_19139_Schemas/resources/codelist/ML_gmxCodelists.xml#MD_RestrictionCode&quot;
+        codeListValue=&quot;otherRestrictions&quot;/&gt;
+    &lt;/gmd:useConstraints&gt;
+    &lt;gmd:otherConstraints&gt;
+      &lt;gmx:Anchor xlink:href=&quot;https://creativecommons.org/licenses/by/4.0/&quot;&gt;
+        CC-BY 4.0
+      &lt;/gmx:Anchor&gt;
+    &lt;/gmd:otherConstraints&gt;
+  &lt;/gmd:MD_LegalConstraints&gt;
+  ...
+  &lt;gmd:MD_LegalConstraints&gt;
+    &lt;gmd:accessConstraints&gt;
+      &lt;gmd:MD_RestrictionCode
+        codeList=&quot;http://standards.iso.org/ittf/PubliclyAvailableStandards/ISO_19139_Schemas/resources/codelist/ML_gmxCodelists.xml#MD_RestrictionCode&quot;
+        codeListValue=&quot;otherRestrictions&quot;/&gt;
+    &lt;/gmd:accessConstraints&gt;
+    &lt;gmd:otherConstraints&gt;
+      &lt;gmx:Anchor xlink:href=&quot;https://inspire.ec.europa.eu/metadata-codelist/LimitationsOnPublicAccess/noLimitations&quot;&gt;
+        no limitations to public access
+      &lt;/gmx:Anchor&gt;
+    &lt;/gmd:otherConstraints&gt;
+  &lt;/gmd:MD_LegalConstraints&gt;
+  ...
+&lt;/gmd:MD_Metadata&gt;</pre>
 
 <p>Resource metadata in ISO 19139:</p>
 
@@ -24733,38 +24765,6 @@ prov:wasUsedBy [
         public access limited according to Article 13(1)(b) 
 	of the INSPIRE Directive
       &lt;/gco:CharacterString&gt;
-    &lt;/gmd:otherConstraints&gt;
-  &lt;/gmd:MD_LegalConstraints&gt;
-  ...
-&lt;/gmd:MD_Metadata&gt;</pre>
-
-<p>Resource metadata in ISO 19139 (using URIs for use and access limitations):</p>
-
-<pre>&lt;gmd:MD_Metadata&gt;
-  ...
-  &lt;gmd:MD_LegalConstraints&gt;
-    &lt;gmd:useConstraints&gt;
-      &lt;gmd:MD_RestrictionCode
-        codeList=&quot;http://standards.iso.org/ittf/PubliclyAvailableStandards/ISO_19139_Schemas/resources/codelist/ML_gmxCodelists.xml#MD_RestrictionCode&quot;
-        codeListValue=&quot;otherRestrictions&quot;/&gt;
-    &lt;/gmd:useConstraints&gt;
-    &lt;gmd:otherConstraints&gt;
-      &lt;gmx:Anchor xlink:href=&quot;https://creativecommons.org/licenses/by/4.0/&quot;&gt;
-        CC-BY 4.0
-      &lt;/gmx:Anchor&gt;
-    &lt;/gmd:otherConstraints&gt;
-  &lt;/gmd:MD_LegalConstraints&gt;
-  ...
-  &lt;gmd:MD_LegalConstraints&gt;
-    &lt;gmd:accessConstraints&gt;
-      &lt;gmd:MD_RestrictionCode
-        codeList=&quot;http://standards.iso.org/ittf/PubliclyAvailableStandards/ISO_19139_Schemas/resources/codelist/ML_gmxCodelists.xml#MD_RestrictionCode&quot;
-        codeListValue=&quot;otherRestrictions&quot;/&gt;
-    &lt;/gmd:accessConstraints&gt;
-    &lt;gmd:otherConstraints&gt;
-      &lt;gmx:Anchor xlink:href=&quot;https://inspire.ec.europa.eu/metadata-codelist/LimitationsOnPublicAccess/noLimitations&quot;&gt;
-        no limitations to public access
-      &lt;/gmx:Anchor&gt;
     &lt;/gmd:otherConstraints&gt;
   &lt;/gmd:MD_LegalConstraints&gt;
   ...
@@ -25779,7 +25779,7 @@ prov:wasUsedBy [
 <tr>
 <td>asNeeded</td>
 <td>-</td>
-<td>-</td>
+<td>AS_NEEDED</td>
 </tr>
 
 <tr>
@@ -25791,7 +25791,7 @@ prov:wasUsedBy [
 <tr>
 <td>notPlanned</td>
 <td>-</td>
-<td>-</td>
+<td>NOT_PLANNED</td>
 </tr>
 
 <tr>
