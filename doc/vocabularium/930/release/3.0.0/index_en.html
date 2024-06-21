@@ -39,6 +39,27 @@
 		, 
 		
 		   {
+		    name: "Natasa Sofou",
+		      
+		      
+		      
+		    }
+		
+		
+             
+        
+	
+	
+	
+		]
+
+	var myauthors = [
+	
+	
+	    
+	    
+		
+		   {
 		    name: "Jakub Klímek",
 		      
 		      
@@ -46,14 +67,6 @@
 		      
 		      
 		    mailto: "jakub@cuit.cz"
-		      
-		    }
-		, 
-		
-		   {
-		    name: "Natasa Sofou",
-		      
-		      
 		      
 		    }
 		, 
@@ -75,31 +88,18 @@
 	
 	
 	
+	
+	
 		]
 
-	var myauthors = [
-	
-	
-	    
-	    
-		
-		   {
-		    name: "Pavlina Fragkou",
-		      
-		      
-		    company: "SEMIC EU",
-		      
-		      
-		    }
-		
-		
-             
-        
-	
-	
-	
-	
-	
+    var myowners = [
+            {
+                value: "SEMIC",
+                href: "https://joinup.ec.europa.eu/collection/semic-support-centre",
+            },
+            {
+                value: "Pavlina Fragkou (DG DIGIT)",
+            },
 		]
 
 
@@ -108,10 +108,16 @@
     var respecConfig = {
       edDraftURI: "https://semiceu.github.io/doc/vocabularium/930/release/3.0.0",
       latestVersion: "https://semiceu.github.io/uri.semic.eu-generated/930/release/3.0.0/",
-      specStatus: "LD",
-      publishDate: "2024-05-10",
+      specStatus: "base",
+      publishDate: "2024-06-26",
       editors: myeditors,
       authors: myauthors,
+      otherLinks: [
+        {
+          key: "Owners:",
+          data: myowners
+        }
+      ],
       github: "SEMICeu/DCAT-AP",
       shortName: "GeoDCAT-AP vocabulary, the 930 namespace",
       xref: "web-platform",
@@ -123,7 +129,7 @@
         width: 154,
         height: 140,
         id: "semic-logo",
-      }],
+      },],
       generatedSubtitle: "",
       additionalCopyrightHolders: "",
       localBiblio: {
@@ -165,6 +171,16 @@
         "DCAT-AP": {
           "href":"https://semiceu.github.io/DCAT-AP/releases/3.0.0/",
           "title":"DCAT-AP, a DCAT profile for European data portals",
+          "publisher":"European Commission"
+        },
+        "GEODCAT-AP": {
+          "href":"https://semiceu.github.io/GEODCAT-AP/releases/3.0.0/",
+          "title":"GEODCAT-AP, a DCAT-AP profile for geospatial datasets",
+          "publisher":"European Commission"
+        },
+        "GEODCAT-AP-2.0.0": {
+          "href":"https://semiceu.github.io/GEODCAT-AP/releases/2.0.0/",
+          "title":"GEODCAT-AP, a DCAT-AP profile for geospatial datasets",
           "publisher":"European Commission"
         },
         "PSI": {
@@ -239,18 +255,27 @@
     
 <h3>Context</h3>
 
-This vocabulary is <strong>supporting</strong> GeoDCAT-AP, a specialisation of the DCAT application profile for European data portals [[DCAT-AP]] for geospatial data. 
+This vocabulary is <strong>supporting</strong> GeoDCAT-AP [[GEODCAT-AP]], a specialisation of the DCAT application profile for European data portals [[DCAT-AP]] for geospatial data. 
 The terms defined in this namespace are defined as broad as possible for wider reuse but are scoped to the needs of GeoDCAT-AP. 
 All terms in this vocabulary have therefore a strong connection with GeoDCAT-AP.
-<p/>
 
 
 <h3>Revision history</h3>
 
+Up to GeoDCAT-AP 2.0.0 [[GEODCAT-AP-2.0.0]] this vocabulary and the DCAT-AP application profile for geospatial datasets where combined in a single document. 
+In order to facilitate the reuse of the defined terms in a broader context than GEODCAT-AP this specification with solely the terms defined in the namespace 
+<code>http://data.europa.eu/930</code> is created and published.
 
-<p class="ednote" title="DOMAIN">
-The domain is set to rdfs:Resource while these properties are only meaningful with DCAT ecosystem. Suggestion to  change the domain to dcat:Resource. The problem is that dcat:Distribution not a subclass is from dcat:Resource. 
-That would possibly limit the reuse.
+<p>
+This reuse objective resulted in wideing the domain and ranges of the properties. 
+In case the properties could be applied to any catalogued resource they are set to dcat:Resource.
+Where needed or possible, the range has been even further broadened to rdfs:Resource. 
+This is because according to DCAT the class dcat:Distribution not a subclass is from dcat:Resource. 
+</p>
+
+<p>
+The creation of  GEODCAT-AP 3 also applied the SEMIC Style Guide. 
+This resulted in the creation of explicit subproperties which where implictly present in GEODCAT-AP 2.
 </p>
 
 
@@ -276,7 +301,7 @@ It is under maintenance by the SEMIC action, Interoperable Europe.
 <section id="specstatus">
     <h2>Status</h2>
         <p>
-            This vocabulary has the status <a href="https://www.w3.org/2021/Process-20211102/#RecsWD">Working Draft</a> published at 2024-05-10.
+            This vocabulary has the status Candidate Recommendation published at 2024-06-26.
         </p>
         <p>
             Information about the process and the decisions involved in the creation of this specification are consultable at the <a href="https://semiceu.github.io/GeoDCAT-AP/releases/3.0.0/CHANGELOG.html">Changelog</a>.
@@ -300,7 +325,7 @@ It is under maintenance by the SEMIC action, Interoperable Europe.
 		  This specification </span> of <a rel="cc:attributionURL" property="cc:attributionName" href="ORGANISATION" xmlns:cc="http://creativecommons.org/ns#">ORGANISATION </a> 
 	          is published under <a href="https://creativecommons.org/licenses/by/4.0/" rel="license">"CC0"</a>.
 	-->
-             Copyright © 2023 European Union. All material in this repository is published under the license CC-BY 4.0, unless explicitly otherwise mentioned.
+             Copyright © 2024 European Union. All material in this repository is published under the license CC-BY 4.0, unless explicitly otherwise mentioned.
         </p>
     
 </section>
@@ -1628,11 +1653,14 @@ Either these are reused as-is, i.e. with no formal additional constraints compar
  
   <section id="controlled-vocs" class="informative">
   <h2>Controlled Vocabularies</h2>
+  The shared use of Controlled Vocabularie is an important aspect in data harmonisation. 
+  This section contains information on the controlled vocabularies (or data instances) that are defined in the namespace <code>http://data.europa.eu/930</code>.
+  And additionally it connects properties that are defined in this namespace with external Controlled Vocabularies to improve the semantical interoperability.
+  
 
-<div data-include-format="html" data-include-replace="true" data-include="./html/tables/controlled-vocabularies-to-be-used.html"></div>
 
   <h3 id="instances-of-metric">Instances of Metric</h3>
-  For the class Metric the following instances have been defined.
+  For the class Metric the following instances are defined in the namespace <code>http://data.europa.eu/930</code>.
 
   <table class="simple" id="table-instances-of-metric">
 <thead>
@@ -1742,6 +1770,148 @@ Either these are reused as-is, i.e. with no formal additional constraints compar
 </tbody>
 </table>
 
+
+  <h3 id="suggestions-of-cv">Suggested Controlled Vocabularies</h3> 
+  Imposing the use of a controlled vocabulary for a property in the vocabulary is restricting severely its reusability. 
+  The table below is added to increase the insight in the preferred way how to use these properties.
+  <p/>
+  Therefore the table SHOULD be read as a strong suggestion because deviating from the presented choices may lead to conflicts 
+  when using it for datasets that are also described by GeoDCAT-AP.
+  It should be observed that this strong suggestion is also a consequense from the precise semantics of the properties. 
+  Their definitions hint at the usage of a Controlled Vocabulary.
+  Nevertheless it should be noted that the listed Controlled Vocabularies and properties have seperate life cycles. 
+  And that in the future other choices might be presented. 
+
+  <table class="simple" id="table-controlled-vocabularies-to-be-used">
+<thead>
+<tr>
+<th>
+<p>Property URI</p>
+</th>
+<th>
+<p>Used for Class</p>
+</th>
+<th>
+<p>Vocabulary name</p>
+</th>
+<th>
+<p>Vocabulary URI</p>
+</th>
+</tr>
+</thead>
+<tbody>
+
+<tr>
+<td>
+    <p><code>geodcatap:referenceSystem</code></p>
+</td>
+<td>
+    <p><code>dcat:Catalog</code>, <code>dcat:Dataset</code>, <code>dcat:DataService</code>, <code>dcat:Distribution</code></p>
+</td>
+<td>
+    <p>OGC EPSG Coordinate Reference Systems Register [[OGC-EPSG]]</p>
+</td>
+<td>
+    <p><a href="http://www.opengis.net/def/crs/EPSG/0/">http://www.opengis.net/def/crs/EPSG/0/</a></p>
+</td>
+</tr>
+
+<tr>
+<td>
+    <p><code>geodcatap:resourceType</code></p>
+</td>
+<td>
+    <p><code>dcat:Dataset</code>, <code>dcat:DataService</code></p>
+</td>
+<td>
+    <p>INSPIRE Resource Types [[INSPIRE-RT]]</p>
+</td>
+<td>
+    <p><a href="http://inspire.ec.europa.eu/metadata-codelist/ResourceType">http://inspire.ec.europa.eu/metadata-codelist/ResourceType</a></p>
+</td>
+</tr>
+
+<tr>
+<td>
+    <p><code>geodcatap:serviceCateogry</code></p>
+</td>
+<td>
+    <p><code>dcat:DataService</code></p>
+</td>
+<td>
+    <p>INSPIRE Spatial Data Service Categories [[INSPIRE-SDSC]]</p>
+</td>
+<td>
+    <p><a href="http://inspire.ec.europa.eu/metadata-codelist/SpatialDataServiceCategory">http://inspire.ec.europa.eu/metadata-codelist/SpatialDataServiceCategory</a></p>
+</td>
+</tr>
+
+<tr>
+<td>
+    <p><code>geodcatap:serviceProtocol</code></p>
+</td>
+<td>
+    <p><code>dcat:DataService</code></p>
+</td>
+<td>
+    <p>INSPIRE Protocol Values [[INSPIRE-PV]]</p>
+</td>
+<td>
+    <p><a href="https://inspire.ec.europa.eu/metadata-codelist/ProtocolValue">https://inspire.ec.europa.eu/metadata-codelist/ProtocolValue</a></p>
+</td>
+</tr>
+
+<tr>
+<td>
+    <p><code>geodcatap:serviceType</code></p>
+</td>
+<td>
+    <p><code>dcat:DataService</code></p>
+</td>
+<td>
+    <p>INSPIRE Spatial Data Service Types [[INSPIRE-SDST]]</p>
+</td>
+<td>
+    <p><a href="http://inspire.ec.europa.eu/metadata-codelist/SpatialDataServiceType">http://inspire.ec.europa.eu/metadata-codelist/SpatialDataServiceType</a></p>
+</td>
+</tr>
+
+<tr>
+<td>
+    <p><code>geodcatap:topicCategory</code></p>
+</td>
+    <td><p><code>dcat:Catalog</code>, <code>dcat:Dataset</code>, <code>dcat:DataService</code></p></td>
+<td>
+    <p>INSPIRE Topic Categories [[INSPIRE-TC]]</p>
+</td>
+<td>
+    <p><a href="http://inspire.ec.europa.eu/metadata-codelist/TopicCategory">http://inspire.ec.europa.eu/metadata-codelist/TopicCategory</a></p>
+</td>
+</tr>    
+
+<!--<tr>
+<td>
+<p>+<code>dct:type</code></p>
+</td>
+<td>
+<p><a href="#Standard.type">Standard</a></p>
+</td>
+<td>
+<p>INSPIRE Glossary [[INSPIRE-GLOSSARY]]</p>
+</td>
+<td>
+<p><a href="http://inspire.ec.europa.eu/glossary/SpatialReferenceSystem">http://inspire.ec.europa.eu/glossary/SpatialReferenceSystem</a></p>
+<p><a href="http://inspire.ec.europa.eu/glossary/TemporalReferenceSystem">http://inspire.ec.europa.eu/glossary/TemporalReferenceSystem</a></p>
+</td>
+<td>
+<p>GeoDCAT-AP extension.</p>
+<p>When the Standard is a spatial or temporal reference system, the relevant URIs from the [[INSPIRE-GLOSSARY]] SHOULD be used.</p>
+</td>
+</tr>-->
+
+</tbody>
+</table>
+
 </section>
 
 
@@ -1815,6 +1985,9 @@ Past and current contributors are :
 		, 
            
 	 	Adina Dragan
+		, 
+           
+	 	Pavlina Fragkou
 		, 
            
 	 	Dietmar Gattwinkel
@@ -2075,5 +2248,16 @@ Past and current contributors are :
 		background-color:dodgerblue;
 		color:white;
 	}
+	table.simple {                                                                      
+                  font-size: small;                                                           
+                          border-spacing:0;                                                   
+                          border-collapse:collapse;                                           
+                          border-bottom:3px solid #005a9c                                     
+        }                                                                                   
+        .simple th{background:#005a9c;color:#fff;padding:3px 5px;text-align:left}           
+        .simple th a{color:#fff;padding:3px 5px;text-align:left}                            
+        .simple th[scope=row]{background:inherit;color:inherit;border-top:1px solid #ddd}   
+        .simple td{padding:3px 10px;border-top:1px solid #ddd}                              
+        .simple tr:nth-child(even){background:#f0f6ff}                   
   </style>
 </html>
