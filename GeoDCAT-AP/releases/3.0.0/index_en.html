@@ -19981,7 +19981,7 @@ In this data specification the use is restricted to instances of this class that
         
 
                    <aside id="ex-metric" class="example" title="Metric">
-  This example shows an abridged description of the instances of <code>dqv:Metric</code> defined in the geodcatap-AP namespace (see <a href="https://data.europa.eu/930#instances-of-metric">Instances of Metric</a>).
+  This example shows an abridged description of the instances of <code>dqv:Metric</code> defined in the GeoDCAT-AP namespace (see <a href="https://data.europa.eu/930#instances-of-metric">Instances of Metric</a>).
 
   <pre class="turtle">
 @prefix dqv: &lt;http://www.w3.org/ns/dqv#&gt; .
@@ -20391,7 +20391,7 @@ geodcatap:spatialResolutionAsVerticalDistance a dqv:Metric ;
   dcat:startDate "2016-01-01"^^xsd:date .</pre>
 </aside>
 
-<a href="ex-period-of-time-with-owl-time"></a> is equivalent to <a href="ex-period-of-time"></a>, but it uses the [[OWL-TIME]] properties.
+<a href="#ex-period-of-time-with-owl-time"></a> is equivalent to <a href="#ex-period-of-time"></a>, but it uses the [[OWL-TIME]] properties.
 
 <aside id="ex-period-of-time-with-owl-time" class="example" title="Period of Time using properties time:hasBeginning and time:hasEnd">
   <pre class="turtle">
@@ -22654,7 +22654,6 @@ When the guidelines become available a reference implementation will be shared h
 <p>(see also binding for GeoDCAT-AP Extended)</p></td>
 <td>
 <p><code>dcat:Dataset</code></p>
-<p><code>dcat:DatasetSeries</code></p>
 </td>
 <td><code>rdfs:Literal</code></td>
 <td>
@@ -22790,7 +22789,7 @@ When the guidelines become available a reference implementation will be shared h
 <p>Conditions for access and use (M)</p>
 <p>*not in ISO&nbsp;19115 core</p>
 </td>
-<td><code>dct:license</code> (R for <code>dcat:Catalog</code> and <code>dcat:Distribution</code>, O for <code>dcat:DataService</code>)</td>
+<td><code>dct:license</code> (R for <code>dcat:Catalog</code> and <code>dcat:Distribution</code>, O for <code>dcat:DataService</code>), <code>dct:rights</code> (O)</td>
 <td>
 <p><code>dcat:Catalog</code></p>
 <p><code>dcat:Distribution</code></p>
@@ -22806,7 +22805,7 @@ When the guidelines become available a reference implementation will be shared h
 <p>Limitations on public access (C)</p>
 <p>*not in ISO&nbsp;19115 core</p>
 </td>
-<td><code>dct:accessRights</code> (O), <code>dct:rights</code> (O)</td>
+<td><code>dct:accessRights</code> (O)</td>
 <td>
 <p><code>dcat:DataService</code></p>
 </td>
@@ -22972,16 +22971,14 @@ When the guidelines become available a reference implementation will be shared h
 <p>Resource type (M)</p>
 <p>*not in ISO&nbsp;19115 core</p>
 </td>
-<td><code>dct:type</code></td>
+<td><code>geodcatap:resourceType</code></td>
 <td>
-<p>-</p>
-<p>(<code>dcat:Catalog</code> (M))</p>
-<p>(<code>dcat:Dataset</code> (M))</p>
-<p>(<code>dcat:DatasetSeries</code> (M))</p>
-<p>(<code>dcat:DataService</code> (O))</p>
+<p><code>dcat:Catalog</code></p>
+<p><code>dcat:Dataset</code></p>
+<p><code>dcat:DatasetSeries</code></p>
+<p><code>dcat:DataService</code></p>
 </td>
-<td><p><code>rdfs:Class</code></p>
-<p>(<code>skos:Concept</code>)</p></td>
+<td><p><code>skos:Concept</code></p></td>
 <td>See <a href="#resource-type---not-in-iso19115-core"></a> and the controlled vocabulary for resource type in <a href="#controlled-vocabularies-to-be-used"></a>. [[DCAT-AP-3]] supports the use of <code>dct:type</code> on <code>dct:Dataset</code> only.</td>
 </tr>
 
@@ -22992,10 +22989,9 @@ When the guidelines become available a reference implementation will be shared h
 </td>
 <td><code>dct:identifier</code></td>
 <td>
-<p>-</p>
-<p>(<code>dcat:Catalog</code> (M))</p>
-<p>(<code>dcat:DatasetSeries</code> (M))</p>
-<p>(<code>dcat:DataService</code> (O))</p>
+<p><code>dcat:Catalog</code></p>
+<p><code>dcat:DatasetSeries</code></p>
+<p><code>dcat:DataService</code></p>
 </td>
 <td><code>rdfs:Literal</code></td>
 <td>See <a href="#unique-resource-identifier---not-in-iso19115-core"></a>. In RDF, this could also be represented as the URI of the resource.</td>
@@ -23008,9 +23004,8 @@ When the guidelines become available a reference implementation will be shared h
 </td>
 <td><code>dct:language</code></td>
 <td>
-<p>-</p>
-<p>(<code>dcat:DatasetSeries</code> (M))</p>
-<p>(<code>dcat:DataService</code> (O))</p>
+<p><code>dcat:DatasetSeries</code></p>
+<p><code>dcat:DataService</code></p>
 </td>
 <td><code>dct:LinguisticSystem</code></td>
 <td>See <a href="#resource-language-and-metadata-language---dataset-language-and-metadata-language"></a>.</td>
@@ -23021,10 +23016,12 @@ When the guidelines become available a reference implementation will be shared h
 <p>Topic category (M)</p>
 <p>*Dataset topic category (M)</p>
 </td>
-<td><code>dct:subject</code></td>
-<td><p>-</p>
-<p>(<code>dcat:Dataset</code> (M))</p>
-<p>(<code>dcat:DatasetSeries</code> (M))</p>
+<td><code>geodcatap:topicCategory</code></td>
+<td>
+<p><code>dcat:Catalog</code></p>
+<p><code>dcat:Dataset</code></p>
+<p><code>dcat:DatasetSeries</code></p>
+<p><code>dcat:DataService</code></p>
 </td>
 <td><p>-</p>
 <p>(<code>skos:Concept</code>)</p></td>
@@ -23036,13 +23033,11 @@ When the guidelines become available a reference implementation will be shared h
 <p>Spatial data service type (M)</p>
 <p>*not in ISO&nbsp;19115</p>
 </td>
-<td><code>dct:type</code></td>
+<td><code>geodcatap:serviceType</code></td>
 <td>
-<p>-</p>
-<p>(<code>dcat:DataService</code> (O))</p>
+<p><code>dcat:DataService</code></p>
 </td>
-<td><p><code>rdfs:Class</code></p>
-<p>(<code>skos:Concept</code>)</p></td>
+<td><p><code>skos:Concept</code></p></td>
 <td>See <a href="#resource-type---not-in-iso19115-core"></a>. See controlled vocabulary for spatial data service type in <a href="#controlled-vocabularies-to-be-used"></a>.</td>
 </tr>
 
@@ -23054,17 +23049,15 @@ When the guidelines become available a reference implementation will be shared h
 <td>
 <p><code>dcat:keyword</code></p>
 <p><code>dcat:theme</code></p>
-<p><code>dct:type</code></p>
 </td>
 <td>
-<p>- (<code>dcat:Catalog</code> (M))</p>
-<p>- (<code>dcat:DatasetSeries</code> (M))</p>
-<p>- (<code>dcat:DataService</code> (O))</p>
+<p><code>dcat:Catalog</code></p>
+<p><code>dcat:DatasetSeries</code></p>
+<p><code>dcat:DataService</code></p>
 </td>
 <td>
-<p>- (<code>rdfs:Literal</code>)</p>
-<p>- (<code>rdfs:Resource</code>)</p>
-<p><code>rdfs:Class</code> (<code>skos:Concept</code>)</p>
+<p><code>rdfs:Literal</code></p>
+<p><code>skos:Concept</code></p>
 </td>
 <td>See <a href="#topic-category-originating-controlled-vocabulary-and-keyword-value---dataset-topic-category"></a>.</td>
 </tr>
@@ -23088,8 +23081,7 @@ When the guidelines become available a reference implementation will be shared h
 </td>
 <td><code>dct:spatial</code> (O)</td>
 <td>
-<p>-</p>
-<p>(<code>dcat:DataService</code> (O))</p>
+<p><code>dcat:DataService</code></p>
 </td>
 <td><code>dct:Location</code></td>
 <td>See <a href="#geographic-bounding-box---geographic-location-of-the-dataset-by-4-coordinates-or-by-geographic-identifier"></a> on the preferred format to be used in RDF for the representation of geometries.</td>
@@ -23101,9 +23093,9 @@ When the guidelines become available a reference implementation will be shared h
 <p>*Additional extent information for the dataset (vertical and temporal) (O)</p>
 </td>
 <td><code>dct:temporal</code> (O)</td>
-<td><p>-</p>
-<p>(<code>dcat:Catalog</code> (M))</p>
-<p>(<code>dcat:DataService</code> (O))</p>
+<td>
+<p><code>dcat:Catalog</code></p>
+<p><code>dcat:DataService</code></p>
 </td>
 <td><code>dct:PeriodOfTime</code></td>
 <td>See <a href="#temporal-reference-and-metadata-date-additional-extent-information-for-the-dataset-vertical-and-temporal-and-metadata-date-stamp"></a>.</td>
@@ -23116,10 +23108,9 @@ When the guidelines become available a reference implementation will be shared h
 </td>
 <td><code>dct:issued</code></td>
 <td>
-<p>-</p>
-<p>(<code>dcat:DataService</code> (O))</p>
+<p><code>dcat:DataService</code></p>
 </td>
-<td><code>xsd:date</code></td>
+<td><a href="#TemporalLiteral">Temporal Literal</a></td>
 <td>See <a href="#temporal-reference-and-metadata-date-additional-extent-information-for-the-dataset-vertical-and-temporal-and-metadata-date-stamp"></a>.</td>
 </tr>
 
@@ -23130,10 +23121,9 @@ When the guidelines become available a reference implementation will be shared h
 </td>
 <td><code>dct:modified</code></td>
 <td>
-<p>-</p>
-<p>(<code>dcat:DataService</code> (O))</p>
+<p><code>dcat:DataService</code></p>
 </td>
-<td><code>xsd:date</code></td>
+<td><a href="#TemporalLiteral">Temporal Literal</a></td>
 <td>See <a href="#temporal-reference-and-metadata-date-additional-extent-information-for-the-dataset-vertical-and-temporal-and-metadata-date-stamp"></a>.</td>
 </tr>
 
@@ -23144,13 +23134,12 @@ When the guidelines become available a reference implementation will be shared h
 </td>
 <td><code>dct:created</code></td>
 <td>
-<p>-</p>
-<p>(<code>dcat:Catalog</code> (M))</p>
-<p>(<code>dcat:Dataset</code> (M))</p>
-<p>(<code>dcat:DatasetSeries</code> (M))</p>
-<p>(<code>dcat:DataService</code> (O))</p>
+<p><code>dcat:Catalog</code></p>
+<p><code>dcat:Dataset</code></p>
+<p><code>dcat:DatasetSeries</code></p>
+<p><code>dcat:DataService</code></p>
 </td>
-<td><code>xsd:date</code></td>
+<td><a href="#TemporalLiteral">Temporal Literal</a></td>
 <td>See <a href="#temporal-reference-and-metadata-date-additional-extent-information-for-the-dataset-vertical-and-temporal-and-metadata-date-stamp"></a>.</td>
 </tr>
 
@@ -23163,9 +23152,8 @@ When the guidelines become available a reference implementation will be shared h
 <p><code>dcat:spatialResolutionInMeters</code></p>
 </td>
 <td>
-<p>-</p>
-<p>(<code>dcat:DatasetSeries</code> (M))</p>
-<p>(<code>dcat:DataService</code> (O))</p>
+<p><code>dcat:DatasetSeries</code></p>
+<p><code>dcat:DataService</code></p>
 </td>
 <td><code>xsd:decimal</code></td>
 <td rowspan="3">See <a href="#spatial-resolution-spatial-resolution-of-the-dataset"></a>. Property <code>dcat:spatialResolutionInMeters</code> can only be used when spatial resolution is expressed as distance in metres. Property <code>dqv:hasQualityMeasurement</code> can be used to specify any type of spatial resolution. Property <code>geodcatap:spatialResolutionAsText</code> is used only in case spatial resolution is specified as free-text.</td>
@@ -23176,10 +23164,9 @@ When the guidelines become available a reference implementation will be shared h
 <p><code>dqv:hasQualityMeasurement</code></p>
 </td>
 <td rowspan="2">
-<p>-</p>
-<p>(<code>dcat:Dataset</code> (M))</p>
-<p>(<code>dcat:DatasetSeries</code> (M))</p>
-<p>(<code>dcat:DataService</code> (O))</p>
+<p><code>dcat:Dataset</code></p>
+<p><code>dcat:DatasetSeries</code></p>
+<p><code>dcat:DataService</code></p>
 </td>
 <td><code>dqv:QualityMeasurement</code></td>
 </tr>
@@ -23199,9 +23186,9 @@ When the guidelines become available a reference implementation will be shared h
 <td><code>prov:wasUsedBy</code></td>
 <td>
 <p><code>prov:Entity</code></p>
-<p>(<code>dcat:Dataset</code> (M))</p>
-<p>(<code>dcat:DatasetSeries</code> (M))</p>
-<p>(<code>dcat:DataService</code> (M))</p>
+<p><code>dcat:Dataset</code></p>
+<p><code>dcat:DatasetSeries</code></p>
+<p><code>dcat:DataService</code></p>
 </td>
 <td><code>prov:Activity</code></td>
 <td>See <a href="#conformity-and-data-quality---not-in-iso19115-core"></a>.</td>
@@ -23256,12 +23243,11 @@ When the guidelines become available a reference implementation will be shared h
 <p>Limitations on public access (C)</p>
 <p>*not in ISO&nbsp;19115 core</p>
 </td>
-<td><code>dct:accessRights</code> (O)</td>
+<td><code>dct:accessRights</code> (O), <code>dct:rights</code> (O)</td>
 <td>
-<p>-</p>
-<p>(<code>dcat:Catalog</code> (M))</p>
-<p>(<code>dcat:Distribution</code> (R))</p>
-<p>(<code>dcat:DataService</code> (O))</p>
+<p><code>dcat:Catalog</code></p>
+<p><code>dcat:Distribution</code></p>
+<p><code>dcat:DataService</code></p>
 </td>
 <td><code>dct:RightsStatement</code></td>
 <td>See <a href="#conditions-for-access-and-use-and-limitations-on-public-access-use-limitation-and-access-other-constraints"></a>.</td>
@@ -23277,9 +23263,8 @@ When the guidelines become available a reference implementation will be shared h
 <p><code>dct:creator</code></p>
 </td>
 <td>
-<p>-</p>
-<p>(<code>dcat:CatalogRecord</code> (O))</p>
-<p>(<code>dcat:DataService</code> (O))</p>
+<p><code>dcat:CatalogRecord</code></p>
+<p><code>dcat:DataService</code></p>
 </td>
 <td><code>foaf:Agent</code></td>
 <td rowspan="4">See <a href="#responsible-party-and-metadata-point-of-contact---dataset-responsible-party-and-metadata-point-of-contact"></a>.</td>
@@ -23288,10 +23273,9 @@ When the guidelines become available a reference implementation will be shared h
 <tr>
 <td><code>dcat:contactPoint</code></td>
 <td>
-<p>-</p>
-<p>(<code>dcat:Catalog</code> (M))</p>
-<p>(<code>dcat:CatalogRecord</code> (O))</p>
-<p>(<code>dcat:DataService</code> (O))</p>
+<p><code>dcat:Catalog</code></p>
+<p><code>dcat:CatalogRecord</code></p>
+<p><code>dcat:DataService</code></p>
 </td>
 <td><code>vcard:Kind</code></td>
 </tr>
@@ -23308,12 +23292,11 @@ When the guidelines become available a reference implementation will be shared h
 <p><code>geodcatap:user</code></p>
 </td>
 <td>
-<p>-</p>
-<p>(<code>dcat:Catalog</code> (M))</p>
-<p>(<code>dcat:Dataset</code> (M))</p>
-<p>(<code>dcat:DatasetSeries</code> (M))</p>
-<p>(<code>dcat:CatalogRecord</code> (O))</p>
-<p>(<code>dcat:DataService</code> (O))</p>
+<p><code>dcat:Catalog</code></p>
+<p><code>dcat:Dataset</code></p>
+<p><code>dcat:DatasetSeries</code></p>
+<p><code>dcat:CatalogRecord</code></p>
+<p><code>dcat:DataService</code></p>
 </td>
 <td><code>foaf:Agent</code></td>
 </tr>
@@ -23322,11 +23305,11 @@ When the guidelines become available a reference implementation will be shared h
 <td><code>prov:qualifiedAttribution</code></td>
 <td>
 <p><code>prov:Entity</code></p>
-<p>(<code>dcat:Catalog</code> (M))</p>
-<p>(<code>dcat:Dataset</code> (M))</p>
-<p>(<code>dcat:DatasetSeries</code> (M))</p>
-<p>(<code>dcat:CatalogRecord</code> (O))</p>
-<p>(<code>dcat:DataService</code> (O))</p>
+<p><code>dcat:Catalog</code></p>
+<p><code>dcat:Dataset</code></p>
+<p><code>dcat:DatasetSeries</code></p>
+<p><code>dcat:CatalogRecord</code></p>
+<p><code>dcat:DataService</code></p>
 </td>
 <td><code>prov:Attribution</code></td>
 </tr>
@@ -23335,8 +23318,7 @@ When the guidelines become available a reference implementation will be shared h
 <td>Responsible party role (M)</td>
 <td><code>dcat:hadRole</code></td>
 <td>
-<p>-</p>
-<p>(<code>prov:Attribution</code>)</p>
+<p><code>prov:Attribution</code></p>
 </td>
 <td><code>dcat:Role</code></td>
 <td>See <a href="#responsible-party-and-metadata-point-of-contact---dataset-responsible-party-and-metadata-point-of-contact"></a> and controlled vocabulary for responsible party role in <a href="#controlled-vocabularies-to-be-used"></a>.</td>
@@ -23345,8 +23327,8 @@ When the guidelines become available a reference implementation will be shared h
 <tr>
 <td>*Metadata file identifier (O)</td>
 <td><code>dct:identifier</code></td>
-<td><p>-</p>
-<p>(<code>dcat:CatalogRecord</code> (O))</p></td>
+<td>
+<p><code>dcat:CatalogRecord</code></p></td>
 <td><code>rdfs:Literal</code></td>
 <td>See <a href="#metadata-file-identifier"></a>. In RDF, this could also be represented as the URI of the metadata / catalogue record.</td>
 </tr>
@@ -23357,53 +23339,56 @@ When the guidelines become available a reference implementation will be shared h
 <p>*Metadata point of contact (M)</p>
 </td>
 <td><code>dcat:contactPoint</code></td>
-<td><p>-</p>
-<p>(<code>dcat:CatalogRecord</code> (O))</p></td>
+<td>
+<p><code>dcat:CatalogRecord</code></p></td>
 <td><code>vcard:Kind</code></td>
 <td rowspan="2">See <a href="#responsible-party-and-metadata-point-of-contact---dataset-responsible-party-and-metadata-point-of-contact"></a>.</td>
 </tr>
 
 <tr>
 <td><code>prov:qualifiedAttribution</code></td>
-<td><p>-</p>
-<p>(<code>dcat:CatalogRecord</code> (O))</p></td>
+<td>
+<p><code>dcat:CatalogRecord</code></p></td>
 <td><code>prov:Attribution</code></td>
 </tr>
 
+<!--removed in GeoDCAT-AP 3.0.0 -->
 <tr>
 <td>*Metadata character set (C)</td>
-<td><code>cnt:characterEncoding</code></td>
-<td><p><code>cnt:Content</code></p>
-<p>(<code>dcat:CatalogRecord</code> (O))</p></td>
-<td><code>rdfs:Literal</code></td>
-<td>See <a href="#character-encoding---dataset-character-set-and-metadata-character-set"></a>.</td>
+<td><p>-</p></td>
+<td><p>-</p>
+<p><p>-</p></td>
+<td><p>-</p></td>
+<td>Metadata in GeoDCAT-AP are always in UTF-8. See <a href="#character-encoding---dataset-character-set-and-metadata-character-set"></a>.</td>
 </tr>
 
 <tr>
 <td><p>Coordinate Reference System (M)</p>
 <p>*Reference System (0)</p></td>
-<td><code>dct:conformsTo</code></td>
+<td><code>geodcatap:referenceSystem</code></td>
 <td>
-<p>-</p>
-<p>(<code>dcat:Dataset</code> (M))</p>
-<p>(<code>dcat:DatasetSeries</code> (M))</p>
-<p>(<code>dcat:DataService</code> (O))</p>
+<p><code>dcat:Catalog</code></p>
+<p><code>dcat:Dataset</code></p>
+<p><code>dcat:DatasetSeries</code></p>
+<p><code>dcat:DataService</code></p>
+<p><code>dcat:Distribution</code></p>
 </td>
-<td><code>dct:Standard</code></td>
+<td><code>skos:Concept</code></td>
 <td>See <a href="#coordinate-reference-systems-and-temporal-reference-systems-reference-system"></a>.</td>
 </tr>
 
 <tr>
 <td><p>Temporal Reference System (C)</p>
 <p>*Reference System (0)</p></td>
-<td><code>dct:conformsTo</code></td>
+<td><code>geodcatap:referenceSystem</code></td>
 <td>
-<p>-</p>
-<p>(<code>dcat:Dataset</code> (M))</p>
-<p>(<code>dcat:DatasetSeries</code> (M))</p>
-<p>(<code>dcat:DataService</code> (O))</p>
+<p><code>dcat:Catalog</code></p>
+<p><code>dcat:Dataset</code></p>
+<p><code>dcat:DatasetSeries</code></p>
+<p><code>dcat:DataService</code></p>
+<p><code>dcat:Distribution</code></p>
 </td>
-<td><code>dct:Standard</code></td>
+<td><code>skos:Concept</code></td>
 <td>See <a href="#coordinate-reference-systems-and-temporal-reference-systems-reference-system"></a>.</td>
 </tr>
 
@@ -23411,8 +23396,7 @@ When the guidelines become available a reference implementation will be shared h
 <td><p>Character Encoding (C)</p>
 <p>*Dataset character set (C)</p></td>
 <td><code>cnt:characterEncoding</code></td>
-<td><p><code>cnt:Content</code></p>
-<p>(<code>dcat:Distribution</code> (R))</p></td>
+<td><p><code>dcat:Distribution</code></p></td>
 <td><code>rdfs:Literal</code></td>
 <td>See <a href="#character-encoding---dataset-character-set-and-metadata-character-set"></a>.</td>
 </tr>
@@ -23421,7 +23405,7 @@ When the guidelines become available a reference implementation will be shared h
 <td><p>Spatial representation type – (M)</p>
 <p>*Spatial representation type (O)</p></td>
 <td><code>adms:representationTechnique</code></td>
-<td><code>dcat:Distribution</code> (R)</td>
+<td><code>dcat:Distribution</code></td>
 <td><code>skos:Concept</code></td>
 <td>See <a href="#spatial-representation-type-spatial-representation-type"></a>.</td>
 </tr>
