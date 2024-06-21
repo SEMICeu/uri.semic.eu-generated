@@ -17273,7 +17273,37 @@ In GeoDCAT-AP, this class SHOULD be used to specify a testing activity over a re
             </div>
         
 
-                   
+                   <a href="ex-activity"></a> shows the use of class <code>prov:Activity</code> to specify the results of a testing activity assessing the conformance of a given resource against a given specification - as illustrated in <a href="#conformance-test-results"></a>.
+
+<aside id="ex-activity" class="example" title="A testing activity">
+<pre class="turtle">
+@prefix dct: &lt;http://purl.org/dc/terms/&gt; .
+@prefix prov: &lt;http://www.w3.org/ns/prov#&gt; .
+@prefix rdf: &lt;http://www.w3.org/1999/02/22-rdf-syntax-ns#&gt; .
+@prefix rdfs: &lt;http://www.w3.org/2000/01/rdf-schema#&gt; .
+@prefix resource: &lt;https://some.catalogue/resource/&gt; .
+@prefix xml: &lt;http://www.w3.org/XML/1998/namespace&gt; .
+@prefix xsd: &lt;http://www.w3.org/2001/XMLSchema#&gt; .
+
+&lt;http://data.europa.eu/eli/reg/2010/1089&gt; a dct:Standard,
+    prov:Entity ;
+  dct:issued "2010-12-08"^^xsd:date ;
+  dct:title """
+    Commission Regulation (EU) No 1089/2010 of 23 November 2010 
+    implementing Directive 2007/2/EC of the European Parliament 
+    and of the Council as regards interoperability of spatial 
+    data sets and services
+  """@en .
+
+[] a prov:Activity ;
+  prov:generated [ a prov:Entity ;
+      dct:description "See the referenced specification"@en ;
+      dct:type &lt;http://inspire.ec.europa.eu/metadata-codelist/DegreeOfConformity/notEvaluated&gt; ] ;
+  prov:qualifiedAssociation [ a prov:Association ;
+      prov:hadPlan [ a prov:Plan ;
+          prov:wasDerivedFrom &lt;http://data.europa.eu/eli/reg/2010/1089&gt; ] ] ;
+  prov:used resource:eea_v_4326_1_mio_EU27-2020-basemap_i_2020_v01_r00 .</pre>
+</aside>
 
 	  
 
@@ -31698,11 +31728,9 @@ Past and current contributors are :
 	.simple td{padding:3px 10px;border-top:1px solid #ddd}
 	.simple tr:nth-child(even){background:#f0f6ff}
     
-    @media (prefers-color-scheme: dark) {
-        .simple th{background:#005a9c94;color:#ddd}
-	    .simple th a{color:#ddd}
-	    .simple tr:nth-child(even){background:#f0f6ff26}
-    }
+    body.darkmode .simple th{background:#005a9c94;color:#ddd}
+	body.darkmode .simple th a{color:#ddd}
+	body.darkmode .simple tr:nth-child(even){background:#f0f6ff26}
   </style>
 
     	<link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.13.4/css/jquery.dataTables.min.css">
