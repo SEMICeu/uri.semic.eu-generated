@@ -102,6 +102,16 @@
 	
 		]
 
+    var myowners = [
+            {
+                value: "SEMIC",
+                href: "https://joinup.ec.europa.eu/collection/semic-support-centre",
+            },
+            {
+                value: "Pavlina Fragkou (DG DIGIT)",
+            },
+		]
+
 
    
 
@@ -1653,11 +1663,14 @@ Either these are reused as-is, i.e. with no formal additional constraints compar
  
   <section id="controlled-vocs" class="informative">
   <h2>Controlled Vocabularies</h2>
+  The shared use of Controlled Vocabularie is an important aspect in data harmonisation. 
+  This section contains information on the controlled vocabularies (or data instances) that are defined in the namespace <code>http://data.europa.eu/930</code>.
+  And additionally it connects properties that are defined in this namespace with external Controlled Vocabularies to improve the semantical interoperability.
+  
 
-  <div data-include-format="html" data-include-replace="true" data-include="./html/tables/controlled-vocabularies-to-be-used.html"></div>
 
   <h3 id="instances-of-metric">Instances of Metric</h3>
-  For the class Metric the following instances are defined.
+  For the class Metric the following instances are defined in the namespace <code>http://data.europa.eu/930</code>.
 
   <table class="simple" id="table-instances-of-metric">
 <thead>
@@ -1763,6 +1776,148 @@ Either these are reused as-is, i.e. with no formal additional constraints compar
 </td>
 -->
 </tr>
+
+</tbody>
+</table>
+
+
+  <h3 id="suggestions-of-cv">Suggested Controlled Vocabularies</h3> 
+  Imposing the use of a controlled vocabulary for a property in the vocabulary is restricting severely its reusability. 
+  The table below is added to increase the insight in the preferred way how to use these properties.
+  <p/>
+  Therefore the table SHOULD be read as a strong suggestion because deviating from the presented choices may lead to conflicts 
+  when using it for datasets that are also described by GeoDCAT-AP.
+  It should be observed that this strong suggestion is also a consequense from the precise semantics of the properties. 
+  Their definitions hint at the usage of a Controlled Vocabulary.
+  Nevertheless it should be noted that the listed Controlled Vocabularies and properties have seperate life cycles. 
+  And that in the future other choices might be presented. 
+
+  <table class="simple" id="table-controlled-vocabularies-to-be-used">
+<thead>
+<tr>
+<th>
+<p>Property URI</p>
+</th>
+<th>
+<p>Used for Class</p>
+</th>
+<th>
+<p>Vocabulary name</p>
+</th>
+<th>
+<p>Vocabulary URI</p>
+</th>
+</tr>
+</thead>
+<tbody>
+
+<tr>
+<td>
+    <p><code>geodcatap:referenceSystem</code></p>
+</td>
+<td>
+    <p><code>dcat:Catalog</code>, <code>dcat:Dataset</code>, <code>dcat:DataService</code>, <code>dcat:Distribution</code></p>
+</td>
+<td>
+    <p>OGC EPSG Coordinate Reference Systems Register [[OGC-EPSG]]</p>
+</td>
+<td>
+    <p><a href="http://www.opengis.net/def/crs/EPSG/0/">http://www.opengis.net/def/crs/EPSG/0/</a></p>
+</td>
+</tr>
+
+<tr>
+<td>
+    <p><code>geodcatap:resourceType</code></p>
+</td>
+<td>
+    <p><code>dcat:Dataset</code>, <code>dcat:DataService</code></p>
+</td>
+<td>
+    <p>INSPIRE Resource Types [[INSPIRE-RT]]</p>
+</td>
+<td>
+    <p><a href="http://inspire.ec.europa.eu/metadata-codelist/ResourceType">http://inspire.ec.europa.eu/metadata-codelist/ResourceType</a></p>
+</td>
+</tr>
+
+<tr>
+<td>
+    <p><code>geodcatap:serviceCateogry</code></p>
+</td>
+<td>
+    <p><code>dcat:DataService</code></p>
+</td>
+<td>
+    <p>INSPIRE Spatial Data Service Categories [[INSPIRE-SDSC]]</p>
+</td>
+<td>
+    <p><a href="http://inspire.ec.europa.eu/metadata-codelist/SpatialDataServiceCategory">http://inspire.ec.europa.eu/metadata-codelist/SpatialDataServiceCategory</a></p>
+</td>
+</tr>
+
+<tr>
+<td>
+    <p><code>geodcatap:serviceProtocol</code></p>
+</td>
+<td>
+    <p><code>dcat:DataService</code></p>
+</td>
+<td>
+    <p>INSPIRE Protocol Values [[INSPIRE-PV]]</p>
+</td>
+<td>
+    <p><a href="https://inspire.ec.europa.eu/metadata-codelist/ProtocolValue">https://inspire.ec.europa.eu/metadata-codelist/ProtocolValue</a></p>
+</td>
+</tr>
+
+<tr>
+<td>
+    <p><code>geodcatap:serviceType</code></p>
+</td>
+<td>
+    <p><code>dcat:DataService</code></p>
+</td>
+<td>
+    <p>INSPIRE Spatial Data Service Types [[INSPIRE-SDST]]</p>
+</td>
+<td>
+    <p><a href="http://inspire.ec.europa.eu/metadata-codelist/SpatialDataServiceType">http://inspire.ec.europa.eu/metadata-codelist/SpatialDataServiceType</a></p>
+</td>
+</tr>
+
+<tr>
+<td>
+    <p><code>geodcatap:topicCategory</code></p>
+</td>
+    <td><p><code>dcat:Catalog</code>, <code>dcat:Dataset</code>, <code>dcat:DataService</code></p></td>
+<td>
+    <p>INSPIRE Topic Categories [[INSPIRE-TC]]</p>
+</td>
+<td>
+    <p><a href="http://inspire.ec.europa.eu/metadata-codelist/TopicCategory">http://inspire.ec.europa.eu/metadata-codelist/TopicCategory</a></p>
+</td>
+</tr>    
+
+<!--<tr>
+<td>
+<p>+<code>dct:type</code></p>
+</td>
+<td>
+<p><a href="#Standard.type">Standard</a></p>
+</td>
+<td>
+<p>INSPIRE Glossary [[INSPIRE-GLOSSARY]]</p>
+</td>
+<td>
+<p><a href="http://inspire.ec.europa.eu/glossary/SpatialReferenceSystem">http://inspire.ec.europa.eu/glossary/SpatialReferenceSystem</a></p>
+<p><a href="http://inspire.ec.europa.eu/glossary/TemporalReferenceSystem">http://inspire.ec.europa.eu/glossary/TemporalReferenceSystem</a></p>
+</td>
+<td>
+<p>GeoDCAT-AP extension.</p>
+<p>When the Standard is a spatial or temporal reference system, the relevant URIs from the [[INSPIRE-GLOSSARY]] SHOULD be used.</p>
+</td>
+</tr>-->
 
 </tbody>
 </table>
