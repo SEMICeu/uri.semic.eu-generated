@@ -62,16 +62,6 @@
 		, 
 		
 		   {
-		    name: "Anastasia Sofou",
-		      
-		      
-		    company: "Trasys International",
-		      
-		      
-		    }
-		, 
-		
-		   {
 		    name: "Bert Van Nuffelen",
 		      
 		      
@@ -138,7 +128,7 @@
       edDraftURI: "https://semiceu.github.io/GeoDCAT-AP/releases/3.0.0",
       latestVersion: "https://github.com/SEMICeu/GeoDCAT-AP/tree/master/releases/2.0.0",
       specStatus: "base",
-      publishDate: "2024-06-21",
+      publishDate: "2024-06-26",
       editors: myeditors,
       authors: myauthors,
       otherLinks: [
@@ -1141,9 +1131,9 @@ The following webinars have been held for the creation of this release
     <h2>Status</h2>
         <p>
 <!-- readd when SEMIC has a codelist about it process 
-	This application profile has the status <a href="https://www.w3.org/2021/Process-20211102/#RecsCR">Working Draft</a> published at 2024-06-21.
+	This application profile has the status <a href="https://www.w3.org/2021/Process-20211102/#RecsCR">Working Draft</a> published at 2024-06-26.
 -->
-	This application profile has the status Working Draft published at 2024-06-21.
+	This application profile has the status Working Draft published at 2024-06-26.
         </p>
         <p>
             Information about the process and the decisions involved in the creation of this specification are consultable at the <a href="https://semiceu.github.io/GeoDCAT-AP/releases/3.0.0/CHANGELOG.html">Changelog</a>.
@@ -23049,6 +23039,7 @@ When the guidelines become available a reference implementation will be shared h
 <td>
 <p><code>dcat:keyword</code></p>
 <p><code>dcat:theme</code></p>
+<p><code>geodcatap:serviceCategory</code></p>
 </td>
 <td>
 <p><code>dcat:Catalog</code></p>
@@ -23356,8 +23347,7 @@ When the guidelines become available a reference implementation will be shared h
 <tr>
 <td>*Metadata character set (C)</td>
 <td><p>-</p></td>
-<td><p>-</p>
-<p><p>-</p></td>
+<td><p>-</p></td>
 <td><p>-</p></td>
 <td>Metadata in GeoDCAT-AP are always in UTF-8. See <a href="#character-encoding---dataset-character-set-and-metadata-character-set"></a>.</td>
 </tr>
@@ -23473,7 +23463,8 @@ When the guidelines become available a reference implementation will be shared h
 <td>Metadata character set</td>
 <td>C</td>
 <td></td>
-<td>Yes</td>
+<!-- Removed in GeoDCAT-AP 3.0.0-->
+<td>Always UTF-8</td>
 </tr>
 <tr>
 <td></td>
@@ -23766,11 +23757,11 @@ When the guidelines become available a reference implementation will be shared h
 
 <p>Resource metadata in GeoDCAT-AP:</p>
 
-<pre>[] dct:title &quot;Forest / Non-Forest Map 2006&quot;@en.</pre>
+<pre class="turtle">[] dct:title &quot;Forest / Non-Forest Map 2006&quot;@en.</pre>
 
 <p>Resource metadata in ISO 19139:</p>
 
-<pre>&lt;gmd:MD_Metadata&gt;
+<pre class="turtle">&lt;gmd:MD_Metadata&gt;
   ...
   &lt;gmd:identificationInfo&gt;
     &lt;gmd:MD_DataIdentification&gt;
@@ -23803,7 +23794,7 @@ When the guidelines become available a reference implementation will be shared h
 
 <p>Resource metadata in GeoDCAT-AP:</p>
 
-<pre>[] dct:description &quot;Pan-European Forest / Non Forest Map with target year 2006,
+<pre class="turtle">[] dct:description &quot;Pan-European Forest / Non Forest Map with target year 2006,
   Data Source: Landsat ETM+ and Corine Land Cover 2006, Classes: for-est, non-forest,
   clouds/snow, no data; Method: automatic classification performed with an in-house
   algorithm; spatial resolution: 25m. In addition, the forest map 2006 is extended to
@@ -23812,7 +23803,7 @@ When the guidelines become available a reference implementation will be shared h
 
 <p>Resource metadata in ISO 19139:</p>
 
-<pre>&lt;gmd:MD_Metadata&gt;
+<pre class="xml">&lt;gmd:MD_Metadata&gt;
   ...
   &lt;gmd:identificationInfo&gt;
     &lt;gmd:MD_DataIdentification&gt;
@@ -23840,7 +23831,8 @@ When the guidelines become available a reference implementation will be shared h
 
 <aside class="note">
 <p>This mapping has been revised in this version of the GeoDCAT-AP specification.</p>
-<p>In particular, class <code>dcat:Dataset</code> has been replaced by class <code>dcat:DataSeries</code> to denote dataset series.</p>
+<p>The class <code>dcat:Dataset</code> has been replaced by class <code>dcat:DatasetSeries</code> to denote dataset series.</p>
+<p>Moreover, the usage of <code>dct:type</code> was replaced by specific subproperties <code>geodcatap:resourceType</code> and <code>geodcatap:serviceType</code>.</p>
 <!--
 <p>In particular:</p>
 <ul>
@@ -23863,7 +23855,7 @@ When the guidelines become available a reference implementation will be shared h
 
 <p>[[VOCAB-DCAT-3]] and [[DCAT-AP-3]] provide specific classes that can be used to represent the INSPIRE notions of <strong>dataset</strong>, <strong>dataset series</strong>, and <strong>service</strong>, namely, <code>dcat:Dataset</code>, <code>dcat:DatasetSeries</code>, and <code>dcat:DataService</code>.</p>
 
-<p>In order to explicitly indicate the correspondence with the relevant INSPIRE resource types, following the work on aligning INSPIRE Metadata and Dublin Core [[?INSPIRE-DC]], in the extended mapping profile of GeoDCAT-AP they will be denoted by using the resource type code list operated by the INSPIRE Registry [[INSPIRE-RT]], and by using <code>dct:type</code>. More precisely, the following URIs SHOULD be used to denote, respectively, dataset, series, and services:</p>
+<p>In order to explicitly indicate the correspondence with the relevant INSPIRE resource types, following the work on aligning INSPIRE Metadata and Dublin Core [[?INSPIRE-DC]], in the extended mapping profile of GeoDCAT-AP they will be denoted by using the resource type code list operated by the INSPIRE Registry [[INSPIRE-RT]], and by using <code>geodcatap:resourceType</code>. More precisely, the following URIs SHOULD be used to denote, respectively, dataset, series, and services:</p>
 
 <ul>
 <li><p><a href="http://inspire.ec.europa.eu/metadata-codelist/ResourceType/dataset">http://inspire.ec.europa.eu/metadata-codelist/ResourceType/dataset</a></p></li>
@@ -23871,7 +23863,7 @@ When the guidelines become available a reference implementation will be shared h
 <li><p><a href="http://inspire.ec.europa.eu/metadata-codelist/ResourceType/service">http://inspire.ec.europa.eu/metadata-codelist/ResourceType/service</a></p></li>
 </ul>
 
-<p>Additionally, the spatial data service type can be specified by using <code>dct:type</code> with the corresponding code lists operated by the INSPIRE Registry [[INSPIRE-SDST]].</p>
+<p>Additionally, the spatial data service type can be specified by using <code>geodcatap:serviceType</code> with the corresponding code lists operated by the INSPIRE Registry [[INSPIRE-SDST]].</p>
 
 <!--
 <p>In [[VOCAB-DCAT-2]], the notion of dataset is quite broad, and may include both the INSPIRE notions of <strong>dataset</strong> and <strong>dataset series</strong>. Moreover, currently no existing vocabulary provides suitable candidates for the INSPIRE notions of dataset series – the existing ones are very generic (e.g., <code>dctype:Collection</code> is defined as <q>An aggregation of resources</q> [[DCTERMS]]).</p>
@@ -23895,22 +23887,22 @@ When the guidelines become available a reference implementation will be shared h
 
 <p>Resource metadata in GeoDCAT-AP:</p>
 
-<pre>## Resource type for datasets
+<pre class="turtle"># Resource type for datasets
 [] a dcat:Dataset;
-  dct:type &lt;http://inspire.ec.europa.eu/metadata-codelist/ResourceType/dataset&gt; .
+  geodcatap:resourceType &lt;http://inspire.ec.europa.eu/metadata-codelist/ResourceType/dataset&gt; .
 
 ## Resource type for series
 [] a dcat:DatasetSeries;
-  dct:type &lt;http://inspire.ec.europa.eu/metadata-codelist/ResourceType/series&gt; .
+geodcatap:resourceType &lt;http://inspire.ec.europa.eu/metadata-codelist/ResourceType/series&gt; .
 
 ## Resource type for services (here, a view service)
 [] a dcat:DataService;
-  dct:type &lt;http://inspire.ec.europa.eu/metadata-codelist/ResourceType/service&gt; ,
-    &lt;http://inspire.ec.europa.eu/metadata-codelist/SpatialDataServiceType/view&gt; .</pre>
+geodcatap:resourceType &lt;http://inspire.ec.europa.eu/metadata-codelist/ResourceType/service&gt; .
+geodcatap:serviceType &lt;http://inspire.ec.europa.eu/metadata-codelist/SpatialDataServiceType/view&gt; .</pre>
 
 <p>Resource metadata in ISO 19139:</p>
 
-<pre>&lt;!-- MD_ScopeCode for a dataset in ISO 19139 --&gt;
+<pre class="xml">&lt;!-- MD_ScopeCode for a dataset in ISO 19139 --&gt;
 &lt;gmd:MD_Metadata&gt;
   ...
   &lt;gmd:hierarchyLevel&gt;
@@ -24085,7 +24077,7 @@ When the guidelines become available a reference implementation will be shared h
 
 <p>Properties <code>dcat:endpointURL</code> and <code>dcat:endpointDescription</code> will have as domain class <code>dcat:DataService</code>, linked to the dataset distribution via property <code>dcat:accessService</code>.</p>
 
-<p>Finally, whenever it is possible to recognise the service protocol, this information will be specified by property <code>dct:conformsTo</code>, taking as value the URI of the relevant specification from the INSPIRE Registry's code list for protocol values [[INSPIRE-PV]].</p>
+<p>Finally, whenever it is possible to recognise the service protocol, this information will be specified by property <code>geodcatap:serviceProtocol</code>, taking as value the URI of the relevant specification from the INSPIRE Registry's code list for protocol values [[INSPIRE-PV]].</p>
 
 <!--
 <p>Finally, whenever it is possible to recognise the service protocol, this information will be specified by property <code>dct:conformsTo</code>, taking as value the URI of the relevant specification. As an example, the following table lists URIs for service protocols of some OGC services.</p>
@@ -24140,7 +24132,7 @@ When the guidelines become available a reference implementation will be shared h
 
 <p>Resource metadata in GeoDCAT-AP:</p>
 
-<pre>## Resource locator for datasets and series
+<pre class="turtle">## Resource locator for datasets and series
 [] a dcat:Dataset;
   foaf:page &lt;http://forest.jrc.ec.europa.eu/forestmap-download&gt; .
 
@@ -24149,12 +24141,12 @@ When the guidelines become available a reference implementation will be shared h
   dcat:endpointDescription &lt;http://geohub.jrc.ec.europa.eu/efas_cc?service=WMS&amp;request=GetCapabilities&gt; ;
   dcat:endpointURL &lt;http://geohub.jrc.ec.europa.eu/efas_cc&gt; ; 
   dcat:accessURL &lt;http://geohub.jrc.ec.europa.eu/efas_cc&gt; ; 
-  dct:conformsTo &lt;http://www.opengeospatial.org/standards/wms&gt; ; 
+  geodcatap:serviceProtocol &lt;http://www.opengeospatial.org/standards/wms&gt; ; 
 .</pre>
 
 <p>Resource metadata in ISO 19139 for datasets:</p>
 
-<pre>&lt;gmd:MD_Metadata&gt;
+<pre class="xml">&lt;gmd:MD_Metadata&gt;
   ...
   &lt;gmd:transferOptions&gt;
     &lt;gmd:MD_DigitalTransferOptions&gt;
@@ -24184,7 +24176,7 @@ When the guidelines become available a reference implementation will be shared h
 
 <p>Resource locator in ISO 19139 for services:</p>
 
-<pre>&lt;gmd:MD_Metadata&gt;
+<pre class="xml">&lt;gmd:MD_Metadata&gt;
   ...
   &lt;gmd:distributionInfo&gt;
     &lt;gmd:MD_Distribution&gt;
@@ -24232,11 +24224,11 @@ When the guidelines become available a reference implementation will be shared h
 
 <p>Resource metadata in GeoDCAT-AP:</p>
 
-<pre>[] dct:identifier &quot;1234567890&quot;^^xsd:string .</pre>
+<pre class="turtle">[] dct:identifier &quot;1234567890&quot;^^xsd:string .</pre>
 
 <p>Resource metadata in ISO 19139</p>
 
-<pre>&lt;gmd:MD_Metadata&gt;
+<pre class="xml">&lt;gmd:MD_Metadata&gt;
   ...
   &lt;gmd:identificationInfo&gt;
     &lt;gmd:MD_DataIdentification&gt;
@@ -24261,12 +24253,12 @@ When the guidelines become available a reference implementation will be shared h
 
 <p>Resource metadata in GeoDCAT-AP</p>
 
-<pre>&lt;https://some.catalogue/resource/1234567890&gt;
+<pre class="turtle">&lt;https://some.catalogue/resource/1234567890&gt;
   dct:identifier &quot;https://some.catalogue/resource/1234567890&quot;^^xsd:anyURI .</pre>
 
 <p>Resource metadata in ISO 19139</p>
 
-<pre>&lt;!-- Unique resource identifier specified only with code --&gt;
+<pre class="xml">&lt;!-- Unique resource identifier specified only with code --&gt;
 &lt;gmd:MD_Metadata&gt;
   ...
   &lt;gmd:identificationInfo&gt;
@@ -24333,7 +24325,7 @@ When the guidelines become available a reference implementation will be shared h
 <p>Following [[VOCAB-DCAT-3]] and [DCAT-AP-3], this relationship is specified by using property <code>dcat:servesDataset</code>.</p>
 
 <aside class="note">
-<p>The notion of “coupled resource” does not apply to catalogue / discovery services. As per the [[DCAT-AP-3]], in GeoDCAT-AP (core and extended mapping profiles) the relationship between the catalogue and the available resources is specified by using <code>dcat:dataset</code> (for Datasets) and <code>dcat:service</code> (for Data Services).</p>
+<p>The notion of “coupled resource” does not apply to catalogue / discovery services. As per the [[DCAT-AP-3]], in GeoDCAT-AP (core and extended mapping profiles) the relationship between the catalogue and the available resources is specified by using <code>dcat:dataset</code> (for Datasets and Dataset Series) and <code>dcat:service</code> (for Data Services).</p>
 </aside>
 
 <p>The target dataset or series SHOULD be preferably referred to by using its unique resource identifier, as in <a href="#ex-mapping-coupled-resource"></a>.</p>
@@ -24342,7 +24334,7 @@ When the guidelines become available a reference implementation will be shared h
 
 <p>Resource metadata in GeoDCAT-AP</p>
 
-<pre>[] a dcat:DataService ;
+<pre class="turtle">[] a dcat:DataService ;
   dct:type &lt;http://inspire.ec.europa.eu/metadata-codelist/ResourceType/service&gt; ,
     &lt;http://inspire.ec.europa.eu/metadata-codelist/SpatialDataServiceType/view&gt; ;
   dcat:servesDataset [ a dcat:Dataset ;
@@ -24351,7 +24343,7 @@ When the guidelines become available a reference implementation will be shared h
 
 <p>Resource metadata in ISO 19139</p>
 
-<pre>&lt;gmd:MD_Metadata&gt;
+<pre class="xml">&lt;gmd:MD_Metadata&gt;
   ...
   &lt;gmd:identificationInfo&gt;
     &lt;srv:SV_ServiceIdentification&gt;
@@ -24401,7 +24393,7 @@ When the guidelines become available a reference implementation will be shared h
 
 <p>Resource metadata in GeoDCAT-AP</p>
 
-<pre># Metadata on metadata
+<pre class="turtle"># Metadata on metadata
 [] a dcat:CatalogRecord ;
   dct:language
   &lt;http://publications.europa.eu/resource/authority/language/NLD&gt; ;
@@ -24413,7 +24405,7 @@ When the guidelines become available a reference implementation will be shared h
 
 <p>Resource metadata in ISO 19139</p>
 
-<pre>&lt;gmd:MD_Metadata&gt;
+<pre class="xml">&lt;gmd:MD_Metadata&gt;
   ...
 &lt;!-- Metadata on metadata: metadata language --&gt;
   &lt;gmd:language&gt;
@@ -24472,7 +24464,7 @@ When the guidelines become available a reference implementation will be shared h
 <p>As far as dataset metadata are concerned, in both [[VOCAB-DCAT-3]] and [[DCAT-AP-3]], a distinction is made only between free keywords and keywords from controlled vocabularies, associated with a URI. For the former, <code>dcat:keyword</code> is used, whereas for the latter <code>dcat:theme</code> (which is a sub-property of <code>dct:subject</code>). Since the INSPIRE Registry operates URI registers for topic categories and INSPIRE spatial data themes, and in order to keep the distinction existing in INSPIRE between topic categories and keywords, the mapping is as follows:</p>
 
 <ul>
-<li><p>Topic category is mapped to <code>dct:subject</code>, and expressed by the corresponding URIs minted for the ISO code list in the INSPIRE Registry – reference register:</p>
+<li><p>Topic category is mapped to <code>geodcatap:topicCategory</code>, and expressed by the corresponding URIs minted for the ISO code list in the INSPIRE Registry – reference register:</p>
 <p><a href="http://inspire.ec.europa.eu/metadata-codelist/TopicCategory">http://inspire.ec.europa.eu/metadata-codelist/TopicCategory</a></p></li>
 <li><p>Keywords not associated with a controlled vocabulary will be mapped to <code>dcat:keyword</code>;</p></li>
 <li><p>INSPIRE spatial data themes are mapped to <code>dcat:theme</code> and expressed by the corresponding URI in the INSPIRE Registry – reference register:</p>
@@ -24549,30 +24541,27 @@ When the guidelines become available a reference implementation will be shared h
 -->
 <p>As far as service metadata are concerned, keywords can classify either a service or the datasets / series operated by the service itself. For the latter, INSPIRE Metadata Regulation requires using at least one of the keywords from the ISO 19119 code list of spatial data service categories.</p>
 
-<p>Both [[VOCAB-DCAT-3]] and [[DCAT-AP-3]] do not have any specific property for keywords classifying either a service or the datasets / series operated by a service. Moreover, <code>dcat:theme</code> and <code>dcat:keyword</code> cannot be used for services, since their domain is restricted to <code>dcat:Dataset</code>.</p>
+<!--<p>Both [[VOCAB-DCAT-3]] and [[DCAT-AP-3]] do not have any specific property for keywords classifying either a service or the datasets / series operated by a service. Moreover, <code>dcat:theme</code> and <code>dcat:keyword</code> cannot be used for services, since their domain is restricted to <code>dcat:Dataset</code>.</p>-->
 
 <p>In order to keep the distinction between these two types of keywords, the adopted solution is as follows:</p>
 
 <ul>
-<li><p>Keywords from the ISO 19119 codelists of spatial data service type and categories are mapped to <code>dct:type</code>, and expressed by the corresponding URI in the INSPIRE Registry – reference registers:</p>
+<li>Keywords from the ISO 19119 codelist of spatial data service type mapped to <code>geodcatap:serviceType</code>, and expressed by the corresponding URI in the INSPIRE Registry <a href="http://inspire.ec.europa.eu/metadata-codelist/SpatialDataServiceType">http://inspire.ec.europa.eu/metadata-codelist/SpatialDataServiceType</a>;</li>
+<li>Keywords from the ISO 19119 codelists of spatial data service type categories are mapped to <code>geodcatap:serviceCategory</code>, and expressed by the corresponding URI in the INSPIRE Registry <a href="http://inspire.ec.europa.eu/metadata-codelist/SpatialDataServiceCategory">http://inspire.ec.europa.eu/metadata-codelist/SpatialDataServiceCategory</a>;</li>
+<li>Keywords not associated with a controlled vocabulary will be mapped to <code>dcat:keyword</code>, and represented as un-typed literals;</li>
+<li>INSPIRE spatial data themes are mapped to <code>dcat:theme</code>, and expressed by the corresponding URI in the INSPIRE Registry – reference register:
 <ul>
-<li><p><a href="http://inspire.ec.europa.eu/metadata-codelist/SpatialDataServiceType">http://inspire.ec.europa.eu/metadata-codelist/SpatialDataServiceType</a></p></li>
-<li><p><a href="http://inspire.ec.europa.eu/metadata-codelist/SpatialDataServiceCategory">http://inspire.ec.europa.eu/metadata-codelist/SpatialDataServiceCategory</a></p></li>
-</ul></li>
-<li><p>Keywords not associated with a controlled vocabulary will be mapped to <code>dcat:keyword</code>, and represented as un-typed literals;</p></li>
-<li><p>INSPIRE spatial data themes are mapped to <code>dcat:theme</code>, and expressed by the corresponding URI in the INSPIRE Registry – reference register:</p>
-<ul>
-<li><p><a href="http://inspire.ec.europa.eu/theme">http://inspire.ec.europa.eu/theme</a></p></li>
+<li><a href="http://inspire.ec.europa.eu/theme">http://inspire.ec.europa.eu/theme</a></li>
 </ul>
 </li>
-<li><p>Keywords associated with other controlled vocabularies are mapped to <code>dcat:theme</code>. If not denoted by an HTTP URI, they SHOULD be expressed as a <code>skos:Concept</code> associated with a <code>skos:ConceptScheme</code>, and annotated with the textual content and reference date(s) in the relevant INSPIRE metadata elements.</p></li>
+<li>Keywords associated with other controlled vocabularies are mapped to <code>dcat:theme</code>. If not denoted by an HTTP URI, they SHOULD be expressed as a <code>skos:Concept</code> associated with a <code>skos:ConceptScheme</code>, and annotated with the textual content and reference date(s) in the relevant INSPIRE metadata elements.</li>
 </ul>
 
 <aside class="example" id="ex-topic-category-and-keyword" title="Topic categories and keywords">
 
 <p>Resource metadata in GeoDCAT-AP:</p>
 
-<pre>## Datasets and series
+<pre class="turtle">## Datasets and series
 [] a dcat:Dataset ;
 ### Free keywords
   dcat:keyword &quot;CHM&quot;@en, &quot;RDSI&quot;@en ;
@@ -24589,14 +24578,14 @@ When the guidelines become available a reference implementation will be shared h
         dct:title &quot;GEMET - Concepts, version 2.4&quot;@en ;
         dct:issued &quot;2010-01-13&quot;^^xsd:date ] ] ;
 ### Topic categories
-  dct:subject &lt;http://inspire.ec.europa.eu/metadata-codelist/TopicCategory/geoscientificInformation&gt; .
+  geodcatap:topicCategory &lt;http://inspire.ec.europa.eu/metadata-codelist/TopicCategory/geoscientificInformation&gt; .
 
 ## Services
 [] a dcat:DataService ;
 ### Free keywords
   dcat:keyword &quot;hydrography&quot;@en ;
 ### Keyword from ISO 19119 codelist of spatial data service categories
-  dct:type &lt;http://inspire.ec.europa.eu/metadata-codelist/SpatialDataServiceCategory/humanGeographicViewer&gt; ;
+  geodcatap:serviceCategory &lt;http://inspire.ec.europa.eu/metadata-codelist/SpatialDataServiceCategory/humanGeographicViewer&gt; ;
 ### Keywords from controlled vocabularies
   dcat:theme &lt;http://inspire.ec.europa.eu/theme/hy&gt; ,
     [ a skos:Concept ;
@@ -24607,7 +24596,7 @@ When the guidelines become available a reference implementation will be shared h
 
 <p>Resource metadata in ISO 19139:</p>
 
-<pre>&lt;!-- Datasets and series --&gt;
+<pre class="xml">&lt;!-- Datasets and series --&gt;
 &lt;gmd:MD_Metadata&gt;
   ...
   &lt;gmd:identificationInfo&gt;
@@ -24773,7 +24762,7 @@ When the guidelines become available a reference implementation will be shared h
 
 <h2>Bounding box</h2>
 
-<p>As a general rule, when the area corresponding to the spatial coverage is denoted by a geometry, as in INSPIRE, [[DCAT-AP-3] recommends the use of the Core Location Vocabulary [[LOCN]], where this is done by using property <a href="https://www.w3.org/ns/locn#locn:geometry"><code>locn:geometry</code></a>, having as range a geometry specified as</p>
+<p>As a general rule, when the area corresponding to the spatial coverage is denoted by a geometry, as in INSPIRE, [[DCAT-AP-3]] recommends the use of the Core Location Vocabulary [[LOCN]], where this is done by using property <a href="https://www.w3.org/ns/locn#locn:geometry"><code>locn:geometry</code></a>, having as range a geometry specified as</p>
 
 <ul>
 <li><p>a URI - e.g., by using the geo URI scheme (IET RFC-5870) [[?RFC5870]], or a geohash URI [[?GEOHASH]], [[?GEOHASH-36]];</p></li>
@@ -24816,7 +24805,7 @@ When the guidelines become available a reference implementation will be shared h
 
 <p>Resource metadata in GeoDCAT-AP using a geographic bounding box. This example uses multiple encodings, namely, the recommended ones (GML and WKT), plus GeoJSON.</p>
 
-<pre>[] dct:spatial [ a dct:Location ;
+<pre class="turtle">[] dct:spatial [ a dct:Location ;
   dcat:bbox &quot;&quot;&quot;
       POLYGON((-10.58 70.09,34.59 70.09,34.59 34.56,-10.58 34.56,-10.58 70.09))
     &quot;&quot;&quot;^^gsp:wktLiteral ;
@@ -24839,7 +24828,7 @@ When the guidelines become available a reference implementation will be shared h
 
 <p>Resource metadata in ISO 19139 using a geographic bounding box:</p>
 
-<pre>&lt;gmd:MD_Metadata&gt;
+<pre class="xml">&lt;gmd:MD_Metadata&gt;
   ...
   &lt;gmd:identificationInfo&gt;
     &lt;gmd:MD_DataIdentification&gt;
@@ -24907,7 +24896,7 @@ When the guidelines become available a reference implementation will be shared h
 
 <p>Resource metadata in GeoDCAT-AP using a geographic identifier</p>
 
-<pre># If a URI is used for the geographic identifier (recommended)
+<pre class="turtle"># If a URI is used for the geographic identifier (recommended)
 []
   dct:spatial &lt;http://publications.europa.eu/resource/authority/country/NLD&gt; .
 
@@ -24964,7 +24953,7 @@ When the guidelines become available a reference implementation will be shared h
 
 <p>Resource metadata in GeoDCAT-AP</p>
 
-<pre>## Creation, publication and last revision dates
+<pre class="turtle">## Creation, publication and last revision dates
 # Metadata on metadata
 [] a dcat:CatalogRecord ;
   ## Metadata date
@@ -24980,7 +24969,7 @@ When the guidelines become available a reference implementation will be shared h
 
 <p>Resource metadata in ISO 19139:</p>
 
-<pre>&lt;gmd:MD_Metadata&gt;
+<pre class="xml">&lt;gmd:MD_Metadata&gt;
   ...
   &lt;!-- metadata date --&gt;
   &lt;gmd:dateStamp&gt;
@@ -25048,7 +25037,7 @@ When the guidelines become available a reference implementation will be shared h
 
 <p>Resource metadata in GeoDCAT-AP:</p>
 
-<pre>[] a dcat:Dataset ;
+<pre class="turtle">[] a dcat:Dataset ;
   dct:provenance [ a dct:ProvenanceStatement ;
     dct:description &quot;Forest Map 2006 is derived from the IMAGE2006 (SPOT/LISS scenes)
       and CORINE2006 landcover dataset. In addition, MODIS composites are used for
@@ -25056,7 +25045,7 @@ When the guidelines become available a reference implementation will be shared h
 
 <p>Resource metadata in ISO 19139:</p>
 
-<pre>&lt;gmd:MD_Metadata&gt;
+<pre class="xml">&lt;gmd:MD_Metadata&gt;
   ...
   &lt;gmd:dataQualityInfo&gt;
     &lt;gmd:DQ_DataQuality&gt;
@@ -25108,7 +25097,7 @@ When the guidelines become available a reference implementation will be shared h
 
 <p>Resource metadata in GeoDCAT-AP:</p>
 
-<pre># Spatial resolution as distance in metres
+<pre class="turtle"># Spatial resolution as distance in metres
 [] a dcat:Dataset ;
   dcat:spatialResolutionInMeters &quot;5000&quot;^^xsd:decimal .
 # Spatial resolution as equivalent scale
@@ -25120,7 +25109,7 @@ When the guidelines become available a reference implementation will be shared h
 
 <p>Resource metadata in ISO 19139</p>
 
-<pre>&lt;gmd:MD_Resolution&gt;
+<pre class="xml">&lt;gmd:MD_Resolution&gt;
   &lt;gmd:equivalentScale&gt;
     &lt;gmd:MD_RepresentativeFraction&gt;
       &lt;gmd:denominator&gt;
@@ -25212,7 +25201,7 @@ To limit the impact, it was decided to only provide a partial mapping for Data Q
 
 <p>Resource metadata in GeoDCAT-AP:</p>
 
-<pre>
+<pre class="turtle">
 prov:wasUsedBy [
   a prov:Activity;
 # Conformity degree
@@ -25236,7 +25225,7 @@ prov:wasUsedBy [
 
 <p>Resource metadata in ISO 19139:</p>
 
-<pre>&lt;gmd:result&gt;
+<pre class="xml">&lt;gmd:result&gt;
   &lt;gmd:DQ_ConformanceResult&gt;
     &lt;gmd:specification&gt;
       &lt;gmd:CI_Citation&gt;
@@ -25302,14 +25291,14 @@ prov:wasUsedBy [
 
 <p>Resource metadata in GeoDCAT-AP (using URIs for use and access limitations):</p>
 
-<pre>[] dcat:distribution [ a dcat:Distribution ;
+<pre class="turtle">[] dcat:distribution [ a dcat:Distribution ;
   dct:license &lt;https://creativecommons.org/licenses/by/4.0/&gt; ;
   dct:accessRights &lt;https://inspire.ec.europa.eu/metadata-codelist/LimitationsOnPublicAccess/noLimitations&gt; ;
 ] .</pre>
 
 <p>Resource metadata in GeoDCAT-AP, free-text version:</p>
 
-<pre>[] dcat:distribution [ a dcat:Distribution ;
+<pre class="turtle">[] dcat:distribution [ a dcat:Distribution ;
   dct:rights [ a dct:RightsStatement ;
     dct:description &quot;&quot;&quot;
         The dataset contains parts which are restricted 
@@ -25327,7 +25316,7 @@ prov:wasUsedBy [
 
 <p>Resource metadata in ISO 19139 (using URIs for use and access limitations):</p>
 
-<pre>&lt;gmd:MD_Metadata&gt;
+<pre class="xml">&lt;gmd:MD_Metadata&gt;
   ...
   &lt;gmd:MD_LegalConstraints&gt;
     &lt;gmd:useConstraints&gt;
@@ -25359,7 +25348,7 @@ prov:wasUsedBy [
 
 <p>Resource metadata in ISO 19139:</p>
 
-<pre>&lt;gmd:MD_Metadata&gt;
+<pre class="xml">&lt;gmd:MD_Metadata&gt;
   ...
   &lt;gmd:MD_LegalConstraints&gt;
     &lt;gmd:useConstraints&gt;
@@ -25573,7 +25562,7 @@ prov:wasUsedBy [
 <aside class="example" id="ex-mapping-responsible-party" title="Responsible party">
 <p>In this example, the same organisation is both the data custodian and the metadata point of contact.</p>
 <p>Resource metadata in GeoDCAT-AP:</p>
-<pre># Metadata on metadata in GeoDCAT-AP
+<pre class="turtle"># Metadata on metadata in GeoDCAT-AP
 [] dcat:contactPoint [ a vcard:Organization ;
       vcard:hasEmail &lt;mailto:bag@kadaster.nl&gt; ;
       vcard:organization-name &quot;Kadaster&quot;@nl ] ;
@@ -25599,7 +25588,7 @@ prov:wasUsedBy [
 
 <p>Resource metadata in ISO 19139:
 
-<pre>&lt;gmd:MD_Metadata&gt;
+<pre class="xml">&lt;gmd:MD_Metadata&gt;
   ...
   &lt;gmd:pointOfContact&gt;
     &lt;gmd:CI_ResponsibleParty&gt;
@@ -25671,10 +25660,10 @@ prov:wasUsedBy [
 
 <p>Metadata on metadata in GeoDCAT-AP:</p>
 
-<pre>[] a dcat:CatalogRecord ;
+<pre class="turtle">[] a dcat:CatalogRecord ;
   dct:identifier &quot;947e5a55-e548-11e1-9105-0017085a97ab&quot;^^xsd:string .</pre><p>Resource metadata in ISO 19139:</p>
 
-<pre>&lt;gmd:MD_Metadata&gt;
+<pre class="xml">&lt;gmd:MD_Metadata&gt;
 &lt;!-- Metadata on metadata --&gt;
   ...
   &lt;gmd:fileIdentifier&gt;
@@ -25693,7 +25682,7 @@ prov:wasUsedBy [
 
 <p>Metadata on metadata in GeoDCAT-AP:</p>
 
-<pre>&lt;https://some.catalogue/record/947e5a55-e548-11e1-9105-0017085a97ab&gt;
+<pre class="turtle">&lt;https://some.catalogue/record/947e5a55-e548-11e1-9105-0017085a97ab&gt;
   a dcat:CatalogRecord ;
   dct:identifier
     &quot;https://some.catalogue/record/947e5a55-e548-11e1-9105-0017085a97ab&quot;^^xsd:anyURI .</pre>
@@ -25743,7 +25732,7 @@ prov:wasUsedBy [
 
 <p>Metadata on metadata in GeoDCAT-AP:</p>
 
-<pre>[] a dcat:CatalogRecord ;
+<pre class="turtle">[] a dcat:CatalogRecord ;
   dct:conformsTo &lt;https://joinup.ec.europa.eu/release/geodcat-ap/10&gt; ;
 .
 
@@ -25756,7 +25745,7 @@ prov:wasUsedBy [
 
 <p>Resource metadata in ISO 19139 for datasets:</p>
 
-<pre>&lt;gmd:MD_Metadata&gt;
+<pre class="xml">&lt;gmd:MD_Metadata&gt;
   ...
   &lt;gmd:metadataStandardName&gt;
     &lt;gco:CharacterString&gt;ISO 19115&lt;/gco:CharacterString&gt;
@@ -25774,7 +25763,7 @@ prov:wasUsedBy [
 
 <p>Metadata on metadata in GeoDCAT-AP:</p>
 
-<pre>[] a dcat:CatalogRecord ;
+<pre class="turtle">[] a dcat:CatalogRecord ;
   dct:conformsTo &lt;https://joinup.ec.europa.eu/release/geodcat-ap/10&gt; ;
   dct:source [ a dcat:CatalogRecord ; 
 # Standard name and version of the source ISO 19115 record
@@ -25792,7 +25781,7 @@ prov:wasUsedBy [
 
 <p>Resource metadata in ISO 19139 for datasets:</p>
 
-<pre>&lt;gmd:MD_Metadata&gt;
+<pre class="xml">&lt;gmd:MD_Metadata&gt;
   ...
   &lt;gmd:metadataStandardName&gt;
     &lt;gco:CharacterString&gt;ISO 19115&lt;/gco:CharacterString&gt;
@@ -25810,7 +25799,7 @@ prov:wasUsedBy [
 
 <h2>*Metadata characterset</h2>
 
-<p>See <a href="#character-encoding---dataset-character-set-and-metadata-character-set"></a>.</p>
+<p>Since in RDF serializations always use UTF-8, the metadata characterset is not reflected in the GeoDCAT-AP.</p>
 
 </section>
 
@@ -25842,7 +25831,7 @@ prov:wasUsedBy [
 
 <h2>Coordinate reference systems and Temporal reference systems – *Reference System</h2>
 
-<p>In GeoDCAT-AP, these elements are mapped to property <code>dct:conformsTo</code>. Moreover, in order to indicate that the object of <code>dct:conformsTo</code> denotes a reference system, an additional statement with predicate <code>dct:type</code> is added, with a code list value defining the notion of (spatial / temporal) reference system, taken from the glossary operated by the INSPIRE Registry [[INSPIRE-GLOSSARY]].</p>
+<p>In GeoDCAT-AP, these elements are mapped to property <code>geodcatap:referenceSystem</code>. Moreover, in order to indicate which type of a reference system the object of <code>geodcatap:referenceSystem</code> denotes, an additional statement with predicate <code>dct:type</code> is added, with a code list value defining the notion of (spatial / temporal) reference system, taken from the glossary operated by the INSPIRE Registry [[INSPIRE-GLOSSARY]].</p>
 
 <p>More precisely, the following URIs SHOULD be used to denote, respectively, spatial and temporal reference systems:</p>
 
@@ -25877,8 +25866,8 @@ prov:wasUsedBy [
 
 <p>Resource metadata in GeoDCAT-AP:</p>
 
-<pre>[] a dcat:Dataset ;
-  dct:conformsTo &lt;http://www.opengis.net/def/crs/EPSG/0/4258&gt; .
+<pre class="turtle">[] a dcat:Dataset ;
+  geodcatap:referenceSystem &lt;http://www.opengis.net/def/crs/EPSG/0/4258&gt; .
 
 &lt;http://www.opengis.net/def/crs/EPSG/0/4258&gt;
   a dct:Standard ;
@@ -25886,7 +25875,7 @@ prov:wasUsedBy [
 
 <p>Resource metadata in ISO 19139:</p>
 
-<pre>&lt;gmd:referenceSystemInfo&gt;
+<pre class="xml">&lt;gmd:referenceSystemInfo&gt;
   &lt;gmd:MD_ReferenceSystem&gt;
     &lt;gmd:referenceSystemIdentifier&gt;
       &lt;gmd:RS_Identifier&gt;
@@ -25909,15 +25898,15 @@ prov:wasUsedBy [
 
 <p>Resource metadata in GeoDCAT-AP:</p>
 
-<pre>[] a dcat:Dataset ;
-  dct:conformsTo [ a dct:Standard ;
+<pre class="turtle">[] a dcat:Dataset ;
+  geodcatap:referenceSystem [ a dct:Standard ;
     dct:identifer &quot;EPSG:4258&quot;^^xsd:string ;
     dct:type &lt;http://inspire.ec.europa.eu/glossary/SpatialReferenceSystem&gt; .
   ] .</pre>
 
 <p>Resource metadata in ISO 19139:</p>
 
-<pre>&lt;gmd:referenceSystemInfo&gt;
+<pre class="xml">&lt;gmd:referenceSystemInfo&gt;
   &lt;gmd:MD_ReferenceSystem&gt;
     &lt;gmd:referenceSystemIdentifier&gt;
       &lt;gmd:RS_Identifier&gt;
@@ -25938,7 +25927,7 @@ prov:wasUsedBy [
 
 <h2>Character encoding - *Dataset character set and *Metadata character set</h2>
 
-<p>In [[VOCAB-DCAT-3]] and [[DCAT-AP-3]], the specification of the character encoding of a dataset and the character encoding of a metadata record is not explicitly supported.</p>
+<p>In [[VOCAB-DCAT-3]] and [[DCAT-AP-3]], the specification of the character encoding of a dataset and the character encoding of a metadata record is not explicitly supported. Moreover, since GeoDCAT-AP is an RDF-based specification, the metadata represented using GeoDCAT-AP are always in the UTF-8 encoding.</p>
 
 <p>According to [[?RFC4288]], the character set can be part of the media type specification, but only for type “text”. By contrast, in INSPIRE the character set can be specified also for other media types.</p>
 
@@ -26131,26 +26120,13 @@ prov:wasUsedBy [
 
 <p>Resource metadata in GeoDCAT-AP:</p>
 
-<pre>[] a dcat:Dataset ;
+<pre class="turtle">[] a dcat:Dataset ;
   dcat:distribution [ a dcat:Distribution ;
-    cnt:characterEncoding &quot;UTF-8&quot;^^xsd:string ] .
-
-# Metadata on metadata in GeoDCAT-AP
-[] a dcat:CatalogRecord ;
-  cnt:characterEncoding &quot;UTF-8&quot;^^xsd:string .</pre>
+    cnt:characterEncoding &quot;UTF-8&quot;^^xsd:string ] .</pre>
 
 <p>Resource metadata in ISO 19139:</p>
 
-<pre>&lt;gmd:MD_Metadata&gt;
-  ...
-&lt;!-- Metadata on metadata: metadata character set --&gt;
-  &lt;gmd:characterSet&gt;
-    &lt;MD_CharacterSetCode
-      codeList=&quot;http://standards.iso.org/ittf/PubliclyAvailableStandards/ISO_19139_Schemas/resources/codelist/ML_gmxCodelists.xml#MD_CharacterSetCode&quot;
-      codeListValue=&quot;utf8&quot;&gt; UTF-8 &lt;/MD_CharacterSetCode&gt;
-  &lt;/gmd:characterSet&gt;
-  ...
-
+<pre class="xml">&lt;gmd:MD_Metadata&gt;
 &lt;!-- Resource metadata: dataset character set --&gt;
   &lt;gmd:identificationInfo&gt;
     &lt;gmd:MD_DataIdentification&gt;
@@ -26194,13 +26170,13 @@ prov:wasUsedBy [
 
 <p>Resource metadata in GeoDCAT-AP:</p>
 
-<pre>[] a dcat:Dataset ;
+<pre class="turtle">[] a dcat:Dataset ;
   dcat:distribution [ a dcat:Distribution ;
     dct:format &lt;http://publications.europa.eu/resource/authority/file-type/TIFF&gt; ] .</pre>
 
 <p>Resource metadata in ISO 19139:</p>
 
-<pre>&lt;gmd:MD_Metadata&gt;
+<pre class="xml">&lt;gmd:MD_Metadata&gt;
   ...
   &lt;gmd:distributionInfo&gt;
     &lt;gmd:MD_Distribution&gt;
@@ -26318,14 +26294,14 @@ prov:wasUsedBy [
 
 <p>Resource metadata in GeoDCAT-AP:</p>
 
-<pre>[] a dcat:Dataset ;
+<pre class="turtle">[] a dcat:Dataset ;
   dcat:distribution [ a dcat:Distribution
     adms:representionTechnique &lt;http://inspire.ec.europa.eu/metadata-codelist/SpatialRepresentationType/vector&gt;
 ] .</pre>
 
 <p>Resource metadata in ISO 19139:</p>
 
-<pre>&lt;gmd:spatialRepresentationType&gt;
+<pre class="xml">&lt;gmd:spatialRepresentationType&gt;
   &lt;gmd:MD_SpatialRepresentationTypeCode
     codeListValue=&quot;vector&quot;
     codeList=&quot;http://standards.iso.org/ittf/PubliclyAvailableStandards/ISO_19139_Schemas/resources/codelist/gmxCodelists.xml#MD_SpatialRepresentationTypeCode&quot;&gt;vector&lt;/gmd:MD_SpatialRepresentationTypeCode&gt;
@@ -26526,10 +26502,10 @@ prov:wasUsedBy [
 
 <aside class="example" id="ex-mapping-maintenance-information" title="Maintenance information">
 <p>Resource metadata in GeoDCAT-AP:</p>
-<pre>[] a dcat:Dataset ;
+<pre class="turtle">[] a dcat:Dataset ;
   dct:accrualPeriodicity &lt;http://publications.europa.eu/resource/authority/frequency/DAILY&gt; .</pre>
 <p>Resource metadata in ISO 19139:</p>
-<pre>&lt;gmd:MD_MaintenanceInformation&gt;
+<pre class="xml">&lt;gmd:MD_MaintenanceInformation&gt;
   &lt;gmd:maintenanceAndUpdateFrequency gco:nilReason=&quot;missing&quot;&gt;
     &lt;gmd:MD_MaintenanceFrequencyCode
       codeList=&quot;http://standards.iso.org/ittf/PubliclyAvailableStandards/ISO_19139_Schemas/resources/codelist/ML_gmxCodelists.xml#MD_MaintenanceFrequencyCode&quot;
@@ -31627,7 +31603,7 @@ The editors gratefully acknowledge the contributions made to this document by al
 <p/>
 This work was elaborated by a Working Group under SEMIC by Interoperable Europe.
 Interoperable Europe of the European Commission was represented by Pavlina Fragkou.
-Bert Van Nuffelen, Makx Dekkers, Pavlina Fragkou, Jitse De Cock, Arthur Schiltz, Anastasia Sofou were the editors of the specification.
+Jakub Klímek, Bert Van Nuffelen, Andrea Perego, Pavlina Fragkou, Jitse De Cock, and Arthur Schiltz were the editors of the specification.
 <p/>
 Past and current contributors are :
 
@@ -31772,6 +31748,9 @@ Past and current contributors are :
 		, 
            
 	 	Sebastian Sklarß
+		, 
+           
+	 	Anastasia Sofou
 		, 
            
 	 	Michele Spichtig
