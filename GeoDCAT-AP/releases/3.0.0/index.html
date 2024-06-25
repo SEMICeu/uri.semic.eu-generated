@@ -22081,6 +22081,13 @@ No validation in this case is also acceptable.
 </li>
 </ul>
 
+<p>
+The first two (and preferably also the others) SHOULD only be used for requirements that can be verified by a machine.
+If the validation can only be realised with the involvement of humans, then a less strong requirement (RECOMMMENDED or MAY) is used, 
+even if the intention is to be very strict.
+This is to ensure that the provided SHACL representations correspond closely to all use cases possible. 
+Stronger enforcements are left for implementations as they have control on actual data exchange.
+</p>
 
 
 <p>Compared with DCAT-AP, GeoDCAT-AP makes use of additional controlled vocabularies mandated by [[INSPIRE-MD-REG]], and operated by the INSPIRE Registry - with the only exceptions of the coordinate reference systems register maintained by OGC [[OGC-EPSG]].</p>
@@ -22472,29 +22479,22 @@ Inherited from DCAT [[vocab-dcat-3]]
 <p><a href="#Catalogue.publisher">Catalogue</a></p>
 <p><a href="#Dataset.publisher">Dataset</a></p>
 <p><a href="#DatasetSeries.publisher">Dataset Series</a></p>
-</td>
-<td rowspan="2">
-<p>EU Vocabularies Corporate bodies Named Authority List [[EUV-CB]]</p>
-</td>
-<td rowspan="2">
-<p><a href="http://publications.europa.eu/resource/authority/corporate-body">http://publications.europa.eu/resource/authority/corporate-body</a></p>
-</td>
-<td>
-<p>The Corporate bodies NAL must be used for European institutions and a small set of international organisations. In case of other types of organisations, national, regional or local vocabularies should be used.</p>
-</td>
-</tr>
-
-<tr>
-<td>
-<p>+<code>dct:publisher</code></p>
-</td>
-<td>
 <p><a href="#DataService.publisher">Data Service</a></p>
 </td>
 <td>
-<p>The use of this property for Data Services is a GeoDCAT-AP extension.</p>
+<p>EU Vocabularies Corporate bodies Named Authority List [[EUV-CB]]</p>
+</td>
+<td>
+<p><a href="http://publications.europa.eu/resource/authority/corporate-body">http://publications.europa.eu/resource/authority/corporate-body</a></p>
+</td>
+<td>
+<p>The Corporate bodies NAL MUST be used for European institutions and a small set of international organisations. In case of other types of organisations, national, regional or local vocabularies should be used.</p>
+</td>
+<td>
+<a href="#cv-d">MAY</a>
 </td>
 </tr>
+
 
 <!-- Reference system -->
 
@@ -22557,10 +22557,10 @@ Inherited from DCAT [[vocab-dcat-3]]
 <p><a href="#DatasetSeries.geographicalcoverage">Dataset Series</a></p>
 <p><a href="#DataService.geographicalcoverage">Data Service</a></p>
 </td>
-<td>
+<td rowspan="4">
 <p>EU Vocabularies Continents Named Authority List [[EUV-CONT]], EU Vocabularies Countries Named Authority List [[EUV-COUNTRIES]], EU Vocabularies Places Named Authority List [[EUV-PLACES]], [[GEONAMES]]</p>
 </td>
-<td>
+<td rowspan="4">
 <p><a href="http://publications.europa.eu/resource/authority/continent">http://publications.europa.eu/resource/authority/continent</a></p> 
 <p><a href="http://publications.europa.eu/resource/authority/country">http://publications.europa.eu/resource/authority/country</a></p> 
 <p><a href="http://publications.europa.eu/resource/authority/place">http://publications.europa.eu/resource/authority/place</a></p> 
@@ -22570,12 +22570,42 @@ Inherited from DCAT [[vocab-dcat-3]]
 <p>The EU Vocabularies Name Authority Lists must be used for continents, countries and places that are in those lists; if a particular location is not in one of the mentioned Named Authority Lists, [[GEONAMES]] URIs must be used.</p>
 </td>
 <td>
-<a href="#cv-a">MUST</a>
+<a href="#cv-d">MAY</a>
 </td>
 </tr>
 
 
+<tr>
+<td >
+<p>EU Vocabularies Countries Named Authority List [[EUV-COUNTRIES]], EU Vocabularies Places Named Authority List [[EUV-PLACES]], [[GEONAMES]]</p>
+</td>
+<td >
+<p><a href="http://publications.europa.eu/resource/authority/country">http://publications.europa.eu/resource/authority/country</a></p> 
+<p><a href="http://publications.europa.eu/resource/authority/place">http://publications.europa.eu/resource/authority/place</a></p> 
+<p><a href="http://sws.geonames.org/">http://sws.geonames.org/</a></p>
+</td>
+</tr>
 
+<tr>
+<td >
+<p>EU Vocabularies Places Named Authority List [[EUV-PLACES]], [[GEONAMES]]</p>
+</td>
+<td >
+<p><a href="http://publications.europa.eu/resource/authority/place">http://publications.europa.eu/resource/authority/place</a></p> 
+<p><a href="http://sws.geonames.org/">http://sws.geonames.org/</a></p>
+</td>
+</tr>
+
+<tr>
+<td >
+<p>[[GEONAMES]]</p>
+</td>
+<td >
+<p><a href="http://sws.geonames.org/">http://sws.geonames.org/</a></p>
+</td>
+</tr>
+
+<!-- service Category -->
 <tr>
 <td>
 <p>+<code>geodcatap:serviceCategory</code></p>
@@ -22708,7 +22738,7 @@ Inherited from DCAT [[vocab-dcat-3]]
 </tr>
 
 <!-- Type -->
-
+<!-- This is a value restriction should be included in the usage note of the property 
 <tr>
 <td>
 <p>+<code>dct:type</code></p>
@@ -22731,6 +22761,8 @@ Inherited from DCAT [[vocab-dcat-3]]
 <a href="#cv-a">MUST</a>
 </td>
 </tr>
+-->
+
 
 <tr>
 <td>
@@ -22749,7 +22781,7 @@ Inherited from DCAT [[vocab-dcat-3]]
 <p>GeoDCAT-AP extension.</p>
 </td>
 <td>
-<a href="#cv-a">MUST</a>
+<a href="#cv-d">MAY</a>
 </td>
 </tr>
 
@@ -22770,7 +22802,7 @@ Inherited from DCAT [[vocab-dcat-3]]
 <p>GeoDCAT-AP extension.</p>
 </td>
 <td>
-<a href="#cv-a">MUST</a>
+<a href="#cv-d">MAY</a>
 </td>
 </tr>
 
