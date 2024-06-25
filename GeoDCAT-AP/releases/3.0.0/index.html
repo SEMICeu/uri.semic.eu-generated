@@ -22108,8 +22108,9 @@ Stronger enforcements are left for implementations as they have control on actua
 </aside>
 -->
 
-<h3 id="must-cv">Properties for which controlled vocabularies MUST be used</h3>
+<h3 id="must-cv">Controlled vocabularies to be used</h3>
 
+<p>
 The table is organised per property and then per class. 
 This is because mostly the used controlled vocabulary is connected with the property and not with the usage context in a class.
 However this is not mandatory, and it may happen (as it is the case for dct:type) that the same property uses a different controlled vocabulary per class.
@@ -22117,7 +22118,19 @@ To disambiguate the usage multiple rows are created.
 In some cases controlled vocabulary usage is more complicated.  
 For instance in the case of dct:spatial and dct:publisher the usage of the controlled vocabulary is dependent on the actual value used. 
 The value space these properties encompass is very large and there is no universal EU controlled vocabulary at hand that covers the whole value space.
+</p>
 
+<p class="ednote" title="Initial assessment of expected codelist usage">
+The last column is a first assessment of the usage of the controlled vocabularies and is open for discussion.
+
+<ul>
+<li>MUST is applied to those cases where the binding between the property and the controlled vocabulary is strong.
+<li>MUST is applied where DCAT-AP also expects the controlled vocabulary and it was adopted by GeoDCAT-AP.
+<li>AT-LEAST is applied on cases where instances of supporting classes are created and it is possible that other profiles would apply a different choice for this supporting class.
+<li>MAY is applied to dct:publisher and dct:spatial as the controlled vocabularies do not cover the whole value space and a correct application cannot be verified by a machine.
+<li>dcat:theme, dct:accrualPeriodicity and dct:accessRights are to addressed in collaboration with DCAT-AP. There are specific INSPIRE codelists which are mappable to the DCAT-AP codelists.    Therefore the suggestion is to keep a MUST for the DCAT-AP requirements and provide a mapping table for the INSPIRE codelists.
+</ul>
+</p>
 
 <table class="simple" id="table-must-cv">
 <thead>
@@ -22414,7 +22427,7 @@ Inherited from DCAT [[vocab-dcat-3]]
 <p>GeoDCAT-AP extension.</p>
 </td>
 <td>
-<a href="#cv-a">MUST</a>
+<a href="#cv-b">MAY</a>
 </td>
 </tr>
 
@@ -22500,7 +22513,7 @@ Inherited from DCAT [[vocab-dcat-3]]
 
 <tr>
 <td>
-<p>+<code>geodcatap:referenceSystem</code></p>
+<p><code>geodcatap:referenceSystem</code></p>
 </td>
 <td>
 <p><a href="#DataService.referencesystem">Data Service</a></p>
@@ -22524,7 +22537,7 @@ Inherited from DCAT [[vocab-dcat-3]]
 
 <tr>
 <td>
-<p>+<code>geodcatap:resourceType</code></p>
+<p><code>geodcatap:resourceType</code></p>
 </td>
 <td>
 <p><a href="#Dataset.resourcetype">Dataset</a></p>
@@ -22558,15 +22571,13 @@ Inherited from DCAT [[vocab-dcat-3]]
 <p><a href="#DataService.geographicalcoverage">Data Service</a></p>
 </td>
 <td >
-<p>EU Vocabularies Continents Named Authority List [[EUV-CONT]], EU Vocabularies Countries Named Authority List [[EUV-COUNTRIES]], EU Vocabularies Places Named Authority List [[EUV-PLACES]], [[GEONAMES]]</p>
+<p>EU Vocabularies Continents Named Authority List [[EUV-CONT]]</p>
 </td>
 <td >
 <p><a href="http://publications.europa.eu/resource/authority/continent">http://publications.europa.eu/resource/authority/continent</a></p> 
-<p><a href="http://publications.europa.eu/resource/authority/country">http://publications.europa.eu/resource/authority/country</a></p> 
-<p><a href="http://publications.europa.eu/resource/authority/place">http://publications.europa.eu/resource/authority/place</a></p> 
-<p><a href="http://sws.geonames.org/">http://sws.geonames.org/</a></p>
 </td>
 <td>
+<p>Inherited from DCAT-AP [[DCAT-AP-3]]</p>
 <p>The EU Vocabularies Name Authority Lists must be used for continents, countries and places that are in those lists; if a particular location is not in one of the mentioned Named Authority Lists, [[GEONAMES]] URIs must be used.</p>
 </td>
 <td>
@@ -22605,7 +22616,7 @@ Inherited from DCAT [[vocab-dcat-3]]
 <!-- service Category -->
 <tr>
 <td>
-<p>+<code>geodcatap:serviceCategory</code></p>
+<p><code>geodcatap:serviceCategory</code></p>
 </td>
 <td>
 <p><a href="#DataService.servicecategory">Data Service</a></p>
@@ -22626,7 +22637,7 @@ Inherited from DCAT [[vocab-dcat-3]]
 
 <tr>
 <td>
-<p>+<code>geodcatap:serviceProtocol</code></p>
+<p><code>geodcatap:serviceProtocol</code></p>
 </td>
 <td>
 <p><a href="#DataService.serviceprotocol">Data Service</a></p>
@@ -22647,7 +22658,7 @@ Inherited from DCAT [[vocab-dcat-3]]
 
 <tr>
 <td>
-<p>+<code>geodcatap:serviceType</code></p>
+<p><code>geodcatap:serviceType</code></p>
 </td>
 <td>
 <p><a href="#DataService.type">Data Service</a></p>
@@ -22668,7 +22679,7 @@ Inherited from DCAT [[vocab-dcat-3]]
 
 <tr>
 <td>
-<p>+<code>geodcatap:topicCategory</code></p>
+<p><code>geodcatap:topicCategory</code></p>
 </td>
 <td>
 <p><a href="#Catalogue.topiccategory">Catalogue</a></p>
@@ -22738,7 +22749,7 @@ Inherited from DCAT [[vocab-dcat-3]]
 <!-- This is a value restriction should be included in the usage note of the property 
 <tr>
 <td>
-<p>+<code>dct:type</code></p>
+<p><code>dct:type</code></p>
 </td>
 <td>
 <p><a href="#Standard.type">Standard</a></p>
@@ -22763,7 +22774,7 @@ Inherited from DCAT [[vocab-dcat-3]]
 
 <tr>
 <td>
-<p>+<code>dct:type</code></p>
+<p><code>dct:type</code></p>
 </td>
 <td>
 <p>Test Result (linked from a <code>prov:Activity</code>).</p>
@@ -22778,13 +22789,13 @@ Inherited from DCAT [[vocab-dcat-3]]
 <p>GeoDCAT-AP extension.</p>
 </td>
 <td>
-<a href="#cv-d">MAY</a>
+<a href="#cv-b">AT-LEAST</a>
 </td>
 </tr>
 
 <tr>
 <td>
-<p>+<code>sdmx-attribute:unitMeasure</code></p>
+<p><code>sdmx-attribute:unitMeasure</code></p>
 </td>
 <td>
 <p><a href="#QualityMeasurement">Quality Measurement</a></p>
@@ -22799,7 +22810,7 @@ Inherited from DCAT [[vocab-dcat-3]]
 <p>GeoDCAT-AP extension.</p>
 </td>
 <td>
-<a href="#cv-d">MAY</a>
+<a href="#cv-b">AT-LEAST</a>
 </td>
 </tr>
 
