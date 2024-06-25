@@ -2,7 +2,7 @@
   "metadata": {
     "title": "MLDCAT-AP",
     "uri": "http://fixme.com",
-    "issued": "2024-05-29",
+    "issued": "2024-06-25",
     "filename": "mldcat-ap",
     "navigation": {
       "prev": "https://semiceu.github.io/MLDCAT-AP/releases/1.0.0/",
@@ -16,8 +16,8 @@
     },
     "status": "Working Draft",
     "statuslabel": "Onbekend",
-    "repositoryurl": "git@uri.semic.eu-thema:SEMICeu/uri.semic.eu-thema.git/tree/f3d15112119bcf8e7d389c14b121eccaa1f0501f",
-    "changelogurl": "git@uri.semic.eu-thema:SEMICeu/uri.semic.eu-thema.git/blob/f3d15112119bcf8e7d389c14b121eccaa1f0501f/CHANGELOG",
+    "repositoryurl": "git@uri.semic.eu-thema:SEMICeu/uri.semic.eu-thema.git/tree/07b307603291057a30446f24cf5347eddd49d786",
+    "changelogurl": "git@uri.semic.eu-thema:SEMICeu/uri.semic.eu-thema.git/blob/07b307603291057a30446f24cf5347eddd49d786/CHANGELOG",
     "feedbackurl": "https://github.com/SEMICeu/MLDCAT-AP/issues",
     "standaardregisterurl": "MLDCAT-AP",
     "usesVocs": [],
@@ -7465,7 +7465,9 @@
       "description": {
         "en": "A conceptual entity that represents the information published."
       },
-      "usage": {},
+      "usage": {
+        "en": "If a Dataset is used as part of a Dataset Series, the usage of the properties listed below must be coherent with the associated Dataset Series. For this usage, consult the guidelines in section <a href=\"https://semiceu.github.io/DCAT-AP/releases/3.0.0/#UsageGuidelines\">14. General usage guidelines</a>."
+      },
       "parents": [
         {
           "label": "Catalogued Resource",
@@ -7479,7 +7481,8 @@
         "ap-definition-en": "A conceptual entity that represents the information published.",
         "ap-label-en": "Dataset",
         "uri": "http://www.w3.org/ns/dcat#Dataset",
-        "class-usage-scope": "main"
+        "class-usage-scope": "main",
+        "ap-usageNote-en": "If a Dataset is used as part of a Dataset Series, the usage of the properties listed below must be coherent with the associated Dataset Series. For this usage, consult the guidelines in section <a href=\"https://semiceu.github.io/DCAT-AP/releases/3.0.0/#UsageGuidelines\">14. General usage guidelines</a>."
       },
       "properties": [
         {
@@ -7613,7 +7616,7 @@
             "en": "access rights"
           },
           "description": {
-            "en": "This property refers to information that indicates whether the Dataset is open data, has access restrictions or is not public."
+            "en": "Information that indicates whether the Dataset is publicly accessible, has access restrictions or is not public."
           },
           "usage": {
             "en": "The recommended controlled  vocabulary is the <a href=\"https://op.europa.eu/en/web/eu-vocabularies/dataset/-/resource?uri=http://publications.europa.eu/resource/dataset/access-right\">Access Rights Named Authority List</a>."
@@ -7642,7 +7645,7 @@
           "cardinality": "0..1",
           "codelist_uri": "",
           "rawTags": {
-            "ap-definition-en": "This property refers to information that indicates whether the Dataset is open data, has access restrictions or is not public.",
+            "ap-definition-en": "Information that indicates whether the Dataset is publicly accessible, has access restrictions or is not public.",
             "uri": "http://purl.org/dc/terms/accessRights",
             "ap-label-en": "access rights",
             "ap-usageNote-en": "The recommended controlled  vocabulary is the <a href=\"https://op.europa.eu/en/web/eu-vocabularies/dataset/-/resource?uri=http://publications.europa.eu/resource/dataset/access-right\">Access Rights Named Authority List</a>."
@@ -7683,49 +7686,9 @@
           "cardinality": "0..*",
           "codelist_uri": "",
           "rawTags": {
-            "uri": "http://purl.org/dc/terms/contributor",
-            "ap-definition-en": "People who contributed to the current version of the datadat (e.g. reformatting)",
-            "ap-label-en": "contributor"
-          }
-        },
-        {
-          "uri": "http://purl.org/dc/terms/contributor",
-          "name": "contributor",
-          "sort": "contributor",
-          "label": {
-            "en": "contributor"
-          },
-          "description": {
-            "en": "\tAn entity responsible for making contributions to the dataset."
-          },
-          "usage": {},
-          "domain": [
-            {
-              "EA-Name": "Dataset",
-              "uri": "http://www.w3.org/ns/dcat#Dataset"
-            }
-          ],
-          "range": [
-            {
-              "range_label": "Agent",
-              "range_uri": "http://xmlns.com/foaf/0.1/Agent"
-            }
-          ],
-          "scopedrange": [
-            {
-              "range_uri": "#Agent",
-              "range_puri": "http://xmlns.com/foaf/0.1/Agent",
-              "range_label": {
-                "en": "Agent"
-              }
-            }
-          ],
-          "cardinality": "0..*",
-          "codelist_uri": "",
-          "rawTags": {
-            "uri": "http://purl.org/dc/terms/contributor",
-            "ap-definition-en": "People who contributed to the current version of the datadat (e.g. reformatting)",
-            "ap-label-en": "contributor"
+            "ap-label-en": "contributor",
+            "ap-definition-en": "\tAn entity responsible for making contributions to the dataset.",
+            "uri": "http://purl.org/dc/terms/contributor"
           }
         },
         {
@@ -7736,7 +7699,7 @@
             "en": "creator"
           },
           "description": {
-            "en": "This property refers to the  entity responsible for producing the dataset."
+            "en": "An entity responsible for producing the Dataset."
           },
           "usage": {},
           "domain": [
@@ -7764,7 +7727,7 @@
           "codelist_uri": "",
           "rawTags": {
             "uri": "http://purl.org/dc/terms/creator",
-            "ap-definition-en": "This property refers to the  entity responsible for producing the dataset.",
+            "ap-definition-en": "An entity responsible for producing the Dataset.",
             "ap-label-en": "creator"
           }
         },
@@ -7776,7 +7739,7 @@
             "en": "description"
           },
           "description": {
-            "en": "A free-text account of the resource."
+            "en": "A free-text account of the Dataset."
           },
           "usage": {
             "en": "This property can be repeated for parallel language versions of the description."
@@ -7805,7 +7768,7 @@
           "cardinality": "1..*",
           "codelist_uri": "",
           "rawTags": {
-            "ap-definition-en": "A free-text account of the resource.",
+            "ap-definition-en": "A free-text account of the Dataset.",
             "uri": "http://purl.org/dc/terms/description",
             "ap-label-en": "description",
             "ap-usageNote-en": "This property can be repeated for parallel language versions of the description."
@@ -7819,7 +7782,7 @@
             "en": "identifier"
           },
           "description": {
-            "en": "An unambiguous identifier for the resource."
+            "en": "The main identifier for the Dataset, e.g. the URI or other unique identifier in the context of the Catalogue."
           },
           "usage": {},
           "domain": [
@@ -7846,7 +7809,7 @@
           "cardinality": "0..*",
           "codelist_uri": "",
           "rawTags": {
-            "ap-definition-en": "An unambiguous identifier for the resource.",
+            "ap-definition-en": "The main identifier for the Dataset, e.g. the URI or other unique identifier in the context of the Catalogue.",
             "ap-label-en": "identifier",
             "uri": "http://purl.org/dc/terms/identifier"
           }
@@ -7859,7 +7822,7 @@
             "en": "is referenced by"
           },
           "description": {
-            "en": "A related resource that references, cites, or otherwise points to the described resource."
+            "en": "A related resource that references, cites, or otherwise points to the dataset."
           },
           "usage": {},
           "domain": [
@@ -7887,7 +7850,7 @@
           "codelist_uri": "",
           "rawTags": {
             "ap-label-en": "is referenced by",
-            "ap-definition-en": "A related resource that references, cites, or otherwise points to the described resource.",
+            "ap-definition-en": "A related resource that references, cites, or otherwise points to the dataset.",
             "uri": "http://purl.org/dc/terms/isReferencedBy"
           }
         },
@@ -7979,7 +7942,7 @@
             "en": "release date"
           },
           "description": {
-            "en": "This property contains the date of formal issuance (e.g., publication) of the Dataset."
+            "en": "The date of formal issuance (e.g., publication) of the Dataset."
           },
           "usage": {},
           "domain": [
@@ -8006,7 +7969,7 @@
           "cardinality": "0..1",
           "codelist_uri": "",
           "rawTags": {
-            "ap-definition-en": "This property contains the date of formal issuance (e.g., publication) of the Dataset.",
+            "ap-definition-en": "The date of formal issuance (e.g., publication) of the Dataset.",
             "ap-label-en": "release date",
             "uri": "http://purl.org/dc/terms/issued"
           }
@@ -8019,7 +7982,7 @@
             "en": "publisher"
           },
           "description": {
-            "en": "This property refers to an entity (organisation) responsible for making the resource available."
+            "en": "An entity (organisation) responsible for making the resource available."
           },
           "usage": {},
           "domain": [
@@ -8048,7 +8011,7 @@
           "rawTags": {
             "uri": "http://purl.org/dc/terms/publisher",
             "ap-label-en": "publisher",
-            "ap-definition-en": "This property refers to an entity (organisation) responsible for making the resource available."
+            "ap-definition-en": "An entity (organisation) responsible for making the resource available."
           }
         },
         {
@@ -8185,7 +8148,7 @@
             "en": "dataset distribution"
           },
           "description": {
-            "en": "This property links the Dataset to an available Distribution."
+            "en": "An available Distribution for the Dataset."
           },
           "usage": {},
           "domain": [
@@ -8212,7 +8175,7 @@
           "cardinality": "0..*",
           "codelist_uri": "",
           "rawTags": {
-            "ap-definition-en": "This property links the Dataset to an available Distribution.",
+            "ap-definition-en": "An available Distribution for the Dataset.",
             "uri": "http://www.w3.org/ns/dcat#distribution",
             "ap-label-en": "dataset distribution"
           }
@@ -8225,7 +8188,7 @@
             "en": "has version"
           },
           "description": {
-            "en": "This property refers to a related Dataset that is a version, edition, or adaptation of the described Dataset."
+            "en": "A related Dataset that is a version, edition, or adaptation of the described Dataset."
           },
           "usage": {},
           "domain": [
@@ -8252,7 +8215,7 @@
           "cardinality": "0..*",
           "codelist_uri": "",
           "rawTags": {
-            "ap-definition-en": "This property refers to a related Dataset that is a version, edition, or adaptation of the described Dataset.",
+            "ap-definition-en": "A related Dataset that is a version, edition, or adaptation of the described Dataset.",
             "uri": "http://www.w3.org/ns/dcat#hasVersion",
             "ap-label-en": "has version"
           }
@@ -8265,7 +8228,7 @@
             "en": "keyword"
           },
           "description": {
-            "en": "A keyword or tag describing the resource."
+            "en": "A keyword or tag describing the Dataset."
           },
           "usage": {},
           "domain": [
@@ -8293,7 +8256,7 @@
           "codelist_uri": "",
           "rawTags": {
             "uri": "http://www.w3.org/ns/dcat#keyword",
-            "ap-definition-en": "A keyword or tag describing the resource.",
+            "ap-definition-en": "A keyword or tag describing the Dataset.",
             "ap-label-en": "keyword"
           }
         },
@@ -8305,7 +8268,7 @@
             "en": "landing page"
           },
           "description": {
-            "en": "This property refers to a web page that provides access to the Dataset, its Distributions and/or additional information."
+            "en": "A web page that provides access to the Dataset, its Distributions and/or additional information."
           },
           "usage": {
             "en": "It is intended to point to a landing page at the original data provider, not to a page on a site of a third party, such as an aggregator."
@@ -8334,7 +8297,7 @@
           "cardinality": "0..*",
           "codelist_uri": "",
           "rawTags": {
-            "ap-definition-en": "This property refers to a web page that provides access to the Dataset, its Distributions and/or additional information.",
+            "ap-definition-en": "A web page that provides access to the Dataset, its Distributions and/or additional information.",
             "ap-label-en": "landing page",
             "uri": "http://www.w3.org/ns/dcat#landingPage",
             "ap-usageNote-en": "It is intended to point to a landing page at the original data provider, not to a page on a site of a third party, such as an aggregator."
@@ -8904,7 +8867,7 @@
             "en": "access service"
           },
           "description": {
-            "en": "This property refers to a data service that gives access to the distribution of the dataset."
+            "en": "A data service that gives access to the distribution of the dataset."
           },
           "usage": {},
           "domain": [
@@ -8931,7 +8894,7 @@
           "cardinality": "0..*",
           "codelist_uri": "",
           "rawTags": {
-            "ap-definition-en": "This property refers to a data service that gives access to the distribution of the dataset.",
+            "ap-definition-en": "A data service that gives access to the distribution of the dataset.",
             "ap-label-en": "access service",
             "uri": "http://www.w3.org/ns/dcat#accessService"
           }
@@ -9107,7 +9070,7 @@
             "en": "has policy"
           },
           "description": {
-            "en": "The policy expressing the rights associated with the distribution if using the [ODRL] vocabulary."
+            "en": "The policy expressing the rights associated with the distribution if using the [[ODRL]] vocabulary."
           },
           "usage": {},
           "domain": [
@@ -9134,7 +9097,7 @@
           "cardinality": "0..1",
           "codelist_uri": "",
           "rawTags": {
-            "ap-definition-en": "The policy expressing the rights associated with the distribution if using the [ODRL] vocabulary.",
+            "ap-definition-en": "The policy expressing the rights associated with the distribution if using the [[ODRL]] vocabulary.",
             "ap-label-en": "has policy",
             "uri": "http://www.w3.org/ns/odrl/2/hasPolicy"
           }
