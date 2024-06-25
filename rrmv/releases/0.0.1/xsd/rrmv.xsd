@@ -38,6 +38,16 @@
   </xs:complexType>
   <xs:complexType name="ActionType">
     <xs:sequence>
+      <xs:element name="relatedTo" ref="ActionType" maxOccurs="unbounded" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation xml:lang="en">Indicates a somehow related other document, not necessarily a legal resource.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="hasAnnotation" type="xs:string" maxOccurs="unbounded" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation xml:lang="en">Annotation related to the Action or Request made by the domain expert.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
       <xs:element name="atTime" ref="PeriodOfTimeType" maxOccurs="unbounded" minOccurs="0">
         <xs:annotation>
           <xs:documentation xml:lang="en">An Action or a Role is valid within a time interval.</xs:documentation>
@@ -46,11 +56,6 @@
       <xs:element name="hasAgentRole" ref="AgentRoleType" maxOccurs="unbounded" minOccurs="0">
         <xs:annotation>
           <xs:documentation xml:lang="en">This property connects the executed Action to the Agent that was involved in its exectuion.</xs:documentation>
-        </xs:annotation>
-      </xs:element>
-      <xs:element name="hasAnnotation" type="xs:string" maxOccurs="unbounded" minOccurs="0">
-        <xs:annotation>
-          <xs:documentation xml:lang="en">Annotation related to the Action or Request made by the domain expert.</xs:documentation>
         </xs:annotation>
       </xs:element>
       <xs:element name="hasNext" ref="ActionType" maxOccurs="unbounded" minOccurs="0">
@@ -66,11 +71,6 @@
       <xs:element name="hasStatus" ref="StatusType" maxOccurs="unbounded" minOccurs="0">
         <xs:annotation>
           <xs:documentation xml:lang="en">A property that links an Action with the Status of this action.</xs:documentation>
-        </xs:annotation>
-      </xs:element>
-      <xs:element name="relatedTo" ref="ActionType" maxOccurs="unbounded" minOccurs="0">
-        <xs:annotation>
-          <xs:documentation xml:lang="en">Indicates a somehow related other document, not necessarily a legal resource.</xs:documentation>
         </xs:annotation>
       </xs:element>
     </xs:sequence>
@@ -161,6 +161,16 @@
           <xs:documentation xml:lang="en">Citation in the text of the legislation. This may be at the legal resource or legal expression level, as required by the implementation context. This includes verbatim citation and citations in referrals.</xs:documentation>
         </xs:annotation>
       </xs:element>
+      <xs:element name="isPartOf" ref="ExpressionType" maxOccurs="unbounded" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation xml:lang="en">Indicates a work in which this one is physically included. Covers the case of text included in an Official Journal, or an article included in a text.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="relatedTo" ref="RequestType" maxOccurs="unbounded" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation xml:lang="en">Indicates a somehow related other document, not necessarily a legal resource.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
       <xs:element name="hasAnnotation" type="xs:string" maxOccurs="unbounded" minOccurs="0">
         <xs:annotation>
           <xs:documentation xml:lang="en">Annotation related to the Action or Request made by the domain expert.</xs:documentation>
@@ -186,19 +196,9 @@
           <xs:documentation xml:lang="en">The property linking a Request a Frequency expressing the value of the unit of the frequency (e.g., 2 is the value, quarter is the unit).</xs:documentation>
         </xs:annotation>
       </xs:element>
-      <xs:element name="isPartOf" ref="ExpressionType" maxOccurs="unbounded" minOccurs="0">
-        <xs:annotation>
-          <xs:documentation xml:lang="en">Indicates a work in which this one is physically included. Covers the case of text included in an Official Journal, or an article included in a text.</xs:documentation>
-        </xs:annotation>
-      </xs:element>
       <xs:element name="produces" ref="ActionType" maxOccurs="unbounded" minOccurs="0">
         <xs:annotation>
           <xs:documentation xml:lang="en">A Request produces one or many Action.</xs:documentation>
-        </xs:annotation>
-      </xs:element>
-      <xs:element name="relatedTo" ref="RequestType" maxOccurs="unbounded" minOccurs="0">
-        <xs:annotation>
-          <xs:documentation xml:lang="en">Indicates a somehow related other document, not necessarily a legal resource.</xs:documentation>
         </xs:annotation>
       </xs:element>
     </xs:sequence>
@@ -270,14 +270,14 @@
   </xs:complexType>
   <xs:complexType name="ExpressionType">
     <xs:sequence>
-      <xs:element name="hasUri" type="xs:anyURI" maxOccurs="unbounded" minOccurs="0">
-        <xs:annotation>
-          <xs:documentation xml:lang="en">URI of the Legal Source Expression where the Request is expressed.</xs:documentation>
-        </xs:annotation>
-      </xs:element>
       <xs:element name="isRealizedBy" ref="WorkType" maxOccurs="unbounded" minOccurs="0">
         <xs:annotation>
           <xs:documentation xml:lang="en">Relates a work to an expression of this work in the form of a "sequence of signs" (typically alpha-numeric characters in a legal context).</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="hasUri" type="xs:anyURI" maxOccurs="unbounded" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation xml:lang="en">URI of the Legal Source Expression where the Request is expressed.</xs:documentation>
         </xs:annotation>
       </xs:element>
     </xs:sequence>
