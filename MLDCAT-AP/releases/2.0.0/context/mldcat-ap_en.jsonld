@@ -1,31 +1,127 @@
 {
   "@context": {
     "Agent": "http://xmlns.com/foaf/0.1/Agent",
+    "Agent.name": {
+      "@container": "@set",
+      "@id": "http://xmlns.com/foaf/0.1/name"
+    },
     "Algorithm": "http://www.w3.org/ns/mls#Algorithm",
+    "Algorithm.hasAlgorithmType": {
+      "@container": "@set",
+      "@id": "http://w3id.org/mlso/hasAlgorithmType",
+      "@type": "@id"
+    },
+    "Algorithm.hasLearningMethodType": {
+      "@id": "http://w3id.org/mlso/hasLearningMethodType",
+      "@type": "@id"
+    },
     "BibliographicReference": "http://purl.org/spar/biro/BibliographicReference",
-    "Catalog": "http://www.w3.org/ns/dcat#Catalog",
-    "Catalog.dataset": {
+    "BibliographicReference.bibliographicCitation": {
+      "@id": "http://purl.org/dc/terms/bibliographicCitation"
+    },
+    "BibliographicReference.format": {
+      "@id": "http://purl.org/dc/terms/format"
+    },
+    "BibliographicReference.references": {
+      "@container": "@set",
+      "@id": "http://purl.org/dc/terms/references",
+      "@type": "@id"
+    },
+    "Catalogue": "http://www.w3.org/ns/dcat#Catalog",
+    "Catalogue.creator": {
+      "@id": "http://purl.org/dc/terms/creator",
+      "@type": "@id"
+    },
+    "Catalogue.dataset": {
       "@container": "@set",
       "@id": "http://www.w3.org/ns/dcat#dataset",
       "@type": "@id"
     },
-    "Catalog.description": {
+    "Catalogue.description": {
       "@container": "@set",
       "@id": "http://purl.org/dc/terms/description"
     },
-    "CatalogRecord": "http://www.w3.org/ns/dcat#CatalogRecord",
-    "CatalogRecord.description": {
+    "Catalogue.homepage": {
+      "@id": "http://xmlns.com/foaf/0.1/homepage",
+      "@type": "@id"
+    },
+    "Catalogue.identifier": {
+      "@id": "http://purl.org/dc/terms/identifier"
+    },
+    "Catalogue.keyword": {
+      "@container": "@set",
+      "@id": "http://www.w3.org/ns/dcat#keyword"
+    },
+    "Catalogue.licence": {
+      "@id": "http://purl.org/dc/terms/license",
+      "@type": "@id"
+    },
+    "Catalogue.modificationDate": {
+      "@id": "http://purl.org/dc/terms/modified"
+    },
+    "Catalogue.publisher": {
+      "@id": "http://purl.org/dc/terms/publisher",
+      "@type": "@id"
+    },
+    "Catalogue.record": {
+      "@container": "@set",
+      "@id": "http://www.w3.org/ns/dcat#record",
+      "@type": "@id"
+    },
+    "Catalogue.releaseDate": {
+      "@id": "http://purl.org/dc/terms/issued"
+    },
+    "Catalogue.service": {
+      "@container": "@set",
+      "@id": "http://www.w3.org/ns/dcat#service",
+      "@type": "@id"
+    },
+    "Catalogue.title": {
+      "@container": "@set",
+      "@id": "http://purl.org/dc/terms/title"
+    },
+    "CatalogueRecord": "http://www.w3.org/ns/dcat#CatalogRecord",
+    "CatalogueRecord.description": {
       "@container": "@set",
       "@id": "http://purl.org/dc/terms/description"
     },
-    "CatalogRecord.version": {
+    "CatalogueRecord.descriptionVersion": {
       "@id": "http://data.europa.eu/it6/descriptionVersion"
     },
+    "CatalogueRecord.modificationDate": {
+      "@id": "http://purl.org/dc/terms/modified"
+    },
+    "CatalogueRecord.primaryTopic": {
+      "@id": "http://xmlns.com/foaf/0.1/primaryTopic",
+      "@type": "@id"
+    },
+    "CataloguedResource": "http://www.w3.org/ns/dcat#Resource",
     "Checksum": "http://spdx.org/rdf/terms#Checksum",
+    "Checksum.algorithm": {
+      "@id": "http://spdx.org/rdf/terms#algorithm",
+      "@type": "@id"
+    },
+    "Checksum.checksumValue": {
+      "@id": "http://spdx.org/rdf/terms#checksumValue",
+      "@type": "http://www.w3.org/2001/XMLSchema#hexBinary"
+    },
     "ChecksumAlgorithm": "http://spdx.org/rdf/terms#ChecksumAlgorithm",
     "Collection": "http://data.europa.eu/it6/Collection",
+    "Collection.creationDate": {
+      "@id": "http://data.europa.eu/it6/creationDate"
+    },
     "Collection.description": {
       "@id": "http://purl.org/dc/terms/description"
+    },
+    "Collection.hasUploader": {
+      "@id": "http://data.europa.eu/it6/hasUploader",
+      "@type": "@id"
+    },
+    "Collection.identifier": {
+      "@id": "http://purl.org/dc/terms/identifier"
+    },
+    "Collection.title": {
+      "@id": "http://purl.org/dc/terms/title"
     },
     "Collection.visibility": {
       "@id": "http://data.europa.eu/it6/visibility",
@@ -37,28 +133,257 @@
     "DataQuality.description": {
       "@id": "http://purl.org/dc/terms/description"
     },
+    "DataQuality.identifier": {
+      "@id": "http://purl.org/dc/terms/identifier"
+    },
+    "DataQuality.title": {
+      "@id": "http://purl.org/dc/terms/title"
+    },
     "DataService": "http://www.w3.org/ns/dcat#DataService",
+    "DataService.endpointUrl": {
+      "@container": "@set",
+      "@id": "http://www.w3.org/ns/dcat#endpointURL",
+      "@type": "@id"
+    },
+    "DataService.servesDataset": {
+      "@container": "@set",
+      "@id": "http://www.w3.org/ns/dcat#servesDataset",
+      "@type": "@id"
+    },
+    "DataService.title": {
+      "@container": "@set",
+      "@id": "http://purl.org/dc/terms/title"
+    },
     "Dataset": "http://www.w3.org/ns/dcat#Dataset",
+    "Dataset.accessRights": {
+      "@id": "http://purl.org/dc/terms/accessRights",
+      "@type": "@id"
+    },
+    "Dataset.collectionDate": {
+      "@id": "http://data.europa.eu/it6/collectionDate"
+    },
+    "Dataset.contributor": {
+      "@container": "@set",
+      "@id": "http://purl.org/dc/terms/contributor",
+      "@type": "@id"
+    },
+    "Dataset.creator": {
+      "@container": "@set",
+      "@id": "http://purl.org/dc/terms/creator",
+      "@type": "@id"
+    },
+    "Dataset.datasetDistribution": {
+      "@container": "@set",
+      "@id": "http://www.w3.org/ns/dcat#distribution",
+      "@type": "@id"
+    },
     "Dataset.description": {
       "@container": "@set",
       "@id": "http://purl.org/dc/terms/description"
     },
+    "Dataset.hasVersion": {
+      "@container": "@set",
+      "@id": "http://www.w3.org/ns/dcat#hasVersion",
+      "@type": "@id"
+    },
+    "Dataset.identifier": {
+      "@container": "@set",
+      "@id": "http://purl.org/dc/terms/identifier"
+    },
+    "Dataset.isReferencedBy": {
+      "@container": "@set",
+      "@id": "http://purl.org/dc/terms/isReferencedBy",
+      "@type": "@id"
+    },
+    "Dataset.isVersionOf": {
+      "@container": "@set",
+      "@id": "http://purl.org/dc/terms/isVersionOf",
+      "@type": "@id"
+    },
+    "Dataset.keyword": {
+      "@container": "@set",
+      "@id": "http://www.w3.org/ns/dcat#keyword"
+    },
+    "Dataset.landingPage": {
+      "@container": "@set",
+      "@id": "http://www.w3.org/ns/dcat#landingPage",
+      "@type": "@id"
+    },
+    "Dataset.publisher": {
+      "@id": "http://purl.org/dc/terms/publisher",
+      "@type": "@id"
+    },
+    "Dataset.releaseDate": {
+      "@id": "http://purl.org/dc/terms/issued"
+    },
     "Dataset.status": {
       "@id": "http://www.w3.org/ns/adms#status",
       "@type": "@id"
+    },
+    "Dataset.title": {
+      "@container": "@set",
+      "@id": "http://purl.org/dc/terms/title"
+    },
+    "Dataset.versionInfo": {
+      "@id": "http://www.w3.org/2002/07/owl#versionInfo"
+    },
+    "Dataset.versionLabel": {
+      "@id": "http://data.europa.eu/it6/versionLabel"
     },
     "Dataset.visibility": {
       "@id": "http://data.europa.eu/it6/access_policy",
       "@type": "@id"
     },
     "Distribution": "http://www.w3.org/ns/dcat#Distribution",
+    "Distribution.accessService": {
+      "@container": "@set",
+      "@id": "http://www.w3.org/ns/dcat#accessService",
+      "@type": "@id"
+    },
+    "Distribution.accessUrl": {
+      "@container": "@set",
+      "@id": "http://www.w3.org/ns/dcat#accessURL",
+      "@type": "@id"
+    },
+    "Distribution.byteSize": {
+      "@id": "http://www.w3.org/ns/dcat#byteSize",
+      "@type": "http://www.w3.org/2001/XMLSchema#nonNegativeInteger"
+    },
+    "Distribution.checksum": {
+      "@id": "http://spdx.org/rdf/terms#checksum",
+      "@type": "@id"
+    },
+    "Distribution.defaultTargetAttribute": {
+      "@container": "@set",
+      "@id": "http://data.europa.eu/it6/defaultTargetAttribute"
+    },
+    "Distribution.downloadUrl": {
+      "@container": "@set",
+      "@id": "http://www.w3.org/ns/dcat#downloadURL",
+      "@type": "@id"
+    },
+    "Distribution.format": {
+      "@id": "http://purl.org/dc/terms/format",
+      "@type": "@id"
+    },
+    "Distribution.hasFeature": {
+      "@container": "@set",
+      "@id": "http://data.europa.eu/it6/hasFeature",
+      "@type": "@id"
+    },
+    "Distribution.hasPolicy": {
+      "@id": "http://www.w3.org/ns/odrl/2/hasPolicy",
+      "@type": "@id"
+    },
+    "Distribution.hasQualityMeasurement": {
+      "@container": "@set",
+      "@id": "http://www.w3.org/ns/dqv#hasQualityMeasurement",
+      "@type": "@id"
+    },
+    "Distribution.identifier": {
+      "@id": "http://purl.org/dc/terms/identifier"
+    },
+    "Distribution.ignoreAttribute": {
+      "@container": "@set",
+      "@id": "http://data.europa.eu/it6/ignoreAttribute"
+    },
+    "Distribution.language": {
+      "@container": "@set",
+      "@id": "http://purl.org/dc/terms/language",
+      "@type": "@id"
+    },
+    "Distribution.license": {
+      "@id": "http://purl.org/dc/terms/license",
+      "@type": "@id"
+    },
+    "Distribution.processingDate": {
+      "@id": "http://data.europa.eu/it6/processingDate"
+    },
+    "Distribution.processingError": {
+      "@id": "http://data.europa.eu/it6/processingError"
+    },
+    "Distribution.processingWarning": {
+      "@id": "http://data.europa.eu/it6/processingWarning"
+    },
+    "Distribution.rowIdAttribute": {
+      "@id": "http://data.europa.eu/it6/rowIDAttribute"
+    },
+    "Distribution.title": {
+      "@container": "@set",
+      "@id": "http://purl.org/dc/terms/title"
+    },
     "Document": "http://xmlns.com/foaf/0.1/Document",
     "Engagement": "http://data.europa.eu/it6/Engagement",
+    "Engagement.download": {
+      "@id": "http://data.europa.eu/it6/download",
+      "@type": "http://www.w3.org/2001/XMLSchema#integer"
+    },
+    "Engagement.like": {
+      "@id": "http://data.europa.eu/it6/like",
+      "@type": "http://www.w3.org/2001/XMLSchema#integer"
+    },
     "EstimationProcedure": "http://data.europa.eu/it6/EstimationProcedure",
+    "EstimationProcedure.dataSplitsUrl": {
+      "@id": "http://data.europa.eu/it6/dataSplitsURL",
+      "@type": "@id"
+    },
     "EstimationProcedure.description": {
       "@id": "http://purl.org/dc/terms/description"
     },
+    "EstimationProcedure.hasParameter": {
+      "@container": "@set",
+      "@id": "http://data.europa.eu/it6/hasParameter",
+      "@type": "@id"
+    },
+    "EstimationProcedure.identifier": {
+      "@id": "http://purl.org/dc/terms/identifier"
+    },
+    "EstimationProcedure.title": {
+      "@id": "http://purl.org/dc/terms/title"
+    },
+    "EstimationProcedure.type": {
+      "@id": "http://purl.org/dc/terms/type",
+      "@type": "@id"
+    },
     "Evaluation": "http://data.europa.eu/it6/Evaluation",
+    "Evaluation.arrayData": {
+      "@id": "http://data.europa.eu/it6/arrayData"
+    },
+    "Evaluation.fold": {
+      "@id": "http://data.europa.eu/it6/fold"
+    },
+    "Evaluation.hasFlow": {
+      "@container": "@set",
+      "@id": "http://data.europa.eu/it6/hasFlow",
+      "@type": "@id"
+    },
+    "Evaluation.identifier": {
+      "@id": "http://purl.org/dc/terms/identifier"
+    },
+    "Evaluation.intervalEnd": {
+      "@id": "http://data.europa.eu/it6/intervalEnd"
+    },
+    "Evaluation.intervalStart": {
+      "@id": "http://data.europa.eu/it6/intervalStart"
+    },
+    "Evaluation.label": {
+      "@id": "http://www.w3.org/2000/01/rdf-schema#label"
+    },
+    "Evaluation.repeat": {
+      "@id": "http://data.europa.eu/it6/repeat"
+    },
+    "Evaluation.sample": {
+      "@id": "http://data.europa.eu/it6/sample"
+    },
+    "Evaluation.sampleSize": {
+      "@id": "http://data.europa.eu/it6/sampleSize"
+    },
+    "Evaluation.stdev": {
+      "@id": "http://data.europa.eu/it6/stdev"
+    },
+    "Evaluation.title": {
+      "@id": "http://purl.org/dc/terms/title"
+    },
     "Evaluation.value": {
       "@id": "http://data.europa.eu/it6/value"
     },
@@ -66,45 +391,236 @@
     "EvaluationMeasure.description": {
       "@id": "http://purl.org/dc/terms/description"
     },
+    "EvaluationMeasure.implementation": {
+      "@id": "http://data.europa.eu/it6/implementation"
+    },
+    "EvaluationMeasure.title": {
+      "@id": "http://purl.org/dc/terms/title"
+    },
     "EvaluationMeasure.value": {
       "@id": "http://data.europa.eu/it6/value"
+    },
+    "EvaluationMeasure.valueBad": {
+      "@id": "http://data.europa.eu/it6/valueBad"
+    },
+    "EvaluationMeasure.valueGood": {
+      "@id": "http://data.europa.eu/it6/valueGood"
     },
     "Feature": "http://data.europa.eu/it6/Feature",
     "Feature.description": {
       "@id": "http://purl.org/dc/terms/description"
     },
+    "Feature.title": {
+      "@id": "http://purl.org/dc/terms/title"
+    },
+    "Feature.type": {
+      "@id": "http://purl.org/dc/terms/type",
+      "@type": "@id"
+    },
     "Flow": "http://data.europa.eu/it6/Flow",
+    "Flow.className": {
+      "@id": "http://data.europa.eu/it6/className"
+    },
+    "Flow.customName": {
+      "@id": "http://data.europa.eu/it6/customName"
+    },
     "Flow.description": {
       "@id": "http://purl.org/dc/terms/description"
+    },
+    "Flow.externalVersion": {
+      "@id": "http://data.europa.eu/it6/externalVersion"
+    },
+    "Flow.hasDependency": {
+      "@container": "@set",
+      "@id": "http://data.europa.eu/it6/hasDependency",
+      "@type": "@id"
+    },
+    "Flow.hasFlowParameter": {
+      "@container": "@set",
+      "@id": "http://data.europa.eu/it6/hasFlowParameter",
+      "@type": "@id"
+    },
+    "Flow.hasUploader": {
+      "@id": "http://data.europa.eu/it6/hasUploader",
+      "@type": "@id"
+    },
+    "Flow.identifier": {
+      "@id": "http://purl.org/dc/terms/identifier"
+    },
+    "Flow.keyword": {
+      "@container": "@set",
+      "@id": "http://www.w3.org/ns/dcat#keyword"
     },
     "Flow.status": {
       "@id": "http://data.europa.eu/it6/status",
       "@type": "@id"
     },
+    "Flow.title": {
+      "@id": "http://purl.org/dc/terms/title"
+    },
+    "Flow.uploaded": {
+      "@id": "http://data.europa.eu/it6/uploaded"
+    },
     "Flow.version": {
       "@id": "http://data.europa.eu/it6/version"
     },
     "FlowParameter": "http://data.europa.eu/it6/FlowParameter",
+    "FlowParameter.defaultValue": {
+      "@id": "http://data.europa.eu/it6/defaultValue"
+    },
     "FlowParameter.description": {
       "@id": "http://purl.org/dc/terms/description"
+    },
+    "FlowParameter.recommendedRange": {
+      "@id": "http://data.europa.eu/it6/recommendedRange"
+    },
+    "FlowParameter.title": {
+      "@id": "http://purl.org/dc/terms/title"
+    },
+    "FlowParameter.type": {
+      "@id": "http://purl.org/dc/terms/type",
+      "@type": "@id"
     },
     "HexBinary": "http://www.w3.org/2001/XMLSchema#hexBinary",
     "ImageObject": "http://data.europa.eu/m8g/ImageObject",
     "Integer": "http://www.w3.org/2001/XMLSchema#integer",
     "Library": "http://data.europa.eu/it6/Library",
+    "Library.title": {
+      "@id": "http://purl.org/dc/terms/title"
+    },
     "Library.version": {
       "@id": "http://data.europa.eu/it6/version"
     },
-    "LicenseDocument": "http://purl.org/dc/terms/LicenseDocument",
+    "LicenceDocument": "http://purl.org/dc/terms/LicenseDocument",
     "LinguisticSystem": "http://purl.org/dc/terms/LinguisticSystem",
     "Literal": "http://www.w3.org/2000/01/rdf-schema#Literal",
     "MachineLearningModel": "http://data.europa.eu/it6/MachineLearningModel",
+    "MachineLearningModel.bias": {
+      "@id": "http://data.europa.eu/it6/bias"
+    },
+    "MachineLearningModel.contributor": {
+      "@container": "@set",
+      "@id": "http://purl.org/dc/terms/contributor",
+      "@type": "@id"
+    },
+    "MachineLearningModel.created": {
+      "@id": "http://purl.org/dc/terms/created"
+    },
+    "MachineLearningModel.creator": {
+      "@container": "@set",
+      "@id": "http://purl.org/dc/terms/creator",
+      "@type": "@id"
+    },
     "MachineLearningModel.description": {
       "@id": "http://purl.org/dc/terms/description"
+    },
+    "MachineLearningModel.evaluationResults": {
+      "@id": "http://data.europa.eu/it6/evaluationResults"
+    },
+    "MachineLearningModel.fineTunedFrom": {
+      "@id": "http://data.europa.eu/it6/fineTunedFrom",
+      "@type": "@id"
+    },
+    "MachineLearningModel.hasBibliographicReference": {
+      "@container": "@set",
+      "@id": "http://data.europa.eu/it6/hasBibliographicReference",
+      "@type": "@id"
+    },
+    "MachineLearningModel.hasEngagement": {
+      "@id": "http://data.europa.eu/it6/hasEngagement",
+      "@type": "@id"
+    },
+    "MachineLearningModel.hasOutputFilePrediction": {
+      "@container": "@set",
+      "@id": "http://data.europa.eu/it6/hasOutputFilePrediction",
+      "@type": "@id"
+    },
+    "MachineLearningModel.hasPrediction": {
+      "@container": "@set",
+      "@id": "http://data.europa.eu/it6/hasPrediction",
+      "@type": "@id"
+    },
+    "MachineLearningModel.hasProvider": {
+      "@container": "@set",
+      "@id": "http://data.europa.eu/it6/hasProvider",
+      "@type": "@id"
     },
     "MachineLearningModel.hasRepository": {
       "@container": "@set",
       "@id": "http://data.europa.eu/it6/hasRepository",
+      "@type": "@id"
+    },
+    "MachineLearningModel.hasRisk": {
+      "@container": "@set",
+      "@id": "http://data.europa.eu/it6/hasRisk",
+      "@type": "@id"
+    },
+    "MachineLearningModel.hasUploader": {
+      "@id": "http://data.europa.eu/it6/hasUploader",
+      "@type": "@id"
+    },
+    "MachineLearningModel.hasVariation": {
+      "@container": "@set",
+      "@id": "http://data.europa.eu/it6/hasVariation",
+      "@type": "@id"
+    },
+    "MachineLearningModel.howToUse": {
+      "@id": "http://data.europa.eu/it6/howToUse"
+    },
+    "MachineLearningModel.intendedUse": {
+      "@id": "http://data.europa.eu/it6/intendedUse"
+    },
+    "MachineLearningModel.keyword": {
+      "@container": "@set",
+      "@id": "http://www.w3.org/ns/dcat#keyword"
+    },
+    "MachineLearningModel.language": {
+      "@container": "@set",
+      "@id": "http://purl.org/dc/terms/language",
+      "@type": "@id"
+    },
+    "MachineLearningModel.licence": {
+      "@container": "@set",
+      "@id": "http://purl.org/dc/terms/license",
+      "@type": "@id"
+    },
+    "MachineLearningModel.limitations": {
+      "@id": "http://data.europa.eu/it6/limitations"
+    },
+    "MachineLearningModel.logo": {
+      "@container": "@set",
+      "@id": "http://data.europa.eu/m8g/logo",
+      "@type": "@id"
+    },
+    "MachineLearningModel.name": {
+      "@id": "http://purl.org/dc/terms/title"
+    },
+    "MachineLearningModel.runnedOn": {
+      "@container": "@set",
+      "@id": "http://data.europa.eu/it6/runnedOn",
+      "@type": "@id"
+    },
+    "MachineLearningModel.testedOn": {
+      "@container": "@set",
+      "@id": "http://data.europa.eu/it6/testedOn",
+      "@type": "@id"
+    },
+    "MachineLearningModel.trainedOn": {
+      "@container": "@set",
+      "@id": "http://data.europa.eu/it6/trainedOn",
+      "@type": "@id"
+    },
+    "MachineLearningModel.trainingProcess": {
+      "@id": "http://data.europa.eu/it6/trainingProcess"
+    },
+    "MachineLearningModel.type": {
+      "@container": "@set",
+      "@id": "http://purl.org/dc/terms/type",
+      "@type": "@id"
+    },
+    "MachineLearningModel.validatedOn": {
+      "@container": "@set",
+      "@id": "http://data.europa.eu/it6/validatedOn",
       "@type": "@id"
     },
     "MachineLearningModel.version": {
@@ -114,570 +630,297 @@
     "MediaTypeOrExtent": "http://purl.org/dc/terms/MediaTypeOrExtent",
     "NonNegativeInteger": "http://www.w3.org/2001/XMLSchema#nonNegativeInteger",
     "OutputFileDescription": "http://data.europa.eu/it6/OutputFileDescription",
+    "OutputFileDescription.id": {
+      "@id": "http://purl.org/dc/terms/identifier"
+    },
+    "OutputFileDescription.title": {
+      "@id": "http://purl.org/dc/terms/title"
+    },
+    "OutputFileDescription.url": {
+      "@id": "http://data.europa.eu/it6/url"
+    },
     "OutputFilePrediction": "http://data.europa.eu/it6/OutputFilePrediction",
+    "OutputFilePrediction.checksum": {
+      "@container": "@set",
+      "@id": "http://spdx.org/rdf/terms#checksum",
+      "@type": "@id"
+    },
+    "OutputFilePrediction.format": {
+      "@id": "http://purl.org/dc/terms/format",
+      "@type": "@id"
+    },
+    "OutputFilePrediction.id": {
+      "@id": "http://purl.org/dc/terms/identifier"
+    },
+    "OutputFilePrediction.title": {
+      "@id": "http://purl.org/dc/terms/title"
+    },
+    "OutputFilePrediction.url": {
+      "@id": "http://data.europa.eu/it6/url",
+      "@type": "@id"
+    },
     "Paper": "https://linkedpaperswithcode.com/class/paper",
+    "Paper.abstract": {
+      "@id": "http://purl.org/dc/terms/abstract"
+    },
+    "Paper.creator": {
+      "@container": "@set",
+      "@id": "http://purl.org/dc/terms/creator",
+      "@type": "@id"
+    },
+    "Paper.date": {
+      "@id": "http://purl.org/dc/terms/date"
+    },
+    "Paper.hasDocument": {
+      "@id": "http://data.europa.eu/it6/hasDocument",
+      "@type": "@id"
+    },
+    "Paper.hasModel": {
+      "@container": "@set",
+      "@id": "https://linkedpaperswithcode.com/property/hasModel",
+      "@type": "@id"
+    },
     "Paper.hasRepository": {
       "@container": "@set",
       "@id": "https://linkedpaperswithcode.com/property/hasRepository",
       "@type": "@id"
     },
+    "Paper.references": {
+      "@container": "@set",
+      "@id": "http://purl.org/dc/terms/references",
+      "@type": "@id"
+    },
+    "Paper.subject": {
+      "@id": "http://purl.org/dc/terms/subject"
+    },
+    "Paper.title": {
+      "@id": "http://purl.org/dc/terms/title"
+    },
     "Parameter": "http://data.europa.eu/it6/Parameter",
+    "Parameter.title": {
+      "@id": "http://purl.org/dc/terms/title"
+    },
     "Parameter.value": {
       "@id": "http://data.europa.eu/it6/value"
     },
     "ParameterSetting": "http://data.europa.eu/it6/ParameterSetting",
+    "ParameterSetting.component": {
+      "@id": "http://data.europa.eu/it6/component"
+    },
+    "ParameterSetting.name": {
+      "@id": "http://purl.org/dc/terms/title"
+    },
     "ParameterSetting.value": {
       "@id": "http://data.europa.eu/it6/value"
     },
     "Policy": "http://www.w3.org/ns/odrl/2/Policy",
     "Prediction": "http://data.europa.eu/it6/Prediction",
+    "Prediction.format": {
+      "@id": "http://purl.org/dc/terms/format",
+      "@type": "@id"
+    },
+    "Prediction.hasPredictionFeature": {
+      "@container": "@set",
+      "@id": "http://data.europa.eu/it6/hasPredictionFeature",
+      "@type": "@id"
+    },
     "PredictionFeature": "http://data.europa.eu/it6/PredictionFeature",
+    "PredictionFeature.title": {
+      "@id": "http://purl.org/dc/terms/title"
+    },
+    "PredictionFeature.type": {
+      "@id": "http://purl.org/dc/terms/type",
+      "@type": "@id"
+    },
     "QualityMeasurement": "http://www.w3.org/ns/dqv#QualityMeasurement",
     "QualityMeasurement.dataset": {
       "@container": "@set",
       "@id": "http://purl.org/linked-data/cube#dataSet",
       "@type": "@id"
     },
+    "QualityMeasurement.featureIndex": {
+      "@id": "http://data.europa.eu/it6/featureIndex",
+      "@type": "@id"
+    },
+    "QualityMeasurement.intervalEnd": {
+      "@id": "http://data.europa.eu/it6/intervalEnd"
+    },
+    "QualityMeasurement.intervalStart": {
+      "@id": "http://data.europa.eu/it6/intervalStart"
+    },
+    "QualityMeasurement.type": {
+      "@id": "http://purl.org/dc/terms/type",
+      "@type": "@id"
+    },
     "QualityMeasurement.value": {
       "@id": "http://www.w3.org/ns/dqv#value"
     },
     "QualityMeasurementDataset": "http://www.w3.org/ns/dqv#QualityMeasurementDataset",
+    "QualityMeasurementDataset.evaluationEngineId": {
+      "@id": "http://data.europa.eu/it6/evaluationEngine"
+    },
+    "QualityMeasurementDataset.identifier": {
+      "@id": "http://purl.org/dc/terms/identifier"
+    },
     "Repository": "https://linkedpaperswithcode.com/class/repository",
-    "Resource": "http://www.w3.org/ns/dcat#Resource",
+    "Repository.hasFile": {
+      "@container": "@set",
+      "@id": "http://data.europa.eu/it6/hasFile",
+      "@type": "@id"
+    },
+    "Resource": "http://www.w3.org/2000/01/rdf-schema#Resource",
     "RightsStatement": "http://purl.org/dc/terms/RightsStatement",
     "Risk": "http://data.europa.eu/it6/Risk",
     "Risk.description": {
       "@id": "http://purl.org/dc/terms/description"
     },
-    "Run": "http://data.europa.eu/it6/Run",
-    "RunCollection": "http://data.europa.eu/it6/RunCollection",
-    "Split": "http://data.europa.eu/it6/Split",
-    "Split.description": {
-      "@id": "http://purl.org/dc/terms/description"
-    },
-    "Task": "http://data.europa.eu/it6/Task",
-    "TaskCollection": "http://data.europa.eu/it6/TaskCollection",
-    "TaskType": "http://data.europa.eu/it6/TaskType",
-    "TaskType.description": {
-      "@id": "http://www.w3.org/2004/02/skos/core#definition"
-    },
-    "TemporalLiteral": "http://www.w3.org/2000/01/rdf-schema#Literal",
-    "abstract": {
-      "@id": "http://purl.org/dc/terms/abstract"
-    },
-    "accessRights": {
-      "@id": "http://purl.org/dc/terms/accessRights",
-      "@type": "@id"
-    },
-    "accessService": {
-      "@container": "@set",
-      "@id": "http://www.w3.org/ns/dcat#accessService",
-      "@type": "@id"
-    },
-    "accessURL": {
-      "@container": "@set",
-      "@id": "http://www.w3.org/ns/dcat#accessURL",
-      "@type": "@id"
-    },
-    "algorithm": {
-      "@id": "http://spdx.org/rdf/terms#algorithm",
-      "@type": "@id"
-    },
-    "arrayData": {
-      "@id": "http://data.europa.eu/it6/arrayData"
-    },
-    "bias": {
-      "@id": "http://data.europa.eu/it6/bias"
-    },
-    "bibliographicCitation": {
-      "@id": "http://purl.org/dc/terms/bibliographicCitation"
-    },
-    "byteSize": {
-      "@id": "http://www.w3.org/ns/dcat#byteSize",
-      "@type": "http://www.w3.org/2001/XMLSchema#nonNegativeInteger"
-    },
-    "checksum": {
-      "@container": "@set",
-      "@id": "http://spdx.org/rdf/terms#checksum",
-      "@type": "@id"
-    },
-    "checksumValue": {
-      "@id": "http://spdx.org/rdf/terms#checksumValue",
-      "@type": "http://www.w3.org/2001/XMLSchema#hexBinary"
-    },
-    "className": {
-      "@id": "http://data.europa.eu/it6/className"
-    },
-    "collectionDate": {
-      "@id": "http://data.europa.eu/it6/collectionDate"
-    },
-    "component": {
-      "@id": "http://data.europa.eu/it6/component"
-    },
-    "contributor": {
-      "@container": "@set",
-      "@id": "http://purl.org/dc/terms/contributor",
-      "@type": "@id"
-    },
-    "created": {
-      "@id": "http://purl.org/dc/terms/created"
-    },
-    "creationDate": {
-      "@id": "http://data.europa.eu/it6/creationDate"
-    },
-    "creator": {
-      "@container": "@set",
-      "@id": "http://purl.org/dc/terms/creator",
-      "@type": "@id"
-    },
-    "customName": {
-      "@id": "http://data.europa.eu/it6/customName"
-    },
-    "dataSplitsURL": {
-      "@id": "http://data.europa.eu/it6/dataSplitsURL",
-      "@type": "@id"
-    },
-    "date": {
-      "@id": "http://purl.org/dc/terms/date"
-    },
-    "defaultTargetAttribute": {
-      "@container": "@set",
-      "@id": "http://data.europa.eu/it6/defaultTargetAttribute"
-    },
-    "defaultValue": {
-      "@id": "http://data.europa.eu/it6/defaultValue"
-    },
-    "distribution": {
-      "@container": "@set",
-      "@id": "http://www.w3.org/ns/dcat#distribution",
-      "@type": "@id"
-    },
-    "download": {
-      "@id": "http://data.europa.eu/it6/download",
-      "@type": "http://www.w3.org/2001/XMLSchema#integer"
-    },
-    "downloadURL": {
-      "@container": "@set",
-      "@id": "http://www.w3.org/ns/dcat#downloadURL",
-      "@type": "@id"
-    },
-    "endpointURL": {
-      "@container": "@set",
-      "@id": "http://www.w3.org/ns/dcat#endpointURL",
-      "@type": "@id"
-    },
-    "errorMessage": {
-      "@id": "http://data.europa.eu/it6/errorMessage"
-    },
-    "evaluationEngine": {
-      "@id": "http://data.europa.eu/it6/evaluationEngine"
-    },
-    "evaluationResults": {
-      "@id": "http://data.europa.eu/it6/evaluationResults"
-    },
-    "externalVersion": {
-      "@id": "http://data.europa.eu/it6/externalVersion"
-    },
-    "featureIndex": {
-      "@id": "http://data.europa.eu/it6/featureIndex",
-      "@type": "@id"
-    },
-    "fineTunedFrom": {
-      "@id": "http://data.europa.eu/it6/fineTunedFrom",
-      "@type": "@id"
-    },
-    "fold": {
-      "@id": "http://data.europa.eu/it6/fold"
-    },
-    "format": {
-      "@id": "http://purl.org/dc/terms/format"
-    },
-    "hasAlgorithmType": {
-      "@container": "@set",
-      "@id": "http://w3id.org/mlso/hasAlgorithmType",
-      "@type": "@id"
-    },
-    "hasBibliographicReference": {
-      "@container": "@set",
-      "@id": "http://data.europa.eu/it6/hasBibliographicReference",
-      "@type": "@id"
-    },
-    "hasCostMatrix": {
-      "@id": "http://data.europa.eu/it6/hasCostMatrix",
-      "@type": "@id"
-    },
-    "hasDependency": {
-      "@container": "@set",
-      "@id": "http://data.europa.eu/it6/hasDependency",
-      "@type": "@id"
-    },
-    "hasDocument": {
-      "@id": "http://data.europa.eu/it6/hasDocument",
-      "@type": "@id"
-    },
-    "hasEngagement": {
-      "@id": "http://data.europa.eu/it6/hasEngagement",
-      "@type": "@id"
-    },
-    "hasEstimationProcedure": {
-      "@container": "@set",
-      "@id": "http://data.europa.eu/it6/hasEstimationProcedure",
-      "@type": "@id"
-    },
-    "hasEvaluation": {
-      "@container": "@set",
-      "@id": "http://data.europa.eu/it6/hasEvaluation",
-      "@type": "@id"
-    },
-    "hasEvaluationMeasure": {
-      "@container": "@set",
-      "@id": "http://data.europa.eu/it6/hasEvaluationMeasure",
-      "@type": "@id"
-    },
-    "hasFeature": {
-      "@container": "@set",
-      "@id": "http://data.europa.eu/it6/hasFeature",
-      "@type": "@id"
-    },
-    "hasFile": {
-      "@container": "@set",
-      "@id": "http://data.europa.eu/it6/hasFile",
-      "@type": "@id"
-    },
-    "hasFlow": {
-      "@id": "http://data.europa.eu/it6/hasFlow",
-      "@type": "@id"
-    },
-    "hasFlowParameter": {
-      "@container": "@set",
-      "@id": "http://data.europa.eu/it6/hasFlowParameter",
-      "@type": "@id"
-    },
-    "hasLearningMethodType": {
-      "@id": "http://w3id.org/mlso/hasLearningMethodType",
-      "@type": "@id"
-    },
-    "hasModel": {
-      "@container": "@set",
-      "@id": "https://linkedpaperswithcode.com/property/hasModel",
-      "@type": "@id"
-    },
-    "hasOutPutFilePrediction": {
-      "@container": "@set",
-      "@id": "http://data.europa.eu/it6/hasOutputFilePrediction",
-      "@type": "@id"
-    },
-    "hasOutput": {
-      "@id": "http://data.europa.eu/it6/hasOutput",
-      "@type": "@id"
-    },
-    "hasOutputFileDescription": {
-      "@id": "http://data.europa.eu/it6/hasOutputFileDescription",
-      "@type": "@id"
-    },
-    "hasOutputFilePrediction": {
-      "@id": "http://data.europa.eu/it6/hasOutputFilePrediction",
-      "@type": "@id"
-    },
-    "hasParameter": {
-      "@container": "@set",
-      "@id": "http://data.europa.eu/it6/hasParameter",
-      "@type": "@id"
-    },
-    "hasParameterSetting": {
-      "@id": "http://data.europa.eu/it6/hasParameterSetting",
-      "@type": "@id"
-    },
-    "hasPolicy": {
-      "@id": "http://www.w3.org/ns/odrl/2/hasPolicy",
-      "@type": "@id"
-    },
-    "hasPrediction": {
-      "@container": "@set",
-      "@id": "http://data.europa.eu/it6/hasPrediction",
-      "@type": "@id"
-    },
-    "hasPredictionfeature": {
-      "@container": "@set",
-      "@id": "http://data.europa.eu/it6/hasPredictionFeature",
-      "@type": "@id"
-    },
-    "hasProvider": {
-      "@container": "@set",
-      "@id": "http://data.europa.eu/it6/hasProvider",
-      "@type": "@id"
-    },
-    "hasQualityMeasurement": {
-      "@container": "@set",
-      "@id": "http://www.w3.org/ns/dqv#hasQualityMeasurement",
-      "@type": "@id"
-    },
-    "hasRisk": {
-      "@container": "@set",
-      "@id": "http://data.europa.eu/it6/hasRisk",
-      "@type": "@id"
-    },
-    "hasRun": {
-      "@container": "@set",
-      "@id": "http://data.europa.eu/it6/hasRun",
-      "@type": "@id"
-    },
-    "hasTask": {
-      "@id": "http://data.europa.eu/it6/hasTask",
-      "@type": "@id"
-    },
-    "hasTaskType": {
-      "@id": "http://data.europa.eu/it6/hasTaskType",
-      "@type": "@id"
-    },
-    "hasUploader": {
-      "@id": "http://data.europa.eu/it6/hasUploader",
-      "@type": "@id"
-    },
-    "hasVariation": {
-      "@container": "@set",
-      "@id": "http://data.europa.eu/it6/hasVariation",
-      "@type": "@id"
-    },
-    "hasVersion": {
-      "@container": "@set",
-      "@id": "http://www.w3.org/ns/dcat#hasVersion",
-      "@type": "@id"
-    },
-    "homepage": {
-      "@id": "http://xmlns.com/foaf/0.1/homepage",
-      "@type": "@id"
-    },
-    "howToUse": {
-      "@id": "http://data.europa.eu/it6/howToUse"
-    },
-    "identifier": {
-      "@id": "http://purl.org/dc/terms/identifier"
-    },
-    "ignoreAttribute": {
-      "@container": "@set",
-      "@id": "http://data.europa.eu/it6/ignoreAttribute"
-    },
-    "implementation": {
-      "@id": "http://data.europa.eu/it6/implementation"
-    },
-    "intendedUse": {
-      "@id": "http://data.europa.eu/it6/intendedUse"
-    },
-    "intervalEnd": {
-      "@id": "http://data.europa.eu/it6/intervalEnd"
-    },
-    "intervalStart": {
-      "@id": "http://data.europa.eu/it6/intervalStart"
-    },
-    "isAppliedTo": {
-      "@container": "@set",
-      "@id": "http://data.europa.eu/it6/isAppliedTo",
-      "@type": "@id"
-    },
-    "isReferencedBy": {
-      "@container": "@set",
-      "@id": "http://purl.org/dc/terms/isReferencedBy",
-      "@type": "@id"
-    },
-    "isVersionOf": {
-      "@container": "@set",
-      "@id": "http://purl.org/dc/terms/isVersionOf",
-      "@type": "@id"
-    },
-    "issued": {
-      "@id": "http://purl.org/dc/terms/issued"
-    },
-    "keyword": {
-      "@container": "@set",
-      "@id": "http://www.w3.org/ns/dcat#keyword"
-    },
-    "label": {
-      "@id": "http://www.w3.org/2000/01/rdf-schema#label"
-    },
-    "landingPage": {
-      "@container": "@set",
-      "@id": "http://www.w3.org/ns/dcat#landingPage",
-      "@type": "@id"
-    },
-    "language": {
-      "@container": "@set",
-      "@id": "http://purl.org/dc/terms/language",
-      "@type": "@id"
-    },
-    "licence": {
-      "@id": "http://purl.org/dc/terms/license",
-      "@type": "@id"
-    },
-    "license": {
-      "@id": "http://purl.org/dc/terms/license",
-      "@type": "@id"
-    },
-    "like": {
-      "@id": "http://data.europa.eu/it6/like",
-      "@type": "http://www.w3.org/2001/XMLSchema#integer"
-    },
-    "limitations": {
-      "@id": "http://data.europa.eu/it6/limitations"
-    },
-    "logo": {
-      "@container": "@set",
-      "@id": "http://data.europa.eu/m8g/logo",
-      "@type": "@id"
-    },
-    "mitigation": {
+    "Risk.mitigation": {
       "@container": "@set",
       "@id": "http://data.europa.eu/it6/mitigation"
     },
-    "modificationDate": {
-      "@id": "http://purl.org/dc/terms/modified"
-    },
-    "modified": {
-      "@id": "http://purl.org/dc/terms/modified"
-    },
-    "name": {
-      "@container": "@set",
-      "@id": "http://xmlns.com/foaf/0.1/name"
-    },
-    "primaryTopic": {
-      "@id": "http://xmlns.com/foaf/0.1/primaryTopic",
-      "@type": "@id"
-    },
-    "probability": {
+    "Risk.probability": {
       "@id": "http://data.europa.eu/it6/probability"
     },
-    "processingDate": {
-      "@id": "http://data.europa.eu/it6/processingDate"
+    "Risk.severity": {
+      "@id": "http://data.europa.eu/it6/severity"
     },
-    "processingError": {
-      "@id": "http://data.europa.eu/it6/processingError"
+    "Risk.title": {
+      "@id": "http://purl.org/dc/terms/title"
     },
-    "processingWarning": {
-      "@id": "http://data.europa.eu/it6/processingWarning"
+    "Run": "http://data.europa.eu/it6/Run",
+    "Run.errorMessage": {
+      "@id": "http://data.europa.eu/it6/errorMessage"
     },
-    "publisher": {
-      "@id": "http://purl.org/dc/terms/publisher",
-      "@type": "@id"
-    },
-    "realizes": {
+    "Run.executes": {
       "@container": "@set",
       "@id": "http://www.w3.org/ns/mls#realizes",
       "@type": "@id"
     },
-    "recommendedRange": {
-      "@id": "http://data.europa.eu/it6/recommendedRange"
-    },
-    "record": {
+    "Run.hasEvaluation": {
       "@container": "@set",
-      "@id": "http://www.w3.org/ns/dcat#record",
+      "@id": "http://data.europa.eu/it6/hasEvaluation",
       "@type": "@id"
     },
-    "references": {
-      "@container": "@set",
-      "@id": "http://purl.org/dc/terms/references",
+    "Run.hasFlow": {
+      "@id": "http://data.europa.eu/it6/hasFlow",
       "@type": "@id"
     },
-    "releaseDate": {
-      "@id": "http://purl.org/dc/terms/issued"
+    "Run.hasOutputFileDescription": {
+      "@id": "http://data.europa.eu/it6/hasOutputFileDescription",
+      "@type": "@id"
     },
-    "repeat": {
-      "@id": "http://data.europa.eu/it6/repeat"
+    "Run.hasOutputFilePrediction": {
+      "@id": "http://data.europa.eu/it6/hasOutputFilePrediction",
+      "@type": "@id"
     },
-    "rowIDAttribute": {
-      "@id": "http://data.europa.eu/it6/rowIDAttribute"
+    "Run.hasParameter": {
+      "@id": "http://data.europa.eu/it6/hasParameterSetting",
+      "@type": "@id"
     },
-    "runDetails": {
+    "Run.hasTask": {
+      "@id": "http://data.europa.eu/it6/hasTask",
+      "@type": "@id"
+    },
+    "Run.hasUploader": {
+      "@id": "http://data.europa.eu/it6/hasUploader",
+      "@type": "@id"
+    },
+    "Run.identifier": {
+      "@id": "http://purl.org/dc/terms/identifier"
+    },
+    "Run.keyword": {
+      "@container": "@set",
+      "@id": "http://www.w3.org/ns/dcat#keyword"
+    },
+    "Run.runDetails": {
       "@id": "http://data.europa.eu/it6/runDetails"
     },
-    "runnedOn": {
-      "@container": "@set",
-      "@id": "http://data.europa.eu/it6/runnedOn",
-      "@type": "@id"
-    },
-    "sample": {
-      "@id": "http://data.europa.eu/it6/sample"
-    },
-    "sampleSize": {
-      "@id": "http://data.europa.eu/it6/sampleSize"
-    },
-    "servesDataset": {
-      "@container": "@set",
-      "@id": "http://www.w3.org/ns/dcat#servesDataset",
-      "@type": "@id"
-    },
-    "service": {
-      "@container": "@set",
-      "@id": "http://www.w3.org/ns/dcat#service",
-      "@type": "@id"
-    },
-    "setupId": {
+    "Run.setupId": {
       "@id": "http://data.europa.eu/it6/setupId"
     },
-    "setupString": {
+    "Run.setupString": {
       "@id": "http://data.europa.eu/it6/setupString"
     },
-    "severity": {
-      "@id": "http://data.europa.eu/it6/severity"
+    "RunCollection": "http://data.europa.eu/it6/RunCollection",
+    "RunCollection.hasRun": {
+      "@container": "@set",
+      "@id": "http://data.europa.eu/it6/hasRun",
+      "@type": "@id"
     },
-    "sourceData": {
+    "Split": "http://data.europa.eu/it6/Split",
+    "Split.description": {
+      "@id": "http://purl.org/dc/terms/description"
+    },
+    "Split.id": {
+      "@id": "http://purl.org/dc/terms/identifier"
+    },
+    "Split.isAppliedTo": {
+      "@container": "@set",
+      "@id": "http://data.europa.eu/it6/isAppliedTo",
+      "@type": "@id"
+    },
+    "Split.title": {
+      "@id": "http://purl.org/dc/terms/title"
+    },
+    "Task": "http://data.europa.eu/it6/Task",
+    "Task.hasCostMatrix": {
+      "@id": "http://data.europa.eu/it6/hasCostMatrix",
+      "@type": "@id"
+    },
+    "Task.hasEstimationProcedure": {
+      "@container": "@set",
+      "@id": "http://data.europa.eu/it6/hasEstimationProcedure",
+      "@type": "@id"
+    },
+    "Task.hasEvaluationMeasure": {
+      "@container": "@set",
+      "@id": "http://data.europa.eu/it6/hasEvaluationMeasure",
+      "@type": "@id"
+    },
+    "Task.hasOutput": {
+      "@id": "http://data.europa.eu/it6/hasOutput",
+      "@type": "@id"
+    },
+    "Task.hasTaskType": {
+      "@id": "http://data.europa.eu/it6/hasTaskType",
+      "@type": "@id"
+    },
+    "Task.id": {
+      "@id": "http://purl.org/dc/terms/identifier"
+    },
+    "Task.keyword": {
+      "@container": "@set",
+      "@id": "http://www.w3.org/ns/dcat#keyword"
+    },
+    "Task.sourceData": {
       "@container": "@set",
       "@id": "http://data.europa.eu/it6/sourceData",
       "@type": "@id"
     },
-    "stdev": {
-      "@id": "http://data.europa.eu/it6/stdev"
-    },
-    "subject": {
-      "@id": "http://purl.org/dc/terms/subject"
-    },
-    "targetFeature": {
+    "Task.targetFeature": {
       "@container": "@set",
       "@id": "http://data.europa.eu/it6/targetFeature",
       "@type": "@id"
     },
-    "testedOn": {
-      "@container": "@set",
-      "@id": "http://data.europa.eu/it6/testedOn",
-      "@type": "@id"
-    },
-    "title": {
+    "Task.title": {
       "@id": "http://purl.org/dc/terms/title"
     },
-    "trainedOn": {
+    "TaskCollection": "http://data.europa.eu/it6/TaskCollection",
+    "TaskCollection.hasTask": {
       "@container": "@set",
-      "@id": "http://data.europa.eu/it6/trainedOn",
+      "@id": "http://data.europa.eu/it6/hasTask",
       "@type": "@id"
     },
-    "trainingProcess": {
-      "@id": "http://data.europa.eu/it6/trainingProcess"
+    "TaskType": "http://data.europa.eu/it6/TaskType",
+    "TaskType.description": {
+      "@id": "http://www.w3.org/2004/02/skos/core#definition"
     },
-    "type": {
-      "@id": "http://purl.org/dc/terms/type",
-      "@type": "@id"
+    "TaskType.id": {
+      "@id": "http://purl.org/dc/terms/identifier"
     },
-    "uploaded": {
-      "@id": "http://data.europa.eu/it6/uploaded"
+    "TaskType.title": {
+      "@id": "http://purl.org/dc/terms/title"
     },
-    "url": {
-      "@id": "http://data.europa.eu/it6/url",
-      "@type": "@id"
-    },
-    "validatedOn": {
-      "@container": "@set",
-      "@id": "http://data.europa.eu/it6/validatedOn",
-      "@type": "@id"
-    },
-    "valueBad": {
-      "@id": "http://data.europa.eu/it6/valueBad"
-    },
-    "valueGood": {
-      "@id": "http://data.europa.eu/it6/valueGood"
-    },
-    "versionInfo": {
-      "@id": "http://www.w3.org/2002/07/owl#versionInfo"
-    },
-    "versionLabel": {
-      "@id": "http://data.europa.eu/it6/versionLabel"
-    }
+    "TemporalLiteral": "http://www.w3.org/2000/01/rdf-schema#Literal"
   }
 }
