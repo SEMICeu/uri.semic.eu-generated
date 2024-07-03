@@ -1539,13 +1539,15 @@ Article 3.3 requires to provide API documentation in a Union or internationally 
                                     
                                 </td>
                                 <td>
-                                    1..*
+                                    0..*
                                 </td>
                                 <td property="rdfs:comment">
                                     This property refers to a collection of data that this data service can distribute.
                                 </td>
                                 <td property="skos:scopeNote">
                                     An API in the context of HVD is not a standalone resource. It is used to open up HVD datasets. Therefore each Data Service is at least tightly connected with a Dataset.
+<br/>
+A Dataset MUST have an associated Data Service, besides the exceptions listed in the HVD IR. This can be either specified directly, using this property, or indirectly. More information on this obligation see [[[#apis-are-mandatory]]]. 
                                 </td>
 				<!--
                                 <td>
@@ -2363,7 +2365,9 @@ As multiple legislations may apply to the resource the maximum cardinality is no
                                     A data service that gives access to the distribution of the dataset
                                 </td>
                                 <td property="skos:scopeNote">
-                                    
+                                    An API in the context of HVD is not a standalone resource. It is used to open up HVD datasets. Therefore each Data Service is at least tightly connected with a Dataset.
+<br/>
+A Dataset MUST have an associated Data Service, besides the exceptions listed in the HVD IR. This can be either specified directly or indirectly using this property. More information on this obligation see [[[#apis-are-mandatory]]]. 
                                 </td>
 				<!--
                                 <td>
@@ -3736,6 +3740,27 @@ But leaves the design of such statement to the data experts of the HVD categorie
 
 </p>
 
+<h3 id="apis-are-mandatory">Connecting Data Services with Datasets</h3>
+The HVD IR imposes in general the presence of an API (Data Service) for a HVD Dataset.
+In DCAT(-AP) there are two routes to relate Data Services with Datasets:
+<ul>
+   <li>Direct: The Data Service refers with the property <a href="#DataService.servesdataset"><code>serves dataset</code></a> to the Dataset.</li>
+   <li>Indirect: The Data Service is referred by the property <a href="#Distribution.accessservice"><code>access service</code></a> from a Distribution to a Dataset.</li>
+</ul> 
+As such DCAT-AP HVD has not the intend to change the existing metadata description practices, nevertheless the following observations have to be made.
+<p/>
+In case of a HVD reporting the indirect approach will be transformed into the direct approach. 
+This is a natural consequence from the HVD IR wording: the dataset shall be available for reuse through APIs.
+Technically it corresponds to the following closure: the APIs for a HVD Dataset are the Data Servies that are directly or indirectly connected with the HVD Dataset.
+<p/>
+Data publishers that solely use the indirect approach might face a undesired side effect of their choice: namely that they must encode a HVD Distribution even that is not required nor necessary.
+That is a consequence of the local publishers agreements but it might have policy impacts: namely also that superflous Distribution becomes subject to the HVD IR.
+<p/>
+Having two routes to declare the presence of a API makes the expression of the obligation as a single cardinality in the specification non trivial.
+
+
+
+
 <h3 id="c8">Reporting</h3>
 The HVD IR requires EU Member States (reporter) to report the list of HVD Datasets. 
 This objective can be achieved by providing to the European Commission (reporting authority) a catalogue containing all the metadata about all the Datasets, Distributions and Data Services that are in scope of the HVD.
@@ -4059,14 +4084,6 @@ The properties are grouped under headings <it>mandatory, recommended, optional</
 						
 					
 						
-							<tr>
-								<td><a href="#DataService">Data Service</a></td>
-								<td><div class="shorten">http://www.w3.org/ns/dcat#DataService</div></td>
-								<td>Mandatory</td>
-								<td><a href="#DataService.servesdataset">serves dataset </a></td>
-								<td><div class="shorten">http://www.w3.org/ns/dcat#servesDataset</div></td>
-							</tr>
-						
 					
 					
 						
@@ -4093,6 +4110,14 @@ The properties are grouped under headings <it>mandatory, recommended, optional</
 					
 						
 					
+						
+							<tr>
+								<td><a href="#DataService">Data Service</a></td>
+								<td><div class="shorten">http://www.w3.org/ns/dcat#DataService</div></td>
+								<td>Recommended</td>
+								<td><a href="#DataService.servesdataset">serves dataset </a></td>
+								<td><div class="shorten">http://www.w3.org/ns/dcat#servesDataset</div></td>
+							</tr>
 						
 					
 					
@@ -4291,6 +4316,14 @@ The properties are grouped under headings <it>mandatory, recommended, optional</
 					
 					
 						
+							<tr>
+								<td><a href="#Distribution">Distribution</a></td>
+								<td><div class="shorten">http://www.w3.org/ns/dcat#Distribution</div></td>
+								<td>Recommended</td>
+								<td><a href="#Distribution.accessservice">access service </a></td>
+								<td><div class="shorten">http://www.w3.org/ns/dcat#accessService</div></td>
+							</tr>
+						
 					
 						
 					
@@ -4311,14 +4344,6 @@ The properties are grouped under headings <it>mandatory, recommended, optional</
 						
 					
 					
-						
-							<tr>
-								<td><a href="#Distribution">Distribution</a></td>
-								<td><div class="shorten">http://www.w3.org/ns/dcat#Distribution</div></td>
-								<td>Optional</td>
-								<td><a href="#Distribution.accessservice">access service </a></td>
-								<td><div class="shorten">http://www.w3.org/ns/dcat#accessService</div></td>
-							</tr>
 						
 					
 						
