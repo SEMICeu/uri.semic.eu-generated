@@ -343,7 +343,7 @@ Any improvement of the metadata will immediately flow throughout the European ne
 
 
 
-<section id="conformance" class="informative">
+<section id="conformance">
 <h2>Conformance Statement</h2>
 
 In order for applications to conform to DCAT-AP HVD, it MUST conform to DCAT-AP. 
@@ -1439,7 +1439,7 @@ Article 3.3 requires to provide API documentation in a Union or internationally 
                                     A licence under which the Data service is made available.
                                 </td>
                                 <td property="skos:scopeNote">
-                                    Article 3.3 specifies that the terms of use should be provided. According to the guidelines for <a href="#c3">legal Information</a> in DCAT-AP HVD this is fullfilled by providing by preference a licence. As alternative rights can be used.
+                                    Article 3.3 specifies that the terms of use should be provided. According to the guidelines for <a href="#c3">legal Information</a> in DCAT-AP HVD this is fulfilled by providing by preference a licence. As alternative rights can be used.
                                 </td>
 				<!--
                                 <td>
@@ -2525,7 +2525,7 @@ As multiple legislations may apply to the resource the maximum cardinality is no
                                     A licence under which the Distribution is made available.
                                 </td>
                                 <td property="skos:scopeNote">
-                                    Article 4.3 specifies that High-value datasets should be made available for reuse. According to the guidelines for <a href="#c3">legal Information</a> in DCAT-AP HVD this is fullfilled by providing by preference a licence. As alternative rights can be used.
+                                    Article 4.3 specifies that High-value datasets should be made available for reuse. According to the guidelines for <a href="#c3">legal Information</a> in DCAT-AP HVD this is fulfilled by providing by preference a licence. As alternative rights can be used.
                                 </td>
 				<!--
                                 <td>
@@ -3473,15 +3473,16 @@ In this data specification the use is restricted to instances of this class that
 
 
 The usage of controlled vocabularies in DCAT-AP HVD conforms and extends the usage defined by DCAT-AP.
-In addition, the following controlled vocabularies are defined to be used:
+In addition, the following controlled vocabularies MUST be used for the properties listed in the table below. 
+The <i>MUST be used</i> interpretation means that the range value space of the property is closed under the controlled vocabulary. 
+Validation systems SHOULD produce errors.
 
-<h3>Controlled vocabularies to be used</h3>
-In the table below, a number of properties are listed with controlled vocabularies that MUST be used for the listed properties. The declaration of the following controlled vocabularies as mandatory ensures a minimum level of interoperability.
         <table id="table-cv" class="simple">
             <thead><tr><th>Property URI</th><th>Used for Class</th><th>Vocabulary name</th><th>Vocabulary URI</th><th>Usage note</th></tr></thead>
             <tbody>
 <tr><td>dcatap:hvdCategory</td><td><a href="#Dataset">Dataset</a></td><td><a href="https://op.europa.eu/en/web/eu-vocabularies/dataset/-/resource?uri=http://publications.europa.eu/resource/dataset/high-value-dataset-category">EU Vocabularies HVD Categories</a></td><td><a href="http://data.europa.eu/bna/asd487ae75">http://data.europa.eu/bna/asd487ae75</a></td><td></td></tr>
 <tr><td>dcatap:hvdCategory</td><td><a href="#DataService">Data Service</a></td><td><a href="https://op.europa.eu/en/web/eu-vocabularies/dataset/-/resource?uri=http://publications.europa.eu/resource/dataset/high-value-dataset-category">EU Vocabularies HVD Categories</a></td><td><a href="http://data.europa.eu/bna/asd487ae75">http://data.europa.eu/bna/asd487ae75</a></td><td></td></tr>
+<tr><td>dcatap:hvdCategory</td><td><a href="#DatasetSeries">Dataset Series </a></td><td><a href="https://op.europa.eu/en/web/eu-vocabularies/dataset/-/resource?uri=http://publications.europa.eu/resource/dataset/high-value-dataset-category">EU Vocabularies HVD Categories</a></td><td><a href="http://data.europa.eu/bna/asd487ae75">http://data.europa.eu/bna/asd487ae75</a></td><td></td></tr>
             </tbody>
             </table>
 
@@ -3572,8 +3573,9 @@ Nevertheless, it must be noted that the HVD requirements on a Data Service might
 <h3 id="c2">HVD data category</h3>
 The HVD IR defines six thematic data categories: geospatial, earth observation and environment, meteorological, statistics, companies and company ownership, and mobility. 
 A new property <a href="http://data.europa.eu/r5r/hvdCategory">HVD category</a> is introduced to indicate the HVD category to which an resource, i.e. a dataset, belongs.
-The controlled vocabulary with all possible values is maintained by the Publications Office.
+The controlled vocabulary <a href="https://op.europa.eu/en/web/eu-vocabularies/dataset/-/resource?uri=http://publications.europa.eu/resource/dataset/high-value-dataset-category">High-value dataset categories</a> with all possible values is maintained by the Publications Office.
 A resource may belong to more than one data category.
+It is recommended to annotate the High Value Datasets with the most precise concept.
 
 
 
@@ -3642,7 +3644,7 @@ If the metadata is augmented with the information about the successor of the Dat
 </p><p>
 The impact for a user of the endpoint URL is higher: systems might get broken when the endpoint URL is taken offline. 
 This situation is the result of a shared responsibility: either the publishers did not apply a decent life cycle management, or the users did not inform the publisher about their critical dependency. 
-Because of this, even if the API gives open access to open data, users that are dependent on the API are advised to inform the publisher about their existance. 
+Because of this, even if the API gives open access to open data, users that are dependent on the API are advised to inform the publisher about their existence. 
 But also, publishers must improve their life cycle management for these APIs so that re-users get the right information and can take the change of the endpoint of the API into account in their roadmaps. 
 
 </p><p>
@@ -3685,7 +3687,7 @@ The decision trees in the figures allow to assess whether or not additional effo
            target="_blank">
             <img src="/DCAT-AP/releases/3.0.0-hvd/html/flow-rights.png"/>
    </a>
-  <figcaption>The decision tree for licence information.</figcaption>
+  <figcaption>The continuation of the decision tree focussing on rights information.</figcaption>
 </figure>
 
 </p><p>
@@ -4045,6 +4047,14 @@ The properties are grouped under headings <it>mandatory, recommended, optional</
 						
 					
 						
+							<tr>
+								<td><a href="#DataService">Data Service</a></td>
+								<td><div class="shorten">http://www.w3.org/ns/dcat#DataService</div></td>
+								<td>Mandatory</td>
+								<td><a href="#DataService.servesdataset">serves dataset </a></td>
+								<td><div class="shorten">http://www.w3.org/ns/dcat#servesDataset</div></td>
+							</tr>
+						
 					
 					
 						
@@ -4071,14 +4081,6 @@ The properties are grouped under headings <it>mandatory, recommended, optional</
 					
 						
 					
-						
-							<tr>
-								<td><a href="#DataService">Data Service</a></td>
-								<td><div class="shorten">http://www.w3.org/ns/dcat#DataService</div></td>
-								<td>Recommended</td>
-								<td><a href="#DataService.servesdataset">serves dataset </a></td>
-								<td><div class="shorten">http://www.w3.org/ns/dcat#servesDataset</div></td>
-							</tr>
 						
 					
 					
