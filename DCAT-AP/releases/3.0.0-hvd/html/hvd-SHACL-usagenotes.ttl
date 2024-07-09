@@ -10,17 +10,13 @@
 @prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
 
 <https://semiceu.github.io/DCAT-AP/releases/3.0.0-hvd> rdfs:member 
-    <https://semiceu.github.io/DCAT-AP/releases/3.0.0-hvd#vcard:KindShape>,
+	<https://semiceu.github.io/DCAT-AP/releases/3.0.0-hvd#vcard:KindShape/union>,
     <https://semiceu.github.io/DCAT-AP/releases/3.0.0-hvd#dcat:DataServiceShape>,
     <https://semiceu.github.io/DCAT-AP/releases/3.0.0-hvd#dcat:DatasetShape>,
     <https://semiceu.github.io/DCAT-AP/releases/3.0.0-hvd#dcat:DatasetSeriesShape>,
-    <https://semiceu.github.io/DCAT-AP/releases/3.0.0-hvd#dcat:DistributionShape>.
-
-<https://semiceu.github.io/DCAT-AP/releases/3.0.0-hvd#vcard:KindShape> a shacl:NodeShape;
-  shacl:closed false;
-  shacl:property 
-    <https://semiceu.github.io/DCAT-AP/releases/3.0.0-hvd#vcard:KindShape/union> ; 
-  shacl:targetClass vcard:Kind .
+    <https://semiceu.github.io/DCAT-AP/releases/3.0.0-hvd#dcat:DistributionShape>,
+	  <https://semiceu.github.io/DCAT-AP/releases/3.0.0-hvd#dcat:DistributionShape/legalInformation>,
+    <https://semiceu.github.io/DCAT-AP/releases/3.0.0-hvd#dcat:DataServiceShape/legalInformation>.
 
 <https://semiceu.github.io/DCAT-AP/releases/3.0.0-hvd#dcat:DatasetShape> a shacl:NodeShape;
   shacl:closed false;
@@ -33,7 +29,6 @@
 <https://semiceu.github.io/DCAT-AP/releases/3.0.0-hvd#dcat:DataServiceShape> a shacl:NodeShape;
   shacl:closed false;
   shacl:property 
-    <https://semiceu.github.io/DCAT-AP/releases/3.0.0-hvd#dcat:DataServiceShape/legalInformation>,
     <https://semiceu.github.io/DCAT-AP/releases/3.0.0-hvd#dcat:DataServiceShape/HVDELI>,
     <https://semiceu.github.io/DCAT-AP/releases/3.0.0-hvd#dcat:DataServiceShape/HVDCategoryCV>;
   shacl:targetClass dcat:DataService .
@@ -48,7 +43,7 @@
 <https://semiceu.github.io/DCAT-AP/releases/3.0.0-hvd#dcat:DistributionShape> a shacl:NodeShape;
   shacl:closed false;
   shacl:property 
-    <https://semiceu.github.io/DCAT-AP/releases/3.0.0-hvd#dcat:DistributionShape/legalInformation>, 
+  
     <https://semiceu.github.io/DCAT-AP/releases/3.0.0-hvd#dcat:DistributionShape/HVDELI>;
   shacl:targetClass dcat:Distribution .
 
@@ -176,6 +171,7 @@
   shacl:path  [ shacl:alternativePath ( [ shacl:inversePath dcat:servesDataset ]  ( dcat:distribution dcat:accessService ) )];
   shacl:nodeKind shacl:IRI ; 
   shacl:minCount 1 ;
-  shacl:severity shacl:Violation
+  shacl:severity shacl:Violation ;
   <https://purl.eu/ns/shacl#message> "A HVD dataset has an API"@en.
+
 
