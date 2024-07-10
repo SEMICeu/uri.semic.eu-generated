@@ -3712,12 +3712,39 @@ The decision trees in the figures allow to assess whether or not additional effo
 </figure>
 
 </p><p>
-To support the assessment whether the assigned legal conditions are equal or more permissive than the reference CC-BY 4.0, the recommendation is to augment the machine-readable publication of MS-specific or publisher-specific licences with mapping information on the Licence NAL. 
-It is recommended to use, in order of preference, the SKOS mapping properties, owl:sameAs or rdfs:seeAlso, to express this mapping. 
-</p><p>
 
 In the reporting requirements of the HVD IR, the notion <strong>terms of use</strong> is used. 
 It has been agreed, by the Working Group for DCAT-AP HVD, that providing terms of use information is the same as providing legal information for a Data Service. 
+
+<h4>Assessment support for  licences</h4>
+To support the assessment whether the assigned legal conditions are equal or more permissive than the reference CC-BY 4.0, the recommendation is to augment the machine-readable publication of MS-specific or publisher-specific licences with mapping information on the EU Vocabularies Licence NAL [[NAL-Licence]].
+It is recommended to express this mapping in the first place using properties that express exquivalence. 
+In order of preference 
+<ul>
+<li>use properties that express a strong equality: <code>skos:exactMatch</code> or <code>owl:sameAs</code> </li>
+<li>use properties that express a permissiveness relation: <code>skos:broadMatch</code> or <code>skos:narrowMatch</code> </li>
+</ul>
+The use of properties that express a weak(er) equality, e.g.<code>skos:closeMatch</code> or <code>rdfs:seeAlso</code> is not recommended; they should only be used as last resort. 
+If non of the first two approaches could be used, then sharing  matching information using these weaker properties may still assist the assessment. 
+But the decision on compliance with the HVD IR is then left to the interpretation by the European Commission. 
+
+</p><p>
+Using the SKOS matching properties requires to agree on a direction to indicate "more permissive than". 
+In accordance to the hierarchy relationship of SKOS in which the most generic concept (the concept higher in the hierarchy, i.e. closer to the top-concept) is more general than the leaf concept the recommendation is to have the most permissive licences at the top and the most restrictive at the bottom.
+</p><p>
+From the definition of the <a href="https://www.w3.org/TR/skos-reference/#semantic-relations">SKOS relations</a> and the definition of the corresponding 
+<a href="https://www.w3.org/TR/skos-reference/#mapping">SKOS mapping relations</a>, a MS specific licence will be expressed as follows as more permissive than CC-BY-4.0.
+
+<aside class="example" title="Encoding a more permissive licence than CC-BY-4.0">
+  <pre>
+<https://data.exampleMS.gov/resource/FreeAndOpen> a dct:LicenseDocument .
+
+<https://data.exampleMS.gov/resource/FreeAndOpen>                    skos:narrowMatch <http://publications.europa.eu/resource/authority/licence/CC_BY_4_0>.
+<http://publications.europa.eu/resource/authority/licence/CC_BY_4_0> skos:broadMatch <https://data.exampleMS.gov/resource/FreeAndOpen>.
+  </pre>
+</aside>
+Because skos:closeMatch is an indication that one concept is  marginally more general or more precise than the other, it cannot be used to indicate the level op permissiveness.
+As described above skos:exactMatch should be used preferably.
 
 <h3 id="c6">Contact Point</h3>
 <p>
