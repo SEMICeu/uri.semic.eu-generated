@@ -712,12 +712,13 @@
 @prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
 
 <https://semiceu.github.io/DCAT-AP/releases/3.0.0-hvd> rdfs:member 
-	<https://semiceu.github.io/DCAT-AP/releases/3.0.0-hvd#vcard:KindShape/union>,
+    <https://semiceu.github.io/DCAT-AP/releases/3.0.0-hvd#dct:LicenseDocumentShape/permissive>,
+    <https://semiceu.github.io/DCAT-AP/releases/3.0.0-hvd#vcard:KindShape/union>,
     <https://semiceu.github.io/DCAT-AP/releases/3.0.0-hvd#dcat:DataServiceShape>,
     <https://semiceu.github.io/DCAT-AP/releases/3.0.0-hvd#dcat:DatasetShape>,
     <https://semiceu.github.io/DCAT-AP/releases/3.0.0-hvd#dcat:DatasetSeriesShape>,
     <https://semiceu.github.io/DCAT-AP/releases/3.0.0-hvd#dcat:DistributionShape>,
-	  <https://semiceu.github.io/DCAT-AP/releases/3.0.0-hvd#dcat:DistributionShape/legalInformation>,
+    <https://semiceu.github.io/DCAT-AP/releases/3.0.0-hvd#dcat:DistributionShape/legalInformation>,
     <https://semiceu.github.io/DCAT-AP/releases/3.0.0-hvd#dcat:DataServiceShape/legalInformation>.
 
 <https://semiceu.github.io/DCAT-AP/releases/3.0.0-hvd#dcat:DatasetShape> a shacl:NodeShape;
@@ -877,3 +878,35 @@
   <https://purl.eu/ns/shacl#message> "A HVD dataset has an API"@en.
 
 
+<https://semiceu.github.io/DCAT-AP/releases/3.0.0-hvd#dct:LicenseDocumentShape/permissive> rdfs:seeAlso "https://semiceu.github.io/DCAT-AP/releases/3.0.0-hvd/#assessment-support-for-licences";
+  shacl:description """It is recommended to provide an indication how the licence is related with other licences. """@en;
+  shacl:or (
+		[
+  			shacl:path skos:exactMatch;
+			shacl:minCount 1 ;
+		]
+		[
+  			shacl:path owl:sameAs;
+			shacl:minCount 1 ;
+		]
+		[
+  			shacl:path skos:broadMatch;
+			shacl:minCount 1 ;
+		]
+		[
+  			shacl:path skos:narrowMatch;
+			shacl:minCount 1 ;
+		]
+		[
+  			shacl:path skos:closeMatch;
+			shacl:minCount 1 ;
+		]
+		[
+  			shacl:path rdfs:seeAlso;
+			shacl:minCount 1 ;
+		]
+	) ; 
+  a shacl:NodeShape ;
+  shacl:targetClass dc:LicenseDocument ;
+  shacl:severity shacl:Warning ;
+  <https://purl.eu/ns/shacl#message> "It is recommended to provide an indication how the licence is related with other licences. "@en .
