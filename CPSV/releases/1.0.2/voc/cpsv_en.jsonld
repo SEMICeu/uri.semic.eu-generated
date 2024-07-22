@@ -95,6 +95,112 @@
   "externals": [],
   "properties": [
     {
+      "@id": "http://purl.org/vocab/cpsv#uses",
+      "@type": "http://www.w3.org/2002/07/owl#ObjectProperty",
+      "label": {
+        "en": "uses"
+      },
+      "definition": {
+        "en": "The uses property links an Agent to a Public Service in which it plays the specific role of user, meaning that it provides the input and receives the output but does not play any direct role in providing the service. This will typically be an individual citizen or an outside organisation."
+      },
+      "domain": [
+        "http://purl.org/dc/terms/Agent"
+      ],
+      "range": [
+        "http://purl.org/vocab/cpsv#PublicService"
+      ],
+      "generalization": [
+        "http://purl.org/vocab/cpsv#hasRole"
+      ]
+    },
+    {
+      "@id": "http://purl.org/vocab/cpsv#provides",
+      "@type": "http://www.w3.org/2002/07/owl#ObjectProperty",
+      "label": {
+        "en": "provides"
+      },
+      "definition": {
+        "en": "The provides property links an Agent to a Public Service for which it is responsible. Whether it provides the service directly or outsources it is not relevant, the Agent that provides the service is the one that is ultimately responsible for its provision."
+      },
+      "domain": [
+        "http://purl.org/dc/terms/Agent"
+      ],
+      "range": [
+        "http://purl.org/vocab/cpsv#PublicService"
+      ],
+      "generalization": [
+        "http://purl.org/vocab/cpsv#hasRole"
+      ]
+    },
+    {
+      "@id": "http://purl.org/vocab/cpsv#produces",
+      "@type": "http://www.w3.org/2002/07/owl#ObjectProperty",
+      "label": {
+        "en": "produces"
+      },
+      "definition": {
+        "en": "The produces property links a Public Service to one or more instances of the Output class which is its range."
+      },
+      "domain": [
+        "http://purl.org/vocab/cpsv#PublicService"
+      ],
+      "range": [
+        "http://purl.org/vocab/cpsv#Output"
+      ],
+      "generalization": []
+    },
+    {
+      "@id": "http://purl.org/vocab/cpsv#physicallyAvailableAt",
+      "@type": "http://www.w3.org/2002/07/owl#ObjectProperty",
+      "label": {
+        "en": "physically available at"
+      },
+      "definition": {
+        "en": "A physical location at which a user may interact with the Public Service."
+      },
+      "domain": [
+        "http://purl.org/vocab/cpsv#PublicService"
+      ],
+      "range": [
+        "http://purl.org/dc/terms/Location"
+      ],
+      "generalization": []
+    },
+    {
+      "@id": "http://purl.org/vocab/cpsv#implements",
+      "@type": "http://www.w3.org/2002/07/owl#ObjectProperty",
+      "label": {
+        "en": "implements"
+      },
+      "definition": {
+        "en": "The implements property links a Rule to relevant legislation or policy documents i.e. the formal framework under which the Rules are defined."
+      },
+      "domain": [
+        "http://purl.org/vocab/cpsv#Rule"
+      ],
+      "range": [
+        "http://purl.org/vocab/cpsv#FormalFramework"
+      ],
+      "generalization": []
+    },
+    {
+      "@id": "http://purl.org/vocab/cpsv#hasrole",
+      "@type": "http://www.w3.org/2002/07/owl#ObjectProperty",
+      "label": {
+        "en": "has role"
+      },
+      "definition": {
+        "en": "This very general property links an Agent to a Public Service in which it plays some role. Both 'provides' and 'uses' are sub properties of playsRole with specific semantics."
+      },
+      "domain": [
+        "http://purl.org/dc/terms/Agent"
+      ],
+      "range": [
+        "http://purl.org/vocab/cpsv#PublicService"
+      ],
+      "generalization": []
+    },
+    {
       "@id": "http://purl.org/vocab/cpsv#hasinput",
       "@type": "http://www.w3.org/2002/07/owl#ObjectProperty",
       "label": {
@@ -108,6 +214,23 @@
       ],
       "range": [
         "http://purl.org/vocab/cpsv#Input"
+      ],
+      "generalization": []
+    },
+    {
+      "@id": "http://purl.org/vocab/cpsv#follows",
+      "@type": "http://www.w3.org/2002/07/owl#ObjectProperty",
+      "label": {
+        "en": "follows"
+      },
+      "definition": {
+        "en": "It links a Public Service to the Rule(s) under which it operates."
+      },
+      "domain": [
+        "http://purl.org/vocab/cpsv#PublicService"
+      ],
+      "range": [
+        "http://purl.org/vocab/cpsv#Rule"
       ],
       "generalization": []
     }
@@ -125,55 +248,6 @@
         "en": "status"
       },
       "@id": "http://www.w3.org/ns/adms#status",
-      "@type": "rdf:Property"
-    },
-    {
-      "name": {
-        "en": "uses"
-      },
-      "@id": "http://purl.org/vocab/cpsv#uses",
-      "@type": "rdf:Property"
-    },
-    {
-      "name": {
-        "en": "provides"
-      },
-      "@id": "http://purl.org/vocab/cpsv#provides",
-      "@type": "rdf:Property"
-    },
-    {
-      "name": {
-        "en": "produces"
-      },
-      "@id": "http://purl.org/vocab/cpsv#produces",
-      "@type": "rdf:Property"
-    },
-    {
-      "name": {
-        "en": "physically available at"
-      },
-      "@id": "http://purl.org/vocab/cpsv#physicallyAvailableAt",
-      "@type": "rdf:Property"
-    },
-    {
-      "name": {
-        "en": "implements"
-      },
-      "@id": "http://purl.org/vocab/cpsv#implements",
-      "@type": "rdf:Property"
-    },
-    {
-      "name": {
-        "en": "has role"
-      },
-      "@id": "http://purl.org/vocab/cpsv#hasRole",
-      "@type": "rdf:Property"
-    },
-    {
-      "name": {
-        "en": "follows"
-      },
-      "@id": "http://purl.org/vocab/cpsv#follows",
       "@type": "rdf:Property"
     },
     {
