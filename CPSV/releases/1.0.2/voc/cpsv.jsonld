@@ -95,74 +95,53 @@
   "externals": [],
   "properties": [
     {
-      "@id": "http://purl.org/vocab/cpsv#uses",
+      "@id": "http://purl.org/vocab/cpsv#follows",
       "@type": "http://www.w3.org/2002/07/owl#ObjectProperty",
       "label": {
-        "en": "uses"
+        "en": "follows"
       },
       "definition": {
-        "en": "The uses property links an Agent to a Public Service in which it plays the specific role of user, meaning that it provides the input and receives the output but does not play any direct role in providing the service. This will typically be an individual citizen or an outside organisation."
-      },
-      "domain": [
-        "http://purl.org/dc/terms/Agent"
-      ],
-      "range": [
-        "http://purl.org/vocab/cpsv#PublicService"
-      ],
-      "generalization": [
-        "http://purl.org/vocab/cpsv#hasRole"
-      ]
-    },
-    {
-      "@id": "http://purl.org/vocab/cpsv#provides",
-      "@type": "http://www.w3.org/2002/07/owl#ObjectProperty",
-      "label": {
-        "en": "provides"
-      },
-      "definition": {
-        "en": "The provides property links an Agent to a Public Service for which it is responsible. Whether it provides the service directly or outsources it is not relevant, the Agent that provides the service is the one that is ultimately responsible for its provision."
-      },
-      "domain": [
-        "http://purl.org/dc/terms/Agent"
-      ],
-      "range": [
-        "http://purl.org/vocab/cpsv#PublicService"
-      ],
-      "generalization": [
-        "http://purl.org/vocab/cpsv#hasRole"
-      ]
-    },
-    {
-      "@id": "http://purl.org/vocab/cpsv#produces",
-      "@type": "http://www.w3.org/2002/07/owl#ObjectProperty",
-      "label": {
-        "en": "produces"
-      },
-      "definition": {
-        "en": "The produces property links a Public Service to one or more instances of the Output class which is its range."
+        "en": "It links a Public Service to the Rule(s) under which it operates."
       },
       "domain": [
         "http://purl.org/vocab/cpsv#PublicService"
       ],
       "range": [
-        "http://purl.org/vocab/cpsv#Output"
+        "http://purl.org/vocab/cpsv#Rule"
       ],
       "generalization": []
     },
     {
-      "@id": "http://purl.org/vocab/cpsv#physicallyAvailableAt",
+      "@id": "http://purl.org/vocab/cpsv#hasInput",
       "@type": "http://www.w3.org/2002/07/owl#ObjectProperty",
       "label": {
-        "en": "physically available at"
+        "en": "has input"
       },
       "definition": {
-        "en": "A physical location at which a user may interact with the Public Service."
+        "en": "The hasInput property links a Public Service to one or more instances of the Input class (see below). A specific service may require the presence of certain inputs or combinations of inputs in order to operate. These should be described in an application profile for a given service."
       },
       "domain": [
         "http://purl.org/vocab/cpsv#PublicService"
       ],
       "range": [
-        "http://purl.org/dc/terms/Location"
+        "http://purl.org/vocab/cpsv#Input"
+      ],
+      "generalization": []
+    },
+    {
+      "@id": "http://purl.org/vocab/cpsv#hasRole",
+      "@type": "http://www.w3.org/2002/07/owl#ObjectProperty",
+      "label": {
+        "en": "has role"
+      },
+      "definition": {
+        "en": "This very general property links an Agent to a Public Service in which it plays some role. Both 'provides' and 'uses' are sub properties of playsRole with specific semantics."
+      },
+      "domain": [
+        "http://purl.org/dc/terms/Agent"
+      ],
+      "range": [
+        "http://purl.org/vocab/cpsv#PublicService"
       ],
       "generalization": []
     },
@@ -184,13 +163,47 @@
       "generalization": []
     },
     {
-      "@id": "http://purl.org/vocab/cpsv#hasrole",
+      "@id": "http://purl.org/vocab/cpsv#physicallyAvailableAt",
       "@type": "http://www.w3.org/2002/07/owl#ObjectProperty",
       "label": {
-        "en": "has role"
+        "en": "physically available at"
       },
       "definition": {
-        "en": "This very general property links an Agent to a Public Service in which it plays some role. Both 'provides' and 'uses' are sub properties of playsRole with specific semantics."
+        "en": "A physical location at which a user may interact with the Public Service."
+      },
+      "domain": [
+        "http://purl.org/vocab/cpsv#PublicService"
+      ],
+      "range": [
+        "http://purl.org/dc/terms/Location"
+      ],
+      "generalization": []
+    },
+    {
+      "@id": "http://purl.org/vocab/cpsv#produces",
+      "@type": "http://www.w3.org/2002/07/owl#ObjectProperty",
+      "label": {
+        "en": "produces"
+      },
+      "definition": {
+        "en": "The produces property links a Public Service to one or more instances of the Output class which is its range."
+      },
+      "domain": [
+        "http://purl.org/vocab/cpsv#PublicService"
+      ],
+      "range": [
+        "http://purl.org/vocab/cpsv#Output"
+      ],
+      "generalization": []
+    },
+    {
+      "@id": "http://purl.org/vocab/cpsv#provides",
+      "@type": "http://www.w3.org/2002/07/owl#ObjectProperty",
+      "label": {
+        "en": "provides"
+      },
+      "definition": {
+        "en": "The provides property links an Agent to a Public Service for which it is responsible. Whether it provides the service directly or outsources it is not relevant, the Agent that provides the service is the one that is ultimately responsible for its provision."
       },
       "domain": [
         "http://purl.org/dc/terms/Agent"
@@ -198,147 +211,36 @@
       "range": [
         "http://purl.org/vocab/cpsv#PublicService"
       ],
-      "generalization": []
+      "generalization": [
+        "http://purl.org/vocab/cpsv#hasRole"
+      ]
     },
     {
-      "@id": "http://purl.org/vocab/cpsv#hasinput",
+      "@id": "http://purl.org/vocab/cpsv#uses",
       "@type": "http://www.w3.org/2002/07/owl#ObjectProperty",
       "label": {
-        "en": "has input"
+        "en": "uses"
       },
       "definition": {
-        "en": "The hasInput property links a Public Service to one or more instances of the Input class (see below). A specific service may require the presence of certain inputs or combinations of inputs in order to operate. These should be described in an application profile for a given service."
+        "en": "The uses property links an Agent to a Public Service in which it plays the specific role of user, meaning that it provides the input and receives the output but does not play any direct role in providing the service. This will typically be an individual citizen or an outside organisation."
       },
       "domain": [
-        "http://purl.org/vocab/cpsv#PublicService"
+        "http://purl.org/dc/terms/Agent"
       ],
       "range": [
-        "http://purl.org/vocab/cpsv#Input"
-      ],
-      "generalization": []
-    },
-    {
-      "@id": "http://purl.org/vocab/cpsv#follows",
-      "@type": "http://www.w3.org/2002/07/owl#ObjectProperty",
-      "label": {
-        "en": "follows"
-      },
-      "definition": {
-        "en": "It links a Public Service to the Rule(s) under which it operates."
-      },
-      "domain": [
         "http://purl.org/vocab/cpsv#PublicService"
       ],
-      "range": [
-        "http://purl.org/vocab/cpsv#Rule"
-      ],
-      "generalization": []
+      "generalization": [
+        "http://purl.org/vocab/cpsv#hasRole"
+      ]
     }
   ],
   "externalproperties": [
     {
       "name": {
-        "en": "keyword"
+        "en": "processing time"
       },
-      "@id": "http://www.w3.org/ns/dcat#keyword",
-      "@type": "rdf:Property"
-    },
-    {
-      "name": {
-        "en": "status"
-      },
-      "@id": "http://www.w3.org/ns/adms#status",
-      "@type": "rdf:Property"
-    },
-    {
-      "name": {
-        "en": "type"
-      },
-      "@id": "http://purl.org/dc/terms/type",
-      "@type": "rdf:Property"
-    },
-    {
-      "name": {
-        "en": "functions of government"
-      },
-      "@id": "http://purl.org/dc/terms/type",
-      "@type": "rdf:Property"
-    },
-    {
-      "name": {
-        "en": "name"
-      },
-      "@id": "http://purl.org/dc/terms/title",
-      "@type": "rdf:Property"
-    },
-    {
-      "name": {
-        "en": "name"
-      },
-      "@id": "http://purl.org/dc/terms/title",
-      "@type": "rdf:Property"
-    },
-    {
-      "name": {
-        "en": "spatial"
-      },
-      "@id": "http://purl.org/dc/terms/spatial",
-      "@type": "rdf:Property"
-    },
-    {
-      "name": {
-        "en": "language"
-      },
-      "@id": "http://purl.org/dc/terms/language",
-      "@type": "rdf:Property"
-    },
-    {
-      "name": {
-        "en": "language"
-      },
-      "@id": "http://purl.org/dc/terms/language",
-      "@type": "rdf:Property"
-    },
-    {
-      "name": {
-        "en": "identifier"
-      },
-      "@id": "http://purl.org/dc/terms/identifier",
-      "@type": "rdf:Property"
-    },
-    {
-      "name": {
-        "en": "identifier"
-      },
-      "@id": "http://purl.org/dc/terms/identifier",
-      "@type": "rdf:Property"
-    },
-    {
-      "name": {
-        "en": "description"
-      },
-      "@id": "http://purl.org/dc/terms/description",
-      "@type": "rdf:Property"
-    },
-    {
-      "name": {
-        "en": "description"
-      },
-      "@id": "http://purl.org/dc/terms/description",
-      "@type": "rdf:Property"
-    },
-    {
-      "name": {
-        "en": "addressee"
-      },
-      "@id": "http://purl.org/dc/terms/audience",
-      "@type": "rdf:Property"
-    },
-    {
-      "name": {
-        "en": "thematic area"
-      },
-      "@id": "http://data.europa.eu/m8g/thematicArea",
+      "@id": "http://data.europa.eu/m8g/processingTime",
       "@type": "rdf:Property"
     },
     {
@@ -350,9 +252,107 @@
     },
     {
       "name": {
-        "en": "processing time"
+        "en": "thematic area"
       },
-      "@id": "http://data.europa.eu/m8g/processingTime",
+      "@id": "http://data.europa.eu/m8g/thematicArea",
+      "@type": "rdf:Property"
+    },
+    {
+      "name": {
+        "en": "addressee"
+      },
+      "@id": "http://purl.org/dc/terms/audience",
+      "@type": "rdf:Property"
+    },
+    {
+      "name": {
+        "en": "description"
+      },
+      "@id": "http://purl.org/dc/terms/description",
+      "@type": "rdf:Property"
+    },
+    {
+      "name": {
+        "en": "description"
+      },
+      "@id": "http://purl.org/dc/terms/description",
+      "@type": "rdf:Property"
+    },
+    {
+      "name": {
+        "en": "identifier"
+      },
+      "@id": "http://purl.org/dc/terms/identifier",
+      "@type": "rdf:Property"
+    },
+    {
+      "name": {
+        "en": "identifier"
+      },
+      "@id": "http://purl.org/dc/terms/identifier",
+      "@type": "rdf:Property"
+    },
+    {
+      "name": {
+        "en": "language"
+      },
+      "@id": "http://purl.org/dc/terms/language",
+      "@type": "rdf:Property"
+    },
+    {
+      "name": {
+        "en": "language"
+      },
+      "@id": "http://purl.org/dc/terms/language",
+      "@type": "rdf:Property"
+    },
+    {
+      "name": {
+        "en": "spatial"
+      },
+      "@id": "http://purl.org/dc/terms/spatial",
+      "@type": "rdf:Property"
+    },
+    {
+      "name": {
+        "en": "name"
+      },
+      "@id": "http://purl.org/dc/terms/title",
+      "@type": "rdf:Property"
+    },
+    {
+      "name": {
+        "en": "name"
+      },
+      "@id": "http://purl.org/dc/terms/title",
+      "@type": "rdf:Property"
+    },
+    {
+      "name": {
+        "en": "functions of government"
+      },
+      "@id": "http://purl.org/dc/terms/type",
+      "@type": "rdf:Property"
+    },
+    {
+      "name": {
+        "en": "type"
+      },
+      "@id": "http://purl.org/dc/terms/type",
+      "@type": "rdf:Property"
+    },
+    {
+      "name": {
+        "en": "status"
+      },
+      "@id": "http://www.w3.org/ns/adms#status",
+      "@type": "rdf:Property"
+    },
+    {
+      "name": {
+        "en": "keyword"
+      },
+      "@id": "http://www.w3.org/ns/dcat#keyword",
       "@type": "rdf:Property"
     }
   ],
