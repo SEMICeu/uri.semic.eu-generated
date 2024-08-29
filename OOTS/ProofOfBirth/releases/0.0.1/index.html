@@ -1,0 +1,1527 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"> 
+ 
+
+
+
+<head>
+    
+	
+    <meta charset="utf-8" />
+    <title>Proof of birth</title>
+    <script src="https://www.w3.org/Tools/respec/respec-w3c" class="remove" defer></script>
+    <script class="remove">
+    // All config options at https://respec.org/docs/
+
+	var myeditors = [
+	
+	
+	    
+	    
+		
+		   {
+		    name: "Emilien Caudron",
+		      
+		      
+		    company: "PwC EU Services",
+		      
+		      
+		    }
+		, 
+		
+		   {
+		    name: "Emidio Stani",
+		      
+		      
+		    company: "PwC EU Services",
+		      
+		      
+		    }
+		, 
+		
+		   {
+		    name: "Claudio Valle",
+		      
+		      
+		    company: "PwC EU Services",
+		      
+		      
+		    }
+		
+		
+             
+        
+	
+		]
+
+	var myauthors = [
+	
+	
+	
+		]
+		
+	function quickreference() {
+		$('#table-quickoverview').DataTable();
+	};
+	var shaclfilepath = "./shacl/proofofbirth-SHACL.ttl" ;
+
+   
+
+    var respecConfig = {
+      postProcess: [quickreference],
+      edDraftURI: "https://semiceu.github.io/OOTS/ProofOfBirth/releases/0.0.1/",
+      latestVersion: "https://semiceu.github.io/OOTS/releases/0.0.1/",
+      specStatus: "LD",
+      publishDate: "2024-08-29",
+      editors: myeditors,
+      authors: myauthors,
+      github: "https://code.europa.eu/oots/tdd/data_models",
+      shortName: "Proof of birth",
+      xref: "web-platform",
+      doJsonLd: true,
+      logos: [{
+        src: "./html/logo-once-only-hub.png",
+        url: "https://ec.europa.eu/digital-building-blocks/sites/display/OOTS/OOTSHUB+Home",
+        alt: "OOTS",
+        width: 100,
+        height: 53,
+        id: "oots-logo",
+      },],
+      generatedSubtitle: "",
+      additionalCopyrightHolders: "",
+      localBiblio: {
+        "DXWG": {
+          "href" : "https://www.w3.org/2017/dxwg/wiki/Main_Page",
+          "title" : "Dataset Exchange Working Group",
+          "publisher" : "W3C"
+          },
+        "ISA":{
+           "href":"https://ec.europa.eu/isa/",
+           "title":"Interoperability Solutions for European Public Administrations (ISA)",
+           "publisher":"European Commission"
+          },
+        "ISA2":{
+          "href":"https://ec.europa.eu/isa2/",
+          "title":"Interoperability solutions for public administrations, businesses and citizens (ISA²)",
+          "publisher":"European Commission"
+        },
+        "SEMIC":{
+          "href":"https://joinup.ec.europa.eu/",
+          "title":"JoinUp welcomes Interoperable Europe",
+          "publisher":"European Commission"
+         },
+        "DEU" : {
+          "href":"https://data.europa.eu",
+          "title":"The official portal for European data",
+          "publisher":"European Commission"
+        },
+		"HVD" : {
+		  "href":"https://eur-lex.europa.eu/legal-content/EN/TXT/?uri=CELEX:32023R0138",
+		  "title":"Implementing Regulation for High Value Datasets",
+		  "publisher":"European Union"
+		},
+		"DCAT-AP-HVD" : {
+		  "href":"https://semiceu.github.io/uri.semic.eu-generated/DCAT-AP/releases/2.2.0-hvd/",
+		  "title":"Usage Guidelines of DCAT-AP for High-Value Datasets",
+		  "publisher":"European Commission"
+		},
+                "PSI" : {
+                  "href": "https://eur-lex.europa.eu/eli/dir/2019/1024/oj",
+                  "title" :  "Directive on open data and the re-use of public sector information (recast)",
+                  "publisher" : "European Union"
+                }
+      }
+    };
+
+
+
+    </script>
+    <style>
+      .figure img, .sidefigure img, figure img, .figure object, .sidefigure object, figure object, img, .img {
+      max-width: 100%;
+      margin: auto;
+      height: auto;
+      }
+    </style>
+     
+    <p class="copyright">
+        Copyright © 2024
+    </p>
+    
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="msapplication-TileColor" content="#7ED956" />
+</head>
+<body>
+    
+
+    <!-- Start page content -->
+
+
+
+
+<section id="abstract">
+    <h2>Abstract</h2>
+Proof of birth describes a request for evidence regarding the birth of the person (evidence subject). Draws upon the birth public document description of REGULATION (EU) 2016/119 (https://eur-lex.europa.eu/legal-content/EN/TXT/HTML/?uri=CELEX:32016R1191&from=EN#d1e41-20-1: Annex I).
+</section>
+
+
+<section id="specintro">
+    <h2>
+        Introduction
+    </h2>
+    
+<p>
+  This is a proof of birth evidence based on the data dictionary
+</p>
+
+</section>
+
+
+
+<!--  should support https://www.w3.org/2021/Process-20211102/, mostly like https://www.w3.org/2021/Process-20211102/#maturity-levels -->
+<section id="specstatus">
+    <h2>Status</h2>
+        <p>
+            This Application Profile has the status Draft published at 2024-08-29.
+        </p>
+        <p>
+            Information about the process and the decisions involved in the creation of this specification are consultable at the <a href="https://code.europa.eu/oots/tdd/data_models/Evidence/ProofOfBirth/tree/master/releases/0.0.1/Changelog.md">Changelog</a>.
+        </p>
+</section>
+
+
+
+
+<section id="speclicence">
+    <h2>
+        License
+    </h2>
+    
+        <p>
+	<!--
+            <span rel="dct:type"
+                  property="dct:title"
+                  href="http://purl.org/dc/dcmitype/Text"
+                  xmlns:dct="http://purl.org/dc/terms/">
+		  This specification </span> of <a rel="cc:attributionURL" property="cc:attributionName" href="ORGANISATION" xmlns:cc="http://creativecommons.org/ns#">ORGANISATION </a> 
+	          is published under <a href="https://creativecommons.org/licenses/by/4.0/" rel="license">"CC0"</a>.
+	-->
+             Copyright © 2024 European Union. All material in this repository is published under the license CC-BY 4.0, unless explicitly otherwise mentioned.
+        </p>
+    
+</section>
+
+
+
+<section id="conformance" class="informative">
+</section>
+
+
+
+
+<section id="specterminology">
+    <h2>
+        Terminology
+    </h2>
+        <p>
+           An Application Profile (AP) is a specification that reuses terms from one or more base standards, adding more specificity by identifying mandatory,
+           recommended and optional elements to be used for a particular application, as well as recommendations for controlled vocabularies to be used. 
+        </p>
+        <p>
+            A Core Vocabulary (CV) is a basic, reusable and extensible data specification that captures the fundamental characteristics of an entity in a context-neutral fashion. Its main objective is to provide terms to be reused in the broadest possible context.
+            More information can be found on the <a href="https://semiceu.github.io/style-guide/1.0.0/terminological-clarifications.html#sec:what-is-a-cv-specification">SEMIC Style Guide</a>.
+        </p>
+        
+This specification uses the following prefixes to shorten the URIs for readibility.
+
+        <table id="table-namespaces" class="simple">
+            <thead><tr><th>Prefix</th><th>Namespace IRI</th></tr></thead>
+            <tbody>           
+            <tr><td><code>cv</code></td><td><code>http://data.europa.eu/m8g/</code></td></tr>           
+            <tr><td><code>dct</code></td><td><code>http://purl.org/dc/terms/</code></td></tr>
+            <tr><td><code>foaf</code></td><td><code>http://xmlns.com/foaf/0.1/</code></td></tr>
+            <tr><td><code>locn</code></td><td><code>http://www.w3.org/ns/locn#</code></td></tr>
+            <tr><td><code>rdf</code></td><td><code>http://www.w3.org/1999/02/22-rdf-syntax-ns#</code></td></tr>
+            <tr><td><code>rdfs</code></td><td><code>http://www.w3.org/2000/01/rdf-schema#</code></td></tr>
+            <tr><td><code>skos</code></td><td><code>http://www.w3.org/2004/02/skos/core#</code></td></tr>
+            </tbody>
+        </table>
+
+
+</section>
+
+
+
+<section id="specoverview">
+    <h2>Overview</h2>
+    
+    
+    <div id="overview">
+                
+                        <p>
+                            This document describes the usage of the following main entities for a correct usage of the Application Profile:
+                            <br />
+                            |
+			      <a href="#Proofofbirth">Proof of birth</a> |
+                        </p>
+                        <p>
+                            The main entities are supported by:
+                            <br />
+                            |
+			      <a href="#Evidence">Evidence</a> |
+			      <a href="#Location">Location</a> |
+			      <a href="#Person">Person</a> |
+                        </p>
+                
+                
+                        <p>
+                            And supported by these datatypes:
+                            <br />
+                            | <a href="#Code">Code</a> | <a href="#GenericDate">GenericDate</a> | <a href="#Literal">Literal</a> | <a href="#Text">Text</a> |
+                        </p>
+                
+    </div>
+    <div>
+        <a href="https://semiceu.github.io/uri.semic.eu-generated/CPSV-AP/releases/3.2.0/html/overview.jpg"
+           target="_blank">
+            <img src="https://semiceu.github.io/uri.semic.eu-generated/CPSV-AP/releases/3.2.0/html/overview.jpg"/>
+        </a>
+    </div>
+</section>
+
+
+<section>
+
+
+    
+
+<h2>
+   Main Entities
+</h2>
+The main entities are those that form the core of the Application Profile.
+
+
+
+
+
+
+
+
+
+   
+        <section>
+            <h3 id="Proofofbirth">
+                <a href="http://data.europa.eu/p4s/ProofOfBirth"
+                   data-toggle="tooltip"
+                   data-content="http://data.europa.eu/p4s/ProofOfBirth"
+                   data-placement="right">Proof of birth</a>
+
+            </h3>
+	        <!-- XXX an image in the h3 will break the rendering of the Table Of Contents of Respec -->
+		<!-- outcomment github feedback possibility
+                <a href="/new?title=Issue%20for%20ProofOfBirth&body=Explain%20your%20issue"}}>
+                   <img src="html/callout.png" loading="lazy" alt="(create issue)" width="20" height="20"/>
+		</a>
+		-->
+            <dl>
+                <dt>
+                    Definition
+                </dt>
+                <dd>
+                    Request for evidence regarding the birth of the person (evidence subject).
+                </dd>
+                
+                
+                
+                    <dt>
+                        Subclass of
+                        <dt>
+                            <dd> <a href="#Evidence">Evidence</a>
+                                
+                        </dd>
+                    
+                    <dt>
+                        Properties
+                    </dt>
+                    
+                        <dd>
+                            For this entity the following properties are defined: <a href="#Proofofbirth.isabout">is about</a>
+                            .
+                    </dd>
+                
+            </dl>
+        </div>
+        
+            <div class="u-table-overflow">
+                <table class="data-table simple" id="table-mandatory-classes">
+                    <thead>
+                        <tr class="data-table__header">
+                            <th class="data-table__header-title--sortable" style="width:6%">
+                            </th>
+                            <th class="data-table__header-title--sortable data-table__header-title--sortable-active" style="width:14%">
+                                Property
+                            </th>
+                            <th class="data-table__header-title--sortable" style="width:14%">
+                                Range
+                            </th>
+                            <th class="data-table__header-title--sortable" style="width:6%">
+                                Card
+                            </th>
+                            <th class="data-table__header-title--sortable" style="width:30%">
+                                Definition 
+                            </th>
+                            <th class="data-table__header-title--sortable" style="width:30%">
+                                Usage
+                            </th>
+			    <!--
+                            <th class="data-table__header-title--sortable" style="width:3%">
+                                Codelist
+                            </th>
+                            <th class="data-table__header-title--sortable" style="width:5%">
+                                DCAT
+                            </th>
+			    -->
+                        </tr>
+                    </thead>
+                    <tbody class="supertype">
+                        
+                            <tr id="Proofofbirth.isabout"
+                                typeof="rdfs:Property"
+                                resource="http://purl.org/dc/terms/subject"
+                                class="class mandatory">
+                                <td>
+				    <a href="/new?title=Issue%20for%20is about%20in%20Proof of birth&body=Explain%20your%20issue%20for%20https://semiceu.github.io/OOTS/ProofOfBirth/releases/0.0.1/%23Proofofbirth.isabout" target="_blank" rel="noopener noreferrer" >
+					    <!--                                        <i class="icon">[o]</i> -->
+                                        <img src="html/callout.png" loading="lazy" alt="[o]" width="100" height="100"/>
+                                    </a>
+                                </td>
+                                <td>
+                                        <a href="http://purl.org/dc/terms/subject"
+                                           data-toggle="tooltip"
+                                           data-content="http://purl.org/dc/terms/subject"
+                                           data-placement="right">
+                                        is about</a>
+                                </td>
+                                <td>
+                                    
+                                        
+                                            <a href="#Person" data-placement="right">Person</a>
+                                        
+                                    
+                                </td>
+                                <td>
+                                    1
+                                </td>
+                                <td property="rdfs:comment">
+                                    Agent that is the subject in the provided Evidence.
+                                </td>
+                                <td property="skos:scopeNote">
+                                    
+                                </td>
+				<!--
+                                <td>
+                                    
+                                </td>
+				-->
+                                <td>
+                                    
+                                </td>
+                            </tr>
+                        
+                    </tbody>
+                </table>
+            </div>
+        
+    </div>
+</section>
+
+
+
+
+</section>
+
+<section>
+<h2>
+   Supportive Entities
+</h2>
+The supportive entities are supporting the main entities in the Application Profile. 
+They are included in the Application Profile because they form the range of properties.
+
+
+
+
+   
+        <section>
+            <h3 id="Evidence">
+                <a href="http://data.europa.eu/m8g/Evidence"
+                   data-toggle="tooltip"
+                   data-content="http://data.europa.eu/m8g/Evidence"
+                   data-placement="right">Evidence</a>
+
+            </h3>
+	        <!-- XXX an image in the h3 will break the rendering of the Table Of Contents of Respec -->
+		<!-- outcomment github feedback possibility
+                <a href="/new?title=Issue%20for%20Evidence&body=Explain%20your%20issue"}}>
+                   <img src="html/callout.png" loading="lazy" alt="(create issue)" width="20" height="20"/>
+		</a>
+		-->
+            <dl>
+                <dt>
+                    Definition
+                </dt>
+                <dd>
+                    Proof that a Requirement is met.
+                </dd>
+                
+                
+                    <dt>
+                        Usage Note
+                    </dt>
+                    <dd>
+                        The Evidence class is defined in <a href="https://github.com/SEMICeu/CCCEV">the Core Criterion and Core Evidence Vocabulary</a> (CCCEV).
+
+Although the wording of the definition is different, the semantics are an exact match for CPSV's Input class which it replaces.
+
+Evidence can be any resource - document, artefact - anything needed for executing the Public Service. In the context of Public Services, Evidence is usually administrative documents or completed application forms. A specific Public Service may require the presence of certain Evidence or combinations of Evidence in order to be delivered.
+
+In some cases, the Output of one service will be Evidence for another service. Such relationships should be described in the associated Rule(s).
+                    </dd>
+                
+                
+                    <dt>
+                        Properties
+                    </dt>
+                    
+                    <dd>
+                        This specification does not impose any additional requirements to properties for this entity.
+                    </dd>
+                
+            </dl>
+        </div>
+        
+    </div>
+</section>
+
+
+
+
+
+   
+        <section>
+            <h3 id="Location">
+                <a href="http://purl.org/dc/terms/Location"
+                   data-toggle="tooltip"
+                   data-content="http://purl.org/dc/terms/Location"
+                   data-placement="right">Location</a>
+
+            </h3>
+	        <!-- XXX an image in the h3 will break the rendering of the Table Of Contents of Respec -->
+		<!-- outcomment github feedback possibility
+                <a href="/new?title=Issue%20for%20Location&body=Explain%20your%20issue"}}>
+                   <img src="html/callout.png" loading="lazy" alt="(create issue)" width="20" height="20"/>
+		</a>
+		-->
+            <dl>
+                <dt>
+                    Definition
+                </dt>
+                <dd>
+                    An identifiable geographic place or named place.
+                </dd>
+                
+                
+                
+                    <dt>
+                        Properties
+                    </dt>
+                    
+                        <dd>
+                            For this entity the following properties are defined: <a href="#Location.geographicname">geographic name</a>
+                            .
+                    </dd>
+                
+            </dl>
+        </div>
+        
+            <div class="u-table-overflow">
+                <table class="data-table simple" id="table-mandatory-classes">
+                    <thead>
+                        <tr class="data-table__header">
+                            <th class="data-table__header-title--sortable" style="width:6%">
+                            </th>
+                            <th class="data-table__header-title--sortable data-table__header-title--sortable-active" style="width:14%">
+                                Property
+                            </th>
+                            <th class="data-table__header-title--sortable" style="width:14%">
+                                Range
+                            </th>
+                            <th class="data-table__header-title--sortable" style="width:6%">
+                                Card
+                            </th>
+                            <th class="data-table__header-title--sortable" style="width:30%">
+                                Definition 
+                            </th>
+                            <th class="data-table__header-title--sortable" style="width:30%">
+                                Usage
+                            </th>
+			    <!--
+                            <th class="data-table__header-title--sortable" style="width:3%">
+                                Codelist
+                            </th>
+                            <th class="data-table__header-title--sortable" style="width:5%">
+                                DCAT
+                            </th>
+			    -->
+                        </tr>
+                    </thead>
+                    <tbody class="supertype">
+                        
+                            <tr id="Location.geographicname"
+                                typeof="rdfs:Property"
+                                resource="http://www.w3.org/ns/locn#geographicName"
+                                class="class mandatory">
+                                <td>
+				    <a href="/new?title=Issue%20for%20geographic name%20in%20Location&body=Explain%20your%20issue%20for%20https://semiceu.github.io/OOTS/ProofOfBirth/releases/0.0.1/%23Location.geographicname" target="_blank" rel="noopener noreferrer" >
+					    <!--                                        <i class="icon">[o]</i> -->
+                                        <img src="html/callout.png" loading="lazy" alt="[o]" width="100" height="100"/>
+                                    </a>
+                                </td>
+                                <td>
+                                        <a href="http://www.w3.org/ns/locn#geographicName"
+                                           data-toggle="tooltip"
+                                           data-content="http://www.w3.org/ns/locn#geographicName"
+                                           data-placement="right">
+                                        geographic name</a>
+                                </td>
+                                <td>
+                                    
+                                        
+                                            <a href="#Text" data-placement="right">Text</a>
+                                        
+                                    
+                                </td>
+                                <td>
+                                    0..*
+                                </td>
+                                <td property="rdfs:comment">
+                                    A textual description for a Location.
+                                </td>
+                                <td property="skos:scopeNote">
+                                    A geographic name is a proper noun applied to a spatial object. Taking the example used in the INSPIRE document (page 18), the following are all valid geographic names for the Greek capital: - "A?n?a"@gr-Grek (the Greek endonym written in the Greek script) - "Athína"@gr-Latn (the standard Romanisation of the endonym) - "Athens"@en (the English language exonym) INSPIRE has a detailed (XML-based) method of providing metadata about a geographic name and in XML-data sets that may be the most appropriate method to follow. When using the Core Location Vocabulary in data sets that are not focussed on environmental/geographical data (the use case for INSPIRE), the Code datatype or a simple language identifier may be used to provide such metadata.
+
+The country codes defined in ISO 3166 may be used as geographic names and these are generally preferred over either the long form or short form of a country's name (as they are less error prone). The Publications Office of the European Union recommends the use of ISO 3166-1 codes for countries in all cases except two: - use 'UK' in preference to the ISO 3166 code GB for the United Kingdom; - use 'EL' in preference to the ISO 3166 code GR for Greece. Where a country has changed its name or no longer exists (such as Czechoslovakia, Yugoslavia etc.) use the ISO 3166-3 code.
+                                </td>
+				<!--
+                                <td>
+                                    
+                                </td>
+				-->
+                                <td>
+                                    
+                                </td>
+                            </tr>
+                        
+                    </tbody>
+                </table>
+            </div>
+        
+    </div>
+</section>
+
+
+
+
+
+   
+        <section>
+            <h3 id="Person">
+                <a href="http://www.w3.org/ns/person#Person"
+                   data-toggle="tooltip"
+                   data-content="http://www.w3.org/ns/person#Person"
+                   data-placement="right">Person</a>
+
+            </h3>
+	        <!-- XXX an image in the h3 will break the rendering of the Table Of Contents of Respec -->
+		<!-- outcomment github feedback possibility
+                <a href="/new?title=Issue%20for%20Person&body=Explain%20your%20issue"}}>
+                   <img src="html/callout.png" loading="lazy" alt="(create issue)" width="20" height="20"/>
+		</a>
+		-->
+            <dl>
+                <dt>
+                    Definition
+                </dt>
+                <dd>
+                    A individual human being who may be dead or alive, but not imaginary.
+                </dd>
+                
+                
+                    <dt>
+                        Usage Note
+                    </dt>
+                    <dd>
+                        The fact that a person in the context of Core Person Vocabulary cannot be imaginary makes person:Person a subclass of foaf:Person which cover imaginary characters as well as real people. The Person Class is a subclass of the more general <a href="https://semiceu.github.io/Core-Person-Vocabulary/releases/2.1.1/#Agent">'Agent' class</a>.
+                    </dd>
+                
+                
+                    <dt>
+                        Properties
+                    </dt>
+                    
+                        <dd>
+                            For this entity the following properties are defined: <a href="#Person.countryofbirth">country of birth</a>
+                            , <a href="#Person.dateofbirth">date of birth</a>
+                            , <a href="#Person.familyname">family name</a>
+                            , <a href="#Person.givenname">given name</a>
+                            , <a href="#Person.placeofbirth">place of birth</a>
+                            , <a href="#Person.sex">sex</a>
+                            .
+                    </dd>
+                
+            </dl>
+        </div>
+        
+            <div class="u-table-overflow">
+                <table class="data-table simple" id="table-mandatory-classes">
+                    <thead>
+                        <tr class="data-table__header">
+                            <th class="data-table__header-title--sortable" style="width:6%">
+                            </th>
+                            <th class="data-table__header-title--sortable data-table__header-title--sortable-active" style="width:14%">
+                                Property
+                            </th>
+                            <th class="data-table__header-title--sortable" style="width:14%">
+                                Range
+                            </th>
+                            <th class="data-table__header-title--sortable" style="width:6%">
+                                Card
+                            </th>
+                            <th class="data-table__header-title--sortable" style="width:30%">
+                                Definition 
+                            </th>
+                            <th class="data-table__header-title--sortable" style="width:30%">
+                                Usage
+                            </th>
+			    <!--
+                            <th class="data-table__header-title--sortable" style="width:3%">
+                                Codelist
+                            </th>
+                            <th class="data-table__header-title--sortable" style="width:5%">
+                                DCAT
+                            </th>
+			    -->
+                        </tr>
+                    </thead>
+                    <tbody class="supertype">
+                        
+                            <tr id="Person.countryofbirth"
+                                typeof="rdfs:Property"
+                                resource="http://www.w3.org/ns/person#countryOfBirth"
+                                class="class mandatory">
+                                <td>
+				    <a href="/new?title=Issue%20for%20country of birth%20in%20Person&body=Explain%20your%20issue%20for%20https://semiceu.github.io/OOTS/ProofOfBirth/releases/0.0.1/%23Person.countryofbirth" target="_blank" rel="noopener noreferrer" >
+					    <!--                                        <i class="icon">[o]</i> -->
+                                        <img src="html/callout.png" loading="lazy" alt="[o]" width="100" height="100"/>
+                                    </a>
+                                </td>
+                                <td>
+                                        <a href="http://www.w3.org/ns/person#countryOfBirth"
+                                           data-toggle="tooltip"
+                                           data-content="http://www.w3.org/ns/person#countryOfBirth"
+                                           data-placement="right">
+                                        country of birth</a>
+                                </td>
+                                <td>
+                                    
+                                        
+                                            <a href="#Location" data-placement="right">Location</a>
+                                        
+                                    
+                                </td>
+                                <td>
+                                    0..*
+                                </td>
+                                <td property="rdfs:comment">
+                                    The country in which the Person was born.
+                                </td>
+                                <td property="skos:scopeNote">
+                                    The Location Class has two properties: a Geographic Name and a Geographic Identifier. Plain codes like "DE" should be provided as values for Geographical Names whereas URIs should be provided as value of the Geographical Identifier. Ideally, provide both. Providing a simple country name is problematic and should be avoided whereas using a standardised system that allows the use of a code list for country names has a lot of potential for increasing semantic interoperability. Known diversity that one has to deal with when exchanging country names between different communication partners without relying on an agreed code list are: (a) long form vs. short form of a country name (e.g. Federal Republic of Germany vs. Germany), (b) different languages (Italy vs. Italia), (c) historic name vs. current name (Burma vs. Myanmar), (d) ambiguity of similar sounding countries (Republic of the Congo vs. Democratic Republic of the Congo). The Publications Office of the European Union recommends and uses ISO 3166-1 codes for countries in all cases except two: use 'UK' in preference to the ISO 3166 code GB for the United Kingdom; use 'EL' in preference to the ISO 3166 code GR for Greece. See Publications Office list of countries for details of the OPOCE's full list of countries, codes, currencies and more. Where a country has changed its name or no longer exists (such as Czechoslovakia, Yugoslavia etc.) use theISO 3166-3 code.
+                                </td>
+				<!--
+                                <td>
+                                    
+                                </td>
+				-->
+                                <td>
+                                    
+                                </td>
+                            </tr>
+                        
+                            <tr id="Person.dateofbirth"
+                                typeof="rdfs:Property"
+                                resource="http://data.europa.eu/m8g/birthDate"
+                                class="class mandatory">
+                                <td>
+				    <a href="/new?title=Issue%20for%20date of birth%20in%20Person&body=Explain%20your%20issue%20for%20https://semiceu.github.io/OOTS/ProofOfBirth/releases/0.0.1/%23Person.dateofbirth" target="_blank" rel="noopener noreferrer" >
+					    <!--                                        <i class="icon">[o]</i> -->
+                                        <img src="html/callout.png" loading="lazy" alt="[o]" width="100" height="100"/>
+                                    </a>
+                                </td>
+                                <td>
+                                        <a href="http://data.europa.eu/m8g/birthDate"
+                                           data-toggle="tooltip"
+                                           data-content="http://data.europa.eu/m8g/birthDate"
+                                           data-placement="right">
+                                        date of birth</a>
+                                </td>
+                                <td>
+                                    
+                                        
+                                            <a href="#GenericDate" data-placement="right">GenericDate</a>
+                                        
+                                    
+                                </td>
+                                <td>
+                                    0..*
+                                </td>
+                                <td property="rdfs:comment">
+                                    The point in time on which the Person was born.
+                                </td>
+                                <td property="skos:scopeNote">
+                                    The date of birth could be expressed as date, gYearMonth or gYear, example:
+- 1980-09-16^^xs:date
+- 1980-09^^xs:gYearMonth
+- 1980^^xs:gYear
+                                </td>
+				<!--
+                                <td>
+                                    
+                                </td>
+				-->
+                                <td>
+                                    
+                                </td>
+                            </tr>
+                        
+                            <tr id="Person.familyname"
+                                typeof="rdfs:Property"
+                                resource="http://xmlns.com/foaf/0.1/familyName"
+                                class="class mandatory">
+                                <td>
+				    <a href="/new?title=Issue%20for%20family name%20in%20Person&body=Explain%20your%20issue%20for%20https://semiceu.github.io/OOTS/ProofOfBirth/releases/0.0.1/%23Person.familyname" target="_blank" rel="noopener noreferrer" >
+					    <!--                                        <i class="icon">[o]</i> -->
+                                        <img src="html/callout.png" loading="lazy" alt="[o]" width="100" height="100"/>
+                                    </a>
+                                </td>
+                                <td>
+                                        <a href="http://xmlns.com/foaf/0.1/familyName"
+                                           data-toggle="tooltip"
+                                           data-content="http://xmlns.com/foaf/0.1/familyName"
+                                           data-placement="right">
+                                        family name</a>
+                                </td>
+                                <td>
+                                    
+                                        
+                                            <a href="#Text" data-placement="right">Text</a>
+                                        
+                                    
+                                </td>
+                                <td>
+                                    0..*
+                                </td>
+                                <td property="rdfs:comment">
+                                    The hereditary surname of a family.
+                                </td>
+                                <td property="skos:scopeNote">
+                                    Usually referring to a group of people related by blood, marriage or adoption. This attribute also carries prefixes or suffixes which are part of the family name, e.g. "de Boer", "van de Putte", "von und zu Orlow". Multiple family names, such as are commonly found in Hispanic countries, are recorded in the single family name property so that, for example, Miguel de Cervantes Saavedra's family name would be recorded as "de Cervantes Saavedra".	The complete name of the Person as one string.	It can be equal to or different from a Person's birth name. The birth name is used as a legal term, whereas the full name just gives a representation of the complete name of a Person.
+
+In addition to the content of given name, family name and, in some systems, patronymic name, this can carry additional parts of a person's name such as titles, middle names or suffixes like "the third" or names which are neither a given nor a family name. The full name is the most reliable label for an individual and as such its use is strongly encouraged, irrespective of whether that name is broken down using the more granular elements.
+                                </td>
+				<!--
+                                <td>
+                                    
+                                </td>
+				-->
+                                <td>
+                                    
+                                </td>
+                            </tr>
+                        
+                            <tr id="Person.givenname"
+                                typeof="rdfs:Property"
+                                resource="http://xmlns.com/foaf/0.1/givenName"
+                                class="class mandatory">
+                                <td>
+				    <a href="/new?title=Issue%20for%20given name%20in%20Person&body=Explain%20your%20issue%20for%20https://semiceu.github.io/OOTS/ProofOfBirth/releases/0.0.1/%23Person.givenname" target="_blank" rel="noopener noreferrer" >
+					    <!--                                        <i class="icon">[o]</i> -->
+                                        <img src="html/callout.png" loading="lazy" alt="[o]" width="100" height="100"/>
+                                    </a>
+                                </td>
+                                <td>
+                                        <a href="http://xmlns.com/foaf/0.1/givenName"
+                                           data-toggle="tooltip"
+                                           data-content="http://xmlns.com/foaf/0.1/givenName"
+                                           data-placement="right">
+                                        given name</a>
+                                </td>
+                                <td>
+                                    
+                                        
+                                            <a href="#Text" data-placement="right">Text</a>
+                                        
+                                    
+                                </td>
+                                <td>
+                                    0..*
+                                </td>
+                                <td property="rdfs:comment">
+                                    The name(s) that identify the Person within a family with a common surname.
+                                </td>
+                                <td property="skos:scopeNote">
+                                    Usually a first name or forename. Given to a person by his or her parents at birth or legally recognised as 'given names' through a formal process. All given names are ordered in one property so that, for example, the given name for Johann Sebastian Bach is "Johann Sebastian".
+                                </td>
+				<!--
+                                <td>
+                                    
+                                </td>
+				-->
+                                <td>
+                                    
+                                </td>
+                            </tr>
+                        
+                            <tr id="Person.placeofbirth"
+                                typeof="rdfs:Property"
+                                resource="http://www.w3.org/ns/person#placeOfBirth"
+                                class="class mandatory">
+                                <td>
+				    <a href="/new?title=Issue%20for%20place of birth%20in%20Person&body=Explain%20your%20issue%20for%20https://semiceu.github.io/OOTS/ProofOfBirth/releases/0.0.1/%23Person.placeofbirth" target="_blank" rel="noopener noreferrer" >
+					    <!--                                        <i class="icon">[o]</i> -->
+                                        <img src="html/callout.png" loading="lazy" alt="[o]" width="100" height="100"/>
+                                    </a>
+                                </td>
+                                <td>
+                                        <a href="http://www.w3.org/ns/person#placeOfBirth"
+                                           data-toggle="tooltip"
+                                           data-content="http://www.w3.org/ns/person#placeOfBirth"
+                                           data-placement="right">
+                                        place of birth</a>
+                                </td>
+                                <td>
+                                    
+                                        
+                                            <a href="#Location" data-placement="right">Location</a>
+                                        
+                                    
+                                </td>
+                                <td>
+                                    0..*
+                                </td>
+                                <td property="rdfs:comment">
+                                    The Location where the Person was born.
+                                </td>
+                                <td property="skos:scopeNote">
+                                    The Place of Birth and Place of Death are given using the Location class which is associated via the appropriate relationship. The Location Class has two properties: (1) the geographic name of the place, which is given as a string such as "Amsterdam" or "Valetta" and (2) an identifier, such as a geonames URI http://sws.geonames.org/2759794 (which identifies Amsterdam) or http://sws.geonames.org/2562305 (which identifies Valetta). The use of identifiers is preferred as these are unambiguous, however, public sector data typically uses simple names to record places and this is fully supported.
+                                </td>
+				<!--
+                                <td>
+                                    
+                                </td>
+				-->
+                                <td>
+                                    
+                                </td>
+                            </tr>
+                        
+                            <tr id="Person.sex"
+                                typeof="rdfs:Property"
+                                resource="http://data.europa.eu/m8g/sex"
+                                class="class mandatory">
+                                <td>
+				    <a href="/new?title=Issue%20for%20sex%20in%20Person&body=Explain%20your%20issue%20for%20https://semiceu.github.io/OOTS/ProofOfBirth/releases/0.0.1/%23Person.sex" target="_blank" rel="noopener noreferrer" >
+					    <!--                                        <i class="icon">[o]</i> -->
+                                        <img src="html/callout.png" loading="lazy" alt="[o]" width="100" height="100"/>
+                                    </a>
+                                </td>
+                                <td>
+                                        <a href="http://data.europa.eu/m8g/sex"
+                                           data-toggle="tooltip"
+                                           data-content="http://data.europa.eu/m8g/sex"
+                                           data-placement="right">
+                                        sex</a>
+                                </td>
+                                <td>
+                                    
+                                        
+                                            <a href="#Code" data-placement="right">Code</a>
+                                        
+                                    
+                                </td>
+                                <td>
+                                    0..*
+                                </td>
+                                <td property="rdfs:comment">
+                                    The organism&#39;s biological sex.
+                                </td>
+                                <td property="skos:scopeNote">
+                                    The recommended controlled vocabulary for this property is <a href="https://op.europa.eu/en/web/eu-vocabularies/concept-scheme/-/resource?uri=http://publications.europa.eu/resource/authority/human-sex">the sex authority table of the Publications Office</a>.
+                                </td>
+				<!--
+                                <td>
+                                    
+                                </td>
+				-->
+                                <td>
+                                    
+                                </td>
+                            </tr>
+                        
+                    </tbody>
+                </table>
+            </div>
+        
+    </div>
+</section>
+
+
+
+
+
+
+
+</section>
+
+    <section>
+        <h2>
+            Datatypes
+        </h2>
+
+	The following datatypes are used within this specification.
+
+	<table class="data-table simple" id="table-mandatory-classes">
+	    <thead>
+		<tr class="data-table__header">
+		    <th class="data-table__header-title--sortable">
+		    </th>
+		    <th class="data-table__header-title--sortable data-table__header-title--sortable-active">
+			Class
+		    </th>
+		    <th class="data-table__header-title--sortable">
+			Definition
+		    </th>
+		</tr>
+	    </thead>
+	    <tbody class="supertype">
+            
+		<tr><td>
+                   <a href="/new?title=Issue%20for%20Code&body=Explain%20your%20issue"}}>
+                     <img src="html/callout.png" loading="lazy" alt="(create issue)" width="50" height="50"/>
+		   </a>
+		</td><td>
+                
+                    <div id="Code">
+                        <a href="http://www.w3.org/2004/02/skos/core#Concept"
+                           data-toggle="tooltip"
+                           data-content="http://www.w3.org/2004/02/skos/core#Concept"
+                           data-placement="right">Code</a>
+                    </div>
+                
+		</td><td>
+                    An idea or notion; a unit of thought.
+		</td></tr>
+		<tr><td>
+                   <a href="/new?title=Issue%20for%20Genericdate&body=Explain%20your%20issue"}}>
+                     <img src="html/callout.png" loading="lazy" alt="(create issue)" width="50" height="50"/>
+		   </a>
+		</td><td>
+                
+                    <div id="GenericDate">
+                        <a href="http://data.europa.eu/m8g/GenericDate"
+                           data-toggle="tooltip"
+                           data-content="http://data.europa.eu/m8g/GenericDate"
+                           data-placement="right">GenericDate</a>
+                    </div>
+                
+		</td><td>
+                    The date data type is the union of xs:date, xs:gYearMonth and xs:gYear
+		</td></tr>
+		<tr><td>
+                   <a href="/new?title=Issue%20for%20Literal&body=Explain%20your%20issue"}}>
+                     <img src="html/callout.png" loading="lazy" alt="(create issue)" width="50" height="50"/>
+		   </a>
+		</td><td>
+                
+                    <div id="Literal">
+                        <a href="http://www.w3.org/2000/01/rdf-schema#Literal"
+                           data-toggle="tooltip"
+                           data-content="http://www.w3.org/2000/01/rdf-schema#Literal"
+                           data-placement="right">Literal</a>
+                    </div>
+                
+		</td><td>
+                    The class of literal values, eg. textual strings and integers.
+		</td></tr>
+		<tr><td>
+                   <a href="/new?title=Issue%20for%20Text&body=Explain%20your%20issue"}}>
+                     <img src="html/callout.png" loading="lazy" alt="(create issue)" width="50" height="50"/>
+		   </a>
+		</td><td>
+                
+                    <div id="Text">
+                        <a href="http://www.w3.org/1999/02/22-rdf-syntax-ns#langString"
+                           data-toggle="tooltip"
+                           data-content="http://www.w3.org/1999/02/22-rdf-syntax-ns#langString"
+                           data-placement="right">Text</a>
+                    </div>
+                
+		</td><td>
+                    The text data type is a combination of a string and a language identifier.
+		</td></tr>
+            </tbody>
+	</table>
+
+
+</section>
+
+<!--
+<section class="informative">
+    <h2 aria-level="1" role="heading" id="h2_sotd">
+        JSON-LD context
+    </h2>
+    <div class="region region--no-space-top" id="jsonld">
+         (non normative)
+        
+            <p>
+                A reusable JSON-LD context definition for this Core Vocabulary is retrievable at: <a href="/OOTS/ProofOfBirth/releases/0.0.1//context/proofofbirth.jsonld"
+    target="_blank">/OOTS/ProofOfBirth/releases/0.0.1//context/proofofbirth.jsonld</a>
+            </p>
+        
+    </div>
+</section>
+<section class="informative">
+    <h2 aria-level="1" role="heading" id="h2_sotd">
+        SHACL template
+    </h2>
+    <div class="region region--no-space-top" id="shacl">
+         (non normative)
+        
+            <p>
+                A reusable SHACL template for this Core Vocabulary is retrievable at: <a href="/OOTS/ProofOfBirth/releases/0.0.1//shacl/proofofbirth-SHACL.ttl"
+    target="_blank">/OOTS/ProofOfBirth/releases/0.0.1//shacl/proofofbirth-SHACL.ttl</a>
+            </p>
+        
+    </div>
+</section>
+-->
+
+<section class="informative">
+    <h2> Examples </h2>
+        
+<div class="h3 examples" id="ProofOfBirth">Example Proof of birth</div>
+
+</section>
+
+
+
+<section class="informative">
+	<h2>Usage Guidelines</h2>
+    <section class="informative">
+  <h2>Support for implementation</h2>
+
+The following section provides support for implementing the Proof of birth.
+<p/>
+
+<h3>JSON-LD context file</h3>
+
+One common technical question is the format in which the data is being exchanged. 
+For conformance with the Proof of birth, it is not mandatory that this happens in a RDF serialisation, but the exhanged format SHOULD be unambiguously be transformable into RDF.
+For the format JSON, a popular format to exchange data between systems, SEMIC provides a <a href="./context/proofofbirth.jsonld">JSON-LD context file</a>. 
+JSON-LD is a W3C Recommendation [[[json-ld11]]] that provided a standard approach to interpret JSON structures as RDF.
+The provided JSON-LD context file can be used by implementers.
+This JSON-LD context is not normative, i.e. other JSON-LD contexts are allowed.
+<p/>
+The JSON-LD context file downloadable <a href="./context/proofofbirth.jsonld">here</a>.
+<p/>
+
+<h3>Validation</h3>
+
+To verify if the data is (technically) conformant to the Proof of birth, the exchanged data can be validated using the provided SHACL shapes. 
+SHACL is a W3C Recommendation to express constraints on a RDF knowledge graph. 
+<p/>
+To support the check whether or not a catalogue satisfies the expressed constraints in this Application Profile, the constraints in this specification are expressed using SHACL [[shacl]].
+Each constraint in this specification that could be converted into a SHACL expression has been included.
+As such this collection of SHACL expressions that can be used to build a validation check for data. 
+<p/>
+It is up to the implementers to define the validation they expect.
+Each implementation happens within a context, and that context is beyond the SHACL expressions here.
+<p/>
+The shapes can be found <a href="./shacl/proofofbirth-SHACL.ttl">here</a>.
+
+<h3>RDF representation</h3>
+The RDF representation of the Proof of birth is available <a href="./rdf/proofofbirth.ttl">here</a>.
+
+<h3>UML representation</h3>
+The UML representation from which the Proof of birth has been build is available <a href="./UML">here</a>.
+
+<!--
+<h3>Mapping</h3>
+A mapping towards Schema.org can be found <a href="https://github.com/SEMICeu/Semantic-Mappings/tree/main/Core%20Location">here</a>
+<p/>
+-->
+
+</section>
+    <section class="informative">
+<h2>Governance</h2>
+
+<h3>Versioning governance</h3>
+All specifications produced in SEMIC will follow the versioning rule described by the SEMIC Style Guide rule 
+<a href="https://semiceu.github.io/style-guide/1.0.0/gc-publication-conventions.html#sec:pc-r3">PC-R3</a>.
+In case a SEMIC asset is deprecated the asset will remain available through its PURI.
+<p/>
+The serialisation will have:
+<ul>
+<li>a dct:isReplacedBy referencing the new assets used instead and</li>
+<li> an adms:status  indicating its deprecated <a href="http://publications.europa.eu/resource/authority/concept-status/DEPRECATED">status</a>.</li>
+</ul>
+<p/>
+
+<h3>Governance requirements for re-used assets</h3>
+In order to adhere to the SEMIC Style Guide rule <a href="https://semiceu.github.io/style-guide/1.0.0/gc-general-conventions.html#sec:gc-r2">GC-R2</a>
+ a specification should have quality and governance standards for the assets that are being reused.
+<p/>
+In order for an asset to be considered for reuse within a SEMIC specification it can be requested by a community member or it requires to adhere to the following requirements:
+<ul>
+<li> The asset is part of a recommendation by a major standards body or an EU institution.</li>
+<li> The asset is actively being maintained.</li>
+</ul>
+<p/>
+
+After being taken into consideration the asset will be validated in three steps:
+<ul>
+<li> Syntax validation will be performed on the relevant artefacts.</li>
+<li> Constraint validation will be performed on the relevant artefacts.</li>
+<li> The PURI will be validated.</li>
+</ul>
+Once considered and validated an asset can be adopted if it is approved by the community.
+<p/>
+
+<h3>Lexicalisation rules</h3>
+
+In order to adhere to the SEMIC Style Guide rule <a href="https://semiceu.github.io/style-guide/1.0.0/gc-semantic-conventions.html#sec:sc-r3">SC-R3</a> a specification requires formal lexicalisation rules.
+The Style Guide proposes two options either by using RDFS or SKOS lexicalisation.
+<p/>
+SEMIC uses and will use the RDFS lexicalisation for all of its specifications. More specifically:
+<ul>
+<li> rdfs:label is used to provide a human-readable version of a resource's name.</li>
+<li> The usage of certain resource can be clarified in a skos:usageNote.</li>
+</ul>
+
+</section>
+</section>
+ 
+
+
+
+ 
+
+
+
+<section id="quick-reference" class="appendix">
+
+<h2>Quick Reference of Classes and Properties</h2>
+
+This section provides a condensed tabular overview of the mentioned classes and properties in this specification.
+The properties are indicated as <it>mandatory, recommended, optional</it> and <it>deprecated</it>. These terms have the following meaning.
+<ul>
+<li>Mandatory property: a receiver MUST be able to process the information for that property; a sender MUST provide the information for that property.</li>
+<li>Recommended property: a receiver MUST be able to process the information for that property; a sender SHOULD provide the information for that property if it is available.</li>
+<li>Optional property: a receiver MUST be able to process the information for that property; a sender MAY provide the information for that property but is not obliged to do so.</li>
+<li>Deprecated property: a receiver SHOULD be able to process information about instances of that property; a sender SHOULD NOT provide the information about instances of that property.</li>
+</ul>
+
+<table id="table-quickoverview" class="simple" style="width:100%; table-layout: fixed; word-wrap:break-word;">
+	<thead>
+		<tr><th>Class</th><th>Class IRI</th><th>Property Type</type><th>Property</th><th>Property IRI</th></tr>
+	</thead>
+	<tbody>
+		
+				
+					<tr>
+						<td><a href="#Evidence">Evidence</a></td>
+						<td><div class="shorten">http://data.europa.eu/m8g/Evidence</div></td>
+						<td></td>
+						<td></td>
+						<td></td>
+					</tr>
+				
+			</tr>
+		
+				
+					
+						
+					
+					
+						
+					
+					
+						
+							<tr>
+								<td><a href="#Location">Location</a></td>
+								<td><div class="shorten">http://purl.org/dc/terms/Location</div></td>
+								<td></td>
+								<td><a href="#Location.geographicname">geographic name </a></td>
+								<td><div class="shorten">http://www.w3.org/ns/locn#geographicName</div></td>
+							</tr>
+						
+					
+				
+			</tr>
+		
+				
+					
+						
+					
+						
+					
+						
+					
+						
+					
+						
+					
+						
+					
+					
+						
+					
+						
+					
+						
+					
+						
+					
+						
+					
+						
+					
+					
+						
+							<tr>
+								<td><a href="#Person">Person</a></td>
+								<td><div class="shorten">http://www.w3.org/ns/person#Person</div></td>
+								<td></td>
+								<td><a href="#Person.countryofbirth">country of birth </a></td>
+								<td><div class="shorten">http://www.w3.org/ns/person#countryOfBirth</div></td>
+							</tr>
+						
+					
+						
+							<tr>
+								<td><a href="#Person">Person</a></td>
+								<td><div class="shorten">http://www.w3.org/ns/person#Person</div></td>
+								<td></td>
+								<td><a href="#Person.dateofbirth">date of birth </a></td>
+								<td><div class="shorten">http://data.europa.eu/m8g/birthDate</div></td>
+							</tr>
+						
+					
+						
+							<tr>
+								<td><a href="#Person">Person</a></td>
+								<td><div class="shorten">http://www.w3.org/ns/person#Person</div></td>
+								<td></td>
+								<td><a href="#Person.familyname">family name </a></td>
+								<td><div class="shorten">http://xmlns.com/foaf/0.1/familyName</div></td>
+							</tr>
+						
+					
+						
+							<tr>
+								<td><a href="#Person">Person</a></td>
+								<td><div class="shorten">http://www.w3.org/ns/person#Person</div></td>
+								<td></td>
+								<td><a href="#Person.givenname">given name </a></td>
+								<td><div class="shorten">http://xmlns.com/foaf/0.1/givenName</div></td>
+							</tr>
+						
+					
+						
+							<tr>
+								<td><a href="#Person">Person</a></td>
+								<td><div class="shorten">http://www.w3.org/ns/person#Person</div></td>
+								<td></td>
+								<td><a href="#Person.placeofbirth">place of birth </a></td>
+								<td><div class="shorten">http://www.w3.org/ns/person#placeOfBirth</div></td>
+							</tr>
+						
+					
+						
+							<tr>
+								<td><a href="#Person">Person</a></td>
+								<td><div class="shorten">http://www.w3.org/ns/person#Person</div></td>
+								<td></td>
+								<td><a href="#Person.sex">sex </a></td>
+								<td><div class="shorten">http://data.europa.eu/m8g/sex</div></td>
+							</tr>
+						
+					
+				
+			</tr>
+		
+				
+					
+						
+					
+					
+						
+					
+					
+						
+							<tr>
+								<td><a href="#Proofofbirth">Proof of birth</a></td>
+								<td><div class="shorten">http://data.europa.eu/p4s/ProofOfBirth</div></td>
+								<td></td>
+								<td><a href="#Proofofbirth.isabout">is about </a></td>
+								<td><div class="shorten">http://purl.org/dc/terms/subject</div></td>
+							</tr>
+						
+					
+				
+			</tr>
+		
+	<tbody>
+</table>
+
+   
+   
+
+
+<!-- This must be at the end of the template, to ensure that the iterator properly works -->
+    <script defer>
+
+
+	    var prefixes = [ 
+{'pref':'adms:', 'ns': 'http://www.w3.org/ns/adms#'},
+{'pref':'dcat:', 'ns': 'http://www.w3.org/ns/dcat#'},
+{'pref':'dcatap:', 'ns': 'http://data.europa.eu/r5r/'},
+{'pref':'dct:', 'ns': 'http://purl.org/dc/terms/'},
+{'pref':'dctype:', 'ns': 'http://purl.org/dc/dcmitype/'},
+{'pref':'cpsv:', 'ns': 'http://purl.org/vocab/cpsv#'},
+{'pref':'foaf:', 'ns': 'http://xmlns.com/foaf/0.1/'},
+{'pref':'locn:', 'ns': 'http://www.w3.org/ns/locn#'},
+{'pref':'odrl:', 'ns': 'http://www.w3.org/ns/odrl/2/'},
+{'pref':'owl:', 'ns': 'http://www.w3.org/2002/07/owl#'},
+{'pref':'prov:', 'ns': 'http://www.w3.org/ns/prov#'},
+{'pref':'rdf:', 'ns': 'http://www.w3.org/1999/02/22-rdf-syntax-ns#'},
+{'pref':'rdfs:', 'ns': 'http://www.w3.org/2000/01/rdf-schema#'},
+{'pref':'skos:', 'ns': 'http://www.w3.org/2004/02/skos/core#'},
+{'pref':'spdx:', 'ns': 'http://spdx.org/rdf/terms#'},
+{'pref':'time:', 'ns': 'http://www.w3.org/2006/time#'},
+{'pref':'vcard:', 'ns': 'http://www.w3.org/2006/vcard/ns#'},
+{'pref':'eli:', 'ns' : 'http://data.europa.eu/eli/ontology#'},
+{'pref':'xsd:', 'ns': 'http://www.w3.org/2001/XMLSchema#'},
+{'pref':'ad:', 'ns': 'http://inspire.ec.europa.eu/ont/ad#'},
+{'pref':'cv:', 'ns': 'http://data.europa.eu/m8g/'},
+{'pref':'geo:', 'ns': 'http://www.opengis.net/ont/geosparql#'},
+{'pref':'schema:', 'ns': 'https://schema.org/'},
+{'pref':'org:', 'ns': 'http://www.w3.org/ns/org#'},
+{'pref':'person:', 'ns': 'http://www.w3.org/ns/person#'},
+{'pref':'legal:', 'ns': 'http://www.w3.org/ns/legal#'},
+{'pref':'atu:', 'ns': 'http://data.europa.eu/88u/dataset/'},
+{'pref':'xhv:', 'ns': 'http://www.w3.org/1999/xhtml/vocab#'},
+{'pref':'epo:', 'ns': 'http://data.europa.eu/a4g/ontology#'},
+
+
+				];
+
+	    function shorturl (url) {
+				var short = url;
+				for (e in prefixes) {
+				   var elem = prefixes[e];
+				   if (short.startsWith(elem.ns)) {
+  					short = elem.pref + short.slice(elem.ns.length);
+					}
+				};
+				return short;
+			};
+
+	    var shorten = document.getElementsByClassName("shorten");
+	    for (k=0;k < shorten.length ; k++){
+			var selem = shorten[k];	
+	                selem.innerHTML = shorturl(selem.innerHTML.trim());
+			}
+    </script>
+    
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.6/codemirror.min.css" />
+	<!--    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.css"> -->
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.13.2/themes/base/jquery-ui.min.css"> 
+	<!-- <script src="https://code.jquery.com/jquery-3.1.1.min.js" ></script> -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.0/jquery.min.js" ></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.6/codemirror.min.js" ></script>
+    <!--    <script src="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js" ></script> -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.13.2/jquery-ui.min.js" ></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.6/codemirror.min.js" ></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.6/mode/javascript/javascript.min.js" ></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.6/mode/turtle/turtle.min.js" ></script>
+    <script src="https://codemirror.net/5/mode/javascript/javascript.js" ></script>
+    <!--    <script src="https://semiceu.github.io/MLDCAT-AP/releases/1.0.0/example.js" ></script> -->
+    <script src="./html/example.js" ></script>
+	<script type="text/javascript">
+		function elementInView(elem){
+				goesIn = ($(window).height() + $(window).scrollTop()) > $(elem).offset().top;
+				goesOut = ($(window).scrollTop()) > ($(elem).offset().top + $(elem).height());
+				if (goesIn && !goesOut)
+					return 1;
+				else
+					return 0;
+			};
+
+		$(window).scroll(function(){
+			$('.CodeMirror').each(function(){
+				if (elementInView($(this))){
+					$(this).each(function(i, el){
+						el.CodeMirror.refresh();
+					});
+				}
+			});
+			
+		});
+	</script>
+	<style>
+		.CodeMirror {
+		  border: 1px solid #eee;
+		  height: auto;
+		}
+		.buttonsample {
+		cursor: pointer;
+		margin-top: 10px;
+		margin-left: 10px;
+		font-weight: 700;
+		border:0 outset buttonface;
+		background: #F5F6F8;
+		background-image: linear-gradient(to bottom,#F5F6F8,#DBDCDE);
+		border-radius:4px;
+		box-shadow:0 1px 3px #666;
+		font-family: Arial;
+		color: grey;
+		font-size: 14px;
+		padding: 10px 5px;
+		text-decoration: none;
+		float: right
+	}
+	.buttonsample:hover {color:#2a70d3}
+	.tabsstyle {
+		padding: 10px;
+		overflow: hidden;
+	}
+	li.ui-tabs-tab > a:hover {
+		background-color:dodgerblue;
+		color:white;
+	}
+  </style>
+
+    	<link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.13.4/css/jquery.dataTables.min.css">
+	<script type="text/javascript" language="javascript" src="https://cdn.datatables.net/1.13.4/js/jquery.dataTables.min.js"></script>
+</html>
