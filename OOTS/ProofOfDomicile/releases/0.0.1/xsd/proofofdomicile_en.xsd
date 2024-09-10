@@ -43,7 +43,13 @@
     </xs:attribute>
   </xs:complexType>
   <xs:complexType name="ProofOfDomicileType">
-    <xs:sequence/>
+    <xs:sequence>
+      <xs:element name="isAbout" ref="PersonType" maxOccurs="1" minOccurs="1">
+        <xs:annotation>
+          <xs:documentation xml:lang="en">Agent that is the subject in the provided Evidence.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+    </xs:sequence>
     <xs:attribute name="ProofOfDomicileRef" type="xs:IDREF">
       <xs:annotation>
         <xs:documentation xml:lang="en">Reference to ProofOfDomicile ID</xs:documentation>
@@ -126,6 +132,11 @@
   </xs:complexType>
   <xs:complexType name="PersonType">
     <xs:sequence>
+      <xs:element name="countryOfBirth" ref="LocationType" maxOccurs="unbounded" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation xml:lang="en">The country in which the Person was born.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
       <xs:element name="dateOfBirth" type="http://data.europa.eu/m8g/GenericDate" maxOccurs="unbounded" minOccurs="0">
         <xs:annotation>
           <xs:documentation xml:lang="en">The point in time on which the Person was born.</xs:documentation>
@@ -144,6 +155,11 @@
       <xs:element name="givenName" type="xs:string" maxOccurs="unbounded" minOccurs="0">
         <xs:annotation>
           <xs:documentation xml:lang="en">The name(s) that identify the Person within a family with a common surname.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="placeOfBirth" ref="LocationType" maxOccurs="unbounded" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation xml:lang="en">The Location where the Person was born.</xs:documentation>
         </xs:annotation>
       </xs:element>
       <xs:element name="sex" type="ConceptType" maxOccurs="unbounded" minOccurs="0">
