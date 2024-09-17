@@ -7,7 +7,7 @@
     
 	
     <meta charset="utf-8" />
-    <title>Proof of birth</title>
+    <title>Proof of domicile</title>
     <script src="https://www.w3.org/Tools/respec/respec-w3c" class="remove" defer></script>
     <script class="remove">
     // All config options at https://respec.org/docs/
@@ -62,18 +62,18 @@
 	function quickreference() {
 		$('#table-quickoverview').DataTable();
 	};
-	var shaclfilepath = "./shacl/proofofbirth-SHACL.ttl" ;
+	var shaclfilepath = "./shacl/proofofdomicile-SHACL.ttl" ;
 
    
 
     var respecConfig = {
       postProcess: [quickreference],
-      edDraftURI: "https://semiceu.github.io/OOTS/ProofOfBirth/releases/0.0.1/",
-      latestVersion: "https://data-models-oots-tdd-8b6791fd33fcb1f29c7d6ad9c6173ba55d28c0a5f9.pages.code.europa.eu/Evidence/ProofOfBirth/releases/0.0.1/",
+      edDraftURI: "https://semiceu.github.io/OOTS/ProofOfDisability/releases/0.0.1/",
+      latestVersion: "https://data-models-oots-tdd-8b6791fd33fcb1f29c7d6ad9c6173ba55d28c0a5f9.pages.code.europa.eu/Evidence/ProofOfDisability/releases/0.0.1",
       specStatus: "LD",
       editors: myeditors,
       authors: myauthors,
-      shortName: "Proof of birth",
+      shortName: "Proof of domicile",
       xref: "web-platform",
       doJsonLd: true,
       logos: [{
@@ -184,7 +184,7 @@ Proof of birth is a simplified data model describing a request for evidence rega
             This Application Profile has the status Draft published at 2024-08-29.
         </p>
         <p>
-            Information about the process and the decisions involved in the creation of this specification are consultable at the <a href="https://code.europa.eu/oots/tdd/data_models/Evidence/ProofOfBirth/tree/master/releases/0.0.1/Changelog.md">Changelog</a>.
+            Information about the process and the decisions involved in the creation of this specification are consultable at the <a href="https://code.europa.eu/oots/tdd/data_models/Evidence/ProofOfDomicile/tree/master/releases/0.0.1/Changelog.md">Changelog</a>.
         </p>
 </section>
 
@@ -261,12 +261,13 @@ This specification uses the following prefixes to shorten the URIs for readibili
                             This document describes the usage of the following main entities for a correct usage of the Application Profile:
                             <br />
                             |
-			      <a href="#Proofofbirth">Proof of birth</a> |
+			      <a href="#Proofofdomicile">Proof of domicile</a> |
                         </p>
                         <p>
                             The main entities are supported by:
                             <br />
                             |
+			      <a href="#Address">Address</a> |
 			      <a href="#Evidence">Evidence</a> |
 			      <a href="#Location">Location</a> |
 			      <a href="#Person">Person</a> |
@@ -276,14 +277,14 @@ This specification uses the following prefixes to shorten the URIs for readibili
                         <p>
                             And supported by these datatypes:
                             <br />
-                            | <a href="#Code">Code</a> | <a href="#GenericDate">GenericDate</a> | <a href="#Text">Text</a> |
+                            | <a href="#Code">Code</a> | <a href="#GenericDate">GenericDate</a> | <a href="#Literal">Literal</a> | <a href="#Text">Text</a> |
                         </p>
                 
     </div>
     <div>
-        <a href="https://data-models-oots-tdd-8b6791fd33fcb1f29c7d6ad9c6173ba55d28c0a5f9.pages.code.europa.eu/Evidence/ProofOfBirth/releases/0.0.1/html/overview.jpg"
+        <a href="https://data-models-oots-tdd-8b6791fd33fcb1f29c7d6ad9c6173ba55d28c0a5f9.pages.code.europa.eu/Evidence/ProofOfDomicile/releases/0.0.1/html/overview.jpg"
            target="_blank">
-            <img src="https://data-models-oots-tdd-8b6791fd33fcb1f29c7d6ad9c6173ba55d28c0a5f9.pages.code.europa.eu/Evidence/ProofOfBirth/releases/0.0.1/html/overview.jpg"/>
+            <img src="https://data-models-oots-tdd-8b6791fd33fcb1f29c7d6ad9c6173ba55d28c0a5f9.pages.code.europa.eu/Evidence/ProofOfDomicile/releases/0.0.1/html/overview.jpg"/>
         </a>
     </div>
 </section>
@@ -307,18 +308,20 @@ The main entities are those that form the core of the Application Profile.
 
 
 
+
+
    
         <section>
-            <h3 id="Proofofbirth">
-                <a href="http://data.europa.eu/p4s/ProofOfBirth"
+            <h3 id="Proofofdomicile">
+                <a href="http://data.europa.eu/p4s/ProofOfDomicile"
                    data-toggle="tooltip"
-                   data-content="http://data.europa.eu/p4s/ProofOfBirth"
-                   data-placement="right">Proof of birth</a>
+                   data-content="http://data.europa.eu/p4s/ProofOfDomicile"
+                   data-placement="right">Proof of domicile</a>
 
             </h3>
 	        <!-- XXX an image in the h3 will break the rendering of the Table Of Contents of Respec -->
 		<!-- outcomment github feedback possibility
-                <a href="https://ec.europa.eu/digital-building-blocks/wikis/display/SDGOO/Discussion+Items+-+EM?src=contextnavpagetreemode/new?title=Issue%20for%20ProofOfBirth&body=Explain%20your%20issue"}}>
+                <a href="https://ec.europa.eu/digital-building-blocks/wikis/display/SDGOO/Discussion+Items+-+EM?src=contextnavpagetreemode/new?title=Issue%20for%20ProofOfDomicile&body=Explain%20your%20issue"}}>
                    <img src="html/callout.png" loading="lazy" alt="(create issue)" width="20" height="20"/>
 		</a>
 		-->
@@ -327,7 +330,7 @@ The main entities are those that form the core of the Application Profile.
                     Definition
                 </dt>
                 <dd>
-                    Request for evidence regarding the birth of the person (evidence subject).
+                    Request for evidence proving the address of the place that the person (evidence subject) considers currently as their permanent home (domicile).
                 </dd>
                 
                 
@@ -344,7 +347,7 @@ The main entities are those that form the core of the Application Profile.
                     </dt>
                     
                         <dd>
-                            For this entity the following properties are defined: <a href="#Proofofbirth.isabout">is about</a>
+                            For this entity the following properties are defined: <a href="#Proofofdomicile.isabout">is about</a>
                             .
                     </dd>
                 
@@ -384,12 +387,12 @@ The main entities are those that form the core of the Application Profile.
                     </thead>
                     <tbody class="supertype">
                         
-                            <tr id="Proofofbirth.isabout"
+                            <tr id="Proofofdomicile.isabout"
                                 typeof="rdfs:Property"
                                 resource="http://purl.org/dc/terms/subject"
                                 class="class mandatory">
                                 <td>
-				    <a href="https://ec.europa.eu/digital-building-blocks/wikis/display/SDGOO/Discussion+Items+-+EM?src=contextnavpagetreemode/new?title=Issue%20for%20is about%20in%20Proof of birth&body=Explain%20your%20issue%20for%20https://semiceu.github.io/OOTS/ProofOfBirth/releases/0.0.1/%23Proofofbirth.isabout" target="_blank" rel="noopener noreferrer" >
+				    <a href="https://ec.europa.eu/digital-building-blocks/wikis/display/SDGOO/Discussion+Items+-+EM?src=contextnavpagetreemode/new?title=Issue%20for%20is about%20in%20Proof of domicile&body=Explain%20your%20issue%20for%20https://semiceu.github.io/OOTS/ProofOfDisability/releases/0.0.1/%23Proofofdomicile.isabout" target="_blank" rel="noopener noreferrer" >
 					    <!--                                        <i class="icon">[o]</i> -->
                                         <img src="html/callout.png" loading="lazy" alt="[o]" width="100" height="100"/>
                                     </a>
@@ -445,6 +448,424 @@ The main entities are those that form the core of the Application Profile.
 </h2>
 The supportive entities are supporting the main entities in the Application Profile. 
 They are included in the Application Profile because they form the range of properties.
+
+
+
+
+   
+        <section>
+            <h3 id="Address">
+                <a href="http://www.w3.org/ns/locn#Address"
+                   data-toggle="tooltip"
+                   data-content="http://www.w3.org/ns/locn#Address"
+                   data-placement="right">Address</a>
+
+            </h3>
+	        <!-- XXX an image in the h3 will break the rendering of the Table Of Contents of Respec -->
+		<!-- outcomment github feedback possibility
+                <a href="https://ec.europa.eu/digital-building-blocks/wikis/display/SDGOO/Discussion+Items+-+EM?src=contextnavpagetreemode/new?title=Issue%20for%20Address&body=Explain%20your%20issue"}}>
+                   <img src="html/callout.png" loading="lazy" alt="(create issue)" width="20" height="20"/>
+		</a>
+		-->
+            <dl>
+                <dt>
+                    Definition
+                </dt>
+                <dd>
+                    A spatial object that in a human-readable way identifies a fixed location.
+                </dd>
+                
+                
+                    <dt>
+                        Usage Note
+                    </dt>
+                    <dd>
+                        <p>
+An "address representation" as conceptually defined by the <a href="https://inspire-regadmin.jrc.ec.europa.eu/dataspecification/ScopeObjectDetail.action?objectDetailId=9353
+">INSPIRE Address Representation data type</a>: "Representation of an address spatial object for use in external application schemas that need to include the basic, address information in a readable way."
+</p></br>
+
+<p>
+The representation of Addresses varies widely from one country's postal system to another. Even within countries, there are almost always examples of Addresses that do not conform to the stated national standard. However, <a href="https://www.iso.org/standard/61710.html">ISO 19160-1</a> provides a method through which different Addresses can be converted from one conceptual model to another.
+</p></br>
+
+<p>
+This specification was heavily based on the INSPIRE Address Representation data type. It is noteworthy that if an Address is provided using the detailed breakdown suggested by the properties for this class, then it will be INSPIRE-conformant. To this very granular set of
+properties, we add two further properties:
+<ul>
+  <li> full address (the complete address as a formatted string)</li>
+  <li> addressID (a unique identifier for the address)</li>
+</ul>
+The first of these allows publishers to simply provide the complete Address as one string, with or without formatting. This is analogous to <a href="https://www.w3.org/TR/vcard-rdf/#d4e953">vCard's label property</a>.
+</p></br>
+
+<p>
+The addressID is part of the <a href="https://knowledge-base.inspire.ec.europa.eu/index_en">INSPIRE guidelines</a> and provides a hook that can be used to link the Address to an alternative representation, such as <a href="https://www.w3.org/TR/vcard-rdf">vCard</a> or <a href="https://www.oasis-open.org/committees/ciq/ciq.html#6">OASIS xAL</a>.
+</p></br>
+
+This class belongs to <a href="https://semiceu.github.io/Core-Location-Vocabulary/releases/2.00/#Address">Core Location Vocabulary</a>
+                    </dd>
+                
+                
+                    <dt>
+                        Properties
+                    </dt>
+                    
+                        <dd>
+                            For this entity the following properties are defined: <a href="#Address.addressarea">address area</a>
+                            , <a href="#Address.administrativeunitlevel1">administrative unit level 1</a>
+                            , <a href="#Address.administrativeunitlevel2">administrative unit level 2</a>
+                            , <a href="#Address.locatordesignator">locator designator</a>
+                            , <a href="#Address.postcode">post code</a>
+                            , <a href="#Address.postname">post name</a>
+                            , <a href="#Address.thoroughfare">thoroughfare</a>
+                            .
+                    </dd>
+                
+            </dl>
+        </div>
+        
+            <div class="u-table-overflow">
+                <table class="data-table simple" id="table-mandatory-classes">
+                    <thead>
+                        <tr class="data-table__header">
+                            <th class="data-table__header-title--sortable" style="width:6%">
+                            </th>
+                            <th class="data-table__header-title--sortable data-table__header-title--sortable-active" style="width:14%">
+                                Property
+                            </th>
+                            <th class="data-table__header-title--sortable" style="width:14%">
+                                Range
+                            </th>
+                            <th class="data-table__header-title--sortable" style="width:6%">
+                                Card
+                            </th>
+                            <th class="data-table__header-title--sortable" style="width:30%">
+                                Definition 
+                            </th>
+                            <th class="data-table__header-title--sortable" style="width:30%">
+                                Usage
+                            </th>
+			    <!--
+                            <th class="data-table__header-title--sortable" style="width:3%">
+                                Codelist
+                            </th>
+                            <th class="data-table__header-title--sortable" style="width:5%">
+                                DCAT
+                            </th>
+			    -->
+                        </tr>
+                    </thead>
+                    <tbody class="supertype">
+                        
+                            <tr id="Address.addressarea"
+                                typeof="rdfs:Property"
+                                resource="http://www.w3.org/ns/locn#addressArea"
+                                class="class mandatory">
+                                <td>
+				    <a href="https://ec.europa.eu/digital-building-blocks/wikis/display/SDGOO/Discussion+Items+-+EM?src=contextnavpagetreemode/new?title=Issue%20for%20address area%20in%20Address&body=Explain%20your%20issue%20for%20https://semiceu.github.io/OOTS/ProofOfDisability/releases/0.0.1/%23Address.addressarea" target="_blank" rel="noopener noreferrer" >
+					    <!--                                        <i class="icon">[o]</i> -->
+                                        <img src="html/callout.png" loading="lazy" alt="[o]" width="100" height="100"/>
+                                    </a>
+                                </td>
+                                <td>
+                                        <a href="http://www.w3.org/ns/locn#addressArea"
+                                           data-toggle="tooltip"
+                                           data-content="http://www.w3.org/ns/locn#addressArea"
+                                           data-placement="right">
+                                        address area</a>
+                                </td>
+                                <td>
+                                    
+                                        
+                                            <a href="#Text" data-placement="right">Text</a>
+                                        
+                                    
+                                </td>
+                                <td>
+                                    0..*
+                                </td>
+                                <td property="rdfs:comment">
+                                    The name of a geographic area that groups Addresses.
+                                </td>
+                                <td property="skos:scopeNote">
+                                    This would typically be part of a city, a neighbourhood or village, e.g. Montmartre. Address area is not an administrative unit.
+                                </td>
+				<!--
+                                <td>
+                                    
+                                </td>
+				-->
+                                <td>
+                                    
+                                </td>
+                            </tr>
+                        
+                            <tr id="Address.administrativeunitlevel1"
+                                typeof="rdfs:Property"
+                                resource="http://www.w3.org/ns/locn#adminUnitL1"
+                                class="class mandatory">
+                                <td>
+				    <a href="https://ec.europa.eu/digital-building-blocks/wikis/display/SDGOO/Discussion+Items+-+EM?src=contextnavpagetreemode/new?title=Issue%20for%20administrative unit level 1%20in%20Address&body=Explain%20your%20issue%20for%20https://semiceu.github.io/OOTS/ProofOfDisability/releases/0.0.1/%23Address.administrativeunitlevel1" target="_blank" rel="noopener noreferrer" >
+					    <!--                                        <i class="icon">[o]</i> -->
+                                        <img src="html/callout.png" loading="lazy" alt="[o]" width="100" height="100"/>
+                                    </a>
+                                </td>
+                                <td>
+                                        <a href="http://www.w3.org/ns/locn#adminUnitL1"
+                                           data-toggle="tooltip"
+                                           data-content="http://www.w3.org/ns/locn#adminUnitL1"
+                                           data-placement="right">
+                                        administrative unit level 1</a>
+                                </td>
+                                <td>
+                                    
+                                        
+                                            <a href="#Text" data-placement="right">Text</a>
+                                        
+                                    
+                                </td>
+                                <td>
+                                    0..*
+                                </td>
+                                <td property="rdfs:comment">
+                                    The name of the uppermost level of the address, almost always a country.
+                                </td>
+                                <td property="skos:scopeNote">
+                                    Best practice is to use the <a href="https://www.iso.org/standard/72482.html">ISO 3166-1 code</a> but if this is inappropriate for the context, country names should be provided in a consistent manner to reduce ambiguity. For example, either write 'France' or 'FRA' consistently throughout the dataset and avoid mixing the two. The <a href="https://op.europa.eu/en/web/eu-vocabularies/dataset/-/resource?uri=http://publications.europa.eu/resource/dataset/country">Country controlled vocabulary</a> from the Publications Office can be reused for this.
+                                </td>
+				<!--
+                                <td>
+                                    
+                                </td>
+				-->
+                                <td>
+                                    
+                                </td>
+                            </tr>
+                        
+                            <tr id="Address.administrativeunitlevel2"
+                                typeof="rdfs:Property"
+                                resource="http://www.w3.org/ns/locn#adminUnitL2"
+                                class="class mandatory">
+                                <td>
+				    <a href="https://ec.europa.eu/digital-building-blocks/wikis/display/SDGOO/Discussion+Items+-+EM?src=contextnavpagetreemode/new?title=Issue%20for%20administrative unit level 2%20in%20Address&body=Explain%20your%20issue%20for%20https://semiceu.github.io/OOTS/ProofOfDisability/releases/0.0.1/%23Address.administrativeunitlevel2" target="_blank" rel="noopener noreferrer" >
+					    <!--                                        <i class="icon">[o]</i> -->
+                                        <img src="html/callout.png" loading="lazy" alt="[o]" width="100" height="100"/>
+                                    </a>
+                                </td>
+                                <td>
+                                        <a href="http://www.w3.org/ns/locn#adminUnitL2"
+                                           data-toggle="tooltip"
+                                           data-content="http://www.w3.org/ns/locn#adminUnitL2"
+                                           data-placement="right">
+                                        administrative unit level 2</a>
+                                </td>
+                                <td>
+                                    
+                                        
+                                            <a href="#Text" data-placement="right">Text</a>
+                                        
+                                    
+                                </td>
+                                <td>
+                                    0..*
+                                </td>
+                                <td property="rdfs:comment">
+                                    The name of a secondary level/region of the address, usually a county, state or other such area that typically encompasses several localities.
+                                </td>
+                                <td property="skos:scopeNote">
+                                    Values could be a region or province, more granular than level 1.
+                                </td>
+				<!--
+                                <td>
+                                    
+                                </td>
+				-->
+                                <td>
+                                    
+                                </td>
+                            </tr>
+                        
+                            <tr id="Address.locatordesignator"
+                                typeof="rdfs:Property"
+                                resource="http://www.w3.org/ns/locn#locatorDesignator"
+                                class="class mandatory">
+                                <td>
+				    <a href="https://ec.europa.eu/digital-building-blocks/wikis/display/SDGOO/Discussion+Items+-+EM?src=contextnavpagetreemode/new?title=Issue%20for%20locator designator%20in%20Address&body=Explain%20your%20issue%20for%20https://semiceu.github.io/OOTS/ProofOfDisability/releases/0.0.1/%23Address.locatordesignator" target="_blank" rel="noopener noreferrer" >
+					    <!--                                        <i class="icon">[o]</i> -->
+                                        <img src="html/callout.png" loading="lazy" alt="[o]" width="100" height="100"/>
+                                    </a>
+                                </td>
+                                <td>
+                                        <a href="http://www.w3.org/ns/locn#locatorDesignator"
+                                           data-toggle="tooltip"
+                                           data-content="http://www.w3.org/ns/locn#locatorDesignator"
+                                           data-placement="right">
+                                        locator designator</a>
+                                </td>
+                                <td>
+                                    
+                                        
+                                            <a href="#Literal" data-placement="right">Literal</a>
+                                        
+                                    
+                                </td>
+                                <td>
+                                    0..*
+                                </td>
+                                <td property="rdfs:comment">
+                                    A number or sequence of characters that uniquely identifies the locator within the relevant scope.
+                                </td>
+                                <td property="skos:scopeNote">
+                                    In simpler terms, this is the building number, apartment number, etc. For an address such as "Flat 3, 17 Bridge Street", the locator is "flat 3, 17".
+                                </td>
+				<!--
+                                <td>
+                                    
+                                </td>
+				-->
+                                <td>
+                                    
+                                </td>
+                            </tr>
+                        
+                            <tr id="Address.postcode"
+                                typeof="rdfs:Property"
+                                resource="http://www.w3.org/ns/locn#postCode"
+                                class="class mandatory">
+                                <td>
+				    <a href="https://ec.europa.eu/digital-building-blocks/wikis/display/SDGOO/Discussion+Items+-+EM?src=contextnavpagetreemode/new?title=Issue%20for%20post code%20in%20Address&body=Explain%20your%20issue%20for%20https://semiceu.github.io/OOTS/ProofOfDisability/releases/0.0.1/%23Address.postcode" target="_blank" rel="noopener noreferrer" >
+					    <!--                                        <i class="icon">[o]</i> -->
+                                        <img src="html/callout.png" loading="lazy" alt="[o]" width="100" height="100"/>
+                                    </a>
+                                </td>
+                                <td>
+                                        <a href="http://www.w3.org/ns/locn#postCode"
+                                           data-toggle="tooltip"
+                                           data-content="http://www.w3.org/ns/locn#postCode"
+                                           data-placement="right">
+                                        post code</a>
+                                </td>
+                                <td>
+                                    
+                                        
+                                            <a href="#Literal" data-placement="right">Literal</a>
+                                        
+                                    
+                                </td>
+                                <td>
+                                    0..*
+                                </td>
+                                <td property="rdfs:comment">
+                                    The code created and maintained for postal purposes to identify a subdivision of addresses and postal delivery points.
+                                </td>
+                                <td property="skos:scopeNote">
+                                    Post codes are common elements in many countries' postal address systems. One of the many post codes of Paris is for example "75000".
+                                </td>
+				<!--
+                                <td>
+                                    
+                                </td>
+				-->
+                                <td>
+                                    
+                                </td>
+                            </tr>
+                        
+                            <tr id="Address.postname"
+                                typeof="rdfs:Property"
+                                resource="http://www.w3.org/ns/locn#postName"
+                                class="class mandatory">
+                                <td>
+				    <a href="https://ec.europa.eu/digital-building-blocks/wikis/display/SDGOO/Discussion+Items+-+EM?src=contextnavpagetreemode/new?title=Issue%20for%20post name%20in%20Address&body=Explain%20your%20issue%20for%20https://semiceu.github.io/OOTS/ProofOfDisability/releases/0.0.1/%23Address.postname" target="_blank" rel="noopener noreferrer" >
+					    <!--                                        <i class="icon">[o]</i> -->
+                                        <img src="html/callout.png" loading="lazy" alt="[o]" width="100" height="100"/>
+                                    </a>
+                                </td>
+                                <td>
+                                        <a href="http://www.w3.org/ns/locn#postName"
+                                           data-toggle="tooltip"
+                                           data-content="http://www.w3.org/ns/locn#postName"
+                                           data-placement="right">
+                                        post name</a>
+                                </td>
+                                <td>
+                                    
+                                        
+                                            <a href="#Text" data-placement="right">Text</a>
+                                        
+                                    
+                                </td>
+                                <td>
+                                    0..*
+                                </td>
+                                <td property="rdfs:comment">
+                                    A name created and maintained for postal purposes to identify a subdivision of addresses and postal delivery points.
+                                </td>
+                                <td property="skos:scopeNote">
+                                    Usually a city, for example "Paris".
+                                </td>
+				<!--
+                                <td>
+                                    
+                                </td>
+				-->
+                                <td>
+                                    
+                                </td>
+                            </tr>
+                        
+                            <tr id="Address.thoroughfare"
+                                typeof="rdfs:Property"
+                                resource="http://www.w3.org/ns/locn#thoroughfare"
+                                class="class mandatory">
+                                <td>
+				    <a href="https://ec.europa.eu/digital-building-blocks/wikis/display/SDGOO/Discussion+Items+-+EM?src=contextnavpagetreemode/new?title=Issue%20for%20thoroughfare%20in%20Address&body=Explain%20your%20issue%20for%20https://semiceu.github.io/OOTS/ProofOfDisability/releases/0.0.1/%23Address.thoroughfare" target="_blank" rel="noopener noreferrer" >
+					    <!--                                        <i class="icon">[o]</i> -->
+                                        <img src="html/callout.png" loading="lazy" alt="[o]" width="100" height="100"/>
+                                    </a>
+                                </td>
+                                <td>
+                                        <a href="http://www.w3.org/ns/locn#thoroughfare"
+                                           data-toggle="tooltip"
+                                           data-content="http://www.w3.org/ns/locn#thoroughfare"
+                                           data-placement="right">
+                                        thoroughfare</a>
+                                </td>
+                                <td>
+                                    
+                                        
+                                            <a href="#Text" data-placement="right">Text</a>
+                                        
+                                    
+                                </td>
+                                <td>
+                                    0..*
+                                </td>
+                                <td property="rdfs:comment">
+                                    The name of a passage or way through from one location to another.
+                                </td>
+                                <td property="skos:scopeNote">
+                                    A thoroughfare is usually a street, but it might be a waterway or some other feature. For example, "Avenue des Champs-Élysées".
+                                </td>
+				<!--
+                                <td>
+                                    
+                                </td>
+				-->
+                                <td>
+                                    
+                                </td>
+                            </tr>
+                        
+                    </tbody>
+                </table>
+            </div>
+        
+    </div>
+</section>
+
 
 
 
@@ -580,7 +1001,7 @@ In some cases, the Output of one service will be Evidence for another service. S
                                 resource="http://www.w3.org/ns/locn#geographicName"
                                 class="class mandatory">
                                 <td>
-				    <a href="https://ec.europa.eu/digital-building-blocks/wikis/display/SDGOO/Discussion+Items+-+EM?src=contextnavpagetreemode/new?title=Issue%20for%20geographic name%20in%20Location&body=Explain%20your%20issue%20for%20https://semiceu.github.io/OOTS/ProofOfBirth/releases/0.0.1/%23Location.geographicname" target="_blank" rel="noopener noreferrer" >
+				    <a href="https://ec.europa.eu/digital-building-blocks/wikis/display/SDGOO/Discussion+Items+-+EM?src=contextnavpagetreemode/new?title=Issue%20for%20geographic name%20in%20Location&body=Explain%20your%20issue%20for%20https://semiceu.github.io/OOTS/ProofOfDisability/releases/0.0.1/%23Location.geographicname" target="_blank" rel="noopener noreferrer" >
 					    <!--                                        <i class="icon">[o]</i> -->
                                         <img src="html/callout.png" loading="lazy" alt="[o]" width="100" height="100"/>
                                     </a>
@@ -670,6 +1091,7 @@ The country codes defined in <a href="https://www.iso.org/iso-3166-country-codes
                         <dd>
                             For this entity the following properties are defined: <a href="#Person.countryofbirth">country of birth</a>
                             , <a href="#Person.dateofbirth">date of birth</a>
+                            , <a href="#Person.domicile">domicile</a>
                             , <a href="#Person.familyname">family name</a>
                             , <a href="#Person.givenname">given name</a>
                             , <a href="#Person.placeofbirth">place of birth</a>
@@ -718,7 +1140,7 @@ The country codes defined in <a href="https://www.iso.org/iso-3166-country-codes
                                 resource="http://www.w3.org/ns/person#countryOfBirth"
                                 class="class mandatory">
                                 <td>
-				    <a href="https://ec.europa.eu/digital-building-blocks/wikis/display/SDGOO/Discussion+Items+-+EM?src=contextnavpagetreemode/new?title=Issue%20for%20country of birth%20in%20Person&body=Explain%20your%20issue%20for%20https://semiceu.github.io/OOTS/ProofOfBirth/releases/0.0.1/%23Person.countryofbirth" target="_blank" rel="noopener noreferrer" >
+				    <a href="https://ec.europa.eu/digital-building-blocks/wikis/display/SDGOO/Discussion+Items+-+EM?src=contextnavpagetreemode/new?title=Issue%20for%20country of birth%20in%20Person&body=Explain%20your%20issue%20for%20https://semiceu.github.io/OOTS/ProofOfDisability/releases/0.0.1/%23Person.countryofbirth" target="_blank" rel="noopener noreferrer" >
 					    <!--                                        <i class="icon">[o]</i> -->
                                         <img src="html/callout.png" loading="lazy" alt="[o]" width="100" height="100"/>
                                     </a>
@@ -761,7 +1183,7 @@ The country codes defined in <a href="https://www.iso.org/iso-3166-country-codes
                                 resource="http://data.europa.eu/m8g/birthDate"
                                 class="class mandatory">
                                 <td>
-				    <a href="https://ec.europa.eu/digital-building-blocks/wikis/display/SDGOO/Discussion+Items+-+EM?src=contextnavpagetreemode/new?title=Issue%20for%20date of birth%20in%20Person&body=Explain%20your%20issue%20for%20https://semiceu.github.io/OOTS/ProofOfBirth/releases/0.0.1/%23Person.dateofbirth" target="_blank" rel="noopener noreferrer" >
+				    <a href="https://ec.europa.eu/digital-building-blocks/wikis/display/SDGOO/Discussion+Items+-+EM?src=contextnavpagetreemode/new?title=Issue%20for%20date of birth%20in%20Person&body=Explain%20your%20issue%20for%20https://semiceu.github.io/OOTS/ProofOfDisability/releases/0.0.1/%23Person.dateofbirth" target="_blank" rel="noopener noreferrer" >
 					    <!--                                        <i class="icon">[o]</i> -->
                                         <img src="html/callout.png" loading="lazy" alt="[o]" width="100" height="100"/>
                                     </a>
@@ -804,12 +1226,55 @@ The country codes defined in <a href="https://www.iso.org/iso-3166-country-codes
                                 </td>
                             </tr>
                         
+                            <tr id="Person.domicile"
+                                typeof="rdfs:Property"
+                                resource="http://data.europa.eu/m8g/domicile"
+                                class="class mandatory">
+                                <td>
+				    <a href="https://ec.europa.eu/digital-building-blocks/wikis/display/SDGOO/Discussion+Items+-+EM?src=contextnavpagetreemode/new?title=Issue%20for%20domicile%20in%20Person&body=Explain%20your%20issue%20for%20https://semiceu.github.io/OOTS/ProofOfDisability/releases/0.0.1/%23Person.domicile" target="_blank" rel="noopener noreferrer" >
+					    <!--                                        <i class="icon">[o]</i> -->
+                                        <img src="html/callout.png" loading="lazy" alt="[o]" width="100" height="100"/>
+                                    </a>
+                                </td>
+                                <td>
+                                        <a href="http://data.europa.eu/m8g/domicile"
+                                           data-toggle="tooltip"
+                                           data-content="http://data.europa.eu/m8g/domicile"
+                                           data-placement="right">
+                                        domicile</a>
+                                </td>
+                                <td>
+                                    
+                                        
+                                            <a href="#Address" data-placement="right">Address</a>
+                                        
+                                    
+                                </td>
+                                <td>
+                                    0..*
+                                </td>
+                                <td property="rdfs:comment">
+                                    The place that the Person treats as permanent home.
+                                </td>
+                                <td property="skos:scopeNote">
+                                    
+                                </td>
+				<!--
+                                <td>
+                                    
+                                </td>
+				-->
+                                <td>
+                                    
+                                </td>
+                            </tr>
+                        
                             <tr id="Person.familyname"
                                 typeof="rdfs:Property"
                                 resource="http://xmlns.com/foaf/0.1/familyName"
                                 class="class mandatory">
                                 <td>
-				    <a href="https://ec.europa.eu/digital-building-blocks/wikis/display/SDGOO/Discussion+Items+-+EM?src=contextnavpagetreemode/new?title=Issue%20for%20family name%20in%20Person&body=Explain%20your%20issue%20for%20https://semiceu.github.io/OOTS/ProofOfBirth/releases/0.0.1/%23Person.familyname" target="_blank" rel="noopener noreferrer" >
+				    <a href="https://ec.europa.eu/digital-building-blocks/wikis/display/SDGOO/Discussion+Items+-+EM?src=contextnavpagetreemode/new?title=Issue%20for%20family name%20in%20Person&body=Explain%20your%20issue%20for%20https://semiceu.github.io/OOTS/ProofOfDisability/releases/0.0.1/%23Person.familyname" target="_blank" rel="noopener noreferrer" >
 					    <!--                                        <i class="icon">[o]</i> -->
                                         <img src="html/callout.png" loading="lazy" alt="[o]" width="100" height="100"/>
                                     </a>
@@ -852,7 +1317,7 @@ The country codes defined in <a href="https://www.iso.org/iso-3166-country-codes
                                 resource="http://xmlns.com/foaf/0.1/givenName"
                                 class="class mandatory">
                                 <td>
-				    <a href="https://ec.europa.eu/digital-building-blocks/wikis/display/SDGOO/Discussion+Items+-+EM?src=contextnavpagetreemode/new?title=Issue%20for%20given name%20in%20Person&body=Explain%20your%20issue%20for%20https://semiceu.github.io/OOTS/ProofOfBirth/releases/0.0.1/%23Person.givenname" target="_blank" rel="noopener noreferrer" >
+				    <a href="https://ec.europa.eu/digital-building-blocks/wikis/display/SDGOO/Discussion+Items+-+EM?src=contextnavpagetreemode/new?title=Issue%20for%20given name%20in%20Person&body=Explain%20your%20issue%20for%20https://semiceu.github.io/OOTS/ProofOfDisability/releases/0.0.1/%23Person.givenname" target="_blank" rel="noopener noreferrer" >
 					    <!--                                        <i class="icon">[o]</i> -->
                                         <img src="html/callout.png" loading="lazy" alt="[o]" width="100" height="100"/>
                                     </a>
@@ -895,7 +1360,7 @@ The country codes defined in <a href="https://www.iso.org/iso-3166-country-codes
                                 resource="http://www.w3.org/ns/person#placeOfBirth"
                                 class="class mandatory">
                                 <td>
-				    <a href="https://ec.europa.eu/digital-building-blocks/wikis/display/SDGOO/Discussion+Items+-+EM?src=contextnavpagetreemode/new?title=Issue%20for%20place of birth%20in%20Person&body=Explain%20your%20issue%20for%20https://semiceu.github.io/OOTS/ProofOfBirth/releases/0.0.1/%23Person.placeofbirth" target="_blank" rel="noopener noreferrer" >
+				    <a href="https://ec.europa.eu/digital-building-blocks/wikis/display/SDGOO/Discussion+Items+-+EM?src=contextnavpagetreemode/new?title=Issue%20for%20place of birth%20in%20Person&body=Explain%20your%20issue%20for%20https://semiceu.github.io/OOTS/ProofOfDisability/releases/0.0.1/%23Person.placeofbirth" target="_blank" rel="noopener noreferrer" >
 					    <!--                                        <i class="icon">[o]</i> -->
                                         <img src="html/callout.png" loading="lazy" alt="[o]" width="100" height="100"/>
                                     </a>
@@ -938,7 +1403,7 @@ The country codes defined in <a href="https://www.iso.org/iso-3166-country-codes
                                 resource="http://data.europa.eu/m8g/sex"
                                 class="class mandatory">
                                 <td>
-				    <a href="https://ec.europa.eu/digital-building-blocks/wikis/display/SDGOO/Discussion+Items+-+EM?src=contextnavpagetreemode/new?title=Issue%20for%20sex%20in%20Person&body=Explain%20your%20issue%20for%20https://semiceu.github.io/OOTS/ProofOfBirth/releases/0.0.1/%23Person.sex" target="_blank" rel="noopener noreferrer" >
+				    <a href="https://ec.europa.eu/digital-building-blocks/wikis/display/SDGOO/Discussion+Items+-+EM?src=contextnavpagetreemode/new?title=Issue%20for%20sex%20in%20Person&body=Explain%20your%20issue%20for%20https://semiceu.github.io/OOTS/ProofOfDisability/releases/0.0.1/%23Person.sex" target="_blank" rel="noopener noreferrer" >
 					    <!--                                        <i class="icon">[o]</i> -->
                                         <img src="html/callout.png" loading="lazy" alt="[o]" width="100" height="100"/>
                                     </a>
@@ -1046,6 +1511,22 @@ The country codes defined in <a href="https://www.iso.org/iso-3166-country-codes
                     The date data type is the union of xs:date, xs:gYearMonth and xs:gYear
 		</td></tr>
 		<tr><td>
+                   <a href="https://ec.europa.eu/digital-building-blocks/wikis/display/SDGOO/Discussion+Items+-+EM?src=contextnavpagetreemode/new?title=Issue%20for%20Literal&body=Explain%20your%20issue"}}>
+                     <img src="html/callout.png" loading="lazy" alt="(create issue)" width="50" height="50"/>
+		   </a>
+		</td><td>
+                
+                    <div id="Literal">
+                        <a href="http://www.w3.org/2000/01/rdf-schema#Literal"
+                           data-toggle="tooltip"
+                           data-content="http://www.w3.org/2000/01/rdf-schema#Literal"
+                           data-placement="right">Literal</a>
+                    </div>
+                
+		</td><td>
+                    The class of literal values, eg. textual strings and integers.
+		</td></tr>
+		<tr><td>
                    <a href="https://ec.europa.eu/digital-building-blocks/wikis/display/SDGOO/Discussion+Items+-+EM?src=contextnavpagetreemode/new?title=Issue%20for%20Text&body=Explain%20your%20issue"}}>
                      <img src="html/callout.png" loading="lazy" alt="(create issue)" width="50" height="50"/>
 		   </a>
@@ -1076,8 +1557,8 @@ The country codes defined in <a href="https://www.iso.org/iso-3166-country-codes
          (non normative)
         
             <p>
-                A reusable JSON-LD context definition for this Core Vocabulary is retrievable at: <a href="/OOTS/ProofOfBirth/releases/0.0.1//context/proofofbirth.jsonld"
-    target="_blank">/OOTS/ProofOfBirth/releases/0.0.1//context/proofofbirth.jsonld</a>
+                A reusable JSON-LD context definition for this Core Vocabulary is retrievable at: <a href="/OOTS/ProofOfDisability/releases/0.0.1//context/proofofdomicile.jsonld"
+    target="_blank">/OOTS/ProofOfDisability/releases/0.0.1//context/proofofdomicile.jsonld</a>
             </p>
         
     </div>
@@ -1090,8 +1571,8 @@ The country codes defined in <a href="https://www.iso.org/iso-3166-country-codes
          (non normative)
         
             <p>
-                A reusable SHACL template for this Core Vocabulary is retrievable at: <a href="/OOTS/ProofOfBirth/releases/0.0.1//shacl/proofofbirth-SHACL.ttl"
-    target="_blank">/OOTS/ProofOfBirth/releases/0.0.1//shacl/proofofbirth-SHACL.ttl</a>
+                A reusable SHACL template for this Core Vocabulary is retrievable at: <a href="/OOTS/ProofOfDisability/releases/0.0.1//shacl/proofofdomicile-SHACL.ttl"
+    target="_blank">/OOTS/ProofOfDisability/releases/0.0.1//shacl/proofofdomicile-SHACL.ttl</a>
             </p>
         
     </div>
@@ -1101,7 +1582,7 @@ The country codes defined in <a href="https://www.iso.org/iso-3166-country-codes
 <section class="informative">
     <h2> Examples </h2>
         
-<div class="h3 examples" id="ProofOfBirth">Example Proof of birth</div>
+<div class="h3 examples" id="ProofOfDomicile">Example Proof of domicile</div>
 
 </section>
 
@@ -1112,24 +1593,24 @@ The country codes defined in <a href="https://www.iso.org/iso-3166-country-codes
 		<section class="informative">
 		  <h2>Support for implementation</h2>
 
-		The following section provides support for implementing the Proof of birth.
+		The following section provides support for implementing the Proof of domicile.
 		<p/>
 
 		<h3>JSON-LD context file</h3>
 
 		One common technical question is the format in which the data is being exchanged. 
-		For conformance with the Proof of birth, it is not mandatory that this happens in a RDF serialisation, but the exhanged format SHOULD be unambiguously be transformable into RDF.
-		For the format JSON, a popular format to exchange data between systems, SEMIC provides a <a href="./context/proofofbirth.jsonld">JSON-LD context file</a>. 
+		For conformance with the Proof of domicile, it is not mandatory that this happens in a RDF serialisation, but the exhanged format SHOULD be unambiguously be transformable into RDF.
+		For the format JSON, a popular format to exchange data between systems, SEMIC provides a <a href="./context/proofofdomicile.jsonld">JSON-LD context file</a>. 
 		JSON-LD is a W3C Recommendation [[[json-ld11]]] that provided a standard approach to interpret JSON structures as RDF.
 		The provided JSON-LD context file can be used by implementers.
 		This JSON-LD context is not normative, i.e. other JSON-LD contexts are allowed.
 		<p/>
-		The JSON-LD context file downloadable <a href="./context/proofofbirth.jsonld">here</a>.
+		The JSON-LD context file downloadable <a href="./context/proofofdomicile.jsonld">here</a>.
 		<p/>
 
 		<h3>Validation</h3>
 
-		To verify if the data is (technically) conformant to the Proof of birth, the exchanged data can be validated using the provided SHACL shapes. 
+		To verify if the data is (technically) conformant to the Proof of domicile, the exchanged data can be validated using the provided SHACL shapes. 
 		SHACL is a W3C Recommendation to express constraints on a RDF knowledge graph. 
 		<p/>
 		To support the check whether or not a catalogue satisfies the expressed constraints in this Application Profile, the constraints in this specification are expressed using SHACL [[shacl]].
@@ -1139,18 +1620,17 @@ The country codes defined in <a href="https://www.iso.org/iso-3166-country-codes
 		It is up to the implementers to define the validation they expect.
 		Each implementation happens within a context, and that context is beyond the SHACL expressions here.
 		<p/>
-		The shapes can be found <a href="./shacl/proofofbirth-SHACL.ttl">here</a>.
+		The shapes can be found <a href="./shacl/proofofdomicile-SHACL.ttl">here</a>.
 
 		<h3>RDF representation</h3>
-		The RDF representation of the Proof of birth is available <a href="./rdf/proofofbirth.ttl">here</a>.
+		The RDF representation of the Proof of domicile is available <a href="./rdf/proofofdomicile.ttl">here</a>.
 
 		<h3>UML representation</h3>
-		The UML representation from which the Proof of birth has been build is available <a href="./UML">here</a>.
+		The UML representation from which the Proof of domicile has been build is available <a href="./UML">here</a>.
 
 		
-		<h3>XML schema representation</h3>
-		The XML schema representation from which the Proof of birth has been build is available <a href="https://code.europa.eu/oots/tdd/data_models/-/tree/main/Evidence/ProofOfBirth/releases/0.0.1/xsd?ref_type=heads">here</a>
- 
+			<p> No XML schema defined </p>
+		 
 		<!--
 		<h3>Mapping</h3>
 		A mapping towards Schema.org can be found <a href="https://github.com/SEMICeu/Semantic-Mappings/tree/main/Core%20Location">here</a>
@@ -1234,6 +1714,111 @@ The properties are indicated as <it>mandatory, recommended, optional</it> and <i
 	<tbody>
 		
 				
+					
+						
+					
+						
+					
+						
+					
+						
+					
+						
+					
+						
+					
+						
+					
+					
+						
+					
+						
+					
+						
+					
+						
+					
+						
+					
+						
+					
+						
+					
+					
+						
+							<tr>
+								<td><a href="#Address">Address</a></td>
+								<td><div class="shorten">http://www.w3.org/ns/locn#Address</div></td>
+								<td>Optional</td>
+								<td><a href="#Address.addressarea">address area </a></td>
+								<td><div class="shorten">http://www.w3.org/ns/locn#addressArea</div></td>
+							</tr>
+						
+					
+						
+							<tr>
+								<td><a href="#Address">Address</a></td>
+								<td><div class="shorten">http://www.w3.org/ns/locn#Address</div></td>
+								<td>Optional</td>
+								<td><a href="#Address.administrativeunitlevel1">administrative unit level 1 </a></td>
+								<td><div class="shorten">http://www.w3.org/ns/locn#adminUnitL1</div></td>
+							</tr>
+						
+					
+						
+							<tr>
+								<td><a href="#Address">Address</a></td>
+								<td><div class="shorten">http://www.w3.org/ns/locn#Address</div></td>
+								<td>Optional</td>
+								<td><a href="#Address.administrativeunitlevel2">administrative unit level 2 </a></td>
+								<td><div class="shorten">http://www.w3.org/ns/locn#adminUnitL2</div></td>
+							</tr>
+						
+					
+						
+							<tr>
+								<td><a href="#Address">Address</a></td>
+								<td><div class="shorten">http://www.w3.org/ns/locn#Address</div></td>
+								<td>Optional</td>
+								<td><a href="#Address.locatordesignator">locator designator </a></td>
+								<td><div class="shorten">http://www.w3.org/ns/locn#locatorDesignator</div></td>
+							</tr>
+						
+					
+						
+							<tr>
+								<td><a href="#Address">Address</a></td>
+								<td><div class="shorten">http://www.w3.org/ns/locn#Address</div></td>
+								<td>Optional</td>
+								<td><a href="#Address.postcode">post code </a></td>
+								<td><div class="shorten">http://www.w3.org/ns/locn#postCode</div></td>
+							</tr>
+						
+					
+						
+							<tr>
+								<td><a href="#Address">Address</a></td>
+								<td><div class="shorten">http://www.w3.org/ns/locn#Address</div></td>
+								<td>Optional</td>
+								<td><a href="#Address.postname">post name </a></td>
+								<td><div class="shorten">http://www.w3.org/ns/locn#postName</div></td>
+							</tr>
+						
+					
+						
+							<tr>
+								<td><a href="#Address">Address</a></td>
+								<td><div class="shorten">http://www.w3.org/ns/locn#Address</div></td>
+								<td>Optional</td>
+								<td><a href="#Address.thoroughfare">thoroughfare </a></td>
+								<td><div class="shorten">http://www.w3.org/ns/locn#thoroughfare</div></td>
+							</tr>
+						
+					
+				
+			</tr>
+		
+				
 					<tr>
 						<td><a href="#Evidence">Evidence</a></td>
 						<td><div class="shorten">http://data.europa.eu/m8g/Evidence</div></td>
@@ -1279,6 +1864,10 @@ The properties are indicated as <it>mandatory, recommended, optional</it> and <i
 					
 						
 					
+						
+					
+					
+						
 					
 						
 					
@@ -1310,6 +1899,16 @@ The properties are indicated as <it>mandatory, recommended, optional</it> and <i
 								<td></td>
 								<td><a href="#Person.dateofbirth">date of birth </a></td>
 								<td><div class="shorten">http://data.europa.eu/m8g/birthDate</div></td>
+							</tr>
+						
+					
+						
+							<tr>
+								<td><a href="#Person">Person</a></td>
+								<td><div class="shorten">http://www.w3.org/ns/person#Person</div></td>
+								<td></td>
+								<td><a href="#Person.domicile">domicile </a></td>
+								<td><div class="shorten">http://data.europa.eu/m8g/domicile</div></td>
 							</tr>
 						
 					
@@ -1366,10 +1965,10 @@ The properties are indicated as <it>mandatory, recommended, optional</it> and <i
 					
 						
 							<tr>
-								<td><a href="#Proofofbirth">Proof of birth</a></td>
-								<td><div class="shorten">http://data.europa.eu/p4s/ProofOfBirth</div></td>
+								<td><a href="#Proofofdomicile">Proof of domicile</a></td>
+								<td><div class="shorten">http://data.europa.eu/p4s/ProofOfDomicile</div></td>
 								<td></td>
-								<td><a href="#Proofofbirth.isabout">is about </a></td>
+								<td><a href="#Proofofdomicile.isabout">is about </a></td>
 								<td><div class="shorten">http://purl.org/dc/terms/subject</div></td>
 							</tr>
 						
