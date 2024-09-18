@@ -2,8 +2,8 @@
 <xs:schema xmlns="https://data.europa.eu/m8g/xml/" xmlns:xs="http://www.w3.org/2001/XMLSchema" targetNamespace="https://data.europa.eu/m8g/xml/" version="2.0.0" elementFormDefault="qualified" attributeFormDefault="unqualified" xmlns:cv="https://data.europa.eu/m8g/xml/">
   <xs:element name="Evidence" type="EvidenceType"/>
   <xs:element name="GenericDate" type="GenericDateType"/>
-  <xs:element name="ProofOfDisability" type="ProofOfDisabilityType"/>
   <xs:element name="Disability" type="DisabilityType"/>
+  <xs:element name="ProofOfDisability" type="ProofOfDisabilityType"/>
   <xs:element name="Text" type="TextType"/>
   <xs:element name="Code" type="CodeType"/>
   <xs:element name="Person" type="PersonType"/>
@@ -41,25 +41,6 @@
       </xs:annotation>
     </xs:attribute>
   </xs:complexType>
-  <xs:complexType name="ProofOfDisabilityType">
-    <xs:sequence>
-      <xs:element name="isAbout" ref="PersonType" maxOccurs="1" minOccurs="1">
-        <xs:annotation>
-          <xs:documentation xml:lang="en">Agent that is the subject in the provided Evidence.</xs:documentation>
-        </xs:annotation>
-      </xs:element>
-      <xs:element name="states" ref="DisabilityType" maxOccurs="unbounded" minOccurs="0">
-        <xs:annotation>
-          <xs:documentation xml:lang="en">Disability that is stated by the certificate</xs:documentation>
-        </xs:annotation>
-      </xs:element>
-    </xs:sequence>
-    <xs:attribute name="ProofOfDisabilityRef" type="xs:IDREF">
-      <xs:annotation>
-        <xs:documentation xml:lang="en">Reference to ProofOfDisability ID</xs:documentation>
-      </xs:annotation>
-    </xs:attribute>
-  </xs:complexType>
   <xs:complexType name="DisabilityType">
     <xs:sequence>
       <xs:element name="dateOfExpiryOfDisabilityStatus" type="http://data.europa.eu/m8g/GenericDate" maxOccurs="1" minOccurs="1">
@@ -86,6 +67,25 @@
     <xs:attribute name="DisabilityRef" type="xs:IDREF">
       <xs:annotation>
         <xs:documentation xml:lang="en">Reference to Disability ID</xs:documentation>
+      </xs:annotation>
+    </xs:attribute>
+  </xs:complexType>
+  <xs:complexType name="ProofOfDisabilityType">
+    <xs:sequence>
+      <xs:element name="isAbout" ref="PersonType" maxOccurs="1" minOccurs="1">
+        <xs:annotation>
+          <xs:documentation xml:lang="en">Agent that is the subject in the provided Evidence.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="states" ref="DisabilityType" maxOccurs="unbounded" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation xml:lang="en">Disability that is stated by the certificate</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+    </xs:sequence>
+    <xs:attribute name="ProofOfDisabilityRef" type="xs:IDREF">
+      <xs:annotation>
+        <xs:documentation xml:lang="en">Reference to ProofOfDisability ID</xs:documentation>
       </xs:annotation>
     </xs:attribute>
   </xs:complexType>
