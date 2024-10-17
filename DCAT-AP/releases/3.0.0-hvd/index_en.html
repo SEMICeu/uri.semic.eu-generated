@@ -1881,6 +1881,8 @@ As multiple legislations may apply to the resource the maximum cardinality is no
                                 </td>
                                 <td property="skos:scopeNote">
                                     The HVD IR is a quality improvement of existing datasets. The intention is that HVD datasets are publicly and open accessible. Therefore a Distribution is expected to be present. (Article 3.1)
+
+This <a href="#apis-are-mandatory">section</a> provides more information how this strong recommendation is implemented.
                                 </td>
 				<!--
                                 <td>
@@ -3796,6 +3798,29 @@ That is a consequence of the local publishers agreements but it might have polic
 <p/>
 Having two routes to declare the presence of a API makes the expression of the obligation as a single cardinality in the specification non trivial.
 To ensure that at least an API is present for a HVD Dataset the SHACL validation rules have been extended.
+
+<p/>
+A similar request, although less visible, is the possibility of downloading the data in bulk. 
+The Annex of the HVD IR requests frequently this need.
+Despite it is not obligatory in all cases, it is a strong recommendation.
+In the formal model such strong recommendations are hard to implement. 
+Adding a minimum cardinality of 1 would enforce the presence, which is too strict. 
+But relaxing the minimum cardinality may be an opening to not provide this information.
+Reviewers have pointed out this challenge.
+Therefore the following approach has been applied in this specification to ensure that publishers consider this need.
+The formal constraints have been relaxed, the usage qualification has been set to recommendation, and additional usage notes 
+includeing this explanation have been added.
+In addition the SHACL validation rules have been extended with a check to validate if each HVD dataset has a HVD Distribution.
+This check has severity Violation, to force publishers to reconsider in case of missing distributions their provided information.
+<p/>
+Forcing the presence of at least one distibution or data service for a Dataset, is also implicitely the result of the need for providing legal information. 
+As DCAT-AP mandates this to be expressed at the level of Distributions or Data Services, a Dataset will have 
+no legal information associated if none of them is present.
+This supports the case for a strong validation check.
+
+
+
+
 
 
 <h3 id="c8">Reporting</h3>
