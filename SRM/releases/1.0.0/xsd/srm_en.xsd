@@ -1,14 +1,13 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <xs:schema xmlns="https://data.europa.eu/m8g/xml/" xmlns:xs="http://www.w3.org/2001/XMLSchema" targetNamespace="https://data.europa.eu/m8g/xml/" version="2.0.0" elementFormDefault="qualified" attributeFormDefault="unqualified" xmlns:cv="https://data.europa.eu/m8g/xml/">
-  <xs:element name="ContactPoint" type="ContactPointType"/>
   <xs:element name="LinguisticSystem" type="LinguisticSystemType"/>
   <xs:element name="Standard" type="StandardType"/>
   <xs:element name="Text" type="TextType"/>
+  <xs:element name="Class" type="ClassType"/>
   <xs:element name="Literal" type="LiteralType"/>
-  <xs:element name="Concept" type="ConceptType"/>
+  <xs:element name="Organization" type="OrganizationType"/>
   <xs:element name="ResourceDescriptor" type="ResourceDescriptorType"/>
   <xs:element name="Agent" type="AgentType"/>
-  <xs:element name="Document" type="DocumentType"/>
   <xs:element name="DateTime" type="DateTimeType"/>
   <xs:simpleType name="Literal">
     <xs:restriction base="xs:string"/>
@@ -28,30 +27,6 @@
       </xs:extension>
     </xs:simpleContent>
   </xs:complexType>
-  <xs:complexType name="ContactPointType">
-    <xs:sequence>
-      <xs:element name="contactPage" ref="DocumentType" maxOccurs="unbounded" minOccurs="0">
-        <xs:annotation>
-          <xs:documentation xml:lang="en">A web page that could be used to reach out the Contact Point.</xs:documentation>
-        </xs:annotation>
-      </xs:element>
-      <xs:element name="hasEmail" type="xs:string" maxOccurs="unbounded" minOccurs="0">
-        <xs:annotation>
-          <xs:documentation xml:lang="en">An electronic address through which the Contact Point can be contacted.</xs:documentation>
-        </xs:annotation>
-      </xs:element>
-      <xs:element name="hasTelephone" type="xs:string" maxOccurs="unbounded" minOccurs="0">
-        <xs:annotation>
-          <xs:documentation xml:lang="en">A telephone number through which the Contact Point can be contacted.</xs:documentation>
-        </xs:annotation>
-      </xs:element>
-    </xs:sequence>
-    <xs:attribute name="ContactPointRef" type="xs:IDREF">
-      <xs:annotation>
-        <xs:documentation xml:lang="en">Reference to ContactPoint ID</xs:documentation>
-      </xs:annotation>
-    </xs:attribute>
-  </xs:complexType>
   <xs:complexType name="LinguisticSystemType">
     <xs:sequence>
       <xs:element name="name" type="xs:string" maxOccurs="1" minOccurs="1">
@@ -68,9 +43,9 @@
   </xs:complexType>
   <xs:complexType name="StandardType">
     <xs:sequence>
-      <xs:element name="contactPoint" ref="ContactPointType" maxOccurs="unbounded" minOccurs="1">
+      <xs:element name="contactPoint" ref="OrganizationType" maxOccurs="unbounded" minOccurs="0">
         <xs:annotation>
-          <xs:documentation xml:lang="en">The main contact information of the resource.</xs:documentation>
+          <xs:documentation xml:lang="en">Contact information that can be used for sending comments about the standard.</xs:documentation>
         </xs:annotation>
       </xs:element>
       <xs:element name="contributor" ref="AgentType" maxOccurs="unbounded" minOccurs="1">
@@ -88,7 +63,7 @@
           <xs:documentation xml:lang="en">An account of the resource.</xs:documentation>
         </xs:annotation>
       </xs:element>
-      <xs:element name="hasResource" ref="ResourceDescriptorType" maxOccurs="unbounded" minOccurs="0">
+      <xs:element name="hasResource" ref="ResourceDescriptorType" maxOccurs="unbounded" minOccurs="1">
         <xs:annotation>
           <xs:documentation xml:lang="en">A resource which describes the nature of an artifact and the role it plays in relation to the Profile.</xs:documentation>
         </xs:annotation>
@@ -103,7 +78,7 @@
           <xs:documentation xml:lang="en">Date of formal issuance of the resource.</xs:documentation>
         </xs:annotation>
       </xs:element>
-      <xs:element name="language" ref="LinguisticSystemType" maxOccurs="unbounded" minOccurs="1">
+      <xs:element name="language" ref="LinguisticSystemType" maxOccurs="unbounded" minOccurs="0">
         <xs:annotation>
           <xs:documentation xml:lang="en">A language of the resource.</xs:documentation>
         </xs:annotation>
@@ -116,16 +91,6 @@
       <xs:element name="publisher" ref="AgentType" maxOccurs="unbounded" minOccurs="1">
         <xs:annotation>
           <xs:documentation xml:lang="en">An entity responsible for making the resource available.</xs:documentation>
-        </xs:annotation>
-      </xs:element>
-      <xs:element name="status" type="ConceptType" maxOccurs="1" minOccurs="1">
-        <xs:annotation>
-          <xs:documentation xml:lang="en">The status of the Asset in the context of a particular workflow process.</xs:documentation>
-        </xs:annotation>
-      </xs:element>
-      <xs:element name="theme" type="ConceptType" maxOccurs="unbounded" minOccurs="1">
-        <xs:annotation>
-          <xs:documentation xml:lang="en">A main category of the resource. A resource can have multiple themes.</xs:documentation>
         </xs:annotation>
       </xs:element>
       <xs:element name="title" type="xs:string" maxOccurs="1" minOccurs="1">
@@ -153,6 +118,25 @@
       </xs:annotation>
     </xs:attribute>
   </xs:complexType>
+  <xs:complexType name="ClassType">
+    <xs:sequence>
+      <xs:element name="isDefinedBy" ref="ResourceDescriptorType" maxOccurs="unbounded" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation xml:lang="en">It indicates an RDF vocabulary in which a resource is described.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="name" type="xs:string" maxOccurs="1" minOccurs="1">
+        <xs:annotation>
+          <xs:documentation xml:lang="en">The name of the class.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+    </xs:sequence>
+    <xs:attribute name="ClassRef" type="xs:IDREF">
+      <xs:annotation>
+        <xs:documentation xml:lang="en">Reference to Class ID</xs:documentation>
+      </xs:annotation>
+    </xs:attribute>
+  </xs:complexType>
   <xs:complexType name="LiteralType">
     <xs:sequence/>
     <xs:attribute name="LiteralRef" type="xs:IDREF">
@@ -161,30 +145,30 @@
       </xs:annotation>
     </xs:attribute>
   </xs:complexType>
-  <xs:complexType name="ConceptType">
+  <xs:complexType name="OrganizationType">
     <xs:sequence>
-      <xs:element name="preferredLabel" type="xs:string" maxOccurs="1" minOccurs="1">
+      <xs:element name="fn" type="xs:string" maxOccurs="1" minOccurs="1">
         <xs:annotation>
-          <xs:documentation xml:lang="en">The preferred lexical label for a resource, in a given language.</xs:documentation>
+          <xs:documentation xml:lang="en">The formatted text corresponding to the name of the object</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="hasEmail" type="xs:string" maxOccurs="unbounded" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation xml:lang="en">To specify the electronic mail address for communication with the object.</xs:documentation>
         </xs:annotation>
       </xs:element>
     </xs:sequence>
-    <xs:attribute name="ConceptRef" type="xs:IDREF">
+    <xs:attribute name="OrganizationRef" type="xs:IDREF">
       <xs:annotation>
-        <xs:documentation xml:lang="en">Reference to Concept ID</xs:documentation>
+        <xs:documentation xml:lang="en">Reference to Organization ID</xs:documentation>
       </xs:annotation>
     </xs:attribute>
   </xs:complexType>
   <xs:complexType name="ResourceDescriptorType">
     <xs:sequence>
-      <xs:element name="hasRole" type="ConceptType" maxOccurs="unbounded" minOccurs="1">
+      <xs:element name="format" type="xs:string" maxOccurs="1" minOccurs="1">
         <xs:annotation>
-          <xs:documentation xml:lang="en">A description of a resource that defines an aspect - a particular part, feature or role - of a Profile</xs:documentation>
-        </xs:annotation>
-      </xs:element>
-      <xs:element name="keyword" type="xs:string" maxOccurs="unbounded" minOccurs="1">
-        <xs:annotation>
-          <xs:documentation xml:lang="en">A keyword or tag describing the resource.</xs:documentation>
+          <xs:documentation xml:lang="en">	The file format, physical medium, or dimensions of the resource.</xs:documentation>
         </xs:annotation>
       </xs:element>
       <xs:element name="name" type="xs:string" maxOccurs="1" minOccurs="1">
@@ -210,14 +194,6 @@
     <xs:attribute name="AgentRef" type="xs:IDREF">
       <xs:annotation>
         <xs:documentation xml:lang="en">Reference to Agent ID</xs:documentation>
-      </xs:annotation>
-    </xs:attribute>
-  </xs:complexType>
-  <xs:complexType name="DocumentType">
-    <xs:sequence/>
-    <xs:attribute name="DocumentRef" type="xs:IDREF">
-      <xs:annotation>
-        <xs:documentation xml:lang="en">Reference to Document ID</xs:documentation>
       </xs:annotation>
     </xs:attribute>
   </xs:complexType>

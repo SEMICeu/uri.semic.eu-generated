@@ -1,0 +1,2811 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"> 
+ 
+
+
+
+<head>
+    
+	
+    <meta charset="utf-8" />
+    <title>RRMV</title>
+    <script src="https://www.w3.org/Tools/respec/respec-w3c" class="remove" defer></script>
+    <script class="remove">
+    // All config options at https://respec.org/docs/
+
+	var myeditors = [
+	
+	
+	    
+	    
+		
+		   {
+		    name: "Emiel Dhondt PwC EU Services",
+		      
+		      
+		      
+		    }
+		
+		
+             
+        
+	
+		]
+
+	var myauthors = [
+	
+	
+	
+		]
+
+    var respecConfig = {
+      edDraftURI: "https://semiceu.github.io/rrmv/releases/0.0.2",
+      latestVersion: "https://semiceu.github.io/rrmv/releases/0.0.1/",
+      specStatus: "REC",
+      publishDate: "2024-11-21",
+      group: "Core Vocabularies Working Group",
+      editors: myeditors,
+      authors: myauthors,
+      github: "https://github.com/SEMICeu/rrmv/issues",
+      shortName: "RRMV",
+      xref: "web-platform",
+      doJsonLd: true,
+      logos: [{
+        src: "./html/semic-icon.png",
+        url: "https://semic.eu",
+        alt: "SEMIC",
+        width: 154,
+        height: 140,
+        id: "semic-logo",
+      },],
+      generatedSubtitle: "",
+      additionalCopyrightHolders: "",
+    };
+
+    </script>
+    <style>
+      .figure img, .sidefigure img, figure img, .figure object, .sidefigure object, figure object, img, .img {
+      max-width: 100%;
+      margin: auto;
+      height: auto;
+      }
+    </style>
+     
+    <p class="copyright">
+        Copyright © 2022
+    </p>
+    
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="msapplication-TileColor" content="#7ED956" />
+</head>
+<body>
+    
+
+    <!-- Start page content -->
+
+
+
+<section id="specintro">
+    <h2>
+        Introduction
+    </h2>
+    
+        <p>
+            This document describes an <strong>application profile</strong>, in this case <strong>RRMV</strong>. The application profile specifies a semantic data model covering a set of usecases. The specification consists of terms with their constraints (cardinalities, codelists, usage guidelines).
+        </p>
+    
+</section>
+
+<section id="abstract">
+    
+<p>
+	This document describes the Regulatory Reporting Metadata Vocabulary that was developed in the context of the SORTIS initiative. The purpose of this
+    vocabulary is to provide the minimum necessary concepts to describe a request, originating from a legal resource, the resulting action and several key concepts
+    related to its execution.
+</p>
+
+</p>
+
+</section>
+
+
+<!--  should support https://www.w3.org/2021/Process-20211102/, mostly like https://www.w3.org/2021/Process-20211102/#maturity-levels -->
+<section id="specstatus">
+    <h2>Status</h2>
+        <p>
+            This application profile has the status <a href="Working Draft">Onbekend</a> published at 2024-11-21.
+        </p>
+        <p>
+            Information about the process and the decisions involved in the creation of this specification are consultable at the <a href="RRMV">registry of standards</a>.
+        </p>
+</section>
+
+
+
+
+<section id="speclicence">
+    <h2>
+        License
+    </h2>
+    
+<p>This specification of <a href=”https://joinup.ec.europa.eu/collection/semantic-interoperability-community-semic”>SEMIC</a> is published under “<a href=”https://creativecommons.org/licenses/by/4.0/”>Creative Commons BY 4.O Licence</a>”.</p>
+
+</section>
+
+
+<section>
+    <h2>
+        Conformance
+    </h2>
+        <p>
+            An implementation is conformant with this application profile if it satisfies <a href="/doc/conformance">these rules</a>.
+        </p>
+</section>
+
+
+
+<section id="specterminology">
+    <h2>
+        Terminology
+    </h2>
+        <p>
+            section on terminology usage
+        </p>
+</section>
+
+
+<section id="specoverview">
+    <h2>Overview</h2>
+    
+    
+    <div id="overview">
+                
+                        <p>
+                            This document describes the usage of the following entities for a correct usage of the Application Profile:
+                            <br />
+                            | <a href="#Action">Action</a> | <a href="#Action%20Result">Action Result</a> | <a href="#Agent">Agent</a> | <a href="#Agent%20Role">Agent Role</a> | <a href="#Agent%20Type">Agent Type</a> | <a href="#Expression">Expression</a> | <a href="#Frequency">Frequency</a> | <a href="#Manifestation">Manifestation</a> | <a href="#Organization">Organization</a> | <a href="#Period%20of%20Time">Period of Time</a> | <a href="#Person">Person</a> | <a href="#Request">Request</a> | <a href="#Result%20Type">Result Type</a> | <a href="#Role">Role</a> | <a href="#Role%20Type">Role Type</a> | <a href="#Status">Status</a> | <a href="#Temporal%20Function">Temporal Function</a> | <a href="#Work">Work</a> |
+                        </p>
+                
+                
+    </div>
+    <div>
+        <a href="/rrmv/releases/0.0.2/html/overview.jpg"
+           target="_blank">
+            <img src="/rrmv/releases/0.0.2/html/overview.jpg"/>
+        </a>
+    </div>
+</section>
+
+
+<section>
+    <h2>
+        Entities
+    </h2>
+    
+        <section>
+            <h3 id="Action">
+                <a href="http://example.com/rrmv/Action"
+                   data-toggle="tooltip"
+                   data-content="http://example.com/rrmv/Action"
+                   data-placement="right">Action</a>
+            </h3>
+            <dl>
+                <dt>
+                    Definition
+                </dt>
+                <dd>
+                    An event with at least one agent that is participant in it in a given time.
+                </dd>
+                
+                
+                    <dt>
+                        Properties
+                    </dt>
+                    
+                        <dd>
+                            For this entity the following properties are defined: <a href="#Action.at%20time">at time</a>
+                            , <a href="#Action.has%20agent%20role">has agent role</a>
+                            , <a href="#Action.has%20annotation">has annotation</a>
+                            , <a href="#Action.has%20next">has next</a>
+                            , <a href="#Action.has%20result">has result</a>
+                            , <a href="#Action.has%20status">has status</a>
+                            , <a href="#Action.related%20to">related to</a>
+                            .
+                    </dd>
+                
+            </dl>
+            <dd>
+                Add an issue for this entity <a href="https://github.com/SEMICeu/rrmv/issues/new?title=Issue%20for%20Action&body=Explain%20your%20issue"}}>here</a>.
+            </dd>
+        </div>
+        
+            <div class="u-table-overflow">
+                <table class="data-table simple" id="table-mandatory-classes">
+                    <thead>
+                        <tr class="data-table__header">
+                            <th class="data-table__header-title--sortable">
+                            </th>
+                            <th class="data-table__header-title--sortable data-table__header-title--sortable-active">
+                                Property
+                            </th>
+                            <th class="data-table__header-title--sortable">
+                                Expected Range
+                            </th>
+                            <th class="data-table__header-title--sortable">
+                                Cardinality
+                            </th>
+                            <th class="data-table__header-title--sortable">
+                                Definition 
+                            </th>
+                            <th class="data-table__header-title--sortable">
+                                Usage
+                            </th>
+                            <th class="data-table__header-title--sortable">
+                                Codelist
+                            </th>
+                        </tr>
+                    </thead>
+                    <tbody class="supertype">
+                        
+                            <tr id="Action.at%20time"
+                                typeof="rdfs:Property"
+                                resource="http://example.com/rrmv/atTime"
+                                class="class mandatory">
+                                <td>
+				    <a href="https://github.com/SEMICeu/rrmv/issues/new?title=Issue%20for%20at time%20in%20Action&body=Explain%20your%20issue%20for%20https://semiceu.github.io/rrmv/releases/0.0.2%23Action.at%20time" target="_blank" rel="noopener noreferrer" >
+                                        <i class="icon">[o]</i>
+                                    </a>
+                                </td>
+                                <td>
+                                    <code property="rdfs:label">
+                                        <a href="http://example.com/rrmv/atTime"
+                                           data-toggle="tooltip"
+                                           data-content="http://example.com/rrmv/atTime"
+                                           data-placement="right">
+                                        at time</a>
+                                    </code>
+                                </td>
+                                <td>
+                                    
+                                        
+                                            <a href="#Period%20of%20Time" data-placement="right">Period of Time</a>
+                                        
+                                    
+                                </td>
+                                <td>
+                                    0..*
+                                </td>
+                                <td property="rdfs:comment">
+                                    An Action or a Role is valid within a time interval.
+                                </td>
+                                <td property="skos:scopeNote">
+                                    
+                                </td>
+                                <td>
+                                    
+                                </td>
+                            </tr>
+                        
+                            <tr id="Action.has%20agent%20role"
+                                typeof="rdfs:Property"
+                                resource="http://example.com/rrmv/hasAgentRole"
+                                class="class mandatory">
+                                <td>
+				    <a href="https://github.com/SEMICeu/rrmv/issues/new?title=Issue%20for%20has agent role%20in%20Action&body=Explain%20your%20issue%20for%20https://semiceu.github.io/rrmv/releases/0.0.2%23Action.has%20agent%20role" target="_blank" rel="noopener noreferrer" >
+                                        <i class="icon">[o]</i>
+                                    </a>
+                                </td>
+                                <td>
+                                    <code property="rdfs:label">
+                                        <a href="http://example.com/rrmv/hasAgentRole"
+                                           data-toggle="tooltip"
+                                           data-content="http://example.com/rrmv/hasAgentRole"
+                                           data-placement="right">
+                                        has agent role</a>
+                                    </code>
+                                </td>
+                                <td>
+                                    
+                                        
+                                            <a href="#Agent%20Role" data-placement="right">Agent Role</a>
+                                        
+                                    
+                                </td>
+                                <td>
+                                    0..*
+                                </td>
+                                <td property="rdfs:comment">
+                                    This property connects the executed Action to the Agent that was involved in its exectuion.
+                                </td>
+                                <td property="skos:scopeNote">
+                                    
+                                </td>
+                                <td>
+                                    
+                                </td>
+                            </tr>
+                        
+                            <tr id="Action.has%20annotation"
+                                typeof="rdfs:Property"
+                                resource="http://example.com/rrmv/hasAnnotation"
+                                class="class mandatory">
+                                <td>
+				    <a href="https://github.com/SEMICeu/rrmv/issues/new?title=Issue%20for%20has annotation%20in%20Action&body=Explain%20your%20issue%20for%20https://semiceu.github.io/rrmv/releases/0.0.2%23Action.has%20annotation" target="_blank" rel="noopener noreferrer" >
+                                        <i class="icon">[o]</i>
+                                    </a>
+                                </td>
+                                <td>
+                                    <code property="rdfs:label">
+                                        <a href="http://example.com/rrmv/hasAnnotation"
+                                           data-toggle="tooltip"
+                                           data-content="http://example.com/rrmv/hasAnnotation"
+                                           data-placement="right">
+                                        has annotation</a>
+                                    </code>
+                                </td>
+                                <td>
+                                    
+                                        
+                                            <a href="#xsd%3Astring"
+                                               data-toggle="tooltip"
+                                               data-content="http://www.w3.org/2001/XMLSchema#string"
+                                               data-placement="right">xsd:string</a>
+                                        
+                                    
+                                </td>
+                                <td>
+                                    0..*
+                                </td>
+                                <td property="rdfs:comment">
+                                    Annotation related to the Action or Request made by the domain expert.
+                                </td>
+                                <td property="skos:scopeNote">
+                                    
+                                </td>
+                                <td>
+                                    
+                                </td>
+                            </tr>
+                        
+                            <tr id="Action.has%20next"
+                                typeof="rdfs:Property"
+                                resource="http://example.com/rrmv/hasNext"
+                                class="class mandatory">
+                                <td>
+				    <a href="https://github.com/SEMICeu/rrmv/issues/new?title=Issue%20for%20has next%20in%20Action&body=Explain%20your%20issue%20for%20https://semiceu.github.io/rrmv/releases/0.0.2%23Action.has%20next" target="_blank" rel="noopener noreferrer" >
+                                        <i class="icon">[o]</i>
+                                    </a>
+                                </td>
+                                <td>
+                                    <code property="rdfs:label">
+                                        <a href="http://example.com/rrmv/hasNext"
+                                           data-toggle="tooltip"
+                                           data-content="http://example.com/rrmv/hasNext"
+                                           data-placement="right">
+                                        has next</a>
+                                    </code>
+                                </td>
+                                <td>
+                                    
+                                        
+                                            <a href="#Action" data-placement="right">Action</a>
+                                        
+                                    
+                                </td>
+                                <td>
+                                    0..*
+                                </td>
+                                <td property="rdfs:comment">
+                                    A property linking an Action with the succeeding Action in a repetitive sequence of actions generated by a Request.
+                                </td>
+                                <td property="skos:scopeNote">
+                                    
+                                </td>
+                                <td>
+                                    
+                                </td>
+                            </tr>
+                        
+                            <tr id="Action.has%20result"
+                                typeof="rdfs:Property"
+                                resource="http://example.com/rrmv/hasResult"
+                                class="class mandatory">
+                                <td>
+				    <a href="https://github.com/SEMICeu/rrmv/issues/new?title=Issue%20for%20has result%20in%20Action&body=Explain%20your%20issue%20for%20https://semiceu.github.io/rrmv/releases/0.0.2%23Action.has%20result" target="_blank" rel="noopener noreferrer" >
+                                        <i class="icon">[o]</i>
+                                    </a>
+                                </td>
+                                <td>
+                                    <code property="rdfs:label">
+                                        <a href="http://example.com/rrmv/hasResult"
+                                           data-toggle="tooltip"
+                                           data-content="http://example.com/rrmv/hasResult"
+                                           data-placement="right">
+                                        has result</a>
+                                    </code>
+                                </td>
+                                <td>
+                                    
+                                        
+                                            <a href="#Action%20Result" data-placement="right">Action Result</a>
+                                        
+                                    
+                                </td>
+                                <td>
+                                    0..*
+                                </td>
+                                <td property="rdfs:comment">
+                                    A property that links an Action with the Result of this action.
+                                </td>
+                                <td property="skos:scopeNote">
+                                    
+                                </td>
+                                <td>
+                                    
+                                </td>
+                            </tr>
+                        
+                            <tr id="Action.has%20status"
+                                typeof="rdfs:Property"
+                                resource="http://example.com/rrmv/hasStatus"
+                                class="class mandatory">
+                                <td>
+				    <a href="https://github.com/SEMICeu/rrmv/issues/new?title=Issue%20for%20has status%20in%20Action&body=Explain%20your%20issue%20for%20https://semiceu.github.io/rrmv/releases/0.0.2%23Action.has%20status" target="_blank" rel="noopener noreferrer" >
+                                        <i class="icon">[o]</i>
+                                    </a>
+                                </td>
+                                <td>
+                                    <code property="rdfs:label">
+                                        <a href="http://example.com/rrmv/hasStatus"
+                                           data-toggle="tooltip"
+                                           data-content="http://example.com/rrmv/hasStatus"
+                                           data-placement="right">
+                                        has status</a>
+                                    </code>
+                                </td>
+                                <td>
+                                    
+                                        
+                                            <a href="#Status" data-placement="right">Status</a>
+                                        
+                                    
+                                </td>
+                                <td>
+                                    0..*
+                                </td>
+                                <td property="rdfs:comment">
+                                    A property that links an Action with the Status of this action.
+                                </td>
+                                <td property="skos:scopeNote">
+                                    
+                                </td>
+                                <td>
+                                    
+                                </td>
+                            </tr>
+                        
+                            <tr id="Action.related%20to"
+                                typeof="rdfs:Property"
+                                resource="http://data.europa.eu/eli/ontology#related_to"
+                                class="class mandatory">
+                                <td>
+				    <a href="https://github.com/SEMICeu/rrmv/issues/new?title=Issue%20for%20related to%20in%20Action&body=Explain%20your%20issue%20for%20https://semiceu.github.io/rrmv/releases/0.0.2%23Action.related%20to" target="_blank" rel="noopener noreferrer" >
+                                        <i class="icon">[o]</i>
+                                    </a>
+                                </td>
+                                <td>
+                                    <code property="rdfs:label">
+                                        <a href="http://data.europa.eu/eli/ontology#related_to"
+                                           data-toggle="tooltip"
+                                           data-content="http://data.europa.eu/eli/ontology#related_to"
+                                           data-placement="right">
+                                        related to</a>
+                                    </code>
+                                </td>
+                                <td>
+                                    
+                                        
+                                            <a href="#Action" data-placement="right">Action</a>
+                                        
+                                    
+                                </td>
+                                <td>
+                                    0..*
+                                </td>
+                                <td property="rdfs:comment">
+                                    Indicates a somehow related other document, not necessarily a legal resource.
+                                </td>
+                                <td property="skos:scopeNote">
+                                    
+                                </td>
+                                <td>
+                                    
+                                </td>
+                            </tr>
+                        
+                    </tbody>
+                </table>
+            </div>
+        
+    </div>
+</section>
+
+        <section>
+            <h3 id="Action%20Result">
+                <a href="http://example.com/rrmv/ActionResult"
+                   data-toggle="tooltip"
+                   data-content="http://example.com/rrmv/ActionResult"
+                   data-placement="right">Action Result</a>
+            </h3>
+            <dl>
+                <dt>
+                    Definition
+                </dt>
+                <dd>
+                    The Result of an Action. It could be an activity (e.g., to do something) or an output (e.g., report).
+                </dd>
+                
+                
+                    <dt>
+                        Properties
+                    </dt>
+                    
+                        <dd>
+                            For this entity the following properties are defined: <a href="#Action%20Result.has%20document">has document</a>
+                            , <a href="#Action%20Result.has%20title">has title</a>
+                            , <a href="#Action%20Result.has%20type">has type</a>
+                            .
+                    </dd>
+                
+            </dl>
+            <dd>
+                Add an issue for this entity <a href="https://github.com/SEMICeu/rrmv/issues/new?title=Issue%20for%20ActionResult&body=Explain%20your%20issue"}}>here</a>.
+            </dd>
+        </div>
+        
+            <div class="u-table-overflow">
+                <table class="data-table simple" id="table-mandatory-classes">
+                    <thead>
+                        <tr class="data-table__header">
+                            <th class="data-table__header-title--sortable">
+                            </th>
+                            <th class="data-table__header-title--sortable data-table__header-title--sortable-active">
+                                Property
+                            </th>
+                            <th class="data-table__header-title--sortable">
+                                Expected Range
+                            </th>
+                            <th class="data-table__header-title--sortable">
+                                Cardinality
+                            </th>
+                            <th class="data-table__header-title--sortable">
+                                Definition 
+                            </th>
+                            <th class="data-table__header-title--sortable">
+                                Usage
+                            </th>
+                            <th class="data-table__header-title--sortable">
+                                Codelist
+                            </th>
+                        </tr>
+                    </thead>
+                    <tbody class="supertype">
+                        
+                            <tr id="Action%20Result.has%20document"
+                                typeof="rdfs:Property"
+                                resource="http://example.com/rrmv/hasDocument"
+                                class="class mandatory">
+                                <td>
+				    <a href="https://github.com/SEMICeu/rrmv/issues/new?title=Issue%20for%20has document%20in%20Action Result&body=Explain%20your%20issue%20for%20https://semiceu.github.io/rrmv/releases/0.0.2%23Action%20Result.has%20document" target="_blank" rel="noopener noreferrer" >
+                                        <i class="icon">[o]</i>
+                                    </a>
+                                </td>
+                                <td>
+                                    <code property="rdfs:label">
+                                        <a href="http://example.com/rrmv/hasDocument"
+                                           data-toggle="tooltip"
+                                           data-content="http://example.com/rrmv/hasDocument"
+                                           data-placement="right">
+                                        has document</a>
+                                    </code>
+                                </td>
+                                <td>
+                                    
+                                        
+                                            <a href="#Expression" data-placement="right">Expression</a>
+                                        
+                                    
+                                </td>
+                                <td>
+                                    0..*
+                                </td>
+                                <td property="rdfs:comment">
+                                    A property that links a Result of an Action with an Expression, usually wen the result is a document.
+                                </td>
+                                <td property="skos:scopeNote">
+                                    
+                                </td>
+                                <td>
+                                    
+                                </td>
+                            </tr>
+                        
+                            <tr id="Action%20Result.has%20title"
+                                typeof="rdfs:Property"
+                                resource="http://example.com/rrmv/hasTitle"
+                                class="class mandatory">
+                                <td>
+				    <a href="https://github.com/SEMICeu/rrmv/issues/new?title=Issue%20for%20has title%20in%20Action Result&body=Explain%20your%20issue%20for%20https://semiceu.github.io/rrmv/releases/0.0.2%23Action%20Result.has%20title" target="_blank" rel="noopener noreferrer" >
+                                        <i class="icon">[o]</i>
+                                    </a>
+                                </td>
+                                <td>
+                                    <code property="rdfs:label">
+                                        <a href="http://example.com/rrmv/hasTitle"
+                                           data-toggle="tooltip"
+                                           data-content="http://example.com/rrmv/hasTitle"
+                                           data-placement="right">
+                                        has title</a>
+                                    </code>
+                                </td>
+                                <td>
+                                    
+                                        
+                                            <a href="#xsd%3Astring"
+                                               data-toggle="tooltip"
+                                               data-content="http://www.w3.org/2001/XMLSchema#string"
+                                               data-placement="right">xsd:string</a>
+                                        
+                                    
+                                </td>
+                                <td>
+                                    0..*
+                                </td>
+                                <td property="rdfs:comment">
+                                    Title of the Action.
+                                </td>
+                                <td property="skos:scopeNote">
+                                    
+                                </td>
+                                <td>
+                                    
+                                </td>
+                            </tr>
+                        
+                            <tr id="Action%20Result.has%20type"
+                                typeof="rdfs:Property"
+                                resource="http://example.com/rrmv/hasType"
+                                class="class mandatory">
+                                <td>
+				    <a href="https://github.com/SEMICeu/rrmv/issues/new?title=Issue%20for%20has type%20in%20Action Result&body=Explain%20your%20issue%20for%20https://semiceu.github.io/rrmv/releases/0.0.2%23Action%20Result.has%20type" target="_blank" rel="noopener noreferrer" >
+                                        <i class="icon">[o]</i>
+                                    </a>
+                                </td>
+                                <td>
+                                    <code property="rdfs:label">
+                                        <a href="http://example.com/rrmv/hasType"
+                                           data-toggle="tooltip"
+                                           data-content="http://example.com/rrmv/hasType"
+                                           data-placement="right">
+                                        has type</a>
+                                    </code>
+                                </td>
+                                <td>
+                                    
+                                        
+                                            <a href="#Result%20Type" data-placement="right">Result Type</a>
+                                        
+                                    
+                                </td>
+                                <td>
+                                    0..*
+                                </td>
+                                <td property="rdfs:comment">
+                                    This property connects the Action Result to the Action Result Type to which it belongs.
+                                </td>
+                                <td property="skos:scopeNote">
+                                    
+                                </td>
+                                <td>
+                                    
+                                </td>
+                            </tr>
+                        
+                    </tbody>
+                </table>
+            </div>
+        
+    </div>
+</section>
+
+        <section>
+            <h3 id="Agent">
+                <a href="http://data.europa.eu/eli/ontology#Agent"
+                   data-toggle="tooltip"
+                   data-content="http://data.europa.eu/eli/ontology#Agent"
+                   data-placement="right">Agent</a>
+            </h3>
+            <dl>
+                <dt>
+                    Definition
+                </dt>
+                <dd>
+                    Individual people or groups of people, like an institution with a legal recognition, who have the potential to perform intentional actions for which they can be held responsible.
+                </dd>
+                
+                
+                    <dt>
+                        Properties
+                    </dt>
+                    
+                        <dd>
+                            For this entity the following properties are defined: <a href="#Agent.has%20type">has type</a>
+                            .
+                    </dd>
+                
+            </dl>
+            <dd>
+                Add an issue for this entity <a href="https://github.com/SEMICeu/rrmv/issues/new?title=Issue%20for%20Agent&body=Explain%20your%20issue"}}>here</a>.
+            </dd>
+        </div>
+        
+            <div class="u-table-overflow">
+                <table class="data-table simple" id="table-mandatory-classes">
+                    <thead>
+                        <tr class="data-table__header">
+                            <th class="data-table__header-title--sortable">
+                            </th>
+                            <th class="data-table__header-title--sortable data-table__header-title--sortable-active">
+                                Property
+                            </th>
+                            <th class="data-table__header-title--sortable">
+                                Expected Range
+                            </th>
+                            <th class="data-table__header-title--sortable">
+                                Cardinality
+                            </th>
+                            <th class="data-table__header-title--sortable">
+                                Definition 
+                            </th>
+                            <th class="data-table__header-title--sortable">
+                                Usage
+                            </th>
+                            <th class="data-table__header-title--sortable">
+                                Codelist
+                            </th>
+                        </tr>
+                    </thead>
+                    <tbody class="supertype">
+                        
+                            <tr id="Agent.has%20type"
+                                typeof="rdfs:Property"
+                                resource="http://example.com/rrmv/hasType"
+                                class="class mandatory">
+                                <td>
+				    <a href="https://github.com/SEMICeu/rrmv/issues/new?title=Issue%20for%20has type%20in%20Agent&body=Explain%20your%20issue%20for%20https://semiceu.github.io/rrmv/releases/0.0.2%23Agent.has%20type" target="_blank" rel="noopener noreferrer" >
+                                        <i class="icon">[o]</i>
+                                    </a>
+                                </td>
+                                <td>
+                                    <code property="rdfs:label">
+                                        <a href="http://example.com/rrmv/hasType"
+                                           data-toggle="tooltip"
+                                           data-content="http://example.com/rrmv/hasType"
+                                           data-placement="right">
+                                        has type</a>
+                                    </code>
+                                </td>
+                                <td>
+                                    
+                                        
+                                            <a href="#Agent%20Type" data-placement="right">Agent Type</a>
+                                        
+                                    
+                                </td>
+                                <td>
+                                    0..*
+                                </td>
+                                <td property="rdfs:comment">
+                                    Assign the type to SKOS controlled vocabulary.
+                                </td>
+                                <td property="skos:scopeNote">
+                                    
+                                </td>
+                                <td>
+                                    
+                                </td>
+                            </tr>
+                        
+                    </tbody>
+                </table>
+            </div>
+        
+    </div>
+</section>
+
+        <section>
+            <h3 id="Agent%20Role">
+                <a href="http://example.com/rrmv/AgentRole"
+                   data-toggle="tooltip"
+                   data-content="http://example.com/rrmv/AgentRole"
+                   data-placement="right">Agent Role</a>
+            </h3>
+            <dl>
+                <dt>
+                    Definition
+                </dt>
+                <dd>
+                    The property linking a Agent to Role.
+                </dd>
+                
+                
+                    <dt>
+                        Properties
+                    </dt>
+                    
+                        <dd>
+                            For this entity the following properties are defined: <a href="#Agent%20Role.at%20time">at time</a>
+                            , <a href="#Agent%20Role.for%20agent">for agent</a>
+                            , <a href="#Agent%20Role.with%20role">with role</a>
+                            .
+                    </dd>
+                
+            </dl>
+            <dd>
+                Add an issue for this entity <a href="https://github.com/SEMICeu/rrmv/issues/new?title=Issue%20for%20AgentRole&body=Explain%20your%20issue"}}>here</a>.
+            </dd>
+        </div>
+        
+            <div class="u-table-overflow">
+                <table class="data-table simple" id="table-mandatory-classes">
+                    <thead>
+                        <tr class="data-table__header">
+                            <th class="data-table__header-title--sortable">
+                            </th>
+                            <th class="data-table__header-title--sortable data-table__header-title--sortable-active">
+                                Property
+                            </th>
+                            <th class="data-table__header-title--sortable">
+                                Expected Range
+                            </th>
+                            <th class="data-table__header-title--sortable">
+                                Cardinality
+                            </th>
+                            <th class="data-table__header-title--sortable">
+                                Definition 
+                            </th>
+                            <th class="data-table__header-title--sortable">
+                                Usage
+                            </th>
+                            <th class="data-table__header-title--sortable">
+                                Codelist
+                            </th>
+                        </tr>
+                    </thead>
+                    <tbody class="supertype">
+                        
+                            <tr id="Agent%20Role.at%20time"
+                                typeof="rdfs:Property"
+                                resource="http://example.com/rrmv/atTime"
+                                class="class mandatory">
+                                <td>
+				    <a href="https://github.com/SEMICeu/rrmv/issues/new?title=Issue%20for%20at time%20in%20Agent Role&body=Explain%20your%20issue%20for%20https://semiceu.github.io/rrmv/releases/0.0.2%23Agent%20Role.at%20time" target="_blank" rel="noopener noreferrer" >
+                                        <i class="icon">[o]</i>
+                                    </a>
+                                </td>
+                                <td>
+                                    <code property="rdfs:label">
+                                        <a href="http://example.com/rrmv/atTime"
+                                           data-toggle="tooltip"
+                                           data-content="http://example.com/rrmv/atTime"
+                                           data-placement="right">
+                                        at time</a>
+                                    </code>
+                                </td>
+                                <td>
+                                    
+                                        
+                                            <a href="#Period%20of%20Time" data-placement="right">Period of Time</a>
+                                        
+                                    
+                                </td>
+                                <td>
+                                    0..*
+                                </td>
+                                <td property="rdfs:comment">
+                                    An Action or a Role is valid within a time interval.
+                                </td>
+                                <td property="skos:scopeNote">
+                                    
+                                </td>
+                                <td>
+                                    
+                                </td>
+                            </tr>
+                        
+                            <tr id="Agent%20Role.for%20agent"
+                                typeof="rdfs:Property"
+                                resource="http://example.com/rrmv/forAgent"
+                                class="class mandatory">
+                                <td>
+				    <a href="https://github.com/SEMICeu/rrmv/issues/new?title=Issue%20for%20for agent%20in%20Agent Role&body=Explain%20your%20issue%20for%20https://semiceu.github.io/rrmv/releases/0.0.2%23Agent%20Role.for%20agent" target="_blank" rel="noopener noreferrer" >
+                                        <i class="icon">[o]</i>
+                                    </a>
+                                </td>
+                                <td>
+                                    <code property="rdfs:label">
+                                        <a href="http://example.com/rrmv/forAgent"
+                                           data-toggle="tooltip"
+                                           data-content="http://example.com/rrmv/forAgent"
+                                           data-placement="right">
+                                        for agent</a>
+                                    </code>
+                                </td>
+                                <td>
+                                    
+                                        
+                                            <a href="#Agent" data-placement="right">Agent</a>
+                                        
+                                    
+                                </td>
+                                <td>
+                                    0..*
+                                </td>
+                                <td property="rdfs:comment">
+                                    The property linking a particular Role to Agent.
+                                </td>
+                                <td property="skos:scopeNote">
+                                    
+                                </td>
+                                <td>
+                                    
+                                </td>
+                            </tr>
+                        
+                            <tr id="Agent%20Role.with%20role"
+                                typeof="rdfs:Property"
+                                resource="http://example.com/rrmv/withRole"
+                                class="class mandatory">
+                                <td>
+				    <a href="https://github.com/SEMICeu/rrmv/issues/new?title=Issue%20for%20with role%20in%20Agent Role&body=Explain%20your%20issue%20for%20https://semiceu.github.io/rrmv/releases/0.0.2%23Agent%20Role.with%20role" target="_blank" rel="noopener noreferrer" >
+                                        <i class="icon">[o]</i>
+                                    </a>
+                                </td>
+                                <td>
+                                    <code property="rdfs:label">
+                                        <a href="http://example.com/rrmv/withRole"
+                                           data-toggle="tooltip"
+                                           data-content="http://example.com/rrmv/withRole"
+                                           data-placement="right">
+                                        with role</a>
+                                    </code>
+                                </td>
+                                <td>
+                                    
+                                        
+                                            <a href="#Role" data-placement="right">Role</a>
+                                        
+                                    
+                                </td>
+                                <td>
+                                    0..*
+                                </td>
+                                <td property="rdfs:comment">
+                                    The property linking an Agent to Role.
+                                </td>
+                                <td property="skos:scopeNote">
+                                    
+                                </td>
+                                <td>
+                                    
+                                </td>
+                            </tr>
+                        
+                    </tbody>
+                </table>
+            </div>
+        
+    </div>
+</section>
+
+        <section>
+            <h3 id="Agent%20Type">
+                <a href="http://example.com/rrmv/AgentType"
+                   data-toggle="tooltip"
+                   data-content="http://example.com/rrmv/AgentType"
+                   data-placement="right">Agent Type</a>
+            </h3>
+            <dl>
+                <dt>
+                    Definition
+                </dt>
+                <dd>
+                    The type of Agent.
+                </dd>
+                
+                
+                    <dt>
+                        Subclass of
+                        <dt>
+                            <dd> <a href="http://www.w3.org/2004/02/skos/core#Concept">Concept</a>
+                                
+                        </dd>
+                    
+                    <dt>
+                        Properties
+                    </dt>
+                    
+                    <dd>
+                        No properties have been defined for this entity.
+                    </dd>
+                
+            </dl>
+            <dd>
+                Add an issue for this entity <a href="https://github.com/SEMICeu/rrmv/issues/new?title=Issue%20for%20AgentType&body=Explain%20your%20issue"}}>here</a>.
+            </dd>
+        </div>
+        
+    </div>
+</section>
+
+        <section>
+            <h3 id="Expression">
+                <a href="http://data.europa.eu/eli/ontology#Expression"
+                   data-toggle="tooltip"
+                   data-content="http://data.europa.eu/eli/ontology#Expression"
+                   data-placement="right">Expression</a>
+            </h3>
+            <dl>
+                <dt>
+                    Definition
+                </dt>
+                <dd>
+                    The intellectual realisation of a Work in the form of identifiable immaterial objects, such as, but not limited to, text.
+                </dd>
+                
+                
+                    <dt>
+                        Properties
+                    </dt>
+                    
+                        <dd>
+                            For this entity the following properties are defined: <a href="#Expression.has%20URI">has URI</a>
+                            , <a href="#Expression.is%20realized%20by">is realized by</a>
+                            .
+                    </dd>
+                
+            </dl>
+            <dd>
+                Add an issue for this entity <a href="https://github.com/SEMICeu/rrmv/issues/new?title=Issue%20for%20Expression&body=Explain%20your%20issue"}}>here</a>.
+            </dd>
+        </div>
+        
+            <div class="u-table-overflow">
+                <table class="data-table simple" id="table-mandatory-classes">
+                    <thead>
+                        <tr class="data-table__header">
+                            <th class="data-table__header-title--sortable">
+                            </th>
+                            <th class="data-table__header-title--sortable data-table__header-title--sortable-active">
+                                Property
+                            </th>
+                            <th class="data-table__header-title--sortable">
+                                Expected Range
+                            </th>
+                            <th class="data-table__header-title--sortable">
+                                Cardinality
+                            </th>
+                            <th class="data-table__header-title--sortable">
+                                Definition 
+                            </th>
+                            <th class="data-table__header-title--sortable">
+                                Usage
+                            </th>
+                            <th class="data-table__header-title--sortable">
+                                Codelist
+                            </th>
+                        </tr>
+                    </thead>
+                    <tbody class="supertype">
+                        
+                            <tr id="Expression.has%20URI"
+                                typeof="rdfs:Property"
+                                resource="http:/example.com/rrmv/hasURI"
+                                class="class mandatory">
+                                <td>
+				    <a href="https://github.com/SEMICeu/rrmv/issues/new?title=Issue%20for%20has URI%20in%20Expression&body=Explain%20your%20issue%20for%20https://semiceu.github.io/rrmv/releases/0.0.2%23Expression.has%20URI" target="_blank" rel="noopener noreferrer" >
+                                        <i class="icon">[o]</i>
+                                    </a>
+                                </td>
+                                <td>
+                                    <code property="rdfs:label">
+                                        <a href="http:/example.com/rrmv/hasURI"
+                                           data-toggle="tooltip"
+                                           data-content="http:/example.com/rrmv/hasURI"
+                                           data-placement="right">
+                                        has URI</a>
+                                    </code>
+                                </td>
+                                <td>
+                                    
+                                        
+                                            <a href="#xsd%3AanyURI"
+                                               data-toggle="tooltip"
+                                               data-content="http://www.w3.org/2001/XMLSchema#anyURI"
+                                               data-placement="right">xsd:anyURI</a>
+                                        
+                                    
+                                </td>
+                                <td>
+                                    0..*
+                                </td>
+                                <td property="rdfs:comment">
+                                    URI of the Legal Source Expression where the Request is expressed.
+                                </td>
+                                <td property="skos:scopeNote">
+                                    
+                                </td>
+                                <td>
+                                    
+                                </td>
+                            </tr>
+                        
+                            <tr id="Expression.is%20realized%20by"
+                                typeof="rdfs:Property"
+                                resource="http://data.europa.eu/eli/ontology#is_realized_by"
+                                class="class mandatory">
+                                <td>
+				    <a href="https://github.com/SEMICeu/rrmv/issues/new?title=Issue%20for%20is realized by%20in%20Expression&body=Explain%20your%20issue%20for%20https://semiceu.github.io/rrmv/releases/0.0.2%23Expression.is%20realized%20by" target="_blank" rel="noopener noreferrer" >
+                                        <i class="icon">[o]</i>
+                                    </a>
+                                </td>
+                                <td>
+                                    <code property="rdfs:label">
+                                        <a href="http://data.europa.eu/eli/ontology#is_realized_by"
+                                           data-toggle="tooltip"
+                                           data-content="http://data.europa.eu/eli/ontology#is_realized_by"
+                                           data-placement="right">
+                                        is realized by</a>
+                                    </code>
+                                </td>
+                                <td>
+                                    
+                                        
+                                            <a href="#Work" data-placement="right">Work</a>
+                                        
+                                    
+                                </td>
+                                <td>
+                                    0..*
+                                </td>
+                                <td property="rdfs:comment">
+                                    Relates a work to an expression of this work in the form of a &quot;sequence of signs&quot; (typically alpha-numeric characters in a legal context).
+                                </td>
+                                <td property="skos:scopeNote">
+                                    
+                                </td>
+                                <td>
+                                    
+                                </td>
+                            </tr>
+                        
+                    </tbody>
+                </table>
+            </div>
+        
+    </div>
+</section>
+
+        <section>
+            <h3 id="Frequency">
+                <a href="http://example.com/rrmv/Frequency"
+                   data-toggle="tooltip"
+                   data-content="http://example.com/rrmv/Frequency"
+                   data-placement="right">Frequency</a>
+            </h3>
+            <dl>
+                <dt>
+                    Definition
+                </dt>
+                <dd>
+                    Frequency of an Request over time (e.g., every 6 months, each quarter).
+                </dd>
+                
+                
+                    <dt>
+                        Properties
+                    </dt>
+                    
+                    <dd>
+                        No properties have been defined for this entity.
+                    </dd>
+                
+            </dl>
+            <dd>
+                Add an issue for this entity <a href="https://github.com/SEMICeu/rrmv/issues/new?title=Issue%20for%20Frequency&body=Explain%20your%20issue"}}>here</a>.
+            </dd>
+        </div>
+        
+    </div>
+</section>
+
+        <section>
+            <h3 id="Manifestation">
+                <a href="http://data.europa.eu/eli/ontology#Manifestation"
+                   data-toggle="tooltip"
+                   data-content="http://data.europa.eu/eli/ontology#Manifestation"
+                   data-placement="right">Manifestation</a>
+            </h3>
+            <dl>
+                <dt>
+                    Definition
+                </dt>
+                <dd>
+                    The physical embodiment of an Expression, either on paper or in any electronic format.
+                </dd>
+                
+                
+                    <dt>
+                        Properties
+                    </dt>
+                    
+                        <dd>
+                            For this entity the following properties are defined: <a href="#Manifestation.is%20embodied%20by">is embodied by</a>
+                            .
+                    </dd>
+                
+            </dl>
+            <dd>
+                Add an issue for this entity <a href="https://github.com/SEMICeu/rrmv/issues/new?title=Issue%20for%20Manifestation&body=Explain%20your%20issue"}}>here</a>.
+            </dd>
+        </div>
+        
+            <div class="u-table-overflow">
+                <table class="data-table simple" id="table-mandatory-classes">
+                    <thead>
+                        <tr class="data-table__header">
+                            <th class="data-table__header-title--sortable">
+                            </th>
+                            <th class="data-table__header-title--sortable data-table__header-title--sortable-active">
+                                Property
+                            </th>
+                            <th class="data-table__header-title--sortable">
+                                Expected Range
+                            </th>
+                            <th class="data-table__header-title--sortable">
+                                Cardinality
+                            </th>
+                            <th class="data-table__header-title--sortable">
+                                Definition 
+                            </th>
+                            <th class="data-table__header-title--sortable">
+                                Usage
+                            </th>
+                            <th class="data-table__header-title--sortable">
+                                Codelist
+                            </th>
+                        </tr>
+                    </thead>
+                    <tbody class="supertype">
+                        
+                            <tr id="Manifestation.is%20embodied%20by"
+                                typeof="rdfs:Property"
+                                resource="http://data.europa.eu/eli/ontology#is_embodied_by"
+                                class="class mandatory">
+                                <td>
+				    <a href="https://github.com/SEMICeu/rrmv/issues/new?title=Issue%20for%20is embodied by%20in%20Manifestation&body=Explain%20your%20issue%20for%20https://semiceu.github.io/rrmv/releases/0.0.2%23Manifestation.is%20embodied%20by" target="_blank" rel="noopener noreferrer" >
+                                        <i class="icon">[o]</i>
+                                    </a>
+                                </td>
+                                <td>
+                                    <code property="rdfs:label">
+                                        <a href="http://data.europa.eu/eli/ontology#is_embodied_by"
+                                           data-toggle="tooltip"
+                                           data-content="http://data.europa.eu/eli/ontology#is_embodied_by"
+                                           data-placement="right">
+                                        is embodied by</a>
+                                    </code>
+                                </td>
+                                <td>
+                                    
+                                        
+                                            <a href="#Expression" data-placement="right">Expression</a>
+                                        
+                                    
+                                </td>
+                                <td>
+                                    0..*
+                                </td>
+                                <td property="rdfs:comment">
+                                    Relates an expression to a manifestation of that expression.
+                                </td>
+                                <td property="skos:scopeNote">
+                                    
+                                </td>
+                                <td>
+                                    
+                                </td>
+                            </tr>
+                        
+                    </tbody>
+                </table>
+            </div>
+        
+    </div>
+</section>
+
+        <section>
+            <h3 id="Organization">
+                <a href="http://data.europa.eu/eli/ontology#Organization"
+                   data-toggle="tooltip"
+                   data-content="http://data.europa.eu/eli/ontology#Organization"
+                   data-placement="right">Organization</a>
+            </h3>
+            <dl>
+                <dt>
+                    Definition
+                </dt>
+                <dd>
+                    Institutions or groups of people that have obtained a legal recognition as a group and can act collectively as agents.
+                </dd>
+                
+                
+                    <dt>
+                        Subclass of
+                        <dt>
+                            <dd> <a href="#Agent">Agent</a>
+                                
+                        </dd>
+                    
+                    <dt>
+                        Properties
+                    </dt>
+                    
+                    <dd>
+                        No properties have been defined for this entity.
+                    </dd>
+                
+            </dl>
+            <dd>
+                Add an issue for this entity <a href="https://github.com/SEMICeu/rrmv/issues/new?title=Issue%20for%20Organization&body=Explain%20your%20issue"}}>here</a>.
+            </dd>
+        </div>
+        
+    </div>
+</section>
+
+        <section>
+            <h3 id="Period%20of%20Time">
+                <a href="http://www.w3.org/2006/time#ProperInterval"
+                   data-toggle="tooltip"
+                   data-content="http://www.w3.org/2006/time#ProperInterval"
+                   data-placement="right">Period of Time</a>
+            </h3>
+            <dl>
+                <dt>
+                    Definition
+                </dt>
+                <dd>
+                    A temporal entity with non-zero extent or duration.
+                </dd>
+                
+                    <dt>
+                        Usage Note
+                    </dt>
+                    <dd>
+                        The value of the start time and end time properties should be different,and/or a duration should be given.
+                    </dd>
+                
+                
+                    <dt>
+                        Properties
+                    </dt>
+                    
+                        <dd>
+                            For this entity the following properties are defined: <a href="#Period%20of%20Time.has%20function">has function</a>
+                            , <a href="#Period%20of%20Time.is%20incomplete">is incomplete</a>
+                            .
+                    </dd>
+                
+            </dl>
+            <dd>
+                Add an issue for this entity <a href="https://github.com/SEMICeu/rrmv/issues/new?title=Issue%20for%20PeriodOfTime&body=Explain%20your%20issue"}}>here</a>.
+            </dd>
+        </div>
+        
+            <div class="u-table-overflow">
+                <table class="data-table simple" id="table-mandatory-classes">
+                    <thead>
+                        <tr class="data-table__header">
+                            <th class="data-table__header-title--sortable">
+                            </th>
+                            <th class="data-table__header-title--sortable data-table__header-title--sortable-active">
+                                Property
+                            </th>
+                            <th class="data-table__header-title--sortable">
+                                Expected Range
+                            </th>
+                            <th class="data-table__header-title--sortable">
+                                Cardinality
+                            </th>
+                            <th class="data-table__header-title--sortable">
+                                Definition 
+                            </th>
+                            <th class="data-table__header-title--sortable">
+                                Usage
+                            </th>
+                            <th class="data-table__header-title--sortable">
+                                Codelist
+                            </th>
+                        </tr>
+                    </thead>
+                    <tbody class="supertype">
+                        
+                            <tr id="Period%20of%20Time.has%20function"
+                                typeof="rdfs:Property"
+                                resource="http://example.com/rrmv/hasFunction"
+                                class="class mandatory">
+                                <td>
+				    <a href="https://github.com/SEMICeu/rrmv/issues/new?title=Issue%20for%20has function%20in%20Period of Time&body=Explain%20your%20issue%20for%20https://semiceu.github.io/rrmv/releases/0.0.2%23Period%20of%20Time.has%20function" target="_blank" rel="noopener noreferrer" >
+                                        <i class="icon">[o]</i>
+                                    </a>
+                                </td>
+                                <td>
+                                    <code property="rdfs:label">
+                                        <a href="http://example.com/rrmv/hasFunction"
+                                           data-toggle="tooltip"
+                                           data-content="http://example.com/rrmv/hasFunction"
+                                           data-placement="right">
+                                        has function</a>
+                                    </code>
+                                </td>
+                                <td>
+                                    
+                                        
+                                            <a href="#Temporal%20Function" data-placement="right">Temporal Function</a>
+                                        
+                                    
+                                </td>
+                                <td>
+                                    0..*
+                                </td>
+                                <td property="rdfs:comment">
+                                    A property that links one Period of Time with its Function inside of the Request (e.g., deadeline, term, enter into force).
+                                </td>
+                                <td property="skos:scopeNote">
+                                    
+                                </td>
+                                <td>
+                                    
+                                </td>
+                            </tr>
+                        
+                            <tr id="Period%20of%20Time.is%20incomplete"
+                                typeof="rdfs:Property"
+                                resource="http://example.com/rrmv/isIncomplete"
+                                class="class mandatory">
+                                <td>
+				    <a href="https://github.com/SEMICeu/rrmv/issues/new?title=Issue%20for%20is incomplete%20in%20Period of Time&body=Explain%20your%20issue%20for%20https://semiceu.github.io/rrmv/releases/0.0.2%23Period%20of%20Time.is%20incomplete" target="_blank" rel="noopener noreferrer" >
+                                        <i class="icon">[o]</i>
+                                    </a>
+                                </td>
+                                <td>
+                                    <code property="rdfs:label">
+                                        <a href="http://example.com/rrmv/isIncomplete"
+                                           data-toggle="tooltip"
+                                           data-content="http://example.com/rrmv/isIncomplete"
+                                           data-placement="right">
+                                        is incomplete</a>
+                                    </code>
+                                </td>
+                                <td>
+                                    
+                                        
+                                            <a href="#xsd%3Aboolean"
+                                               data-toggle="tooltip"
+                                               data-content="http://www.w3.org/2001/XMLSchema#boolean"
+                                               data-placement="right">xsd:boolean</a>
+                                        
+                                    
+                                </td>
+                                <td>
+                                    0..*
+                                </td>
+                                <td property="rdfs:comment">
+                                    Data property that track the incompleteness of the temporal parameters.
+                                </td>
+                                <td property="skos:scopeNote">
+                                    
+                                </td>
+                                <td>
+                                    
+                                </td>
+                            </tr>
+                        
+                    </tbody>
+                </table>
+            </div>
+        
+    </div>
+</section>
+
+        <section>
+            <h3 id="Person">
+                <a href="http://data.europa.eu/eli/ontology#Person"
+                   data-toggle="tooltip"
+                   data-content="http://data.europa.eu/eli/ontology#Person"
+                   data-placement="right">Person</a>
+            </h3>
+            <dl>
+                <dt>
+                    Definition
+                </dt>
+                <dd>
+                    A real person who live or has lived.
+                </dd>
+                
+                
+                    <dt>
+                        Subclass of
+                        <dt>
+                            <dd> <a href="#Agent">Agent</a>
+                                
+                        </dd>
+                    
+                    <dt>
+                        Properties
+                    </dt>
+                    
+                    <dd>
+                        No properties have been defined for this entity.
+                    </dd>
+                
+            </dl>
+            <dd>
+                Add an issue for this entity <a href="https://github.com/SEMICeu/rrmv/issues/new?title=Issue%20for%20Person&body=Explain%20your%20issue"}}>here</a>.
+            </dd>
+        </div>
+        
+    </div>
+</section>
+
+        <section>
+            <h3 id="Request">
+                <a href="http://example.com/rrmv/Request"
+                   data-toggle="tooltip"
+                   data-content="http://example.com/rrmv/Request"
+                   data-placement="right">Request</a>
+            </h3>
+            <dl>
+                <dt>
+                    Definition
+                </dt>
+                <dd>
+                    A portion of legal source expression including a mandate that produces at least one Action.
+                </dd>
+                
+                
+                    <dt>
+                        Properties
+                    </dt>
+                    
+                        <dd>
+                            For this entity the following properties are defined: <a href="#Request.changes">changes</a>
+                            , <a href="#Request.cites">cites</a>
+                            , <a href="#Request.cites">cites</a>
+                            , <a href="#Request.has%20annotation">has annotation</a>
+                            , <a href="#Request.has%20topic">has topic</a>
+                            , <a href="#Request.has%20unit">has unit</a>
+                            , <a href="#Request.has%20URI">has URI</a>
+                            , <a href="#Request.has%20value">has value</a>
+                            , <a href="#Request.is%20part%20of">is part of</a>
+                            , <a href="#Request.produces">produces</a>
+                            , <a href="#Request.related%20to">related to</a>
+                            .
+                    </dd>
+                
+            </dl>
+            <dd>
+                Add an issue for this entity <a href="https://github.com/SEMICeu/rrmv/issues/new?title=Issue%20for%20Request&body=Explain%20your%20issue"}}>here</a>.
+            </dd>
+        </div>
+        
+            <div class="u-table-overflow">
+                <table class="data-table simple" id="table-mandatory-classes">
+                    <thead>
+                        <tr class="data-table__header">
+                            <th class="data-table__header-title--sortable">
+                            </th>
+                            <th class="data-table__header-title--sortable data-table__header-title--sortable-active">
+                                Property
+                            </th>
+                            <th class="data-table__header-title--sortable">
+                                Expected Range
+                            </th>
+                            <th class="data-table__header-title--sortable">
+                                Cardinality
+                            </th>
+                            <th class="data-table__header-title--sortable">
+                                Definition 
+                            </th>
+                            <th class="data-table__header-title--sortable">
+                                Usage
+                            </th>
+                            <th class="data-table__header-title--sortable">
+                                Codelist
+                            </th>
+                        </tr>
+                    </thead>
+                    <tbody class="supertype">
+                        
+                            <tr id="Request.changes"
+                                typeof="rdfs:Property"
+                                resource="http://data.europa.eu/eli/ontology#changes"
+                                class="class mandatory">
+                                <td>
+				    <a href="https://github.com/SEMICeu/rrmv/issues/new?title=Issue%20for%20changes%20in%20Request&body=Explain%20your%20issue%20for%20https://semiceu.github.io/rrmv/releases/0.0.2%23Request.changes" target="_blank" rel="noopener noreferrer" >
+                                        <i class="icon">[o]</i>
+                                    </a>
+                                </td>
+                                <td>
+                                    <code property="rdfs:label">
+                                        <a href="http://data.europa.eu/eli/ontology#changes"
+                                           data-toggle="tooltip"
+                                           data-content="http://data.europa.eu/eli/ontology#changes"
+                                           data-placement="right">
+                                        changes</a>
+                                    </code>
+                                </td>
+                                <td>
+                                    
+                                        
+                                            <a href="#Request" data-placement="right">Request</a>
+                                        
+                                    
+                                </td>
+                                <td>
+                                    0..*
+                                </td>
+                                <td property="rdfs:comment">
+                                    Indicates that this work or expression legally changes another. This encompasses the notions of amendment, replacement, repeal, or other types of change. This may be a direct change (textual or non-textual amendment) or a consequential or indirect change.
+                                </td>
+                                <td property="skos:scopeNote">
+                                    
+                                </td>
+                                <td>
+                                    
+                                </td>
+                            </tr>
+                        
+                            <tr id="Request.cites"
+                                typeof="rdfs:Property"
+                                resource="http://data.europa.eu/eli/ontology#cites"
+                                class="class mandatory">
+                                <td>
+				    <a href="https://github.com/SEMICeu/rrmv/issues/new?title=Issue%20for%20cites%20in%20Request&body=Explain%20your%20issue%20for%20https://semiceu.github.io/rrmv/releases/0.0.2%23Request.cites" target="_blank" rel="noopener noreferrer" >
+                                        <i class="icon">[o]</i>
+                                    </a>
+                                </td>
+                                <td>
+                                    <code property="rdfs:label">
+                                        <a href="http://data.europa.eu/eli/ontology#cites"
+                                           data-toggle="tooltip"
+                                           data-content="http://data.europa.eu/eli/ontology#cites"
+                                           data-placement="right">
+                                        cites</a>
+                                    </code>
+                                </td>
+                                <td>
+                                    
+                                        
+                                            <a href="#Request" data-placement="right">Request</a>
+                                        
+                                    
+                                </td>
+                                <td>
+                                    0..*
+                                </td>
+                                <td property="rdfs:comment">
+                                    Citation in the text of the legislation. This may be at the legal resource or legal expression level, as required by the implementation context. This includes verbatim citation and citations in referrals.
+                                </td>
+                                <td property="skos:scopeNote">
+                                    
+                                </td>
+                                <td>
+                                    
+                                </td>
+                            </tr>
+                        
+                            <tr id="Request.cites"
+                                typeof="rdfs:Property"
+                                resource="http://data.europa.eu/eli/ontology#cites"
+                                class="class mandatory">
+                                <td>
+				    <a href="https://github.com/SEMICeu/rrmv/issues/new?title=Issue%20for%20cites%20in%20Request&body=Explain%20your%20issue%20for%20https://semiceu.github.io/rrmv/releases/0.0.2%23Request.cites" target="_blank" rel="noopener noreferrer" >
+                                        <i class="icon">[o]</i>
+                                    </a>
+                                </td>
+                                <td>
+                                    <code property="rdfs:label">
+                                        <a href="http://data.europa.eu/eli/ontology#cites"
+                                           data-toggle="tooltip"
+                                           data-content="http://data.europa.eu/eli/ontology#cites"
+                                           data-placement="right">
+                                        cites</a>
+                                    </code>
+                                </td>
+                                <td>
+                                    
+                                        
+                                            <a href="#Expression" data-placement="right">Expression</a>
+                                        
+                                    
+                                </td>
+                                <td>
+                                    0..*
+                                </td>
+                                <td property="rdfs:comment">
+                                    Citation in the text of the legislation. This may be at the legal resource or legal expression level, as required by the implementation context. This includes verbatim citation and citations in referrals.
+                                </td>
+                                <td property="skos:scopeNote">
+                                    
+                                </td>
+                                <td>
+                                    
+                                </td>
+                            </tr>
+                        
+                            <tr id="Request.has%20annotation"
+                                typeof="rdfs:Property"
+                                resource="http://example.com/rrmv/hasAnnotation"
+                                class="class mandatory">
+                                <td>
+				    <a href="https://github.com/SEMICeu/rrmv/issues/new?title=Issue%20for%20has annotation%20in%20Request&body=Explain%20your%20issue%20for%20https://semiceu.github.io/rrmv/releases/0.0.2%23Request.has%20annotation" target="_blank" rel="noopener noreferrer" >
+                                        <i class="icon">[o]</i>
+                                    </a>
+                                </td>
+                                <td>
+                                    <code property="rdfs:label">
+                                        <a href="http://example.com/rrmv/hasAnnotation"
+                                           data-toggle="tooltip"
+                                           data-content="http://example.com/rrmv/hasAnnotation"
+                                           data-placement="right">
+                                        has annotation</a>
+                                    </code>
+                                </td>
+                                <td>
+                                    
+                                        
+                                            <a href="#xsd%3Astring"
+                                               data-toggle="tooltip"
+                                               data-content="http://www.w3.org/2001/XMLSchema#string"
+                                               data-placement="right">xsd:string</a>
+                                        
+                                    
+                                </td>
+                                <td>
+                                    0..*
+                                </td>
+                                <td property="rdfs:comment">
+                                    Annotation related to the Action or Request made by the domain expert.
+                                </td>
+                                <td property="skos:scopeNote">
+                                    
+                                </td>
+                                <td>
+                                    
+                                </td>
+                            </tr>
+                        
+                            <tr id="Request.has%20topic"
+                                typeof="rdfs:Property"
+                                resource="http://example.com/rrmv/hasTopic"
+                                class="class mandatory">
+                                <td>
+				    <a href="https://github.com/SEMICeu/rrmv/issues/new?title=Issue%20for%20has topic%20in%20Request&body=Explain%20your%20issue%20for%20https://semiceu.github.io/rrmv/releases/0.0.2%23Request.has%20topic" target="_blank" rel="noopener noreferrer" >
+                                        <i class="icon">[o]</i>
+                                    </a>
+                                </td>
+                                <td>
+                                    <code property="rdfs:label">
+                                        <a href="http://example.com/rrmv/hasTopic"
+                                           data-toggle="tooltip"
+                                           data-content="http://example.com/rrmv/hasTopic"
+                                           data-placement="right">
+                                        has topic</a>
+                                    </code>
+                                </td>
+                                <td>
+                                    
+                                        
+                                            <a href="#skos%3AConcept"
+                                               data-toggle="tooltip"
+                                               data-content="http://www.w3.org/2004/02/skos/core#Concept"
+                                               data-placement="right">skos:Concept</a>
+                                        
+                                    
+                                </td>
+                                <td>
+                                    0..*
+                                </td>
+                                <td property="rdfs:comment">
+                                    The topic of the request.
+                                </td>
+                                <td property="skos:scopeNote">
+                                    
+                                </td>
+                                <td>
+                                    
+                                </td>
+                            </tr>
+                        
+                            <tr id="Request.has%20unit"
+                                typeof="rdfs:Property"
+                                resource="http://example.com/rrmv/hasUnit"
+                                class="class mandatory">
+                                <td>
+				    <a href="https://github.com/SEMICeu/rrmv/issues/new?title=Issue%20for%20has unit%20in%20Request&body=Explain%20your%20issue%20for%20https://semiceu.github.io/rrmv/releases/0.0.2%23Request.has%20unit" target="_blank" rel="noopener noreferrer" >
+                                        <i class="icon">[o]</i>
+                                    </a>
+                                </td>
+                                <td>
+                                    <code property="rdfs:label">
+                                        <a href="http://example.com/rrmv/hasUnit"
+                                           data-toggle="tooltip"
+                                           data-content="http://example.com/rrmv/hasUnit"
+                                           data-placement="right">
+                                        has unit</a>
+                                    </code>
+                                </td>
+                                <td>
+                                    
+                                        
+                                            <a href="#Frequency" data-placement="right">Frequency</a>
+                                        
+                                    
+                                </td>
+                                <td>
+                                    0..*
+                                </td>
+                                <td property="rdfs:comment">
+                                    The property linking a Request with the Frequency and expressing the unit of this frequency.
+                                </td>
+                                <td property="skos:scopeNote">
+                                    
+                                </td>
+                                <td>
+                                    
+                                </td>
+                            </tr>
+                        
+                            <tr id="Request.has%20URI"
+                                typeof="rdfs:Property"
+                                resource="http://example.com/rrmv/hasURI"
+                                class="class mandatory">
+                                <td>
+				    <a href="https://github.com/SEMICeu/rrmv/issues/new?title=Issue%20for%20has URI%20in%20Request&body=Explain%20your%20issue%20for%20https://semiceu.github.io/rrmv/releases/0.0.2%23Request.has%20URI" target="_blank" rel="noopener noreferrer" >
+                                        <i class="icon">[o]</i>
+                                    </a>
+                                </td>
+                                <td>
+                                    <code property="rdfs:label">
+                                        <a href="http://example.com/rrmv/hasURI"
+                                           data-toggle="tooltip"
+                                           data-content="http://example.com/rrmv/hasURI"
+                                           data-placement="right">
+                                        has URI</a>
+                                    </code>
+                                </td>
+                                <td>
+                                    
+                                        
+                                            <a href="#xsd%3AanyURI"
+                                               data-toggle="tooltip"
+                                               data-content="http://www.w3.org/2001/XMLSchema#anyURI"
+                                               data-placement="right">xsd:anyURI</a>
+                                        
+                                    
+                                </td>
+                                <td>
+                                    0..*
+                                </td>
+                                <td property="rdfs:comment">
+                                    URI of the Request.
+                                </td>
+                                <td property="skos:scopeNote">
+                                    
+                                </td>
+                                <td>
+                                    
+                                </td>
+                            </tr>
+                        
+                            <tr id="Request.has%20value"
+                                typeof="rdfs:Property"
+                                resource="http://example.com/rrmv/hasValue"
+                                class="class mandatory">
+                                <td>
+				    <a href="https://github.com/SEMICeu/rrmv/issues/new?title=Issue%20for%20has value%20in%20Request&body=Explain%20your%20issue%20for%20https://semiceu.github.io/rrmv/releases/0.0.2%23Request.has%20value" target="_blank" rel="noopener noreferrer" >
+                                        <i class="icon">[o]</i>
+                                    </a>
+                                </td>
+                                <td>
+                                    <code property="rdfs:label">
+                                        <a href="http://example.com/rrmv/hasValue"
+                                           data-toggle="tooltip"
+                                           data-content="http://example.com/rrmv/hasValue"
+                                           data-placement="right">
+                                        has value</a>
+                                    </code>
+                                </td>
+                                <td>
+                                    
+                                        
+                                            <a href="#Frequency" data-placement="right">Frequency</a>
+                                        
+                                    
+                                </td>
+                                <td>
+                                    0..*
+                                </td>
+                                <td property="rdfs:comment">
+                                    The property linking a Request a Frequency expressing the value of the unit of the frequency (e.g., 2 is the value, quarter is the unit).
+                                </td>
+                                <td property="skos:scopeNote">
+                                    
+                                </td>
+                                <td>
+                                    
+                                </td>
+                            </tr>
+                        
+                            <tr id="Request.is%20part%20of"
+                                typeof="rdfs:Property"
+                                resource="http://data.europa.eu/eli/ontology#is_part_of"
+                                class="class mandatory">
+                                <td>
+				    <a href="https://github.com/SEMICeu/rrmv/issues/new?title=Issue%20for%20is part of%20in%20Request&body=Explain%20your%20issue%20for%20https://semiceu.github.io/rrmv/releases/0.0.2%23Request.is%20part%20of" target="_blank" rel="noopener noreferrer" >
+                                        <i class="icon">[o]</i>
+                                    </a>
+                                </td>
+                                <td>
+                                    <code property="rdfs:label">
+                                        <a href="http://data.europa.eu/eli/ontology#is_part_of"
+                                           data-toggle="tooltip"
+                                           data-content="http://data.europa.eu/eli/ontology#is_part_of"
+                                           data-placement="right">
+                                        is part of</a>
+                                    </code>
+                                </td>
+                                <td>
+                                    
+                                        
+                                            <a href="#Expression" data-placement="right">Expression</a>
+                                        
+                                    
+                                </td>
+                                <td>
+                                    0..*
+                                </td>
+                                <td property="rdfs:comment">
+                                    Indicates a work in which this one is physically included. Covers the case of text included in an Official Journal, or an article included in a text.
+                                </td>
+                                <td property="skos:scopeNote">
+                                    
+                                </td>
+                                <td>
+                                    
+                                </td>
+                            </tr>
+                        
+                            <tr id="Request.produces"
+                                typeof="rdfs:Property"
+                                resource="http://example.com/rrmv/produces"
+                                class="class mandatory">
+                                <td>
+				    <a href="https://github.com/SEMICeu/rrmv/issues/new?title=Issue%20for%20produces%20in%20Request&body=Explain%20your%20issue%20for%20https://semiceu.github.io/rrmv/releases/0.0.2%23Request.produces" target="_blank" rel="noopener noreferrer" >
+                                        <i class="icon">[o]</i>
+                                    </a>
+                                </td>
+                                <td>
+                                    <code property="rdfs:label">
+                                        <a href="http://example.com/rrmv/produces"
+                                           data-toggle="tooltip"
+                                           data-content="http://example.com/rrmv/produces"
+                                           data-placement="right">
+                                        produces</a>
+                                    </code>
+                                </td>
+                                <td>
+                                    
+                                        
+                                            <a href="#Action" data-placement="right">Action</a>
+                                        
+                                    
+                                </td>
+                                <td>
+                                    0..*
+                                </td>
+                                <td property="rdfs:comment">
+                                    A Request produces one or many Action.
+                                </td>
+                                <td property="skos:scopeNote">
+                                    
+                                </td>
+                                <td>
+                                    
+                                </td>
+                            </tr>
+                        
+                            <tr id="Request.related%20to"
+                                typeof="rdfs:Property"
+                                resource="http://data.europa.eu/eli/ontology#related_to"
+                                class="class mandatory">
+                                <td>
+				    <a href="https://github.com/SEMICeu/rrmv/issues/new?title=Issue%20for%20related to%20in%20Request&body=Explain%20your%20issue%20for%20https://semiceu.github.io/rrmv/releases/0.0.2%23Request.related%20to" target="_blank" rel="noopener noreferrer" >
+                                        <i class="icon">[o]</i>
+                                    </a>
+                                </td>
+                                <td>
+                                    <code property="rdfs:label">
+                                        <a href="http://data.europa.eu/eli/ontology#related_to"
+                                           data-toggle="tooltip"
+                                           data-content="http://data.europa.eu/eli/ontology#related_to"
+                                           data-placement="right">
+                                        related to</a>
+                                    </code>
+                                </td>
+                                <td>
+                                    
+                                        
+                                            <a href="#Request" data-placement="right">Request</a>
+                                        
+                                    
+                                </td>
+                                <td>
+                                    0..*
+                                </td>
+                                <td property="rdfs:comment">
+                                    Indicates a somehow related other document, not necessarily a legal resource.
+                                </td>
+                                <td property="skos:scopeNote">
+                                    
+                                </td>
+                                <td>
+                                    
+                                </td>
+                            </tr>
+                        
+                    </tbody>
+                </table>
+            </div>
+        
+    </div>
+</section>
+
+        <section>
+            <h3 id="Result%20Type">
+                <a href="http://example.com/rrmv/ResultType"
+                   data-toggle="tooltip"
+                   data-content="http://example.com/rrmv/ResultType"
+                   data-placement="right">Result Type</a>
+            </h3>
+            <dl>
+                <dt>
+                    Definition
+                </dt>
+                <dd>
+                    Result Type. SKOS Concept.
+                </dd>
+                
+                
+                    <dt>
+                        Subclass of
+                        <dt>
+                            <dd> <a href="http://www.w3.org/2004/02/skos/core#Concept">Concept</a>
+                                
+                        </dd>
+                    
+                    <dt>
+                        Properties
+                    </dt>
+                    
+                    <dd>
+                        No properties have been defined for this entity.
+                    </dd>
+                
+            </dl>
+            <dd>
+                Add an issue for this entity <a href="https://github.com/SEMICeu/rrmv/issues/new?title=Issue%20for%20ResultType&body=Explain%20your%20issue"}}>here</a>.
+            </dd>
+        </div>
+        
+    </div>
+</section>
+
+        <section>
+            <h3 id="Role">
+                <a href="http://example.com/rrmv/Role"
+                   data-toggle="tooltip"
+                   data-content="http://example.com/rrmv/Role"
+                   data-placement="right">Role</a>
+            </h3>
+            <dl>
+                <dt>
+                    Definition
+                </dt>
+                <dd>
+                    Role is played by and Agent involved in the Request.
+                </dd>
+                
+                
+                    <dt>
+                        Properties
+                    </dt>
+                    
+                        <dd>
+                            For this entity the following properties are defined: <a href="#Role.has%20type">has type</a>
+                            .
+                    </dd>
+                
+            </dl>
+            <dd>
+                Add an issue for this entity <a href="https://github.com/SEMICeu/rrmv/issues/new?title=Issue%20for%20Role&body=Explain%20your%20issue"}}>here</a>.
+            </dd>
+        </div>
+        
+            <div class="u-table-overflow">
+                <table class="data-table simple" id="table-mandatory-classes">
+                    <thead>
+                        <tr class="data-table__header">
+                            <th class="data-table__header-title--sortable">
+                            </th>
+                            <th class="data-table__header-title--sortable data-table__header-title--sortable-active">
+                                Property
+                            </th>
+                            <th class="data-table__header-title--sortable">
+                                Expected Range
+                            </th>
+                            <th class="data-table__header-title--sortable">
+                                Cardinality
+                            </th>
+                            <th class="data-table__header-title--sortable">
+                                Definition 
+                            </th>
+                            <th class="data-table__header-title--sortable">
+                                Usage
+                            </th>
+                            <th class="data-table__header-title--sortable">
+                                Codelist
+                            </th>
+                        </tr>
+                    </thead>
+                    <tbody class="supertype">
+                        
+                            <tr id="Role.has%20type"
+                                typeof="rdfs:Property"
+                                resource="http://example.com/rrmv/hasType"
+                                class="class mandatory">
+                                <td>
+				    <a href="https://github.com/SEMICeu/rrmv/issues/new?title=Issue%20for%20has type%20in%20Role&body=Explain%20your%20issue%20for%20https://semiceu.github.io/rrmv/releases/0.0.2%23Role.has%20type" target="_blank" rel="noopener noreferrer" >
+                                        <i class="icon">[o]</i>
+                                    </a>
+                                </td>
+                                <td>
+                                    <code property="rdfs:label">
+                                        <a href="http://example.com/rrmv/hasType"
+                                           data-toggle="tooltip"
+                                           data-content="http://example.com/rrmv/hasType"
+                                           data-placement="right">
+                                        has type</a>
+                                    </code>
+                                </td>
+                                <td>
+                                    
+                                        
+                                            <a href="#Role%20Type" data-placement="right">Role Type</a>
+                                        
+                                    
+                                </td>
+                                <td>
+                                    0..*
+                                </td>
+                                <td property="rdfs:comment">
+                                    Assign the type to SKOS controlled vocabulary.
+                                </td>
+                                <td property="skos:scopeNote">
+                                    
+                                </td>
+                                <td>
+                                    
+                                </td>
+                            </tr>
+                        
+                    </tbody>
+                </table>
+            </div>
+        
+    </div>
+</section>
+
+        <section>
+            <h3 id="Role%20Type">
+                <a href="http://example.com/rrmv/RoleType"
+                   data-toggle="tooltip"
+                   data-content="http://example.com/rrmv/RoleType"
+                   data-placement="right">Role Type</a>
+            </h3>
+            <dl>
+                <dt>
+                    Definition
+                </dt>
+                <dd>
+                    The kind of role of the agent as is described in the legal resource.
+                </dd>
+                
+                
+                    <dt>
+                        Subclass of
+                        <dt>
+                            <dd> <a href="http://www.w3.org/2004/02/skos/core#Concept">Concept</a>
+                                
+                        </dd>
+                    
+                    <dt>
+                        Properties
+                    </dt>
+                    
+                    <dd>
+                        No properties have been defined for this entity.
+                    </dd>
+                
+            </dl>
+            <dd>
+                Add an issue for this entity <a href="https://github.com/SEMICeu/rrmv/issues/new?title=Issue%20for%20RoleType&body=Explain%20your%20issue"}}>here</a>.
+            </dd>
+        </div>
+        
+    </div>
+</section>
+
+        <section>
+            <h3 id="Status">
+                <a href="http://example.com/rrmv/Status"
+                   data-toggle="tooltip"
+                   data-content="http://example.com/rrmv/Status"
+                   data-placement="right">Status</a>
+            </h3>
+            <dl>
+                <dt>
+                    Definition
+                </dt>
+                <dd>
+                    Status of Action.
+                </dd>
+                
+                
+                    <dt>
+                        Subclass of
+                        <dt>
+                            <dd> <a href="http://www.w3.org/2004/02/skos/core#Concept">Concept</a>
+                                
+                        </dd>
+                    
+                    <dt>
+                        Properties
+                    </dt>
+                    
+                    <dd>
+                        No properties have been defined for this entity.
+                    </dd>
+                
+            </dl>
+            <dd>
+                Add an issue for this entity <a href="https://github.com/SEMICeu/rrmv/issues/new?title=Issue%20for%20Status&body=Explain%20your%20issue"}}>here</a>.
+            </dd>
+        </div>
+        
+    </div>
+</section>
+
+        <section>
+            <h3 id="Temporal%20Function">
+                <a href="http://example.com/rrmv/TemporalFunction"
+                   data-toggle="tooltip"
+                   data-content="http://example.com/rrmv/TemporalFunction"
+                   data-placement="right">Temporal Function</a>
+            </h3>
+            <dl>
+                <dt>
+                    Definition
+                </dt>
+                <dd>
+                    Function of the temporal parameter.
+                </dd>
+                
+                
+                    <dt>
+                        Subclass of
+                        <dt>
+                            <dd> <a href="http://www.w3.org/2004/02/skos/core#Concept">Concept</a>
+                                
+                        </dd>
+                    
+                    <dt>
+                        Properties
+                    </dt>
+                    
+                    <dd>
+                        No properties have been defined for this entity.
+                    </dd>
+                
+            </dl>
+            <dd>
+                Add an issue for this entity <a href="https://github.com/SEMICeu/rrmv/issues/new?title=Issue%20for%20TemporalFunction&body=Explain%20your%20issue"}}>here</a>.
+            </dd>
+        </div>
+        
+    </div>
+</section>
+
+        <section>
+            <h3 id="Work">
+                <a href="http://data.europa.eu/eli/ontology#LegalResource"
+                   data-toggle="tooltip"
+                   data-content="http://data.europa.eu/eli/ontology#LegalResource"
+                   data-placement="right">Work</a>
+            </h3>
+            <dl>
+                <dt>
+                    Definition
+                </dt>
+                <dd>
+                    Any distinct intellectual creation (i.e., the intellectual content), in the context of ELI.
+                </dd>
+                
+                
+                    <dt>
+                        Properties
+                    </dt>
+                    
+                    <dd>
+                        No properties have been defined for this entity.
+                    </dd>
+                
+            </dl>
+            <dd>
+                Add an issue for this entity <a href="https://github.com/SEMICeu/rrmv/issues/new?title=Issue%20for%20Work&body=Explain%20your%20issue"}}>here</a>.
+            </dd>
+        </div>
+        
+    </div>
+</section>
+
+</section>
+
+    <section>
+        <h2>
+            Datatypes
+        </h2>
+        
+    </section>
+
+
+<section class="informative">
+    <h2 aria-level="1" role="heading" id="h2_sotd">
+        JSON-LD context
+    </h2>
+    <div class="region region--no-space-top" id="jsonld">
+         (non normative)
+        
+            <p>
+                A reusable JSON-LD context definition for this application profile is retrievable at: <a href="/rrmv/releases/0.0.2/context/rrmv.jsonld"
+    target="_blank">/rrmv/releases/0.0.2/context/rrmv.jsonld</a>
+            </p>
+        
+    </div>
+</section>
+<section class="informative">
+    <h2 aria-level="1" role="heading" id="h2_sotd">
+        SHACL template
+    </h2>
+    <div class="region region--no-space-top" id="shacl">
+         (non normative)
+        
+            <p>
+                A reusable SHACL template for this application profile is retrievable at: <a href="/rrmv/releases/0.0.2/shacl/rrmv-SHACL.ttl"
+    target="_blank">/rrmv/releases/0.0.2/shacl/rrmv-SHACL.ttl</a>
+            </p>
+        
+    </div>
+</section>
+<section class="informative">
+    <h2 aria-level="1" role="heading" id="h2_sotd">
+        Examples
+    </h2>
+    <div class="region region--no-space-top" id="examples">
+        
+	<p> No examples defined </p>
+        
+    </div>
+</section>
+
+
+<section class="informative">
+	<h2>Usage Guidelines</h2>
+</section>
+ 
+
+<section class="appendix">
+
+<h2>Quick Reference of Classes and Properties</h2>
+
+
+<table id="table-quickoverview" class="simple">
+<thead><tr><th>Class</th><th>Class IRI</th><th>Property</th><th>Property IRI</th></tr></thead>
+<tbody>
+
+<tr><td>
+		<a href="#Action">Action</a>
+	</td><td>
+		http://example.com/rrmv/Action
+	</td><td>
+        
+        
+	        <a href="#Action.at%20time">at time </a><br/>
+        
+	        <a href="#Action.has%20agent%20role">has agent role </a><br/>
+        
+	        <a href="#Action.has%20annotation">has annotation </a><br/>
+        
+	        <a href="#Action.has%20next">has next </a><br/>
+        
+	        <a href="#Action.has%20result">has result </a><br/>
+        
+	        <a href="#Action.has%20status">has status </a><br/>
+        
+	        <a href="#Action.related%20to">related to </a><br/>
+        
+        
+	</td><td>
+        
+        
+	       http://example.com/rrmv/atTime<br/>
+        
+	       http://example.com/rrmv/hasAgentRole<br/>
+        
+	       http://example.com/rrmv/hasAnnotation<br/>
+        
+	       http://example.com/rrmv/hasNext<br/>
+        
+	       http://example.com/rrmv/hasResult<br/>
+        
+	       http://example.com/rrmv/hasStatus<br/>
+        
+	       http://data.europa.eu/eli/ontology#related_to<br/>
+        
+        
+	</td></tr>
+
+<tr><td>
+		<a href="#Action%20Result">Action Result</a>
+	</td><td>
+		http://example.com/rrmv/ActionResult
+	</td><td>
+        
+        
+	        <a href="#Action%20Result.has%20document">has document </a><br/>
+        
+	        <a href="#Action%20Result.has%20title">has title </a><br/>
+        
+	        <a href="#Action%20Result.has%20type">has type </a><br/>
+        
+        
+	</td><td>
+        
+        
+	       http://example.com/rrmv/hasDocument<br/>
+        
+	       http://example.com/rrmv/hasTitle<br/>
+        
+	       http://example.com/rrmv/hasType<br/>
+        
+        
+	</td></tr>
+
+<tr><td>
+		<a href="#Agent">Agent</a>
+	</td><td>
+		http://data.europa.eu/eli/ontology#Agent
+	</td><td>
+        
+        
+	        <a href="#Agent.has%20type">has type </a><br/>
+        
+        
+	</td><td>
+        
+        
+	       http://example.com/rrmv/hasType<br/>
+        
+        
+	</td></tr>
+
+<tr><td>
+		<a href="#Agent%20Role">Agent Role</a>
+	</td><td>
+		http://example.com/rrmv/AgentRole
+	</td><td>
+        
+        
+	        <a href="#Agent%20Role.at%20time">at time </a><br/>
+        
+	        <a href="#Agent%20Role.for%20agent">for agent </a><br/>
+        
+	        <a href="#Agent%20Role.with%20role">with role </a><br/>
+        
+        
+	</td><td>
+        
+        
+	       http://example.com/rrmv/atTime<br/>
+        
+	       http://example.com/rrmv/forAgent<br/>
+        
+	       http://example.com/rrmv/withRole<br/>
+        
+        
+	</td></tr>
+
+<tr><td>
+		<a href="#Agent%20Type">Agent Type</a>
+	</td><td>
+		http://example.com/rrmv/AgentType
+	</td><td>
+        
+	</td><td>
+        
+	</td></tr>
+
+<tr><td>
+		<a href="#Expression">Expression</a>
+	</td><td>
+		http://data.europa.eu/eli/ontology#Expression
+	</td><td>
+        
+        
+	        <a href="#Expression.has%20URI">has URI </a><br/>
+        
+	        <a href="#Expression.is%20realized%20by">is realized by </a><br/>
+        
+        
+	</td><td>
+        
+        
+	       http:/example.com/rrmv/hasURI<br/>
+        
+	       http://data.europa.eu/eli/ontology#is_realized_by<br/>
+        
+        
+	</td></tr>
+
+<tr><td>
+		<a href="#Frequency">Frequency</a>
+	</td><td>
+		http://example.com/rrmv/Frequency
+	</td><td>
+        
+	</td><td>
+        
+	</td></tr>
+
+<tr><td>
+		<a href="#Manifestation">Manifestation</a>
+	</td><td>
+		http://data.europa.eu/eli/ontology#Manifestation
+	</td><td>
+        
+        
+	        <a href="#Manifestation.is%20embodied%20by">is embodied by </a><br/>
+        
+        
+	</td><td>
+        
+        
+	       http://data.europa.eu/eli/ontology#is_embodied_by<br/>
+        
+        
+	</td></tr>
+
+<tr><td>
+		<a href="#Organization">Organization</a>
+	</td><td>
+		http://data.europa.eu/eli/ontology#Organization
+	</td><td>
+        
+	</td><td>
+        
+	</td></tr>
+
+<tr><td>
+		<a href="#Period%20of%20Time">Period of Time</a>
+	</td><td>
+		http://www.w3.org/2006/time#ProperInterval
+	</td><td>
+        
+        
+	        <a href="#Period%20of%20Time.has%20function">has function </a><br/>
+        
+	        <a href="#Period%20of%20Time.is%20incomplete">is incomplete </a><br/>
+        
+        
+	</td><td>
+        
+        
+	       http://example.com/rrmv/hasFunction<br/>
+        
+	       http://example.com/rrmv/isIncomplete<br/>
+        
+        
+	</td></tr>
+
+<tr><td>
+		<a href="#Person">Person</a>
+	</td><td>
+		http://data.europa.eu/eli/ontology#Person
+	</td><td>
+        
+	</td><td>
+        
+	</td></tr>
+
+<tr><td>
+		<a href="#Request">Request</a>
+	</td><td>
+		http://example.com/rrmv/Request
+	</td><td>
+        
+        
+	        <a href="#Request.changes">changes </a><br/>
+        
+	        <a href="#Request.cites">cites </a><br/>
+        
+	        <a href="#Request.cites">cites </a><br/>
+        
+	        <a href="#Request.has%20annotation">has annotation </a><br/>
+        
+	        <a href="#Request.has%20topic">has topic </a><br/>
+        
+	        <a href="#Request.has%20unit">has unit </a><br/>
+        
+	        <a href="#Request.has%20URI">has URI </a><br/>
+        
+	        <a href="#Request.has%20value">has value </a><br/>
+        
+	        <a href="#Request.is%20part%20of">is part of </a><br/>
+        
+	        <a href="#Request.produces">produces </a><br/>
+        
+	        <a href="#Request.related%20to">related to </a><br/>
+        
+        
+	</td><td>
+        
+        
+	       http://data.europa.eu/eli/ontology#changes<br/>
+        
+	       http://data.europa.eu/eli/ontology#cites<br/>
+        
+	       http://data.europa.eu/eli/ontology#cites<br/>
+        
+	       http://example.com/rrmv/hasAnnotation<br/>
+        
+	       http://example.com/rrmv/hasTopic<br/>
+        
+	       http://example.com/rrmv/hasUnit<br/>
+        
+	       http://example.com/rrmv/hasURI<br/>
+        
+	       http://example.com/rrmv/hasValue<br/>
+        
+	       http://data.europa.eu/eli/ontology#is_part_of<br/>
+        
+	       http://example.com/rrmv/produces<br/>
+        
+	       http://data.europa.eu/eli/ontology#related_to<br/>
+        
+        
+	</td></tr>
+
+<tr><td>
+		<a href="#Result%20Type">Result Type</a>
+	</td><td>
+		http://example.com/rrmv/ResultType
+	</td><td>
+        
+	</td><td>
+        
+	</td></tr>
+
+<tr><td>
+		<a href="#Role">Role</a>
+	</td><td>
+		http://example.com/rrmv/Role
+	</td><td>
+        
+        
+	        <a href="#Role.has%20type">has type </a><br/>
+        
+        
+	</td><td>
+        
+        
+	       http://example.com/rrmv/hasType<br/>
+        
+        
+	</td></tr>
+
+<tr><td>
+		<a href="#Role%20Type">Role Type</a>
+	</td><td>
+		http://example.com/rrmv/RoleType
+	</td><td>
+        
+	</td><td>
+        
+	</td></tr>
+
+<tr><td>
+		<a href="#Status">Status</a>
+	</td><td>
+		http://example.com/rrmv/Status
+	</td><td>
+        
+	</td><td>
+        
+	</td></tr>
+
+<tr><td>
+		<a href="#Temporal%20Function">Temporal Function</a>
+	</td><td>
+		http://example.com/rrmv/TemporalFunction
+	</td><td>
+        
+	</td><td>
+        
+	</td></tr>
+
+<tr><td>
+		<a href="#Work">Work</a>
+	</td><td>
+		http://data.europa.eu/eli/ontology#LegalResource
+	</td><td>
+        
+	</td><td>
+        
+	</td></tr>
+
+<tbody>	     
+</table>
+
+</section>
+
+<section class="appendix">
+
+<h2>Acknowledgments</h2>
+
+The editors gratefully acknowledge the contributions made to this document by all members of the working group.
+
+This work was elaborated by a Working Group under the ISA programme. The ISA Programme of the European Commission was represented by Suzanne Wigard, Pavlina Fragkou and Fidel Santiago. Natasa Sofou & Bert Van Nuffelen were the editors of the specification. 
+
+Contibutors: Martin Alvarez-Espinar, Oystein Asnes, Makx Dekkers, Jean Delahousse, Ine De Visser, Adina Dragan, Dietmar Gattwinkel, Stijn Goedertier, Bart Hanssens, Luis Daniel Ibáñez, Jakub Klímek, Andreas Kuckartz, Christine Laaboudi-Spoiden, Giorgia Lodi, Ludger A. Rinsche, Andrea Perego, Maxime Servais, Emidio Stani, Sebastian Sklarß, Sander Van Dooren, Bert Van Nuffelen, Suzanne Wigard.
+
+Contributors:
+
+
+.
+</section>
+<!-- End page content -->
+</body>
+</html>
