@@ -1,11 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <xs:schema xmlns="https://data.europa.eu/m8g/xml/" xmlns:xs="http://www.w3.org/2001/XMLSchema" targetNamespace="https://data.europa.eu/m8g/xml/" version="2.0.0" elementFormDefault="qualified" attributeFormDefault="unqualified" xmlns:cv="https://data.europa.eu/m8g/xml/">
-  <xs:element name="Agent" type="AgentType"/>
-  <xs:element name="Expression" type="ExpressionType"/>
-  <xs:element name="Manifestation" type="ManifestationType"/>
-  <xs:element name="Organization" type="OrganizationType"/>
-  <xs:element name="Person" type="PersonType"/>
-  <xs:element name="Work" type="WorkType"/>
   <xs:element name="Action" type="ActionType"/>
   <xs:element name="ActionResult" type="ActionResultType"/>
   <xs:element name="AgentRole" type="AgentRoleType"/>
@@ -14,6 +8,12 @@
   <xs:element name="Request" type="RequestType"/>
   <xs:element name="Status" type="StatusType"/>
   <xs:element name="TemporalFunction" type="TemporalFunctionType"/>
+  <xs:element name="Agent" type="AgentType"/>
+  <xs:element name="Expression" type="ExpressionType"/>
+  <xs:element name="Manifestation" type="ManifestationType"/>
+  <xs:element name="Organization" type="OrganizationType"/>
+  <xs:element name="Person" type="PersonType"/>
+  <xs:element name="Work" type="WorkType"/>
   <xs:element name="ResultType" type="ResultTypeType"/>
   <xs:element name="Role" type="RoleType"/>
   <xs:element name="RoleType" type="RoleTypeType"/>
@@ -35,91 +35,6 @@
         <xs:attribute name="conceptSchemeRef" type="xs:IDREF"/>
       </xs:extension>
     </xs:simpleContent>
-  </xs:complexType>
-  <xs:complexType name="AgentType">
-    <xs:sequence/>
-    <xs:attribute name="AgentRef" type="xs:IDREF">
-      <xs:annotation>
-        <xs:documentation xml:lang="en">Reference to Agent ID</xs:documentation>
-      </xs:annotation>
-    </xs:attribute>
-  </xs:complexType>
-  <xs:complexType name="ExpressionType">
-    <xs:sequence>
-      <xs:element name="cites" ref="ExpressionType" maxOccurs="unbounded" minOccurs="0">
-        <xs:annotation>
-          <xs:documentation xml:lang="en">Citation in the text of the legislation. This may be at the legal resource or legal expression level, as required by the implementation context. This includes verbatim citation and citations in referrals.</xs:documentation>
-        </xs:annotation>
-      </xs:element>
-      <xs:element name="embodies" ref="ManifestationType" maxOccurs="unbounded" minOccurs="0">
-        <xs:annotation>
-          <xs:documentation xml:lang="en">Relates a manifestation to the expression that it embodies. Inverse of "is_embodied_by".</xs:documentation>
-        </xs:annotation>
-      </xs:element>
-      <xs:element name="isPartOf" ref="ExpressionType" maxOccurs="unbounded" minOccurs="0">
-        <xs:annotation>
-          <xs:documentation xml:lang="en">Indicates a work in which this one is physically included. Covers the case of text included in an Official Journal, or an article included in a text.</xs:documentation>
-        </xs:annotation>
-      </xs:element>
-      <xs:element name="isRealizedBy" ref="WorkType" maxOccurs="unbounded" minOccurs="0">
-        <xs:annotation>
-          <xs:documentation xml:lang="en">Relates a work to an expression of this work in the form of a "sequence of signs" (typically alpha-numeric characters in a legal context).</xs:documentation>
-        </xs:annotation>
-      </xs:element>
-      <xs:element name="isRealizedBy" ref="WorkType" maxOccurs="unbounded" minOccurs="0">
-        <xs:annotation>
-          <xs:documentation xml:lang="en">Relates a work to an expression of this work in the form of a "sequence of signs" (typically alpha-numeric characters in a legal context).</xs:documentation>
-        </xs:annotation>
-      </xs:element>
-      <xs:element name="hasUri" type="xs:anyURI" maxOccurs="unbounded" minOccurs="0">
-        <xs:annotation>
-          <xs:documentation xml:lang="en">URI of the Legal Source Expression where the Request is expressed.</xs:documentation>
-        </xs:annotation>
-      </xs:element>
-    </xs:sequence>
-    <xs:attribute name="ExpressionRef" type="xs:IDREF">
-      <xs:annotation>
-        <xs:documentation xml:lang="en">Reference to Expression ID</xs:documentation>
-      </xs:annotation>
-    </xs:attribute>
-  </xs:complexType>
-  <xs:complexType name="ManifestationType">
-    <xs:sequence>
-      <xs:element name="isEmbodiedBy" ref="ExpressionType" maxOccurs="unbounded" minOccurs="0">
-        <xs:annotation>
-          <xs:documentation xml:lang="en">Relates an expression to a manifestation of that expression.</xs:documentation>
-        </xs:annotation>
-      </xs:element>
-    </xs:sequence>
-    <xs:attribute name="ManifestationRef" type="xs:IDREF">
-      <xs:annotation>
-        <xs:documentation xml:lang="en">Reference to Manifestation ID</xs:documentation>
-      </xs:annotation>
-    </xs:attribute>
-  </xs:complexType>
-  <xs:complexType name="OrganizationType">
-    <xs:sequence/>
-    <xs:attribute name="OrganizationRef" type="xs:IDREF">
-      <xs:annotation>
-        <xs:documentation xml:lang="en">Reference to Organization ID</xs:documentation>
-      </xs:annotation>
-    </xs:attribute>
-  </xs:complexType>
-  <xs:complexType name="PersonType">
-    <xs:sequence/>
-    <xs:attribute name="PersonRef" type="xs:IDREF">
-      <xs:annotation>
-        <xs:documentation xml:lang="en">Reference to Person ID</xs:documentation>
-      </xs:annotation>
-    </xs:attribute>
-  </xs:complexType>
-  <xs:complexType name="WorkType">
-    <xs:sequence/>
-    <xs:attribute name="WorkRef" type="xs:IDREF">
-      <xs:annotation>
-        <xs:documentation xml:lang="en">Reference to Work ID</xs:documentation>
-      </xs:annotation>
-    </xs:attribute>
   </xs:complexType>
   <xs:complexType name="ActionType">
     <xs:sequence>
@@ -276,6 +191,92 @@
     <xs:attribute name="TemporalFunctionRef" type="xs:IDREF">
       <xs:annotation>
         <xs:documentation xml:lang="en">Reference to TemporalFunction ID</xs:documentation>
+      </xs:annotation>
+    </xs:attribute>
+  </xs:complexType>
+  <xs:complexType name="AgentType">
+    <xs:sequence/>
+    <xs:attribute name="AgentRef" type="xs:IDREF">
+      <xs:annotation>
+        <xs:documentation xml:lang="en">Reference to Agent ID</xs:documentation>
+      </xs:annotation>
+    </xs:attribute>
+  </xs:complexType>
+  <xs:complexType name="ExpressionType">
+    <xs:sequence>
+      <xs:element name="cites" ref="ExpressionType" maxOccurs="unbounded" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation xml:lang="en">Citation in the text of the legislation. This may be at the legal resource or legal expression level, as required by the implementation context. This includes verbatim citation and citations in referrals.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="embodies" ref="ManifestationType" maxOccurs="unbounded" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation xml:lang="en">Relates a manifestation to the expression that it embodies. Inverse of "is_embodied_by".</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="isPartOf" ref="ExpressionType" maxOccurs="unbounded" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation xml:lang="en">Indicates a work in which this one is physically included. Covers the case of text included in an Official Journal, or an article included in a text.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="hasUri" type="xs:anyURI" maxOccurs="unbounded" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation xml:lang="en">URI of the Legal Source Expression where the Request is expressed.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+    </xs:sequence>
+    <xs:attribute name="ExpressionRef" type="xs:IDREF">
+      <xs:annotation>
+        <xs:documentation xml:lang="en">Reference to Expression ID</xs:documentation>
+      </xs:annotation>
+    </xs:attribute>
+  </xs:complexType>
+  <xs:complexType name="ManifestationType">
+    <xs:sequence>
+      <xs:element name="isEmbodiedBy" ref="ExpressionType" maxOccurs="unbounded" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation xml:lang="en">Relates an expression to a manifestation of that expression.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+    </xs:sequence>
+    <xs:attribute name="ManifestationRef" type="xs:IDREF">
+      <xs:annotation>
+        <xs:documentation xml:lang="en">Reference to Manifestation ID</xs:documentation>
+      </xs:annotation>
+    </xs:attribute>
+  </xs:complexType>
+  <xs:complexType name="OrganizationType">
+    <xs:sequence/>
+    <xs:attribute name="OrganizationRef" type="xs:IDREF">
+      <xs:annotation>
+        <xs:documentation xml:lang="en">Reference to Organization ID</xs:documentation>
+      </xs:annotation>
+    </xs:attribute>
+  </xs:complexType>
+  <xs:complexType name="PersonType">
+    <xs:sequence/>
+    <xs:attribute name="PersonRef" type="xs:IDREF">
+      <xs:annotation>
+        <xs:documentation xml:lang="en">Reference to Person ID</xs:documentation>
+      </xs:annotation>
+    </xs:attribute>
+  </xs:complexType>
+  <xs:complexType name="WorkType">
+    <xs:sequence>
+      <xs:element name="isRealizedBy" ref="ExpressionType" maxOccurs="unbounded" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation xml:lang="en">Relates an expression to a work realised through that expression. Inverse of "is_realized_by".</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="isRealizedBy" ref="ExpressionType" maxOccurs="unbounded" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation xml:lang="en">Relates an expression to a work realised through that expression. Inverse of "is_realized_by".</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+    </xs:sequence>
+    <xs:attribute name="WorkRef" type="xs:IDREF">
+      <xs:annotation>
+        <xs:documentation xml:lang="en">Reference to Work ID</xs:documentation>
       </xs:annotation>
     </xs:attribute>
   </xs:complexType>
