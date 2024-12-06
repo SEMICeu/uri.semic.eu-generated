@@ -6,17 +6,23 @@
 @prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
 
 <https://semiceu.github.io/OOTS/ProofOfCitizenship/releases/0.0.1/> rdfs:member <https://semiceu.github.io/OOTS/ProofOfCitizenship/releases/0.0.1/#EvidenceTypeShape>,
-    <https://semiceu.github.io/OOTS/ProofOfCitizenship/releases/0.0.1/#PersonShape>,
+    <https://semiceu.github.io/OOTS/ProofOfCitizenship/releases/0.0.1/#GenericDateShape>,
     <https://semiceu.github.io/OOTS/ProofOfCitizenship/releases/0.0.1/#ProofOfCitizenshipShape>,
-    <https://semiceu.github.io/OOTS/ProofOfCitizenship/releases/0.0.1/#JurisdictionShape> .
+    <https://semiceu.github.io/OOTS/ProofOfCitizenship/releases/0.0.1/#JurisdictionShape>,
+    <https://semiceu.github.io/OOTS/ProofOfCitizenship/releases/0.0.1/#TextShape>,
+    <https://semiceu.github.io/OOTS/ProofOfCitizenship/releases/0.0.1/#PersonShape> .
 
 <https://semiceu.github.io/OOTS/ProofOfCitizenship/releases/0.0.1/#EvidenceTypeShape> a shacl:NodeShape;
   shacl:closed false;
   shacl:targetClass <http://data.europa.eu/m8g/EvidenceType> .
 
+<https://semiceu.github.io/OOTS/ProofOfCitizenship/releases/0.0.1/#GenericDateShape> a shacl:NodeShape;
+  shacl:closed false;
+  shacl:targetClass <http://data.europa.eu/m8g/GenericDate> .
+
 <https://semiceu.github.io/OOTS/ProofOfCitizenship/releases/0.0.1/#JurisdictionShape> a shacl:NodeShape;
   shacl:closed false;
-  shacl:targetClass <https://semiceu.github.io/Core-Person-Vocabulary/releases/2.1.1/#Jurisdiction> .
+  shacl:targetClass dc:Jurisdiction .
 
 <https://semiceu.github.io/OOTS/ProofOfCitizenship/releases/0.0.1/#PersonShape> a shacl:NodeShape;
   shacl:closed false;
@@ -47,7 +53,7 @@
   shacl:description """	The Jurisdiction that has conferred citizenship rights on the Person such as the right to vote, to receive certain protection from the community or the issuance of a passport."""@en;
   shacl:name "citizenship"@en;
   shacl:nodeKind shacl:BlankNodeOrIRI;
-  shacl:path <https://semiceu.github.io/Core-Person-Vocabulary/releases/2.1.1/#Person.citizenship> .
+  shacl:path <http://www.w3.org/ns/person#citizenship> .
 
 <https://semiceu.github.io/OOTS/ProofOfCitizenship/releases/0.0.1/#PersonShape/7349aedd98256d90685571bddc6da8ac9eab1767> rdfs:seeAlso "https://semiceu.github.io/OOTS/ProofOfCitizenship/releases/0.0.1/#Person.givenname";
   shacl:description "The name(s) that identify the Person within a family with a common surname."@en;
@@ -74,10 +80,10 @@
   shacl:uniqueLang true .
 
 <https://semiceu.github.io/OOTS/ProofOfCitizenship/releases/0.0.1/#PersonShape/bf74cccfec7e50f438b22e22a005bb1546874a66> rdfs:seeAlso "https://semiceu.github.io/OOTS/ProofOfCitizenship/releases/0.0.1/#Person.citizenship";
-  shacl:class <https://semiceu.github.io/Core-Person-Vocabulary/releases/2.1.1/#Jurisdiction>;
+  shacl:class dc:Jurisdiction;
   shacl:description """	The Jurisdiction that has conferred citizenship rights on the Person such as the right to vote, to receive certain protection from the community or the issuance of a passport."""@en;
   shacl:name "citizenship"@en;
-  shacl:path <https://semiceu.github.io/Core-Person-Vocabulary/releases/2.1.1/#Person.citizenship> .
+  shacl:path <http://www.w3.org/ns/person#citizenship> .
 
 <https://semiceu.github.io/OOTS/ProofOfCitizenship/releases/0.0.1/#PersonShape/f888a185270cac3f6e32d6e1a22eb6a89d617ba8> rdfs:seeAlso "https://semiceu.github.io/OOTS/ProofOfCitizenship/releases/0.0.1/#Person.givenname";
   shacl:datatype rdf:langString;
@@ -92,7 +98,7 @@
     <https://semiceu.github.io/OOTS/ProofOfCitizenship/releases/0.0.1/#ProofOfCitizenshipShape/81cc0ae833ea6f13aaaa73620b37f37ec5c500b6>,
     <https://semiceu.github.io/OOTS/ProofOfCitizenship/releases/0.0.1/#ProofOfCitizenshipShape/dd5acd5f2a95b2d54489e871f39a1756b0157962>,
     <https://semiceu.github.io/OOTS/ProofOfCitizenship/releases/0.0.1/#ProofOfCitizenshipShape/ef5e8b6c5a21c44b1ee5c98c4246fc32995a7e2c>;
-  shacl:targetClass <https://ec.europa.eu/digital-building-blocks/wikis/display/SDGOO/Proof+of+citizenship> .
+  shacl:targetClass <http://data.europa.eu/p4s/ProofOfCitizenship> .
 
 <https://semiceu.github.io/OOTS/ProofOfCitizenship/releases/0.0.1/#ProofOfCitizenshipShape/20dd2753b73d4f7eccdaf00a2c473caeac093f1f> rdfs:seeAlso "https://semiceu.github.io/OOTS/ProofOfCitizenship/releases/0.0.1/#Proofofcitizenship.DateIssued";
   shacl:description "Date of formal issuance of the resource."@en;
@@ -123,3 +129,7 @@
   shacl:description "Agent that is the subject in the provided Evidence."@en;
   shacl:name "is about"@en;
   shacl:path dc:subject .
+
+<https://semiceu.github.io/OOTS/ProofOfCitizenship/releases/0.0.1/#TextShape> a shacl:NodeShape;
+  shacl:closed false;
+  shacl:targetClass rdf:langString .
