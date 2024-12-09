@@ -25,7 +25,9 @@
     <https://semiceu.github.io/Reporting-Requirements-Metadata-Vocabulary/releases/0.0.1#xsd:anyURIShape>,
     <https://semiceu.github.io/Reporting-Requirements-Metadata-Vocabulary/releases/0.0.1#xsd:booleanShape>,
     <https://semiceu.github.io/Reporting-Requirements-Metadata-Vocabulary/releases/0.0.1#xsd:stringShape>,
-    <https://semiceu.github.io/Reporting-Requirements-Metadata-Vocabulary/releases/0.0.1#PeriodOfTimeShape> .
+    <https://semiceu.github.io/Reporting-Requirements-Metadata-Vocabulary/releases/0.0.1#skos:ConceptShape>,
+    <https://semiceu.github.io/Reporting-Requirements-Metadata-Vocabulary/releases/0.0.1#PeriodOfTimeShape>,
+    <https://semiceu.github.io/Reporting-Requirements-Metadata-Vocabulary/releases/0.0.1#InstantShape> .
 
 <https://semiceu.github.io/Reporting-Requirements-Metadata-Vocabulary/releases/0.0.1#ActionResultShape> a shacl:NodeShape;
   shacl:closed false;
@@ -289,6 +291,10 @@
   shacl:name "value"@en;
   shacl:path <http://data.europa.eu/2qy/rrmv#value> .
 
+<https://semiceu.github.io/Reporting-Requirements-Metadata-Vocabulary/releases/0.0.1#InstantShape> a shacl:NodeShape;
+  shacl:closed false;
+  shacl:targetClass <https://www.w3.org/2006/time#Instant> .
+
 <https://semiceu.github.io/Reporting-Requirements-Metadata-Vocabulary/releases/0.0.1#ManifestationShape> a shacl:NodeShape;
   shacl:closed false;
   shacl:property <https://semiceu.github.io/Reporting-Requirements-Metadata-Vocabulary/releases/0.0.1#ManifestationShape/79040c0b97b43ae95559b7c15f481545e6667de4>,
@@ -468,7 +474,7 @@
   shacl:class <http://data.europa.eu/2qy/rrmv#Frequency>;
   shacl:description "The frequency in which the request is to be executed in case of repetitive mandate."@en;
   shacl:name "has frequency"@en;
-  shacl:path <http://data.europa.eu/2qy/rrmv#rrmv:hasFrequency> .
+  shacl:path <http://data.europa.eu/2qy/rrmv#hasFrequency> .
 
 <https://semiceu.github.io/Reporting-Requirements-Metadata-Vocabulary/releases/0.0.1#RequestShape/53bd38e3d33ba488ee41d290d32c1df211accc84> rdfs:seeAlso "https://semiceu.github.io/Reporting-Requirements-Metadata-Vocabulary/releases/0.0.1#Request.produces";
   shacl:class <http://data.europa.eu/2qy/rrmv#Action>;
@@ -510,7 +516,7 @@
   shacl:description "The frequency in which the request is to be executed in case of repetitive mandate."@en;
   shacl:name "has frequency"@en;
   shacl:nodeKind shacl:BlankNodeOrIRI;
-  shacl:path <http://data.europa.eu/2qy/rrmv#rrmv:hasFrequency> .
+  shacl:path <http://data.europa.eu/2qy/rrmv#hasFrequency> .
 
 <https://semiceu.github.io/Reporting-Requirements-Metadata-Vocabulary/releases/0.0.1#ResultTypeShape> a shacl:NodeShape;
   shacl:closed false;
@@ -563,6 +569,24 @@
   shacl:description "Relates an expression to a work realised through that expression. Inverse of \"is_realized_by\"."@en;
   shacl:name "is realized by"@en;
   shacl:path <http://data.europa.eu/eli/ontology#is_realized_by> .
+
+<https://semiceu.github.io/Reporting-Requirements-Metadata-Vocabulary/releases/0.0.1#skos:ConceptShape> a shacl:NodeShape;
+  shacl:closed false;
+  shacl:property <https://semiceu.github.io/Reporting-Requirements-Metadata-Vocabulary/releases/0.0.1#skos:ConceptShape/6cd0f0f5e19a1c8dce362ecbe8a196575b9cd85f>,
+    <https://semiceu.github.io/Reporting-Requirements-Metadata-Vocabulary/releases/0.0.1#skos:ConceptShape/e4d44fb0d3c41df2a4042ee73fec8d83fc141a60>;
+  shacl:targetClass skos:Concept .
+
+<https://semiceu.github.io/Reporting-Requirements-Metadata-Vocabulary/releases/0.0.1#skos:ConceptShape/6cd0f0f5e19a1c8dce362ecbe8a196575b9cd85f> rdfs:seeAlso "https://semiceu.github.io/Reporting-Requirements-Metadata-Vocabulary/releases/0.0.1#Concept.preferredlabel";
+  shacl:description "A preferred label of the concept."@en;
+  shacl:name "preferred label"@en;
+  shacl:nodeKind shacl:Literal;
+  shacl:path skos:prefLabel .
+
+<https://semiceu.github.io/Reporting-Requirements-Metadata-Vocabulary/releases/0.0.1#skos:ConceptShape/e4d44fb0d3c41df2a4042ee73fec8d83fc141a60> rdfs:seeAlso "https://semiceu.github.io/Reporting-Requirements-Metadata-Vocabulary/releases/0.0.1#Concept.preferredlabel";
+  shacl:description "A preferred label of the concept."@en;
+  shacl:minCount 1;
+  shacl:name "preferred label"@en;
+  shacl:path skos:prefLabel .
 
 <https://semiceu.github.io/Reporting-Requirements-Metadata-Vocabulary/releases/0.0.1#xsd:anyURIShape> a shacl:NodeShape;
   shacl:closed false;
