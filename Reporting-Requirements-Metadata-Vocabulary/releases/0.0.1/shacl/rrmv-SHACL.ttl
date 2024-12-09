@@ -11,6 +11,7 @@
     <https://semiceu.github.io/Reporting-Requirements-Metadata-Vocabulary/releases/0.0.1#FrequencyShape>,
     <https://semiceu.github.io/Reporting-Requirements-Metadata-Vocabulary/releases/0.0.1#RequestShape>,
     <https://semiceu.github.io/Reporting-Requirements-Metadata-Vocabulary/releases/0.0.1#ResultTypeShape>,
+    <https://semiceu.github.io/Reporting-Requirements-Metadata-Vocabulary/releases/0.0.1#RoleTypeShape>,
     <https://semiceu.github.io/Reporting-Requirements-Metadata-Vocabulary/releases/0.0.1#StatusShape>,
     <https://semiceu.github.io/Reporting-Requirements-Metadata-Vocabulary/releases/0.0.1#TemporalFunctionShape>,
     <https://semiceu.github.io/Reporting-Requirements-Metadata-Vocabulary/releases/0.0.1#AgentShape>,
@@ -20,7 +21,9 @@
     <https://semiceu.github.io/Reporting-Requirements-Metadata-Vocabulary/releases/0.0.1#PersonShape>,
     <https://semiceu.github.io/Reporting-Requirements-Metadata-Vocabulary/releases/0.0.1#WorkShape>,
     <https://semiceu.github.io/Reporting-Requirements-Metadata-Vocabulary/releases/0.0.1#RoleShape>,
-    <https://semiceu.github.io/Reporting-Requirements-Metadata-Vocabulary/releases/0.0.1#RoleTypeShape>,
+    <https://semiceu.github.io/Reporting-Requirements-Metadata-Vocabulary/releases/0.0.1#xsd:anyURIShape>,
+    <https://semiceu.github.io/Reporting-Requirements-Metadata-Vocabulary/releases/0.0.1#xsd:booleanShape>,
+    <https://semiceu.github.io/Reporting-Requirements-Metadata-Vocabulary/releases/0.0.1#xsd:stringShape>,
     <https://semiceu.github.io/Reporting-Requirements-Metadata-Vocabulary/releases/0.0.1#PeriodOfTimeShape> .
 
 <https://semiceu.github.io/Reporting-Requirements-Metadata-Vocabulary/releases/0.0.1#ActionResultShape> a shacl:NodeShape;
@@ -35,7 +38,7 @@
   shacl:description "This property connects the Action Result to the Action Result Type to which it belongs."@en;
   shacl:name "has type"@en;
   shacl:nodeKind shacl:BlankNodeOrIRI;
-  shacl:path <http://data.europa.eu/2qy/rrmv#rrmv:hasType> .
+  shacl:path <http://data.europa.eu/2qy/rrmv#hasType> .
 
 <https://semiceu.github.io/Reporting-Requirements-Metadata-Vocabulary/releases/0.0.1#ActionResultShape/50ecc5949fdf82de52aadf3da1bdb127a673ccda> rdfs:seeAlso "https://semiceu.github.io/Reporting-Requirements-Metadata-Vocabulary/releases/0.0.1#ActionResult.hastitle";
   shacl:datatype xsd:string;
@@ -53,7 +56,7 @@
   shacl:class <http://data.europa.eu/2qy/rrmv#ResultType>;
   shacl:description "This property connects the Action Result to the Action Result Type to which it belongs."@en;
   shacl:name "has type"@en;
-  shacl:path <http://data.europa.eu/2qy/rrmv#rrmv:hasType> .
+  shacl:path <http://data.europa.eu/2qy/rrmv#hasType> .
 
 <https://semiceu.github.io/Reporting-Requirements-Metadata-Vocabulary/releases/0.0.1#ActionShape> a shacl:NodeShape;
   shacl:closed false;
@@ -111,13 +114,13 @@
   shacl:class <http://data.europa.eu/2qy/rrmv#ActionResult>;
   shacl:description "A result of an action."@en;
   shacl:name "has result"@en;
-  shacl:path <http://data.europa.eu/2qy/rrmv#rrmv:hasResult> .
+  shacl:path <http://data.europa.eu/2qy/rrmv#hasTitle> .
 
 <https://semiceu.github.io/Reporting-Requirements-Metadata-Vocabulary/releases/0.0.1#ActionShape/67a37d46605206e8cd18ac245816a79bad5ec0ab> rdfs:seeAlso "https://semiceu.github.io/Reporting-Requirements-Metadata-Vocabulary/releases/0.0.1#Action.hasresult";
   shacl:description "A result of an action."@en;
   shacl:name "has result"@en;
   shacl:nodeKind shacl:BlankNodeOrIRI;
-  shacl:path <http://data.europa.eu/2qy/rrmv#rrmv:hasResult> .
+  shacl:path <http://data.europa.eu/2qy/rrmv#hasTitle> .
 
 <https://semiceu.github.io/Reporting-Requirements-Metadata-Vocabulary/releases/0.0.1#ActionShape/71370aa71c2cc663675602b05c87fbdff12aff59> rdfs:seeAlso "https://semiceu.github.io/Reporting-Requirements-Metadata-Vocabulary/releases/0.0.1#Action.hasstatus";
   shacl:description "A status of this Action."@en;
@@ -246,12 +249,26 @@
 <https://semiceu.github.io/Reporting-Requirements-Metadata-Vocabulary/releases/0.0.1#FrequencyShape> a shacl:NodeShape;
   shacl:closed false;
   shacl:property <https://semiceu.github.io/Reporting-Requirements-Metadata-Vocabulary/releases/0.0.1#FrequencyShape/0c2f1ebdbaf105d73a0a1a6d978bba7f5184d75d>,
+    <https://semiceu.github.io/Reporting-Requirements-Metadata-Vocabulary/releases/0.0.1#FrequencyShape/4d55af37dbbb6a42088d917caa1ca25428ec42c9>,
+    <https://semiceu.github.io/Reporting-Requirements-Metadata-Vocabulary/releases/0.0.1#FrequencyShape/b41e904f152a5e9ac34b45665787f02461d7a0b3>,
     <https://semiceu.github.io/Reporting-Requirements-Metadata-Vocabulary/releases/0.0.1#FrequencyShape/ce012334c76fbb8723d52324457cb619f53f2527>;
   shacl:targetClass <http://data.europa.eu/2qy/rrmv#Frequency> .
 
 <https://semiceu.github.io/Reporting-Requirements-Metadata-Vocabulary/releases/0.0.1#FrequencyShape/0c2f1ebdbaf105d73a0a1a6d978bba7f5184d75d> rdfs:seeAlso "https://semiceu.github.io/Reporting-Requirements-Metadata-Vocabulary/releases/0.0.1#Frequency.";
   shacl:description "";
   shacl:minCount 1;
+  shacl:path <http://data.europa.eu/2qy/rrmv#rrmv:hasUnit>,
+    <http://data.europa.eu/2qy/rrmv#rrmv:value> .
+
+<https://semiceu.github.io/Reporting-Requirements-Metadata-Vocabulary/releases/0.0.1#FrequencyShape/4d55af37dbbb6a42088d917caa1ca25428ec42c9> rdfs:seeAlso "https://semiceu.github.io/Reporting-Requirements-Metadata-Vocabulary/releases/0.0.1#Frequency.";
+  shacl:datatype xsd:string;
+  shacl:description "";
+  shacl:path <http://data.europa.eu/2qy/rrmv#rrmv:hasUnit>,
+    <http://data.europa.eu/2qy/rrmv#rrmv:value> .
+
+<https://semiceu.github.io/Reporting-Requirements-Metadata-Vocabulary/releases/0.0.1#FrequencyShape/b41e904f152a5e9ac34b45665787f02461d7a0b3> rdfs:seeAlso "https://semiceu.github.io/Reporting-Requirements-Metadata-Vocabulary/releases/0.0.1#Frequency.";
+  shacl:description "";
+  shacl:nodeKind shacl:Literal;
   shacl:path <http://data.europa.eu/2qy/rrmv#rrmv:hasUnit>,
     <http://data.europa.eu/2qy/rrmv#rrmv:value> .
 
@@ -325,7 +342,7 @@
   shacl:description "The temporal information is incomplete."@en;
   shacl:name "is incomplete"@en;
   shacl:nodeKind shacl:Literal;
-  shacl:path <http://fixme.com#rrmv:isIncomplete> .
+  shacl:path <http://fixme.com#isIncomplete> .
 
 <https://semiceu.github.io/Reporting-Requirements-Metadata-Vocabulary/releases/0.0.1#PeriodOfTimeShape/cee1f50f736e99d611db359c3085c1f3f31d959d> rdfs:seeAlso "https://semiceu.github.io/Reporting-Requirements-Metadata-Vocabulary/releases/0.0.1#PeriodofTime.endtime";
   shacl:description "Time instant at which the Period was terminated. "@en;
@@ -343,7 +360,7 @@
   shacl:datatype xsd:boolean;
   shacl:description "The temporal information is incomplete."@en;
   shacl:name "is incomplete"@en;
-  shacl:path <http://fixme.com#rrmv:isIncomplete> .
+  shacl:path <http://fixme.com#isIncomplete> .
 
 <https://semiceu.github.io/Reporting-Requirements-Metadata-Vocabulary/releases/0.0.1#PeriodOfTimeShape/e6d4e21bf5642e6443beb278b26ff238306ce664> rdfs:seeAlso "https://semiceu.github.io/Reporting-Requirements-Metadata-Vocabulary/releases/0.0.1#PeriodofTime.starttime";
   shacl:description "Time instant at which the Period was initiated"@en;
@@ -382,10 +399,10 @@
   shacl:targetClass <http://data.europa.eu/2qy/rrmv#Request> .
 
 <https://semiceu.github.io/Reporting-Requirements-Metadata-Vocabulary/releases/0.0.1#RequestShape/12d5122ea7d1db1a9282c128f9b1489c699aa76d> rdfs:seeAlso "https://semiceu.github.io/Reporting-Requirements-Metadata-Vocabulary/releases/0.0.1#Request.hasannotation";
-  shacl:description "Annotation related to the Action or Request made by the domain expert."@en;
+  shacl:description "A note added by way of comment or explanation."@en;
   shacl:name "has annotation"@en;
   shacl:nodeKind shacl:Literal;
-  shacl:path <http://data.europa.eu/2qy/rrmv#rrmv:hasAnnotation> .
+  shacl:path <http://data.europa.eu/2qy/rrmv#hasAnnotation> .
 
 <https://semiceu.github.io/Reporting-Requirements-Metadata-Vocabulary/releases/0.0.1#RequestShape/1b985546f308cffd31c56410dc5d8bdc383f3baa> rdfs:seeAlso "https://semiceu.github.io/Reporting-Requirements-Metadata-Vocabulary/releases/0.0.1#Request.relatedto";
   shacl:class <http://data.europa.eu/2qy/rrmv#Request>;
@@ -415,25 +432,25 @@
   shacl:description "The topic of the request."@en;
   shacl:name "has topic"@en;
   shacl:nodeKind shacl:BlankNodeOrIRI;
-  shacl:path <http://data.europa.eu/2qy/rrmv#rrmv:hasTopic> .
+  shacl:path <http://data.europa.eu/2qy/rrmv#hasTopic> .
 
 <https://semiceu.github.io/Reporting-Requirements-Metadata-Vocabulary/releases/0.0.1#RequestShape/3b4bb2f2cb5fc1278944e948cbeb9ee739f10a19> rdfs:seeAlso "https://semiceu.github.io/Reporting-Requirements-Metadata-Vocabulary/releases/0.0.1#Request.hasURI";
   shacl:description "URI of the Request."@en;
   shacl:name "has URI"@en;
   shacl:nodeKind shacl:Literal;
-  shacl:path <http://data.europa.eu/2qy/rrmv#rrmv:hasUri> .
+  shacl:path <http://data.europa.eu/2qy/rrmv#hasURI> .
 
 <https://semiceu.github.io/Reporting-Requirements-Metadata-Vocabulary/releases/0.0.1#RequestShape/465d45838e770ff9a70a996c3cf34973ee605f0a> rdfs:seeAlso "https://semiceu.github.io/Reporting-Requirements-Metadata-Vocabulary/releases/0.0.1#Request.hasURI";
   shacl:datatype xsd:anyURI;
   shacl:description "URI of the Request."@en;
   shacl:name "has URI"@en;
-  shacl:path <http://data.europa.eu/2qy/rrmv#rrmv:hasUri> .
+  shacl:path <http://data.europa.eu/2qy/rrmv#hasURI> .
 
 <https://semiceu.github.io/Reporting-Requirements-Metadata-Vocabulary/releases/0.0.1#RequestShape/53bd38e3d33ba488ee41d290d32c1df211accc84> rdfs:seeAlso "https://semiceu.github.io/Reporting-Requirements-Metadata-Vocabulary/releases/0.0.1#Request.produces";
   shacl:class <http://data.europa.eu/2qy/rrmv#Action>;
   shacl:description "The action that is produced by a request."@en;
   shacl:name "produces"@en;
-  shacl:path <http://data.europa.eu/2qy/rrmv#rrmv:produces> .
+  shacl:path <http://data.europa.eu/2qy/rrmv#produces> .
 
 <https://semiceu.github.io/Reporting-Requirements-Metadata-Vocabulary/releases/0.0.1#RequestShape/6698df8a2d713cf66720d7a2b1f4037f7f58d708> rdfs:seeAlso "https://semiceu.github.io/Reporting-Requirements-Metadata-Vocabulary/releases/0.0.1#Request.hasunit";
   shacl:class <http://data.europa.eu/2qy/rrmv#Frequency>;
@@ -445,7 +462,7 @@
   shacl:class skos:Concept;
   shacl:description "The topic of the request."@en;
   shacl:name "has topic"@en;
-  shacl:path <http://data.europa.eu/2qy/rrmv#rrmv:hasTopic> .
+  shacl:path <http://data.europa.eu/2qy/rrmv#hasTopic> .
 
 <https://semiceu.github.io/Reporting-Requirements-Metadata-Vocabulary/releases/0.0.1#RequestShape/8fe3ff2da55fb4298b1f1979e5ccea3459728cd8> rdfs:seeAlso "https://semiceu.github.io/Reporting-Requirements-Metadata-Vocabulary/releases/0.0.1#Request.relatedto";
   shacl:description "Indicates a somehow related other document, not necessarily a legal resource."@en;
@@ -455,9 +472,9 @@
 
 <https://semiceu.github.io/Reporting-Requirements-Metadata-Vocabulary/releases/0.0.1#RequestShape/93d00bcfd5ffae09c4360fa2a155c210bef0724b> rdfs:seeAlso "https://semiceu.github.io/Reporting-Requirements-Metadata-Vocabulary/releases/0.0.1#Request.hasannotation";
   shacl:datatype xsd:string;
-  shacl:description "Annotation related to the Action or Request made by the domain expert."@en;
+  shacl:description "A note added by way of comment or explanation."@en;
   shacl:name "has annotation"@en;
-  shacl:path <http://data.europa.eu/2qy/rrmv#rrmv:hasAnnotation> .
+  shacl:path <http://data.europa.eu/2qy/rrmv#hasAnnotation> .
 
 <https://semiceu.github.io/Reporting-Requirements-Metadata-Vocabulary/releases/0.0.1#RequestShape/c90428fbe09f8377e994279893416d89a474c968> rdfs:seeAlso "https://semiceu.github.io/Reporting-Requirements-Metadata-Vocabulary/releases/0.0.1#Request.hasvalue";
   shacl:description "The property linking a Request a Frequency expressing the value of the unit of the frequency (e.g., 2 is the value, quarter is the unit)."@en;
@@ -469,7 +486,7 @@
   shacl:description "The action that is produced by a request."@en;
   shacl:name "produces"@en;
   shacl:nodeKind shacl:BlankNodeOrIRI;
-  shacl:path <http://data.europa.eu/2qy/rrmv#rrmv:produces> .
+  shacl:path <http://data.europa.eu/2qy/rrmv#produces> .
 
 <https://semiceu.github.io/Reporting-Requirements-Metadata-Vocabulary/releases/0.0.1#RequestShape/d6979a925fe55dfff828a2b49a43d8dc817fac76> rdfs:seeAlso "https://semiceu.github.io/Reporting-Requirements-Metadata-Vocabulary/releases/0.0.1#Request.hasunit";
   shacl:description "The property linking a Request with the Frequency and expressing the unit of this frequency."@en;
@@ -491,17 +508,17 @@
   shacl:description "Assign the type to SKOS controlled vocabulary."@en;
   shacl:name "has type"@en;
   shacl:nodeKind shacl:BlankNodeOrIRI;
-  shacl:path <http://data.europa.eu/2qy/rrmv#rrmv:hasType> .
+  shacl:path <http://data.europa.eu/2qy/rrmv#hasType> .
 
 <https://semiceu.github.io/Reporting-Requirements-Metadata-Vocabulary/releases/0.0.1#RoleShape/73346d19590bfb11fb7f63af0fad3072e2df1f68> rdfs:seeAlso "https://semiceu.github.io/Reporting-Requirements-Metadata-Vocabulary/releases/0.0.1#Role.hastype";
-  shacl:class <http://example.com/rrmv/RoleType>;
+  shacl:class <http://data.europa.eu/2qy/rrmv#RoleType>;
   shacl:description "Assign the type to SKOS controlled vocabulary."@en;
   shacl:name "has type"@en;
-  shacl:path <http://data.europa.eu/2qy/rrmv#rrmv:hasType> .
+  shacl:path <http://data.europa.eu/2qy/rrmv#hasType> .
 
 <https://semiceu.github.io/Reporting-Requirements-Metadata-Vocabulary/releases/0.0.1#RoleTypeShape> a shacl:NodeShape;
   shacl:closed false;
-  shacl:targetClass <http://example.com/rrmv/RoleType> .
+  shacl:targetClass <http://data.europa.eu/2qy/rrmv#RoleType> .
 
 <https://semiceu.github.io/Reporting-Requirements-Metadata-Vocabulary/releases/0.0.1#StatusShape> a shacl:NodeShape;
   shacl:closed false;
@@ -528,3 +545,15 @@
   shacl:description "Relates an expression to a work realised through that expression. Inverse of \"is_realized_by\"."@en;
   shacl:name "is realized by"@en;
   shacl:path <http://data.europa.eu/eli/ontology#is_realized_by> .
+
+<https://semiceu.github.io/Reporting-Requirements-Metadata-Vocabulary/releases/0.0.1#xsd:anyURIShape> a shacl:NodeShape;
+  shacl:closed false;
+  shacl:targetClass xsd:anyURI .
+
+<https://semiceu.github.io/Reporting-Requirements-Metadata-Vocabulary/releases/0.0.1#xsd:booleanShape> a shacl:NodeShape;
+  shacl:closed false;
+  shacl:targetClass xsd:boolean .
+
+<https://semiceu.github.io/Reporting-Requirements-Metadata-Vocabulary/releases/0.0.1#xsd:stringShape> a shacl:NodeShape;
+  shacl:closed false;
+  shacl:targetClass xsd:string .
