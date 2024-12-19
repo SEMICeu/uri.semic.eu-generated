@@ -125,12 +125,12 @@
   </xs:complexType>
   <xs:complexType name="FrequencyType">
     <xs:sequence>
-      <xs:element name="hasUnit" type="ConceptType" maxOccurs="1" minOccurs="1">
+      <xs:element name="hasUnit" type="ConceptType" maxOccurs="1" minOccurs="0">
         <xs:annotation>
           <xs:documentation xml:lang="en">The unit of the Frequency</xs:documentation>
         </xs:annotation>
       </xs:element>
-      <xs:element name="value" type="xs:string" maxOccurs="1" minOccurs="1">
+      <xs:element name="value" type="xs:string" maxOccurs="1" minOccurs="0">
         <xs:annotation>
           <xs:documentation xml:lang="en">The value of the frequency.</xs:documentation>
         </xs:annotation>
@@ -388,17 +388,27 @@
   </xs:complexType>
   <xs:complexType name="PeriodOfTimeType">
     <xs:sequence>
-      <xs:element name="endTime" ref="InstantType" maxOccurs="1" minOccurs="1">
+      <xs:element name="endTime" ref="InstantType" maxOccurs="1" minOccurs="0">
         <xs:annotation>
           <xs:documentation xml:lang="en">Time instant at which the Period was terminated. </xs:documentation>
         </xs:annotation>
       </xs:element>
-      <xs:element name="isIncomplete" type="xs:boolean" maxOccurs="unbounded" minOccurs="0">
+      <xs:element name="duration" maxOccurs="1" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation xml:lang="en">Duration of a temporal entity</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="hasFunction" ref="TemporalFunctionType" maxOccurs="unbounded" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation xml:lang="en">The function the temporal infomation plays </xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="isIncomplete" type="xs:boolean" maxOccurs="1" minOccurs="0">
         <xs:annotation>
           <xs:documentation xml:lang="en">The temporal information is incomplete.</xs:documentation>
         </xs:annotation>
       </xs:element>
-      <xs:element name="startTime" ref="InstantType" maxOccurs="1" minOccurs="1">
+      <xs:element name="startTime" ref="InstantType" maxOccurs="1" minOccurs="0">
         <xs:annotation>
           <xs:documentation xml:lang="en">Time instant at which the Period was initiated</xs:documentation>
         </xs:annotation>
