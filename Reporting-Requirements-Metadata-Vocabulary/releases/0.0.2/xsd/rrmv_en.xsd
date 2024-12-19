@@ -25,6 +25,7 @@
   <xs:element name="Concept" type="ConceptType"/>
   <xs:element name="Instant" type="InstantType"/>
   <xs:element name="PeriodOfTime" type="PeriodOfTimeType"/>
+  <xs:element name="TemporalDuration" type="TemporalDurationType"/>
   <xs:simpleType name="Literal">
     <xs:restriction base="xs:string"/>
   </xs:simpleType>
@@ -393,7 +394,7 @@
           <xs:documentation xml:lang="en">Time instant at which the Period was terminated. </xs:documentation>
         </xs:annotation>
       </xs:element>
-      <xs:element name="duration" maxOccurs="1" minOccurs="0">
+      <xs:element name="duration" ref="TemporalDurationType" maxOccurs="1" minOccurs="0">
         <xs:annotation>
           <xs:documentation xml:lang="en">Duration of a temporal entity</xs:documentation>
         </xs:annotation>
@@ -417,6 +418,14 @@
     <xs:attribute name="PeriodOfTimeRef" type="xs:IDREF">
       <xs:annotation>
         <xs:documentation xml:lang="en">Reference to PeriodOfTime ID</xs:documentation>
+      </xs:annotation>
+    </xs:attribute>
+  </xs:complexType>
+  <xs:complexType name="TemporalDurationType">
+    <xs:sequence/>
+    <xs:attribute name="TemporalDurationRef" type="xs:IDREF">
+      <xs:annotation>
+        <xs:documentation xml:lang="en">Reference to TemporalDuration ID</xs:documentation>
       </xs:annotation>
     </xs:attribute>
   </xs:complexType>
