@@ -9,6 +9,7 @@
   <xs:element name="Literal" type="LiteralType"/>
   <xs:element name="Uri" type="UriType"/>
   <xs:element name="Date" type="DateType"/>
+  <xs:element name="DateTime" type="DateTimeType"/>
   <xs:element name="Code" type="CodeType"/>
   <xs:element name="TemporalEntity" type="TemporalEntityType"/>
   <xs:element name="Identifier" type="IdentifierType"/>
@@ -17,7 +18,6 @@
   <xs:element name="Organization" type="OrganizationType"/>
   <xs:element name="OrganizationalUnit" type="OrganizationalUnitType"/>
   <xs:element name="Document" type="DocumentType"/>
-  <xs:element name="DateTime" type="DateTimeType"/>
   <xs:simpleType name="Literal">
     <xs:restriction base="xs:string"/>
   </xs:simpleType>
@@ -236,6 +236,14 @@
       </xs:annotation>
     </xs:attribute>
   </xs:complexType>
+  <xs:complexType name="DateTimeType">
+    <xs:sequence/>
+    <xs:attribute name="DateTimeRef" type="xs:IDREF">
+      <xs:annotation>
+        <xs:documentation xml:lang="en">Reference to DateTime ID</xs:documentation>
+      </xs:annotation>
+    </xs:attribute>
+  </xs:complexType>
   <xs:complexType name="CodeType">
     <xs:sequence/>
     <xs:attribute name="CodeRef" type="xs:IDREF">
@@ -438,14 +446,6 @@
     <xs:attribute name="DocumentRef" type="xs:IDREF">
       <xs:annotation>
         <xs:documentation xml:lang="en">Reference to Document ID</xs:documentation>
-      </xs:annotation>
-    </xs:attribute>
-  </xs:complexType>
-  <xs:complexType name="DateTimeType">
-    <xs:sequence/>
-    <xs:attribute name="DateTimeRef" type="xs:IDREF">
-      <xs:annotation>
-        <xs:documentation xml:lang="en">Reference to DateTime ID</xs:documentation>
       </xs:annotation>
     </xs:attribute>
   </xs:complexType>
