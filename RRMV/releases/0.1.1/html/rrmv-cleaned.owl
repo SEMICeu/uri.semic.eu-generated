@@ -54,9 +54,15 @@ rdf:List a owl:Class .
 
 dcterms:isPartOf a owl:ObjectProperty;
   rdfs:domain :Request;
-  rdfs:range eli:Expression;
+  rdfs:range eli:LegalExpression;
   rdfs:comment "A related resource in which the described resource is physically or logically included. "@en;
   dcterms:modified "2024-12-11T12:07:07"^^xsd:dateTime .
+
+dcterms:title a owl:DatatypeProperty;
+  rdfs:domain :ActionResult;
+  rdfs:range rdfs:langString; 
+  rdfs:comment "A name given to the resource."@en .
+
 
 eli:Agent a owl:Class;
   rdfs:label "Agent"@en;
@@ -88,6 +94,14 @@ eli:Expression a owl:Class;
   rdfs:label "Expression"@en;
   rdfs:comment "The intellectual realisation of a Work in the form of identifiable immaterial objects, such as, but not limited to, text. "@en;
   dcterms:modified "2024-12-19T11:32:23"^^xsd:dateTime .
+
+eli:LegalExpression a owl:Class;
+  rdfs:label "Legal Expression"@en;
+  rdfs:subClassOf <http://data.europa.eu/eli/ontology#Expression>
+  rdfs:comment """The intellectual realisation of a legal resource in the form of a &quot;sequence of signs&quot; (typically alpha-numeric characters in a legal context).
+For example, any version of the legal resource whose content is specified and different from others for any reason: language, versions, etc.;
+
+Note that ELI ontology accommodates different point of view on what should be considered a new legal resource, or a new legal expression of the same resource. Typically, a consolidated version can be viewed, in the context of ELI, either as separate legal resource (linked to original version and previous consolidated version using corresponding ELI relations), or as a different legal expression of the same legal resource."""@"en".
 
 eli:is_embodied_by a owl:ObjectProperty;
   rdfs:domain eli:Manifestation;
