@@ -6,17 +6,16 @@
 @prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
 @prefix shacl: <http://www.w3.org/ns/shacl#> .
 @prefix skos: <http://www.w3.org/2004/02/skos/core#> .
-@prefix vcard: <http://www.w3.org/2006/vcard/ns#> .
 @prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
 
-<https://semiceu.github.io/SRM/releases/1.0.0/> rdfs:member <https://semiceu.github.io/SRM/releases/1.0.0/#LocationShape>,
+<https://semiceu.github.io/SRM/releases/1.0.0/> rdfs:member <https://semiceu.github.io/SRM/releases/1.0.0/#ContactPointShape>,
+    <https://semiceu.github.io/SRM/releases/1.0.0/#LocationShape>,
     <https://semiceu.github.io/SRM/releases/1.0.0/#StandardShape>,
     <https://semiceu.github.io/SRM/releases/1.0.0/#TextShape>,
     <https://semiceu.github.io/SRM/releases/1.0.0/#ClassShape>,
     <https://semiceu.github.io/SRM/releases/1.0.0/#LiteralShape>,
     <https://semiceu.github.io/SRM/releases/1.0.0/#URIShape>,
     <https://semiceu.github.io/SRM/releases/1.0.0/#CodeShape>,
-    <https://semiceu.github.io/SRM/releases/1.0.0/#OrganizationShape>,
     <https://semiceu.github.io/SRM/releases/1.0.0/#ResourceDescriptorShape>,
     <https://semiceu.github.io/SRM/releases/1.0.0/#AgentShape>,
     <https://semiceu.github.io/SRM/releases/1.0.0/#DocumentShape>,
@@ -132,6 +131,17 @@
   shacl:closed false;
   shacl:targetClass skos:Concept .
 
+<https://semiceu.github.io/SRM/releases/1.0.0/#ContactPointShape> a shacl:NodeShape;
+  shacl:closed false;
+  shacl:property <https://semiceu.github.io/SRM/releases/1.0.0/#ContactPointShape/0c404fa56c64463c15f65878d02efa16eec065b0>;
+  shacl:targetClass <http://data.europa.eu/m8g/ContactPoint> .
+
+<https://semiceu.github.io/SRM/releases/1.0.0/#ContactPointShape/0c404fa56c64463c15f65878d02efa16eec065b0> rdfs:seeAlso "https://semiceu.github.io/SRM/releases/1.0.0/#ContactPoint.hasemail";
+  shacl:description """	An electronic address through which the Contact Point can be contacted."""@en;
+  shacl:name "has email"@en;
+  shacl:nodeKind shacl:Literal;
+  shacl:path <http://data.europa.eu/m8g/email> .
+
 <https://semiceu.github.io/SRM/releases/1.0.0/#DateTimeShape> a shacl:NodeShape;
   shacl:closed false;
   shacl:targetClass <https://www.w3.org/2001/XMLSchema#dateTime> .
@@ -147,52 +157,6 @@
 <https://semiceu.github.io/SRM/releases/1.0.0/#LocationShape> a shacl:NodeShape;
   shacl:closed false;
   shacl:targetClass dc:Location .
-
-<https://semiceu.github.io/SRM/releases/1.0.0/#OrganizationShape> a shacl:NodeShape;
-  shacl:closed false;
-  shacl:property <https://semiceu.github.io/SRM/releases/1.0.0/#OrganizationShape/0c404fa56c64463c15f65878d02efa16eec065b0>,
-    <https://semiceu.github.io/SRM/releases/1.0.0/#OrganizationShape/53a3012bfcb17709ffb6f586272b2f3e571c2573>,
-    <https://semiceu.github.io/SRM/releases/1.0.0/#OrganizationShape/634a12d7160e01f8887801cc3ccbee879965e908>,
-    <https://semiceu.github.io/SRM/releases/1.0.0/#OrganizationShape/8c00ab9c30f0a099f648747c31ae63d7bafc0929>,
-    <https://semiceu.github.io/SRM/releases/1.0.0/#OrganizationShape/9ab7731e83a25b36996d44a946b85e9c59614fa6>,
-    <https://semiceu.github.io/SRM/releases/1.0.0/#OrganizationShape/b07337c7a48d37eeb0376ca15fa2911a7320c8e7>;
-  shacl:targetClass vcard:Kind .
-
-<https://semiceu.github.io/SRM/releases/1.0.0/#OrganizationShape/0c404fa56c64463c15f65878d02efa16eec065b0> rdfs:seeAlso "https://semiceu.github.io/SRM/releases/1.0.0/#Organization.hasemail";
-  shacl:description "To specify the electronic mail address for communication with the object."@en;
-  shacl:name "has email"@en;
-  shacl:nodeKind shacl:Literal;
-  shacl:path vcard:hasEmail .
-
-<https://semiceu.github.io/SRM/releases/1.0.0/#OrganizationShape/53a3012bfcb17709ffb6f586272b2f3e571c2573> rdfs:seeAlso "https://semiceu.github.io/SRM/releases/1.0.0/#Organization.fn";
-  shacl:description "The formatted text corresponding to the name of the object"@en;
-  shacl:minCount 1;
-  shacl:name "fn"@en;
-  shacl:path vcard:fn .
-
-<https://semiceu.github.io/SRM/releases/1.0.0/#OrganizationShape/634a12d7160e01f8887801cc3ccbee879965e908> rdfs:seeAlso "https://semiceu.github.io/SRM/releases/1.0.0/#Organization.fn";
-  shacl:description "The formatted text corresponding to the name of the object"@en;
-  shacl:name "fn"@en;
-  shacl:nodeKind shacl:Literal;
-  shacl:path vcard:fn .
-
-<https://semiceu.github.io/SRM/releases/1.0.0/#OrganizationShape/8c00ab9c30f0a099f648747c31ae63d7bafc0929> rdfs:seeAlso "https://semiceu.github.io/SRM/releases/1.0.0/#Organization.fn";
-  shacl:description "The formatted text corresponding to the name of the object"@en;
-  shacl:name "fn"@en;
-  shacl:path vcard:fn;
-  shacl:uniqueLang true .
-
-<https://semiceu.github.io/SRM/releases/1.0.0/#OrganizationShape/9ab7731e83a25b36996d44a946b85e9c59614fa6> rdfs:seeAlso "https://semiceu.github.io/SRM/releases/1.0.0/#Organization.fn";
-  shacl:datatype rdf:langString;
-  shacl:description "The formatted text corresponding to the name of the object"@en;
-  shacl:name "fn"@en;
-  shacl:path vcard:fn .
-
-<https://semiceu.github.io/SRM/releases/1.0.0/#OrganizationShape/b07337c7a48d37eeb0376ca15fa2911a7320c8e7> rdfs:seeAlso "https://semiceu.github.io/SRM/releases/1.0.0/#Organization.fn";
-  shacl:description "The formatted text corresponding to the name of the object"@en;
-  shacl:maxCount 1;
-  shacl:name "fn"@en;
-  shacl:path vcard:fn .
 
 <https://semiceu.github.io/SRM/releases/1.0.0/#ResourceDescriptorShape> a shacl:NodeShape;
   shacl:closed false;
@@ -469,7 +433,7 @@
   shacl:uniqueLang true .
 
 <https://semiceu.github.io/SRM/releases/1.0.0/#StandardShape/7b6713c1f4a52e964f5db57eabef294b6d04e90e> rdfs:seeAlso "https://semiceu.github.io/SRM/releases/1.0.0/#Standard.contactpoint";
-  shacl:class vcard:Kind;
+  shacl:class <http://data.europa.eu/m8g/ContactPoint>;
   shacl:description "Contact information that can be used for sending comments about the standard."@en;
   shacl:name "contact point"@en;
   shacl:path dcat:contactPoint .
