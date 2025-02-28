@@ -246,11 +246,11 @@ This specification uses the following prefixes to shorten the URIs for readibili
 	<thead><tr><th>Prefix</th><th>Namespace IRI</th></tr></thead>
 	<tbody>
 		<tr><td><code>adms</code></td><td><code>http://www.w3.org/ns/adms#</code></td></tr>
+		<tr><td><code>cv</code></td><td><code>http://data.europa.eu/m8g/</code></td></tr>
 		<tr><td><code>dcat</code></td><td><code>http://www.w3.org/ns/dcat#</code></td></tr>
 		<tr><td><code>dct</code></td><td><code>http://purl.org/dc/terms/</code></td></tr>
 		<tr><td><code>foaf</code></td><td><code>http://xmlns.com/foaf/0.1/</code></td></tr>
 		<tr><td><code>owl</code></td><td><code>http://www.w3.org/2002/07/owl#</code></td></tr>
-		<tr><td><code>m8g</code></td><td><code>http://data.europa.eu/m8g/</code></td></tr>
 		<tr><td><code>prof</code></td><td><code>http://www.w3.org/ns/dx/prof/</code></td></tr>
 		<tr><td><code>rdf</code></td><td><code>http://www.w3.org/1999/02/22-rdf-syntax-ns#</code></td></tr>
 		<tr><td><code>rdfs</code></td><td><code>http://www.w3.org/2000/01/rdf-schema#</code></td></tr>
@@ -292,7 +292,7 @@ This specification uses the following prefixes to shorten the URIs for readibili
                         <p>
                             And supported by these datatypes:
                             <br />
-                            | <a href="#Code">Code</a> | <a href="#DateTime">DateTime</a> | <a href="#Literal">Literal</a> | <a href="#Text">Text</a> | <a href="#URI">URI</a> |
+                            | <a href="#Code">Code</a> | <a href="#DateTime">DateTime</a> | <a href="#String">String</a> | <a href="#Text">Text</a> | <a href="#URI">URI</a> |
                         </p>
                 
     </div>
@@ -367,6 +367,7 @@ The main entities are those that form the core of the Application Profile.
                             , <a href="#Standard.datemodified">date modified</a>
                             , <a href="#Standard.description">description</a>
                             , <a href="#Standard.hasimplementation">has implementation</a>
+                            , <a href="#Standard.haspart">has part</a>
                             , <a href="#Standard.hasresource">has resource</a>
                             , <a href="#Standard.homepage">homepage</a>
                             , <a href="#Standard.identifier">identifier</a>
@@ -761,6 +762,49 @@ The main entities are those that form the core of the Application Profile.
                                 </td>
                             </tr>
                         
+                            <tr id="Standard.haspart"
+                                typeof="rdfs:Property"
+                                resource="http://purl.org/dc/terms/hasPart"
+                                class="class mandatory">
+                                <td>
+				    <a href="https://github.com/SEMICeu/SRM/issues/new?title=Issue%20for%20has part%20in%20Standard&body=Explain%20your%20issue%20for%20https://semiceu.github.io/SRM/releases/1.0.0/%23Standard.haspart" target="_blank" rel="noopener noreferrer" >
+					    <!--                                        <i class="icon">[o]</i> -->
+                                        <img src="html/callout.png" loading="lazy" alt="[o]" width="100" height="100"/>
+                                    </a>
+                                </td>
+                                <td>
+                                        <a href="http://purl.org/dc/terms/hasPart"
+                                           data-toggle="tooltip"
+                                           data-content="http://purl.org/dc/terms/hasPart"
+                                           data-placement="right">
+                                        has part</a>
+                                </td>
+                                <td>
+                                    
+                                        
+                                            <a href="#Class" data-placement="right">Class</a>
+                                        
+                                    
+                                </td>
+                                <td>
+                                    0..*
+                                </td>
+                                <td property="rdfs:comment">
+                                    	A related resource that is included either physically or logically in the described resource.
+                                </td>
+                                <td property="skos:scopeNote">
+                                    
+                                </td>
+				<!--
+                                <td>
+                                    
+                                </td>
+				-->
+                                <td>
+                                    
+                                </td>
+                            </tr>
+                        
                             <tr id="Standard.hasresource"
                                 typeof="rdfs:Property"
                                 resource="http://www.w3.org/ns/dx/prof/hasResource"
@@ -867,7 +911,7 @@ The main entities are those that form the core of the Application Profile.
                                 <td>
                                     
                                         
-                                            <a href="#Literal" data-placement="right">Literal</a>
+                                            <a href="#String" data-placement="right">String</a>
                                         
                                     
                                 </td>
@@ -1211,7 +1255,7 @@ The main entities are those that form the core of the Application Profile.
                                 <td>
                                     
                                         
-                                            <a href="#Literal" data-placement="right">Literal</a>
+                                            <a href="#String" data-placement="right">String</a>
                                         
                                     
                                 </td>
@@ -1682,7 +1726,7 @@ They are included in the Application Profile because they form the range of prop
                                 <td>
                                     
                                         
-                                            <a href="#Literal" data-placement="right">Literal</a>
+                                            <a href="#String" data-placement="right">String</a>
                                         
                                     
                                 </td>
@@ -1832,8 +1876,8 @@ They are included in the Application Profile because they form the range of prop
                     </dt>
                     
                         <dd>
-                            For this entity the following properties are defined: <a href="#ResourceDescriptor.format">format</a>
-                            , <a href="#ResourceDescriptor.haspart">has part</a>
+                            For this entity the following properties are defined: <a href="#ResourceDescriptor.undefined"></a>
+                            , <a href="#ResourceDescriptor.format">format</a>
                             , <a href="#ResourceDescriptor.hasrole">has role</a>
                             , <a href="#ResourceDescriptor.name">name</a>
                             .
@@ -1875,6 +1919,49 @@ They are included in the Application Profile because they form the range of prop
                     </thead>
                     <tbody class="supertype">
                         
+                            <tr id="ResourceDescriptor.undefined"
+                                typeof="rdfs:Property"
+                                resource="http://www.w3.org/ns/dx/prof/downloadURL"
+                                class="class mandatory">
+                                <td>
+				    <a href="https://github.com/SEMICeu/SRM/issues/new?title=Issue%20for%20%20in%20Resource Descriptor&body=Explain%20your%20issue%20for%20https://semiceu.github.io/SRM/releases/1.0.0/%23ResourceDescriptor.undefined" target="_blank" rel="noopener noreferrer" >
+					    <!--                                        <i class="icon">[o]</i> -->
+                                        <img src="html/callout.png" loading="lazy" alt="[o]" width="100" height="100"/>
+                                    </a>
+                                </td>
+                                <td>
+                                        <a href="http://www.w3.org/ns/dx/prof/downloadURL"
+                                           data-toggle="tooltip"
+                                           data-content="http://www.w3.org/ns/dx/prof/downloadURL"
+                                           data-placement="right">
+                                        </a>
+                                </td>
+                                <td>
+                                    
+                                        
+                                            <a href="#URI" data-placement="right">URI</a>
+                                        
+                                    
+                                </td>
+                                <td>
+                                    1
+                                </td>
+                                <td property="rdfs:comment">
+                                    
+                                </td>
+                                <td property="skos:scopeNote">
+                                    
+                                </td>
+				<!--
+                                <td>
+                                    
+                                </td>
+				-->
+                                <td>
+                                    
+                                </td>
+                            </tr>
+                        
                             <tr id="ResourceDescriptor.format"
                                 typeof="rdfs:Property"
                                 resource="http://purl.org/dc/terms/format"
@@ -1904,49 +1991,6 @@ They are included in the Application Profile because they form the range of prop
                                 </td>
                                 <td property="rdfs:comment">
                                     	The file format, physical medium, or dimensions of the resource.
-                                </td>
-                                <td property="skos:scopeNote">
-                                    
-                                </td>
-				<!--
-                                <td>
-                                    
-                                </td>
-				-->
-                                <td>
-                                    
-                                </td>
-                            </tr>
-                        
-                            <tr id="ResourceDescriptor.haspart"
-                                typeof="rdfs:Property"
-                                resource="http://purl.org/dc/terms/hasPart"
-                                class="class mandatory">
-                                <td>
-				    <a href="https://github.com/SEMICeu/SRM/issues/new?title=Issue%20for%20has part%20in%20Resource Descriptor&body=Explain%20your%20issue%20for%20https://semiceu.github.io/SRM/releases/1.0.0/%23ResourceDescriptor.haspart" target="_blank" rel="noopener noreferrer" >
-					    <!--                                        <i class="icon">[o]</i> -->
-                                        <img src="html/callout.png" loading="lazy" alt="[o]" width="100" height="100"/>
-                                    </a>
-                                </td>
-                                <td>
-                                        <a href="http://purl.org/dc/terms/hasPart"
-                                           data-toggle="tooltip"
-                                           data-content="http://purl.org/dc/terms/hasPart"
-                                           data-placement="right">
-                                        has part</a>
-                                </td>
-                                <td>
-                                    
-                                        
-                                            <a href="#Class" data-placement="right">Class</a>
-                                        
-                                    
-                                </td>
-                                <td>
-                                    0..*
-                                </td>
-                                <td property="rdfs:comment">
-                                    	A related resource that is included either physically or logically in the described resource.
                                 </td>
                                 <td property="skos:scopeNote">
                                     
@@ -2117,20 +2161,20 @@ They are included in the Application Profile because they form the range of prop
                     DateTime values may be viewed as objects with integer-valued year, month, day, hour and minute properties, a decimal-valued second property, and a boolean timezoned property.
 		</td></tr>
 		<tr><td>
-                   <a href="https://github.com/SEMICeu/SRM/issues/new?title=Issue%20for%20Literal&body=Explain%20your%20issue"}}>
+                   <a href="https://github.com/SEMICeu/SRM/issues/new?title=Issue%20for%20String&body=Explain%20your%20issue"}}>
                      <img src="html/callout.png" loading="lazy" alt="(create issue)" width="50" height="50"/>
 		   </a>
 		</td><td>
                 
-                    <div id="Literal">
-                        <a href="http://www.w3.org/2000/01/rdf-schema#Literal"
+                    <div id="String">
+                        <a href="https://www.w3.org/2001/XMLSchema#string"
                            data-toggle="tooltip"
-                           data-content="http://www.w3.org/2000/01/rdf-schema#Literal"
-                           data-placement="right">Literal</a>
+                           data-content="https://www.w3.org/2001/XMLSchema#string"
+                           data-placement="right">String</a>
                     </div>
                 
 		</td><td>
-                    The class of literal values, eg. textual strings and integers.
+                    The string datatype represents character strings in XML.
 		</td></tr>
 		<tr><td>
                    <a href="https://github.com/SEMICeu/SRM/issues/new?title=Issue%20for%20Text&body=Explain%20your%20issue"}}>
@@ -2448,6 +2492,8 @@ The properties are indicated as <it>mandatory, recommended, optional</it> and <i
 				
 					
 						
+					
+						
 							<tr>
 								<td><a href="#ResourceDescriptor">Resource Descriptor</a></td>
 								<td><div class="shorten">http://www.w3.org/ns/dx/prof/ResourceDescriptor</div></td>
@@ -2455,8 +2501,6 @@ The properties are indicated as <it>mandatory, recommended, optional</it> and <i
 								<td><a href="#ResourceDescriptor.format">format </a></td>
 								<td><div class="shorten">http://purl.org/dc/terms/format</div></td>
 							</tr>
-						
-					
 						
 					
 						
@@ -2490,15 +2534,15 @@ The properties are indicated as <it>mandatory, recommended, optional</it> and <i
 					
 					
 						
-					
-						
 							<tr>
 								<td><a href="#ResourceDescriptor">Resource Descriptor</a></td>
 								<td><div class="shorten">http://www.w3.org/ns/dx/prof/ResourceDescriptor</div></td>
-								<td>Optional</td>
-								<td><a href="#ResourceDescriptor.haspart">has part </a></td>
-								<td><div class="shorten">http://purl.org/dc/terms/hasPart</div></td>
+								<td></td>
+								<td><a href="#ResourceDescriptor.undefined"> </a></td>
+								<td><div class="shorten">http://www.w3.org/ns/dx/prof/downloadURL</div></td>
 							</tr>
+						
+					
 						
 					
 						
@@ -2547,6 +2591,8 @@ The properties are indicated as <it>mandatory, recommended, optional</it> and <i
 						
 					
 						
+					
+						
 							<tr>
 								<td><a href="#Standard">Standard</a></td>
 								<td><div class="shorten">http://purl.org/dc/terms/Standard</div></td>
@@ -2580,6 +2626,8 @@ The properties are indicated as <it>mandatory, recommended, optional</it> and <i
 					
 						
 					
+					
+						
 					
 						
 					
@@ -2681,6 +2729,16 @@ The properties are indicated as <it>mandatory, recommended, optional</it> and <i
 								<td>Optional</td>
 								<td><a href="#Standard.hasimplementation">has implementation </a></td>
 								<td><div class="shorten">http://data.europa.eu/m8g/hasImplementation</div></td>
+							</tr>
+						
+					
+						
+							<tr>
+								<td><a href="#Standard">Standard</a></td>
+								<td><div class="shorten">http://purl.org/dc/terms/Standard</div></td>
+								<td>Optional</td>
+								<td><a href="#Standard.haspart">has part </a></td>
+								<td><div class="shorten">http://purl.org/dc/terms/hasPart</div></td>
 							</tr>
 						
 					
@@ -2797,7 +2855,7 @@ The properties are indicated as <it>mandatory, recommended, optional</it> and <i
 {'pref':'adms:', 'ns': 'http://www.w3.org/ns/adms#'},
 {'pref':'atu:', 'ns': 'http://data.europa.eu/88u/dataset/'},
 {'pref':'cpsv:', 'ns': 'http://purl.org/vocab/cpsv#'},
-{'pref':'m8g:', 'ns': 'http://data.europa.eu/m8g/'},
+{'pref':'cv:', 'ns': 'http://data.europa.eu/m8g/'},
 {'pref':'dcat:', 'ns': 'http://www.w3.org/ns/dcat#'},
 {'pref':'dcatap:', 'ns': 'http://data.europa.eu/r5r/'},
 {'pref':'dct:', 'ns': 'http://purl.org/dc/terms/'},
