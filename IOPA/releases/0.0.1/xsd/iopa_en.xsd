@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <xs:schema xmlns="https://data.europa.eu/m8g/xml/" xmlns:xs="http://www.w3.org/2001/XMLSchema" targetNamespace="https://data.europa.eu/m8g/xml/" version="2.0.0" elementFormDefault="qualified" attributeFormDefault="unqualified" xmlns:cv="https://data.europa.eu/m8g/xml/">
   <xs:element name="Assessment" type="AssessmentType"/>
-  <xs:element name="AdmsAsset" type="AdmsAssetType"/>
+  <xs:element name="CavAsset" type="CavAssetType"/>
   <xs:element name="Statement" type="StatementType"/>
   <xs:element name="Participation" type="ParticipationType"/>
   <xs:element name="PublicOrganisation" type="PublicOrganisationType"/>
@@ -12,6 +12,7 @@
   <xs:element name="Literal" type="LiteralType"/>
   <xs:element name="Uri" type="UriType"/>
   <xs:element name="Code" type="CodeType"/>
+  <xs:element name="AdmsAsset" type="AdmsAssetType"/>
   <xs:element name="Identifier" type="IdentifierType"/>
   <xs:element name="Resource" type="ResourceType"/>
   <xs:element name="Agent" type="AgentType"/>
@@ -36,7 +37,7 @@
   </xs:complexType>
   <xs:complexType name="AssessmentType">
     <xs:sequence>
-      <xs:element name="assesses" ref="AdmsAssetType" maxOccurs="1" minOccurs="1">
+      <xs:element name="assesses" ref="CavAssetType" maxOccurs="1" minOccurs="1">
         <xs:annotation>
           <xs:documentation xml:lang="en">The reference to the asset(s) that are the object of the assessment.</xs:documentation>
         </xs:annotation>
@@ -58,7 +59,7 @@
       </xs:annotation>
     </xs:attribute>
   </xs:complexType>
-  <xs:complexType name="AdmsAssetType">
+  <xs:complexType name="CavAssetType">
     <xs:sequence>
       <xs:element name="constrains" ref="PublicServiceType" maxOccurs="unbounded" minOccurs="1">
         <xs:annotation>
@@ -68,11 +69,6 @@
       <xs:element name="hasParticipation" ref="ParticipationType" maxOccurs="unbounded" minOccurs="0">
         <xs:annotation>
           <xs:documentation xml:lang="en">The way how a resource is organized.</xs:documentation>
-        </xs:annotation>
-      </xs:element>
-      <xs:element name="landingPage" ref="DocumentType" maxOccurs="unbounded" minOccurs="0">
-        <xs:annotation>
-          <xs:documentation xml:lang="en">A web page that provides access to the Dataset, its Distributions and/or additional information.</xs:documentation>
         </xs:annotation>
       </xs:element>
       <xs:element name="isPartOf" ref="WorkType" maxOccurs="1" minOccurs="1">
@@ -90,11 +86,6 @@
           <xs:documentation xml:lang="en">A related resource.</xs:documentation>
         </xs:annotation>
       </xs:element>
-      <xs:element name="description" type="xs:string" maxOccurs="unbounded" minOccurs="1">
-        <xs:annotation>
-          <xs:documentation xml:lang="en">An account of the resource.</xs:documentation>
-        </xs:annotation>
-      </xs:element>
       <xs:element name="documentedIn" type="xs:anyURI" maxOccurs="unbounded" minOccurs="0">
         <xs:annotation>
           <xs:documentation xml:lang="en">A link to any information supporting the value of the asset and any 
@@ -106,30 +97,15 @@ other related relevant details.</xs:documentation>
           <xs:documentation xml:lang="en">A page or document about this thing.</xs:documentation>
         </xs:annotation>
       </xs:element>
-      <xs:element name="identifier" ref="IdentifierType" maxOccurs="1" minOccurs="1">
-        <xs:annotation>
-          <xs:documentation xml:lang="en">Links a resource to an adms:Identifier class.</xs:documentation>
-        </xs:annotation>
-      </xs:element>
-      <xs:element name="title" type="xs:string" maxOccurs="unbounded" minOccurs="1">
-        <xs:annotation>
-          <xs:documentation xml:lang="en">	A name given to the resource.</xs:documentation>
-        </xs:annotation>
-      </xs:element>
-      <xs:element name="type" type="ConceptType" maxOccurs="unbounded" minOccurs="1">
-        <xs:annotation>
-          <xs:documentation xml:lang="en">The nature or genre of the resource.</xs:documentation>
-        </xs:annotation>
-      </xs:element>
       <xs:element name="valueDescription" type="xs:string" maxOccurs="unbounded" minOccurs="1">
         <xs:annotation>
           <xs:documentation xml:lang="en">Brief description of the Asset.</xs:documentation>
         </xs:annotation>
       </xs:element>
     </xs:sequence>
-    <xs:attribute name="AdmsAssetRef" type="xs:IDREF">
+    <xs:attribute name="CavAssetRef" type="xs:IDREF">
       <xs:annotation>
-        <xs:documentation xml:lang="en">Reference to AdmsAsset ID</xs:documentation>
+        <xs:documentation xml:lang="en">Reference to CavAsset ID</xs:documentation>
       </xs:annotation>
     </xs:attribute>
   </xs:complexType>
@@ -321,6 +297,40 @@ other related relevant details.</xs:documentation>
     <xs:attribute name="CodeRef" type="xs:IDREF">
       <xs:annotation>
         <xs:documentation xml:lang="en">Reference to Code ID</xs:documentation>
+      </xs:annotation>
+    </xs:attribute>
+  </xs:complexType>
+  <xs:complexType name="AdmsAssetType">
+    <xs:sequence>
+      <xs:element name="landingPage" ref="DocumentType" maxOccurs="unbounded" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation xml:lang="en">A web page that provides access to the Dataset, its Distributions and/or additional information.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="description" type="xs:string" maxOccurs="unbounded" minOccurs="1">
+        <xs:annotation>
+          <xs:documentation xml:lang="en">An account of the resource.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="identifier" ref="IdentifierType" maxOccurs="1" minOccurs="1">
+        <xs:annotation>
+          <xs:documentation xml:lang="en">Links a resource to an adms:Identifier class.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="title" type="xs:string" maxOccurs="unbounded" minOccurs="1">
+        <xs:annotation>
+          <xs:documentation xml:lang="en">	A name given to the resource.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="type" type="ConceptType" maxOccurs="unbounded" minOccurs="1">
+        <xs:annotation>
+          <xs:documentation xml:lang="en">The nature or genre of the resource.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+    </xs:sequence>
+    <xs:attribute name="AdmsAssetRef" type="xs:IDREF">
+      <xs:annotation>
+        <xs:documentation xml:lang="en">Reference to AdmsAsset ID</xs:documentation>
       </xs:annotation>
     </xs:attribute>
   </xs:complexType>
