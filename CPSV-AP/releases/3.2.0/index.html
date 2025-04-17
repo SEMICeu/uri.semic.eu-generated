@@ -74,7 +74,7 @@
 		    name: "Anastasia Sofou",
 		      
 		      
-		    company: "Trasys International",
+		    company: "European Commission",
 		      
 		      
 		    }
@@ -119,7 +119,16 @@
 	function quickreference() {
 		$('#table-quickoverview').DataTable();
 	};
-	var shaclfilepath = "./shacl/cpsv-ap-SHACL.ttl" ;
+	var shaclfilepath = "shacl/cpsv-ap-SHACL.ttl" ;
+	var folder = "./html/examples/";
+	var model = "cpsv-ap" ;
+	var version_list = [
+		{
+		"type": "v3.2.0",
+		"description": "CPSV-AP 2.1.0"
+		}
+	] ;
+	var linkinfo = "https://semiceu.github.io/CPSV-AP/releases/3.2.0/" + "#validation" ;
 
    
 
@@ -7967,6 +7976,11 @@ Each implementation happens within a context, and that context is beyond the SHA
 <p/>
 The shapes can be found <a href="./shacl/cpsv-ap-SHACL.ttl">here</a>.
 
+<p>
+The Interoperability Test Bed (ITB) provides a <a href="https://www.itb.ec.europa.eu/shacl/cpsv-ap/upload">validation service for CPSV-AP</a> reusing the linked shapes.
+The examples in this specification can be validated via the <a href="https://www.itb.ec.europa.eu/shacl/swagger-ui/index.html">ITB REST API</a>.
+</p>
+
 <h3>RDF representation</h3>
 The RDF representation of the Core Public Service Vocabulary Application Profile (CPSV-AP) is available <a href="./rdf/cpsv-ap.ttl">here</a>.
 
@@ -9899,36 +9913,38 @@ The properties are indicated as <it>mandatory, recommended, optional</it> and <i
 
 
 	    var prefixes = [ 
+{'pref':'ad:', 'ns': 'http://inspire.ec.europa.eu/ont/ad#'},
 {'pref':'adms:', 'ns': 'http://www.w3.org/ns/adms#'},
+{'pref':'atu:', 'ns': 'http://data.europa.eu/88u/dataset/'},
+{'pref':'cav:', 'ns': 'http://data.europa.eu/2sa/cav#'},
+{'pref':'cpsv:', 'ns': 'http://purl.org/vocab/cpsv#'},
+{'pref':'cv:', 'ns': 'http://data.europa.eu/m8g/'},
 {'pref':'dcat:', 'ns': 'http://www.w3.org/ns/dcat#'},
 {'pref':'dcatap:', 'ns': 'http://data.europa.eu/r5r/'},
 {'pref':'dct:', 'ns': 'http://purl.org/dc/terms/'},
 {'pref':'dctype:', 'ns': 'http://purl.org/dc/dcmitype/'},
-{'pref':'cpsv:', 'ns': 'http://purl.org/vocab/cpsv#'},
+{'pref':'eli:', 'ns' : 'http://data.europa.eu/eli/ontology#'},
+{'pref':'epo:', 'ns': 'http://data.europa.eu/a4g/ontology#'},
 {'pref':'foaf:', 'ns': 'http://xmlns.com/foaf/0.1/'},
+{'pref':'frbr:', 'ns': 'http://purl.org/vocab/frbr/core#'},
+{'pref':'geo:', 'ns': 'http://www.opengis.net/ont/geosparql#'},
+{'pref':'legal:', 'ns': 'http://www.w3.org/ns/legal#'},
 {'pref':'locn:', 'ns': 'http://www.w3.org/ns/locn#'},
 {'pref':'odrl:', 'ns': 'http://www.w3.org/ns/odrl/2/'},
+{'pref':'org:', 'ns': 'http://www.w3.org/ns/org#'},
 {'pref':'owl:', 'ns': 'http://www.w3.org/2002/07/owl#'},
+{'pref':'person:', 'ns': 'http://www.w3.org/ns/person#'},
+{'pref':'prof:', 'ns': 'http://www.w3.org/ns/dx/prof/'},
 {'pref':'prov:', 'ns': 'http://www.w3.org/ns/prov#'},
 {'pref':'rdf:', 'ns': 'http://www.w3.org/1999/02/22-rdf-syntax-ns#'},
 {'pref':'rdfs:', 'ns': 'http://www.w3.org/2000/01/rdf-schema#'},
+{'pref':'schema:', 'ns': 'https://schema.org/'},
 {'pref':'skos:', 'ns': 'http://www.w3.org/2004/02/skos/core#'},
 {'pref':'spdx:', 'ns': 'http://spdx.org/rdf/terms#'},
 {'pref':'time:', 'ns': 'http://www.w3.org/2006/time#'},
 {'pref':'vcard:', 'ns': 'http://www.w3.org/2006/vcard/ns#'},
-{'pref':'eli:', 'ns' : 'http://data.europa.eu/eli/ontology#'},
-{'pref':'xsd:', 'ns': 'http://www.w3.org/2001/XMLSchema#'},
-{'pref':'ad:', 'ns': 'http://inspire.ec.europa.eu/ont/ad#'},
-{'pref':'cv:', 'ns': 'http://data.europa.eu/m8g/'},
-{'pref':'geo:', 'ns': 'http://www.opengis.net/ont/geosparql#'},
-{'pref':'schema:', 'ns': 'https://schema.org/'},
-{'pref':'org:', 'ns': 'http://www.w3.org/ns/org#'},
-{'pref':'person:', 'ns': 'http://www.w3.org/ns/person#'},
-{'pref':'legal:', 'ns': 'http://www.w3.org/ns/legal#'},
-{'pref':'atu:', 'ns': 'http://data.europa.eu/88u/dataset/'},
 {'pref':'xhv:', 'ns': 'http://www.w3.org/1999/xhtml/vocab#'},
-{'pref':'epo:', 'ns': 'http://data.europa.eu/a4g/ontology#'},
-
+{'pref':'xsd:', 'ns': 'http://www.w3.org/2001/XMLSchema#'},
 
 				];
 
@@ -9962,7 +9978,8 @@ The properties are indicated as <it>mandatory, recommended, optional</it> and <i
     <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.6/mode/javascript/javascript.min.js" ></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.6/mode/turtle/turtle.min.js" ></script>
     <script src="https://codemirror.net/5/mode/javascript/javascript.js" ></script>
-    <!--    <script src="https://semiceu.github.io/MLDCAT-AP/releases/1.0.0/example.js" ></script> -->
+	<script src="https://unpkg.com/n3@1.14.0/browser/n3.min.js"></script>
+	<script src="https://rdf.js.org/comunica-browser/versions/v4/engines/query-sparql/comunica-browser.js"></script>
     <script src="./html/example.js" ></script>
 	<script type="text/javascript">
 		function elementInView(elem){
@@ -9987,60 +10004,98 @@ The properties are indicated as <it>mandatory, recommended, optional</it> and <i
 	</script>
 	<style>
 		.CodeMirror {
-		  border: 1px solid #eee;
-		  height: auto;
+			border: 1px solid #eee;
+			height: auto;
 		}
 		.buttonsample {
-		cursor: pointer;
-		margin-top: 10px;
-		margin-left: 10px;
-		font-weight: 700;
-		border:0 outset buttonface;
-		background: #F5F6F8;
-		background-image: linear-gradient(to bottom,#F5F6F8,#DBDCDE);
-		border-radius:4px;
-		box-shadow:0 1px 3px #666;
-		font-family: Arial;
-		color: grey;
-		font-size: 14px;
-		padding: 10px 5px;
-		text-decoration: none;
-		float: right
-	}
-	.buttonsample:hover {color:#2a70d3}
-	.tabsstyle {
-		padding: 10px;
-		overflow: hidden;
-	}
-	li.ui-tabs-tab > a:hover {
-		background-color:dodgerblue;
-		color:white;
-	}
-    table.simple {                                                                      
-                  font-size: small;                                                           
-                          border-spacing:0;                                                   
-                          border-collapse:collapse;                                           
-                          border-bottom:3px solid #005a9c                                     
-        }                                                                                   
-        .simple th{background:#005a9c;color:#fff;padding:3px 5px;text-align:left}           
-        .simple th a{color:#fff;padding:3px 5px;text-align:left}                            
-        .simple th[scope=row]{background:inherit;color:inherit;border-top:1px solid #ddd}   
-        .simple td{padding:3px 10px;border-top:1px solid #ddd}                              
-        .simple tr:nth-child(even){background:#f0f6ff}
-    body.darkmode .simple th{background:#005a9c94;color:#ddd}
-    body.darkmode .simple th a{color:#ddd}
-    body.darkmode .simple tr:nth-child(even){background:#f0f6ff26}
-    body.darkmode :is(h4,h5,h6)+a.self-link::before {
-        color: var(--heading-text);
-    }
-    body.darkmode img {
-        background: none;
-    }
-    body.darkmode section#references :target {
-        background: #04162d;
-    }
-  </style>
+			cursor: pointer;
+			margin-top: 10px;
+			margin-left: 10px;
+			font-weight: 700;
+			border:0 outset buttonface;
+			background: #F5F6F8;
+			background-image: linear-gradient(to bottom,#F5F6F8,#DBDCDE);
+			border-radius:4px;
+			box-shadow:0 1px 3px #666;
+			font-family: Arial;
+			color: grey;
+			font-size: 13px !important;
+			padding: 10px 5px;
+			text-decoration: none;
+			float: right
+		}
+	    .chooseVersion {
+			cursor: pointer;
+			margin-top: 10px;
+			margin-left: 10px;
+			font-weight: 700;
+			border:0 outset buttonface;
+			background: #F5F6F8;
+			background-image: linear-gradient(to bottom,#F5F6F8,#DBDCDE);
+			border-radius:4px;
+			box-shadow:0 1px 3px #666;
+			font-family: Arial;
+			color: grey;
+			font-size: 13px !important;
+			padding: 10px 5px;
+			text-decoration: none;
+			float: right
+		}
+		.infosample {
+			cursor: pointer;
+			margin-top: 10px;
+			font-weight: 700;
+			border:0 outset buttonface;
+			border-radius:4px;
+			font-family: Arial;
+			color: grey;
+			font-size: 14px;
+			padding: 10px 0px;
+			text-decoration: none;
+			float: right
+		}
+		.buttonsample:hover {color:#2a70d3}
+		.tabsstyle {
+			padding: 10px;
+			overflow: hidden;
+		}
+		li.ui-tabs-tab > a:hover {
+			background-color:dodgerblue;
+			color:white;
+		}
+		table.simple {
+			font-size: small;
+			border-spacing:0;
+			border-collapse:collapse;
+			border-bottom:3px solid #005a9c
+		}
+		.simple th{background:#005a9c;color:#fff;padding:3px 5px;text-align:left}
+		.simple th a{color:#fff;padding:3px 5px;text-align:left}
+		.simple th[scope=row]{background:inherit;color:inherit;border-top:1px solid #ddd}
+		.simple td{padding:3px 10px;border-top:1px solid #ddd}
+		.simple tr:nth-child(even){background:#f0f6ff}
+		body.darkmode .simple th{background:#005a9c94;color:#ddd}
+		body.darkmode .simple th a{color:#ddd}
+		body.darkmode .simple tr:nth-child(even){background:#f0f6ff26}
+		body.darkmode :is(h4,h5,h6)+a.self-link::before {
+			color: var(--heading-text);
+		}
+		body.darkmode img {
+			background: none;
+		}
+		body.darkmode section#references :target {
+			background: #04162d;
+		}
+	</style>
 
-    	<link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.13.4/css/jquery.dataTables.min.css">
-	<script type="text/javascript" language="javascript" src="https://cdn.datatables.net/1.13.4/js/jquery.dataTables.min.js"></script>
+	<link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/2.2.2/css/dataTables.dataTables.min.css">
+	<link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/buttons/3.2.2/css/buttons.dataTables.min.css">
+	<script type="text/javascript" language="javascript" src="https://cdn.datatables.net/2.2.2/js/dataTables.min.js"></script>
+	<script type="text/javascript" language="javascript" src="https://cdn.datatables.net/buttons/3.2.2/js/dataTables.buttons.min.js"></script>
+	<script type="text/javascript" language="javascript" src="https://cdn.datatables.net/buttons/3.2.2/js/buttons.dataTables.js"></script>
+	<script type="text/javascript" language="javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.10.1/jszip.min.js"></script>
+	<script type="text/javascript" language="javascript" src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.2.7/pdfmake.min.js"></script>
+	<script type="text/javascript" language="javascript" src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.2.7/vfs_fonts.js"></script>
+	<script type="text/javascript" language="javascript" src="https://cdn.datatables.net/buttons/3.2.0/js/buttons.html5.min.js"></script>
+	<script type="text/javascript" language="javascript" src="https://cdn.datatables.net/buttons/3.2.0/js/buttons.print.min.js"></script>
 </html>
