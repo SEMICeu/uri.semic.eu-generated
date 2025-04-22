@@ -2,7 +2,7 @@
   "metadata": {
     "title": "DCAT-AP 3.0.1",
     "uri": "http://fixme.com",
-    "issued": "2025-01-27",
+    "issued": "2025-03-05",
     "filename": "dcat-ap",
     "navigation": {
       "next": "https://semiceu.github.io/DCAT-AP/releases/3.0.1-draft/",
@@ -17,10 +17,10 @@
     },
     "status": "https://www.w3.org/2021/Process-20211102/#RecsW3C",
     "statuslabel": "Onbekend",
-    "repositoryurl": "git@semicthema-DCAT-AP:SEMICeu/Semicthema-DCAT-AP.git/tree/cb1be80ac97ef854e1a1e6c53d9bfb5bbaa5c782",
-    "changelogurl": "git@semicthema-DCAT-AP:SEMICeu/Semicthema-DCAT-AP.git/blob/cb1be80ac97ef854e1a1e6c53d9bfb5bbaa5c782/CHANGELOG",
+    "repositoryurl": "git@semicthema-DCAT-AP:SEMICeu/Semicthema-DCAT-AP.git/tree/c11dd62a241ba32228a0c1cb3d8e8af36d3c44da",
+    "changelogurl": "git@semicthema-DCAT-AP:SEMICeu/Semicthema-DCAT-AP.git/blob/c11dd62a241ba32228a0c1cb3d8e8af36d3c44da/CHANGELOG",
     "feedbackurl": "https://github.com/SEMICeu/DCAT-AP/issues",
-    "standaardregisterurl": "https://semiceu.github.io/DCAT-AP/releases/3.0.0/CHANGELOG.html",
+    "standaardregisterurl": "https://semiceu.github.io/DCAT-AP/releases/3.0.1-draft/CHANGELOG.html",
     "usesVocs": [],
     "usesAPs": []
   },
@@ -312,26 +312,6 @@
       "uri": "http://purl.org/dc/terms/MediaType",
       "name": "MediaType",
       "label": {
-        "en": "Media type"
-      },
-      "sort": "Media type",
-      "description": {
-        "en": "A media type, e.g. the format of a computer file."
-      },
-      "usage": {},
-      "parents": [],
-      "rawTags": {
-        "ap-label-en": "Media type",
-        "ap-definition-en": "A media type, e.g. the format of a computer file.",
-        "uri": "http://purl.org/dc/terms/MediaType",
-        "class-usage-scope": "datatype"
-      },
-      "properties": []
-    },
-    {
-      "uri": "http://purl.org/dc/terms/MediaType",
-      "name": "MediaType",
-      "label": {
         "en": "Media Type"
       },
       "sort": "Media Type",
@@ -341,9 +321,9 @@
       "usage": {},
       "parents": [],
       "rawTags": {
+        "ap-label-en": "Media Type",
+        "ap-definition-en": "A file format or physical medium.",
         "uri": "http://purl.org/dc/terms/MediaType",
-        "definition-en": "A file format or physical medium.",
-        "label-en": "Media Type",
         "class-usage-scope": "supportive"
       },
       "properties": []
@@ -1048,7 +1028,7 @@
             "en": "applicable legislation"
           },
           "description": {
-            "en": "The legislation that mandates the creation or management of the Catalog."
+            "en": "The legislation that mandates the creation or management of the Catalogue."
           },
           "usage": {},
           "domain": [
@@ -1076,7 +1056,7 @@
           "codelist_uri": "",
           "rawTags": {
             "uri": "http://data.europa.eu/r5r/applicableLegislation",
-            "ap-definition-en": "The legislation that mandates the creation or management of the Catalog.",
+            "ap-definition-en": "The legislation that mandates the creation or management of the Catalogue.",
             "ap-label-en": "applicable legislation",
             "property-usage-scope": "optional",
             "reuse": "profile"
@@ -1122,7 +1102,7 @@
             "ap-definition-en": "An entity responsible for the creation of the catalogue.",
             "property-usage-scope": "optional",
             "DCAT": "https://www.w3.org/TR/vocab-dcat-3/#Property:resource_creator",
-            "reuse": "asis"
+            "reuse": "extended"
           }
         },
         {
@@ -1399,7 +1379,9 @@
           "description": {
             "en": "An entity (organisation) responsible for making the Catalogue available."
           },
-          "usage": {},
+          "usage": {
+            "en": "In case multiple organisations are considered the publishers of the catalogue, it is recommended to use foaf:Group to bundle them into one entity. "
+          },
           "domain": [
             {
               "EA-Name": "dcat:Catalog",
@@ -1429,7 +1411,8 @@
             "uri": "http://purl.org/dc/terms/publisher",
             "property-usage-scope": "mandatory",
             "DCAT": "https://www.w3.org/TR/vocab-dcat-3/#Property:resource_publisher",
-            "reuse": "extended"
+            "reuse": "extended",
+            "ap-usageNote-en": "In case multiple organisations are considered the publishers of the catalogue, it is recommended to use foaf:Group to bundle them into one entity. "
           }
         },
         {
@@ -1464,7 +1447,7 @@
               }
             }
           ],
-          "cardinality": "0..1",
+          "cardinality": "0..*",
           "codelist_uri": "",
           "rawTags": {
             "ap-label-en": "rights",
@@ -1472,7 +1455,7 @@
             "uri": "http://purl.org/dc/terms/rights",
             "property-usage-scope": "optional",
             "DCAT": "https://www.w3.org/TR/vocab-dcat-3/#Property:resource_rights",
-            "reuse": "extended"
+            "reuse": "asis"
           }
         },
         {
@@ -2449,7 +2432,7 @@
             "ap-definition-en": "An established (technical) standard to which the Data Service conforms.",
             "uri": "http://purl.org/dc/terms/conformsTo",
             "ap-label-en": "conforms to",
-            "DCAT": "https://www.w3.org/TR/vocab-dcat-3/#Property:record_conforms_to",
+            "DCAT": "https://www.w3.org/TR/vocab-dcat-3/#Property:resource_conforms_to",
             "reuse": "extended",
             "definition-en": "An established standard to which the described resource conforms.",
             "ap-usageNote-en": "The standards referred here SHOULD describe the Data Service and not the data it serves. The latter is provided by the dataset with which this Data Service is connected.\r\n\r\nFor instance the data service adheres to the OGC WFS API standard, while the associated dataset adheres to the <a href=\"https://knowledge-base.inspire.ec.europa.eu/index_en\">INSPIRE</a> Address data model."
@@ -4145,7 +4128,8 @@
             "ap-definition-en": "A related Dataset that is a version, edition, or adaptation of the described Dataset.",
             "property-usage-scope": "optional",
             "parentURI": "http://purl.org/dc/terms/hasVersion",
-            "reuse": "asis"
+            "reuse": "asis",
+            "DCAT": "https://www.w3.org/TR/vocab-dcat-3/#Property:resource_has_version"
           }
         },
         {
@@ -4355,7 +4339,7 @@
               }
             }
           ],
-          "cardinality": "0..1",
+          "cardinality": "0..*",
           "codelist_uri": "",
           "rawTags": {
             "ap-label-en": "spatial resolution",
@@ -4406,7 +4390,7 @@
             "ap-definition-en": "The minimum time period resolvable in the dataset.",
             "property-usage-scope": "optional",
             "DCAT": "https://www.w3.org/TR/vocab-dcat-3/#Property:dataset_temporal_resolution",
-            "reuse": "asis"
+            "reuse": "extended"
           }
         },
         {
@@ -4495,7 +4479,7 @@
             "uri": "http://www.w3.org/ns/dcat#version",
             "DCAT": "https://www.w3.org/TR/vocab-dcat-3/#Property:resource_version",
             "property-usage-scope": "optional",
-            "reuse": "asis"
+            "reuse": "extended"
           }
         },
         {
@@ -5559,7 +5543,7 @@
               }
             }
           ],
-          "cardinality": "0..1",
+          "cardinality": "0..*",
           "codelist_uri": "",
           "rawTags": {
             "ap-label-en": "rights",
@@ -5567,7 +5551,7 @@
             "ap-definition-en": "A statement that specifies rights associated with the Distribution.",
             "property-usage-scope": "optional",
             "DCAT": "https://www.w3.org/TR/vocab-dcat-3/#Property:distribution_rights",
-            "reuse": "extended"
+            "reuse": "asis"
           }
         },
         {
@@ -5860,7 +5844,7 @@
           ],
           "range": [
             {
-              "range_label": "dct:mediaType",
+              "range_label": "dct:MediaType",
               "range_uri": "http://purl.org/dc/terms/MediaType"
             }
           ],
@@ -5947,7 +5931,7 @@
           ],
           "range": [
             {
-              "range_label": "dct:mediaType",
+              "range_label": "dct:MediaType",
               "range_uri": "http://purl.org/dc/terms/MediaType"
             }
           ],
@@ -5992,7 +5976,7 @@
           ],
           "range": [
             {
-              "range_label": "dct:mediaType",
+              "range_label": "dct:MediaType",
               "range_uri": "http://purl.org/dc/terms/MediaType"
             }
           ],
@@ -6057,7 +6041,7 @@
             "ap-definition-en": "The minimum spatial separation resolvable in a dataset distribution, measured in meters.",
             "property-usage-scope": "optional",
             "DCAT": "https://www.w3.org/TR/vocab-dcat-3/#Property:distribution_spatial_resolution",
-            "reuse": "asis"
+            "reuse": "extended"
           }
         },
         {
@@ -6100,7 +6084,7 @@
             "ap-definition-en": "The minimum time period resolvable in the dataset distribution.",
             "property-usage-scope": "optional",
             "DCAT": "https://www.w3.org/TR/vocab-dcat-3/#Property:distribution_temporal_resolution",
-            "reuse": "asis"
+            "reuse": "extended"
           }
         },
         {
@@ -6580,12 +6564,6 @@
       "affiliation": {
         "name": "PwC EU Services"
       }
-    },
-    {
-      "role": "E",
-      "first_name": "Makx",
-      "last_name": "Dekkers",
-      "affiliation": {}
     },
     {
       "role": "E",

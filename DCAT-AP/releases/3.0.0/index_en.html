@@ -31,14 +31,6 @@
 		, 
 		
 		   {
-		    name: "Makx Dekkers",
-		      
-		      
-		      
-		    }
-		, 
-		
-		   {
 		    name: "Pavlina Fragkou",
 		      
 		      
@@ -116,6 +108,41 @@
 		$('#table-quickoverview').DataTable();
 	};
 
+	var shaclfilepath = "shacl/dcat-ap-SHACL.ttl" ;
+	var folder = "./html/examples/";
+	var model = "dcat-ap" ;
+	var version_list = [
+      {
+		"type": "v3.0Base0",
+		"description": "DCAT-AP 3.0.0 Base Zero"
+	  },
+	  {
+		"type": "v3.0Range0",
+		"description": "DCAT-AP 3.0.0 Ranges Zero"
+	  },
+	  {
+		"type": "v3.0Base",
+		"description": "DCAT-AP 3.0.0 Base"
+	  },
+	  {
+		"type": "v3.0Range",
+		"description": "DCAT-AP 3.0.0 Ranges"
+	  },
+	  {
+		"type": "v3.0Rec",
+		"description": "DCAT-AP 3.0.0 Recommendations"
+	  },
+	  {
+		"type": "v3.Full",
+		"description": "DCAT-AP 3.0.0 Full"
+	  },
+	  {
+		"type": "v3.Full1",
+		"description": "DCAT-AP 3.0.0 Full (with constraints)"
+	  }
+	] ;
+	var linkinfo = "https://github.com/ISAITB/validator-resources-dcat-ap?tab=readme-ov-file#configured-options" ;
+	
    
 
     var respecConfig = {
@@ -123,7 +150,7 @@
       edDraftURI: "https://semiceu.github.io/DCAT-AP/releases/3.0.0",
       latestVersion: "https://github.com/SEMICeu/DCAT-AP/tree/master/releases/2.1.1",
       specStatus: "base",
-      publishDate: "2025-01-27",
+      publishDate: "2025-03-05",
       editors: myeditors,
       authors: myauthors,
       otherLinks: [
@@ -324,57 +351,17 @@ The years after this specification was further elaborated in new release 2.0.1, 
 W3C DCAT 2 restructured DCAT by introducing the notions of a generic Catalogued Resource of which Datasets and Data Services are special cases.
 In 2023, the adoption of W3C DCAT 3 [[vocab-dcat-3]] triggered a new alignment for DCAT-AP.
 W3C DCAT 3 extends the profile with the Dataset Series notion.
-This document is the combination of addressing issues raised by the community and this alignment.
-
-<h4>Notes on alignment with DCAT 3</h4>
-The introduction of Dataset Series in DCAT is an additive operation from semantical, data modeling perspective. 
-Therefore the impact on existing DCAT-AP 2.x exchanges is limited. 
-Nevertheless, publishers may face substantial impact on the existing catalogues as the new terminology for Dataset Series may require to revisit the publisher's metadata guidelines.
-For instance, if the publisher had chosen to document a Dataset Series as a Dataset with multiple Distributions, then the alignment with Dataset Series as expressed in this specification will require a substantial effort. 
-This impact goes beyond the specification and dependent on the usage of the shared information.
-In the context of DCAT-AP and in line with the conformance expectations, the term Dataset Series will be solely used for resources that are explicitly identified by the class Dataset Series. 
-The situation, as mentioned, where a Dataset has multiple Distributions, will be considered as a Dataset with multiple Distributions and not as a Dataset Series. 
-This way, receivers of DCAT-AP metadata can rely on the classes to process the metadata.
+In the release <a href="">DCAT-AP 3.0</a> the alignment was made together with a number of community requests. 
+More information on the alignment and the applied changes in that context are found in that document.
 <p/>
-The sole data model impact DCAT 3 creates, is by deprecating the use of some URIs and introducing new URIs in the DCAT namespace for the use case of Dataset versioning.
-As these properties are optional and since there is an equivalence between the deprecated and the new ones, catalogue owners can easily realign.
-
-<div class="ednote" title="Data model adaptations">
-<ul>
-<li>Added class Dataset Series, alignment with DCAT 3.0</li>
-<li>Replaced the URI mapping for the Dataset properties hasVersion, isVersionOf and version, alignment with DCAT 3.0</li>
-<li>Fixed the range for Distribution bytesize, alignment with DCAT 3.0</li>
-<li>Changed the range for Location geometry, alignment with DCAT 3.0</li>
-<li>Add the properties publisher and format to Data Service</li>
-<li>Replaced mandatory Distribution status controlled vocabulary</li>
-<li>Adapted the definition for property type of Agent</li>
-<li>Adapted the definition for property access rights for Dataset</li>
-<li>Lift the max cardinality for property application profile for Catalogue Record</li>
-<li>Add new property applicable legislation as generic approach to indicate the legislation under which a dataset is made available.</li>
-</ul>
-
-To support the review, the changes are also highlighted on the diagram below.
-
-    <div>
-        <a href="https://semiceu.github.io/DCAT-AP/releases/3.0.0/html/overview-annotated.jpg"
-           target="_blank">
-            <img src="https://semiceu.github.io/DCAT-AP/releases/3.0.0/html/overview-annotated.jpg"/>
-        </a>
-    </div>
-</div>
-
-
+This release addresses identified bugfixes and issues that have been identified. 
+For an overview we refer to the <a href="https://semiceu.github.io/DCAT-AP/releases/3.0.1-draft/CHANGELOG.html">Changelog</a>.
 
 
 <h3>Meeting minutes</h3>
 The following webinars have been held for the creation of this release
     <ul>
-	    <li>Webinar 25 November 2022 (<a href="https://joinup.ec.europa.eu/sites/default/files/inline-files/MeetingMinutes.pdf">Meeting Minutes</a>, <a href="https://www.youtube.com/watch?v=vpCu3wrBeso">recording</a>, <a href="https://joinup.ec.europa.eu/sites/default/files/inline-files/Slides.pdf">slides</a>) </li>
-      <li>Webinar 2 February 2023 (<a href="https://joinup.ec.europa.eu/sites/default/files/inline-files/20230202%20Webinar%20DCAT-AP.pdf">Meeting Minutes</a>, <a href="https://www.youtube.com/watch?v=teUeMLwv4Ks">recording</a>, <a href="https://joinup.ec.europa.eu/sites/default/files/inline-files/webinar_2_feb_2022_DCAT-AP_v.0.3.pdf">slides</a>) </li>
-      <li>Webinar 4 October 2023 (<a href="https://joinup.ec.europa.eu/sites/default/files/inline-files/20231004%20Webinar%20DCAT-AP%20for%20Data%20Spaces_Incorporated_Comments.pdf">Meeting Minutes</a>, <a href="https://youtu.be/HIQ-xFtZcxY">recording</a>, <a href="https://joinup.ec.europa.eu/sites/default/files/event/attachment/2023-10/DCAT-AP%20for%20Data%20Spaces%20Webinar.pdf">slides</a>) </li>
-      <li>Webinar 7 November 2023 (<a href="https://joinup.ec.europa.eu/sites/default/files/event/attachment/2023-12/20231107%20Webinar%20dedicated%20to%20the%20status%20and%20governance%20of%20DCAT-AP%20%281%29.pdf">Meeting Minutes</a>, <a href="https://www.youtube.com/watch?v=lMMaUa4mrQE">recording</a>, <a href="https://joinup.ec.europa.eu/sites/default/files/event/attachment/2023-11/Webinar%20DCAT-AP%20Status%20%26%20Governance_0.pdf">slides</a>) </li>
-      <li>Webinar 21 November 2023 (<a href="https://joinup.ec.europa.eu/sites/default/files/event/attachment/2023-12/20231121%20Webinar%20DCAT-AP%20Technical%20Issues.pdf">Meeting Minutes</a>, <a href="https://www.youtube.com/watch?v=X2rw2HWm23w">recording</a>, <a href="https://joinup.ec.europa.eu/sites/default/files/event/attachment/2023-11/Webinar%20DCAT-AP%2020231121%20v1.0.pdf">slides</a>) </li>
-      <li>Webinar 16 January 2024 (<a href="https://joinup.ec.europa.eu/sites/default/files/event/attachment/2023-12/20231107%20Webinar%20dedicated%20to%20the%20status%20and%20governance%20of%20DCAT-AP%20%281%29.pdf">Meeting Minutes</a>, <a href="https://www.youtube.com/watch?v=lMMaUa4mrQE">recording</a>, <a href="https://joinup.ec.europa.eu/sites/default/files/event/attachment/2023-11/Webinar%20DCAT-AP%20Status%20%26%20Governance_0.pdf">slides</a>) </li>
+	    <li>Webinar 4 February 2025 (<a href="https://interoperable-europe.ec.europa.eu/sites/default/files/event/attachment/2025-03/20250204%20Meeting%20Minutes%20webinar%20on%20DCAT-AP_1.pdf">Meeting Minutes</a>, <a href="https://youtu.be/G2G5MrA5jp0?feature=shared">recording</a>, <a href="https://interoperable-europe.ec.europa.eu/sites/default/files/event/attachment/2025-03/Webinar%20DCAT-AP%2020250204%20v1.0.pdf">slides</a>) </li>
    </ul>
 
 
@@ -404,12 +391,12 @@ This document is the result of the major semantic change release process describ
     <h2>Status</h2>
         <p>
 <!-- readd when SEMIC has a codelist about it process 
-	This application profile has the status <a href="https://www.w3.org/2021/Process-20211102/#RecsW3C">SEMIC Draft Specification</a> published at 2025-01-27.
+	This application profile has the status <a href="https://www.w3.org/2021/Process-20211102/#RecsW3C">SEMIC Draft Specification</a> published at 2025-03-05.
 -->
-	This application profile has the status SEMIC Draft Specification published at 2025-01-27.
+	This application profile has the status SEMIC Draft Specification published at 2025-03-05.
         </p>
         <p>
-            Information about the process and the decisions involved in the creation of this specification are consultable at the <a href="https://semiceu.github.io/DCAT-AP/releases/3.0.0/CHANGELOG.html">Changelog</a>.
+            Information about the process and the decisions involved in the creation of this specification are consultable at the <a href="https://semiceu.github.io/DCAT-AP/releases/3.0.1-draft/CHANGELOG.html">Changelog</a>.
         </p>
 </section>
 
@@ -572,7 +559,6 @@ The cardinalities and qualifications are included in the figure.
 			      <a href="#LegalResource">Legal Resource</a> |
 			      <a href="#Linguisticsystem">Linguistic system</a> |
 			      <a href="#Literal">Literal</a> |
-			      <a href="#Mediatype">Media type</a> |
 			      <a href="#MediaType">Media Type</a> |
 			      <a href="#MediaTypeorExtent">Media Type or Extent</a> |
 			      <a href="#Periodoftime">Period of time</a> |
@@ -614,9 +600,9 @@ The main entities are those that form the core of the Application Profile.
 The properties and their associated constraints that apply in the context of this profile are listed in a tabular form.
 Each row corresponds to one property. 
 In addition to the constraints also cross-references are provided to DCAT. To save space, the following abbreviations are used to indicate in short the difference with DCAT:
-<ul>
-	<li>A: reused as-is defined and expressed in DCAT</li>
-	<li>E: reused with additional usage notes or additional restrictions compared to DCAT</li>
+<ul id="reuse-column">
+	<li>A: reused as-is defined and expressed in DCAT [[vocab-dcat-3]]</li>
+	<li>E: reused with additional usage notes or additional restrictions compared to DCAT [[vocab-dcat-3]]</li>
 	<li>P: DCAT-AP profile specific extension where DCAT had no requirements earlier on specified</li>
 </ul>
 This reuse qualification assessement is with respect to a specific version of DCAT. 
@@ -707,11 +693,13 @@ Therefore it may vary over time when new versions of DCAT-AP are created.
                                 Codelist
                             </th>
 			    -->
+			    <!--
                             <th class="data-table__header-title--sortable" style="width:5%">
                                 DCAT
                             </th>
+			    -->
                             <th class="data-table__header-title--sortable" style="width:3%">
-                                Reuse
+				    <a href="#reuse-column">Reuse</a>
                             </th>
                         </tr>
                     </thead>
@@ -756,9 +744,11 @@ Therefore it may vary over time when new versions of DCAT-AP are created.
                                     
                                 </td>
 				-->
+				<!--
                                 <td>
                                     
                                 </td>
+				-->
                                 <td>
                                     
 				       P
@@ -805,9 +795,11 @@ Therefore it may vary over time when new versions of DCAT-AP are created.
                                     
                                 </td>
 				-->
+				<!--
                                 <td>
                                     
                                 </td>
+				-->
                                 <td>
                                     
 				       P
@@ -918,11 +910,13 @@ Therefore it may vary over time when new versions of DCAT-AP are created.
                                 Codelist
                             </th>
 			    -->
+			    <!--
                             <th class="data-table__header-title--sortable" style="width:5%">
                                 DCAT
                             </th>
+			    -->
                             <th class="data-table__header-title--sortable" style="width:3%">
-                                Reuse
+				    <a href="#reuse-column">Reuse</a>
                             </th>
                         </tr>
                     </thead>
@@ -957,7 +951,7 @@ Therefore it may vary over time when new versions of DCAT-AP are created.
                                     0..*
                                 </td>
                                 <td property="rdfs:comment">
-                                    The legislation that mandates the creation or management of the Catalog.
+                                    The legislation that mandates the creation or management of the Catalogue.
                                 </td>
                                 <td property="skos:scopeNote">
                                     
@@ -967,9 +961,11 @@ Therefore it may vary over time when new versions of DCAT-AP are created.
                                     
                                 </td>
 				-->
+				<!--
                                 <td>
                                     
                                 </td>
+				-->
                                 <td>
                                     
 				       P
@@ -1016,9 +1012,11 @@ Therefore it may vary over time when new versions of DCAT-AP are created.
                                     
                                 </td>
 				-->
+				<!--
                                 <td>
                                     <a href="https://www.w3.org/TR/vocab-dcat-3/#Property:catalog_catalog">Link</a>
                                 </td>
+				-->
                                 <td>
                                     
 				       
@@ -1067,14 +1065,16 @@ Therefore it may vary over time when new versions of DCAT-AP are created.
                                     
                                 </td>
 				-->
+				<!--
                                 <td>
                                     <a href="https://www.w3.org/TR/vocab-dcat-3/#Property:resource_creator">Link</a>
                                 </td>
+				-->
                                 <td>
                                     
 				       
-				        <a href="https://www.w3.org/TR/vocab-dcat-3/#Property:resource_creator">A</a>
-                                       
+				        <a href="https://www.w3.org/TR/vocab-dcat-3/#Property:resource_creator">E</a>
+				       
                                     
                                 </td>
                             </tr>
@@ -1118,9 +1118,11 @@ Therefore it may vary over time when new versions of DCAT-AP are created.
                                     
                                 </td>
 				-->
+				<!--
                                 <td>
                                     <a href="https://www.w3.org/TR/vocab-dcat-3/#Property:catalog_dataset">Link</a>
                                 </td>
+				-->
                                 <td>
                                     
 				       
@@ -1169,9 +1171,11 @@ Therefore it may vary over time when new versions of DCAT-AP are created.
                                     
                                 </td>
 				-->
+				<!--
                                 <td>
                                     <a href="https://www.w3.org/TR/vocab-dcat-3/#Property:resource_description">Link</a>
                                 </td>
+				-->
                                 <td>
                                     
 				       
@@ -1220,9 +1224,11 @@ Therefore it may vary over time when new versions of DCAT-AP are created.
                                     
                                 </td>
 				-->
+				<!--
                                 <td>
                                     <a href="https://www.w3.org/TR/vocab-dcat-3/#Property:dataset_spatial">Link</a>
                                 </td>
+				-->
                                 <td>
                                     
 				       
@@ -1271,9 +1277,11 @@ Therefore it may vary over time when new versions of DCAT-AP are created.
                                     
                                 </td>
 				-->
+				<!--
                                 <td>
                                     <a href="https://www.w3.org/TR/vocab-dcat-3/#Property:resource_has_part">Link</a>
                                 </td>
+				-->
                                 <td>
                                     
 				       
@@ -1322,9 +1330,11 @@ Therefore it may vary over time when new versions of DCAT-AP are created.
                                     
                                 </td>
 				-->
+				<!--
                                 <td>
                                     <a href="https://www.w3.org/TR/vocab-dcat-3/#Property:catalog_homepage">Link</a>
                                 </td>
+				-->
                                 <td>
                                     
 				       
@@ -1373,9 +1383,11 @@ Therefore it may vary over time when new versions of DCAT-AP are created.
                                     
                                 </td>
 				-->
+				<!--
                                 <td>
                                     <a href="https://www.w3.org/TR/vocab-dcat-3/#Property:resource_language">Link</a>
                                 </td>
+				-->
                                 <td>
                                     
 				       
@@ -1424,9 +1436,11 @@ Therefore it may vary over time when new versions of DCAT-AP are created.
                                     
                                 </td>
 				-->
+				<!--
                                 <td>
                                     <a href="https://www.w3.org/TR/vocab-dcat-3/#Property:resource_license">Link</a>
                                 </td>
+				-->
                                 <td>
                                     
 				       
@@ -1475,9 +1489,11 @@ Therefore it may vary over time when new versions of DCAT-AP are created.
                                     
                                 </td>
 				-->
+				<!--
                                 <td>
                                     <a href="https://www.w3.org/TR/vocab-dcat-3/#Property:resource_update_date">Link</a>
                                 </td>
+				-->
                                 <td>
                                     
 				       
@@ -1519,16 +1535,18 @@ Therefore it may vary over time when new versions of DCAT-AP are created.
                                     An entity (organisation) responsible for making the Catalogue available.
                                 </td>
                                 <td property="skos:scopeNote">
-                                    
+                                    In case multiple organisations are considered the publishers of the catalogue, it is recommended to use foaf:Group to bundle them into one entity. 
                                 </td>
 				<!--
                                 <td>
                                     
                                 </td>
 				-->
+				<!--
                                 <td>
                                     <a href="https://www.w3.org/TR/vocab-dcat-3/#Property:resource_publisher">Link</a>
                                 </td>
+				-->
                                 <td>
                                     
 				       
@@ -1577,9 +1595,11 @@ Therefore it may vary over time when new versions of DCAT-AP are created.
                                     
                                 </td>
 				-->
+				<!--
                                 <td>
                                     <a href="https://www.w3.org/TR/vocab-dcat-3/#Property:catalog_catalog_record">Link</a>
                                 </td>
+				-->
                                 <td>
                                     
 				       
@@ -1628,9 +1648,11 @@ Therefore it may vary over time when new versions of DCAT-AP are created.
                                     
                                 </td>
 				-->
+				<!--
                                 <td>
                                     <a href="https://www.w3.org/TR/vocab-dcat-3/#Property:resource_release_date">Link</a>
                                 </td>
+				-->
                                 <td>
                                     
 				       
@@ -1666,7 +1688,7 @@ Therefore it may vary over time when new versions of DCAT-AP are created.
                                     
                                 </td>
                                 <td>
-                                    0..1
+                                    0..*
                                 </td>
                                 <td property="rdfs:comment">
                                     A statement that specifies rights associated with the Catalogue.
@@ -1679,14 +1701,16 @@ Therefore it may vary over time when new versions of DCAT-AP are created.
                                     
                                 </td>
 				-->
+				<!--
                                 <td>
                                     <a href="https://www.w3.org/TR/vocab-dcat-3/#Property:resource_rights">Link</a>
                                 </td>
+				-->
                                 <td>
                                     
 				       
-				        <a href="https://www.w3.org/TR/vocab-dcat-3/#Property:resource_rights">E</a>
-				       
+				        <a href="https://www.w3.org/TR/vocab-dcat-3/#Property:resource_rights">A</a>
+                                       
                                     
                                 </td>
                             </tr>
@@ -1730,9 +1754,11 @@ Therefore it may vary over time when new versions of DCAT-AP are created.
                                     
                                 </td>
 				-->
+				<!--
                                 <td>
                                     <a href="https://www.w3.org/TR/vocab-dcat-3/#Property:catalog_service">Link</a>
                                 </td>
+				-->
                                 <td>
                                     
 				       
@@ -1781,9 +1807,11 @@ Therefore it may vary over time when new versions of DCAT-AP are created.
                                     
                                 </td>
 				-->
+				<!--
                                 <td>
                                     <a href="https://www.w3.org/TR/vocab-dcat-3/#Property:dataset_temporal_resolution">Link</a>
                                 </td>
+				-->
                                 <td>
                                     
 				       
@@ -1832,9 +1860,11 @@ Therefore it may vary over time when new versions of DCAT-AP are created.
                                     
                                 </td>
 				-->
+				<!--
                                 <td>
                                     <a href="https://www.w3.org/TR/vocab-dcat-3/#Property:catalog_themes">Link</a>
                                 </td>
+				-->
                                 <td>
                                     
 				       
@@ -1883,9 +1913,11 @@ Therefore it may vary over time when new versions of DCAT-AP are created.
                                     
                                 </td>
 				-->
+				<!--
                                 <td>
                                     <a href="https://www.w3.org/TR/vocab-dcat-3/#Property:resource_title">Link</a>
                                 </td>
+				-->
                                 <td>
                                     
 				       
@@ -1986,11 +2018,13 @@ Therefore it may vary over time when new versions of DCAT-AP are created.
                                 Codelist
                             </th>
 			    -->
+			    <!--
                             <th class="data-table__header-title--sortable" style="width:5%">
                                 DCAT
                             </th>
+			    -->
                             <th class="data-table__header-title--sortable" style="width:3%">
-                                Reuse
+				    <a href="#reuse-column">Reuse</a>
                             </th>
                         </tr>
                     </thead>
@@ -2035,9 +2069,11 @@ Therefore it may vary over time when new versions of DCAT-AP are created.
                                     
                                 </td>
 				-->
+				<!--
                                 <td>
                                     <a href="https://www.w3.org/TR/vocab-dcat-3/#Property:record_conforms_to">Link</a>
                                 </td>
+				-->
                                 <td>
                                     
 				       
@@ -2086,9 +2122,11 @@ Therefore it may vary over time when new versions of DCAT-AP are created.
                                     
                                 </td>
 				-->
+				<!--
                                 <td>
                                     
                                 </td>
+				-->
                                 <td>
                                     
 				       P
@@ -2135,9 +2173,11 @@ Therefore it may vary over time when new versions of DCAT-AP are created.
                                     
                                 </td>
 				-->
+				<!--
                                 <td>
                                     <a href="https://www.w3.org/TR/vocab-dcat-3/#Property:record_description">Link</a>
                                 </td>
+				-->
                                 <td>
                                     
 				       
@@ -2186,9 +2226,11 @@ Therefore it may vary over time when new versions of DCAT-AP are created.
                                     
                                 </td>
 				-->
+				<!--
                                 <td>
                                     
                                 </td>
+				-->
                                 <td>
                                     
 				       P
@@ -2235,9 +2277,11 @@ Therefore it may vary over time when new versions of DCAT-AP are created.
                                     
                                 </td>
 				-->
+				<!--
                                 <td>
                                     <a href="https://www.w3.org/TR/vocab-dcat-3/#Property:record_listing_date">Link</a>
                                 </td>
+				-->
                                 <td>
                                     
 				       
@@ -2286,9 +2330,11 @@ Therefore it may vary over time when new versions of DCAT-AP are created.
                                     
                                 </td>
 				-->
+				<!--
                                 <td>
                                     <a href="https://www.w3.org/TR/vocab-dcat-3/#Property:record_update_date">Link</a>
                                 </td>
+				-->
                                 <td>
                                     
 				       
@@ -2337,9 +2383,11 @@ Therefore it may vary over time when new versions of DCAT-AP are created.
                                     
                                 </td>
 				-->
+				<!--
                                 <td>
                                     <a href="https://www.w3.org/TR/vocab-dcat-3/#Property:record_primary_topic">Link</a>
                                 </td>
+				-->
                                 <td>
                                     
 				       
@@ -2388,9 +2436,11 @@ Therefore it may vary over time when new versions of DCAT-AP are created.
                                     
                                 </td>
 				-->
+				<!--
                                 <td>
                                     
                                 </td>
+				-->
                                 <td>
                                     
 				       P
@@ -2437,9 +2487,11 @@ Therefore it may vary over time when new versions of DCAT-AP are created.
                                     
                                 </td>
 				-->
+				<!--
                                 <td>
                                     <a href="https://www.w3.org/TR/vocab-dcat-3/#Property:record_title">Link</a>
                                 </td>
+				-->
                                 <td>
                                     
 				       
@@ -2597,11 +2649,13 @@ Therefore it may vary over time when new versions of DCAT-AP are created.
                                 Codelist
                             </th>
 			    -->
+			    <!--
                             <th class="data-table__header-title--sortable" style="width:5%">
                                 DCAT
                             </th>
+			    -->
                             <th class="data-table__header-title--sortable" style="width:3%">
-                                Reuse
+				    <a href="#reuse-column">Reuse</a>
                             </th>
                         </tr>
                     </thead>
@@ -2646,9 +2700,11 @@ Therefore it may vary over time when new versions of DCAT-AP are created.
                                     
                                 </td>
 				-->
+				<!--
                                 <td>
                                     <a href="https://w3c.github.io/dxwg/dcat/#Property:checksum_algorithm">Link</a>
                                 </td>
+				-->
                                 <td>
                                     
 				       
@@ -2697,9 +2753,11 @@ Therefore it may vary over time when new versions of DCAT-AP are created.
                                     
                                 </td>
 				-->
+				<!--
                                 <td>
                                     <a href="https://w3c.github.io/dxwg/dcat/#Property:checksum_checksum_value">Link</a>
                                 </td>
+				-->
                                 <td>
                                     
 				       
@@ -2820,11 +2878,13 @@ Therefore it may vary over time when new versions of DCAT-AP are created.
                                 Codelist
                             </th>
 			    -->
+			    <!--
                             <th class="data-table__header-title--sortable" style="width:5%">
                                 DCAT
                             </th>
+			    -->
                             <th class="data-table__header-title--sortable" style="width:3%">
-                                Reuse
+				    <a href="#reuse-column">Reuse</a>
                             </th>
                         </tr>
                     </thead>
@@ -2869,9 +2929,11 @@ Therefore it may vary over time when new versions of DCAT-AP are created.
                                     
                                 </td>
 				-->
+				<!--
                                 <td>
                                     <a href="https://www.w3.org/TR/vocab-dcat-3/#Property:resource_access_rights">Link</a>
                                 </td>
+				-->
                                 <td>
                                     
 				       
@@ -2920,9 +2982,11 @@ Therefore it may vary over time when new versions of DCAT-AP are created.
                                     
                                 </td>
 				-->
+				<!--
                                 <td>
                                     
                                 </td>
+				-->
                                 <td>
                                     
 				       P
@@ -2971,13 +3035,15 @@ For instance the data service adheres to the OGC WFS API standard, while the ass
                                     
                                 </td>
 				-->
+				<!--
                                 <td>
-                                    <a href="https://www.w3.org/TR/vocab-dcat-3/#Property:record_conforms_to">Link</a>
+                                    <a href="https://www.w3.org/TR/vocab-dcat-3/#Property:resource_conforms_to">Link</a>
                                 </td>
+				-->
                                 <td>
                                     
 				       
-				        <a href="https://www.w3.org/TR/vocab-dcat-3/#Property:record_conforms_to">E</a>
+				        <a href="https://www.w3.org/TR/vocab-dcat-3/#Property:resource_conforms_to">E</a>
 				       
                                     
                                 </td>
@@ -3022,9 +3088,11 @@ For instance the data service adheres to the OGC WFS API standard, while the ass
                                     
                                 </td>
 				-->
+				<!--
                                 <td>
                                     <a href="https://www.w3.org/TR/vocab-dcat-3/#Property:resource_contact_point">Link</a>
                                 </td>
+				-->
                                 <td>
                                     
 				       
@@ -3073,9 +3141,11 @@ For instance the data service adheres to the OGC WFS API standard, while the ass
                                     
                                 </td>
 				-->
+				<!--
                                 <td>
                                     <a href="https://www.w3.org/TR/vocab-dcat-3/#Property:resource_description">Link</a>
                                 </td>
+				-->
                                 <td>
                                     
 				       
@@ -3124,9 +3194,11 @@ For instance the data service adheres to the OGC WFS API standard, while the ass
                                     
                                 </td>
 				-->
+				<!--
                                 <td>
                                     
                                 </td>
+				-->
                                 <td>
                                     
 				       P
@@ -3173,9 +3245,11 @@ For instance the data service adheres to the OGC WFS API standard, while the ass
                                     
                                 </td>
 				-->
+				<!--
                                 <td>
                                     <a href="https://www.w3.org/TR/vocab-dcat-3/#Property:data_service_endpoint_description">Link</a>
                                 </td>
+				-->
                                 <td>
                                     
 				       
@@ -3224,9 +3298,11 @@ For instance the data service adheres to the OGC WFS API standard, while the ass
                                     
                                 </td>
 				-->
+				<!--
                                 <td>
                                     <a href="https://www.w3.org/TR/vocab-dcat-3/#Property:data_service_endpoint_url">Link</a>
                                 </td>
+				-->
                                 <td>
                                     
 				       
@@ -3275,9 +3351,11 @@ For instance the data service adheres to the OGC WFS API standard, while the ass
                                     
                                 </td>
 				-->
+				<!--
                                 <td>
                                     
                                 </td>
+				-->
                                 <td>
                                     
 				       P
@@ -3324,9 +3402,11 @@ For instance the data service adheres to the OGC WFS API standard, while the ass
                                     
                                 </td>
 				-->
+				<!--
                                 <td>
                                     <a href="https://www.w3.org/TR/vocab-dcat-3/#Property:resource_keyword">Link</a>
                                 </td>
+				-->
                                 <td>
                                     
 				       
@@ -3375,9 +3455,11 @@ For instance the data service adheres to the OGC WFS API standard, while the ass
                                     
                                 </td>
 				-->
+				<!--
                                 <td>
                                     <a href="https://www.w3.org/TR/vocab-dcat-3/#Property:resource_landing_page">Link</a>
                                 </td>
+				-->
                                 <td>
                                     
 				       
@@ -3426,9 +3508,11 @@ For instance the data service adheres to the OGC WFS API standard, while the ass
                                     
                                 </td>
 				-->
+				<!--
                                 <td>
                                     <a href="https://www.w3.org/TR/vocab-dcat-3/#Property:resource_license">Link</a>
                                 </td>
+				-->
                                 <td>
                                     
 				       
@@ -3477,9 +3561,11 @@ For instance the data service adheres to the OGC WFS API standard, while the ass
                                     
                                 </td>
 				-->
+				<!--
                                 <td>
                                     <a href="https://www.w3.org/TR/vocab-dcat-3/#Property:resource_publisher">Link</a>
                                 </td>
+				-->
                                 <td>
                                     
 				       
@@ -3528,9 +3614,11 @@ For instance the data service adheres to the OGC WFS API standard, while the ass
                                     
                                 </td>
 				-->
+				<!--
                                 <td>
                                     <a href="https://www.w3.org/TR/vocab-dcat-3/#Property:data_service_serves_dataset">Link</a>
                                 </td>
+				-->
                                 <td>
                                     
 				       
@@ -3579,9 +3667,11 @@ For instance the data service adheres to the OGC WFS API standard, while the ass
                                     
                                 </td>
 				-->
+				<!--
                                 <td>
                                     <a href="https://www.w3.org/TR/vocab-dcat-3/#Property:resource_theme">Link</a>
                                 </td>
+				-->
                                 <td>
                                     
 				       
@@ -3630,9 +3720,11 @@ For instance the data service adheres to the OGC WFS API standard, while the ass
                                     
                                 </td>
 				-->
+				<!--
                                 <td>
                                     <a href="https://www.w3.org/TR/vocab-dcat-3/#Property:resource_title">Link</a>
                                 </td>
+				-->
                                 <td>
                                     
 				       
@@ -3775,11 +3867,13 @@ For this usage, consult the guidelines in section [[[#UsageGuidelines]]].
                                 Codelist
                             </th>
 			    -->
+			    <!--
                             <th class="data-table__header-title--sortable" style="width:5%">
                                 DCAT
                             </th>
+			    -->
                             <th class="data-table__header-title--sortable" style="width:3%">
-                                Reuse
+				    <a href="#reuse-column">Reuse</a>
                             </th>
                         </tr>
                     </thead>
@@ -3824,9 +3918,11 @@ For this usage, consult the guidelines in section [[[#UsageGuidelines]]].
                                     
                                 </td>
 				-->
+				<!--
                                 <td>
                                     <a href="https://www.w3.org/TR/vocab-dcat-3/#Property:resource_access_rights">Link</a>
                                 </td>
+				-->
                                 <td>
                                     
 				       
@@ -3875,9 +3971,11 @@ For this usage, consult the guidelines in section [[[#UsageGuidelines]]].
                                     
                                 </td>
 				-->
+				<!--
                                 <td>
                                     
                                 </td>
+				-->
                                 <td>
                                     
 				       P
@@ -3924,9 +4022,11 @@ For this usage, consult the guidelines in section [[[#UsageGuidelines]]].
                                     
                                 </td>
 				-->
+				<!--
                                 <td>
                                     <a href="https://www.w3.org/TR/vocab-dcat-3/#Property:resource_conforms_to">Link</a>
                                 </td>
+				-->
                                 <td>
                                     
 				       
@@ -3975,9 +4075,11 @@ For this usage, consult the guidelines in section [[[#UsageGuidelines]]].
                                     
                                 </td>
 				-->
+				<!--
                                 <td>
                                     <a href="https://www.w3.org/TR/vocab-dcat-3/#Property:resource_contact_point">Link</a>
                                 </td>
+				-->
                                 <td>
                                     
 				       
@@ -4026,9 +4128,11 @@ For this usage, consult the guidelines in section [[[#UsageGuidelines]]].
                                     
                                 </td>
 				-->
+				<!--
                                 <td>
                                     <a href="https://www.w3.org/TR/vocab-dcat-3/#Property:resource_creator">Link</a>
                                 </td>
+				-->
                                 <td>
                                     
 				       
@@ -4077,9 +4181,11 @@ For this usage, consult the guidelines in section [[[#UsageGuidelines]]].
                                     
                                 </td>
 				-->
+				<!--
                                 <td>
                                     <a href="https://www.w3.org/TR/vocab-dcat-3/#Property:dataset_distribution">Link</a>
                                 </td>
+				-->
                                 <td>
                                     
 				       
@@ -4128,9 +4234,11 @@ For this usage, consult the guidelines in section [[[#UsageGuidelines]]].
                                     
                                 </td>
 				-->
+				<!--
                                 <td>
                                     <a href="https://www.w3.org/TR/vocab-dcat-3/#Property:resource_description">Link</a>
                                 </td>
+				-->
                                 <td>
                                     
 				       
@@ -4179,9 +4287,11 @@ For this usage, consult the guidelines in section [[[#UsageGuidelines]]].
                                     
                                 </td>
 				-->
+				<!--
                                 <td>
                                     
                                 </td>
+				-->
                                 <td>
                                     
 				       P
@@ -4228,9 +4338,11 @@ For this usage, consult the guidelines in section [[[#UsageGuidelines]]].
                                     
                                 </td>
 				-->
+				<!--
                                 <td>
                                     <a href="https://www.w3.org/TR/vocab-dcat-3/#Property:dataset_frequency">Link</a>
                                 </td>
+				-->
                                 <td>
                                     
 				       
@@ -4279,9 +4391,11 @@ For this usage, consult the guidelines in section [[[#UsageGuidelines]]].
                                     
                                 </td>
 				-->
+				<!--
                                 <td>
                                     <a href="https://www.w3.org/TR/vocab-dcat-3/#Property:dataset_spatial">Link</a>
                                 </td>
+				-->
                                 <td>
                                     
 				       
@@ -4330,13 +4444,17 @@ For this usage, consult the guidelines in section [[[#UsageGuidelines]]].
                                     
                                 </td>
 				-->
+				<!--
                                 <td>
-                                    
+                                    <a href="https://www.w3.org/TR/vocab-dcat-3/#Property:resource_has_version">Link</a>
                                 </td>
+				-->
                                 <td>
                                     
-				       P
-				    
+				       
+				        <a href="https://www.w3.org/TR/vocab-dcat-3/#Property:resource_has_version">A</a>
+                                       
+                                    
                                 </td>
                             </tr>
                         
@@ -4379,9 +4497,11 @@ For this usage, consult the guidelines in section [[[#UsageGuidelines]]].
                                     
                                 </td>
 				-->
+				<!--
                                 <td>
                                     <a href="https://www.w3.org/TR/vocab-dcat-3/#Property:resource_identifier">Link</a>
                                 </td>
+				-->
                                 <td>
                                     
 				       
@@ -4430,9 +4550,11 @@ For this usage, consult the guidelines in section [[[#UsageGuidelines]]].
                                     
                                 </td>
 				-->
+				<!--
                                 <td>
                                     <a href="https://www.w3.org/TR/vocab-dcat-3/#Property:dataset_in_series">Link</a>
                                 </td>
+				-->
                                 <td>
                                     
 				       
@@ -4481,9 +4603,11 @@ For this usage, consult the guidelines in section [[[#UsageGuidelines]]].
                                     
                                 </td>
 				-->
+				<!--
                                 <td>
                                     <a href="https://www.w3.org/TR/vocab-dcat-3/#Property:resource_is_referenced_by">Link</a>
                                 </td>
+				-->
                                 <td>
                                     
 				       
@@ -4532,9 +4656,11 @@ For this usage, consult the guidelines in section [[[#UsageGuidelines]]].
                                     
                                 </td>
 				-->
+				<!--
                                 <td>
                                     <a href="https://www.w3.org/TR/vocab-dcat-3/#Property:resource_keyword">Link</a>
                                 </td>
+				-->
                                 <td>
                                     
 				       
@@ -4583,9 +4709,11 @@ For this usage, consult the guidelines in section [[[#UsageGuidelines]]].
                                     
                                 </td>
 				-->
+				<!--
                                 <td>
                                     <a href="https://www.w3.org/TR/vocab-dcat-3/#Property:resource_landing_page">Link</a>
                                 </td>
+				-->
                                 <td>
                                     
 				       
@@ -4634,9 +4762,11 @@ For this usage, consult the guidelines in section [[[#UsageGuidelines]]].
                                     
                                 </td>
 				-->
+				<!--
                                 <td>
                                     <a href="https://www.w3.org/TR/vocab-dcat-3/#Property:resource_language">Link</a>
                                 </td>
+				-->
                                 <td>
                                     
 				       
@@ -4685,9 +4815,11 @@ For this usage, consult the guidelines in section [[[#UsageGuidelines]]].
                                     
                                 </td>
 				-->
+				<!--
                                 <td>
                                     <a href="https://www.w3.org/TR/vocab-dcat-3/#Property:resource_update_date">Link</a>
                                 </td>
+				-->
                                 <td>
                                     
 				       
@@ -4736,9 +4868,11 @@ For this usage, consult the guidelines in section [[[#UsageGuidelines]]].
                                     
                                 </td>
 				-->
+				<!--
                                 <td>
                                     <a href="https://www.w3.org/TR/vocab-dcat-3/#dereferenceable-identifiers">Link</a>
                                 </td>
+				-->
                                 <td>
                                     
 				       
@@ -4787,9 +4921,11 @@ For this usage, consult the guidelines in section [[[#UsageGuidelines]]].
                                     
                                 </td>
 				-->
+				<!--
                                 <td>
                                     
                                 </td>
+				-->
                                 <td>
                                     
 				       P
@@ -4836,9 +4972,11 @@ For this usage, consult the guidelines in section [[[#UsageGuidelines]]].
                                     
                                 </td>
 				-->
+				<!--
                                 <td>
                                     <a href="https://www.w3.org/TR/vocab-dcat-3/#Property:resource_publisher">Link</a>
                                 </td>
+				-->
                                 <td>
                                     
 				       
@@ -4887,9 +5025,11 @@ For this usage, consult the guidelines in section [[[#UsageGuidelines]]].
                                     
                                 </td>
 				-->
+				<!--
                                 <td>
                                     <a href="https://www.w3.org/TR/vocab-dcat-3/#Property:resource_qualified_attribution">Link</a>
                                 </td>
+				-->
                                 <td>
                                     
 				       
@@ -4938,9 +5078,11 @@ For this usage, consult the guidelines in section [[[#UsageGuidelines]]].
                                     
                                 </td>
 				-->
+				<!--
                                 <td>
                                     <a href="https://www.w3.org/TR/vocab-dcat-3/#Property:resource_qualified_relation">Link</a>
                                 </td>
+				-->
                                 <td>
                                     
 				       
@@ -4989,9 +5131,11 @@ For this usage, consult the guidelines in section [[[#UsageGuidelines]]].
                                     
                                 </td>
 				-->
+				<!--
                                 <td>
                                     <a href="https://www.w3.org/TR/vocab-dcat-3/#Property:resource_relation">Link</a>
                                 </td>
+				-->
                                 <td>
                                     
 				       
@@ -5040,9 +5184,11 @@ For this usage, consult the guidelines in section [[[#UsageGuidelines]]].
                                     
                                 </td>
 				-->
+				<!--
                                 <td>
                                     <a href="https://www.w3.org/TR/vocab-dcat-3/#Property:resource_release_date">Link</a>
                                 </td>
+				-->
                                 <td>
                                     
 				       
@@ -5091,9 +5237,11 @@ For this usage, consult the guidelines in section [[[#UsageGuidelines]]].
                                     
                                 </td>
 				-->
+				<!--
                                 <td>
                                     
                                 </td>
+				-->
                                 <td>
                                     
 				       P
@@ -5140,9 +5288,11 @@ For this usage, consult the guidelines in section [[[#UsageGuidelines]]].
                                     
                                 </td>
 				-->
+				<!--
                                 <td>
                                     
                                 </td>
+				-->
                                 <td>
                                     
 				       P
@@ -5176,7 +5326,7 @@ For this usage, consult the guidelines in section [[[#UsageGuidelines]]].
                                     
                                 </td>
                                 <td>
-                                    0..1
+                                    0..*
                                 </td>
                                 <td property="rdfs:comment">
                                     The minimum spatial separation resolvable in a dataset, measured in meters.
@@ -5189,9 +5339,11 @@ For this usage, consult the guidelines in section [[[#UsageGuidelines]]].
                                     
                                 </td>
 				-->
+				<!--
                                 <td>
                                     <a href="https://www.w3.org/TR/vocab-dcat-3/#Property:dataset_spatial_resolution">Link</a>
                                 </td>
+				-->
                                 <td>
                                     
 				       
@@ -5240,9 +5392,11 @@ For this usage, consult the guidelines in section [[[#UsageGuidelines]]].
                                     
                                 </td>
 				-->
+				<!--
                                 <td>
                                     <a href="https://www.w3.org/TR/vocab-dcat-3/#Property:dataset_temporal">Link</a>
                                 </td>
+				-->
                                 <td>
                                     
 				       
@@ -5291,14 +5445,16 @@ For this usage, consult the guidelines in section [[[#UsageGuidelines]]].
                                     
                                 </td>
 				-->
+				<!--
                                 <td>
                                     <a href="https://www.w3.org/TR/vocab-dcat-3/#Property:dataset_temporal_resolution">Link</a>
                                 </td>
+				-->
                                 <td>
                                     
 				       
-				        <a href="https://www.w3.org/TR/vocab-dcat-3/#Property:dataset_temporal_resolution">A</a>
-                                       
+				        <a href="https://www.w3.org/TR/vocab-dcat-3/#Property:dataset_temporal_resolution">E</a>
+				       
                                     
                                 </td>
                             </tr>
@@ -5342,9 +5498,11 @@ For this usage, consult the guidelines in section [[[#UsageGuidelines]]].
                                     
                                 </td>
 				-->
+				<!--
                                 <td>
                                     <a href="https://www.w3.org/TR/vocab-dcat-3/#Property:resource_theme">Link</a>
                                 </td>
+				-->
                                 <td>
                                     
 				       
@@ -5393,9 +5551,11 @@ For this usage, consult the guidelines in section [[[#UsageGuidelines]]].
                                     
                                 </td>
 				-->
+				<!--
                                 <td>
                                     <a href="https://www.w3.org/TR/vocab-dcat-3/#Property:resource_title">Link</a>
                                 </td>
+				-->
                                 <td>
                                     
 				       
@@ -5444,9 +5604,11 @@ For this usage, consult the guidelines in section [[[#UsageGuidelines]]].
                                     
                                 </td>
 				-->
+				<!--
                                 <td>
                                     <a href="https://www.w3.org/TR/vocab-dcat-3/#Property:resource_type">Link</a>
                                 </td>
+				-->
                                 <td>
                                     
 				       
@@ -5495,14 +5657,16 @@ For this usage, consult the guidelines in section [[[#UsageGuidelines]]].
                                     
                                 </td>
 				-->
+				<!--
                                 <td>
                                     <a href="https://www.w3.org/TR/vocab-dcat-3/#Property:resource_version">Link</a>
                                 </td>
+				-->
                                 <td>
                                     
 				       
-				        <a href="https://www.w3.org/TR/vocab-dcat-3/#Property:resource_version">A</a>
-                                       
+				        <a href="https://www.w3.org/TR/vocab-dcat-3/#Property:resource_version">E</a>
+				       
                                     
                                 </td>
                             </tr>
@@ -5546,9 +5710,11 @@ For this usage, consult the guidelines in section [[[#UsageGuidelines]]].
                                     
                                 </td>
 				-->
+				<!--
                                 <td>
                                     
                                 </td>
+				-->
                                 <td>
                                     
 				       P
@@ -5595,9 +5761,11 @@ For this usage, consult the guidelines in section [[[#UsageGuidelines]]].
                                     
                                 </td>
 				-->
+				<!--
                                 <td>
                                     <a href="https://www.w3.org/TR/vocab-dcat-3/#Property:dataset_was_generated_by">Link</a>
                                 </td>
+				-->
                                 <td>
                                     
 				       
@@ -5713,11 +5881,13 @@ For this usage, consult the guidelines in section [[[#UsageGuidelines]]].
                                 Codelist
                             </th>
 			    -->
+			    <!--
                             <th class="data-table__header-title--sortable" style="width:5%">
                                 DCAT
                             </th>
+			    -->
                             <th class="data-table__header-title--sortable" style="width:3%">
-                                Reuse
+				    <a href="#reuse-column">Reuse</a>
                             </th>
                         </tr>
                     </thead>
@@ -5762,9 +5932,11 @@ For this usage, consult the guidelines in section [[[#UsageGuidelines]]].
                                     
                                 </td>
 				-->
+				<!--
                                 <td>
                                     
                                 </td>
+				-->
                                 <td>
                                     
 				       P
@@ -5811,9 +5983,11 @@ For this usage, consult the guidelines in section [[[#UsageGuidelines]]].
                                     
                                 </td>
 				-->
+				<!--
                                 <td>
                                     <a href="https://www.w3.org/TR/vocab-dcat-3/#Property:resource_contact_point">Link</a>
                                 </td>
+				-->
                                 <td>
                                     
 				       
@@ -5864,9 +6038,11 @@ It is recommended to provide an indication about the dimensions the Dataset Seri
                                     
                                 </td>
 				-->
+				<!--
                                 <td>
                                     <a href="https://www.w3.org/TR/vocab-dcat-3/#Property:resource_description">Link</a>
                                 </td>
+				-->
                                 <td>
                                     
 				       
@@ -5915,9 +6091,11 @@ It is recommended to provide an indication about the dimensions the Dataset Seri
                                     
                                 </td>
 				-->
+				<!--
                                 <td>
                                     <a href="https://www.w3.org/TR/vocab-dcat-3/#Property:dataset_frequency">Link</a>
                                 </td>
+				-->
                                 <td>
                                     
 				       
@@ -5966,9 +6144,11 @@ It is recommended to provide an indication about the dimensions the Dataset Seri
                                     
                                 </td>
 				-->
+				<!--
                                 <td>
                                     <a href="https://www.w3.org/TR/vocab-dcat-3/#Property:dataset_spatial">Link</a>
                                 </td>
+				-->
                                 <td>
                                     
 				       
@@ -6017,9 +6197,11 @@ It is recommended to provide an indication about the dimensions the Dataset Seri
                                     
                                 </td>
 				-->
+				<!--
                                 <td>
                                     <a href="https://www.w3.org/TR/vocab-dcat-3/#Property:resource_update_date">Link</a>
                                 </td>
+				-->
                                 <td>
                                     
 				       
@@ -6069,9 +6251,11 @@ E.g. a digital archive could take over the publishing of older datasets in the 
                                     
                                 </td>
 				-->
+				<!--
                                 <td>
                                     <a href="https://www.w3.org/TR/vocab-dcat-3/#Property:resource_publisher">Link</a>
                                 </td>
+				-->
                                 <td>
                                     
 				       
@@ -6122,9 +6306,11 @@ This is not equal to the release date of the oldest dataset in the collection of
                                     
                                 </td>
 				-->
+				<!--
                                 <td>
                                     <a href="https://www.w3.org/TR/vocab-dcat-3/#Property:resource_release_date">Link</a>
                                 </td>
+				-->
                                 <td>
                                     
 				       
@@ -6173,9 +6359,11 @@ This is not equal to the release date of the oldest dataset in the collection of
                                     
                                 </td>
 				-->
+				<!--
                                 <td>
                                     <a href="https://www.w3.org/TR/vocab-dcat-3/#Property:dataset_temporal">Link</a>
                                 </td>
+				-->
                                 <td>
                                     
 				       
@@ -6224,9 +6412,11 @@ This is not equal to the release date of the oldest dataset in the collection of
                                     
                                 </td>
 				-->
+				<!--
                                 <td>
                                     <a href="https://www.w3.org/TR/vocab-dcat-3/#Property:resource_title">Link</a>
                                 </td>
+				-->
                                 <td>
                                     
 				       
@@ -6342,11 +6532,13 @@ This is not equal to the release date of the oldest dataset in the collection of
                                 Codelist
                             </th>
 			    -->
+			    <!--
                             <th class="data-table__header-title--sortable" style="width:5%">
                                 DCAT
                             </th>
+			    -->
                             <th class="data-table__header-title--sortable" style="width:3%">
-                                Reuse
+				    <a href="#reuse-column">Reuse</a>
                             </th>
                         </tr>
                     </thead>
@@ -6391,9 +6583,11 @@ This is not equal to the release date of the oldest dataset in the collection of
                                     
                                 </td>
 				-->
+				<!--
                                 <td>
                                     <a href="https://www.w3.org/TR/vocab-dcat-3/#Property:distribution_access_service">Link</a>
                                 </td>
+				-->
                                 <td>
                                     
 				       
@@ -6442,9 +6636,11 @@ This is not equal to the release date of the oldest dataset in the collection of
                                     
                                 </td>
 				-->
+				<!--
                                 <td>
                                     <a href="https://www.w3.org/TR/vocab-dcat-3/#Property:distribution_access_url">Link</a>
                                 </td>
+				-->
                                 <td>
                                     
 				       
@@ -6493,9 +6689,11 @@ This is not equal to the release date of the oldest dataset in the collection of
                                     
                                 </td>
 				-->
+				<!--
                                 <td>
                                     
                                 </td>
+				-->
                                 <td>
                                     
 				       P
@@ -6542,9 +6740,11 @@ This is not equal to the release date of the oldest dataset in the collection of
                                     
                                 </td>
 				-->
+				<!--
                                 <td>
                                     
                                 </td>
+				-->
                                 <td>
                                     
 				       P
@@ -6591,9 +6791,11 @@ This is not equal to the release date of the oldest dataset in the collection of
                                     
                                 </td>
 				-->
+				<!--
                                 <td>
                                     <a href="https://www.w3.org/TR/vocab-dcat-3/#Property:distribution_size">Link</a>
                                 </td>
+				-->
                                 <td>
                                     
 				       
@@ -6642,9 +6844,11 @@ This is not equal to the release date of the oldest dataset in the collection of
                                     
                                 </td>
 				-->
+				<!--
                                 <td>
                                     <a href="https://www.w3.org/TR/vocab-dcat-3/#Property:distribution_checksum">Link</a>
                                 </td>
+				-->
                                 <td>
                                     
 				       
@@ -6693,9 +6897,11 @@ This is not equal to the release date of the oldest dataset in the collection of
                                     
                                 </td>
 				-->
+				<!--
                                 <td>
                                     <a href="https://www.w3.org/TR/vocab-dcat-3/#Property:distribution_compression_format">Link</a>
                                 </td>
+				-->
                                 <td>
                                     
 				       
@@ -6744,9 +6950,11 @@ This is not equal to the release date of the oldest dataset in the collection of
                                     
                                 </td>
 				-->
+				<!--
                                 <td>
                                     <a href="https://www.w3.org/TR/vocab-dcat-3/#Property:distribution_description">Link</a>
                                 </td>
+				-->
                                 <td>
                                     
 				       
@@ -6795,9 +7003,11 @@ This is not equal to the release date of the oldest dataset in the collection of
                                     
                                 </td>
 				-->
+				<!--
                                 <td>
                                     
                                 </td>
+				-->
                                 <td>
                                     
 				       P
@@ -6844,9 +7054,11 @@ This is not equal to the release date of the oldest dataset in the collection of
                                     
                                 </td>
 				-->
+				<!--
                                 <td>
                                     <a href="https://www.w3.org/TR/vocab-dcat-3/#Property:distribution_download_url">Link</a>
                                 </td>
+				-->
                                 <td>
                                     
 				       
@@ -6895,9 +7107,11 @@ This is not equal to the release date of the oldest dataset in the collection of
                                     
                                 </td>
 				-->
+				<!--
                                 <td>
                                     <a href="https://www.w3.org/TR/vocab-dcat-3/#Property:distribution_format">Link</a>
                                 </td>
+				-->
                                 <td>
                                     
 				       
@@ -6946,9 +7160,11 @@ This is not equal to the release date of the oldest dataset in the collection of
                                     
                                 </td>
 				-->
+				<!--
                                 <td>
                                     <a href="https://www.w3.org/TR/vocab-dcat-3/#Property:distribution_has_policy">Link</a>
                                 </td>
+				-->
                                 <td>
                                     
 				       
@@ -6997,9 +7213,11 @@ This is not equal to the release date of the oldest dataset in the collection of
                                     
                                 </td>
 				-->
+				<!--
                                 <td>
                                     
                                 </td>
+				-->
                                 <td>
                                     
 				       P
@@ -7046,9 +7264,11 @@ This is not equal to the release date of the oldest dataset in the collection of
                                     
                                 </td>
 				-->
+				<!--
                                 <td>
                                     <a href="https://www.w3.org/TR/vocab-dcat-3/#Property:distribution_license">Link</a>
                                 </td>
+				-->
                                 <td>
                                     
 				       
@@ -7097,9 +7317,11 @@ This is not equal to the release date of the oldest dataset in the collection of
                                     
                                 </td>
 				-->
+				<!--
                                 <td>
                                     <a href="https://www.w3.org/TR/vocab-dcat-3/#Property:distribution_conforms_to">Link</a>
                                 </td>
+				-->
                                 <td>
                                     
 				       
@@ -7148,9 +7370,11 @@ This is not equal to the release date of the oldest dataset in the collection of
                                     
                                 </td>
 				-->
+				<!--
                                 <td>
                                     <a href="https://www.w3.org/TR/vocab-dcat-3/#Property:distribution_media_type">Link</a>
                                 </td>
+				-->
                                 <td>
                                     
 				       
@@ -7199,9 +7423,11 @@ This is not equal to the release date of the oldest dataset in the collection of
                                     
                                 </td>
 				-->
+				<!--
                                 <td>
                                     <a href="https://www.w3.org/TR/vocab-dcat-3/#Property:distribution_update_date">Link</a>
                                 </td>
+				-->
                                 <td>
                                     
 				       
@@ -7250,9 +7476,11 @@ This is not equal to the release date of the oldest dataset in the collection of
                                     
                                 </td>
 				-->
+				<!--
                                 <td>
                                     <a href="https://www.w3.org/TR/vocab-dcat-3/#Property:distribution_packaging_format">Link</a>
                                 </td>
+				-->
                                 <td>
                                     
 				       
@@ -7301,9 +7529,11 @@ This is not equal to the release date of the oldest dataset in the collection of
                                     
                                 </td>
 				-->
+				<!--
                                 <td>
                                     <a href="https://www.w3.org/TR/vocab-dcat-3/#Property:distribution_release_date">Link</a>
                                 </td>
+				-->
                                 <td>
                                     
 				       
@@ -7339,7 +7569,7 @@ This is not equal to the release date of the oldest dataset in the collection of
                                     
                                 </td>
                                 <td>
-                                    0..1
+                                    0..*
                                 </td>
                                 <td property="rdfs:comment">
                                     A statement that specifies rights associated with the Distribution.
@@ -7352,14 +7582,16 @@ This is not equal to the release date of the oldest dataset in the collection of
                                     
                                 </td>
 				-->
+				<!--
                                 <td>
                                     <a href="https://www.w3.org/TR/vocab-dcat-3/#Property:distribution_rights">Link</a>
                                 </td>
+				-->
                                 <td>
                                     
 				       
-				        <a href="https://www.w3.org/TR/vocab-dcat-3/#Property:distribution_rights">E</a>
-				       
+				        <a href="https://www.w3.org/TR/vocab-dcat-3/#Property:distribution_rights">A</a>
+                                       
                                     
                                 </td>
                             </tr>
@@ -7403,14 +7635,16 @@ This is not equal to the release date of the oldest dataset in the collection of
                                     
                                 </td>
 				-->
+				<!--
                                 <td>
                                     <a href="https://www.w3.org/TR/vocab-dcat-3/#Property:distribution_spatial_resolution">Link</a>
                                 </td>
+				-->
                                 <td>
                                     
 				       
-				        <a href="https://www.w3.org/TR/vocab-dcat-3/#Property:distribution_spatial_resolution">A</a>
-                                       
+				        <a href="https://www.w3.org/TR/vocab-dcat-3/#Property:distribution_spatial_resolution">E</a>
+				       
                                     
                                 </td>
                             </tr>
@@ -7454,9 +7688,11 @@ This is not equal to the release date of the oldest dataset in the collection of
                                     
                                 </td>
 				-->
+				<!--
                                 <td>
                                     
                                 </td>
+				-->
                                 <td>
                                     
 				       P
@@ -7503,14 +7739,16 @@ This is not equal to the release date of the oldest dataset in the collection of
                                     
                                 </td>
 				-->
+				<!--
                                 <td>
                                     <a href="https://www.w3.org/TR/vocab-dcat-3/#Property:distribution_temporal_resolution">Link</a>
                                 </td>
+				-->
                                 <td>
                                     
 				       
-				        <a href="https://www.w3.org/TR/vocab-dcat-3/#Property:distribution_temporal_resolution">A</a>
-                                       
+				        <a href="https://www.w3.org/TR/vocab-dcat-3/#Property:distribution_temporal_resolution">E</a>
+				       
                                     
                                 </td>
                             </tr>
@@ -7554,9 +7792,11 @@ This is not equal to the release date of the oldest dataset in the collection of
                                     
                                 </td>
 				-->
+				<!--
                                 <td>
                                     <a href="https://www.w3.org/TR/vocab-dcat-3/#Property:distribution_title">Link</a>
                                 </td>
+				-->
                                 <td>
                                     
 				       
@@ -7702,11 +7942,13 @@ This is not equal to the release date of the oldest dataset in the collection of
                                 Codelist
                             </th>
 			    -->
+			    <!--
                             <th class="data-table__header-title--sortable" style="width:5%">
                                 DCAT
                             </th>
+			    -->
                             <th class="data-table__header-title--sortable" style="width:3%">
-                                Reuse
+				    <a href="#reuse-column">Reuse</a>
                             </th>
                         </tr>
                     </thead>
@@ -7751,9 +7993,11 @@ This is not equal to the release date of the oldest dataset in the collection of
                                     
                                 </td>
 				-->
+				<!--
                                 <td>
                                     
                                 </td>
+				-->
                                 <td>
                                     
 				       P
@@ -7857,11 +8101,13 @@ This is not equal to the release date of the oldest dataset in the collection of
                                 Codelist
                             </th>
 			    -->
+			    <!--
                             <th class="data-table__header-title--sortable" style="width:5%">
                                 DCAT
                             </th>
+			    -->
                             <th class="data-table__header-title--sortable" style="width:3%">
-                                Reuse
+				    <a href="#reuse-column">Reuse</a>
                             </th>
                         </tr>
                     </thead>
@@ -7906,9 +8152,11 @@ This is not equal to the release date of the oldest dataset in the collection of
                                     
                                 </td>
 				-->
+				<!--
                                 <td>
                                     <a href="https://www.w3.org/TR/vocab-dcat-3/#Property:location_bbox">Link</a>
                                 </td>
+				-->
                                 <td>
                                     
 				       
@@ -7957,9 +8205,11 @@ This is not equal to the release date of the oldest dataset in the collection of
                                     
                                 </td>
 				-->
+				<!--
                                 <td>
                                     <a href="https://www.w3.org/TR/vocab-dcat-3/#Property:location_centroid">Link</a>
                                 </td>
+				-->
                                 <td>
                                     
 				       
@@ -8008,9 +8258,11 @@ This is not equal to the release date of the oldest dataset in the collection of
                                     
                                 </td>
 				-->
+				<!--
                                 <td>
                                     <a href="https://www.w3.org/TR/vocab-dcat-3/#Property:location_geometry">Link</a>
                                 </td>
+				-->
                                 <td>
                                     
 				       
@@ -8026,8 +8278,6 @@ This is not equal to the release date of the oldest dataset in the collection of
         
     </div>
 </section>
-
-
 
 
 
@@ -8116,11 +8366,13 @@ This is not equal to the release date of the oldest dataset in the collection of
                                 Codelist
                             </th>
 			    -->
+			    <!--
                             <th class="data-table__header-title--sortable" style="width:5%">
                                 DCAT
                             </th>
+			    -->
                             <th class="data-table__header-title--sortable" style="width:3%">
-                                Reuse
+				    <a href="#reuse-column">Reuse</a>
                             </th>
                         </tr>
                     </thead>
@@ -8165,9 +8417,11 @@ This is not equal to the release date of the oldest dataset in the collection of
                                     
                                 </td>
 				-->
+				<!--
                                 <td>
                                     <a href="https://w3c.github.io/dxwg/dcat/#Property:relationship_hadRole">Link</a>
                                 </td>
+				-->
                                 <td>
                                     
 				       
@@ -8216,9 +8470,11 @@ This is not equal to the release date of the oldest dataset in the collection of
                                     
                                 </td>
 				-->
+				<!--
                                 <td>
                                     <a href="https://w3c.github.io/dxwg/dcat/#Property:relationship_relation">Link</a>
                                 </td>
+				-->
                                 <td>
                                     
 				       
@@ -8469,11 +8725,13 @@ They are included in the Application Profile because they form the range of prop
                                 Codelist
                             </th>
 			    -->
+			    <!--
                             <th class="data-table__header-title--sortable" style="width:5%">
                                 DCAT
                             </th>
+			    -->
                             <th class="data-table__header-title--sortable" style="width:3%">
-                                Reuse
+				    <a href="#reuse-column">Reuse</a>
                             </th>
                         </tr>
                     </thead>
@@ -8518,9 +8776,11 @@ They are included in the Application Profile because they form the range of prop
                                     
                                 </td>
 				-->
+				<!--
                                 <td>
                                     
                                 </td>
+				-->
                                 <td>
                                     
 				       P
@@ -8611,11 +8871,13 @@ They are included in the Application Profile because they form the range of prop
                                 Codelist
                             </th>
 			    -->
+			    <!--
                             <th class="data-table__header-title--sortable" style="width:5%">
                                 DCAT
                             </th>
+			    -->
                             <th class="data-table__header-title--sortable" style="width:3%">
-                                Reuse
+				    <a href="#reuse-column">Reuse</a>
                             </th>
                         </tr>
                     </thead>
@@ -8660,9 +8922,11 @@ They are included in the Application Profile because they form the range of prop
                                     
                                 </td>
 				-->
+				<!--
                                 <td>
                                     
                                 </td>
+				-->
                                 <td>
                                     
 				       P
@@ -8897,11 +9161,13 @@ This is based on the UN/CEFACT Identifier class.
                                 Codelist
                             </th>
 			    -->
+			    <!--
                             <th class="data-table__header-title--sortable" style="width:5%">
                                 DCAT
                             </th>
+			    -->
                             <th class="data-table__header-title--sortable" style="width:3%">
-                                Reuse
+				    <a href="#reuse-column">Reuse</a>
                             </th>
                         </tr>
                     </thead>
@@ -8946,9 +9212,11 @@ This is based on the UN/CEFACT Identifier class.
                                     
                                 </td>
 				-->
+				<!--
                                 <td>
                                     
                                 </td>
+				-->
                                 <td>
                                     
 				       P
@@ -9106,49 +9374,6 @@ In this data specification the use is restricted to instances of this class that
 </section>
 
 
-
-
-
-
-
-   
-        <section>
-            <h3 id="Mediatype">
-                <a href="http://purl.org/dc/terms/MediaType"
-                   data-toggle="tooltip"
-                   data-content="http://purl.org/dc/terms/MediaType"
-                   data-placement="right">Media type</a>
-
-            </h3>
-	        <!-- XXX an image in the h3 will break the rendering of the Table Of Contents of Respec -->
-		<!-- outcomment github feedback possibility
-                <a href="https://github.com/SEMICeu/DCAT-AP/issues/new?title=Issue%20for%20MediaType&body=Explain%20your%20issue"}}>
-                   <img src="html/callout.png" loading="lazy" alt="(create issue)" width="20" height="20"/>
-		</a>
-		-->
-            <dl>
-                <dt>
-                    Definition
-                </dt>
-                <dd>
-                    A media type, e.g. the format of a computer file.
-                </dd>
-                
-                
-                
-                    <dt>
-                        Properties
-                    </dt>
-                    
-                    <dd>
-                        This specification does not impose any additional requirements to properties for this entity.
-                    </dd>
-                
-            </dl>
-        </div>
-        
-    </div>
-</section>
 
 
 
@@ -9315,11 +9540,13 @@ In this data specification the use is restricted to instances of this class that
                                 Codelist
                             </th>
 			    -->
+			    <!--
                             <th class="data-table__header-title--sortable" style="width:5%">
                                 DCAT
                             </th>
+			    -->
                             <th class="data-table__header-title--sortable" style="width:3%">
-                                Reuse
+				    <a href="#reuse-column">Reuse</a>
                             </th>
                         </tr>
                     </thead>
@@ -9364,9 +9591,11 @@ In this data specification the use is restricted to instances of this class that
                                     
                                 </td>
 				-->
+				<!--
                                 <td>
                                     <a href="https://www.w3.org/TR/vocab-dcat-3/#Property:period_has_beginning">Link</a>
                                 </td>
+				-->
                                 <td>
                                     
 				       
@@ -9415,9 +9644,11 @@ In this data specification the use is restricted to instances of this class that
                                     
                                 </td>
 				-->
+				<!--
                                 <td>
                                     <a href="https://www.w3.org/TR/vocab-dcat-3/#Property:period_has_end">Link</a>
                                 </td>
+				-->
                                 <td>
                                     
 				       
@@ -9466,9 +9697,11 @@ In this data specification the use is restricted to instances of this class that
                                     
                                 </td>
 				-->
+				<!--
                                 <td>
                                     <a href="https://www.w3.org/TR/vocab-dcat-3/#Property:period_end_date">Link</a>
                                 </td>
+				-->
                                 <td>
                                     
 				       
@@ -9517,9 +9750,11 @@ In this data specification the use is restricted to instances of this class that
                                     
                                 </td>
 				-->
+				<!--
                                 <td>
                                     <a href="https://www.w3.org/TR/vocab-dcat-3/#Property:period_start_date">Link</a>
                                 </td>
+				-->
                                 <td>
                                     
 				       
@@ -9826,8 +10061,10 @@ In this data specification the use is restricted to instances of this class that
 	<table class="data-table simple" id="table-mandatory-classes">
 	    <thead>
 		<tr class="data-table__header">
+			<!--
 		    <th class="data-table__header-title--sortable">
 		    </th>
+			-->
 		    <th class="data-table__header-title--sortable data-table__header-title--sortable-active">
 			Class
 		    </th>
@@ -9838,11 +10075,15 @@ In this data specification the use is restricted to instances of this class that
 	    </thead>
 	    <tbody class="supertype">
             
-		<tr><td>
+		<tr>
+			<!--
+		<td>
                    <a href="https://github.com/SEMICeu/DCAT-AP/issues/new?title=Issue%20for%20TemporalLiteral&body=Explain%20your%20issue"}}>
                      <img src="html/callout.png" loading="lazy" alt="(create issue)" width="50" height="50"/>
 		   </a>
-		</td><td>
+		</td>
+			-->
+		<td>
                 
                     <div id="TemporalLiteral">
                         <a href="http://www.w3.org/2000/01/rdf-schema#Literal"
@@ -9854,11 +10095,15 @@ In this data specification the use is restricted to instances of this class that
 		</td><td>
                     rdfs:Literal encoded using the relevant [[ISO8601]] Date and Time compliant string and typed using the appropriate XML Schema datatype (xsd:gYear, xsd:gYearMonth, xsd:date, or xsd:dateTime).
 		</td></tr>
-		<tr><td>
+		<tr>
+			<!--
+		<td>
                    <a href="https://github.com/SEMICeu/DCAT-AP/issues/new?title=Issue%20for%20TimeInstant&body=Explain%20your%20issue"}}>
                      <img src="html/callout.png" loading="lazy" alt="(create issue)" width="50" height="50"/>
 		   </a>
-		</td><td>
+		</td>
+			-->
+		<td>
                 
                     <div id="Timeinstant">
                         <a href="http://www.w3.org/2006/time#Instant"
@@ -9870,11 +10115,15 @@ In this data specification the use is restricted to instances of this class that
 		</td><td>
                     A temporal entity with zero extent or duration.
 		</td></tr>
-		<tr><td>
+		<tr>
+			<!--
+		<td>
                    <a href="https://github.com/SEMICeu/DCAT-AP/issues/new?title=Issue%20for%20Xsd:datetime&body=Explain%20your%20issue"}}>
                      <img src="html/callout.png" loading="lazy" alt="(create issue)" width="50" height="50"/>
 		   </a>
-		</td><td>
+		</td>
+			-->
+		<td>
                 
                     <div id="xsd%3AdateTime">
                         <a href="http://www.w3.org/2001/XMLSchema#dateTime"
@@ -9886,11 +10135,15 @@ In this data specification the use is restricted to instances of this class that
 		</td><td>
                     Object with integer-valued year, month, day, hour and minute properties, a decimal-valued second property, and a boolean timezoned property.
 		</td></tr>
-		<tr><td>
+		<tr>
+			<!--
+		<td>
                    <a href="https://github.com/SEMICeu/DCAT-AP/issues/new?title=Issue%20for%20Xsd:decimal&body=Explain%20your%20issue"}}>
                      <img src="html/callout.png" loading="lazy" alt="(create issue)" width="50" height="50"/>
 		   </a>
-		</td><td>
+		</td>
+			-->
+		<td>
                 
                     <div id="xsd%3Adecimal">
                         <a href="http://www.w3.org/2001/XMLSchema#decimal"
@@ -9902,11 +10155,15 @@ In this data specification the use is restricted to instances of this class that
 		</td><td>
                     Decimal represents a subset of the real numbers, which can be represented by decimal numerals. The ·value space· of decimal is the set of numbers that can be obtained by multiplying an integer by a non-positive power of ten, i.e., expressible as i × 10^-n where i and n are integers and n >= 0.
 		</td></tr>
-		<tr><td>
+		<tr>
+			<!--
+		<td>
                    <a href="https://github.com/SEMICeu/DCAT-AP/issues/new?title=Issue%20for%20Xsd:duration&body=Explain%20your%20issue"}}>
                      <img src="html/callout.png" loading="lazy" alt="(create issue)" width="50" height="50"/>
 		   </a>
-		</td><td>
+		</td>
+			-->
+		<td>
                 
                     <div id="xsd%3Aduration">
                         <a href="http://www.w3.org/2001/XMLSchema#duration"
@@ -9918,11 +10175,15 @@ In this data specification the use is restricted to instances of this class that
 		</td><td>
                     Duration represents a duration of time. The ·value space· of duration is a six-dimensional space where the coordinates designate the Gregorian year, month, day, hour, minute, and second components defined in § 5.5.3.2 of [[ISO8601]], respectively.
 		</td></tr>
-		<tr><td>
+		<tr>
+			<!--
+		<td>
                    <a href="https://github.com/SEMICeu/DCAT-AP/issues/new?title=Issue%20for%20Xsd:hexbinary&body=Explain%20your%20issue"}}>
                      <img src="html/callout.png" loading="lazy" alt="(create issue)" width="50" height="50"/>
 		   </a>
-		</td><td>
+		</td>
+			-->
+		<td>
                 
                     <div id="xsd%3AhexBinary">
                         <a href="http://www.w3.org/2001/XMLSchema#hexBinary"
@@ -9934,11 +10195,15 @@ In this data specification the use is restricted to instances of this class that
 		</td><td>
                     Hex-encoded binary data. The ·value space· of hexBinary is the set of finite-length sequences of binary octets.
 		</td></tr>
-		<tr><td>
+		<tr>
+			<!--
+		<td>
                    <a href="https://github.com/SEMICeu/DCAT-AP/issues/new?title=Issue%20for%20Xsd:nonnegativeinteger&body=Explain%20your%20issue"}}>
                      <img src="html/callout.png" loading="lazy" alt="(create issue)" width="50" height="50"/>
 		   </a>
-		</td><td>
+		</td>
+			-->
+		<td>
                 
                     <div id="xsd%3AnonNegativeInteger">
                         <a href="http://www.w3.org/2001/XMLSchema#nonNegativeInteger"
@@ -10064,35 +10329,68 @@ Stronger enforcements are left for implementations as they have control on actua
 
 
 <h3>Controlled vocabularies to be used</h3>
-<p>In the table below, a number of properties are listed with controlled vocabularies that MUST be used for the listed properties. The declaration of the following controlled vocabularies as mandatory ensures a minimum level of interoperability.</p>
+The tables below show the usage of the codelists with the expected qualification. 
+
+<div class="ednote" title="Proposal qualification of use of controlled vocabularies">
+This proposal is being discussed in 3 issues: 
+<a href="https://github.com/SEMICeu/DCAT-AP/issues/407">407</a>,
+<a href="https://github.com/SEMICeu/DCAT-AP/issues/408">408</a>,
+<a href="https://github.com/SEMICeu/DCAT-AP/issues/409">409</a>.
+
+The previous table can be found <a href="https://semiceu.github.io/DCAT-AP/releases/3.0.0/#controlled-vocabularies-to-be-used">here</a>.
+</div>
+
+
+<h4>Properties with controlled vocabularies that MUST be used for the listed properties</h4>
 
 <table id="table-cv" class="simple">
 	<thead><tr><th>Property URI</th><th>Used for Class</th><th>Vocabulary name</th><th>Usage note</th></tr></thead>
 	<tbody>
 		<tr><td>dcat:mediaType</td><td><a href="#Distribution">Distribution</a></td><td><a href="http://www.iana.org/assignments/media-types/media-types.xhtml">IANA Media Types</a></td><td></td></tr>
-		<tr><td>dcat:theme</td><td><a href="#Dataset">Dataset</a>, <a href="#DataService">Data Service</a>, <a href="#Catalogue">Catalogue</a></td><td><a href="http://publications.europa.eu/resource/authority/data-theme">Dataset Theme Vocabulary</a></td><td>The values to be used for this property are the URIs of the concepts in the vocabulary.</td></tr>
 		<tr><td>dct:accrualPeriodicity</td><td><a href="#Dataset">Dataset</a>,<a href="#DatasetSeries">Dataset Series</a></td><td><a href="http://publications.europa.eu/resource/authority/frequency">EU Vocabularies Frequency Named Authority List</a></td><td></td></tr>
 		<tr><td>dct:format</td><td><a href="#Distribution">Distribution</a>,<a href="#DataService">Data Service </a></td><td><a href="http://publications.europa.eu/resource/authority/file-type">EU Vocabularies File Type Named Authority List</a></td><td></td></tr>
 		<tr><td>dct:language</td><td><a href="#Catalogue">Catalogue</a>,<a href="#Dataset">Dataset</a>, <a href="#CatalogueRecord">Catalogue Records</a>, <a href="#Distribution">Distribution</a></td><td><a href="http://publications.europa.eu/resource/authority/language">EU Vocabularies Languages Named Authority List</a></td><td></td></tr>
-		<tr><td>dct:publisher</td><td><a href="#Catalogue">Catalogue</a>,<a href="#Dataset">Dataset</a>,<a href="#DatasetSeries">Dataset Series</a>,<a href="#DataService">Data Service</a></td><td><a href="http://publications.europa.eu/resource/authority/corporate-body">EU Vocabularies Corporate bodies Named Authority List</a></td><td>The Corporate bodies NAL must be used for European institutions and a small set of international organisations. In case of other types of organisations, national, regional or local vocabularies should be used.</td></tr>
-		<tr><td>dct:spatial</td><td><a href="#Catalogue">Catalogue</a>,<a href="#Dataset">Dataset</a>,<a href="#DatasetSeries">Dataset Series</a></td><td><a href="http://publications.europa.eu/resource/authority/continent/">EU Vocabularies Continents Named Authority List</a>, <a href="http://publications.europa.eu/resource/authority/country">EU Vocabularies Countries Named Authority List</a>, <a href="http://publications.europa.eu/resource/authority/place/">EU Vocabularies Places Named Authority List</a>, <a href="http://sws.geonames.org/">Geonames</a></td><td> The EU Vocabularies Name Authority Lists must be used for continents, countries and places that are in those lists; if a particular location is not in one of the mentioned Named Authority Lists, Geonames URIs must be used.</td></tr>
 		<tr><td>adms:status</td><td><a href="#Distribution">Distribution</a></td><td><a href="http://publications.europa.eu/resource/authority/distribution-status">EU Vocabularies Distribution Status</a></td><td></td></tr>
-		<tr><td>dct:type</td><td><a href="#Agent">Agent</a></td><td><a href="http://purl.org/adms/publishertype/1.0">ADMS publisher type</a> vocabulary</td><td> The list of terms in the ADMS publisher type vocabulary is included in the ADMS specification</td></tr>
-		<tr><td>dct:type</td><td><a href="#LicenceDocument">Licence Document</a></td><td><a href="http://purl.org/adms/licencetype/1.0">ADMS licence type vocabulary</a></td><td> The list of terms in the ADMS licence type vocabulary is included in the ADMS specification</td></tr>
 		<tr><td>dcatap:availability</td><td><a href="#Distribution">Distribution</a></td><td><a href="http://publications.europa.eu/resource/authority/planned-availability">Distribution availability vocabulary</a></td><td>The list of terms for the avalability levels of a dataset distribution in the DCAT-AP  specification.</td></tr>
 		<tr><td>spdx:algorithm</td><td><a href="#Checksum">Checksum</a></td><td><a href="https://spdx.org/rdf/terms/#d4e2129">Checksum algorithm members</a></td><td>The members listed are considered a controlled vocabulary of supported checksum algorithms.</td></tr>
+	</tbody>
+</table>
+<h4>Properties with AT LEAST 1 value from the controlled vocabularies</h4>
+<div class="ednote" title="dcat:theme CV usage qualification">
+During the last webinar this choice raised many questions and there was no consensus.
+There was no clear preference between the option shown below or keeping it under the above MUST qualification.
+Readers are expected to provide there feedback in issue 409.
+</div>
+<table id="table-cv" class="simple">
+	<thead><tr><th>Property URI</th><th>Used for Class</th><th>Vocabulary name</th><th>Usage note</th></tr></thead>
+	<tbody>
+		<tr><td>dcat:theme</td><td><a href="#Dataset">Dataset</a>, <a href="#DataService">Data Service</a>, <a href="#Catalogue">Catalogue</a></td><td><a href="http://publications.europa.eu/resource/authority/data-theme">Dataset Theme Vocabulary</a></td><td>The values to be used for this property are the URIs of the concepts in the vocabulary.</td></tr>
+	</tbody>
+</table>
+
+<h4>Properties with a RECOMMENDED use of controlled vocabularies</h4>
+<table id="table-cv" class="simple">
+	<thead><tr><th>Property URI</th><th>Used for Class</th><th>Vocabulary name</th><th>Usage note</th></tr></thead>
+	<tbody>
+		<tr><td>dct:type</td><td><a href="#Agent">Agent</a></td><td><a href="http://purl.org/adms/publishertype/1.0">ADMS publisher type</a> vocabulary</td><td> The list of terms in the ADMS publisher type vocabulary is included in the ADMS specification</td></tr>
+		<tr><td>dct:type</td><td><a href="#LicenceDocument">Licence Document</a></td><td><a href="http://purl.org/adms/licencetype/1.0">ADMS licence type vocabulary</a></td><td> The list of terms in the ADMS licence type vocabulary is included in the ADMS specification</td></tr>
 		<tr><td>dct:accessRights</td><td><a href="#Dataset">Dataset</a>, <a href="#DataService">Data Service</a></td><td><a href="http://publications.europa.eu/resource/authority/access-right">Access Rights Named Authority List</td><td>Use one of the following values (:PUBLIC, :RESTRICTED, :NON_PUBLIC).</td></tr>
 	</tbody>
 </table>
 
-<p>In the table below, a number of properties are listed with controlled vocabularies that MAY be used for the listed properties. The declaration of the following controlled vocabularies as recommended stimulates interoperability.</p>
-
+<h4>Properties with MAY use a controlled vocabularies</h4>
 <table id="table-cv" class="simple">
-    <thead><tr><th>Property URI</th><th>Used for Class</th><th>Vocabulary name</th><th>Usage note</th></tr></thead>
-    <tbody>
+	<thead><tr><th>Property URI</th><th>Used for Class</th><th>Vocabulary name</th><th>Usage note</th></tr></thead>
+	<tbody>
+		<tr><td>dct:publisher</td><td><a href="#Catalogue">Catalogue</a>,<a href="#Dataset">Dataset</a>,<a href="#DatasetSeries">Dataset Series</a>,<a href="#DataService">Data Service</a></td><td><a href="http://publications.europa.eu/resource/authority/corporate-body">EU Vocabularies Corporate bodies Named Authority List</a></td><td>The Corporate bodies NAL must be used for European institutions and a small set of international organisations. In case of other types of organisations, national, regional or local vocabularies should be used.</td></tr>
+		<tr><td>dct:spatial</td><td><a href="#Catalogue">Catalogue</a>,<a href="#Dataset">Dataset</a>,<a href="#DatasetSeries">Dataset Series</a></td><td><a href="http://publications.europa.eu/resource/authority/continent/">EU Vocabularies Continents Named Authority List</a>, <a href="http://publications.europa.eu/resource/authority/country">EU Vocabularies Countries Named Authority List</a>, <a href="http://publications.europa.eu/resource/authority/place/">EU Vocabularies Places Named Authority List</a>, <a href="http://sws.geonames.org/">Geonames</a></td><td> The EU Vocabularies Name Authority Lists must be used for continents, countries and places that are in those lists; if a particular location is not in one of the mentioned Named Authority Lists, Geonames URIs must be used.</td></tr>
 <tr><td>dct:type</td><td><a href="#Dataset">Dataset</a></td><td><a href="http://publications.europa.eu/resource/authority/dataset-type">Dataset-type authority table</a></td><td>This list of terms provide types of datasets. Its main scope is to support dataset categorisation of the EU Open Data Portal.</td></tr>
-    </tbody>
+	</tbody>
 </table>
+
+
+
+
 
 <h3>Other controlled vocabularies</h3>
 In addition to the proposed common controlled vocabularies, which are mandatory to ensure minimal interoperability, implementers are encouraged to publish and to use further region or domain-specific vocabularies that are available online. While those may not be recognised by general implementations of the Application Profile, they may serve to increase interoperability across applications in the same region or domain. Examples are the full set of concepts in <a href="https://op.europa.eu/en/web/eu-vocabularies/dataset/-/resource?uri=http://publications.europa.eu/resource/dataset/eurovoc">EuroVoc</a>, <a href="https://dspacecris.eurocris.org/">the CERIF standard vocabularies</a>, <a href="http://www.oclc.org/content/dam/oclc/dewey/versions/print/intro.pdf">the Dewey Decimal Classification</a> and numerous other schemes.
@@ -12584,17 +12882,6 @@ The properties are grouped under headings <it>mandatory, recommended, optional</
 		
 				
 					<tr>
-						<td><a href="#Mediatype">Media type</a></td>
-						<td><div class="shorten">http://purl.org/dc/terms/MediaType</div></td>
-						<td></td>
-						<td></td>
-						<td></td>
-					</tr>
-				
-			</tr>
-		
-				
-					<tr>
 						<td><a href="#MediaType">Media Type</a></td>
 						<td><div class="shorten">http://purl.org/dc/terms/MediaType</div></td>
 						<td></td>
@@ -13062,7 +13349,8 @@ Past and current contributors are :
     <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.6/mode/javascript/javascript.min.js" ></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.6/mode/turtle/turtle.min.js" ></script>
     <script src="https://codemirror.net/5/mode/javascript/javascript.js" ></script>
-    <!--    <script src="https://semiceu.github.io/MLDCAT-AP/releases/1.0.0/example.js" ></script> -->
+    <script src="https://unpkg.com/n3@1.14.0/browser/n3.min.js"></script>
+	<script src="https://rdf.js.org/comunica-browser/versions/v4/engines/query-sparql/comunica-browser.js"></script>
     <script src="./html/example.js" ></script>
 	<script type="text/javascript">
 		function elementInView(elem){
@@ -13087,60 +13375,98 @@ Past and current contributors are :
 	</script>
 	<style>
 		.CodeMirror {
-		  border: 1px solid #eee;
-		  height: auto;
+			border: 1px solid #eee;
+			height: auto;
 		}
 		.buttonsample {
-		cursor: pointer;
-		margin-top: 10px;
-		margin-left: 10px;
-		font-weight: 700;
-		border:0 outset buttonface;
-		background: #F5F6F8;
-		background-image: linear-gradient(to bottom,#F5F6F8,#DBDCDE);
-		border-radius:4px;
-		box-shadow:0 1px 3px #666;
-		font-family: Arial;
-		color: grey;
-		font-size: 14px;
-		padding: 10px 5px;
-		text-decoration: none;
-		float: right
-	}
-	.buttonsample:hover {color:#2a70d3}
-	.tabsstyle {
-		padding: 10px;
-		overflow: hidden;
-	}
-	li.ui-tabs-tab > a:hover {
-		background-color:dodgerblue;
-		color:white;
-	}
-    	table.simple {                                                                      
-                  font-size: small;                                                           
-                          border-spacing:0;                                                   
-                          border-collapse:collapse;                                           
-                          border-bottom:3px solid #005a9c                                     
-        }                                                                                   
-        .simple th{background:#005a9c;color:#fff;padding:3px 5px;text-align:left}           
-        .simple th a{color:#fff;padding:3px 5px;text-align:left}                            
-        .simple th[scope=row]{background:inherit;color:inherit;border-top:1px solid #ddd}   
-        .simple td{padding:3px 10px;border-top:1px solid #ddd}                              
-        .simple tr:nth-child(even){background:#f0f6ff}
-    body.darkmode .simple th{background:#005a9c94;color:#ddd}
-	body.darkmode .simple th a{color:#ddd}
-	body.darkmode .simple tr:nth-child(even){background:#f0f6ff26}
-    body.darkmode :is(h4,h5,h6)+a.self-link::before {
-        color: var(--heading-text);
-    }
-    body.darkmode img {
-        background: none;
-    }
-    body.darkmode section#references :target {
-        background: #04162d;
-    }
-  </style>
+			cursor: pointer;
+			margin-top: 10px;
+			margin-left: 10px;
+			font-weight: 700;
+			border:0 outset buttonface;
+			background: #F5F6F8;
+			background-image: linear-gradient(to bottom,#F5F6F8,#DBDCDE);
+			border-radius:4px;
+			box-shadow:0 1px 3px #666;
+			font-family: Arial;
+			color: grey;
+			font-size: 13px !important;
+			padding: 10px 5px;
+			text-decoration: none;
+			float: right
+		}
+	    .chooseVersion {
+			cursor: pointer;
+			margin-top: 10px;
+			margin-left: 10px;
+			font-weight: 700;
+			border:0 outset buttonface;
+			background: #F5F6F8;
+			background-image: linear-gradient(to bottom,#F5F6F8,#DBDCDE);
+			border-radius:4px;
+			box-shadow:0 1px 3px #666;
+			font-family: Arial;
+			color: grey;
+			font-size: 13px !important;
+			padding: 10px 5px;
+			text-decoration: none;
+			float: right
+		}
+		.infosample {
+			cursor: pointer;
+			margin-top: 10px;
+			font-weight: 700;
+			border:0 outset buttonface;
+			border-radius:4px;
+			font-family: Arial;
+			color: grey;
+			font-size: 14px;
+			padding: 10px 0px;
+			text-decoration: none;
+			float: right
+		}
+		.buttonsample:hover {color:#2a70d3}
+		.tabsstyle {
+			padding: 10px;
+			overflow: hidden;
+		}
+		li.ui-tabs-tab > a:hover {
+			background-color:dodgerblue;
+			color:white;
+		}
+		table.simple {
+			font-size: small;
+			border-spacing:0;
+			border-collapse:collapse;
+			border-bottom:3px solid #005a9c
+		}
+		.simple th{background:#005a9c;color:#fff;padding:3px 5px;text-align:left}
+		.simple th a{color:#fff;padding:3px 5px;text-align:left}
+		.simple th[scope=row]{background:inherit;color:inherit;border-top:1px solid #ddd}
+		.simple td{padding:3px 10px;border-top:1px solid #ddd}
+		.simple tr:nth-child(even){background:#f0f6ff}
+		body.darkmode .simple th{background:#005a9c94;color:#ddd}
+		body.darkmode .simple th a{color:#ddd}
+		body.darkmode .simple tr:nth-child(even){background:#f0f6ff26}
+		body.darkmode :is(h4,h5,h6)+a.self-link::before {
+			color: var(--heading-text);
+		}
+		body.darkmode img {
+			background: none;
+		}
+		body.darkmode section#references :target {
+			background: #04162d;
+		}
+	</style>
 
-    	<link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.13.4/css/jquery.dataTables.min.css">
-	<script type="text/javascript" language="javascript" src="https://cdn.datatables.net/1.13.4/js/jquery.dataTables.min.js"></script>
+	<link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/2.2.2/css/dataTables.dataTables.min.css">
+	<link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/buttons/3.2.2/css/buttons.dataTables.min.css">
+	<script type="text/javascript" language="javascript" src="https://cdn.datatables.net/2.2.2/js/dataTables.min.js"></script>
+	<script type="text/javascript" language="javascript" src="https://cdn.datatables.net/buttons/3.2.2/js/dataTables.buttons.min.js"></script>
+	<script type="text/javascript" language="javascript" src="https://cdn.datatables.net/buttons/3.2.2/js/buttons.dataTables.js"></script>
+	<script type="text/javascript" language="javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.10.1/jszip.min.js"></script>
+	<script type="text/javascript" language="javascript" src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.2.7/pdfmake.min.js"></script>
+	<script type="text/javascript" language="javascript" src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.2.7/vfs_fonts.js"></script>
+	<script type="text/javascript" language="javascript" src="https://cdn.datatables.net/buttons/3.2.0/js/buttons.html5.min.js"></script>
+	<script type="text/javascript" language="javascript" src="https://cdn.datatables.net/buttons/3.2.0/js/buttons.print.min.js"></script>
 </html>
