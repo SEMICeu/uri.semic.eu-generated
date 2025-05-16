@@ -1,0 +1,639 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<xs:schema xmlns="https://data.europa.eu/m8g/xml/" xmlns:xs="http://www.w3.org/2001/XMLSchema" targetNamespace="https://data.europa.eu/m8g/xml/" version="2.0.0" elementFormDefault="qualified" attributeFormDefault="unqualified" xmlns:cv="https://data.europa.eu/m8g/xml/">
+  <xs:element name="DataFlow" type="DataFlowType"/>
+  <xs:element name="InteroperabilityAssessment" type="InteroperabilityAssessmentType"/>
+  <xs:element name="PolicyAlignment" type="PolicyAlignmentType"/>
+  <xs:element name="RequirementOfDigitalRelevance" type="RequirementOfDigitalRelevanceType"/>
+  <xs:element name="SolutionAssessment" type="SolutionAssessmentType"/>
+  <xs:element name="Action" type="ActionType"/>
+  <xs:element name="AgentRole" type="AgentRoleType"/>
+  <xs:element name="AgentType" type="AgentTypeType"/>
+  <xs:element name="Frequency" type="FrequencyType"/>
+  <xs:element name="Request" type="RequestType"/>
+  <xs:element name="Role" type="RoleType"/>
+  <xs:element name="RoleType" type="RoleTypeType"/>
+  <xs:element name="Assessment" type="AssessmentType"/>
+  <xs:element name="Statement" type="StatementType"/>
+  <xs:element name="Agent" type="AgentType"/>
+  <xs:element name="LegalExpression" type="LegalExpressionType"/>
+  <xs:element name="Manifestation" type="ManifestationType"/>
+  <xs:element name="Organization" type="OrganizationType"/>
+  <xs:element name="Person" type="PersonType"/>
+  <xs:element name="Work" type="WorkType"/>
+  <xs:element name="BusinessEvent" type="BusinessEventType"/>
+  <xs:element name="Event" type="EventType"/>
+  <xs:element name="LifeEvent" type="LifeEventType"/>
+  <xs:element name="Location" type="LocationType"/>
+  <xs:element name="PublicService" type="PublicServiceType"/>
+  <xs:element name="Text" type="TextType"/>
+  <xs:element name="Literal" type="LiteralType"/>
+  <xs:element name="Uri" type="UriType"/>
+  <xs:element name="XsdanyUri" type="XsdanyUriType"/>
+  <xs:element name="Code" type="CodeType"/>
+  <xs:element name="Asset" type="AssetType"/>
+  <xs:element name="Identifier" type="IdentifierType"/>
+  <xs:element name="Dataset" type="DatasetType"/>
+  <xs:element name="Resource" type="ResourceType"/>
+  <xs:element name="Specification" type="SpecificationType"/>
+  <xs:simpleType name="Literal">
+    <xs:restriction base="xs:string"/>
+  </xs:simpleType>
+  <xs:complexType name="langstring">
+    <xs:simpleContent>
+      <xs:extension base="xs:string">
+        <xs:attribute name="lang" type="xs:language"/>
+      </xs:extension>
+    </xs:simpleContent>
+  </xs:complexType>
+  <xs:complexType name="ConceptType">
+    <xs:simpleContent>
+      <xs:extension base="xs:token">
+        <xs:attribute name="ref" type="xs:IDREF"/>
+        <xs:attribute name="conceptSchemeRef" type="xs:IDREF"/>
+      </xs:extension>
+    </xs:simpleContent>
+  </xs:complexType>
+  <xs:complexType name="DataFlowType">
+    <xs:sequence>
+      <xs:element name="hasFrequency" ref="FrequencyType" maxOccurs="unbounded" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation xml:lang="en">The Frequency in which the Action is to be executed.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="trigger" type="xs:string" maxOccurs="unbounded" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation xml:lang="en">An event which results in the start of an action.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+    </xs:sequence>
+    <xs:attribute name="DataFlowRef" type="xs:IDREF">
+      <xs:annotation>
+        <xs:documentation xml:lang="en">Reference to DataFlow ID</xs:documentation>
+      </xs:annotation>
+    </xs:attribute>
+  </xs:complexType>
+  <xs:complexType name="InteroperabilityAssessmentType">
+    <xs:sequence/>
+    <xs:attribute name="InteroperabilityAssessmentRef" type="xs:IDREF">
+      <xs:annotation>
+        <xs:documentation xml:lang="en">Reference to InteroperabilityAssessment ID</xs:documentation>
+      </xs:annotation>
+    </xs:attribute>
+  </xs:complexType>
+  <xs:complexType name="PolicyAlignmentType">
+    <xs:sequence>
+      <xs:element name="description" type="xs:string" maxOccurs="unbounded" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation xml:lang="en">An account of the resource.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="policy" type="xs:anyURI" maxOccurs="unbounded" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation xml:lang="en">A URI which identifies a policy.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+    </xs:sequence>
+    <xs:attribute name="PolicyAlignmentRef" type="xs:IDREF">
+      <xs:annotation>
+        <xs:documentation xml:lang="en">Reference to PolicyAlignment ID</xs:documentation>
+      </xs:annotation>
+    </xs:attribute>
+  </xs:complexType>
+  <xs:complexType name="RequirementOfDigitalRelevanceType">
+    <xs:sequence>
+      <xs:element name="category" type="ConceptType" maxOccurs="unbounded" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation xml:lang="en">The categroy of the Requirement.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+    </xs:sequence>
+    <xs:attribute name="RequirementOfDigitalRelevanceRef" type="xs:IDREF">
+      <xs:annotation>
+        <xs:documentation xml:lang="en">Reference to RequirementOfDigitalRelevance ID</xs:documentation>
+      </xs:annotation>
+    </xs:attribute>
+  </xs:complexType>
+  <xs:complexType name="SolutionAssessmentType">
+    <xs:sequence>
+      <xs:element name="question" type="ConceptType" maxOccurs="unbounded" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation xml:lang="en">The question against which is being assessed.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+    </xs:sequence>
+    <xs:attribute name="SolutionAssessmentRef" type="xs:IDREF">
+      <xs:annotation>
+        <xs:documentation xml:lang="en">Reference to SolutionAssessment ID</xs:documentation>
+      </xs:annotation>
+    </xs:attribute>
+  </xs:complexType>
+  <xs:complexType name="ActionType">
+    <xs:sequence>
+      <xs:element name="relatedTo" ref="ActionType" maxOccurs="unbounded" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation xml:lang="en">Indicates a somehow related other document, not necessarily a legal resource.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="hasAnnotation" type="xs:string" maxOccurs="unbounded" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation xml:lang="en">A note added by way of comment or explanation.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="hasAgentRole" ref="AgentRoleType" maxOccurs="unbounded" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation xml:lang="en">The involvement of an agent in a role within this action.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="hasNext" ref="ActionType" maxOccurs="unbounded" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation xml:lang="en">A succeeding action </xs:documentation>
+        </xs:annotation>
+      </xs:element>
+    </xs:sequence>
+    <xs:attribute name="ActionRef" type="xs:IDREF">
+      <xs:annotation>
+        <xs:documentation xml:lang="en">Reference to Action ID</xs:documentation>
+      </xs:annotation>
+    </xs:attribute>
+  </xs:complexType>
+  <xs:complexType name="AgentRoleType">
+    <xs:sequence>
+      <xs:element name="withRole" ref="RoleType" maxOccurs="unbounded" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation xml:lang="en">The property linking an Agent to Role.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+    </xs:sequence>
+    <xs:attribute name="AgentRoleRef" type="xs:IDREF">
+      <xs:annotation>
+        <xs:documentation xml:lang="en">Reference to AgentRole ID</xs:documentation>
+      </xs:annotation>
+    </xs:attribute>
+  </xs:complexType>
+  <xs:complexType name="AgentTypeType">
+    <xs:sequence/>
+    <xs:attribute name="AgentTypeRef" type="xs:IDREF">
+      <xs:annotation>
+        <xs:documentation xml:lang="en">Reference to AgentType ID</xs:documentation>
+      </xs:annotation>
+    </xs:attribute>
+  </xs:complexType>
+  <xs:complexType name="FrequencyType">
+    <xs:sequence>
+      <xs:element name="hasUnit" type="ConceptType" maxOccurs="1" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation xml:lang="en">The unit of the Frequency</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="value" type="xs:string" maxOccurs="1" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation xml:lang="en">The value of the frequency.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+    </xs:sequence>
+    <xs:attribute name="FrequencyRef" type="xs:IDREF">
+      <xs:annotation>
+        <xs:documentation xml:lang="en">Reference to Frequency ID</xs:documentation>
+      </xs:annotation>
+    </xs:attribute>
+  </xs:complexType>
+  <xs:complexType name="RequestType">
+    <xs:sequence>
+      <xs:element name="isPartOf" ref="LegalExpressionType" maxOccurs="1" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation xml:lang="en"> 	A related resource in which the described resource is physically or logically included.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="references" ref="ResourceType" maxOccurs="unbounded" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation xml:lang="en">A related resource that is referenced, cited, or otherwise pointed to by the described resource.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="requires" ref="ResourceType" maxOccurs="unbounded" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation xml:lang="en">A related resource that is required by the described resource to support its function, delivery, or coherence.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="changes" ref="RequestType" maxOccurs="unbounded" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation xml:lang="en">Indicates that this work or expression legally changes another. This encompasses the notions of amendment, replacement, repeal, or other types of change. This may be a direct change (textual or non-textual amendment) or a consequential or indirect change.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="relatedTo" ref="RequestType" maxOccurs="unbounded" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation xml:lang="en">Indicates a somehow related other document, not necessarily a legal resource.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="hasAnnotation" type="xs:string" maxOccurs="unbounded" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation xml:lang="en">A note added by way of comment or explanation.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="hasFrequency" ref="FrequencyType" maxOccurs="unbounded" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation xml:lang="en">The frequency in which the request is to be executed in case of repetitive mandate.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="hasTopic" type="ConceptType" maxOccurs="unbounded" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation xml:lang="en">The topic of the request.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="hasUri" type="xs:anyURI" maxOccurs="unbounded" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation xml:lang="en">URI of the Request.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="produces" ref="ActionType" maxOccurs="unbounded" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation xml:lang="en">The action that is produced by a request.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+    </xs:sequence>
+    <xs:attribute name="RequestRef" type="xs:IDREF">
+      <xs:annotation>
+        <xs:documentation xml:lang="en">Reference to Request ID</xs:documentation>
+      </xs:annotation>
+    </xs:attribute>
+  </xs:complexType>
+  <xs:complexType name="RoleType">
+    <xs:sequence>
+      <xs:element name="hasType" ref="RoleTypeType" maxOccurs="unbounded" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation xml:lang="en">A kind of Role </xs:documentation>
+        </xs:annotation>
+      </xs:element>
+    </xs:sequence>
+    <xs:attribute name="RoleRef" type="xs:IDREF">
+      <xs:annotation>
+        <xs:documentation xml:lang="en">Reference to Role ID</xs:documentation>
+      </xs:annotation>
+    </xs:attribute>
+  </xs:complexType>
+  <xs:complexType name="RoleTypeType">
+    <xs:sequence/>
+    <xs:attribute name="RoleTypeRef" type="xs:IDREF">
+      <xs:annotation>
+        <xs:documentation xml:lang="en">Reference to RoleType ID</xs:documentation>
+      </xs:annotation>
+    </xs:attribute>
+  </xs:complexType>
+  <xs:complexType name="AssessmentType">
+    <xs:sequence>
+      <xs:element name="assesses" ref="RequestType" maxOccurs="unbounded" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation xml:lang="en">The reference to the asset(s) that are the object of the assessment.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="assesses" ref="AssetType" maxOccurs="unbounded" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation xml:lang="en">The reference to the asset(s) that are the object of the assessment.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="resultsIn" ref="StatementType" maxOccurs="unbounded" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation xml:lang="en">The creation of the statements resulting from the assessment.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+    </xs:sequence>
+    <xs:attribute name="AssessmentRef" type="xs:IDREF">
+      <xs:annotation>
+        <xs:documentation xml:lang="en">Reference to Assessment ID</xs:documentation>
+      </xs:annotation>
+    </xs:attribute>
+  </xs:complexType>
+  <xs:complexType name="StatementType">
+    <xs:sequence>
+      <xs:element name="interpretation" type="ConceptType" maxOccurs="unbounded" minOccurs="1">
+        <xs:annotation>
+          <xs:documentation xml:lang="en">The favourability perception of the statement (e.g. positive, negative or neutral).</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="judgement" type="xs:string" maxOccurs="unbounded" minOccurs="1">
+        <xs:annotation>
+          <xs:documentation xml:lang="en">The text expressing the statement's resulting value judgement.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="hasRelatedService" ref="PublicServiceType" maxOccurs="unbounded" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation xml:lang="en">The Public Service related to the Statement.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="type" type="ConceptType" maxOccurs="unbounded" minOccurs="1">
+        <xs:annotation>
+          <xs:documentation xml:lang="en">The categorisation of the statement.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+    </xs:sequence>
+    <xs:attribute name="StatementRef" type="xs:IDREF">
+      <xs:annotation>
+        <xs:documentation xml:lang="en">Reference to Statement ID</xs:documentation>
+      </xs:annotation>
+    </xs:attribute>
+  </xs:complexType>
+  <xs:complexType name="AgentType">
+    <xs:sequence>
+      <xs:element name="hasFrequency" ref="AgentTypeType" maxOccurs="unbounded" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation xml:lang="en">The frequency in which the request is to be executed in case of repetitive mandate.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+    </xs:sequence>
+    <xs:attribute name="AgentRef" type="xs:IDREF">
+      <xs:annotation>
+        <xs:documentation xml:lang="en">Reference to Agent ID</xs:documentation>
+      </xs:annotation>
+    </xs:attribute>
+  </xs:complexType>
+  <xs:complexType name="LegalExpressionType">
+    <xs:sequence>
+      <xs:element name="cites" ref="LegalExpressionType" maxOccurs="unbounded" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation xml:lang="en">Citation in the text of the legislation. This may be at the legal resource or legal expression level, as required by the implementation context. This includes verbatim citation and citations in referrals.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="embodies" ref="ManifestationType" maxOccurs="unbounded" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation xml:lang="en">Relates a manifestation to the expression that it embodies. Inverse of "is_embodied_by".</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="isPartOf" ref="LegalExpressionType" maxOccurs="unbounded" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation xml:lang="en">Indicates a work in which this one is physically included. Covers the case of text included in an Official Journal, or an article included in a text.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="isRealizedBy" ref="WorkType" maxOccurs="unbounded" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation xml:lang="en">Relates a work to an expression of this work in the form of a "sequence of signs" (typically alpha-numeric characters in a legal context).</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="isRealizedBy" ref="WorkType" maxOccurs="unbounded" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation xml:lang="en">Relates a work to an expression of this work in the form of a "sequence of signs" (typically alpha-numeric characters in a legal context).</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+    </xs:sequence>
+    <xs:attribute name="LegalExpressionRef" type="xs:IDREF">
+      <xs:annotation>
+        <xs:documentation xml:lang="en">Reference to LegalExpression ID</xs:documentation>
+      </xs:annotation>
+    </xs:attribute>
+  </xs:complexType>
+  <xs:complexType name="ManifestationType">
+    <xs:sequence>
+      <xs:element name="isEmbodiedBy" ref="LegalExpressionType" maxOccurs="unbounded" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation xml:lang="en">Relates an expression to a manifestation of that expression.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+    </xs:sequence>
+    <xs:attribute name="ManifestationRef" type="xs:IDREF">
+      <xs:annotation>
+        <xs:documentation xml:lang="en">Reference to Manifestation ID</xs:documentation>
+      </xs:annotation>
+    </xs:attribute>
+  </xs:complexType>
+  <xs:complexType name="OrganizationType">
+    <xs:sequence/>
+    <xs:attribute name="OrganizationRef" type="xs:IDREF">
+      <xs:annotation>
+        <xs:documentation xml:lang="en">Reference to Organization ID</xs:documentation>
+      </xs:annotation>
+    </xs:attribute>
+  </xs:complexType>
+  <xs:complexType name="PersonType">
+    <xs:sequence/>
+    <xs:attribute name="PersonRef" type="xs:IDREF">
+      <xs:annotation>
+        <xs:documentation xml:lang="en">Reference to Person ID</xs:documentation>
+      </xs:annotation>
+    </xs:attribute>
+  </xs:complexType>
+  <xs:complexType name="WorkType">
+    <xs:sequence/>
+    <xs:attribute name="WorkRef" type="xs:IDREF">
+      <xs:annotation>
+        <xs:documentation xml:lang="en">Reference to Work ID</xs:documentation>
+      </xs:annotation>
+    </xs:attribute>
+  </xs:complexType>
+  <xs:complexType name="BusinessEventType">
+    <xs:sequence>
+      <xs:element name="type" type="ConceptType" maxOccurs="unbounded" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation xml:lang="en">It links an Event to a controlled vocabulary of event types.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+    </xs:sequence>
+    <xs:attribute name="BusinessEventRef" type="xs:IDREF">
+      <xs:annotation>
+        <xs:documentation xml:lang="en">Reference to BusinessEvent ID</xs:documentation>
+      </xs:annotation>
+    </xs:attribute>
+  </xs:complexType>
+  <xs:complexType name="EventType">
+    <xs:sequence>
+      <xs:element name="description" type="xs:string" maxOccurs="unbounded" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation xml:lang="en">A free text description of the Event.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="identifier" type="xs:string" maxOccurs="1" minOccurs="1">
+        <xs:annotation>
+          <xs:documentation xml:lang="en">An Identifier for the Event.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="name" type="xs:string" maxOccurs="unbounded" minOccurs="1">
+        <xs:annotation>
+          <xs:documentation xml:lang="en">The Name (or title) of the Event.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+    </xs:sequence>
+    <xs:attribute name="EventRef" type="xs:IDREF">
+      <xs:annotation>
+        <xs:documentation xml:lang="en">Reference to Event ID</xs:documentation>
+      </xs:annotation>
+    </xs:attribute>
+  </xs:complexType>
+  <xs:complexType name="LifeEventType">
+    <xs:sequence>
+      <xs:element name="type" type="ConceptType" maxOccurs="unbounded" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation xml:lang="en">It links an Event to a controlled vocabulary of event types.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+    </xs:sequence>
+    <xs:attribute name="LifeEventRef" type="xs:IDREF">
+      <xs:annotation>
+        <xs:documentation xml:lang="en">Reference to LifeEvent ID</xs:documentation>
+      </xs:annotation>
+    </xs:attribute>
+  </xs:complexType>
+  <xs:complexType name="LocationType">
+    <xs:sequence>
+      <xs:element name="geographicIdentifier" type="xs:anyURI" maxOccurs="unbounded" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation xml:lang="en">A reference in the form of a Uniform Resource Identifier to the Location.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+    </xs:sequence>
+    <xs:attribute name="LocationRef" type="xs:IDREF">
+      <xs:annotation>
+        <xs:documentation xml:lang="en">Reference to Location ID</xs:documentation>
+      </xs:annotation>
+    </xs:attribute>
+  </xs:complexType>
+  <xs:complexType name="PublicServiceType">
+    <xs:sequence>
+      <xs:element name="description" type="xs:string" maxOccurs="unbounded" minOccurs="1">
+        <xs:annotation>
+          <xs:documentation xml:lang="en">A free text Description of the Public Service.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="identifier" type="xs:string" maxOccurs="unbounded" minOccurs="1">
+        <xs:annotation>
+          <xs:documentation xml:lang="en">A formally-issued Identifier for the Public Service.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="name" type="xs:string" maxOccurs="unbounded" minOccurs="1">
+        <xs:annotation>
+          <xs:documentation xml:lang="en">A name given to the resource.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="spatial" ref="LocationType" maxOccurs="unbounded" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation xml:lang="en">Spatial characteristics of the resource.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="isGroupedBy" ref="EventType" maxOccurs="unbounded" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation xml:lang="en">It links the Public Service to the Event class.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+    </xs:sequence>
+    <xs:attribute name="PublicServiceRef" type="xs:IDREF">
+      <xs:annotation>
+        <xs:documentation xml:lang="en">Reference to PublicService ID</xs:documentation>
+      </xs:annotation>
+    </xs:attribute>
+  </xs:complexType>
+  <xs:complexType name="TextType">
+    <xs:sequence/>
+    <xs:attribute name="TextRef" type="xs:IDREF">
+      <xs:annotation>
+        <xs:documentation xml:lang="en">Reference to Text ID</xs:documentation>
+      </xs:annotation>
+    </xs:attribute>
+  </xs:complexType>
+  <xs:complexType name="LiteralType">
+    <xs:sequence/>
+    <xs:attribute name="LiteralRef" type="xs:IDREF">
+      <xs:annotation>
+        <xs:documentation xml:lang="en">Reference to Literal ID</xs:documentation>
+      </xs:annotation>
+    </xs:attribute>
+  </xs:complexType>
+  <xs:complexType name="UriType">
+    <xs:sequence/>
+    <xs:attribute name="UriRef" type="xs:IDREF">
+      <xs:annotation>
+        <xs:documentation xml:lang="en">Reference to Uri ID</xs:documentation>
+      </xs:annotation>
+    </xs:attribute>
+  </xs:complexType>
+  <xs:complexType name="XsdanyUriType">
+    <xs:sequence/>
+    <xs:attribute name="XsdanyUriRef" type="xs:IDREF">
+      <xs:annotation>
+        <xs:documentation xml:lang="en">Reference to XsdanyUri ID</xs:documentation>
+      </xs:annotation>
+    </xs:attribute>
+  </xs:complexType>
+  <xs:complexType name="CodeType">
+    <xs:sequence/>
+    <xs:attribute name="CodeRef" type="xs:IDREF">
+      <xs:annotation>
+        <xs:documentation xml:lang="en">Reference to Code ID</xs:documentation>
+      </xs:annotation>
+    </xs:attribute>
+  </xs:complexType>
+  <xs:complexType name="AssetType">
+    <xs:sequence>
+      <xs:element name="description" type="xs:string" maxOccurs="unbounded" minOccurs="1">
+        <xs:annotation>
+          <xs:documentation xml:lang="en">An account of the resource.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="identifier" ref="IdentifierType" maxOccurs="1" minOccurs="1">
+        <xs:annotation>
+          <xs:documentation xml:lang="en">Links a resource to an adms:Identifier class.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="title" type="xs:string" maxOccurs="unbounded" minOccurs="1">
+        <xs:annotation>
+          <xs:documentation xml:lang="en">	A name given to the resource.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="type" type="ConceptType" maxOccurs="unbounded" minOccurs="1">
+        <xs:annotation>
+          <xs:documentation xml:lang="en">The nature or genre of the resource.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+    </xs:sequence>
+    <xs:attribute name="AssetRef" type="xs:IDREF">
+      <xs:annotation>
+        <xs:documentation xml:lang="en">Reference to Asset ID</xs:documentation>
+      </xs:annotation>
+    </xs:attribute>
+  </xs:complexType>
+  <xs:complexType name="IdentifierType">
+    <xs:sequence/>
+    <xs:attribute name="IdentifierRef" type="xs:IDREF">
+      <xs:annotation>
+        <xs:documentation xml:lang="en">Reference to Identifier ID</xs:documentation>
+      </xs:annotation>
+    </xs:attribute>
+  </xs:complexType>
+  <xs:complexType name="DatasetType">
+    <xs:sequence>
+      <xs:element name="description" type="xs:string" maxOccurs="unbounded" minOccurs="1">
+        <xs:annotation>
+          <xs:documentation xml:lang="en">A free-text account of the distribution.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+    </xs:sequence>
+    <xs:attribute name="DatasetRef" type="xs:IDREF">
+      <xs:annotation>
+        <xs:documentation xml:lang="en">Reference to Dataset ID</xs:documentation>
+      </xs:annotation>
+    </xs:attribute>
+  </xs:complexType>
+  <xs:complexType name="ResourceType">
+    <xs:sequence>
+      <xs:element name="description" type="xs:string" maxOccurs="unbounded" minOccurs="1">
+        <xs:annotation>
+          <xs:documentation xml:lang="en">An account of the resource.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+    </xs:sequence>
+    <xs:attribute name="ResourceRef" type="xs:IDREF">
+      <xs:annotation>
+        <xs:documentation xml:lang="en">Reference to Resource ID</xs:documentation>
+      </xs:annotation>
+    </xs:attribute>
+  </xs:complexType>
+  <xs:complexType name="SpecificationType">
+    <xs:sequence>
+      <xs:element name="description" type="xs:string" maxOccurs="unbounded" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation xml:lang="en">An account of the resource.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+    </xs:sequence>
+    <xs:attribute name="SpecificationRef" type="xs:IDREF">
+      <xs:annotation>
+        <xs:documentation xml:lang="en">Reference to Specification ID</xs:documentation>
+      </xs:annotation>
+    </xs:attribute>
+  </xs:complexType>
+</xs:schema>

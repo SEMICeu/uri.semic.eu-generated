@@ -1,0 +1,3249 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"> 
+ 
+
+
+
+<head>
+    
+	
+    <meta charset="utf-8" />
+    <title>Semantic Registry Model</title>
+    <script src="https://www.w3.org/Tools/respec/respec-w3c" class="remove" defer></script>
+    <script class="remove">
+    // All config options at https://respec.org/docs/
+
+	var myeditors = [
+	
+	
+	    
+	    
+		
+		   {
+		    name: "Claudio Baldassarre",
+		      
+		      
+		    company: "European Commission",
+		      
+		      
+		    }
+		, 
+		
+		   {
+		    name: "Arthur Schiltz",
+		      
+		      
+		    company: "PwC EU Services",
+		      
+		      
+		    }
+		, 
+		
+		   {
+		    name: "Emidio Stani",
+		      
+		      
+		    company: "PwC EU Services",
+		      
+		      
+		    }
+		
+		
+             
+        
+	
+		]
+
+	var myauthors = [
+	
+	
+	
+		]
+		
+	function quickreference() {
+		$('#table-quickoverview').DataTable();
+	};
+	var shaclfilepath = "shacl/srm-SHACL.ttl" ;
+	var folder = "./html/examples/";
+	var model = "any" ;
+	var version_list = [
+		{
+		"type": "v3.2.0",
+		"description": "CPSV-AP 2.1.0"
+		}
+	] ;
+	var linkinfo = "https://semiceu.github.io/SRM/releases/1.0.0" + "#validation" ;
+
+   
+
+    var respecConfig = {
+      postProcess: [quickreference],
+      edDraftURI: "https://semiceu.github.io/SRM/releases/1.0.0",
+      latestVersion: "https://semiceu.github.io/SRM/releases/1.0.0/",
+      specStatus: "LD",
+      publishDate: "2025-03-24",
+      editors: myeditors,
+      authors: myauthors,
+      github: "SEMICeu/SRM",
+      shortName: "Semantic Registry Model",
+      xref: "web-platform",
+      doJsonLd: true,
+      logos: [{
+        src: "https://semiceu.github.io/CPOV/releases/2.1.0/html/semic-icon.png",
+        url: "https://semic.eu",
+        alt: "SEMIC",
+        width: 154,
+        height: 140,
+        id: "semic-logo",
+      },],
+      generatedSubtitle: "",
+      additionalCopyrightHolders: "",
+      localBiblio: {
+        "DXWG": {
+          "href" : "https://www.w3.org/2017/dxwg/wiki/Main_Page",
+          "title" : "Dataset Exchange Working Group",
+          "publisher" : "W3C"
+          },
+        "ISA":{
+           "href":"https://ec.europa.eu/isa/",
+           "title":"Interoperability Solutions for European Public Administrations (ISA)",
+           "publisher":"European Commission"
+          },
+        "ISA2":{
+          "href":"https://ec.europa.eu/isa2/",
+          "title":"Interoperability solutions for public administrations, businesses and citizens (ISA²)",
+          "publisher":"European Commission"
+        },
+        "SEMIC":{
+          "href":"https://joinup.ec.europa.eu/",
+          "title":"JoinUp welcomes Interoperable Europe",
+          "publisher":"European Commission"
+         },
+        "DEU" : {
+          "href":"https://data.europa.eu",
+          "title":"The official portal for European data",
+          "publisher":"European Commission"
+        },
+		"HVD" : {
+		  "href":"https://eur-lex.europa.eu/legal-content/EN/TXT/?uri=CELEX:32023R0138",
+		  "title":"Implementing Regulation for High Value Datasets",
+		  "publisher":"European Union"
+		},
+		"DCAT-AP-HVD" : {
+		  "href":"https://semiceu.github.io/uri.semic.eu-generated/DCAT-AP/releases/2.2.0-hvd/",
+		  "title":"Usage Guidelines of DCAT-AP for High-Value Datasets",
+		  "publisher":"European Commission"
+		},
+                "PSI" : {
+                  "href": "https://eur-lex.europa.eu/eli/dir/2019/1024/oj",
+                  "title" :  "Directive on open data and the re-use of public sector information (recast)",
+                  "publisher" : "European Union"
+                }
+      }
+    };
+
+
+
+    </script>
+    <style>
+      .figure img, .sidefigure img, figure img, .figure object, .sidefigure object, figure object, img, .img {
+      max-width: 100%;
+      margin: auto;
+      height: auto;
+      }
+    </style>
+     
+    <p class="copyright">
+        Copyright © 2024
+    </p>
+    
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="msapplication-TileColor" content="#7ED956" />
+</head>
+<body>
+    
+
+    <!-- Start page content -->
+
+
+
+
+<section id="abstract">
+    <h2>Abstract</h2>
+SRM (Semantic Registry Model) is designed to accomodate metadata to be used by the Semantic Registry.
+</section>
+
+
+<section id="specintro">
+    <h2>
+        Introduction
+    </h2>
+    
+<p>
+  SRM has been conceived to find and search semantic models withing the Semantic Registry.
+</p>
+<p>
+  SRM is designed to meet the following use cases:
+  <ul>
+    <li>facilitating the access to semantic models;</li>
+    <li>building user-centric registry of semantic models so end users are able to find them quickly; and</li>
+	<li>incentive communities to collaborate on semantic models.</li>
+  </ul>
+</p>
+<p>
+  The specification of the SRM is represented in a UML class diagram.
+  The figure here beneath shows the full profile which includes:
+  <ul>
+    <li>The class that define the semantic models;</li>
+    <li>The classes and properties that describe the Organization behind the specification and ContactPoint; and </li>
+    <li>The different ways a sematic model is provided .</li> 
+</p>
+
+</section>
+
+
+
+<!--  should support https://www.w3.org/2021/Process-20211102/, mostly like https://www.w3.org/2021/Process-20211102/#maturity-levels -->
+<section id="specstatus">
+    <h2>Status</h2>
+        <p>
+            This Application Profile has the status Draft published at 2025-03-24.
+        </p>
+        <p>
+            Information about the process and the decisions involved in the creation of this specification are consultable at the <a href="https://github.com/SEMICeu/SRM/blob/master/releases/1.0.0/Changelog.md">Changelog</a>.
+        </p>
+</section>
+
+
+
+
+<section id="speclicence">
+    <h2>
+        License
+    </h2>
+    
+        <p>
+	<!--
+            <span rel="dct:type"
+                  property="dct:title"
+                  href="http://purl.org/dc/dcmitype/Text"
+                  xmlns:dct="http://purl.org/dc/terms/">
+		  This specification </span> of <a rel="cc:attributionURL" property="cc:attributionName" href="ORGANISATION" xmlns:cc="http://creativecommons.org/ns#">ORGANISATION </a> 
+	          is published under <a href="https://creativecommons.org/licenses/by/4.0/" rel="license">"CC0"</a>.
+	-->
+             Copyright © 2024 European Union. All material in this repository is published under the license CC-BY 4.0, unless explicitly otherwise mentioned.
+        </p>
+    
+</section>
+
+
+
+<section id="conformance" class="informative">
+</section>
+
+
+
+
+<section id="specterminology">
+    <h2>
+        Terminology
+    </h2>
+        <p>
+           An Application Profile (AP) is a specification that reuses terms from one or more base standards, adding more specificity by identifying mandatory,
+           recommended and optional elements to be used for a particular application, as well as recommendations for controlled vocabularies to be used. 
+        </p>
+        <p>
+            A Core Vocabulary (CV) is a basic, reusable and extensible data specification that captures the fundamental characteristics of an entity in a context-neutral fashion. Its main objective is to provide terms to be reused in the broadest possible context.
+            More information can be found on the <a href="https://semiceu.github.io/style-guide/1.0.0/terminological-clarifications.html#sec:what-is-a-cv-specification">SEMIC Style Guide</a>.
+        </p>
+    <h3>Used Prefixes</h3>
+        
+This specification uses the following prefixes to shorten the URIs for readibility.
+
+<table id="table-namespaces" class="simple">
+	<thead><tr><th>Prefix</th><th>Namespace IRI</th></tr></thead>
+	<tbody>
+		<tr><td><code>adms</code></td><td><code>http://www.w3.org/ns/adms#</code></td></tr>
+		<tr><td><code>cv</code></td><td><code>http://data.europa.eu/m8g/</code></td></tr>
+		<tr><td><code>dcat</code></td><td><code>http://www.w3.org/ns/dcat#</code></td></tr>
+		<tr><td><code>dct</code></td><td><code>http://purl.org/dc/terms/</code></td></tr>
+		<tr><td><code>foaf</code></td><td><code>http://xmlns.com/foaf/0.1/</code></td></tr>
+		<tr><td><code>owl</code></td><td><code>http://www.w3.org/2002/07/owl#</code></td></tr>
+		<tr><td><code>prof</code></td><td><code>http://www.w3.org/ns/dx/prof/</code></td></tr>
+		<tr><td><code>rdf</code></td><td><code>http://www.w3.org/1999/02/22-rdf-syntax-ns#</code></td></tr>
+		<tr><td><code>rdfs</code></td><td><code>http://www.w3.org/2000/01/rdf-schema#</code></td></tr>
+		<tr><td><code>skos</code></td><td><code>http://www.w3.org/2004/02/skos/core#</code></td></tr>
+		<tr><td><code>vann</code></td><td><code>http://purl.org/vocab/vann/</code></td></tr>
+		<tr><td><code>xsd</code></td><td><code>http://www.w3.org/2001/XMLSchema#</code></td></tr>
+	</tbody>
+</table>
+
+
+</section>
+
+
+
+<section id="specoverview">
+    <h2>Overview</h2>
+    
+    
+    <div id="overview">
+                
+                        <p>
+                            This document describes the usage of the following main entities for a correct usage of the Application Profile:
+                            <br />
+                            |
+			      <a href="#Standard">Standard</a> |
+                        </p>
+                        <p>
+                            The main entities are supported by:
+                            <br />
+                            |
+			      <a href="#Agent">Agent</a> |
+			      <a href="#Class">Class</a> |
+			      <a href="#ContactPoint">Contact Point</a> |
+			      <a href="#Document">Document</a> |
+			      <a href="#Location">Location</a> |
+			      <a href="#ResourceDescriptor">Resource Descriptor</a> |
+                        </p>
+                
+                
+                        <p>
+                            And supported by these datatypes:
+                            <br />
+                            | <a href="#Code">Code</a> | <a href="#DateTime">DateTime</a> | <a href="#NonNegativeInteger">NonNegativeInteger</a> | <a href="#String">String</a> | <a href="#Text">Text</a> | <a href="#URI">URI</a> |
+                        </p>
+                
+    </div>
+    <div>
+        <a href="https://semiceu.github.io/uri.semic.eu-generated/SRM/releases/1.0.0/html/overview.jpg"
+           target="_blank">
+            <img src="https://semiceu.github.io/uri.semic.eu-generated/SRM/releases/1.0.0/html/overview.jpg"/>
+        </a>
+    </div>
+</section>
+
+
+<section>
+
+
+    
+
+<h2>
+   Main Entities
+</h2>
+The main entities are those that form the core of the Application Profile.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+   
+        <section>
+            <h3 id="Standard">
+                <a href="http://purl.org/dc/terms/Standard"
+                   data-toggle="tooltip"
+                   data-content="http://purl.org/dc/terms/Standard"
+                   data-placement="right">Standard</a>
+
+            </h3>
+	        <!-- XXX an image in the h3 will break the rendering of the Table Of Contents of Respec -->
+		<!-- outcomment github feedback possibility
+                <a href="https://github.com/SEMICeu/SRM/issues/new?title=Issue%20for%20Standard&body=Explain%20your%20issue"}}>
+                   <img src="html/callout.png" loading="lazy" alt="(create issue)" width="20" height="20"/>
+		</a>
+		-->
+            <dl>
+                <dt>
+                    Definition
+                </dt>
+                <dd>
+                    A reference point against which other things can be evaluated or compared.
+                </dd>
+                
+                
+                
+                    <dt>
+                        Properties
+                    </dt>
+                    
+                        <dd>
+                            For this entity the following properties are defined: <a href="#Standard.contactpoint">contact point</a>
+                            , <a href="#Standard.contributor">contributor</a>
+                            , <a href="#Standard.creator">creator</a>
+                            , <a href="#Standard.datecreated">date created</a>
+                            , <a href="#Standard.dateissued">date issued</a>
+                            , <a href="#Standard.datemodified">date modified</a>
+                            , <a href="#Standard.description">description</a>
+                            , <a href="#Standard.hasimplementation">has implementation</a>
+                            , <a href="#Standard.haspart">has part</a>
+                            , <a href="#Standard.hasresource">has resource</a>
+                            , <a href="#Standard.homepage">homepage</a>
+                            , <a href="#Standard.identifier">identifier</a>
+                            , <a href="#Standard.isreusedby">is reused by</a>
+                            , <a href="#Standard.keyword">keyword</a>
+                            , <a href="#Standard.language">language</a>
+                            , <a href="#Standard.lovrank">lov rank</a>
+                            , <a href="#Standard.preferrednamespaceURI">preferred namespace URI</a>
+                            , <a href="#Standard.publisher">publisher</a>
+                            , <a href="#Standard.requires">requires</a>
+                            , <a href="#Standard.status">status</a>
+                            , <a href="#Standard.theme">theme</a>
+                            , <a href="#Standard.title">title</a>
+                            , <a href="#Standard.versioninfo">version info</a>
+                            .
+                    </dd>
+                
+            </dl>
+        </div>
+        
+            <div class="u-table-overflow">
+                <table class="data-table simple" id="table-mandatory-classes">
+                    <thead>
+                        <tr class="data-table__header">
+                            <th class="data-table__header-title--sortable" style="width:6%">
+                            </th>
+                            <th class="data-table__header-title--sortable data-table__header-title--sortable-active" style="width:14%">
+                                Property
+                            </th>
+                            <th class="data-table__header-title--sortable" style="width:14%">
+                                Range
+                            </th>
+                            <th class="data-table__header-title--sortable" style="width:6%">
+                                Card
+                            </th>
+                            <th class="data-table__header-title--sortable" style="width:30%">
+                                Definition 
+                            </th>
+                            <th class="data-table__header-title--sortable" style="width:30%">
+                                Usage
+                            </th>
+			    <!--
+                            <th class="data-table__header-title--sortable" style="width:3%">
+                                Codelist
+                            </th>
+                            <th class="data-table__header-title--sortable" style="width:5%">
+                                DCAT
+                            </th>
+			    -->
+                        </tr>
+                    </thead>
+                    <tbody class="supertype">
+                        
+                            <tr id="Standard.contactpoint"
+                                typeof="rdf:Property"
+                                resource="http://data.europa.eu/m8g/contactPoint"
+                                class="class mandatory">
+                                <td>
+				    <a href="https://github.com/SEMICeu/SRM/issues/new?title=Issue%20for%20contact point%20in%20Standard&body=Explain%20your%20issue%20for%20https://semiceu.github.io/SRM/releases/1.0.0%23Standard.contactpoint" target="_blank" rel="noopener noreferrer" >
+					    <!--                                        <i class="icon">[o]</i> -->
+                                        <img src="html/callout.png" loading="lazy" alt="[o]" width="100" height="100"/>
+                                    </a>
+                                </td>
+                                <td>
+                                        <a href="http://data.europa.eu/m8g/contactPoint"
+                                           data-toggle="tooltip"
+                                           data-content="http://data.europa.eu/m8g/contactPoint"
+                                           data-placement="right">
+                                        contact point</a>
+                                </td>
+                                <td>
+                                    
+                                        
+                                            <a href="#ContactPoint" data-placement="right">Contact Point</a>
+                                        
+                                    
+                                </td>
+                                <td>
+                                    0..*
+                                </td>
+                                <td property="rdfs:comment">
+                                    Contact information that can be used for sending comments about the standard.
+                                </td>
+                                <td property="skos:scopeNote">
+                                    
+                                </td>
+				<!--
+                                <td>
+                                    
+                                </td>
+				-->
+                                <td>
+                                    
+                                </td>
+                            </tr>
+                        
+                            <tr id="Standard.contributor"
+                                typeof="rdf:Property"
+                                resource="http://purl.org/dc/terms/contributor"
+                                class="class mandatory">
+                                <td>
+				    <a href="https://github.com/SEMICeu/SRM/issues/new?title=Issue%20for%20contributor%20in%20Standard&body=Explain%20your%20issue%20for%20https://semiceu.github.io/SRM/releases/1.0.0%23Standard.contributor" target="_blank" rel="noopener noreferrer" >
+					    <!--                                        <i class="icon">[o]</i> -->
+                                        <img src="html/callout.png" loading="lazy" alt="[o]" width="100" height="100"/>
+                                    </a>
+                                </td>
+                                <td>
+                                        <a href="http://purl.org/dc/terms/contributor"
+                                           data-toggle="tooltip"
+                                           data-content="http://purl.org/dc/terms/contributor"
+                                           data-placement="right">
+                                        contributor</a>
+                                </td>
+                                <td>
+                                    
+                                        
+                                            <a href="#Agent" data-placement="right">Agent</a>
+                                        
+                                    
+                                </td>
+                                <td>
+                                    0..*
+                                </td>
+                                <td property="rdfs:comment">
+                                    An entity responsible for making contributions to the resource.
+                                </td>
+                                <td property="skos:scopeNote">
+                                    
+                                </td>
+				<!--
+                                <td>
+                                    
+                                </td>
+				-->
+                                <td>
+                                    
+                                </td>
+                            </tr>
+                        
+                            <tr id="Standard.creator"
+                                typeof="rdf:Property"
+                                resource="http://purl.org/dc/terms/creator"
+                                class="class mandatory">
+                                <td>
+				    <a href="https://github.com/SEMICeu/SRM/issues/new?title=Issue%20for%20creator%20in%20Standard&body=Explain%20your%20issue%20for%20https://semiceu.github.io/SRM/releases/1.0.0%23Standard.creator" target="_blank" rel="noopener noreferrer" >
+					    <!--                                        <i class="icon">[o]</i> -->
+                                        <img src="html/callout.png" loading="lazy" alt="[o]" width="100" height="100"/>
+                                    </a>
+                                </td>
+                                <td>
+                                        <a href="http://purl.org/dc/terms/creator"
+                                           data-toggle="tooltip"
+                                           data-content="http://purl.org/dc/terms/creator"
+                                           data-placement="right">
+                                        creator</a>
+                                </td>
+                                <td>
+                                    
+                                        
+                                            <a href="#Agent" data-placement="right">Agent</a>
+                                        
+                                    
+                                </td>
+                                <td>
+                                    1..*
+                                </td>
+                                <td property="rdfs:comment">
+                                    An entity responsible for making the resource.
+                                </td>
+                                <td property="skos:scopeNote">
+                                    
+                                </td>
+				<!--
+                                <td>
+                                    
+                                </td>
+				-->
+                                <td>
+                                    
+                                </td>
+                            </tr>
+                        
+                            <tr id="Standard.datecreated"
+                                typeof="rdf:Property"
+                                resource="http://purl.org/dc/terms/created"
+                                class="class mandatory">
+                                <td>
+				    <a href="https://github.com/SEMICeu/SRM/issues/new?title=Issue%20for%20date created%20in%20Standard&body=Explain%20your%20issue%20for%20https://semiceu.github.io/SRM/releases/1.0.0%23Standard.datecreated" target="_blank" rel="noopener noreferrer" >
+					    <!--                                        <i class="icon">[o]</i> -->
+                                        <img src="html/callout.png" loading="lazy" alt="[o]" width="100" height="100"/>
+                                    </a>
+                                </td>
+                                <td>
+                                        <a href="http://purl.org/dc/terms/created"
+                                           data-toggle="tooltip"
+                                           data-content="http://purl.org/dc/terms/created"
+                                           data-placement="right">
+                                        date created</a>
+                                </td>
+                                <td>
+                                    
+                                        
+                                            <a href="#DateTime" data-placement="right">DateTime</a>
+                                        
+                                    
+                                </td>
+                                <td>
+                                    0..1
+                                </td>
+                                <td property="rdfs:comment">
+                                    Date of creation of the resource.
+                                </td>
+                                <td property="skos:scopeNote">
+                                    
+                                </td>
+				<!--
+                                <td>
+                                    
+                                </td>
+				-->
+                                <td>
+                                    
+                                </td>
+                            </tr>
+                        
+                            <tr id="Standard.dateissued"
+                                typeof="rdf:Property"
+                                resource="http://purl.org/dc/terms/issued"
+                                class="class mandatory">
+                                <td>
+				    <a href="https://github.com/SEMICeu/SRM/issues/new?title=Issue%20for%20date issued%20in%20Standard&body=Explain%20your%20issue%20for%20https://semiceu.github.io/SRM/releases/1.0.0%23Standard.dateissued" target="_blank" rel="noopener noreferrer" >
+					    <!--                                        <i class="icon">[o]</i> -->
+                                        <img src="html/callout.png" loading="lazy" alt="[o]" width="100" height="100"/>
+                                    </a>
+                                </td>
+                                <td>
+                                        <a href="http://purl.org/dc/terms/issued"
+                                           data-toggle="tooltip"
+                                           data-content="http://purl.org/dc/terms/issued"
+                                           data-placement="right">
+                                        date issued</a>
+                                </td>
+                                <td>
+                                    
+                                        
+                                            <a href="#DateTime" data-placement="right">DateTime</a>
+                                        
+                                    
+                                </td>
+                                <td>
+                                    0..1
+                                </td>
+                                <td property="rdfs:comment">
+                                    Date of formal issuance of the resource.
+                                </td>
+                                <td property="skos:scopeNote">
+                                    
+                                </td>
+				<!--
+                                <td>
+                                    
+                                </td>
+				-->
+                                <td>
+                                    
+                                </td>
+                            </tr>
+                        
+                            <tr id="Standard.datemodified"
+                                typeof="rdf:Property"
+                                resource="http://purl.org/dc/terms/modified"
+                                class="class mandatory">
+                                <td>
+				    <a href="https://github.com/SEMICeu/SRM/issues/new?title=Issue%20for%20date modified%20in%20Standard&body=Explain%20your%20issue%20for%20https://semiceu.github.io/SRM/releases/1.0.0%23Standard.datemodified" target="_blank" rel="noopener noreferrer" >
+					    <!--                                        <i class="icon">[o]</i> -->
+                                        <img src="html/callout.png" loading="lazy" alt="[o]" width="100" height="100"/>
+                                    </a>
+                                </td>
+                                <td>
+                                        <a href="http://purl.org/dc/terms/modified"
+                                           data-toggle="tooltip"
+                                           data-content="http://purl.org/dc/terms/modified"
+                                           data-placement="right">
+                                        date modified</a>
+                                </td>
+                                <td>
+                                    
+                                        
+                                            <a href="#DateTime" data-placement="right">DateTime</a>
+                                        
+                                    
+                                </td>
+                                <td>
+                                    0..1
+                                </td>
+                                <td property="rdfs:comment">
+                                    Date on which the resource was changed.
+                                </td>
+                                <td property="skos:scopeNote">
+                                    
+                                </td>
+				<!--
+                                <td>
+                                    
+                                </td>
+				-->
+                                <td>
+                                    
+                                </td>
+                            </tr>
+                        
+                            <tr id="Standard.description"
+                                typeof="rdf:Property"
+                                resource="http://purl.org/dc/terms/description"
+                                class="class mandatory">
+                                <td>
+				    <a href="https://github.com/SEMICeu/SRM/issues/new?title=Issue%20for%20description%20in%20Standard&body=Explain%20your%20issue%20for%20https://semiceu.github.io/SRM/releases/1.0.0%23Standard.description" target="_blank" rel="noopener noreferrer" >
+					    <!--                                        <i class="icon">[o]</i> -->
+                                        <img src="html/callout.png" loading="lazy" alt="[o]" width="100" height="100"/>
+                                    </a>
+                                </td>
+                                <td>
+                                        <a href="http://purl.org/dc/terms/description"
+                                           data-toggle="tooltip"
+                                           data-content="http://purl.org/dc/terms/description"
+                                           data-placement="right">
+                                        description</a>
+                                </td>
+                                <td>
+                                    
+                                        
+                                            <a href="#Text" data-placement="right">Text</a>
+                                        
+                                    
+                                </td>
+                                <td>
+                                    0..*
+                                </td>
+                                <td property="rdfs:comment">
+                                    An account of the resource.
+                                </td>
+                                <td property="skos:scopeNote">
+                                    
+                                </td>
+				<!--
+                                <td>
+                                    
+                                </td>
+				-->
+                                <td>
+                                    
+                                </td>
+                            </tr>
+                        
+                            <tr id="Standard.hasimplementation"
+                                typeof="rdf:Property"
+                                resource="http://data.europa.eu/m8g/hasImplementation"
+                                class="class mandatory">
+                                <td>
+				    <a href="https://github.com/SEMICeu/SRM/issues/new?title=Issue%20for%20has implementation%20in%20Standard&body=Explain%20your%20issue%20for%20https://semiceu.github.io/SRM/releases/1.0.0%23Standard.hasimplementation" target="_blank" rel="noopener noreferrer" >
+					    <!--                                        <i class="icon">[o]</i> -->
+                                        <img src="html/callout.png" loading="lazy" alt="[o]" width="100" height="100"/>
+                                    </a>
+                                </td>
+                                <td>
+                                        <a href="http://data.europa.eu/m8g/hasImplementation"
+                                           data-toggle="tooltip"
+                                           data-content="http://data.europa.eu/m8g/hasImplementation"
+                                           data-placement="right">
+                                        has implementation</a>
+                                </td>
+                                <td>
+                                    
+                                        
+                                            <a href="#URI" data-placement="right">URI</a>
+                                        
+                                    
+                                </td>
+                                <td>
+                                    0..*
+                                </td>
+                                <td property="rdfs:comment">
+                                    The portal/repository implementing such Standard.
+                                </td>
+                                <td property="skos:scopeNote">
+                                    
+                                </td>
+				<!--
+                                <td>
+                                    
+                                </td>
+				-->
+                                <td>
+                                    
+                                </td>
+                            </tr>
+                        
+                            <tr id="Standard.haspart"
+                                typeof="rdf:Property"
+                                resource="http://purl.org/dc/terms/hasPart"
+                                class="class mandatory">
+                                <td>
+				    <a href="https://github.com/SEMICeu/SRM/issues/new?title=Issue%20for%20has part%20in%20Standard&body=Explain%20your%20issue%20for%20https://semiceu.github.io/SRM/releases/1.0.0%23Standard.haspart" target="_blank" rel="noopener noreferrer" >
+					    <!--                                        <i class="icon">[o]</i> -->
+                                        <img src="html/callout.png" loading="lazy" alt="[o]" width="100" height="100"/>
+                                    </a>
+                                </td>
+                                <td>
+                                        <a href="http://purl.org/dc/terms/hasPart"
+                                           data-toggle="tooltip"
+                                           data-content="http://purl.org/dc/terms/hasPart"
+                                           data-placement="right">
+                                        has part</a>
+                                </td>
+                                <td>
+                                    
+                                        
+                                            <a href="#Class" data-placement="right">Class</a>
+                                        
+                                    
+                                </td>
+                                <td>
+                                    0..*
+                                </td>
+                                <td property="rdfs:comment">
+                                    	A related resource that is included either physically or logically in the described resource.
+                                </td>
+                                <td property="skos:scopeNote">
+                                    
+                                </td>
+				<!--
+                                <td>
+                                    
+                                </td>
+				-->
+                                <td>
+                                    
+                                </td>
+                            </tr>
+                        
+                            <tr id="Standard.hasresource"
+                                typeof="rdf:Property"
+                                resource="http://www.w3.org/ns/dx/prof/hasResource"
+                                class="class mandatory">
+                                <td>
+				    <a href="https://github.com/SEMICeu/SRM/issues/new?title=Issue%20for%20has resource%20in%20Standard&body=Explain%20your%20issue%20for%20https://semiceu.github.io/SRM/releases/1.0.0%23Standard.hasresource" target="_blank" rel="noopener noreferrer" >
+					    <!--                                        <i class="icon">[o]</i> -->
+                                        <img src="html/callout.png" loading="lazy" alt="[o]" width="100" height="100"/>
+                                    </a>
+                                </td>
+                                <td>
+                                        <a href="http://www.w3.org/ns/dx/prof/hasResource"
+                                           data-toggle="tooltip"
+                                           data-content="http://www.w3.org/ns/dx/prof/hasResource"
+                                           data-placement="right">
+                                        has resource</a>
+                                </td>
+                                <td>
+                                    
+                                        
+                                            <a href="#ResourceDescriptor" data-placement="right">Resource Descriptor</a>
+                                        
+                                    
+                                </td>
+                                <td>
+                                    0..*
+                                </td>
+                                <td property="rdfs:comment">
+                                    A resource which describes the nature of an artifact and the role it plays in relation to the Profile.
+                                </td>
+                                <td property="skos:scopeNote">
+                                    
+                                </td>
+				<!--
+                                <td>
+                                    
+                                </td>
+				-->
+                                <td>
+                                    
+                                </td>
+                            </tr>
+                        
+                            <tr id="Standard.homepage"
+                                typeof="rdf:Property"
+                                resource="http://xmlns.com/foaf/0.1/homepage"
+                                class="class mandatory">
+                                <td>
+				    <a href="https://github.com/SEMICeu/SRM/issues/new?title=Issue%20for%20homepage%20in%20Standard&body=Explain%20your%20issue%20for%20https://semiceu.github.io/SRM/releases/1.0.0%23Standard.homepage" target="_blank" rel="noopener noreferrer" >
+					    <!--                                        <i class="icon">[o]</i> -->
+                                        <img src="html/callout.png" loading="lazy" alt="[o]" width="100" height="100"/>
+                                    </a>
+                                </td>
+                                <td>
+                                        <a href="http://xmlns.com/foaf/0.1/homepage"
+                                           data-toggle="tooltip"
+                                           data-content="http://xmlns.com/foaf/0.1/homepage"
+                                           data-placement="right">
+                                        homepage</a>
+                                </td>
+                                <td>
+                                    
+                                        
+                                            <a href="#Document" data-placement="right">Document</a>
+                                        
+                                    
+                                </td>
+                                <td>
+                                    0..1
+                                </td>
+                                <td property="rdfs:comment">
+                                    A homepage for some thing.
+                                </td>
+                                <td property="skos:scopeNote">
+                                    
+                                </td>
+				<!--
+                                <td>
+                                    
+                                </td>
+				-->
+                                <td>
+                                    
+                                </td>
+                            </tr>
+                        
+                            <tr id="Standard.identifier"
+                                typeof="rdf:Property"
+                                resource="http://purl.org/dc/terms/identifier"
+                                class="class mandatory">
+                                <td>
+				    <a href="https://github.com/SEMICeu/SRM/issues/new?title=Issue%20for%20identifier%20in%20Standard&body=Explain%20your%20issue%20for%20https://semiceu.github.io/SRM/releases/1.0.0%23Standard.identifier" target="_blank" rel="noopener noreferrer" >
+					    <!--                                        <i class="icon">[o]</i> -->
+                                        <img src="html/callout.png" loading="lazy" alt="[o]" width="100" height="100"/>
+                                    </a>
+                                </td>
+                                <td>
+                                        <a href="http://purl.org/dc/terms/identifier"
+                                           data-toggle="tooltip"
+                                           data-content="http://purl.org/dc/terms/identifier"
+                                           data-placement="right">
+                                        identifier</a>
+                                </td>
+                                <td>
+                                    
+                                        
+                                            <a href="#String" data-placement="right">String</a>
+                                        
+                                    
+                                </td>
+                                <td>
+                                    1
+                                </td>
+                                <td property="rdfs:comment">
+                                    An unambiguous reference to the resource within a given context.
+                                </td>
+                                <td property="skos:scopeNote">
+                                    
+                                </td>
+				<!--
+                                <td>
+                                    
+                                </td>
+				-->
+                                <td>
+                                    
+                                </td>
+                            </tr>
+                        
+                            <tr id="Standard.isreusedby"
+                                typeof="rdf:Property"
+                                resource="http://data.europa.eu/m8g/isReusedBy"
+                                class="class mandatory">
+                                <td>
+				    <a href="https://github.com/SEMICeu/SRM/issues/new?title=Issue%20for%20is reused by%20in%20Standard&body=Explain%20your%20issue%20for%20https://semiceu.github.io/SRM/releases/1.0.0%23Standard.isreusedby" target="_blank" rel="noopener noreferrer" >
+					    <!--                                        <i class="icon">[o]</i> -->
+                                        <img src="html/callout.png" loading="lazy" alt="[o]" width="100" height="100"/>
+                                    </a>
+                                </td>
+                                <td>
+                                        <a href="http://data.europa.eu/m8g/isReusedBy"
+                                           data-toggle="tooltip"
+                                           data-content="http://data.europa.eu/m8g/isReusedBy"
+                                           data-placement="right">
+                                        is reused by</a>
+                                </td>
+                                <td>
+                                    
+                                        
+                                            <a href="#URI" data-placement="right">URI</a>
+                                        
+                                    
+                                </td>
+                                <td>
+                                    0..*
+                                </td>
+                                <td property="rdfs:comment">
+                                    the portal or repository reusing such Standard.
+                                </td>
+                                <td property="skos:scopeNote">
+                                    
+                                </td>
+				<!--
+                                <td>
+                                    
+                                </td>
+				-->
+                                <td>
+                                    
+                                </td>
+                            </tr>
+                        
+                            <tr id="Standard.keyword"
+                                typeof="rdf:Property"
+                                resource="http://www.w3.org/ns/dcat#keyword"
+                                class="class mandatory">
+                                <td>
+				    <a href="https://github.com/SEMICeu/SRM/issues/new?title=Issue%20for%20keyword%20in%20Standard&body=Explain%20your%20issue%20for%20https://semiceu.github.io/SRM/releases/1.0.0%23Standard.keyword" target="_blank" rel="noopener noreferrer" >
+					    <!--                                        <i class="icon">[o]</i> -->
+                                        <img src="html/callout.png" loading="lazy" alt="[o]" width="100" height="100"/>
+                                    </a>
+                                </td>
+                                <td>
+                                        <a href="http://www.w3.org/ns/dcat#keyword"
+                                           data-toggle="tooltip"
+                                           data-content="http://www.w3.org/ns/dcat#keyword"
+                                           data-placement="right">
+                                        keyword</a>
+                                </td>
+                                <td>
+                                    
+                                        
+                                            <a href="#Text" data-placement="right">Text</a>
+                                        
+                                    
+                                </td>
+                                <td>
+                                    0..*
+                                </td>
+                                <td property="rdfs:comment">
+                                    A keyword or tag describing the Standard.
+                                </td>
+                                <td property="skos:scopeNote">
+                                    
+                                </td>
+				<!--
+                                <td>
+                                    
+                                </td>
+				-->
+                                <td>
+                                    
+                                </td>
+                            </tr>
+                        
+                            <tr id="Standard.language"
+                                typeof="rdf:Property"
+                                resource="http://purl.org/dc/terms/language"
+                                class="class mandatory">
+                                <td>
+				    <a href="https://github.com/SEMICeu/SRM/issues/new?title=Issue%20for%20language%20in%20Standard&body=Explain%20your%20issue%20for%20https://semiceu.github.io/SRM/releases/1.0.0%23Standard.language" target="_blank" rel="noopener noreferrer" >
+					    <!--                                        <i class="icon">[o]</i> -->
+                                        <img src="html/callout.png" loading="lazy" alt="[o]" width="100" height="100"/>
+                                    </a>
+                                </td>
+                                <td>
+                                        <a href="http://purl.org/dc/terms/language"
+                                           data-toggle="tooltip"
+                                           data-content="http://purl.org/dc/terms/language"
+                                           data-placement="right">
+                                        language</a>
+                                </td>
+                                <td>
+                                    
+                                        
+                                            <a href="#Code" data-placement="right">Code</a>
+                                        
+                                    
+                                </td>
+                                <td>
+                                    0..*
+                                </td>
+                                <td property="rdfs:comment">
+                                    A language of the resource.
+                                </td>
+                                <td property="skos:scopeNote">
+                                    
+                                </td>
+				<!--
+                                <td>
+                                    
+                                </td>
+				-->
+                                <td>
+                                    
+                                </td>
+                            </tr>
+                        
+                            <tr id="Standard.lovrank"
+                                typeof="rdf:Property"
+                                resource="http://data.europa.eu/m8g/lovRank"
+                                class="class mandatory">
+                                <td>
+				    <a href="https://github.com/SEMICeu/SRM/issues/new?title=Issue%20for%20lov rank%20in%20Standard&body=Explain%20your%20issue%20for%20https://semiceu.github.io/SRM/releases/1.0.0%23Standard.lovrank" target="_blank" rel="noopener noreferrer" >
+					    <!--                                        <i class="icon">[o]</i> -->
+                                        <img src="html/callout.png" loading="lazy" alt="[o]" width="100" height="100"/>
+                                    </a>
+                                </td>
+                                <td>
+                                        <a href="http://data.europa.eu/m8g/lovRank"
+                                           data-toggle="tooltip"
+                                           data-content="http://data.europa.eu/m8g/lovRank"
+                                           data-placement="right">
+                                        lov rank</a>
+                                </td>
+                                <td>
+                                    
+                                        
+                                            <a href="#NonNegativeInteger" data-placement="right">NonNegativeInteger</a>
+                                        
+                                    
+                                </td>
+                                <td>
+                                    0..1
+                                </td>
+                                <td property="rdfs:comment">
+                                    A numeric value that rank the Standard on the number of the reuse.
+                                </td>
+                                <td property="skos:scopeNote">
+                                    The lovRank is used to rank Standards, the formula is based on the paper <a href="https://www.researchgate.net/publication/299492189_Linked_Open_Vocabulary_Recommendation_Based_on_Ranking_and_Linked_Open_Data">Linked Open Vocabulary Recommendation Based on Ranking and Linked Open Data</a> paper.
+                                </td>
+				<!--
+                                <td>
+                                    
+                                </td>
+				-->
+                                <td>
+                                    
+                                </td>
+                            </tr>
+                        
+                            <tr id="Standard.preferrednamespaceURI"
+                                typeof="rdf:Property"
+                                resource="http://purl.org/vocab/vann/preferredNamespaceUri"
+                                class="class mandatory">
+                                <td>
+				    <a href="https://github.com/SEMICeu/SRM/issues/new?title=Issue%20for%20preferred namespace URI%20in%20Standard&body=Explain%20your%20issue%20for%20https://semiceu.github.io/SRM/releases/1.0.0%23Standard.preferrednamespaceURI" target="_blank" rel="noopener noreferrer" >
+					    <!--                                        <i class="icon">[o]</i> -->
+                                        <img src="html/callout.png" loading="lazy" alt="[o]" width="100" height="100"/>
+                                    </a>
+                                </td>
+                                <td>
+                                        <a href="http://purl.org/vocab/vann/preferredNamespaceUri"
+                                           data-toggle="tooltip"
+                                           data-content="http://purl.org/vocab/vann/preferredNamespaceUri"
+                                           data-placement="right">
+                                        preferred namespace URI</a>
+                                </td>
+                                <td>
+                                    
+                                        
+                                            <a href="#URI" data-placement="right">URI</a>
+                                        
+                                    
+                                </td>
+                                <td>
+                                    0..1
+                                </td>
+                                <td property="rdfs:comment">
+                                    The preferred namespace URI of the Standard.
+                                </td>
+                                <td property="skos:scopeNote">
+                                    
+                                </td>
+				<!--
+                                <td>
+                                    
+                                </td>
+				-->
+                                <td>
+                                    
+                                </td>
+                            </tr>
+                        
+                            <tr id="Standard.publisher"
+                                typeof="rdf:Property"
+                                resource="http://purl.org/dc/terms/publisher"
+                                class="class mandatory">
+                                <td>
+				    <a href="https://github.com/SEMICeu/SRM/issues/new?title=Issue%20for%20publisher%20in%20Standard&body=Explain%20your%20issue%20for%20https://semiceu.github.io/SRM/releases/1.0.0%23Standard.publisher" target="_blank" rel="noopener noreferrer" >
+					    <!--                                        <i class="icon">[o]</i> -->
+                                        <img src="html/callout.png" loading="lazy" alt="[o]" width="100" height="100"/>
+                                    </a>
+                                </td>
+                                <td>
+                                        <a href="http://purl.org/dc/terms/publisher"
+                                           data-toggle="tooltip"
+                                           data-content="http://purl.org/dc/terms/publisher"
+                                           data-placement="right">
+                                        publisher</a>
+                                </td>
+                                <td>
+                                    
+                                        
+                                            <a href="#Agent" data-placement="right">Agent</a>
+                                        
+                                    
+                                </td>
+                                <td>
+                                    0..*
+                                </td>
+                                <td property="rdfs:comment">
+                                    An entity responsible for making the resource available.
+                                </td>
+                                <td property="skos:scopeNote">
+                                    
+                                </td>
+				<!--
+                                <td>
+                                    
+                                </td>
+				-->
+                                <td>
+                                    
+                                </td>
+                            </tr>
+                        
+                            <tr id="Standard.requires"
+                                typeof="rdf:Property"
+                                resource="http://purl.org/dc/terms/requires"
+                                class="class mandatory">
+                                <td>
+				    <a href="https://github.com/SEMICeu/SRM/issues/new?title=Issue%20for%20requires%20in%20Standard&body=Explain%20your%20issue%20for%20https://semiceu.github.io/SRM/releases/1.0.0%23Standard.requires" target="_blank" rel="noopener noreferrer" >
+					    <!--                                        <i class="icon">[o]</i> -->
+                                        <img src="html/callout.png" loading="lazy" alt="[o]" width="100" height="100"/>
+                                    </a>
+                                </td>
+                                <td>
+                                        <a href="http://purl.org/dc/terms/requires"
+                                           data-toggle="tooltip"
+                                           data-content="http://purl.org/dc/terms/requires"
+                                           data-placement="right">
+                                        requires</a>
+                                </td>
+                                <td>
+                                    
+                                        
+                                            <a href="#Standard" data-placement="right">Standard</a>
+                                        
+                                    
+                                </td>
+                                <td>
+                                    0..*
+                                </td>
+                                <td property="rdfs:comment">
+                                    A related resource that is required by the described resource to support its function, delivery, or coherence.
+                                </td>
+                                <td property="skos:scopeNote">
+                                    
+                                </td>
+				<!--
+                                <td>
+                                    
+                                </td>
+				-->
+                                <td>
+                                    
+                                </td>
+                            </tr>
+                        
+                            <tr id="Standard.status"
+                                typeof="rdf:Property"
+                                resource="http://www.w3.org/ns/adms#status"
+                                class="class mandatory">
+                                <td>
+				    <a href="https://github.com/SEMICeu/SRM/issues/new?title=Issue%20for%20status%20in%20Standard&body=Explain%20your%20issue%20for%20https://semiceu.github.io/SRM/releases/1.0.0%23Standard.status" target="_blank" rel="noopener noreferrer" >
+					    <!--                                        <i class="icon">[o]</i> -->
+                                        <img src="html/callout.png" loading="lazy" alt="[o]" width="100" height="100"/>
+                                    </a>
+                                </td>
+                                <td>
+                                        <a href="http://www.w3.org/ns/adms#status"
+                                           data-toggle="tooltip"
+                                           data-content="http://www.w3.org/ns/adms#status"
+                                           data-placement="right">
+                                        status</a>
+                                </td>
+                                <td>
+                                    
+                                        
+                                            <a href="#Code" data-placement="right">Code</a>
+                                        
+                                    
+                                </td>
+                                <td>
+                                    0..1
+                                </td>
+                                <td property="rdfs:comment">
+                                    The status of the Standard
+                                </td>
+                                <td property="skos:scopeNote">
+                                    
+                                </td>
+				<!--
+                                <td>
+                                    
+                                </td>
+				-->
+                                <td>
+                                    
+                                </td>
+                            </tr>
+                        
+                            <tr id="Standard.theme"
+                                typeof="rdf:Property"
+                                resource="http://www.w3.org/ns/dcat#theme"
+                                class="class mandatory">
+                                <td>
+				    <a href="https://github.com/SEMICeu/SRM/issues/new?title=Issue%20for%20theme%20in%20Standard&body=Explain%20your%20issue%20for%20https://semiceu.github.io/SRM/releases/1.0.0%23Standard.theme" target="_blank" rel="noopener noreferrer" >
+					    <!--                                        <i class="icon">[o]</i> -->
+                                        <img src="html/callout.png" loading="lazy" alt="[o]" width="100" height="100"/>
+                                    </a>
+                                </td>
+                                <td>
+                                        <a href="http://www.w3.org/ns/dcat#theme"
+                                           data-toggle="tooltip"
+                                           data-content="http://www.w3.org/ns/dcat#theme"
+                                           data-placement="right">
+                                        theme</a>
+                                </td>
+                                <td>
+                                    
+                                        
+                                            <a href="#Code" data-placement="right">Code</a>
+                                        
+                                    
+                                </td>
+                                <td>
+                                    0..*
+                                </td>
+                                <td property="rdfs:comment">
+                                    A classification of the Standard.
+                                </td>
+                                <td property="skos:scopeNote">
+                                    
+                                </td>
+				<!--
+                                <td>
+                                    
+                                </td>
+				-->
+                                <td>
+                                    
+                                </td>
+                            </tr>
+                        
+                            <tr id="Standard.title"
+                                typeof="rdf:Property"
+                                resource="http://purl.org/dc/terms/title"
+                                class="class mandatory">
+                                <td>
+				    <a href="https://github.com/SEMICeu/SRM/issues/new?title=Issue%20for%20title%20in%20Standard&body=Explain%20your%20issue%20for%20https://semiceu.github.io/SRM/releases/1.0.0%23Standard.title" target="_blank" rel="noopener noreferrer" >
+					    <!--                                        <i class="icon">[o]</i> -->
+                                        <img src="html/callout.png" loading="lazy" alt="[o]" width="100" height="100"/>
+                                    </a>
+                                </td>
+                                <td>
+                                        <a href="http://purl.org/dc/terms/title"
+                                           data-toggle="tooltip"
+                                           data-content="http://purl.org/dc/terms/title"
+                                           data-placement="right">
+                                        title</a>
+                                </td>
+                                <td>
+                                    
+                                        
+                                            <a href="#Text" data-placement="right">Text</a>
+                                        
+                                    
+                                </td>
+                                <td>
+                                    1..*
+                                </td>
+                                <td property="rdfs:comment">
+                                    A name given to the resource.
+                                </td>
+                                <td property="skos:scopeNote">
+                                    
+                                </td>
+				<!--
+                                <td>
+                                    
+                                </td>
+				-->
+                                <td>
+                                    
+                                </td>
+                            </tr>
+                        
+                            <tr id="Standard.versioninfo"
+                                typeof="rdf:Property"
+                                resource="http://www.w3.org/2002/07/owl#versionInfo"
+                                class="class mandatory">
+                                <td>
+				    <a href="https://github.com/SEMICeu/SRM/issues/new?title=Issue%20for%20version info%20in%20Standard&body=Explain%20your%20issue%20for%20https://semiceu.github.io/SRM/releases/1.0.0%23Standard.versioninfo" target="_blank" rel="noopener noreferrer" >
+					    <!--                                        <i class="icon">[o]</i> -->
+                                        <img src="html/callout.png" loading="lazy" alt="[o]" width="100" height="100"/>
+                                    </a>
+                                </td>
+                                <td>
+                                        <a href="http://www.w3.org/2002/07/owl#versionInfo"
+                                           data-toggle="tooltip"
+                                           data-content="http://www.w3.org/2002/07/owl#versionInfo"
+                                           data-placement="right">
+                                        version info</a>
+                                </td>
+                                <td>
+                                    
+                                        
+                                            <a href="#String" data-placement="right">String</a>
+                                        
+                                    
+                                </td>
+                                <td>
+                                    0..1
+                                </td>
+                                <td property="rdfs:comment">
+                                    A string giving information about this version.
+                                </td>
+                                <td property="skos:scopeNote">
+                                    
+                                </td>
+				<!--
+                                <td>
+                                    
+                                </td>
+				-->
+                                <td>
+                                    
+                                </td>
+                            </tr>
+                        
+                    </tbody>
+                </table>
+            </div>
+        
+    </div>
+</section>
+
+
+
+
+</section>
+
+<section>
+<h2>
+   Supportive Entities
+</h2>
+The supportive entities are supporting the main entities in the Application Profile. 
+They are included in the Application Profile because they form the range of properties.
+
+
+
+
+   
+        <section>
+            <h3 id="Agent">
+                <a href="http://xmlns.com/foaf/0.1/Agent"
+                   data-toggle="tooltip"
+                   data-content="http://xmlns.com/foaf/0.1/Agent"
+                   data-placement="right">Agent</a>
+
+            </h3>
+	        <!-- XXX an image in the h3 will break the rendering of the Table Of Contents of Respec -->
+		<!-- outcomment github feedback possibility
+                <a href="https://github.com/SEMICeu/SRM/issues/new?title=Issue%20for%20Agent&body=Explain%20your%20issue"}}>
+                   <img src="html/callout.png" loading="lazy" alt="(create issue)" width="20" height="20"/>
+		</a>
+		-->
+            <dl>
+                <dt>
+                    Definition
+                </dt>
+                <dd>
+                    The Agent class is any resource that acts or has the power to act. This includes people, organisations and groups. The Public Organization class, defined in the Core Public Organisation Vocabulary, is a notable subclass of Agent.
+                </dd>
+                
+                
+                
+                    <dt>
+                        Properties
+                    </dt>
+                    
+                        <dd>
+                            For this entity the following properties are defined: <a href="#Agent.name">name</a>
+                            , <a href="#Agent.spatial">spatial</a>
+                            , <a href="#Agent.type">type</a>
+                            .
+                    </dd>
+                
+            </dl>
+        </div>
+        
+            <div class="u-table-overflow">
+                <table class="data-table simple" id="table-mandatory-classes">
+                    <thead>
+                        <tr class="data-table__header">
+                            <th class="data-table__header-title--sortable" style="width:6%">
+                            </th>
+                            <th class="data-table__header-title--sortable data-table__header-title--sortable-active" style="width:14%">
+                                Property
+                            </th>
+                            <th class="data-table__header-title--sortable" style="width:14%">
+                                Range
+                            </th>
+                            <th class="data-table__header-title--sortable" style="width:6%">
+                                Card
+                            </th>
+                            <th class="data-table__header-title--sortable" style="width:30%">
+                                Definition 
+                            </th>
+                            <th class="data-table__header-title--sortable" style="width:30%">
+                                Usage
+                            </th>
+			    <!--
+                            <th class="data-table__header-title--sortable" style="width:3%">
+                                Codelist
+                            </th>
+                            <th class="data-table__header-title--sortable" style="width:5%">
+                                DCAT
+                            </th>
+			    -->
+                        </tr>
+                    </thead>
+                    <tbody class="supertype">
+                        
+                            <tr id="Agent.name"
+                                typeof="rdf:Property"
+                                resource="http://purl.org/dc/terms/title"
+                                class="class mandatory">
+                                <td>
+				    <a href="https://github.com/SEMICeu/SRM/issues/new?title=Issue%20for%20name%20in%20Agent&body=Explain%20your%20issue%20for%20https://semiceu.github.io/SRM/releases/1.0.0%23Agent.name" target="_blank" rel="noopener noreferrer" >
+					    <!--                                        <i class="icon">[o]</i> -->
+                                        <img src="html/callout.png" loading="lazy" alt="[o]" width="100" height="100"/>
+                                    </a>
+                                </td>
+                                <td>
+                                        <a href="http://purl.org/dc/terms/title"
+                                           data-toggle="tooltip"
+                                           data-content="http://purl.org/dc/terms/title"
+                                           data-placement="right">
+                                        name</a>
+                                </td>
+                                <td>
+                                    
+                                        
+                                            <a href="#Text" data-placement="right">Text</a>
+                                        
+                                    
+                                </td>
+                                <td>
+                                    1..*
+                                </td>
+                                <td property="rdfs:comment">
+                                    The noun given to the Agent.
+                                </td>
+                                <td property="skos:scopeNote">
+                                    
+                                </td>
+				<!--
+                                <td>
+                                    
+                                </td>
+				-->
+                                <td>
+                                    
+                                </td>
+                            </tr>
+                        
+                            <tr id="Agent.spatial"
+                                typeof="rdf:Property"
+                                resource="http://purl.org/dc/terms/spatial"
+                                class="class mandatory">
+                                <td>
+				    <a href="https://github.com/SEMICeu/SRM/issues/new?title=Issue%20for%20spatial%20in%20Agent&body=Explain%20your%20issue%20for%20https://semiceu.github.io/SRM/releases/1.0.0%23Agent.spatial" target="_blank" rel="noopener noreferrer" >
+					    <!--                                        <i class="icon">[o]</i> -->
+                                        <img src="html/callout.png" loading="lazy" alt="[o]" width="100" height="100"/>
+                                    </a>
+                                </td>
+                                <td>
+                                        <a href="http://purl.org/dc/terms/spatial"
+                                           data-toggle="tooltip"
+                                           data-content="http://purl.org/dc/terms/spatial"
+                                           data-placement="right">
+                                        spatial</a>
+                                </td>
+                                <td>
+                                    
+                                        
+                                            <a href="#Location" data-placement="right">Location</a>
+                                        
+                                    
+                                </td>
+                                <td>
+                                    0..*
+                                </td>
+                                <td property="rdfs:comment">
+                                    The country of the Agent.
+                                </td>
+                                <td property="skos:scopeNote">
+                                    
+                                </td>
+				<!--
+                                <td>
+                                    
+                                </td>
+				-->
+                                <td>
+                                    
+                                </td>
+                            </tr>
+                        
+                            <tr id="Agent.type"
+                                typeof="rdf:Property"
+                                resource="http://purl.org/dc/terms/type"
+                                class="class mandatory">
+                                <td>
+				    <a href="https://github.com/SEMICeu/SRM/issues/new?title=Issue%20for%20type%20in%20Agent&body=Explain%20your%20issue%20for%20https://semiceu.github.io/SRM/releases/1.0.0%23Agent.type" target="_blank" rel="noopener noreferrer" >
+					    <!--                                        <i class="icon">[o]</i> -->
+                                        <img src="html/callout.png" loading="lazy" alt="[o]" width="100" height="100"/>
+                                    </a>
+                                </td>
+                                <td>
+                                        <a href="http://purl.org/dc/terms/type"
+                                           data-toggle="tooltip"
+                                           data-content="http://purl.org/dc/terms/type"
+                                           data-placement="right">
+                                        type</a>
+                                </td>
+                                <td>
+                                    
+                                        
+                                            <a href="#Code" data-placement="right">Code</a>
+                                        
+                                    
+                                </td>
+                                <td>
+                                    0..1
+                                </td>
+                                <td property="rdfs:comment">
+                                    The nature of the Agent.
+                                </td>
+                                <td property="skos:scopeNote">
+                                    
+                                </td>
+				<!--
+                                <td>
+                                    
+                                </td>
+				-->
+                                <td>
+                                    
+                                </td>
+                            </tr>
+                        
+                    </tbody>
+                </table>
+            </div>
+        
+    </div>
+</section>
+
+
+
+
+
+   
+        <section>
+            <h3 id="Class">
+                <a href="http://www.w3.org/2000/01/rdf-schema#Class"
+                   data-toggle="tooltip"
+                   data-content="http://www.w3.org/2000/01/rdf-schema#Class"
+                   data-placement="right">Class</a>
+
+            </h3>
+	        <!-- XXX an image in the h3 will break the rendering of the Table Of Contents of Respec -->
+		<!-- outcomment github feedback possibility
+                <a href="https://github.com/SEMICeu/SRM/issues/new?title=Issue%20for%20Class&body=Explain%20your%20issue"}}>
+                   <img src="html/callout.png" loading="lazy" alt="(create issue)" width="20" height="20"/>
+		</a>
+		-->
+            <dl>
+                <dt>
+                    Definition
+                </dt>
+                <dd>
+                    The class of resources that are RDF classes.
+                </dd>
+                
+                
+                
+                    <dt>
+                        Properties
+                    </dt>
+                    
+                        <dd>
+                            For this entity the following properties are defined: <a href="#Class.name">name</a>
+                            .
+                    </dd>
+                
+            </dl>
+        </div>
+        
+            <div class="u-table-overflow">
+                <table class="data-table simple" id="table-mandatory-classes">
+                    <thead>
+                        <tr class="data-table__header">
+                            <th class="data-table__header-title--sortable" style="width:6%">
+                            </th>
+                            <th class="data-table__header-title--sortable data-table__header-title--sortable-active" style="width:14%">
+                                Property
+                            </th>
+                            <th class="data-table__header-title--sortable" style="width:14%">
+                                Range
+                            </th>
+                            <th class="data-table__header-title--sortable" style="width:6%">
+                                Card
+                            </th>
+                            <th class="data-table__header-title--sortable" style="width:30%">
+                                Definition 
+                            </th>
+                            <th class="data-table__header-title--sortable" style="width:30%">
+                                Usage
+                            </th>
+			    <!--
+                            <th class="data-table__header-title--sortable" style="width:3%">
+                                Codelist
+                            </th>
+                            <th class="data-table__header-title--sortable" style="width:5%">
+                                DCAT
+                            </th>
+			    -->
+                        </tr>
+                    </thead>
+                    <tbody class="supertype">
+                        
+                            <tr id="Class.name"
+                                typeof="rdf:Property"
+                                resource="http://www.w3.org/2000/01/rdf-schema#label"
+                                class="class mandatory">
+                                <td>
+				    <a href="https://github.com/SEMICeu/SRM/issues/new?title=Issue%20for%20name%20in%20Class&body=Explain%20your%20issue%20for%20https://semiceu.github.io/SRM/releases/1.0.0%23Class.name" target="_blank" rel="noopener noreferrer" >
+					    <!--                                        <i class="icon">[o]</i> -->
+                                        <img src="html/callout.png" loading="lazy" alt="[o]" width="100" height="100"/>
+                                    </a>
+                                </td>
+                                <td>
+                                        <a href="http://www.w3.org/2000/01/rdf-schema#label"
+                                           data-toggle="tooltip"
+                                           data-content="http://www.w3.org/2000/01/rdf-schema#label"
+                                           data-placement="right">
+                                        name</a>
+                                </td>
+                                <td>
+                                    
+                                        
+                                            <a href="#Text" data-placement="right">Text</a>
+                                        
+                                    
+                                </td>
+                                <td>
+                                    1..*
+                                </td>
+                                <td property="rdfs:comment">
+                                    The name of the class.
+                                </td>
+                                <td property="skos:scopeNote">
+                                    
+                                </td>
+				<!--
+                                <td>
+                                    
+                                </td>
+				-->
+                                <td>
+                                    
+                                </td>
+                            </tr>
+                        
+                    </tbody>
+                </table>
+            </div>
+        
+    </div>
+</section>
+
+
+
+
+
+   
+        <section>
+            <h3 id="ContactPoint">
+                <a href="http://data.europa.eu/m8g/ContactPoint"
+                   data-toggle="tooltip"
+                   data-content="http://data.europa.eu/m8g/ContactPoint"
+                   data-placement="right">Contact Point</a>
+
+            </h3>
+	        <!-- XXX an image in the h3 will break the rendering of the Table Of Contents of Respec -->
+		<!-- outcomment github feedback possibility
+                <a href="https://github.com/SEMICeu/SRM/issues/new?title=Issue%20for%20ContactPoint&body=Explain%20your%20issue"}}>
+                   <img src="html/callout.png" loading="lazy" alt="(create issue)" width="20" height="20"/>
+		</a>
+		-->
+            <dl>
+                <dt>
+                    Definition
+                </dt>
+                <dd>
+                    Information (e.g. e-mail address, telephone number) of a person or department through which the user can get in touch with.
+                </dd>
+                
+                
+                
+                    <dt>
+                        Properties
+                    </dt>
+                    
+                        <dd>
+                            For this entity the following properties are defined: <a href="#ContactPoint.hasemail">has email</a>
+                            .
+                    </dd>
+                
+            </dl>
+        </div>
+        
+            <div class="u-table-overflow">
+                <table class="data-table simple" id="table-mandatory-classes">
+                    <thead>
+                        <tr class="data-table__header">
+                            <th class="data-table__header-title--sortable" style="width:6%">
+                            </th>
+                            <th class="data-table__header-title--sortable data-table__header-title--sortable-active" style="width:14%">
+                                Property
+                            </th>
+                            <th class="data-table__header-title--sortable" style="width:14%">
+                                Range
+                            </th>
+                            <th class="data-table__header-title--sortable" style="width:6%">
+                                Card
+                            </th>
+                            <th class="data-table__header-title--sortable" style="width:30%">
+                                Definition 
+                            </th>
+                            <th class="data-table__header-title--sortable" style="width:30%">
+                                Usage
+                            </th>
+			    <!--
+                            <th class="data-table__header-title--sortable" style="width:3%">
+                                Codelist
+                            </th>
+                            <th class="data-table__header-title--sortable" style="width:5%">
+                                DCAT
+                            </th>
+			    -->
+                        </tr>
+                    </thead>
+                    <tbody class="supertype">
+                        
+                            <tr id="ContactPoint.hasemail"
+                                typeof="rdf:Property"
+                                resource="http://data.europa.eu/m8g/email"
+                                class="class mandatory">
+                                <td>
+				    <a href="https://github.com/SEMICeu/SRM/issues/new?title=Issue%20for%20has email%20in%20Contact Point&body=Explain%20your%20issue%20for%20https://semiceu.github.io/SRM/releases/1.0.0%23ContactPoint.hasemail" target="_blank" rel="noopener noreferrer" >
+					    <!--                                        <i class="icon">[o]</i> -->
+                                        <img src="html/callout.png" loading="lazy" alt="[o]" width="100" height="100"/>
+                                    </a>
+                                </td>
+                                <td>
+                                        <a href="http://data.europa.eu/m8g/email"
+                                           data-toggle="tooltip"
+                                           data-content="http://data.europa.eu/m8g/email"
+                                           data-placement="right">
+                                        has email</a>
+                                </td>
+                                <td>
+                                    
+                                        
+                                            <a href="#String" data-placement="right">String</a>
+                                        
+                                    
+                                </td>
+                                <td>
+                                    0..*
+                                </td>
+                                <td property="rdfs:comment">
+                                    	An electronic address through which the Contact Point can be contacted.
+                                </td>
+                                <td property="skos:scopeNote">
+                                    
+                                </td>
+				<!--
+                                <td>
+                                    
+                                </td>
+				-->
+                                <td>
+                                    
+                                </td>
+                            </tr>
+                        
+                    </tbody>
+                </table>
+            </div>
+        
+    </div>
+</section>
+
+
+
+
+
+   
+        <section>
+            <h3 id="Document">
+                <a href="http://xmlns.com/foaf/0.1/Document"
+                   data-toggle="tooltip"
+                   data-content="http://xmlns.com/foaf/0.1/Document"
+                   data-placement="right">Document</a>
+
+            </h3>
+	        <!-- XXX an image in the h3 will break the rendering of the Table Of Contents of Respec -->
+		<!-- outcomment github feedback possibility
+                <a href="https://github.com/SEMICeu/SRM/issues/new?title=Issue%20for%20Document&body=Explain%20your%20issue"}}>
+                   <img src="html/callout.png" loading="lazy" alt="(create issue)" width="20" height="20"/>
+		</a>
+		-->
+            <dl>
+                <dt>
+                    Definition
+                </dt>
+                <dd>
+                    A document.
+                </dd>
+                
+                
+                
+                    <dt>
+                        Properties
+                    </dt>
+                    
+                    <dd>
+                        This specification does not impose any additional requirements to properties for this entity.
+                    </dd>
+                
+            </dl>
+        </div>
+        
+    </div>
+</section>
+
+
+
+
+
+   
+        <section>
+            <h3 id="Location">
+                <a href="http://purl.org/dc/terms/Location"
+                   data-toggle="tooltip"
+                   data-content="http://purl.org/dc/terms/Location"
+                   data-placement="right">Location</a>
+
+            </h3>
+	        <!-- XXX an image in the h3 will break the rendering of the Table Of Contents of Respec -->
+		<!-- outcomment github feedback possibility
+                <a href="https://github.com/SEMICeu/SRM/issues/new?title=Issue%20for%20Location&body=Explain%20your%20issue"}}>
+                   <img src="html/callout.png" loading="lazy" alt="(create issue)" width="20" height="20"/>
+		</a>
+		-->
+            <dl>
+                <dt>
+                    Definition
+                </dt>
+                <dd>
+                    A spatial region or named place.
+                </dd>
+                
+                
+                
+                    <dt>
+                        Properties
+                    </dt>
+                    
+                    <dd>
+                        This specification does not impose any additional requirements to properties for this entity.
+                    </dd>
+                
+            </dl>
+        </div>
+        
+    </div>
+</section>
+
+
+
+
+
+   
+        <section>
+            <h3 id="ResourceDescriptor">
+                <a href="http://www.w3.org/ns/dx/prof/ResourceDescriptor"
+                   data-toggle="tooltip"
+                   data-content="http://www.w3.org/ns/dx/prof/ResourceDescriptor"
+                   data-placement="right">Resource Descriptor</a>
+
+            </h3>
+	        <!-- XXX an image in the h3 will break the rendering of the Table Of Contents of Respec -->
+		<!-- outcomment github feedback possibility
+                <a href="https://github.com/SEMICeu/SRM/issues/new?title=Issue%20for%20ResourceDescriptor&body=Explain%20your%20issue"}}>
+                   <img src="html/callout.png" loading="lazy" alt="(create issue)" width="20" height="20"/>
+		</a>
+		-->
+            <dl>
+                <dt>
+                    Definition
+                </dt>
+                <dd>
+                    A description of a resource that defines an aspect - a particular part, feature or role - of a Profile
+                </dd>
+                
+                
+                
+                    <dt>
+                        Properties
+                    </dt>
+                    
+                        <dd>
+                            For this entity the following properties are defined: <a href="#ResourceDescriptor.downloadURL">download URL</a>
+                            , <a href="#ResourceDescriptor.format">format</a>
+                            , <a href="#ResourceDescriptor.hasrole">has role</a>
+                            , <a href="#ResourceDescriptor.name">name</a>
+                            .
+                    </dd>
+                
+            </dl>
+        </div>
+        
+            <div class="u-table-overflow">
+                <table class="data-table simple" id="table-mandatory-classes">
+                    <thead>
+                        <tr class="data-table__header">
+                            <th class="data-table__header-title--sortable" style="width:6%">
+                            </th>
+                            <th class="data-table__header-title--sortable data-table__header-title--sortable-active" style="width:14%">
+                                Property
+                            </th>
+                            <th class="data-table__header-title--sortable" style="width:14%">
+                                Range
+                            </th>
+                            <th class="data-table__header-title--sortable" style="width:6%">
+                                Card
+                            </th>
+                            <th class="data-table__header-title--sortable" style="width:30%">
+                                Definition 
+                            </th>
+                            <th class="data-table__header-title--sortable" style="width:30%">
+                                Usage
+                            </th>
+			    <!--
+                            <th class="data-table__header-title--sortable" style="width:3%">
+                                Codelist
+                            </th>
+                            <th class="data-table__header-title--sortable" style="width:5%">
+                                DCAT
+                            </th>
+			    -->
+                        </tr>
+                    </thead>
+                    <tbody class="supertype">
+                        
+                            <tr id="ResourceDescriptor.downloadURL"
+                                typeof="rdf:Property"
+                                resource="http://www.w3.org/ns/dcat#downloadURL"
+                                class="class mandatory">
+                                <td>
+				    <a href="https://github.com/SEMICeu/SRM/issues/new?title=Issue%20for%20download URL%20in%20Resource Descriptor&body=Explain%20your%20issue%20for%20https://semiceu.github.io/SRM/releases/1.0.0%23ResourceDescriptor.downloadURL" target="_blank" rel="noopener noreferrer" >
+					    <!--                                        <i class="icon">[o]</i> -->
+                                        <img src="html/callout.png" loading="lazy" alt="[o]" width="100" height="100"/>
+                                    </a>
+                                </td>
+                                <td>
+                                        <a href="http://www.w3.org/ns/dcat#downloadURL"
+                                           data-toggle="tooltip"
+                                           data-content="http://www.w3.org/ns/dcat#downloadURL"
+                                           data-placement="right">
+                                        download URL</a>
+                                </td>
+                                <td>
+                                    
+                                        
+                                            <a href="#URI" data-placement="right">URI</a>
+                                        
+                                    
+                                </td>
+                                <td>
+                                    1
+                                </td>
+                                <td property="rdfs:comment">
+                                    The URL of the downloadable file in a given format.
+                                </td>
+                                <td property="skos:scopeNote">
+                                    
+                                </td>
+				<!--
+                                <td>
+                                    
+                                </td>
+				-->
+                                <td>
+                                    
+                                </td>
+                            </tr>
+                        
+                            <tr id="ResourceDescriptor.format"
+                                typeof="rdf:Property"
+                                resource="http://purl.org/dc/terms/format"
+                                class="class mandatory">
+                                <td>
+				    <a href="https://github.com/SEMICeu/SRM/issues/new?title=Issue%20for%20format%20in%20Resource Descriptor&body=Explain%20your%20issue%20for%20https://semiceu.github.io/SRM/releases/1.0.0%23ResourceDescriptor.format" target="_blank" rel="noopener noreferrer" >
+					    <!--                                        <i class="icon">[o]</i> -->
+                                        <img src="html/callout.png" loading="lazy" alt="[o]" width="100" height="100"/>
+                                    </a>
+                                </td>
+                                <td>
+                                        <a href="http://purl.org/dc/terms/format"
+                                           data-toggle="tooltip"
+                                           data-content="http://purl.org/dc/terms/format"
+                                           data-placement="right">
+                                        format</a>
+                                </td>
+                                <td>
+                                    
+                                        
+                                            <a href="#Code" data-placement="right">Code</a>
+                                        
+                                    
+                                </td>
+                                <td>
+                                    1
+                                </td>
+                                <td property="rdfs:comment">
+                                    	The file format, physical medium, or dimensions of the resource.
+                                </td>
+                                <td property="skos:scopeNote">
+                                    
+                                </td>
+				<!--
+                                <td>
+                                    
+                                </td>
+				-->
+                                <td>
+                                    
+                                </td>
+                            </tr>
+                        
+                            <tr id="ResourceDescriptor.hasrole"
+                                typeof="rdf:Property"
+                                resource="http://www.w3.org/ns/dx/prof/hasRole"
+                                class="class mandatory">
+                                <td>
+				    <a href="https://github.com/SEMICeu/SRM/issues/new?title=Issue%20for%20has role%20in%20Resource Descriptor&body=Explain%20your%20issue%20for%20https://semiceu.github.io/SRM/releases/1.0.0%23ResourceDescriptor.hasrole" target="_blank" rel="noopener noreferrer" >
+					    <!--                                        <i class="icon">[o]</i> -->
+                                        <img src="html/callout.png" loading="lazy" alt="[o]" width="100" height="100"/>
+                                    </a>
+                                </td>
+                                <td>
+                                        <a href="http://www.w3.org/ns/dx/prof/hasRole"
+                                           data-toggle="tooltip"
+                                           data-content="http://www.w3.org/ns/dx/prof/hasRole"
+                                           data-placement="right">
+                                        has role</a>
+                                </td>
+                                <td>
+                                    
+                                        
+                                            <a href="#Code" data-placement="right">Code</a>
+                                        
+                                    
+                                </td>
+                                <td>
+                                    1
+                                </td>
+                                <td property="rdfs:comment">
+                                    A description of a resource that defines an aspect - a particular part, feature or role - of a Profile.
+                                </td>
+                                <td property="skos:scopeNote">
+                                    
+                                </td>
+				<!--
+                                <td>
+                                    
+                                </td>
+				-->
+                                <td>
+                                    
+                                </td>
+                            </tr>
+                        
+                            <tr id="ResourceDescriptor.name"
+                                typeof="rdf:Property"
+                                resource="http://purl.org/dc/terms/title"
+                                class="class mandatory">
+                                <td>
+				    <a href="https://github.com/SEMICeu/SRM/issues/new?title=Issue%20for%20name%20in%20Resource Descriptor&body=Explain%20your%20issue%20for%20https://semiceu.github.io/SRM/releases/1.0.0%23ResourceDescriptor.name" target="_blank" rel="noopener noreferrer" >
+					    <!--                                        <i class="icon">[o]</i> -->
+                                        <img src="html/callout.png" loading="lazy" alt="[o]" width="100" height="100"/>
+                                    </a>
+                                </td>
+                                <td>
+                                        <a href="http://purl.org/dc/terms/title"
+                                           data-toggle="tooltip"
+                                           data-content="http://purl.org/dc/terms/title"
+                                           data-placement="right">
+                                        name</a>
+                                </td>
+                                <td>
+                                    
+                                        
+                                            <a href="#Text" data-placement="right">Text</a>
+                                        
+                                    
+                                </td>
+                                <td>
+                                    1..*
+                                </td>
+                                <td property="rdfs:comment">
+                                    The noun given to the Resource Descriptor.
+                                </td>
+                                <td property="skos:scopeNote">
+                                    
+                                </td>
+				<!--
+                                <td>
+                                    
+                                </td>
+				-->
+                                <td>
+                                    
+                                </td>
+                            </tr>
+                        
+                    </tbody>
+                </table>
+            </div>
+        
+    </div>
+</section>
+
+
+
+
+
+
+
+</section>
+
+    <section>
+        <h2>
+            Datatypes
+        </h2>
+
+	The following datatypes are used within this specification.
+
+	<table class="data-table simple" id="table-mandatory-classes">
+	    <thead>
+		<tr class="data-table__header">
+		    <th class="data-table__header-title--sortable">
+		    </th>
+		    <th class="data-table__header-title--sortable data-table__header-title--sortable-active">
+			Class
+		    </th>
+		    <th class="data-table__header-title--sortable">
+			Definition
+		    </th>
+		</tr>
+	    </thead>
+	    <tbody class="supertype">
+            
+		<tr><td>
+                   <a href="https://github.com/SEMICeu/SRM/issues/new?title=Issue%20for%20Code&body=Explain%20your%20issue"}}>
+                     <img src="html/callout.png" loading="lazy" alt="(create issue)" width="50" height="50"/>
+		   </a>
+		</td><td>
+                
+                    <div id="Code">
+                        <a href="http://www.w3.org/2004/02/skos/core#Concept"
+                           data-toggle="tooltip"
+                           data-content="http://www.w3.org/2004/02/skos/core#Concept"
+                           data-placement="right">Code</a>
+                    </div>
+                
+		</td><td>
+                    An idea or notion; a unit of thought.
+		</td></tr>
+		<tr><td>
+                   <a href="https://github.com/SEMICeu/SRM/issues/new?title=Issue%20for%20Datetime&body=Explain%20your%20issue"}}>
+                     <img src="html/callout.png" loading="lazy" alt="(create issue)" width="50" height="50"/>
+		   </a>
+		</td><td>
+                
+                    <div id="DateTime">
+                        <a href="http://www.w3.org/2001/XMLSchema#dateTime"
+                           data-toggle="tooltip"
+                           data-content="http://www.w3.org/2001/XMLSchema#dateTime"
+                           data-placement="right">DateTime</a>
+                    </div>
+                
+		</td><td>
+                    DateTime values may be viewed as objects with integer-valued year, month, day, hour and minute properties, a decimal-valued second property, and a boolean timezoned property.
+		</td></tr>
+		<tr><td>
+                   <a href="https://github.com/SEMICeu/SRM/issues/new?title=Issue%20for%20Nonnegativeinteger&body=Explain%20your%20issue"}}>
+                     <img src="html/callout.png" loading="lazy" alt="(create issue)" width="50" height="50"/>
+		   </a>
+		</td><td>
+                
+                    <div id="NonNegativeInteger">
+                        <a href="http://www.w3.org/2001/XMLSchema#nonNegativeInteger"
+                           data-toggle="tooltip"
+                           data-content="http://www.w3.org/2001/XMLSchema#nonNegativeInteger"
+                           data-placement="right">NonNegativeInteger</a>
+                    </div>
+                
+		</td><td>
+                    nonNegativeInteger is derived from integer by setting the value of minInclusive to be 0.
+		</td></tr>
+		<tr><td>
+                   <a href="https://github.com/SEMICeu/SRM/issues/new?title=Issue%20for%20String&body=Explain%20your%20issue"}}>
+                     <img src="html/callout.png" loading="lazy" alt="(create issue)" width="50" height="50"/>
+		   </a>
+		</td><td>
+                
+                    <div id="String">
+                        <a href="http://www.w3.org/2001/XMLSchema#string"
+                           data-toggle="tooltip"
+                           data-content="http://www.w3.org/2001/XMLSchema#string"
+                           data-placement="right">String</a>
+                    </div>
+                
+		</td><td>
+                    The string datatype represents character strings in XML.
+		</td></tr>
+		<tr><td>
+                   <a href="https://github.com/SEMICeu/SRM/issues/new?title=Issue%20for%20Text&body=Explain%20your%20issue"}}>
+                     <img src="html/callout.png" loading="lazy" alt="(create issue)" width="50" height="50"/>
+		   </a>
+		</td><td>
+                
+                    <div id="Text">
+                        <a href="http://www.w3.org/1999/02/22-rdf-syntax-ns#langString"
+                           data-toggle="tooltip"
+                           data-content="http://www.w3.org/1999/02/22-rdf-syntax-ns#langString"
+                           data-placement="right">Text</a>
+                    </div>
+                
+		</td><td>
+                    The text data type is a combination of a string and a language identifier.
+		</td></tr>
+		<tr><td>
+                   <a href="https://github.com/SEMICeu/SRM/issues/new?title=Issue%20for%20Uri&body=Explain%20your%20issue"}}>
+                     <img src="html/callout.png" loading="lazy" alt="(create issue)" width="50" height="50"/>
+		   </a>
+		</td><td>
+                
+                    <div id="URI">
+                        <a href="http://www.w3.org/2001/XMLSchema#anyURI"
+                           data-toggle="tooltip"
+                           data-content="http://www.w3.org/2001/XMLSchema#anyURI"
+                           data-placement="right">URI</a>
+                    </div>
+                
+		</td><td>
+                    anyURI represents an Internationalized Resource Identifier Reference (IRI).  An anyURI value can be absolute or relative, and may have an optional fragment identifier (i.e., it may be an IRI Reference).
+		</td></tr>
+            </tbody>
+	</table>
+
+
+</section>
+
+<!--
+<section class="informative">
+    <h2 aria-level="1" role="heading" id="h2_sotd">
+        JSON-LD context
+    </h2>
+    <div class="region region--no-space-top" id="jsonld">
+         (non normative)
+        
+            <p>
+                A reusable JSON-LD context definition for this Core Vocabulary is retrievable at: <a href="/SRM/releases/1.0.0/context/srm.jsonld"
+    target="_blank">/SRM/releases/1.0.0/context/srm.jsonld</a>
+            </p>
+        
+    </div>
+</section>
+<section class="informative">
+    <h2 aria-level="1" role="heading" id="h2_sotd">
+        SHACL template
+    </h2>
+    <div class="region region--no-space-top" id="shacl">
+         (non normative)
+        
+            <p>
+                A reusable SHACL template for this Core Vocabulary is retrievable at: <a href="/SRM/releases/1.0.0/shacl/srm-SHACL.ttl"
+    target="_blank">/SRM/releases/1.0.0/shacl/srm-SHACL.ttl</a>
+            </p>
+        
+    </div>
+</section>
+-->
+
+<section class="informative">
+    <h2> Examples </h2>
+        
+
+<h3 class="h3 examples" id="example-rdf_cellar">Example <a href="https://publications.europa.eu/webapi/rdf/sparql?default-graph-uri=&query=prefix+cdm%3A+%3Chttp%3A%2F%2Fpublications.europa.eu%2Fontology%2Fcdm%23%3E%0D%0Aprefix+dct%3A+%3Chttp%3A%2F%2Fpurl.org%2Fdc%2Fterms%2F%3E%0D%0Aprefix+cssv%3A+%3Chttps%3A%2F%2Fdata.europa.eu%2F2sa%2Fcssv%23%3E%0D%0A%0D%0Aselect+*%0D%0Awhere+%7B%0D%0A%3Chttp%3A%2F%2Fdata.europa.eu%2F2sa%2Fcssv%2Frsc%2Fe9bb09990f610bec081e4275f7a49d6a4cdf7df89e3903a5daff682135f02c35%3E+%3Fp+%3Fo+%0D%0A%7D%0D%0A%0D%0A&format=text%2Fhtml&timeout=0&debug=on&run=+Run+Query+">Core Person</a> taken from Cellar</h3>
+<br/>
+<h3 class="h3 examples" id="example-rdf_schema-gov-it">Example <a href="https://schema.gov.it/sparql?default-graph-uri=&query=select+distinct+%3Fprop+%3Fvalue+where+%7B+%3Chttps%3A%2F%2Fw3id.org%2Fitalia%2Fonto%2FCPV%3E+%3Fprop+%3Fvalue%7D%0D%0A&format=text%2Fhtml&timeout=0&signal_void=on">CPV-AP_IT</a> taken from Schema.gov.it</h3>
+
+</section>
+
+
+
+<section class="informative">
+	<h2>Usage Guidelines</h2>
+    <section class="informative">
+  <h2>Support for implementation</h2>
+
+The following section provides support for implementing the Semantic Registry Model.
+<p/>
+
+<h3>JSON-LD context file</h3>
+
+One common technical question is the format in which the data is being exchanged. 
+For conformance with the Semantic Registry Model, it is not mandatory that this happens in an RDF serialisation, but the exchanged format SHOULD be unambiguously transformable into RDF.
+For the format JSON, a popular format to exchange data between systems, SEMIC provides a <a href="./context/srm.jsonld">JSON-LD context file</a>. 
+JSON-LD is a W3C Recommendation [[[json-ld11]]] that provided a standard approach to interpret JSON structures as RDF.
+The provided JSON-LD context file can be used by implementers.
+This JSON-LD context is not normative, i.e. other JSON-LD contexts are allowed.
+<p/>
+The JSON-LD context file downloadable <a href="./context/srm.jsonld">here</a>.
+<p/>
+
+<h3>Validation</h3>
+
+To verify if the data is (technically) conformant to the Semantic Registry Model, the exchanged data can be validated using the provided SHACL shapes. 
+SHACL is a W3C Recommendation to express constraints on an RDF knowledge graph. 
+<p/>
+To support the check whether or not a catalogue satisfies the expressed constraints in this Application Profile, the constraints in this specification are expressed using SHACL [[shacl]].
+Each constraint in this specification that could be converted into a SHACL expression has been included.
+As such this collection of SHACL expressions that can be used to build a validation check for data. 
+<p/>
+It is up to the implementers to define the validation they expect.
+Each implementation happens within a context, and that context is beyond the SHACL expressions here.
+<p/>
+The shapes can be found <a href="./shacl/srm-SHACL.ttl">here</a>.
+
+
+<h3>UML representation</h3>
+The UML representation from which the Semantic Registry Model has been build is available <a href="./UML">here</a>.
+
+<!--
+<h3>Mapping</h3>
+A mapping towards Schema.org can be found <a href="https://github.com/SEMICeu/Semantic-Mappings/tree/main/Core%20Location">here</a>
+<p/>
+-->
+
+</section>
+    <section class="informative">
+<h2>Governance</h2>
+
+<h3>Versioning governance</h3>
+All specifications produced in SEMIC will follow the versioning rule described by the SEMIC Style Guide rule 
+<a href="https://semiceu.github.io/style-guide/1.0.0/gc-publication-conventions.html#sec:pc-r3">PC-R3</a>.
+In case a SEMIC asset is deprecated the asset will remain available through its PURI.
+<p/>
+The serialisation will have:
+<ul>
+<li>a dct:isReplacedBy referencing the new assets used instead and</li>
+<li> an adms:status  indicating its deprecated <a href="http://publications.europa.eu/resource/authority/concept-status/DEPRECATED">status</a>.</li>
+</ul>
+<p/>
+
+<h3>Governance requirements for re-used assets</h3>
+In order to adhere to the SEMIC Style Guide rule <a href="https://semiceu.github.io/style-guide/1.0.0/gc-general-conventions.html#sec:gc-r2">GC-R2</a>
+ a specification should have quality and governance standards for the assets that are being reused.
+<p/>
+In order for an asset to be considered for reuse within a SEMIC specification it can be requested by a community member or it requires to adhere to the following requirements:
+<ul>
+<li> The asset is part of a recommendation by a major standards body or an EU institution.</li>
+<li> The asset is actively being maintained.</li>
+</ul>
+<p/>
+
+After being taken into consideration the asset will be validated in three steps:
+<ul>
+<li> Syntax validation will be performed on the relevant artefacts.</li>
+<li> Constraint validation will be performed on the relevant artefacts.</li>
+<li> The PURI will be validated.</li>
+</ul>
+Once considered and validated an asset can be adopted if it is approved by the community.
+<p/>
+
+<h3>Lexicalisation rules</h3>
+
+In order to adhere to the SEMIC Style Guide rule <a href="https://semiceu.github.io/style-guide/1.0.0/gc-semantic-conventions.html#sec:sc-r3">SC-R3</a> a specification requires formal lexicalisation rules.
+The Style Guide proposes two options either by using RDFS or SKOS lexicalisation.
+<p/>
+SEMIC uses and will use the RDFS lexicalisation for all of its specifications. More specifically:
+<ul>
+<li> rdfs:label is used to provide a human-readable version of a resource's name.</li>
+<li> The usage of certain resource can be clarified in a skos:usageNote.</li>
+</ul>
+
+</section>
+</section>
+ 
+
+
+
+ 
+
+
+
+<section id="quick-reference" class="appendix">
+
+<h2>Quick Reference of Classes and Properties</h2>
+
+This section provides a condensed tabular overview of the mentioned classes and properties in this specification.
+The properties are indicated as <it>mandatory, recommended, optional</it> and <it>deprecated</it>. These terms have the following meaning.
+<ul>
+<li>Mandatory property: a receiver MUST be able to process the information for that property; a sender MUST provide the information for that property.</li>
+<li>Recommended property: a receiver MUST be able to process the information for that property; a sender SHOULD provide the information for that property if it is available.</li>
+<li>Optional property: a receiver MUST be able to process the information for that property; a sender MAY provide the information for that property but is not obliged to do so.</li>
+<li>Deprecated property: a receiver SHOULD be able to process information about instances of that property; a sender SHOULD NOT provide the information about instances of that property.</li>
+</ul>
+
+<table id="table-quickoverview" class="simple" style="width:100%; table-layout: fixed; word-wrap:break-word;">
+	<thead>
+		<tr><th>Class</th><th>Class IRI</th><th>Property Type</type><th>Property</th><th>Property IRI</th></tr>
+	</thead>
+	<tbody>
+		
+				
+					
+						
+							<tr>
+								<td><a href="#Agent">Agent</a></td>
+								<td><div class="shorten">http://xmlns.com/foaf/0.1/Agent</div></td>
+								<td>Mandatory</td>
+								<td><a href="#Agent.name">name </a></td>
+								<td><div class="shorten">http://purl.org/dc/terms/title</div></td>
+							</tr>
+						
+					
+						
+					
+						
+					
+					
+						
+					
+						
+					
+						
+					
+					
+						
+					
+						
+							<tr>
+								<td><a href="#Agent">Agent</a></td>
+								<td><div class="shorten">http://xmlns.com/foaf/0.1/Agent</div></td>
+								<td>Optional</td>
+								<td><a href="#Agent.spatial">spatial </a></td>
+								<td><div class="shorten">http://purl.org/dc/terms/spatial</div></td>
+							</tr>
+						
+					
+						
+							<tr>
+								<td><a href="#Agent">Agent</a></td>
+								<td><div class="shorten">http://xmlns.com/foaf/0.1/Agent</div></td>
+								<td>Optional</td>
+								<td><a href="#Agent.type">type </a></td>
+								<td><div class="shorten">http://purl.org/dc/terms/type</div></td>
+							</tr>
+						
+					
+				
+			</tr>
+		
+				
+					
+						
+							<tr>
+								<td><a href="#Class">Class</a></td>
+								<td><div class="shorten">http://www.w3.org/2000/01/rdf-schema#Class</div></td>
+								<td>Mandatory</td>
+								<td><a href="#Class.name">name </a></td>
+								<td><div class="shorten">http://www.w3.org/2000/01/rdf-schema#label</div></td>
+							</tr>
+						
+					
+					
+						
+					
+					
+						
+					
+				
+			</tr>
+		
+				
+					
+						
+					
+					
+						
+					
+					
+						
+							<tr>
+								<td><a href="#ContactPoint">Contact Point</a></td>
+								<td><div class="shorten">http://data.europa.eu/m8g/ContactPoint</div></td>
+								<td>Optional</td>
+								<td><a href="#ContactPoint.hasemail">has email </a></td>
+								<td><div class="shorten">http://data.europa.eu/m8g/email</div></td>
+							</tr>
+						
+					
+				
+			</tr>
+		
+				
+					<tr>
+						<td><a href="#Document">Document</a></td>
+						<td><div class="shorten">http://xmlns.com/foaf/0.1/Document</div></td>
+						<td></td>
+						<td></td>
+						<td></td>
+					</tr>
+				
+			</tr>
+		
+				
+					<tr>
+						<td><a href="#Location">Location</a></td>
+						<td><div class="shorten">http://purl.org/dc/terms/Location</div></td>
+						<td></td>
+						<td></td>
+						<td></td>
+					</tr>
+				
+			</tr>
+		
+				
+					
+						
+							<tr>
+								<td><a href="#ResourceDescriptor">Resource Descriptor</a></td>
+								<td><div class="shorten">http://www.w3.org/ns/dx/prof/ResourceDescriptor</div></td>
+								<td>Mandatory</td>
+								<td><a href="#ResourceDescriptor.downloadURL">download URL </a></td>
+								<td><div class="shorten">http://www.w3.org/ns/dcat#downloadURL</div></td>
+							</tr>
+						
+					
+						
+							<tr>
+								<td><a href="#ResourceDescriptor">Resource Descriptor</a></td>
+								<td><div class="shorten">http://www.w3.org/ns/dx/prof/ResourceDescriptor</div></td>
+								<td>Mandatory</td>
+								<td><a href="#ResourceDescriptor.format">format </a></td>
+								<td><div class="shorten">http://purl.org/dc/terms/format</div></td>
+							</tr>
+						
+					
+						
+							<tr>
+								<td><a href="#ResourceDescriptor">Resource Descriptor</a></td>
+								<td><div class="shorten">http://www.w3.org/ns/dx/prof/ResourceDescriptor</div></td>
+								<td>Mandatory</td>
+								<td><a href="#ResourceDescriptor.hasrole">has role </a></td>
+								<td><div class="shorten">http://www.w3.org/ns/dx/prof/hasRole</div></td>
+							</tr>
+						
+					
+						
+							<tr>
+								<td><a href="#ResourceDescriptor">Resource Descriptor</a></td>
+								<td><div class="shorten">http://www.w3.org/ns/dx/prof/ResourceDescriptor</div></td>
+								<td>Mandatory</td>
+								<td><a href="#ResourceDescriptor.name">name </a></td>
+								<td><div class="shorten">http://purl.org/dc/terms/title</div></td>
+							</tr>
+						
+					
+					
+						
+					
+						
+					
+						
+					
+						
+					
+					
+						
+					
+						
+					
+						
+					
+						
+					
+				
+			</tr>
+		
+				
+					
+						
+					
+						
+					
+						
+							<tr>
+								<td><a href="#Standard">Standard</a></td>
+								<td><div class="shorten">http://purl.org/dc/terms/Standard</div></td>
+								<td>Mandatory</td>
+								<td><a href="#Standard.creator">creator </a></td>
+								<td><div class="shorten">http://purl.org/dc/terms/creator</div></td>
+							</tr>
+						
+					
+						
+					
+						
+					
+						
+					
+						
+							<tr>
+								<td><a href="#Standard">Standard</a></td>
+								<td><div class="shorten">http://purl.org/dc/terms/Standard</div></td>
+								<td>Mandatory</td>
+								<td><a href="#Standard.description">description </a></td>
+								<td><div class="shorten">http://purl.org/dc/terms/description</div></td>
+							</tr>
+						
+					
+						
+					
+						
+					
+						
+					
+						
+					
+						
+							<tr>
+								<td><a href="#Standard">Standard</a></td>
+								<td><div class="shorten">http://purl.org/dc/terms/Standard</div></td>
+								<td>Mandatory</td>
+								<td><a href="#Standard.identifier">identifier </a></td>
+								<td><div class="shorten">http://purl.org/dc/terms/identifier</div></td>
+							</tr>
+						
+					
+						
+					
+						
+					
+						
+					
+						
+					
+						
+					
+						
+					
+						
+					
+						
+					
+						
+					
+						
+							<tr>
+								<td><a href="#Standard">Standard</a></td>
+								<td><div class="shorten">http://purl.org/dc/terms/Standard</div></td>
+								<td>Mandatory</td>
+								<td><a href="#Standard.title">title </a></td>
+								<td><div class="shorten">http://purl.org/dc/terms/title</div></td>
+							</tr>
+						
+					
+						
+					
+					
+						
+					
+						
+					
+						
+					
+						
+					
+						
+					
+						
+					
+						
+					
+						
+					
+						
+					
+						
+					
+						
+					
+						
+					
+						
+					
+						
+					
+						
+					
+						
+					
+						
+					
+						
+					
+						
+					
+						
+					
+						
+					
+						
+					
+						
+					
+					
+						
+							<tr>
+								<td><a href="#Standard">Standard</a></td>
+								<td><div class="shorten">http://purl.org/dc/terms/Standard</div></td>
+								<td>Optional</td>
+								<td><a href="#Standard.contactpoint">contact point </a></td>
+								<td><div class="shorten">http://data.europa.eu/m8g/contactPoint</div></td>
+							</tr>
+						
+					
+						
+							<tr>
+								<td><a href="#Standard">Standard</a></td>
+								<td><div class="shorten">http://purl.org/dc/terms/Standard</div></td>
+								<td>Optional</td>
+								<td><a href="#Standard.contributor">contributor </a></td>
+								<td><div class="shorten">http://purl.org/dc/terms/contributor</div></td>
+							</tr>
+						
+					
+						
+					
+						
+							<tr>
+								<td><a href="#Standard">Standard</a></td>
+								<td><div class="shorten">http://purl.org/dc/terms/Standard</div></td>
+								<td>Optional</td>
+								<td><a href="#Standard.datecreated">date created </a></td>
+								<td><div class="shorten">http://purl.org/dc/terms/created</div></td>
+							</tr>
+						
+					
+						
+							<tr>
+								<td><a href="#Standard">Standard</a></td>
+								<td><div class="shorten">http://purl.org/dc/terms/Standard</div></td>
+								<td>Optional</td>
+								<td><a href="#Standard.dateissued">date issued </a></td>
+								<td><div class="shorten">http://purl.org/dc/terms/issued</div></td>
+							</tr>
+						
+					
+						
+							<tr>
+								<td><a href="#Standard">Standard</a></td>
+								<td><div class="shorten">http://purl.org/dc/terms/Standard</div></td>
+								<td>Optional</td>
+								<td><a href="#Standard.datemodified">date modified </a></td>
+								<td><div class="shorten">http://purl.org/dc/terms/modified</div></td>
+							</tr>
+						
+					
+						
+					
+						
+							<tr>
+								<td><a href="#Standard">Standard</a></td>
+								<td><div class="shorten">http://purl.org/dc/terms/Standard</div></td>
+								<td>Optional</td>
+								<td><a href="#Standard.hasimplementation">has implementation </a></td>
+								<td><div class="shorten">http://data.europa.eu/m8g/hasImplementation</div></td>
+							</tr>
+						
+					
+						
+							<tr>
+								<td><a href="#Standard">Standard</a></td>
+								<td><div class="shorten">http://purl.org/dc/terms/Standard</div></td>
+								<td>Optional</td>
+								<td><a href="#Standard.haspart">has part </a></td>
+								<td><div class="shorten">http://purl.org/dc/terms/hasPart</div></td>
+							</tr>
+						
+					
+						
+							<tr>
+								<td><a href="#Standard">Standard</a></td>
+								<td><div class="shorten">http://purl.org/dc/terms/Standard</div></td>
+								<td>Optional</td>
+								<td><a href="#Standard.hasresource">has resource </a></td>
+								<td><div class="shorten">http://www.w3.org/ns/dx/prof/hasResource</div></td>
+							</tr>
+						
+					
+						
+							<tr>
+								<td><a href="#Standard">Standard</a></td>
+								<td><div class="shorten">http://purl.org/dc/terms/Standard</div></td>
+								<td>Optional</td>
+								<td><a href="#Standard.homepage">homepage </a></td>
+								<td><div class="shorten">http://xmlns.com/foaf/0.1/homepage</div></td>
+							</tr>
+						
+					
+						
+					
+						
+							<tr>
+								<td><a href="#Standard">Standard</a></td>
+								<td><div class="shorten">http://purl.org/dc/terms/Standard</div></td>
+								<td>Optional</td>
+								<td><a href="#Standard.isreusedby">is reused by </a></td>
+								<td><div class="shorten">http://data.europa.eu/m8g/isReusedBy</div></td>
+							</tr>
+						
+					
+						
+							<tr>
+								<td><a href="#Standard">Standard</a></td>
+								<td><div class="shorten">http://purl.org/dc/terms/Standard</div></td>
+								<td>Optional</td>
+								<td><a href="#Standard.keyword">keyword </a></td>
+								<td><div class="shorten">http://www.w3.org/ns/dcat#keyword</div></td>
+							</tr>
+						
+					
+						
+							<tr>
+								<td><a href="#Standard">Standard</a></td>
+								<td><div class="shorten">http://purl.org/dc/terms/Standard</div></td>
+								<td>Optional</td>
+								<td><a href="#Standard.language">language </a></td>
+								<td><div class="shorten">http://purl.org/dc/terms/language</div></td>
+							</tr>
+						
+					
+						
+							<tr>
+								<td><a href="#Standard">Standard</a></td>
+								<td><div class="shorten">http://purl.org/dc/terms/Standard</div></td>
+								<td>Optional</td>
+								<td><a href="#Standard.lovrank">lov rank </a></td>
+								<td><div class="shorten">http://data.europa.eu/m8g/lovRank</div></td>
+							</tr>
+						
+					
+						
+							<tr>
+								<td><a href="#Standard">Standard</a></td>
+								<td><div class="shorten">http://purl.org/dc/terms/Standard</div></td>
+								<td>Optional</td>
+								<td><a href="#Standard.preferrednamespaceURI">preferred namespace URI </a></td>
+								<td><div class="shorten">http://purl.org/vocab/vann/preferredNamespaceUri</div></td>
+							</tr>
+						
+					
+						
+							<tr>
+								<td><a href="#Standard">Standard</a></td>
+								<td><div class="shorten">http://purl.org/dc/terms/Standard</div></td>
+								<td>Optional</td>
+								<td><a href="#Standard.publisher">publisher </a></td>
+								<td><div class="shorten">http://purl.org/dc/terms/publisher</div></td>
+							</tr>
+						
+					
+						
+							<tr>
+								<td><a href="#Standard">Standard</a></td>
+								<td><div class="shorten">http://purl.org/dc/terms/Standard</div></td>
+								<td>Optional</td>
+								<td><a href="#Standard.requires">requires </a></td>
+								<td><div class="shorten">http://purl.org/dc/terms/requires</div></td>
+							</tr>
+						
+					
+						
+							<tr>
+								<td><a href="#Standard">Standard</a></td>
+								<td><div class="shorten">http://purl.org/dc/terms/Standard</div></td>
+								<td>Optional</td>
+								<td><a href="#Standard.status">status </a></td>
+								<td><div class="shorten">http://www.w3.org/ns/adms#status</div></td>
+							</tr>
+						
+					
+						
+							<tr>
+								<td><a href="#Standard">Standard</a></td>
+								<td><div class="shorten">http://purl.org/dc/terms/Standard</div></td>
+								<td>Optional</td>
+								<td><a href="#Standard.theme">theme </a></td>
+								<td><div class="shorten">http://www.w3.org/ns/dcat#theme</div></td>
+							</tr>
+						
+					
+						
+					
+						
+							<tr>
+								<td><a href="#Standard">Standard</a></td>
+								<td><div class="shorten">http://purl.org/dc/terms/Standard</div></td>
+								<td>Optional</td>
+								<td><a href="#Standard.versioninfo">version info </a></td>
+								<td><div class="shorten">http://www.w3.org/2002/07/owl#versionInfo</div></td>
+							</tr>
+						
+					
+				
+			</tr>
+		
+	<tbody>
+</table>
+
+   
+   
+
+
+<!-- This must be at the end of the template, to ensure that the iterator properly works -->
+    <script defer>
+
+
+	    var prefixes = [ 
+{'pref':'ad:', 'ns': 'http://inspire.ec.europa.eu/ont/ad#'},
+{'pref':'adms:', 'ns': 'http://www.w3.org/ns/adms#'},
+{'pref':'atu:', 'ns': 'http://data.europa.eu/88u/dataset/'},
+{'pref':'cpsv:', 'ns': 'http://purl.org/vocab/cpsv#'},
+{'pref':'cv:', 'ns': 'http://data.europa.eu/m8g/'},
+{'pref':'dcat:', 'ns': 'http://www.w3.org/ns/dcat#'},
+{'pref':'dcatap:', 'ns': 'http://data.europa.eu/r5r/'},
+{'pref':'dct:', 'ns': 'http://purl.org/dc/terms/'},
+{'pref':'dctype:', 'ns': 'http://purl.org/dc/dcmitype/'},
+{'pref':'eli:', 'ns' : 'http://data.europa.eu/eli/ontology#'},
+{'pref':'epo:', 'ns': 'http://data.europa.eu/a4g/ontology#'},
+{'pref':'foaf:', 'ns': 'http://xmlns.com/foaf/0.1/'},
+{'pref':'geo:', 'ns': 'http://www.opengis.net/ont/geosparql#'},
+{'pref':'legal:', 'ns': 'http://www.w3.org/ns/legal#'},
+{'pref':'locn:', 'ns': 'http://www.w3.org/ns/locn#'},
+{'pref':'odrl:', 'ns': 'http://www.w3.org/ns/odrl/2/'},
+{'pref':'org:', 'ns': 'http://www.w3.org/ns/org#'},
+{'pref':'owl:', 'ns': 'http://www.w3.org/2002/07/owl#'},
+{'pref':'person:', 'ns': 'http://www.w3.org/ns/person#'},
+{'pref':'prof:', 'ns': 'http://www.w3.org/ns/dx/prof/'},
+{'pref':'prov:', 'ns': 'http://www.w3.org/ns/prov#'},
+{'pref':'rdf:', 'ns': 'http://www.w3.org/1999/02/22-rdf-syntax-ns#'},
+{'pref':'rdfs:', 'ns': 'http://www.w3.org/2000/01/rdf-schema#'},
+{'pref':'schema:', 'ns': 'https://schema.org/'},
+{'pref':'skos:', 'ns': 'http://www.w3.org/2004/02/skos/core#'},
+{'pref':'spdx:', 'ns': 'http://spdx.org/rdf/terms#'},
+{'pref':'time:', 'ns': 'http://www.w3.org/2006/time#'},
+{'pref':'vann:', 'ns': 'http://purl.org/vocab/vann/'},
+{'pref':'vcard:', 'ns': 'http://www.w3.org/2006/vcard/ns#'},
+{'pref':'xhv:', 'ns': 'http://www.w3.org/1999/xhtml/vocab#'},
+{'pref':'xsd:', 'ns': 'http://www.w3.org/2001/XMLSchema#'},
+
+				];
+
+	    function shorturl (url) {
+				var short = url;
+				for (e in prefixes) {
+				   var elem = prefixes[e];
+				   if (short.startsWith(elem.ns)) {
+  					short = elem.pref + short.slice(elem.ns.length);
+					}
+				};
+				return short;
+			};
+
+	    var shorten = document.getElementsByClassName("shorten");
+	    for (k=0;k < shorten.length ; k++){
+			var selem = shorten[k];	
+	                selem.innerHTML = shorturl(selem.innerHTML.trim());
+			}
+    </script>
+    
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.6/codemirror.min.css" />
+	<!--    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.css"> -->
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.13.2/themes/base/jquery-ui.min.css"> 
+	<!-- <script src="https://code.jquery.com/jquery-3.1.1.min.js" ></script> -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.0/jquery.min.js" ></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.6/codemirror.min.js" ></script>
+    <!--    <script src="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js" ></script> -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.13.2/jquery-ui.min.js" ></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.6/codemirror.min.js" ></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.6/mode/javascript/javascript.min.js" ></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.6/mode/turtle/turtle.min.js" ></script>
+    <script src="https://codemirror.net/5/mode/javascript/javascript.js" ></script>
+	<script src="https://unpkg.com/n3@1.14.0/browser/n3.min.js"></script>
+	<script src="https://rdf.js.org/comunica-browser/versions/v4/engines/query-sparql/comunica-browser.js"></script>
+    <script src="./html/example.js" ></script>
+	<script type="text/javascript">
+		function elementInView(elem){
+				goesIn = ($(window).height() + $(window).scrollTop()) > $(elem).offset().top;
+				goesOut = ($(window).scrollTop()) > ($(elem).offset().top + $(elem).height());
+				if (goesIn && !goesOut)
+					return 1;
+				else
+					return 0;
+			};
+
+		$(window).scroll(function(){
+			$('.CodeMirror').each(function(){
+				if (elementInView($(this))){
+					$(this).each(function(i, el){
+						el.CodeMirror.refresh();
+					});
+				}
+			});
+			
+		});
+	</script>
+	<style>
+		.CodeMirror {
+			border: 1px solid #eee;
+			height: auto;
+		}
+		.buttonsample {
+			cursor: pointer;
+			margin-top: 10px;
+			margin-left: 10px;
+			font-weight: 700;
+			border:0 outset buttonface;
+			background: #F5F6F8;
+			background-image: linear-gradient(to bottom,#F5F6F8,#DBDCDE);
+			border-radius:4px;
+			box-shadow:0 1px 3px #666;
+			font-family: Arial;
+			color: grey;
+			font-size: 13px !important;
+			padding: 10px 5px;
+			text-decoration: none;
+			float: right
+		}
+	    .chooseVersion {
+			cursor: pointer;
+			margin-top: 10px;
+			margin-left: 10px;
+			font-weight: 700;
+			border:0 outset buttonface;
+			background: #F5F6F8;
+			background-image: linear-gradient(to bottom,#F5F6F8,#DBDCDE);
+			border-radius:4px;
+			box-shadow:0 1px 3px #666;
+			font-family: Arial;
+			color: grey;
+			font-size: 13px !important;
+			padding: 9px 5px;
+			text-decoration: none;
+			float: right
+		}
+		.infosample {
+			cursor: pointer;
+			margin-top: 10px;
+			font-weight: 700;
+			border:0 outset buttonface;
+			border-radius:4px;
+			font-family: Arial;
+			color: grey;
+			font-size: 14px;
+			padding: 10px 0px;
+			text-decoration: none;
+			float: right
+		}
+		.buttonsample:hover {color:#2a70d3}
+		.tabsstyle {
+			padding: 10px;
+			overflow: hidden;
+		}
+		li.ui-tabs-tab > a:hover {
+			background-color:dodgerblue;
+			color:white;
+		}
+		table.simple {
+			font-size: small;
+			border-spacing:0;
+			border-collapse:collapse;
+			border-bottom:3px solid #005a9c
+		}
+		.simple th{background:#005a9c;color:#fff;padding:3px 5px;text-align:left}
+		.simple th a{color:#fff;padding:3px 5px;text-align:left}
+		.simple th[scope=row]{background:inherit;color:inherit;border-top:1px solid #ddd}
+		.simple td{padding:3px 10px;border-top:1px solid #ddd}
+		.simple tr:nth-child(even){background:#f0f6ff}
+		body.darkmode .simple th{background:#005a9c94;color:#ddd}
+		body.darkmode .simple th a{color:#ddd}
+		body.darkmode .simple tr:nth-child(even){background:#f0f6ff26}
+		body.darkmode :is(h4,h5,h6)+a.self-link::before {
+			color: var(--heading-text);
+		}
+		body.darkmode img {
+			background: none;
+		}
+		body.darkmode section#references :target {
+			background: #04162d;
+		}
+	</style>
+
+	<link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/2.2.2/css/dataTables.dataTables.min.css">
+	<link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/buttons/3.2.2/css/buttons.dataTables.min.css">
+	<script type="text/javascript" language="javascript" src="https://cdn.datatables.net/2.2.2/js/dataTables.min.js"></script>
+	<script type="text/javascript" language="javascript" src="https://cdn.datatables.net/buttons/3.2.2/js/dataTables.buttons.min.js"></script>
+	<script type="text/javascript" language="javascript" src="https://cdn.datatables.net/buttons/3.2.2/js/buttons.dataTables.js"></script>
+	<script type="text/javascript" language="javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.10.1/jszip.min.js"></script>
+	<script type="text/javascript" language="javascript" src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.2.7/pdfmake.min.js"></script>
+	<script type="text/javascript" language="javascript" src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.2.7/vfs_fonts.js"></script>
+	<script type="text/javascript" language="javascript" src="https://cdn.datatables.net/buttons/3.2.0/js/buttons.html5.min.js"></script>
+	<script type="text/javascript" language="javascript" src="https://cdn.datatables.net/buttons/3.2.0/js/buttons.print.min.js"></script>
+</html>
