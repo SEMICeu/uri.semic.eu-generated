@@ -17,8 +17,8 @@
     },
     "status": "Working Draft",
     "statuslabel": "Onbekend",
-    "repositoryurl": "https://code.europa.eu/regulatory-reporting/rrmv.git/tree/ecc0cf0febd7bc51275a4f4835fa061db3595c44",
-    "changelogurl": "https://code.europa.eu/regulatory-reporting/rrmv.git/blob/ecc0cf0febd7bc51275a4f4835fa061db3595c44/CHANGELOG",
+    "repositoryurl": "https://code.europa.eu/regulatory-reporting/rrmv.git/tree/a976180a315adc333ef035483b3c4b5063e090c6",
+    "changelogurl": "https://code.europa.eu/regulatory-reporting/rrmv.git/blob/a976180a315adc333ef035483b3c4b5063e090c6/CHANGELOG",
     "feedbackurl": "https://github.com/SEMICeu/RRMV/issues",
     "standaardregisterurl": "RRMV",
     "usesVocs": [],
@@ -370,7 +370,8 @@
       "parents": [],
       "rawTags": {
         "definition-en": "A supportive class connecting agents with a role they play.",
-        "label-en": "Agent Role"
+        "label-en": "Agent Role",
+        "class-usage-scope": "main"
       },
       "properties": [
         {
@@ -736,7 +737,7 @@
             "en": "Indicates that this work or expression legally changes another. This encompasses the notions of amendment, replacement, repeal, or other types of change. This may be a direct change (textual or non-textual amendment) or a consequential or indirect change."
           },
           "usage": {
-            "en": "This relation cannot reuse the eli URI as it would force the class to be an eli:Expression"
+            "en": "This relation cannot reuse the eli URI as it would force the class to be an eli:Expression TBD issue 43"
           },
           "domain": [
             {
@@ -766,7 +767,7 @@
             "definition-en": "Indicates that this work or expression legally changes another. This encompasses the notions of amendment, replacement, repeal, or other types of change. This may be a direct change (textual or non-textual amendment) or a consequential or indirect change.",
             "parentURI": "http://data.europa.eu/eli/ontology#changes",
             "label-en": "changes",
-            "ap-usageNote-en": "This relation cannot reuse the eli URI as it would force the class to be an eli:Expression"
+            "ap-usageNote-en": "This relation cannot reuse the eli URI as it would force the class to be an eli:Expression TBD issue 43"
           }
         },
         {
@@ -817,9 +818,11 @@
             "en": "has URI"
           },
           "description": {
-            "en": "URI of the Request."
+            "en": "associates a rrmv:Requirement with a unique identifier, denoted by a Uniform Resource Identifier (URI), which serves as a reference to the portion (or portions) of the text from where the Requirement is expressed and modelled. "
           },
-          "usage": {},
+          "usage": {
+            "en": "Multiple values indicate that the union of the content of these URIs should be considered for the complete understanding of the Requirement. This property can be repeated, as different portions of the act may encode different aspects of the Requirement, for instance, the addressees may be in one article, while the temporal aspects may be in another."
+          },
           "domain": [
             {
               "EA-Name": "Requirement",
@@ -844,9 +847,10 @@
           "cardinality": "0..*",
           "codelist_uri": "",
           "rawTags": {
-            "definition-en": "URI of the Request.",
+            "definition-en": "associates a rrmv:Requirement with a unique identifier, denoted by a Uniform Resource Identifier (URI), which serves as a reference to the portion (or portions) of the text from where the Requirement is expressed and modelled. ",
             "label-en": "has URI",
-            "name": "hasURI"
+            "name": "hasURI",
+            "usageNote-en": "Multiple values indicate that the union of the content of these URIs should be considered for the complete understanding of the Requirement. This property can be repeated, as different portions of the act may encode different aspects of the Requirement, for instance, the addressees may be in one article, while the temporal aspects may be in another."
           }
         },
         {
@@ -900,7 +904,7 @@
             "en": "Indicates a somehow related other document, not necessarily a legal resource."
           },
           "usage": {
-            "en": "This relation cannot reuse the eli URI as it would force the class to be an eli:Expression"
+            "en": "TBD Issue 43: using this property make a Requirement an instance of an eli:Expression or eli:LegalResource"
           },
           "domain": [
             {
@@ -928,7 +932,7 @@
           "rawTags": {
             "definition-en": "Indicates a somehow related other document, not necessarily a legal resource.",
             "name": "related_to",
-            "ap-usageNote-en": "This relation cannot reuse the eli URI as it would force the class to be an eli:Expression",
+            "ap-usageNote-en": "TBD Issue 43: using this property make a Requirement an instance of an eli:Expression or eli:LegalResource",
             "label-en": "related to",
             "parentURI": "http://data.europa.eu/eli/ontology#related_to"
           }
@@ -1130,7 +1134,7 @@
       "parents": [],
       "rawTags": {
         "label-en": "Temporal Entity Specification",
-        "class-usage-scope": "supportive",
+        "class-usage-scope": "main",
         "definition-en": "A temporal entity specification serving as an abstract class for all temporal specifications. It includes specifications for instants, intervals, frequency, and durations, functioning as the structure for expressing temporal constraints related to normative provisions and other use cases."
       },
       "properties": [
@@ -1289,25 +1293,6 @@
         "definition-en": "A specific temporal role or function. It classifies temporal specifications according to their functional meaning in the normative provisions, such as deadline, validity period, or reporting frequency. This classification helps to interpret the meaning of various temporal specifications within the regulatory framework, among others.",
         "label-en": "Temporal Function",
         "usageNote-en": "for instance as deadline, moment of entering into force, etc."
-      },
-      "properties": []
-    },
-    {
-      "uri": "http://data.europa.eu/eli/ontology#Agent",
-      "name": "Agent",
-      "label": {
-        "en": "Agent"
-      },
-      "sort": "Agent",
-      "description": {
-        "en": "Individual people or groups of people, like an institution with a legal recognition, who have the potential to perform intentional actions for which they can be held responsible."
-      },
-      "usage": {},
-      "parents": [],
-      "rawTags": {
-        "uri": "http://data.europa.eu/eli/ontology#Agent",
-        "definition-en": "Individual people or groups of people, like an institution with a legal recognition, who have the potential to perform intentional actions for which they can be held responsible.",
-        "label-en": "Agent"
       },
       "properties": []
     },
@@ -1538,60 +1523,6 @@
       ]
     },
     {
-      "uri": "http://data.europa.eu/eli/ontology#Organization",
-      "name": "Organization",
-      "label": {
-        "en": "Organization"
-      },
-      "sort": "Organization",
-      "description": {
-        "en": "Institutions or groups of people that have obtained a legal recognition as a group and can act collectively as agents."
-      },
-      "usage": {},
-      "parents": [
-        {
-          "label": "Agent",
-          "name": "Agent",
-          "package": "eli",
-          "uri": "http://data.europa.eu/eli/ontology#Agent",
-          "scoped_uri": "#Agent"
-        }
-      ],
-      "rawTags": {
-        "uri": "http://data.europa.eu/eli/ontology#Organization",
-        "definition-en": "Institutions or groups of people that have obtained a legal recognition as a group and can act collectively as agents.",
-        "label-en": "Organization"
-      },
-      "properties": []
-    },
-    {
-      "uri": "http://data.europa.eu/eli/ontology#Person",
-      "name": "Person",
-      "label": {
-        "en": "Person"
-      },
-      "sort": "Person",
-      "description": {
-        "en": "A real person who live or has lived."
-      },
-      "usage": {},
-      "parents": [
-        {
-          "label": "Agent",
-          "name": "Agent",
-          "package": "eli",
-          "uri": "http://data.europa.eu/eli/ontology#Agent",
-          "scoped_uri": "#Agent"
-        }
-      ],
-      "rawTags": {
-        "uri": "http://data.europa.eu/eli/ontology#Person",
-        "definition-en": "A real person who live or has lived.",
-        "label-en": "Person"
-      },
-      "properties": []
-    },
-    {
       "uri": "http://data.europa.eu/eli/ontology#Work",
       "name": "Work",
       "label": {
@@ -1797,44 +1728,6 @@
           }
         }
       ]
-    },
-    {
-      "uri": "http://www.w3.org/2006/time#Instant",
-      "name": "Instant",
-      "label": {
-        "en": "Instant"
-      },
-      "sort": "Instant",
-      "description": {
-        "en": "A temporal entity with zero extent or duration"
-      },
-      "usage": {},
-      "parents": [],
-      "rawTags": {
-        "label-en": "Instant",
-        "uri": "http://www.w3.org/2006/time#Instant",
-        "definition-en": "A temporal entity with zero extent or duration"
-      },
-      "properties": []
-    },
-    {
-      "uri": "http://www.w3.org/2006/time#TemporalDuration",
-      "name": "TemporalDuration",
-      "label": {
-        "en": "Temporal Duration"
-      },
-      "sort": "Temporal Duration",
-      "description": {
-        "en": "Time extent; duration of a time interval separate from its particular start position"
-      },
-      "usage": {},
-      "parents": [],
-      "rawTags": {
-        "label-en": "Temporal Duration",
-        "uri": "http://www.w3.org/2006/time#TemporalDuration",
-        "definition-en": "Time extent; duration of a time interval separate from its particular start position"
-      },
-      "properties": []
     },
     {
       "uri": "http://www.w3.org/ns/oa#Annotation",
