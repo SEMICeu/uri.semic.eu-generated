@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <xs:schema xmlns="https://data.europa.eu/m8g/xml/" xmlns:xs="http://www.w3.org/2001/XMLSchema" targetNamespace="https://data.europa.eu/m8g/xml/" version="2.0.0" elementFormDefault="qualified" attributeFormDefault="unqualified" xmlns:cv="https://data.europa.eu/m8g/xml/">
-  <xs:element name="ActionXxx" type="ActionXxxType"/>
+  <xs:element name="Action" type="ActionType"/>
   <xs:element name="ActionResult" type="ActionResultType"/>
   <xs:element name="AgentRole" type="AgentRoleType"/>
   <xs:element name="AgentType" type="AgentTypeType"/>
@@ -50,7 +50,7 @@
       </xs:extension>
     </xs:simpleContent>
   </xs:complexType>
-  <xs:complexType name="ActionXxxType">
+  <xs:complexType name="ActionType">
     <xs:sequence>
       <xs:element name="atTime" ref="TemporalEntitySpecificationType" maxOccurs="unbounded" minOccurs="0">
         <xs:annotation>
@@ -62,7 +62,7 @@
           <xs:documentation xml:lang="en">The involvement of an agent in a role within this action.</xs:documentation>
         </xs:annotation>
       </xs:element>
-      <xs:element name="hasNext" ref="ActionXxxType" maxOccurs="unbounded" minOccurs="0">
+      <xs:element name="hasNext" ref="ActionType" maxOccurs="unbounded" minOccurs="0">
         <xs:annotation>
           <xs:documentation xml:lang="en">A succeeding action</xs:documentation>
         </xs:annotation>
@@ -78,9 +78,9 @@
         </xs:annotation>
       </xs:element>
     </xs:sequence>
-    <xs:attribute name="ActionXxxRef" type="xs:IDREF">
+    <xs:attribute name="ActionRef" type="xs:IDREF">
       <xs:annotation>
-        <xs:documentation xml:lang="en">Reference to ActionXxx ID</xs:documentation>
+        <xs:documentation xml:lang="en">Reference to Action ID</xs:documentation>
       </xs:annotation>
     </xs:attribute>
   </xs:complexType>
@@ -196,11 +196,6 @@
           <xs:documentation xml:lang="en">Indicates a somehow related other document, not necessarily a legal resource.</xs:documentation>
         </xs:annotation>
       </xs:element>
-      <xs:element name="hasAnnotation" type="xs:string" maxOccurs="unbounded" minOccurs="0">
-        <xs:annotation>
-          <xs:documentation xml:lang="en">A note added by way of comment or explanation.</xs:documentation>
-        </xs:annotation>
-      </xs:element>
       <xs:element name="hasTopic" type="ConceptType" maxOccurs="unbounded" minOccurs="0">
         <xs:annotation>
           <xs:documentation xml:lang="en">The topic of the request.</xs:documentation>
@@ -211,7 +206,7 @@
           <xs:documentation xml:lang="en">URI of the Request.</xs:documentation>
         </xs:annotation>
       </xs:element>
-      <xs:element name="produces" ref="ActionXxxType" maxOccurs="unbounded" minOccurs="0">
+      <xs:element name="produces" ref="ActionType" maxOccurs="unbounded" minOccurs="0">
         <xs:annotation>
           <xs:documentation xml:lang="en">The action that is produced by a request.</xs:documentation>
         </xs:annotation>
@@ -294,13 +289,7 @@
     </xs:attribute>
   </xs:complexType>
   <xs:complexType name="AgentType">
-    <xs:sequence>
-      <xs:element name="hasType" ref="AgentTypeType" maxOccurs="unbounded" minOccurs="0">
-        <xs:annotation>
-          <xs:documentation xml:lang="en">A kind of agent</xs:documentation>
-        </xs:annotation>
-      </xs:element>
-    </xs:sequence>
+    <xs:sequence/>
     <xs:attribute name="AgentRef" type="xs:IDREF">
       <xs:annotation>
         <xs:documentation xml:lang="en">Reference to Agent ID</xs:documentation>
