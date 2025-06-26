@@ -2,6 +2,8 @@
 <xs:schema xmlns="https://data.europa.eu/m8g/xml/" xmlns:xs="http://www.w3.org/2001/XMLSchema" targetNamespace="https://data.europa.eu/m8g/xml/" version="2.0.0" elementFormDefault="qualified" attributeFormDefault="unqualified" xmlns:cv="https://data.europa.eu/m8g/xml/">
   <xs:element name="Action" type="ActionType"/>
   <xs:element name="ActionResult" type="ActionResultType"/>
+  <xs:element name="Agent" type="AgentType"/>
+  <xs:element name="AgentCategory" type="AgentCategoryType"/>
   <xs:element name="AgentRole" type="AgentRoleType"/>
   <xs:element name="AgentType" type="AgentTypeType"/>
   <xs:element name="DurationTemporalEntitySpecification" type="DurationTemporalEntitySpecificationType"/>
@@ -98,11 +100,38 @@
       </xs:annotation>
     </xs:attribute>
   </xs:complexType>
+  <xs:complexType name="AgentType">
+    <xs:sequence>
+      <xs:element name="hasType" ref="AgentTypeType" maxOccurs="unbounded" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation xml:lang="en">A kind of agent</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+    </xs:sequence>
+    <xs:attribute name="AgentRef" type="xs:IDREF">
+      <xs:annotation>
+        <xs:documentation xml:lang="en">Reference to Agent ID</xs:documentation>
+      </xs:annotation>
+    </xs:attribute>
+  </xs:complexType>
+  <xs:complexType name="AgentCategoryType">
+    <xs:sequence/>
+    <xs:attribute name="AgentCategoryRef" type="xs:IDREF">
+      <xs:annotation>
+        <xs:documentation xml:lang="en">Reference to AgentCategory ID</xs:documentation>
+      </xs:annotation>
+    </xs:attribute>
+  </xs:complexType>
   <xs:complexType name="AgentRoleType">
     <xs:sequence>
       <xs:element name="atTime" ref="TemporalEntitySpecificationType" maxOccurs="unbounded" minOccurs="0">
         <xs:annotation>
           <xs:documentation xml:lang="en">An Action or a Role is valid within a time interval.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="forAgent" ref="AgentType" maxOccurs="unbounded" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation xml:lang="en">The agent for which this AgentRole applies.</xs:documentation>
         </xs:annotation>
       </xs:element>
       <xs:element name="withRole" ref="RoleType" maxOccurs="unbounded" minOccurs="0">
