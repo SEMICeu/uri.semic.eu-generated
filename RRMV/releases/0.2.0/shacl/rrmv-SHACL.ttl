@@ -8,6 +8,8 @@
 
 <https://semiceu.github.io/RRMV/releases/0.2.0> rdfs:member <https://semiceu.github.io/RRMV/releases/0.2.0#ActionShape>,
     <https://semiceu.github.io/RRMV/releases/0.2.0#ActionResultShape>,
+    <https://semiceu.github.io/RRMV/releases/0.2.0#AgentShape>,
+    <https://semiceu.github.io/RRMV/releases/0.2.0#AgentCategoryShape>,
     <https://semiceu.github.io/RRMV/releases/0.2.0#AgentRoleShape>,
     <https://semiceu.github.io/RRMV/releases/0.2.0#AgentTypeShape>,
     <https://semiceu.github.io/RRMV/releases/0.2.0#DurationSpecShape>,
@@ -147,19 +149,37 @@
   shacl:name "has status"@en;
   shacl:path <http://data.europa.eu/2qy/rrmv#hasStatus> .
 
+<https://semiceu.github.io/RRMV/releases/0.2.0#AgentCategoryShape> a shacl:NodeShape;
+  shacl:closed false;
+  shacl:targetClass <http://data.europa.eu/2qy/rrmv#AgentCategory> .
+
 <https://semiceu.github.io/RRMV/releases/0.2.0#AgentRoleShape> a shacl:NodeShape;
   shacl:closed false;
-  shacl:property <https://semiceu.github.io/RRMV/releases/0.2.0#AgentRoleShape/2493c833f6a1d61b32b3562aacc5b0f2b2671720>,
+  shacl:property <https://semiceu.github.io/RRMV/releases/0.2.0#AgentRoleShape/1ca2b87a5b5e235de67dc584be390b5878f00e9d>,
+    <https://semiceu.github.io/RRMV/releases/0.2.0#AgentRoleShape/2493c833f6a1d61b32b3562aacc5b0f2b2671720>,
+    <https://semiceu.github.io/RRMV/releases/0.2.0#AgentRoleShape/25b90941e0ca2bf8418ae12a338a168a1cc3812f>,
     <https://semiceu.github.io/RRMV/releases/0.2.0#AgentRoleShape/8b02fcd051692945b0bfe772172c84c4354dc27c>,
     <https://semiceu.github.io/RRMV/releases/0.2.0#AgentRoleShape/bca7ee7647c6e274a04dd716b7c5af0ae99c795d>,
     <https://semiceu.github.io/RRMV/releases/0.2.0#AgentRoleShape/e661e9cf1e190828d410fd2ab59d81b83cb3c62f>;
   shacl:targetClass <http://data.europa.eu/2qy/rrmv#AgentRole> .
+
+<https://semiceu.github.io/RRMV/releases/0.2.0#AgentRoleShape/1ca2b87a5b5e235de67dc584be390b5878f00e9d> rdfs:seeAlso "https://semiceu.github.io/RRMV/releases/0.2.0#AgentRole.foragent";
+  shacl:description "The agent for which this AgentRole applies."@en;
+  shacl:name "for agent"@en;
+  shacl:nodeKind shacl:BlankNodeOrIRI;
+  shacl:path <http://data.europa.eu/2qy/rrmv#forAgent> .
 
 <https://semiceu.github.io/RRMV/releases/0.2.0#AgentRoleShape/2493c833f6a1d61b32b3562aacc5b0f2b2671720> rdfs:seeAlso "https://semiceu.github.io/RRMV/releases/0.2.0#AgentRole.attime";
   shacl:class <http://data.europa.eu/2qy/rrmv#TemporalEntitySpec>;
   shacl:description "An Action or a Role is valid within a time interval."@en;
   shacl:name "at time"@en;
   shacl:path <http://data.europa.eu/2qy/rrmv#atTime> .
+
+<https://semiceu.github.io/RRMV/releases/0.2.0#AgentRoleShape/25b90941e0ca2bf8418ae12a338a168a1cc3812f> rdfs:seeAlso "https://semiceu.github.io/RRMV/releases/0.2.0#AgentRole.foragent";
+  shacl:class <http://data.europa.eu/2qy/rrmv#Agent>;
+  shacl:description "The agent for which this AgentRole applies."@en;
+  shacl:name "for agent"@en;
+  shacl:path <http://data.europa.eu/2qy/rrmv#forAgent> .
 
 <https://semiceu.github.io/RRMV/releases/0.2.0#AgentRoleShape/8b02fcd051692945b0bfe772172c84c4354dc27c> rdfs:seeAlso "https://semiceu.github.io/RRMV/releases/0.2.0#AgentRole.withrole";
   shacl:description "The property linking an Agent to Role."@en;
@@ -178,6 +198,24 @@
   shacl:description "The property linking an Agent to Role."@en;
   shacl:name "with role"@en;
   shacl:path <http://data.europa.eu/2qy/rrmv#withRole> .
+
+<https://semiceu.github.io/RRMV/releases/0.2.0#AgentShape> a shacl:NodeShape;
+  shacl:closed false;
+  shacl:property <https://semiceu.github.io/RRMV/releases/0.2.0#AgentShape/26de3103378473bd7e70743bb33391753f1e6cbd>,
+    <https://semiceu.github.io/RRMV/releases/0.2.0#AgentShape/73346d19590bfb11fb7f63af0fad3072e2df1f68>;
+  shacl:targetClass <http://data.europa.eu/2qy/rrmv#Agent> .
+
+<https://semiceu.github.io/RRMV/releases/0.2.0#AgentShape/26de3103378473bd7e70743bb33391753f1e6cbd> rdfs:seeAlso "https://semiceu.github.io/RRMV/releases/0.2.0#Agent.hastype";
+  shacl:description "A kind of agent"@en;
+  shacl:name "has type"@en;
+  shacl:nodeKind shacl:BlankNodeOrIRI;
+  shacl:path <http://data.europa.eu/2qy/rrmv#hasType> .
+
+<https://semiceu.github.io/RRMV/releases/0.2.0#AgentShape/73346d19590bfb11fb7f63af0fad3072e2df1f68> rdfs:seeAlso "https://semiceu.github.io/RRMV/releases/0.2.0#Agent.hastype";
+  shacl:class <http://data.europa.eu/2qy/rrmv#AgentType>;
+  shacl:description "A kind of agent"@en;
+  shacl:name "has type"@en;
+  shacl:path <http://data.europa.eu/2qy/rrmv#hasType> .
 
 <https://semiceu.github.io/RRMV/releases/0.2.0#AgentTypeShape> a shacl:NodeShape;
   shacl:closed false;
