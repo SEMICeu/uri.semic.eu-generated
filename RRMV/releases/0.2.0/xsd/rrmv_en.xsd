@@ -8,7 +8,7 @@
   <xs:element name="Frequency" type="FrequencyType"/>
   <xs:element name="InstantTemportalEntitySpecification" type="InstantTemportalEntitySpecificationType"/>
   <xs:element name="IntervalTemporalEntitySpecification" type="IntervalTemporalEntitySpecificationType"/>
-  <xs:element name="Request" type="RequestType"/>
+  <xs:element name="Requirement" type="RequirementType"/>
   <xs:element name="ResultType" type="ResultTypeType"/>
   <xs:element name="Role" type="RoleType"/>
   <xs:element name="RoleType" type="RoleTypeType"/>
@@ -167,49 +167,60 @@
     </xs:attribute>
   </xs:complexType>
   <xs:complexType name="IntervalTemporalEntitySpecificationType">
-    <xs:sequence/>
+    <xs:sequence>
+      <xs:element name="hasEnd" ref="InstantTemportalEntitySpecificationType" maxOccurs="unbounded" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation xml:lang="en">Connects an interval to its concluding instant.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="hasStart" ref="InstantTemportalEntitySpecificationType" maxOccurs="unbounded" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation xml:lang="en">Connects an interval to its starting instant.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+    </xs:sequence>
     <xs:attribute name="IntervalTemporalEntitySpecificationRef" type="xs:IDREF">
       <xs:annotation>
         <xs:documentation xml:lang="en">Reference to IntervalTemporalEntitySpecification ID</xs:documentation>
       </xs:annotation>
     </xs:attribute>
   </xs:complexType>
-  <xs:complexType name="RequestType">
+  <xs:complexType name="RequirementType">
     <xs:sequence>
       <xs:element name="partOf" ref="ExpressionType" maxOccurs="1" minOccurs="0">
         <xs:annotation>
           <xs:documentation xml:lang="en">	A related resource in which the described resource is physically or logically included.</xs:documentation>
         </xs:annotation>
       </xs:element>
-      <xs:element name="changes" ref="RequestType" maxOccurs="unbounded" minOccurs="0">
+      <xs:element name="changes" ref="RequirementType" maxOccurs="unbounded" minOccurs="0">
         <xs:annotation>
           <xs:documentation xml:lang="en">Indicates that this work or expression legally changes another. This encompasses the notions of amendment, replacement, repeal, or other types of change. This may be a direct change (textual or non-textual amendment) or a consequential or indirect change.</xs:documentation>
         </xs:annotation>
       </xs:element>
-      <xs:element name="relatedTo" ref="RequestType" maxOccurs="unbounded" minOccurs="0">
+      <xs:element name="relatedTo" ref="RequirementType" maxOccurs="unbounded" minOccurs="0">
         <xs:annotation>
           <xs:documentation xml:lang="en">Indicates a somehow related other document, not necessarily a legal resource.</xs:documentation>
         </xs:annotation>
       </xs:element>
       <xs:element name="hasTopic" type="ConceptType" maxOccurs="unbounded" minOccurs="0">
         <xs:annotation>
-          <xs:documentation xml:lang="en">The topic of the request.</xs:documentation>
+          <xs:documentation xml:lang="en">The topic of the requirement</xs:documentation>
         </xs:annotation>
       </xs:element>
       <xs:element name="hasUri" type="xs:anyURI" maxOccurs="unbounded" minOccurs="0">
         <xs:annotation>
-          <xs:documentation xml:lang="en">associates a rrmv:Requirement with a unique identifier, denoted by a Uniform Resource Identifier (URI), which serves as a reference to the portion (or portions) of the text from where the Requirement is expressed and modelled. </xs:documentation>
+          <xs:documentation xml:lang="en">associates a rrmv:Requirement with a unique identifier, denoted by a Uniform Resource Identifier (URI), which serves as a reference to the portion (or portions) of the text from where the Requirement is expressed and modelled.</xs:documentation>
         </xs:annotation>
       </xs:element>
       <xs:element name="produces" ref="ActionType" maxOccurs="unbounded" minOccurs="0">
         <xs:annotation>
-          <xs:documentation xml:lang="en">The action that is produced by a request.</xs:documentation>
+          <xs:documentation xml:lang="en">The action that is produced by a requirement.</xs:documentation>
         </xs:annotation>
       </xs:element>
     </xs:sequence>
-    <xs:attribute name="RequestRef" type="xs:IDREF">
+    <xs:attribute name="RequirementRef" type="xs:IDREF">
       <xs:annotation>
-        <xs:documentation xml:lang="en">Reference to Request ID</xs:documentation>
+        <xs:documentation xml:lang="en">Reference to Requirement ID</xs:documentation>
       </xs:annotation>
     </xs:attribute>
   </xs:complexType>
@@ -253,9 +264,29 @@
   </xs:complexType>
   <xs:complexType name="TemporalEntitySpecificationType">
     <xs:sequence>
+      <xs:element name="after" ref="TemporalEntitySpecificationType" maxOccurs="unbounded" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation xml:lang="en">Indicates that one temporal entity specification occurs following another one.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="before" ref="TemporalEntitySpecificationType" maxOccurs="unbounded" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation xml:lang="en">Indicates that one temporal entity specification precedes another one.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="ends" ref="TemporalEntitySpecificationType" maxOccurs="unbounded" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation xml:lang="en">Establishes that one temporal entity specification marks the conclusion of another one.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
       <xs:element name="externalEvent" type="xs:boolean" maxOccurs="unbounded" minOccurs="0">
         <xs:annotation>
           <xs:documentation xml:lang="en">Indicates whether a temporal entity specification depends on events outside the regulatory framework's direct control.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="in" ref="TemporalEntitySpecificationType" maxOccurs="unbounded" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation xml:lang="en">Establishes that one temporal entity specification occurs entirely within the boundaries of another temporal entity specification.</xs:documentation>
         </xs:annotation>
       </xs:element>
       <xs:element name="isUnspecified" type="xs:boolean" maxOccurs="unbounded" minOccurs="0">
@@ -263,9 +294,29 @@
           <xs:documentation xml:lang="en">Indicates whether a temporal aspect exists but is undefined.</xs:documentation>
         </xs:annotation>
       </xs:element>
+      <xs:element name="meets" ref="TemporalEntitySpecificationType" maxOccurs="unbounded" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation xml:lang="en">Indicates that one temporal entity specification directly adjoins another one without overlap, where one ends exactly when the other begins.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="overlaps" ref="TemporalEntitySpecificationType" maxOccurs="unbounded" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation xml:lang="en">Indicates that two temporal entities specifications share a common portion of time without either completely containing the other.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="hasFrequency" ref="FrequencyType" maxOccurs="unbounded" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation xml:lang="en">(TBD) The frequency in which the requirement is to be executed in case of repetitive mandate.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
       <xs:element name="hasFunction" ref="TemporalFunctionType" maxOccurs="unbounded" minOccurs="0">
         <xs:annotation>
           <xs:documentation xml:lang="en">The function the temporal infomation plays</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="starts" ref="TemporalEntitySpecificationType" maxOccurs="unbounded" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation xml:lang="en">Establishes that one temporal entity specification marks the beginning of another one.</xs:documentation>
         </xs:annotation>
       </xs:element>
     </xs:sequence>
@@ -415,6 +466,11 @@
       <xs:element name="hasBody" type="xs:string" maxOccurs="unbounded" minOccurs="0">
         <xs:annotation>
           <xs:documentation xml:lang="en">The object of the relationship is a resource that is a body of the Annotation.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="hasTarget" ref="ResourceType" maxOccurs="unbounded" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation xml:lang="en">The relationship between an Annotation and its Target.</xs:documentation>
         </xs:annotation>
       </xs:element>
     </xs:sequence>
