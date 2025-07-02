@@ -5620,6 +5620,49 @@ example:action1 a rrmv:Action;
 </pre>
 </aside>
 
+
+
+<aside class="example" title="Temporal information - encoding 3">
+<pre class="nohighlight turtle">
+@prefix dcterms: &lt;http://purl.org/dc/terms/&gt; .
+@prefix eli: &lt;http://data.europa.eu/eli/ontology#&gt; .
+@prefix skos: &lt;http://www.w3.org/2004/02/skos/core#&gt;.
+@prefix rdfs: &lt;http://www.w3.org/2000/01/rdf-schema#&gt; .
+@prefix oa: &lt;http://www.w3.org/ns/oa#&gt;
+@prefix time: &lt;http://www.w3.org/2006/time#&gt;.
+@prefix xsd: &lt;http://www.w3.org/2001/XMLSchema#&gt; .
+
+@prefix rrmv: &lt;http://data.europa.eu/2qy/rrmv#&gt; .
+@prefix rrmv-codes: &lt;http://data.europa.eu/2qy/rrmv-codes#&gt; .
+
+@prefix example: &lt;https://system.org/example#&gt; .
+
+[] a oa:Annotation;
+    oa:hasBody "31 July 2021";
+    oa:hasTarget example:action1TS1.
+
+[] a oa:Annotation;
+    oa:hasBody "every year thereafter (year X)";
+    oa:hasTarget example:action1TS2.
+
+example:action1 a rrmv:Action;
+   rrmv:atTime [
+      rrmv:hasFunction rrmv-codes:deadline;
+      a rrmv:InstantSpec;
+      rrmv:starts example:action1TS1; 
+      rrmv:hasFrequency example:action1TS2
+      ] .
+
+example:action1TS1 a rrmv:InstantSpec;
+      xxx:moment "2021-07-31"^^xsd:date. #TBD 
+
+example:action1TS2  a rrmv:Frequency;
+      rrmv:value "1";
+      rrmv:unit  rrmv-codes:year. # TBD
+
+</pre>
+</aside>
+
 </section>
 
   <section class="informative">
