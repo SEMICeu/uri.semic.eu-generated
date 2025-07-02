@@ -5663,6 +5663,56 @@ example:action1TS2  a rrmv:Frequency;
 </pre>
 </aside>
 
+Other temporal patterns.
+
+<aside class="example" title="Temporal information - encoding 3">
+<pre class="nohighlight turtle">
+@prefix dcterms: &lt;http://purl.org/dc/terms/&gt; .
+@prefix eli: &lt;http://data.europa.eu/eli/ontology#&gt; .
+@prefix skos: &lt;http://www.w3.org/2004/02/skos/core#&gt;.
+@prefix rdfs: &lt;http://www.w3.org/2000/01/rdf-schema#&gt; .
+@prefix oa: &lt;http://www.w3.org/ns/oa#&gt;
+@prefix time: &lt;http://www.w3.org/2006/time#&gt;.
+@prefix xsd: &lt;http://www.w3.org/2001/XMLSchema#&gt; .
+
+@prefix rrmv: &lt;http://data.europa.eu/2qy/rrmv#&gt; .
+@prefix rrmv-codes: &lt;http://data.europa.eu/2qy/rrmv-codes#&gt; .
+
+@prefix example: &lt;https://system.org/example#&gt; .
+
+[] a oa:Annotation;
+    oa:hasBody "not earlier than 31 July 2021";
+    oa:hasTarget example:action1TS1.
+
+example:action1 a rrmv:Action;
+   rrmv:atTime [
+      a rrmv:InstantSpec;
+      rrmv:starts example:action1TS1; 
+      ] .
+
+example:action1TS1 a rrmv:InstantSpec;
+      xxx:moment "2021-07-31"^^xsd:date. #TBD 
+
+[] a oa:Annotation;
+    oa:hasBody "9 months after the directive went into force";
+    oa:hasTarget example:action1TS1.
+
+example:action1 a rrmv:Action;
+   rrmv:atTime [
+      a rrmv:TemporalEntitySpec;
+      rrmv:after example:action1TS1; 
+      ] .
+
+example:action1TS1 a rrmv:DurationSpec;
+      rrmv:hasDuration "P9M"^^xsd:duration;
+      rrmv:after [ 
+          a rrmv:InstantSpec; 
+          rrmv:externalEvent true
+          ].
+
+</pre>
+</aside>
+
 </section>
 
   <section class="informative">
