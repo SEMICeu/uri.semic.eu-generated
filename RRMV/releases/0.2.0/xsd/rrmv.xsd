@@ -5,10 +5,9 @@
   <xs:element name="Agent" type="AgentType"/>
   <xs:element name="AgentCategory" type="AgentCategoryType"/>
   <xs:element name="AgentRole" type="AgentRoleType"/>
-  <xs:element name="AgentType" type="AgentTypeType"/>
   <xs:element name="DurationTemporalEntitySpecification" type="DurationTemporalEntitySpecificationType"/>
   <xs:element name="Frequency" type="FrequencyType"/>
-  <xs:element name="InstantTemportalEntitySpecification" type="InstantTemportalEntitySpecificationType"/>
+  <xs:element name="InstantTemporalEntitySpecification" type="InstantTemporalEntitySpecificationType"/>
   <xs:element name="IntervalTemporalEntitySpecification" type="IntervalTemporalEntitySpecificationType"/>
   <xs:element name="Requirement" type="RequirementType"/>
   <xs:element name="ResultType" type="ResultTypeType"/>
@@ -108,11 +107,6 @@
           <xs:documentation xml:lang="en">Connects the Agent to its AgentCategory.</xs:documentation>
         </xs:annotation>
       </xs:element>
-      <xs:element name="hasType" ref="AgentTypeType" maxOccurs="unbounded" minOccurs="0">
-        <xs:annotation>
-          <xs:documentation xml:lang="en">A kind of agent</xs:documentation>
-        </xs:annotation>
-      </xs:element>
     </xs:sequence>
     <xs:attribute name="AgentRef" type="xs:IDREF">
       <xs:annotation>
@@ -152,14 +146,6 @@
       </xs:annotation>
     </xs:attribute>
   </xs:complexType>
-  <xs:complexType name="AgentTypeType">
-    <xs:sequence/>
-    <xs:attribute name="AgentTypeRef" type="xs:IDREF">
-      <xs:annotation>
-        <xs:documentation xml:lang="en">Reference to AgentType ID</xs:documentation>
-      </xs:annotation>
-    </xs:attribute>
-  </xs:complexType>
   <xs:complexType name="DurationTemporalEntitySpecificationType">
     <xs:sequence>
       <xs:element name="hasDuration" type="xs:duration" maxOccurs="1" minOccurs="0">
@@ -193,22 +179,22 @@
       </xs:annotation>
     </xs:attribute>
   </xs:complexType>
-  <xs:complexType name="InstantTemportalEntitySpecificationType">
+  <xs:complexType name="InstantTemporalEntitySpecificationType">
     <xs:sequence/>
-    <xs:attribute name="InstantTemportalEntitySpecificationRef" type="xs:IDREF">
+    <xs:attribute name="InstantTemporalEntitySpecificationRef" type="xs:IDREF">
       <xs:annotation>
-        <xs:documentation xml:lang="en">Reference to InstantTemportalEntitySpecification ID</xs:documentation>
+        <xs:documentation xml:lang="en">Reference to InstantTemporalEntitySpecification ID</xs:documentation>
       </xs:annotation>
     </xs:attribute>
   </xs:complexType>
   <xs:complexType name="IntervalTemporalEntitySpecificationType">
     <xs:sequence>
-      <xs:element name="hasEnd" ref="InstantTemportalEntitySpecificationType" maxOccurs="unbounded" minOccurs="0">
+      <xs:element name="hasEnd" ref="InstantTemporalEntitySpecificationType" maxOccurs="unbounded" minOccurs="0">
         <xs:annotation>
           <xs:documentation xml:lang="en">Connects an interval to its concluding instant.</xs:documentation>
         </xs:annotation>
       </xs:element>
-      <xs:element name="hasStart" ref="InstantTemportalEntitySpecificationType" maxOccurs="unbounded" minOccurs="0">
+      <xs:element name="hasStart" ref="InstantTemporalEntitySpecificationType" maxOccurs="unbounded" minOccurs="0">
         <xs:annotation>
           <xs:documentation xml:lang="en">Connects an interval to its starting instant.</xs:documentation>
         </xs:annotation>
@@ -222,7 +208,7 @@
   </xs:complexType>
   <xs:complexType name="RequirementType">
     <xs:sequence>
-      <xs:element name="partOf" ref="ExpressionType" maxOccurs="1" minOccurs="0">
+      <xs:element name="partOf" ref="ExpressionType" maxOccurs="unbounded" minOccurs="1">
         <xs:annotation>
           <xs:documentation xml:lang="en">	A related resource in which the described resource is physically or logically included.</xs:documentation>
         </xs:annotation>
@@ -232,7 +218,7 @@
           <xs:documentation xml:lang="en">Indicates that this work or expression legally changes another. This encompasses the notions of amendment, replacement, repeal, or other types of change. This may be a direct change (textual or non-textual amendment) or a consequential or indirect change.</xs:documentation>
         </xs:annotation>
       </xs:element>
-      <xs:element name="isPartOf" ref="WorkType" maxOccurs="1" minOccurs="0">
+      <xs:element name="isPartOf" ref="WorkType" maxOccurs="unbounded" minOccurs="1">
         <xs:annotation>
           <xs:documentation xml:lang="en">TBD</xs:documentation>
         </xs:annotation>
@@ -346,7 +332,7 @@
       </xs:element>
       <xs:element name="hasFrequency" ref="FrequencyType" maxOccurs="unbounded" minOccurs="0">
         <xs:annotation>
-          <xs:documentation xml:lang="en">(TBD) The frequency in which the requirement is to be executed in case of repetitive mandate.</xs:documentation>
+          <xs:documentation xml:lang="en">The frequency in which the Action is to be executed in case of repetitive mandate.</xs:documentation>
         </xs:annotation>
       </xs:element>
       <xs:element name="hasFunction" ref="TemporalFunctionType" maxOccurs="unbounded" minOccurs="0">
