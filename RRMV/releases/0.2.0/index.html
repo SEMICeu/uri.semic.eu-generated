@@ -61,16 +61,6 @@
 		, 
 		
 		   {
-		    name: "Pavlina Fragkou",
-		      
-		      
-		    company: "DIGIT",
-		      
-		      
-		    }
-		, 
-		
-		   {
 		    name: "Thomas Francart",
 		      
 		      
@@ -105,6 +95,16 @@
 		      
 		      
 		    company: "PwC EU Services",
+		      
+		      
+		    }
+		, 
+		
+		   {
+		    name: "Sander Van Dooren",
+		      
+		      
+		    company: "DIGIT",
 		      
 		      
 		    }
@@ -5143,10 +5143,7 @@ Note that ELI ontology accommodates different point of view on what should be co
   <section id="controlled-vocs" class="informative">
 
 
-
-
-
-  <h2>Controlled Vocabularies</h2>
+<h2>Controlled Vocabularies</h2>
 
 
 The usage of controlled vocabularies in RRMV conforms to the best practices as set by the Publications Office. 
@@ -5161,7 +5158,6 @@ Validation systems SHOULD produce errors.
    <tbody>
    <tr><td>rrmv:hasType</td><td><a href="#ActionResult">Action Result</a></td><td><a href="">Action Result Type</a></td><td>This controlled vocabulary is under construction.</td><td></td></tr>
    <tr><td>rrmv:hasType</td><td><a href="#Role">Role</a></td><td><a href="">Role Type</a></td><td>This controlled vocabulary is under construction.</td><td></td></tr>
-   <tr><td>rrmv:hasType</td><td><a href="#Agent">Agent</a></td><td><a href="">Agent Type</a></td><td>This controlled vocabulary is under construction.</td><td></td></tr>
    <tr><td>rrmv:hasCategory</td><td><a href="#Agent">Agent</a></td><td><a href="">Agent Category</a></td><td>This controlled vocabulary is under construction.</td><td></td></tr>
    <tr><td>rrmv:hasstatus</td><td><a href="#Action">Action</a></td><td><a href="">Status</a></td><td>This controlled vocabulary is under construction.</td><td></td></tr>
    </tbody>
@@ -5170,33 +5166,6 @@ Validation systems SHOULD produce errors.
 A first version of the controlled vocabularies can be downloaded as the file <a href="https://semiceu.github.io/uri.semic.eu-generated/RRMV/releases/0.2.0/html/rrmv-codes.ttl">rrmv-codes.ttl</a>.
 
 
-
-
-<p class="ednote" title="Frequency">
-The EU Vocabularies contains a codelist for <a href="https://op.europa.eu/en/web/eu-vocabularies/concept-scheme/-/resource?uri=http://publications.europa.eu/resource/authority/frequency">frequencies</a>.
-It should be considered if this codelist is not better suited to address the usecase of the class Frequency.
-</p>
-
-<p class="ednote" title="Action Result Type">
-Considered instances are ReportInProgress, report, actionResult, plan, standard.
-</p>
-
-<p class="ednote" title="Role Type">
-Considered instances are bearer, addressee, addresser, proposer, implementor.
-</p>
-
-<p class="ednote" title="Agent Type">
-Considered instances are company, individual, association, publicAdminisitration, agency.
-</p>
-
-
-<p class="ednote" title="Status">
-Considered instances are completed, implemented, suspended, activated, postponed, reiterated, duplicated, deleted.
-</p>
-
-<p class="ednote" title="Temporal Function">
-Considered entitities are deadline, validity.
-</p>
 
 </section>
 
@@ -5237,29 +5206,27 @@ Other more elaborated annotation functionality is considered beyond the core nee
 @prefix example: &lt;https://system.org/example#&gt; .
 
 [] a oa:Annotation;
-    oa:hasBody "Providers of political advertising services shall ensure that the contractual arrangements concluded for the provision of a political advertising service require the sponsor, or providers of advertising services acting on behalf of sponsors, to provide the declaration in accordance with paragraph 1 of this Article and the relevant information necessary to comply with Articles 9(1), 11(1) and 12(1). That information shall be transmitted in a complete and accurate manner and without undue delay."@en ;
-    oa:hasTarget example:Requirement0032024R0900.
+    rrmv:hasBody "Providers of political advertising services shall ensure that the contractual arrangements concluded for the provision of a political advertising service require the sponsor, or providers of advertising services acting on behalf of sponsors, to provide the declaration in accordance with paragraph 1 of this Article and the relevant information necessary to comply with Articles 9(1), 11(1) and 12(1). That information shall be transmitted in a complete and accurate manner and without undue delay."@en ;
+    rrmv:hasTarget example:Requirement0032024R0900.
 
 [] a oa:Annotation;
-    oa:hasBody "That information shall be transmitted in a complete and accurate manner and without undue delay."@en ;
-    oa:hasTarget example:Action0032024R0900 .
+    rrmv:hasBody "That information shall be transmitted in a complete and accurate manner and without undue delay."@en ;
+    rrmv:hasTarget example:Action0032024R0900 .
 
 [] a oa:Annotation;
-    oa:hasBody "That information"@en ;
-    oa:hasTarget example:ActionResult032024R0900 .
+    rrmv:hasBody "That information"@en ;
+    rrmv:hasTarget example:ActionResult032024R0900 .
 
 
 example:Requirement0032024R0900 a rrmv:Requirement ;
-    rrmv:hasURI "https://system.org/example#Requirement0032024R0900"^^xsd:anyURI ;
+    rrmv:hasURI "http://data.europa.eu/eli/reg/2024/900/oj/article/007/paragraph/002"^^xsd:anyURI ;
     rrmv:produces example:Action0032024R0900 ;
-    dcterms:isPartOf &lt;http://data.europa.eu/eli/reg/2024/900/oj&gt; ;
-    dcterms:isPartOf &lt;http://data.europa.eu/eli/reg/2024/900/oj/article/007/paragraph/002&gt; .
+    dcterms:isPartOf &lt;http://data.europa.eu/eli/reg/2024/900/oj&gt; .
 
 example:Action0032024R0900 a rrmv:Action ;
     rrmv:hasActionResult example:ActionResult032024R0900 ;
 
-example:ActionResult032024R0900 a rrmv:ActionResult ;
-    rrmv:hasAnnotation "That information"@en .
+example:ActionResult032024R0900 a rrmv:ActionResult .
 
 </pre>
 </aside>
@@ -5276,6 +5243,7 @@ The examples in this section are fictitious; their sole purpose is to illustrate
 to ensure a clear understanding of the model.
 
 
+<!--  to be removed and adjusted in the example section 
 <h3>A Requirement expressed in a legislation</h3>
 
 <div class="h3 examples" id="example_request">Example 1 - Relating a Requirement with legislation</div>
@@ -5415,14 +5383,19 @@ rrmv-codes:bearer a  rrmv:RoleType ;
 </pre>
 </aside>
 
+--!>
+
 
 <h3>ReportNet example - temporal representation</h3>
 This example focusses on the use of the temporal specifications to denote the temporal aspects of a Requirement.
 
 According to the 
-<i> Regulation (EU) 2018/1999 of the European Parliament and of the Council of 11 December 2018 on the Governance of the Energy Union and Climate Action, amending Regulations (EC) No 663/2009 and (EC) No 715/2009 of the European Parliament and of the Council, Directives 94/22/EC, 98/70/EC, 2009/31/EC, 2009/73/EC, 2010/31/EU, 2012/27/EU and 2013/30/EU of the European Parliament and of the Council, Council Directives 2009/119/EC and (EU) 2015/652 and repealing Regulation (EU) No 525/2013 of the European Parliament and of the Council (Text with EEA relevance.)  </i> shall 
+<br/>
+<i> Regulation (EU) 2018/1999 of the European Parliament and of the Council of 11 December 2018 on the Governance of the Energy Union and Climate Action, amending Regulations (EC) No 663/2009 and (EC) No 715/2009 of the European Parliament and of the Council, Directives 94/22/EC, 98/70/EC, 2009/31/EC, 2009/73/EC, 2010/31/EU, 2012/27/EU and 2013/30/EU of the European Parliament and of the Council, Council Directives 2009/119/EC and (EU) 2015/652 and repealing Regulation (EU) No 525/2013 of the European Parliament and of the Council (Text with EEA relevance.)  </i> i
+<br/> shall <p>
 
 (article 26) “By 31 July 2021, and every year thereafter (year X), Member States shall report to the Commission their approximated greenhouse gas inventories for the year X-1. For the purposes of this paragraph, the Commission shall, on the basis of the Member States' approximated greenhouse gas inventories or, if a Member State has not communicated its approximated inventories by that date, on the basis of its own estimates, annually compile a Union approximated greenhouse gas inventory. The Commission shall make that information available to the public by 30 September every year”.
+</p>
 
 <p/>
 This requirement initiates an action with a yearly deadline starting from 31 July 2021.
@@ -5513,12 +5486,12 @@ example:action1 a rrmv:Action;
 @prefix example: &lt;https://system.org/example#&gt; .
 
 [] a oa:Annotation;
-    oa:hasBody "31 July 2021";
-    oa:hasTarget example:action1TS1.
+    rrmv:hasBody "31 July 2021";
+    rrmv:hasTarget example:action1TS1.
 
 [] a oa:Annotation;
-    oa:hasBody "every year thereafter (year X)";
-    oa:hasTarget example:action1TS2.
+    rrmv:hasBody "every year thereafter (year X)";
+    rrmv:hasTarget example:action1TS2.
 
 example:action1 a rrmv:Action;
    rrmv:atTime [
@@ -5556,8 +5529,8 @@ Other temporal patterns.
 @prefix example: &lt;https://system.org/example#&gt; .
 
 [] a oa:Annotation;
-    oa:hasBody "not earlier than 31 July 2021";
-    oa:hasTarget example:action1TS1.
+    rrmv:hasBody "not earlier than 31 July 2021";
+    rrmv:hasTarget example:action1TS1.
 
 example:action1 a rrmv:Action;
    rrmv:atTime [
