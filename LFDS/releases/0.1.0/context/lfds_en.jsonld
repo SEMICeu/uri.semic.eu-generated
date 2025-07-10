@@ -1,14 +1,8 @@
 {
   "@context": {
     "Action": "http://data.europa.eu/2qy/rrmv#Action",
-    "Agent": "http://data.europa.eu/eli/ontology#Agent",
-    "Agent.rrmv:hasFrequency": {
-      "@container": "@set",
-      "@id": "http://data.europa.eu/2qy/rrmv#hasType",
-      "@type": "@id"
-    },
+    "ActionResult": "http://data.europa.eu/2qy/rrmv#ActionResult",
     "AgentRole": "http://data.europa.eu/2qy/rrmv#AgentRole",
-    "AgentType": "http://data.europa.eu/2qy/rrmv#AgentType",
     "Assessment": "http://data.europa.eu/2sa/cav#Assessment",
     "Asset": "http://www.w3.org/ns/adms#Asset",
     "Asset.identifier": {
@@ -27,13 +21,13 @@
       "@type": "@id"
     },
     "Code": "http://www.w3.org/2004/02/skos/core#Concept",
+    "DEPRECATEAgent": "http://data.europa.eu/eli/ontology#Agent",
     "DataFlow": "http://data.europa.eu/2qy/lfds#DataFlow",
     "Dataset": "http://www.w3.org/ns/dcat#Dataset",
     "Event": "http://data.europa.eu/m8g/Event",
     "Event.identifier": {
       "@id": "http://purl.org/dc/terms/identifier"
     },
-    "Frequency": "http://data.europa.eu/2qy/rrmv#Frequency",
     "IOPAssessment": "http://data.europa.eu/2qy/lfds#IOPAssessment",
     "Identifier": "http://www.w3.org/ns/adms#Identifier",
     "LegalExpression": "http://data.europa.eu/eli/ontology#LegalExpression",
@@ -46,6 +40,7 @@
     "Literal": "http://www.w3.org/2000/01/rdf-schema#Literal",
     "Location": "http://purl.org/dc/terms/Location",
     "Manifestation": "http://data.europa.eu/eli/ontology#Manifestation",
+    "NAME CAHNGEAgentType": "http://data.europa.eu/2qy/rrmv#NAME CAHNGEAgentType",
     "Organization": "http://data.europa.eu/eli/ontology#Organization",
     "Person": "http://data.europa.eu/eli/ontology#Person",
     "PolicyAlignment": "http://data.europa.eu/2qy/lfds#PolicyAlignment",
@@ -59,14 +54,10 @@
       "@id": "http://purl.org/dc/terms/spatial",
       "@type": "@id"
     },
-    "Request": "http://data.europa.eu/2qy/rrmv#Request",
-    "Request.rrmv:hasFrequency": {
-      "@container": "@set",
-      "@id": "http://data.europa.eu/2qy/rrmv#hasFrequency",
-      "@type": "@id"
-    },
+    "Requirement": "http://data.europa.eu/2qy/rrmv#Requirement",
     "RequirementDigitalRelevance": "http://data.europa.eu/2qy/lfds#RequirementDigitalRelevance",
     "Resource": "http://www.w3.org/ns/dcat#Resource",
+    "ResultType": "http://data.europa.eu/2qy/rrmv#ResultType",
     "Role": "http://data.europa.eu/2qy/rrmv#Role",
     "RoleType": "http://data.europa.eu/2qy/rrmv#RoleType",
     "SolutionAssessment": "http://data.europa.eu/2qy/lfds#SolutionAssessment",
@@ -82,10 +73,21 @@
       "@id": "http://data.europa.eu/2sa/cav#type",
       "@type": "@id"
     },
+    "TemporalEntitySpec": "http://data.europa.eu/2qy/rrmv#TemporalEntitySpec",
     "Text": "http://www.w3.org/1999/02/22-rdf-syntax-ns#langString",
     "URI": "http://www.w3.org/2001/XMLSchema#anyURI",
     "Work": "http://data.europa.eu/eli/ontology#Work",
     "Xsd:anyURI": "http://www.w3.org/2001/XMLSchema#anyURI",
+    "after": {
+      "@container": "@set",
+      "@id": "http://data.europa.eu/2qy/rrmv#after",
+      "@type": "@id"
+    },
+    "before": {
+      "@container": "@set",
+      "@id": "http://data.europa.eu/2qy/rrmv#before",
+      "@type": "@id"
+    },
     "category": {
       "@container": "@set",
       "@id": "http://data.europa.eu/2qy/lfds#RequirementCategory",
@@ -118,6 +120,11 @@
       "@container": "@set",
       "@id": "http://purl.org/dc/terms/requires",
       "@type": "@id"
+    },
+    "dct:title": {
+      "@container": "@set",
+      "@id": "http://purl.org/dc/terms/title",
+      "@type": "http://www.w3.org/1999/02/22-rdf-syntax-ns#langString"
     },
     "description": {
       "@container": "@set",
@@ -159,6 +166,16 @@
       "@id": "http://data.europa.eu/eli/ontology#related_to",
       "@type": "@id"
     },
+    "ends": {
+      "@container": "@set",
+      "@id": "http://data.europa.eu/2qy/rrmv#ends",
+      "@type": "@id"
+    },
+    "externalEvent": {
+      "@container": "@set",
+      "@id": "http://data.europa.eu/2qy/rrmv#externalEvent",
+      "@type": "http://www.w3.org/2001/XMLSchema#boolean"
+    },
     "geographicIdentifier": {
       "@container": "@set",
       "@id": "http://www.w3.org/2000/01/rdf-schema#seeAlso",
@@ -169,30 +186,45 @@
       "@id": "http://data.europa.eu/2qy/rrmv#hasAnnotation",
       "@type": "http://www.w3.org/1999/02/22-rdf-syntax-ns#langString"
     },
+    "in": {
+      "@container": "@set",
+      "@id": "http://data.europa.eu/2qy/rrmv#in",
+      "@type": "@id"
+    },
     "interpretation": {
       "@container": "@set",
       "@id": "http://data.europa.eu/2sa/cav#interpretation",
       "@type": "@id"
+    },
+    "isUnspecified": {
+      "@container": "@set",
+      "@id": "http://data.europa.eu/2qy/rrmv#isUnspecified",
+      "@type": "http://www.w3.org/2001/XMLSchema#boolean"
     },
     "judgement": {
       "@container": "@set",
       "@id": "http://data.europa.eu/2sa/cav#judgement",
       "@type": "http://www.w3.org/1999/02/22-rdf-syntax-ns#langString"
     },
-    "lfds:hasFrequency": {
-      "@container": "@set",
-      "@id": "http://data.europa.eu/2qy/lfds#hasFrequency",
-      "@type": "@id"
-    },
     "lfds:trigger": {
       "@container": "@set",
       "@id": "http://data.europa.eu/2qy/lfds#trigger",
       "@type": "http://www.w3.org/1999/02/22-rdf-syntax-ns#langString"
     },
+    "meets": {
+      "@container": "@set",
+      "@id": "http://data.europa.eu/2qy/rrmv#meets",
+      "@type": "@id"
+    },
     "name": {
       "@container": "@set",
       "@id": "http://purl.org/dc/terms/title",
       "@type": "http://www.w3.org/1999/02/22-rdf-syntax-ns#langString"
+    },
+    "overlaps": {
+      "@container": "@set",
+      "@id": "http://data.europa.eu/2qy/rrmv#overlaps",
+      "@type": "@id"
     },
     "policy": {
       "@container": "@set",
@@ -202,6 +234,11 @@
     "question": {
       "@container": "@set",
       "@id": "http://data.europa.eu/2qy/lfds#question",
+      "@type": "@id"
+    },
+    "rrmv:atTime": {
+      "@container": "@set",
+      "@id": "http://data.europa.eu/2qy/rrmv#rrmv:atTime",
       "@type": "@id"
     },
     "rrmv:hasAgentRole": {
@@ -214,9 +251,19 @@
       "@id": "http://data.europa.eu/2qy/rrmv#hasAnnotation",
       "@type": "http://www.w3.org/1999/02/22-rdf-syntax-ns#langString"
     },
+    "rrmv:hasFrequency": {
+      "@container": "@set",
+      "@id": "http://data.europa.eu/2qy/rrmv#hasType",
+      "@type": "@id"
+    },
     "rrmv:hasNext": {
       "@container": "@set",
       "@id": "http://data.europa.eu/2qy/rrmv#hasNext",
+      "@type": "@id"
+    },
+    "rrmv:hasResult": {
+      "@container": "@set",
+      "@id": "http://data.europa.eu/2qy/rrmv#hasResult",
       "@type": "@id"
     },
     "rrmv:hasTopic": {
@@ -229,10 +276,6 @@
       "@id": "http://example.com/rrmv/hasType",
       "@type": "@id"
     },
-    "rrmv:hasUnit": {
-      "@id": "http://data.europa.eu/2qy/rrmv#hasUnit",
-      "@type": "@id"
-    },
     "rrmv:hasUri": {
       "@container": "@set",
       "@id": "http://data.europa.eu/2qy/rrmv#hasURI",
@@ -243,12 +286,14 @@
       "@id": "http://data.europa.eu/2qy/rrmv#produces",
       "@type": "@id"
     },
-    "rrmv:value": {
-      "@id": "http://data.europa.eu/2qy/rrmv#value"
-    },
     "rrmv:withRole": {
       "@container": "@set",
       "@id": "http://data.europa.eu/2qy/rrmv#withRole",
+      "@type": "@id"
+    },
+    "starts": {
+      "@container": "@set",
+      "@id": "http://data.europa.eu/2qy/rrmv#starts",
       "@type": "@id"
     },
     "title": {

@@ -106,6 +106,19 @@
       }
     },
     {
+      "EA-Guid": "{3BB75C80-597C-499f-99B0-C2E26A992C2C}",
+      "name": "ActionResult",
+      "label": {
+        "en": "Action Result"
+      },
+      "definition": {
+        "en": "The outcome of an Action"
+      },
+      "usage": {
+        "en": "It could be an activity (e.g.,to do something) or an physical or digital entiity (e.g.,report)."
+      }
+    },
+    {
       "EA-Guid": "{6CE439AA-3296-44a9-BD0E-57F24CF4E01D}",
       "name": "AgentRole",
       "label": {
@@ -126,23 +139,23 @@
       }
     },
     {
-      "EA-Guid": "{6887F49F-9037-463b-A40D-FD3535B1EDC8}",
-      "name": "Frequency",
-      "label": {
-        "en": "Frequency"
-      },
-      "definition": {
-        "en": "Frequency of an Request over time (e.g.,every 6 months,each quarter)."
-      }
-    },
-    {
       "EA-Guid": "{07CEBAF3-D679-4550-B582-49FE8F628E72}",
-      "name": "Request",
+      "name": "Requirement",
       "label": {
-        "en": "Request"
+        "en": "Requirement"
       },
       "definition": {
         "en": "A portion of legal source expression including a mandate that produces at least one Action."
+      }
+    },
+    {
+      "EA-Guid": "{7DB2D295-2613-40c6-9052-D43D86E24991}",
+      "name": "ResultType",
+      "label": {
+        "en": "Result Type"
+      },
+      "definition": {
+        "en": "The kind of Action Result"
       }
     },
     {
@@ -163,6 +176,16 @@
       },
       "definition": {
         "en": "The kind of Role played by an Agent."
+      }
+    },
+    {
+      "EA-Guid": "{A5E5AFDD-8A35-445d-8CAA-4F24F996A249}",
+      "name": "TemporalEntitySpecification",
+      "label": {
+        "en": "Temporal Entity Specification"
+      },
+      "definition": {
+        "en": "A temporal entity specification serving as an abstract class for all temporal specifications. It includes specifications for instants, intervals, frequency, and durations, functioning as the structure for expressing temporal constraints related to normative provisions and other use cases."
       }
     },
     {
@@ -419,13 +442,43 @@
   ],
   "externalproperties": [
     {
-      "EA-Guid": "{244CE912-C7EE-41cb-B680-A09449018BB8}",
-      "name": "hasFrequency",
+      "EA-Guid": "{0362D2BF-11A5-4bf4-AE88-7A7B093B4AE3}",
+      "name": "after",
       "label": {
-        "en": "has frequency"
+        "en": "after"
       },
       "definition": {
-        "en": "The Frequency in which the Action is to be executed."
+        "en": "Indicates that one temporal entity specification occurs following another one."
+      }
+    },
+    {
+      "EA-Guid": "{4A866AA0-2594-4df3-B89C-67DAF4EC68AF}",
+      "name": "before",
+      "label": {
+        "en": "before"
+      },
+      "definition": {
+        "en": "Indicates that one temporal entity specification precedes another one."
+      }
+    },
+    {
+      "EA-Guid": "{DC1EB969-34A9-4eae-8FCA-35473891E4B4}",
+      "name": "ends",
+      "label": {
+        "en": "ends"
+      },
+      "definition": {
+        "en": "Establishes that one temporal entity specification marks the conclusion of another one."
+      }
+    },
+    {
+      "EA-Guid": "{C32467BE-5B06-466e-AD3E-34E815731D36}",
+      "name": "externalEvent",
+      "label": {
+        "en": "external event"
+      },
+      "definition": {
+        "en": "Indicates whether a temporal entity specification depends on events outside the regulatory framework's direct control."
       }
     },
     {
@@ -468,16 +521,6 @@
       }
     },
     {
-      "EA-Guid": "{557391EC-2AF0-4f93-8D6E-D610C0FF1B49}",
-      "name": "hasFrequency",
-      "label": {
-        "en": "has frequency"
-      },
-      "definition": {
-        "en": "The frequency in which the request is to be executed in case of repetitive mandate."
-      }
-    },
-    {
       "EA-Guid": "{4BBA6F1E-C7B0-46ae-AF2C-9BE466C57B5B}",
       "name": "hasNext",
       "label": {
@@ -488,6 +531,16 @@
       },
       "usage": {
         "en": "A request may formulate a repetitive sequence of actions. This property chains the actions together."
+      }
+    },
+    {
+      "EA-Guid": "{DED2E2BF-0412-402f-8D17-DA8AE95A03F6}",
+      "name": "hasResult",
+      "label": {
+        "en": "has result"
+      },
+      "definition": {
+        "en": "A result of an action."
       }
     },
     {
@@ -521,16 +574,43 @@
       }
     },
     {
-      "EA-Guid": "{430E7B64-5B6C-4a8b-A4FB-B97125855D22}",
-      "name": "hasUnit",
+      "EA-Guid": "{6A6A9D31-DDC6-4cb2-894F-35F6B4E0B0B4}",
+      "name": "in",
       "label": {
-        "en": "has unit"
+        "en": "in"
       },
       "definition": {
-        "en": "The unit of the Frequency"
+        "en": "Establishes that one temporal entity specification occurs entirely within the boundaries of another temporal entity specification."
+      }
+    },
+    {
+      "EA-Guid": "{C92505CD-E390-4f78-B2C9-2D71AF3EB3BD}",
+      "name": "isUnspecified",
+      "label": {
+        "en": "is unspecified"
       },
-      "usage": {
-        "en": "e.g. Quarter"
+      "definition": {
+        "en": "Indicates whether a temporal aspect exists but is undefined."
+      }
+    },
+    {
+      "EA-Guid": "{2A6EDFE1-CCDC-4d4c-8BD6-3479C21EB18F}",
+      "name": "meets",
+      "label": {
+        "en": "meets"
+      },
+      "definition": {
+        "en": "Indicates that one temporal entity specification directly adjoins another one without overlap, where one ends exactly when the other begins."
+      }
+    },
+    {
+      "EA-Guid": "{7CF04975-3121-4357-8884-63B13CCCF0EB}",
+      "name": "overlaps",
+      "label": {
+        "en": "overlaps"
+      },
+      "definition": {
+        "en": "Indicates that two temporal entities specifications share a common portion of time without either completely containing the other."
       }
     },
     {
@@ -544,13 +624,23 @@
       }
     },
     {
-      "EA-Guid": "{1DC21E78-623E-4e38-A6EF-2F588B17ABA0}",
-      "name": "value",
+      "EA-Guid": "{B8666417-EE68-447e-AFAE-CF94271607F3}",
+      "name": "atTime",
       "label": {
-        "en": "value"
+        "en": "at time"
       },
       "definition": {
-        "en": "The value of the frequency."
+        "en": "An Action valid within a time interval."
+      }
+    },
+    {
+      "EA-Guid": "{6CF0F429-5FB8-4ce7-8EA0-F1FCF4F17DA8}",
+      "name": "starts",
+      "label": {
+        "en": "starts"
+      },
+      "definition": {
+        "en": "Establishes that one temporal entity specification marks the beginning of another one."
       }
     },
     {
@@ -564,7 +654,7 @@
       }
     },
     {
-      "EA-Guid": "{BFB51D2C-64EF-4333-AE64-45821A0FB58E}",
+      "EA-Guid": "{23380B4A-FB94-4679-AE90-B8814E3973A9}",
       "name": "assesses",
       "label": {
         "en": "assesses"
@@ -574,13 +664,10 @@
       }
     },
     {
-      "EA-Guid": "{23380B4A-FB94-4679-AE90-B8814E3973A9}",
+      "EA-Guid": "{0F52CE33-BE60-4b8d-BC29-D6BCDB18E1B1}",
       "name": "assesses",
       "label": {
         "en": "assesses"
-      },
-      "definition": {
-        "en": "The reference to the asset(s) that are the object of the assessment."
       }
     },
     {
@@ -709,7 +796,7 @@
       }
     },
     {
-      "EA-Guid": "{184A6D7E-56FF-473f-8826-3D3548E27E68}",
+      "EA-Guid": "{85933F3C-636A-4ad4-890F-D24BDCA25813}",
       "name": "relatedTo",
       "label": {
         "en": "related to"
@@ -722,7 +809,7 @@
       }
     },
     {
-      "EA-Guid": "{85933F3C-636A-4ad4-890F-D24BDCA25813}",
+      "EA-Guid": "{184A6D7E-56FF-473f-8826-3D3548E27E68}",
       "name": "relatedTo",
       "label": {
         "en": "related to"
@@ -765,6 +852,16 @@
       },
       "definition": {
         "en": "A kind of Role "
+      }
+    },
+    {
+      "EA-Guid": "{6CF9B37E-BB5E-4a79-A4FF-7CD83ED87145}",
+      "name": "hasType",
+      "label": {
+        "en": "has type"
+      },
+      "definition": {
+        "en": "A kind of result "
       }
     },
     {
@@ -937,6 +1034,16 @@
       },
       "definition": {
         "en": "The Name (or title) of the Event."
+      }
+    },
+    {
+      "EA-Guid": "{EC20B553-211A-4724-80AE-A3E447AFCEF9}",
+      "name": "hasTitle",
+      "label": {
+        "en": "has title"
+      },
+      "definition": {
+        "en": "Title of the action result"
       }
     },
     {
