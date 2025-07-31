@@ -18,8 +18,8 @@
     },
     "status": "Working Draft",
     "statuslabel": "Onbekend",
-    "repositoryurl": "https://code.europa.eu/regulatory-reporting/rrmv.git/tree/c5a36c8f1c56b589014e0047342130bae463d3a7",
-    "changelogurl": "https://code.europa.eu/regulatory-reporting/rrmv.git/blob/c5a36c8f1c56b589014e0047342130bae463d3a7/CHANGELOG",
+    "repositoryurl": "https://code.europa.eu/regulatory-reporting/rrmv.git/tree/e6b98f55fe8ced2f89b130d27ae7ff4b144d1752",
+    "changelogurl": "https://code.europa.eu/regulatory-reporting/rrmv.git/blob/e6b98f55fe8ced2f89b130d27ae7ff4b144d1752/CHANGELOG",
     "feedbackurl": "https://github.com/SEMICeu/RRMV/issues",
     "standaardregisterurl": "RRMV",
     "usesVocs": [],
@@ -1863,7 +1863,8 @@
       "rawTags": {
         "definition-en": "The intellectual realisation of a legal resource in the form of a &quot;sequence of signs&quot; (typically alpha-numeric characters in a legal context).\nFor example, any version of the legal resource whose content is specified and different from others for any reason: language, versions, etc.;\n\nNote that ELI ontology accommodates different point of view on what should be considered a new legal resource, or a new legal expression of the same resource. Typically, a consolidated version can be viewed, in the context of ELI, either as separate legal resource (linked to original version and previous consolidated version using corresponding ELI relations), or as a different legal expression of the same legal resource.",
         "label-en": "Legal Expression",
-        "uri": "http://data.europa.eu/eli/ontology#LegalExpression"
+        "uri": "http://data.europa.eu/eli/ontology#LegalExpression",
+        "class-usage-scope": "import"
       },
       "properties": [
         {
@@ -2003,7 +2004,8 @@
       "rawTags": {
         "uri": "http://data.europa.eu/eli/ontology#Manifestation",
         "definition-en": "The physical embodiment of an Expression, either on paper or in any electronic format.",
-        "label-en": "Manifestation"
+        "label-en": "Manifestation",
+        "class-usage-scope": "import"
       },
       "properties": [
         {
@@ -2063,7 +2065,8 @@
       "rawTags": {
         "uri": "http://data.europa.eu/eli/ontology#Work",
         "label-en": "Work",
-        "definition-en": "Any distinct intellectual creation (i.e., the intellectual content), in the context of ELI."
+        "definition-en": "Any distinct intellectual creation (i.e., the intellectual content), in the context of ELI.",
+        "class-usage-scope": "import"
       },
       "properties": [
         {
@@ -2182,7 +2185,7 @@
       "parents": [],
       "rawTags": {
         "uri": "http://www.w3.org/2000/01/rdf-schema#Resource",
-        "class-usage-scope": "supportive",
+        "class-usage-scope": "import",
         "definition-en": "Anything described by RDF.",
         "label-en": "Resource"
       },
@@ -2204,7 +2207,7 @@
       "parents": [],
       "rawTags": {
         "uri": "http://www.w3.org/2004/02/skos/core#Concept",
-        "class-usage-scope": "supportive",
+        "class-usage-scope": "import",
         "label-en": "Concept",
         "usageNote-en": "However, what constitutes a unit of thought is subjective, and this definition is meant to be suggestive, rather than restrictive.",
         "definition-en": "An idea or notion; a unit of thought."
@@ -2270,9 +2273,51 @@
       "rawTags": {
         "label-en": "Annotation",
         "definition-en": "The class for Web Annotations.",
-        "class-usage-scope": "supportive"
+        "class-usage-scope": "import"
       },
       "properties": [
+        {
+          "uri": "http://data.europa.eu/2qy/rrmv#hasTarget",
+          "name": "hasTarget",
+          "sort": "has target",
+          "label": {
+            "en": "has target"
+          },
+          "description": {
+            "en": "The relationship between an Annotation and its Target."
+          },
+          "usage": {},
+          "domain": [
+            {
+              "EA-Name": "Annotation",
+              "uri": "http://www.w3.org/ns/oa#Annotation"
+            }
+          ],
+          "range": [
+            {
+              "range_label": "rdfs:Resource",
+              "range_uri": "http://www.w3.org/2000/01/rdf-schema#Resource"
+            }
+          ],
+          "scopedrange": [
+            {
+              "range_uri": "#Resource",
+              "range_puri": "http://www.w3.org/2000/01/rdf-schema#Resource",
+              "range_label": {
+                "en": "Resource"
+              }
+            }
+          ],
+          "cardinality": "0..*",
+          "codelist_uri": "",
+          "rawTags": {
+            "uri": "http://data.europa.eu/2qy/rrmv#hasTarget",
+            "package": "rrmv",
+            "parentURI": "http://www.w3.org/ns/oa#hasTarget",
+            "definition-en": "The relationship between an Annotation and its Target.",
+            "label-en": "has target"
+          }
+        },
         {
           "uri": "http://www.w3.org/ns/oa#hasBody",
           "name": "hasBody",
@@ -2311,47 +2356,6 @@
             "definition-en": "The object of the relationship is a resource that is a body of the Annotation.",
             "parentURI": "http://www.w3.org/ns/oa#hasBody",
             "label-en": "has body"
-          }
-        },
-        {
-          "uri": "http://www.w3.org/ns/oa#hasTarget",
-          "name": "hasTarget",
-          "sort": "has target",
-          "label": {
-            "en": "has target"
-          },
-          "description": {
-            "en": "The relationship between an Annotation and its Target."
-          },
-          "usage": {},
-          "domain": [
-            {
-              "EA-Name": "Annotation",
-              "uri": "http://www.w3.org/ns/oa#Annotation"
-            }
-          ],
-          "range": [
-            {
-              "range_label": "rdfs:Resource",
-              "range_uri": "http://www.w3.org/2000/01/rdf-schema#Resource"
-            }
-          ],
-          "scopedrange": [
-            {
-              "range_uri": "#Resource",
-              "range_puri": "http://www.w3.org/2000/01/rdf-schema#Resource",
-              "range_label": {
-                "en": "Resource"
-              }
-            }
-          ],
-          "cardinality": "0..*",
-          "codelist_uri": "",
-          "rawTags": {
-            "uri": "http://www.w3.org/ns/oa#hasTarget",
-            "package": "oa",
-            "definition-en": "The relationship between an Annotation and its Target.",
-            "label-en": "has target"
           }
         }
       ]
