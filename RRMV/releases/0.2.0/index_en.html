@@ -5298,7 +5298,14 @@ The controlled vocabularies are under development. Currently they are distribute
 </section>
 
   <section class="informative">
-<h2>Annotations</h2>
+<h2>Examples</h2>
+In this section we illustrate the usage of the RRMV with examples.
+The examples in this section are fictitious; their sole purpose is to illustrate the use of the application profile 
+to ensure a clear understanding of the model.
+
+
+<section>
+<h3>Annotations</h3>
 In this section we illustrate how the texts from legal documents are connected with the RRMV main classes.
 
 The objective of RRMV is to provide a structured representation for legal expressions that mandate an activity.
@@ -5307,7 +5314,7 @@ Nevertheless the relationships are sufficient for the main use cases, it is ofte
 These textual extracts aid in the trustbuilding and the editorial process, establishing RRMV instances.
 
 
-<h3>The Web Annotation Vocabulary for the RRMV context</h3>
+<h4>The Web Annotation Vocabulary for the RRMV context</h4>
 The RRMV utilizes the Web Annotation Vocabulary [annotation-vocab] to establish connections between the classes of the ontology and the relevant portions of the legal text. In the context of the RRMV, the usage of this vocabulary has been restricted in the following ways:
 
 <ul>
@@ -5363,171 +5370,28 @@ example:ActionResult032024R0900 a rrmv:ActionResult .
 
 </section>
 
-  
-  <section class="informative">
-<h2>Example</h2>
-In this section we illustrate the usage of the RRMV with examples.
-The examples in this section are fictitious; their sole purpose is to illustrate the use of the application profile 
-to ensure a clear understanding of the model.
 
+<h3>ReportNet example</h3>
+To make the examples more illustrative the RRMV use is illustrated for the following concrete case. 
 
-<!--  to be removed and adjusted in the example section 
-<h3>A Requirement expressed in a legislation</h3>
-
-<div class="h3 examples" id="example_request">Example 1 - Relating a Requirement with legislation</div>
-
-
-<p class="ednote" title="Multiple identifiers for legislation">
-The example uses the ELI as unique reference for the legal document: 
-<code>http://data.europa.eu/eli/reg/2016/1011/oj</code>.
-Question to be raised is whether implementations should always use this one? Or other like the CELEX are allowed?
-The fact that a legal document has many identifiers may raise implementation questions.
-It is unclear if this needs to be discussed in the context of RRMV.
-</p>
-
-<p class="ednote" title="lifecycle of Requirements">
-A Requirement is an interpretation of the legislation with the objective to track reporting obligations.
-As such it has a strong connection with the legislation, but it is not the THE legislation. 
-If it would be the same then one should reflect on why the existing ELI machine readible annotations are not sufficient to track and followup reporting obligations.
-In the following we assume that this reflection has happened and that the conclusion was they are different entities with a different lifecylce, yet strongly connected.
-</p>
-
-<p class="ednote" title="Identity of Requirements">
-Given the above context, it is assumed that requirements are managed in systems outside the legislation. 
-It is not needed to annotate the legation with a RRMV interpretation to be formally adopted. 
-Therefore the structure of the identifier of Requirement is not determined by RRMV.  
-For the sake of readibility the examples assume that the URI is the identifier of the Requirement (a Linked Data implementation). 
-</p>
-
-<h3> Annotation example </h3>
-
-This example can be downloaded at <a href="/html/examples/poladv.ttl">poladv.ttl</a>. 
-
-<aside class="example" title="Annotation for legislation CELEX:32024R0900">
-<pre class="nohighlight turtle">
-
-@prefix dcterms: &lt;http://purl.org/dc/terms/&gt; .
-@prefix eli: &lt;http://data.europa.eu/eli/ontology#&gt; .
-@prefix skos: &lt;http://www.w3.org/2004/02/skos/core#&gt;.
-@prefix rdfs: &lt;http://www.w3.org/2000/01/rdf-schema#&gt; .
-@prefix rrmv: &lt;http://data.europa.eu/2qy/rrmv#&gt; .
-@prefix rrmv-codes: &lt;http://data.europa.eu/2qy/rrmv-codes#&gt; .
-@prefix xsd: &lt;http://www.w3.org/2001/XMLSchema#&gt; .
-@prefix time: &lt;http://www.w3.org/2006/time#&gt;.
-@prefix example: &lt;https://system.org/example#&gt; .
-
-example:Requirement0032024R0900 a rrmv:Requirement ;
-    rrmv:hasAnnotation "Providers of political advertising services shall ensure that the contractual arrangements concluded for the provision of a political advertising service require the sponsor, or providers of advertising services acting on behalf of sponsors, to provide the declaration in accordance with paragraph 1 of this Article and the relevant information necessary to comply with Articles 9(1), 11(1) and 12(1). That information shall be transmitted in a complete and accurate manner and without undue delay."@en ;
-    rrmv:hasURI "https://system.org/example#Requirement0032024R0900"^^xsd:anyURI ;
-    rrmv:produces example:Action0032024R0900 ;
-    dcterms:isPartOf &lt;http://data.europa.eu/eli/reg/2024/900/oj&gt; ;
-    dcterms:isPartOf &lt;http://data.europa.eu/eli/reg/2024/900/oj/article/007/paragraph/002&gt; .
-
-example:Requirement0132024R0900 a rrmv:Requirement ;
-    rrmv:hasAnnotation "Sponsors shall provide and ensure the accuracy of the information necessary for the providers of political advertising services to comply with Article 9(1), points (a), (d), (e) and (f), Article 11(1), points (a) to (d), and Article 12(1), points (a), (b), (c), (e), (h) and (k), before or during the period of publication, delivery, or dissemination of the political advertisement. Where a sponsor, or a provider of advertising services acting on behalf of a sponsor, becomes aware that information which it has transmitted has changed, it shall ensure that updated information is transmitted to the relevant provider of political advertising services in a timely, complete and accurate manner. Where a sponsor, or a provider of advertising services acting on behalf of a sponsor, becomes aware that any information transmitted to or published by the political advertising publisher is incomplete or inaccurate, it shall contact, without undue delay, the political advertising publisher concerned and shall transmit completed or corrected information to that political advertising publisher."@en ;
-    rrmv:hasURI "https://system.org/example#Requirement0132024R0900"^^xsd:anyURI ;
-    rrmv:produces example:Action0132024R0900 ;
-    dcterms:isPartOf &lt;http://data.europa.eu/eli/reg/2024/900/oj&gt; ;
-    dcterms:isPartOf &lt;http://data.europa.eu/eli/reg/2024/900/oj/article/007/paragraph/003&gt; .
-
-
-example:Requirement0232024R0900 a rrmv:Requirement ;
-    rrmv:hasAnnotation "Providers of political advertising services shall ensure that the information referred to in Article 9(1) is transmitted in a timely, complete and accurate manner to political advertising publishers to enable them to comply with their obligations under this Regulation. Each provider of political advertising services shall transmit the information referred to in the first subparagraph during the provision of the relevant service and in accordance with best practice and industry standards and, where technically possible, by means of a standardised automated process. When the political advertising publisher is the only provider of political advertising services, the sponsor shall transmit the relevant information to the political advertising publisher."@en ;
-    rrmv:hasURI "https://system.org/example#Requirement0232024R0900"^^xsd:anyURI ;
-    rrmv:produces example:Action0232024R0900,
-        example:Action0332024R0900 ;
-    dcterms:isPartOf &lt;http://data.europa.eu/eli/reg/2024/900/oj&gt; ;
-    dcterms:isPartOf &lt;http://data.europa.eu/eli/reg/2024/900/oj/article/010/paragraph/001&gt; .
-
-example:Action0032024R0900 a rrmv:Action ;
-    rrmv:hasActionResult example:ActionResult032024R0900 ;
-    rrmv:hasAnnotation "That information shall be transmitted in a complete and accurate manner and without undue delay."@en .
-
-example:ActionResult032024R0900 a rrmv:ActionResult ;
-    rrmv:hasAnnotation "That information"@en .
-
-example:Action0132024R0900 a rrmv:Action ;
-    rrmv:hasAnnotation "Where a sponsor, or a provider of advertising services acting on behalf of a sponsor, becomes aware that any information transmitted to or published by the political advertising publisher is incomplete or inaccurate, it shall contact, without undue delay, the political advertising publisher concerned and shall transmit completed or corrected information to that political advertising publisher."@en .
-
-example:Action0232024R0900 a rrmv:Action ;
-    rrmv:atTime example:PeriodOfTime232024R0900 ;
-    rrmv:hasActionResult example:ActionResult232024R0900 ;
-    rrmv:hasAgentRole example:Action2AgentRoleAddressee032024R0900,
-        example:Action2AgentRoleAddressee132024R0900,
-        example:Action2AgentRoleAddressee232024R0900,
-        example:Action2AgentRoleAddressee332024R0900,
-        example:Action2AgentRoleAddressee432024R0900,
-        example:Action2AgentRoleAddressee532024R0900,
-        example:Action2AgentRoleAddresser032024R0900,
-        example:Action2AgentRoleAddresser132024R0900 ;
-    rrmv:hasAnnotation "Each provider of political advertising services shall transmit the information referred to in the first subparagraph during the provision of the relevant service and in accordance with best practice and industry standards and, where technically possible, by means of a standardised automated process."@en .
-
-example:ActionResult232024R0900 a rrmv:ActionResult ;
-    rrmv:hasAnnotation "the information referred"@en .
-
-example:PeriodOfTime232024R0900 a  time:ProperInterval;
-    rrmv:hasAnnotation "during the provision of the relevant service and in accordance with best practice and industry standards and , where technically possible"@en.
-
-example:Action2AgentRoleAddressee032024R0900 a rrmv:AgentRole ;
-    rrmv:forAgent example:Agent232024R0900 ;
-    rrmv:withRole rrmv-codes:addressee .
-
-example:Agent232024R0900 a eli:Agent ;
-    rrmv:hasAnnotation "the_first_subparagraph"@en .
-
-example:Action0332024R0900 a rrmv:Action ;
-    rrmv:hasActionResult example:ActionResult332024R0900 ;
-    rrmv:hasAgentRole example:Action3AgentRoleAddressee032024R0900,
-        example:Action3AgentRoleAddresser032024R0900 ;
-    rrmv:hasAnnotation "When the political advertising publisher is the only provider of political advertising services, the sponsor shall transmit the relevant information to the political advertising publisher."@en .
-
-example:ActionResult332024R0900 a rrmv:ActionResult ;
-    rrmv:hasAnnotation "the relevant information"@en .
-
-example:Action3AgentRoleAddressee032024R0900 a rrmv:AgentRole ;
-    rrmv:forAgent example:Agent932024R0900 ;
-    rrmv:withRole rrmv-codes:addressee .
-
-example:Action3AgentRoleAddresser032024R0900 a rrmv:AgentRole ;
-    rrmv:forAgent example:Agent832024R0900 ;
-    rrmv:withRole rrmv-codes:addresser .
-
-example:Agent932024R0900 a eli:Agent ;
-    rrmv:hasAnnotation "the_political_advertising_publisher"@en . 
-
-example:Agent832024R0900 a eli:Agent ;
-    rrmv:hasAnnotation "the_sponsor"@en .
-
-rrmv-codes:addresser a  rrmv:RoleType ;
-   a skos:Concept.
-
-rrmv-codes:addressee a rrmv:RoleType ;
-   a skos:Concept.
-
-rrmv-codes:bearer a  rrmv:RoleType ;
-   a skos:Concept.
-
-
-</pre>
-</aside>
-
---!>
-
-
-<h3>ReportNet example - temporal representation</h3>
-This example focusses on the use of the temporal specifications to denote the temporal aspects of a Requirement.
-
+<p>
 According to the 
 <br/>
-<i> Regulation (EU) 2018/1999 of the European Parliament and of the Council of 11 December 2018 on the Governance of the Energy Union and Climate Action, amending Regulations (EC) No 663/2009 and (EC) No 715/2009 of the European Parliament and of the Council, Directives 94/22/EC, 98/70/EC, 2009/31/EC, 2009/73/EC, 2010/31/EU, 2012/27/EU and 2013/30/EU of the European Parliament and of the Council, Council Directives 2009/119/EC and (EU) 2015/652 and repealing Regulation (EU) No 525/2013 of the European Parliament and of the Council (Text with EEA relevance.)  </i> i
-<br/> shall <p>
-
+<i> Regulation (EU) 2018/1999 of the European Parliament and of the Council of 11 December 2018 on the Governance of the Energy Union and Climate Action, amending Regulations (EC) No 663/2009 and (EC) No 715/2009 of the European Parliament and of the Council, Directives 94/22/EC, 98/70/EC, 2009/31/EC, 2009/73/EC, 2010/31/EU, 2012/27/EU and 2013/30/EU of the European Parliament and of the Council, Council Directives 2009/119/EC and (EU) 2015/652 and repealing Regulation (EU) No 525/2013 of the European Parliament and of the Council (Text with EEA relevance.)  </i> 
+<p/> shall 
+<p>
+<i>
 (article 26) “By 31 July 2021, and every year thereafter (year X), Member States shall report to the Commission their approximated greenhouse gas inventories for the year X-1. For the purposes of this paragraph, the Commission shall, on the basis of the Member States' approximated greenhouse gas inventories or, if a Member State has not communicated its approximated inventories by that date, on the basis of its own estimates, annually compile a Union approximated greenhouse gas inventory. The Commission shall make that information available to the public by 30 September every year”.
+</i></p>
+This requirement initiates an action with a yearly deadline starting from 31 July 2021.
 </p>
 
-<p/>
-This requirement initiates an action with a yearly deadline starting from 31 July 2021.
-Encoding this temporal information using the RRMV temporal specification is as follows.
+In the next subsections this context will be used to demonstrate the use of RRMV.
+
+
+<h3>Temporal representation</h3>
+This section focusses on the use of the temporal specifications to denote the temporal aspects of a Requirement.
+Encoding the temporal information using the RRMV temporal specification is done as follows.
 
 
 <aside class="example" title="Temporal information - encoding 1">
