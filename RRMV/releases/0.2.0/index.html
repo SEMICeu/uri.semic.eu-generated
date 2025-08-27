@@ -856,7 +856,7 @@ Therefore it may vary over time when new versions of DCAT-AP are created.
                                     0..*
                                 </td>
                                 <td property="rdfs:comment">
-                                    A result of an action.
+                                    A result of this action.
                                 </td>
                                 <td property="skos:scopeNote">
                                     
@@ -970,7 +970,7 @@ Therefore it may vary over time when new versions of DCAT-AP are created.
                     Definition
                 </dt>
                 <dd>
-                    The outcome of an Action
+                    The outcome of an Action.
                 </dd>
                 
                 
@@ -978,7 +978,7 @@ Therefore it may vary over time when new versions of DCAT-AP are created.
                         Usage Note
                     </dt>
                     <dd>
-                        It could be an activity (e.g., to do something) or an physical or digital entiity (e.g., report).
+                        It could be an activity (e.g., to do something) or a physical or digital entity (e.g., report).
                     </dd>
                 
                 
@@ -2455,7 +2455,7 @@ Therefore it may vary over time when new versions of DCAT-AP are created.
                                     0..*
                                 </td>
                                 <td property="rdfs:comment">
-                                     The function played by the TemporalEntitySpecification, such as a deadline or a validity period.
+                                    The function played by the TemporalEntitySpecification, such as a deadline or a validity period.
                                 </td>
                                 <td property="skos:scopeNote">
                                     For instance as deadline, moment of entering into force, etc.
@@ -2770,12 +2770,10 @@ Therefore it may vary over time when new versions of DCAT-AP are created.
 <h2>
    Supporting Entities
 </h2>
-The supporting entities are supporting the main entities in the Application Profile. 
-The scope and objective of the Application profile is fully covered with the main entities.
-The listed entities are supporting because they form the range of properties 
-or are detailed subclasses exploring specific aspects of some use cases. 
-In this application profile, the supporting entities are those that are defined in the same namespace as the main entities.
-Those that are imported are listed in a subsequent section.
+
+Supporting entities complement the main entities in the Application Profile. 
+The scope and objectives of the profile are fully covered by the main entities; supporting entities serve as property ranges or as subclasses used in specific use cases. 
+In this context, supporting entities are those defined in the same namespace as the main entities; imported entities are listed in a subsequent section.
 
 
 
@@ -2875,7 +2873,7 @@ Those that are imported are listed in a subsequent section.
                     Definition
                 </dt>
                 <dd>
-                    An continuous amount of time without reference to specific temporal points. It defines a time interval in terms of length rather than absolute positioning in time, used to express concepts such as 'within 30 days', 'for 6 months', or other relative temporal requirements that are not anchored to calendar dates.
+                    A continuous amount of time without reference to specific temporal points. It defines a time interval in terms of length rather than absolute positioning in time, used to express concepts such as 'within 30 days', 'for 6 months', or other relative temporal requirements that are not anchored to calendar dates.
                 </dd>
                 
                 
@@ -3037,7 +3035,7 @@ Those that are imported are listed in a subsequent section.
                     Definition
                 </dt>
                 <dd>
-                    The rate at which a temporal entity recurs or repeats over a specified period of time
+                    The rate at which a temporal entity recurs or repeats over a specified period of time.
                 </dd>
                 
                 
@@ -3804,7 +3802,7 @@ Those that are imported are listed in a subsequent section.
                     Definition
                 </dt>
                 <dd>
-                    The legal status of Action.
+                    The legal status of an Action.
                 </dd>
                 
                 
@@ -3864,7 +3862,7 @@ Those that are imported are listed in a subsequent section.
                     Definition
                 </dt>
                 <dd>
-                    A specific temporal role or function. It classifies temporal specifications according to their functional meaning in the normative provisions, such as "deadline", validity period, or reporting frequency. This classification helps to interpret the meaning of various temporal specifications within the regulatory framework, among others.
+                    A specific temporal role or function. It classifies temporal specifications according to their functional meaning in the normative provisions, such as "deadline", "validity period", or "reporting frequency". This classification helps to interpret the meaning of various temporal specifications within the regulatory framework, among others.
                 </dd>
                 
                 
@@ -5306,9 +5304,8 @@ In this section we illustrate how the texts from legal documents are connected w
 
 The objective of RRMV is to provide a structured representation for legal expressions that mandate an activity.
 Embedding and sharing the text from which the structure representation has been derived is in principle not needed because the one can retrieve this via the relationships that connect Requirement with the legal documents (isPartOf eli:Work, PartOf eli:Expression). 
-Nevertheless the relationships are sufficient for the main use cases, it is often needed to have a more fine-grained reference to the text that initiated the instance.
-These textual extracts aid in the trust building and the editorial process, establishing RRMV instances.
-
+Nevertheless, while these relationships are sufficient for the main use cases, it is often necessary to provide a finergrained reference to the text that initiated an instance.
+ Such textual extracts aid trustbuilding and the editorial process when establishing RRMV instances.
 
 <h4>The Web Annotation Vocabulary for the RRMV context</h4>
 The RRMV utilises the Web Annotation Vocabulary [annotation-vocab] to establish connections between the classes of the ontology and the relevant portions of the legal text. In the context of the RRMV, the usage of this vocabulary has been restricted in the following ways:
@@ -5357,7 +5354,7 @@ example:Requirement0032024R0900 a rrmv:Requirement ;
     dcterms:isPartOf &lt;http://data.europa.eu/eli/reg/2024/900/oj&gt; .
 
 example:Action0032024R0900 a rrmv:Action ;
-    rrmv:hasActionResult example:ActionResult032024R0900 ;
+    rrmv:hasResult example:ActionResult032024R0900 ;
 
 example:ActionResult032024R0900 a rrmv:ActionResult .
 
@@ -5367,40 +5364,28 @@ example:ActionResult032024R0900 a rrmv:ActionResult .
 <h4>Usage of annotations in different RDF serialisations</h4>
 
 <aside class="example" title="Illustration of the use of the Web Annotation Vocabulary for legislation CELEX:32024R0900">
-<pre class="nohighlight turtle">
+<pre class="highlight jsonld">
 { 
 
   "@context": { 
 
     "@base": "http://data.europa.eu/2qy/rrmv#", 
-
     "@vocab": "http://data.europa.eu/2qy/rrmv#", 
-
     "rrmv": "http://data.europa.eu/2qy/rrmv#", 
-
     "rrmv-extra": "http://data.europa.eu/2qy/rrmv/extra#", 
-
     "date": "http://www.w3.org/2001/XMLSchema#date", 
-
     "example": "https://system.org/example#", 
 
     "hasAnnotation": { 
-
       "@reverse": "rrmv:hasTarget", 
-
       "@context": { 
-
         "en": { 
-
           "@id": "rrmv:hasBody", 
-
           "@language": "en" 
-
         } 
-
       } 
-
-    }, 
+    } 
+}
 </pre>
 </aside>
 
