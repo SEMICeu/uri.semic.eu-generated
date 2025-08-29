@@ -5464,56 +5464,150 @@ For the running example the following core structure can be constructed accordin
  
 <aside class="example" title="Main entities example">
 <pre class="highlight turtle">
-@prefix ns0: <http://data.europa.eu/2qy/rrmv#> .
 
-<https://system.org/example#REG20181999OJART26PAR2>
-  ns0:hasAction _:genid1 ;
-  ns0:isPartOf <http://data.europa.eu/eli/reg/2018/1999/oj/art_26/par_2> ;
-  a ns0:Requirement .
-
-[]
-  ns0:hasBody "By 31 July 2021, ... year X-1."@en ;
-  ns0:hasTarget <https://system.org/example#REG20181999OJART26PAR2> .
-
-_:genid1
-  ns0:atTime _:genid3 ;
-  ns0:hasAgentRole [
-    ns0:forAgent _:genid12 ;
-    ns0:withRole ns0:addressee
+@prefix dcterms: <http://purl.org/dc/terms/> . 
+@prefix eli: <http://data.europa.eu/eli/ontology#> . 
+@prefix skos: <http://www.w3.org/2004/02/skos/core#>. 
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> . 
+@prefix oa: <http://www.w3.org/ns/oa#> .
+@prefix time: <http://www.w3.org/2006/time#>. 
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> . 
+@prefix rrmv: <http://data.europa.eu/2qy/rrmv#> . 
+@prefix rrmv-codes: <http://data.europa.eu/2qy/rrmv-codes#> . 
+@prefix example: <https://system.org/example#> . 
+@prefix rrmv-extra: < http://data.europa.eu/2qy/rrmv/extra#> . 
+ 
+example:REG20181999OJART26PAR2
+  a example:Requirement ;
+  rrmv:hasURI "http://data.europa.eu/eli/reg/2018/1999/oj/art_26/par_2"^^xsd:anyURI ;
+  rrmv:isPartOf <http://data.europa.eu/eli/reg/2018/1999/oj> ;
+  rrmv:produces example:REG20181999OJART26PAR2_Action.
+.
+example:REG20181999OJART26PAR2_Action
+  rrmv:atTime example:temporalEntitySpec;
+  rrmv:hasAgentRole [
+    rrmv:forAgent example:TheCommission;
+    rrmv:withRole rrmv:addressee
   ], [
-    ns0:forAgent _:genid8 ;
-    ns0:withRole ns0:addresser
+    rrmv:forAgent example:MemberState;
+    rrmv:withRole rrmv:addresser
   ] ;
-  ns0:hasResult _:genid6 .
+  rrmv:hasResult example:REG20181999OJART26PAR2_ActionResult.
+  
+example:REG20181999OJART26PAR2_ActionResult a rrmv:ActionResult.
+example:MemberState a rrmv:Agent.
+example:TheCommission a rrmv:Agent.
 
-[]
-  ns0:hasBody "Member State"@en ;
-  ns0:hasTarget _:genid8 .
+example:temporalEntitySpec
+ a rrmv:InstantSpec .
 
-[]
-  ns0:hasBody "approximated greenhouse gas inventories for the year X-1"@en ;
-  ns0:hasTarget _:genid6 .
 
-[]
-  ns0:hasBody "Member States shall report to the Commission"@en ;
-  ns0:hasTarget _:genid1 .
+[] a oa:Annotation;
+  rrmv:hasTarget <https://system.org/example#REG20181999OJART26PAR2> ;
+  rrmv:hasBody "By 31 July 2021, ... year X-1."@en 
+  
+[] a oa:Annotation;
+  rrmv:hasTarget example:REG20181999OJART26PAR2_Action;
+  rrmv:hasBody "Member States shall report to the Commission"@en .
+  
+[] a oa:Annotation;
+  rrmv:hasTarget example:TemporalEntitySpec;
+  rrmv:hasBody "By 31 July 2021, and every year hereafter"@en .
 
-[]
-  ns0:hasBody "By 31 July 2021, and every year hereafter"@en ;
-  ns0:hasTarget _:genid3 .
+[] a oa:Annotation;
+  rrmv:hasTarget example:TheCommission;
+  rrmv:hasBody "the Commission"@en .
 
-[]
-  ns0:hasBody "the Commission"@en ;
-  ns0:hasTarget _:genid12 .
+[] a oa:Annotation;
+  rrmv:hasTarget example:MemberState;
+  rrmv:hasBody "Member State"@en .
 
+[] a oa:Annotation;
+  rrmv:hasTarget example:REG20181999OJART26PAR2_ActionResult;
+  rrmv:hasBody "approximated greenhouse gas inventories for the year X-1"@en .
+
+
+</pre>
+</aside>
+
+Using addition background knowledge, interpreting the temporal specification and the agent roles, enables to represent a specific activity by the 
+agent France for the year 2023. 
+
+<aside class="example" title="Main entities example">
+<pre class="highlight turtle">
+
+@prefix dcterms: &lt;http://purl.org/dc/terms/&gt; .
+@prefix eli: &lt;http://data.europa.eu/eli/ontology#&gt; .
+@prefix skos: &lt;http://www.w3.org/2004/02/skos/core#&gt;.
+@prefix rdfs: &lt;http://www.w3.org/2000/01/rdf-schema#&gt; .
+@prefix oa: &lt;http://www.w3.org/ns/oa#&gt; .
+@prefix time: &lt;http://www.w3.org/2006/time#&gt;.
+@prefix xsd: &lt;http://www.w3.org/2001/XMLSchema#&gt; .
+@prefix rrmv: &lt;http://data.europa.eu/2qy/rrmv#&gt; .
+@prefix rrmv-codes: &lt;http://data.europa.eu/2qy/rrmv-codes#&gt; .
+@prefix example: &lt;https://system.org/example#&gt; .
+@prefix rrmv-extra: &lt;http://data.europa.eu/2qy/rrmv/extra#&gt; .
+ 
+ 
+example:REG20181999OJART26PAR2_FRANCE
+ rrmv:produces example:REG20181999OJART26PAR2_ACTION_FRANCE ;
+ rrmv:isPartOf &lt;http://data.europa.eu/eli/reg/2018/1999/oj/art_26/par_2&gt; ; 
+ a rrmv:Requirement .
+ 
+example:REG20181999OJART26PAR2_ACTION_FRANCE a rrmv:Action ;
+ rrmv:atTime example:By31July2023 ; 
+ rrmv:hasAgentRole [ 
+   a rrmv:AgentRole ;
+   rrmv:forAgent example:thecommission; 
+   rrmv:withRole rrmv:addressee 
+ ], [
+   a rrmv:AgentRole ; 
+   rrmv:forAgent example:france; 
+   rrmv:withRole rrmv:addresser 
+ ] ; 
+ rrmv:hasResult example:example:REG20181999OJART26PAR2_RESULT_FRANCE_2022 .
+ 
+example:example:REG20181999OJART26PAR2_RESULT_FRANCE_2022 a rrmv:ActionResult. 
+ 
+ 
+[] a oa:Annotation;
+ rrmv:hasBody "France shall report to the Commission by 31 July 2023"@en ; 
+ rrmv:hasTarget example:REG20181999OJART26PAR2_ACTION_FRANCE .
+ 
+[] a oa:Annotation;
+ rrmv:hasBody "approximated greenhouse gas inventories for the year 2022"@en ; 
+ rrmv:hasTarget example:example:REG20181999OJART26PAR2_RESULT_FRANCE_2022 .
+ 
+example:By31July2023
+ rrmv:hasFunction rrmv:deadline;
+ rrmv-extra:moment "2023-07-31"^^xsd:date ; 
+ a rrmv:InstantSpec .
+ 
+[] a oa:Annotation;
+ rrmv:hasBody "By 31 July 2023"@en ; 
+ rrmv:hasTarget example:By31July2023.
+ 
+[] a oa:Annotation;
+ rrmv:hasBody "the Commission"@en ; 
+ rrmv:hasTarget example:thecommission.
+ 
+[] a oa:Annotation;
+ rrmv:hasBody "France"@en ; 
+ rrmv:hasTarget example:france. 
+ 
 </pre>
 </aside>
 
 
 <h3>Temporal representation</h3>
 This section focusses on the use of the temporal specifications to denote the temporal aspects of a Requirement.
-Encoding the temporal information using the RRMV temporal specification is done as follows.
-
+The RRMV temportal specifications provide a adaptable environment to express these temporal aspects.
+Here we illustrate typical patterns.
+<br/>
+In the running example the requirement is about a reporting that hase to be performed each year.
+These are determined as a collection of deadlines 31 July 2021, 31 July 2022, 31 July 2023, ... with no end.
+<br/>
+One possible representation is as follows expressing it as a instant with a frequency.
 
 <aside class="example" title="Temporal information - encoding 1">
 <pre class="nohighlight turtle">
@@ -5533,8 +5627,8 @@ Encoding the temporal information using the RRMV temporal specification is done 
 example:action1 a rrmv:Action;
    rrmv:atTime [
       a rrmv:InstantSpec;
-      rrmv:hasFunction rrmv-codes:deadline;
-      xxx:moment "2021-07-31"^^xsd:date; # TBD
+      rrmv:hasFunction rrmv:deadline;
+      rrmv-extra:value "2021-07-31"^^xsd:date; # TBD
       rrmv:hasFrequency [
           a rrmv:Frequency;
           rrmv:value "1";
@@ -5545,8 +5639,7 @@ example:action1 a rrmv:Action;
 </pre>
 </aside>
 
-This describes a collection of deadlines 31 July 2021, 31 July 2022, 31 July 2023, ... with no end.
-
+An alternative representation is by expressing it a moment in a range of deadlines: an instance which is constrainted by a start date and a frequency.
 
 <aside class="example" title="Temporal information - encoding 2">
 <pre class="nohighlight turtle">
@@ -5569,7 +5662,7 @@ example:action1 a rrmv:Action;
       a rrmv:InstantSpec;
       rrmv:starts [
          a rrmv:InstantSpec;
-         xxx:moment "2021-07-31"^^xsd:date; # TBD
+         rrmv-extra:value "2021-07-31"^^xsd:date; # TBD
          ];
       rrmv:hasFrequency [
           a rrmv:Frequency;
@@ -5581,98 +5674,7 @@ example:action1 a rrmv:Action;
 </pre>
 </aside>
 
-
-
-<aside class="example" title="Temporal information - encoding 3">
-<pre class="nohighlight turtle">
-@prefix dcterms: &lt;http://purl.org/dc/terms/&gt; .
-@prefix eli: &lt;http://data.europa.eu/eli/ontology#&gt; .
-@prefix skos: &lt;http://www.w3.org/2004/02/skos/core#&gt;.
-@prefix rdfs: &lt;http://www.w3.org/2000/01/rdf-schema#&gt; .
-@prefix oa: &lt;http://www.w3.org/ns/oa#&gt;
-@prefix time: &lt;http://www.w3.org/2006/time#&gt;.
-@prefix xsd: &lt;http://www.w3.org/2001/XMLSchema#&gt; .
-
-@prefix rrmv: &lt;http://data.europa.eu/2qy/rrmv#&gt; .
-@prefix rrmv-codes: &lt;http://data.europa.eu/2qy/rrmv-codes#&gt; .
-
-@prefix example: &lt;https://system.org/example#&gt; .
-
-[] a oa:Annotation;
-    rrmv:hasBody "31 July 2021";
-    rrmv:hasTarget example:action1TS1.
-
-[] a oa:Annotation;
-    rrmv:hasBody "every year thereafter (year X)";
-    rrmv:hasTarget example:action1TS2.
-
-example:action1 a rrmv:Action;
-   rrmv:atTime [
-      rrmv:hasFunction rrmv-codes:deadline;
-      a rrmv:InstantSpec;
-      rrmv:starts example:action1TS1; 
-      rrmv:hasFrequency example:action1TS2
-      ] .
-
-example:action1TS1 a rrmv:InstantSpec;
-      xxx:moment "2021-07-31"^^xsd:date. #TBD 
-
-example:action1TS2  a rrmv:Frequency;
-      rrmv:value "1";
-      rrmv:unit  rrmv-codes:year. # TBD
-
-</pre>
-</aside>
-
-Other temporal patterns.
-
-<aside class="example" title="Temporal information - encoding 3">
-<pre class="nohighlight turtle">
-@prefix dcterms: &lt;http://purl.org/dc/terms/&gt; .
-@prefix eli: &lt;http://data.europa.eu/eli/ontology#&gt; .
-@prefix skos: &lt;http://www.w3.org/2004/02/skos/core#&gt;.
-@prefix rdfs: &lt;http://www.w3.org/2000/01/rdf-schema#&gt; .
-@prefix oa: &lt;http://www.w3.org/ns/oa#&gt;
-@prefix time: &lt;http://www.w3.org/2006/time#&gt;.
-@prefix xsd: &lt;http://www.w3.org/2001/XMLSchema#&gt; .
-
-@prefix rrmv: &lt;http://data.europa.eu/2qy/rrmv#&gt; .
-@prefix rrmv-codes: &lt;http://data.europa.eu/2qy/rrmv-codes#&gt; .
-
-@prefix example: &lt;https://system.org/example#&gt; .
-
-[] a oa:Annotation;
-    rrmv:hasBody "not earlier than 31 July 2021";
-    rrmv:hasTarget example:action1TS1.
-
-example:action1 a rrmv:Action;
-   rrmv:atTime [
-      a rrmv:InstantSpec;
-      rrmv:starts example:action1TS1; 
-      ] .
-
-example:action1TS1 a rrmv:InstantSpec;
-      xxx:moment "2021-07-31"^^xsd:date. #TBD 
-
-[] a oa:Annotation;
-    oa:hasBody "9 months after the directive went into force";
-    oa:hasTarget example:action1TS1.
-
-example:action1 a rrmv:Action;
-   rrmv:atTime [
-      a rrmv:TemporalEntitySpec;
-      rrmv:after example:action1TS1; 
-      ] .
-
-example:action1TS1 a rrmv:DurationSpec;
-      rrmv:hasDuration "P9M"^^xsd:duration;
-      rrmv:after [ 
-          a rrmv:InstantSpec; 
-          rrmv:externalEvent true
-          ].
-
-</pre>
-</aside>
+In the future this section will be elaborated with more examples.
 
 </section>
 
