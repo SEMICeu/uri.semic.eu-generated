@@ -35,6 +35,7 @@
   <xs:element name="CoordinationGroup" type="CoordinationGroupType"/>
   <xs:element name="OnlineShortTermRentalPlatform" type="OnlineShortTermRentalPlatformType"/>
   <xs:element name="Order" type="OrderType"/>
+  <xs:element name="RandomCheckResult" type="RandomCheckResultType"/>
   <xs:element name="RegistrationNumber" type="RegistrationNumberType"/>
   <xs:element name="RegistrationProcedure" type="RegistrationProcedureType"/>
   <xs:element name="ShortTermAccomodationRentalService" type="ShortTermAccomodationRentalServiceType"/>
@@ -791,14 +792,14 @@ and managed by a Base Registry Service.</xs:documentation>
   </xs:complexType>
   <xs:complexType name="OnlineShortTermRentalPlatformType">
     <xs:sequence>
-      <xs:element name="checks" ref="SingleDigitalEntryPointType" maxOccurs="unbounded" minOccurs="0">
-        <xs:annotation>
-          <xs:documentation xml:lang="en">It indicates the Single Digital Entry Point being checked.</xs:documentation>
-        </xs:annotation>
-      </xs:element>
       <xs:element name="identifier" type="xs:string" maxOccurs="1" minOccurs="1">
         <xs:annotation>
           <xs:documentation xml:lang="en">An Identifier for the OnlineShortTermRentalPlatform</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="performs" ref="RandomCheckResultType" maxOccurs="unbounded" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation xml:lang="en">The random check result executed by the Online Short Rental Platform.</xs:documentation>
         </xs:annotation>
       </xs:element>
       <xs:element name="providesInformationTo" ref="SingleDigitalEntryPointType" maxOccurs="unbounded" minOccurs="0">
@@ -859,6 +860,45 @@ and managed by a Base Registry Service.</xs:documentation>
     <xs:attribute name="OrderRef" type="xs:IDREF">
       <xs:annotation>
         <xs:documentation xml:lang="en">Reference to Order ID</xs:documentation>
+      </xs:annotation>
+    </xs:attribute>
+  </xs:complexType>
+  <xs:complexType name="RandomCheckResultType">
+    <xs:sequence>
+      <xs:element name="checkDate" type="xs:dateTime" maxOccurs="1" minOccurs="1">
+        <xs:annotation>
+          <xs:documentation xml:lang="en">The date in which the check has been perfomed.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="concerns" ref="RegistrationNumberType" maxOccurs="unbounded" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation xml:lang="en">It indicated the Registration Number concerned.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="details" type="xs:string" maxOccurs="1" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation xml:lang="en">A free-text indicating more information on the result of the check.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="isReportedTo" ref="PublicOrganisationType" maxOccurs="unbounded" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation xml:lang="en">The Competent Authoriy to which the Random Check Result is provided.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="result" type="ConceptType" maxOccurs="1" minOccurs="1">
+        <xs:annotation>
+          <xs:documentation xml:lang="en">The type of result of the check.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="verifiedVia" ref="SingleDigitalEntryPointType" maxOccurs="unbounded" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation xml:lang="en">The Single Digital Entry Point on which the check relies on.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+    </xs:sequence>
+    <xs:attribute name="RandomCheckResultRef" type="xs:IDREF">
+      <xs:annotation>
+        <xs:documentation xml:lang="en">Reference to RandomCheckResult ID</xs:documentation>
       </xs:annotation>
     </xs:attribute>
   </xs:complexType>
