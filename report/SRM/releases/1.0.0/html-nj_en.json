@@ -2,7 +2,7 @@
   "metadata": {
     "title": "Semantic Registry Model",
     "uri": "https://data.europa.eu/m8g",
-    "issued": "2025-09-16",
+    "issued": "2025-09-25",
     "baseURI": "https://data.europa.eu/m8g/",
     "filename": "srm",
     "navigation": {
@@ -17,8 +17,8 @@
     },
     "status": "Draft",
     "statuslabel": "Onbekend",
-    "repositoryurl": "git@uri.semic.eu-thema:SEMICeu/uri.semic.eu-thema.git/tree/128d115f3f36a0b0d17c574559948125bd384ad6",
-    "changelogurl": "git@uri.semic.eu-thema:SEMICeu/uri.semic.eu-thema.git/blob/128d115f3f36a0b0d17c574559948125bd384ad6/CHANGELOG",
+    "repositoryurl": "git@uri.semic.eu-thema:SEMICeu/uri.semic.eu-thema.git/tree/4c411f4daee9726346222076177549eb44591217",
+    "changelogurl": "git@uri.semic.eu-thema:SEMICeu/uri.semic.eu-thema.git/blob/4c411f4daee9726346222076177549eb44591217/CHANGELOG",
     "feedbackurl": "https://github.com/SEMICeu/SRM/issues",
     "standaardregisterurl": "https://github.com/SEMICeu/SRM/blob/master/releases/1.0.0/Changelog.md",
     "usesVocs": [],
@@ -456,47 +456,6 @@
             "definition-en": "An free-text account of the resource.",
             "property-usage-scope": "mandatory",
             "usageNote-en": "This property can be repeated for parallel language versions of the description."
-          }
-        },
-        {
-          "uri": "http://purl.org/dc/terms/hasPart",
-          "name": "hasPart",
-          "sort": "has part",
-          "label": {
-            "en": "has part"
-          },
-          "description": {
-            "en": "\tA related resource that is included either physically or logically in the described resource."
-          },
-          "usage": {},
-          "domain": [
-            {
-              "EA-Name": "Standard",
-              "uri": "http://purl.org/dc/terms/Standard"
-            }
-          ],
-          "range": [
-            {
-              "range_label": "Class",
-              "range_uri": "http://www.w3.org/2000/01/rdf-schema#Class"
-            }
-          ],
-          "scopedrange": [
-            {
-              "range_uri": "#Class",
-              "range_puri": "http://www.w3.org/2000/01/rdf-schema#Class",
-              "range_label": {
-                "en": "Class"
-              }
-            }
-          ],
-          "cardinality": "0..*",
-          "codelist_uri": "",
-          "rawTags": {
-            "label-en": "has part",
-            "property-usage-scope": "optional",
-            "uri": "http://purl.org/dc/terms/hasPart",
-            "definition-en": "\tA related resource that is included either physically or logically in the described resource."
           }
         },
         {
@@ -1103,6 +1062,47 @@
       },
       "properties": [
         {
+          "uri": "http://www.w3.org/2000/01/rdf-schema#isDefinedBy",
+          "name": "isDefinedBy",
+          "sort": "is defined by",
+          "label": {
+            "en": "is defined by"
+          },
+          "description": {
+            "en": "A resource defining the subject resource."
+          },
+          "usage": {},
+          "domain": [
+            {
+              "EA-Name": "Class",
+              "uri": "http://www.w3.org/2000/01/rdf-schema#Class"
+            }
+          ],
+          "range": [
+            {
+              "range_label": "ResourceDescriptor",
+              "range_uri": "http://www.w3.org/ns/dx/prof/ResourceDescriptor"
+            }
+          ],
+          "scopedrange": [
+            {
+              "range_uri": "#Resource Descriptor",
+              "range_puri": "http://www.w3.org/ns/dx/prof/ResourceDescriptor",
+              "range_label": {
+                "en": "Resource Descriptor"
+              }
+            }
+          ],
+          "cardinality": "1",
+          "codelist_uri": "",
+          "rawTags": {
+            "label-en": "is defined by",
+            "property-usage-scope": "optional",
+            "uri": "http://www.w3.org/2000/01/rdf-schema#isDefinedBy",
+            "definition-en": "A resource defining the subject resource."
+          }
+        },
+        {
           "uri": "http://www.w3.org/2000/01/rdf-schema#label",
           "name": "name",
           "sort": "name",
@@ -1188,6 +1188,74 @@
             "definition-en": "The alternative name for the class.",
             "label-en": "alternative label",
             "usageNote-en": "This property can be repeated for parallel language versions of the label."
+          }
+        }
+      ]
+    },
+    {
+      "uri": "http://www.w3.org/ns/dx/prof/Profile",
+      "name": "Profile",
+      "label": {
+        "en": "Profile"
+      },
+      "sort": "Profile",
+      "description": {
+        "en": "A specification that constrains, extends, combines, or provides guidance or explanation about the usage of other specifications.\r\n\r\nThis definition includes what are sometimes called \"application profiles\", \"metadata application profiles\", or \"metadata profiles\"."
+      },
+      "usage": {},
+      "parents": [
+        {
+          "label": "Standard",
+          "name": "Standard",
+          "package": "dct",
+          "uri": "http://purl.org/dc/terms/Standard",
+          "scoped_uri": "#Standard"
+        }
+      ],
+      "rawTags": {
+        "uri": "http://www.w3.org/ns/dx/prof/Profile",
+        "label-en": "Profile",
+        "definition-en": "A specification that constrains, extends, combines, or provides guidance or explanation about the usage of other specifications.\r\n\r\nThis definition includes what are sometimes called \"application profiles\", \"metadata application profiles\", or \"metadata profiles\"."
+      },
+      "properties": [
+        {
+          "uri": "http://www.w3.org/ns/dx/prof/isProfileOf",
+          "name": "isProfileOf",
+          "sort": "is profile of",
+          "label": {
+            "en": "is profile of"
+          },
+          "description": {
+            "en": "A specification for which this Profile defines constraints, extensions, or which it uses in combination with other specifications, or provides guidance or explanation about its usage."
+          },
+          "usage": {},
+          "domain": [
+            {
+              "EA-Name": "Profile",
+              "uri": "http://www.w3.org/ns/dx/prof/Profile"
+            }
+          ],
+          "range": [
+            {
+              "range_label": "Standard",
+              "range_uri": "http://purl.org/dc/terms/Standard"
+            }
+          ],
+          "scopedrange": [
+            {
+              "range_uri": "#Standard",
+              "range_puri": "http://purl.org/dc/terms/Standard",
+              "range_label": {
+                "en": "Standard"
+              }
+            }
+          ],
+          "cardinality": "1..*",
+          "codelist_uri": "",
+          "rawTags": {
+            "definition-en": "A specification for which this Profile defines constraints, extensions, or which it uses in combination with other specifications, or provides guidance or explanation about its usage.",
+            "uri": "http://www.w3.org/ns/dx/prof/isProfileOf",
+            "label-en": "is profile of"
           }
         }
       ]

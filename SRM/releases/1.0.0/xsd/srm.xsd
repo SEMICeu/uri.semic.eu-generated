@@ -10,6 +10,7 @@
   <xs:element name="NonNegativeInteger" type="NonNegativeIntegerType"/>
   <xs:element name="String" type="StringType"/>
   <xs:element name="Code" type="CodeType"/>
+  <xs:element name="Profile" type="ProfileType"/>
   <xs:element name="ResourceDescriptor" type="ResourceDescriptorType"/>
   <xs:element name="Agent" type="AgentType"/>
   <xs:element name="Document" type="DocumentType"/>
@@ -83,11 +84,6 @@
       <xs:element name="hasImplementation" type="xs:anyURI" maxOccurs="unbounded" minOccurs="0">
         <xs:annotation>
           <xs:documentation xml:lang="en">The portal/repository implementing such Standard.</xs:documentation>
-        </xs:annotation>
-      </xs:element>
-      <xs:element name="hasPart" ref="ClassType" maxOccurs="unbounded" minOccurs="0">
-        <xs:annotation>
-          <xs:documentation xml:lang="en">	A related resource that is included either physically or logically in the described resource.</xs:documentation>
         </xs:annotation>
       </xs:element>
       <xs:element name="hasResource" ref="ResourceDescriptorType" maxOccurs="unbounded" minOccurs="0">
@@ -192,6 +188,11 @@
           <xs:documentation xml:lang="en">The alternative name for the class.</xs:documentation>
         </xs:annotation>
       </xs:element>
+      <xs:element name="isDefinedBy" ref="ResourceDescriptorType" maxOccurs="1" minOccurs="1">
+        <xs:annotation>
+          <xs:documentation xml:lang="en">A resource defining the subject resource.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
       <xs:element name="name" type="xs:string" maxOccurs="unbounded" minOccurs="1">
         <xs:annotation>
           <xs:documentation xml:lang="en">The name of the class.</xs:documentation>
@@ -241,6 +242,20 @@
     <xs:attribute name="CodeRef" type="xs:IDREF">
       <xs:annotation>
         <xs:documentation xml:lang="en">Reference to Code ID</xs:documentation>
+      </xs:annotation>
+    </xs:attribute>
+  </xs:complexType>
+  <xs:complexType name="ProfileType">
+    <xs:sequence>
+      <xs:element name="isProfileOf" ref="StandardType" maxOccurs="unbounded" minOccurs="1">
+        <xs:annotation>
+          <xs:documentation xml:lang="en">A specification for which this Profile defines constraints, extensions, or which it uses in combination with other specifications, or provides guidance or explanation about its usage.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+    </xs:sequence>
+    <xs:attribute name="ProfileRef" type="xs:IDREF">
+      <xs:annotation>
+        <xs:documentation xml:lang="en">Reference to Profile ID</xs:documentation>
       </xs:annotation>
     </xs:attribute>
   </xs:complexType>
