@@ -48,6 +48,7 @@
   <xs:element name="Association" type="AssociationType"/>
   <xs:element name="Attribution" type="AttributionType"/>
   <xs:element name="Entity" type="EntityType"/>
+  <xs:element name="TestPlan" type="TestPlanType"/>
   <xs:element name="Agent" type="AgentType"/>
   <xs:element name="Document" type="DocumentType"/>
   <xs:simpleType name="Literal">
@@ -1907,7 +1908,13 @@
     </xs:attribute>
   </xs:complexType>
   <xs:complexType name="AssociationType">
-    <xs:sequence/>
+    <xs:sequence>
+      <xs:element name="hadPlan" ref="TestPlanType" maxOccurs="unbounded" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation xml:lang="en">A plan is an entity that represents a set of actions or steps intended by one or more agents to achieve some goals.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+    </xs:sequence>
     <xs:attribute name="AssociationRef" type="xs:IDREF">
       <xs:annotation>
         <xs:documentation xml:lang="en">Reference to Association ID</xs:documentation>
@@ -1934,10 +1941,40 @@
     </xs:attribute>
   </xs:complexType>
   <xs:complexType name="EntityType">
-    <xs:sequence/>
+    <xs:sequence>
+      <xs:element name="description" type="xs:string" maxOccurs="unbounded" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation xml:lang="en">A free-text account of the Entity.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="degreeOfConformity" type="ConceptType" maxOccurs="1" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation xml:lang="en">Degree of conformity of the test result [[INSPIRE-DoC]].</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="qualifiedAssociation" ref="AssociationType" maxOccurs="unbounded" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation xml:lang="en">An activity association is an assignment of responsibility to an agent for an activity, indicating that the agent had a role in the activity. It further allows for a plan to be specified, which is the plan intended by the agent to achieve some goals in th</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+    </xs:sequence>
     <xs:attribute name="EntityRef" type="xs:IDREF">
       <xs:annotation>
         <xs:documentation xml:lang="en">Reference to Entity ID</xs:documentation>
+      </xs:annotation>
+    </xs:attribute>
+  </xs:complexType>
+  <xs:complexType name="TestPlanType">
+    <xs:sequence>
+      <xs:element name="wasDerivedFrom" ref="EntityType" maxOccurs="unbounded" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation xml:lang="en">A derivation is a transformation of an entity into another, an update of an entity resulting in a new one, or the construction of a new entity based on a pre-existing entity.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+    </xs:sequence>
+    <xs:attribute name="TestPlanRef" type="xs:IDREF">
+      <xs:annotation>
+        <xs:documentation xml:lang="en">Reference to TestPlan ID</xs:documentation>
       </xs:annotation>
     </xs:attribute>
   </xs:complexType>
