@@ -1,0 +1,570 @@
+@prefix : <http://data.europa.eu/2qy/rrmv#> .
+@prefix eli: <http://data.europa.eu/eli/ontology#> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix skos: <http://www.w3.org/2004/02/skos/core#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix frbr: <http://iflastandards.info/ns/fr/frbr/frbroo> .
+@prefix oa: <http://www.w3.org/ns/oa#> .
+@prefix dct: <http://purl.org/dc/terms/> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix xml: <http://www.w3.org/XML/1998/namespace> .
+@prefix dc: <http://purl.org/dc/elements/1.1/> .
+
+
+<http://data.europa.eu/2qy/rrmv> a owl:Ontology;
+  owl:imports <http://data.europa.eu/eli/ontology>, <http://purl.org/dc/terms/>, <http://purl.org/dc/terms>,
+    <http://www.w3.org/ns/oa#>, <http://iflastandards.info/ns/fr/frbr/frbroo>;
+  owl:versionInfo "0.2.0"@en;
+  dc:rights "This work is distributed under a EUPL 1.2 License (https://interoperable-europe.ec.europa.eu/sites/default/files/custom-page/attachment/2020-03/EUPL-1.2%20EN.txt)."@en;
+  dct:contributor "Andrea Giovanni Nuzzolese (CNR)"@en, "Tomas Slangen (PwC EU Services)"@en,
+    "Alexander Potloot (PwC EU Services)"@en;
+  dct:creator "Monica Palmirani (University of Bologna)"@en, "Cecile Guasch (DIGIT.B2)"@en,
+    "Alessio Nardin (DIGIT.B2)"@en, "Bert Van Nuffelen (Digital Flanders)"@en, "Davide Audrito (DIGIT.B2)"@en;
+  dct:description "The RRMV ontology (Reporting Requirement Metadata Vocabulary) can be used for modelling and representing Reporting Requirements set in legal resources."@en;
+  dct:title "Reporting Requirement Metadata Vocabulary"@en;
+  dct:modified "2025-06-25T16:18:27"^^xsd:dateTime .
+
+:hasFunction a owl:ObjectProperty;
+  rdfs:domain :TemporalEntitySpec;
+  rdfs:range :TemporalFunction;
+  rdfs:label "has temporal function"@en;
+  dct:modified "2025-04-10T15:55:41"^^xsd:dateTime;
+  dct:created "2025-03-18T20:56:45"^^xsd:dateTime .
+
+:Action a owl:Class;
+  rdfs:subClassOf owl:Thing;
+  rdfs:label "Action"@en;
+  rdfs:comment "An event with at least one agent that is participant in it in a given time."@en;
+  dct:modified "2025-03-20T14:03:01"^^xsd:dateTime;
+  dct:created "2025-03-13T13:37:02"^^xsd:dateTime .
+
+:hasNext a owl:ObjectProperty;
+  rdfs:domain :Action;
+  rdfs:range :Action;
+  rdfs:label "has next"@en;
+  rdfs:comment "A succeeding action"@en;
+  dct:modified "2025-03-13T14:39:46"^^xsd:dateTime;
+  dct:created "2025-03-13T14:33:18"^^xsd:dateTime .
+
+:hasStatus a owl:ObjectProperty;
+  rdfs:domain :Action;
+  rdfs:range :Status;
+  rdfs:label "has status"@en;
+  rdfs:comment "A status of this Action."@en;
+  owl:minCardinality "0"^^xsd:nonNegativeInteger;
+  dct:modified "2025-03-24T21:42:54"^^xsd:dateTime;
+  dct:created "2025-03-13T14:03:45"^^xsd:dateTime .
+
+:Status a owl:Class;
+  rdfs:subClassOf skos:Concept;
+  rdfs:label "Status"@en;
+  rdfs:comment "The legal status of Action.";
+  dct:modified "2025-06-20T14:41:00"^^xsd:dateTime;
+  dct:created "2025-03-13T13:55:07"^^xsd:dateTime .
+
+:hasTopic a owl:ObjectProperty;
+  rdfs:domain :Requirement;
+  rdfs:range skos:Concept;
+  rdfs:label "has topic"@en;
+  dct:modified "2025-03-25T16:11:25"^^xsd:dateTime;
+  dct:created "2025-03-18T21:17:11"^^xsd:dateTime .
+
+:hasType a owl:ObjectProperty;
+  rdfs:label "has type"@en;
+  rdfs:comment "Associates entities with their class in a controlled vocabulary."@en;
+  dct:modified "2025-06-20T15:24:28"^^xsd:dateTime;
+  dct:created "2025-03-13T16:55:31"^^xsd:dateTime .
+
+:ActionResult a owl:Class;
+  rdfs:subClassOf owl:Thing, [ a owl:Restriction;
+      owl:allValuesFrom :ResultType;
+      owl:onProperty :hasType
+    ];
+  rdfs:label "ActionResult"@en;
+  rdfs:comment "The outcome of an Action"@en;
+  dct:modified "2025-03-20T14:03:25"^^xsd:dateTime;
+  dct:created "2025-03-13T13:45:09"^^xsd:dateTime .
+
+:Role a owl:Class;
+  rdfs:subClassOf owl:Thing, [ a owl:Restriction;
+      owl:allValuesFrom :RoleType;
+      owl:onProperty :hasType
+    ];
+  rdfs:label "Role"@en;
+  rdfs:comment "The function played by an Agent involved in an Action."@en;
+  dct:modified "2025-06-20T14:41:28"^^xsd:dateTime;
+  dct:created "2025-03-13T13:48:10"^^xsd:dateTime .
+
+:ResultType a owl:Class;
+  rdfs:subClassOf skos:Concept;
+  rdfs:label "Result Type"@en;
+  rdfs:comment "The kind of Action Result";
+  dct:modified "2025-03-13T13:53:14"^^xsd:dateTime;
+  dct:created "2025-03-13T13:52:49"^^xsd:dateTime .
+
+:AgentRole a owl:Class;
+  rdfs:subClassOf owl:Thing;
+  rdfs:label "AgentRole"@en;
+  rdfs:comment "A supportive class connecting agents with a role they play."@en;
+  dct:modified "2025-03-19T15:07:59"^^xsd:dateTime;
+  dct:created "2025-03-13T13:46:56"^^xsd:dateTime .
+
+:RoleType a owl:Class;
+  rdfs:subClassOf skos:Concept;
+  rdfs:label "Role Type"@en;
+  rdfs:comment "The kind of Role played by an Agent.";
+  dct:modified "2025-03-13T13:54:21"^^xsd:dateTime;
+  dct:created "2025-03-13T13:53:53"^^xsd:dateTime .
+
+:addressee a :RoleType;
+  rdfs:label "addressee"@en;
+  rdfs:comment "A role type representing the entity to whom a request is directed and who is expected to respond or comply."@en;
+  dct:modified "2025-06-26T09:28:47"^^xsd:dateTime;
+  dct:created "2025-03-20T10:16:28"^^xsd:dateTime .
+
+:addresser a :RoleType;
+  rdfs:label "addresser"@en;
+  rdfs:comment "A role type representing the entity who issues or originates a requirement."@en;
+  dct:modified "2025-06-26T09:29:26"^^xsd:dateTime;
+  dct:created "2025-03-20T10:16:31"^^xsd:dateTime .
+
+:bearer a :RoleType;
+  rdfs:label "bearer"@en;
+  rdfs:comment "A role type representing the entity who carries the responsibility or obligation associated with a requirement."@en;
+  dct:modified "2025-06-26T09:29:52"^^xsd:dateTime;
+  dct:created "2025-03-20T10:16:36"^^xsd:dateTime .
+
+:completed a :Status;
+  rdfs:label "completed"@en;
+  rdfs:comment "Status indicating that an action has been completed."@en;
+  dct:modified "2025-06-26T09:24:11"^^xsd:dateTime;
+  dct:created "2025-03-20T10:18:13"^^xsd:dateTime .
+
+:deadline a :TemporalFunction;
+  rdfs:label "deadline"@en;
+  rdfs:comment "A temporal function that specifies the latest point in time by which an action must be completed."@en;
+  dct:modified "2025-06-26T09:31:19"^^xsd:dateTime;
+  dct:created "2025-03-20T10:13:33"^^xsd:dateTime .
+
+:deleted a :Status;
+  rdfs:label "deleted"@en;
+  rdfs:comment "Status indicating that an action has been deleted and should no longer be undertaken."@en;
+  dct:modified "2025-06-26T09:24:58"^^xsd:dateTime;
+  dct:created "2025-03-20T10:18:20"^^xsd:dateTime .
+
+:implemented a :Status;
+  rdfs:label "implemented"@en;
+  rdfs:comment "Status indicating that an action has been put into practical effect through concrete measures."@en;
+  dct:modified "2025-06-26T09:25:56"^^xsd:dateTime;
+  dct:created "2025-03-20T10:18:26"^^xsd:dateTime .
+
+:implementor a :RoleType;
+  rdfs:label "implementor"@en;
+  rdfs:comment "A role type representing the entity tasked with putting a requirement into practical effect."@en;
+  dct:modified "2025-06-26T09:30:17"^^xsd:dateTime;
+  dct:created "2025-03-20T10:16:43"^^xsd:dateTime .
+
+:plan a :ResultType;
+  rdfs:label "plan"@en;
+  rdfs:comment "A result type representing a structured set of intended actions or procedures."@en;
+  dct:modified "2025-06-26T09:05:00"^^xsd:dateTime;
+  dct:created "2025-03-20T10:15:59"^^xsd:dateTime .
+
+:postponed a :Status;
+  rdfs:label "postponed"@en;
+  rdfs:comment "Status indicating that an action has been delayed to a future time from its originally scheduled execution."@en;
+  dct:modified "2025-06-26T09:26:22"^^xsd:dateTime;
+  dct:created "2025-03-20T10:19:19"^^xsd:dateTime .
+
+:proposer a :RoleType;
+  rdfs:label "proposer"@en;
+  rdfs:comment "A role type representing the entity who suggests or puts forward a proposal."@en;
+  dct:modified "2025-06-26T09:30:40"^^xsd:dateTime;
+  dct:created "2025-03-20T10:16:48"^^xsd:dateTime .
+
+:reiterated a :Status;
+  rdfs:label "reiterated"@en;
+  rdfs:comment "Status indicating that an action has been repeated or restated."@en;
+  dct:modified "2025-06-26T09:26:47"^^xsd:dateTime;
+  dct:created "2025-03-20T10:19:28"^^xsd:dateTime .
+
+:report a :ResultType;
+  rdfs:label "report"@en;
+  rdfs:comment "A result type representing a formal document containing required information, data, or analysis."@en;
+  dct:modified "2025-06-26T09:05:29"^^xsd:dateTime;
+  dct:created "2025-03-20T10:16:05"^^xsd:dateTime .
+
+:standard a :ResultType;
+  rdfs:label "standard"@en;
+  rdfs:comment "A result type representing a formal specification, guideline, or benchmark developed to ensure data consistency and quality."@en;
+  dct:modified "2025-06-26T09:06:01"^^xsd:dateTime;
+  dct:created "2025-03-20T10:16:13"^^xsd:dateTime .
+
+:suspended a :Status;
+  rdfs:label "suspended"@en;
+  rdfs:comment "Status indicating that an action has been temporarily halted but may resume in the future."@en;
+  dct:modified "2025-06-26T09:27:13"^^xsd:dateTime;
+  dct:created "2025-03-20T10:20:12"^^xsd:dateTime .
+
+:validity a :TemporalFunction;
+  rdfs:label "validity"@en;
+  rdfs:comment "A temporal function that defines the time period during which a request, obligation, or permission is effective."@en;
+  dct:modified "2025-06-26T09:31:41"^^xsd:dateTime;
+  dct:created "2025-03-20T10:13:58"^^xsd:dateTime .
+
+:hasFrequency a owl:ObjectProperty;
+  rdfs:domain :TemporalEntitySpec;
+  rdfs:range :Frequency;
+  rdfs:label "has frequency"@en;
+  rdfs:comment "The frequency in which the Action is to be executed in case of repetitive mandate. "@en;
+  owl:minCardinality "0"^^xsd:nonNegativeInteger;
+  dct:modified "2025-06-25T16:19:03"^^xsd:dateTime;
+  dct:created "2025-03-13T14:00:58"^^xsd:dateTime .
+
+:value a owl:DatatypeProperty;
+  rdfs:domain :Frequency;
+  rdfs:range xsd:integer;
+  rdfs:label "value"@en;
+  rdfs:comment "Assigns a numeric quantity to a frequency specification."@en;
+  dct:modified "2025-06-20T15:26:42"^^xsd:dateTime;
+  dct:created "2025-04-10T16:07:03"^^xsd:dateTime .
+
+:Frequency a owl:Class;
+  rdfs:subClassOf owl:Thing;
+  rdfs:label "Frequency"@en;
+  rdfs:comment "The rate at which a temporal entity recurs or repeats over a specified period of time."@en;
+  dct:modified "2025-06-20T14:42:07"^^xsd:dateTime;
+  dct:created "2025-03-13T13:47:35"^^xsd:dateTime .
+
+:atTime a owl:ObjectProperty;
+  rdfs:domain :Action, :AgentRole;
+  rdfs:range :TemporalEntitySpec;
+  rdfs:label "at time"@en;
+  owl:minCardinality "0"^^xsd:nonNegativeInteger;
+  dct:modified "2025-04-10T15:53:39"^^xsd:dateTime;
+  dct:created "2025-03-18T20:30:51"^^xsd:dateTime .
+
+:forAgent a owl:ObjectProperty;
+  rdfs:domain :AgentRole;
+  rdfs:range :Agent;
+  rdfs:label "for agent"@en;
+  rdfs:comment "The property linking a particular Role to Agent."@en;
+  dct:modified "2025-06-20T14:48:00"^^xsd:dateTime;
+  dct:created "2025-03-13T14:37:42"^^xsd:dateTime .
+
+:hasAgentRole a owl:ObjectProperty;
+  rdfs:domain :Action;
+  rdfs:range :AgentRole;
+  rdfs:label "has agent role"@en;
+  rdfs:comment "The involvement of an agent in a role within this action. "@en;
+  owl:minCardinality "0"^^xsd:nonNegativeInteger;
+  dct:modified "2025-03-24T21:40:41"^^xsd:dateTime;
+  dct:created "2025-03-13T14:35:42"^^xsd:dateTime .
+
+:hasResult a owl:ObjectProperty;
+  rdfs:domain :Action;
+  rdfs:range :ActionResult;
+  rdfs:label "has result"@en;
+  rdfs:comment "A result of an action."@en;
+  dct:modified "2025-03-13T14:40:36"^^xsd:dateTime;
+  dct:created "2025-03-13T14:31:57"^^xsd:dateTime .
+
+:produces a owl:ObjectProperty;
+  rdfs:domain :Requirement;
+  rdfs:range :Action;
+  rdfs:label "produces"@en;
+  rdfs:comment "The action that is produced by a Requirement."@en;
+  owl:minCardinality "0"^^xsd:nonNegativeInteger;
+  dct:modified "2025-06-25T16:19:35"^^xsd:dateTime;
+  dct:created "2025-03-13T13:39:29"^^xsd:dateTime .
+
+:withRole a owl:ObjectProperty;
+  rdfs:domain :AgentRole;
+  rdfs:range :Role;
+  rdfs:label "with role"@en;
+  rdfs:comment "The property linking a Agent to Role"@en;
+  owl:minCardinality "0"^^xsd:nonNegativeInteger;
+  dct:modified "2025-03-24T21:43:30"^^xsd:dateTime;
+  dct:created "2025-03-13T14:59:59"^^xsd:dateTime .
+
+:isPartOf a rdf:Property;
+  rdfs:subPropertyOf dct:isPartOf;
+  rdfs:domain :Requirement;
+  rdfs:range eli:Work;
+  rdfs:label "Is Part Of"@en;
+  owl:maxCardinality "1"^^xsd:nonNegativeInteger;
+  owl:minCardinality "0"^^xsd:nonNegativeInteger;
+  dct:modified "2025-06-20T14:54:27"^^xsd:dateTime;
+  dct:created "2025-03-13T17:08:16"^^xsd:dateTime .
+
+:changes a owl:ObjectProperty;
+  rdfs:subPropertyOf eli:changes;
+  rdfs:domain :Requirement;
+  rdfs:range :Requirement;
+  rdfs:label "changes"@en;
+  owl:minCardinality "0"^^xsd:nonNegativeInteger;
+  dct:modified "2025-03-25T16:10:45"^^xsd:dateTime;
+  dct:created "2025-03-13T17:13:19"^^xsd:dateTime .
+
+:related_to a owl:ObjectProperty;
+  rdfs:subPropertyOf eli:related_to;
+  rdfs:domain :Requirement;
+  rdfs:range :Requirement;
+  rdfs:label """related to
+"""@en;
+  owl:minCardinality "0"^^xsd:nonNegativeInteger;
+  dct:modified "2025-03-25T16:12:16"^^xsd:dateTime;
+  dct:created "2025-03-13T17:15:49"^^xsd:dateTime .
+
+[] a owl:Class;
+  owl:unionOf [ a rdf:List;
+      rdf:first :Action;
+      rdf:rest [ a rdf:List;
+          rdf:first :AgentRole;
+          rdf:rest rdf:nil
+        ]
+    ] .
+
+:TemporalFunction a owl:Class;
+  rdfs:subClassOf skos:Concept;
+  rdfs:label "Temporal Function"@en;
+  rdfs:comment "A specific temporal role or function. It classifies temporal specifications according to their functional meaning in the normative provisions, such as “deadline”, “validity period”, or “reporting frequency”. This classification helps to interpret the meaning of various temporal specifications within the regulatory framework, among others."@en;
+  dct:modified "2025-06-16T13:47:47"^^xsd:dateTime;
+  dct:created "2025-03-18T20:55:55"^^xsd:dateTime .
+
+:activated a :Status;
+  rdfs:label "activated"@en;
+  rdfs:comment "Status indicating that an action has been initiated and is currently in effect or underway."@en;
+  dct:modified "2025-06-26T09:23:45"^^xsd:dateTime;
+  dct:created "2025-03-20T10:17:08"^^xsd:dateTime .
+
+:hasURI a owl:DatatypeProperty;
+  rdfs:domain :Requirement;
+  rdfs:range xsd:anyURI;
+  rdfs:label "has URI"@en;
+  rdfs:comment """associates a rrmv:Requirement with a unique identifier, denoted by a Uniform Resource Identifier (URI), which serves as a reference to the portion (or portions) of the text from where the Requirement is expressed and modelled. Multiple values indicate that the union of the content of these URIs should be considered for the complete understanding of the Requirement.
+This property can be repeated, as different portions of the act may encode different aspects of the Requirement, for instance, the addressees may be in one article, while the temporal aspects may be in another."""@en;
+  owl:minCardinality "1"^^xsd:nonNegativeInteger;
+  dct:modified "2025-06-20T15:51:53"^^xsd:dateTime;
+  dct:created "2025-03-24T21:30:16"^^xsd:dateTime .
+
+:partOf a owl:ObjectProperty;
+  rdfs:subPropertyOf <https://www.iflastandards.info/fr/frbr/frbroo#R8i>;
+  rdfs:domain :Requirement;
+  rdfs:range eli:Expression;
+  rdfs:label "partOf"@en;
+  dct:modified "2025-05-28T09:42:57"^^xsd:dateTime;
+  dct:created "2025-04-03T12:45:58"^^xsd:dateTime .
+
+:hasBody a rdf:Property;
+  rdfs:subPropertyOf oa:hasBody;
+  rdfs:domain oa:Annotation;
+  dct:modified "2025-04-10T12:54:05"^^xsd:dateTime;
+  dct:created "2025-04-10T12:52:42"^^xsd:dateTime .
+
+:hasTarget a owl:ObjectProperty;
+  rdfs:subPropertyOf oa:hasTarget;
+  rdfs:domain oa:Annotation;
+  rdfs:range eli:Agent, :Action, :ActionResult, :Requirement;
+  rdfs:label "has target"@en;
+  dct:modified "2025-04-10T16:12:37"^^xsd:dateTime;
+  dct:created "2025-04-10T12:53:23"^^xsd:dateTime .
+
+:TemporalEntitySpec a owl:Class;
+  rdfs:subClassOf owl:Thing;
+  rdfs:label "Temporal Entity Specification"@en;
+  rdfs:comment "A temporal entity specification serving as an abstract class for all temporal specifications. It includes specifications for instants, intervals, frequency, and durations, functioning as the structure for expressing temporal constraints related to normative provisions and other use cases."@en;
+  dct:modified "2025-06-16T13:45:42"^^xsd:dateTime;
+  dct:created "2025-04-10T15:51:30"^^xsd:dateTime .
+
+:isUnspecified a owl:DatatypeProperty;
+  rdfs:domain :TemporalEntitySpec;
+  rdfs:range xsd:boolean;
+  rdfs:label "is unspecified"@en;
+  rdfs:comment "Indicates whether a temporal aspect exists but is undefined or it depends on an event external to the legislative corpus."@en;
+  dct:modified "2025-06-26T09:00:54"^^xsd:dateTime;
+  dct:created "2025-04-10T16:07:56"^^xsd:dateTime .
+
+:DurationSpec a owl:Class;
+  rdfs:subClassOf :TemporalEntitySpec;
+  rdfs:label "Duration Specification"@en;
+  rdfs:comment "An continuous amount of time without reference to specific temporal points. It defines a time interval in terms of length rather than absolute positioning in time, used to express concepts such as 'within 30 days', 'for 6 months', or other relative temporal requirements that are not anchored to calendar dates."@en;
+  dct:modified "2025-06-16T13:47:11"^^xsd:dateTime;
+  dct:created "2025-04-10T15:59:36"^^xsd:dateTime .
+
+:IntervalSpec a owl:Class;
+  rdfs:subClassOf :TemporalEntitySpec;
+  rdfs:label "Interval Specification"@en;
+  rdfs:comment "A segment of time with determined start and end points, representing a period of time. This class is appropriate for modelling validity periods, time windows for regulatory compliance, and reporting cycles with defined temporal boundaries, among others."@en;
+  dct:modified "2025-06-16T13:46:32"^^xsd:dateTime;
+  dct:created "2025-04-10T15:59:44"^^xsd:dateTime .
+
+:InstantSpec a owl:Class;
+  rdfs:subClassOf :TemporalEntitySpec;
+  rdfs:label "Instant Specification"@en;
+  rdfs:comment "A set point in time, representing a single moment without duration. It can be used, for example, when a normative provision establishes a specific temporal reference, such as a deadline, start time, or activation moment. This class is appropriate for establishing unique temporal reference points for normative provisions and other use cases."@en;
+  dct:modified "2025-06-16T13:46:11"^^xsd:dateTime;
+  dct:created "2025-04-10T15:59:50"^^xsd:dateTime .
+
+:hasStart a owl:ObjectProperty;
+  rdfs:domain :IntervalSpec;
+  rdfs:range :InstantSpec;
+  rdfs:label "has start"@en;
+  rdfs:comment "Connects an interval to its starting instant."@en;
+  dct:modified "2025-06-20T15:24:07"^^xsd:dateTime;
+  dct:created "2025-04-10T16:01:48"^^xsd:dateTime .
+
+:hasEnd a owl:ObjectProperty;
+  rdfs:domain :IntervalSpec;
+  rdfs:range :InstantSpec;
+  rdfs:label "has end"@en;
+  rdfs:comment "Connects an interval to its concluding instant."@en;
+  dct:modified "2025-06-20T15:23:48"^^xsd:dateTime;
+  dct:created "2025-04-10T16:02:30"^^xsd:dateTime .
+
+:hasDuration a owl:DatatypeProperty;
+  rdfs:domain :DurationSpec;
+  rdfs:range xsd:duration;
+  rdfs:label "has duration"@en;
+  rdfs:comment "Links a duration specification to its duration value, quantifying the time periods."@en;
+  dct:modified "2025-06-20T15:23:26"^^xsd:dateTime;
+  dct:created "2025-04-10T16:05:50"^^xsd:dateTime .
+
+:externalEvent a owl:DatatypeProperty;
+  rdfs:domain :TemporalEntitySpec;
+  rdfs:range xsd:boolean;
+  rdfs:label "external event"@en;
+  rdfs:comment "Indicates whether a temporal entity specification depends on events outside the regulatory framework's direct control."@en;
+  dct:modified "2025-06-20T15:22:51"^^xsd:dateTime;
+  dct:created "2025-04-10T16:08:27"^^xsd:dateTime .
+
+:after a owl:ObjectProperty;
+  rdfs:domain :TemporalEntitySpec;
+  rdfs:range :TemporalEntitySpec;
+  rdfs:label "after"@en;
+  rdfs:comment "Indicates that one temporal entity specification occurs following another one."@en;
+  dct:modified "2025-06-20T14:59:08"^^xsd:dateTime;
+  dct:created "2025-04-10T16:21:26"^^xsd:dateTime .
+
+:before a owl:ObjectProperty;
+  rdfs:domain :TemporalEntitySpec;
+  rdfs:range :TemporalEntitySpec;
+  rdfs:label "before"@en;
+  rdfs:comment "Indicates that one temporal entity specification precedes another one."@en;
+  dct:modified "2025-06-20T14:59:34"^^xsd:dateTime;
+  dct:created "2025-04-10T16:21:47"^^xsd:dateTime .
+
+:in a owl:ObjectProperty;
+  rdfs:domain :TemporalEntitySpec;
+  rdfs:range :TemporalEntitySpec;
+  rdfs:label "in"@en;
+  rdfs:comment "Establishes that one temporal entity specification occurs entirely within the boundaries of another temporal entity specification."@en;
+  dct:modified "2025-06-20T15:22:10"^^xsd:dateTime;
+  dct:created "2025-04-10T16:22:02"^^xsd:dateTime .
+
+:ends a owl:ObjectProperty;
+  rdfs:domain :TemporalEntitySpec;
+  rdfs:range :TemporalEntitySpec;
+  rdfs:label "ends"@en;
+  rdfs:comment "Establishes that one temporal entity specification marks the conclusion of another one."@en;
+  dct:modified "2025-06-20T15:00:14"^^xsd:dateTime;
+  dct:created "2025-04-10T16:22:20"^^xsd:dateTime .
+
+:starts a owl:ObjectProperty;
+  rdfs:domain :TemporalEntitySpec;
+  rdfs:range :TemporalEntitySpec;
+  rdfs:label "starts"@en;
+  rdfs:comment "Establishes that one temporal entity specification marks the beginning of another one."@en;
+  dct:modified "2025-06-20T15:26:14"^^xsd:dateTime;
+  dct:created "2025-04-10T16:22:42"^^xsd:dateTime .
+
+:meets a owl:ObjectProperty;
+  rdfs:domain :TemporalEntitySpec;
+  rdfs:range :TemporalEntitySpec;
+  rdfs:label "meets"@en;
+  rdfs:comment "Indicates that one temporal entity specification directly adjoins another one without overlap, where one ends exactly when the other begins."@en;
+  dct:modified "2025-06-20T15:25:25"^^xsd:dateTime;
+  dct:created "2025-04-10T16:23:00"^^xsd:dateTime .
+
+:overlaps a owl:ObjectProperty;
+  rdfs:domain :TemporalEntitySpec;
+  rdfs:range :TemporalEntitySpec;
+  rdfs:label "overlaps"@en;
+  rdfs:comment "Indicates that two temporal entities specifications share a common portion of time without either completely containing the other."@en;
+  dct:modified "2025-06-20T15:25:50"^^xsd:dateTime;
+  dct:created "2025-04-10T16:23:15"^^xsd:dateTime .
+
+:actionResult a skos:Concept, :ResultType;
+  rdfs:label "action result"@en;
+  rdfs:comment " A general type of result produced by an action, serving as the base concept for more specific result types."@en;
+  dct:modified "2025-06-26T09:04:10"^^xsd:dateTime;
+  dct:created "2025-03-20T10:15:08"^^xsd:dateTime .
+
+:duplicated a :Status;
+  rdfs:label "duplicated"@en;
+  rdfs:comment "Status indicating that an action has been identified as a duplicate of another existing action."@en;
+  dct:modified "2025-06-26T09:25:31"^^xsd:dateTime;
+  dct:created "2025-04-10T16:27:05"^^xsd:dateTime .
+
+:company a :AgentCategory;
+  rdfs:label "company"@en;
+  dct:modified "2025-06-26T09:33:27"^^xsd:dateTime;
+  dct:created "2025-04-10T16:28:02"^^xsd:dateTime .
+
+:individual a :AgentCategory;
+  rdfs:label "individual"@en;
+  dct:modified "2025-06-26T09:33:36"^^xsd:dateTime;
+  dct:created "2025-04-10T16:28:05"^^xsd:dateTime .
+
+:association a :AgentCategory;
+  rdfs:label "association"@en;
+  dct:modified "2025-06-26T09:33:19"^^xsd:dateTime;
+  dct:created "2025-04-10T16:28:10"^^xsd:dateTime .
+
+:publicAdministration a :AgentCategory;
+  rdfs:label "public administration"@en;
+  dct:modified "2025-06-26T09:33:51"^^xsd:dateTime;
+  dct:created "2025-04-10T16:28:18"^^xsd:dateTime .
+
+:agency a :AgentCategory;
+  rdfs:label "agency"@en;
+  dct:modified "2025-06-26T09:32:08"^^xsd:dateTime;
+  dct:created "2025-04-10T16:28:22"^^xsd:dateTime .
+
+:Requirement a owl:Class;
+  rdfs:subClassOf owl:Thing;
+  rdfs:label "Requirement"@en;
+  rdfs:comment "A portion of legal source expression including a mandate that produces at least one Action."@en;
+  dct:modified "2025-06-16T13:55:37"^^xsd:dateTime;
+  dct:created "2025-03-13T13:29:29"^^xsd:dateTime .
+
+:AgentCategory a owl:Class;
+  rdfs:subClassOf skos:Concept;
+  rdfs:label "Agent Category"@en;
+  rdfs:comment "The category of the Agent";
+  dct:modified "2025-06-16T15:15:39"^^xsd:dateTime;
+  dct:created "2025-03-13T13:49:28"^^xsd:dateTime .
+
+:hasTitle a owl:DatatypeProperty;
+  rdfs:domain :ActionResult;
+  rdfs:range rdf:langString;
+  rdfs:label "has title"@en;
+  rdfs:comment "the title of the ActionResult"@en;
+  dct:modified "2025-06-26T11:07:20"^^xsd:dateTime;
+  dct:created "2025-06-16T15:33:10"^^xsd:dateTime .
+
+:Agent a owl:Class;
+  rdfs:subClassOf owl:Thing;
+  rdfs:label "Agent"@en;
+  rdfs:comment "A legal subject, which refers to any entity involved in an Action, including but not limited to individual entities (such as natural persons or organizations) and groups of entities (such as classes of persons, organizations, or things)"@en;
+  dct:modified "2025-06-20T14:49:05"^^xsd:dateTime;
+  dct:created "2025-06-20T14:45:00"^^xsd:dateTime .
+
+:hasCategory a owl:ObjectProperty;
+  rdfs:domain :Agent;
+  rdfs:range :AgentCategory;
+  rdfs:label "has category"@en;
+  rdfs:comment "A property connecting the Agent to its AgentCategory"@en;
+  dct:modified "2025-06-20T14:52:45"^^xsd:dateTime;
+  dct:created "2025-06-20T14:50:28"^^xsd:dateTime .
