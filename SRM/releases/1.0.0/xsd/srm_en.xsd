@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <xs:schema xmlns="https://data.europa.eu/m8g/xml/" xmlns:xs="http://www.w3.org/2001/XMLSchema" targetNamespace="https://data.europa.eu/m8g/xml/" version="2.0.0" elementFormDefault="qualified" attributeFormDefault="unqualified" xmlns:cv="https://data.europa.eu/m8g/xml/">
   <xs:element name="ContactPoint" type="ContactPointType"/>
+  <xs:element name="LicenceDocument" type="LicenceDocumentType"/>
   <xs:element name="Location" type="LocationType"/>
   <xs:element name="Standard" type="StandardType"/>
   <xs:element name="Text" type="TextType"/>
@@ -43,6 +44,14 @@
     <xs:attribute name="ContactPointRef" type="xs:IDREF">
       <xs:annotation>
         <xs:documentation xml:lang="en">Reference to ContactPoint ID</xs:documentation>
+      </xs:annotation>
+    </xs:attribute>
+  </xs:complexType>
+  <xs:complexType name="LicenceDocumentType">
+    <xs:sequence/>
+    <xs:attribute name="LicenceDocumentRef" type="xs:IDREF">
+      <xs:annotation>
+        <xs:documentation xml:lang="en">Reference to LicenceDocument ID</xs:documentation>
       </xs:annotation>
     </xs:attribute>
   </xs:complexType>
@@ -119,6 +128,11 @@
       <xs:element name="language" type="ConceptType" maxOccurs="unbounded" minOccurs="0">
         <xs:annotation>
           <xs:documentation xml:lang="en">A language of the resource.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="licence" ref="LicenceDocumentType" maxOccurs="unbounded" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation xml:lang="en">A licence under which the standard is made available.</xs:documentation>
         </xs:annotation>
       </xs:element>
       <xs:element name="lovRank" ref="NonNegativeIntegerType" maxOccurs="1" minOccurs="0">
