@@ -6,10 +6,10 @@
 @prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
 @prefix shacl: <http://www.w3.org/ns/shacl#> .
 @prefix skos: <http://www.w3.org/2004/02/skos/core#> .
+@prefix vcard: <http://www.w3.org/2006/vcard/ns#> .
 @prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
 
-<https://semiceu.github.io/SRM/releases/1.0.0> rdfs:member <https://semiceu.github.io/SRM/releases/1.0.0#ContactPointShape>,
-    <https://semiceu.github.io/SRM/releases/1.0.0#LicenseDocumentShape>,
+<https://semiceu.github.io/SRM/releases/1.0.0> rdfs:member <https://semiceu.github.io/SRM/releases/1.0.0#LicenseDocumentShape>,
     <https://semiceu.github.io/SRM/releases/1.0.0#LocationShape>,
     <https://semiceu.github.io/SRM/releases/1.0.0#StandardShape>,
     <https://semiceu.github.io/SRM/releases/1.0.0#TextShape>,
@@ -19,7 +19,8 @@
     <https://semiceu.github.io/SRM/releases/1.0.0#NonNegativeIntegerShape>,
     <https://semiceu.github.io/SRM/releases/1.0.0#StringShape>,
     <https://semiceu.github.io/SRM/releases/1.0.0#CodeShape>,
-    <https://semiceu.github.io/SRM/releases/1.0.0#ProfileShape>,
+    <https://semiceu.github.io/SRM/releases/1.0.0#EmailShape>,
+    <https://semiceu.github.io/SRM/releases/1.0.0#KindShape>,
     <https://semiceu.github.io/SRM/releases/1.0.0#ResourceDescriptorShape>,
     <https://semiceu.github.io/SRM/releases/1.0.0#AgentShape>,
     <https://semiceu.github.io/SRM/releases/1.0.0#DocumentShape> .
@@ -148,24 +149,6 @@
   shacl:closed false;
   shacl:targetClass skos:Concept .
 
-<https://semiceu.github.io/SRM/releases/1.0.0#ContactPointShape> a shacl:NodeShape;
-  shacl:closed false;
-  shacl:property <https://semiceu.github.io/SRM/releases/1.0.0#ContactPointShape/0867cf853418cb9d7d1fb8b906e353ec44462596>,
-    <https://semiceu.github.io/SRM/releases/1.0.0#ContactPointShape/0c404fa56c64463c15f65878d02efa16eec065b0>;
-  shacl:targetClass <http://data.europa.eu/m8g/ContactPoint> .
-
-<https://semiceu.github.io/SRM/releases/1.0.0#ContactPointShape/0867cf853418cb9d7d1fb8b906e353ec44462596> rdfs:seeAlso "https://semiceu.github.io/SRM/releases/1.0.0#ContactPoint.hasemail";
-  shacl:datatype xsd:string;
-  shacl:description """	An electronic address through which the Contact Point can be contacted."""@en;
-  shacl:name "has email"@en;
-  shacl:path <http://data.europa.eu/m8g/email> .
-
-<https://semiceu.github.io/SRM/releases/1.0.0#ContactPointShape/0c404fa56c64463c15f65878d02efa16eec065b0> rdfs:seeAlso "https://semiceu.github.io/SRM/releases/1.0.0#ContactPoint.hasemail";
-  shacl:description """	An electronic address through which the Contact Point can be contacted."""@en;
-  shacl:name "has email"@en;
-  shacl:nodeKind shacl:Literal;
-  shacl:path <http://data.europa.eu/m8g/email> .
-
 <https://semiceu.github.io/SRM/releases/1.0.0#DateTimeShape> a shacl:NodeShape;
   shacl:closed false;
   shacl:targetClass xsd:dateTime .
@@ -173,6 +156,28 @@
 <https://semiceu.github.io/SRM/releases/1.0.0#DocumentShape> a shacl:NodeShape;
   shacl:closed false;
   shacl:targetClass foaf:Document .
+
+<https://semiceu.github.io/SRM/releases/1.0.0#EmailShape> a shacl:NodeShape;
+  shacl:closed false;
+  shacl:targetClass vcard:Email .
+
+<https://semiceu.github.io/SRM/releases/1.0.0#KindShape> a shacl:NodeShape;
+  shacl:closed false;
+  shacl:property <https://semiceu.github.io/SRM/releases/1.0.0#KindShape/0867cf853418cb9d7d1fb8b906e353ec44462596>,
+    <https://semiceu.github.io/SRM/releases/1.0.0#KindShape/0c404fa56c64463c15f65878d02efa16eec065b0>;
+  shacl:targetClass vcard:Kind .
+
+<https://semiceu.github.io/SRM/releases/1.0.0#KindShape/0867cf853418cb9d7d1fb8b906e353ec44462596> rdfs:seeAlso "https://semiceu.github.io/SRM/releases/1.0.0#Kind.hasemail";
+  shacl:class vcard:Email;
+  shacl:description "To specify the electronic mail address for communication with the object"@en;
+  shacl:name "has email"@en;
+  shacl:path vcard:hasEmail .
+
+<https://semiceu.github.io/SRM/releases/1.0.0#KindShape/0c404fa56c64463c15f65878d02efa16eec065b0> rdfs:seeAlso "https://semiceu.github.io/SRM/releases/1.0.0#Kind.hasemail";
+  shacl:description "To specify the electronic mail address for communication with the object"@en;
+  shacl:name "has email"@en;
+  shacl:nodeKind shacl:BlankNodeOrIRI;
+  shacl:path vcard:hasEmail .
 
 <https://semiceu.github.io/SRM/releases/1.0.0#LicenseDocumentShape> a shacl:NodeShape;
   shacl:closed false;
@@ -185,31 +190,6 @@
 <https://semiceu.github.io/SRM/releases/1.0.0#NonNegativeIntegerShape> a shacl:NodeShape;
   shacl:closed false;
   shacl:targetClass xsd:nonNegativeInteger .
-
-<https://semiceu.github.io/SRM/releases/1.0.0#ProfileShape> a shacl:NodeShape;
-  shacl:closed false;
-  shacl:property <https://semiceu.github.io/SRM/releases/1.0.0#ProfileShape/548bbaf61cf7be925693c54f6c72905f4435bd23>,
-    <https://semiceu.github.io/SRM/releases/1.0.0#ProfileShape/a25f00bcce4402d493a9702e683ce505ee621e82>,
-    <https://semiceu.github.io/SRM/releases/1.0.0#ProfileShape/e7c37d70723b190b222111eb0598366870b36857>;
-  shacl:targetClass <http://www.w3.org/ns/dx/prof/Profile> .
-
-<https://semiceu.github.io/SRM/releases/1.0.0#ProfileShape/548bbaf61cf7be925693c54f6c72905f4435bd23> rdfs:seeAlso "https://semiceu.github.io/SRM/releases/1.0.0#Profile.isprofileof";
-  shacl:description "A specification for which this Profile defines constraints, extensions, or which it uses in combination with other specifications, or provides guidance or explanation about its usage."@en;
-  shacl:minCount 1;
-  shacl:name "is profile of"@en;
-  shacl:path <http://www.w3.org/ns/dx/prof/isProfileOf> .
-
-<https://semiceu.github.io/SRM/releases/1.0.0#ProfileShape/a25f00bcce4402d493a9702e683ce505ee621e82> rdfs:seeAlso "https://semiceu.github.io/SRM/releases/1.0.0#Profile.isprofileof";
-  shacl:class dc:Standard;
-  shacl:description "A specification for which this Profile defines constraints, extensions, or which it uses in combination with other specifications, or provides guidance or explanation about its usage."@en;
-  shacl:name "is profile of"@en;
-  shacl:path <http://www.w3.org/ns/dx/prof/isProfileOf> .
-
-<https://semiceu.github.io/SRM/releases/1.0.0#ProfileShape/e7c37d70723b190b222111eb0598366870b36857> rdfs:seeAlso "https://semiceu.github.io/SRM/releases/1.0.0#Profile.isprofileof";
-  shacl:description "A specification for which this Profile defines constraints, extensions, or which it uses in combination with other specifications, or provides guidance or explanation about its usage."@en;
-  shacl:name "is profile of"@en;
-  shacl:nodeKind shacl:BlankNodeOrIRI;
-  shacl:path <http://www.w3.org/ns/dx/prof/isProfileOf> .
 
 <https://semiceu.github.io/SRM/releases/1.0.0#ResourceDescriptorShape> a shacl:NodeShape;
   shacl:closed false;
@@ -329,14 +309,17 @@
     <https://semiceu.github.io/SRM/releases/1.0.0#StandardShape/203c9e087d4af4374273c4e2bf22610d8642e403>,
     <https://semiceu.github.io/SRM/releases/1.0.0#StandardShape/228323ac5cd154d01d2ec0e457deeea67c875ca2>,
     <https://semiceu.github.io/SRM/releases/1.0.0#StandardShape/22f1578dcd99ac6439079f483b4886754ddf6ec4>,
+    <https://semiceu.github.io/SRM/releases/1.0.0#StandardShape/236f0210baaf149903750c43bbe7012c21debb2a>,
     <https://semiceu.github.io/SRM/releases/1.0.0#StandardShape/29ba27566ab1f32c8bb73f3492436d4bd868d3d2>,
     <https://semiceu.github.io/SRM/releases/1.0.0#StandardShape/2bc917d85a4ffccfa9de4268bf84b517c322ce2c>,
     <https://semiceu.github.io/SRM/releases/1.0.0#StandardShape/2f24e5e77199a0d328c94cb874400d574fc8e87f>,
     <https://semiceu.github.io/SRM/releases/1.0.0#StandardShape/2fd3850ab494807d4d5cc3ac00cc92ede3ec5052>,
+    <https://semiceu.github.io/SRM/releases/1.0.0#StandardShape/322371a77364a50f049d46180f6192532eea26dc>,
     <https://semiceu.github.io/SRM/releases/1.0.0#StandardShape/3894f9fa605c37b8ff4766859d3107f97cc5f934>,
     <https://semiceu.github.io/SRM/releases/1.0.0#StandardShape/3bbdbd65941f58187b251bba520894472f60f953>,
     <https://semiceu.github.io/SRM/releases/1.0.0#StandardShape/3c1ab2e1170c5050c8b7742e97810027ddc104b1>,
     <https://semiceu.github.io/SRM/releases/1.0.0#StandardShape/488f0bcb1b2d7cb5288ca9952a7b94f106f95859>,
+    <https://semiceu.github.io/SRM/releases/1.0.0#StandardShape/4f381639bb6e021939f65b4f41409d1edaeade9b>,
     <https://semiceu.github.io/SRM/releases/1.0.0#StandardShape/5bc739112726cd993c279f81380611cafc3a9857>,
     <https://semiceu.github.io/SRM/releases/1.0.0#StandardShape/6c7c1bd2ab3b7761e5be759a078a9fd93f411a57>,
     <https://semiceu.github.io/SRM/releases/1.0.0#StandardShape/6cae9880e515253132af1452a38a8a5827165149>,
@@ -424,6 +407,12 @@
   shacl:name "version info"@en;
   shacl:path owl:versionInfo .
 
+<https://semiceu.github.io/SRM/releases/1.0.0#StandardShape/236f0210baaf149903750c43bbe7012c21debb2a> rdfs:seeAlso "https://semiceu.github.io/SRM/releases/1.0.0#Standard.type";
+  shacl:description "The nature or genre of the Standard."@en;
+  shacl:maxCount 1;
+  shacl:name "type"@en;
+  shacl:path dc:type .
+
 <https://semiceu.github.io/SRM/releases/1.0.0#StandardShape/29ba27566ab1f32c8bb73f3492436d4bd868d3d2> rdfs:seeAlso "https://semiceu.github.io/SRM/releases/1.0.0#Standard.language";
   shacl:class skos:Concept;
   shacl:description "A language of the resource."@en;
@@ -448,6 +437,12 @@
   shacl:nodeKind shacl:BlankNodeOrIRI;
   shacl:path dc:contributor .
 
+<https://semiceu.github.io/SRM/releases/1.0.0#StandardShape/322371a77364a50f049d46180f6192532eea26dc> rdfs:seeAlso "https://semiceu.github.io/SRM/releases/1.0.0#Standard.type";
+  shacl:class skos:Concept;
+  shacl:description "The nature or genre of the Standard."@en;
+  shacl:name "type"@en;
+  shacl:path dc:type .
+
 <https://semiceu.github.io/SRM/releases/1.0.0#StandardShape/3894f9fa605c37b8ff4766859d3107f97cc5f934> rdfs:seeAlso "https://semiceu.github.io/SRM/releases/1.0.0#Standard.keyword";
   shacl:datatype rdf:langString;
   shacl:description "A keyword or tag describing the Standard."@en;
@@ -471,6 +466,12 @@
   shacl:description "A name given to the resource."@en;
   shacl:name "title"@en;
   shacl:path dc:title .
+
+<https://semiceu.github.io/SRM/releases/1.0.0#StandardShape/4f381639bb6e021939f65b4f41409d1edaeade9b> rdfs:seeAlso "https://semiceu.github.io/SRM/releases/1.0.0#Standard.type";
+  shacl:description "The nature or genre of the Standard."@en;
+  shacl:name "type"@en;
+  shacl:nodeKind shacl:BlankNodeOrIRI;
+  shacl:path dc:type .
 
 <https://semiceu.github.io/SRM/releases/1.0.0#StandardShape/5bc739112726cd993c279f81380611cafc3a9857> rdfs:seeAlso "https://semiceu.github.io/SRM/releases/1.0.0#Standard.keyword";
   shacl:description "A keyword or tag describing the Standard."@en;
@@ -497,7 +498,7 @@
   shacl:path <http://data.europa.eu/m8g/lovRank> .
 
 <https://semiceu.github.io/SRM/releases/1.0.0#StandardShape/7b6713c1f4a52e964f5db57eabef294b6d04e90e> rdfs:seeAlso "https://semiceu.github.io/SRM/releases/1.0.0#Standard.contactpoint";
-  shacl:class <http://data.europa.eu/m8g/ContactPoint>;
+  shacl:class vcard:Kind;
   shacl:description "Contact information that can be used for sending comments about the standard."@en;
   shacl:name "contact point"@en;
   shacl:path <http://data.europa.eu/m8g/contactPoint> .

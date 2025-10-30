@@ -17,75 +17,14 @@
     },
     "status": "Draft",
     "statuslabel": "Onbekend",
-    "repositoryurl": "git@uri.semic.eu-thema:SEMICeu/uri.semic.eu-thema.git/tree/55e5dd66c6e3971750df03c1c46287c9156f6381",
-    "changelogurl": "git@uri.semic.eu-thema:SEMICeu/uri.semic.eu-thema.git/blob/55e5dd66c6e3971750df03c1c46287c9156f6381/CHANGELOG",
+    "repositoryurl": "git@uri.semic.eu-thema:SEMICeu/uri.semic.eu-thema.git/tree/7b2e0d1e1cc583b5b5ae6071330c86d1649870d8",
+    "changelogurl": "git@uri.semic.eu-thema:SEMICeu/uri.semic.eu-thema.git/blob/7b2e0d1e1cc583b5b5ae6071330c86d1649870d8/CHANGELOG",
     "feedbackurl": "https://github.com/SEMICeu/SRM/issues",
     "standaardregisterurl": "https://github.com/SEMICeu/SRM/blob/master/releases/1.0.0/Changelog.md",
     "usesVocs": [],
     "usesAPs": []
   },
   "classes": [
-    {
-      "uri": "http://data.europa.eu/m8g/ContactPoint",
-      "name": "ContactPoint",
-      "label": {
-        "en": "Contact Point"
-      },
-      "sort": "Contact Point",
-      "description": {
-        "en": "Information (e.g. e-mail address, telephone number) of a person or department through which the user can get in touch with."
-      },
-      "usage": {},
-      "parents": [],
-      "rawTags": {
-        "definition-en": "Information (e.g. e-mail address, telephone number) of a person or department through which the user can get in touch with.",
-        "uri": "http://data.europa.eu/m8g/ContactPoint",
-        "label-en": "Contact Point"
-      },
-      "properties": [
-        {
-          "uri": "http://data.europa.eu/m8g/email",
-          "name": "hasEmail",
-          "sort": "has email",
-          "label": {
-            "en": "has email"
-          },
-          "description": {
-            "en": "\tAn electronic address through which the Contact Point can be contacted."
-          },
-          "usage": {},
-          "domain": [
-            {
-              "EA-Name": "ContactPoint",
-              "uri": "http://data.europa.eu/m8g/ContactPoint"
-            }
-          ],
-          "range": [
-            {
-              "range_label": "String",
-              "range_uri": "http://www.w3.org/2001/XMLSchema#string"
-            }
-          ],
-          "scopedrange": [
-            {
-              "range_uri": "#String",
-              "range_puri": "http://www.w3.org/2001/XMLSchema#string",
-              "range_label": {
-                "en": "String"
-              }
-            }
-          ],
-          "cardinality": "0..*",
-          "codelist_uri": "",
-          "rawTags": {
-            "label-en": "has email",
-            "definition-en": "\tAn electronic address through which the Contact Point can be contacted.",
-            "uri": "http://data.europa.eu/m8g/email",
-            "property-usage-scope": "optional"
-          }
-        }
-      ]
-    },
     {
       "uri": "http://purl.org/dc/terms/LicenseDocument",
       "name": "LicenceDocument",
@@ -162,16 +101,16 @@
           ],
           "range": [
             {
-              "range_label": "ContactPoint",
-              "range_uri": "http://data.europa.eu/m8g/ContactPoint"
+              "range_label": "Kind",
+              "range_uri": "http://www.w3.org/2006/vcard/ns#Kind"
             }
           ],
           "scopedrange": [
             {
-              "range_uri": "#Contact Point",
-              "range_puri": "http://data.europa.eu/m8g/ContactPoint",
+              "range_uri": "#Kind",
+              "range_puri": "http://www.w3.org/2006/vcard/ns#Kind",
               "range_label": {
-                "en": "Contact Point"
+                "en": "Kind"
               }
             }
           ],
@@ -815,6 +754,50 @@
           }
         },
         {
+          "uri": "http://purl.org/dc/terms/type",
+          "name": "type",
+          "sort": "type",
+          "label": {
+            "en": "type"
+          },
+          "description": {
+            "en": "The nature or genre of the Standard."
+          },
+          "usage": {
+            "en": "The values are http://purl.org/dc/terms/Standard or http://www.w3.org/ns/dx/prof/Profile"
+          },
+          "domain": [
+            {
+              "EA-Name": "Standard",
+              "uri": "http://purl.org/dc/terms/Standard"
+            }
+          ],
+          "range": [
+            {
+              "range_label": "Code",
+              "range_uri": "http://www.w3.org/2004/02/skos/core#Concept"
+            }
+          ],
+          "scopedrange": [
+            {
+              "range_uri": "#Code",
+              "range_puri": "http://www.w3.org/2004/02/skos/core#Concept",
+              "range_label": {
+                "en": "Code"
+              }
+            }
+          ],
+          "cardinality": "0..1",
+          "codelist_uri": "",
+          "rawTags": {
+            "uri": "http://purl.org/dc/terms/type",
+            "label-en": "type",
+            "definition-en": "The nature or genre of the Standard.",
+            "usageNote-en": "The values are http://purl.org/dc/terms/Standard or http://www.w3.org/ns/dx/prof/Profile",
+            "property-usage-scope": "optional"
+          }
+        },
+        {
           "uri": "http://purl.org/vocab/vann/preferredNamespaceUri",
           "name": "preferredNamespaceUri",
           "sort": "preferred namespace URI",
@@ -1259,69 +1242,81 @@
       ]
     },
     {
-      "uri": "http://www.w3.org/ns/dx/prof/Profile",
-      "name": "Profile",
+      "uri": "http://www.w3.org/2006/vcard/ns#Email",
+      "name": "Email",
       "label": {
-        "en": "Profile"
+        "en": "Email"
       },
-      "sort": "Profile",
+      "sort": "Email",
       "description": {
-        "en": "A specification that constrains, extends, combines, or provides guidance or explanation about the usage of other specifications.\r\n\r\nThis definition includes what are sometimes called \"application profiles\", \"metadata application profiles\", or \"metadata profiles\"."
+        "en": "To specify the electronic mail address for communication with the object the vCard represents. "
       },
       "usage": {},
-      "parents": [
-        {
-          "label": "Standard",
-          "name": "Standard",
-          "package": "dct",
-          "uri": "http://purl.org/dc/terms/Standard",
-          "scoped_uri": "#Standard"
-        }
-      ],
+      "parents": [],
       "rawTags": {
-        "uri": "http://www.w3.org/ns/dx/prof/Profile",
-        "label-en": "Profile",
-        "definition-en": "A specification that constrains, extends, combines, or provides guidance or explanation about the usage of other specifications.\r\n\r\nThis definition includes what are sometimes called \"application profiles\", \"metadata application profiles\", or \"metadata profiles\"."
+        "uri": "http://www.w3.org/2006/vcard/ns#Email",
+        "label-en": "Email",
+        "definition-en": "To specify the electronic mail address for communication with the object the vCard represents. "
+      },
+      "properties": []
+    },
+    {
+      "uri": "http://www.w3.org/2006/vcard/ns#Kind",
+      "name": "Kind",
+      "label": {
+        "en": "Kind"
+      },
+      "sort": "Kind",
+      "description": {
+        "en": "A description following the vCard specification, e.g. to provide telephone number and e-mail address for a contact point."
+      },
+      "usage": {},
+      "parents": [],
+      "rawTags": {
+        "definition-en": "A description following the vCard specification, e.g. to provide telephone number and e-mail address for a contact point.",
+        "uri": "http://www.w3.org/2006/vcard/ns#Kind",
+        "label-en": "Kind"
       },
       "properties": [
         {
-          "uri": "http://www.w3.org/ns/dx/prof/isProfileOf",
-          "name": "isProfileOf",
-          "sort": "is profile of",
+          "uri": "http://www.w3.org/2006/vcard/ns#hasEmail",
+          "name": "hasEmail",
+          "sort": "has email",
           "label": {
-            "en": "is profile of"
+            "en": "has email"
           },
           "description": {
-            "en": "A specification for which this Profile defines constraints, extensions, or which it uses in combination with other specifications, or provides guidance or explanation about its usage."
+            "en": "To specify the electronic mail address for communication with the object"
           },
           "usage": {},
           "domain": [
             {
-              "EA-Name": "Profile",
-              "uri": "http://www.w3.org/ns/dx/prof/Profile"
+              "EA-Name": "Kind",
+              "uri": "http://www.w3.org/2006/vcard/ns#Kind"
             }
           ],
           "range": [
             {
-              "range_label": "Standard",
-              "range_uri": "http://purl.org/dc/terms/Standard"
+              "range_label": "Email",
+              "range_uri": "http://www.w3.org/2006/vcard/ns#Email"
             }
           ],
           "scopedrange": [
             {
-              "range_uri": "#Standard",
-              "range_puri": "http://purl.org/dc/terms/Standard",
+              "range_uri": "#Email",
+              "range_puri": "http://www.w3.org/2006/vcard/ns#Email",
               "range_label": {
-                "en": "Standard"
+                "en": "Email"
               }
             }
           ],
-          "cardinality": "1..*",
+          "cardinality": "0..*",
           "codelist_uri": "",
           "rawTags": {
-            "definition-en": "A specification for which this Profile defines constraints, extensions, or which it uses in combination with other specifications, or provides guidance or explanation about its usage.",
-            "uri": "http://www.w3.org/ns/dx/prof/isProfileOf",
-            "label-en": "is profile of"
+            "label-en": "has email",
+            "definition-en": "To specify the electronic mail address for communication with the object",
+            "uri": "http://www.w3.org/2006/vcard/ns#hasEmail",
+            "property-usage-scope": "optional"
           }
         }
       ]
