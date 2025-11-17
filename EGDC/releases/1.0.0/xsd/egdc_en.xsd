@@ -1,0 +1,336 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<xs:schema xmlns="https://data.europa.eu/m8g/xml/" xmlns:xs="http://www.w3.org/2001/XMLSchema" targetNamespace="https://data.europa.eu/m8g/xml/" version="2.0.0" elementFormDefault="qualified" attributeFormDefault="unqualified" xmlns:cv="https://data.europa.eu/m8g/xml/">
+  <xs:element name="LicenceDocument" type="LicenceDocumentType"/>
+  <xs:element name="Location" type="LocationType"/>
+  <xs:element name="Text" type="TextType"/>
+  <xs:element name="Class" type="ClassType"/>
+  <xs:element name="Uri" type="UriType"/>
+  <xs:element name="DateTime" type="DateTimeType"/>
+  <xs:element name="NonNegativeInteger" type="NonNegativeIntegerType"/>
+  <xs:element name="String" type="StringType"/>
+  <xs:element name="Code" type="CodeType"/>
+  <xs:element name="Email" type="EmailType"/>
+  <xs:element name="Kind" type="KindType"/>
+  <xs:element name="Asset" type="AssetType"/>
+  <xs:element name="AssetDistribution" type="AssetDistributionType"/>
+  <xs:element name="Agent" type="AgentType"/>
+  <xs:element name="Document" type="DocumentType"/>
+  <xs:simpleType name="Literal">
+    <xs:restriction base="xs:string"/>
+  </xs:simpleType>
+  <xs:complexType name="langstring">
+    <xs:simpleContent>
+      <xs:extension base="xs:string">
+        <xs:attribute name="lang" type="xs:language"/>
+      </xs:extension>
+    </xs:simpleContent>
+  </xs:complexType>
+  <xs:complexType name="ConceptType">
+    <xs:simpleContent>
+      <xs:extension base="xs:token">
+        <xs:attribute name="ref" type="xs:IDREF"/>
+        <xs:attribute name="conceptSchemeRef" type="xs:IDREF"/>
+      </xs:extension>
+    </xs:simpleContent>
+  </xs:complexType>
+  <xs:complexType name="LicenceDocumentType">
+    <xs:sequence/>
+    <xs:attribute name="LicenceDocumentRef" type="xs:IDREF">
+      <xs:annotation>
+        <xs:documentation xml:lang="en">Reference to LicenceDocument ID</xs:documentation>
+      </xs:annotation>
+    </xs:attribute>
+  </xs:complexType>
+  <xs:complexType name="LocationType">
+    <xs:sequence/>
+    <xs:attribute name="LocationRef" type="xs:IDREF">
+      <xs:annotation>
+        <xs:documentation xml:lang="en">Reference to Location ID</xs:documentation>
+      </xs:annotation>
+    </xs:attribute>
+  </xs:complexType>
+  <xs:complexType name="TextType">
+    <xs:sequence/>
+    <xs:attribute name="TextRef" type="xs:IDREF">
+      <xs:annotation>
+        <xs:documentation xml:lang="en">Reference to Text ID</xs:documentation>
+      </xs:annotation>
+    </xs:attribute>
+  </xs:complexType>
+  <xs:complexType name="ClassType">
+    <xs:sequence>
+      <xs:element name="alternativeLabel" type="xs:string" maxOccurs="unbounded" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation xml:lang="en">The alternative name for the class.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="isDefinedBy" ref="AssetDistributionType" maxOccurs="unbounded" minOccurs="1">
+        <xs:annotation>
+          <xs:documentation xml:lang="en">A resource defining the subject resource.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="name" type="xs:string" maxOccurs="unbounded" minOccurs="1">
+        <xs:annotation>
+          <xs:documentation xml:lang="en">The name of the class.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+    </xs:sequence>
+    <xs:attribute name="ClassRef" type="xs:IDREF">
+      <xs:annotation>
+        <xs:documentation xml:lang="en">Reference to Class ID</xs:documentation>
+      </xs:annotation>
+    </xs:attribute>
+  </xs:complexType>
+  <xs:complexType name="UriType">
+    <xs:sequence/>
+    <xs:attribute name="UriRef" type="xs:IDREF">
+      <xs:annotation>
+        <xs:documentation xml:lang="en">Reference to Uri ID</xs:documentation>
+      </xs:annotation>
+    </xs:attribute>
+  </xs:complexType>
+  <xs:complexType name="DateTimeType">
+    <xs:sequence/>
+    <xs:attribute name="DateTimeRef" type="xs:IDREF">
+      <xs:annotation>
+        <xs:documentation xml:lang="en">Reference to DateTime ID</xs:documentation>
+      </xs:annotation>
+    </xs:attribute>
+  </xs:complexType>
+  <xs:complexType name="NonNegativeIntegerType">
+    <xs:sequence/>
+    <xs:attribute name="NonNegativeIntegerRef" type="xs:IDREF">
+      <xs:annotation>
+        <xs:documentation xml:lang="en">Reference to NonNegativeInteger ID</xs:documentation>
+      </xs:annotation>
+    </xs:attribute>
+  </xs:complexType>
+  <xs:complexType name="StringType">
+    <xs:sequence/>
+    <xs:attribute name="StringRef" type="xs:IDREF">
+      <xs:annotation>
+        <xs:documentation xml:lang="en">Reference to String ID</xs:documentation>
+      </xs:annotation>
+    </xs:attribute>
+  </xs:complexType>
+  <xs:complexType name="CodeType">
+    <xs:sequence/>
+    <xs:attribute name="CodeRef" type="xs:IDREF">
+      <xs:annotation>
+        <xs:documentation xml:lang="en">Reference to Code ID</xs:documentation>
+      </xs:annotation>
+    </xs:attribute>
+  </xs:complexType>
+  <xs:complexType name="EmailType">
+    <xs:sequence/>
+    <xs:attribute name="EmailRef" type="xs:IDREF">
+      <xs:annotation>
+        <xs:documentation xml:lang="en">Reference to Email ID</xs:documentation>
+      </xs:annotation>
+    </xs:attribute>
+  </xs:complexType>
+  <xs:complexType name="KindType">
+    <xs:sequence>
+      <xs:element name="hasEmail" ref="EmailType" maxOccurs="unbounded" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation xml:lang="en">To specify the electronic mail address for communication with the object</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+    </xs:sequence>
+    <xs:attribute name="KindRef" type="xs:IDREF">
+      <xs:annotation>
+        <xs:documentation xml:lang="en">Reference to Kind ID</xs:documentation>
+      </xs:annotation>
+    </xs:attribute>
+  </xs:complexType>
+  <xs:complexType name="AssetType">
+    <xs:sequence>
+      <xs:element name="contactPoint" ref="KindType" maxOccurs="unbounded" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation xml:lang="en">Contact information that can be used for sending comments about the standard.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="contributor" ref="AgentType" maxOccurs="unbounded" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation xml:lang="en">An entity responsible for making contributions to the resource.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="dateCreated" type="xs:dateTime" maxOccurs="1" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation xml:lang="en">Date of creation of the resource.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="creator" ref="AgentType" maxOccurs="unbounded" minOccurs="1">
+        <xs:annotation>
+          <xs:documentation xml:lang="en">An entity responsible for making the resource.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="description" type="xs:string" maxOccurs="unbounded" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation xml:lang="en">An free-text account of the resource.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="distribution" ref="AssetDistributionType" maxOccurs="unbounded" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation xml:lang="en">An available distribution of the dataset.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="hasImplementation" type="xs:anyURI" maxOccurs="unbounded" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation xml:lang="en">The portal/repository implementing such Standard.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="homepage" ref="DocumentType" maxOccurs="1" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation xml:lang="en">A homepage for some thing.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="identifier" type="xs:string" maxOccurs="1" minOccurs="1">
+        <xs:annotation>
+          <xs:documentation xml:lang="en">An unambiguous reference to the resource within a given context.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="isReusedBy" type="xs:anyURI" maxOccurs="unbounded" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation xml:lang="en">The portal or repository reusing such Standard.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="dateIssued" type="xs:dateTime" maxOccurs="1" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation xml:lang="en">Date of formal issuance of the resource.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="keyword" type="xs:string" maxOccurs="unbounded" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation xml:lang="en">A keyword or tag describing the Standard.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="language" type="ConceptType" maxOccurs="unbounded" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation xml:lang="en">A language of the resource.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="licence" ref="LicenceDocumentType" maxOccurs="unbounded" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation xml:lang="en">A licence under which the standard is made available.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="lovRank" ref="NonNegativeIntegerType" maxOccurs="1" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation xml:lang="en">A numeric value that rank the Standard on the number of the reuse.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="dateModified" type="xs:dateTime" maxOccurs="1" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation xml:lang="en">Date on which the resource was changed.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="preferredNamespaceUri" type="xs:anyURI" maxOccurs="1" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation xml:lang="en">The preferred namespace URI of the Standard.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="publisher" ref="AgentType" maxOccurs="unbounded" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation xml:lang="en">An entity responsible for making the resource available.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="requires" ref="AssetType" maxOccurs="unbounded" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation xml:lang="en">A related resource that is required by the described resource to support its function, delivery, or coherence.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="status" type="ConceptType" maxOccurs="1" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation xml:lang="en">The status of the Standard.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="theme" type="ConceptType" maxOccurs="unbounded" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation xml:lang="en">A classification of the Standard.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="title" type="xs:string" maxOccurs="unbounded" minOccurs="1">
+        <xs:annotation>
+          <xs:documentation xml:lang="en">A name given to the resource.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="type" type="ConceptType" maxOccurs="1" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation xml:lang="en">The nature or genre of the Standard.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="versionInfo" type="xs:string" maxOccurs="1" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation xml:lang="en">A string giving information about this version.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+    </xs:sequence>
+    <xs:attribute name="AssetRef" type="xs:IDREF">
+      <xs:annotation>
+        <xs:documentation xml:lang="en">Reference to Asset ID</xs:documentation>
+      </xs:annotation>
+    </xs:attribute>
+  </xs:complexType>
+  <xs:complexType name="AssetDistributionType">
+    <xs:sequence>
+      <xs:element name="downloadUrl" type="xs:anyURI" maxOccurs="1" minOccurs="1">
+        <xs:annotation>
+          <xs:documentation xml:lang="en">The URL of the downloadable file in a given format.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="format" type="ConceptType" maxOccurs="1" minOccurs="1">
+        <xs:annotation>
+          <xs:documentation xml:lang="en">	The file format, physical medium, or dimensions of the resource.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="hasRole" type="ConceptType" maxOccurs="1" minOccurs="1">
+        <xs:annotation>
+          <xs:documentation xml:lang="en">A description of a resource that defines an aspect - a particular part, feature or role - of a Profile.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="name" type="xs:string" maxOccurs="unbounded" minOccurs="1">
+        <xs:annotation>
+          <xs:documentation xml:lang="en">The noun given to the Asset Distribution.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+    </xs:sequence>
+    <xs:attribute name="AssetDistributionRef" type="xs:IDREF">
+      <xs:annotation>
+        <xs:documentation xml:lang="en">Reference to AssetDistribution ID</xs:documentation>
+      </xs:annotation>
+    </xs:attribute>
+  </xs:complexType>
+  <xs:complexType name="AgentType">
+    <xs:sequence>
+      <xs:element name="name" type="xs:string" maxOccurs="unbounded" minOccurs="1">
+        <xs:annotation>
+          <xs:documentation xml:lang="en">The noun given to the Agent.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="spatial" ref="LocationType" maxOccurs="unbounded" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation xml:lang="en">The country of the Agent.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="type" type="ConceptType" maxOccurs="1" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation xml:lang="en">The nature of the Agent.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+    </xs:sequence>
+    <xs:attribute name="AgentRef" type="xs:IDREF">
+      <xs:annotation>
+        <xs:documentation xml:lang="en">Reference to Agent ID</xs:documentation>
+      </xs:annotation>
+    </xs:attribute>
+  </xs:complexType>
+  <xs:complexType name="DocumentType">
+    <xs:sequence/>
+    <xs:attribute name="DocumentRef" type="xs:IDREF">
+      <xs:annotation>
+        <xs:documentation xml:lang="en">Reference to Document ID</xs:documentation>
+      </xs:annotation>
+    </xs:attribute>
+  </xs:complexType>
+</xs:schema>
