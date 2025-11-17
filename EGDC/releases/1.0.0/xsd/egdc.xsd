@@ -1,15 +1,16 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <xs:schema xmlns="https://data.europa.eu/m8g/xml/" xmlns:xs="http://www.w3.org/2001/XMLSchema" targetNamespace="https://data.europa.eu/m8g/xml/" version="2.0.0" elementFormDefault="qualified" attributeFormDefault="unqualified" xmlns:cv="https://data.europa.eu/m8g/xml/">
-  <xs:element name="LicenceDocument" type="LicenceDocumentType"/>
+  <xs:element name="ContactPoint" type="ContactPointType"/>
+  <xs:element name="ImageObject" type="ImageObjectType"/>
   <xs:element name="Location" type="LocationType"/>
   <xs:element name="Text" type="TextType"/>
   <xs:element name="Uri" type="UriType"/>
   <xs:element name="DateTime" type="DateTimeType"/>
+  <xs:element name="Integer" type="IntegerType"/>
   <xs:element name="NonNegativeInteger" type="NonNegativeIntegerType"/>
   <xs:element name="String" type="StringType"/>
   <xs:element name="Code" type="CodeType"/>
-  <xs:element name="Email" type="EmailType"/>
-  <xs:element name="Asset" type="AssetType"/>
+  <xs:element name="Organization" type="OrganizationType"/>
   <xs:element name="Document" type="DocumentType"/>
   <xs:element name="Benefit" type="BenefitType"/>
   <xs:element name="CaseStudy" type="CaseStudyType"/>
@@ -31,11 +32,31 @@
       </xs:extension>
     </xs:simpleContent>
   </xs:complexType>
-  <xs:complexType name="LicenceDocumentType">
-    <xs:sequence/>
-    <xs:attribute name="LicenceDocumentRef" type="xs:IDREF">
+  <xs:complexType name="ContactPointType">
+    <xs:sequence>
+      <xs:element name="hasEmail" type="xs:string" maxOccurs="unbounded" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation xml:lang="en">An electronic address through which the Contact Point can be contacted.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+    </xs:sequence>
+    <xs:attribute name="ContactPointRef" type="xs:IDREF">
       <xs:annotation>
-        <xs:documentation xml:lang="en">Reference to LicenceDocument ID</xs:documentation>
+        <xs:documentation xml:lang="en">Reference to ContactPoint ID</xs:documentation>
+      </xs:annotation>
+    </xs:attribute>
+  </xs:complexType>
+  <xs:complexType name="ImageObjectType">
+    <xs:sequence>
+      <xs:element name="name" type="xs:string" maxOccurs="1" minOccurs="1">
+        <xs:annotation>
+          <xs:documentation xml:lang="en">A name given to the logo.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+    </xs:sequence>
+    <xs:attribute name="ImageObjectRef" type="xs:IDREF">
+      <xs:annotation>
+        <xs:documentation xml:lang="en">Reference to ImageObject ID</xs:documentation>
       </xs:annotation>
     </xs:attribute>
   </xs:complexType>
@@ -71,6 +92,14 @@
       </xs:annotation>
     </xs:attribute>
   </xs:complexType>
+  <xs:complexType name="IntegerType">
+    <xs:sequence/>
+    <xs:attribute name="IntegerRef" type="xs:IDREF">
+      <xs:annotation>
+        <xs:documentation xml:lang="en">Reference to Integer ID</xs:documentation>
+      </xs:annotation>
+    </xs:attribute>
+  </xs:complexType>
   <xs:complexType name="NonNegativeIntegerType">
     <xs:sequence/>
     <xs:attribute name="NonNegativeIntegerRef" type="xs:IDREF">
@@ -95,120 +124,43 @@
       </xs:annotation>
     </xs:attribute>
   </xs:complexType>
-  <xs:complexType name="EmailType">
-    <xs:sequence/>
-    <xs:attribute name="EmailRef" type="xs:IDREF">
-      <xs:annotation>
-        <xs:documentation xml:lang="en">Reference to Email ID</xs:documentation>
-      </xs:annotation>
-    </xs:attribute>
-  </xs:complexType>
-  <xs:complexType name="AssetType">
+  <xs:complexType name="OrganizationType">
     <xs:sequence>
-      <xs:element name="dateCreated" type="xs:dateTime" maxOccurs="1" minOccurs="0">
+      <xs:element name="name" type="xs:string" maxOccurs="unbounded" minOccurs="1">
         <xs:annotation>
-          <xs:documentation xml:lang="en">Date of creation of the resource.</xs:documentation>
+          <xs:documentation xml:lang="en">The noun given to the Organization.</xs:documentation>
         </xs:annotation>
       </xs:element>
-      <xs:element name="description" type="xs:string" maxOccurs="unbounded" minOccurs="0">
+      <xs:element name="sector" type="ConceptType" maxOccurs="1" minOccurs="1">
         <xs:annotation>
-          <xs:documentation xml:lang="en">An free-text account of the resource.</xs:documentation>
-        </xs:annotation>
-      </xs:element>
-      <xs:element name="hasImplementation" type="xs:anyURI" maxOccurs="unbounded" minOccurs="0">
-        <xs:annotation>
-          <xs:documentation xml:lang="en">The portal/repository implementing such Standard.</xs:documentation>
-        </xs:annotation>
-      </xs:element>
-      <xs:element name="homepage" ref="DocumentType" maxOccurs="1" minOccurs="0">
-        <xs:annotation>
-          <xs:documentation xml:lang="en">A homepage for some thing.</xs:documentation>
-        </xs:annotation>
-      </xs:element>
-      <xs:element name="identifier" type="xs:string" maxOccurs="1" minOccurs="1">
-        <xs:annotation>
-          <xs:documentation xml:lang="en">An unambiguous reference to the resource within a given context.</xs:documentation>
-        </xs:annotation>
-      </xs:element>
-      <xs:element name="isReusedBy" type="xs:anyURI" maxOccurs="unbounded" minOccurs="0">
-        <xs:annotation>
-          <xs:documentation xml:lang="en">The portal or repository reusing such Standard.</xs:documentation>
-        </xs:annotation>
-      </xs:element>
-      <xs:element name="dateIssued" type="xs:dateTime" maxOccurs="1" minOccurs="0">
-        <xs:annotation>
-          <xs:documentation xml:lang="en">Date of formal issuance of the resource.</xs:documentation>
-        </xs:annotation>
-      </xs:element>
-      <xs:element name="keyword" type="xs:string" maxOccurs="unbounded" minOccurs="0">
-        <xs:annotation>
-          <xs:documentation xml:lang="en">A keyword or tag describing the Standard.</xs:documentation>
-        </xs:annotation>
-      </xs:element>
-      <xs:element name="language" type="ConceptType" maxOccurs="unbounded" minOccurs="0">
-        <xs:annotation>
-          <xs:documentation xml:lang="en">A language of the resource.</xs:documentation>
-        </xs:annotation>
-      </xs:element>
-      <xs:element name="licence" ref="LicenceDocumentType" maxOccurs="unbounded" minOccurs="0">
-        <xs:annotation>
-          <xs:documentation xml:lang="en">A licence under which the standard is made available.</xs:documentation>
-        </xs:annotation>
-      </xs:element>
-      <xs:element name="lovRank" ref="NonNegativeIntegerType" maxOccurs="1" minOccurs="0">
-        <xs:annotation>
-          <xs:documentation xml:lang="en">A numeric value that rank the Standard on the number of the reuse.</xs:documentation>
-        </xs:annotation>
-      </xs:element>
-      <xs:element name="dateModified" type="xs:dateTime" maxOccurs="1" minOccurs="0">
-        <xs:annotation>
-          <xs:documentation xml:lang="en">Date on which the resource was changed.</xs:documentation>
-        </xs:annotation>
-      </xs:element>
-      <xs:element name="preferredNamespaceUri" type="xs:anyURI" maxOccurs="1" minOccurs="0">
-        <xs:annotation>
-          <xs:documentation xml:lang="en">The preferred namespace URI of the Standard.</xs:documentation>
-        </xs:annotation>
-      </xs:element>
-      <xs:element name="requires" ref="AssetType" maxOccurs="unbounded" minOccurs="0">
-        <xs:annotation>
-          <xs:documentation xml:lang="en">A related resource that is required by the described resource to support its function, delivery, or coherence.</xs:documentation>
-        </xs:annotation>
-      </xs:element>
-      <xs:element name="status" type="ConceptType" maxOccurs="1" minOccurs="0">
-        <xs:annotation>
-          <xs:documentation xml:lang="en">The status of the Standard.</xs:documentation>
-        </xs:annotation>
-      </xs:element>
-      <xs:element name="theme" type="ConceptType" maxOccurs="unbounded" minOccurs="0">
-        <xs:annotation>
-          <xs:documentation xml:lang="en">A classification of the Standard.</xs:documentation>
-        </xs:annotation>
-      </xs:element>
-      <xs:element name="title" type="xs:string" maxOccurs="unbounded" minOccurs="1">
-        <xs:annotation>
-          <xs:documentation xml:lang="en">A name given to the resource.</xs:documentation>
+          <xs:documentation xml:lang="en">The industry or sector the Organization is intended for.</xs:documentation>
         </xs:annotation>
       </xs:element>
       <xs:element name="type" type="ConceptType" maxOccurs="1" minOccurs="0">
         <xs:annotation>
-          <xs:documentation xml:lang="en">The nature or genre of the Standard.</xs:documentation>
-        </xs:annotation>
-      </xs:element>
-      <xs:element name="versionInfo" type="xs:string" maxOccurs="1" minOccurs="0">
-        <xs:annotation>
-          <xs:documentation xml:lang="en">A string giving information about this version.</xs:documentation>
+          <xs:documentation xml:lang="en">The nature of the Organization.</xs:documentation>
         </xs:annotation>
       </xs:element>
     </xs:sequence>
-    <xs:attribute name="AssetRef" type="xs:IDREF">
+    <xs:attribute name="OrganizationRef" type="xs:IDREF">
       <xs:annotation>
-        <xs:documentation xml:lang="en">Reference to Asset ID</xs:documentation>
+        <xs:documentation xml:lang="en">Reference to Organization ID</xs:documentation>
       </xs:annotation>
     </xs:attribute>
   </xs:complexType>
   <xs:complexType name="DocumentType">
-    <xs:sequence/>
+    <xs:sequence>
+      <xs:element name="name" type="xs:string" maxOccurs="1" minOccurs="1">
+        <xs:annotation>
+          <xs:documentation xml:lang="en">The title of the document.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="type" type="ConceptType" maxOccurs="1" minOccurs="1">
+        <xs:annotation>
+          <xs:documentation xml:lang="en">The nature or genre of the document.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+    </xs:sequence>
     <xs:attribute name="DocumentRef" type="xs:IDREF">
       <xs:annotation>
         <xs:documentation xml:lang="en">Reference to Document ID</xs:documentation>
