@@ -1,8 +1,11 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <xs:schema xmlns="https://data.europa.eu/m8g/xml/" xmlns:xs="http://www.w3.org/2001/XMLSchema" targetNamespace="https://data.europa.eu/m8g/xml/" version="2.0.0" elementFormDefault="qualified" attributeFormDefault="unqualified" xmlns:cv="https://data.europa.eu/m8g/xml/">
-  <xs:element name="EvidenceType" type="EvidenceTypeType"/>
+  <xs:element name="Evidence" type="EvidenceType"/>
   <xs:element name="GenericDate" type="GenericDateType"/>
   <xs:element name="EvidenceOfBirth" type="EvidenceOfBirthType"/>
+  <xs:element name="OotsEvidence" type="OotsEvidenceType"/>
+  <xs:element name="AttributeSet" type="AttributeSetType"/>
+  <xs:element name="Birth" type="BirthType"/>
   <xs:element name="Location" type="LocationType"/>
   <xs:element name="Text" type="TextType"/>
   <xs:element name="Code" type="CodeType"/>
@@ -25,11 +28,11 @@
       </xs:extension>
     </xs:simpleContent>
   </xs:complexType>
-  <xs:complexType name="EvidenceTypeType">
+  <xs:complexType name="EvidenceType">
     <xs:sequence/>
-    <xs:attribute name="EvidenceTypeRef" type="xs:IDREF">
+    <xs:attribute name="EvidenceRef" type="xs:IDREF">
       <xs:annotation>
-        <xs:documentation xml:lang="en">Reference to EvidenceType ID</xs:documentation>
+        <xs:documentation xml:lang="en">Reference to Evidence ID</xs:documentation>
       </xs:annotation>
     </xs:attribute>
   </xs:complexType>
@@ -43,6 +46,11 @@
   </xs:complexType>
   <xs:complexType name="EvidenceOfBirthType">
     <xs:sequence>
+      <xs:element name="birth" ref="BirthType" maxOccurs="unbounded" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation xml:lang="en">Example DEF</xs:documentation>
+        </xs:annotation>
+      </xs:element>
       <xs:element name="isAbout" ref="PersonType" maxOccurs="1" minOccurs="1">
         <xs:annotation>
           <xs:documentation xml:lang="en">Agent that is the subject in the provided Evidence.</xs:documentation>
@@ -52,6 +60,57 @@
     <xs:attribute name="EvidenceOfBirthRef" type="xs:IDREF">
       <xs:annotation>
         <xs:documentation xml:lang="en">Reference to EvidenceOfBirth ID</xs:documentation>
+      </xs:annotation>
+    </xs:attribute>
+  </xs:complexType>
+  <xs:complexType name="OotsEvidenceType">
+    <xs:sequence>
+      <xs:element name="hasAttributeSet" ref="AttributeSetType" maxOccurs="unbounded" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation xml:lang="en">Exemple DEF</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+    </xs:sequence>
+    <xs:attribute name="OotsEvidenceRef" type="xs:IDREF">
+      <xs:annotation>
+        <xs:documentation xml:lang="en">Reference to OotsEvidence ID</xs:documentation>
+      </xs:annotation>
+    </xs:attribute>
+  </xs:complexType>
+  <xs:complexType name="AttributeSetType">
+    <xs:sequence/>
+    <xs:attribute name="AttributeSetRef" type="xs:IDREF">
+      <xs:annotation>
+        <xs:documentation xml:lang="en">Reference to AttributeSet ID</xs:documentation>
+      </xs:annotation>
+    </xs:attribute>
+  </xs:complexType>
+  <xs:complexType name="BirthType">
+    <xs:sequence>
+      <xs:element name="countryOfBirth" ref="LocationType" maxOccurs="unbounded" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation xml:lang="en">The country in which the Person was born.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="dateOfBirth" type="http://data.europa.eu/m8g/GenericDate" maxOccurs="unbounded" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation xml:lang="en">The point in time on which the Person was born.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="hasAttributeSet" ref="AttributeSetType" maxOccurs="unbounded" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation xml:lang="en">Example DEF</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="placeOfBirth" ref="LocationType" maxOccurs="unbounded" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation xml:lang="en">The Location where the Person was born.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+    </xs:sequence>
+    <xs:attribute name="BirthRef" type="xs:IDREF">
+      <xs:annotation>
+        <xs:documentation xml:lang="en">Reference to Birth ID</xs:documentation>
       </xs:annotation>
     </xs:attribute>
   </xs:complexType>
@@ -87,16 +146,6 @@
   </xs:complexType>
   <xs:complexType name="PersonType">
     <xs:sequence>
-      <xs:element name="countryOfBirth" ref="LocationType" maxOccurs="unbounded" minOccurs="0">
-        <xs:annotation>
-          <xs:documentation xml:lang="en">The country in which the Person was born.</xs:documentation>
-        </xs:annotation>
-      </xs:element>
-      <xs:element name="dateOfBirth" type="http://data.europa.eu/m8g/GenericDate" maxOccurs="unbounded" minOccurs="0">
-        <xs:annotation>
-          <xs:documentation xml:lang="en">The point in time on which the Person was born.</xs:documentation>
-        </xs:annotation>
-      </xs:element>
       <xs:element name="familyName" type="xs:string" maxOccurs="unbounded" minOccurs="0">
         <xs:annotation>
           <xs:documentation xml:lang="en">The hereditary surname of a family.</xs:documentation>
@@ -107,9 +156,9 @@
           <xs:documentation xml:lang="en">The name(s) that identify the Person within a family with a common surname.</xs:documentation>
         </xs:annotation>
       </xs:element>
-      <xs:element name="placeOfBirth" ref="LocationType" maxOccurs="unbounded" minOccurs="0">
+      <xs:element name="hasAttributeSet" ref="AttributeSetType" maxOccurs="unbounded" minOccurs="0">
         <xs:annotation>
-          <xs:documentation xml:lang="en">The Location where the Person was born.</xs:documentation>
+          <xs:documentation xml:lang="en">Example DEF</xs:documentation>
         </xs:annotation>
       </xs:element>
       <xs:element name="sex" type="ConceptType" maxOccurs="unbounded" minOccurs="0">
