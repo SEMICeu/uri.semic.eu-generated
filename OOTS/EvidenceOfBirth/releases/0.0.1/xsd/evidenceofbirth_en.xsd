@@ -2,6 +2,7 @@
 <xs:schema xmlns="https://data.europa.eu/m8g/xml/" xmlns:xs="http://www.w3.org/2001/XMLSchema" targetNamespace="https://data.europa.eu/m8g/xml/" version="2.0.0" elementFormDefault="qualified" attributeFormDefault="unqualified" xmlns:cv="https://data.europa.eu/m8g/xml/">
   <xs:element name="Evidence" type="EvidenceType"/>
   <xs:element name="GenericDate" type="GenericDateType"/>
+  <xs:element name="Attribute" type="AttributeType"/>
   <xs:element name="AttributeSet" type="AttributeSetType"/>
   <xs:element name="Birth" type="BirthType"/>
   <xs:element name="EvidenceOfBirth" type="EvidenceOfBirthType"/>
@@ -44,8 +45,22 @@
       </xs:annotation>
     </xs:attribute>
   </xs:complexType>
-  <xs:complexType name="AttributeSetType">
+  <xs:complexType name="AttributeType">
     <xs:sequence/>
+    <xs:attribute name="AttributeRef" type="xs:IDREF">
+      <xs:annotation>
+        <xs:documentation xml:lang="en">Reference to Attribute ID</xs:documentation>
+      </xs:annotation>
+    </xs:attribute>
+  </xs:complexType>
+  <xs:complexType name="AttributeSetType">
+    <xs:sequence>
+      <xs:element name="hasAttribute" ref="AttributeType" maxOccurs="1" minOccurs="1">
+        <xs:annotation>
+          <xs:documentation xml:lang="en">Example DEF</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+    </xs:sequence>
     <xs:attribute name="AttributeSetRef" type="xs:IDREF">
       <xs:annotation>
         <xs:documentation xml:lang="en">Reference to AttributeSet ID</xs:documentation>
@@ -83,7 +98,7 @@
   </xs:complexType>
   <xs:complexType name="EvidenceOfBirthType">
     <xs:sequence>
-      <xs:element name="birth" ref="BirthType" maxOccurs="unbounded" minOccurs="0">
+      <xs:element name="hasBirth" ref="BirthType" maxOccurs="unbounded" minOccurs="0">
         <xs:annotation>
           <xs:documentation xml:lang="en">Example DEF</xs:documentation>
         </xs:annotation>
