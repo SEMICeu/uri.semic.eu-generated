@@ -18,8 +18,8 @@
     },
     "status": "SEMIC Recommendation",
     "statuslabel": "Onbekend",
-    "repositoryurl": "https://code.europa.eu/regulatory-reporting/rrmv.git/tree/624a311f4a464035ecc8a6ad8e06bcb27dfa7691",
-    "changelogurl": "https://code.europa.eu/regulatory-reporting/rrmv.git/blob/624a311f4a464035ecc8a6ad8e06bcb27dfa7691/CHANGELOG",
+    "repositoryurl": "https://code.europa.eu/regulatory-reporting/rrmv.git/tree/0fc6ba22798fcba910aec426bed0ed82552f9f24",
+    "changelogurl": "https://code.europa.eu/regulatory-reporting/rrmv.git/blob/0fc6ba22798fcba910aec426bed0ed82552f9f24/CHANGELOG",
     "feedbackurl": "https://github.com/SEMICeu/RRMV/issues",
     "standaardregisterurl": "RRMV",
     "usesVocs": [],
@@ -663,11 +663,14 @@
       "description": {
         "en": "The rate at which a temporal entity recurs or repeats over a specified period of time."
       },
-      "usage": {},
+      "usage": {
+        "en": "Specify both the numeric value and the unit to define how often an action recurs (e.g., value='1' with unit='Quarter' means 'once per quarter')."
+      },
       "parents": [],
       "rawTags": {
         "definition-en": "The rate at which a temporal entity recurs or repeats over a specified period of time.",
-        "label-en": "Frequency"
+        "label-en": "Frequency",
+        "ap-usageNote-en": "Specify both the numeric value and the unit to define how often an action recurs (e.g., value='1' with unit='Quarter' means 'once per quarter')."
       },
       "properties": [
         {
@@ -824,7 +827,9 @@
       "description": {
         "en": "A set point in time, representing a single moment without duration. It can be used, for example, when a normative provision establishes a specific temporal reference, such as a deadline, start time, or activation moment. This class is appropriate for establishing unique temporal reference points for normative provisions and other use cases."
       },
-      "usage": {},
+      "usage": {
+        "en": "Use this class for specific points in time such as '31 July 2021', 'the date of entry into force', or 'the moment of notification'. Unlike intervals, instants have no duration."
+      },
       "parents": [
         {
           "label": "Temporal Entity Specification",
@@ -837,7 +842,8 @@
       "rawTags": {
         "label-en": "Instant Temporal Entity Specification",
         "class-usage-scope": "supportive",
-        "definition-en": "A set point in time, representing a single moment without duration. It can be used, for example, when a normative provision establishes a specific temporal reference, such as a deadline, start time, or activation moment. This class is appropriate for establishing unique temporal reference points for normative provisions and other use cases."
+        "definition-en": "A set point in time, representing a single moment without duration. It can be used, for example, when a normative provision establishes a specific temporal reference, such as a deadline, start time, or activation moment. This class is appropriate for establishing unique temporal reference points for normative provisions and other use cases.",
+        "ap-usageNote-en": "Use this class for specific points in time such as '31 July 2021', 'the date of entry into force', or 'the moment of notification'. Unlike intervals, instants have no duration."
       },
       "properties": []
     },
@@ -851,7 +857,9 @@
       "description": {
         "en": "A segment of time with determined start and end points, representing a period of time. This class is appropriate for modelling validity periods, time windows for regulatory compliance, and reporting cycles with defined temporal boundaries, among others."
       },
-      "usage": {},
+      "usage": {
+        "en": "While multiple start or end points are technically possible, typically an interval has one start and one end instant. Multiple values may be used to express alternative or conditional boundaries."
+      },
       "parents": [
         {
           "label": "Temporal Entity Specification",
@@ -864,7 +872,8 @@
       "rawTags": {
         "label-en": "Interval Temporal Entity Specification",
         "class-usage-scope": "supportive",
-        "definition-en": "A segment of time with determined start and end points, representing a period of time. This class is appropriate for modelling validity periods, time windows for regulatory compliance, and reporting cycles with defined temporal boundaries, among others."
+        "definition-en": "A segment of time with determined start and end points, representing a period of time. This class is appropriate for modelling validity periods, time windows for regulatory compliance, and reporting cycles with defined temporal boundaries, among others.",
+        "ap-usageNote-en": "While multiple start or end points are technically possible, typically an interval has one start and one end instant. Multiple values may be used to express alternative or conditional boundaries."
       },
       "properties": [
         {
@@ -957,12 +966,15 @@
       "description": {
         "en": "A portion of legal source expression including a mandate that produces at least one Action."
       },
-      "usage": {},
+      "usage": {
+        "en": "A Requirement represents a normative provision within a legal text that mandates, permits, or prohibits specific actions. It typically corresponds to an article, paragraph, or clause that establishes obligations for identified agents. For example, Article 26(2) of Regulation (EU) 2018/1999 constitutes a reporting Requirement because it mandates Member States to submit greenhouse gas inventories to the Commission. Each Requirement is linked to the specific portion(s) of the legal text through has URI and must produce at least one Action representing the mandated activity."
+      },
       "parents": [],
       "rawTags": {
         "definition-en": "A portion of legal source expression including a mandate that produces at least one Action.",
         "label-en": "Requirement",
-        "class-usage-scope": "main"
+        "class-usage-scope": "main",
+        "ap-usageNote-en": "A Requirement represents a normative provision within a legal text that mandates, permits, or prohibits specific actions. It typically corresponds to an article, paragraph, or clause that establishes obligations for identified agents. For example, Article 26(2) of Regulation (EU) 2018/1999 constitutes a reporting Requirement because it mandates Member States to submit greenhouse gas inventories to the Commission. Each Requirement is linked to the specific portion(s) of the legal text through has URI and must produce at least one Action representing the mandated activity."
       },
       "properties": [
         {
@@ -1586,7 +1598,9 @@
           "description": {
             "en": "Indicates whether a temporal entity specification depends on events outside the regulatory framework's direct control."
           },
-          "usage": {},
+          "usage": {
+            "en": "Set to true when the temporal specification depends on events outside the regulatory framework's direct control (e.g., 'within 30 days of the disaster declaration', 'upon completion of the national consultation'). Set to false for calendar-based deadlines."
+          },
           "domain": [
             {
               "EA-Name": "TemporalEntitySpec",
@@ -1613,7 +1627,8 @@
           "rawTags": {
             "name": "externalEvent",
             "definition-en": "Indicates whether a temporal entity specification depends on events outside the regulatory framework's direct control.",
-            "label-en": "external event"
+            "label-en": "external event",
+            "ap-usageNote-en": "Set to true when the temporal specification depends on events outside the regulatory framework's direct control (e.g., 'within 30 days of the disaster declaration', 'upon completion of the national consultation'). Set to false for calendar-based deadlines."
           }
         },
         {
@@ -1706,7 +1721,9 @@
           "description": {
             "en": " Indicates whether a temporal aspect exists but is undefined or it depends on an event external to the legislative corpus."
           },
-          "usage": {},
+          "usage": {
+            "en": "Set to true when the legal text indicates that a temporal aspect exists but does not specify its exact value (e.g., 'as soon as possible', 'in due time'). This differs from external event which refers to temporally defined but externally triggered events."
+          },
           "domain": [
             {
               "EA-Name": "TemporalEntitySpec",
@@ -1733,7 +1750,8 @@
           "rawTags": {
             "name": "isUnspecified",
             "definition-en": " Indicates whether a temporal aspect exists but is undefined or it depends on an event external to the legislative corpus.",
-            "label-en": "is unspecified"
+            "label-en": "is unspecified",
+            "ap-usageNote-en": "Set to true when the legal text indicates that a temporal aspect exists but does not specify its exact value (e.g., 'as soon as possible', 'in due time'). This differs from external event which refers to temporally defined but externally triggered events."
           }
         },
         {
