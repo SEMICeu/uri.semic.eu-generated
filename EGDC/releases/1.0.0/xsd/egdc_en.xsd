@@ -13,6 +13,7 @@
   <xs:element name="Code" type="CodeType"/>
   <xs:element name="Dataset" type="DatasetType"/>
   <xs:element name="Organization" type="OrganizationType"/>
+  <xs:element name="EnvironmentalBenefit" type="EnvironmentalBenefitType"/>
   <xs:simpleType name="Literal">
     <xs:restriction base="xs:string"/>
   </xs:simpleType>
@@ -62,17 +63,17 @@
           <xs:documentation xml:lang="en">Date of creation of the resource.</xs:documentation>
         </xs:annotation>
       </xs:element>
-      <xs:element name="fundedBy" ref="OrganizationType" maxOccurs="unbounded" minOccurs="0">
-        <xs:annotation>
-          <xs:documentation xml:lang="en">An entity responsible for the financial support.</xs:documentation>
-        </xs:annotation>
-      </xs:element>
-      <xs:element name="funding" type="ConceptType" maxOccurs="1" minOccurs="1">
+      <xs:element name="fundingType" type="ConceptType" maxOccurs="1" minOccurs="0">
         <xs:annotation>
           <xs:documentation xml:lang="en">The type of financing of the Case Study.</xs:documentation>
         </xs:annotation>
       </xs:element>
-      <xs:element name="hasBenefit" ref="BenefitType" maxOccurs="unbounded" minOccurs="1">
+      <xs:element name="hasBenefit" ref="EnvironmentalBenefitType" maxOccurs="1" minOccurs="1">
+        <xs:annotation>
+          <xs:documentation xml:lang="en">The benefit measured by the case study.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="hasBenefit" ref="BenefitType" maxOccurs="unbounded" minOccurs="0">
         <xs:annotation>
           <xs:documentation xml:lang="en">The benefit measured by the case study.</xs:documentation>
         </xs:annotation>
@@ -87,9 +88,19 @@
           <xs:documentation xml:lang="en">The methodology provided with the Case Study.</xs:documentation>
         </xs:annotation>
       </xs:element>
+      <xs:element name="isFundedBy" ref="OrganizationType" maxOccurs="unbounded" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation xml:lang="en">An entity responsible for the financial support.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
       <xs:element name="isProvidedBy" ref="OrganizationType" maxOccurs="unbounded" minOccurs="1">
         <xs:annotation>
           <xs:documentation xml:lang="en">An entity responsible for making the resource.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="isUsedBy" ref="OrganizationType" maxOccurs="unbounded" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation xml:lang="en">The entity using the solution.</xs:documentation>
         </xs:annotation>
       </xs:element>
       <xs:element name="logo" ref="ImageObjectType" maxOccurs="1" minOccurs="1">
@@ -102,7 +113,7 @@
           <xs:documentation xml:lang="en">An extended description of the Case Study.</xs:documentation>
         </xs:annotation>
       </xs:element>
-      <xs:element name="problemSolved" type="ConceptType" maxOccurs="1" minOccurs="1">
+      <xs:element name="problemSolved" type="xs:string" maxOccurs="1" minOccurs="1">
         <xs:annotation>
           <xs:documentation xml:lang="en">The type of challenge the Case Study resolved.</xs:documentation>
         </xs:annotation>
@@ -112,7 +123,7 @@
           <xs:documentation xml:lang="en">An account of the Case Study.</xs:documentation>
         </xs:annotation>
       </xs:element>
-      <xs:element name="spatial" ref="LocationType" maxOccurs="unbounded" minOccurs="0">
+      <xs:element name="spatial" ref="LocationType" maxOccurs="unbounded" minOccurs="1">
         <xs:annotation>
           <xs:documentation xml:lang="en">Spatial characteristics of the Case Study.</xs:documentation>
         </xs:annotation>
@@ -269,6 +280,14 @@
     <xs:attribute name="OrganizationRef" type="xs:IDREF">
       <xs:annotation>
         <xs:documentation xml:lang="en">Reference to Organization ID</xs:documentation>
+      </xs:annotation>
+    </xs:attribute>
+  </xs:complexType>
+  <xs:complexType name="EnvironmentalBenefitType">
+    <xs:sequence/>
+    <xs:attribute name="EnvironmentalBenefitRef" type="xs:IDREF">
+      <xs:annotation>
+        <xs:documentation xml:lang="en">Reference to EnvironmentalBenefit ID</xs:documentation>
       </xs:annotation>
     </xs:attribute>
   </xs:complexType>
