@@ -2,6 +2,7 @@
 <xs:schema xmlns="https://data.europa.eu/m8g/xml/" xmlns:xs="http://www.w3.org/2001/XMLSchema" targetNamespace="https://data.europa.eu/m8g/xml/" version="2.0.0" elementFormDefault="qualified" attributeFormDefault="unqualified" xmlns:cv="https://data.europa.eu/m8g/xml/">
   <xs:element name="Benefit" type="BenefitType"/>
   <xs:element name="CaseStudy" type="CaseStudyType"/>
+  <xs:element name="EnvironmentalBenefit" type="EnvironmentalBenefitType"/>
   <xs:element name="Methodology" type="MethodologyType"/>
   <xs:element name="ContactPoint" type="ContactPointType"/>
   <xs:element name="ImageObject" type="ImageObjectType"/>
@@ -13,7 +14,6 @@
   <xs:element name="Code" type="CodeType"/>
   <xs:element name="Dataset" type="DatasetType"/>
   <xs:element name="Organization" type="OrganizationType"/>
-  <xs:element name="EnvironmentalBenefit" type="EnvironmentalBenefitType"/>
   <xs:simpleType name="Literal">
     <xs:restriction base="xs:string"/>
   </xs:simpleType>
@@ -68,12 +68,12 @@
           <xs:documentation xml:lang="en">The type of financing of the Case Study.</xs:documentation>
         </xs:annotation>
       </xs:element>
-      <xs:element name="hasBenefit" ref="EnvironmentalBenefitType" maxOccurs="1" minOccurs="1">
+      <xs:element name="hasBenefit" ref="BenefitType" maxOccurs="unbounded" minOccurs="0">
         <xs:annotation>
           <xs:documentation xml:lang="en">The benefit measured by the case study.</xs:documentation>
         </xs:annotation>
       </xs:element>
-      <xs:element name="hasBenefit" ref="BenefitType" maxOccurs="unbounded" minOccurs="0">
+      <xs:element name="hasBenefit" ref="EnvironmentalBenefitType" maxOccurs="1" minOccurs="1">
         <xs:annotation>
           <xs:documentation xml:lang="en">The benefit measured by the case study.</xs:documentation>
         </xs:annotation>
@@ -147,6 +147,14 @@
     <xs:attribute name="CaseStudyRef" type="xs:IDREF">
       <xs:annotation>
         <xs:documentation xml:lang="en">Reference to CaseStudy ID</xs:documentation>
+      </xs:annotation>
+    </xs:attribute>
+  </xs:complexType>
+  <xs:complexType name="EnvironmentalBenefitType">
+    <xs:sequence/>
+    <xs:attribute name="EnvironmentalBenefitRef" type="xs:IDREF">
+      <xs:annotation>
+        <xs:documentation xml:lang="en">Reference to EnvironmentalBenefit ID</xs:documentation>
       </xs:annotation>
     </xs:attribute>
   </xs:complexType>
@@ -280,14 +288,6 @@
     <xs:attribute name="OrganizationRef" type="xs:IDREF">
       <xs:annotation>
         <xs:documentation xml:lang="en">Reference to Organization ID</xs:documentation>
-      </xs:annotation>
-    </xs:attribute>
-  </xs:complexType>
-  <xs:complexType name="EnvironmentalBenefitType">
-    <xs:sequence/>
-    <xs:attribute name="EnvironmentalBenefitRef" type="xs:IDREF">
-      <xs:annotation>
-        <xs:documentation xml:lang="en">Reference to EnvironmentalBenefit ID</xs:documentation>
       </xs:annotation>
     </xs:attribute>
   </xs:complexType>
