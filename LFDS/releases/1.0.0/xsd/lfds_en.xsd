@@ -30,6 +30,7 @@
   <xs:element name="XsdanyUri" type="XsdanyUriType"/>
   <xs:element name="Xsdboolean" type="XsdbooleanType"/>
   <xs:element name="Code" type="CodeType"/>
+  <xs:element name="Identifier" type="IdentifierType"/>
   <xs:element name="Dataset" type="DatasetType"/>
   <xs:element name="Resource" type="ResourceType"/>
   <xs:element name="Specification" type="SpecificationType"/>
@@ -66,7 +67,7 @@
           <xs:documentation xml:lang="en">An account of the resource.</xs:documentation>
         </xs:annotation>
       </xs:element>
-      <xs:element name="identifier" maxOccurs="1" minOccurs="1">
+      <xs:element name="identifier" ref="IdentifierType" maxOccurs="1" minOccurs="1">
         <xs:annotation>
           <xs:documentation xml:lang="en">Links a resource to an adms:Identifier class.</xs:documentation>
         </xs:annotation>
@@ -345,12 +346,12 @@
   </xs:complexType>
   <xs:complexType name="AssessmentType">
     <xs:sequence>
-      <xs:element name="assesses" ref="PublicServiceType" maxOccurs="unbounded" minOccurs="0">
+      <xs:element name="assesses" ref="RequirementType" maxOccurs="unbounded" minOccurs="0">
         <xs:annotation>
           <xs:documentation xml:lang="en">The reference to the asset(s) that are the object of the assessment.</xs:documentation>
         </xs:annotation>
       </xs:element>
-      <xs:element name="assesses" ref="RequirementType" maxOccurs="unbounded" minOccurs="0">
+      <xs:element name="assesses" ref="PublicServiceType" maxOccurs="unbounded" minOccurs="0">
         <xs:annotation>
           <xs:documentation xml:lang="en">The reference to the asset(s) that are the object of the assessment.</xs:documentation>
         </xs:annotation>
@@ -423,6 +424,16 @@
           <xs:documentation xml:lang="en">Indicates a work in which this one is physically included. Covers the case of text included in an Official Journal, or an article included in a text.</xs:documentation>
         </xs:annotation>
       </xs:element>
+      <xs:element name="isRealizedBy" ref="WorkType" maxOccurs="unbounded" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation xml:lang="en">Relates a work to an expression of this work in the form of a "sequence of signs" (typically alpha-numeric characters in a legal context).</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="isRealizedBy" ref="WorkType" maxOccurs="unbounded" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation xml:lang="en">Relates a work to an expression of this work in the form of a "sequence of signs" (typically alpha-numeric characters in a legal context).</xs:documentation>
+        </xs:annotation>
+      </xs:element>
     </xs:sequence>
     <xs:attribute name="LegalExpressionRef" type="xs:IDREF">
       <xs:annotation>
@@ -445,18 +456,7 @@
     </xs:attribute>
   </xs:complexType>
   <xs:complexType name="WorkType">
-    <xs:sequence>
-      <xs:element name="isRealizedBy" ref="LegalExpressionType" maxOccurs="unbounded" minOccurs="0">
-        <xs:annotation>
-          <xs:documentation xml:lang="en">Relates an expression to a work realised through that expression. Inverse of "is_realized_by".</xs:documentation>
-        </xs:annotation>
-      </xs:element>
-      <xs:element name="isRealizedBy" ref="LegalExpressionType" maxOccurs="unbounded" minOccurs="0">
-        <xs:annotation>
-          <xs:documentation xml:lang="en">Relates an expression to a work realised through that expression. Inverse of "is_realized_by".</xs:documentation>
-        </xs:annotation>
-      </xs:element>
-    </xs:sequence>
+    <xs:sequence/>
     <xs:attribute name="WorkRef" type="xs:IDREF">
       <xs:annotation>
         <xs:documentation xml:lang="en">Reference to Work ID</xs:documentation>
@@ -546,14 +546,14 @@
           <xs:documentation xml:lang="en">A name given to the resource.</xs:documentation>
         </xs:annotation>
       </xs:element>
-      <xs:element name="isGroupedBy" ref="EventType" maxOccurs="unbounded" minOccurs="0">
-        <xs:annotation>
-          <xs:documentation xml:lang="en">It links the Public Service to the Event class.</xs:documentation>
-        </xs:annotation>
-      </xs:element>
       <xs:element name="spatial" ref="LocationType" maxOccurs="unbounded" minOccurs="0">
         <xs:annotation>
           <xs:documentation xml:lang="en">Spatial characteristics of the resource.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="isGroupedBy" ref="EventType" maxOccurs="unbounded" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation xml:lang="en">It links the Public Service to the Event class.</xs:documentation>
         </xs:annotation>
       </xs:element>
     </xs:sequence>
@@ -608,6 +608,14 @@
     <xs:attribute name="CodeRef" type="xs:IDREF">
       <xs:annotation>
         <xs:documentation xml:lang="en">Reference to Code ID</xs:documentation>
+      </xs:annotation>
+    </xs:attribute>
+  </xs:complexType>
+  <xs:complexType name="IdentifierType">
+    <xs:sequence/>
+    <xs:attribute name="IdentifierRef" type="xs:IDREF">
+      <xs:annotation>
+        <xs:documentation xml:lang="en">Reference to Identifier ID</xs:documentation>
       </xs:annotation>
     </xs:attribute>
   </xs:complexType>

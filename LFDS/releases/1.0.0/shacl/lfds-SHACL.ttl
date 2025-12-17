@@ -37,6 +37,7 @@
     <https://semiceu.github.io/LFDS/releases/1.0.0#xsd:anyURIShape>,
     <https://semiceu.github.io/LFDS/releases/1.0.0#xsd:booleanShape>,
     <https://semiceu.github.io/LFDS/releases/1.0.0#CodeShape>,
+    <https://semiceu.github.io/LFDS/releases/1.0.0#IdentifierShape>,
     <https://semiceu.github.io/LFDS/releases/1.0.0#DatasetShape>,
     <https://semiceu.github.io/LFDS/releases/1.0.0#ResourceShape>,
     <https://semiceu.github.io/LFDS/releases/1.0.0#SpecificationShape> .
@@ -270,8 +271,8 @@
   shacl:path dc:type .
 
 <https://semiceu.github.io/LFDS/releases/1.0.0#AssessmentShape/5c78cfc0b2f1e3a2139614e0cdf0ace1a05783dd> rdfs:seeAlso "https://semiceu.github.io/LFDS/releases/1.0.0#Assessment.assesses";
-  shacl:class <http://purl.org/vocab/cpsv#PublicService>,
-    <http://data.europa.eu/2qy/rrmv#Requirement>;
+  shacl:class <http://data.europa.eu/2qy/rrmv#Requirement>,
+    <http://purl.org/vocab/cpsv#PublicService>;
   shacl:description "The reference to the asset(s) that are the object of the assessment."@en;
   shacl:name "assesses"@en;
   shacl:path <http://data.europa.eu/2sa/cav#assesses> .
@@ -545,11 +546,17 @@
   shacl:name "description"@en;
   shacl:path dc:description .
 
+<https://semiceu.github.io/LFDS/releases/1.0.0#IdentifierShape> a shacl:NodeShape;
+  shacl:closed false;
+  shacl:targetClass <http://www.w3.org/ns/adms#Identifier> .
+
 <https://semiceu.github.io/LFDS/releases/1.0.0#LegalExpressionShape> a shacl:NodeShape;
   shacl:closed false;
   shacl:property <https://semiceu.github.io/LFDS/releases/1.0.0#LegalExpressionShape/28d4860d1ad14d789ffc09b841dfc4f9b27a0f4d>,
     <https://semiceu.github.io/LFDS/releases/1.0.0#LegalExpressionShape/5d3b501368b0e6230133103390ac50e7385e214a>,
     <https://semiceu.github.io/LFDS/releases/1.0.0#LegalExpressionShape/842604dcbbe4917bc9cdefa599b788f17745f307>,
+    <https://semiceu.github.io/LFDS/releases/1.0.0#LegalExpressionShape/88a90c213534ac8c4fba6c8b5dfa167be7b35cf1>,
+    <https://semiceu.github.io/LFDS/releases/1.0.0#LegalExpressionShape/be09b1185e7618f97fa7aee26b523e3b69f359ff>,
     <https://semiceu.github.io/LFDS/releases/1.0.0#LegalExpressionShape/c1dd7db4d0fe9532aeac071ed27b1ab7295bd438>,
     <https://semiceu.github.io/LFDS/releases/1.0.0#LegalExpressionShape/c9662e1437a7dae8f9dd84bb54b1d9ddf1cb0fc4>,
     <https://semiceu.github.io/LFDS/releases/1.0.0#LegalExpressionShape/cbdb40c27622b1c3cc24afbbccdfb6bb131af212>;
@@ -572,6 +579,18 @@
   shacl:name "cites"@en;
   shacl:nodeKind shacl:BlankNodeOrIRI;
   shacl:path <http://data.europa.eu/eli/ontology#cites> .
+
+<https://semiceu.github.io/LFDS/releases/1.0.0#LegalExpressionShape/88a90c213534ac8c4fba6c8b5dfa167be7b35cf1> rdfs:seeAlso "https://semiceu.github.io/LFDS/releases/1.0.0#LegalExpression.isrealizedby";
+  shacl:description "Relates a work to an expression of this work in the form of a \"sequence of signs\" (typically alpha-numeric characters in a legal context)."@en;
+  shacl:name "is realized by"@en;
+  shacl:nodeKind shacl:BlankNodeOrIRI;
+  shacl:path <http://data.europa.eu/eli/ontology#realizes> .
+
+<https://semiceu.github.io/LFDS/releases/1.0.0#LegalExpressionShape/be09b1185e7618f97fa7aee26b523e3b69f359ff> rdfs:seeAlso "https://semiceu.github.io/LFDS/releases/1.0.0#LegalExpression.isrealizedby";
+  shacl:class <http://data.europa.eu/eli/ontology#Work>;
+  shacl:description "Relates a work to an expression of this work in the form of a \"sequence of signs\" (typically alpha-numeric characters in a legal context)."@en;
+  shacl:name "is realized by"@en;
+  shacl:path <http://data.europa.eu/eli/ontology#realizes> .
 
 <https://semiceu.github.io/LFDS/releases/1.0.0#LegalExpressionShape/c1dd7db4d0fe9532aeac071ed27b1ab7295bd438> rdfs:seeAlso "https://semiceu.github.io/LFDS/releases/1.0.0#LegalExpression.cites";
   shacl:class <http://data.europa.eu/eli/ontology#LegalExpression>;
@@ -1145,21 +1164,7 @@
 
 <https://semiceu.github.io/LFDS/releases/1.0.0#WorkShape> a shacl:NodeShape;
   shacl:closed false;
-  shacl:property <https://semiceu.github.io/LFDS/releases/1.0.0#WorkShape/88a90c213534ac8c4fba6c8b5dfa167be7b35cf1>,
-    <https://semiceu.github.io/LFDS/releases/1.0.0#WorkShape/be09b1185e7618f97fa7aee26b523e3b69f359ff>;
   shacl:targetClass <http://data.europa.eu/eli/ontology#Work> .
-
-<https://semiceu.github.io/LFDS/releases/1.0.0#WorkShape/88a90c213534ac8c4fba6c8b5dfa167be7b35cf1> rdfs:seeAlso "https://semiceu.github.io/LFDS/releases/1.0.0#Work.isrealizedby";
-  shacl:description "Relates an expression to a work realised through that expression. Inverse of \"is_realized_by\"."@en;
-  shacl:name "is realized by"@en;
-  shacl:nodeKind shacl:BlankNodeOrIRI;
-  shacl:path <http://data.europa.eu/eli/ontology#is_realized_by> .
-
-<https://semiceu.github.io/LFDS/releases/1.0.0#WorkShape/be09b1185e7618f97fa7aee26b523e3b69f359ff> rdfs:seeAlso "https://semiceu.github.io/LFDS/releases/1.0.0#Work.isrealizedby";
-  shacl:class <http://data.europa.eu/eli/ontology#LegalExpression>;
-  shacl:description "Relates an expression to a work realised through that expression. Inverse of \"is_realized_by\"."@en;
-  shacl:name "is realized by"@en;
-  shacl:path <http://data.europa.eu/eli/ontology#is_realized_by> .
 
 <https://semiceu.github.io/LFDS/releases/1.0.0#xsd:anyURIShape> a shacl:NodeShape;
   shacl:closed false;
