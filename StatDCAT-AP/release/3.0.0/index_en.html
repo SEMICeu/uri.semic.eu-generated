@@ -7,8 +7,14 @@
     
 	
     <meta charset="utf-8" />
+    <meta name="color-scheme" content="light dark">
     <title>StatDCAT-AP</title>
     <script src="https://www.w3.org/Tools/respec/respec-w3c" class="remove" defer></script>
+
+    <!-- RDF Turtle syntax highlighting -->
+    <link rel="stylesheet" href="html/turtle-highlighting.css">
+    <script src='html/turtle-highlighting.js' class='remove'></script>
+
     <script class="remove">
     // All config options at https://respec.org/docs/
 
@@ -89,7 +95,21 @@
 	
 	
 		]
-		
+	
+    var myowners = [
+            
+            {
+                value: "Georges Lobo (DIGIT)",
+            },
+            {
+                value: "Anastasia Sofou (DIGIT-EXT)",
+            },
+            {
+                value: "SEMIC",
+                href: "https://joinup.ec.europa.eu/collection/semic-support-centre",
+            },
+		]
+
 	function quickreference() {
 		$('#table-quickoverview').DataTable();
 	};
@@ -938,6 +958,7 @@
 
 
     </script>
+
     <style>
       .figure img, .sidefigure img, figure img, .figure object, .sidefigure object, figure object, img, .img {
       max-width: 100%;
@@ -1082,7 +1103,10 @@ The following webinars have been held for the creation of this release
 <section id="specstatus">
     <h2>Status</h2>
         <p>
-            This application profile has the status <a href="https://www.w3.org/2021/Process-20211102/#RecsWD">Working Draft</a> published at 2025-12-09.
+<!-- readd when SEMIC has a codelist about it process 
+	This application profile has the status <a href="https://www.w3.org/2021/Process-20211102/#RecsWD">Working Draft</a> published at 2025-12-09.
+-->
+	This application profile has the status Working Draft published at 2025-12-09.
         </p>
         <p>
             Information about the process and the decisions involved in the creation of this specification are consultable at the <a href="https://semiceu.github.io/StatDCAT-AP/releases/3.0.0/CHANGELOG.html">Changelog</a>.
@@ -1221,10 +1245,13 @@ This specification distinguishes between main entities, i.e. classes in the core
                 
     </div>
     <div>
-        <a href="https://semiceu.github.io/uri.semic.eu-generated/StatDCAT-ap/release/3.0.0/html/overview.jpg"
-           target="_blank">
-            <img src="https://semiceu.github.io/uri.semic.eu-generated/StatDCAT-ap/release/3.0.0/html/overview.jpg"/>
-        </a>
+        <figure>
+            <a href="https://semiceu.github.io/uri.semic.eu-generated/StatDCAT-ap/release/3.0.0/html/overview.svg"
+            target="_blank">
+             <img src="https://semiceu.github.io/uri.semic.eu-generated/StatDCAT-ap/release/3.0.0/html/overview.svg"/>
+         </a>
+        <figcaption>UML diagram overview of the StatDCAT-AP 3.0.1 Application profile</figcaption>             
+        </figure>
     </div>
 </section>
 
@@ -1237,7 +1264,19 @@ This specification distinguishes between main entities, i.e. classes in the core
 <h2>
    Main Entities
 </h2>
-The main entities are those that form the core of the Application Profile.
+<p>
+The main entities are those that form the core of the Application Profile. 
+The properties and their associated constraints that apply in the context of this profile are listed in a tabular form.
+Each row corresponds to one property. 
+In addition to the constraints also cross-references are provided to DCAT. To save space, the following abbreviations are used to indicate in short the difference with DCAT:
+<ul>
+	<li>A: reused as-is defined and expressed in DCAT-AP, or if it has been reused as-is from DCAT in case the property was not explicitly mentioned in DCAT-AP</li>
+	<li>E: reused with additional usage notes or additional restrictions compared to DCAT-AP (or DCAT)</li>
+	<li>P: StatDCAT-AP profile specific extension where DCAT-AP had no requirements earlier on specified</li>
+</ul>
+This reuse qualification assessement is w.r.t. a specific version of DCAT. 
+Therefore it may vary over time when new versions of DCAT-AP are created.
+
 
 
 
@@ -1296,6 +1335,12 @@ They are included in the Application Profile because they form the range of prop
             </dl>
         </div>
         
+
+                   
+
+	  
+
+
     </div>
 </section>
 
@@ -1351,8 +1396,10 @@ They are included in the Application Profile because they form the range of prop
                 <table class="data-table simple" id="table-mandatory-classes">
                     <thead>
                         <tr class="data-table__header">
+<!--
                             <th class="data-table__header-title--sortable" style="width:5%">
                             </th>
+--->
                             <th class="data-table__header-title--sortable data-table__header-title--sortable-active" style="width:12%">
                                 Property
                             </th>
@@ -1373,8 +1420,13 @@ They are included in the Application Profile because they form the range of prop
                                 Codelist
                             </th>
 			    -->
+			    <!--
                             <th class="data-table__header-title--sortable" style="width:5%">
                                 DCAT
+                            </th>
+			    -->
+                            <th class="data-table__header-title--sortable" style="width:3%">
+                                Reuse
                             </th>
                         </tr>
                     </thead>
@@ -1384,12 +1436,13 @@ They are included in the Application Profile because they form the range of prop
                                 typeof="rdf:Property"
                                 resource="http://www.w3.org/2004/02/skos/core#prefLabel"
                                 class="class mandatory">
+<!--
                                 <td>
 				    <a href="https://github.com/SEMICeu/StatDCAT-AP/issues/new?title=Issue%20for%20preferred label%20in%20Concept&body=Explain%20your%20issue%20for%20https://semiceu.github.io/StatDCAT-AP/release/3.0.0%23Concept.preferredlabel" target="_blank" rel="noopener noreferrer" >
-					    <!--                                        <i class="icon">[o]</i> -->
                                         <img src="html/callout.png" loading="lazy" alt="[o]" width="100" height="100"/>
                                     </a>
                                 </td>
+--->
                                 <td>
                                         <a href="http://www.w3.org/2004/02/skos/core#prefLabel"
                                            data-toggle="tooltip"
@@ -1421,8 +1474,17 @@ They are included in the Application Profile because they form the range of prop
                                     
                                 </td>
 				-->
+				<!--
                                 <td>
                                     
+                                </td>
+				-->
+                                <td>
+                                    
+                                       
+				        P
+				       
+				    
                                 </td>
                             </tr>
                         
@@ -1430,6 +1492,12 @@ They are included in the Application Profile because they form the range of prop
                 </table>
             </div>
         
+
+                   
+
+	  
+
+
     </div>
 </section>
 
@@ -1473,6 +1541,12 @@ They are included in the Application Profile because they form the range of prop
             </dl>
         </div>
         
+
+                   
+
+	  
+
+
     </div>
 </section>
 
@@ -1524,8 +1598,10 @@ They are included in the Application Profile because they form the range of prop
                 <table class="data-table simple" id="table-mandatory-classes">
                     <thead>
                         <tr class="data-table__header">
+<!--
                             <th class="data-table__header-title--sortable" style="width:5%">
                             </th>
+--->
                             <th class="data-table__header-title--sortable data-table__header-title--sortable-active" style="width:12%">
                                 Property
                             </th>
@@ -1546,8 +1622,13 @@ They are included in the Application Profile because they form the range of prop
                                 Codelist
                             </th>
 			    -->
+			    <!--
                             <th class="data-table__header-title--sortable" style="width:5%">
                                 DCAT
+                            </th>
+			    -->
+                            <th class="data-table__header-title--sortable" style="width:3%">
+                                Reuse
                             </th>
                         </tr>
                     </thead>
@@ -1557,12 +1638,13 @@ They are included in the Application Profile because they form the range of prop
                                 typeof="rdf:Property"
                                 resource="http://data.europa.eu/s1n/attribute"
                                 class="class mandatory">
+<!--
                                 <td>
 				    <a href="https://github.com/SEMICeu/StatDCAT-AP/issues/new?title=Issue%20for%20attribute%20in%20Resource&body=Explain%20your%20issue%20for%20https://semiceu.github.io/StatDCAT-AP/release/3.0.0%23Resource.attribute" target="_blank" rel="noopener noreferrer" >
-					    <!--                                        <i class="icon">[o]</i> -->
                                         <img src="html/callout.png" loading="lazy" alt="[o]" width="100" height="100"/>
                                     </a>
                                 </td>
+--->
                                 <td>
                                         <a href="http://data.europa.eu/s1n/attribute"
                                            data-toggle="tooltip"
@@ -1592,8 +1674,17 @@ Attribute is a conceptual entity that applies to all distribution formats, e
                                     
                                 </td>
 				-->
+				<!--
                                 <td>
                                     
+                                </td>
+				-->
+                                <td>
+                                    
+                                       
+				        P
+				       
+				    
                                 </td>
                             </tr>
                         
@@ -1601,12 +1692,13 @@ Attribute is a conceptual entity that applies to all distribution formats, e
                                 typeof="rdf:Property"
                                 resource="http://data.europa.eu/s1n/dimension"
                                 class="class mandatory">
+<!--
                                 <td>
 				    <a href="https://github.com/SEMICeu/StatDCAT-AP/issues/new?title=Issue%20for%20dimension%20in%20Resource&body=Explain%20your%20issue%20for%20https://semiceu.github.io/StatDCAT-AP/release/3.0.0%23Resource.dimension" target="_blank" rel="noopener noreferrer" >
-					    <!--                                        <i class="icon">[o]</i> -->
                                         <img src="html/callout.png" loading="lazy" alt="[o]" width="100" height="100"/>
                                     </a>
                                 </td>
+--->
                                 <td>
                                         <a href="http://data.europa.eu/s1n/dimension"
                                            data-toggle="tooltip"
@@ -1637,8 +1729,17 @@ Dimension is a conceptual entity that applies to all distribution formats, e
                                     
                                 </td>
 				-->
+				<!--
                                 <td>
                                     
+                                </td>
+				-->
+                                <td>
+                                    
+                                       
+				        P
+				       
+				    
                                 </td>
                             </tr>
                         
@@ -1646,12 +1747,13 @@ Dimension is a conceptual entity that applies to all distribution formats, e
                                 typeof="rdf:Property"
                                 resource="http://data.europa.eu/s1n/numSeries"
                                 class="class mandatory">
+<!--
                                 <td>
 				    <a href="https://github.com/SEMICeu/StatDCAT-AP/issues/new?title=Issue%20for%20number of data series%20in%20Resource&body=Explain%20your%20issue%20for%20https://semiceu.github.io/StatDCAT-AP/release/3.0.0%23Resource.numberofdataseries" target="_blank" rel="noopener noreferrer" >
-					    <!--                                        <i class="icon">[o]</i> -->
                                         <img src="html/callout.png" loading="lazy" alt="[o]" width="100" height="100"/>
                                     </a>
                                 </td>
+--->
                                 <td>
                                         <a href="http://data.europa.eu/s1n/numSeries"
                                            data-toggle="tooltip"
@@ -1676,8 +1778,17 @@ Dimension is a conceptual entity that applies to all distribution formats, e
                                     
                                 </td>
 				-->
+				<!--
                                 <td>
                                     
+                                </td>
+				-->
+                                <td>
+                                    
+                                       
+				        P
+				       
+				    
                                 </td>
                             </tr>
                         
@@ -1685,12 +1796,13 @@ Dimension is a conceptual entity that applies to all distribution formats, e
                                 typeof="rdf:Property"
                                 resource="http://data.europa.eu/s1n/statUnitMeasure"
                                 class="class mandatory">
+<!--
                                 <td>
 				    <a href="https://github.com/SEMICeu/StatDCAT-AP/issues/new?title=Issue%20for%20unit of measurement%20in%20Resource&body=Explain%20your%20issue%20for%20https://semiceu.github.io/StatDCAT-AP/release/3.0.0%23Resource.unitofmeasurement" target="_blank" rel="noopener noreferrer" >
-					    <!--                                        <i class="icon">[o]</i> -->
                                         <img src="html/callout.png" loading="lazy" alt="[o]" width="100" height="100"/>
                                     </a>
                                 </td>
+--->
                                 <td>
                                         <a href="http://data.europa.eu/s1n/statUnitMeasure"
                                            data-toggle="tooltip"
@@ -1722,8 +1834,17 @@ e.g. in the case when a dataset is provided both in SDMX and in Data Cube.
                                     
                                 </td>
 				-->
+				<!--
                                 <td>
                                     
+                                </td>
+				-->
+                                <td>
+                                    
+                                       
+				        P
+				       
+				    
                                 </td>
                             </tr>
                         
@@ -1731,6 +1852,12 @@ e.g. in the case when a dataset is provided both in SDMX and in Data Cube.
                 </table>
             </div>
         
+
+                   
+
+	  
+
+
     </div>
 </section>
 
@@ -2394,11 +2521,58 @@ As note to this discussion: when exhanging DCAT as an RDF graph the impact of th
 
  
 
+
+  <h3>Versioning governance</h3>
+All specifications produced in SEMIC will follow the versioning rule described by the SEMIC Style Guide rule 
+<a href="https://semiceu.github.io/style-guide/1.0.0/gc-publication-conventions.html#sec:pc-r3">PC-R3</a>.
+In case a SEMIC asset is deprecated the asset will remain available through its PURI.
+<p/>
+The serialisation will have:
+<ul>
+<li>a dct:isReplacedBy referencing the new assets used instead and</li>
+<li> an adms:status  indicating its deprecated <a href="http://publications.europa.eu/resource/authority/concept-status/DEPRECATED">status</a>.</li>
+</ul>
+<p/>
+
+<h3>Governance requirements for re-used assets</h3>
+In order to adhere to the SEMIC Style Guide rule <a href="https://semiceu.github.io/style-guide/1.0.0/gc-general-conventions.html#sec:gc-r2">GC-R2</a>
+ a specification should have quality and governance standards for the assets that are being reused.
+<p/>
+In order for an asset to be considered for reuse within a SEMIC specification it can be requested by a community member or it requires to adhere to the following requirements:
+<ul>
+<li> The asset is part of a recommendation by a major standards body or an EU institution.</li>
+<li> The asset is actively being maintained.</li>
+</ul>
+<p/>
+
+After being taken into consideration the asset will be validated in three steps:
+<ul>
+<li> Syntax validation will be performed on the relevant artefacts.</li>
+<li> Constraint validation will be performed on the relevant artefacts.</li>
+<li> The PURI will be validated.</li>
+</ul>
+Once considered and validated an asset can be adopted if it is approved by the community.
+<p/>
+
+<h3>Lexicalisation rules</h3>
+
+In order to adhere to the SEMIC Style Guide rule <a href="https://semiceu.github.io/style-guide/1.0.0/gc-semantic-conventions.html#sec:sc-r3">SC-R3</a> a specification requires formal lexicalisation rules.
+The Style Guide proposes two options either by using RDFS or SKOS lexicalisation.
+<p/>
+SEMIC uses and will use the RDFS lexicalisation for all of its specifications. More specifically:
+<ul>
+<li> rdfs:label is used to provide a human-readable version of a resource's name.</li>
+<li> The usage of certain resource can be clarified in a skos:usageNote.</li>
+</ul>
+
+ 
+
 <section id="quick-reference" class="appendix">
+
 <h2>Quick Reference of Classes and Properties</h2>
 
 This section provides a condensed tabular overview of the mentioned classes and properties in this specification.
-The properties are indicated as <it>mandatory, recommended, optional</it> and <it>deprecated</it>. These terms have the following meaning.
+The properties are grouped under headings <it>mandatory, recommended, optional</it> and <it>deprecated</it>. These terms have the following meaning.
 <ul>
 <li>Mandatory property: a receiver MUST be able to process the information for that property; a sender MUST provide the information for that property.</li>
 <li>Recommended property: a receiver MUST be able to process the information for that property; a sender SHOULD provide the information for that property if it is available.</li>
@@ -2543,11 +2717,13 @@ To identify these deprecations, a <a href="./html/shacl/deprecateduris.ttl"  >SH
 <h2>Acknowledgments</h2>
 
 The editors gratefully acknowledge the contributions made to this document by all members of the working group.
-
-This work was elaborated by a Working Group under SEMIC by Interoperable Europe.
-Interoperable Europe of the European Commission was represented by Pavlina Fragkou and Seth Van Hooland.
-Natasa Sofou, Makx Dekkers and Bert Van Nuffelen were the editors of the specification.
-
+Especially we would like to express our gratetude for the former editor and author Andrea Perego.
+</p><p>
+This work was elaborated by a Working Group under SEMIC by Interoperable Europe and EStat.
+Interoperable Europe of the European Commission was represented by X.
+EStat was represented by Joeri Robbrecht and JRC by Jordi Escriu. 
+Jakub Klímek, X and X were the editors of this specification.
+<p/>
 Past and current contributors are :
 
 
@@ -2773,7 +2949,12 @@ Past and current contributors are :
 {'pref':'time:', 'ns': 'http://www.w3.org/2006/time#'},
 {'pref':'vcard:', 'ns': 'http://www.w3.org/2006/vcard/ns#'},
 {'pref':'eli:', 'ns' : 'http://data.europa.eu/eli/ontology#'},
-{'pref':'xsd:', 'ns': 'http://www.w3.org/2001/XMLSchema#'}
+{'pref':'xsd:', 'ns': 'http://www.w3.org/2001/XMLSchema#'},
+{'pref':'org:', 'ns': 'http://www.w3.org/ns/org#'},
+{'pref':'content:', 'ns': 'http://www.w3.org/2011/content#'},
+{'pref':'dqv:', 'ns': 'http://www.w3.org/ns/dqv#'},
+{'pref':'geodcatap:', 'ns': 'http://data.europa.eu/930/'},
+{'pref':'sdmx-attribute:', 'ns': 'http://purl.org/linked-data/sdmx/2009/attribute#'}
 				];
 
 	    function shorturl (url) {
@@ -2860,6 +3041,33 @@ Past and current contributors are :
 		background-color:dodgerblue;
 		color:white;
 	}
+	table.simple {
+		font-size: small;
+			border-spacing:0;
+			border-collapse:collapse;
+			border-bottom:3px solid #005a9c
+	}
+
+    body.darkmode .simple th{background:#005a9c94;color:#ddd}
+	body.darkmode .simple th a{color:#ddd}
+	body.darkmode .simple tr:nth-child(even){background:#f0f6ff26}
+
+    body.darkmode :is(h4,h5,h6)+a.self-link::before {
+        color: var(--heading-text);
+    }
+    body.darkmode img {
+        background: none;
+    }
+    body.darkmode section#references :target {
+        background: #04162d;
+    }
+    
+    .simple th{background:#005a9c;color:#fff;padding:3px 5px;text-align:left}
+	.simple th a{color:#fff;padding:3px 5px;text-align:left}
+	.simple th[scope=row]{background:inherit;color:inherit;border-top:1px solid #ddd}
+	.simple td{padding:3px 10px;border-top:1px solid #ddd}
+	.simple tr:nth-child(even){background:#f0f6ff}
+    
   </style>
 
     	<link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.13.4/css/jquery.dataTables.min.css">
