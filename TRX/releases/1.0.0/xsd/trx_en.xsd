@@ -40,7 +40,7 @@
   </xs:complexType>
   <xs:complexType name="TransformationType">
     <xs:sequence>
-      <xs:element name="declaresOutputDistribution" ref="DistributionType" maxOccurs="1" minOccurs="1">
+      <xs:element name="declaresOutputDistribution" ref="DistributionType" maxOccurs="1" minOccurs="0">
         <xs:annotation>
           <xs:documentation xml:lang="en">Association that defines the target into which the input distribution is converted to.</xs:documentation>
         </xs:annotation>
@@ -67,6 +67,11 @@
       <xs:element name="executedTransformation" ref="TransformationType" maxOccurs="unbounded" minOccurs="1">
         <xs:annotation>
           <xs:documentation xml:lang="en">Association to the planned transformation which occurred.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="generated" ref="TransformationReportType" maxOccurs="1" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation xml:lang="en">Generation is the completion of production of a new entity by an activity. This entity did not exist before generation and becomes available for usage after this generation..</xs:documentation>
         </xs:annotation>
       </xs:element>
       <xs:element name="identifier" type="xs:string" maxOccurs="1" minOccurs="1">
@@ -97,13 +102,7 @@
     </xs:attribute>
   </xs:complexType>
   <xs:complexType name="TransformationReportType">
-    <xs:sequence>
-      <xs:element name="wasGeneratedBy" ref="TransformationExecutionType" maxOccurs="1" minOccurs="1">
-        <xs:annotation>
-          <xs:documentation xml:lang="en">Generation is the completion of production of a new entity by an activity. This entity did not exist before generation and becomes available for usage after this generation.</xs:documentation>
-        </xs:annotation>
-      </xs:element>
-    </xs:sequence>
+    <xs:sequence/>
     <xs:attribute name="TransformationReportRef" type="xs:IDREF">
       <xs:annotation>
         <xs:documentation xml:lang="en">Reference to TransformationReport ID</xs:documentation>
