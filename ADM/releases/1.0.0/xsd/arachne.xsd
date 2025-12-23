@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <xs:schema xmlns="https://data.europa.eu/m8g/xml/" xmlns:xs="http://www.w3.org/2001/XMLSchema" targetNamespace="https://data.europa.eu/m8g/xml/" version="2.0.0" elementFormDefault="qualified" attributeFormDefault="unqualified" xmlns:cv="https://data.europa.eu/m8g/xml/">
-  <xs:element name="Beneficiary" type="BeneficiaryType"/>
   <xs:element name="Contract" type="ContractType"/>
+  <xs:element name="KeyExpert" type="KeyExpertType"/>
   <xs:simpleType name="Literal">
     <xs:restriction base="xs:string"/>
   </xs:simpleType>
@@ -20,16 +20,13 @@
       </xs:extension>
     </xs:simpleContent>
   </xs:complexType>
-  <xs:complexType name="BeneficiaryType">
-    <xs:sequence/>
-    <xs:attribute name="BeneficiaryRef" type="xs:IDREF">
-      <xs:annotation>
-        <xs:documentation xml:lang="en">Reference to Beneficiary ID</xs:documentation>
-      </xs:annotation>
-    </xs:attribute>
-  </xs:complexType>
   <xs:complexType name="ContractType">
     <xs:sequence>
+      <xs:element name="hasKeyExpert" ref="KeyExpertType" maxOccurs="unbounded" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation xml:lang="en">Expert assigned on a contract</xs:documentation>
+        </xs:annotation>
+      </xs:element>
       <xs:element name="id" type="xs:string" maxOccurs="1" minOccurs="1">
         <xs:annotation>
           <xs:documentation xml:lang="en">Unique way to define a contract</xs:documentation>
@@ -39,6 +36,14 @@
     <xs:attribute name="ContractRef" type="xs:IDREF">
       <xs:annotation>
         <xs:documentation xml:lang="en">Reference to Contract ID</xs:documentation>
+      </xs:annotation>
+    </xs:attribute>
+  </xs:complexType>
+  <xs:complexType name="KeyExpertType">
+    <xs:sequence/>
+    <xs:attribute name="KeyExpertRef" type="xs:IDREF">
+      <xs:annotation>
+        <xs:documentation xml:lang="en">Reference to KeyExpert ID</xs:documentation>
       </xs:annotation>
     </xs:attribute>
   </xs:complexType>
