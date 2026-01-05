@@ -16,8 +16,8 @@
     },
     "status": "Semic Recommendation",
     "statuslabel": "Onbekend",
-    "repositoryurl": "git@uri.semic.eu-thema:SEMICeu/uri.semic.eu-thema.git/tree/21f81d13c13e2e0ec48115f1742873727e8fb620",
-    "changelogurl": "git@uri.semic.eu-thema:SEMICeu/uri.semic.eu-thema.git/blob/21f81d13c13e2e0ec48115f1742873727e8fb620/CHANGELOG",
+    "repositoryurl": "git@uri.semic.eu-thema:SEMICeu/uri.semic.eu-thema.git/tree/50d5745ff4250108521a09ceab3c5c2e871b20ad",
+    "changelogurl": "git@uri.semic.eu-thema:SEMICeu/uri.semic.eu-thema.git/blob/50d5745ff4250108521a09ceab3c5c2e871b20ad/CHANGELOG",
     "feedbackurl": "https://github.com/SEMICeu/ADM/issues",
     "standaardregisterurl": "https://github.com/SEMICeu/ADM/blob/master/releases/1.0.0/Changelog.md",
     "usesVocs": [],
@@ -25,21 +25,29 @@
   },
   "classes": [
     {
-      "uri": "http://example.com/Contract",
+      "uri": "http://data.europa.eu/a4g/ontology#Contract",
       "name": "Contract",
       "label": {
         "en": "Contract"
       },
       "sort": "Contract",
       "description": {
-        "en": "An agreement between two entities"
+        "en": "A voluntary, deliberate, and legally binding agreement between two or more competent parties."
       },
       "usage": {},
-      "parents": [],
+      "parents": [
+        {
+          "label": "Document",
+          "name": "Document",
+          "package": "epo",
+          "uri": "http://data.europa.eu/a4g/ontology#Document",
+          "scoped_uri": "#Document"
+        }
+      ],
       "rawTags": {
-        "uri": "http://example.com/Contract",
+        "uri": "http://data.europa.eu/a4g/ontology#Contract",
         "label-en": "Contract",
-        "definition-en": "An agreement between two entities"
+        "definition-en": "A voluntary, deliberate, and legally binding agreement between two or more competent parties."
       },
       "properties": [
         {
@@ -56,7 +64,7 @@
           "domain": [
             {
               "EA-Name": "Contract",
-              "uri": "http://example.com/Contract"
+              "uri": "http://data.europa.eu/a4g/ontology#Contract"
             }
           ],
           "range": [
@@ -81,45 +89,65 @@
             "label-en": "has KeyExpert",
             "definition-en": "Expert assigned on a contract"
           }
-        },
+        }
+      ]
+    },
+    {
+      "uri": "http://data.europa.eu/a4g/ontology#Document",
+      "name": "Document",
+      "label": {
+        "en": "Document"
+      },
+      "sort": "Document",
+      "description": {
+        "en": "A set of interrelated Business Information representing the Business facts and associated metadata."
+      },
+      "usage": {},
+      "parents": [],
+      "rawTags": {
+        "label-en": "Document",
+        "uri": "http://data.europa.eu/a4g/ontology#Document",
+        "definition-en": "A set of interrelated Business Information representing the Business facts and associated metadata."
+      },
+      "properties": [
         {
-          "uri": "http://example.com/id",
-          "name": "id",
-          "sort": "id",
+          "uri": "http://www.w3.org/ns/adms#identifier",
+          "name": "identifier",
+          "sort": "identifier",
           "label": {
-            "en": "id"
+            "en": "identifier"
           },
           "description": {
-            "en": "Unique way to define a contract"
+            "en": "Links a resource to an adms:Identifier class."
           },
           "usage": {},
           "domain": [
             {
-              "EA-Name": "Contract",
-              "uri": "http://example.com/Contract"
+              "EA-Name": "Document",
+              "uri": "http://data.europa.eu/a4g/ontology#Document"
             }
           ],
           "range": [
             {
-              "range_label": "String",
-              "range_uri": "http://www.w3.org/2001/XMLSchema#string"
+              "range_label": "Identifier",
+              "range_uri": "http://www.w3.org/ns/adms#Identifier"
             }
           ],
           "scopedrange": [
             {
-              "range_uri": "http://www.w3.org/2001/XMLSchema#string",
-              "range_puri": "http://www.w3.org/2001/XMLSchema#string",
+              "range_uri": "#Identifier",
+              "range_puri": "http://www.w3.org/ns/adms#Identifier",
               "range_label": {
-                "en": "String"
+                "en": "Identifier"
               }
             }
           ],
           "cardinality": "1",
           "codelist_uri": "",
           "rawTags": {
-            "uri": "http://example.com/id",
-            "label-en": "id",
-            "definition-en": "Unique way to define a contract"
+            "uri": "http://www.w3.org/ns/adms#identifier",
+            "definition-en": "Links a resource to an adms:Identifier class.",
+            "label-en": "identifier"
           }
         }
       ]
@@ -135,13 +163,246 @@
         "en": "The entity getting benefit from a contract"
       },
       "usage": {},
-      "parents": [],
+      "parents": [
+        {
+          "label": "Person",
+          "name": "Person",
+          "package": "Core Person",
+          "uri": "http://www.w3.org/ns/person#Person",
+          "scoped_uri": "#Person"
+        }
+      ],
       "rawTags": {
         "uri": "http://example.com/KeyExpert",
         "label-en": "KeyExpert",
         "definition-en": "The entity getting benefit from a contract"
       },
       "properties": []
+    },
+    {
+      "uri": "http://www.w3.org/ns/adms#Identifier",
+      "name": "Identifier",
+      "label": {
+        "en": "Identifier"
+      },
+      "sort": "Identifier",
+      "description": {
+        "en": "A structured reference that identifies an entity."
+      },
+      "usage": {
+        "en": "The Identifier class is based on the <a href=\"https://www.gs1.org/standards/edi/gs1-un-cefact-xml/2012\">UN/CEFACT</a> class of the same name and is defined under the ADMS namespace."
+      },
+      "parents": [],
+      "rawTags": {
+        "uri": "http://www.w3.org/ns/adms#Identifier",
+        "definition-en": "A structured reference that identifies an entity.",
+        "label-en": "Identifier",
+        "usageNote-en": "The Identifier class is based on the <a href=\"https://www.gs1.org/standards/edi/gs1-un-cefact-xml/2012\">UN/CEFACT</a> class of the same name and is defined under the ADMS namespace.",
+        "class-usage-scope": "main"
+      },
+      "properties": [
+        {
+          "uri": "http://www.w3.org/2004/02/skos/core#notation",
+          "name": "notation",
+          "sort": "notation",
+          "label": {
+            "en": "notation"
+          },
+          "description": {
+            "en": "A string of characters to uniquely identify a concept."
+          },
+          "usage": {},
+          "domain": [
+            {
+              "EA-Name": "Identifier",
+              "uri": "http://www.w3.org/ns/adms#Identifier"
+            }
+          ],
+          "range": [
+            {
+              "range_label": "Literal",
+              "range_uri": "http://www.w3.org/2000/01/rdf-schema#Literal"
+            }
+          ],
+          "scopedrange": [
+            {
+              "range_uri": "http://www.w3.org/2000/01/rdf-schema#Literal",
+              "range_puri": "http://www.w3.org/2000/01/rdf-schema#Literal",
+              "range_label": {
+                "en": "Literal"
+              }
+            }
+          ],
+          "cardinality": "0..*",
+          "codelist_uri": "",
+          "rawTags": {
+            "uri": "http://www.w3.org/2004/02/skos/core#notation",
+            "label-en": "notation",
+            "definition-en": "A string of characters to uniquely identify a concept."
+          }
+        }
+      ]
+    },
+    {
+      "uri": "http://www.w3.org/ns/person#Person",
+      "name": "Person",
+      "label": {
+        "en": "Person"
+      },
+      "sort": "Person",
+      "description": {
+        "en": "A individual human being who may be dead or alive, but not imaginary."
+      },
+      "usage": {
+        "en": "The fact that a person in the context of Core Person Vocabulary cannot be imaginary makes person:Person a subclass of foaf:Person which cover imaginary characters as well as real people. The Person Class is a subclass of the more general <a href=\"#Agent\">'Agent' class</a>."
+      },
+      "parents": [
+        {
+          "label": "Person",
+          "name": "foaf:Person",
+          "package": "foaf",
+          "uri": "http://xmlns.com/foaf/0.1/Person",
+          "scoped_uri": "http://xmlns.com/foaf/0.1/Person"
+        }
+      ],
+      "rawTags": {
+        "uri": "http://www.w3.org/ns/person#Person",
+        "definition-en": "A individual human being who may be dead or alive, but not imaginary.",
+        "usageNote-en": "The fact that a person in the context of Core Person Vocabulary cannot be imaginary makes person:Person a subclass of foaf:Person which cover imaginary characters as well as real people. The Person Class is a subclass of the more general <a href=\"#Agent\">'Agent' class</a>.",
+        "label-en": "Person",
+        "class-usage-scope": "main"
+      },
+      "properties": [
+        {
+          "uri": "http://data.europa.eu/m8g/birthDate",
+          "name": "dateOfBirth",
+          "sort": "date of birth",
+          "label": {
+            "en": "date of birth"
+          },
+          "description": {
+            "en": "The point in time on which the Person was born."
+          },
+          "usage": {
+            "en": "The date of birth could be expressed as date, gYearMonth or gYear, example:\r\n<ul>\r\n<li>- 1980-09-16^^xs:date</li>\r\n<li>- 1980-09^^xs:gYearMonth</li>\r\n<li>- 1980^^xs:gYear</li>\r\n</ul>"
+          },
+          "domain": [
+            {
+              "EA-Name": "Person",
+              "uri": "http://www.w3.org/ns/person#Person"
+            }
+          ],
+          "range": [
+            {
+              "range_label": "GenericDate",
+              "range_uri": "http://data.europa.eu/m8g/GenericDate"
+            }
+          ],
+          "scopedrange": [
+            {
+              "range_uri": "http://data.europa.eu/m8g/GenericDate",
+              "range_puri": "http://data.europa.eu/m8g/GenericDate",
+              "range_label": {
+                "en": "GenericDate"
+              }
+            }
+          ],
+          "cardinality": "0..*",
+          "codelist_uri": "",
+          "rawTags": {
+            "uri": "http://data.europa.eu/m8g/birthDate",
+            "definition-en": "The point in time on which the Person was born.",
+            "label-en": "date of birth",
+            "usageNote-en": "The date of birth could be expressed as date, gYearMonth or gYear, example:\r\n<ul>\r\n<li>- 1980-09-16^^xs:date</li>\r\n<li>- 1980-09^^xs:gYearMonth</li>\r\n<li>- 1980^^xs:gYear</li>\r\n</ul>"
+          }
+        },
+        {
+          "uri": "http://xmlns.com/foaf/0.1/familyName",
+          "name": "familyName",
+          "sort": "family name",
+          "label": {
+            "en": "family name"
+          },
+          "description": {
+            "en": "The hereditary surname of a family."
+          },
+          "usage": {
+            "en": "Usually referring to a group of people related by blood, marriage or adoption. This attribute also carries prefixes or suffixes which are part of the family name, e.g. \"de Boer\", \"van de Putte\", \"von und zu Orlow\". Multiple family names, such as are commonly found in Hispanic countries, are recorded in the single family name property so that, for example, Miguel de Cervantes Saavedra's family name would be recorded as \"de Cervantes Saavedra\"."
+          },
+          "domain": [
+            {
+              "EA-Name": "Person",
+              "uri": "http://www.w3.org/ns/person#Person"
+            }
+          ],
+          "range": [
+            {
+              "range_label": "Text",
+              "range_uri": "http://www.w3.org/1999/02/22-rdf-syntax-ns#langString"
+            }
+          ],
+          "scopedrange": [
+            {
+              "range_uri": "http://www.w3.org/1999/02/22-rdf-syntax-ns#langString",
+              "range_puri": "http://www.w3.org/1999/02/22-rdf-syntax-ns#langString",
+              "range_label": {
+                "en": "Text"
+              }
+            }
+          ],
+          "cardinality": "1..*",
+          "codelist_uri": "",
+          "rawTags": {
+            "uri": "http://xmlns.com/foaf/0.1/familyName",
+            "definition-en": "The hereditary surname of a family.",
+            "label-en": "family name",
+            "usageNote-en": "Usually referring to a group of people related by blood, marriage or adoption. This attribute also carries prefixes or suffixes which are part of the family name, e.g. \"de Boer\", \"van de Putte\", \"von und zu Orlow\". Multiple family names, such as are commonly found in Hispanic countries, are recorded in the single family name property so that, for example, Miguel de Cervantes Saavedra's family name would be recorded as \"de Cervantes Saavedra\"."
+          }
+        },
+        {
+          "uri": "http://xmlns.com/foaf/0.1/givenName",
+          "name": "givenName",
+          "sort": "given name",
+          "label": {
+            "en": "given name"
+          },
+          "description": {
+            "en": "The name(s) that identify the Person within a family with a common surname."
+          },
+          "usage": {
+            "en": "Usually a first name or forename. Given to a person by his or her parents at birth or legally recognised as 'given names' through a formal process. All given names are ordered in one property so that, for example, the given name for Johann Sebastian Bach is \"Johann Sebastian\"."
+          },
+          "domain": [
+            {
+              "EA-Name": "Person",
+              "uri": "http://www.w3.org/ns/person#Person"
+            }
+          ],
+          "range": [
+            {
+              "range_label": "Text",
+              "range_uri": "http://www.w3.org/1999/02/22-rdf-syntax-ns#langString"
+            }
+          ],
+          "scopedrange": [
+            {
+              "range_uri": "http://www.w3.org/1999/02/22-rdf-syntax-ns#langString",
+              "range_puri": "http://www.w3.org/1999/02/22-rdf-syntax-ns#langString",
+              "range_label": {
+                "en": "Text"
+              }
+            }
+          ],
+          "cardinality": "0..*",
+          "codelist_uri": "",
+          "rawTags": {
+            "uri": "http://xmlns.com/foaf/0.1/givenName",
+            "label-en": "given name",
+            "definition-en": "The name(s) that identify the Person within a family with a common surname.",
+            "usageNote-en": "Usually a first name or forename. Given to a person by his or her parents at birth or legally recognised as 'given names' through a formal process. All given names are ordered in one property so that, for example, the given name for Johann Sebastian Bach is \"Johann Sebastian\"."
+          }
+        }
+      ]
     }
   ],
   "properties": [],

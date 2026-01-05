@@ -1,7 +1,10 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <xs:schema xmlns="https://data.europa.eu/m8g/xml/" xmlns:xs="http://www.w3.org/2001/XMLSchema" targetNamespace="https://data.europa.eu/m8g/xml/" version="2.0.0" elementFormDefault="qualified" attributeFormDefault="unqualified" xmlns:cv="https://data.europa.eu/m8g/xml/">
   <xs:element name="Contract" type="ContractType"/>
+  <xs:element name="Document" type="DocumentType"/>
   <xs:element name="KeyExpert" type="KeyExpertType"/>
+  <xs:element name="Identifier" type="IdentifierType"/>
+  <xs:element name="Person" type="PersonType"/>
   <xs:simpleType name="Literal">
     <xs:restriction base="xs:string"/>
   </xs:simpleType>
@@ -27,15 +30,24 @@
           <xs:documentation xml:lang="en">Expert assigned on a contract</xs:documentation>
         </xs:annotation>
       </xs:element>
-      <xs:element name="id" type="xs:string" maxOccurs="1" minOccurs="1">
-        <xs:annotation>
-          <xs:documentation xml:lang="en">Unique way to define a contract</xs:documentation>
-        </xs:annotation>
-      </xs:element>
     </xs:sequence>
     <xs:attribute name="ContractRef" type="xs:IDREF">
       <xs:annotation>
         <xs:documentation xml:lang="en">Reference to Contract ID</xs:documentation>
+      </xs:annotation>
+    </xs:attribute>
+  </xs:complexType>
+  <xs:complexType name="DocumentType">
+    <xs:sequence>
+      <xs:element name="identifier" ref="IdentifierType" maxOccurs="1" minOccurs="1">
+        <xs:annotation>
+          <xs:documentation xml:lang="en">Links a resource to an adms:Identifier class.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+    </xs:sequence>
+    <xs:attribute name="DocumentRef" type="xs:IDREF">
+      <xs:annotation>
+        <xs:documentation xml:lang="en">Reference to Document ID</xs:documentation>
       </xs:annotation>
     </xs:attribute>
   </xs:complexType>
@@ -44,6 +56,44 @@
     <xs:attribute name="KeyExpertRef" type="xs:IDREF">
       <xs:annotation>
         <xs:documentation xml:lang="en">Reference to KeyExpert ID</xs:documentation>
+      </xs:annotation>
+    </xs:attribute>
+  </xs:complexType>
+  <xs:complexType name="IdentifierType">
+    <xs:sequence>
+      <xs:element name="notation" type="xs:string" maxOccurs="unbounded" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation xml:lang="en">A string of characters to uniquely identify a concept.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+    </xs:sequence>
+    <xs:attribute name="IdentifierRef" type="xs:IDREF">
+      <xs:annotation>
+        <xs:documentation xml:lang="en">Reference to Identifier ID</xs:documentation>
+      </xs:annotation>
+    </xs:attribute>
+  </xs:complexType>
+  <xs:complexType name="PersonType">
+    <xs:sequence>
+      <xs:element name="dateOfBirth" type="http://data.europa.eu/m8g/GenericDate" maxOccurs="unbounded" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation xml:lang="en">The point in time on which the Person was born.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="familyName" type="xs:string" maxOccurs="unbounded" minOccurs="1">
+        <xs:annotation>
+          <xs:documentation xml:lang="en">The hereditary surname of a family.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="givenName" type="xs:string" maxOccurs="unbounded" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation xml:lang="en">The name(s) that identify the Person within a family with a common surname.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+    </xs:sequence>
+    <xs:attribute name="PersonRef" type="xs:IDREF">
+      <xs:annotation>
+        <xs:documentation xml:lang="en">Reference to Person ID</xs:documentation>
       </xs:annotation>
     </xs:attribute>
   </xs:complexType>

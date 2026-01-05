@@ -1,32 +1,21 @@
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
 @prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
 @prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
 @prefix shacl: <http://www.w3.org/ns/shacl#> .
+@prefix skos: <http://www.w3.org/2004/02/skos/core#> .
 @prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
 
 <https://semiceu.github.io/ADM/releases/1.0.0> rdfs:member <https://semiceu.github.io/ADM/releases/1.0.0#ContractShape>,
-    <https://semiceu.github.io/ADM/releases/1.0.0#KeyExpertShape> .
+    <https://semiceu.github.io/ADM/releases/1.0.0#DocumentShape>,
+    <https://semiceu.github.io/ADM/releases/1.0.0#KeyExpertShape>,
+    <https://semiceu.github.io/ADM/releases/1.0.0#IdentifierShape>,
+    <https://semiceu.github.io/ADM/releases/1.0.0#PersonShape> .
 
 <https://semiceu.github.io/ADM/releases/1.0.0#ContractShape> a shacl:NodeShape;
   shacl:closed false;
-  shacl:property <https://semiceu.github.io/ADM/releases/1.0.0#ContractShape/0d913ac7222b4a9b73152f30451f727c90294f39>,
-    <https://semiceu.github.io/ADM/releases/1.0.0#ContractShape/1bf6b202f78591cc7dc23e70eebefda2d3e72ec5>,
-    <https://semiceu.github.io/ADM/releases/1.0.0#ContractShape/208a4fc983bf671e1e10ca24fa2dc6884649e3c4>,
-    <https://semiceu.github.io/ADM/releases/1.0.0#ContractShape/5ea3e6deebe239c60a44df6083bb214422fb8cca>,
-    <https://semiceu.github.io/ADM/releases/1.0.0#ContractShape/602c43156a1e8e7cd856ada50643e32a81a8ecba>,
-    <https://semiceu.github.io/ADM/releases/1.0.0#ContractShape/e0c9d9e2a26ed56f4d4d9eb9de7c55864b9b5635>;
-  shacl:targetClass <http://example.com/Contract> .
-
-<https://semiceu.github.io/ADM/releases/1.0.0#ContractShape/0d913ac7222b4a9b73152f30451f727c90294f39> rdfs:seeAlso "https://semiceu.github.io/ADM/releases/1.0.0#Contract.id";
-  shacl:datatype xsd:string;
-  shacl:description "Unique way to define a contract"@en;
-  shacl:name "id"@en;
-  shacl:path <http://example.com/id> .
-
-<https://semiceu.github.io/ADM/releases/1.0.0#ContractShape/1bf6b202f78591cc7dc23e70eebefda2d3e72ec5> rdfs:seeAlso "https://semiceu.github.io/ADM/releases/1.0.0#Contract.id";
-  shacl:description "Unique way to define a contract"@en;
-  shacl:name "id"@en;
-  shacl:nodeKind shacl:Literal;
-  shacl:path <http://example.com/id> .
+  shacl:property <https://semiceu.github.io/ADM/releases/1.0.0#ContractShape/208a4fc983bf671e1e10ca24fa2dc6884649e3c4>,
+    <https://semiceu.github.io/ADM/releases/1.0.0#ContractShape/602c43156a1e8e7cd856ada50643e32a81a8ecba>;
+  shacl:targetClass <http://data.europa.eu/a4g/ontology#Contract> .
 
 <https://semiceu.github.io/ADM/releases/1.0.0#ContractShape/208a4fc983bf671e1e10ca24fa2dc6884649e3c4> rdfs:seeAlso "https://semiceu.github.io/ADM/releases/1.0.0#Contract.hasKeyExpert";
   shacl:class <http://example.com/KeyExpert>;
@@ -34,24 +23,101 @@
   shacl:name "has KeyExpert"@en;
   shacl:path <http://example.com/hasKeyExpert> .
 
-<https://semiceu.github.io/ADM/releases/1.0.0#ContractShape/5ea3e6deebe239c60a44df6083bb214422fb8cca> rdfs:seeAlso "https://semiceu.github.io/ADM/releases/1.0.0#Contract.id";
-  shacl:description "Unique way to define a contract"@en;
-  shacl:maxCount 1;
-  shacl:name "id"@en;
-  shacl:path <http://example.com/id> .
-
 <https://semiceu.github.io/ADM/releases/1.0.0#ContractShape/602c43156a1e8e7cd856ada50643e32a81a8ecba> rdfs:seeAlso "https://semiceu.github.io/ADM/releases/1.0.0#Contract.hasKeyExpert";
   shacl:description "Expert assigned on a contract"@en;
   shacl:name "has KeyExpert"@en;
   shacl:nodeKind shacl:BlankNodeOrIRI;
   shacl:path <http://example.com/hasKeyExpert> .
 
-<https://semiceu.github.io/ADM/releases/1.0.0#ContractShape/e0c9d9e2a26ed56f4d4d9eb9de7c55864b9b5635> rdfs:seeAlso "https://semiceu.github.io/ADM/releases/1.0.0#Contract.id";
-  shacl:description "Unique way to define a contract"@en;
+<https://semiceu.github.io/ADM/releases/1.0.0#DocumentShape> a shacl:NodeShape;
+  shacl:closed false;
+  shacl:property <https://semiceu.github.io/ADM/releases/1.0.0#DocumentShape/6c7c1bd2ab3b7761e5be759a078a9fd93f411a57>,
+    <https://semiceu.github.io/ADM/releases/1.0.0#DocumentShape/aadbd67a77a624f073be2076627fb9dc883cbe48>,
+    <https://semiceu.github.io/ADM/releases/1.0.0#DocumentShape/c0d17764e84e711728581fda7356a51e99a9040a>,
+    <https://semiceu.github.io/ADM/releases/1.0.0#DocumentShape/e2017f72421063cd9ff494011ec78f35f9632a4a>;
+  shacl:targetClass <http://data.europa.eu/a4g/ontology#Document> .
+
+<https://semiceu.github.io/ADM/releases/1.0.0#DocumentShape/6c7c1bd2ab3b7761e5be759a078a9fd93f411a57> rdfs:seeAlso "https://semiceu.github.io/ADM/releases/1.0.0#Document.identifier";
+  shacl:description "Links a resource to an adms:Identifier class."@en;
   shacl:minCount 1;
-  shacl:name "id"@en;
-  shacl:path <http://example.com/id> .
+  shacl:name "identifier"@en;
+  shacl:path <http://www.w3.org/ns/adms#identifier> .
+
+<https://semiceu.github.io/ADM/releases/1.0.0#DocumentShape/aadbd67a77a624f073be2076627fb9dc883cbe48> rdfs:seeAlso "https://semiceu.github.io/ADM/releases/1.0.0#Document.identifier";
+  shacl:description "Links a resource to an adms:Identifier class."@en;
+  shacl:name "identifier"@en;
+  shacl:nodeKind shacl:BlankNodeOrIRI;
+  shacl:path <http://www.w3.org/ns/adms#identifier> .
+
+<https://semiceu.github.io/ADM/releases/1.0.0#DocumentShape/c0d17764e84e711728581fda7356a51e99a9040a> rdfs:seeAlso "https://semiceu.github.io/ADM/releases/1.0.0#Document.identifier";
+  shacl:description "Links a resource to an adms:Identifier class."@en;
+  shacl:maxCount 1;
+  shacl:name "identifier"@en;
+  shacl:path <http://www.w3.org/ns/adms#identifier> .
+
+<https://semiceu.github.io/ADM/releases/1.0.0#DocumentShape/e2017f72421063cd9ff494011ec78f35f9632a4a> rdfs:seeAlso "https://semiceu.github.io/ADM/releases/1.0.0#Document.identifier";
+  shacl:class <http://www.w3.org/ns/adms#Identifier>;
+  shacl:description "Links a resource to an adms:Identifier class."@en;
+  shacl:name "identifier"@en;
+  shacl:path <http://www.w3.org/ns/adms#identifier> .
+
+<https://semiceu.github.io/ADM/releases/1.0.0#IdentifierShape> a shacl:NodeShape;
+  shacl:closed false;
+  shacl:property <https://semiceu.github.io/ADM/releases/1.0.0#IdentifierShape/053d0ae3c4b213ae2f708e5e492b97e2cce08686>;
+  shacl:targetClass <http://www.w3.org/ns/adms#Identifier> .
+
+<https://semiceu.github.io/ADM/releases/1.0.0#IdentifierShape/053d0ae3c4b213ae2f708e5e492b97e2cce08686> rdfs:seeAlso "https://semiceu.github.io/ADM/releases/1.0.0#Identifier.notation";
+  shacl:description "A string of characters to uniquely identify a concept."@en;
+  shacl:name "notation"@en;
+  shacl:nodeKind shacl:Literal;
+  shacl:path skos:notation .
 
 <https://semiceu.github.io/ADM/releases/1.0.0#KeyExpertShape> a shacl:NodeShape;
   shacl:closed false;
   shacl:targetClass <http://example.com/KeyExpert> .
+
+<https://semiceu.github.io/ADM/releases/1.0.0#PersonShape> a shacl:NodeShape;
+  shacl:closed false;
+  shacl:property <https://semiceu.github.io/ADM/releases/1.0.0#PersonShape/1572a063cf6e42858dabf5017baf40a96bf7155d>,
+    <https://semiceu.github.io/ADM/releases/1.0.0#PersonShape/66aadf8f2f30ec822961e903241612a4a0f876d8>,
+    <https://semiceu.github.io/ADM/releases/1.0.0#PersonShape/7349aedd98256d90685571bddc6da8ac9eab1767>,
+    <https://semiceu.github.io/ADM/releases/1.0.0#PersonShape/7d0aad3aaae427f799249eafced4cbb0b8a36dc5>,
+    <https://semiceu.github.io/ADM/releases/1.0.0#PersonShape/b9da0bb511b75552c4edec2383d2c9ebb35f0774>,
+    <https://semiceu.github.io/ADM/releases/1.0.0#PersonShape/f888a185270cac3f6e32d6e1a22eb6a89d617ba8>;
+  shacl:targetClass <http://www.w3.org/ns/person#Person> .
+
+<https://semiceu.github.io/ADM/releases/1.0.0#PersonShape/1572a063cf6e42858dabf5017baf40a96bf7155d> rdfs:seeAlso "https://semiceu.github.io/ADM/releases/1.0.0#Person.familyname";
+  shacl:datatype rdf:langString;
+  shacl:description "The hereditary surname of a family."@en;
+  shacl:name "family name"@en;
+  shacl:path foaf:familyName .
+
+<https://semiceu.github.io/ADM/releases/1.0.0#PersonShape/66aadf8f2f30ec822961e903241612a4a0f876d8> rdfs:seeAlso "https://semiceu.github.io/ADM/releases/1.0.0#Person.familyname";
+  shacl:description "The hereditary surname of a family."@en;
+  shacl:minCount 1;
+  shacl:name "family name"@en;
+  shacl:path foaf:familyName .
+
+<https://semiceu.github.io/ADM/releases/1.0.0#PersonShape/7349aedd98256d90685571bddc6da8ac9eab1767> rdfs:seeAlso "https://semiceu.github.io/ADM/releases/1.0.0#Person.givenname";
+  shacl:description "The name(s) that identify the Person within a family with a common surname."@en;
+  shacl:name "given name"@en;
+  shacl:nodeKind shacl:Literal;
+  shacl:path foaf:givenName .
+
+<https://semiceu.github.io/ADM/releases/1.0.0#PersonShape/7d0aad3aaae427f799249eafced4cbb0b8a36dc5> rdfs:seeAlso "https://semiceu.github.io/ADM/releases/1.0.0#Person.familyname";
+  shacl:description "The hereditary surname of a family."@en;
+  shacl:name "family name"@en;
+  shacl:nodeKind shacl:Literal;
+  shacl:path foaf:familyName .
+
+<https://semiceu.github.io/ADM/releases/1.0.0#PersonShape/b9da0bb511b75552c4edec2383d2c9ebb35f0774> rdfs:seeAlso "https://semiceu.github.io/ADM/releases/1.0.0#Person.dateofbirth";
+  shacl:description "The point in time on which the Person was born."@en;
+  shacl:name "date of birth"@en;
+  shacl:nodeKind shacl:Literal;
+  shacl:path <http://data.europa.eu/m8g/birthDate> .
+
+<https://semiceu.github.io/ADM/releases/1.0.0#PersonShape/f888a185270cac3f6e32d6e1a22eb6a89d617ba8> rdfs:seeAlso "https://semiceu.github.io/ADM/releases/1.0.0#Person.givenname";
+  shacl:datatype rdf:langString;
+  shacl:description "The name(s) that identify the Person within a family with a common surname."@en;
+  shacl:name "given name"@en;
+  shacl:path foaf:givenName .
