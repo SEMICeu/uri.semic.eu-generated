@@ -17,8 +17,8 @@
     },
     "status": "Draft",
     "statuslabel": "Onbekend",
-    "repositoryurl": "git@uri.semic.eu-thema:SEMICeu/uri.semic.eu-thema.git/tree/21f81d13c13e2e0ec48115f1742873727e8fb620",
-    "changelogurl": "git@uri.semic.eu-thema:SEMICeu/uri.semic.eu-thema.git/blob/21f81d13c13e2e0ec48115f1742873727e8fb620/CHANGELOG",
+    "repositoryurl": "git@uri.semic.eu-thema:SEMICeu/uri.semic.eu-thema.git/tree/75e3ef30865ffee701c44970e1023b7585721ea5",
+    "changelogurl": "git@uri.semic.eu-thema:SEMICeu/uri.semic.eu-thema.git/blob/75e3ef30865ffee701c44970e1023b7585721ea5/CHANGELOG",
     "feedbackurl": "https://github.com/SEMICeu/PLD/issues",
     "standaardregisterurl": "https://github.com/SEMICeu/PLD/blob/master/releases/1.0.0/Changelog.md",
     "usesVocs": [],
@@ -71,13 +71,15 @@
       },
       "properties": [
         {
-          "uri": "http://example.com/ontology/pld#caseNumber",
-          "name": "caseNumber",
-          "sort": "case number",
+          "uri": "http://example.com/ontology/pld#caseID",
+          "name": "caseId",
+          "sort": "case ID",
           "label": {
-            "en": "case number"
+            "en": "case ID"
           },
-          "description": {},
+          "description": {
+            "en": "The unique identifier of a case law."
+          },
           "usage": {},
           "domain": [
             {
@@ -103,8 +105,50 @@
           "cardinality": "1",
           "codelist_uri": "",
           "rawTags": {
-            "uri": "http://example.com/ontology/pld#caseNumber",
-            "label-en": "case number"
+            "uri": "http://example.com/ontology/pld#caseID",
+            "label-en": "case ID",
+            "definition-en": "The unique identifier of a case law."
+          }
+        },
+        {
+          "uri": "http://publications.europa.eu/ontology/cdm#case-law_delivered_by_court_national",
+          "name": "deliveredByCourtNational",
+          "sort": "delivered by court national",
+          "label": {
+            "en": "delivered by court national"
+          },
+          "description": {
+            "en": "Reference to the national court who delivered the judgement"
+          },
+          "usage": {},
+          "domain": [
+            {
+              "EA-Name": "CaseLaw",
+              "uri": "http://publications.europa.eu/ontology/cdm#case-law"
+            }
+          ],
+          "range": [
+            {
+              "range_label": "NationalCourt",
+              "range_uri": "http://publications.europa.eu/ontology/cdm#court_national"
+            }
+          ],
+          "scopedrange": [
+            {
+              "range_uri": "#National court",
+              "range_puri": "http://publications.europa.eu/ontology/cdm#court_national",
+              "range_label": {
+                "en": "National court"
+              }
+            }
+          ],
+          "cardinality": "1",
+          "codelist_uri": "",
+          "rawTags": {
+            "uri": "http://publications.europa.eu/ontology/cdm#case-law_delivered_by_court_national",
+            "definition-en": "Reference to the national court who delivered the judgement",
+            "label-en": "delivered by court national",
+            "property-usage-scope": "mandatory"
           }
         },
         {
@@ -146,46 +190,154 @@
             "label-en": "ecli",
             "definition-en": "European Case Law Identifier. Identifier of the decision, including all its summaries."
           }
-        },
+        }
+      ]
+    },
+    {
+      "uri": "http://publications.europa.eu/ontology/cdm#court_national",
+      "name": "NationalCourt",
+      "label": {
+        "en": "National court"
+      },
+      "sort": "National court",
+      "description": {
+        "en": "National court, used esp. in the context of JURE"
+      },
+      "usage": {},
+      "parents": [],
+      "rawTags": {
+        "definition-en": "National court, used esp. in the context of JURE",
+        "uri": "http://publications.europa.eu/ontology/cdm#court_national",
+        "label-en": "National court"
+      },
+      "properties": [
         {
-          "uri": "http://publications.europa.eu/ontology/cdm#work_created_by_agent",
-          "name": "workCreatedByAgent",
-          "sort": "work created by agent",
+          "uri": "http://publications.europa.eu/ontology/cdm#court_national_name",
+          "name": "name",
+          "sort": "name",
           "label": {
-            "en": "work created by agent"
+            "en": "name"
           },
           "description": {
-            "en": "The work is created to by an agent"
+            "en": "Name of this national court, possibly qualified by language. "
           },
-          "usage": {},
+          "usage": {
+            "en": "This property can be repeated for parallel language versions of the name."
+          },
           "domain": [
             {
-              "EA-Name": "CaseLaw",
-              "uri": "http://publications.europa.eu/ontology/cdm#case-law"
+              "EA-Name": "NationalCourt",
+              "uri": "http://publications.europa.eu/ontology/cdm#court_national"
             }
           ],
           "range": [
             {
-              "range_label": "Agent",
-              "range_uri": "http://xmlns.com/foaf/0.1/Agent"
+              "range_label": "Text",
+              "range_uri": "http://www.w3.org/1999/02/22-rdf-syntax-ns#langString"
             }
           ],
           "scopedrange": [
             {
-              "range_uri": "#Agent",
-              "range_puri": "http://xmlns.com/foaf/0.1/Agent",
+              "range_uri": "#Text",
+              "range_puri": "http://www.w3.org/1999/02/22-rdf-syntax-ns#langString",
               "range_label": {
-                "en": "Agent"
+                "en": "Text"
               }
             }
           ],
           "cardinality": "1..*",
           "codelist_uri": "",
           "rawTags": {
-            "uri": "http://publications.europa.eu/ontology/cdm#work_created_by_agent",
-            "definition-en": "The work is created to by an agent",
-            "label-en": "work created by agent",
-            "property-usage-scope": "mandatory"
+            "definition-en": "Name of this national court, possibly qualified by language. ",
+            "uri": "http://publications.europa.eu/ontology/cdm#court_national_name",
+            "label-en": "name",
+            "property-usage-scope": "mandatory",
+            "usageNote-en": "This property can be repeated for parallel language versions of the name."
+          }
+        },
+        {
+          "uri": "http://purl.org/dc/terms/spatial",
+          "name": "spatial",
+          "sort": "spatial",
+          "label": {
+            "en": "spatial"
+          },
+          "description": {
+            "en": "The country of the Agent."
+          },
+          "usage": {},
+          "domain": [
+            {
+              "EA-Name": "NationalCourt",
+              "uri": "http://publications.europa.eu/ontology/cdm#court_national"
+            }
+          ],
+          "range": [
+            {
+              "range_label": "Location",
+              "range_uri": "http://purl.org/dc/terms/Location"
+            }
+          ],
+          "scopedrange": [
+            {
+              "range_uri": "#Location",
+              "range_puri": "http://purl.org/dc/terms/Location",
+              "range_label": {
+                "en": "Location"
+              }
+            }
+          ],
+          "cardinality": "0..*",
+          "codelist_uri": "",
+          "rawTags": {
+            "uri": "http://purl.org/dc/terms/spatial",
+            "label-en": "spatial",
+            "definition-en": "The country of the Agent.",
+            "property-usage-scope": "optional"
+          }
+        },
+        {
+          "uri": "http://purl.org/dc/terms/type",
+          "name": "type",
+          "sort": "type",
+          "label": {
+            "en": "type"
+          },
+          "description": {
+            "en": "The nature of the Agent."
+          },
+          "usage": {
+            "en": "The values to be used for this property are the URIs of the concepts in the Publications Office <a href=\"https://op.europa.eu/en/web/eu-vocabularies/dataset/-/resource?uri=http://publications.europa.eu/resource/dataset/organization-type\">Organization Type</a>, <a href=\"https://op.europa.eu/en/web/eu-vocabularies/concept-scheme/-/resource?uri=http://publications.europa.eu/resource/authority/corporate-body-classification\">Corporate Body classification</a> code list or <a href=\"http://purl.org/adms/publishertype/\">Publisher type</a> code list."
+          },
+          "domain": [
+            {
+              "EA-Name": "NationalCourt",
+              "uri": "http://publications.europa.eu/ontology/cdm#court_national"
+            }
+          ],
+          "range": [
+            {
+              "range_label": "Code",
+              "range_uri": "http://www.w3.org/2004/02/skos/core#Concept"
+            }
+          ],
+          "scopedrange": [
+            {
+              "range_uri": "#Code",
+              "range_puri": "http://www.w3.org/2004/02/skos/core#Concept",
+              "range_label": {
+                "en": "Code"
+              }
+            }
+          ],
+          "cardinality": "0..1",
+          "codelist_uri": "",
+          "rawTags": {
+            "uri": "http://purl.org/dc/terms/type",
+            "label-en": "type",
+            "definition-en": "The nature of the Agent.",
+            "property-usage-scope": "optional",
+            "usageNote-en": "The values to be used for this property are the URIs of the concepts in the Publications Office <a href=\"https://op.europa.eu/en/web/eu-vocabularies/dataset/-/resource?uri=http://publications.europa.eu/resource/dataset/organization-type\">Organization Type</a>, <a href=\"https://op.europa.eu/en/web/eu-vocabularies/concept-scheme/-/resource?uri=http://publications.europa.eu/resource/authority/corporate-body-classification\">Corporate Body classification</a> code list or <a href=\"http://purl.org/adms/publishertype/\">Publisher type</a> code list."
           }
         }
       ]
@@ -1564,155 +1716,6 @@
             "uri": "http://www.w3.org/ns/dx/prof/hasRole",
             "property-usage-scope": "mandatory",
             "usageNote-en": "The values to be used for this property are the URIs of the concepts in the PROF <a href=\"https://w3c.github.io/dx-prof/prof/#resource-roles-vocab\">Resource Role code list</a>."
-          }
-        }
-      ]
-    },
-    {
-      "uri": "http://xmlns.com/foaf/0.1/Agent",
-      "name": "Agent",
-      "label": {
-        "en": "Agent"
-      },
-      "sort": "Agent",
-      "description": {
-        "en": "The Agent class is any resource that acts or has the power to act. This includes people, organisations and groups. The Public Organization class, defined in the Core Public Organisation Vocabulary, is a notable subclass of Agent.\r"
-      },
-      "usage": {},
-      "parents": [],
-      "rawTags": {
-        "definition-en": "The Agent class is any resource that acts or has the power to act. This includes people, organisations and groups. The Public Organization class, defined in the Core Public Organisation Vocabulary, is a notable subclass of Agent.\r",
-        "uri": "http://xmlns.com/foaf/0.1/Agent",
-        "label-en": "Agent"
-      },
-      "properties": [
-        {
-          "uri": "http://purl.org/dc/terms/spatial",
-          "name": "spatial",
-          "sort": "spatial",
-          "label": {
-            "en": "spatial"
-          },
-          "description": {
-            "en": "The country of the Agent."
-          },
-          "usage": {},
-          "domain": [
-            {
-              "EA-Name": "Agent",
-              "uri": "http://xmlns.com/foaf/0.1/Agent"
-            }
-          ],
-          "range": [
-            {
-              "range_label": "Location",
-              "range_uri": "http://purl.org/dc/terms/Location"
-            }
-          ],
-          "scopedrange": [
-            {
-              "range_uri": "#Location",
-              "range_puri": "http://purl.org/dc/terms/Location",
-              "range_label": {
-                "en": "Location"
-              }
-            }
-          ],
-          "cardinality": "0..*",
-          "codelist_uri": "",
-          "rawTags": {
-            "uri": "http://purl.org/dc/terms/spatial",
-            "label-en": "spatial",
-            "definition-en": "The country of the Agent.",
-            "property-usage-scope": "optional"
-          }
-        },
-        {
-          "uri": "http://purl.org/dc/terms/type",
-          "name": "type",
-          "sort": "type",
-          "label": {
-            "en": "type"
-          },
-          "description": {
-            "en": "The nature of the Agent."
-          },
-          "usage": {
-            "en": "The values to be used for this property are the URIs of the concepts in the Publications Office <a href=\"https://op.europa.eu/en/web/eu-vocabularies/dataset/-/resource?uri=http://publications.europa.eu/resource/dataset/organization-type\">Organization Type</a>, <a href=\"https://op.europa.eu/en/web/eu-vocabularies/concept-scheme/-/resource?uri=http://publications.europa.eu/resource/authority/corporate-body-classification\">Corporate Body classification</a> code list or <a href=\"http://purl.org/adms/publishertype/\">Publisher type</a> code list."
-          },
-          "domain": [
-            {
-              "EA-Name": "Agent",
-              "uri": "http://xmlns.com/foaf/0.1/Agent"
-            }
-          ],
-          "range": [
-            {
-              "range_label": "Code",
-              "range_uri": "http://www.w3.org/2004/02/skos/core#Concept"
-            }
-          ],
-          "scopedrange": [
-            {
-              "range_uri": "#Code",
-              "range_puri": "http://www.w3.org/2004/02/skos/core#Concept",
-              "range_label": {
-                "en": "Code"
-              }
-            }
-          ],
-          "cardinality": "0..1",
-          "codelist_uri": "",
-          "rawTags": {
-            "uri": "http://purl.org/dc/terms/type",
-            "label-en": "type",
-            "definition-en": "The nature of the Agent.",
-            "property-usage-scope": "optional",
-            "usageNote-en": "The values to be used for this property are the URIs of the concepts in the Publications Office <a href=\"https://op.europa.eu/en/web/eu-vocabularies/dataset/-/resource?uri=http://publications.europa.eu/resource/dataset/organization-type\">Organization Type</a>, <a href=\"https://op.europa.eu/en/web/eu-vocabularies/concept-scheme/-/resource?uri=http://publications.europa.eu/resource/authority/corporate-body-classification\">Corporate Body classification</a> code list or <a href=\"http://purl.org/adms/publishertype/\">Publisher type</a> code list."
-          }
-        },
-        {
-          "uri": "http://xmlns.com/foaf/0.1/name",
-          "name": "name",
-          "sort": "name",
-          "label": {
-            "en": "name"
-          },
-          "description": {
-            "en": "The noun given to the Agent."
-          },
-          "usage": {
-            "en": "This property can be repeated for parallel language versions of the name."
-          },
-          "domain": [
-            {
-              "EA-Name": "Agent",
-              "uri": "http://xmlns.com/foaf/0.1/Agent"
-            }
-          ],
-          "range": [
-            {
-              "range_label": "Text",
-              "range_uri": "http://www.w3.org/1999/02/22-rdf-syntax-ns#langString"
-            }
-          ],
-          "scopedrange": [
-            {
-              "range_uri": "#Text",
-              "range_puri": "http://www.w3.org/1999/02/22-rdf-syntax-ns#langString",
-              "range_label": {
-                "en": "Text"
-              }
-            }
-          ],
-          "cardinality": "1..*",
-          "codelist_uri": "",
-          "rawTags": {
-            "definition-en": "The noun given to the Agent.",
-            "uri": "http://xmlns.com/foaf/0.1/name",
-            "label-en": "name",
-            "property-usage-scope": "mandatory",
-            "usageNote-en": "This property can be repeated for parallel language versions of the name."
           }
         }
       ]

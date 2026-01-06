@@ -1,3 +1,5 @@
+@prefix dbo: <http://dbpedia.org/ontology/> .
+@prefix dc: <http://purl.org/dc/terms/> .
 @prefix foaf: <http://xmlns.com/foaf/0.1/> .
 @prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
 @prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
@@ -7,15 +9,31 @@
 
 <https://semiceu.github.io/ADM/releases/1.0.0> rdfs:member <https://semiceu.github.io/ADM/releases/1.0.0#ContractShape>,
     <https://semiceu.github.io/ADM/releases/1.0.0#DocumentShape>,
+    <https://semiceu.github.io/ADM/releases/1.0.0#GenericDateShape>,
     <https://semiceu.github.io/ADM/releases/1.0.0#KeyExpertShape>,
+    <https://semiceu.github.io/ADM/releases/1.0.0#SubcontractShape>,
+    <https://semiceu.github.io/ADM/releases/1.0.0#TextShape>,
+    <https://semiceu.github.io/ADM/releases/1.0.0#LiteralShape>,
+    <https://semiceu.github.io/ADM/releases/1.0.0#DateShape>,
     <https://semiceu.github.io/ADM/releases/1.0.0#IdentifierShape>,
-    <https://semiceu.github.io/ADM/releases/1.0.0#PersonShape> .
+    <https://semiceu.github.io/ADM/releases/1.0.0#PersonShape>,
+    <https://semiceu.github.io/ADM/releases/1.0.0#ProjectShape> .
 
 <https://semiceu.github.io/ADM/releases/1.0.0#ContractShape> a shacl:NodeShape;
   shacl:closed false;
-  shacl:property <https://semiceu.github.io/ADM/releases/1.0.0#ContractShape/208a4fc983bf671e1e10ca24fa2dc6884649e3c4>,
-    <https://semiceu.github.io/ADM/releases/1.0.0#ContractShape/602c43156a1e8e7cd856ada50643e32a81a8ecba>;
+  shacl:property <https://semiceu.github.io/ADM/releases/1.0.0#ContractShape/1049d7e016614757ec43c897a7b4b984c808ce6f>,
+    <https://semiceu.github.io/ADM/releases/1.0.0#ContractShape/208a4fc983bf671e1e10ca24fa2dc6884649e3c4>,
+    <https://semiceu.github.io/ADM/releases/1.0.0#ContractShape/4d9b7a441b5f0699ced6b8a1a3f61d7384e5bab6>,
+    <https://semiceu.github.io/ADM/releases/1.0.0#ContractShape/5deb0335fa605142388046b109375ba6c9140d0a>,
+    <https://semiceu.github.io/ADM/releases/1.0.0#ContractShape/602c43156a1e8e7cd856ada50643e32a81a8ecba>,
+    <https://semiceu.github.io/ADM/releases/1.0.0#ContractShape/9fc03e4178f5c95fc7caed4eae56f98f28e51286>;
   shacl:targetClass <http://data.europa.eu/a4g/ontology#Contract> .
+
+<https://semiceu.github.io/ADM/releases/1.0.0#ContractShape/1049d7e016614757ec43c897a7b4b984c808ce6f> rdfs:seeAlso "https://semiceu.github.io/ADM/releases/1.0.0#Contract.belongsto";
+  shacl:description "The project in which a contract is executed."@en;
+  shacl:name "belongs to"@en;
+  shacl:nodeKind shacl:BlankNodeOrIRI;
+  shacl:path <http://example.com/belongsTo> .
 
 <https://semiceu.github.io/ADM/releases/1.0.0#ContractShape/208a4fc983bf671e1e10ca24fa2dc6884649e3c4> rdfs:seeAlso "https://semiceu.github.io/ADM/releases/1.0.0#Contract.hasKeyExpert";
   shacl:class <http://example.com/KeyExpert>;
@@ -23,11 +41,33 @@
   shacl:name "has KeyExpert"@en;
   shacl:path <http://example.com/hasKeyExpert> .
 
+<https://semiceu.github.io/ADM/releases/1.0.0#ContractShape/4d9b7a441b5f0699ced6b8a1a3f61d7384e5bab6> rdfs:seeAlso "https://semiceu.github.io/ADM/releases/1.0.0#Contract.belongsto";
+  shacl:class <https://dbpedia.org/ontology/Project>;
+  shacl:description "The project in which a contract is executed."@en;
+  shacl:name "belongs to"@en;
+  shacl:path <http://example.com/belongsTo> .
+
+<https://semiceu.github.io/ADM/releases/1.0.0#ContractShape/5deb0335fa605142388046b109375ba6c9140d0a> rdfs:seeAlso "https://semiceu.github.io/ADM/releases/1.0.0#Contract.belongsto";
+  shacl:description "The project in which a contract is executed."@en;
+  shacl:maxCount 1;
+  shacl:name "belongs to"@en;
+  shacl:path <http://example.com/belongsTo> .
+
 <https://semiceu.github.io/ADM/releases/1.0.0#ContractShape/602c43156a1e8e7cd856ada50643e32a81a8ecba> rdfs:seeAlso "https://semiceu.github.io/ADM/releases/1.0.0#Contract.hasKeyExpert";
   shacl:description "Expert assigned on a contract"@en;
   shacl:name "has KeyExpert"@en;
   shacl:nodeKind shacl:BlankNodeOrIRI;
   shacl:path <http://example.com/hasKeyExpert> .
+
+<https://semiceu.github.io/ADM/releases/1.0.0#ContractShape/9fc03e4178f5c95fc7caed4eae56f98f28e51286> rdfs:seeAlso "https://semiceu.github.io/ADM/releases/1.0.0#Contract.belongsto";
+  shacl:description "The project in which a contract is executed."@en;
+  shacl:minCount 1;
+  shacl:name "belongs to"@en;
+  shacl:path <http://example.com/belongsTo> .
+
+<https://semiceu.github.io/ADM/releases/1.0.0#DateShape> a shacl:NodeShape;
+  shacl:closed false;
+  shacl:targetClass xsd:date .
 
 <https://semiceu.github.io/ADM/releases/1.0.0#DocumentShape> a shacl:NodeShape;
   shacl:closed false;
@@ -61,6 +101,10 @@
   shacl:name "identifier"@en;
   shacl:path <http://www.w3.org/ns/adms#identifier> .
 
+<https://semiceu.github.io/ADM/releases/1.0.0#GenericDateShape> a shacl:NodeShape;
+  shacl:closed false;
+  shacl:targetClass <http://data.europa.eu/m8g/GenericDate> .
+
 <https://semiceu.github.io/ADM/releases/1.0.0#IdentifierShape> a shacl:NodeShape;
   shacl:closed false;
   shacl:property <https://semiceu.github.io/ADM/releases/1.0.0#IdentifierShape/053d0ae3c4b213ae2f708e5e492b97e2cce08686>;
@@ -75,6 +119,10 @@
 <https://semiceu.github.io/ADM/releases/1.0.0#KeyExpertShape> a shacl:NodeShape;
   shacl:closed false;
   shacl:targetClass <http://example.com/KeyExpert> .
+
+<https://semiceu.github.io/ADM/releases/1.0.0#LiteralShape> a shacl:NodeShape;
+  shacl:closed false;
+  shacl:targetClass rdfs:Literal .
 
 <https://semiceu.github.io/ADM/releases/1.0.0#PersonShape> a shacl:NodeShape;
   shacl:closed false;
@@ -121,3 +169,82 @@
   shacl:description "The name(s) that identify the Person within a family with a common surname."@en;
   shacl:name "given name"@en;
   shacl:path foaf:givenName .
+
+<https://semiceu.github.io/ADM/releases/1.0.0#ProjectShape> a shacl:NodeShape;
+  shacl:closed false;
+  shacl:property <https://semiceu.github.io/ADM/releases/1.0.0#ProjectShape/060e7b8260504ecdc352754bdc66692a030718d6>,
+    <https://semiceu.github.io/ADM/releases/1.0.0#ProjectShape/59fdfa4abfd9413716ffbdf9a27b9fdbf23d7772>,
+    <https://semiceu.github.io/ADM/releases/1.0.0#ProjectShape/734ca37cb57eb7386e624ca5375d566ae94864ef>,
+    <https://semiceu.github.io/ADM/releases/1.0.0#ProjectShape/ca557d93c60335eb94cfb2cbade6564cfa29da81>,
+    <https://semiceu.github.io/ADM/releases/1.0.0#ProjectShape/de859f6cb226ad795bc5b0dfa9777c0f6352efaf>,
+    <https://semiceu.github.io/ADM/releases/1.0.0#ProjectShape/f72c3efebeb551122e98eb731aa0ec8af8b4c1b7>;
+  shacl:targetClass <https://dbpedia.org/ontology/Project> .
+
+<https://semiceu.github.io/ADM/releases/1.0.0#ProjectShape/060e7b8260504ecdc352754bdc66692a030718d6> rdfs:seeAlso "https://semiceu.github.io/ADM/releases/1.0.0#Project.startdate";
+  shacl:datatype xsd:date;
+  shacl:description "The start date of the project."@en;
+  shacl:name "start date"@en;
+  shacl:path dbo:projectStartDate .
+
+<https://semiceu.github.io/ADM/releases/1.0.0#ProjectShape/59fdfa4abfd9413716ffbdf9a27b9fdbf23d7772> rdfs:seeAlso "https://semiceu.github.io/ADM/releases/1.0.0#Project.startdate";
+  shacl:description "The start date of the project."@en;
+  shacl:name "start date"@en;
+  shacl:nodeKind shacl:Literal;
+  shacl:path dbo:projectStartDate .
+
+<https://semiceu.github.io/ADM/releases/1.0.0#ProjectShape/734ca37cb57eb7386e624ca5375d566ae94864ef> rdfs:seeAlso "https://semiceu.github.io/ADM/releases/1.0.0#Project.enddate";
+  shacl:maxCount 1;
+  shacl:name "end date"@en;
+  shacl:path dbo:projectEndDate .
+
+<https://semiceu.github.io/ADM/releases/1.0.0#ProjectShape/ca557d93c60335eb94cfb2cbade6564cfa29da81> rdfs:seeAlso "https://semiceu.github.io/ADM/releases/1.0.0#Project.enddate";
+  shacl:datatype xsd:date;
+  shacl:name "end date"@en;
+  shacl:path dbo:projectEndDate .
+
+<https://semiceu.github.io/ADM/releases/1.0.0#ProjectShape/de859f6cb226ad795bc5b0dfa9777c0f6352efaf> rdfs:seeAlso "https://semiceu.github.io/ADM/releases/1.0.0#Project.enddate";
+  shacl:name "end date"@en;
+  shacl:nodeKind shacl:Literal;
+  shacl:path dbo:projectEndDate .
+
+<https://semiceu.github.io/ADM/releases/1.0.0#ProjectShape/f72c3efebeb551122e98eb731aa0ec8af8b4c1b7> rdfs:seeAlso "https://semiceu.github.io/ADM/releases/1.0.0#Project.startdate";
+  shacl:description "The start date of the project."@en;
+  shacl:maxCount 1;
+  shacl:name "start date"@en;
+  shacl:path dbo:projectStartDate .
+
+<https://semiceu.github.io/ADM/releases/1.0.0#SubcontractShape> a shacl:NodeShape;
+  shacl:closed false;
+  shacl:property <https://semiceu.github.io/ADM/releases/1.0.0#SubcontractShape/19f6de267036c30c67819273f5e8a4eedb68e228>,
+    <https://semiceu.github.io/ADM/releases/1.0.0#SubcontractShape/28d4860d1ad14d789ffc09b841dfc4f9b27a0f4d>,
+    <https://semiceu.github.io/ADM/releases/1.0.0#SubcontractShape/3253331fcb1cd3f2e87fbaef799d58ece408a646>,
+    <https://semiceu.github.io/ADM/releases/1.0.0#SubcontractShape/5d3b501368b0e6230133103390ac50e7385e214a>;
+  shacl:targetClass <http://example.com/Subcontract> .
+
+<https://semiceu.github.io/ADM/releases/1.0.0#SubcontractShape/19f6de267036c30c67819273f5e8a4eedb68e228> rdfs:seeAlso "https://semiceu.github.io/ADM/releases/1.0.0#Subcontract.ispartof";
+  shacl:description "A related resource in which the described resource is physically or logically included."@en;
+  shacl:maxCount 1;
+  shacl:name "is part of"@en;
+  shacl:path dc:isPartOf .
+
+<https://semiceu.github.io/ADM/releases/1.0.0#SubcontractShape/28d4860d1ad14d789ffc09b841dfc4f9b27a0f4d> rdfs:seeAlso "https://semiceu.github.io/ADM/releases/1.0.0#Subcontract.ispartof";
+  shacl:description "A related resource in which the described resource is physically or logically included."@en;
+  shacl:name "is part of"@en;
+  shacl:nodeKind shacl:BlankNodeOrIRI;
+  shacl:path dc:isPartOf .
+
+<https://semiceu.github.io/ADM/releases/1.0.0#SubcontractShape/3253331fcb1cd3f2e87fbaef799d58ece408a646> rdfs:seeAlso "https://semiceu.github.io/ADM/releases/1.0.0#Subcontract.ispartof";
+  shacl:description "A related resource in which the described resource is physically or logically included."@en;
+  shacl:minCount 1;
+  shacl:name "is part of"@en;
+  shacl:path dc:isPartOf .
+
+<https://semiceu.github.io/ADM/releases/1.0.0#SubcontractShape/5d3b501368b0e6230133103390ac50e7385e214a> rdfs:seeAlso "https://semiceu.github.io/ADM/releases/1.0.0#Subcontract.ispartof";
+  shacl:class <http://data.europa.eu/a4g/ontology#Contract>;
+  shacl:description "A related resource in which the described resource is physically or logically included."@en;
+  shacl:name "is part of"@en;
+  shacl:path dc:isPartOf .
+
+<https://semiceu.github.io/ADM/releases/1.0.0#TextShape> a shacl:NodeShape;
+  shacl:closed false;
+  shacl:targetClass rdf:langString .

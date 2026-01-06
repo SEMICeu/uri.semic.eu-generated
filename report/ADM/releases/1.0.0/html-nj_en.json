@@ -16,8 +16,8 @@
     },
     "status": "Semic Recommendation",
     "statuslabel": "Onbekend",
-    "repositoryurl": "git@uri.semic.eu-thema:SEMICeu/uri.semic.eu-thema.git/tree/50d5745ff4250108521a09ceab3c5c2e871b20ad",
-    "changelogurl": "git@uri.semic.eu-thema:SEMICeu/uri.semic.eu-thema.git/blob/50d5745ff4250108521a09ceab3c5c2e871b20ad/CHANGELOG",
+    "repositoryurl": "git@uri.semic.eu-thema:SEMICeu/uri.semic.eu-thema.git/tree/75e3ef30865ffee701c44970e1023b7585721ea5",
+    "changelogurl": "git@uri.semic.eu-thema:SEMICeu/uri.semic.eu-thema.git/blob/75e3ef30865ffee701c44970e1023b7585721ea5/CHANGELOG",
     "feedbackurl": "https://github.com/SEMICeu/ADM/issues",
     "standaardregisterurl": "https://github.com/SEMICeu/ADM/blob/master/releases/1.0.0/Changelog.md",
     "usesVocs": [],
@@ -47,9 +47,50 @@
       "rawTags": {
         "uri": "http://data.europa.eu/a4g/ontology#Contract",
         "label-en": "Contract",
-        "definition-en": "A voluntary, deliberate, and legally binding agreement between two or more competent parties."
+        "definition-en": "A voluntary, deliberate, and legally binding agreement between two or more competent parties.",
+        "class-usage-scope": "main"
       },
       "properties": [
+        {
+          "uri": "http://example.com/belongsTo",
+          "name": "belongsTo",
+          "sort": "belongs to",
+          "label": {
+            "en": "belongs to"
+          },
+          "description": {
+            "en": "The project in which a contract is executed."
+          },
+          "usage": {},
+          "domain": [
+            {
+              "EA-Name": "Contract",
+              "uri": "http://data.europa.eu/a4g/ontology#Contract"
+            }
+          ],
+          "range": [
+            {
+              "range_label": "Project",
+              "range_uri": "https://dbpedia.org/ontology/Project"
+            }
+          ],
+          "scopedrange": [
+            {
+              "range_uri": "#Project",
+              "range_puri": "https://dbpedia.org/ontology/Project",
+              "range_label": {
+                "en": "Project"
+              }
+            }
+          ],
+          "cardinality": "1",
+          "codelist_uri": "",
+          "rawTags": {
+            "definition-en": "The project in which a contract is executed.",
+            "uri": "http://example.com/belongsTo",
+            "label-en": "belongs to"
+          }
+        },
         {
           "uri": "http://example.com/hasKeyExpert",
           "name": "hasKeyexpert",
@@ -180,6 +221,64 @@
       "properties": []
     },
     {
+      "uri": "http://example.com/Subcontract",
+      "name": "Subcontract",
+      "label": {
+        "en": "Subcontract"
+      },
+      "sort": "Subcontract",
+      "description": {},
+      "usage": {},
+      "parents": [],
+      "rawTags": {
+        "uri": "http://example.com/Subcontract",
+        "label-en": "Subcontract",
+        "class-usage-scope": "main"
+      },
+      "properties": [
+        {
+          "uri": "http://purl.org/dc/terms/isPartOf",
+          "name": "isPartOf",
+          "sort": "is part of",
+          "label": {
+            "en": "is part of"
+          },
+          "description": {
+            "en": "A related resource in which the described resource is physically or logically included."
+          },
+          "usage": {},
+          "domain": [
+            {
+              "EA-Name": "Subcontract",
+              "uri": "http://example.com/Subcontract"
+            }
+          ],
+          "range": [
+            {
+              "range_label": "Contract",
+              "range_uri": "http://data.europa.eu/a4g/ontology#Contract"
+            }
+          ],
+          "scopedrange": [
+            {
+              "range_uri": "#Contract",
+              "range_puri": "http://data.europa.eu/a4g/ontology#Contract",
+              "range_label": {
+                "en": "Contract"
+              }
+            }
+          ],
+          "cardinality": "1",
+          "codelist_uri": "",
+          "rawTags": {
+            "definition-en": "A related resource in which the described resource is physically or logically included.",
+            "label-en": "is part of",
+            "uri": "http://purl.org/dc/terms/isPartOf"
+          }
+        }
+      ]
+    },
+    {
       "uri": "http://www.w3.org/ns/adms#Identifier",
       "name": "Identifier",
       "label": {
@@ -197,8 +296,7 @@
         "uri": "http://www.w3.org/ns/adms#Identifier",
         "definition-en": "A structured reference that identifies an entity.",
         "label-en": "Identifier",
-        "usageNote-en": "The Identifier class is based on the <a href=\"https://www.gs1.org/standards/edi/gs1-un-cefact-xml/2012\">UN/CEFACT</a> class of the same name and is defined under the ADMS namespace.",
-        "class-usage-scope": "main"
+        "usageNote-en": "The Identifier class is based on the <a href=\"https://www.gs1.org/standards/edi/gs1-un-cefact-xml/2012\">UN/CEFACT</a> class of the same name and is defined under the ADMS namespace."
       },
       "properties": [
         {
@@ -226,7 +324,7 @@
           ],
           "scopedrange": [
             {
-              "range_uri": "http://www.w3.org/2000/01/rdf-schema#Literal",
+              "range_uri": "#Literal",
               "range_puri": "http://www.w3.org/2000/01/rdf-schema#Literal",
               "range_label": {
                 "en": "Literal"
@@ -269,8 +367,7 @@
         "uri": "http://www.w3.org/ns/person#Person",
         "definition-en": "A individual human being who may be dead or alive, but not imaginary.",
         "usageNote-en": "The fact that a person in the context of Core Person Vocabulary cannot be imaginary makes person:Person a subclass of foaf:Person which cover imaginary characters as well as real people. The Person Class is a subclass of the more general <a href=\"#Agent\">'Agent' class</a>.",
-        "label-en": "Person",
-        "class-usage-scope": "main"
+        "label-en": "Person"
       },
       "properties": [
         {
@@ -300,10 +397,10 @@
           ],
           "scopedrange": [
             {
-              "range_uri": "http://data.europa.eu/m8g/GenericDate",
+              "range_uri": "#Generic date",
               "range_puri": "http://data.europa.eu/m8g/GenericDate",
               "range_label": {
-                "en": "GenericDate"
+                "en": "Generic date"
               }
             }
           ],
@@ -343,7 +440,7 @@
           ],
           "scopedrange": [
             {
-              "range_uri": "http://www.w3.org/1999/02/22-rdf-syntax-ns#langString",
+              "range_uri": "#Text",
               "range_puri": "http://www.w3.org/1999/02/22-rdf-syntax-ns#langString",
               "range_label": {
                 "en": "Text"
@@ -386,7 +483,7 @@
           ],
           "scopedrange": [
             {
-              "range_uri": "http://www.w3.org/1999/02/22-rdf-syntax-ns#langString",
+              "range_uri": "#Text",
               "range_puri": "http://www.w3.org/1999/02/22-rdf-syntax-ns#langString",
               "range_label": {
                 "en": "Text"
@@ -403,6 +500,103 @@
           }
         }
       ]
+    },
+    {
+      "uri": "https://dbpedia.org/ontology/Project",
+      "name": "Project",
+      "label": {
+        "en": "Project"
+      },
+      "sort": "Project",
+      "description": {},
+      "usage": {},
+      "parents": [],
+      "rawTags": {
+        "uri": "https://dbpedia.org/ontology/Project",
+        "label-en": "Project",
+        "defintion-en": "A project is a temporary endeavor undertaken to achieve defined objectives.",
+        "class-usage-scope": "main"
+      },
+      "properties": [
+        {
+          "uri": "http://dbpedia.org/ontology/projectEndDate",
+          "name": "endDate",
+          "sort": "end date",
+          "label": {
+            "en": "end date"
+          },
+          "description": {},
+          "usage": {},
+          "domain": [
+            {
+              "EA-Name": "Project",
+              "uri": "https://dbpedia.org/ontology/Project"
+            }
+          ],
+          "range": [
+            {
+              "range_label": "Date",
+              "range_uri": "http://www.w3.org/2001/XMLSchema#date"
+            }
+          ],
+          "scopedrange": [
+            {
+              "range_uri": "#Date",
+              "range_puri": "http://www.w3.org/2001/XMLSchema#date",
+              "range_label": {
+                "en": "Date"
+              }
+            }
+          ],
+          "cardinality": "0..1",
+          "codelist_uri": "",
+          "rawTags": {
+            "uri": "http://dbpedia.org/ontology/projectEndDate",
+            "label-en": "end date",
+            "defintion-en": "The end date of the project."
+          }
+        },
+        {
+          "uri": "http://dbpedia.org/ontology/projectStartDate",
+          "name": "startDate",
+          "sort": "start date",
+          "label": {
+            "en": "start date"
+          },
+          "description": {
+            "en": "The start date of the project."
+          },
+          "usage": {},
+          "domain": [
+            {
+              "EA-Name": "Project",
+              "uri": "https://dbpedia.org/ontology/Project"
+            }
+          ],
+          "range": [
+            {
+              "range_label": "Date",
+              "range_uri": "http://www.w3.org/2001/XMLSchema#date"
+            }
+          ],
+          "scopedrange": [
+            {
+              "range_uri": "#Date",
+              "range_puri": "http://www.w3.org/2001/XMLSchema#date",
+              "range_label": {
+                "en": "Date"
+              }
+            }
+          ],
+          "cardinality": "0..1",
+          "codelist_uri": "",
+          "rawTags": {
+            "uri": "http://dbpedia.org/ontology/projectStartDate",
+            "label-en": "start date",
+            "definition-en": "The start date of the project."
+          }
+        }
+      ]
     }
   ],
   "properties": [],
@@ -416,7 +610,92 @@
       }
     }
   ],
-  "datatypes": [],
+  "datatypes": [
+    {
+      "uri": "http://data.europa.eu/m8g/GenericDate",
+      "name": "GenericDate",
+      "label": {
+        "en": "Generic date"
+      },
+      "sort": "Generic date",
+      "description": {
+        "en": "The date data type is the union of  xs:date, xs:gYearMonth and xs:gYear"
+      },
+      "usage": {},
+      "parents": [],
+      "rawTags": {
+        "definition-en": "The date data type is the union of  xs:date, xs:gYearMonth and xs:gYear",
+        "label-en": "Generic date",
+        "uri": "http://data.europa.eu/m8g/GenericDate",
+        "literal": "True"
+      },
+      "properties": []
+    },
+    {
+      "uri": "http://www.w3.org/1999/02/22-rdf-syntax-ns#langString",
+      "name": "Text",
+      "label": {
+        "en": "Text"
+      },
+      "sort": "Text",
+      "description": {
+        "en": "The text data type is a combination of a string and a language identifier."
+      },
+      "usage": {
+        "en": "It is useful for names and descriptions that are available in multiple languages. Where this is so, each version of the data should be included and each one associated with the relevant language identifier. RFC 3066 provides a commonly used set of identifiers for natural languages. This is the set recognised by UN/CEFACT and XML Schema.\r\nLanguages are represented by two character codes, optionally followed by a locale definition such as \"de\" meaning German and \"de-at\" meaning \"German as spoken in Austria.\""
+      },
+      "parents": [],
+      "rawTags": {
+        "uri": "http://www.w3.org/1999/02/22-rdf-syntax-ns#langString",
+        "label-en": "Text",
+        "definition-en": "The text data type is a combination of a string and a language identifier.",
+        "usageNote-en": "It is useful for names and descriptions that are available in multiple languages. Where this is so, each version of the data should be included and each one associated with the relevant language identifier. RFC 3066 provides a commonly used set of identifiers for natural languages. This is the set recognised by UN/CEFACT and XML Schema.\r\nLanguages are represented by two character codes, optionally followed by a locale definition such as \"de\" meaning German and \"de-at\" meaning \"German as spoken in Austria.\"",
+        "literal": "True",
+        "class-usage-scope": "datatype"
+      },
+      "properties": []
+    },
+    {
+      "uri": "http://www.w3.org/2000/01/rdf-schema#Literal",
+      "name": "Literal",
+      "label": {
+        "en": "Literal"
+      },
+      "sort": "Literal",
+      "description": {
+        "en": "The class of literal values, eg. textual strings and integers."
+      },
+      "usage": {},
+      "parents": [],
+      "rawTags": {
+        "uri": "http://www.w3.org/2000/01/rdf-schema#Literal",
+        "label-en": "Literal",
+        "definition-en": "The class of literal values, eg. textual strings and integers.",
+        "literal": "true",
+        "class-usage-scope": "datatype"
+      },
+      "properties": []
+    },
+    {
+      "uri": "http://www.w3.org/2001/XMLSchema#date",
+      "name": "Date",
+      "label": {
+        "en": "Date"
+      },
+      "sort": "Date",
+      "description": {
+        "en": "Date represents top-open intervals of exactly one day in length on the timelines of dateTime, beginning on the beginning moment of each day, up to but not including the beginning moment of the next day).  For non-timezoned values, the top-open intervals disjointly cover the non-timezoned timeline, one per day.  For timezoned values, the intervals begin at every minute and therefore overlap."
+      },
+      "usage": {},
+      "parents": [],
+      "rawTags": {
+        "uri": "http://www.w3.org/2001/XMLSchema#date",
+        "label-en": "Date",
+        "definition-en": "Date represents top-open intervals of exactly one day in length on the timelines of dateTime, beginning on the beginning moment of each day, up to but not including the beginning moment of the next day).  For non-timezoned values, the top-open intervals disjointly cover the non-timezoned timeline, one per day.  For timezoned values, the intervals begin at every minute and therefore overlap."
+      },
+      "properties": []
+    }
+  ],
   "parents": [],
   "documentroot": "/ADM/releases/1.0.0"
 }
