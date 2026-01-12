@@ -95,7 +95,7 @@
     var respecConfig = {
       edDraftURI: "https://semiceu.github.io/doc/vocabularium/s1n/drafts/3.0.0",
       latestVersion: "",
-      specStatus: "LD",
+      specStatus: "base",
       publishDate: "2026-01-12",
       editors: myeditors,
       authors: myauthors,
@@ -103,6 +103,7 @@
       shortName: "StatDCAT-AP vocabulary, the s1n namespace",
       xref: "web-platform",
       doJsonLd: true,
+      historyURI: null,
       logos: [{
         src: "https://semiceu.github.io/CPOV/releases/2.1.0/html/semic-icon.png",
         url: "https://semic.eu",
@@ -139,26 +140,26 @@
           "title":"The official portal for European data",
           "publisher":"European Commission"
         },
-		"HVD" : {
-		  "href":"https://eur-lex.europa.eu/legal-content/EN/TXT/?uri=CELEX:32023R0138",
-		  "title":"Implementing Regulation for High Value Datasets",
-		  "publisher":"European Union"
-		},
-		"DCAT-AP-HVD" : {
-		  "href":"https://semiceu.github.io/uri.semic.eu-generated/DCAT-AP/releases/2.2.0-hvd/",
-		  "title":"Usage Guidelines of DCAT-AP for High-Value Datasets",
-		  "publisher":"European Commission"
-		},
-		"DCAT-AP" : {
-		  "href":"https://semiceu.github.io/DCAT-AP/releases/3.0.0/",
-		  "title":"DCAT-AP, a DCAT profile for European data portals",
-		  "publisher":"European Commission"
-		},
-                "PSI" : {
-                  "href": "https://eur-lex.europa.eu/eli/dir/2019/1024/oj",
-                  "title" :  "Directive on open data and the re-use of public sector information (recast)",
-                  "publisher" : "European Union"
-                }
+        "HVD" : {
+          "href":"https://eur-lex.europa.eu/legal-content/EN/TXT/?uri=CELEX:32023R0138",
+          "title":"Implementing Regulation for High Value Datasets",
+          "publisher":"European Union"
+        },
+        "DCAT-AP-HVD" : {
+          "href":"https://semiceu.github.io/uri.semic.eu-generated/DCAT-AP/releases/2.2.0-hvd/",
+          "title":"Usage Guidelines of DCAT-AP for High-Value Datasets",
+          "publisher":"European Commission"
+        },
+        "DCAT-AP" : {
+          "href":"https://semiceu.github.io/DCAT-AP/releases/3.0.1/",
+          "title":"DCAT-AP, a DCAT profile for European data portals",
+          "publisher":"European Commission"
+        },
+        "PSI" : {
+          "href": "https://eur-lex.europa.eu/eli/dir/2019/1024/oj",
+          "title" :  "Directive on open data and the re-use of public sector information (recast)",
+          "publisher" : "European Union"
+        }
       }
     };
 
@@ -194,16 +195,40 @@
         Introduction
     </h2>
     
-  
+<h3>Context</h3>
+    <p>
+        This vocabulary is <strong>supporting</strong> StatDCAT-AP, a specialisation of the DCAT application profile for European data portals [[DCAT-AP]] for statistical data. 
+        The terms defined in this namespace are defined as broad as possible for wider reuse but are scoped to the needs of StatDCAT-AP. 
+        All terms in this vocabulary have therefore a strong connection with StatDCAT-AP.
+    </p>
+
+<h3>Revision history</h3>
+
+  <p class="ednote" title="NAMESPACE ISSUE">
+    Issue https://github.com/SEMICeu/StatDCAT-AP/issues/3 has to addressed!
+    <br/>
+    In StatDCAT-AP document the namespace mentioned in the PDF document is a temporary one <code>http://data.europa.eu/(xyz)/statdcat-ap/</code>. But in the ttl the Core Vocabularies namespace is used. See https://github.com/SEMICeu/StatDCAT-AP/blob/master/Release%201.0.1/StatDCAT-AP_1.0.1.ttl#L293. 
+    <br/>
+    Proposal is to move it to this namespace as it was the intention and mentioned in the issue #3. 
+  </p>
+
+  <p class="ednote" title="DOMAIN">
+  The domain is set to rdfs:Resource while these properties are only meaningful with DCAT ecosystem. Suggestion to  change the domain to dcat:Resource. The problem is that dcat:Distribution not a subclass is from dcat:Resource. 
+  That would possibly limit the reuse.
+  </p>
+
+<h3>Meeting minutes</h3>
+  </p>
+
 
 </section>
 
 
 <section id="abstract">
     <h2>Abstract</h2>
-This vocabulary is <strong>supporting</strong> StatDCAT-AP, a specialisation of the DCAT application profile for European data portals [[DCAT-AP]] for statistical data. 
-The terms defined in this namespace are defined as broad as possible for wider reuse but are scoped to the needs of StatDCAT-AP. 
-All terms in this vocabulary have therefore a strong connection with StatDCAT-AP.
+The StatDCAT-AP vocabulary supports the <a href="https://semiceu.github.io/StatDCAT-AP/releases/">StatDCAT-AP profile</a>.
+The namespace for this vocabulary is <code>http://data.europa.eu/s1n/</code> .
+It is under maintenance by the SEMIC action, Interoperable Europe.
 </section>
 
 
@@ -266,10 +291,10 @@ In the RDF ecosystem these are the universal denominators.
 <section id="specterminology">
     <h2>Terminology</h2>
 
-The namespace for this vocabulary is <code>http://data.europa.eu/s1n/</code> . 
-<p>
-<h3>Used Prefixes</h3>
+    The namespace for this vocabulary is <code>http://data.europa.eu/s1n/</code> . 
+    <p>
 
+<h3>Used Prefixes</h3>
 
         <table id="table-namespaces" class="simple">
             <thead><tr><th>Prefix</th><th>Namespace IRI</th></tr></thead>
