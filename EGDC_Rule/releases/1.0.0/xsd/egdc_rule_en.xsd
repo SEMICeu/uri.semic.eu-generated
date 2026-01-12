@@ -1,0 +1,310 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<xs:schema xmlns="https://data.europa.eu/m8g/xml/" xmlns:xs="http://www.w3.org/2001/XMLSchema" targetNamespace="https://data.europa.eu/m8g/xml/" version="2.0.0" elementFormDefault="qualified" attributeFormDefault="unqualified" xmlns:cv="https://data.europa.eu/m8g/xml/">
+  <xs:element name="InputParameter" type="InputParameterType"/>
+  <xs:element name="Output" type="OutputType"/>
+  <xs:element name="Range" type="RangeType"/>
+  <xs:element name="Rule" type="RuleType"/>
+  <xs:element name="Source" type="SourceType"/>
+  <xs:element name="Text" type="TextType"/>
+  <xs:element name="Date" type="DateType"/>
+  <xs:element name="Integer" type="IntegerType"/>
+  <xs:element name="String" type="StringType"/>
+  <xs:element name="Code" type="CodeType"/>
+  <xs:element name="Agent" type="AgentType"/>
+  <xs:element name="Document" type="DocumentType"/>
+  <xs:simpleType name="Literal">
+    <xs:restriction base="xs:string"/>
+  </xs:simpleType>
+  <xs:complexType name="langstring">
+    <xs:simpleContent>
+      <xs:extension base="xs:string">
+        <xs:attribute name="lang" type="xs:language"/>
+      </xs:extension>
+    </xs:simpleContent>
+  </xs:complexType>
+  <xs:complexType name="ConceptType">
+    <xs:simpleContent>
+      <xs:extension base="xs:token">
+        <xs:attribute name="ref" type="xs:IDREF"/>
+        <xs:attribute name="conceptSchemeRef" type="xs:IDREF"/>
+      </xs:extension>
+    </xs:simpleContent>
+  </xs:complexType>
+  <xs:complexType name="InputParameterType">
+    <xs:sequence>
+      <xs:element name="dataType" type="ConceptType" maxOccurs="1" minOccurs="1">
+        <xs:annotation>
+          <xs:documentation xml:lang="en">A collection of data values.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="description" type="xs:string" maxOccurs="1" minOccurs="1">
+        <xs:annotation>
+          <xs:documentation xml:lang="en">An account of the Input Parameter.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="example" type="xs:string" maxOccurs="1" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation xml:lang="en">An example of the Input Parameter.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="hasRange" ref="RangeType" maxOccurs="1" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation xml:lang="en">The associated Range of hte Input Parameter.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="name" type="xs:string" maxOccurs="1" minOccurs="1">
+        <xs:annotation>
+          <xs:documentation xml:lang="en">The name of the Input Parameter.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="option" type="ConceptType" maxOccurs="unbounded" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation xml:lang="en">An option of the Input Parameter.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="unit" type="ConceptType" maxOccurs="1" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation xml:lang="en">The unit of measure of the value.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+    </xs:sequence>
+    <xs:attribute name="InputParameterRef" type="xs:IDREF">
+      <xs:annotation>
+        <xs:documentation xml:lang="en">Reference to InputParameter ID</xs:documentation>
+      </xs:annotation>
+    </xs:attribute>
+  </xs:complexType>
+  <xs:complexType name="OutputType">
+    <xs:sequence>
+      <xs:element name="description" type="xs:string" maxOccurs="1" minOccurs="1">
+        <xs:annotation>
+          <xs:documentation xml:lang="en">An account of the Output.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="referenceData" type="xs:string" maxOccurs="1" minOccurs="1">
+        <xs:annotation>
+          <xs:documentation xml:lang="en">The reference data of the Output.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="unit" type="ConceptType" maxOccurs="1" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation xml:lang="en">The unit of measure of the value.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+    </xs:sequence>
+    <xs:attribute name="OutputRef" type="xs:IDREF">
+      <xs:annotation>
+        <xs:documentation xml:lang="en">Reference to Output ID</xs:documentation>
+      </xs:annotation>
+    </xs:attribute>
+  </xs:complexType>
+  <xs:complexType name="RangeType">
+    <xs:sequence>
+      <xs:element name="maximumValue" type="xs:integer" maxOccurs="1" minOccurs="1">
+        <xs:annotation>
+          <xs:documentation xml:lang="en">The maximum value of the Range.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="minimumValue" type="xs:integer" maxOccurs="1" minOccurs="1">
+        <xs:annotation>
+          <xs:documentation xml:lang="en">The minimum value of a Range.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+    </xs:sequence>
+    <xs:attribute name="RangeRef" type="xs:IDREF">
+      <xs:annotation>
+        <xs:documentation xml:lang="en">Reference to Range ID</xs:documentation>
+      </xs:annotation>
+    </xs:attribute>
+  </xs:complexType>
+  <xs:complexType name="RuleType">
+    <xs:sequence>
+      <xs:element name="category" type="ConceptType" maxOccurs="1" minOccurs="1">
+        <xs:annotation>
+          <xs:documentation xml:lang="en">The classification of the Rule.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="complexity" type="ConceptType" maxOccurs="1" minOccurs="1">
+        <xs:annotation>
+          <xs:documentation xml:lang="en">The intrinsic complexity of a Rule.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="created" type="xs:date" maxOccurs="1" minOccurs="1">
+        <xs:annotation>
+          <xs:documentation xml:lang="en">Date of creation of the Rule.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="creator" ref="AgentType" maxOccurs="1" minOccurs="1">
+        <xs:annotation>
+          <xs:documentation xml:lang="en">An entity responsible for making the resource.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="description" type="xs:string" maxOccurs="1" minOccurs="1">
+        <xs:annotation>
+          <xs:documentation xml:lang="en">An account of the Rule.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="exampleScenario" type="xs:string" maxOccurs="1" minOccurs="1">
+        <xs:annotation>
+          <xs:documentation xml:lang="en">An example of the application of the Rule.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="hasInputParameter" ref="InputParameterType" maxOccurs="unbounded" minOccurs="1">
+        <xs:annotation>
+          <xs:documentation xml:lang="en">The Input Parameter needed by the Rule.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="hasOutput" ref="OutputType" maxOccurs="1" minOccurs="1">
+        <xs:annotation>
+          <xs:documentation xml:lang="en">The Output generated by the Rule.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="hasRelated" ref="RuleType" maxOccurs="unbounded" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation xml:lang="en">A related Rule.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="hasSource" ref="SourceType" maxOccurs="1" minOccurs="1">
+        <xs:annotation>
+          <xs:documentation xml:lang="en">A related resource from which the described Rule is derived.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="identifier" type="xs:string" maxOccurs="1" minOccurs="1">
+        <xs:annotation>
+          <xs:documentation xml:lang="en">An unambiguous reference to the Rule within a given context.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="impactType" type="ConceptType" maxOccurs="1" minOccurs="1">
+        <xs:annotation>
+          <xs:documentation xml:lang="en">The impact of the Rule.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="modified" type="xs:date" maxOccurs="1" minOccurs="1">
+        <xs:annotation>
+          <xs:documentation xml:lang="en">Date on which the resource was changed.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="name" type="xs:string" maxOccurs="1" minOccurs="1">
+        <xs:annotation>
+          <xs:documentation xml:lang="en">The name of the Rule.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="popular" type="ConceptType" maxOccurs="1" minOccurs="1">
+        <xs:annotation>
+          <xs:documentation xml:lang="en">An indicator expressing if the rule is used.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="status" type="ConceptType" maxOccurs="1" minOccurs="1">
+        <xs:annotation>
+          <xs:documentation xml:lang="en">The stats of the Rule in the context of a particular workflow process.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="tag" type="xs:string" maxOccurs="unbounded" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation xml:lang="en">A keyword or tag describing the Rule.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="version" type="xs:string" maxOccurs="1" minOccurs="1">
+        <xs:annotation>
+          <xs:documentation xml:lang="en">The version of the Rule.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+    </xs:sequence>
+    <xs:attribute name="RuleRef" type="xs:IDREF">
+      <xs:annotation>
+        <xs:documentation xml:lang="en">Reference to Rule ID</xs:documentation>
+      </xs:annotation>
+    </xs:attribute>
+  </xs:complexType>
+  <xs:complexType name="SourceType">
+    <xs:sequence>
+      <xs:element name="name" type="xs:string" maxOccurs="1" minOccurs="1">
+        <xs:annotation>
+          <xs:documentation xml:lang="en">The name of a Source.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="reference" ref="DocumentType" maxOccurs="1" minOccurs="1">
+        <xs:annotation>
+          <xs:documentation xml:lang="en">A web page that acts as the main page for the Source.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="region" type="ConceptType" maxOccurs="unbounded" minOccurs="1">
+        <xs:annotation>
+          <xs:documentation xml:lang="en">The region of a Source.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="sector" type="ConceptType" maxOccurs="unbounded" minOccurs="1">
+        <xs:annotation>
+          <xs:documentation xml:lang="en">The sector of a Source.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+    </xs:sequence>
+    <xs:attribute name="SourceRef" type="xs:IDREF">
+      <xs:annotation>
+        <xs:documentation xml:lang="en">Reference to Source ID</xs:documentation>
+      </xs:annotation>
+    </xs:attribute>
+  </xs:complexType>
+  <xs:complexType name="TextType">
+    <xs:sequence/>
+    <xs:attribute name="TextRef" type="xs:IDREF">
+      <xs:annotation>
+        <xs:documentation xml:lang="en">Reference to Text ID</xs:documentation>
+      </xs:annotation>
+    </xs:attribute>
+  </xs:complexType>
+  <xs:complexType name="DateType">
+    <xs:sequence/>
+    <xs:attribute name="DateRef" type="xs:IDREF">
+      <xs:annotation>
+        <xs:documentation xml:lang="en">Reference to Date ID</xs:documentation>
+      </xs:annotation>
+    </xs:attribute>
+  </xs:complexType>
+  <xs:complexType name="IntegerType">
+    <xs:sequence/>
+    <xs:attribute name="IntegerRef" type="xs:IDREF">
+      <xs:annotation>
+        <xs:documentation xml:lang="en">Reference to Integer ID</xs:documentation>
+      </xs:annotation>
+    </xs:attribute>
+  </xs:complexType>
+  <xs:complexType name="StringType">
+    <xs:sequence/>
+    <xs:attribute name="StringRef" type="xs:IDREF">
+      <xs:annotation>
+        <xs:documentation xml:lang="en">Reference to String ID</xs:documentation>
+      </xs:annotation>
+    </xs:attribute>
+  </xs:complexType>
+  <xs:complexType name="CodeType">
+    <xs:sequence/>
+    <xs:attribute name="CodeRef" type="xs:IDREF">
+      <xs:annotation>
+        <xs:documentation xml:lang="en">Reference to Code ID</xs:documentation>
+      </xs:annotation>
+    </xs:attribute>
+  </xs:complexType>
+  <xs:complexType name="AgentType">
+    <xs:sequence>
+      <xs:element name="name" type="xs:string" maxOccurs="1" minOccurs="1">
+        <xs:annotation>
+          <xs:documentation xml:lang="en">The name of the Agent.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+    </xs:sequence>
+    <xs:attribute name="AgentRef" type="xs:IDREF">
+      <xs:annotation>
+        <xs:documentation xml:lang="en">Reference to Agent ID</xs:documentation>
+      </xs:annotation>
+    </xs:attribute>
+  </xs:complexType>
+  <xs:complexType name="DocumentType">
+    <xs:sequence/>
+    <xs:attribute name="DocumentRef" type="xs:IDREF">
+      <xs:annotation>
+        <xs:documentation xml:lang="en">Reference to Document ID</xs:documentation>
+      </xs:annotation>
+    </xs:attribute>
+  </xs:complexType>
+</xs:schema>
