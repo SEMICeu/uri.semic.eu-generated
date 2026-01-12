@@ -1,0 +1,3569 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"> 
+ 
+
+
+
+<head>
+    
+	
+    <meta charset="utf-8" />
+    <title>EGDC Rule</title>
+    <script src="https://www.w3.org/Tools/respec/respec-w3c" class="remove" defer></script>
+    <script class="remove">
+    // All config options at https://respec.org/docs/
+
+	var myeditors = [
+	
+	
+	    
+	    
+		
+		   {
+		    name: "Emidio Stani",
+		      
+		      
+		    company: "PwC EU Services",
+		      
+		      
+		    }
+		
+		
+             
+        
+	
+		]
+
+	var myauthors = [
+	
+	
+	
+		]
+		
+	function quickreference() {
+		$('#table-quickoverview').DataTable(
+			{
+			layout: {
+				topStart: {
+					buttons: [
+						'copy', 
+						'csv']
+				}
+			}
+			}
+		);
+	};
+	var shaclfilepath = "shacl/egdc_rule-SHACL.ttl" ;
+	var folder = "./html/examples/";
+	var model = "mldcat-ap" ;
+	var version_list = [
+		{
+		"type": "v3.0.0",
+		"description": "MLDCAT-AP 3.0.0"
+		}
+	] ;
+	var linkinfo = "https://semiceu.github.io/EGDC_Rule/releases/1.0.0" + "#validation" ;
+
+   
+
+    var respecConfig = {
+      postProcess: [quickreference],
+      edDraftURI: "https://semiceu.github.io/EGDC_Rule/releases/1.0.0",
+      latestVersion: "https://semiceu.github.io/EGDC_Rule/releases/1.0.0/",
+      specStatus: "base",
+      publishDate: "2025-12-12",
+      editors: myeditors,
+      authors: myauthors,
+      github: "SEMICeu/EGDC",
+      shortName: "EGDC Rule",
+      xref: "web-platform",
+      doJsonLd: true,
+      logos: [{
+        src: "https://semiceu.github.io/CPOV/releases/2.1.0/html/semic-icon.png",
+        url: "https://semic.eu",
+        alt: "SEMIC",
+        width: 154,
+        height: 140,
+        id: "semic-logo",
+      },],
+      generatedSubtitle: "",
+      additionalCopyrightHolders: "",
+      localBiblio: {
+        "DXWG": {
+          "href" : "https://www.w3.org/2017/dxwg/wiki/Main_Page",
+          "title" : "Dataset Exchange Working Group",
+          "publisher" : "W3C"
+          },
+        "ISA":{
+           "href":"https://ec.europa.eu/isa/",
+           "title":"Interoperability Solutions for European Public Administrations (ISA)",
+           "publisher":"European Commission"
+          },
+        "ISA2":{
+          "href":"https://ec.europa.eu/isa2/",
+          "title":"Interoperability solutions for public administrations, businesses and citizens (ISA²)",
+          "publisher":"European Commission"
+        },
+        "SEMIC":{
+          "href":"https://joinup.ec.europa.eu/",
+          "title":"JoinUp welcomes Interoperable Europe",
+          "publisher":"European Commission"
+         },
+        "DEU" : {
+          "href":"https://data.europa.eu",
+          "title":"The official portal for European data",
+          "publisher":"European Commission"
+        }
+      }
+    };
+
+
+
+    </script>
+    <style>
+      .figure img, .sidefigure img, figure img, .figure object, .sidefigure object, figure object, img, .img {
+      max-width: 100%;
+      margin: auto;
+      height: auto;
+      }
+    </style>
+     
+    <p class="copyright">
+        Copyright © 2024
+    </p>
+    
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="msapplication-TileColor" content="#7ED956" />
+</head>
+<body>
+    
+
+    <!-- Start page content -->
+
+
+
+
+<section id="abstract">
+    <h2>Abstract</h2>
+    EGDC Case Study data model allows to described EGDC Case Studied together with the Organizations behind it, the attachments, etc.
+
+</section>
+
+
+<section id="specintro">
+    <h2>
+        Introduction
+    </h2>
+    
+	<p>
+The EGDC Case Study data model is an Application Profile to describe EGDC Case studies.
+
+</p>
+
+</section>
+
+
+
+<!--  should support https://www.w3.org/2021/Process-20211102/, mostly like https://www.w3.org/2021/Process-20211102/#maturity-levels -->
+<section id="specstatus">
+    <h2>Status</h2>
+        <p>
+            This Application Profile has the status Draft published at 2025-12-12.
+        </p>
+        <p>
+            Information about the process and the decisions involved in the creation of this specification can be consulted at the <a href="https://github.com/SEMICeu/EGDC_Rule/blob/master/releases/1.0.0/Changelog.md">Changelog</a>.
+        </p>
+</section>
+
+
+
+
+<section id="speclicence">
+    <h2>
+        License
+    </h2>
+    
+        <p>
+	<!--
+            <span rel="dct:type"
+                  property="dct:title"
+                  href="http://purl.org/dc/dcmitype/Text"
+                  xmlns:dct="http://purl.org/dc/terms/">
+		  This specification </span> of <a rel="cc:attributionURL" property="cc:attributionName" href="ORGANISATION" xmlns:cc="http://creativecommons.org/ns#">ORGANISATION </a> 
+	          is published under <a href="https://creativecommons.org/licenses/by/4.0/" rel="license">"CC0"</a>.
+	-->
+             Copyright © 2024 European Union. All material in this repository is published under the license CC-BY 4.0, unless explicitly otherwise mentioned.
+        </p>
+    
+</section>
+
+
+
+<section id="conformance" class="informative">
+</section>
+
+
+
+
+<section id="specterminology">
+    <h2>
+        Terminology
+    </h2>
+        <p>
+            An Application Profile is a data specification aimed to facilitate the data exchange in a well-defined application context. It re-uses concepts from one or more semantic data specifications, while adding more specificity, by identifying mandatory, recommended, and optional elements, addressing particular application needs, and providing recommendations for controlled vocabularies to be used. 
+            More information can be found on the <a href="https://semiceu.github.io/style-guide/1.0.0/terminological-clarifications.html#sec:what-is-a-cv-specification">SEMIC Style Guide</a>.
+        </p>
+    <h3>Used Prefixes</h3>
+        
+EGDC is a semantic specification, where each class and property has an URI.
+
+The prefixed form of the URI, can be found in part in the class diagram and in the quick reference table at the bottom, while, for ease of reading, full URI can be found in the hyperlink of each class and property.  
+
+This specification uses the following prefixes to shorten the URIs for readability:
+
+<table id="table-namespaces" class="simple">
+	<thead><tr><th>Prefix</th><th>Namespace IRI</th></tr></thead>
+	<tbody>
+		<tr><td><code>cv</code></td><td><code>http://data.europa.eu/m8g/</code></td></tr>
+		<tr><td><code>dcat</code></td><td><code>http://www.w3.org/ns/dcat#</code></td></tr>
+		<tr><td><code>dct</code></td><td><code>http://purl.org/dc/terms/</code></td></tr>
+		<tr><td><code>egdc</code></td><td><code>https://www.greendigitalcoalition.eu/model/</code></td></tr>
+		<tr><td><code>egdc-cl</code></td><td><code>https://www.greendigitalcoalition.eu/codelist/</code></td></tr>
+		<tr><td><code>foaf</code></td><td><code>http://xmlns.com/foaf/0.1/</code></td></tr>
+		<tr><td><code>locn</code></td><td><code>http://www.w3.org/ns/locn#</code></td></tr>
+		<tr><td><code>org</code></td><td><code>http://www.w3.org/ns/org#</code></td></tr>
+		<tr><td><code>owl</code></td><td><code>http://www.w3.org/2002/07/owl#</code></td></tr>
+		<tr><td><code>rdf</code></td><td><code>http://www.w3.org/1999/02/22-rdf-syntax-ns#</code></td></tr>
+		<tr><td><code>rdfs</code></td><td><code>http://www.w3.org/2000/01/rdf-schema#</code></td></tr>
+		<tr><td><code>skos</code></td><td><code>http://www.w3.org/2004/02/skos/core#</code></td></tr>
+		<tr><td><code>xsd</code></td><td><code>http://www.w3.org/2001/XMLSchema#</code></td></tr>
+	</tbody>
+</table>
+
+
+</section>
+
+
+
+<section id="specoverview">
+    <h2>Overview</h2>
+    
+    
+    <div id="overview">
+                
+                        <p>
+                            This document describes the usage of the following main entities for a correct usage of the Application Profile:
+                            <br />
+                            |
+			      <a href="#Rule">Rule</a> |
+                        </p>
+                        <p>
+                            The main entities are supported by:
+                            <br />
+                            |
+			      <a href="#Agent">Agent</a> |
+			      <a href="#Document">Document</a> |
+			      <a href="#InputParameter">InputParameter</a> |
+			      <a href="#Output">Output</a> |
+			      <a href="#Range">Range</a> |
+			      <a href="#Source">Source</a> |
+                        </p>
+                
+                
+                        <p>
+                            And supported by these datatypes:
+                            <br />
+                            | <a href="#Code">Code</a> | <a href="#Date">Date</a> | <a href="#String">String</a> | <a href="#Text">Text</a> |
+                        </p>
+                
+    </div>
+    <div>
+        <a href="./html/overview.jpg"
+           target="_blank">
+            <img src="./html/overview.jpg"/>
+        </a>
+    </div>
+</section>
+
+
+<section>
+
+
+    
+
+<h2>
+   Main Entities
+</h2>
+The main entities are those that form the core of the Application Profile.
+The properties and their associated constraints that apply in the context of this profile are listed in a tabular form.
+Each row corresponds to one property. 
+
+
+
+
+
+
+
+
+
+
+
+
+
+   
+        <section>
+            <h3 id="Rule">
+                <a href="https://www.greendigitalcoalition.eu/model/Rule"
+                   data-toggle="tooltip"
+                   data-content="https://www.greendigitalcoalition.eu/model/Rule"
+                   data-placement="right">Rule</a>
+
+            </h3>
+	        <!-- XXX an image in the h3 will break the rendering of the Table Of Contents of Respec -->
+		<!-- outcomment github feedback possibility
+                <a href="https://github.com/SEMICeu/EGDC_Rule/issues/new?title=Issue%20for%20Rule&body=Explain%20your%20issue"}}>
+                   <img src="html/callout.png" loading="lazy" alt="(create issue)" width="20" height="20"/>
+		</a>
+		-->
+            <dl>
+                <dt>
+                    Definition
+                </dt>
+                <dd>
+                    A Rule generates an Output based on InputParameters.
+                </dd>
+                
+                
+                
+                    <dt>
+                        Properties
+                    </dt>
+                    
+                        <dd>
+                            For this entity the following properties are defined: <a href="#Rule.category">category</a>
+                            , <a href="#Rule.complexity">complexity</a>
+                            , <a href="#Rule.created">created</a>
+                            , <a href="#Rule.creator">creator</a>
+                            , <a href="#Rule.description">description</a>
+                            , <a href="#Rule.examplescenario">example scenario</a>
+                            , <a href="#Rule.hasinputparameter">has input parameter</a>
+                            , <a href="#Rule.hasoutput">has output</a>
+                            , <a href="#Rule.hasrelated">has related</a>
+                            , <a href="#Rule.hassource">has source</a>
+                            , <a href="#Rule.identifier">identifier</a>
+                            , <a href="#Rule.impacttype">impact type</a>
+                            , <a href="#Rule.modified">modified</a>
+                            , <a href="#Rule.name">name</a>
+                            , <a href="#Rule.popular">popular</a>
+                            , <a href="#Rule.status">status</a>
+                            , <a href="#Rule.tag">tag</a>
+                            , <a href="#Rule.version">version</a>
+                            .
+                    </dd>
+                
+            </dl>
+        </div>
+        
+            <div class="u-table-overflow">
+                <table class="data-table simple" id="table-mandatory-classes">
+                    <thead>
+                        <tr class="data-table__header">
+                            <th class="data-table__header-title--sortable" style="width:6%">
+                            </th>
+                            <th class="data-table__header-title--sortable data-table__header-title--sortable-active" style="width:14%">
+                                Property
+                            </th>
+                            <th class="data-table__header-title--sortable" style="width:14%">
+                                Range
+                            </th>
+                            <th class="data-table__header-title--sortable" style="width:6%">
+                                Card
+                            </th>
+                            <th class="data-table__header-title--sortable" style="width:30%">
+                                Definition 
+                            </th>
+                            <th class="data-table__header-title--sortable" style="width:30%">
+                                Usage
+                            </th>
+			    <!--
+                            <th class="data-table__header-title--sortable" style="width:3%">
+                                Codelist
+                            </th>
+				-->
+                            <th class="data-table__header-title--sortable" style="width:5%">
+                                REF
+                            </th>
+			    
+                        </tr>
+                    </thead>
+                    <tbody class="supertype">
+                        
+                            <tr id="Rule.category"
+                                typeof="rdf:Property"
+                                resource="https://www.greendigitalcoalition.eu/model/category"
+                                class="class mandatory">
+                                <td>
+				    <a href="https://github.com/SEMICeu/EGDC_Rule/issues/new?title=Issue%20for%20category%20in%20Rule&body=Explain%20your%20issue%20for%20https://semiceu.github.io/EGDC_Rule/releases/1.0.0%23Rule.category" target="_blank" rel="noopener noreferrer" >
+					    <!--                                        <i class="icon">[o]</i> -->
+                                        <img src="html/callout.png" loading="lazy" alt="[o]" width="100" height="100"/>
+                                    </a>
+                                </td>
+                                <td>
+                                        <a href="https://www.greendigitalcoalition.eu/model/category"
+                                           data-toggle="tooltip"
+                                           data-content="https://www.greendigitalcoalition.eu/model/category"
+                                           data-placement="right">
+                                        category</a>
+                                </td>
+                                <td>
+                                    
+                                        
+                                            <a href="#Code" data-placement="right">Code</a>
+                                        
+                                    
+                                </td>
+                                <td>
+                                    1
+                                </td>
+                                <td property="rdfs:comment">
+                                    The classification of the Rule.
+                                </td>
+                                <td property="skos:scopeNote">
+                                    
+                                </td>
+				<!--
+                                <td>
+                                    
+                                </td>
+				-->
+                                <td>
+                                    
+                                    
+                                        No references available.
+                                    
+                                </td>
+                            </tr>
+                        
+                            <tr id="Rule.complexity"
+                                typeof="rdf:Property"
+                                resource="https://www.greendigitalcoalition.eu/model/complexity"
+                                class="class mandatory">
+                                <td>
+				    <a href="https://github.com/SEMICeu/EGDC_Rule/issues/new?title=Issue%20for%20complexity%20in%20Rule&body=Explain%20your%20issue%20for%20https://semiceu.github.io/EGDC_Rule/releases/1.0.0%23Rule.complexity" target="_blank" rel="noopener noreferrer" >
+					    <!--                                        <i class="icon">[o]</i> -->
+                                        <img src="html/callout.png" loading="lazy" alt="[o]" width="100" height="100"/>
+                                    </a>
+                                </td>
+                                <td>
+                                        <a href="https://www.greendigitalcoalition.eu/model/complexity"
+                                           data-toggle="tooltip"
+                                           data-content="https://www.greendigitalcoalition.eu/model/complexity"
+                                           data-placement="right">
+                                        complexity</a>
+                                </td>
+                                <td>
+                                    
+                                        
+                                            <a href="#Code" data-placement="right">Code</a>
+                                        
+                                    
+                                </td>
+                                <td>
+                                    1
+                                </td>
+                                <td property="rdfs:comment">
+                                    The intrinsic complexity of a Rule.
+                                </td>
+                                <td property="skos:scopeNote">
+                                    
+                                </td>
+				<!--
+                                <td>
+                                    
+                                </td>
+				-->
+                                <td>
+                                    
+                                    
+                                        No references available.
+                                    
+                                </td>
+                            </tr>
+                        
+                            <tr id="Rule.created"
+                                typeof="rdf:Property"
+                                resource="http://purl.org/dc/terms/created"
+                                class="class mandatory">
+                                <td>
+				    <a href="https://github.com/SEMICeu/EGDC_Rule/issues/new?title=Issue%20for%20created%20in%20Rule&body=Explain%20your%20issue%20for%20https://semiceu.github.io/EGDC_Rule/releases/1.0.0%23Rule.created" target="_blank" rel="noopener noreferrer" >
+					    <!--                                        <i class="icon">[o]</i> -->
+                                        <img src="html/callout.png" loading="lazy" alt="[o]" width="100" height="100"/>
+                                    </a>
+                                </td>
+                                <td>
+                                        <a href="http://purl.org/dc/terms/created"
+                                           data-toggle="tooltip"
+                                           data-content="http://purl.org/dc/terms/created"
+                                           data-placement="right">
+                                        created</a>
+                                </td>
+                                <td>
+                                    
+                                        
+                                            <a href="#Date" data-placement="right">Date</a>
+                                        
+                                    
+                                </td>
+                                <td>
+                                    1
+                                </td>
+                                <td property="rdfs:comment">
+                                    Date of creation of the Rule.
+                                </td>
+                                <td property="skos:scopeNote">
+                                    
+                                </td>
+				<!--
+                                <td>
+                                    
+                                </td>
+				-->
+                                <td>
+                                    
+                                    
+                                        No references available.
+                                    
+                                </td>
+                            </tr>
+                        
+                            <tr id="Rule.creator"
+                                typeof="rdf:Property"
+                                resource="http://purl.org/dc/terms/creator"
+                                class="class mandatory">
+                                <td>
+				    <a href="https://github.com/SEMICeu/EGDC_Rule/issues/new?title=Issue%20for%20creator%20in%20Rule&body=Explain%20your%20issue%20for%20https://semiceu.github.io/EGDC_Rule/releases/1.0.0%23Rule.creator" target="_blank" rel="noopener noreferrer" >
+					    <!--                                        <i class="icon">[o]</i> -->
+                                        <img src="html/callout.png" loading="lazy" alt="[o]" width="100" height="100"/>
+                                    </a>
+                                </td>
+                                <td>
+                                        <a href="http://purl.org/dc/terms/creator"
+                                           data-toggle="tooltip"
+                                           data-content="http://purl.org/dc/terms/creator"
+                                           data-placement="right">
+                                        creator</a>
+                                </td>
+                                <td>
+                                    
+                                        
+                                            <a href="#Agent" data-placement="right">Agent</a>
+                                        
+                                    
+                                </td>
+                                <td>
+                                    1
+                                </td>
+                                <td property="rdfs:comment">
+                                    An entity responsible for making the resource.
+                                </td>
+                                <td property="skos:scopeNote">
+                                    
+                                </td>
+				<!--
+                                <td>
+                                    
+                                </td>
+				-->
+                                <td>
+                                    
+                                    
+                                        No references available.
+                                    
+                                </td>
+                            </tr>
+                        
+                            <tr id="Rule.description"
+                                typeof="rdf:Property"
+                                resource="http://purl.org/dc/terms/description"
+                                class="class mandatory">
+                                <td>
+				    <a href="https://github.com/SEMICeu/EGDC_Rule/issues/new?title=Issue%20for%20description%20in%20Rule&body=Explain%20your%20issue%20for%20https://semiceu.github.io/EGDC_Rule/releases/1.0.0%23Rule.description" target="_blank" rel="noopener noreferrer" >
+					    <!--                                        <i class="icon">[o]</i> -->
+                                        <img src="html/callout.png" loading="lazy" alt="[o]" width="100" height="100"/>
+                                    </a>
+                                </td>
+                                <td>
+                                        <a href="http://purl.org/dc/terms/description"
+                                           data-toggle="tooltip"
+                                           data-content="http://purl.org/dc/terms/description"
+                                           data-placement="right">
+                                        description</a>
+                                </td>
+                                <td>
+                                    
+                                        
+                                            <a href="#Text" data-placement="right">Text</a>
+                                        
+                                    
+                                </td>
+                                <td>
+                                    1
+                                </td>
+                                <td property="rdfs:comment">
+                                    An account of the Rule.
+                                </td>
+                                <td property="skos:scopeNote">
+                                    
+                                </td>
+				<!--
+                                <td>
+                                    
+                                </td>
+				-->
+                                <td>
+                                    
+                                    
+                                        No references available.
+                                    
+                                </td>
+                            </tr>
+                        
+                            <tr id="Rule.examplescenario"
+                                typeof="rdf:Property"
+                                resource="https://www.greendigitalcoalition.eu/model/exampleScenario"
+                                class="class mandatory">
+                                <td>
+				    <a href="https://github.com/SEMICeu/EGDC_Rule/issues/new?title=Issue%20for%20example scenario%20in%20Rule&body=Explain%20your%20issue%20for%20https://semiceu.github.io/EGDC_Rule/releases/1.0.0%23Rule.examplescenario" target="_blank" rel="noopener noreferrer" >
+					    <!--                                        <i class="icon">[o]</i> -->
+                                        <img src="html/callout.png" loading="lazy" alt="[o]" width="100" height="100"/>
+                                    </a>
+                                </td>
+                                <td>
+                                        <a href="https://www.greendigitalcoalition.eu/model/exampleScenario"
+                                           data-toggle="tooltip"
+                                           data-content="https://www.greendigitalcoalition.eu/model/exampleScenario"
+                                           data-placement="right">
+                                        example scenario</a>
+                                </td>
+                                <td>
+                                    
+                                        
+                                            <a href="#Text" data-placement="right">Text</a>
+                                        
+                                    
+                                </td>
+                                <td>
+                                    1
+                                </td>
+                                <td property="rdfs:comment">
+                                    An example of the application of the Rule.
+                                </td>
+                                <td property="skos:scopeNote">
+                                    
+                                </td>
+				<!--
+                                <td>
+                                    
+                                </td>
+				-->
+                                <td>
+                                    
+                                    
+                                        No references available.
+                                    
+                                </td>
+                            </tr>
+                        
+                            <tr id="Rule.hasinputparameter"
+                                typeof="rdf:Property"
+                                resource="https://www.greendigitalcoalition.eu/model/hasInputParameter"
+                                class="class mandatory">
+                                <td>
+				    <a href="https://github.com/SEMICeu/EGDC_Rule/issues/new?title=Issue%20for%20has input parameter%20in%20Rule&body=Explain%20your%20issue%20for%20https://semiceu.github.io/EGDC_Rule/releases/1.0.0%23Rule.hasinputparameter" target="_blank" rel="noopener noreferrer" >
+					    <!--                                        <i class="icon">[o]</i> -->
+                                        <img src="html/callout.png" loading="lazy" alt="[o]" width="100" height="100"/>
+                                    </a>
+                                </td>
+                                <td>
+                                        <a href="https://www.greendigitalcoalition.eu/model/hasInputParameter"
+                                           data-toggle="tooltip"
+                                           data-content="https://www.greendigitalcoalition.eu/model/hasInputParameter"
+                                           data-placement="right">
+                                        has input parameter</a>
+                                </td>
+                                <td>
+                                    
+                                        
+                                            <a href="#InputParameter" data-placement="right">InputParameter</a>
+                                        
+                                    
+                                </td>
+                                <td>
+                                    1..*
+                                </td>
+                                <td property="rdfs:comment">
+                                    The Input Parameter needed by the Rule.
+                                </td>
+                                <td property="skos:scopeNote">
+                                    
+                                </td>
+				<!--
+                                <td>
+                                    
+                                </td>
+				-->
+                                <td>
+                                    
+                                    
+                                        No references available.
+                                    
+                                </td>
+                            </tr>
+                        
+                            <tr id="Rule.hasoutput"
+                                typeof="rdf:Property"
+                                resource="https://www.greendigitalcoalition.eu/model/hasOutput"
+                                class="class mandatory">
+                                <td>
+				    <a href="https://github.com/SEMICeu/EGDC_Rule/issues/new?title=Issue%20for%20has output%20in%20Rule&body=Explain%20your%20issue%20for%20https://semiceu.github.io/EGDC_Rule/releases/1.0.0%23Rule.hasoutput" target="_blank" rel="noopener noreferrer" >
+					    <!--                                        <i class="icon">[o]</i> -->
+                                        <img src="html/callout.png" loading="lazy" alt="[o]" width="100" height="100"/>
+                                    </a>
+                                </td>
+                                <td>
+                                        <a href="https://www.greendigitalcoalition.eu/model/hasOutput"
+                                           data-toggle="tooltip"
+                                           data-content="https://www.greendigitalcoalition.eu/model/hasOutput"
+                                           data-placement="right">
+                                        has output</a>
+                                </td>
+                                <td>
+                                    
+                                        
+                                            <a href="#Output" data-placement="right">Output</a>
+                                        
+                                    
+                                </td>
+                                <td>
+                                    1
+                                </td>
+                                <td property="rdfs:comment">
+                                    The Output generated by the Rule.
+                                </td>
+                                <td property="skos:scopeNote">
+                                    
+                                </td>
+				<!--
+                                <td>
+                                    
+                                </td>
+				-->
+                                <td>
+                                    
+                                    
+                                        No references available.
+                                    
+                                </td>
+                            </tr>
+                        
+                            <tr id="Rule.hasrelated"
+                                typeof="rdf:Property"
+                                resource="http://purl.org/dc/terms/relation"
+                                class="class mandatory">
+                                <td>
+				    <a href="https://github.com/SEMICeu/EGDC_Rule/issues/new?title=Issue%20for%20has related%20in%20Rule&body=Explain%20your%20issue%20for%20https://semiceu.github.io/EGDC_Rule/releases/1.0.0%23Rule.hasrelated" target="_blank" rel="noopener noreferrer" >
+					    <!--                                        <i class="icon">[o]</i> -->
+                                        <img src="html/callout.png" loading="lazy" alt="[o]" width="100" height="100"/>
+                                    </a>
+                                </td>
+                                <td>
+                                        <a href="http://purl.org/dc/terms/relation"
+                                           data-toggle="tooltip"
+                                           data-content="http://purl.org/dc/terms/relation"
+                                           data-placement="right">
+                                        has related</a>
+                                </td>
+                                <td>
+                                    
+                                        
+                                            <a href="#Rule" data-placement="right">Rule</a>
+                                        
+                                    
+                                </td>
+                                <td>
+                                    0..*
+                                </td>
+                                <td property="rdfs:comment">
+                                    A related Rule.
+                                </td>
+                                <td property="skos:scopeNote">
+                                    
+                                </td>
+				<!--
+                                <td>
+                                    
+                                </td>
+				-->
+                                <td>
+                                    
+                                    
+                                        No references available.
+                                    
+                                </td>
+                            </tr>
+                        
+                            <tr id="Rule.hassource"
+                                typeof="rdf:Property"
+                                resource="http://purl.org/dc/terms/source"
+                                class="class mandatory">
+                                <td>
+				    <a href="https://github.com/SEMICeu/EGDC_Rule/issues/new?title=Issue%20for%20has source%20in%20Rule&body=Explain%20your%20issue%20for%20https://semiceu.github.io/EGDC_Rule/releases/1.0.0%23Rule.hassource" target="_blank" rel="noopener noreferrer" >
+					    <!--                                        <i class="icon">[o]</i> -->
+                                        <img src="html/callout.png" loading="lazy" alt="[o]" width="100" height="100"/>
+                                    </a>
+                                </td>
+                                <td>
+                                        <a href="http://purl.org/dc/terms/source"
+                                           data-toggle="tooltip"
+                                           data-content="http://purl.org/dc/terms/source"
+                                           data-placement="right">
+                                        has source</a>
+                                </td>
+                                <td>
+                                    
+                                        
+                                            <a href="#Source" data-placement="right">Source</a>
+                                        
+                                    
+                                </td>
+                                <td>
+                                    1
+                                </td>
+                                <td property="rdfs:comment">
+                                    A related resource from which the described Rule is derived.
+                                </td>
+                                <td property="skos:scopeNote">
+                                    
+                                </td>
+				<!--
+                                <td>
+                                    
+                                </td>
+				-->
+                                <td>
+                                    
+                                    
+                                        No references available.
+                                    
+                                </td>
+                            </tr>
+                        
+                            <tr id="Rule.identifier"
+                                typeof="rdf:Property"
+                                resource="http://purl.org/dc/terms/identifier"
+                                class="class mandatory">
+                                <td>
+				    <a href="https://github.com/SEMICeu/EGDC_Rule/issues/new?title=Issue%20for%20identifier%20in%20Rule&body=Explain%20your%20issue%20for%20https://semiceu.github.io/EGDC_Rule/releases/1.0.0%23Rule.identifier" target="_blank" rel="noopener noreferrer" >
+					    <!--                                        <i class="icon">[o]</i> -->
+                                        <img src="html/callout.png" loading="lazy" alt="[o]" width="100" height="100"/>
+                                    </a>
+                                </td>
+                                <td>
+                                        <a href="http://purl.org/dc/terms/identifier"
+                                           data-toggle="tooltip"
+                                           data-content="http://purl.org/dc/terms/identifier"
+                                           data-placement="right">
+                                        identifier</a>
+                                </td>
+                                <td>
+                                    
+                                        
+                                            <a href="#String" data-placement="right">String</a>
+                                        
+                                    
+                                </td>
+                                <td>
+                                    1
+                                </td>
+                                <td property="rdfs:comment">
+                                    An unambiguous reference to the Rule within a given context.
+                                </td>
+                                <td property="skos:scopeNote">
+                                    
+                                </td>
+				<!--
+                                <td>
+                                    
+                                </td>
+				-->
+                                <td>
+                                    
+                                    
+                                        No references available.
+                                    
+                                </td>
+                            </tr>
+                        
+                            <tr id="Rule.impacttype"
+                                typeof="rdf:Property"
+                                resource="https://www.greendigitalcoalition.eu/model/impactType"
+                                class="class mandatory">
+                                <td>
+				    <a href="https://github.com/SEMICeu/EGDC_Rule/issues/new?title=Issue%20for%20impact type%20in%20Rule&body=Explain%20your%20issue%20for%20https://semiceu.github.io/EGDC_Rule/releases/1.0.0%23Rule.impacttype" target="_blank" rel="noopener noreferrer" >
+					    <!--                                        <i class="icon">[o]</i> -->
+                                        <img src="html/callout.png" loading="lazy" alt="[o]" width="100" height="100"/>
+                                    </a>
+                                </td>
+                                <td>
+                                        <a href="https://www.greendigitalcoalition.eu/model/impactType"
+                                           data-toggle="tooltip"
+                                           data-content="https://www.greendigitalcoalition.eu/model/impactType"
+                                           data-placement="right">
+                                        impact type</a>
+                                </td>
+                                <td>
+                                    
+                                        
+                                            <a href="#Code" data-placement="right">Code</a>
+                                        
+                                    
+                                </td>
+                                <td>
+                                    1
+                                </td>
+                                <td property="rdfs:comment">
+                                    
+                                </td>
+                                <td property="skos:scopeNote">
+                                    
+                                </td>
+				<!--
+                                <td>
+                                    
+                                </td>
+				-->
+                                <td>
+                                    
+                                    
+                                        No references available.
+                                    
+                                </td>
+                            </tr>
+                        
+                            <tr id="Rule.modified"
+                                typeof="rdf:Property"
+                                resource="http://purl.org/dc/terms/modified"
+                                class="class mandatory">
+                                <td>
+				    <a href="https://github.com/SEMICeu/EGDC_Rule/issues/new?title=Issue%20for%20modified%20in%20Rule&body=Explain%20your%20issue%20for%20https://semiceu.github.io/EGDC_Rule/releases/1.0.0%23Rule.modified" target="_blank" rel="noopener noreferrer" >
+					    <!--                                        <i class="icon">[o]</i> -->
+                                        <img src="html/callout.png" loading="lazy" alt="[o]" width="100" height="100"/>
+                                    </a>
+                                </td>
+                                <td>
+                                        <a href="http://purl.org/dc/terms/modified"
+                                           data-toggle="tooltip"
+                                           data-content="http://purl.org/dc/terms/modified"
+                                           data-placement="right">
+                                        modified</a>
+                                </td>
+                                <td>
+                                    
+                                        
+                                            <a href="#Date" data-placement="right">Date</a>
+                                        
+                                    
+                                </td>
+                                <td>
+                                    1
+                                </td>
+                                <td property="rdfs:comment">
+                                    Date on which the resource was changed.
+                                </td>
+                                <td property="skos:scopeNote">
+                                    
+                                </td>
+				<!--
+                                <td>
+                                    
+                                </td>
+				-->
+                                <td>
+                                    
+                                    
+                                        No references available.
+                                    
+                                </td>
+                            </tr>
+                        
+                            <tr id="Rule.name"
+                                typeof="rdf:Property"
+                                resource="http://purl.org/dc/terms/title"
+                                class="class mandatory">
+                                <td>
+				    <a href="https://github.com/SEMICeu/EGDC_Rule/issues/new?title=Issue%20for%20name%20in%20Rule&body=Explain%20your%20issue%20for%20https://semiceu.github.io/EGDC_Rule/releases/1.0.0%23Rule.name" target="_blank" rel="noopener noreferrer" >
+					    <!--                                        <i class="icon">[o]</i> -->
+                                        <img src="html/callout.png" loading="lazy" alt="[o]" width="100" height="100"/>
+                                    </a>
+                                </td>
+                                <td>
+                                        <a href="http://purl.org/dc/terms/title"
+                                           data-toggle="tooltip"
+                                           data-content="http://purl.org/dc/terms/title"
+                                           data-placement="right">
+                                        name</a>
+                                </td>
+                                <td>
+                                    
+                                        
+                                            <a href="#Text" data-placement="right">Text</a>
+                                        
+                                    
+                                </td>
+                                <td>
+                                    1
+                                </td>
+                                <td property="rdfs:comment">
+                                    The name of the Rule.
+                                </td>
+                                <td property="skos:scopeNote">
+                                    
+                                </td>
+				<!--
+                                <td>
+                                    
+                                </td>
+				-->
+                                <td>
+                                    
+                                    
+                                        No references available.
+                                    
+                                </td>
+                            </tr>
+                        
+                            <tr id="Rule.popular"
+                                typeof="rdf:Property"
+                                resource="https://www.greendigitalcoalition.eu/model/popular"
+                                class="class mandatory">
+                                <td>
+				    <a href="https://github.com/SEMICeu/EGDC_Rule/issues/new?title=Issue%20for%20popular%20in%20Rule&body=Explain%20your%20issue%20for%20https://semiceu.github.io/EGDC_Rule/releases/1.0.0%23Rule.popular" target="_blank" rel="noopener noreferrer" >
+					    <!--                                        <i class="icon">[o]</i> -->
+                                        <img src="html/callout.png" loading="lazy" alt="[o]" width="100" height="100"/>
+                                    </a>
+                                </td>
+                                <td>
+                                        <a href="https://www.greendigitalcoalition.eu/model/popular"
+                                           data-toggle="tooltip"
+                                           data-content="https://www.greendigitalcoalition.eu/model/popular"
+                                           data-placement="right">
+                                        popular</a>
+                                </td>
+                                <td>
+                                    
+                                        
+                                            <a href="#Code" data-placement="right">Code</a>
+                                        
+                                    
+                                </td>
+                                <td>
+                                    1
+                                </td>
+                                <td property="rdfs:comment">
+                                    An indicator expressing if the rule is used.
+                                </td>
+                                <td property="skos:scopeNote">
+                                    
+                                </td>
+				<!--
+                                <td>
+                                    
+                                </td>
+				-->
+                                <td>
+                                    
+                                    
+                                        No references available.
+                                    
+                                </td>
+                            </tr>
+                        
+                            <tr id="Rule.status"
+                                typeof="rdf:Property"
+                                resource="http://www.w3.org/ns/adms#status"
+                                class="class mandatory">
+                                <td>
+				    <a href="https://github.com/SEMICeu/EGDC_Rule/issues/new?title=Issue%20for%20status%20in%20Rule&body=Explain%20your%20issue%20for%20https://semiceu.github.io/EGDC_Rule/releases/1.0.0%23Rule.status" target="_blank" rel="noopener noreferrer" >
+					    <!--                                        <i class="icon">[o]</i> -->
+                                        <img src="html/callout.png" loading="lazy" alt="[o]" width="100" height="100"/>
+                                    </a>
+                                </td>
+                                <td>
+                                        <a href="http://www.w3.org/ns/adms#status"
+                                           data-toggle="tooltip"
+                                           data-content="http://www.w3.org/ns/adms#status"
+                                           data-placement="right">
+                                        status</a>
+                                </td>
+                                <td>
+                                    
+                                        
+                                            <a href="#Code" data-placement="right">Code</a>
+                                        
+                                    
+                                </td>
+                                <td>
+                                    1
+                                </td>
+                                <td property="rdfs:comment">
+                                    The stats of the Rule in the context of a particular workflow process.
+                                </td>
+                                <td property="skos:scopeNote">
+                                    
+                                </td>
+				<!--
+                                <td>
+                                    
+                                </td>
+				-->
+                                <td>
+                                    
+                                    
+                                        No references available.
+                                    
+                                </td>
+                            </tr>
+                        
+                            <tr id="Rule.tag"
+                                typeof="rdf:Property"
+                                resource="https://www.w3.org/ns/dcat#keyword"
+                                class="class mandatory">
+                                <td>
+				    <a href="https://github.com/SEMICeu/EGDC_Rule/issues/new?title=Issue%20for%20tag%20in%20Rule&body=Explain%20your%20issue%20for%20https://semiceu.github.io/EGDC_Rule/releases/1.0.0%23Rule.tag" target="_blank" rel="noopener noreferrer" >
+					    <!--                                        <i class="icon">[o]</i> -->
+                                        <img src="html/callout.png" loading="lazy" alt="[o]" width="100" height="100"/>
+                                    </a>
+                                </td>
+                                <td>
+                                        <a href="https://www.w3.org/ns/dcat#keyword"
+                                           data-toggle="tooltip"
+                                           data-content="https://www.w3.org/ns/dcat#keyword"
+                                           data-placement="right">
+                                        tag</a>
+                                </td>
+                                <td>
+                                    
+                                        
+                                            <a href="#Text" data-placement="right">Text</a>
+                                        
+                                    
+                                </td>
+                                <td>
+                                    0..*
+                                </td>
+                                <td property="rdfs:comment">
+                                    A keyword or tag describing the Rule.
+                                </td>
+                                <td property="skos:scopeNote">
+                                    
+                                </td>
+				<!--
+                                <td>
+                                    
+                                </td>
+				-->
+                                <td>
+                                    
+                                    
+                                        No references available.
+                                    
+                                </td>
+                            </tr>
+                        
+                            <tr id="Rule.version"
+                                typeof="rdf:Property"
+                                resource="https://www.greendigitalcoalition.eu/model/version"
+                                class="class mandatory">
+                                <td>
+				    <a href="https://github.com/SEMICeu/EGDC_Rule/issues/new?title=Issue%20for%20version%20in%20Rule&body=Explain%20your%20issue%20for%20https://semiceu.github.io/EGDC_Rule/releases/1.0.0%23Rule.version" target="_blank" rel="noopener noreferrer" >
+					    <!--                                        <i class="icon">[o]</i> -->
+                                        <img src="html/callout.png" loading="lazy" alt="[o]" width="100" height="100"/>
+                                    </a>
+                                </td>
+                                <td>
+                                        <a href="https://www.greendigitalcoalition.eu/model/version"
+                                           data-toggle="tooltip"
+                                           data-content="https://www.greendigitalcoalition.eu/model/version"
+                                           data-placement="right">
+                                        version</a>
+                                </td>
+                                <td>
+                                    
+                                        
+                                            <a href="#String" data-placement="right">String</a>
+                                        
+                                    
+                                </td>
+                                <td>
+                                    1
+                                </td>
+                                <td property="rdfs:comment">
+                                    The version of the Rule.
+                                </td>
+                                <td property="skos:scopeNote">
+                                    
+                                </td>
+				<!--
+                                <td>
+                                    
+                                </td>
+				-->
+                                <td>
+                                    
+                                    
+                                        No references available.
+                                    
+                                </td>
+                            </tr>
+                        
+                    </tbody>
+                </table>
+            </div>
+        
+    </div>
+</section>
+
+
+
+
+
+
+</section>
+
+<section>
+<h2>
+   Supportive Entities
+</h2>
+The supportive entities are supporting the main entities in the Application Profile. 
+They are included in the Application Profile because they form the range of properties.
+
+
+
+
+   
+        <section>
+            <h3 id="Agent">
+                <a href="http://xmlns.com/foaf/0.1/Agent"
+                   data-toggle="tooltip"
+                   data-content="http://xmlns.com/foaf/0.1/Agent"
+                   data-placement="right">Agent</a>
+
+            </h3>
+	        <!-- XXX an image in the h3 will break the rendering of the Table Of Contents of Respec -->
+		<!-- outcomment github feedback possibility
+                <a href="https://github.com/SEMICeu/EGDC_Rule/issues/new?title=Issue%20for%20Agent&body=Explain%20your%20issue"}}>
+                   <img src="html/callout.png" loading="lazy" alt="(create issue)" width="20" height="20"/>
+		</a>
+		-->
+            <dl>
+                <dt>
+                    Definition
+                </dt>
+                <dd>
+                    Entity that is able to carry out action.
+                </dd>
+                
+                
+                
+                    <dt>
+                        Properties
+                    </dt>
+                    
+                        <dd>
+                            For this entity the following properties are defined: <a href="#Agent.name">name</a>
+                            .
+                    </dd>
+                
+            </dl>
+        </div>
+        
+            <div class="u-table-overflow">
+                <table class="data-table simple" id="table-mandatory-classes">
+                    <thead>
+                        <tr class="data-table__header">
+                            <th class="data-table__header-title--sortable" style="width:6%">
+                            </th>
+                            <th class="data-table__header-title--sortable data-table__header-title--sortable-active" style="width:14%">
+                                Property
+                            </th>
+                            <th class="data-table__header-title--sortable" style="width:14%">
+                                Range
+                            </th>
+                            <th class="data-table__header-title--sortable" style="width:6%">
+                                Card
+                            </th>
+                            <th class="data-table__header-title--sortable" style="width:30%">
+                                Definition 
+                            </th>
+                            <th class="data-table__header-title--sortable" style="width:30%">
+                                Usage
+                            </th>
+			    <!--
+                            <th class="data-table__header-title--sortable" style="width:3%">
+                                Codelist
+                            </th>
+				-->
+                            <th class="data-table__header-title--sortable" style="width:5%">
+                                REF
+                            </th>
+			    
+                        </tr>
+                    </thead>
+                    <tbody class="supertype">
+                        
+                            <tr id="Agent.name"
+                                typeof="rdf:Property"
+                                resource="http://purl.org/dc/terms/title"
+                                class="class mandatory">
+                                <td>
+				    <a href="https://github.com/SEMICeu/EGDC_Rule/issues/new?title=Issue%20for%20name%20in%20Agent&body=Explain%20your%20issue%20for%20https://semiceu.github.io/EGDC_Rule/releases/1.0.0%23Agent.name" target="_blank" rel="noopener noreferrer" >
+					    <!--                                        <i class="icon">[o]</i> -->
+                                        <img src="html/callout.png" loading="lazy" alt="[o]" width="100" height="100"/>
+                                    </a>
+                                </td>
+                                <td>
+                                        <a href="http://purl.org/dc/terms/title"
+                                           data-toggle="tooltip"
+                                           data-content="http://purl.org/dc/terms/title"
+                                           data-placement="right">
+                                        name</a>
+                                </td>
+                                <td>
+                                    
+                                        
+                                            <a href="#Text" data-placement="right">Text</a>
+                                        
+                                    
+                                </td>
+                                <td>
+                                    1
+                                </td>
+                                <td property="rdfs:comment">
+                                    The name of the Agent.
+                                </td>
+                                <td property="skos:scopeNote">
+                                    
+                                </td>
+				<!--
+                                <td>
+                                    
+                                </td>
+				-->
+                                <td>
+                                    
+                                    
+                                        No references available.
+                                    
+                                </td>
+                            </tr>
+                        
+                    </tbody>
+                </table>
+            </div>
+        
+    </div>
+</section>
+
+
+
+
+
+   
+        <section>
+            <h3 id="Document">
+                <a href="http://xmlns.com/foaf/0.1/Document"
+                   data-toggle="tooltip"
+                   data-content="http://xmlns.com/foaf/0.1/Document"
+                   data-placement="right">Document</a>
+
+            </h3>
+	        <!-- XXX an image in the h3 will break the rendering of the Table Of Contents of Respec -->
+		<!-- outcomment github feedback possibility
+                <a href="https://github.com/SEMICeu/EGDC_Rule/issues/new?title=Issue%20for%20Document&body=Explain%20your%20issue"}}>
+                   <img src="html/callout.png" loading="lazy" alt="(create issue)" width="20" height="20"/>
+		</a>
+		-->
+            <dl>
+                <dt>
+                    Definition
+                </dt>
+                <dd>
+                    A textual resource intended for human consumption that contains information.
+                </dd>
+                
+                
+                
+                    <dt>
+                        Properties
+                    </dt>
+                    
+                    <dd>
+                        This specification does not impose any additional requirements to properties for this entity.
+                    </dd>
+                
+            </dl>
+        </div>
+        
+    </div>
+</section>
+
+
+
+
+
+   
+        <section>
+            <h3 id="InputParameter">
+                <a href="https://www.greendigitalcoalition.eu/model/InputParameter"
+                   data-toggle="tooltip"
+                   data-content="https://www.greendigitalcoalition.eu/model/InputParameter"
+                   data-placement="right">InputParameter</a>
+
+            </h3>
+	        <!-- XXX an image in the h3 will break the rendering of the Table Of Contents of Respec -->
+		<!-- outcomment github feedback possibility
+                <a href="https://github.com/SEMICeu/EGDC_Rule/issues/new?title=Issue%20for%20Inputparameter&body=Explain%20your%20issue"}}>
+                   <img src="html/callout.png" loading="lazy" alt="(create issue)" width="20" height="20"/>
+		</a>
+		-->
+            <dl>
+                <dt>
+                    Definition
+                </dt>
+                <dd>
+                    The input used by a Rule.
+                </dd>
+                
+                
+                
+                    <dt>
+                        Properties
+                    </dt>
+                    
+                        <dd>
+                            For this entity the following properties are defined: <a href="#InputParameter.datatype">data type</a>
+                            , <a href="#InputParameter.description">description</a>
+                            , <a href="#InputParameter.example">example</a>
+                            , <a href="#InputParameter.hasrange">has range</a>
+                            , <a href="#InputParameter.name">name</a>
+                            , <a href="#InputParameter.option">option</a>
+                            , <a href="#InputParameter.unit">unit</a>
+                            .
+                    </dd>
+                
+            </dl>
+        </div>
+        
+            <div class="u-table-overflow">
+                <table class="data-table simple" id="table-mandatory-classes">
+                    <thead>
+                        <tr class="data-table__header">
+                            <th class="data-table__header-title--sortable" style="width:6%">
+                            </th>
+                            <th class="data-table__header-title--sortable data-table__header-title--sortable-active" style="width:14%">
+                                Property
+                            </th>
+                            <th class="data-table__header-title--sortable" style="width:14%">
+                                Range
+                            </th>
+                            <th class="data-table__header-title--sortable" style="width:6%">
+                                Card
+                            </th>
+                            <th class="data-table__header-title--sortable" style="width:30%">
+                                Definition 
+                            </th>
+                            <th class="data-table__header-title--sortable" style="width:30%">
+                                Usage
+                            </th>
+			    <!--
+                            <th class="data-table__header-title--sortable" style="width:3%">
+                                Codelist
+                            </th>
+				-->
+                            <th class="data-table__header-title--sortable" style="width:5%">
+                                REF
+                            </th>
+			    
+                        </tr>
+                    </thead>
+                    <tbody class="supertype">
+                        
+                            <tr id="InputParameter.datatype"
+                                typeof="rdf:Property"
+                                resource="https://www.greendigitalcoalition.eu/model/dataType"
+                                class="class mandatory">
+                                <td>
+				    <a href="https://github.com/SEMICeu/EGDC_Rule/issues/new?title=Issue%20for%20data type%20in%20InputParameter&body=Explain%20your%20issue%20for%20https://semiceu.github.io/EGDC_Rule/releases/1.0.0%23InputParameter.datatype" target="_blank" rel="noopener noreferrer" >
+					    <!--                                        <i class="icon">[o]</i> -->
+                                        <img src="html/callout.png" loading="lazy" alt="[o]" width="100" height="100"/>
+                                    </a>
+                                </td>
+                                <td>
+                                        <a href="https://www.greendigitalcoalition.eu/model/dataType"
+                                           data-toggle="tooltip"
+                                           data-content="https://www.greendigitalcoalition.eu/model/dataType"
+                                           data-placement="right">
+                                        data type</a>
+                                </td>
+                                <td>
+                                    
+                                        
+                                            <a href="#Code" data-placement="right">Code</a>
+                                        
+                                    
+                                </td>
+                                <td>
+                                    1
+                                </td>
+                                <td property="rdfs:comment">
+                                    A collection of data values.
+                                </td>
+                                <td property="skos:scopeNote">
+                                    
+                                </td>
+				<!--
+                                <td>
+                                    
+                                </td>
+				-->
+                                <td>
+                                    
+                                    
+                                        No references available.
+                                    
+                                </td>
+                            </tr>
+                        
+                            <tr id="InputParameter.description"
+                                typeof="rdf:Property"
+                                resource="http://purl.org/dc/terms/description"
+                                class="class mandatory">
+                                <td>
+				    <a href="https://github.com/SEMICeu/EGDC_Rule/issues/new?title=Issue%20for%20description%20in%20InputParameter&body=Explain%20your%20issue%20for%20https://semiceu.github.io/EGDC_Rule/releases/1.0.0%23InputParameter.description" target="_blank" rel="noopener noreferrer" >
+					    <!--                                        <i class="icon">[o]</i> -->
+                                        <img src="html/callout.png" loading="lazy" alt="[o]" width="100" height="100"/>
+                                    </a>
+                                </td>
+                                <td>
+                                        <a href="http://purl.org/dc/terms/description"
+                                           data-toggle="tooltip"
+                                           data-content="http://purl.org/dc/terms/description"
+                                           data-placement="right">
+                                        description</a>
+                                </td>
+                                <td>
+                                    
+                                        
+                                            <a href="#Text" data-placement="right">Text</a>
+                                        
+                                    
+                                </td>
+                                <td>
+                                    1
+                                </td>
+                                <td property="rdfs:comment">
+                                    An account of the Input Parameter.
+                                </td>
+                                <td property="skos:scopeNote">
+                                    
+                                </td>
+				<!--
+                                <td>
+                                    
+                                </td>
+				-->
+                                <td>
+                                    
+                                    
+                                        No references available.
+                                    
+                                </td>
+                            </tr>
+                        
+                            <tr id="InputParameter.example"
+                                typeof="rdf:Property"
+                                resource="https://www.greendigitalcoalition.eu/model/example"
+                                class="class mandatory">
+                                <td>
+				    <a href="https://github.com/SEMICeu/EGDC_Rule/issues/new?title=Issue%20for%20example%20in%20InputParameter&body=Explain%20your%20issue%20for%20https://semiceu.github.io/EGDC_Rule/releases/1.0.0%23InputParameter.example" target="_blank" rel="noopener noreferrer" >
+					    <!--                                        <i class="icon">[o]</i> -->
+                                        <img src="html/callout.png" loading="lazy" alt="[o]" width="100" height="100"/>
+                                    </a>
+                                </td>
+                                <td>
+                                        <a href="https://www.greendigitalcoalition.eu/model/example"
+                                           data-toggle="tooltip"
+                                           data-content="https://www.greendigitalcoalition.eu/model/example"
+                                           data-placement="right">
+                                        example</a>
+                                </td>
+                                <td>
+                                    
+                                        
+                                            <a href="#String" data-placement="right">String</a>
+                                        
+                                    
+                                </td>
+                                <td>
+                                    0..1
+                                </td>
+                                <td property="rdfs:comment">
+                                    An example of the Input Parameter.
+                                </td>
+                                <td property="skos:scopeNote">
+                                    
+                                </td>
+				<!--
+                                <td>
+                                    
+                                </td>
+				-->
+                                <td>
+                                    
+                                    
+                                        No references available.
+                                    
+                                </td>
+                            </tr>
+                        
+                            <tr id="InputParameter.hasrange"
+                                typeof="rdf:Property"
+                                resource="https://www.greendigitalcoalition.eu/model/hasRange"
+                                class="class mandatory">
+                                <td>
+				    <a href="https://github.com/SEMICeu/EGDC_Rule/issues/new?title=Issue%20for%20has range%20in%20InputParameter&body=Explain%20your%20issue%20for%20https://semiceu.github.io/EGDC_Rule/releases/1.0.0%23InputParameter.hasrange" target="_blank" rel="noopener noreferrer" >
+					    <!--                                        <i class="icon">[o]</i> -->
+                                        <img src="html/callout.png" loading="lazy" alt="[o]" width="100" height="100"/>
+                                    </a>
+                                </td>
+                                <td>
+                                        <a href="https://www.greendigitalcoalition.eu/model/hasRange"
+                                           data-toggle="tooltip"
+                                           data-content="https://www.greendigitalcoalition.eu/model/hasRange"
+                                           data-placement="right">
+                                        has range</a>
+                                </td>
+                                <td>
+                                    
+                                        
+                                            <a href="#Range" data-placement="right">Range</a>
+                                        
+                                    
+                                </td>
+                                <td>
+                                    0..1
+                                </td>
+                                <td property="rdfs:comment">
+                                    The associated Range of hte Input Parameter.
+                                </td>
+                                <td property="skos:scopeNote">
+                                    
+                                </td>
+				<!--
+                                <td>
+                                    
+                                </td>
+				-->
+                                <td>
+                                    
+                                    
+                                        No references available.
+                                    
+                                </td>
+                            </tr>
+                        
+                            <tr id="InputParameter.name"
+                                typeof="rdf:Property"
+                                resource="http://purl.org/dc/terms/title"
+                                class="class mandatory">
+                                <td>
+				    <a href="https://github.com/SEMICeu/EGDC_Rule/issues/new?title=Issue%20for%20name%20in%20InputParameter&body=Explain%20your%20issue%20for%20https://semiceu.github.io/EGDC_Rule/releases/1.0.0%23InputParameter.name" target="_blank" rel="noopener noreferrer" >
+					    <!--                                        <i class="icon">[o]</i> -->
+                                        <img src="html/callout.png" loading="lazy" alt="[o]" width="100" height="100"/>
+                                    </a>
+                                </td>
+                                <td>
+                                        <a href="http://purl.org/dc/terms/title"
+                                           data-toggle="tooltip"
+                                           data-content="http://purl.org/dc/terms/title"
+                                           data-placement="right">
+                                        name</a>
+                                </td>
+                                <td>
+                                    
+                                        
+                                            <a href="#Text" data-placement="right">Text</a>
+                                        
+                                    
+                                </td>
+                                <td>
+                                    1
+                                </td>
+                                <td property="rdfs:comment">
+                                    The name of the Input Parameter.
+                                </td>
+                                <td property="skos:scopeNote">
+                                    
+                                </td>
+				<!--
+                                <td>
+                                    
+                                </td>
+				-->
+                                <td>
+                                    
+                                    
+                                        No references available.
+                                    
+                                </td>
+                            </tr>
+                        
+                            <tr id="InputParameter.option"
+                                typeof="rdf:Property"
+                                resource="https://www.greendigitalcoalition.eu/model/option"
+                                class="class mandatory">
+                                <td>
+				    <a href="https://github.com/SEMICeu/EGDC_Rule/issues/new?title=Issue%20for%20option%20in%20InputParameter&body=Explain%20your%20issue%20for%20https://semiceu.github.io/EGDC_Rule/releases/1.0.0%23InputParameter.option" target="_blank" rel="noopener noreferrer" >
+					    <!--                                        <i class="icon">[o]</i> -->
+                                        <img src="html/callout.png" loading="lazy" alt="[o]" width="100" height="100"/>
+                                    </a>
+                                </td>
+                                <td>
+                                        <a href="https://www.greendigitalcoalition.eu/model/option"
+                                           data-toggle="tooltip"
+                                           data-content="https://www.greendigitalcoalition.eu/model/option"
+                                           data-placement="right">
+                                        option</a>
+                                </td>
+                                <td>
+                                    
+                                        
+                                            <a href="#Code" data-placement="right">Code</a>
+                                        
+                                    
+                                </td>
+                                <td>
+                                    0..*
+                                </td>
+                                <td property="rdfs:comment">
+                                    An option of the Input Parameter.
+                                </td>
+                                <td property="skos:scopeNote">
+                                    
+                                </td>
+				<!--
+                                <td>
+                                    
+                                </td>
+				-->
+                                <td>
+                                    
+                                    
+                                        No references available.
+                                    
+                                </td>
+                            </tr>
+                        
+                            <tr id="InputParameter.unit"
+                                typeof="rdf:Property"
+                                resource="https://www.greendigitalcoalition.eu/model/unit"
+                                class="class mandatory">
+                                <td>
+				    <a href="https://github.com/SEMICeu/EGDC_Rule/issues/new?title=Issue%20for%20unit%20in%20InputParameter&body=Explain%20your%20issue%20for%20https://semiceu.github.io/EGDC_Rule/releases/1.0.0%23InputParameter.unit" target="_blank" rel="noopener noreferrer" >
+					    <!--                                        <i class="icon">[o]</i> -->
+                                        <img src="html/callout.png" loading="lazy" alt="[o]" width="100" height="100"/>
+                                    </a>
+                                </td>
+                                <td>
+                                        <a href="https://www.greendigitalcoalition.eu/model/unit"
+                                           data-toggle="tooltip"
+                                           data-content="https://www.greendigitalcoalition.eu/model/unit"
+                                           data-placement="right">
+                                        unit</a>
+                                </td>
+                                <td>
+                                    
+                                        
+                                            <a href="#Code" data-placement="right">Code</a>
+                                        
+                                    
+                                </td>
+                                <td>
+                                    0..1
+                                </td>
+                                <td property="rdfs:comment">
+                                    The unit of measure of the value.
+                                </td>
+                                <td property="skos:scopeNote">
+                                    
+                                </td>
+				<!--
+                                <td>
+                                    
+                                </td>
+				-->
+                                <td>
+                                    
+                                    
+                                        No references available.
+                                    
+                                </td>
+                            </tr>
+                        
+                    </tbody>
+                </table>
+            </div>
+        
+    </div>
+</section>
+
+
+
+
+
+   
+        <section>
+            <h3 id="Output">
+                <a href="https://www.greendigitalcoalition.eu/model/Output"
+                   data-toggle="tooltip"
+                   data-content="https://www.greendigitalcoalition.eu/model/Output"
+                   data-placement="right">Output</a>
+
+            </h3>
+	        <!-- XXX an image in the h3 will break the rendering of the Table Of Contents of Respec -->
+		<!-- outcomment github feedback possibility
+                <a href="https://github.com/SEMICeu/EGDC_Rule/issues/new?title=Issue%20for%20Output&body=Explain%20your%20issue"}}>
+                   <img src="html/callout.png" loading="lazy" alt="(create issue)" width="20" height="20"/>
+		</a>
+		-->
+            <dl>
+                <dt>
+                    Definition
+                </dt>
+                <dd>
+                    The generated value of the Rule.
+                </dd>
+                
+                
+                
+                    <dt>
+                        Properties
+                    </dt>
+                    
+                        <dd>
+                            For this entity the following properties are defined: <a href="#Output.description">description</a>
+                            , <a href="#Output.referencedata">reference data</a>
+                            , <a href="#Output.unit">unit</a>
+                            .
+                    </dd>
+                
+            </dl>
+        </div>
+        
+            <div class="u-table-overflow">
+                <table class="data-table simple" id="table-mandatory-classes">
+                    <thead>
+                        <tr class="data-table__header">
+                            <th class="data-table__header-title--sortable" style="width:6%">
+                            </th>
+                            <th class="data-table__header-title--sortable data-table__header-title--sortable-active" style="width:14%">
+                                Property
+                            </th>
+                            <th class="data-table__header-title--sortable" style="width:14%">
+                                Range
+                            </th>
+                            <th class="data-table__header-title--sortable" style="width:6%">
+                                Card
+                            </th>
+                            <th class="data-table__header-title--sortable" style="width:30%">
+                                Definition 
+                            </th>
+                            <th class="data-table__header-title--sortable" style="width:30%">
+                                Usage
+                            </th>
+			    <!--
+                            <th class="data-table__header-title--sortable" style="width:3%">
+                                Codelist
+                            </th>
+				-->
+                            <th class="data-table__header-title--sortable" style="width:5%">
+                                REF
+                            </th>
+			    
+                        </tr>
+                    </thead>
+                    <tbody class="supertype">
+                        
+                            <tr id="Output.description"
+                                typeof="rdf:Property"
+                                resource="http://purl.org/dc/terms/description"
+                                class="class mandatory">
+                                <td>
+				    <a href="https://github.com/SEMICeu/EGDC_Rule/issues/new?title=Issue%20for%20description%20in%20Output&body=Explain%20your%20issue%20for%20https://semiceu.github.io/EGDC_Rule/releases/1.0.0%23Output.description" target="_blank" rel="noopener noreferrer" >
+					    <!--                                        <i class="icon">[o]</i> -->
+                                        <img src="html/callout.png" loading="lazy" alt="[o]" width="100" height="100"/>
+                                    </a>
+                                </td>
+                                <td>
+                                        <a href="http://purl.org/dc/terms/description"
+                                           data-toggle="tooltip"
+                                           data-content="http://purl.org/dc/terms/description"
+                                           data-placement="right">
+                                        description</a>
+                                </td>
+                                <td>
+                                    
+                                        
+                                            <a href="#Text" data-placement="right">Text</a>
+                                        
+                                    
+                                </td>
+                                <td>
+                                    1
+                                </td>
+                                <td property="rdfs:comment">
+                                    An account of the Output.
+                                </td>
+                                <td property="skos:scopeNote">
+                                    
+                                </td>
+				<!--
+                                <td>
+                                    
+                                </td>
+				-->
+                                <td>
+                                    
+                                    
+                                        No references available.
+                                    
+                                </td>
+                            </tr>
+                        
+                            <tr id="Output.referencedata"
+                                typeof="rdf:Property"
+                                resource="https://www.greendigitalcoalition.eu/model/referenceData"
+                                class="class mandatory">
+                                <td>
+				    <a href="https://github.com/SEMICeu/EGDC_Rule/issues/new?title=Issue%20for%20reference data%20in%20Output&body=Explain%20your%20issue%20for%20https://semiceu.github.io/EGDC_Rule/releases/1.0.0%23Output.referencedata" target="_blank" rel="noopener noreferrer" >
+					    <!--                                        <i class="icon">[o]</i> -->
+                                        <img src="html/callout.png" loading="lazy" alt="[o]" width="100" height="100"/>
+                                    </a>
+                                </td>
+                                <td>
+                                        <a href="https://www.greendigitalcoalition.eu/model/referenceData"
+                                           data-toggle="tooltip"
+                                           data-content="https://www.greendigitalcoalition.eu/model/referenceData"
+                                           data-placement="right">
+                                        reference data</a>
+                                </td>
+                                <td>
+                                    
+                                        
+                                            <a href="#Text" data-placement="right">Text</a>
+                                        
+                                    
+                                </td>
+                                <td>
+                                    1
+                                </td>
+                                <td property="rdfs:comment">
+                                    The reference data of the Output.
+                                </td>
+                                <td property="skos:scopeNote">
+                                    
+                                </td>
+				<!--
+                                <td>
+                                    
+                                </td>
+				-->
+                                <td>
+                                    
+                                    
+                                        No references available.
+                                    
+                                </td>
+                            </tr>
+                        
+                            <tr id="Output.unit"
+                                typeof="rdf:Property"
+                                resource="https://www.greendigitalcoalition.eu/model/unit"
+                                class="class mandatory">
+                                <td>
+				    <a href="https://github.com/SEMICeu/EGDC_Rule/issues/new?title=Issue%20for%20unit%20in%20Output&body=Explain%20your%20issue%20for%20https://semiceu.github.io/EGDC_Rule/releases/1.0.0%23Output.unit" target="_blank" rel="noopener noreferrer" >
+					    <!--                                        <i class="icon">[o]</i> -->
+                                        <img src="html/callout.png" loading="lazy" alt="[o]" width="100" height="100"/>
+                                    </a>
+                                </td>
+                                <td>
+                                        <a href="https://www.greendigitalcoalition.eu/model/unit"
+                                           data-toggle="tooltip"
+                                           data-content="https://www.greendigitalcoalition.eu/model/unit"
+                                           data-placement="right">
+                                        unit</a>
+                                </td>
+                                <td>
+                                    
+                                        
+                                            <a href="#Code" data-placement="right">Code</a>
+                                        
+                                    
+                                </td>
+                                <td>
+                                    0..1
+                                </td>
+                                <td property="rdfs:comment">
+                                    The unit of measure of the value.
+                                </td>
+                                <td property="skos:scopeNote">
+                                    
+                                </td>
+				<!--
+                                <td>
+                                    
+                                </td>
+				-->
+                                <td>
+                                    
+                                    
+                                        No references available.
+                                    
+                                </td>
+                            </tr>
+                        
+                    </tbody>
+                </table>
+            </div>
+        
+    </div>
+</section>
+
+
+
+
+
+   
+        <section>
+            <h3 id="Range">
+                <a href="https://www.greendigitalcoalition.eu/model/Range"
+                   data-toggle="tooltip"
+                   data-content="https://www.greendigitalcoalition.eu/model/Range"
+                   data-placement="right">Range</a>
+
+            </h3>
+	        <!-- XXX an image in the h3 will break the rendering of the Table Of Contents of Respec -->
+		<!-- outcomment github feedback possibility
+                <a href="https://github.com/SEMICeu/EGDC_Rule/issues/new?title=Issue%20for%20Range&body=Explain%20your%20issue"}}>
+                   <img src="html/callout.png" loading="lazy" alt="(create issue)" width="20" height="20"/>
+		</a>
+		-->
+            <dl>
+                <dt>
+                    Definition
+                </dt>
+                <dd>
+                    The interval defining the possible values of an Input Parameter.
+                </dd>
+                
+                
+                
+                    <dt>
+                        Properties
+                    </dt>
+                    
+                        <dd>
+                            For this entity the following properties are defined: <a href="#Range.maximumvalue">maximum value</a>
+                            , <a href="#Range.minimumvalue">minimum value</a>
+                            .
+                    </dd>
+                
+            </dl>
+        </div>
+        
+            <div class="u-table-overflow">
+                <table class="data-table simple" id="table-mandatory-classes">
+                    <thead>
+                        <tr class="data-table__header">
+                            <th class="data-table__header-title--sortable" style="width:6%">
+                            </th>
+                            <th class="data-table__header-title--sortable data-table__header-title--sortable-active" style="width:14%">
+                                Property
+                            </th>
+                            <th class="data-table__header-title--sortable" style="width:14%">
+                                Range
+                            </th>
+                            <th class="data-table__header-title--sortable" style="width:6%">
+                                Card
+                            </th>
+                            <th class="data-table__header-title--sortable" style="width:30%">
+                                Definition 
+                            </th>
+                            <th class="data-table__header-title--sortable" style="width:30%">
+                                Usage
+                            </th>
+			    <!--
+                            <th class="data-table__header-title--sortable" style="width:3%">
+                                Codelist
+                            </th>
+				-->
+                            <th class="data-table__header-title--sortable" style="width:5%">
+                                REF
+                            </th>
+			    
+                        </tr>
+                    </thead>
+                    <tbody class="supertype">
+                        
+                            <tr id="Range.maximumvalue"
+                                typeof="rdf:Property"
+                                resource="https://www.greendigitalcoalition.eu/model/maxValue"
+                                class="class mandatory">
+                                <td>
+				    <a href="https://github.com/SEMICeu/EGDC_Rule/issues/new?title=Issue%20for%20maximum value%20in%20Range&body=Explain%20your%20issue%20for%20https://semiceu.github.io/EGDC_Rule/releases/1.0.0%23Range.maximumvalue" target="_blank" rel="noopener noreferrer" >
+					    <!--                                        <i class="icon">[o]</i> -->
+                                        <img src="html/callout.png" loading="lazy" alt="[o]" width="100" height="100"/>
+                                    </a>
+                                </td>
+                                <td>
+                                        <a href="https://www.greendigitalcoalition.eu/model/maxValue"
+                                           data-toggle="tooltip"
+                                           data-content="https://www.greendigitalcoalition.eu/model/maxValue"
+                                           data-placement="right">
+                                        maximum value</a>
+                                </td>
+                                <td>
+                                    
+                                        
+                                            <a href="#Integer"
+                                               data-toggle="tooltip"
+                                               data-content="http://www.w3.org/2001/XMLSchema#integer"
+                                               data-placement="right">Integer</a>
+                                        
+                                    
+                                </td>
+                                <td>
+                                    1
+                                </td>
+                                <td property="rdfs:comment">
+                                    The maximum value of the Range.
+                                </td>
+                                <td property="skos:scopeNote">
+                                    
+                                </td>
+				<!--
+                                <td>
+                                    
+                                </td>
+				-->
+                                <td>
+                                    
+                                    
+                                        No references available.
+                                    
+                                </td>
+                            </tr>
+                        
+                            <tr id="Range.minimumvalue"
+                                typeof="rdf:Property"
+                                resource="https://www.greendigitalcoalition.eu/model/minValue"
+                                class="class mandatory">
+                                <td>
+				    <a href="https://github.com/SEMICeu/EGDC_Rule/issues/new?title=Issue%20for%20minimum value%20in%20Range&body=Explain%20your%20issue%20for%20https://semiceu.github.io/EGDC_Rule/releases/1.0.0%23Range.minimumvalue" target="_blank" rel="noopener noreferrer" >
+					    <!--                                        <i class="icon">[o]</i> -->
+                                        <img src="html/callout.png" loading="lazy" alt="[o]" width="100" height="100"/>
+                                    </a>
+                                </td>
+                                <td>
+                                        <a href="https://www.greendigitalcoalition.eu/model/minValue"
+                                           data-toggle="tooltip"
+                                           data-content="https://www.greendigitalcoalition.eu/model/minValue"
+                                           data-placement="right">
+                                        minimum value</a>
+                                </td>
+                                <td>
+                                    
+                                        
+                                            <a href="#Integer"
+                                               data-toggle="tooltip"
+                                               data-content="http://www.w3.org/2001/XMLSchema#integer"
+                                               data-placement="right">Integer</a>
+                                        
+                                    
+                                </td>
+                                <td>
+                                    1
+                                </td>
+                                <td property="rdfs:comment">
+                                    The minimum value of a Range.
+                                </td>
+                                <td property="skos:scopeNote">
+                                    
+                                </td>
+				<!--
+                                <td>
+                                    
+                                </td>
+				-->
+                                <td>
+                                    
+                                    
+                                        No references available.
+                                    
+                                </td>
+                            </tr>
+                        
+                    </tbody>
+                </table>
+            </div>
+        
+    </div>
+</section>
+
+
+
+
+
+
+
+   
+        <section>
+            <h3 id="Source">
+                <a href="https://www.greendigitalcoalition.eu/model/Source"
+                   data-toggle="tooltip"
+                   data-content="https://www.greendigitalcoalition.eu/model/Source"
+                   data-placement="right">Source</a>
+
+            </h3>
+	        <!-- XXX an image in the h3 will break the rendering of the Table Of Contents of Respec -->
+		<!-- outcomment github feedback possibility
+                <a href="https://github.com/SEMICeu/EGDC_Rule/issues/new?title=Issue%20for%20Source&body=Explain%20your%20issue"}}>
+                   <img src="html/callout.png" loading="lazy" alt="(create issue)" width="20" height="20"/>
+		</a>
+		-->
+            <dl>
+                <dt>
+                    Definition
+                </dt>
+                <dd>
+                    The reference of a Rule.
+                </dd>
+                
+                
+                
+                    <dt>
+                        Properties
+                    </dt>
+                    
+                        <dd>
+                            For this entity the following properties are defined: <a href="#Source.name">name</a>
+                            , <a href="#Source.reference">reference</a>
+                            , <a href="#Source.region">region</a>
+                            , <a href="#Source.sector">sector</a>
+                            .
+                    </dd>
+                
+            </dl>
+        </div>
+        
+            <div class="u-table-overflow">
+                <table class="data-table simple" id="table-mandatory-classes">
+                    <thead>
+                        <tr class="data-table__header">
+                            <th class="data-table__header-title--sortable" style="width:6%">
+                            </th>
+                            <th class="data-table__header-title--sortable data-table__header-title--sortable-active" style="width:14%">
+                                Property
+                            </th>
+                            <th class="data-table__header-title--sortable" style="width:14%">
+                                Range
+                            </th>
+                            <th class="data-table__header-title--sortable" style="width:6%">
+                                Card
+                            </th>
+                            <th class="data-table__header-title--sortable" style="width:30%">
+                                Definition 
+                            </th>
+                            <th class="data-table__header-title--sortable" style="width:30%">
+                                Usage
+                            </th>
+			    <!--
+                            <th class="data-table__header-title--sortable" style="width:3%">
+                                Codelist
+                            </th>
+				-->
+                            <th class="data-table__header-title--sortable" style="width:5%">
+                                REF
+                            </th>
+			    
+                        </tr>
+                    </thead>
+                    <tbody class="supertype">
+                        
+                            <tr id="Source.name"
+                                typeof="rdf:Property"
+                                resource="http://purl.org/dc/terms/title"
+                                class="class mandatory">
+                                <td>
+				    <a href="https://github.com/SEMICeu/EGDC_Rule/issues/new?title=Issue%20for%20name%20in%20Source&body=Explain%20your%20issue%20for%20https://semiceu.github.io/EGDC_Rule/releases/1.0.0%23Source.name" target="_blank" rel="noopener noreferrer" >
+					    <!--                                        <i class="icon">[o]</i> -->
+                                        <img src="html/callout.png" loading="lazy" alt="[o]" width="100" height="100"/>
+                                    </a>
+                                </td>
+                                <td>
+                                        <a href="http://purl.org/dc/terms/title"
+                                           data-toggle="tooltip"
+                                           data-content="http://purl.org/dc/terms/title"
+                                           data-placement="right">
+                                        name</a>
+                                </td>
+                                <td>
+                                    
+                                        
+                                            <a href="#String" data-placement="right">String</a>
+                                        
+                                    
+                                </td>
+                                <td>
+                                    1
+                                </td>
+                                <td property="rdfs:comment">
+                                    The name of a Source.
+                                </td>
+                                <td property="skos:scopeNote">
+                                    
+                                </td>
+				<!--
+                                <td>
+                                    
+                                </td>
+				-->
+                                <td>
+                                    
+                                    
+                                        No references available.
+                                    
+                                </td>
+                            </tr>
+                        
+                            <tr id="Source.reference"
+                                typeof="rdf:Property"
+                                resource="http://xmlns.com/foaf/0.1/homepage"
+                                class="class mandatory">
+                                <td>
+				    <a href="https://github.com/SEMICeu/EGDC_Rule/issues/new?title=Issue%20for%20reference%20in%20Source&body=Explain%20your%20issue%20for%20https://semiceu.github.io/EGDC_Rule/releases/1.0.0%23Source.reference" target="_blank" rel="noopener noreferrer" >
+					    <!--                                        <i class="icon">[o]</i> -->
+                                        <img src="html/callout.png" loading="lazy" alt="[o]" width="100" height="100"/>
+                                    </a>
+                                </td>
+                                <td>
+                                        <a href="http://xmlns.com/foaf/0.1/homepage"
+                                           data-toggle="tooltip"
+                                           data-content="http://xmlns.com/foaf/0.1/homepage"
+                                           data-placement="right">
+                                        reference</a>
+                                </td>
+                                <td>
+                                    
+                                        
+                                            <a href="#Document" data-placement="right">Document</a>
+                                        
+                                    
+                                </td>
+                                <td>
+                                    1
+                                </td>
+                                <td property="rdfs:comment">
+                                    A web page that acts as the main page for the Source.
+                                </td>
+                                <td property="skos:scopeNote">
+                                    
+                                </td>
+				<!--
+                                <td>
+                                    
+                                </td>
+				-->
+                                <td>
+                                    
+                                    
+                                        No references available.
+                                    
+                                </td>
+                            </tr>
+                        
+                            <tr id="Source.region"
+                                typeof="rdf:Property"
+                                resource="https://www.greendigitalcoalition.eu/model/region"
+                                class="class mandatory">
+                                <td>
+				    <a href="https://github.com/SEMICeu/EGDC_Rule/issues/new?title=Issue%20for%20region%20in%20Source&body=Explain%20your%20issue%20for%20https://semiceu.github.io/EGDC_Rule/releases/1.0.0%23Source.region" target="_blank" rel="noopener noreferrer" >
+					    <!--                                        <i class="icon">[o]</i> -->
+                                        <img src="html/callout.png" loading="lazy" alt="[o]" width="100" height="100"/>
+                                    </a>
+                                </td>
+                                <td>
+                                        <a href="https://www.greendigitalcoalition.eu/model/region"
+                                           data-toggle="tooltip"
+                                           data-content="https://www.greendigitalcoalition.eu/model/region"
+                                           data-placement="right">
+                                        region</a>
+                                </td>
+                                <td>
+                                    
+                                        
+                                            <a href="#Code" data-placement="right">Code</a>
+                                        
+                                    
+                                </td>
+                                <td>
+                                    1..*
+                                </td>
+                                <td property="rdfs:comment">
+                                    The region of a Source.
+                                </td>
+                                <td property="skos:scopeNote">
+                                    
+                                </td>
+				<!--
+                                <td>
+                                    
+                                </td>
+				-->
+                                <td>
+                                    
+                                    
+                                        No references available.
+                                    
+                                </td>
+                            </tr>
+                        
+                            <tr id="Source.sector"
+                                typeof="rdf:Property"
+                                resource="https://www.greendigitalcoalition.eu/model/sector"
+                                class="class mandatory">
+                                <td>
+				    <a href="https://github.com/SEMICeu/EGDC_Rule/issues/new?title=Issue%20for%20sector%20in%20Source&body=Explain%20your%20issue%20for%20https://semiceu.github.io/EGDC_Rule/releases/1.0.0%23Source.sector" target="_blank" rel="noopener noreferrer" >
+					    <!--                                        <i class="icon">[o]</i> -->
+                                        <img src="html/callout.png" loading="lazy" alt="[o]" width="100" height="100"/>
+                                    </a>
+                                </td>
+                                <td>
+                                        <a href="https://www.greendigitalcoalition.eu/model/sector"
+                                           data-toggle="tooltip"
+                                           data-content="https://www.greendigitalcoalition.eu/model/sector"
+                                           data-placement="right">
+                                        sector</a>
+                                </td>
+                                <td>
+                                    
+                                        
+                                            <a href="#Code" data-placement="right">Code</a>
+                                        
+                                    
+                                </td>
+                                <td>
+                                    1..*
+                                </td>
+                                <td property="rdfs:comment">
+                                    The sector of a Source.
+                                </td>
+                                <td property="skos:scopeNote">
+                                    
+                                </td>
+				<!--
+                                <td>
+                                    
+                                </td>
+				-->
+                                <td>
+                                    
+                                    
+                                        No references available.
+                                    
+                                </td>
+                            </tr>
+                        
+                    </tbody>
+                </table>
+            </div>
+        
+    </div>
+</section>
+
+
+
+
+
+</section>
+
+    <section>
+        <h2>
+            Datatypes
+        </h2>
+
+	The following datatypes are used within this specification.
+
+	<table class="data-table simple" id="table-mandatory-classes">
+	    <thead>
+		<tr class="data-table__header">
+		    <th class="data-table__header-title--sortable">
+		    </th>
+		    <th class="data-table__header-title--sortable data-table__header-title--sortable-active">
+			Class
+		    </th>
+		    <th class="data-table__header-title--sortable">
+			Definition
+		    </th>
+		</tr>
+	    </thead>
+	    <tbody class="supertype">
+            
+		<tr><td>
+                   <a href="https://github.com/SEMICeu/EGDC_Rule/issues/new?title=Issue%20for%20Code&body=Explain%20your%20issue"}}>
+                     <img src="html/callout.png" loading="lazy" alt="(create issue)" width="50" height="50"/>
+		   </a>
+		</td><td>
+                
+                    <div id="Code">
+                        <a href="http://www.w3.org/2004/02/skos/core#Concept"
+                           data-toggle="tooltip"
+                           data-content="http://www.w3.org/2004/02/skos/core#Concept"
+                           data-placement="right">Code</a>
+                    </div>
+                
+		</td><td>
+                    An idea or notion; a unit of thought.
+		</td></tr>
+		<tr><td>
+                   <a href="https://github.com/SEMICeu/EGDC_Rule/issues/new?title=Issue%20for%20Date&body=Explain%20your%20issue"}}>
+                     <img src="html/callout.png" loading="lazy" alt="(create issue)" width="50" height="50"/>
+		   </a>
+		</td><td>
+                
+                    <div id="Date">
+                        <a href="http://www.w3.org/2001/XMLSchema#date"
+                           data-toggle="tooltip"
+                           data-content="http://www.w3.org/2001/XMLSchema#date"
+                           data-placement="right">Date</a>
+                    </div>
+                
+		</td><td>
+                    DateTime values may be viewed as objects with integer-valued year, month, day, hour and minute properties, a decimal-valued second property, and a boolean timezoned property.
+		</td></tr>
+		<tr><td>
+                   <a href="https://github.com/SEMICeu/EGDC_Rule/issues/new?title=Issue%20for%20String&body=Explain%20your%20issue"}}>
+                     <img src="html/callout.png" loading="lazy" alt="(create issue)" width="50" height="50"/>
+		   </a>
+		</td><td>
+                
+                    <div id="String">
+                        <a href="http://www.w3.org/2001/XMLSchema#string"
+                           data-toggle="tooltip"
+                           data-content="http://www.w3.org/2001/XMLSchema#string"
+                           data-placement="right">String</a>
+                    </div>
+                
+		</td><td>
+                    The string datatype represents character strings in XML.
+		</td></tr>
+		<tr><td>
+                   <a href="https://github.com/SEMICeu/EGDC_Rule/issues/new?title=Issue%20for%20Text&body=Explain%20your%20issue"}}>
+                     <img src="html/callout.png" loading="lazy" alt="(create issue)" width="50" height="50"/>
+		   </a>
+		</td><td>
+                
+                    <div id="Text">
+                        <a href="http://www.w3.org/1999/02/22-rdf-syntax-ns#langString"
+                           data-toggle="tooltip"
+                           data-content="http://www.w3.org/1999/02/22-rdf-syntax-ns#langString"
+                           data-placement="right">Text</a>
+                    </div>
+                
+		</td><td>
+                    The text data type is a combination of a string and a language identifier.
+		</td></tr>
+            </tbody>
+	</table>
+
+
+</section>
+
+<!--
+<section class="informative">
+    <h2 aria-level="1" role="heading" id="h2_sotd">
+        JSON-LD context
+    </h2>
+    <div class="region region--no-space-top" id="jsonld">
+         (non normative)
+        
+            <p>
+                A reusable JSON-LD context definition for this Core Vocabulary is retrievable at: <a href="/EGDC_Rule/releases/1.0.0/context/egdc_rule.jsonld"
+    target="_blank">/EGDC_Rule/releases/1.0.0/context/egdc_rule.jsonld</a>
+            </p>
+        
+    </div>
+</section>
+<section class="informative">
+    <h2 aria-level="1" role="heading" id="h2_sotd">
+        SHACL template
+    </h2>
+    <div class="region region--no-space-top" id="shacl">
+         (non normative)
+        
+            <p>
+                A reusable SHACL template for this Core Vocabulary is retrievable at: <a href="/EGDC_Rule/releases/1.0.0/shacl/egdc_rule-SHACL.ttl"
+    target="_blank">/EGDC_Rule/releases/1.0.0/shacl/egdc_rule-SHACL.ttl</a>
+            </p>
+        
+    </div>
+</section>
+-->
+
+
+<section class="informative">
+    <h2 aria-level="1" role="heading" id="h2_codelist">
+        Code List
+    </h2> 												   
+    
+<h3 id="cs-funding">Case Study - Funding</h3> 
+<table id="table-cs-funding" class="simple">
+	<thead><tr><th>URI</th><th>Identifier</th><th>Label</th></tr></thead>
+	<tbody>
+		<tr><td></td><td><code></code></td><td><code></code></td></tr>
+	</tbody>
+</table>
+
+<h3 id="cs-technology">Case Study - Technology</h3> 
+<table id="table-cs-technology" class="simple">
+	<thead><tr><th>URI</th><th>Identifier</th><th>Label</th></tr></thead>
+	<tbody>
+		<tr><td></td><td><code></code></td><td><code></code></td></tr>
+	</tbody>
+</table>
+
+<h3 id="cs-calculation">Case Study - Type of Calculation</h3> 
+<table id="table-cs-calculation" class="simple">
+	<thead><tr><th>URI</th><th>Identifier</th><th>Label</th></tr></thead>
+	<tbody>
+		<tr><td>egdc-cl:calculation/ex-ante</td><td><code>ex-ante</code></td><td><code>Ex Ante</code></td></tr>
+		<tr><td>egdc-cl:calculation/ex-post</td><td><code>ex-post</code></td><td><code>Ex Post</code></td></tr>
+	</tbody>
+</table>
+
+<h3 id="org-sector">Organization - Sector</h3> 
+<table id="table-org-sector" class="simple">
+	<thead><tr><th>URI</th><th>Identifier</th><th>Label</th><th>Eurovoc Domain</th></tr></thead>
+	<tbody>
+    <tr><td>egdc-cl:sector/agriculture</td><td><code>agriculture</code></td><td><code>Agriculture sector</code></td><td><a href="https://showvoc.op.europa.eu/#/datasets/OP_EuroVoc/data?resId=http:%2F%2Feurovoc.europa.eu%2F100156">56 AGRICULTURE, FORESTRY AND FISHERIES</a></td></tr>
+    <tr><td>egdc-cl:sector/construction</td><td><code>construction</code></td><td><code>Construction/building sector</code></td><td><a href="https://showvoc.op.europa.eu/#/datasets/OP_EuroVoc/data?resId=http:%2F%2Feurovoc.europa.eu%2F100160">68 INDUSTRY</a></td></tr>
+    <tr><td>egdc-cl:sector/energy</td><td><code>energy</code></td><td><code>Energy/Power sector</code></td><td><a href="https://showvoc.op.europa.eu/#/datasets/OP_EuroVoc/data?resId=http:%2F%2Feurovoc.europa.eu%2F100159">66 ENERGY</a></td></tr>
+    <tr><td>egdc-cl:sector/manufacturing</td><td><code>manufacturing</code></td><td><code>Manufacturing sector</code></td><td><a href="https://showvoc.op.europa.eu/#/datasets/OP_EuroVoc/data?resId=http:%2F%2Feurovoc.europa.eu%2F100158">64 PRODUCTION, TECHNOLOGY AND RESEARCH</a></td></tr>
+    <tr><td>egdc-cl:sector/smart-cities</td><td><code>smart-cities</code></td><td><code>Smart Cities sector</code></td><td><a href="https://showvoc.op.europa.eu/#/datasets/OP_EuroVoc/data?resId=http:%2F%2Feurovoc.europa.eu%2F100149">28 SOCIAL QUESTIONS</a></td></tr>
+    <tr><td>egdc-cl:sector/transport</td><td><code>transport</code></td><td><code>Transport sector</code></td><td><a href="https://showvoc.op.europa.eu/#/datasets/OP_EuroVoc/data?resId=http:%2F%2Feurovoc.europa.eu%2F100154">48 TRANSPORT</a></td></tr>
+	</tbody>
+</table>
+
+<h3 id="org-type">Organization - Type</h3> 
+<table id="table-org-type" class="simple">
+	<thead><tr><th>URI</th><th>Identifier</th><th>Label</th></tr></thead>
+	<tbody>
+		<tr><td></td><td><code></code></td><td><code></code></td></tr>
+	</tbody>
+</table>
+
+<h3 id="be-unit">Benefit - Unit</h3> 
+<table id="table-doc-type" class="simple">
+	<thead><tr><th>URI</th><th>Identifier</th><th>Label</th></tr></thead>
+	<tbody>
+		<tr><td></td><td><code></code></td><td><code></code></td></tr>
+	</tbody>
+</table>
+
+</section>
+
+<section class="informative">
+    <h2 aria-level="1" role="heading" id="h2_sotd">
+        Examples
+    </h2> 
+	<div class="region region--no-space-top" id="examples">													   
+        
+
+	</div>
+</section>
+
+
+
+
+<section class="informative">
+	<h2>Usage Guidelines</h2>
+    <section class="informative">
+  <h2>Support for implementation</h2>
+
+The following section provides support for implementing the EGDC Rule.
+<p/>
+
+<h3>JSON-LD context file</h3>
+
+One common technical question is the format in which the data is being exchanged. 
+For conformance with the EGDC Rule, it is not mandatory that this happens in an RDF serialisation, but the exchanged format SHOULD be unambiguously transformable into RDF.
+For the format JSON, a popular format to exchange data between systems, SEMIC provides a <a href="./context/egdc_rule.jsonld">JSON-LD context file</a>. 
+JSON-LD is a W3C Recommendation [[[json-ld11]]] that provided a standard approach to interpret JSON structures as RDF.
+The provided JSON-LD context file can be used by implementers.
+This JSON-LD context is not normative, i.e. other JSON-LD contexts are allowed.
+<p/>
+The JSON-LD context file downloadable <a href="./context/egdc_rule.jsonld">here</a>.
+<p/>
+
+<h3>Validation</h3>
+
+To verify if the data is (technically) conformant to the EGDC Rule, the exchanged data can be validated using the provided SHACL shapes. 
+SHACL is a W3C Recommendation to express constraints on an RDF knowledge graph. 
+<p/>
+To support the check whether or not a catalogue satisfies the expressed constraints in this Application Profile, the constraints in this specification are expressed using SHACL [[shacl]].
+Each constraint in this specification that could be converted into a SHACL expression has been included.
+As such this collection of SHACL expressions can be used to build a validation check for data. 
+<p/>
+It is up to the implementers to define the validation they expect.
+Each implementation happens within a context, and that context is beyond the SHACL expressions here.
+<p/>
+The shapes can be found <a href="./shacl/egdc_rule-SHACL.ttl">here</a>.
+
+<p>
+The Interoperability Test Bed (ITB) provides a <a href="https://www.itb.ec.europa.eu/shacl/any/upload">validation service</a> reusing the linked shapes.
+The examples in this specification can be validated via the <a href="https://www.itb.ec.europa.eu/shacl/swagger-ui/index.html">ITB REST API</a>.
+</p>
+
+<h3>UML representation</h3>
+The UML representation from which the EGDC Rule has been build is available <a href="/uml">here</a>.
+
+<!--
+<h3>Mapping</h3>
+A mapping towards Schema.org can be found <a href="https://github.com/SEMICeu/Semantic-Mappings/tree/main/Core%20Location">here</a>
+<p/>
+-->
+
+</section>
+    <section class="informative">
+<h2>Governance</h2>
+
+<h3>Versioning governance</h3>
+All specifications produced in SEMIC will follow the versioning rule described by the SEMIC Style Guide rule 
+<a href="https://semiceu.github.io/style-guide/1.0.0/gc-publication-conventions.html#sec:pc-r3">PC-R3</a>.
+In case a SEMIC asset is deprecated the asset will remain available through its PURI.
+<p/>
+The serialisation will have:
+<ul>
+<li>a dct:isReplacedBy referencing the new assets used instead and</li>
+<li> an adms:status  indicating its deprecated <a href="http://publications.europa.eu/resource/authority/concept-status/DEPRECATED">status</a>.</li>
+</ul>
+<p/>
+
+<h3>Governance requirements for re-used assets</h3>
+In order to adhere to the SEMIC Style Guide rule <a href="https://semiceu.github.io/style-guide/1.0.0/gc-general-conventions.html#sec:gc-r2">GC-R2</a>
+ a specification should have quality and governance standards for the assets that are being reused.
+<p/>
+In order for an asset to be considered for reuse within a SEMIC specification it can be requested by a community member or it requires to adhere to the following requirements:
+<ul>
+<li> The asset is part of a recommendation by a major standards body or an EU institution.</li>
+<li> The asset is actively being maintained.</li>
+</ul>
+<p/>
+
+After being taken into consideration the asset will be validated in three steps:
+<ul>
+<li> Syntax validation will be performed on the relevant artefacts.</li>
+<li> Constraint validation will be performed on the relevant artefacts.</li>
+<li> The PURI will be validated.</li>
+</ul>
+Once considered and validated an asset can be adopted if it is approved by the community.
+<p/>
+
+<h3>Lexicalisation rules</h3>
+
+In order to adhere to the SEMIC Style Guide rule <a href="https://semiceu.github.io/style-guide/1.0.0/gc-semantic-conventions.html#sec:sc-r3">SC-R3</a> a specification requires formal lexicalisation rules.
+The Style Guide proposes two options either by using RDFS or SKOS lexicalisation.
+<p/>
+SEMIC uses and will use the RDFS lexicalisation for all of its specifications. More specifically:
+<ul>
+<li> rdfs:label is used to provide a human-readable version of a resource's name.</li>
+<li> The usage of certain resource can be clarified in a skos:usageNote.</li>
+</ul>
+
+</section>    
+</section>
+ 
+
+
+<section class="informative">
+	<h2>Mappings</h2>
+</section>
+ 
+
+
+
+<section id="quick-reference" class="appendix">
+
+<h2>Quick Reference of Classes and Properties</h2>
+
+This section provides a condensed tabular overview of the mentioned classes and properties in this specification.
+The properties are indicated as <it>mandatory, recommended, optional</it> and <it>deprecated</it>. These terms have the following meaning.
+<ul>
+<li>Mandatory property: a receiver MUST be able to process the information for that property; a sender MUST provide the information for that property.</li>
+<li>Recommended property: a receiver MUST be able to process the information for that property; a sender SHOULD provide the information for that property if it is available.</li>
+<li>Optional property: a receiver MUST be able to process the information for that property; a sender MAY provide the information for that property but is not obliged to do so.</li>
+<li>Deprecated property: a receiver SHOULD be able to process information about instances of that property; a sender SHOULD NOT provide the information about instances of that property.</li>
+</ul>
+
+<table id="table-quickoverview" class="simple" style="width:100%; table-layout: fixed; word-wrap:break-word;">
+	<thead>
+		<tr><th>Class</th><th>Class IRI</th><th>Property Type</type><th>Property</th><th>Property IRI</th></tr>
+	</thead>
+	<tbody>
+		
+				
+					
+						
+					
+					
+						
+					
+					
+						
+							<tr>
+								<td><a href="#Agent">Agent</a></td>
+								<td><div class="shorten">http://xmlns.com/foaf/0.1/Agent</div></td>
+								<td></td>
+								<td><a href="#Agent.name">name </a></td>
+								<td><div class="shorten">http://purl.org/dc/terms/title</div></td>
+							</tr>
+						
+					
+				
+			</tr>
+		
+				
+					<tr>
+						<td><a href="#Document">Document</a></td>
+						<td><div class="shorten">http://xmlns.com/foaf/0.1/Document</div></td>
+						<td></td>
+						<td></td>
+						<td></td>
+					</tr>
+				
+			</tr>
+		
+				
+					
+						
+					
+						
+					
+						
+					
+						
+					
+						
+					
+						
+					
+						
+					
+					
+						
+					
+						
+					
+						
+					
+						
+					
+						
+					
+						
+					
+						
+					
+					
+						
+							<tr>
+								<td><a href="#InputParameter">InputParameter</a></td>
+								<td><div class="shorten">https://www.greendigitalcoalition.eu/model/InputParameter</div></td>
+								<td></td>
+								<td><a href="#InputParameter.datatype">data type </a></td>
+								<td><div class="shorten">https://www.greendigitalcoalition.eu/model/dataType</div></td>
+							</tr>
+						
+					
+						
+							<tr>
+								<td><a href="#InputParameter">InputParameter</a></td>
+								<td><div class="shorten">https://www.greendigitalcoalition.eu/model/InputParameter</div></td>
+								<td></td>
+								<td><a href="#InputParameter.description">description </a></td>
+								<td><div class="shorten">http://purl.org/dc/terms/description</div></td>
+							</tr>
+						
+					
+						
+							<tr>
+								<td><a href="#InputParameter">InputParameter</a></td>
+								<td><div class="shorten">https://www.greendigitalcoalition.eu/model/InputParameter</div></td>
+								<td></td>
+								<td><a href="#InputParameter.example">example </a></td>
+								<td><div class="shorten">https://www.greendigitalcoalition.eu/model/example</div></td>
+							</tr>
+						
+					
+						
+							<tr>
+								<td><a href="#InputParameter">InputParameter</a></td>
+								<td><div class="shorten">https://www.greendigitalcoalition.eu/model/InputParameter</div></td>
+								<td></td>
+								<td><a href="#InputParameter.hasrange">has range </a></td>
+								<td><div class="shorten">https://www.greendigitalcoalition.eu/model/hasRange</div></td>
+							</tr>
+						
+					
+						
+							<tr>
+								<td><a href="#InputParameter">InputParameter</a></td>
+								<td><div class="shorten">https://www.greendigitalcoalition.eu/model/InputParameter</div></td>
+								<td></td>
+								<td><a href="#InputParameter.name">name </a></td>
+								<td><div class="shorten">http://purl.org/dc/terms/title</div></td>
+							</tr>
+						
+					
+						
+							<tr>
+								<td><a href="#InputParameter">InputParameter</a></td>
+								<td><div class="shorten">https://www.greendigitalcoalition.eu/model/InputParameter</div></td>
+								<td></td>
+								<td><a href="#InputParameter.option">option </a></td>
+								<td><div class="shorten">https://www.greendigitalcoalition.eu/model/option</div></td>
+							</tr>
+						
+					
+						
+							<tr>
+								<td><a href="#InputParameter">InputParameter</a></td>
+								<td><div class="shorten">https://www.greendigitalcoalition.eu/model/InputParameter</div></td>
+								<td></td>
+								<td><a href="#InputParameter.unit">unit </a></td>
+								<td><div class="shorten">https://www.greendigitalcoalition.eu/model/unit</div></td>
+							</tr>
+						
+					
+				
+			</tr>
+		
+				
+					
+						
+					
+						
+					
+						
+					
+					
+						
+					
+						
+					
+						
+					
+					
+						
+							<tr>
+								<td><a href="#Output">Output</a></td>
+								<td><div class="shorten">https://www.greendigitalcoalition.eu/model/Output</div></td>
+								<td></td>
+								<td><a href="#Output.description">description </a></td>
+								<td><div class="shorten">http://purl.org/dc/terms/description</div></td>
+							</tr>
+						
+					
+						
+							<tr>
+								<td><a href="#Output">Output</a></td>
+								<td><div class="shorten">https://www.greendigitalcoalition.eu/model/Output</div></td>
+								<td></td>
+								<td><a href="#Output.referencedata">reference data </a></td>
+								<td><div class="shorten">https://www.greendigitalcoalition.eu/model/referenceData</div></td>
+							</tr>
+						
+					
+						
+							<tr>
+								<td><a href="#Output">Output</a></td>
+								<td><div class="shorten">https://www.greendigitalcoalition.eu/model/Output</div></td>
+								<td></td>
+								<td><a href="#Output.unit">unit </a></td>
+								<td><div class="shorten">https://www.greendigitalcoalition.eu/model/unit</div></td>
+							</tr>
+						
+					
+				
+			</tr>
+		
+				
+					
+						
+					
+						
+					
+					
+						
+					
+						
+					
+					
+						
+							<tr>
+								<td><a href="#Range">Range</a></td>
+								<td><div class="shorten">https://www.greendigitalcoalition.eu/model/Range</div></td>
+								<td></td>
+								<td><a href="#Range.maximumvalue">maximum value </a></td>
+								<td><div class="shorten">https://www.greendigitalcoalition.eu/model/maxValue</div></td>
+							</tr>
+						
+					
+						
+							<tr>
+								<td><a href="#Range">Range</a></td>
+								<td><div class="shorten">https://www.greendigitalcoalition.eu/model/Range</div></td>
+								<td></td>
+								<td><a href="#Range.minimumvalue">minimum value </a></td>
+								<td><div class="shorten">https://www.greendigitalcoalition.eu/model/minValue</div></td>
+							</tr>
+						
+					
+				
+			</tr>
+		
+				
+					
+						
+					
+						
+					
+						
+					
+						
+					
+						
+					
+						
+					
+						
+					
+						
+					
+						
+					
+						
+					
+						
+					
+						
+					
+						
+					
+						
+					
+						
+					
+						
+					
+						
+					
+						
+					
+					
+						
+					
+						
+					
+						
+					
+						
+					
+						
+					
+						
+					
+						
+					
+						
+					
+						
+					
+						
+					
+						
+					
+						
+					
+						
+					
+						
+					
+						
+					
+						
+					
+						
+					
+						
+					
+					
+						
+							<tr>
+								<td><a href="#Rule">Rule</a></td>
+								<td><div class="shorten">https://www.greendigitalcoalition.eu/model/Rule</div></td>
+								<td></td>
+								<td><a href="#Rule.category">category </a></td>
+								<td><div class="shorten">https://www.greendigitalcoalition.eu/model/category</div></td>
+							</tr>
+						
+					
+						
+							<tr>
+								<td><a href="#Rule">Rule</a></td>
+								<td><div class="shorten">https://www.greendigitalcoalition.eu/model/Rule</div></td>
+								<td></td>
+								<td><a href="#Rule.complexity">complexity </a></td>
+								<td><div class="shorten">https://www.greendigitalcoalition.eu/model/complexity</div></td>
+							</tr>
+						
+					
+						
+							<tr>
+								<td><a href="#Rule">Rule</a></td>
+								<td><div class="shorten">https://www.greendigitalcoalition.eu/model/Rule</div></td>
+								<td></td>
+								<td><a href="#Rule.created">created </a></td>
+								<td><div class="shorten">http://purl.org/dc/terms/created</div></td>
+							</tr>
+						
+					
+						
+							<tr>
+								<td><a href="#Rule">Rule</a></td>
+								<td><div class="shorten">https://www.greendigitalcoalition.eu/model/Rule</div></td>
+								<td></td>
+								<td><a href="#Rule.creator">creator </a></td>
+								<td><div class="shorten">http://purl.org/dc/terms/creator</div></td>
+							</tr>
+						
+					
+						
+							<tr>
+								<td><a href="#Rule">Rule</a></td>
+								<td><div class="shorten">https://www.greendigitalcoalition.eu/model/Rule</div></td>
+								<td></td>
+								<td><a href="#Rule.description">description </a></td>
+								<td><div class="shorten">http://purl.org/dc/terms/description</div></td>
+							</tr>
+						
+					
+						
+							<tr>
+								<td><a href="#Rule">Rule</a></td>
+								<td><div class="shorten">https://www.greendigitalcoalition.eu/model/Rule</div></td>
+								<td></td>
+								<td><a href="#Rule.examplescenario">example scenario </a></td>
+								<td><div class="shorten">https://www.greendigitalcoalition.eu/model/exampleScenario</div></td>
+							</tr>
+						
+					
+						
+							<tr>
+								<td><a href="#Rule">Rule</a></td>
+								<td><div class="shorten">https://www.greendigitalcoalition.eu/model/Rule</div></td>
+								<td></td>
+								<td><a href="#Rule.hasinputparameter">has input parameter </a></td>
+								<td><div class="shorten">https://www.greendigitalcoalition.eu/model/hasInputParameter</div></td>
+							</tr>
+						
+					
+						
+							<tr>
+								<td><a href="#Rule">Rule</a></td>
+								<td><div class="shorten">https://www.greendigitalcoalition.eu/model/Rule</div></td>
+								<td></td>
+								<td><a href="#Rule.hasoutput">has output </a></td>
+								<td><div class="shorten">https://www.greendigitalcoalition.eu/model/hasOutput</div></td>
+							</tr>
+						
+					
+						
+							<tr>
+								<td><a href="#Rule">Rule</a></td>
+								<td><div class="shorten">https://www.greendigitalcoalition.eu/model/Rule</div></td>
+								<td></td>
+								<td><a href="#Rule.hasrelated">has related </a></td>
+								<td><div class="shorten">http://purl.org/dc/terms/relation</div></td>
+							</tr>
+						
+					
+						
+							<tr>
+								<td><a href="#Rule">Rule</a></td>
+								<td><div class="shorten">https://www.greendigitalcoalition.eu/model/Rule</div></td>
+								<td></td>
+								<td><a href="#Rule.hassource">has source </a></td>
+								<td><div class="shorten">http://purl.org/dc/terms/source</div></td>
+							</tr>
+						
+					
+						
+							<tr>
+								<td><a href="#Rule">Rule</a></td>
+								<td><div class="shorten">https://www.greendigitalcoalition.eu/model/Rule</div></td>
+								<td></td>
+								<td><a href="#Rule.identifier">identifier </a></td>
+								<td><div class="shorten">http://purl.org/dc/terms/identifier</div></td>
+							</tr>
+						
+					
+						
+							<tr>
+								<td><a href="#Rule">Rule</a></td>
+								<td><div class="shorten">https://www.greendigitalcoalition.eu/model/Rule</div></td>
+								<td></td>
+								<td><a href="#Rule.impacttype">impact type </a></td>
+								<td><div class="shorten">https://www.greendigitalcoalition.eu/model/impactType</div></td>
+							</tr>
+						
+					
+						
+							<tr>
+								<td><a href="#Rule">Rule</a></td>
+								<td><div class="shorten">https://www.greendigitalcoalition.eu/model/Rule</div></td>
+								<td></td>
+								<td><a href="#Rule.modified">modified </a></td>
+								<td><div class="shorten">http://purl.org/dc/terms/modified</div></td>
+							</tr>
+						
+					
+						
+							<tr>
+								<td><a href="#Rule">Rule</a></td>
+								<td><div class="shorten">https://www.greendigitalcoalition.eu/model/Rule</div></td>
+								<td></td>
+								<td><a href="#Rule.name">name </a></td>
+								<td><div class="shorten">http://purl.org/dc/terms/title</div></td>
+							</tr>
+						
+					
+						
+							<tr>
+								<td><a href="#Rule">Rule</a></td>
+								<td><div class="shorten">https://www.greendigitalcoalition.eu/model/Rule</div></td>
+								<td></td>
+								<td><a href="#Rule.popular">popular </a></td>
+								<td><div class="shorten">https://www.greendigitalcoalition.eu/model/popular</div></td>
+							</tr>
+						
+					
+						
+							<tr>
+								<td><a href="#Rule">Rule</a></td>
+								<td><div class="shorten">https://www.greendigitalcoalition.eu/model/Rule</div></td>
+								<td></td>
+								<td><a href="#Rule.status">status </a></td>
+								<td><div class="shorten">http://www.w3.org/ns/adms#status</div></td>
+							</tr>
+						
+					
+						
+							<tr>
+								<td><a href="#Rule">Rule</a></td>
+								<td><div class="shorten">https://www.greendigitalcoalition.eu/model/Rule</div></td>
+								<td></td>
+								<td><a href="#Rule.tag">tag </a></td>
+								<td><div class="shorten">https://www.w3.org/ns/dcat#keyword</div></td>
+							</tr>
+						
+					
+						
+							<tr>
+								<td><a href="#Rule">Rule</a></td>
+								<td><div class="shorten">https://www.greendigitalcoalition.eu/model/Rule</div></td>
+								<td></td>
+								<td><a href="#Rule.version">version </a></td>
+								<td><div class="shorten">https://www.greendigitalcoalition.eu/model/version</div></td>
+							</tr>
+						
+					
+				
+			</tr>
+		
+				
+					
+						
+					
+						
+					
+						
+					
+						
+					
+					
+						
+					
+						
+					
+						
+					
+						
+					
+					
+						
+							<tr>
+								<td><a href="#Source">Source</a></td>
+								<td><div class="shorten">https://www.greendigitalcoalition.eu/model/Source</div></td>
+								<td></td>
+								<td><a href="#Source.name">name </a></td>
+								<td><div class="shorten">http://purl.org/dc/terms/title</div></td>
+							</tr>
+						
+					
+						
+							<tr>
+								<td><a href="#Source">Source</a></td>
+								<td><div class="shorten">https://www.greendigitalcoalition.eu/model/Source</div></td>
+								<td></td>
+								<td><a href="#Source.reference">reference </a></td>
+								<td><div class="shorten">http://xmlns.com/foaf/0.1/homepage</div></td>
+							</tr>
+						
+					
+						
+							<tr>
+								<td><a href="#Source">Source</a></td>
+								<td><div class="shorten">https://www.greendigitalcoalition.eu/model/Source</div></td>
+								<td></td>
+								<td><a href="#Source.region">region </a></td>
+								<td><div class="shorten">https://www.greendigitalcoalition.eu/model/region</div></td>
+							</tr>
+						
+					
+						
+							<tr>
+								<td><a href="#Source">Source</a></td>
+								<td><div class="shorten">https://www.greendigitalcoalition.eu/model/Source</div></td>
+								<td></td>
+								<td><a href="#Source.sector">sector </a></td>
+								<td><div class="shorten">https://www.greendigitalcoalition.eu/model/sector</div></td>
+							</tr>
+						
+					
+				
+			</tr>
+		
+	<tbody>
+</table>
+
+
+   
+   
+
+
+<!-- This must be at the end of the template, to ensure that the iterator properly works -->
+    <script defer>
+
+
+	    var prefixes = [ 
+{'pref':'adms:', 'ns': 'http://www.w3.org/ns/adms#'},
+{'pref':'biro:', 'ns': 'http://purl.org/spar/biro/'},
+{'pref':'cv:', 'ns': 'http://data.europa.eu/m8g/'},
+{'pref':'dcat:', 'ns': 'http://www.w3.org/ns/dcat#'},
+{'pref':'dct:', 'ns': 'http://purl.org/dc/terms/'},
+{'pref':'dpv:', 'ns': 'https://w3id.org/dpv#'},
+{'pref':'dqv:', 'ns': 'http://www.w3.org/ns/dqv#'},
+{'pref':'egdc:', 'ns': 'https://www.greendigitalcoalition.eu/model/'},
+{'pref':'foaf:', 'ns': 'http://xmlns.com/foaf/0.1/'},
+{'pref':'frapo:', 'ns': 'http://purl.org/cerif/frapo/'},
+{'pref':'it6:', 'ns': 'http://data.europa.eu/it6/'},
+{'pref':'lpwcc:', 'ns': 'https://linkedpaperswithcode.com/class/'},
+{'pref':'lpwc:', 'ns': 'https://linkedpaperswithcode.com/property/'},
+{'pref':'mls:', 'ns': 'http://www.w3.org/ns/mls#'},
+{'pref':'mlso:', 'ns': 'http://w3id.org/mlso/'},
+{'pref':'odrl:', 'ns': 'http://www.w3.org/ns/odrl/2/'},
+{'pref':'org:', 'ns': 'http://www.w3.org/ns/org#'},
+{'pref':'owl:', 'ns': 'http://www.w3.org/2002/07/owl#'},
+{'pref':'qb:', 'ns': 'http://purl.org/linked-data/cube#'},
+{'pref':'rdf:', 'ns': 'http://www.w3.org/1999/02/22-rdf-syntax-ns#'},
+{'pref':'rdfs:', 'ns': 'http://www.w3.org/2000/01/rdf-schema#'},
+{'pref':'skos:', 'ns': 'http://www.w3.org/2004/02/skos/core#'},
+{'pref':'spdx:', 'ns': 'http://spdx.org/rdf/terms#'},
+{'pref':'xsd:', 'ns': 'http://www.w3.org/2001/XMLSchema#'}
+
+				];
+
+	    function shorturl (url) {
+				var short = url;
+				for (e in prefixes) {
+				   var elem = prefixes[e];
+				   if (short.startsWith(elem.ns)) {
+  					short = elem.pref + short.slice(elem.ns.length);
+					}
+				};
+				return short;
+			};
+
+	    var shorten = document.getElementsByClassName("shorten");
+	    for (k=0;k < shorten.length ; k++){
+			var selem = shorten[k];	
+	                selem.innerHTML = shorturl(selem.innerHTML.trim());
+			}
+    </script>
+    
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.6/codemirror.min.css" />
+	<!--    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.css"> -->
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.13.2/themes/base/jquery-ui.min.css"> 
+	<!-- <script src="https://code.jquery.com/jquery-3.1.1.min.js" ></script> -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.0/jquery.min.js" ></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.6/codemirror.min.js" ></script>
+    <!--    <script src="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js" ></script> -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.13.2/jquery-ui.min.js" ></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.6/codemirror.min.js" ></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.6/mode/javascript/javascript.min.js" ></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.6/mode/turtle/turtle.min.js" ></script>
+    <script src="https://codemirror.net/5/mode/javascript/javascript.js" ></script>
+    <!--    <script src="https://semiceu.github.io/MLDCAT-AP/releases/1.0.0/example.js" ></script> -->
+	<script src="https://unpkg.com/n3@1.14.0/browser/n3.min.js"></script>
+	<script src="https://rdf.js.org/comunica-browser/versions/v4/engines/query-sparql/comunica-browser.js"></script>
+    <script src="./html/example.js" ></script>
+	<script type="text/javascript">
+		function elementInView(elem){
+				goesIn = ($(window).height() + $(window).scrollTop()) > $(elem).offset().top;
+				goesOut = ($(window).scrollTop()) > ($(elem).offset().top + $(elem).height());
+				if (goesIn && !goesOut)
+					return 1;
+				else
+					return 0;
+			};
+
+		$(window).scroll(function(){
+			$('.CodeMirror').each(function(){
+				if (elementInView($(this))){
+					$(this).each(function(i, el){
+						el.CodeMirror.refresh();
+					});
+				}
+			});
+			
+		});
+	</script>
+	<style>
+		.CodeMirror {
+			border: 1px solid #eee;
+			height: auto;
+		}
+		.buttonsample {
+			cursor: pointer;
+			margin-top: 10px;
+			margin-left: 10px;
+			font-weight: 700;
+			border:0 outset buttonface;
+			background: #F5F6F8;
+			background-image: linear-gradient(to bottom,#F5F6F8,#DBDCDE);
+			border-radius:4px;
+			box-shadow:0 1px 3px #666;
+			font-family: Arial;
+			color: grey;
+			font-size: 13px !important;
+			padding: 10px 5px;
+			text-decoration: none;
+			float: right
+		}
+		.chooseVersion {
+			cursor: pointer;
+			margin-top: 10px;
+			margin-left: 10px;
+			font-weight: 700;
+			border:0 outset buttonface;
+			background: #F5F6F8;
+			background-image: linear-gradient(to bottom,#F5F6F8,#DBDCDE);
+			border-radius:4px;
+			box-shadow:0 1px 3px #666;
+			font-family: Arial;
+			color: grey;
+			font-size: 13px !important;
+			padding: 10px 5px;
+			text-decoration: none;
+			float: right
+		}
+		.infosample {
+			cursor: pointer;
+			margin-top: 10px;
+			font-weight: 700;
+			border:0 outset buttonface;
+			border-radius:4px;
+			font-family: Arial;
+			color: grey;
+			font-size: 14px;
+			padding: 10px 0px;
+			text-decoration: none;
+			float: right
+		}
+		.buttonsample:hover {color:#2a70d3}
+		.tabsstyle {
+			padding: 10px;
+			overflow: hidden;
+		}
+		li.ui-tabs-tab > a:hover {
+			background-color:dodgerblue;
+			color:white;
+		}
+		table.simple {
+			font-size: small;
+			border-spacing:0;
+			border-collapse:collapse;
+			border-bottom:3px solid #005a9c
+		}
+		.simple th{background:#005a9c;color:#fff;padding:3px 5px;text-align:left}
+		.simple th a{color:#fff;padding:3px 5px;text-align:left}
+		.simple th[scope=row]{background:inherit;color:inherit;border-top:1px solid #ddd}
+		.simple td{padding:3px 10px;border-top:1px solid #ddd}
+		.simple tr:nth-child(even){background:#f0f6ff}
+		body.darkmode .simple th{background:#005a9c94;color:#ddd}
+		body.darkmode .simple th a{color:#ddd}
+		body.darkmode .simple tr:nth-child(even){background:#f0f6ff26}
+		body.darkmode :is(h4,h5,h6)+a.self-link::before {
+			color: var(--heading-text);
+		}
+		body.darkmode img {
+			background: none;
+		}
+		body.darkmode section#references :target {
+			background: #04162d;
+		}
+	</style>
+
+	<link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/2.2.2/css/dataTables.dataTables.min.css">
+	<link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/buttons/3.2.2/css/buttons.dataTables.min.css">
+	<script type="text/javascript" language="javascript" src="https://cdn.datatables.net/2.2.2/js/dataTables.min.js"></script>
+	<script type="text/javascript" language="javascript" src="https://cdn.datatables.net/buttons/3.2.2/js/dataTables.buttons.min.js"></script>
+	<script type="text/javascript" language="javascript" src="https://cdn.datatables.net/buttons/3.2.2/js/buttons.dataTables.js"></script>
+	<script type="text/javascript" language="javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.10.1/jszip.min.js"></script>
+	<script type="text/javascript" language="javascript" src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.2.7/pdfmake.min.js"></script>
+	<script type="text/javascript" language="javascript" src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.2.7/vfs_fonts.js"></script>
+	<script type="text/javascript" language="javascript" src="https://cdn.datatables.net/buttons/3.2.0/js/buttons.html5.min.js"></script>
+	<script type="text/javascript" language="javascript" src="https://cdn.datatables.net/buttons/3.2.0/js/buttons.print.min.js"></script>
+</html>
