@@ -2,11 +2,11 @@
 <xs:schema xmlns="https://data.europa.eu/m8g/xml/" xmlns:xs="http://www.w3.org/2001/XMLSchema" targetNamespace="https://data.europa.eu/m8g/xml/" version="2.0.0" elementFormDefault="qualified" attributeFormDefault="unqualified" xmlns:cv="https://data.europa.eu/m8g/xml/">
   <xs:element name="Evidence" type="EvidenceType"/>
   <xs:element name="GenericDate" type="GenericDateType"/>
+  <xs:element name="Attribute" type="AttributeType"/>
   <xs:element name="AttributeSet" type="AttributeSetType"/>
   <xs:element name="Birth" type="BirthType"/>
   <xs:element name="EvidenceOfBirth" type="EvidenceOfBirthType"/>
   <xs:element name="OotsEvidence" type="OotsEvidenceType"/>
-  <xs:element name="HttpdataEuropaEup4Sattribute" type="HttpdataEuropaEup4SattributeType"/>
   <xs:element name="Location" type="LocationType"/>
   <xs:element name="Text" type="TextType"/>
   <xs:element name="Code" type="CodeType"/>
@@ -45,9 +45,17 @@
       </xs:annotation>
     </xs:attribute>
   </xs:complexType>
+  <xs:complexType name="AttributeType">
+    <xs:sequence/>
+    <xs:attribute name="AttributeRef" type="xs:IDREF">
+      <xs:annotation>
+        <xs:documentation xml:lang="en">Reference to Attribute ID</xs:documentation>
+      </xs:annotation>
+    </xs:attribute>
+  </xs:complexType>
   <xs:complexType name="AttributeSetType">
     <xs:sequence>
-      <xs:element name="hasAttribute" ref="Http://dataEuropaEu/p4S/attributeType" maxOccurs="1" minOccurs="1">
+      <xs:element name="hasAttribute" ref="AttributeType" maxOccurs="unbounded" minOccurs="1">
         <xs:annotation>
           <xs:documentation xml:lang="en">The optional property that provides additional descriptive information.</xs:documentation>
         </xs:annotation>
@@ -118,14 +126,6 @@
     <xs:attribute name="OotsEvidenceRef" type="xs:IDREF">
       <xs:annotation>
         <xs:documentation xml:lang="en">Reference to OotsEvidence ID</xs:documentation>
-      </xs:annotation>
-    </xs:attribute>
-  </xs:complexType>
-  <xs:complexType name="HttpdataEuropaEup4SattributeType">
-    <xs:sequence/>
-    <xs:attribute name="HttpdataEuropaEup4SattributeRef" type="xs:IDREF">
-      <xs:annotation>
-        <xs:documentation xml:lang="en">Reference to HttpdataEuropaEup4Sattribute ID</xs:documentation>
       </xs:annotation>
     </xs:attribute>
   </xs:complexType>
