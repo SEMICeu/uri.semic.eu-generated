@@ -75,13 +75,21 @@
 
 
     var respecConfig = {
-      postProcess: [quickreference],
-      edDraftURI: "https://semiceu.github.io/StatDCAT-AP/drafts/3.0.0",
+      postProcess: [quickreference, setupTurtleHighlighting],
+      edDraftURI: "",
+      thisVersionURI: "https://semiceu.github.io/StatDCAT-AP/drafts/3.0.0",
+      prevVersionURI: "",
       latestVersion: "",
       specStatus: "base",
       publishDate: "2026-01-12",
       editors: myeditors,
       authors: myauthors,
+      otherLinks: [
+        {
+          key: "Owners:",
+          data: myowners
+        }
+      ],
       github: "SEMICeu/StatDCAT-AP",
       shortName: "StatDCAT-AP 3.0.0",
       xref: "web-platform",
@@ -94,10 +102,30 @@
         width: 154,
         height: 140,
         id: "semic-logo",
-      },],
+      }],
       generatedSubtitle: "",
       additionalCopyrightHolders: "",
       localBiblio: {
+        "PROV": {
+          "href" : "http://www.w3.org/TR/prov-o/",
+          "title" : "PROV-O: The PROV Ontology",
+          "publisher" : "W3C"
+          },
+        "VCARD": {
+          "href" : "https://www.w3.org/TR/vcard-rdf/",
+          "title" : "vCard Ontology - for describing People and Organizations",
+          "publisher" : "W3C"
+          },
+        "ORG": {
+          "href" : "http://www.w3.org/TR/vocab-org/",
+          "title" : "The Organization Ontology",
+          "publisher" : "W3C"
+          },
+        "DXWG": {
+          "href" : "https://www.w3.org/2017/dxwg/wiki/Main_Page",
+          "title" : "Dataset Exchange Working Group",
+          "publisher" : "W3C"
+          },
         "ISA":{
            "href":"https://ec.europa.eu/isa/",
            "title":"Interoperability Solutions for European Public Administrations (ISA)",
@@ -109,8 +137,8 @@
           "publisher":"European Commission"
         },
         "SEMIC":{
-          "href":"https://ec.europa.eu/isa2/actions/improving-semantic-interoperability-european-egovernment-systems_en",
-          "title":"Interoperability solutions for public administrations, businesses and citizens (ISA²). Improving semantic interoperability in European eGovernment systems",
+          "href":"https://joinup.ec.europa.eu/",
+          "title":"JoinUp welcomes Interoperable Europe",
           "publisher":"European Commission"
          },
         "DEU" : {
@@ -118,57 +146,771 @@
           "title":"The official portal for European data",
           "publisher":"European Commission"
         },
-        "ADMS1" : {
-          "href" : "https://joinup.ec.europa.eu/collection/support-centre/solution/asset-description-metadata-schema-adms/release/100",
-          "title" : "ADMS 1.00, 1ste version of ADMS as defined by the European Commission ISA Programme",
-          "publisher" : "European Commission"
-        },
-        "WG-GLD" : {
-          "href" : "http://www.w3.org/2011/gld/",
-          "title" : "Government Linked Data Working Group (Closed community group)",
-          "publisher" : "W3C"
-        },
-        "NAL-FileType" : {
-          "href" : "http://publications.europa.eu/resource/authority/file-type",
-          "title" : "Named Authority List File Type",
-          "publisher" : "Publication Office of the EU, EU Vocabularies"
-        },
-        "NAL-Licence" : {
-          "href" : "http://publications.europa.eu/resource/authority/licence",
-          "title" : "Named Authority List Licence", 
-          "publisher" : "Publication Office of the EU, EU Vocabularies"
-        },
-        "codelist-adms" : {
-          "href" : "purl.org/adms/",
-          "title" : "Controlled Vocabularies supporting the ADMS vocabulary.",
-          "publisher" : "European Commission, Interoperable Europe"
-        },
-        "IdentifierGuidelines":{
-          "href":"https://github.com/SEMICeu/DCAT-AP/blob/2.x.y-draft/releases/2.x.y/usageguide-identifiers.md",
-          "title":"Guidelines on the management of identifiers",
-          "publisher":"European Commission"
-         },
-        "HVD" : {
-           "href":"https://eur-lex.europa.eu/legal-content/EN/TXT/?uri=CELEX:32023R0138",
-           "title" : "Implementing Regulation for High Value Datasets",
-           "publisher":"European Commission"
-        },
-        "EU-DIGI-STRAT" : {
-            "href"  : "https://commission.europa.eu/strategy-and-policy/priorities-2019-2024/europe-fit-digital-age_en",
-           "title"  : "Digital Strategy for Europe",
-           "publisher": "European Commission"
-        },
-        "SDG" : {
-           "href" : "https://eur-lex.europa.eu/eli/reg_impl/2020/1121/oj",
-           "title" : "Single Digital Gateway Implementing Regulation",
-           "publisher" : "European Commission"
-        },
-        "OOTS" : {
-           "href" : "https://ec.europa.eu/digital-building-blocks/wikis/display/OOTS/About+OOTS#",
-           "title" : "Once-Only Technical System, the EU hub for the Single Digital Gateway",
-           "publisher" : "European Commision"
-       }
+		"HVD" : {
+		  "href":"https://eur-lex.europa.eu/legal-content/EN/TXT/?uri=CELEX:32023R0138",
+		  "title":"Implementing Regulation for High Value Datasets",
+		  "publisher":"European Union"
+		},
+		"DCAT-AP-HVD" : {
+		  "href":"https://semiceu.github.io/DCAT-AP/releases/3.0.0-hvd/",
+		  "title":"Usage Guidelines of DCAT-AP for High-Value Datasets",
+		  "publisher":"European Commission"
+		},
+    "LOCN" : {
+		  "href":"https://semiceu.github.io/Core-Location-Vocabulary/releases/2.1.0/",
+		  "title":"Core Location Vocabulary 2.1.0",
+		  "publisher":"European Commission"
+		},
+    "PSI" : {
+      "href": "https://eur-lex.europa.eu/eli/dir/2019/1024/oj",
+      "title" :  "Directive on open data and the re-use of public sector information (recast)",
+      "publisher" : "European Union"
+    },
+    "MASTADS" : {
+      "href": "https://archive.stsci.edu/pub_dsn.html",
+      "title" :  "Referencing Data Sets in Astronomical Literature",
+      "publisher" : "MAST"
+    },
+    "DATACITE" : {
+      "href": "http://www.datacite.org/",
+      "title" :  "DataCite",
+      "publisher" : "DataCite"
+    },
+    "DOI" : {
+      "href": "http://www.doi.org/",
+      "title" :  "Digital Object Identifier",
+      "publisher" : "DOI Foundation"
+    },
+    "EZID" : {
+      "href": "https://ezid.cdlib.org/",
+      "title" :  "EZID",
+      "publisher" : "California Digital Library"
+    },
+    "W3ID" : {
+      "href": "https://w3id.org/",
+      "title" :  "Permanent Identifiers for the Web",
+      "publisher" : "W3C Permanent Identifier Community Group"
+    },
+    "ODRL" : {
+      "href": "https://www.w3.org/ns/odrl/2/",
+      "title" :  "The Open Digital Rights Language Ontology Version 2.2",
+      "publisher" : "W3C POE Working Group"
+    },
+    "FAIR" : {
+      "href": "https://www.openaire.eu/how-to-make-your-data-fair",
+      "title" :  "How to make your data FAIR",
+      "publisher" : "OpenAire"
+    },    
+
+      "ADMS-SKOS":{
+        "href":"https://joinup.ec.europa.eu/svn/adms/ADMS_v1.00/ADMS_SKOS_v1.00.html",
+        "title":"Joinup. ADMS Controlled Vocabularies",
+        "publisher":"European Commission",
+      },
+      "CLD-FREQ": {
+        "href":"http://dublincore.org/groups/collections/frequency/",
+        "title":"Dublin Core Collection Description Frequency Vocabulary",
+        "authors":["Dublin Core Collection Description Task Group"],
+        "publisher":"Dublin Core Metadata Initiative",
+        "date":"9 March 2007"
+      },
+      "DataCite2RDF": {
+        "href":"https://doi.org/10.6084/m9.figshare.2075356",
+        "title":"DataCite2RDF: Mapping DataCite Metadata Schema 3.1 Terms to RDF. Version 3.3",
+        "authors":["Silvio Peroni","David Shotton","Jan Ashton","Amy Barton","Egbert Gramsbergen","Marie-Christine Jacquemot"],
+        "date":"2016"
+      },
+      "DC2AP": {
+        "href":"https://groups.google.com/a/datacite.org/group/dc2map/attach/624ec3cd533a3/DataCite%20Dublin%20Core%20AP%20-%20Draft%201_8.pdf",
+        "title":"DataCite Dublin Core Application Profile (DC2AP). Version 1.8",
+        "authors":["DataCite Metadata Working Group"],
+        "date":"3 February 2016"
+      },
+      "ELI": {
+        "href":"https://eurlex.europa.eu/eli",
+        "title":"European Legislation Identifier (ELI)",
+        "publisher":"Publications Office of the European Union",
+      },
+      "ELI-ONTOLOGY": {
+        "href":"https://op.europa.eu/en/web/eu-vocabularies/at-dataset/-/resource/dataset/eli",
+        "title":"ELI Metadata Ontology",
+        "publisher":"Publications Office of the European Union",
+      },
+      "ELI-TG": {
+        "href":"https://doi.org/10.2830/51169",
+        "title":"ELI technical guide",
+        "publisher":"Publications Office of the European Union",
+        "date":"2018"
+      },
+      "ELI-GP": {
+        "href":"https://doi.org/10.2830/44907",
+        "title":"ELI, the European legislation identifier – Good practices and guidelines",
+        "publisher":"Publications Office of the European Union",
+        "date":"2018"
+      },
+      "ELI-CONCL-20121026": {
+        "href":"https://eur-lex.europa.eu/legal-content/EN/ALL/?uri=CELEX:52012XG1026(01)",
+        "title":"Council conclusions inviting the introduction of the European Legislation Identifier (ELI)",
+        "publisher":"OJ C 325",
+        "date":"26 October 2012"
+      },
+      "ELI-CONCL-20171106": {
+        "href":"https://eur-lex.europa.eu/legal-content/EN/TXT/?uri=CELEX:52017XG1222(02)",
+        "title":"Council conclusions of 6 November 2017 on the European Legislation Identifier",
+        "publisher":"OJ C 441",
+        "date":"6 November 2017"
+      },
+      "EPRINTS-AR": {
+        "href":"http://purl.org/eprint/accessRights/",
+        "title":"Eprints AccessRights Vocabulary Encoding Scheme",
+        "date":"14 May 2008"
+      },
+      "EPSG-RDF":{
+        "href":"https://github.com/semiceu/epsg-to-rdf/",
+        "title":"Proof of concept for the RDF representation of the OGC EPSG register of coordinate reference systems",
+        "publisher":"European Commission",
+       },
+      "EU-OD-DIR": {
+        "href":"http://data.europa.eu/eli/dir/2019/1024/oj",
+        "title":"Directive (EU) 2019/1024 of the European Parliament and of the Council of 20 June 2019 on open data and the re-use of public sector information",
+        "publisher":"OJ L 172",
+        "date":"20 June 2019"
+      },
+      "EU-REPO-AR": {
+        "href":"https://wiki.surfnet.nl/display/standards/info-eu-repo#info-eu-repo-AccessRights",
+        "title":"EU-Repo: Access Rights",
+        "date":"17 April 2018"
+      },
+      "FAIR" : {
+        "title":"The FAIR Guiding Principles for scientific data management and stewardship",
+        "authors":["Mark D. Wilkinson"],
+        "etAl": true,
+        "status":"Scientific Data, vol. 3, Article nr. 160018",
+        "publisher":"Nature",
+        "href":"https://doi.org/10.1038/sdata.2016.18"
+      },
+      "FRAPO": {
+        "href":"http://purl.org/cerif/frapo",
+        "title":"FRAPO, the Funding, Research Administration and Projects Ontology",
+        "authors":["David Shotton"],
+        "publisher":"SPAR Ontologies",
+        "status":"Namespace Document",
+        "date":"4 September 2017"
+      },
+      "FRBR": {
+        "href":"http://purl.org/vocab/frbr/core#",
+        "title":"Expression of Core FRBR Concepts in RDF",
+        "authors":["Ian Davis","Richard Newman"],
+        "publisher":"Vocab.org",
+        "status":"Namespace Document",
+        "date":"2005"
+      },
+      "GeoDCAT-ACV":{
+        "href":"https://joinup.ec.europa.eu/node/148245/",
+        "title":"Joinup. GeoDCAT-AP: Alignment of controlled vocabularies",
+        "publisher":"European Commission",
+       },
+      "GeoDCAT-XSLT":{
+        "href":"https://github.com/semiceu/iso-19139-to-dcat-ap/",
+        "title":"Reference XSLT-based implementation of GeoDCAT-AP",
+        "publisher":"European Commission",
+       },
+      "GEOHASH":{
+        "href":"http://en.wikipedia.org/wiki/Geohash",
+        "title":"Geohash",
+        "publisher":"Wikipedia"
+       },
+      "GEOHASH-36":{
+        "href":"http://en.wikipedia.org/wiki/Geohash-36",
+        "title":"Geohash-36",
+        "publisher":"Wikipedia"
+       },
+      "GEOJSON":{
+        "href":"http://geojson.org/geojson-spec.html",
+        "title":"The GeoJSON Format Specification",
+        "authors":["Howard Butler","Martin Daly","Allan Doyle","Sean Gillies","Tim Schaub","Christopher Schmidt"],
+        "date":"16 June 2008"
+      },
+      "GEONAMES":{
+        "href":"http://geonames.org/",
+        "title":"Geonames"
+       },
+      "iiWAS17-JRC": {
+        "href": "https://doi.org/10.1145/3151759.3151810",
+        "title": "The JRC multidisciplinary research data infrastructure",
+        "authors": ["Anders Friis-Christensen"],
+        "etAl": true,
+        "publisher":"19th International Conference on Information Integration and Web-based Applications & Services (iiWAS'17). Salzburg, Austria, 4-6 Dec 2017 ",
+        "date": "2017"
+      },
+      "INSPIRE-CAU": {
+        "href":"http://inspire.ec.europa.eu/metadata-codelist/ConditionsApplyingToAccessAndUse",
+        "title":"INSPIRE Registry: Conditions applying to access and use",
+        "publisher":"European Commission"
+      },
+      "INSPIRE-DC": {
+        "href":"https://inspire.ec.europa.eu/reports/ImplementingRules/metadata/MD_IR_and_DC_state%20of%20progress.pdf",
+        "title":"State of progress in the development of guidelines to express elements of the INSPIRE metadata implementing rules using ISO 15836 (Dublin core)",
+        "publisher":"European Commission",
+        "date":"6 May 2008"
+      },
+      "INSPIRE-DCAT": {
+        "href":"https://ies-svn.jrc.ec.europa.eu/projects/metadata/wiki/Alignment_of_INSPIRE_metadata_with_DCAT-AP",
+        "title":"Alignment of INSPIRE metadata with DCAT-AP",
+        "publisher":"European Commission",
+        "date":"2014"
+      },
+      "INSPIRE-DIR": {
+        "href":"http://data.europa.eu/eli/dir/2007/2",
+        "title":"DIRECTIVE 2007/2/EC OF THE EUROPEAN PARLIAMENT AND OF THE COUNCIL of 14 March 2007 establishing an Infrastructure for Spatial Information in the European Community (INSPIRE)",
+        "publisher":"OJ L 108",
+        "date":"25 April 2007"
+      },
+      "INSPIRE-GLOSSARY": {
+        "href":"http://inspire.ec.europa.eu/glossary",
+        "title":"INSPIRE Glossary",
+        "publisher":"European Commission"
+      },
+      "INSPIRE-LPA": {
+        "href":"http://inspire.ec.europa.eu/metadata-codelist/LimitationsOnPublicAccess",
+        "title":"INSPIRE Registry: Limitations on public access",
+        "publisher":"European Commission"
+      },
+      "INSPIRE-MD": {
+        "href":"https://inspire-mif.github.io/technical-guidelines/metadata/",
+        "title":"Technical Guidance for the implementation of INSPIRE dataset and service metadata based on ISO/TS 19139:2007. Version 2.2.0",
+        "publisher":"European Commission",
+        "date":"31 January 2024"
+      },
+      "INSPIRE-MD-REG": {
+        "href":"http://data.europa.eu/eli/reg/2008/1205",
+        "title":"Commission Regulation (EC) No 1205/2008 of 3 December 2008 implementing Directive 2007/2/EC of the European Parliament and of the Council as regards metadata",
+        "publisher":"OJ L 326",
+        "date":"4 December 2008"
+      },
+      "INSPIRE-MT": {
+        "href":"http://inspire.ec.europa.eu/media-types",
+        "title":"INSPIRE Media Type Register",
+        "publisher":"European Commission",
+        "date":"7 November 2011"
+      },
+      "INSPIRE-PV": {
+        "href":"https://inspire.ec.europa.eu/metadata-codelist/ProtocolValue",
+        "title":"INSPIRE Registry: Protocol values",
+        "publisher":"European Commission"
+      },
+      "INSPIRE-DS": {
+        "href":"https://inspire.ec.europa.eu/documents/Network_Services/TechnicalGuidance_DiscoveryServices_v3.1.pdf",
+        "title":"Technical Guidance for the implementation of INSPIRE Discovery Services. Version 3.1",
+        "publisher":"European Commission",
+        "date":"7 November 2011"
+      },
+      "INSPIRE-DoC": {
+        "href":"http://inspire.ec.europa.eu/metadata-codelist/DegreeOfConformity",
+        "title":"INSPIRE Registry: Degrees of conformity",
+        "publisher":"European Commission"
+      },
+      "INSPIRE-MF": {
+        "href":"http://inspire.ec.europa.eu/metadata-codelist/MaintenanceFrequency",
+        "title":"INSPIRE Registry: Maintenance Frequency",
+        "publisher":"European Commission"
+      },
+      "INSPIRE-RPR": {
+        "href":"http://inspire.ec.europa.eu/metadata-codelist/ResponsiblePartyRole",
+        "title":"INSPIRE Registry: Responsible party roles",
+        "publisher":"European Commission"
+      },
+      "INSPIRE-SDSC": {
+        "href":"http://inspire.ec.europa.eu/metadata-codelist/SpatialDataServiceCategory",
+        "title":"INSPIRE Registry: Classification of spatial data services",
+        "publisher":"European Commission"
+      },
+      "INSPIRE-SRT": {
+        "href":"http://inspire.ec.europa.eu/metadata-codelist/SpatialRepresentationType",
+        "title":"INSPIRE Registry: Spatial Representation Types",
+        "publisher":"European Commission"
+      },
+      "INSPIRE-THEMES": {
+        "href":"http://inspire.ec.europa.eu/theme",
+        "title":"INSPIRE Registry: INSPIRE themes",
+        "publisher":"European Commission"
+      },
+      "INSPIRE-TC": {
+        "href":"http://inspire.ec.europa.eu/metadata-codelist/TopicCategory",
+        "title":"INSPIRE Registry: Topic categories in accordance with EN ISO 19115",
+        "publisher":"European Commission"
+      },
+      "INSPIRE-SDST": {
+        "href":"http://inspire.ec.europa.eu/metadata-codelist/SpatialDataServiceType",
+        "title":"INSPIRE Registry: Spatial data service types",
+        "publisher":"European Commission"
+      },
+      "INSPIRE-RPR": {
+        "href":"http://inspire.ec.europa.eu/metadata-codelist/ResponsiblePartyRole",
+        "title":"INSPIRE Registry: Responsible party roles",
+        "publisher":"European Commission"
+      },
+      "INSPIRE-RT": {
+        "href":"http://inspire.ec.europa.eu/metadata-codelist/ResourceType",
+        "title":"INSPIRE Registry: Resource types",
+        "publisher":"European Commission"
+      },
+      "INSPIRE-SDSS-REG": {
+        "href":"http://data.europa.eu/eli/reg/2010/1089",
+        "title":"Commission Regulation (EU) No 1089/2010 of 23 November 2010 implementing Directive 2007/2/EC of the European Parliament and of the Council as regards interoperability of spatial data sets and services",
+        "publisher":"OJ L 323",
+        "date":"8 December 2010"
+      },
+      "OGC-EPSG": {
+        "href":"http://www.opengis.net/def/crs/EPSG/",
+        "title":"EPSG CRS Register",
+        "publisher":"OGC"
+      },
+      "ISO-8061": {
+        "authors": [
+            "ISO/TC 154"
+        ],
+        "href": "https://www.iso.org/standard/40874.html",
+        "title": "Data elements and interchange formats -- Information interchange -- Representation of dates and times",
+        "publisher": "ISO",
+        "status": "International Standard",
+        "date": "2004",
+        "isoNumber": "ISO 8061:2004"
+      },
+      "JRC-DP": {
+        "href": "https://doi.org/10.2788/607378",
+        "title": "JRC Data Policy",
+        "authors": ["Catherine Doldirina"],
+        "etAl": true,
+        "publisher":"Publications Office of the European Union",
+        "date": "2015"
+      },
+      "KML": {
+        "href": "http://www.opengeospatial.org/standards/kml",
+        "title": "OGC KML 2.3",
+        "authors": ["David Burggraf"],
+        "publisher":"OGC",
+        "date": "4 August 2015"
+      },
+      "LD-BOOK": {
+        "href":"http://linkeddatabook.com/",
+        "title":"Linked Data: Evolving the Web into a Global Data Space",
+        "authors":["Tom Heath","Christian Bizer"],
+        "publisher":"Morgan & Claypool",
+        "date":"2011"
+      },
+      "LINK-PROP":{
+        "href":"https://github.com/OSGeo/Cat-Interop/blob/master/LinkPropertyLookupTable.csv",
+        "title":"Link properties",
+        "publisher":"OSGeo"
+      },
+      "EUV-AR":{
+        "href":"https://publications.europa.eu/en/web/eu-vocabularies/at-dataset/-/resource/dataset/access-right",
+        "title":"Named Authority List: Access rights",
+        "publisher":"Publications Office of the European Union"
+       },
+      "EUV-CB":{
+        "href":"https://publications.europa.eu/en/web/eu-vocabularies/at-dataset/-/resource/dataset/corporate-body",
+        "title":"Named Authority List: Corporate bodies",
+        "publisher":"Publications Office of the European Union"
+       },
+      "EUV-CONT":{
+        "href":"https://publications.europa.eu/en/web/eu-vocabularies/at-dataset/-/resource/dataset/continent",
+        "title":"Named Authority List: Continents",
+        "publisher":"Publications Office of the European Union"
+       },
+      "EUV-COUNTRIES":{
+        "href":"https://publications.europa.eu/en/web/eu-vocabularies/at-dataset/-/resource/dataset/country",
+        "title":"Named Authority List: Countries",
+        "publisher":"Publications Office of the European Union"
+       },
+      "EUV-DS":{
+        "href":"https://publications.europa.eu/en/web/eu-vocabularies/at-dataset/-/resource/dataset/dataset-status",
+        "title":"Named Authority List: Dataset status",
+        "publisher":"Publications Office of the European Union"
+       },
+      "EUV-DISTS":{
+        "href":"https://publications.europa.eu/en/web/eu-vocabularies/at-dataset/-/resource/dataset/distribution-status",
+        "title":"Named Authority List: Distribution status",
+        "publisher":"Publications Office of the European Union"
+       },
+      "EUV-DT":{
+        "href":"https://publications.europa.eu/en/web/eu-vocabularies/at-dataset/-/resource/dataset/distribution-type",
+        "title":"Named Authority List: Distribution types",
+        "publisher":"Publications Office of the European Union"
+       },
+      "EUV-EUROVOC":{
+        "href":"https://publications.europa.eu/en/web/eu-vocabularies/th-dataset/-/resource/dataset/eurovoc",
+        "title":"EuroVoc",
+        "publisher":"Publications Office of the European Union"
+       },
+      "EUV-FREQ":{
+        "href":"https://publications.europa.eu/en/web/eu-vocabularies/at-dataset/-/resource/dataset/frequency",
+        "title":"Named Authority List: Frequencies",
+        "publisher":"Publications Office of the European Union"
+       },
+      "EUV-FT":{
+        "href":"https://publications.europa.eu/en/web/eu-vocabularies/at-dataset/-/resource/dataset/file-type",
+        "title":"Named Authority List: File types",
+        "publisher":"Publications Office of the European Union"
+       },
+      "EUV-LANG":{
+        "href":"https://publications.europa.eu/en/web/eu-vocabularies/at-dataset/-/resource/dataset/language",
+        "title":"Named Authority List: Languages",
+        "publisher":"Publications Office of the European Union"
+       },
+      "EUV-LICENCES":{
+        "href":"https://publications.europa.eu/en/web/eu-vocabularies/at-dataset/-/resource/dataset/licence",
+        "title":"Named Authority List: Licences",
+        "publisher":"Publications Office of the European Union"
+       },
+      "EUV-PAV":{
+        "href":"https://op.europa.eu/en/web/eu-vocabularies/at-dataset/-/resource/dataset/planned-availability",
+        "title":"Named Authority List: Planned availability",
+        "publisher":"Publications Office of the European Union"
+       },
+      "EUV-PLACES":{
+        "href":"https://publications.europa.eu/en/web/eu-vocabularies/at-dataset/-/resource/dataset/place",
+        "title":"Named Authority List: Places",
+        "publisher":"Publications Office of the European Union"
+       },
+      "EUV-ROLES":{
+        "href":"https://publications.europa.eu/en/web/eu-vocabularies/at-dataset/-/resource/dataset/role",
+        "title":"Named Authority List: Roles",
+        "publisher":"Publications Office of the European Union"
+       },
+      "EUV-THEMES":{
+        "href":"https://publications.europa.eu/en/web/eu-vocabularies/at-dataset/-/resource/dataset/data-theme",
+        "title":"Named Authority List: Data Themes",
+        "publisher":"Publications Office of the European Union"
+       },
+      "NEOGEO": {
+        "href": "http://geovocab.org/doc/neogeo/",
+        "title": "NeoGeo Vocabulary Specification - Madrid Edition",
+        "authors": ["Juan Martín Salas","Andreas Harth"],
+        "publisher":"GeoVocab.org",
+        "date": "25 February 2012"
+      },
+      "OpenSearch": {
+         "authors": [
+           "DeWitt Clinton"
+         ],
+         "href":"https://github.com/dewitt/opensearch/blob/master/opensearch-1-1-draft-6.md",
+         "title":"OpenSearch 1.1 Draft 6",
+         "date":"17 April 2018",
+         "publisher":"OpenSearch"
+      },
+      "SCHEMA-ORG":{
+        "href":"http://schema.org/",
+        "title":"Schema.org"
+      },
+      "SCoRO": {
+        "href":"http://purl.org/spar/scoro#",
+        "title":"Scholarly Contributions and Roles Ontology (SCoRO)",
+        "authors":["David Shotton","Silvio Peroni"],
+        "publisher":"SPAR Ontologies",
+        "status":"Namespace Document",
+        "date":"2017"
+      },
+      "SDMX":{
+        "href":"https://sdmx.org/",
+        "title":"Statistical Data and Metadata eXchange (SDMX)",
+        "publisher":"SDMX"
+      },
+      "SDSVoc16-27": {
+        "href": "https://www.w3.org/2016/11/sdsvoc/SDSVoc16_paper_27",
+        "title": "Using DCAT-AP for research data",
+        "authors": ["Andrea Perego"],
+        "etAl": true,
+        "publisher":"Smart Descriptions & Smarter Vocabularies (SDSVoc). Amsterdam, 30 Nov - 1 Dec 2016",
+        "date": "2016"
+      },
+      "SPDX":{
+        "href":"http://spdx.org/rdf/terms#",
+        "title":"SPDX 2.2",
+        "publisher":"SPDX"
+      },
+      "UNSD-M49":{
+        "href":"https://unstats.un.org/unsd/methodology/m49/",
+        "title":"Methodology - Standard country or area codes for statistical use (M49)",
+        "publisher":"United Nations Statistics Division"
+       },
+
+      "INTEROPERABLE-EUROPE":{
+        "href":"https://joinup.ec.europa.eu/interoperable-europe",
+        "title":"Interoperable Europe",
+        "publisher":"European Commission"
+       },
+      "ISA":{
+        "href":"https://ec.europa.eu/isa/",
+        "title":"Interoperability Solutions for European Public Administrations (ISA)",
+        "publisher":"European Commission"
+       },
+      "ISA2":{
+        "href":"https://ec.europa.eu/isa2/",
+        "title":"Interoperability solutions for public administrations, businesses and citizens (ISA²)",
+        "publisher":"European Commission"
+       },
+      "SEMIC":{
+        "href":"https://ec.europa.eu/isa2/actions/improving-semantic-interoperability-european-egovernment-systems_en",
+        "title":"Interoperability solutions for public administrations, businesses and citizens (ISA²). Improving semantic interoperability in European eGovernment systems",
+        "publisher":"European Commission"
+       },
+      "Vickery":{
+        "href":"http://ec.europa.eu/information_society/policy/psi/docs/pdfs/report/final_version_study_psi.docx",
+        "title":"Review of recent studies on PSI reuse and related market developments",
+        "authors":["Graham Vickery"],
+        "nopublisher":"European Commission"
+       },
+      "EC-OD-COM":{
+        "href":"http://ec.europa.eu/information_society/policy/psi/docs/pdfs/opendata2012/open_data_communication/en.pdf",
+        "title":"Communication on Open Data",
+        "publisher":"European Commission"
+       },
+      "DCAT-AP-CRMP":{
+        "href":"https://joinup.ec.europa.eu/collection/semantic-interoperability-community-semic/solution/dcat-application-profile-data-portals-europe/document/change-and-release-management-policy-dcat-ap",
+        "title":"Joinup. Change and Release Management Policy for DCAT-AP",
+        "publisher":"European Commission"
+       },
+      "DXWG":{
+        "href":"https://www.w3.org/2017/dxwg/",
+        "title":"Dataset Exchange Working Group (DXWG)",
+        "publisher":"W3C"
+       },
+      "GLD":{
+        "href":"https://www.w3.org/2011/gld/",
+        "title":"Government Linked Data (GLD) Working Group",
+        "publisher":"W3C"
+       },
+      "GeoDCAT-AP-RPR": {
+        "href":"https://joinup.ec.europa.eu/discussion/geodcat-ap-how-express-different-responsible-party-roles-supported-iso-19115-inspire",
+        "title":"Joinup. DCAT application profile for data portals in Europe. GeoDCAT-AP – How to express the different responsible party roles supported in ISO 19115 / INSPIRE",
+        "publisher":"European Commission"
+      },
+      "VOCAB-DCAT-QA": {
+        "title":"Data Catalog Vocabulary (DCAT) - Version 2. Section 13.1",
+        "href":"https://www.w3.org/TR/vocab-dcat-2/#qualified-attribution",
+        "publisher":"W3C"
+      },
+      "MARC-REL": {
+        "href":"http://loc.gov/marc/relators/relaterm.html",
+        "title":"MARC Code List for Relators",
+        "publisher":"Library of Congress"
+      },
+      "DataCite-Types": {
+        "href":"https://schema.datacite.org/meta/kernel-3/doc/DataCite-MetadataKernel_v3.1.pdf",
+        "title":"DataCite Metadata Schema for the Publication and Citation of Research Data, version 3.1. Appendix 1, table 5",
+        "publisher":"DataCite"
+      },
+      "CLDR": {
+        "href":"http://unicode.org/cldr/trac/browser/trunk/common/bcp47/transform_mt.xml",
+        "title":"CLDR - Unicode Common Locale Data Repository. BCP47, transform_mt.xml",
+        "publisher":"UNICODE Consortium"
+      },
+      "CONNEG": {
+        "href":"http://httpd.apache.org/docs/current/content-negotiation.html",
+        "title":"Apache Web Server: content negotiation",
+        "publisher":"Apache Foundation"
+      },
+      "ODRS": {
+        "authors": ["Leigh Dodds"],
+        "href":"http://schema.theodi.org/odrs",
+        "title":"Open Data Rights Statement Vocabulary",
+        "date":"29 July 2013",
+        "publisher":"ODI"
+      },
+      "CLV": {
+        "href":"https://joinup.ec.europa.eu/solution/core-location-vocabulary",
+        "title":"Joinup. Core Location Vocabulary",
+        "publisher":"European Commission"
+      },
+      "MAST-ADS": {
+        "href":"http://archive.stsci.edu/pub_dsn.html",
+        "title":"Referencing Data Sets in Astronomical Literature",
+        "publisher":"Mikulski Archive for Space Telescopes (MAST)"
+      },
+      "DOI": {
+        "href":"http://www.doi.org/",
+        "title":"Digital Object Identifier",
+        "publisher":"DOI"
+      },
+      "EZID": {
+        "href":"http://n2t.net/ezid",
+        "title":"EZID"
+      },
+      "W3ID": {
+        "href":"https://w3id.org/",
+        "title":"Permanent Identifiers for the Web",
+        "publisher":"W3C Permanent Identifier Community Group"
+      },
+      "DataCite-RIS": {
+        "href":"http://purl.org/spar/datacite/ResourceIdentifierScheme",
+        "title":"DataCite Resource Identifier Scheme"
+      },
+      "ADMS": {
+        "href":"https://joinup.ec.europa.eu/solution/asset-description-metadata-schema-adms",
+        "title":"Joinup. Asset Description Metadata Schema (ADMS)",
+        "publisher":"European Commission"
+      },
+      "CERIF-VOCS": {
+        "href":"http://www.eurocris.org/Uploads/Web%20pages/CERIF-1.5/CERIF1.5_Semantics.xhtml",
+        "title":"CERIF standard vocabularies"
+      },
+      "DDC": {
+        "href":"http://www.oclc.org/dewey/webservices.en.html",
+        "title":"Dewey Summaries as Linked Data",
+        "publisher":"OCLC"
+      },
+      "CC": {
+        "href":"http://creativecommons.org/licenses/",
+        "title":"About The Licenses",
+        "publisher":"Creative Commons"
+      },
+      "CC0": {
+        "href":"http://creativecommons.org/publicdomain/zero/1.0/",
+        "title":"CC0 1.0 Universal (CC0 1.0) Public Domain Dedication",
+        "publisher":"Creative Commons"
+      },
+      "CC-BY": {
+        "href":"https://creativecommons.org/licenses/by/4.0/",
+        "title":"CC-BY 4.0 Attribution 4.0 International",
+        "publisher":"Creative Commons"
+      },
+      "PDDL": {
+        "href":"http://opendatacommons.org/licenses/pddl/",
+        "title":"Public Domain Dedication and License (PDDL)",
+        "publisher":"Open Data Commons"
+      },
+      "EUPL": {
+        "href":"https://joinup.ec.europa.eu/collection/eupl",
+        "title":"Joinup. Open Source Software. European Union Public Licence (EUPL)",
+        "publisher":"European Commission"
+      },
+      "UKOGL": {
+        "href":"http://www.nationalarchives.gov.uk/doc/open-government-licence/version/2/",
+        "title":"Open Government Licence for public sector information",
+        "publisher":"The National Archives"
+      },
+      "ODI": {
+        "href":"http://www.theodi.org/",
+        "title":"ODI"
+      },
+      "GETTY": {
+        "href":"https://www.getty.edu/research/publications/electronic_publications/intro_controlled_vocab/",
+        "authors":["Patricia Harpring"],
+        "title":"Introduction to Controlled Vocabularies: Terminology for Art, Architecture, and Other Cultural Works",
+        "publisher": "The Getty Research Institute",
+        "date":"2010"
+      },
+      "OPENDATA-DIR": {
+        "href":"http://data.europa.eu/eli/dir/2019/1024/oj",
+        "title":"Directive (EU) 2019/1024 of the European Parliament and of the Council of 20 June 2019 on open data and the re-use of public sector information",
+        "publisher":"OJ L 172",
+        "date":"20 June 2019"
+      },
+      "DataStrategy": {
+        "href":"https://eur-lex.europa.eu/legal-content/EN/TXT/?uri=CELEX:52020DC0066",
+        "title":"COMMUNICATION FROM THE COMMISSION TO THE EUROPEAN PARLIAMENT, THE COUNCIL, THE EUROPEAN ECONOMIC AND SOCIAL COMMITTEE AND THE COMMITTEE OF THE REGIONS A European strategy for data",
+        "publisher":"COM/2020/66 final",
+        "date":"19 February 2020"
+      },
+      "SPS": {
+        "href":"http://www.ogc.org/standards/sps",
+        "title":"OGC® Sensor Planning Service Implementation Standard ",
+        "publisher":"OGC",
+        "date":"28 March 2011",
+        "authors":["Ingo Simonis","Johannes Echterhoff"]
+      },
+      "WCS": {
+        "href":"http://www.ogc.org/standards/wcs",
+        "title":"OGC Web Coverage Service (WCS) 2.1 Interface Standard - Core",
+        "publisher":"OGC",
+        "date":"16 August 2018"
+      },
+      "QUDT-UNITS": {
+        "href":"http://www.qudt.org/vocab/unit",
+        "title":"QUDT Units Vocabulary",
+        "publisher":"QUDT.org",
+      },
+      "QUDT-UNITS-21": {
+        "href":"http://www.qudt.org/2.1/vocab/unit",
+        "title":"QUDT Units Vocabulary. Version 2.1",
+        "publisher":"QUDT.org",
+        "date":"28 January 2021",
+        "authors":["Ralph Hodgson"]
+      },
+      "OM": {
+        "href":"http://www.wurvoc.org/vocabularies/om-1.8/",
+        "title":"Ontology of units of Measure (OM)",
+        "publisher":"Wageningen UR",
+        "date":"4 June 2018",
+        "authors":["Hajo Rijgersberg", "Mark van Assem", "Don Willems", "Xin-Ying Ren", "Mari Wigham", "Jeen Broekstra", "Jan Top"]
+      },
+      "OM-2": {
+        "href":"http://www.ontology-of-units-of-measure.org/resource/om-2/",
+        "title":"Ontology of units of Measure (OM). Version 2",
+        "publisher":"Wageningen UR",
+        "date":"28 December 2017",
+        "authors":["Hajo Rijgersberg", "Don Willems", "Xin-Ying Ren", "Mari Wigham", "Jan Top"]
+      },
+      "OM-18": {
+        "href":"http://www.wurvoc.org/vocabularies/om-1.8/",
+        "title":"Ontology of units of Measure (OM). Version 1.8",
+        "publisher":"Wageningen UR",
+        "date":"4 June 2018",
+        "authors":["Hajo Rijgersberg", "Mark van Assem", "Don Willems", "Xin-Ying Ren", "Mari Wigham", "Jeen Broekstra", "Jan Top"]
+      },
+      "GeoSPARQL11": {
+        "href": "http://www.opengis.net/doc/IS/geosparql/1.1",
+        "title": "OGC GeoSPARQL - A Geographic Query Language for RDF Data. Version 1.1",
+        "publisher":"OGC",
+        "status":"International Standard",
+        "date": "29 January 2024"
+      },
+      "DCAT-AP-3": {
+        "href": "https://semiceu.github.io/DCAT-AP/releases/3.0.1/",
+        "title": "DCAT-AP 3.0.1",
+        "publisher":"European Commission",
+        "date": "10 July 2025"
+      },
+      "LOCN-MAPPING": {
+        "href": "https://semiceu.github.io/locn-mapping/",
+        "title": "LOCN mappings to vCard and Schema.org",
+        "authors": [
+          "Andrea Perego"
+        ],
+        "status": "Working Draft",
+        "publisher": "European Commission, Joint Research Centre (JRC)",
+        "date": "2019",
+        "id": "locn-mapping"
+      },
+      "AGRI-POLICY" : {
+        "href":" https://eur-lex.europa.eu/legal-content/en/TXT/?uri=CELEX:32013R1306",
+        "title":"Regulation (EU) No 1306/2013 of the European Parliament and of the Council of 17 December 2013 on the financing, management and monitoring of the common agricultural policy and repealing Council Regulations (EEC) No 352/78, (EC) No 165/94, (EC) No 2799/98, (EC) No 814/2000, (EC) No 1290/2005 and (EC) No 485/2008",
+        "publisher":"European Union"
+      },
+      "AGRI-POLICY-FARMERS" : {
+        "href":"https://eur-lex.europa.eu/legal-content/EN/TXT/?uri=CELEX:32013R1307",
+        "title":"Regulation (EU) No 1307/2013 of the European Parliament and of the Council of 17 December 2013 establishing rules for direct payments to farmers under support schemes within the framework of the common agricultural policy and repealing Council Regulation (EC) No 637/2008 and Council Regulation (EC) No 73/2009",
+        "publisher":"European Union"
+      },
+      "IACS" : {
+        "href":"https://publications.jrc.ec.europa.eu/repository/handle/JRC121450",
+        "title":"Technical guidelines on IACS spatial data sharing. Part 1 - Data discovery",
+        "publisher":"JRC"
+      },
+      "A2.5" : {
+        "href":"https://wikis.ec.europa.eu/display/InspireMIG/Action+2.5+Alignment+of+INSPIRE+and+high-value+dataset+implementation",
+        "title":"Action 2.5 Alignment of INSPIRE and high-value dataset implementation",
+        "publisher":"European Commission - INSPIRE Maintenance and Implementation Group (MIG)"
+      },
+      "HVD-GOOD-PRACTICE" : {
+        "href":"https://github.com/INSPIRE-MIF/GeoDCAT-AP-pilot/tree/main/good-practices/hvd-tagging",
+        "title":"Good practice on Geospatial High-Value Datasets (HVDs) tagging",
+        "publisher":"European Commission - INSPIRE Maintenance and Implementation Group (MIG)"
       }
+    }
+
     };
 
 
@@ -200,13 +942,8 @@
 
 
 <section id="abstract">
-    <h2>Meeting minutes</h2>
-    <ul>
-    <li>Webinar 21 March 2023 (<a href="https://joinup.ec.europa.eu/sites/default/files/inline-files/Report_Meeting%20Minutes_%20Webinar%20on%20BRegDCAT-AP.pdf">Meeting Minutes</a>, 
-                               <a href="https://www.youtube.com/watch?v=-LJ-eX6flSo">recording</a>, 
-                               <a href="https://joinup.ec.europa.eu/sites/default/files/inline-files/Slides%20Webinar%20on%20BRegDCATAP%2021March2023.pdf">slides</a>) </li>
-
-    </ul>
+    <h2>Abstract</h2>
+StatDCAT-AP is an extension of the DCAT application profile for data portals in Europe ([[[DCAT-AP-3]]]) for data portals in Europe (DCAT-AP) designed to support to exchange of statistical information between data portals in Europe. The specification of the StatDCAT-AP was a joint initiative of Eurostat, the EU Publications Office and the ISA Programme.
 </section>
 
 
@@ -215,52 +952,100 @@
         Introduction
     </h2>
     
+  <p>This document contains version 3.0.0 of the specification for StatDCAT-AP, an extension of the DCAT application profile for data portals in Europe [[DCAT-AP-3]] for describing statistical datasets, dataset series, and services.</p>
+
+<p><strong>The StatDCAT-AP specification does not replace the SDMX standard </strong> [[?SDMX]] <strong>nor the SDMX technical guidelines</strong> [[SDMX]] <strong>.</strong> Its purpose is to give producers and maintainers of statistical metadata the possibility to achieve more by providing the means of an <em>additional</em> implementation through harmonised RDF syntax bindings used in the Open Data community. Conversion rules to RDF syntax would allow Member States to maintain their collections of SDMX-relevant datasets following the SDMX Metadata technical guidelines, while at the same time publishing these collections on [[DCAT-AP-3]]-conformant data portals. A conversion to an RDF representation allows additional metadata elements to be displayed on general-purposed open data portals, provided that such data portals are capable of displaying additional metadata elements. Additionally, data portals may be capable of providing machine-to-machine interfaces where additional metadata could be provided.</p>
+
+<section id="context">
+
 <h3>Context</h3>
-<p>
-One of the targets of the Digital Single Market [[EU-DIGI-STRAT]] is to deliver cross-border and crosssector
-public services in Europe. Thus, in order to succeed with this objective, Member
-States’ base registries need to be interconnected. Base registries are trusted and
-reliable sources of basic information on data items such as citizens, corporations,
-vehicles, driver licences, buildings, and locations. They are the cornerstone of public
-services and essential entities for public administration management.
-</p><p>
-The interoperability of base registries is key for the development of the EU Single Digital
-Gateway (or just Gateway) [[SDG]], a platform that aims to be the single point of access to
-public EU Member States’ services, facilitating digital public services among public
-administrations and citizens. The implementation of the Gateway [[OOTS]] relies on the once-only
-principle, ensuring data that is submitted at least once to an EU Member State,
-could be reused by any public authority across the EU.
-</p><p>
-To interconnect European base registries it is of interest to have a European wide insight 
-in the connection potential of these.
-The development of a European Registry of Base Registries (ERBR), a pan-European
-registry of base registries, will improve the interoperability of individual base registries
-and harmonise the existing registries of base registries, enabling a one-stop-platform for
-citizens, business and public bodies to access and manage base registries across the
-European Union and across different domains.
-</p><p>
-This specification, BRegDCAT-AP, facilitates the creation of ERBR. 
-It interconnects public services with base registries the and their associated services.
-By conforming to this specification Base Registries will becomes easier to find. 
-And subsequently together with the provision through the Once Only Hub [[OOTS]] make them more interoperable by .
-This set of recommendations will enable a mechanism for the update of EU reducing technical, organisational and multilingual barriers.
-</p><p>
+
+<p>With a view to fostering Europe's digital transformation, the European Commission is investing in frameworks and agreements to provide governments and businesses with the appropriate resources to digitalise their services. There are, for instance, building blocks available for creating a single market for data, where data flows freely within the EU and across sectors for the benefit of businesses, researchers and public administrations.</p>
+
+<p>To this direction, the European Commission launched the European Data Strategy [[DataStrategy]], as part of the European Commission's priorities for 2019-2024 in order to make the EU a leader in a data-driven society.</p>
+
+<p>Studies previously conducted on behalf of the European Commission (e.g., [[Vickery]]) shed light on the importance of having data findable and available in machine readable format in order to stimulate its reuse. This vision led to several legislative actions to reduce barriers and promote data sharing, such as the Open Data Directive [[OPENDATA-DIR]], which turned out to be a driving force towards a more transparent and fair access to government data.</p>
+
+<p>With this regard, the wide range of (open) data portals developed by European public administrations is the result of this mission. These Web-based interfaces allow access to data by providing users means to explore a catalogue of datasets. To facilitate the sharing, discovery and re-use of the data beyond the (open) data portal, common agreements for the exchange of catalogues of datasets are needed. These interoperability agreements enable to connect (open) data catalogues into a pan-european catalogue of datasets.</p>
+
+<p>The DCAT Application Profile specifies the generic agreements for (open) data portals operated by public administrations in Europe. This specification extends DCAT-AP with additional requirements for describing statistical data.</p>
+
+<p>The current document is the result of the major semantic change release process described in the Change and Release Management Policy for DCAT-AP [[DCAT-AP-CRMP]] and was built starting from StatDCAT-AP version 1.0.0 [[StatDCAT-AP-20191023]], with the purpose of aligning it with DCAT-AP version 3.x.x [[DCAT-AP-3]] and with the latest development in statistical metadata standards such as SDMX [[SDMX]].</p>
+
+<p>This work has been carried out in the context of the European Commission’s <q>Interoperable Europe</q> initiative [[INTEROPERABLE-EUROPE]].</p>
+
+</section>
+
+<section id="scope-of-the-revision">
+
+<h3>Scope of the Application Profile</h3>
+
+<p>The objective of this work is to produce an updated release of StatDCAT-AP based on requests for change coming from real-world implementations of the specification and an alignment with [[DCAT-AP-3]] and [[SDMX]].</p> 
+
+<p>As [[[DCAT-AP-3]]], the Application Profile specified in this document is based on the specification of the <strong>Data Catalog Vocabulary</strong> (DCAT). DCAT is originally developed under the responsibility of the Government Linked Data Working Group [[GLD]] at W3C, and was significantly revised in 2020 by the W3C Dataset Exchange Working Group [[DXWG]]. DCAT is an RDF [[RDF11-CONCEPTS]] vocabulary designed to facilitate interoperability between data catalogues published on the Web.
+</p> 
+
+<p>The objective of this work is to produce an extension of [[DCAT-AP-3]] based on numerous requests for change coming from real-world implementations ....
+</p>
+
+<p>The work does not cover implementation issues like mechanisms for exchange of data and expected behaviour of systems implementing the Application Profile other than what is defined in the Conformance Statement in section [[[#conformance]]].
+
+</p>
+
+<p>The Application Profile is intended to facilitate data exchange and therefore the classes and properties defined in this document are only relevant for the data to be exchanged; there are no requirements for communicating systems to implement specific technical environments. The only requirement is that the systems can export and import data in RDF in conformance with this Application Profile.
+</p>
+
+<p>The Application Profile is intended to facilitate data exchange and therefore the classes and properties defined in this document are only relevant for the data to be exchanged; there are no requirements for communicating systems to implement specific technical environments. The only requirement is that the systems can export and import data in RDF in conformance with this Application Profile.
+</p> 
+
+<p>As mentioned in the context, the prime objective of the Application Profile is to enhance data findability and promote reusability. 
+To achieve this goal, datasets should be coherently documented. 
+To enable this, the Application Profile considers several essential aspects, including among others:
+<ul>
+	<li>Understanding the data or service structure, and how to get access to the data</li>
+	<li>Information on scope or purpose of the data</li>
+	<li>Legal information</li>
+	<li>Knowledge on data publishers, and any other agents involved</li>
+	<li>Knowledge of data availability and change policies</li>
+</ul>
+These are addressed with the aim to facilitate effective data reuse, allowing users to locate, understand and utilise the available data resources more efficiently.
+</p>
+
+</section>
+
+<h3>DCAT-AP context</h3>
+
+<p>Around 2010, on behalf of the European Commission the access to public sector information was studied. These studies showed that businesses and citizens faced many difficulties in finding and reusing public sector information. 
+The studies indicated that the availability of the information in a machine-readable format as well as a thin layer of commonly agreed metadata could facilitate data cross-reference and interoperability and therefore considerably enhance its value for reuse.
+Therefore, to overcome these hurdles, the European Commission invested in policies [[PSI]], data interoperability [[SEMIC]] and infrastructure [[DEU]].
+</p>
+
+<p>Interoperable Europe, within its mission to stimulate the data interoperability in Europe, manages this specification on the metadata agreements for sharing dataset descriptions between data portals. 
+The governance is taken care by the SEMIC action within Interoperable Europe. 
+Initially, the scope of the specification was the exchange between Open Data Portals in Europe.
+Although this is still at the core of the specification, DCAT-AP is not limited to publicly accessible Open Data, but can be applied to any kind of datasets.
+In the past decade, DCAT-AP has grown from a single specification to a whole ecosystem of related and interconnected specifications.
+</p>
 
 
-<h3>Scope</h3>
-<p>
-This document provides the guidelines on how to use DCAT-AP to make Base Registries well documented.
-The document is called the "usage guidelines of DCAT-AP for Base Registries", in short BRegDCAT-AP.
 
-</p><p>
-To understand these guidelines, it is important to realise that the BRegDCAT-AP applies 
-to a subset of all the datasets that are collected by (Open) Data Portals in Europe.
-A single catalogue may contain catalogued resources which are within and outside scope of BRegDCAT-AP.
+
+<h3>Revision history</h3>
+The first StatDCAT-AP specification was released in 
+In 2025, the release of DCAT-AP 3.0.1 and ...
+This document is the combination of this alignment and addressing issues raised by the community.
+
+<h3>Meeting minutes</h3>
+The following webinars have been held for the creation of this release
+    <ul>
+      <li>Webinar XX YYY 2025 (<a href="">Meeting Minutes</a>, <a href="">recording</a>, <a href="">slides</a>) </li>
+   </ul>
 
 </p>
 
 
-</section>
+
+
 
 </section>
 
@@ -303,74 +1088,43 @@ A single catalogue may contain catalogued resources which are within and outside
 </section>
 
 
+  
 
-
-
-
-<section id="conformance"> 
-<h2>Conformance Statement</h2>
-
-<h3>Provider requirements</h3>
-In order to conform to this Application Profile, an application that provides metadata MUST:
-<ul>
-<li>Provide a description of the Catalogue, including at least the mandatory properties specified for the class <a href="#Catalogue">Catalogue</a>.</li>
-<li>Provide information for the mandatory properties for <a href="#CatalogueRecord">Catalogue Records</a>, if descriptions of Catalogue Records are provided – please note that the provision of descriptions of Catalogue Records is optional.</li>
-<li>Provide descriptions of Datasets in the Catalogue, including at least the mandatory properties for the class <a href="#Dataset">Dataset</a>.</li>
-<li>Provide descriptions of Distributions, if any, of Datasets in the Catalogue, including at least the mandatory properties for the class <a href="#Distribution">Distribution</a>.</li>
-
-<li>Provide descriptions of Data Services, if any, of Datasets in the Catalogue, including at least the mandatory properties for the class <a href="#DataService">Data Service</a>.</li>
-
-<li>Provide descriptions of all organisations involved in the descriptions of Catalogue and Datasets, including at least the mandatory properties for the class <a href="#Agent">Agent</a>.</li>
-<li>Apply the publication requirements for the controlled vocabularies as mentioned in section [[[#controlled-vocs]]]. </li>
-</ul>
-
-For the properties listed in the table in section [[[#controlled-vocs]]], the associated controlled vocabularies MUST be used. Additional controlled vocabularies MAY be used.
-In addition to the mandatory properties, any of the recommended and optional properties defined in section [[[#quick-reference]]] MAY be provided.
-<h3>Receiver requirements</h3>
-In order to conform to this Application Profile, an application that receives metadata MUST be able to:
-<li>Process information for all classes and properties specified in section [[[#quick-reference]]].</li>
-<li>Process information for all controlled vocabularies specified in section [[[#controlled-vocs]]].</li>
-"Processing" means that receivers must accept incoming data and transparently provide these data to applications and services. 
-It does neither imply nor prescribe what applications and services finally do with the data (parse, convert, store, make searchable, display to users, etc.).
-
-
-</section>
 
 
 <section id="specterminology">
-<h2>Terminology</h2>
+    <h2>Terminology</h2>
 <p>
 An <strong>Application Profile</strong> is a specification that reuses terms from one or more base standards, adding more specificity by identifying mandatory, recommended and optional elements to be used for a particular application, as well as recommendations for controlled vocabularies to be used.
 </p><p>
-An <strong>Annex to an Application Profile</strong> is a specification that precises the use of some aspects of the Application Profile for a specific context.
-</p><p>
-A <strong>Base Registry</strong> is a web-based system that contains an inventory of descriptions of
-Master datasets and provides services enabling discovery and re-use of the datasets.
-The mandate of a Base Registry is given by specific legislation. 
-</p><p>
-At EU level, National
-Registers aggregate information about Base Registries in Registries of Base Registries. A
-<strong>Registry of Base Registries</strong> is considered as a Catalogue of collections of metadata about datasets or
-data services.
-</p>
+A <strong>Dataset</strong> is a collection of data, published or curated by a single source, and available for access or download in one or more formats.
+A <strong>Data Portal</strong> is a Web-based system that contains a data catalogue with descriptions of datasets and provides services enabling discovery and reuse of the datasets.
 
-This specification uses the following prefixes to shorten the URIs for readibility.
+<h3>Used prefixes</h3>
 
 
         <table id="table-namespaces" class="simple">
             <thead><tr><th>Prefix</th><th>Namespace IRI</th></tr></thead>
             <tbody>
             <tr><td><code>adms</code></td><td><code>http://www.w3.org/ns/adms#</code></td></tr>
+            <tr><td><code>cnt</code></td><td><code>http://www.w3.org/2011/content#</code></td></tr>
             <tr><td><code>dcat</code></td><td><code>http://www.w3.org/ns/dcat#</code></td></tr>
             <tr><td><code>dcatap</code></td><td><code>http://data.europa.eu/r5r/</code></td></tr>
             <tr><td><code>dct</code></td><td><code>http://purl.org/dc/terms/</code></td></tr>
             <tr><td><code>dctype</code></td><td><code>http://purl.org/dc/dcmitype/</code></td></tr>
+            <tr><td><code>dqv</code></td><td><code>http://www.w3.org/ns/dqv#</code></td></tr>
             <tr><td><code>foaf</code></td><td><code>http://xmlns.com/foaf/0.1/</code></td></tr>
             <tr><td><code>locn</code></td><td><code>http://www.w3.org/ns/locn#</code></td></tr>
+            <tr><td><code>odrl</code></td><td><code>http://www.w3.org/ns/odrl/2/</code></td></tr>
+            <tr><td><code>org</code></td><td><code>http://www.w3.org/ns/org#</code></td></tr>
             <tr><td><code>owl</code></td><td><code>http://www.w3.org/2002/07/owl#</code></td></tr>
+            <tr><td><code>prov</code></td><td><code>http://www.w3.org/ns/prov#</code></td></tr>
             <tr><td><code>rdf</code></td><td><code>http://www.w3.org/1999/02/22-rdf-syntax-ns#</code></td></tr>
             <tr><td><code>rdfs</code></td><td><code>http://www.w3.org/2000/01/rdf-schema#</code></td></tr>
+            <tr><td><code>sdmx-attribute</code></td><td><code>http://purl.org/linked-data/sdmx/2009/attribute#</code></td></tr>
             <tr><td><code>skos</code></td><td><code>http://www.w3.org/2004/02/skos/core#</code></td></tr>
+            <tr><td><code>spdx</code></td><td><code>http://spdx.org/rdf/terms#</code></td></tr>
+            <tr><td><code>time</code></td><td><code>http://www.w3.org/2006/time#</code></td></tr>
             <tr><td><code>vcard</code></td><td><code>http://www.w3.org/2006/vcard/ns#</code></td></tr>
             <tr><td><code>xsd</code></td><td><code>http://www.w3.org/2001/XMLSchema#</code></td></tr>
             </tbody>
@@ -383,26 +1137,26 @@ This specification uses the following prefixes to shorten the URIs for readibili
     <h2>Overview</h2>
     
 <p>
-BRegDCAT-AP is an annex to DCAT-AP. 
-It describes additional usage of the DCAT-AP for Base Registries.
-In this document only the additional information, that is required for the catalogued resources which are within scope of the regulation, is included.
-In any other case, the guidelines of DCAT-AP itself are applicable.
+This Application Profile extends [[DCAT-AP-3]] by including
+<li>additional classes and properties;</li>
+<li>additional recommendations on the use of classes and properties;</li>
+<li>additional controlled vocabularies (documented in <a href="#controlled-vocs">9. Controlled Vocabularies</a> to be used, along with the ones used in [[DCAT-AP-3]]).</li>
+</p><p>
+These extensions are meant to provide a DCAT-AP-conformant representation of statistical metadata.
 </p>
-
 
 <h3>Application profile diagram</h3>
-<p>
-An overview of BRegDCAT-AP is shown by the UML diagram below. 
-The UML diagram illustrates the specification described in this document. 
-For readability purposes the representation has been condensed as follows:
+
+An overview of StatDCAT-AP is shown by the UML diagram below. The UML diagram illustrates the specification described in this document. For readability purposes, the representation has been condensed as follows:
 <ul>
+<!--<li> no ranges for data properties are shown, because some of them are expressed as unions of XSD types</li>-->
 <li> The figure contains the key classes with some important supporting classes. Other object properties (relationships) are listed as properties on the UML class with their target range.</li>
-<li> The class dcat:Resource has been included more easily see the connection with W3C DCAT. DCAT-AP treats it as an abstract notion. </li>
+<li> The class <code>dcat:Resource</code> has been included to ease to see the connection with W3C DCAT. StatDCAT-AP treats it as an abstract notion. </li>
 </ul>
 The cardinalities and qualifications are included in the figure.
-</p><p>
-For readibility of this document as an annex to DCAT-AP, the core relationships between classes are included.
-</p>
+
+This specification distinguishes between main entities, i.e. classes in the core of the application profile, supporting entities, i.e. classes used for representation of less crucial aspects of the application profile, and datatypes used for typing literal values.
+
 
     <div id="overview">
                 
@@ -11010,13 +11764,1922 @@ In this data specification the use is restricted to instances of this class that
 -->
 
  
+  <section id="controlled-vocs" class="informative">
+  <h2 >Controlled Vocabularies</h2>
+
+<h3 id="requirements-for-controlled-vocabularies">Requirements for controlled vocabularies</h3>
+
+<p>The following is a list of requirements that were identified for the controlled vocabularies to be recommended in this Application Profile. Controlled vocabularies SHOULD:</p>
+
+<ul>
+<li>Be published under an open licence.</li>
+<li>Be operated and/or maintained by an institution of the European Union, by a recognised standards organisation or another trusted organisation.</li>
+<li>Be properly documented.</li>
+<li>Have labels in multiple languages, ideally in all official languages of the European Union.</li>
+<li>Contain a relatively small number of terms (e.g. 10-25) that are general enough to enable a wide range of resources to be classified.</li>
+<li>Have terms that are identified by URIs with each URI resolving to documentation about the term.</li>
+<li>Have associated persistence and versioning policies.</li>
+</ul>
+
+<p>These criteria do not intend to define a set of requirements for controlled vocabularies in general; they are only intended to be used for the selection of the controlled vocabularies that are proposed for this Application Profile.</p>
+
+
+
+
+
+<h3>Expected usage of controlled vocabularies</h3>
+
+To increase the interoperability, the value spaces of properties can be further harmonised using shared controlled vocabularies.
+This kind of restriction may be subject to a varying interpretation on what the expected usage of a controlled vocabulary is.
+To ensure a common interpretation the following expectations are defined:
+
+<ul>
+<li id="cv-a"> The property MUST use as range values codes from {codelist} <br/>
+This expectation results in that the value space is closed under the codelist. 
+Validation systems SHOULD produce errors.
+All profiles in the ecosystem MUST avoid conflicts by creating subproperties.
+
+</li>
+<li id="cv-b"> The property MUST have at least one value from {codelist} <br/>
+This expectation makes the value space minimally constrained.
+Validation systems SHOULD produce warnings.
+All profiles in the ecosystem MUST adopt this interpretation in case they want to restrict the value space.
+Adopting the former expectation will lead to cross-profile interpretations challenges.
+
+</li>
+<li id="cv-c"> The property IS RECOMMENDED to use as range values codes from {codelist} <br/>
+The value space is closed under the codelist, but other values are tolerated. 
+Recommending means expressing a strong preference. 
+To make this stronger direction towards harmonisation visible in the data exchanges, validation systems SHOULD produce warnings.
+
+</li>
+<li id="cv-d">The property MAY use as range values codes from {codelist} <br/>
+The value space is closed under the codelist, but other values are accepted.
+This expectation is more a hint to be used. 
+As there is no obligation nor strongly suggestion expressed here, the use of other codelists is valid is all cases.
+Therefore validation systems MAY produce warnings but users are free to ignore them.
+No validation in this case is also acceptable.
+</li>
+</ul>
+
+<p>
+The first two (and preferably also the others) SHOULD only be used for requirements that can be verified by a machine.
+If the validation can only be realised with the involvement of humans, then a less strong requirement (RECOMMMENDED or MAY) is used, 
+even if the intention is to be very strict.
+This is to ensure that the provided SHACL representations correspond closely to all use cases possible. 
+Stronger enforcements are left for implementations as they have control on actual data exchange.
+</p>
+
+
+
+
+
+
+<h3 id="other-controlled-vocabularies">Other controlled vocabularies</h3>
+
+<p>In addition to the proposed common vocabularies in <a class="no-sectionRef" href="#controlled-vocabularies-to-be-used"></a>, which are mandatory to ensure minimal interoperability, implementers are encouraged to publish and to use further region or domain-specific vocabularies that are available online. While those may not be recognised by general implementations of the Application Profile, they may serve to increase interoperability across applications in the same region or domain. Examples are the full set of concepts in EuroVoc [[?EUV-EUROVOC]], the CERIF standard vocabularies [[?CERIF-VOCS]], the Dewey Decimal Classification [[?DDC]] and numerous other schemes.</p>
+
+<p>For GEOspatial metadata, the working group has identified the following additional vocabularies:</p>
+
+<ul>
+<li><p><strong>Geographic identifiers</strong>:</p>
+<ul>
+<li><p><strong>For marine regions: </strong></p>
+<ul>
+<li><p><a href="https://www.marineregions.org/">Marine Regions </a></p></li>
+<li><p><a href="https://www.bodc.ac.uk/resources/vocabularies/seavox/#:~:text=SeaVoX%20Salt%20and%20Fresh%20Water%20Body%20Gazetteer">SeaVoX salt and fresh water body gazetteer</a></p></li>
+</ul></li>
+<li><p><strong>General:</strong></p>
+<ul>
+<li><p><a href="https://www.dbpedia.org/about/">DBpedia for Geographic Placenames</a></p></li>
+<li><p>National gazetteer vocabularies where feasible</p></li>
+<li><p><a href="https://www.bodc.ac.uk/resources/vocabularies/seavox/#:~:text=SeaVoX%20Salt%20and%20Fresh%20Water%20Body%20Gazetteer">SeaVoX salt and fresh water body gazetteer</a> for ‘marine geonames’</p></li>
+</ul></li>
+</ul></li>
+<li><p><strong>Keywords (with controlled vocabularies):</strong></p>
+<ul>
+<li><p><strong>For discipline</strong>: suggested vocabularies are</p>
+<ul>
+<li><p><a href="https://www.eionet.europa.eu/gemet/">General Multilingual Environmental Thesaurus (GEMET)</a></p></li>
+</ul></li>
+<li><p><strong>General: </strong></p>
+<ul>
+<li><p><a href="https://en.wikipedia.org/wiki/Societal_Benefit_Areas"><abbr title="Global Earth Observation System of Systems">GEOSS</abbr> Societal Benefit Areas</a></p></li>
+<li><p><a href="https://www.eionet.europa.eu/gemet/">General Multilingual Environmental Thesaurus (GEMET)</a></p></li>
+<li><p><a href="https://www.bodc.ac.uk/">British Oceanographic Data centre</a></p></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+
+
+
+</section>
+
+  <section class="informative">
+  <h2>Agent Roles</h2>
+
+  <p class="ednote" title="integrate the following remarks">
+    - reference to DCAT usage guideline https://w3c.github.io/dxwg/dcat/#qualified-attribution
+    - adjust to the DCAT(-AP) multiple roles that have been adopted.
+    - add references to referenced resources
+    - replace properties with references to properties
+  </p>
+
+<p>The first version of DCAT Application Profile [vocab-dcat-1] had a single property to relate an Agent (typically, an organisation) to a Dataset. The only such ‘agent role’ that could be expressed in that version of the profile is through the property publisher, defined as “An entity responsible for making the dataset available”. A second property is available in that DCAT recommendation [vocab-dcat-1], contact point, defined as “Link a dataset to relevant contact information which is provided using vCard”, but this is not an agent role as the value of this property is contact data, rather than a representation of the organisation as such. In specific cases, for example in exchanging data among domain-specific portals, it may be useful to express other, more specific agent roles. In such cases, extensions to DCAT-AP may be defined using additional properties with more specific meanings.</p>
+
+<p>Two possible approaches have been discussed, particular in the context of the development of the domain-specific GeoDCAT Application Profile [geodcat-ap]. The first possible approach is based on the use of a predicate vocabulary that provides a set of properties that represent additional types of relationships between Datasets and Agents. For example, properties could be defined, such as foo:owner, foo:curator or foo:responsibleParty, in addition to the use of existing well-known properties, such as dct:creator and dct:rightsHolder. A possible source for such additional properties is the Roles Named Authority List maintained by the Publications Office of the EU. Other domain-specific sources for additional properties are the INSPIRE Responsible Party roles ,the Library of Congress’ MARC relators and DataCite’s contributor types. To enable the use of such properties, they must be defined as RDF properties with URIs in a well-managed namespace. GeoDCAT-AP has introduced a number of specific properties. </p>
+<p>A second approach is based on the use of W3C’s PROV ontology [prov-o] which provides a powerful mechanism to express a set of classes, properties, and restrictions that can be used to represent and interchange provenance information generated in different systems and under different contexts. In the context of work on GeoDCAT-AP, a PROV-conformant solution for expressing agent roles was agreed . This solution uses prov:qualifiedAttribution in combination with a dct:type assertion pointing to the code list for Responsible Party Role in the INSPIRE registry. To enable the use of such types, they must be defined with URIs in a well-managed namespace.</p>
+<p>Based on the experience gained with the use of domain-specific extensions for additional ‘agent roles’ in the exchange of information about Datasets and on the requests of implementors and stakeholders, the DCAT Application Profile release 2.0.0 is extended with additional roles as proposed by DCAT Version 2 [vocab-dcat-2] that have proven to be useful across domains. Precisely, properties creator, qualified attribution and qualified relation have been added to Dataset class to further facilitate relationships between datasets and agents.</p>
+<p>In the most recent DCAT Version 3 [vocab-dcat-3] a dedicated section on the relationship with Agents is provided. The DCAT-AP guidelines for Agents Roles are conformant to this.
+</p>
+</section>
+  <section id="accessibility-and-multilingual-aspects" class="informative">
+<h2>Accessibility and Multilingual Aspects</h2>
+
+<strong>Accessibility</strong> in the context of this Application Profile is limited to information about the technical format of distributions of datasets. The properties <code>dcat:mediaType</code> and <code>dct:format</code> provide information that can be used to determine what software can be deployed to process the data. The accessibility of the data within the datasets needs to be taken care of by the software that processes the data and is outside of the scope of this Application Profile.
+
+</p><p>
+<strong>Multilingual aspects</strong> related to this Application Profile concern all properties whose contents are expressed as strings (i.e. <code>rdfs:Literal</code>) with human-readable text. Wherever such properties are used, the string values are of one of two types:
+
+<ul>
+<li>The string is free text. Examples are descriptions and labels. Such text may be translated into several languages.</li>
+<li>The string is an appellation of a ‘named entity’. Examples are names of organisations or persons. These names may have parallel versions in other languages but those versions don’t need to be literal translations.</li>
+</ul>
+
+</p><p>
+Wherever values of properties are expressed with either type of string, the property can be repeated with translations in the case of free text and with parallel versions in case of named entities. For free text, e.g. in the cases of titles, descriptions and keywords, the <strong>language tag</strong> is mandatory. 
+
+</p><p>
+Language tags to be used with <code>rdfs:Literal</code> are defined by [[BCP47]], which allows the use of the "t" extension for text transformations defined in [[RFC6497]] with the field "t0" [[CLDR]] indicating a machine translation.
+
+</p><p>
+A language tag will look like: "en-t-es-t0-abcd", which conveys the information that the string is in English, translated from Spanish by machine translation using a tool named "abcd".
+
+</p><p>
+For named entities, the language tag is optional and should only be provided if the parallel version of the name is strictly associated with a particular language. For example, the name ‘European Union’ has parallel versions in all official languages of the union, while a name like ‘W3C’ is not associated with a particular language and has no parallel versions.
+
+</p><p>
+For linking to different language versions of associated web pages (e.g. landing pages) or documentation, a content negotiation [[CONNEG]] mechanism may be used whereby different content is served based on the Accept-Languages indicated by the browser. Using such a mechanism, the link to the page or document can resolve to different language versions of the page or document.
+
+</p><p>
+All the occurrences of the property <code>dct:language</code>, which can be repeated if the metadata is provided in multiple languages, must have a URI as their object, not a literal string from the [[ISO-639]] code list.
+
+</p><p>
+How multilingual information is handled in systems, for example in indexing and user interfaces, is outside of the scope of this Application Profile.
+</p>
+
+</section>
+
+  <section id="UsageGuidelines" class="informative">
+<h2>General usage guidelines</h2>
+<h3>Usage guide on Datasets, Distributions and Data Services</h3>
+<p>
+The introduction of Data Services as first class citizens in DCAT 2.0 raised questions about the usage of Data Services and Distributions. This section provides a guideline for publishers: what to consider as a Distribution and what as a Data Service.
+</p><p>
+
+A first distinction between distributions and data services is their dependency on a dataset for their existence. A distribution cannot exist without its dataset. It is a specific representation of a dataset (cfr definition W3C <a href="https://w3c.github.io/dxwg/dcat/#Class:Distribution">Distribution</a>). Whereas a data service is an entity in its own right. It provides access to datasets or it provides data processing functions. The independence also holds between the distributions of a dataset, and the data service which provides access to that dataset. The distributions are not required to be the result of the data service operations. However, they may.
+
+</p><p>
+Many of the properties of distributions are file oriented (downloadURL, format, byte size, checksum, modification date, ...). The relevance of this information is reduced for data services, related information is present in a very different form and thus under different terminology. For instance, data services do and can provide format transformations, language transformations and schema transformations on request. Also the handling of trust is different. While tampering of downloadable content is detected by e.g. checksums, data services create often a trusted channel using security measures such as authentication and encryption. This reduces the need for additional trust checks on the data.
+
+</p><p>
+The difference between downloading a file or accessing the data through a service have resulted in the following guidelines:
+<ul>
+    <li>Datasets are the conceptual entity denoting a collection of data.</li>
+    <li>Distributions are specific representations of a dataset, described with the intend to facilitate the delivery of the data as file to a reuser. The access URL (preferably download URL) will provide a simple way to obtain (download) the content of the dataset in the representation specified by the distribution. The obtained (downloaded) content is fully determined by the publisher of the distribution. Only after obtaining the data the (re)user can change the data according to its needs.</li>
+    <li>Anything that has not the intend to provide a downloadable representation of a dataset is a data service. Data services offer smarter, more interactive ways to the data.</li>
+</ul>
+
+</p><p>
+Orthogonal to the nature clarification of distributions and data services, there might be need for a granularity clarification between datasets and distributions. Commonly, at first sight, it is expected that all distributions of a dataset are identical in content, only differing in the representation of the data. But when considering dataset series, this interpretation seems not valid anymore. In the upcoming release of DCAT 3.0, dataset series and dataset versioning are addressed. Implementors are advised to already take this proposal into account when creating guidelines for distributions. Note that this is less an issue between datasets and data services as both are independent entities. Data services usually address the granularity by providing the necessary query interface language so that the user can get the data according its needs.
+
+</p><p>
+These guidelines will be able to capture many access patterns, corresponding to most users' expectations. However there might be cases that are more vague. In that case the DCAT(-AP) community can be questioned for a recommended approach.
+</p>
+
+
+<h3>Usage guide on Dataset Series</h3>
+Dataset Series can be considered as message from the publisher that the data of a dataset evolves according to one or more dimensions and that this evolution is available via a collection of independent, yet closely related, datasets.
+<p/>
+The need for sharing this grouping explicitly is strongly use case dependent, and therefore as this will require additional metadata management effort by the publisher, the use of Dataset Series is optional.
+It should fit the objectives.
+For instance, if a publisher is sharing an active updated dataset accessible via an API, that provides current as historic data, then it is not mandatory to created metadata records for each snapshot per year. Only if these snapshots are created intentionally and the publisher wants to share the life cycle of them with the public, then Dataset Series come into the picture.
+<p/>
+In order to harmonise the use of Dataset Series, the following guidelines are to be considered:
+<ul>
+<li>To introduce a Dataset Series only if the publisher has the intend to manage a collection of datasets. Dataset Series with a single dataset in the collection should be avoided.
+</li>
+<li>Dataset Series without a dataset in the collection should be avoided. In that case, publishers should ensure that the metadata, in particular, the life cycle metadata is up to date. 
+For instance, if dataset get retracted and as consequence the collection becomes empty, then publishers should consider to retract also the Dataset Series.
+In case, publishers use persistent identifiers, then this should be reflected in the status of the Dataset Series.
+</li>
+<li>A Dataset Series is an conceptual dataset without distributions.
+When interpreting a Dataset Series as a Dataset, then it is expected that the directly associated Distributions contain the data that is the union of all Datasets in the collection. 
+But the presence of these Distributions raise semantical conflicts such as whether the property of the Dataset Series <code>frequency</code> refers to the update frequency of the associated Distributions or the update frequency of the collection. To avoid these semantical conflicts, it is recommended not to associate distributions with a Dataset Series.
+</li>
+<li>The members of a Dataset Series should be described in such a way that without the knowledge of the Dataset Series, the metadata is interpreted correctly. The existence of a dataset should not be based on the membership in a Dataset Series. The interpretation of a member with its associated Distributions and Data Services is conform the above guidelines.
+</li>
+<li>Whenever a Data Service is providing access to all the data of a Dataset Series, i.e. the union of all datasets in the collection of the Dataset Series, 
+    then the Data Service may refer to the Dataset Series using <a href="#DataService.servesdataset">serves dataset</a>. 
+    The ensures that whenever in the future the Dataset Series is extended with new Datasets the Data Service description does not need to be adapted.
+    In that case the Dataset Series should also be considered as a GEODCAT-AP Dataset.
+</li>      
+<li>Keep the usage simple. Complex nesting such as Dataset Series being a member of Dataset Series, or Dataset belonging to multiple Dataset Series are to be handled with care. 
+While from a data knowlegde graph these nestings are feasible and not so problematic, it must be realised that these complicate the presentation on a webpage. 
+Since data portal representations are the main communication from metadata owners to potential data consumers and there is no clear expectations
+on how to present the members of a Dataset Series in a UI (e.g. because orderning is not imposed), GeoDCAT-AP users may not expect from other portals which harvest and process their Dataset Series, that these are more than a collection of Datasets.
+Any interpretation, such as the collection is ordered, or grouped according to time or any wellknown dimension, is a specific expectation beyond the agreemenents made in GeoDCAT-AP. 
+</li>
+<li>Conceptually, a Dataset Series is a special kind of Dataset. It is recommended to apply the same metadata quality of Datasets to Dataset Series (see [[[#quick-reference]]] ). The dedicated usage guidelines for Dataset Series and the Dataset members of a Dataset Series take priority over the generic GeoDCAT-AP Dataset guidelines.
+</li>
+</ul>
+
+<p/>
+In general it is expected that the members of Dataset Series are strongly connected. 
+However, there are no common criteria or rules how this connection could be determined.
+Usually, the shared characteristics are expressed as a data domain, e.g. the population of bees, and some evolution in space and time, e.g. in Greece for the period of 2019-2023, and published by a single publisher.
+Nevertheless, other characteristics could give raise to the creation of a Dataset Series.
+<p/>
+The DCAT-AP Working Group has investigated to find and express unique characteristics of Datasets that are members of a Dataset Series. 
+Over time, during the exchanges it became clear that today no consensus exists on restricting the use of Dataset Series to a more limited use.
+Therefore the DCAT-AP Working Group has decided to retract the notion of a Dataset Member of a Dataset Series (a subclass of DCAT-AP Datasets). 
+Profile builders may reintroduce this notion when they want to express specific constraints for that usage scope.
+<p/>
+In case the connection is very strong or the result of an automated process, versioning terminology is a natural way to express the connection between the Datasets in the Dataset Series collection.
+For guidelines on expressing versioning information in GeoDCAT-AP, consult the <a href="https://w3c.github.io/dxwg/dcat/#version-history">DCAT guidelines on versioning</a>.
+As versioning is not always the most appropriate terminology, DCAT introduces properties <a href="https://w3c.github.io/dxwg/dcat/#ex-dataset-series-containment">(e.g. next, previous, inSeries, last, etc.)</a> to interconnect the Dataset Series with its members and among the members themselves. 
+It is recommended to use always these properties in combination with Dataset Series, and versioning when appropriate.
+<p/>
+The membership in a Dataset Series may influence the (descriptive) metadata to highlight differences from other Datasets in the collection. 
+For instance, a usual adaption is the addition of the release data in the title.
+
+</section>
+  <section class="informative">
+<h2>High Value Datasets</h2>
+
+<p>
+In light of the growing importance of data, the European Commission has adopted an <href="https://eur-lex.europa.eu/legal-content/EN/TXT/?uri=CELEX:32023R0138">implementing regulation</a> focused on high-value datasets on 21 December 2022 [[HVD]]. 
+The ambition of the High-Value Datasets implementing regulation (HVD IR) is to improve the availability, accessibility, quality and reuse of a selective set of core datasets from the public sector whose re-use is associated with important socio-economic benefits.
+To achieve this the HVD IR sets, among others, requirements on the metadata associated with the disclosed datasets.
+</p>
+<p>
+To foster a common approach on using DCAT-AP metadata to describe Datasets that are in scope of the HVD IR a dedicated DCAT-AP annex DCAT-AP HVD [[DCAT-AP-HVD]] is provided. 
+The requirements expressed in DCAT-AP HVD are additional constraints and usages notes which can be directly applied to StatDCAT-AP 3.0.1.
+</p>
+<p>
+Because StatDCAT-AP is also applicable for datasets that are not within the scope of the HVD IR, the constraints of DCAT-AP HVD are not included in this specification. 
+Implementers of the HVD IR should consult DCAT-AP HVD to check the specific requirements of the HVD IR and the adherence to them.
+However the implementation of the DCAT-AP HVD in the context of a StatDCAT-AP mapping requires to implement additional mapping rules, between the EuroStat theme vocabulary and the MDR data themes vocabulary.
+
+<p>
+A clear mapping between HVD categories and INSPIRE data themes has been early defined by this community during the process of drafting the High-Value Datasets implementing regulation [[HVD]], as illustrated in the figure below:
+</p>
+
+<figure>
+    <a href="https://semiceu.github.io/StatDCAT-AP/drafts/3.0.0/html/mapping-HVD-categories-to-INSPIRE-themes.webp"
+           target="_blank">
+            <img src="https://semiceu.github.io/StatDCAT-AP/drafts/3.0.0/html/mapping-HVD-categories-to-INSPIRE-themes.webp"/>
+    </a>
+    <figcaption>Mapping between HVD categories and INSPIRE data themes</figcaption>
+</figure>
+
+<p>
+For this reason, the identification of HVD in the scope of INSPIRE is currently relying on this mapping. No additional generic requirements for tagging these datasets are provisioned, except in the case of Integrated Administration and Control System (IACS) agricultural datasets in the scope of the European Common Agricultural Policy (CAP), mainly represented by the Land Parcel Identification System (LPIS) and the Geospatial Aid application (GSAA) datasets.
+</p>
+
+<p>
+Despite IACS datasets are in the scope of either the Land cover, Land use, Cadastral parcels, Agricultural facilities and/or Area management zones INSPIRE themes, there is a need to further facilitate their discoverability among other datasets belonging to the GEOspatial HVD category (See the Annex of the Implementing Regulation focused on high-value datasets on 21 December 2022 [[HVD]]). Additionally, a need to classify them as Reference parcels or Agricultural parcels as defined in Regulation (EU) No 1306/2013 of the European Parliament and of the Council [[AGRI-POLICY]] and of Regulation (EU) No 1307/2013 of the European Parliament and of the Council [[AGRI-POLICY-FARMERS]], respectively.
+</p>
+
+<p>
+To satisfy these needs, the "INSPIRE Technical guidelines on IACS spatial data sharing. Part 1 - Data discovery" [[IACS]] sets specific requirements and recommendations for describing IACS datasets through the INSPIRE infrastructure.
+</p>
+
+<p>
+The INSPIRE Maintenance and Implementation Group (MIG) has formulated a Good practice on Geospatial High-Value Datasets (HVDs) tagging [[HVD-GOOD-PRACTICE]]. It covers the Datasets tagging in the INSPIRE metadata. This practice has been implemented in the reference XSLT transformation. However, the practice does not cover additional DCAT-AP HVD requirements such as Distribution tagging, Data Service tagging, HVD category, Quality of Service specification or the Data Service contact point. The practice will be further evaluated in the Ad-hoc Subgroup on the Alignment of INSPIRE and High-Value Datasets implementation (MIG Action 2.5) [[A2.5]]. This specification will be duly updated in case additional provisions enter into force in the future.
+</p>
+
+</section>
+
+  <section class="informative">
+  <h2>Legal information</h2>
+
+<p>
+The considerations for expressing legal information follow the guidelines and approach of DCAT-AP. 
+Readers should consult the <a href="https://semiceu.github.io/DCAT-AP/releases/3.0.1/#legal-information">DCAT-AP section on legal information</a>.
+</p><p>
+The HVD IR [[HVD]] imposes additional quality requirements on legal information. 
+An elaboration of these is found in the section <a href="https://semiceu.github.io/DCAT-AP/releases/3.0.0-hvd/#c3">legal information in DCAT-AP HVD</a>.
+</p><p>
+Implementers of mappings from the EuroStat theme vocabulary and the MDR data themes vocabulary metadata should take these considerations into account to ensure that the legal information is shared correctly.
+</p>
+ 
+
+<h3>Privacy and security considerations </h3>
+
+<p>StatDCAT-AP supports the attribution of data and metadata to various participants such as resource creators, publishers and other parties or agents, and as such defines terms that may be related to personal information. In addition, it also supports the association of rights and licenses with catalogued Resources and Distributions. These rights and licenses could potentially include or reference sensitive information such as user and asset identifiers as <a data-cite="VOCAB-ODRL#privacy-consideration">described</a> in [[VOCAB-ODRL]].</p>
+
+<p>Implementations that produce, maintain, publish or consume such vocabulary terms must take steps to ensure security and privacy considerations are addressed at the application level.</p>
+
+
+</section>
+
+  <section id='privsec'>
+
+<h2>Privacy and security considerations </h2>
+
+<p>StatDCAT-AP supports the attribution of data and metadata to various participants such as resource creators, publishers and other parties or agents, and as such defines terms that may be related to personal information. In addition, it also supports the association of rights and licenses with catalogued Resources and Distributions. These rights and licenses could potentially include or reference sensitive information such as user and asset identifiers as <a data-cite="VOCAB-ODRL#privacy-consideration">described</a> in [[VOCAB-ODRL]].</p>
+
+<p>Implementations that produce, maintain, publish or consume such vocabulary terms must take steps to ensure security and privacy considerations are addressed at the application level.</p>
+
+</section>
+
+  <section class="informative">
+  <h2>Support for implementation</h2>
+
+Implementing the StatDCAT-AP data specification in a data exchange between two systems raises also technical questions.
+<p/>
+
+<h4>JSON-LD context file</h4>
+
+One common technical question is the format in which the data is being exchanged. 
+For StatDCAT-AP conformance, it is not mandatory that this happens in a RDF serialisation, but the exchanged format SHOULD be unambiguously be transformable into RDF.
+For the format JSON, a popular format to exchange data between systems, StatDCAT-AP provides a <a href="./context/statdcat-ap.jsonld">JSON-LD context file</a>. 
+JSON-LD is a W3C Recommendation [[[json-ld11]]] that provided a standard approach to interpret JSON structures as RDF.
+The provided JSON-LD context file can be used by implementers to base their data exchange upon, and so create a StatDCAT-AP conformant data exchange.
+This JSON-LD context is not normative, i.e. other JSON-LD contexts are allowed to create a conformant StatDCAT-AP data exchange.
+<p/>
+The JSON-LD context file downloadable <a href="./context/statdcat-ap.jsonld">here</a>.
+
+<p/>
+<h4>Identifiers</h4>
+For implementers, the requirement to being able to exchange data as RDF impacts the design of the exchange format and the data management. 
+One aspect, the use of identifiers, needs special attention as it influences the interpretation by others. 
+StatDCAT-AP is used mostly in a harvesting network: where one catalogue harvests from other. 
+By this process, the StatDCAT-AP metadata descriptions spread through the harvesting network. 
+In contrast to "classical" data exchange patterns where by default identifiers are locally scoped to the exchange context, the RDF format implicitly assumes global, public accessible identifiers (URIs).
+Harvesting enforces the latter. 
+More on this identifier challenge and possible solution approaches are documented in the <a href="https://github.com/SEMICeu/DCAT-AP/blob/2.x.y-draft/releases/2.x.y/usageguide-identifiers.md">the guidelines on identifier management in DCAT-AP</a> these guidelines can also be applied to StatDCAT-AP.
+
+
+<p/>
+<h4>Validation</h4>
+To verify if the data exchange is (technically) conformant to StatDCAT-AP, the exchanged data can be validated using the provided SHACL shapes. 
+SHACL is a W3C Recommendation to express constraints on a RDF knowledge graph. 
+The provided SHACL shapes allow to check whether an StatDCAT-AP catalogue expressed in a RDF serialization is valid.
+As it should be possible for StatDCAT-AP conformance to transform the data exchange in RDF, these SHACL shapes can be used in any data exchange context.
+However, likewise the use of the JSON-LD context, the provided SHACL shapes provide only a start point for implementers. 
+<p/>
+The shapes that can be derived from the StatDCAT-AP specification have the following usage limitations.
+Shapes may check situations that never occur in the implemented data exchange and result in messages that confuse publishers, or they are too general and more detailed checks should be implemented. 
+For example, the nature of a licence is recommended by StatDCAT-AP, but most StatDCAT-AP exchanges assume that based on the URI of the licence this information is known. 
+Thus the check that a licence should have a licence type is considered often not relevant for the individual publishers. 
+However they might support catalogue maintainers to guide individual publishers to use well-documented licence URIs.
+The case that a title cannot be an empty string and must have a value in a specific language are examples of more detailed constraints that are not present in the provided StatDCAT-AP SHACL shapes.
+<p/>
+More on the validation and the provided SHACL shapes can be found in section [[[#validation-of-statdcat-ap]]].
+
+<p/>
+
+
+
+
+
+
+
+
+</section>
+
+  <section class="informative">
+  <h2>Validation of StatDCAT-AP</h2>
+
+<p>Validation of a catalogue according to StatDCAT-AP can be approached from different perspectives. 
+One perspective is to consider StatDCAT-AP as an extension to DCAT-AP and thus implement a two staged process:
+first validation against DCAT-AP and then additionally validate the StatDCAT-AP specific constraints. 
+Another perspective is to consider this specification as a standalone specification and validate all constraints at once.
+Besides these there are many other validation perspectives possible.
+For additional considerations on validation consult the section Validation in DCAT-AP.
+</p><p>
+As there is yet not preferred perspective decided nor requested by the community, a similar to DCAT-AP SHACL artefact with all the constraints is provided. 
+The shape is downloadable <a href="./shacl/statdcat-ap-SHACL.ttl">here</a>.
+
+</section>
+
+  <section class="informative">
+<h2>Example Dataset Series</h2>
+
+<p>This section describes the use of Dataset Series via examples.
+All examples are fictitious and are created to facilitate the understanding of Dataset Series.
+This section complements the usage explained in section <a href="https://w3c.github.io/dxwg/dcat/#dataset-series">Dataset series</a> in DCAT 3 [[vocab-dcat-3]], because it 
+illustrates the decision making process when switching from publishing a single Dataset to a Dataset Series.
+</p>
+
+<p>Consider the dataset 'Bee population in Greece" published by the Greek Environment Agency.
+Users can download the data as a CSV or an RDF file.</p>
+
+<div class="h3 examples" id="example-bee-population">Example 1 - Bee population dataset</div>
+
+<p>To see the evolution in the bee population, the Greek Environment Agency publishes an update each year.
+This update can be reflected in the DCAT-AP description in various ways.</p>
+
+<p>The first option is to update and renew the metadata each update.
+For instance, the temporal coverage changes from the period "2020 - 2022" to "2020 - 2023".</p>
+
+<p>This solution has as benefit that new information is shared with a minimal effort of publisher.
+However, this approach removes the previous state of affairs from the metadata and also does not reflect the aggregation and publishing effort for the dataset in the metadata.
+In some cases this is a desired outcome.</p>
+
+<p>The alternative option is the creation of a new dataset description.
+Often this choice is a voluntary decision, however it might be enforced by legislation. 
+Legislation can impose to share an audited dataset reflecting the state of affairs on a reference date.</p>
+
+<p>The creation of new dataset also impacts the metadata, as the generic title "Bee population" cannot be maintained for both.
+A publisher must perform a minimal disambiguation effort to make the two datasets distinct.</p>
+
+<div class="h3 examples" id="example-bee-population-2022-2023">Example 2 - Bee population datasets for 2022 and 2023</div>
+
+<p>Independent of the metadata descriptions, a core decision to take is whether the dataset <code>BeePopulation2022</code> is also contained in the dataset <code>BeePopulation2023</code>. 
+Either case is valuable and seen in practice.</p>
+
+<p>However, without expressing any relationships between the datasets this approach has a major drawback: a search on the catalogue for bee population will result in several variants of the same dataset.
+The catalogue user is not provided with any guidance to select the most recent or most appropriate one.
+To address that use case, Dataset Series come into the picture.
+Dataset Series offer a structured approach to order or organise the datasets by the publisher for the catalogue user.</p>
+
+<p>To support the data portal users, the Greek Environment Agency starts managing a Dataset Series <code>BeePopulation</code>.</p>
+
+<div class="h3 examples" id="example-bee-population-dataset-series">Example 3 - Bee population datasets series</div>
+
+<p>As the dataset <code>BeePopulation2023</code> is more recent than <code>BeePopulation2022</code>, a navigation ordering is added.</p>
+
+<div class="h3 examples" id="example-bee-population-dataset-series-ordered">Example 4 - Bee population datasets series ordered</div>
+
+<p>In most cases, the navigation is a single chain sequence, although tree organised structures are not prohibited.</p>
+
+<p>Similarly as the introduction of a new dataset description, the introduction of a Dataset Series impacts the metadata of the involved datasets.</p>
+
+<p>For instance the notion of the update frequency becomes more precise.
+In case of a single dataset description, the statement, in the example below, means that the dataset is updated each year.</p>
+
+<div class="h3 examples" id="example-bee-population-dataset-frequency">Example 5 - Bee population dataset frequency</div>
+
+<p>So each year the actual data to which this dataset provides access to changes, and the most recent information can be found via this metadata.</p>
+
+<p>However; when the publisher will introduce a new dataset description each year, the update frequency of an existing dataset is none. Namely it will not be updated. 
+Without a Dataset Series notion the information of the yearly update is lost.</p>
+
+<div class="h3 examples" id="example-bee-population-dataset-series-frequency">Example 6 - Bee population dataset series frequency</div>
+
+<p>Users expect that metadata of Dataset Series is coherent with the collection of datasets it refers to. 
+Up to 2022, the Greek Environment Agency only had the ability to provide the information for the region of Thessaloniki, and shared that via the spatial coverage.</p>
+
+<div class="h3 examples" id="example-bee-population-dataset-series-spatial-thessaloniki">Example 7 - Bee population dataset series about Thessaloniki</div>
+
+<p>From 2023 onwards, data for the region of Athens is also provided. As a consequence, not only the spatial coverage of the new dataset <code>BeePopulation2023</code> will reflect that, but also the one of the Dataset Series.
+Namely the geographical coverage of a dataset series will cover the union of all places of each dataset associated with the Dataset Series.</p>
+
+<div class="h3 examples" id="example-bee-population-dataset-series-spatial-thessaloniki-athens">Example 8 - Bee population dataset series about Thessaloniki and Athens</div>
+
+<p>A similar coherency concern applies to the temporal coverage of datasets.
+Publisher are advised to verify the properties title and description to match any reference to temporal and geographical coverage information with the properties.</p>
+
+<p>The metadata descriptions of a Dataset Series provide insight in how this collection of datasets evolves.
+The release date of the Dataset Series <code>BeePopulation</code> correspond to the moment the collection has been issued for the first time.
+In many cases this moment corresponds to the earliest release date of the dataset in the collection.
+In the example, the Dataset <code>BeePopulation2022</code> was first issued on <code>2022-04-01</code> while shortly after, the Dataset Series was created.</p>
+
+<div class="h3 examples" id="example-bee-population-dataset-series-issued">Example 9 - Bee population dataset series issuing</div>
+
+<p>This relationship between the issuing date and the oldest dataset in the collection can reduce over time.
+The Greek Environment Agency and the National History Archives start to collaborate on the use and production of honey.
+That project results in new datasets on bee populations predating 2022. 
+To make that information visible, the Dataset Series collection is updated with these historic datasets.</p>
+
+<div class="h3 examples" id="example-bee-population-dataset-series-gea-nha">Example 10 - Bee population dataset series with National History Archive</div>
+
+<p>The modification date of the Dataset Series is the moment the collection has changed. 
+The addition of the historic datasets changes the collection, and thus the modification date of the Dataset Series is set to <code>2023-06-01</code>.</p>
+
+<div class="h3 examples" id="example-bee-population-dataset-series-modified">Example 11 - Bee population dataset series with modification date</div>
+
+<p>To make the datasets easier to use, the Greek Environment Agency introduces a new API platform. Via this API platform the datasets are not only downloadable in tabular format, but also in the international Biodiversity JSON format.</p>
+
+<div class="h3 examples" id="example-bee-population-dataset-series-api">Example 11 - Bee population available in new format</div>
+
+As such the use of a new API platform has not changed the data denoted by the dataset <code>BeePopulation2023</code>, and so it is not necessary to adapt the modification date of the dataset.
+Similarly adding or removing distributions to a dataset did not affected the membership of dataset <code>BeePopulation2023</code> in the Dataset Series. 
+And thus the modification date of the Dataset Series is not adapted.
+
+<p/>
+To support the users even more, the API platform is extended with a possibility to get life counts of the bee population.
+This means that there is a dataset which data is updated very frequently, eg. every second.
+In that case providing a modification date for the dataset becomes a technical challenge, but also it reduces it value.
+Namely one gets the data at query time.</p>
+
+<div class="h3 examples" id="example-bee-population-dataset-series-life-count">Example 12 - Bee population dataset series API life count</div>
+
+All this can be combined in one dataset series about the Bee population. Doing so, the Bee population dataset series becomes 
+less a structured sequence of yearly snapshots of the Bee population data, but more a collection of datasets around the same topic.
+Likewise DCAT, DCAT-AP does not limit the use of dataset series to a strict interpretation. Making this approach acceptable. 
+Nevertheless users usually expect that the datasets of a Dataset Series are strongly related, and the notion of a series or sequence is somehow present in the collection.
+Diverging too far from this interpretation is not recommended.
+The alternative for dataset series for grouping datasets are catalogues. 
+<p/>
+Thus to conclude the example of maintaining a Dataset Series, the Greek Environment Agency has created a Dataset Series about the Bee population in Greece.
+It contains the dataset with actual life data, the yearly snapshots for 2023 and 2022 and also the historic data of 2000 maintained by the National History Archives.
+<div class="h3 examples" id="example-bee-population-dataset-series-combined">Example 13 - Bee population dataset series</div>
+
+
+
+</section>
+
+  <section class="informative">
+  <h2>Inverse properties</h2>
+
+The W3C DCAT specification introduces for some relationships two properties which are eachothers inverse. 
+In general, this may lead to situations that data exchanges based on different DCAT profiles require reasoning to align. 
+
+<p/>
+To harmonise the exchange of DCAT based data and reduce the need for inference engines, 
+W3C DCAT imposes <a href="https://w3c.github.io/dxwg/dcat/#inverse-properties">implementation guidelines</a> expressing a preference in use. 
+The guidelines state which property must be used while the other, called the inverse,  may be used.
+In a proper DCAT profile the inverse property cannot be used to replace completely the property. 
+
+<p/>
+In line with these guidelines with the objective to reduce the burden of implementers DCAT-AP will follow the W3C guidelines in a more strict way.
+When a property is subject to this W3C guideline then DCAT-AP will include only the use of this property and not the inverse.
+Implementers are still free to use the inverse to optimise their data management. 
+<p/>
+As note to this discussion: when exhanging DCAT as an RDF graph the impact of the directionality is reduced because
+<ul>
+<li> RDF statements are non-ordered and grouping according to directionality is more for human readibility than technically enforced. 
+</li>
+<li> SPARQL allows to query in any direction simply by switching the subject and object variables.
+</ul>  
+
+
+
+
+
+
+
+
+
+
+
+</section>
+
   
+<section id="Mapping-SMDX-to-statdcat-ap" class="appendix">
+
+<h2>Mapping SMDX to StatDCAT-AP </h2>
+
+	<section id="scope">
+    <h2>Scope</h2>
+    <p>
+      The scope of this section is to describe the mapping of StatDCAT-AP to the SDMX Information Model. This is achieved by means of schematic diagrams of the SDMX Information Model and also by a worked example where the SDMX-ML content is mapped to the classes and properties of DCAT-AP.
+    </p>
+<p>
+    The intent of this mapping is twofold:
+  </p>
+  <ol>
+    <li>
+      It enables organisations using SDMX to know which metadata structures to use in order to generate DCAT-AP compliant messages directly from their SDMX metadata repositories (such as an SDMX Registry).
+    </li>
+    <li>
+      It enables organisations that intend to use SDMX-ML structural metadata as format for the Transformation Mechanism (described in Annex V of this specification) to map SDMX-ML elements or attributes to DCAT-AP classes or properties.
+    </li>
+	<!--"Described in section IV" to change-->
+  </ol>
+</section>
+
+
+ 
+<section id="diagrams">
+  <h3>Diagrams</h3>
+
+  <figure id="Schematic-map-of-SMDX-Classes-to-DCAT-AP">
+    <a href="html/appendices/annex-I-fig01.png"target="_blank">
+      <img src="html/appendices/annex-I-fig01.png"/>
+    </a>
+    <figcaption>
+      Schematic map of SDMX Classes to DCAT-AP.
+      This diagram highlights the high-level SDMX classes that provide the metadata required by StatDCAT-AP and their correspondences to DCAT-AP entities.
+    </figcaption>
+  </figure>
+
+  <p>
+    This is a schematic diagram of those high level classes in the SDMX Information Model that provide the metadata required by StatDCAT-AP.
+  </p>
+
+  <p>A narrative explanation is:</p>
+  <ol>
+    <li>
+    The DCAT Catalogue is mapped to an SDMX Category Scheme. The Category can link to any other structural metadata object in SDMX using a Categorisation. The Categorisation provides the link, i.e. the Categorisation references both the object and the Category to which it is linked. Two Categories are present in the Category Scheme representing the DCAT-Catalogue, one for linking the Dataflows, and one for linking the Category Scheme containing the topic themes.  There will be multiple Categorisations, each one linking the object (e.g. Dataflow) to the relevant Category. Therefore, for instance, there will be one Categorisation for each Dataflow, each Categorisation referencing the same Category. In this way all of the Dataflows that are contained in the catalogue are linked to the same Category.
+    </li>
+    <li>
+    The StatDCAT-AP Dataset maps to the SDMX Dataflow. 
+    </li>
+    <li>
+    Dimension and Attribute in the StatDCAT-AP Dataset map to Dimension and Attribute in the SDMX Data Structure
+    </li>
+    <li>
+    The DCAT Category Scheme maps to the SDMX Category Scheme. However, it should be noted that this Category Scheme will be different from the one that contains the DCAT Catalogue. The Categories in this Category Scheme are the topics or themes that categorise the type of data. Each Category links to the Dataflows that are relevant to the topic by means of a Categorisation. A Dataflow may be linked to many such topics (Categories) and a topic (Category) can be linked to many Dataflows.
+    </li>
+    <li>
+    The DCAT Distribution maps to the SDMX Provision Agreement which links a Data Provider with a Dataflow. The Data Provider and the Dataflow have a many-to- many association, each one-to-one association is represented as a Provision Agreement. The actual data source for one Data Provider and its linked Dataflow is the Registered Data Source linked to the Provision Agreement. The URL of the Registered Data Source is a link to a data source, which can be a URL that resolves to an actual set of data or it may be a URL to a web service that can be queried for the data. SDMX makes a distinction between the two.
+    </li>
+    <li>
+    The DCAT Agent maps to the SDMX Agency which is the “Maintenance Agency” for the metadata such as the Dataflow. Note that in SDMX the Maintenance Agency is maintained in a different scheme from the Data Provider. So, the Data Provider is a different construct from the Agency. In SDMX the Data Provider (of the actual data) can be different from the Maintenance Agency of the metadata describing the data (the SDMX Dataflow): they may both have the same Id but are different entities.
+    </li>
+  </ol>
+
+  <figure id="fig-dcat-perspective">
+    https://semiceu.github.io/StatDCAT-AP/drafts/3.0.0/html/appendices/annex-I-fig02.png
+    />
+    <figcaption>
+      DCAT-AP Model mapped to SDMX Model Classes.
+      This figure shows the same mapping as Figure&nbsp;1 but from the perspective of the DCAT-AP model.
+    </figcaption>
+  </figure>
+</section>
+
+<section id="example">
+  <h3>Example</h3>
+
+  <h4>Introduction</h4>
+  <p>
+    This example shows how the SDMX structural metadata are mapped to the DCAT-AP classes and properties.
+    The mapping shows the XML instances of the structural metadata authored in an SDMX Registry and
+    exported as SDMX‑ML.
+  </p>
+
+  <figure id="fig-example-metadata-overview">
+    https://semiceu.github.io/StatDCAT-AP/drafts/3.0.0/html/appendices/annex-I-fig03.png
+    />
+    <figcaption>
+      Metadata Used in the Mapping Example.
+      This shows the schematic diagram of the high level SDMX classes and the content of these for the instance of these classes used in the examples that follow.
+    </figcaption>
+  </figure>
+
+  <p>A narrative explanation is:</p>
+  <ol>
+    <li>
+      The SDMX Category Scheme containing the DCAT Catalogue has two Categories:
+      one called <em>TOPIC_SCHEMES</em>, linking to the DCAT Category Scheme of MDR Themes;
+      and one called <em>DATASETS</em>, linking to all the DCAT Datasets
+      (in SDMX this is a Dataflow) listed in the Catalogue.
+    </li>
+    <li>
+      In the example two Dataflows are present: <code>DF_HC58</code> (Census Hub Hypercube 58)
+      and <code>Cens01_neisco</code> (Census data by education and occupation). Both are
+      maintained by Eurostat (<code>Agency=ESTAT</code>).
+      <code>DF_HC58</code> shows how a Category can link to multiple Dataflows,
+      while <code>Cens01_neisco</code> is used for the detailed mapping of SDMX
+      to the StatDCAT‑AP classes - Dataset, Distribution, Category Scheme, Agent.
+    </li>
+    <li>
+      The Dataflow is linked to the Data Structure <code>CENS_01_NEISCO</code>, which has a
+      number of Dimensions including Age, Sex, Geography and one Attribute, Observation Status.
+    </li>
+    <li>
+      The SDMX Category Scheme containing the statistical themes has the name <em>MDR Themes</em> in the example.
+    </li>
+    <li>
+      The Provision Agreement containing the DCAT Distribution in the example is named
+      <em>Census by Education and Occupation</em> and links the Data Provider (<code>ESTAT</code>)
+      to the Dataflow <code>Cens01_neisco</code>. The URL of the Registered Data Source is a link to 
+	  a web service that can be queried for the data.
+    </li>
+    <li>
+      The SDMX Agency containing the DCAT Agent is <code>ESTAT</code>. The Data Provider is a
+      different construct from the <code>ESTAT</code> Agency, but in this example it is given use the same ID (<code>ESTAT</code>).
+    </li>
+    <li>
+      The URL in the Registered Data Source
+      (<a href="http://www.ec.europa.eu/eurostat/SDMX/diss-web/rest">http://www.ec.europa.eu/eurostat/SDMX/diss-web/rest</a>)
+      is the <code>dcat:accessURL</code> in the DCAT Distribution.
+    </li>
+  </ol>
+</section>
+
+<section id="sdmx-annotations">
+  <h3>SDMX Annotations</h3>
+  <p>
+    SDMX does not support some of the mandatory or recommended properties of DCAT-AP. However, SDMX has an extensibility mechanism called <em>Annotations</em>. Annotations can be added to any SDMX object that can be identified.
+  </p>
+
+  <figure id="fig-sdmx-annotation-schema">
+   https://semiceu.github.io/StatDCAT-AP/drafts/3.0.0/html/appendices/annex-I-fig04.png
+    />
+    <figcaption>
+      SDMX XML schema specification for <code>Annotation</code>.
+    </figcaption>
+  </figure>
+
+  <p>In the examples that follow, the following elements are used:</p>
+  <ul>
+    <li>
+      <strong>AnnotationTitle</strong>contains the <code>DCAT‑AP</code> property 
+    </li>
+    <li>
+      <strong>AnnotationType</strong> contains the value <code>StatDCAT‑AP</code> indicating that this is a StatDCAT‑AP property.
+    </li>
+    <li>
+      <strong>AnnotationURL</strong> is a URI 
+    </li>
+    <li>
+      <strong>AnnotationText</strong> is a text value (this can occur many times to support multilingual values)
+    </li>
+  </ul>
+</section>
+ 
+
+<section id="explanation-of-mapping-diagrams">
+  <h3>Explanation of the mapping diagrams</h3>
+
+  <p>
+    In all cases the mapping is shown between the DCAT-AP property and the location of the property in an SDMX XML message. Table 1 under the mapping diagram maps the DCAT-AP properties to the corresponding SDMX XML elements or attributes. In all cases the SDMX message is a &lt;Structure&gt; message (i.e. the start tag is the &lt;Structure&gt; element) 
+    <br/>e.g.  https://semiceu.github.io/StatDCAT-AP/drafts/3.0.0/html/appendices/annex-I-fig05.png
+    <br/>In Table 1 the additional StatDCAT-AP properties are shown in turquoise.
+    <br/>e.g.  https://semiceu.github.io/StatDCAT-AP/drafts/3.0.0/html/appendices/annex-I-fig06.png
+  </p>
+  <h4 id="data-catalogue">Data Catalogue</h4>
+
+  
+  <figure id="fig-07-08-09-dcat-catalogue-mapping">
+  https://semiceu.github.io/StatDCAT-AP/drafts/3.0.0/html/appendices/annex-I-fig07.png
+  https://semiceu.github.io/StatDCAT-AP/drafts/3.0.0/html/appendices/annex-I-fig08.png
+  https://semiceu.github.io/StatDCAT-AP/drafts/3.0.0/html/appendices/annex-I-fig09.png
+    />
+    <figcaption>
+      SDMX-DCAT mapping example for the DCAT Catalogue
+    </figcaption>
+  </figure>
+
+  <h5 id="table-1">Table 1 DCAT-AP properties mapped to the corresponding SDMX XML elements or attributes</h5>
+  <table class="simple">
+    <thead>
+      <tr>
+        <th>DCAT-AP Property</th>
+        <th>SDMX Element or Element.Attribute</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><code>dct:description</code></td>
+        <td>Description</td>
+      </tr>
+      <tr>
+        <td><code>dct:publisher</code></td>
+        <td>CategoryScheme.agencyID</td>
+      </tr>
+      <tr>
+        <td><code>dct:title</code></td>
+        <td>Name</td>
+      </tr>
+      <tr>
+        <td><code>foaf:homepage</code></td>
+        <td>AnnotationTitle</td>
+      </tr>
+      <tr>
+        <td><code>dct:license</code></td>
+        <td>AnnotationTitle</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <h4 id="linking-to-categories-using-categorisations">Linking to Categories using Categorisations</h4>
+
+  <p>Schematic</p>
+  <figure id="fig-10-categorisations-schematic">
+    https://semiceu.github.io/StatDCAT-AP/drafts/3.0.0/html/appendices/annex-I-fig10.png
+    <figcaption>
+      Schematic showing links between SDMX Categories and other SDMX objects 
+    </figcaption>
+  </figure>
+
+  <p>Example</p>
+  <figure id="fig-11-linking-catalogue-datasets-themes">
+    https://semiceu.github.io/StatDCAT-AP/drafts/3.0.0/html/appendices/annex-I-fig11.png
+    <figcaption>
+      Linking Catalogue to DCAT Datasets and Category (Topic) Scheme
+    </figcaption>
+  </figure>
+
+  <table class="simple">
+    <thead>
+      <tr>
+        <th>DCAT-AP Property</th>
+        <th>SDMX Element or Element.Attribute</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><code>dcat:dataset</code></td>
+        <td>
+          Source/Ref.id (id of the Dataflow)<br />
+          Source/Ref.agencyId (agency of the Dataflow)<br />
+          Source/Ref.version (version of the Dataflow)<br /><br />
+          Target/Ref.id (id of the Category)<br />
+          Target/maintainableParentId (id of the Category Scheme that is the DCAT-AP Catalogue)<br />
+          Target/agencyId (agency of the Category Scheme)<br />
+          Target/version (version of the Category Scheme)
+        </td>
+      </tr>
+      <tr>
+        <td><code>dcat:themeTaxonomy</code></td>
+        <td>
+          Source/Ref.id (id of the Dataflow)<br />
+          Source/Ref.agencyId (agency of the Dataflow)<br />
+          Source/Ref.version (version of the Dataflow)<br /><br />
+          Target/Ref.id (id of the Category)<br />
+          Target/maintainableParentId (id of the Category Scheme that is the DCAT-AP Category Scheme)<br />
+          Target/agencyId (agency of the Category Scheme)<br />
+          Target/version (version of the Category Scheme)
+        </td>
+      </tr>
+    </tbody>
+  </table>
+
+  <h4 id="dataset">Dataset</h4>
+
+  <figure id="fig-12-dataset-mapping">
+    https://semiceu.github.io/StatDCAT-AP/drafts/3.0.0/html/appendices/annex-I-fig12.png
+    <figcaption>
+      SDMX to DCAT mapping example for the StatDCAT-AP Dataset
+    </figcaption>
+  </figure>
+
+  <table class="simple">
+    <thead>
+      <tr>
+        <th>DCAT-AP Property</th>
+        <th>SDMX Element or Element.Attribute</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr><td><code>dcat:distribution</code></td><td>AnnotationURL</td></tr>
+      <tr><td><code>dcat:keyword</code></td><td>AnnotatationText</td></tr>
+      <tr><td><code>dct:publisher</code></td><td>Dataflow.agencyID</td></tr>
+      <tr><td><code>dcat:theme</code></td><td>AnnotationURL</td></tr>
+      <tr><td><code>stat:numSeries</code></td><td>AnnotationText</td></tr>
+      <tr><td><code>stat:statUnitMeasure</code></td><td>AnnotationURL</td></tr>
+      <tr><td><code>dct:description</code></td><td>Description</td></tr>
+      <tr><td><code>dct:title</code></td><td>Name</td></tr>
+    </tbody>
+  </table>
+
+  <figure id="fig-13-dataflow-to-topic">
+    https://semiceu.github.io/StatDCAT-AP/drafts/3.0.0/html/appendices/annex-I-fig13.png
+    <figcaption>
+      Linking a Dataflow to the SDMX Category (Topic)
+    </figcaption>
+  </figure>
+
+  <p>
+    This links the Dataflow cens_01neisco version 1.0 maintained by ESTAT to the Category SOCI in the Category Scheme representing the MDR Themes (MDR_THEMES). This (SDMX) Category is the map to the dcat:theme.
+	</p>
+	<p>
+    <br/><strong>Property and Attribute Property</strong> 
+    <br/>The URL must resolve to a qb:dimension or qb:attribute.</p>
+   <p>
+	<br/><strong>Quality Annotation</strong> 
+    <br/>If required as SDMX structural metadata this will be an Annotation in the Dataflow
+  </p>
+
+  <figure id="fig-14-annotation-mapping">
+    https://semiceu.github.io/StatDCAT-AP/drafts/3.0.0/html/appendices/annex-I-fig14.png
+    <figcaption>
+      SDMX to DCAT mapping example for the StatDCAT-AP Annotation
+    </figcaption>
+  </figure>
+
+  <h4 id="distribution">Distribution</h4>
+
+  <figure id="fig-15-provision-agreement">
+    https://semiceu.github.io/StatDCAT-AP/drafts/3.0.0/html/appendices/annex-I-fig15.png
+    <figcaption>
+      Linking a Distribution to the SDMX Provision Agreement
+    </figcaption>
+  </figure>
+
+  <table class="simple">
+    <thead>
+      <tr>
+        <th>DCAT-AP Property</th>
+        <th>SDMX Element or Eelement.Attribute</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr><td><code>dct:description</code></td><td>Description</td></tr>
+      <tr><td><code>dct:format</code></td><td>AnnotationText</td></tr>
+      <tr><td><code>dct:license</code></td><td>AnnotationText</td></tr>
+    </tbody>
+  </table>
+
+  <figure id="fig-16-accessurl-provision-agreement">
+    https://semiceu.github.io/StatDCAT-AP/drafts/3.0.0/html/appendices/annex-I-fig16.png
+    <figcaption>
+      Linking a Distribution (accessURL) to the SDMX Provision Agreement
+    </figcaption>
+  </figure>
+
+  <table class="simple">
+    <thead>
+      <tr>
+        <th>DCAT-AP Property</th>
+        <th>SDMX Element or Element.Attribute</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr><td><code>dcat:accessURL</code></td><td>QueryableDataSource/DataURL</td></tr>
+    </tbody>
+  </table>
+
+  <h4 id="agent">Agent</h4>
+
+  <figure id="fig-17-agent-mapping">
+    https://semiceu.github.io/StatDCAT-AP/drafts/3.0.0/html/appendices/annex-I-fig17.png
+    <figcaption>
+     Linking an Agent to the SDMX Agency
+    </figcaption>
+  </figure>
+
+  <table class="simple">
+    <thead>
+      <tr>
+        <th>DCAT-AP Property</th>
+        <th>SDMX Element or Eelement.Attribute</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr><td><code>dcat:contactPoint</code></td><td>Contact/Name<br/>Contact/Telephone<br/>Contact/Email</td></tr>
+    </tbody>
+  </table>
+
+  <h4 id="summary">Summary</h4>
+  <p>
+    The mapping above is the recommended mapping between SDMX classes and attributes and DCAT-AP classes and properties. Clearly, an organisation is free to use whatever input source(s) it wishes, including a mixture of sources. The use of SDMX Annotations to curate the DCAT-AP properties is a recommendation for those organisations that wish to use 100% SDMX structural metadata for this mapping. In order to achieve interoperability between systems, StatDCAT-AP will specify a controlled vocabulary for the AnnotationTitle (this contains the DCAT-AP property).
+  </p>
+</section>
+
+  <section id="annex-II-transformation-mechanism" class="appendix">
+  <h2>SDMX-BASED TRANSFORMATION MECHANISM</h2>
+
+  <section id="annex-II-scope">
+    <h3>Scope of this section</h3>
+    <p>
+      The scope of this section is to describe a mechanism intended to assist statistical organisations to create StatDCAT-AP messages without the need for the organisation to understand the syntax and rules of DCAT-AP. This mechanism is referred to as here the “Transformation Mechanism”.
+    </p>
+    <p>
+      Whilst any organisation is free to choose whichever mechanism it prefers in order to create and publish DCAT-AP RDF, it is the intention that the Transformation Mechanism described here will be provided in the form of tools that an organisation can use to convert an XML file based on SDMX-formatted structures (SDMX-ML) into DCAT-AP.
+    </p>
+    <p>
+      The intent of this Transformation Mechanism is to assist organisations that do not wish to invest in resources to understand RDF technologies and vocabularies and thus to encourage organisations to use DCAT-AP to publish the content of their open data. Whilst the two formats used in this Transformation Mechanism will be familiar to organisations already using SDMX, the Metadata Set variant of the format is a very simple XML structure and it should therefore be easy for organisations with general XML skills to create the metadata required from their own metadata sources, even if they do not use SDMX.
+    </p>
+    <p>
+      The Transformation Mechanism is first explained. This is followed by an example of the mapping of the input format used by the Transformation Mechanism to the DCAT-AP properties.
+    </p>
+  </section>
+
+  <section id="annex-II-transformation-mechanism">
+    <h3>Transformation mechanism</h3>
+    <p>
+      The essence of this mechanism is shown in the following diagram and explanation.
+    </p>
+
+    <figure id="fig-20-intermediary-mechanism">
+      <!-- Replace with actual image path -->
+      <img
+        src="assets/img/fig20-intermediary-mechanism.png"
+        alt="Diagram of the flow of metadata through the Intermediary Transformation Mechanism."
+        width="760"
+        style="max-width:100%; height:auto; border:0;"
+        loading="lazy"
+        decoding="async"
+      />
+      <figcaption>Diagram of the flow of metadata though the Intermediary Mechanism</figcaption>
+    </figure>
+
+    <p>
+      The structural metadata required to populate the DCAT-AP can be derived from many types of source. The sources may be multiple and may include a maintained structural metadata repository which could be an SDMX-compliant source such as an SDMX Registry.
+    </p>
+    <p>
+      The metadata required for the intermediary format may be made available either as SDMX structural metadata or as an SDMX metadata set. Both of these options are described later in this section.
+    </p>
+    <p>
+      The metadata provided is read by a “Data Reader” which understands the format of the metadata stream (i.e. SDMX structural metadata or SDMX metadata set), and makes these metadata available to a Data Writer via an API that is conformant to the SDMX Common Component Architecture. The Data Writer creates the DCAT-AP output. Therefore, the Transformation Mechanism comprises two Data Readers (one for each of the two formats) and one Data Writer. It should be noted that under the SDMX Common Component Architecture, the Data Reader and the Data Writer are totally independent from each other and so any Data Reader can supply data to any Data Writer. Thus the Data Readers and Writers can be integrated into an organisation’s system or can be built easily into transformation tools. There are a number of SDMX validation and transformation tools that can be extended to use these two Data Readers and the DCAT-AP Data Writer.
+    </p>
+  </section>
+
+  <section id="annex-II-transformation-input-formats">
+    <h3>Transformation input formats</h3>
+
+    <section id="annex-II-choice-of-mechanisms">
+      <h4>Choice of mechanisms</h4>
+      <p>
+        It is the responsibility of the user system to extract the metadata from the metadata source(s) and write the metadata to the relevant transformation input format. So, the question that requires an answer is “why, then, not just create DCAT-AP directly?”
+      </p>
+      <p>
+        Of course if an organisation can create DCAT-AP messages directly from its own systems, then it should do so. However, if an organisation is not comfortable with this direct approach (e.g., because it does not have RDF skills, or it already has SDMX systems in place and is more familiar with SDMX formats) then the Transformation Mechanism is an attractive approach as it uses SDMX formats and has built-in validation procedures ensuring that the metadata are DCAT-AP-compliant.
+      </p>
+    </section>
+
+    <section id="annex-II-sdmx-structural-metadata">
+      <h4>SDMX Structural Metadata</h4>
+      <p>
+        The format is an SDMX Structure Message. The mapping of SDMX to DCAT-AP has been described in Annex I of this specification and examples of the mapping are also given in that Annex.
+      </p>
+      <p>
+        However, there is one difference between the mapping given in Annex I and the format used in the Transformation Mechanism. This concerns the accessURL of the DCAT Distribution. In SDMX the Registration element is not an output in the SDMX Structure Message, it is an output in the SDMX Registry Interface Message. Therefore, for the purpose of this transformation this metadata is represented as an Annotation in the Provision Agreement.
+      </p>
+      <p>
+        So, taking the example from Annex I:
+      </p>
+
+      <figure id="fig-21-accessurl-from-section-9">
+        <!-- Replace with your actual image path -->
+        <img
+          src="assets/img/fig21-accessurl-from-section-9.png"
+          alt="From Section 9 - Linking a Distribution accessURL to the SDMX Provision Agreement."
+          width="760"
+          style="max-width:100%; height:auto; border:0;"
+          loading="lazy"
+          decoding="async"
+        />
+        <figcaption><strong>Figure 21:</strong> From Section 9 - Linking a Distribution (accessURL) to the SDMX Provision Agreement</figcaption>
+      </figure>
+
+      <p>
+        Using the Transformation Mechanism the output is the following:
+      </p>
+
+      <figure id="fig-22-transformation-format-accessurl">
+        <!-- Replace with your actual image path -->
+        <img
+          src="assets/img/fig22-transformation-format-accessurl.png"
+          alt="Transformation format - Linking a Distribution accessURL to the SDMX Provision Agreement."
+          width="760"
+          style="max-width:100%; height:auto; border:0;"
+          loading="lazy"
+          decoding="async"
+        />
+        <figcaption>Transformation format - Linking a Distribution (accessURL) to the SDMX Provision Agreement</figcaption>
+      </figure>
+
+      <p>
+        So, the full example of the Provision Agreement will look like this:
+      </p>
+
+      <figure id="fig-23-provision-agreement-example">
+        <!-- Replace with your actual image path -->
+        <img
+          src="assets/img/fig23-provision-agreement-example.png"
+          alt="Example of a Provision Agreement for DCAT-AP Distribution."
+          width="760"
+          style="max-width:100%; height:auto; border:0;"
+          loading="lazy"
+          decoding="async"
+        />
+        <figcaption>Example of a Provision Agreement for DCAT-AP Distribution</figcaption>
+      </figure>
+
+      <p>
+        The full example of the Structure Message is shown in Annex III.
+      </p>
+      <p>
+        It is a simple software development to create an extract process from an SDMX Registry to create the SDMX format required for the Transformation Mechanism, as the relevant metadata can be retrieved using SDMX web services which are supported already by an SDMX Registry.
+      </p>
+    </section>
+
+    <section id="annex-II-sdmx-metadata-set">
+      <h4>SDMX Metadata Set</h4>
+
+      <h5>Structure</h5>
+      <p>
+        A Metadata Set represents metadata for some or all of the DCAT Classes and Properties as Metadata Attributes. The structure of a Metadata Set is defined by a Metadata Structure Definition (MSD). The MSD contains all of the information required to structure the content of a Metadata Set in terms of:
+      </p>
+      <p>For each Metadata Attribute:</p>
+      <ul>
+        <li>the Concept used (i.e. the DCAT-AP Class or Property);</li>
+        <li>the valid content (e.g. a Code List, text, URL, integer, no content etc.); and</li>
+        <li>child Metadata Attributes if a hierarchy is specified.</li>
+      </ul>
+      <p>
+        The MSD also specifies the type of object (class) to which the metadata pertains, such as an SDMX Dataflow. The identification of the actual instance (e.g., an actual Dataflow) is contained in the Metadata Set together with the content of the Metadata Attributes.
+      </p>
+      <p>
+        A schematic of the MSD is shown below.
+      </p>
+
+      <figure id="fig-24-schematic-msd">
+        <!-- Replace with your actual image path -->
+        <img
+          src="assets/img/fig24-schematic-msd-model.png"
+          alt="Schematic diagram of the SDMX Metadata Structure Definition model."
+          width="760"
+          style="max-width:100%; height:auto; border:0;"
+          loading="lazy"
+          decoding="async"
+        />
+        <figcaption>Schematic diagram of the SDMX Metadata Structure Definition model</figcaption>
+      </figure>
+
+      <p>
+        A schematic representation of the Metadata Set is shown below.
+      </p>
+
+      <figure id="fig-25-schematic-metadata-set">
+        <!-- Replace with your actual image path -->
+        <img
+          src="assets/img/fig25-schematic-metadata-set.png"
+          alt="Schematic diagram of the SDMX Metadata Set with MSD, Report Structure, Metadata Target and Reported Attributes."
+          width="760"
+          style="max-width:100%; height:auto; border:0;"
+          loading="lazy"
+          decoding="async"
+        />
+        <figcaption>Schematic diagram of the SDMX Metadata Set</figcaption>
+      </figure>
+
+      <p>
+        The green boxes represent the content of the Metadata Set. The MSD is not a part of the Metadata Set but both the MSD and the Report Structure are identified in the Metadata Set. The Id of the Metadata Attribute is contained in the Reported Attribute thus enabling the structure and content of the Reported Attribute to be validated. The Metadata Target contains the Id of SDMX structural component to which the metadata pertains. In the example the target is the SDMX Category Scheme that represents the DCAT-AP Catalogue.
+      </p>
+
+      <h5>Example MSD</h5>
+      <p>
+        Note that this MSD is not finalised. At the moment is contains the Mandatory and Recommended properties of DCAT-AP, and the extensions added by StatDCAT-AP.
+      </p>
+
+      <figure id="fig-26-metadata-attributes-in-msd">
+        <!-- Replace with actual image path -->
+        <img
+          src="assets/img/fig26-metadata-attributes-in-msd.png"
+          alt="Diagram of the Metadata Attributes in the DCAT-AP MSD, showing top-level DCAT-AP and StatDCAT-AP classes and their child attributes."
+          width="760"
+          style="max-width:100%; height:auto; border:0;"
+          loading="lazy"
+          decoding="async"
+        />
+        <figcaption>Metadata Attributes in the DCAT-AP MSD</figcaption>
+      </figure>
+
+      <p>
+        Each DCAT-AP class and StatDCAT-AP class are top level Metadata Attributes in the MSD. The properties of the class are the child Metadata Attributes. Additional hierarchies are defined where appropriate (e.g., in DCAT_DATASET the CONTACT_POINT has two child Metadata Attributes).
+      </p>
+      <p>
+        The Metadata Attributes representing the DCAT-AP classes are for grouping purposes which enable the transformation software to determine to which DCAT-AP class the metadata pertains. They have no content themselves but have child Metadata Attributes. The following picture shows some examples of the type of valid content that can be specified.
+      </p>
+
+      <figure id="fig-27-metadata-attribute-specification">
+        <!-- Replace with your actual image path -->
+        <img
+          src="assets/img/fig27-metadata-attribute-specification.png"
+          alt="Examples of Metadata Attribute specification, including content types and occurrence rules."
+          width="760"
+          style="max-width:100%; height:auto; border:0;"
+          loading="lazy"
+          decoding="async"
+        />
+        <figcaption>Example of Metadata Attribute Specification</figcaption>
+      </figure>
+
+      <p>
+        The examples above show:
+      </p>
+      <ol>
+        <li>DCAT_DISTRIBUTION is used for grouping purposes only and so no actual value is reported in a Metadata Set.</li>
+        <li>accessURL is mandatory if DCAT_DISTRIBUTION information is present; in this case its valid representation is XHTML.</li>
+        <li>Contact Point can occur many times; if this information is available CONTACT_PHONE is optional while CONTACT_EMAIL is mandatory.</li>
+      </ol>
+      <p>
+        Note that a code list may be specified as the valid representation, in which case the value of the reported attribute in the Metadata Set must be a code in the assigned code list. There is no example of this in the Figure 27 above.
+      </p>
+
+      <h5>Example of Metadata Report</h5>
+      <p>
+        The following SDMX Metadata Set Report shows how the DCAT-AP metadata are represented in a Metadata Set structured according to the MSD.
+      </p>
+
+      
+<section id="annex-II-example-metadata-report">
+  <h4>Example of Metadata Report</h4>
+
+  <p>
+    The following SDMX Metadata Set Report shows how the DCAT-AP metadata are represented in a Metadata Set structured according to the MSD.
+  </p>
+
+  <figure id="fig-28-catalogue-metadata">
+    <!-- Replace with actual image -->
+    assets/img/fig28-catalogue-metadata.png
+    <figcaption>SDMX catalogue metadata pertaining to the DCAT-AP Catalogue</figcaption>
+  </figure>
+
+  <figure id="fig-29-category-scheme-metadata">
+    <!-- Replace with actual image -->
+    assets/img/fig29-category-scheme-metadata.png
+    <figcaption>SDMX category scheme metadata pertaining to the DCAT-AP Catalogue</figcaption>
+  </figure>
+
+  <figure id="fig-30-dataset-metadata">
+    <!-- Replace with actual image -->
+    assets/img/fig30-dataset-metadata.png
+    <figcaption>SDMX dataset metadata pertaining to the DCAT-AP Catalogue including StatDCAT-AP extensions to the Dataset.</figcaption>
+  </figure>
+
+  <figure id="fig-31-distribution-metadata">
+    <!-- Replace with actual image -->
+    assets/img/fig31-distribution-metadata.png
+    <figcaption>SDMX distribution metadata pertaining to the DCAT-AP Catalogue including StatDCAT-AP extensions to the Distribution</figcaption>
+  </figure>
+
+  <p>
+    It is possible to create a Metadata Set for any or all of the DCAT-AP classes to be supported by StatDCAT-AP. Therefore, an entire catalogue can be published including all its associated Datasets, Distributions, Category Schemes., and Agents. Alternatively, metadata may be added to an existing Catalogue incrementally.
+  </p>
+</section>
+
+<section id="annex-II-advantages-formats">
+  <h3>Advantages and disadvantages of the two transformation formats</h3>
+
+  <section id="annex-II-sdmx-structure-message">
+    <h4>SDMX Structure Message</h4>
+
+    <strong>Advantages</strong>
+    <ul>
+      <li>Familiar to organisations using SDMX</li>
+      <li>Can be generated easily from an SDMX Registry</li>
+    </ul>
+
+    <strong>Disadvantages</strong>
+    <ul>
+      <li>The XML can be complex and verbose</li>
+      <li>
+        Annotations cannot be
+        <ul>
+          <li>coded (representation is restricted to text and URL)</li>
+          <li>hierarchical (but there is a mechanism to achieve this)</li>
+          <li>validated by SDMX validators (e.g. check that Title is valid)</li>
+          <li>given mandatory and optional status (all Annotations are optional)</li>
+        </ul>
+      </li>
+      <li>Such messages could create unnecessary “noise” when exchanging structural metadata with other organisations if this is the source of the metadata in an SDMX Registry-compliant metadata source</li>
+    </ul>
+
+    <strong>However</strong>
+    <p>
+      It is possible to use the MSD for the Metadata Set option to validate that the content of the structural metadata is complete and that the Annotation metadata is correct (e.g. text representing a coded value can be validated against a code list) and that the correct hierarchy is built in DCAT-AP.
+    </p>
+  </section>
+
+  <section id="annex-II-sdmx-metadata-set-advantages">
+    <h4>SDMX Metadata Set</h4>
+
+    <strong>Advantages</strong>
+    <ul>
+      <li>Simple XML structure</li>
+      <li>
+        Attributes can be:
+        <ul>
+          <li>assigned any type of representation (e.g. coded, text, HTML, Boolean etc.);</li>
+          <li>hierarchical;</li>
+          <li>validated; and</li>
+          <li>assigned mandatory or optional usage status.</li>
+        </ul>
+      </li>
+      <li>The Metadata Set Report can reference any object that can be identified (e.g., Dataflow, Provision Agreement, Category Scheme)</li>
+      <li>Is separate from the structural metadata so does not affect the structural metadata components</li>
+      <li>If present, a Metadata Attribute can be “presentational”, just giving structure to child attributes</li>
+    </ul>
+
+    <strong>Disadvantages</strong>
+    <ul>
+      <li>Not always well understood by SDMX users (may result in some reluctance to use this mechanism)</li>
+      <li>Not widely used</li>
+    </ul>
+  </section>
+</section>
+
+<section id="annex-II-summary-2">
+  <h3>Summary</h3>
+  <p>
+    Whilst an organisation can choose to generate DCAT-AP directly from its own systems, having an intermediary Transformation Mechanism will be of benefit to some organisations. This will be particularly true for organisations already using SDMX.
+  </p>
+  <p>
+  
+<section id="annex-III-sdmx-files" class="appendix">
+  <h2>SDMX FILES USED FOR THE EXAMPLES</h2>
+
+  <section id="annex-III-structural-metadata">
+    <h3>SDMX Structural Metadata</h3>
+
+    <p>
+      In the following example, to avoid any ambiguity, instead of using keywords e.g DCAT-AP, URIs are used. For DCAT-AP, the URI: http://www.w3.org/ns/dcat# is used. For StatDCAT-AP, the  fictitious URI http://data.europa.eu/xyz is used that  corresponds to the namespace URI of StatDCAT-AP.
+    </p>
+
+    <details open>
+      <summary><strong>SDMX Structure XML (full example)</strong></summary>
+      <pre><code class="language-xml">&lt;?xml version="1.0" encoding="UTF-8"?&gt;
+&lt;mes:Structure xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xml="http://www.w3.org/XML/1998/namespace" xmlns:mes="http://www.sdmx.org/resources/sdmxml/schemas/v2_1/message" xmlns:str="http://www.sdmx.org/resources/sdmxml/schemas/v2_1/structure" xmlns:com="http://www.sdmx.org/resources/sdmxml/schemas/v2_1/common" xsi:schemaLocation="http://www.sdmx.org/resources/sdmxml/schemas/v2_1/message https://registry.sdmx.org/schemas/v2_1/SDMXMessage.xsd"&gt;
+&lt;mes:Header&gt;
+        &lt;mes:ID&gt;IDREF169&lt;/mes:ID&gt;
+        &lt;mes:Test&gt;false&lt;/mes:Test&gt;
+        &lt;mes:Prepared&gt;2016-05-05T15:11:56&lt;/mes:Prepared&gt;
+        &lt;mes:Sender id="FR"/&gt;
+        &lt;mes:Receiver id="not_supplied"/&gt;
+    &lt;/mes:Header&gt;
+    &lt;mes:Structures&gt;
+&lt;str:OrganisationSchemes&gt;
+
+DCAT Agent
+&lt;str:AgencyScheme id="AGENCIES" urn="urn:sdmx:org.sdmx.infomodel.base.AgencyScheme=SDMX:AGENCIES(1.0)" isExternalReference="false" agencyID="SDMX" isFinal="false" version="1.0"&gt;
+&lt;com:Name xml:lang="en"&gt;SDMX Agency Scheme&lt;/com:Name&gt;
+&lt;str:Agency id="ESTAT" urn="urn:sdmx:org.sdmx.infomodel.base.Agency=ESTAT"&gt;
+&lt;com:Name xml:lang="en"&gt;Eurostat&lt;/com:Name&gt;
+&lt;str:Contact&gt;
+&lt;com:Name xml:lang="en"&gt;Dissemination&lt;/com:Name&gt;
+&lt;str:Telephone&gt;+352431034320&lt;/str:Telephone&gt;
+&lt;str:Email&gt;dissemination@ec.europa.eu&lt;/str:Email&gt;
+&lt;/str:Contact&gt;
+&lt;/str:Agency&gt;
+&lt;/str:AgencyScheme&gt;
+&lt;/str:OrganisationSchemes&gt;
+&lt;str:Dataflows&gt;
+
+DCAT Dataset
+&lt;str:Dataflow id="cens_01neisco" agencyID="ESTAT" version="1.0"&gt;
+    &lt;com:Annotations&gt;
+        &lt;com:Annotation&gt;
+       &lt;com:AnnotationTitle&gt;http://www.w3.org/ns/dcat#distribution&lt;/com:AnnotationTitle&gt;
+       &lt;com:AnnotationType&gt; http://data.europa.eu/xyz&lt;/com:AnnotationType&gt;
+       &lt;com:AnnotationURL&gt;urn:sdmx:org.sdmx.infomodel.registry.ProvisionAgreement=ESTAT:AT-  NEISCO(1.0)&lt;/com:AnnotationURL&gt;
+      &lt;/com:Annotation&gt;
+  &lt;com:Annotation&gt;
+      &lt;com:AnnotationTitle&gt; http://www.w3.org/ns/dcat#keyword&lt;/com:AnnotationTitle&gt;
+      &lt;com:AnnotationType&gt; http://data.europa.eu/xyz &lt;/com:AnnotationType&gt;
+      &lt;com:AnnotationText&gt;Population&lt;/com:AnnotationText&gt;
+&lt;/com:Annotation&gt;
+&lt;com:Annotation&gt;
+      &lt;com:AnnotationTitle&gt; http://www.w3.org/ns/dcat#keyword&lt;/com:AnnotationTitle&gt;
+     &lt;com:AnnotationType&gt; http://data.europa.eu/xyz &lt;/com:AnnotationType&gt;
+     &lt;com:AnnotationText&gt;Austria&lt;/com:AnnotationText&gt;
+&lt;/com:Annotation&gt;
+&lt;com:Annotation&gt;
+     &lt;com:AnnotationTitle&gt; http://www.w3.org/ns/dcat#keyword&lt;/com:AnnotationTitle&gt;
+    &lt;com:AnnotationType&gt; http://data.europa.eu/xyz &lt;/com:AnnotationType&gt;
+    &lt;com:AnnotationText&gt;Census&lt;/com:AnnotationText&gt;
+&lt;/com:Annotation&gt;
+&lt;com:Annotation&gt;
+     &lt;com:AnnotationTitle&gt; http://www.w3.org/ns/dcat#theme&lt;/com:AnnotationTitle&gt;
+     &lt;com:AnnotationType&gt; http://data.europa.eu/xyz &lt;/com:AnnotationType&gt;     &lt;com:AnnotationURL&gt;urn:sdmx:org.sdmx.infomodel.categoryscheme.Category=ESTAT:MDR_THEMES(1.0).SOC&lt;/com:AnnotationURL&gt;
+&lt;/com:Annotation&gt;
+&lt;com:Annotation&gt;
+      &lt;com:AnnotationTitle&gt;stat:numSeries&lt;/com:AnnotationTitle&gt;
+      &lt;com:AnnotationType&gt; http://data.europa.eu/xyz &lt;/com:AnnotationType&gt;
+      &lt;com:AnnotationText&gt;106850&lt;/com:AnnotationText&gt;
+&lt;/com:Annotation&gt;
+&lt;com:Annotation&gt;
+      &lt;com:AnnotationTitle&gt;stat:statUnitMeasure&lt;/com:AnnotationTitle&gt;
+      &lt;com:AnnotationType&gt; http://data.europa.eu/xyz &lt;/com:AnnotationType&gt;
+      &lt;com:AnnotationURL&gt;http://example.com/measures/percentage&lt;/com:AnnotationURL&gt;
+&lt;/com:Annotation&gt;
+&lt;com:Annotation&gt;
+      &lt;com:AnnotationTitle&gt;dqv:hasQualityAnnotation&lt;/com:AnnotationTitle&gt;
+      &lt;com:AnnotationType&gt; http://data.europa.eu/xyz &lt;/com:AnnotationType&gt;
+      &lt;com:AnnotationURL&gt;http://qualifications.org/QualityCertificate1&lt;/com:AnnotationURL&gt;
+&lt;/com:Annotation&gt;
+&lt;com:Annotation&gt;
+      &lt;com:AnnotationTitle&gt;oa:hasBody&lt;/com:AnnotationTitle&gt;
+      &lt;com:AnnotationType&gt; http://data.europa.eu/xyz &lt;/com:AnnotationType&gt;
+      &lt;com:AnnotationURL&gt;http://qualifications.org/QualityCertificate1/body&lt;/com:AnnotationURL&gt;
+&lt;/com:Annotation&gt;
+&lt;/com:Annotations&gt;
+ &lt;com:Name xml:lang="de"&gt;Bevölkerung im Alter zwischen 15 und 74 Jahren nach Geschlecht, Altersklasse, erreichtes Bildungsniveau (ISCED 1997) und Beruf (ISCO-88)&lt;/com:Name&gt;
+  &lt;com:Name xml:lang="fr"&gt;Population âgée de 15 à 74 ans, par sexe, groupe d'âge, niveau d'instruction (ISCED 1997) et profession (CITP-88)&lt;/com:Name&gt;
+  &lt;com:Name xml:lang="en"&gt;Population by education and occupation&lt;/com:Name&gt;
+&lt;com:Description xml:lang="en"&gt;Population aged 15-74 by sex, age group, educational attainment (ISCED 1997) and occupation (ISCO 1988)&lt;/com:Description&gt;
+&lt;str:Structure&gt;
+&lt;Ref id="CENS_01_NEISCO" package="datastructure" class="DataStructure" agencyID="ESTAT" version="1.0"/&gt;
+&lt;/str:Structure&gt;
+&lt;/str:Dataflow&gt;
+
+DCAT Catalogue
+&lt;str:CategoryScheme id="DCAT_CATALOGUE" urn="urn:sdmx:org.sdmx.infomodel.categoryscheme.CategoryScheme=ESTAT:DCAT_CATALOGUE(1.0)" isExternalReference="false" agencyID="ESTAT" isFinal="false" version="1.0"&gt;
+&lt;com:Annotations&gt;
+    &lt;com:Annotation&gt;
+         &lt;com:AnnotationTitle&gt; http://www.w3.org/ns/dcat#dataset&lt;/com:AnnotationTitle&gt;
+         &lt;com:AnnotationType&gt; http://data.europa.eu/xyz &lt;/com:AnnotationType&gt;
+&lt;com:AnnotationURL&gt;urn:sdmx:org.sdmx.infomodel.datastructure.Dataflow=ESTAT:DF_HC58(1.0)&lt;/com:AnnotationURL&gt;
+&lt;/com:Annotation&gt;
+&lt;com:Annotation&gt;
+       &lt;com:AnnotationTitle&gt;foaf:homepage&lt;/com:AnnotationTitle&gt;
+       &lt;com:AnnotationType&gt; http://data.europa.eu/xyz &lt;/com:AnnotationType&gt;
+       &lt;com:AnnotationURL&gt;http://ec.europa.eu/DataCatalogue&lt;/com:AnnotationURL&gt;
+&lt;/com:Annotation&gt;
+&lt;com:Annotation&gt;
+        &lt;com:AnnotationTitle&gt;dct:license&lt;/com:AnnotationTitle&gt;
+       &lt;com:AnnotationType&gt; http://data.europa.eu/xyz &lt;/com:AnnotationType&gt;
+       &lt;com:AnnotationText xml:lang="en"&gt;Free to use provided Eurostat is acknowledged as the  source&lt;/com:AnnotationText&gt;
+&lt;/com:Annotation&gt;
+&lt;/com:Annotations&gt;
+ &lt;com:Name xml:lang="en"&gt;DCAT Catalogue for Eurostat Data Sets&lt;/com:Name&gt;
+&lt;str:Category id="DATASETS" urn="urn:sdmx:org.sdmx.infomodel.categoryscheme.Category=ESTAT:DCAT_CATALOGUE(1.0).DATASETS"&gt;
+&lt;com:Name xml:lang="en"&gt;Links to Data Sets (Dataflows)&lt;/com:Name&gt;
+&lt;/str:Category&gt;
+&lt;str:Category id="TOPIC_THEMES" urn="urn:sdmx:org.sdmx.infomodel.categoryscheme.Category=ESTAT:DCAT_CATALOGUE(1.0).TOPIC_THEMES"&gt;
+&lt;com:Name xml:lang="en"&gt;Links to Topic (Category) Schemes&lt;/com:Name&gt;
+&lt;/str:Category&gt;
+&lt;/str:CategoryScheme&gt;
+
+DCAT Category Scheme
+&lt;str:CategoryScheme id="MDR_THEMES" urn="urn:sdmx:org.sdmx.infomodel.categoryscheme.CategoryScheme=ESTAT:MDR_THEMES(1.0)" isExternalReference="false" agencyID="ESTAT" isFinal="false" version="1.0"&gt;
+&lt;com:Name xml:lang="en"&gt;MDR Themes&lt;/com:Name&gt;
+&lt;str:Category id="AGRI" urn="urn:sdmx:org.sdmx.infomodel.categoryscheme.Category=ESTAT:MDR_THEMES(1.0).AGRI"&gt;
+&lt;com:Name xml:lang="en"&gt;Agriculture, fisheries, forestry and food&lt;/com:Name&gt;
+&lt;com:Description xml:lang="en"&gt;This concept identifies datasets covering such domains as agriculture, fisheries, forestry or food.&lt;/com:Description&gt;
+&lt;/str:Category&gt;
+&lt;str:Category id="ECON" urn="urn:sdmx:org.sdmx.infomodel.categoryscheme.Category=ESTAT:MDR_THEMES(1.0).ECON"&gt;
+&lt;com:Name xml:lang="en"&gt;Economy and finance&lt;/com:Name&gt;
+&lt;com:Description xml:lang="en"&gt;This concept identifies datasets covering such domains as economy or finance.&lt;/com:Description&gt;
+&lt;/str:Category&gt;
+&lt;str:Category id="EDUC" urn="urn:sdmx:org.sdmx.infomodel.categoryscheme.Category=ESTAT:MDR_THEMES(1.0).EDUC"&gt;
+&lt;com:Name xml:lang="en"&gt;Education, culture and sport&lt;/com:Name&gt;
+&lt;com:Description xml:lang="en"&gt;This concept identifies datasets covering such domains as education, culture or sport.&lt;/com:Description&gt;
+&lt;/str:Category&gt;
+&lt;str:Category id="ENER" urn="urn:sdmx:org.sdmx.infomodel.categoryscheme.Category=ESTAT:MDR_THEMES(1.0).ENER"&gt;
+&lt;com:Name xml:lang="en"&gt;Energy&lt;/com:Name&gt;
+&lt;com:Description xml:lang="en"&gt;This concept identifies datasets covering the domain of energy.&lt;/com:Description&gt;
+&lt;/str:Category&gt;
+&lt;str:Category id="ENVI" urn="urn:sdmx:org.sdmx.infomodel.categoryscheme.Category=ESTAT:MDR_THEMES(1.0).ENVI"&gt;
+&lt;com:Name xml:lang="en"&gt;Environment&lt;/com:Name&gt;
+&lt;com:Description xml:lang="en"&gt;This concept identifies datasets covering the domain of environment&lt;/com:Description&gt;
+&lt;/str:Category&gt;
+&lt;str:Category id="GOVE" urn="urn:sdmx:org.sdmx.infomodel.categoryscheme.Category=ESTAT:MDR_THEMES(1.0).GOVE"&gt;
+&lt;com:Name xml:lang="en"&gt;Government and public sector&lt;/com:Name&gt;
+&lt;com:Description xml:lang="en"&gt;This concept identifies datasets covering such domains as government or public sector.&lt;/com:Description&gt;
+&lt;/str:Category&gt;
+&lt;str:Category id="HEAL" urn="urn:sdmx:org.sdmx.infomodel.categoryscheme.Category=ESTAT:MDR_THEMES(1.0).HEAL"&gt;
+&lt;com:Name xml:lang="en"&gt;Health&lt;/com:Name&gt;
+&lt;com:Description xml:lang="en"&gt;This concept identifies datasets covering the domain of health.&lt;/com:Description&gt;
+&lt;/str:Category&gt;
+&lt;str:Category id="INTR" urn="urn:sdmx:org.sdmx.infomodel.categoryscheme.Category=ESTAT:MDR_THEMES(1.0).INTR"&gt;
+&lt;com:Name xml:lang="en"&gt;International issues&lt;/com:Name&gt;
+&lt;com:Description xml:lang="en"&gt;This concept identifies datasets covering the domain of international issues.&lt;/com:Description&gt;
+&lt;/str:Category&gt;
+&lt;str:Category id="JUST" urn="urn:sdmx:org.sdmx.infomodel.categoryscheme.Category=ESTAT:MDR_THEMES(1.0).JUST"&gt;
+&lt;com:Name xml:lang="en"&gt;Justice, legal system and public safety&lt;/com:Name&gt;
+&lt;com:Description xml:lang="en"&gt;This concept identifies datasets covering such domains as justice, legal system or public safety.&lt;/com:Description&gt;
+&lt;/str:Category&gt;
+&lt;str:Category id="REGI" urn="urn:sdmx:org.sdmx.infomodel.categoryscheme.Category=ESTAT:MDR_THEMES(1.0).REGI"&gt;
+&lt;com:Name xml:lang="en"&gt;Regions and cities&lt;/com:Name&gt;
+&lt;com:Description xml:lang="en"&gt;This concept identifies datasets covering such domains as regions or cities.&lt;/com:Description&gt;
+&lt;/str:Category&gt;
+&lt;str:Category id="SOCI" urn="urn:sdmx:org.sdmx.infomodel.categoryscheme.Category=ESTAT:MDR_THEMES(1.0).SOCI"&gt;
+&lt;com:Name xml:lang="en"&gt;Population and society&lt;/com:Name&gt;
+&lt;com:Description xml:lang="en"&gt;This concept identifies datasets covering such domains as population or society.&lt;/com:Description&gt;
+&lt;/str:Category&gt;
+&lt;str:Category id="TECH" urn="urn:sdmx:org.sdmx.infomodel.categoryscheme.Category=ESTAT:MDR_THEMES(1.0).TECH"&gt;
+&lt;com:Name xml:lang="en"&gt;Science and technology&lt;/com:Name&gt;
+&lt;com:Description xml:lang="en"&gt;This concept identifies datasets covering such domains as science or technology.&lt;/com:Description&gt;
+&lt;/str:Category&gt;
+&lt;str:Category id="TRAN" urn="urn:sdmx:org.sdmx.infomodel.categoryscheme.Category=ESTAT:MDR_THEMES(1.0).TRAN"&gt;
+&lt;com:Name xml:lang="en"&gt;Transport&lt;/com:Name&gt;
+&lt;com:Description xml:lang="en"&gt;This concept identifies datasets covering such domains as transport&lt;/com:Description&gt;
+&lt;/str:Category&gt;
+&lt;/str:CategoryScheme&gt;
+&lt;/str:CategorySchemes&gt;
+&lt;str:Categorisations&gt;
+
+Link between Dataflow and Category in the MDR Scheme of Topics
+
+&lt;str:Categorisation id="4880e39f-585a-4452-2403-4ea6806df530" urn="urn:sdmx:org.sdmx.infomodel.categoryscheme.Categorisation=ESTAT:4880e39f-585a-4452-2403-4ea6806df530(1.0)" isExternalReference="false" agencyID="ESTAT" isFinal="false" version="1.0"&gt;
+&lt;com:Name xml:lang="en"&gt;4880e39f-585a-4452-2403-4ea6806df530&lt;/com:Name&gt;
+&lt;str:Source&gt;
+&lt;Ref id="cens_01neisco" package="datastructure" class="Dataflow" agencyID="ESTAT" version="1.0"/&gt;
+&lt;/str:Source&gt;
+&lt;str:Target&gt;
+&lt;Ref id="SOCI" maintainableParentID="MDR_THEMES" package="categoryscheme" class="Category" agencyID="ESTAT" maintainableParentVersion="1.0"/&gt;
+&lt;/str:Target&gt;
+&lt;/str:Categorisation&gt;
+
+Links between Dataflows and DATASET Category of the DCAT-Catalogue
+&lt;str:Categorisation id="5c96f6c8-67a3-805f-7a2b-81bee0e4f6f4" urn="urn:sdmx:org.sdmx.infomodel.categoryscheme.Categorisation=ESTAT:5c96f6c8-67a3-805f-7a2b-81bee0e4f6f4(1.0)" isExternalReference="false" agencyID="ESTAT" isFinal="false" version="1.0"&gt;
+&lt;com:Name xml:lang="en"&gt;5c96f6c8-67a3-805f-7a2b-81bee0e4f6f4&lt;/com:Name&gt;
+&lt;str:Source&gt;
+&lt;Ref id="DF_HC58" package="datastructure" class="Dataflow" agencyID="ESTAT" version="1.0"/&gt;
+&lt;/str:Source&gt;
+&lt;str:Target&gt;
+&lt;Ref id="DATASETS" maintainableParentID="DCAT_CATALOGUE" package="categoryscheme" class="Category" agencyID="ESTAT" maintainableParentVersion="1.0"/&gt;
+&lt;/str:Target&gt;
+&lt;/str:Categorisation&gt;
+&lt;str:Categorisation id="7ca03df9-a610-4cdc-3c1c-f8dbc7913cd4" urn="urn:sdmx:org.sdmx.infomodel.categoryscheme.Categorisation=ESTAT:7ca03df9-a610-4cdc-3c1c-f8dbc7913cd4(1.0)" isExternalReference="false" agencyID="ESTAT" isFinal="false" version="1.0"&gt;
+&lt;com:Name xml:lang="en"&gt;7ca03df9-a610-4cdc-3c1c-f8dbc7913cd4&lt;/com:Name&gt;
+&lt;str:Source&gt;
+&lt;Ref id="cens_01neisco" package="datastructure" class="Dataflow" agencyID="ESTAT" version="1.0"/&gt;
+&lt;/str:Source&gt;
+&lt;str:Target&gt;
+&lt;Ref id="DATASETS" maintainableParentID="DCAT_CATALOGUE" package="categoryscheme" class="Category" agencyID="ESTAT" maintainableParentVersion="1.0"/&gt;
+&lt;/str:Target&gt;
+&lt;/str:Categorisation&gt;
+
+Link between DCAT-Catalogue and Category Scheme of Topics
+
+&lt;str:Categorisation id="LINK_TO_MDR_TOPICS" urn="urn:sdmx:org.sdmx.infomodel.categoryscheme.Categorisation=ESTAT:LINK_TO_MDR_TOPICS(1.0)" isExternalReference="false" agencyID="ESTAT" isFinal="false" version="1.0"&gt;
+&lt;com:Name xml:lang="en"&gt;Link to MDR Topics&lt;/com:Name&gt;
+&lt;str:Source&gt;
+&lt;Ref id="MDR_THEMES" package="categoryscheme" class="CategoryScheme" agencyID="ESTAT" version="1.0"/&gt;
+&lt;/str:Source&gt;
+&lt;str:Target&gt;
+&lt;Ref id="TOPIC_THEMES" maintainableParentID="DCAT_CATALOGUE" package="categoryscheme" class="Category" agencyID="ESTAT" maintainableParentVersion="1.0"/&gt;
+&lt;/str:Target&gt;
+&lt;/str:Categorisation&gt;
+&lt;/str:Categorisations&gt;
+
+DCAT Distribution
+&lt;str:ProvisionAgreements&gt;
+&lt;str:ProvisionAgreement id="ESTAT-NEISCO" urn="urn:sdmx:org.sdmx.infomodel.registry.ProvisionAgreement=ESTAT:ESTAT-NEISCO(1.0)" isExternalReference="false" agencyID="ESTAT" isFinal="false" version="1.0"&gt;
+&lt;com:Annotations&gt;
+&lt;com:Annotation&gt;
+       &lt;com:AnnotationTitle&gt; http://www.w3.org/ns/dcat#:license&lt;/com:AnnotationTitle&gt;
+       &lt;com:AnnotationType&gt; http://data.europa.eu/xyz &lt;/com:AnnotationType&gt;
+       &lt;com:AnnotationText&gt;Free to use provided Eurostat is acknowledged as the source&lt;/com:AnnotationText&gt;
+&lt;/com:Annotation&gt;
+&lt;com:Annotation&gt;
+       &lt;com:AnnotationTitle&gt; http://www.w3.org/ns/dcat#:accessURL&lt;/com:AnnotationTitle&gt;
+       &lt;com:AnnotationType&gt; http://data.europa.eu/xyz &lt;/com:AnnotationType&gt;
+       &lt;com:AnnotationURL&gt;http://www.ec.europa.eu/eurostat/SDMX/diss-web/rest/&lt;/com:AnnotationURL&gt;
+ &lt;/com:Annotation&gt;
+&lt;/com:Annotations&gt;
+ &lt;com:Name xml:lang="en"&gt;Census by education and occupation&lt;/com:Name&gt;
+&lt;com:Description&gt;xml:lang="en"&gt;Census by education and occupation,sex, age (5-year groups)&lt;/com:Description&gt;
+&lt;str:StructureUsage&gt;
+&lt;Ref id="cens_01neisco" package="datastructure" class="Dataflow" agencyID="ESTAT" version="1.0"/&gt;
+&lt;/str:StructureUsage&gt;
+&lt;str:DataProvider&gt;
+&lt;Ref id="ESTAT" maintainableParentID="DATA_PROVIDERS" package="base" class="DataProvider" agencyID="ESTAT" maintainableParentVersion="1.0"/&gt;
+&lt;/str:DataProvider&gt;
+&lt;/str:ProvisionAgreement&gt;
+&lt;/str:ProvisionAgreements&gt;
+&lt;/mes:Structures&gt;
+&lt;/mes:Structure&gt;
+</code></pre>
+    </details>
+  </section>
+
+  <section id="annex-III-metadata-set">
+    <h3>SDMX Metadata Set</h3>
+
+    <h4>Content</h4>
+    <p>
+      The section below describes the content of the Metadata Set, first in a synthetic view, followed by its SDMX-ML detailed representation.
+    </p>
+
+    <p>Metadata Set - Start </p>
+
+    <details open>
+      <summary><strong>SDMX Metadata Set XML (full example)</strong></summary>
+
+      <!-- PART 1: From start to the first image anchor -->
+      <pre><code class="language-xml">&lt;mes:MetadataSet structureRef="MDS2" setID="ba70fc24-f95b-4f0f-a2e2-658d993c2078"&gt;
+    &lt;com:Name xml:lang="en" xmlns:com="http://www.sdmx.org/resources/sdmxml/schemas/v2_1/common"&gt;DCAT_CATALOGUE_1&lt;/com:Name&gt;
+    &lt;gen:Report id="StatDCAT_Report" xmlns:gen="http://www.sdmx.org/resources/sdmxml/schemas/v2_1/metadata/generic"&gt;
+        &lt;gen:Target id="CategorySchemeTARGET"&gt;
+            &lt;gen:ReferenceValue id="CategoryScheme"&gt;
+                &lt;gen:ObjectReference&gt;
+&lt;URN&gt;urn:sdmx:org.sdmx.infomodel.categoryscheme.CategoryScheme=ESTAT:DCAT_CATALOGUE(1.0)&lt;/URN&gt;
+                &lt;/gen:ObjectReference&gt;
+            &lt;/gen:ReferenceValue&gt;
+        &lt;/gen:Target&gt;
+        &lt;gen:AttributeSet&gt;
+
+Followed by the Reported Attributes for the properties of the various DCAT-AP classes
+</code></pre>
+
+      <!-- IMAGE 1 — after “Followed by the Reported Attributes …” -->
+      <figure id="annex3-img1">
+        assets/img/annex3-img1.png
+        <figcaption>Reported Attributes overview.</figcaption>
+      </figure>
+
+      <!-- PART 2: Continue until the end of the DCAT_CATALOGUE block (2nd anchor) -->
+      <pre><code class="language-xml">
+&lt;gen:ReportedAttribute id="DCAT_CATALOGUE"&gt;
+&lt;com:StructuredText xml:lang="en" xmlns:com="http://www.sdmx.org/resources/sdmxml/schemas/v2_1/common"&gt;&amp;lt;p&gt;&amp;lt;a href="urn:sdmx:org.sdmx.infomodel.categoryscheme.CategoryScheme=ESTAT:DCAT_CATALOGUE(1.0)"&gt;urn:sdmx:org.sdmx.infomodel.categoryscheme.CategoryScheme=ESTAT:DCAT_CATALOGUE(1.0)&amp;lt;/a&gt;&amp;lt;/p&gt;&lt;/com:StructuredText&gt;
+&lt;gen:AttributeSet&gt;
+        &lt;gen:ReportedAttribute id="DATASET"&gt;
+        &lt;com:StructuredText xml:lang="en" xmlns:com="http://www.sdmx.org/resources/sdmxml/schemas/v2_1/common"&gt;&amp;lt;p&gt;&amp;lt;a href="urn:sdmx:org.sdmx.infomodel.datastructure.Dataflow=ESTAT:cens_01neisco(1.0"&gt;urn:sdmx:org.sdmx.infomodel.datastructure.Dataflow=ESTAT:cens_01neisco(1.0&amp;lt;/a&gt;&amp;lt;/p&gt;&lt;/com:StructuredText&gt;
+        &lt;/gen:ReportedAttribute&gt;
+        &lt;gen:ReportedAttribute id="DATASET"&gt;
+        &lt;com:StructuredText xml:lang="en" xmlns:com="http://www.sdmx.org/resources/sdmxml/schemas/v2_1/common"&gt;&amp;lt;p&gt;&amp;lt;a href="urn:sdmx:org.sdmx.infomodel.datastructure.Dataflow=ESTAT:DF_HC58(1.0)"&gt;urn:sdmx:org.sdmx.infomodel.datastructure.Dataflow=ESTAT:DF_HC58(1.0)&amp;lt;/a&gt;&amp;lt;/p&gt;&lt;/com:StructuredText&gt;
+        &lt;/gen:ReportedAttribute&gt;
+        &lt;gen:ReportedAttribute id="CATALOGUE_DESCRIPTION" value="Extended Description for DCAT Catalogue for Eurostat Data Sets"/&gt;
+        &lt;gen:ReportedAttribute id="CATALOGUE_PUBLISHER" value="urn:sdmx:org.sdmx.infomodel.base.Agency=ESTAT"/&gt;
+        &lt;gen:ReportedAttribute id="TITLE" value="DCAT Catalogue for Eurostat Data Sets"/&gt;
+        &lt;gen:ReportedAttribute id="CATALOGUE_HOMEPAGE"&gt;
+        &lt;com:StructuredText xml:lang="en" xmlns:com="http://www.sdmx.org/resources/sdmxml/schemas/v2_1/common"&gt;&amp;lt;p&gt;&amp;lt;a href="http://ec.europa.eu/DataCatalogue"&gt;http://ec.europa.eu/DataCatalogue&amp;lt;/a&gt;&amp;lt;/p&gt;&lt;/com:StructuredText&gt;
+        &lt;/gen:ReportedAttribute&gt;
+        &lt;gen:ReportedAttribute id="LANGUAGE" value="en"/&gt;
+        &lt;gen:ReportedAttribute id="CATALOGUE_LICENSE" value="Free to use provided Eurostat is acknowledged as the source"/&gt;
+        &lt;gen:ReportedAttribute id="CATALOGUE_THEME"&gt;
+        &lt;com:StructuredText xml:lang="en" xmlns:com="http://www.sdmx.org/resources/sdmxml/schemas/v2_1/common"&gt;&amp;lt;p&gt;&amp;lt;a href="urn:sdmx:org.sdmx.infomodel.categoryscheme.CategoryScheme=ESTAT:MDR_THEMES(1.0)"&gt;urn:sdmx:org.sdmx.infomodel.categoryscheme.CategoryScheme=ESTAT:MDR_THEMES(1.0)&amp;lt;/a&gt;&amp;lt;/p&gt;&lt;/com:StructuredText&gt;
+        &lt;/gen:ReportedAttribute&gt;
+    &lt;/gen:AttributeSet&gt;
+&lt;/gen:ReportedAttribute&gt;
+</code></pre>
+
+      <!-- IMAGE 2 — after the MDR_THEMES StructuredText + closing tags above -->
+      <figure id="annex3-img2">
+        assets/img/annex3-img2.png
+        <figcaption>Category Scheme mapping illustration (Catalogue theme).</figcaption>
+      </figure>
+
+      <!-- PART 3: DCAT_CATEGORY_SCHEME block up to ENER example -->
+      <pre><code class="language-xml">
+And so on….
+&lt;gen:ReportedAttribute id="DCAT_CATEGORY_SCHEME"&gt;
+&lt;com:StructuredText xml:lang="en" xmlns:com="http://www.sdmx.org/resources/sdmxml/schemas/v2_1/common"&gt;&amp;lt;p&gt;&amp;lt;a href="urn:sdmx:org.sdmx.infomodel.categoryscheme.CategoryScheme=ESTAT:MDR_THEMES(1.0)"&gt;urn:sdmx:org.sdmx.infomodel.categoryscheme.CategoryScheme=ESTAT:MDR_THEMES(1.0)&amp;lt;/a&gt;&amp;lt;/p&gt;&lt;/com:StructuredText&gt;
+    &lt;gen:AttributeSet&gt;
+        &lt;gen:ReportedAttribute id="CATEGORY_SCHEME_TITLE" value="MDR Themes"/&gt;
+        &lt;gen:ReportedAttribute id="DCAT_CATEGORY" value="urn:sdmx:org.sdmx.infomodel.categoryscheme.Category=ESTAT:MDR_THEMES(1.0).AGRI"&gt;
+            &lt;gen:AttributeSet&gt;
+            &lt;gen:ReportedAttribute id="PREFERRED_LABEL" value="Agriculture, fisheries, forestry and food"/&gt;
+            &lt;/gen:AttributeSet&gt;
+        &lt;/gen:ReportedAttribute&gt;
+        gen:ReportedAttribute id="DCAT_CATEGORY" value="urn:sdmx:org.sdmx.infomodel.categoryscheme.Category=ESTAT:MDR_THEMES(1.0).ECON"&gt;
+            &lt;gen:AttributeSet&gt;
+            &lt;gen:ReportedAttribute id="PREFERRED_LABEL" value="Economy and finance"/&gt;
+            &lt;/gen:AttributeSet&gt;
+        &lt;/gen:ReportedAttribute&gt;
+        &lt;gen:ReportedAttribute id="DCAT_CATEGORY" value="urn:sdmx:org.sdmx.infomodel.categoryscheme.Category=ESTAT:MDR_THEMES(1.0).EDUC"&gt;
+            &lt;gen:AttributeSet&gt;
+            &lt;gen:ReportedAttribute id="PREFERRED_LABEL" value="Education, culture and sport"/&gt;
+            &lt;/gen:AttributeSet&gt;
+        &lt;/gen:ReportedAttribute&gt;
+        &lt;gen:ReportedAttribute id="DCAT_CATEGORY" value="urn:sdmx:org.sdmx.infomodel.categoryscheme.Category=ESTAT:MDR_THEMES(1.0).ENER"&gt;
+            &lt;gen:AttributeSet&gt;
+            &lt;gen:ReportedAttribute id="PREFERRED_LABEL" value="Energy"/&gt;
+            &lt;/gen:AttributeSet&gt;
+        &lt;/gen:ReportedAttribute&gt;
+</code></pre>
+
+      <!-- IMAGE 3 — after ENER preferred label + “And so on….” -->
+      <figure id="annex3-img3">
+        assets/img/annex3-img3.png
+        <figcaption>ENERGY Metadata Attribute example.</figcaption>
+      </figure>
+
+      <pre><code class="language-xml">
+And so on….
+ 
+                &lt;gen:ReportedAttribute id="DCAT_DATASET"&gt;
+                    &lt;gen:AttributeSet&gt;
+                        &lt;gen:ReportedAttribute id="DATASET_DESCRIPTION" value="Extended description for Population aged 15-74 by sex, age group, educational attainment (ISCED 1997) and occupation (ISCO 1988)"/&gt;
+                        &lt;gen:ReportedAttribute id="DATASET_TITLE" value="Population aged 15-74 by sex, age group, educational attainment (ISCED 1997) and occupation (ISCO 1988)"/&gt;
+                        &lt;gen:ReportedAttribute id="CONTACT_POINT" value="Dissemination"&gt;
+                            &lt;gen:AttributeSet&gt;
+                                &lt;gen:ReportedAttribute id="CONTACT_PHONE" value="+352431034320"/&gt;
+                                &lt;gen:ReportedAttribute id="CONTACT_EMAIL" value="dissemination@ec.europa.eu"/&gt;
+                            &lt;/gen:AttributeSet&gt;
+                        &lt;/gen:ReportedAttribute&gt;
+                        &lt;gen:ReportedAttribute id="DISTRIBUTION"&gt;
+                            &lt;com:StructuredText xml:lang="en" xmlns:com="http://www.sdmx.org/resources/sdmxml/schemas/v2_1/common"&gt;&amp;lt;p&gt;&amp;lt;a href="urn:sdmx:org.sdmx.infomodel.registry.ProvisionAgreement=ESTAT:AT-NEISCO(1.0)"&gt;urn:sdmx:org.sdmx.infomodel.registry.ProvisionAgreement=ESTAT:AT-NEISCO(1.0)&amp;lt;/a&gt;&amp;lt;/p&gt;&lt;/com:StructuredText&gt;
+                        &lt;/gen:ReportedAttribute&gt;
+                        &lt;gen:ReportedAttribute id="KEYWORD" value="Population"/&gt;
+                        &lt;gen:ReportedAttribute id="KEYWORD" value="Austria"/&gt;
+                        &lt;gen:ReportedAttribute id="KEYWORD" value="Census"/&gt;
+                        &lt;gen:ReportedAttribute id="DATASET_PUBLISHER" value="ESTAT"/&gt;
+                        &lt;gen:ReportedAttribute id="DATASET_THEME"&gt;
+                            &lt;com:StructuredText xml:lang="en" xmlns:com="http://www.sdmx.org/resources/sdmxml/schemas/v2_1/common"&gt;&amp;lt;p&gt;&amp;lt;a href="http://urn:sdmx:org.sdmx.infomodel.categoryscheme.Category=ESTAT:MDR_THEMES(1.0).SOCI"&gt;http://urn:sdmx:org.sdmx.infomodel.categoryscheme.Category=ESTAT:MDR_THEMES(1.0).SOCI&amp;lt;/a&gt;&amp;lt;/p&gt;&lt;/com:StructuredText&gt;
+                        &lt;/gen:ReportedAttribute&gt;
+                        &lt;gen:ReportedAttribute id="NUM_SERIES" value="110259"/&gt;
+                        &lt;gen:ReportedAttribute id="STAT_MEASURE"&gt;
+                            &lt;com:StructuredText xml:lang="en" xmlns:com="http://www.sdmx.org/resources/sdmxml/schemas/v2_1/common"&gt;&amp;lt;p&gt;&amp;lt;a href="http://example.com/measures/percentage"&gt;http://example.com/measures/percentage&amp;lt;/a&gt;&amp;lt;/p&gt;&lt;/com:StructuredText&gt;
+                        &lt;/gen:ReportedAttribute&gt;
+</code></pre>
+
+      <!-- IMAGE 4 — after the STAT_MEASURE StructuredText (percentage URL) -->
+      <figure id="annex3-img4">
+        assets/img/annex3-img4.png
+        <figcaption>Statistical unit measure mapping (example link to a unit measure URI).</figcaption>
+      </figure>
+
+      <pre><code class="language-xml">
+                    &lt;/gen:AttributeSet&gt;
+                &lt;/gen:ReportedAttribute&gt;
+
+
+&lt;gen:ReportedAttribute id="DCAT_DISTRIBUTION"&gt;
+    &lt;com:StructuredText xml:lang="en" xmlns:com="http://www.sdmx.org/resources/sdmxml/schemas/v2_1/common"&gt;&amp;lt;p&gt;&amp;lt;a href="urn:sdmx:org.sdmx.infomodel.registry.ProvisionAgreement=ESTAT:AT-NEISCO(1.0)"&gt;urn:sdmx:org.sdmx.infomodel.registry.ProvisionAgreement=ESTAT:AT-NEISCO(1.0)&amp;lt;/a&gt;&amp;lt;/p&gt;&lt;/com:StructuredText&gt;
+    &lt;gen:AttributeSet&gt;
+        &lt;gen:ReportedAttribute id="ACCESS_URL"&gt;
+        &lt;com:StructuredText xml:lang="en" xmlns:com="http://www.sdmx.org/resources/sdmxml/schemas/v2_1/common"&gt;&amp;lt;p&gt;&amp;lt;a href="http://localhost:8080/FusionRegistry/ws/rest"&gt;http://localhost:8080/FusionRegistry/ws/rest&amp;lt;/a&gt;&amp;lt;/p&gt;&lt;/com:StructuredText&gt;
+        &lt;/gen:ReportedAttribute&gt;
+        &lt;gen:ReportedAttribute id="DISTRIBUTION_DESCRIPTION" value="Austria for Census by education and occupation"/&gt;
+        &lt;gen:ReportedAttribute id="DISTRIBUTION_FORMAT" value="SDMX Data Structure Specific"/&gt;
+        &lt;gen:ReportedAttribute id="DISTRIBUTION_LICENSE" value="Free to use provided Eurostat is acknowledged as the source"/&gt;
+    &lt;/gen:AttributeSet&gt;
+&lt;/gen:ReportedAttribute&gt;
+</code></pre>
+
+      <!-- IMAGE 5 — after DISTRIBUTION_FORMAT and DISTRIBUTION_LICENSE -->
+      <figure id="annex3-img5">
+        assets/img/annex3-img5.png
+        <figcaption>Distribution metadata mapping (accessURL, format, license).</figcaption>
+      </figure>
+
+      <pre><code class="language-xml">
+ 
+&lt;gen:ReportedAttribute id="DCAT_AGENT"&gt;
+    &lt;com:StructuredText xml:lang="en" xmlns:com="http://www.sdmx.org/resources/sdmxml/schemas/v2_1/common"&gt;&amp;lt;p&gt;&amp;lt;a href="urn:sdmx:org.sdmx.infomodel.base.Agency=ESTAT"&gt;urn:sdmx:org.sdmx.infomodel.base.Agency=ESTAT&amp;lt;/a&gt;&amp;lt;/p&gt;&lt;/com:StructuredText&gt;
+    &lt;gen:AttributeSet&gt;
+        &lt;gen:ReportedAttribute id="AGENT_NAME" value="Eurostat"/&gt;
+        &lt;gen:ReportedAttribute id="AGENT_TYPE" value="Publisher"/&gt;
+    &lt;/gen:AttributeSet&gt;
+&lt;/gen:ReportedAttribute&gt;
+End of Metadata Set
+        &lt;/gen:AttributeSet&gt;
+    &lt;/gen:Report&gt;
+&lt;/mes:MetadataSet&gt;
+</code></pre>
+    </details>
+  </section>
+</section>
+
+
+  <section id="annex-iv-rdf-examples" class="appendix">
+  <h2>EXAMPLES OF STATDCAT‑AP DESCRIPTIONS OF DATA CUBE DATASETS</h2>
+
+  <section id="annex-iv-example-1">
+    <h3>RDF Example 1</h3>
+    <p>Derived from <a href="https://www.w3.org/TR/vocab-data-cube/#full-example" target="_blank">https://www.w3.org/TR/vocab-data-cube/#full-example</a></p>
+
+    <details open>
+      <summary><strong>Show RDF Example 1</strong></summary>
+
+<pre><code class="language-turtle">@prefix dcat:     &lt;http://www.w3.org/ns/dcat#&gt; .
+@prefix dct:      &lt;http://purl.org/dc/terms/&gt; . 
+@prefix eg:       &lt;http://example.org/ns#&gt; .
+@prefix geonames: &lt;http://sws.geonames.org/&gt; . 
+@prefix sdmx-dimension:  &lt;http://purl.org/linked-data/sdmx/2009/dimension#&gt; .
+@prefix sdmx-attribute:  &lt;http://purl.org/linked-data/sdmx/2009/attribute#&gt; .
+@prefix stat:     &lt;http://data.europa.eu/(xyz)/statdcat-ap/&gt; .
+@prefix theme:    &lt;http://publications.europa.eu/resource/authority/data-theme/&gt; .
+@prefix xsd:      &lt;http://www.w3.org/2001/XMLSchema#&gt; .
+
+# -- Dataset --------------------------------------------
+
+eg:dataset-le3 a dcat:Dataset ;
+    dct:title       "Life expectancy"@en ;
+    dct:description "Life expectancy within Welsh Unitary authorities - extracted from Stats Wales"@en ;
+    dct:publisher   eg:organization ;
+    dct:issued      "2010-08-11"^^xsd:date ;
+
+# These four properties have been copied from the source metadata.
+
+    dcat:theme
+        theme:HEAL , # Health
+        theme:REGI ; # Regions and cities
+
+#   dct:subject 
+#       sdmx-subject:3.2 ,      # regional and small area statistics
+#       sdmx-subject:1.4 ,      # Health
+#
+# These subjects have been mapped to the MDR Data Theme NAL. Note that this is not a
+# trivial mapping but may require specific mapping tables or owl:sameAs assertions.
+
+    dct:spatial geonames:2634865 ; #Wales
+
+#       ex-geo:wales;           # Wales
+# The subject in the source mapped to dct:spatial and value from Geonames. Note again that 
+# this may require specific mapping tables or owl:sameAs assertions.
+
+    stat:dimension  eg:refArea ;
+    stat:dimension  eg:refPeriod ;
+    stat:dimension  sdmx-dimension:sex ;
+    stat:attribute  sdmx-attribute:unitMeasure ;
+
+# The values of these properties copied from the qb:attribute and qb:dimension properties
+# in the source metadata.
+
+    stat:statUnitMeasure &lt;http://dbpedia.org/resource/Year&gt; .
+
+# The value of this property copied from the sdmx-attribute:unitMeasure property
+# in the source metadata.
+
+# -- Distribution -----------------------------------------
+
+eg:distribution-le3 a dcat:Distribution ;
+    dcat:accessURL  &lt;http://example.org/file.rdf&gt; ;
+    dct:format      &lt;http://publications.europa.eu/mdr/authority/file-type/RDF_TURTLE&gt; .
+
+# The format is not specified in the source metadata but added here for completeness.
+# The URI for Distribution is declared in the eg: namespace – this was not specified in the 
+# the source metadata as this did not describe the distribution separately.
+# In addition, a link to a file is shown as value for dcat:accessURL which was not 
+# specified in the source metadata.
+
+# Note that the definitions of eg:organization, eg:refArea and eg:refPeriod have not been
+# reproduced here. They are defined in the source metadata.
+</code></pre>
+
+    </details>
+  </section>
+
+  <section id="annex-iv-example-2">
+    <h3>RDF Example 2</h3>
+    <p>Derived from <a href="https://digital-agenda-data.eu/datasets/digital_agenda_scoreboard_key_indicators/@@get_dataset_metadata" target="_blank">Digital Agenda Scoreboard Key Indicators metadata</a></p>
+
+<details open>
+  <summary><strong>Show RDF Example 2</strong></summary>
+
+<pre><code class="language-turtle">@prefix adms:     &lt;http://www.w3.org/ns/adms#&gt; .
+@prefix dad-prop: &lt;http://semantic.digital-agenda-data.eu/def/property/&gt; .
+@prefix dcat:     &lt;http://www.w3.org/ns/dcat#&gt; .
+@prefix dct:      &lt;http://purl.org/dc/terms/&gt; .
+@prefix ns22:     &lt;http://semantic.digital-agenda-data.eu/dataset/&gt; .
+@prefix ns25:     &lt;http://ec.europa.eu/geninfo/legal_notices_en.htm#&gt; .
+@prefix ns26:     &lt;http://publications.europa.eu/resource/authority/access-right/&gt; .
+@prefix ns27:     &lt;http://publications.europa.eu/resource/authority/language/&gt; .
+@prefix ns28:     &lt;http://publications.europa.eu/resource/authority/corporate-body/&gt; .
+@prefix ns29:     &lt;http://publications.europa.eu/resource/authority/country/&gt; .
+@prefix ns30:     &lt;http://semantic.digital-agenda-data.eu/dataset/digital-agenda-scoreboard-key-indicators/distribution/&gt; .
+@prefix ns31:     &lt;http://publications.europa.eu/resource/authority/data-theme/&gt; .
+@prefix ns33:     &lt;http://purl.org/adms/status/&gt; .
+@prefix ns35:     &lt;http://publications.europa.eu/resource/authority/frequency/&gt; .
+@prefix ns38:     &lt;http://publications.europa.eu/resource/authority/file-type/&gt; .
+@prefix ns39:     &lt;http://publications.europa.eu/resource/authority/distribution-type/&gt; .
+@prefix ns40:     &lt;http://digital-agenda-data.eu/datasets/digital_agenda_scoreboard_key_indicators#&gt; .
+@prefix ns41:     &lt;http://digital-agenda-data.eu/datasets/&gt; .
+@prefix stat:     &lt;http://data.europa.eu/(xyz)/statdcat-ap/&gt; .
+@prefix vcard:    &lt;http://www.w3.org/2006/vcard/ns#&gt; .
+@prefix xsd:      &lt;http://www.w3.org/2001/XMLSchema#&gt; .
+
+# ---- Dataset ----------------------------------------------------
+
+ns22:digital-agenda-scoreboard-key-indicators a dcat:Dataset ;
+
+    dct:title         "Digital Agenda Key Indicators" ;
+    dct:description   "European Commission services selected more than 100 indicators..." ;
+    dct:identifier    "digital-agenda-scoreboard-key-indicators" ;
+    dct:issued        "2011-05-01T00:00:00Z"^^xsd:dateTime ;
+    dct:modified      "2016-11-11T10:31:56+02:00"^^xsd:dateTime ;
+    dct:publisher     ns28:CNECT ;
+    dct:language      ns27:ENG ;
+    dct:accessRights  ns26:PUBLIC ;
+    dct:spatial       ns29:TUR , ns29:NOR , ns29:ISL , ns29:EUR , ns29:CHE ;
+    dcat:keyword      "ebusiness" , "broadband" , "internet" , "ICT research" , "ecommerce" , "digital agenda" , "telecom market" , "ICT skills" , "information-society" ;
+    dcat:theme        ns31:SOCI , ns31:TECH , ns31:GOVE ;
+    dct:temporal      [ schema:startDate "2002-01-01+03:00"^^xsd:date ] ;
+    dcat:distribution ns30:download ;
+    dcat:distribution ns30:visualisation ;
+    adms:status       ns33:Completed ;
+    dcat:landingPage  &lt;http://digital-agenda-data.eu/&gt; ;
+
+# Contact point
+    dcat:contactPoint [
+        vcard:fn "DG CONNECT - Digital Economy and Skills (Unit F.4)" ;
+        vcard:hasEmail &lt;mailto:CNECT-F4@ec.europa.eu&gt; ;
+        vcard:hasURL   &lt;https://ec.europa.eu/digital-single-market/en/&gt;
+    ] ;
+
+    dct:accrualPeriodicity ns35:ANNUAL_2 ;
+
+    stat:attribute          dad-prop:flag ;
+    stat:attribute          dad-prop:note ;
+    stat:dimension          dad-prop:breakdown ;
+    stat:dimension          dad-prop:indicator ;
+    stat:dimension          dad-prop:ref-area ;
+    stat:dimension          dad-prop:time-period ;
+    stat:dimension          dad-prop:unit-measure .
+
+# ---- Distributions ----------------------------------------------
+
+ns30:download a dcat:Distribution ;
+    dct:format      ns38:RDF_TURTLE ;
+    dct:type        ns39:DOWNLOADABLE_FILE ;
+    dcat:accessURL  ns40:download ;
+    dct:license     ns25:copyright .
+
+ns30:visualisation a dcat:Distribution ;
+    dct:type        ns39:VISUALIZATION ;
+    dcat:accessURL  ns41:digital_agenda_scoreboard_key_indicators ;
+    dct:license     ns25:copyright .
+</code></pre>
+
+</details>
+
+
+  </section>
+
+</section>
+
  
 
 
-<section class="informative">
-	<h2>Governance</h2>
-</section>
  
 
 <section id="quick-reference" class="appendix">
@@ -13307,7 +15970,18 @@ The properties are grouped under headings <it>mandatory, recommended, optional</
 </table>
 
    
-   
+  <h3>Deprecated properties and classes</h3>
+<p>
+The following URIs used in StatDCAT-AP release 1.0 for properties have been deprecated in DCAT 3 [[vocab-dcat-3]] in favor for the URIs within the DCAT namespace.
+<ul>
+<li>dct:hasVersion is replaced by dcat:hasVersion.</li>
+<li>dct:isVersionOf is replaced by dcat:isVersionOf. </li>
+<li>owl:versionInfo is replaced by dcat:version. </li>
+</ul>
+</p><p>
+To identify these deprecations, a <a href="./html/shacl/deprecateduris.ttl"  >SHACL shape</a> is provided.
+</p>
+
 
 
 </section>
