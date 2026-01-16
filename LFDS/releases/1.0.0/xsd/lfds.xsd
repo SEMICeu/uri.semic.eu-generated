@@ -211,12 +211,12 @@
           <xs:documentation xml:lang="en"> 	A related resource in which the described resource is physically or logically included.</xs:documentation>
         </xs:annotation>
       </xs:element>
-      <xs:element name="references" ref="ResourceType" maxOccurs="unbounded" minOccurs="0">
+      <xs:element name="references" ref="DigitalSolutionType" maxOccurs="unbounded" minOccurs="0">
         <xs:annotation>
           <xs:documentation xml:lang="en">A related resource that is referenced, cited, or otherwise pointed to by the described resource.</xs:documentation>
         </xs:annotation>
       </xs:element>
-      <xs:element name="references" ref="DigitalSolutionType" maxOccurs="unbounded" minOccurs="0">
+      <xs:element name="references" ref="ResourceType" maxOccurs="unbounded" minOccurs="0">
         <xs:annotation>
           <xs:documentation xml:lang="en">A related resource that is referenced, cited, or otherwise pointed to by the described resource.</xs:documentation>
         </xs:annotation>
@@ -319,7 +319,12 @@
   </xs:complexType>
   <xs:complexType name="AssessmentType">
     <xs:sequence>
-      <xs:element name="assesses" ref="DigitalSolutionType" maxOccurs="unbounded" minOccurs="0">
+      <xs:element name="assesses" ref="DatasetType" maxOccurs="unbounded" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation xml:lang="en">The reference to the asset(s) that are the object of the assessment.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="assesses" ref="WorkFlowType" maxOccurs="unbounded" minOccurs="0">
         <xs:annotation>
           <xs:documentation xml:lang="en">The reference to the asset(s) that are the object of the assessment.</xs:documentation>
         </xs:annotation>
@@ -334,12 +339,7 @@
           <xs:documentation xml:lang="en">The reference to the asset(s) that are the object of the assessment.</xs:documentation>
         </xs:annotation>
       </xs:element>
-      <xs:element name="assesses" ref="DatasetType" maxOccurs="unbounded" minOccurs="0">
-        <xs:annotation>
-          <xs:documentation xml:lang="en">The reference to the asset(s) that are the object of the assessment.</xs:documentation>
-        </xs:annotation>
-      </xs:element>
-      <xs:element name="assesses" ref="WorkFlowType" maxOccurs="unbounded" minOccurs="0">
+      <xs:element name="assesses" ref="DigitalSolutionType" maxOccurs="unbounded" minOccurs="0">
         <xs:annotation>
           <xs:documentation xml:lang="en">The reference to the asset(s) that are the object of the assessment.</xs:documentation>
         </xs:annotation>
@@ -412,16 +412,6 @@
           <xs:documentation xml:lang="en">Indicates a work in which this one is physically included. Covers the case of text included in an Official Journal, or an article included in a text.</xs:documentation>
         </xs:annotation>
       </xs:element>
-      <xs:element name="isRealizedBy" ref="WorkType" maxOccurs="unbounded" minOccurs="0">
-        <xs:annotation>
-          <xs:documentation xml:lang="en">Relates a work to an expression of this work in the form of a "sequence of signs" (typically alpha-numeric characters in a legal context).</xs:documentation>
-        </xs:annotation>
-      </xs:element>
-      <xs:element name="isRealizedBy" ref="WorkType" maxOccurs="unbounded" minOccurs="0">
-        <xs:annotation>
-          <xs:documentation xml:lang="en">Relates a work to an expression of this work in the form of a "sequence of signs" (typically alpha-numeric characters in a legal context).</xs:documentation>
-        </xs:annotation>
-      </xs:element>
     </xs:sequence>
     <xs:attribute name="LegalExpressionRef" type="xs:IDREF">
       <xs:annotation>
@@ -444,7 +434,18 @@
     </xs:attribute>
   </xs:complexType>
   <xs:complexType name="WorkType">
-    <xs:sequence/>
+    <xs:sequence>
+      <xs:element name="isRealizedBy" ref="LegalExpressionType" maxOccurs="unbounded" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation xml:lang="en">Relates an expression to a work realised through that expression. Inverse of "is_realized_by".</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="isRealizedBy" ref="LegalExpressionType" maxOccurs="unbounded" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation xml:lang="en">Relates an expression to a work realised through that expression. Inverse of "is_realized_by".</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+    </xs:sequence>
     <xs:attribute name="WorkRef" type="xs:IDREF">
       <xs:annotation>
         <xs:documentation xml:lang="en">Reference to Work ID</xs:documentation>
