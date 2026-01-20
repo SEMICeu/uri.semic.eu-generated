@@ -10,6 +10,11 @@
     <meta name="color-scheme" content="light dark">
     <title>StatDCAT-AP 3.0.0</title>
     <script src="https://www.w3.org/Tools/respec/respec-w3c" class="remove" defer></script>
+
+    <!-- RDF Turtle syntax highlighting -->
+    <link rel="stylesheet" href="html/turtle-highlighting.css">
+    <script src='html/turtle-highlighting.js' class='remove'></script>
+    
     <script class="remove">
     // All config options at https://respec.org/docs/
 
@@ -85,7 +90,7 @@
 
 
     var respecConfig = {
-      postProcess: [quickreference],
+      postProcess: [quickreference, setupTurtleHighlighting],
       edDraftURI: "https://semiceu.github.io/StatDCAT-AP/drafts/3.0.0/",
       thisVersion: "https://semiceu.github.io/StatDCAT-AP/drafts/3.0.0",
       prevRecURI: "https://interoperable-europe.ec.europa.eu/collection/semic-support-centre/solution/statdcat-application-profile-data-portals-europe/release/101",
@@ -13444,12 +13449,12 @@ Both datasets however, are in scope of the INSPIRE directive.</p>
     <h3>SDMX Structural Metadata</h3>
 
     <p>
-      In the following example, to avoid any ambiguity, instead of using keywords e.g DCAT-AP, URIs are used. For DCAT-AP, the URI: http://www.w3.org/ns/dcat# is used. For StatDCAT-AP, the  fictitious URI http://data.europa.eu/xyz is used that  corresponds to the namespace URI of StatDCAT-AP.
+      In the following example, to avoid any ambiguity, instead of using keywords e.g DCAT-AP, URIs are used. For DCAT-AP, the URI: <code>http://www.w3.org/ns/dcat#</code> is used. For StatDCAT-AP, the URI <code>http://data.europa.eu/s1n</code> is used that corresponds to the namespace URI of StatDCAT-AP.
     </p>
 
     <details open>
-      <summary><strong>SDMX Structure XML (full example)</strong></summary>
-      <pre><code class="language-xml">&lt;?xml version="1.0" encoding="UTF-8"?&gt;
+      <summary>SDMX Structure XML (full example)</summary>
+      <pre class="xml">&lt;?xml version="1.0" encoding="UTF-8"?&gt;
 &lt;mes:Structure xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xml="http://www.w3.org/XML/1998/namespace" xmlns:mes="http://www.sdmx.org/resources/sdmxml/schemas/v2_1/message" xmlns:str="http://www.sdmx.org/resources/sdmxml/schemas/v2_1/structure" xmlns:com="http://www.sdmx.org/resources/sdmxml/schemas/v2_1/common" xsi:schemaLocation="http://www.sdmx.org/resources/sdmxml/schemas/v2_1/message https://registry.sdmx.org/schemas/v2_1/SDMXMessage.xsd"&gt;
 &lt;mes:Header&gt;
         &lt;mes:ID&gt;IDREF169&lt;/mes:ID&gt;
@@ -13459,10 +13464,12 @@ Both datasets however, are in scope of the INSPIRE directive.</p>
         &lt;mes:Receiver id="not_supplied"/&gt;
     &lt;/mes:Header&gt;
     &lt;mes:Structures&gt;
-&lt;str:OrganisationSchemes&gt;
+&lt;str:OrganisationSchemes&gt;</pre>
+    </details>
 
-DCAT Agent
-&lt;str:AgencyScheme id="AGENCIES" urn="urn:sdmx:org.sdmx.infomodel.base.AgencyScheme=SDMX:AGENCIES(1.0)" isExternalReference="false" agencyID="SDMX" isFinal="false" version="1.0"&gt;
+    <details open>
+      <summary>DCAT Agent</summary>
+      <pre class="xml">&lt;str:AgencyScheme id="AGENCIES" urn="urn:sdmx:org.sdmx.infomodel.base.AgencyScheme=SDMX:AGENCIES(1.0)" isExternalReference="false" agencyID="SDMX" isFinal="false" version="1.0"&gt;
 &lt;com:Name xml:lang="en"&gt;SDMX Agency Scheme&lt;/com:Name&gt;
 &lt;str:Agency id="ESTAT" urn="urn:sdmx:org.sdmx.infomodel.base.Agency=ESTAT"&gt;
 &lt;com:Name xml:lang="en"&gt;Eurostat&lt;/com:Name&gt;
@@ -13474,53 +13481,55 @@ DCAT Agent
 &lt;/str:Agency&gt;
 &lt;/str:AgencyScheme&gt;
 &lt;/str:OrganisationSchemes&gt;
-&lt;str:Dataflows&gt;
+&lt;str:Dataflows&gt;</pre>
+    </details>
 
-DCAT Dataset
-&lt;str:Dataflow id="cens_01neisco" agencyID="ESTAT" version="1.0"&gt;
+    <details open>
+      <summary>DCAT Dataset</summary>
+      <pre class="xml">&lt;str:Dataflow id="cens_01neisco" agencyID="ESTAT" version="1.0"&gt;
     &lt;com:Annotations&gt;
         &lt;com:Annotation&gt;
        &lt;com:AnnotationTitle&gt;http://www.w3.org/ns/dcat#distribution&lt;/com:AnnotationTitle&gt;
-       &lt;com:AnnotationType&gt; http://data.europa.eu/xyz&lt;/com:AnnotationType&gt;
+       &lt;com:AnnotationType&gt; http://data.europa.eu/s1n&lt;/com:AnnotationType&gt;
        &lt;com:AnnotationURL&gt;urn:sdmx:org.sdmx.infomodel.registry.ProvisionAgreement=ESTAT:AT-  NEISCO(1.0)&lt;/com:AnnotationURL&gt;
       &lt;/com:Annotation&gt;
   &lt;com:Annotation&gt;
       &lt;com:AnnotationTitle&gt; http://www.w3.org/ns/dcat#keyword&lt;/com:AnnotationTitle&gt;
-      &lt;com:AnnotationType&gt; http://data.europa.eu/xyz &lt;/com:AnnotationType&gt;
+      &lt;com:AnnotationType&gt; http://data.europa.eu/s1n &lt;/com:AnnotationType&gt;
       &lt;com:AnnotationText&gt;Population&lt;/com:AnnotationText&gt;
 &lt;/com:Annotation&gt;
 &lt;com:Annotation&gt;
       &lt;com:AnnotationTitle&gt; http://www.w3.org/ns/dcat#keyword&lt;/com:AnnotationTitle&gt;
-     &lt;com:AnnotationType&gt; http://data.europa.eu/xyz &lt;/com:AnnotationType&gt;
+     &lt;com:AnnotationType&gt; http://data.europa.eu/s1n &lt;/com:AnnotationType&gt;
      &lt;com:AnnotationText&gt;Austria&lt;/com:AnnotationText&gt;
 &lt;/com:Annotation&gt;
 &lt;com:Annotation&gt;
      &lt;com:AnnotationTitle&gt; http://www.w3.org/ns/dcat#keyword&lt;/com:AnnotationTitle&gt;
-    &lt;com:AnnotationType&gt; http://data.europa.eu/xyz &lt;/com:AnnotationType&gt;
+    &lt;com:AnnotationType&gt; http://data.europa.eu/s1n &lt;/com:AnnotationType&gt;
     &lt;com:AnnotationText&gt;Census&lt;/com:AnnotationText&gt;
 &lt;/com:Annotation&gt;
 &lt;com:Annotation&gt;
      &lt;com:AnnotationTitle&gt; http://www.w3.org/ns/dcat#theme&lt;/com:AnnotationTitle&gt;
-     &lt;com:AnnotationType&gt; http://data.europa.eu/xyz &lt;/com:AnnotationType&gt;     &lt;com:AnnotationURL&gt;urn:sdmx:org.sdmx.infomodel.categoryscheme.Category=ESTAT:MDR_THEMES(1.0).SOC&lt;/com:AnnotationURL&gt;
+     &lt;com:AnnotationType&gt; http://data.europa.eu/s1n &lt;/com:AnnotationType&gt;     &lt;com:AnnotationURL&gt;urn:sdmx:org.sdmx.infomodel.categoryscheme.Category=ESTAT:MDR_THEMES(1.0).SOC&lt;/com:AnnotationURL&gt;
 &lt;/com:Annotation&gt;
 &lt;com:Annotation&gt;
       &lt;com:AnnotationTitle&gt;stat:numSeries&lt;/com:AnnotationTitle&gt;
-      &lt;com:AnnotationType&gt; http://data.europa.eu/xyz &lt;/com:AnnotationType&gt;
+      &lt;com:AnnotationType&gt; http://data.europa.eu/s1n &lt;/com:AnnotationType&gt;
       &lt;com:AnnotationText&gt;106850&lt;/com:AnnotationText&gt;
 &lt;/com:Annotation&gt;
 &lt;com:Annotation&gt;
       &lt;com:AnnotationTitle&gt;stat:statUnitMeasure&lt;/com:AnnotationTitle&gt;
-      &lt;com:AnnotationType&gt; http://data.europa.eu/xyz &lt;/com:AnnotationType&gt;
+      &lt;com:AnnotationType&gt; http://data.europa.eu/s1n &lt;/com:AnnotationType&gt;
       &lt;com:AnnotationURL&gt;http://example.com/measures/percentage&lt;/com:AnnotationURL&gt;
 &lt;/com:Annotation&gt;
 &lt;com:Annotation&gt;
       &lt;com:AnnotationTitle&gt;dqv:hasQualityAnnotation&lt;/com:AnnotationTitle&gt;
-      &lt;com:AnnotationType&gt; http://data.europa.eu/xyz &lt;/com:AnnotationType&gt;
+      &lt;com:AnnotationType&gt; http://data.europa.eu/s1n &lt;/com:AnnotationType&gt;
       &lt;com:AnnotationURL&gt;http://qualifications.org/QualityCertificate1&lt;/com:AnnotationURL&gt;
 &lt;/com:Annotation&gt;
 &lt;com:Annotation&gt;
       &lt;com:AnnotationTitle&gt;oa:hasBody&lt;/com:AnnotationTitle&gt;
-      &lt;com:AnnotationType&gt; http://data.europa.eu/xyz &lt;/com:AnnotationType&gt;
+      &lt;com:AnnotationType&gt; http://data.europa.eu/s1n &lt;/com:AnnotationType&gt;
       &lt;com:AnnotationURL&gt;http://qualifications.org/QualityCertificate1/body&lt;/com:AnnotationURL&gt;
 &lt;/com:Annotation&gt;
 &lt;/com:Annotations&gt;
@@ -13531,24 +13540,26 @@ DCAT Dataset
 &lt;str:Structure&gt;
 &lt;Ref id="CENS_01_NEISCO" package="datastructure" class="DataStructure" agencyID="ESTAT" version="1.0"/&gt;
 &lt;/str:Structure&gt;
-&lt;/str:Dataflow&gt;
+&lt;/str:Dataflow&gt;</pre>
+    </details>
 
-DCAT Catalogue
-&lt;str:CategoryScheme id="DCAT_CATALOGUE" urn="urn:sdmx:org.sdmx.infomodel.categoryscheme.CategoryScheme=ESTAT:DCAT_CATALOGUE(1.0)" isExternalReference="false" agencyID="ESTAT" isFinal="false" version="1.0"&gt;
+    <details open>
+      <summary>DCAT Catalogue</summary>
+      <pre class="xml">&lt;str:CategoryScheme id="DCAT_CATALOGUE" urn="urn:sdmx:org.sdmx.infomodel.categoryscheme.CategoryScheme=ESTAT:DCAT_CATALOGUE(1.0)" isExternalReference="false" agencyID="ESTAT" isFinal="false" version="1.0"&gt;
 &lt;com:Annotations&gt;
     &lt;com:Annotation&gt;
          &lt;com:AnnotationTitle&gt; http://www.w3.org/ns/dcat#dataset&lt;/com:AnnotationTitle&gt;
-         &lt;com:AnnotationType&gt; http://data.europa.eu/xyz &lt;/com:AnnotationType&gt;
+         &lt;com:AnnotationType&gt; http://data.europa.eu/s1n &lt;/com:AnnotationType&gt;
 &lt;com:AnnotationURL&gt;urn:sdmx:org.sdmx.infomodel.datastructure.Dataflow=ESTAT:DF_HC58(1.0)&lt;/com:AnnotationURL&gt;
 &lt;/com:Annotation&gt;
 &lt;com:Annotation&gt;
        &lt;com:AnnotationTitle&gt;foaf:homepage&lt;/com:AnnotationTitle&gt;
-       &lt;com:AnnotationType&gt; http://data.europa.eu/xyz &lt;/com:AnnotationType&gt;
+       &lt;com:AnnotationType&gt; http://data.europa.eu/s1n &lt;/com:AnnotationType&gt;
        &lt;com:AnnotationURL&gt;http://ec.europa.eu/DataCatalogue&lt;/com:AnnotationURL&gt;
 &lt;/com:Annotation&gt;
 &lt;com:Annotation&gt;
         &lt;com:AnnotationTitle&gt;dct:license&lt;/com:AnnotationTitle&gt;
-       &lt;com:AnnotationType&gt; http://data.europa.eu/xyz &lt;/com:AnnotationType&gt;
+       &lt;com:AnnotationType&gt; http://data.europa.eu/s1n &lt;/com:AnnotationType&gt;
        &lt;com:AnnotationText xml:lang="en"&gt;Free to use provided Eurostat is acknowledged as the  source&lt;/com:AnnotationText&gt;
 &lt;/com:Annotation&gt;
 &lt;/com:Annotations&gt;
@@ -13559,10 +13570,12 @@ DCAT Catalogue
 &lt;str:Category id="TOPIC_THEMES" urn="urn:sdmx:org.sdmx.infomodel.categoryscheme.Category=ESTAT:DCAT_CATALOGUE(1.0).TOPIC_THEMES"&gt;
 &lt;com:Name xml:lang="en"&gt;Links to Topic (Category) Schemes&lt;/com:Name&gt;
 &lt;/str:Category&gt;
-&lt;/str:CategoryScheme&gt;
+&lt;/str:CategoryScheme&gt;</pre>
+    </details>
 
-DCAT Category Scheme
-&lt;str:CategoryScheme id="MDR_THEMES" urn="urn:sdmx:org.sdmx.infomodel.categoryscheme.CategoryScheme=ESTAT:MDR_THEMES(1.0)" isExternalReference="false" agencyID="ESTAT" isFinal="false" version="1.0"&gt;
+    <details open>
+        <summary>DCAT Category Scheme</summary>
+        <pre class="xml">&lt;str:CategoryScheme id="MDR_THEMES" urn="urn:sdmx:org.sdmx.infomodel.categoryscheme.CategoryScheme=ESTAT:MDR_THEMES(1.0)" isExternalReference="false" agencyID="ESTAT" isFinal="false" version="1.0"&gt;
 &lt;com:Name xml:lang="en"&gt;MDR Themes&lt;/com:Name&gt;
 &lt;str:Category id="AGRI" urn="urn:sdmx:org.sdmx.infomodel.categoryscheme.Category=ESTAT:MDR_THEMES(1.0).AGRI"&gt;
 &lt;com:Name xml:lang="en"&gt;Agriculture, fisheries, forestry and food&lt;/com:Name&gt;
@@ -13619,10 +13632,12 @@ DCAT Category Scheme
 &lt;/str:CategoryScheme&gt;
 &lt;/str:CategorySchemes&gt;
 &lt;str:Categorisations&gt;
+</pre>
+    </details>
 
-Link between Dataflow and Category in the MDR Scheme of Topics
-
-&lt;str:Categorisation id="4880e39f-585a-4452-2403-4ea6806df530" urn="urn:sdmx:org.sdmx.infomodel.categoryscheme.Categorisation=ESTAT:4880e39f-585a-4452-2403-4ea6806df530(1.0)" isExternalReference="false" agencyID="ESTAT" isFinal="false" version="1.0"&gt;
+    <details open>
+      <summary>Link between Dataflow and Category in the MDR Scheme of Topics</summary>
+      <pre class="xml">&lt;str:Categorisation id="4880e39f-585a-4452-2403-4ea6806df530" urn="urn:sdmx:org.sdmx.infomodel.categoryscheme.Categorisation=ESTAT:4880e39f-585a-4452-2403-4ea6806df530(1.0)" isExternalReference="false" agencyID="ESTAT" isFinal="false" version="1.0"&gt;
 &lt;com:Name xml:lang="en"&gt;4880e39f-585a-4452-2403-4ea6806df530&lt;/com:Name&gt;
 &lt;str:Source&gt;
 &lt;Ref id="cens_01neisco" package="datastructure" class="Dataflow" agencyID="ESTAT" version="1.0"/&gt;
@@ -13630,10 +13645,12 @@ Link between Dataflow and Category in the MDR Scheme of Topics
 &lt;str:Target&gt;
 &lt;Ref id="SOCI" maintainableParentID="MDR_THEMES" package="categoryscheme" class="Category" agencyID="ESTAT" maintainableParentVersion="1.0"/&gt;
 &lt;/str:Target&gt;
-&lt;/str:Categorisation&gt;
+&lt;/str:Categorisation&gt;</pre>
+    </details>
 
-Links between Dataflows and DATASET Category of the DCAT-Catalogue
-&lt;str:Categorisation id="5c96f6c8-67a3-805f-7a2b-81bee0e4f6f4" urn="urn:sdmx:org.sdmx.infomodel.categoryscheme.Categorisation=ESTAT:5c96f6c8-67a3-805f-7a2b-81bee0e4f6f4(1.0)" isExternalReference="false" agencyID="ESTAT" isFinal="false" version="1.0"&gt;
+    <details open>
+      <summary>Links between Dataflows and DATASET Category of the DCAT-Catalogue</summary>
+      <pre class="xml">&lt;str:Categorisation id="5c96f6c8-67a3-805f-7a2b-81bee0e4f6f4" urn="urn:sdmx:org.sdmx.infomodel.categoryscheme.Categorisation=ESTAT:5c96f6c8-67a3-805f-7a2b-81bee0e4f6f4(1.0)" isExternalReference="false" agencyID="ESTAT" isFinal="false" version="1.0"&gt;
 &lt;com:Name xml:lang="en"&gt;5c96f6c8-67a3-805f-7a2b-81bee0e4f6f4&lt;/com:Name&gt;
 &lt;str:Source&gt;
 &lt;Ref id="DF_HC58" package="datastructure" class="Dataflow" agencyID="ESTAT" version="1.0"/&gt;
@@ -13650,11 +13667,12 @@ Links between Dataflows and DATASET Category of the DCAT-Catalogue
 &lt;str:Target&gt;
 &lt;Ref id="DATASETS" maintainableParentID="DCAT_CATALOGUE" package="categoryscheme" class="Category" agencyID="ESTAT" maintainableParentVersion="1.0"/&gt;
 &lt;/str:Target&gt;
-&lt;/str:Categorisation&gt;
+&lt;/str:Categorisation&gt;</pre>
+    </details>
 
-Link between DCAT-Catalogue and Category Scheme of Topics
-
-&lt;str:Categorisation id="LINK_TO_MDR_TOPICS" urn="urn:sdmx:org.sdmx.infomodel.categoryscheme.Categorisation=ESTAT:LINK_TO_MDR_TOPICS(1.0)" isExternalReference="false" agencyID="ESTAT" isFinal="false" version="1.0"&gt;
+    <details open>
+      <summary>Link between DCAT-Catalogue and Category Scheme of Topics</summary>
+      <pre class="xml">&lt;str:Categorisation id="LINK_TO_MDR_TOPICS" urn="urn:sdmx:org.sdmx.infomodel.categoryscheme.Categorisation=ESTAT:LINK_TO_MDR_TOPICS(1.0)" isExternalReference="false" agencyID="ESTAT" isFinal="false" version="1.0"&gt;
 &lt;com:Name xml:lang="en"&gt;Link to MDR Topics&lt;/com:Name&gt;
 &lt;str:Source&gt;
 &lt;Ref id="MDR_THEMES" package="categoryscheme" class="CategoryScheme" agencyID="ESTAT" version="1.0"/&gt;
@@ -13663,20 +13681,22 @@ Link between DCAT-Catalogue and Category Scheme of Topics
 &lt;Ref id="TOPIC_THEMES" maintainableParentID="DCAT_CATALOGUE" package="categoryscheme" class="Category" agencyID="ESTAT" maintainableParentVersion="1.0"/&gt;
 &lt;/str:Target&gt;
 &lt;/str:Categorisation&gt;
-&lt;/str:Categorisations&gt;
+&lt;/str:Categorisations&gt;</pre>
+    </details>
 
-DCAT Distribution
-&lt;str:ProvisionAgreements&gt;
+    <details open>
+      <summary>DCAT Distribution</summary>
+      <pre class="xml">&lt;str:ProvisionAgreements&gt;
 &lt;str:ProvisionAgreement id="ESTAT-NEISCO" urn="urn:sdmx:org.sdmx.infomodel.registry.ProvisionAgreement=ESTAT:ESTAT-NEISCO(1.0)" isExternalReference="false" agencyID="ESTAT" isFinal="false" version="1.0"&gt;
 &lt;com:Annotations&gt;
 &lt;com:Annotation&gt;
        &lt;com:AnnotationTitle&gt; http://www.w3.org/ns/dcat#:license&lt;/com:AnnotationTitle&gt;
-       &lt;com:AnnotationType&gt; http://data.europa.eu/xyz &lt;/com:AnnotationType&gt;
+       &lt;com:AnnotationType&gt; http://data.europa.eu/s1n &lt;/com:AnnotationType&gt;
        &lt;com:AnnotationText&gt;Free to use provided Eurostat is acknowledged as the source&lt;/com:AnnotationText&gt;
 &lt;/com:Annotation&gt;
 &lt;com:Annotation&gt;
        &lt;com:AnnotationTitle&gt; http://www.w3.org/ns/dcat#:accessURL&lt;/com:AnnotationTitle&gt;
-       &lt;com:AnnotationType&gt; http://data.europa.eu/xyz &lt;/com:AnnotationType&gt;
+       &lt;com:AnnotationType&gt; http://data.europa.eu/s1n &lt;/com:AnnotationType&gt;
        &lt;com:AnnotationURL&gt;http://www.ec.europa.eu/eurostat/SDMX/diss-web/rest/&lt;/com:AnnotationURL&gt;
  &lt;/com:Annotation&gt;
 &lt;/com:Annotations&gt;
@@ -13691,8 +13711,7 @@ DCAT Distribution
 &lt;/str:ProvisionAgreement&gt;
 &lt;/str:ProvisionAgreements&gt;
 &lt;/mes:Structures&gt;
-&lt;/mes:Structure&gt;
-</code></pre>
+&lt;/mes:Structure&gt;</pre>
     </details>
   </section>
 
@@ -13707,24 +13726,22 @@ DCAT Distribution
 
         <p>Metadata Set - Start </p>
 
-        <details open>
-        <summary><strong>SDMX Metadata Set XML (full example)</strong></summary>
-
         <!-- PART 1: From start to the first image anchor -->
-        <pre><code class="language-xml">&lt;mes:MetadataSet structureRef="MDS2" setID="ba70fc24-f95b-4f0f-a2e2-658d993c2078"&gt;
-        &lt;com:Name xml:lang="en" xmlns:com="http://www.sdmx.org/resources/sdmxml/schemas/v2_1/common"&gt;DCAT_CATALOGUE_1&lt;/com:Name&gt;
-        &lt;gen:Report id="StatDCAT_Report" xmlns:gen="http://www.sdmx.org/resources/sdmxml/schemas/v2_1/metadata/generic"&gt;
-            &lt;gen:Target id="CategorySchemeTARGET"&gt;
-                &lt;gen:ReferenceValue id="CategoryScheme"&gt;
-                    &lt;gen:ObjectReference&gt;
-    &lt;URN&gt;urn:sdmx:org.sdmx.infomodel.categoryscheme.CategoryScheme=ESTAT:DCAT_CATALOGUE(1.0)&lt;/URN&gt;
-                    &lt;/gen:ObjectReference&gt;
-                &lt;/gen:ReferenceValue&gt;
-            &lt;/gen:Target&gt;
-            &lt;gen:AttributeSet&gt;
-
-    Followed by the Reported Attributes for the properties of the various DCAT-AP classes
-    </code></pre>
+        <pre class="xml">&lt;mes:MetadataSet structureRef="MDS2" setID="ba70fc24-f95b-4f0f-a2e2-658d993c2078"&gt;
+    &lt;com:Name xml:lang="en" xmlns:com="http://www.sdmx.org/resources/sdmxml/schemas/v2_1/common"&gt;DCAT_CATALOGUE_1&lt;/com:Name&gt;
+    &lt;gen:Report id="StatDCAT_Report" xmlns:gen="http://www.sdmx.org/resources/sdmxml/schemas/v2_1/metadata/generic"&gt;
+        &lt;gen:Target id="CategorySchemeTARGET"&gt;
+            &lt;gen:ReferenceValue id="CategoryScheme"&gt;
+                &lt;gen:ObjectReference&gt;
+&lt;URN&gt;urn:sdmx:org.sdmx.infomodel.categoryscheme.CategoryScheme=ESTAT:DCAT_CATALOGUE(1.0)&lt;/URN&gt;
+                &lt;/gen:ObjectReference&gt;
+            &lt;/gen:ReferenceValue&gt;
+        &lt;/gen:Target&gt;
+        &lt;gen:AttributeSet&gt;</pre>
+        
+        <p>
+            Followed by the Reported Attributes for the properties of the various DCAT-AP classes
+        </p>
 
         <a href="html/appendices/annex-III-fig01.png"target="_blank">
         <img src="html/appendices/annex-III-fig01.png"/>
@@ -13733,30 +13750,29 @@ DCAT Distribution
         </figure>
 
         <!-- PART 2: Continue until the end of the DCAT_CATALOGUE block (2nd anchor) -->
-        <pre><code class="language-xml">
-    &lt;gen:ReportedAttribute id="DCAT_CATALOGUE"&gt;
-    &lt;com:StructuredText xml:lang="en" xmlns:com="http://www.sdmx.org/resources/sdmxml/schemas/v2_1/common"&gt;&amp;lt;p&gt;&amp;lt;a href="urn:sdmx:org.sdmx.infomodel.categoryscheme.CategoryScheme=ESTAT:DCAT_CATALOGUE(1.0)"&gt;urn:sdmx:org.sdmx.infomodel.categoryscheme.CategoryScheme=ESTAT:DCAT_CATALOGUE(1.0)&amp;lt;/a&gt;&amp;lt;/p&gt;&lt;/com:StructuredText&gt;
-    &lt;gen:AttributeSet&gt;
-            &lt;gen:ReportedAttribute id="DATASET"&gt;
-            &lt;com:StructuredText xml:lang="en" xmlns:com="http://www.sdmx.org/resources/sdmxml/schemas/v2_1/common"&gt;&amp;lt;p&gt;&amp;lt;a href="urn:sdmx:org.sdmx.infomodel.datastructure.Dataflow=ESTAT:cens_01neisco(1.0"&gt;urn:sdmx:org.sdmx.infomodel.datastructure.Dataflow=ESTAT:cens_01neisco(1.0&amp;lt;/a&gt;&amp;lt;/p&gt;&lt;/com:StructuredText&gt;
-            &lt;/gen:ReportedAttribute&gt;
-            &lt;gen:ReportedAttribute id="DATASET"&gt;
-            &lt;com:StructuredText xml:lang="en" xmlns:com="http://www.sdmx.org/resources/sdmxml/schemas/v2_1/common"&gt;&amp;lt;p&gt;&amp;lt;a href="urn:sdmx:org.sdmx.infomodel.datastructure.Dataflow=ESTAT:DF_HC58(1.0)"&gt;urn:sdmx:org.sdmx.infomodel.datastructure.Dataflow=ESTAT:DF_HC58(1.0)&amp;lt;/a&gt;&amp;lt;/p&gt;&lt;/com:StructuredText&gt;
-            &lt;/gen:ReportedAttribute&gt;
-            &lt;gen:ReportedAttribute id="CATALOGUE_DESCRIPTION" value="Extended Description for DCAT Catalogue for Eurostat Data Sets"/&gt;
-            &lt;gen:ReportedAttribute id="CATALOGUE_PUBLISHER" value="urn:sdmx:org.sdmx.infomodel.base.Agency=ESTAT"/&gt;
-            &lt;gen:ReportedAttribute id="TITLE" value="DCAT Catalogue for Eurostat Data Sets"/&gt;
-            &lt;gen:ReportedAttribute id="CATALOGUE_HOMEPAGE"&gt;
-            &lt;com:StructuredText xml:lang="en" xmlns:com="http://www.sdmx.org/resources/sdmxml/schemas/v2_1/common"&gt;&amp;lt;p&gt;&amp;lt;a href="http://ec.europa.eu/DataCatalogue"&gt;http://ec.europa.eu/DataCatalogue&amp;lt;/a&gt;&amp;lt;/p&gt;&lt;/com:StructuredText&gt;
-            &lt;/gen:ReportedAttribute&gt;
-            &lt;gen:ReportedAttribute id="LANGUAGE" value="en"/&gt;
-            &lt;gen:ReportedAttribute id="CATALOGUE_LICENSE" value="Free to use provided Eurostat is acknowledged as the source"/&gt;
-            &lt;gen:ReportedAttribute id="CATALOGUE_THEME"&gt;
-            &lt;com:StructuredText xml:lang="en" xmlns:com="http://www.sdmx.org/resources/sdmxml/schemas/v2_1/common"&gt;&amp;lt;p&gt;&amp;lt;a href="urn:sdmx:org.sdmx.infomodel.categoryscheme.CategoryScheme=ESTAT:MDR_THEMES(1.0)"&gt;urn:sdmx:org.sdmx.infomodel.categoryscheme.CategoryScheme=ESTAT:MDR_THEMES(1.0)&amp;lt;/a&gt;&amp;lt;/p&gt;&lt;/com:StructuredText&gt;
-            &lt;/gen:ReportedAttribute&gt;
-        &lt;/gen:AttributeSet&gt;
-    &lt;/gen:ReportedAttribute&gt;
-    </code></pre>
+        <pre class="xml">
+&lt;gen:ReportedAttribute id="DCAT_CATALOGUE"&gt;
+&lt;com:StructuredText xml:lang="en" xmlns:com="http://www.sdmx.org/resources/sdmxml/schemas/v2_1/common"&gt;&amp;lt;p&gt;&amp;lt;a href="urn:sdmx:org.sdmx.infomodel.categoryscheme.CategoryScheme=ESTAT:DCAT_CATALOGUE(1.0)"&gt;urn:sdmx:org.sdmx.infomodel.categoryscheme.CategoryScheme=ESTAT:DCAT_CATALOGUE(1.0)&amp;lt;/a&gt;&amp;lt;/p&gt;&lt;/com:StructuredText&gt;
+&lt;gen:AttributeSet&gt;
+        &lt;gen:ReportedAttribute id="DATASET"&gt;
+        &lt;com:StructuredText xml:lang="en" xmlns:com="http://www.sdmx.org/resources/sdmxml/schemas/v2_1/common"&gt;&amp;lt;p&gt;&amp;lt;a href="urn:sdmx:org.sdmx.infomodel.datastructure.Dataflow=ESTAT:cens_01neisco(1.0"&gt;urn:sdmx:org.sdmx.infomodel.datastructure.Dataflow=ESTAT:cens_01neisco(1.0&amp;lt;/a&gt;&amp;lt;/p&gt;&lt;/com:StructuredText&gt;
+        &lt;/gen:ReportedAttribute&gt;
+        &lt;gen:ReportedAttribute id="DATASET"&gt;
+        &lt;com:StructuredText xml:lang="en" xmlns:com="http://www.sdmx.org/resources/sdmxml/schemas/v2_1/common"&gt;&amp;lt;p&gt;&amp;lt;a href="urn:sdmx:org.sdmx.infomodel.datastructure.Dataflow=ESTAT:DF_HC58(1.0)"&gt;urn:sdmx:org.sdmx.infomodel.datastructure.Dataflow=ESTAT:DF_HC58(1.0)&amp;lt;/a&gt;&amp;lt;/p&gt;&lt;/com:StructuredText&gt;
+        &lt;/gen:ReportedAttribute&gt;
+        &lt;gen:ReportedAttribute id="CATALOGUE_DESCRIPTION" value="Extended Description for DCAT Catalogue for Eurostat Data Sets"/&gt;
+        &lt;gen:ReportedAttribute id="CATALOGUE_PUBLISHER" value="urn:sdmx:org.sdmx.infomodel.base.Agency=ESTAT"/&gt;
+        &lt;gen:ReportedAttribute id="TITLE" value="DCAT Catalogue for Eurostat Data Sets"/&gt;
+        &lt;gen:ReportedAttribute id="CATALOGUE_HOMEPAGE"&gt;
+        &lt;com:StructuredText xml:lang="en" xmlns:com="http://www.sdmx.org/resources/sdmxml/schemas/v2_1/common"&gt;&amp;lt;p&gt;&amp;lt;a href="http://ec.europa.eu/DataCatalogue"&gt;http://ec.europa.eu/DataCatalogue&amp;lt;/a&gt;&amp;lt;/p&gt;&lt;/com:StructuredText&gt;
+        &lt;/gen:ReportedAttribute&gt;
+        &lt;gen:ReportedAttribute id="LANGUAGE" value="en"/&gt;
+        &lt;gen:ReportedAttribute id="CATALOGUE_LICENSE" value="Free to use provided Eurostat is acknowledged as the source"/&gt;
+        &lt;gen:ReportedAttribute id="CATALOGUE_THEME"&gt;
+        &lt;com:StructuredText xml:lang="en" xmlns:com="http://www.sdmx.org/resources/sdmxml/schemas/v2_1/common"&gt;&amp;lt;p&gt;&amp;lt;a href="urn:sdmx:org.sdmx.infomodel.categoryscheme.CategoryScheme=ESTAT:MDR_THEMES(1.0)"&gt;urn:sdmx:org.sdmx.infomodel.categoryscheme.CategoryScheme=ESTAT:MDR_THEMES(1.0)&amp;lt;/a&gt;&amp;lt;/p&gt;&lt;/com:StructuredText&gt;
+        &lt;/gen:ReportedAttribute&gt;
+    &lt;/gen:AttributeSet&gt;
+&lt;/gen:ReportedAttribute&gt;</pre>
 
         <a href="html/appendices/annex-III-fig02.png"target="_blank">
         <img src="html/appendices/annex-III-fig02.png"/>
@@ -13764,35 +13780,40 @@ DCAT Distribution
             <figcaption>Category Scheme mapping illustration (Catalogue theme).</figcaption>
         </figure>
 
-        <!-- PART 3: DCAT_CATEGORY_SCHEME block up to ENER example -->
-        <pre><code class="language-xml">
-    And so on….
-    &lt;gen:ReportedAttribute id="DCAT_CATEGORY_SCHEME"&gt;
-    &lt;com:StructuredText xml:lang="en" xmlns:com="http://www.sdmx.org/resources/sdmxml/schemas/v2_1/common"&gt;&amp;lt;p&gt;&amp;lt;a href="urn:sdmx:org.sdmx.infomodel.categoryscheme.CategoryScheme=ESTAT:MDR_THEMES(1.0)"&gt;urn:sdmx:org.sdmx.infomodel.categoryscheme.CategoryScheme=ESTAT:MDR_THEMES(1.0)&amp;lt;/a&gt;&amp;lt;/p&gt;&lt;/com:StructuredText&gt;
-        &lt;gen:AttributeSet&gt;
-            &lt;gen:ReportedAttribute id="CATEGORY_SCHEME_TITLE" value="MDR Themes"/&gt;
-            &lt;gen:ReportedAttribute id="DCAT_CATEGORY" value="urn:sdmx:org.sdmx.infomodel.categoryscheme.Category=ESTAT:MDR_THEMES(1.0).AGRI"&gt;
-                &lt;gen:AttributeSet&gt;
-                &lt;gen:ReportedAttribute id="PREFERRED_LABEL" value="Agriculture, fisheries, forestry and food"/&gt;
-                &lt;/gen:AttributeSet&gt;
-            &lt;/gen:ReportedAttribute&gt;
-            gen:ReportedAttribute id="DCAT_CATEGORY" value="urn:sdmx:org.sdmx.infomodel.categoryscheme.Category=ESTAT:MDR_THEMES(1.0).ECON"&gt;
-                &lt;gen:AttributeSet&gt;
-                &lt;gen:ReportedAttribute id="PREFERRED_LABEL" value="Economy and finance"/&gt;
-                &lt;/gen:AttributeSet&gt;
-            &lt;/gen:ReportedAttribute&gt;
-            &lt;gen:ReportedAttribute id="DCAT_CATEGORY" value="urn:sdmx:org.sdmx.infomodel.categoryscheme.Category=ESTAT:MDR_THEMES(1.0).EDUC"&gt;
-                &lt;gen:AttributeSet&gt;
-                &lt;gen:ReportedAttribute id="PREFERRED_LABEL" value="Education, culture and sport"/&gt;
-                &lt;/gen:AttributeSet&gt;
-            &lt;/gen:ReportedAttribute&gt;
-            &lt;gen:ReportedAttribute id="DCAT_CATEGORY" value="urn:sdmx:org.sdmx.infomodel.categoryscheme.Category=ESTAT:MDR_THEMES(1.0).ENER"&gt;
-                &lt;gen:AttributeSet&gt;
-                &lt;gen:ReportedAttribute id="PREFERRED_LABEL" value="Energy"/&gt;
-                &lt;/gen:AttributeSet&gt;
-            &lt;/gen:ReportedAttribute&gt;
-    </code></pre>
+        <p>
+            And so on...
+        </p>
 
+        <!-- PART 3: DCAT_CATEGORY_SCHEME block up to ENER example -->
+        <pre class="xml">&lt;gen:ReportedAttribute id="DCAT_CATEGORY_SCHEME"&gt;
+&lt;com:StructuredText xml:lang="en" xmlns:com="http://www.sdmx.org/resources/sdmxml/schemas/v2_1/common"&gt;&amp;lt;p&gt;&amp;lt;a href="urn:sdmx:org.sdmx.infomodel.categoryscheme.CategoryScheme=ESTAT:MDR_THEMES(1.0)"&gt;urn:sdmx:org.sdmx.infomodel.categoryscheme.CategoryScheme=ESTAT:MDR_THEMES(1.0)&amp;lt;/a&gt;&amp;lt;/p&gt;&lt;/com:StructuredText&gt;
+    &lt;gen:AttributeSet&gt;
+        &lt;gen:ReportedAttribute id="CATEGORY_SCHEME_TITLE" value="MDR Themes"/&gt;
+        &lt;gen:ReportedAttribute id="DCAT_CATEGORY" value="urn:sdmx:org.sdmx.infomodel.categoryscheme.Category=ESTAT:MDR_THEMES(1.0).AGRI"&gt;
+            &lt;gen:AttributeSet&gt;
+            &lt;gen:ReportedAttribute id="PREFERRED_LABEL" value="Agriculture, fisheries, forestry and food"/&gt;
+            &lt;/gen:AttributeSet&gt;
+        &lt;/gen:ReportedAttribute&gt;
+        gen:ReportedAttribute id="DCAT_CATEGORY" value="urn:sdmx:org.sdmx.infomodel.categoryscheme.Category=ESTAT:MDR_THEMES(1.0).ECON"&gt;
+            &lt;gen:AttributeSet&gt;
+            &lt;gen:ReportedAttribute id="PREFERRED_LABEL" value="Economy and finance"/&gt;
+            &lt;/gen:AttributeSet&gt;
+        &lt;/gen:ReportedAttribute&gt;
+        &lt;gen:ReportedAttribute id="DCAT_CATEGORY" value="urn:sdmx:org.sdmx.infomodel.categoryscheme.Category=ESTAT:MDR_THEMES(1.0).EDUC"&gt;
+            &lt;gen:AttributeSet&gt;
+            &lt;gen:ReportedAttribute id="PREFERRED_LABEL" value="Education, culture and sport"/&gt;
+            &lt;/gen:AttributeSet&gt;
+        &lt;/gen:ReportedAttribute&gt;
+        &lt;gen:ReportedAttribute id="DCAT_CATEGORY" value="urn:sdmx:org.sdmx.infomodel.categoryscheme.Category=ESTAT:MDR_THEMES(1.0).ENER"&gt;
+            &lt;gen:AttributeSet&gt;
+            &lt;gen:ReportedAttribute id="PREFERRED_LABEL" value="Energy"/&gt;
+            &lt;/gen:AttributeSet&gt;
+        &lt;/gen:ReportedAttribute&gt;</pre>
+
+        <p>
+            And so on...
+        </p>
+        
         <!-- IMAGE 3 — after ENER preferred label + “And so on….” -->
         <a href="html/appendices/annex-III-fig03.png"target="_blank">
         <img src="html/appendices/annex-III-fig03.png"/>
@@ -13800,34 +13821,30 @@ DCAT Distribution
             <figcaption>ENERGY Metadata Attribute example.</figcaption>
         </figure>
 
-        <pre><code class="language-xml">
-    And so on….
-    
-                    &lt;gen:ReportedAttribute id="DCAT_DATASET"&gt;
-                        &lt;gen:AttributeSet&gt;
-                            &lt;gen:ReportedAttribute id="DATASET_DESCRIPTION" value="Extended description for Population aged 15-74 by sex, age group, educational attainment (ISCED 1997) and occupation (ISCO 1988)"/&gt;
-                            &lt;gen:ReportedAttribute id="DATASET_TITLE" value="Population aged 15-74 by sex, age group, educational attainment (ISCED 1997) and occupation (ISCO 1988)"/&gt;
-                            &lt;gen:ReportedAttribute id="CONTACT_POINT" value="Dissemination"&gt;
-                                &lt;gen:AttributeSet&gt;
-                                    &lt;gen:ReportedAttribute id="CONTACT_PHONE" value="+352431034320"/&gt;
-                                    &lt;gen:ReportedAttribute id="CONTACT_EMAIL" value="dissemination@ec.europa.eu"/&gt;
-                                &lt;/gen:AttributeSet&gt;
-                            &lt;/gen:ReportedAttribute&gt;
-                            &lt;gen:ReportedAttribute id="DISTRIBUTION"&gt;
-                                &lt;com:StructuredText xml:lang="en" xmlns:com="http://www.sdmx.org/resources/sdmxml/schemas/v2_1/common"&gt;&amp;lt;p&gt;&amp;lt;a href="urn:sdmx:org.sdmx.infomodel.registry.ProvisionAgreement=ESTAT:AT-NEISCO(1.0)"&gt;urn:sdmx:org.sdmx.infomodel.registry.ProvisionAgreement=ESTAT:AT-NEISCO(1.0)&amp;lt;/a&gt;&amp;lt;/p&gt;&lt;/com:StructuredText&gt;
-                            &lt;/gen:ReportedAttribute&gt;
-                            &lt;gen:ReportedAttribute id="KEYWORD" value="Population"/&gt;
-                            &lt;gen:ReportedAttribute id="KEYWORD" value="Austria"/&gt;
-                            &lt;gen:ReportedAttribute id="KEYWORD" value="Census"/&gt;
-                            &lt;gen:ReportedAttribute id="DATASET_PUBLISHER" value="ESTAT"/&gt;
-                            &lt;gen:ReportedAttribute id="DATASET_THEME"&gt;
-                                &lt;com:StructuredText xml:lang="en" xmlns:com="http://www.sdmx.org/resources/sdmxml/schemas/v2_1/common"&gt;&amp;lt;p&gt;&amp;lt;a href="http://urn:sdmx:org.sdmx.infomodel.categoryscheme.Category=ESTAT:MDR_THEMES(1.0).SOCI"&gt;http://urn:sdmx:org.sdmx.infomodel.categoryscheme.Category=ESTAT:MDR_THEMES(1.0).SOCI&amp;lt;/a&gt;&amp;lt;/p&gt;&lt;/com:StructuredText&gt;
-                            &lt;/gen:ReportedAttribute&gt;
-                            &lt;gen:ReportedAttribute id="NUM_SERIES" value="110259"/&gt;
-                            &lt;gen:ReportedAttribute id="STAT_MEASURE"&gt;
-                                &lt;com:StructuredText xml:lang="en" xmlns:com="http://www.sdmx.org/resources/sdmxml/schemas/v2_1/common"&gt;&amp;lt;p&gt;&amp;lt;a href="http://example.com/measures/percentage"&gt;http://example.com/measures/percentage&amp;lt;/a&gt;&amp;lt;/p&gt;&lt;/com:StructuredText&gt;
-                            &lt;/gen:ReportedAttribute&gt;
-    </code></pre>
+        <pre class="xml">&lt;gen:ReportedAttribute id="DCAT_DATASET"&gt;
+&lt;gen:AttributeSet&gt;
+&lt;gen:ReportedAttribute id="DATASET_DESCRIPTION" value="Extended description for Population aged 15-74 by sex, age group, educational attainment (ISCED 1997) and occupation (ISCO 1988)"/&gt;
+&lt;gen:ReportedAttribute id="DATASET_TITLE" value="Population aged 15-74 by sex, age group, educational attainment (ISCED 1997) and occupation (ISCO 1988)"/&gt;
+&lt;gen:ReportedAttribute id="CONTACT_POINT" value="Dissemination"&gt;
+    &lt;gen:AttributeSet&gt;
+        &lt;gen:ReportedAttribute id="CONTACT_PHONE" value="+352431034320"/&gt;
+        &lt;gen:ReportedAttribute id="CONTACT_EMAIL" value="dissemination@ec.europa.eu"/&gt;
+    &lt;/gen:AttributeSet&gt;
+&lt;/gen:ReportedAttribute&gt;
+&lt;gen:ReportedAttribute id="DISTRIBUTION"&gt;
+    &lt;com:StructuredText xml:lang="en" xmlns:com="http://www.sdmx.org/resources/sdmxml/schemas/v2_1/common"&gt;&amp;lt;p&gt;&amp;lt;a href="urn:sdmx:org.sdmx.infomodel.registry.ProvisionAgreement=ESTAT:AT-NEISCO(1.0)"&gt;urn:sdmx:org.sdmx.infomodel.registry.ProvisionAgreement=ESTAT:AT-NEISCO(1.0)&amp;lt;/a&gt;&amp;lt;/p&gt;&lt;/com:StructuredText&gt;
+&lt;/gen:ReportedAttribute&gt;
+&lt;gen:ReportedAttribute id="KEYWORD" value="Population"/&gt;
+&lt;gen:ReportedAttribute id="KEYWORD" value="Austria"/&gt;
+&lt;gen:ReportedAttribute id="KEYWORD" value="Census"/&gt;
+&lt;gen:ReportedAttribute id="DATASET_PUBLISHER" value="ESTAT"/&gt;
+&lt;gen:ReportedAttribute id="DATASET_THEME"&gt;
+    &lt;com:StructuredText xml:lang="en" xmlns:com="http://www.sdmx.org/resources/sdmxml/schemas/v2_1/common"&gt;&amp;lt;p&gt;&amp;lt;a href="http://urn:sdmx:org.sdmx.infomodel.categoryscheme.Category=ESTAT:MDR_THEMES(1.0).SOCI"&gt;http://urn:sdmx:org.sdmx.infomodel.categoryscheme.Category=ESTAT:MDR_THEMES(1.0).SOCI&amp;lt;/a&gt;&amp;lt;/p&gt;&lt;/com:StructuredText&gt;
+&lt;/gen:ReportedAttribute&gt;
+&lt;gen:ReportedAttribute id="NUM_SERIES" value="110259"/&gt;
+&lt;gen:ReportedAttribute id="STAT_MEASURE"&gt;
+    &lt;com:StructuredText xml:lang="en" xmlns:com="http://www.sdmx.org/resources/sdmxml/schemas/v2_1/common"&gt;&amp;lt;p&gt;&amp;lt;a href="http://example.com/measures/percentage"&gt;http://example.com/measures/percentage&amp;lt;/a&gt;&amp;lt;/p&gt;&lt;/com:StructuredText&gt;
+&lt;/gen:ReportedAttribute&gt;</pre>
 
         <!-- IMAGE 4 — after the STAT_MEASURE StructuredText (percentage URL) -->
         <a href="html/appendices/annex-III-fig04.png"target="_blank">
@@ -13836,23 +13853,17 @@ DCAT Distribution
             <figcaption>Statistical unit measure mapping (example link to a unit measure URI).</figcaption>
         </figure>
 
-        <pre><code class="language-xml">
-                        &lt;/gen:AttributeSet&gt;
-                    &lt;/gen:ReportedAttribute&gt;
-
-
-    &lt;gen:ReportedAttribute id="DCAT_DISTRIBUTION"&gt;
-        &lt;com:StructuredText xml:lang="en" xmlns:com="http://www.sdmx.org/resources/sdmxml/schemas/v2_1/common"&gt;&amp;lt;p&gt;&amp;lt;a href="urn:sdmx:org.sdmx.infomodel.registry.ProvisionAgreement=ESTAT:AT-NEISCO(1.0)"&gt;urn:sdmx:org.sdmx.infomodel.registry.ProvisionAgreement=ESTAT:AT-NEISCO(1.0)&amp;lt;/a&gt;&amp;lt;/p&gt;&lt;/com:StructuredText&gt;
-        &lt;gen:AttributeSet&gt;
-            &lt;gen:ReportedAttribute id="ACCESS_URL"&gt;
-            &lt;com:StructuredText xml:lang="en" xmlns:com="http://www.sdmx.org/resources/sdmxml/schemas/v2_1/common"&gt;&amp;lt;p&gt;&amp;lt;a href="http://localhost:8080/FusionRegistry/ws/rest"&gt;http://localhost:8080/FusionRegistry/ws/rest&amp;lt;/a&gt;&amp;lt;/p&gt;&lt;/com:StructuredText&gt;
-            &lt;/gen:ReportedAttribute&gt;
-            &lt;gen:ReportedAttribute id="DISTRIBUTION_DESCRIPTION" value="Austria for Census by education and occupation"/&gt;
-            &lt;gen:ReportedAttribute id="DISTRIBUTION_FORMAT" value="SDMX Data Structure Specific"/&gt;
-            &lt;gen:ReportedAttribute id="DISTRIBUTION_LICENSE" value="Free to use provided Eurostat is acknowledged as the source"/&gt;
-        &lt;/gen:AttributeSet&gt;
+        <pre class="xml">&lt;gen:ReportedAttribute id="DCAT_DISTRIBUTION"&gt;
+&lt;com:StructuredText xml:lang="en" xmlns:com="http://www.sdmx.org/resources/sdmxml/schemas/v2_1/common"&gt;&amp;lt;p&gt;&amp;lt;a href="urn:sdmx:org.sdmx.infomodel.registry.ProvisionAgreement=ESTAT:AT-NEISCO(1.0)"&gt;urn:sdmx:org.sdmx.infomodel.registry.ProvisionAgreement=ESTAT:AT-NEISCO(1.0)&amp;lt;/a&gt;&amp;lt;/p&gt;&lt;/com:StructuredText&gt;
+&lt;gen:AttributeSet&gt;
+    &lt;gen:ReportedAttribute id="ACCESS_URL"&gt;
+    &lt;com:StructuredText xml:lang="en" xmlns:com="http://www.sdmx.org/resources/sdmxml/schemas/v2_1/common"&gt;&amp;lt;p&gt;&amp;lt;a href="http://localhost:8080/FusionRegistry/ws/rest"&gt;http://localhost:8080/FusionRegistry/ws/rest&amp;lt;/a&gt;&amp;lt;/p&gt;&lt;/com:StructuredText&gt;
     &lt;/gen:ReportedAttribute&gt;
-    </code></pre>
+    &lt;gen:ReportedAttribute id="DISTRIBUTION_DESCRIPTION" value="Austria for Census by education and occupation"/&gt;
+    &lt;gen:ReportedAttribute id="DISTRIBUTION_FORMAT" value="SDMX Data Structure Specific"/&gt;
+    &lt;gen:ReportedAttribute id="DISTRIBUTION_LICENSE" value="Free to use provided Eurostat is acknowledged as the source"/&gt;
+&lt;/gen:AttributeSet&gt;
+&lt;/gen:ReportedAttribute&gt;</pre>
 
         <!-- IMAGE 5 — after DISTRIBUTION_FORMAT and DISTRIBUTION_LICENSE -->
         <a href="html/appendices/annex-III-fig05.png"target="_blank">
@@ -13861,21 +13872,17 @@ DCAT Distribution
             <figcaption>Distribution metadata mapping (accessURL, format, license).</figcaption>
         </figure>
 
-        <pre><code class="language-xml">
-    
-    &lt;gen:ReportedAttribute id="DCAT_AGENT"&gt;
-        &lt;com:StructuredText xml:lang="en" xmlns:com="http://www.sdmx.org/resources/sdmxml/schemas/v2_1/common"&gt;&amp;lt;p&gt;&amp;lt;a href="urn:sdmx:org.sdmx.infomodel.base.Agency=ESTAT"&gt;urn:sdmx:org.sdmx.infomodel.base.Agency=ESTAT&amp;lt;/a&gt;&amp;lt;/p&gt;&lt;/com:StructuredText&gt;
-        &lt;gen:AttributeSet&gt;
-            &lt;gen:ReportedAttribute id="AGENT_NAME" value="Eurostat"/&gt;
-            &lt;gen:ReportedAttribute id="AGENT_TYPE" value="Publisher"/&gt;
+        <pre class="xml">&lt;gen:ReportedAttribute id="DCAT_AGENT"&gt;
+    &lt;com:StructuredText xml:lang="en" xmlns:com="http://www.sdmx.org/resources/sdmxml/schemas/v2_1/common"&gt;&amp;lt;p&gt;&amp;lt;a href="urn:sdmx:org.sdmx.infomodel.base.Agency=ESTAT"&gt;urn:sdmx:org.sdmx.infomodel.base.Agency=ESTAT&amp;lt;/a&gt;&amp;lt;/p&gt;&lt;/com:StructuredText&gt;
+    &lt;gen:AttributeSet&gt;
+        &lt;gen:ReportedAttribute id="AGENT_NAME" value="Eurostat"/&gt;
+        &lt;gen:ReportedAttribute id="AGENT_TYPE" value="Publisher"/&gt;
+    &lt;/gen:AttributeSet&gt;
+&lt;/gen:ReportedAttribute&gt;
+End of Metadata Set
         &lt;/gen:AttributeSet&gt;
-    &lt;/gen:ReportedAttribute&gt;
-    End of Metadata Set
-            &lt;/gen:AttributeSet&gt;
-        &lt;/gen:Report&gt;
-    &lt;/mes:MetadataSet&gt;
-    </code></pre>
-        </details>
+    &lt;/gen:Report&gt;
+&lt;/mes:MetadataSet&gt;</pre>
     </section>
   </section>
 </section>
@@ -13891,7 +13898,7 @@ DCAT Distribution
     <details open>
       <summary><strong>Show RDF Example 1</strong></summary>
 
-<pre><code class="language-turtle">@prefix dcat:     &lt;http://www.w3.org/ns/dcat#&gt; .
+<pre class="turtle">@prefix dcat:     &lt;http://www.w3.org/ns/dcat#&gt; .
 @prefix dct:      &lt;http://purl.org/dc/terms/&gt; . 
 @prefix eg:       &lt;http://example.org/ns#&gt; .
 @prefix geonames: &lt;http://sws.geonames.org/&gt; . 
@@ -13955,7 +13962,7 @@ eg:distribution-le3 a dcat:Distribution ;
 
 # Note that the definitions of eg:organization, eg:refArea and eg:refPeriod have not been
 # reproduced here. They are defined in the source metadata.
-</code></pre>
+</pre>
 
     </details>
   </section>
@@ -13967,7 +13974,7 @@ eg:distribution-le3 a dcat:Distribution ;
 <details open>
   <summary><strong>Show RDF Example 2</strong></summary>
 
-<pre><code class="language-turtle">@prefix adms:     &lt;http://www.w3.org/ns/adms#&gt; .
+<pre class="turtle">@prefix adms:     &lt;http://www.w3.org/ns/adms#&gt; .
 @prefix dad-prop: &lt;http://semantic.digital-agenda-data.eu/def/property/&gt; .
 @prefix dcat:     &lt;http://www.w3.org/ns/dcat#&gt; .
 @prefix dct:      &lt;http://purl.org/dc/terms/&gt; .
@@ -14039,7 +14046,7 @@ ns30:visualisation a dcat:Distribution ;
     dct:type        ns39:VISUALIZATION ;
     dcat:accessURL  ns41:digital_agenda_scoreboard_key_indicators ;
     dct:license     ns25:copyright .
-</code></pre>
+</pre>
 
 </details>
 
@@ -16345,6 +16352,7 @@ The properties are grouped under headings <it>mandatory, recommended, optional</
 </p>
 <ul>
     <li><code>http://data.europa.eu/(xyz)/statdcat-ap/</code></li>
+    <li><code>http://data.europa.eu/xyz</code></li>
     <li><code>http://data.europa.eu/m8g/</code></li>
 </ul>
 
