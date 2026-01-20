@@ -12699,36 +12699,34 @@ Both datasets however, are in scope of the INSPIRE directive.</p>
   </ul>  
 </section>
   
-<section id="annex-I" class="appendix">
+<section id="mapping-sdmx-to-statdcat-ap" class="appendix">
 
-  <h2>Mapping SMDX to StatDCAT-AP </h2>
+  <h2>Mapping SDMX to StatDCAT-AP</h2>
 
-	<section id="scope">
-    <h2>Scope</h2>
+	<section id="mapping-sdmx-to-statdcat-ap-scope">
+    <h3>Scope</h3>
     <p>
       The scope of this section is to describe the mapping of StatDCAT-AP to the SDMX Information Model. This is achieved by means of schematic diagrams of the SDMX Information Model and also by a worked example where the SDMX-ML content is mapped to the classes and properties of DCAT-AP.
     </p>
-<p>
-    The intent of this mapping is twofold:
-  </p>
-  <ol>
-    <li>
-      It enables organisations using SDMX to know which metadata structures to use in order to generate DCAT-AP compliant messages directly from their SDMX metadata repositories (such as an SDMX Registry).
-    </li>
-    <li>
-      It enables organisations that intend to use SDMX-ML structural metadata as format for the Transformation Mechanism (described in Annex V of this specification) to map SDMX-ML elements or attributes to DCAT-AP classes or properties.
-    </li>
-	<!--"Described in section IV" to change-->
-  </ol>
+    <p>
+      The intent of this mapping is twofold:
+    </p>
+    <ol>
+      <li>
+        It enables organisations using SDMX to know which metadata structures to use in order to generate DCAT-AP compliant messages directly from their SDMX metadata repositories (such as an SDMX Registry).
+      </li>
+      <li>
+        It enables organisations that intend to use SDMX-ML structural metadata as format for the Transformation Mechanism (described in Annex V of this specification) to map SDMX-ML elements or attributes to DCAT-AP classes or properties.
+      </li>
+	  <!--"Described in section IV" to change-->
+    </ol>
   </section>
-
-
  
-<section id="diagrams">
+  <section id="mapping-sdmx-to-statdcat-ap-diagrams">
   <h3>Diagrams</h3>
 
   <figure id="Schematic-map-of-SMDX-Classes-to-DCAT-AP">
-    <a href="html/appendices/annex-I-fig01.png"target="_blank">
+    <a href="html/appendices/annex-I-fig01.png" target="_blank">
       <img src="html/appendices/annex-I-fig01.png"/>
     </a>
     <figcaption>
@@ -12764,7 +12762,7 @@ Both datasets however, are in scope of the INSPIRE directive.</p>
   </ol>
 
   <figure id="fig-dcat-perspective">
-    <a href="html/appendices/annex-I-fig02.png"target="_blank">
+    <a href="html/appendices/annex-I-fig02.png" target="_blank">
       <img src="html/appendices/annex-I-fig02.png"/>
     </a>
     <figcaption>
@@ -12774,133 +12772,136 @@ Both datasets however, are in scope of the INSPIRE directive.</p>
   </figure>
   </section>
 
-<section id="example">
+  <section id="mapping-sdmx-to-statdcat-ap-example">
   <h3>Example</h3>
-
-  <h4>Introduction</h4>
-  <p>
-    This example shows how the SDMX structural metadata are mapped to the DCAT-AP classes and properties.
-    The mapping shows the XML instances of the structural metadata authored in an SDMX Registry and
-    exported as SDMX‑ML.
-  </p>
-
-  <figure id="fig-example-metadata-overview">
-    <a href="html/appendices/annex-I-fig03.png"target="_blank">
-      <img src="html/appendices/annex-I-fig03.png"/>
-    </a>
-    <figcaption>
-      Metadata Used in the Mapping Example.
-      This shows the schematic diagram of the high level SDMX classes and the content of these for the instance of these classes used in the examples that follow.
-    </figcaption>
-  </figure>
-
-  <p>A narrative explanation is:</p>
-  <ol>
-    <li>
-      The SDMX Category Scheme containing the DCAT Catalogue has two Categories:
-      one called <em>TOPIC_SCHEMES</em>, linking to the DCAT Category Scheme of MDR Themes;
-      and one called <em>DATASETS</em>, linking to all the DCAT Datasets
-      (in SDMX this is a Dataflow) listed in the Catalogue.
-    </li>
-    <li>
-      In the example two Dataflows are present: <code>DF_HC58</code> (Census Hub Hypercube 58)
-      and <code>Cens01_neisco</code> (Census data by education and occupation). Both are
-      maintained by Eurostat (<code>Agency=ESTAT</code>).
-      <code>DF_HC58</code> shows how a Category can link to multiple Dataflows,
-      while <code>Cens01_neisco</code> is used for the detailed mapping of SDMX
-      to the StatDCAT‑AP classes - Dataset, Distribution, Category Scheme, Agent.
-    </li>
-    <li>
-      The Dataflow is linked to the Data Structure <code>CENS_01_NEISCO</code>, which has a
-      number of Dimensions including Age, Sex, Geography and one Attribute, Observation Status.
-    </li>
-    <li>
-      The SDMX Category Scheme containing the statistical themes has the name <em>MDR Themes</em> in the example.
-    </li>
-    <li>
-      The Provision Agreement containing the DCAT Distribution in the example is named
-      <em>Census by Education and Occupation</em> and links the Data Provider (<code>ESTAT</code>)
-      to the Dataflow <code>Cens01_neisco</code>. The URL of the Registered Data Source is a link to 
-	  a web service that can be queried for the data.
-    </li>
-    <li>
-      The SDMX Agency containing the DCAT Agent is <code>ESTAT</code>. The Data Provider is a
-      different construct from the <code>ESTAT</code> Agency, but in this example it is given use the same ID (<code>ESTAT</code>).
-    </li>
-    <li>
-      The URL in the Registered Data Source
-      (<a href="http://www.ec.europa.eu/eurostat/SDMX/diss-web/rest">http://www.ec.europa.eu/eurostat/SDMX/diss-web/rest</a>)
-      is the <code>dcat:accessURL</code> in the DCAT Distribution.
-    </li>
-  </ol>
-</section>
-
-<section id="sdmx-annotations">
-  <h3>SDMX Annotations</h3>
-  <p>
-    SDMX does not support some of the mandatory or recommended properties of DCAT-AP. However, SDMX has an extensibility mechanism called <em>Annotations</em>. Annotations can be added to any SDMX object that can be identified.
-  </p>
-
-  <figure id="fig-sdmx-annotation-schema">
-   <a href="html/appendices/annex-I-fig04.png"target="_blank">
-      <img src="html/appendices/annex-I-fig04.png"/>
-    </a>
-    <figcaption>
-      SDMX XML schema specification for <code>Annotation</code>.
-    </figcaption>
-  </figure>
-
-  <p>In the examples that follow, the following elements are used:</p>
-  <ul>
-    <li>
-      <strong>AnnotationTitle</strong>contains the <code>DCAT‑AP</code> property 
-    </li>
-    <li>
-      <strong>AnnotationType</strong> contains the value <code>StatDCAT‑AP</code> indicating that this is a StatDCAT‑AP property.
-    </li>
-    <li>
-      <strong>AnnotationURL</strong> is a URI 
-    </li>
-    <li>
-      <strong>AnnotationText</strong> is a text value (this can occur many times to support multilingual values)
-    </li>
-  </ul>
-</section>
- 
-
-<section id="explanation-of-mapping-diagrams">
-  <h3>Explanation of the mapping diagrams</h3>
-
-  <p>
-    In all cases the mapping is shown between the DCAT-AP property and the location of the property in an SDMX XML message. Table 1 under the mapping diagram maps the DCAT-AP properties to the corresponding SDMX XML elements or attributes. In all cases the SDMX message is a &lt;Structure&gt; message (i.e. the start tag is the &lt;Structure&gt; element) 
-    <br/>e.g.  <a href="html/appendices/annex-I-fig05.png"target="_blank">
-      <img src="html/appendices/annex-I-fig05.png"/>
-    </a>
-    <br/>In Table 1 the additional StatDCAT-AP properties are shown in turquoise.
-    <br/>e.g.<a href="html/appendices/annex-I-fig06.png"target="_blank">
-      <img src="html/appendices/annex-I-fig06.png"/>
-    </a>
-  </p>
-  <h4 id="data-catalogue">Data Catalogue</h4>
-
   
-  <figure id="fig-07-08-09-dcat-catalogue-mapping">
-  <a href="html/appendices/annex-I-fig07.png"target="_blank">
-      <img src="html/appendices/annex-I-fig07.png"/>
-    </a>
- <a href="html/appendices/annex-I-fig08.png"target="_blank">
-      <img src="html/appendices/annex-I-fig08.png"/>
-    </a>
-  <a href="html/appendices/annex-I-fig09.png"target="_blank">
-      <img src="html/appendices/annex-I-fig09.png"/>
-    </a>
-    <figcaption>
-      SDMX-DCAT mapping example for the DCAT Catalogue
-    </figcaption>
-  </figure>
+  <section id="mapping-sdmx-to-statdcat-ap-example-introduction">
+    <h4>Introduction</h4>
+  
+    <p>
+      This example shows how the SDMX structural metadata are mapped to the DCAT-AP classes and properties.
+      The mapping shows the XML instances of the structural metadata authored in an SDMX Registry and
+      exported as SDMX‑ML.
+    </p>
 
-  <h5 id="table-1">Table 1 DCAT-AP properties mapped to the corresponding SDMX XML elements or attributes</h5>
+    <figure id="fig-example-metadata-overview">
+      <a href="html/appendices/annex-I-fig03.png" target="_blank">
+        <img src="html/appendices/annex-I-fig03.png"/>
+      </a>
+      <figcaption>
+        Metadata Used in the Mapping Example.
+        This shows the schematic diagram of the high level SDMX classes and the content of these for the instance of these classes used in the examples that follow.
+      </figcaption>
+    </figure>
+
+    <p>A narrative explanation is:</p>
+    <ol>
+      <li>
+        The SDMX Category Scheme containing the DCAT Catalogue has two Categories:
+        one called <em>TOPIC_SCHEMES</em>, linking to the DCAT Category Scheme of MDR Themes;
+        and one called <em>DATASETS</em>, linking to all the DCAT Datasets
+        (in SDMX this is a Dataflow) listed in the Catalogue.
+      </li>
+      <li>
+        In the example two Dataflows are present: <code>DF_HC58</code> (Census Hub Hypercube 58)
+        and <code>Cens01_neisco</code> (Census data by education and occupation). Both are
+        maintained by Eurostat (<code>Agency=ESTAT</code>).
+        <code>DF_HC58</code> shows how a Category can link to multiple Dataflows,
+        while <code>Cens01_neisco</code> is used for the detailed mapping of SDMX
+        to the StatDCAT‑AP classes - Dataset, Distribution, Category Scheme, Agent.
+      </li>
+      <li>
+        The Dataflow is linked to the Data Structure <code>CENS_01_NEISCO</code>, which has a
+        number of Dimensions including Age, Sex, Geography and one Attribute, Observation Status.
+      </li>
+      <li>
+        The SDMX Category Scheme containing the statistical themes has the name <em>MDR Themes</em> in the example.
+      </li>
+      <li>
+        The Provision Agreement containing the DCAT Distribution in the example is named
+        <em>Census by Education and Occupation</em> and links the Data Provider (<code>ESTAT</code>)
+        to the Dataflow <code>Cens01_neisco</code>. The URL of the Registered Data Source is a link to 
+      a web service that can be queried for the data.
+      </li>
+      <li>
+        The SDMX Agency containing the DCAT Agent is <code>ESTAT</code>. The Data Provider is a
+        different construct from the <code>ESTAT</code> Agency, but in this example it is given use the same ID (<code>ESTAT</code>).
+      </li>
+      <li>
+        The URL in the Registered Data Source
+        (<a href="http://www.ec.europa.eu/eurostat/SDMX/diss-web/rest">http://www.ec.europa.eu/eurostat/SDMX/diss-web/rest</a>)
+        is the <code>dcat:accessURL</code> in the DCAT Distribution.
+      </li>
+    </ol>
+  </section>
+
+  <section id="mapping-sdmx-to-statdcat-ap-example-sdmx-annotations">
+    <h4>SDMX Annotations</h4>
+    <p>
+      SDMX does not support some of the mandatory or recommended properties of DCAT-AP. However, SDMX has an extensibility mechanism called <em>Annotations</em>. Annotations can be added to any SDMX object that can be identified.
+    </p>
+
+    <figure id="fig-sdmx-annotation-schema">
+    <a href="html/appendices/annex-I-fig04.png" target="_blank">
+        <img src="html/appendices/annex-I-fig04.png"/>
+      </a>
+      <figcaption>
+        SDMX XML schema specification for <code>Annotation</code>.
+      </figcaption>
+    </figure>
+
+    <p>In the examples that follow, the following elements are used:</p>
+    <ul>
+      <li>
+        <strong>AnnotationTitle</strong>contains the <code>DCAT‑AP</code> property 
+      </li>
+      <li>
+        <strong>AnnotationType</strong> contains the value <code>StatDCAT‑AP</code> indicating that this is a StatDCAT‑AP property.
+      </li>
+      <li>
+        <strong>AnnotationURL</strong> is a URI 
+      </li>
+      <li>
+        <strong>AnnotationText</strong> is a text value (this can occur many times to support multilingual values)
+      </li>
+    </ul>
+  </section>
+
+  <section id="mapping-sdmx-to-statdcat-ap-example-explanation-of-mapping-diagrams">
+    <h4>Explanation of the mapping diagrams</h4>
+
+    <p>
+      In all cases the mapping is shown between the DCAT-AP property and the location of the property in an SDMX XML message. Table 1 under the mapping diagram maps the DCAT-AP properties to the corresponding SDMX XML elements or attributes. In all cases the SDMX message is a &lt;Structure&gt; message (i.e. the start tag is the &lt;Structure&gt; element) 
+      <br/>e.g.  <a href="html/appendices/annex-I-fig05.png" target="_blank">
+        <img src="html/appendices/annex-I-fig05.png"/>
+      </a>
+      <br/>In Table 1 the additional StatDCAT-AP properties are shown in turquoise.
+      <br/>e.g.<a href="html/appendices/annex-I-fig06.png" target="_blank">
+        <img src="html/appendices/annex-I-fig06.png"/>
+      </a>
+    </p>
+  </section>
+
+  <section id="mapping-sdmx-to-statdcat-ap-example-data-catalogue">
+  <h4>Data Catalogue</h4>
+  
+    <figure id="fig-07-08-09-dcat-catalogue-mapping">
+    <a href="html/appendices/annex-I-fig07.png" target="_blank">
+        <img src="html/appendices/annex-I-fig07.png"/>
+      </a>
+  <a href="html/appendices/annex-I-fig08.png" target="_blank">
+        <img src="html/appendices/annex-I-fig08.png"/>
+      </a>
+    <a href="html/appendices/annex-I-fig09.png" target="_blank">
+        <img src="html/appendices/annex-I-fig09.png"/>
+      </a>
+      <figcaption>
+        SDMX-DCAT mapping example for the DCAT Catalogue
+      </figcaption>
+    </figure>
+
   <table class="simple">
+    <caption>Table 1 DCAT-AP properties mapped to the corresponding SDMX XML elements or attributes</caption>
     <thead>
       <tr>
         <th>DCAT-AP Property</th>
@@ -12930,67 +12931,72 @@ Both datasets however, are in scope of the INSPIRE directive.</p>
       </tr>
     </tbody>
   </table>
+  </section>
+  
+  <section id="mapping-sdmx-to-statdcat-ap-example-linking-to-categories-using-categorisations">
+    <h4 id="linking-to-categories-using-categorisations">Linking to Categories using Categorisations</h4>
 
-  <h4 id="linking-to-categories-using-categorisations">Linking to Categories using Categorisations</h4>
+    <p>Schematic</p>
+    <figure id="annex-I-fig10">
+      <a href="html/appendices/annex-I-fig10.png" target="_blank">
+        <img src="html/appendices/annex-I-fig10.png"/>
+      </a>
+      <figcaption>
+        Schematic showing links between SDMX Categories and other SDMX objects 
+      </figcaption>
+    </figure>
 
-  <p>Schematic</p>
- <a href="html/appendices/annex-I-fig10.png"target="_blank">
-      <img src="html/appendices/annex-I-fig10.png"/>
-    </a>
-    <figcaption>
-      Schematic showing links between SDMX Categories and other SDMX objects 
-    </figcaption>
-  </figure>
+    <p>Example</p>
+    <figure id="fig-11-linking-catalogue-datasets-themes">
+      <a href="html/appendices/annex-I-fig11.png" target="_blank">
+        <img src="html/appendices/annex-I-fig11.png"/>
+      </a>
+      <figcaption>
+        Linking Catalogue to DCAT Datasets and Category (Topic) Scheme
+      </figcaption>
+    </figure>
 
-  <p>Example</p>
-  <figure id="fig-11-linking-catalogue-datasets-themes">
-  <a href="html/appendices/annex-I-fig11.png"target="_blank">
-      <img src="html/appendices/annex-I-fig11.png"/>
-    </a>
-    <figcaption>
-      Linking Catalogue to DCAT Datasets and Category (Topic) Scheme
-    </figcaption>
-  </figure>
+    <table class="simple">
+      <thead>
+        <tr>
+          <th>DCAT-AP Property</th>
+          <th>SDMX Element or Element.Attribute</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><code>dcat:dataset</code></td>
+          <td>
+            Source/Ref.id (id of the Dataflow)<br />
+            Source/Ref.agencyId (agency of the Dataflow)<br />
+            Source/Ref.version (version of the Dataflow)<br /><br />
+            Target/Ref.id (id of the Category)<br />
+            Target/maintainableParentId (id of the Category Scheme that is the DCAT-AP Catalogue)<br />
+            Target/agencyId (agency of the Category Scheme)<br />
+            Target/version (version of the Category Scheme)
+          </td>
+        </tr>
+        <tr>
+          <td><code>dcat:themeTaxonomy</code></td>
+          <td>
+            Source/Ref.id (id of the Dataflow)<br />
+            Source/Ref.agencyId (agency of the Dataflow)<br />
+            Source/Ref.version (version of the Dataflow)<br /><br />
+            Target/Ref.id (id of the Category)<br />
+            Target/maintainableParentId (id of the Category Scheme that is the DCAT-AP Category Scheme)<br />
+            Target/agencyId (agency of the Category Scheme)<br />
+            Target/version (version of the Category Scheme)
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </section>
 
-  <table class="simple">
-    <thead>
-      <tr>
-        <th>DCAT-AP Property</th>
-        <th>SDMX Element or Element.Attribute</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><code>dcat:dataset</code></td>
-        <td>
-          Source/Ref.id (id of the Dataflow)<br />
-          Source/Ref.agencyId (agency of the Dataflow)<br />
-          Source/Ref.version (version of the Dataflow)<br /><br />
-          Target/Ref.id (id of the Category)<br />
-          Target/maintainableParentId (id of the Category Scheme that is the DCAT-AP Catalogue)<br />
-          Target/agencyId (agency of the Category Scheme)<br />
-          Target/version (version of the Category Scheme)
-        </td>
-      </tr>
-      <tr>
-        <td><code>dcat:themeTaxonomy</code></td>
-        <td>
-          Source/Ref.id (id of the Dataflow)<br />
-          Source/Ref.agencyId (agency of the Dataflow)<br />
-          Source/Ref.version (version of the Dataflow)<br /><br />
-          Target/Ref.id (id of the Category)<br />
-          Target/maintainableParentId (id of the Category Scheme that is the DCAT-AP Category Scheme)<br />
-          Target/agencyId (agency of the Category Scheme)<br />
-          Target/version (version of the Category Scheme)
-        </td>
-      </tr>
-    </tbody>
-  </table>
-
-  <h4 id="dataset">Dataset</h4>
+  <section id="mapping-sdmx-to-statdcat-ap-example-dataset">
+  <h4>Dataset</h4>
 
   <figure id="fig-12-dataset-mapping">
-    <a href="html/appendices/annex-I-fig12.png"target="_blank">
+    <a href="html/appendices/annex-I-fig12.png" target="_blank">
       <img src="html/appendices/annex-I-fig12.png"/>
     </a>
     <figcaption>
@@ -13010,15 +13016,15 @@ Both datasets however, are in scope of the INSPIRE directive.</p>
       <tr><td><code>dcat:keyword</code></td><td>AnnotatationText</td></tr>
       <tr><td><code>dct:publisher</code></td><td>Dataflow.agencyID</td></tr>
       <tr><td><code>dcat:theme</code></td><td>AnnotationURL</td></tr>
-      <tr><td><code>stat:numSeries</code></td><td>AnnotationText</td></tr>
-      <tr><td><code>stat:statUnitMeasure</code></td><td>AnnotationURL</td></tr>
+      <tr><td><strong><code>stat:numSeries</code></strong></td><td><strong>AnnotationText</strong></td></tr>
+      <tr><td><strong><code>stat:statUnitMeasure</code></strong></td><td><strong>AnnotationURL</strong></td></tr>
       <tr><td><code>dct:description</code></td><td>Description</td></tr>
       <tr><td><code>dct:title</code></td><td>Name</td></tr>
     </tbody>
   </table>
 
   <figure id="fig-13-dataflow-to-topic">
-    <a href="html/appendices/annex-I-fig13.png"target="_blank">
+    <a href="html/appendices/annex-I-fig13.png" target="_blank">
       <img src="html/appendices/annex-I-fig13.png"/>
     </a>
     <figcaption>
@@ -13038,18 +13044,20 @@ Both datasets however, are in scope of the INSPIRE directive.</p>
   </p>
 
   <figure id="fig-14-annotation-mapping">
-   <a href="html/appendices/annex-I-fig14.png"target="_blank">
+   <a href="html/appendices/annex-I-fig14.png" target="_blank">
       <img src="html/appendices/annex-I-fig14.png"/>
     </a>
     <figcaption>
       SDMX to DCAT mapping example for the StatDCAT-AP Annotation
     </figcaption>
   </figure>
+  </section>
 
-  <h4 id="distribution">Distribution</h4>
+  <section id="mapping-sdmx-to-statdcat-ap-example-distribution">
+  <h4>Distribution</h4>
 
   <figure id="fig-15-provision-agreement">
-    <a href="html/appendices/annex-I-fig15.png"target="_blank">
+    <a href="html/appendices/annex-I-fig15.png" target="_blank">
       <img src="html/appendices/annex-I-fig15.png"/>
     </a>
     <figcaption>
@@ -13072,7 +13080,7 @@ Both datasets however, are in scope of the INSPIRE directive.</p>
   </table>
 
   <figure id="fig-16-accessurl-provision-agreement">
-    <a href="html/appendices/annex-I-fig16.png"target="_blank">
+    <a href="html/appendices/annex-I-fig16.png" target="_blank">
       <img src="html/appendices/annex-I-fig16.png"/>
     </a>
     <figcaption>
@@ -13091,11 +13099,13 @@ Both datasets however, are in scope of the INSPIRE directive.</p>
       <tr><td><code>dcat:accessURL</code></td><td>QueryableDataSource/DataURL</td></tr>
     </tbody>
   </table>
+  </section>
 
-  <h4 id="agent">Agent</h4>
+  <section id="mapping-sdmx-to-statdcat-ap-example-agent">
+  <h4>Agent</h4>
 
   <figure id="fig-17-agent-mapping">
-    <a href="html/appendices/annex-I-fig17.png"target="_blank">
+    <a href="html/appendices/annex-I-fig17.png" target="_blank">
       <img src="html/appendices/annex-I-fig17.png"/>
     </a>
     <figcaption>
@@ -13114,12 +13124,15 @@ Both datasets however, are in scope of the INSPIRE directive.</p>
       <tr><td><code>dcat:contactPoint</code></td><td>Contact/Name<br/>Contact/Telephone<br/>Contact/Email</td></tr>
     </tbody>
   </table>
+  </section>
+  </section>
 
-  <h4 id="summary">Summary</h4>
-  <p>
-    The mapping above is the recommended mapping between SDMX classes and attributes and DCAT-AP classes and properties. Clearly, an organisation is free to use whatever input source(s) it wishes, including a mixture of sources. The use of SDMX Annotations to curate the DCAT-AP properties is a recommendation for those organisations that wish to use 100% SDMX structural metadata for this mapping. In order to achieve interoperability between systems, StatDCAT-AP will specify a controlled vocabulary for the AnnotationTitle (this contains the DCAT-AP property).
-  </p>
-</section>
+  <section id="mapping-sdmx-to-statdcat-ap-summary">
+    <h4 id="summary">Summary</h4>
+    <p>
+      The mapping above is the recommended mapping between SDMX classes and attributes and DCAT-AP classes and properties. Clearly, an organisation is free to use whatever input source(s) it wishes, including a mixture of sources. The use of SDMX Annotations to curate the DCAT-AP properties is a recommendation for those organisations that wish to use 100% SDMX structural metadata for this mapping. In order to achieve interoperability between systems, StatDCAT-AP will specify a controlled vocabulary for the AnnotationTitle (this contains the DCAT-AP property).
+    </p>
+  </section>
 </section>
 
   <section id="annex-II-transformation-mechanism" class="appendix">
@@ -13229,189 +13242,189 @@ Both datasets however, are in scope of the INSPIRE directive.</p>
 
     <section id="annex-II-sdmx-metadata-set">
       <h4>SDMX Metadata Set</h4>
-
-      <h5>Structure</h5>
-      <p>
-        A Metadata Set represents metadata for some or all of the DCAT Classes and Properties as Metadata Attributes. The structure of a Metadata Set is defined by a Metadata Structure Definition (MSD). The MSD contains all of the information required to structure the content of a Metadata Set in terms of:
-      </p>
-      <p>For each Metadata Attribute:</p>
-      <ul>
-        <li>the Concept used (i.e. the DCAT-AP Class or Property);</li>
-        <li>the valid content (e.g. a Code List, text, URL, integer, no content etc.); and</li>
-        <li>child Metadata Attributes if a hierarchy is specified.</li>
-      </ul>
-      <p>
-        The MSD also specifies the type of object (class) to which the metadata pertains, such as an SDMX Dataflow. The identification of the actual instance (e.g., an actual Dataflow) is contained in the Metadata Set together with the content of the Metadata Attributes.
-      </p>
-      <p>
-        A schematic of the MSD is shown below.
-      </p>
-
-      <figure id="fig-24-schematic-msd">
-        <a href="html/appendices/annex-II-fig05.png"target="_blank">
-      <img src="html/appendices/annex-II-fig05.png"/>
-    </a>
-        <figcaption>Schematic diagram of the SDMX Metadata Structure Definition model</figcaption>
-      </figure>
-
-      <p>
-        A schematic representation of the Metadata Set is shown below.
-      </p>
-
-      <figure id="fig-25-schematic-metadata-set">
-        <a href="html/appendices/annex-II-fig06.png"target="_blank">
-      <img src="html/appendices/annex-II-fig06.png"/>
-    </a>
-        <figcaption>Schematic diagram of the SDMX Metadata Set</figcaption>
-      </figure>
-
-      <p>
-        The green boxes represent the content of the Metadata Set. The MSD is not a part of the Metadata Set but both the MSD and the Report Structure are identified in the Metadata Set. The Id of the Metadata Attribute is contained in the Reported Attribute thus enabling the structure and content of the Reported Attribute to be validated. The Metadata Target contains the Id of SDMX structural component to which the metadata pertains. In the example the target is the SDMX Category Scheme that represents the DCAT-AP Catalogue.
-      </p>
-
-      <h5>Example MSD</h5>
-      <p>
-        Note that this MSD is not finalised. At the moment is contains the Mandatory and Recommended properties of DCAT-AP, and the extensions added by StatDCAT-AP.
-      </p>
-
-      <figure id="fig-26-metadata-attributes-in-msd">
-        <a href="html/appendices/annex-II-fig07.png"target="_blank">
-      <img src="html/appendices/annex-II-fig07.png"/>
-    </a>
-        <figcaption>Metadata Attributes in the DCAT-AP MSD</figcaption>
-      </figure>
-
-      <p>
-        Each DCAT-AP class and StatDCAT-AP class are top level Metadata Attributes in the MSD. The properties of the class are the child Metadata Attributes. Additional hierarchies are defined where appropriate (e.g., in DCAT_DATASET the CONTACT_POINT has two child Metadata Attributes).
-      </p>
-      <p>
-        The Metadata Attributes representing the DCAT-AP classes are for grouping purposes which enable the transformation software to determine to which DCAT-AP class the metadata pertains. They have no content themselves but have child Metadata Attributes. The following picture shows some examples of the type of valid content that can be specified.
-      </p>
-
-      <figure id="fig-27-metadata-attribute-specification">
-        <a href="html/appendices/annex-II-fig08.png"target="_blank">
-      <img src="html/appendices/annex-II-fig08.png"/>
-    </a>
-        <figcaption>Example of Metadata Attribute Specification</figcaption>
-      </figure>
-
-      <p>
-        The examples above show:
-      </p>
-      <ol>
-        <li>DCAT_DISTRIBUTION is used for grouping purposes only and so no actual value is reported in a Metadata Set.</li>
-        <li>accessURL is mandatory if DCAT_DISTRIBUTION information is present; in this case its valid representation is XHTML.</li>
-        <li>Contact Point can occur many times; if this information is available CONTACT_PHONE is optional while CONTACT_EMAIL is mandatory.</li>
-      </ol>
-      <p>
-        Note that a code list may be specified as the valid representation, in which case the value of the reported attribute in the Metadata Set must be a code in the assigned code list. There is no example of this in the Figure 27 above.
-      </p>
-
-      <h5>Example of Metadata Report</h5>
-      <p>
-        The following SDMX Metadata Set Report shows how the DCAT-AP metadata are represented in a Metadata Set structured according to the MSD.
-      </p>
-
       
-<section id="annex-II-example-metadata-report">
-  <h4>Example of Metadata Report</h4>
+      <section>
+        <h5>Structure</h5>
+        <p>
+          A Metadata Set represents metadata for some or all of the DCAT Classes and Properties as Metadata Attributes. The structure of a Metadata Set is defined by a Metadata Structure Definition (MSD). The MSD contains all of the information required to structure the content of a Metadata Set in terms of:
+        </p>
+        <p>For each Metadata Attribute:</p>
+        <ul>
+          <li>the Concept used (i.e. the DCAT-AP Class or Property);</li>
+          <li>the valid content (e.g. a Code List, text, URL, integer, no content etc.); and</li>
+          <li>child Metadata Attributes if a hierarchy is specified.</li>
+        </ul>
+        <p>
+          The MSD also specifies the type of object (class) to which the metadata pertains, such as an SDMX Dataflow. The identification of the actual instance (e.g., an actual Dataflow) is contained in the Metadata Set together with the content of the Metadata Attributes.
+        </p>
+        <p>
+          A schematic of the MSD is shown below.
+        </p>
 
-  <p>
-    The following SDMX Metadata Set Report shows how the DCAT-AP metadata are represented in a Metadata Set structured according to the MSD.
-  </p>
+        <figure id="fig-24-schematic-msd">
+          <a href="html/appendices/annex-II-fig05.png"target="_blank">
+        <img src="html/appendices/annex-II-fig05.png"/>
+      </a>
+          <figcaption>Schematic diagram of the SDMX Metadata Structure Definition model</figcaption>
+        </figure>
 
-  <figure id="fig-28-catalogue-metadata">
-    <a href="html/appendices/annex-II-fig09.png"target="_blank">
-      <img src="html/appendices/annex-II-fig09.png"/>
-    </a>
-    <figcaption>SDMX catalogue metadata pertaining to the DCAT-AP Catalogue</figcaption>
-  </figure>
+        <p>
+          A schematic representation of the Metadata Set is shown below.
+        </p>
 
-  <figure id="fig-29-category-scheme-metadata">
-   <a href="html/appendices/annex-II-fig10.png"target="_blank">
-      <img src="html/appendices/annex-II-fig10.png"/>
-    </a>
-    <figcaption>SDMX category scheme metadata pertaining to the DCAT-AP Catalogue</figcaption>
-  </figure>
+        <figure id="fig-25-schematic-metadata-set">
+          <a href="html/appendices/annex-II-fig06.png"target="_blank">
+        <img src="html/appendices/annex-II-fig06.png"/>
+      </a>
+          <figcaption>Schematic diagram of the SDMX Metadata Set</figcaption>
+        </figure>
 
-  <figure id="fig-30-dataset-metadata">
-    <a href="html/appendices/annex-II-fig11.png"target="_blank">
-      <img src="html/appendices/annex-II-fig11.png"/>
-    </a>
-    <figcaption>SDMX dataset metadata pertaining to the DCAT-AP Catalogue including StatDCAT-AP extensions to the Dataset.</figcaption>
-  </figure>
+        <p>
+          The green boxes represent the content of the Metadata Set. The MSD is not a part of the Metadata Set but both the MSD and the Report Structure are identified in the Metadata Set. The Id of the Metadata Attribute is contained in the Reported Attribute thus enabling the structure and content of the Reported Attribute to be validated. The Metadata Target contains the Id of SDMX structural component to which the metadata pertains. In the example the target is the SDMX Category Scheme that represents the DCAT-AP Catalogue.
+        </p>
+      </section>
 
-  <figure id="fig-31-distribution-metadata">
-    <a href="html/appendices/annex-II-fig12.png"target="_blank">
-      <img src="html/appendices/annex-II-fig12.png"/>
-    </a>
-    <figcaption>SDMX distribution metadata pertaining to the DCAT-AP Catalogue including StatDCAT-AP extensions to the Distribution</figcaption>
-  </figure>
+      <section>
+        <h5>Example MSD</h5>
+        <p>
+          Note that this MSD is not finalised. At the moment is contains the Mandatory and Recommended properties of DCAT-AP, and the extensions added by StatDCAT-AP.
+        </p>
 
-  <p>
-    It is possible to create a Metadata Set for any or all of the DCAT-AP classes to be supported by StatDCAT-AP. Therefore, an entire catalogue can be published including all its associated Datasets, Distributions, Category Schemes., and Agents. Alternatively, metadata may be added to an existing Catalogue incrementally.
-  </p>
-</section>
+        <figure id="fig-26-metadata-attributes-in-msd">
+          <a href="html/appendices/annex-II-fig07.png"target="_blank">
+        <img src="html/appendices/annex-II-fig07.png"/>
+      </a>
+          <figcaption>Metadata Attributes in the DCAT-AP MSD</figcaption>
+        </figure>
 
-<section id="annex-II-advantages-formats">
+        <p>
+          Each DCAT-AP class and StatDCAT-AP class are top level Metadata Attributes in the MSD. The properties of the class are the child Metadata Attributes. Additional hierarchies are defined where appropriate (e.g., in DCAT_DATASET the CONTACT_POINT has two child Metadata Attributes).
+        </p>
+        <p>
+          The Metadata Attributes representing the DCAT-AP classes are for grouping purposes which enable the transformation software to determine to which DCAT-AP class the metadata pertains. They have no content themselves but have child Metadata Attributes. The following picture shows some examples of the type of valid content that can be specified.
+        </p>
+
+        <figure id="fig-27-metadata-attribute-specification">
+          <a href="html/appendices/annex-II-fig08.png"target="_blank">
+        <img src="html/appendices/annex-II-fig08.png"/>
+      </a>
+          <figcaption>Example of Metadata Attribute Specification</figcaption>
+        </figure>
+
+        <p>
+          The examples above show:
+        </p>
+        <ol>
+          <li>DCAT_DISTRIBUTION is used for grouping purposes only and so no actual value is reported in a Metadata Set.</li>
+          <li>accessURL is mandatory if DCAT_DISTRIBUTION information is present; in this case its valid representation is XHTML.</li>
+          <li>Contact Point can occur many times; if this information is available CONTACT_PHONE is optional while CONTACT_EMAIL is mandatory.</li>
+        </ol>
+        <p>
+          Note that a code list may be specified as the valid representation, in which case the value of the reported attribute in the Metadata Set must be a code in the assigned code list. There is no example of this in the Figure 27 above.
+        </p>
+      </section>
+      
+      <section id="annex-II-example-metadata-report">
+        <h5>Example of Metadata Report</h5>
+        <p>
+          The following SDMX Metadata Set Report shows how the DCAT-AP metadata are represented in a Metadata Set structured according to the MSD.
+        </p>
+
+        <figure id="fig-28-catalogue-metadata">
+          <a href="html/appendices/annex-II-fig09.png"target="_blank">
+            <img src="html/appendices/annex-II-fig09.png"/>
+          </a>
+          <figcaption>SDMX catalogue metadata pertaining to the DCAT-AP Catalogue</figcaption>
+        </figure>
+
+        <figure id="fig-29-category-scheme-metadata">
+        <a href="html/appendices/annex-II-fig10.png"target="_blank">
+            <img src="html/appendices/annex-II-fig10.png"/>
+          </a>
+          <figcaption>SDMX category scheme metadata pertaining to the DCAT-AP Catalogue</figcaption>
+        </figure>
+
+        <figure id="fig-30-dataset-metadata">
+          <a href="html/appendices/annex-II-fig11.png"target="_blank">
+            <img src="html/appendices/annex-II-fig11.png"/>
+          </a>
+          <figcaption>SDMX dataset metadata pertaining to the DCAT-AP Catalogue including StatDCAT-AP extensions to the Dataset.</figcaption>
+        </figure>
+
+        <figure id="fig-31-distribution-metadata">
+          <a href="html/appendices/annex-II-fig12.png"target="_blank">
+            <img src="html/appendices/annex-II-fig12.png"/>
+          </a>
+          <figcaption>SDMX distribution metadata pertaining to the DCAT-AP Catalogue including StatDCAT-AP extensions to the Distribution</figcaption>
+        </figure>
+
+        <p>
+          It is possible to create a Metadata Set for any or all of the DCAT-AP classes to be supported by StatDCAT-AP. Therefore, an entire catalogue can be published including all its associated Datasets, Distributions, Category Schemes., and Agents. Alternatively, metadata may be added to an existing Catalogue incrementally.
+        </p>
+      </section>
+    </section>
+  </section>
+
+  <section id="annex-II-advantages-formats">
   <h3>Advantages and disadvantages of the two transformation formats</h3>
 
-  <section id="annex-II-sdmx-structure-message">
-    <h4>SDMX Structure Message</h4>
+    <section id="annex-II-sdmx-structure-message">
+      <h4>SDMX Structure Message</h4>
 
-    <strong>Advantages</strong>
-    <ul>
-      <li>Familiar to organisations using SDMX</li>
-      <li>Can be generated easily from an SDMX Registry</li>
-    </ul>
+      <strong>Advantages</strong>
+      <ul>
+        <li>Familiar to organisations using SDMX</li>
+        <li>Can be generated easily from an SDMX Registry</li>
+      </ul>
 
-    <strong>Disadvantages</strong>
-    <ul>
-      <li>The XML can be complex and verbose</li>
-      <li>
-        Annotations cannot be
-        <ul>
-          <li>coded (representation is restricted to text and URL)</li>
-          <li>hierarchical (but there is a mechanism to achieve this)</li>
-          <li>validated by SDMX validators (e.g. check that Title is valid)</li>
-          <li>given mandatory and optional status (all Annotations are optional)</li>
-        </ul>
-      </li>
-      <li>Such messages could create unnecessary “noise” when exchanging structural metadata with other organisations if this is the source of the metadata in an SDMX Registry-compliant metadata source</li>
-    </ul>
+      <strong>Disadvantages</strong>
+      <ul>
+        <li>The XML can be complex and verbose</li>
+        <li>
+          Annotations cannot be
+          <ul>
+            <li>coded (representation is restricted to text and URL)</li>
+            <li>hierarchical (but there is a mechanism to achieve this)</li>
+            <li>validated by SDMX validators (e.g. check that Title is valid)</li>
+            <li>given mandatory and optional status (all Annotations are optional)</li>
+          </ul>
+        </li>
+        <li>Such messages could create unnecessary “noise” when exchanging structural metadata with other organisations if this is the source of the metadata in an SDMX Registry-compliant metadata source</li>
+      </ul>
 
-    <strong>However</strong>
-    <p>
-      It is possible to use the MSD for the Metadata Set option to validate that the content of the structural metadata is complete and that the Annotation metadata is correct (e.g. text representing a coded value can be validated against a code list) and that the correct hierarchy is built in DCAT-AP.
-    </p>
-  </section>
+      <strong>However</strong>
+      <p>
+        It is possible to use the MSD for the Metadata Set option to validate that the content of the structural metadata is complete and that the Annotation metadata is correct (e.g. text representing a coded value can be validated against a code list) and that the correct hierarchy is built in DCAT-AP.
+      </p>
+    </section>
 
-  <section id="annex-II-sdmx-metadata-set-advantages">
-    <h4>SDMX Metadata Set</h4>
+    <section id="annex-II-sdmx-metadata-set-advantages">
+      <h4>SDMX Metadata Set</h4>
 
-    <strong>Advantages</strong>
-    <ul>
-      <li>Simple XML structure</li>
-      <li>
-        Attributes can be:
-        <ul>
-          <li>assigned any type of representation (e.g. coded, text, HTML, Boolean etc.);</li>
-          <li>hierarchical;</li>
-          <li>validated; and</li>
-          <li>assigned mandatory or optional usage status.</li>
-        </ul>
-      </li>
-      <li>The Metadata Set Report can reference any object that can be identified (e.g., Dataflow, Provision Agreement, Category Scheme)</li>
-      <li>Is separate from the structural metadata so does not affect the structural metadata components</li>
-      <li>If present, a Metadata Attribute can be “presentational”, just giving structure to child attributes</li>
-    </ul>
+      <strong>Advantages</strong>
+      <ul>
+        <li>Simple XML structure</li>
+        <li>
+          Attributes can be:
+          <ul>
+            <li>assigned any type of representation (e.g. coded, text, HTML, Boolean etc.);</li>
+            <li>hierarchical;</li>
+            <li>validated; and</li>
+            <li>assigned mandatory or optional usage status.</li>
+          </ul>
+        </li>
+        <li>The Metadata Set Report can reference any object that can be identified (e.g., Dataflow, Provision Agreement, Category Scheme)</li>
+        <li>Is separate from the structural metadata so does not affect the structural metadata components</li>
+        <li>If present, a Metadata Attribute can be “presentational”, just giving structure to child attributes</li>
+      </ul>
 
-    <strong>Disadvantages</strong>
-    <ul>
-      <li>Not always well understood by SDMX users (may result in some reluctance to use this mechanism)</li>
-      <li>Not widely used</li>
-    </ul>
-  </section>
+      <strong>Disadvantages</strong>
+      <ul>
+        <li>Not always well understood by SDMX users (may result in some reluctance to use this mechanism)</li>
+        <li>Not widely used</li>
+      </ul>
+    </section>
+
 </section>
 
 <section id="annex-II-summary-2">
@@ -13420,8 +13433,9 @@ Both datasets however, are in scope of the INSPIRE directive.</p>
     Whilst an organisation can choose to generate DCAT-AP directly from its own systems, having an intermediary Transformation Mechanism will be of benefit to some organisations. This will be particularly true for organisations already using SDMX.
   </p>
   <p>
-   </section>
-   </section>
+</section>
+
+</section>
   
 <section id="annex-III-sdmx-files" class="appendix">
   <h2>SDMX FILES USED FOR THE EXAMPLES</h2>
@@ -13685,184 +13699,185 @@ DCAT Distribution
   <section id="annex-III-metadata-set">
     <h3>SDMX Metadata Set</h3>
 
-    <h4>Content</h4>
-    <p>
-      The section below describes the content of the Metadata Set, first in a synthetic view, followed by its SDMX-ML detailed representation.
-    </p>
+    <section>
+        <h4>Content</h4>
+        <p>
+        The section below describes the content of the Metadata Set, first in a synthetic view, followed by its SDMX-ML detailed representation.
+        </p>
 
-    <p>Metadata Set - Start </p>
+        <p>Metadata Set - Start </p>
 
-    <details open>
-      <summary><strong>SDMX Metadata Set XML (full example)</strong></summary>
+        <details open>
+        <summary><strong>SDMX Metadata Set XML (full example)</strong></summary>
 
-      <!-- PART 1: From start to the first image anchor -->
-      <pre><code class="language-xml">&lt;mes:MetadataSet structureRef="MDS2" setID="ba70fc24-f95b-4f0f-a2e2-658d993c2078"&gt;
-    &lt;com:Name xml:lang="en" xmlns:com="http://www.sdmx.org/resources/sdmxml/schemas/v2_1/common"&gt;DCAT_CATALOGUE_1&lt;/com:Name&gt;
-    &lt;gen:Report id="StatDCAT_Report" xmlns:gen="http://www.sdmx.org/resources/sdmxml/schemas/v2_1/metadata/generic"&gt;
-        &lt;gen:Target id="CategorySchemeTARGET"&gt;
-            &lt;gen:ReferenceValue id="CategoryScheme"&gt;
-                &lt;gen:ObjectReference&gt;
-&lt;URN&gt;urn:sdmx:org.sdmx.infomodel.categoryscheme.CategoryScheme=ESTAT:DCAT_CATALOGUE(1.0)&lt;/URN&gt;
-                &lt;/gen:ObjectReference&gt;
-            &lt;/gen:ReferenceValue&gt;
-        &lt;/gen:Target&gt;
-        &lt;gen:AttributeSet&gt;
+        <!-- PART 1: From start to the first image anchor -->
+        <pre><code class="language-xml">&lt;mes:MetadataSet structureRef="MDS2" setID="ba70fc24-f95b-4f0f-a2e2-658d993c2078"&gt;
+        &lt;com:Name xml:lang="en" xmlns:com="http://www.sdmx.org/resources/sdmxml/schemas/v2_1/common"&gt;DCAT_CATALOGUE_1&lt;/com:Name&gt;
+        &lt;gen:Report id="StatDCAT_Report" xmlns:gen="http://www.sdmx.org/resources/sdmxml/schemas/v2_1/metadata/generic"&gt;
+            &lt;gen:Target id="CategorySchemeTARGET"&gt;
+                &lt;gen:ReferenceValue id="CategoryScheme"&gt;
+                    &lt;gen:ObjectReference&gt;
+    &lt;URN&gt;urn:sdmx:org.sdmx.infomodel.categoryscheme.CategoryScheme=ESTAT:DCAT_CATALOGUE(1.0)&lt;/URN&gt;
+                    &lt;/gen:ObjectReference&gt;
+                &lt;/gen:ReferenceValue&gt;
+            &lt;/gen:Target&gt;
+            &lt;gen:AttributeSet&gt;
 
-Followed by the Reported Attributes for the properties of the various DCAT-AP classes
-</code></pre>
+    Followed by the Reported Attributes for the properties of the various DCAT-AP classes
+    </code></pre>
 
-      <a href="html/appendices/annex-III-fig01.png"target="_blank">
-      <img src="html/appendices/annex-III-fig01.png"/>
-    </a>
-        <figcaption>Reported Attributes overview.</figcaption>
-      </figure>
+        <a href="html/appendices/annex-III-fig01.png"target="_blank">
+        <img src="html/appendices/annex-III-fig01.png"/>
+        </a>
+            <figcaption>Reported Attributes overview.</figcaption>
+        </figure>
 
-      <!-- PART 2: Continue until the end of the DCAT_CATALOGUE block (2nd anchor) -->
-      <pre><code class="language-xml">
-&lt;gen:ReportedAttribute id="DCAT_CATALOGUE"&gt;
-&lt;com:StructuredText xml:lang="en" xmlns:com="http://www.sdmx.org/resources/sdmxml/schemas/v2_1/common"&gt;&amp;lt;p&gt;&amp;lt;a href="urn:sdmx:org.sdmx.infomodel.categoryscheme.CategoryScheme=ESTAT:DCAT_CATALOGUE(1.0)"&gt;urn:sdmx:org.sdmx.infomodel.categoryscheme.CategoryScheme=ESTAT:DCAT_CATALOGUE(1.0)&amp;lt;/a&gt;&amp;lt;/p&gt;&lt;/com:StructuredText&gt;
-&lt;gen:AttributeSet&gt;
-        &lt;gen:ReportedAttribute id="DATASET"&gt;
-        &lt;com:StructuredText xml:lang="en" xmlns:com="http://www.sdmx.org/resources/sdmxml/schemas/v2_1/common"&gt;&amp;lt;p&gt;&amp;lt;a href="urn:sdmx:org.sdmx.infomodel.datastructure.Dataflow=ESTAT:cens_01neisco(1.0"&gt;urn:sdmx:org.sdmx.infomodel.datastructure.Dataflow=ESTAT:cens_01neisco(1.0&amp;lt;/a&gt;&amp;lt;/p&gt;&lt;/com:StructuredText&gt;
-        &lt;/gen:ReportedAttribute&gt;
-        &lt;gen:ReportedAttribute id="DATASET"&gt;
-        &lt;com:StructuredText xml:lang="en" xmlns:com="http://www.sdmx.org/resources/sdmxml/schemas/v2_1/common"&gt;&amp;lt;p&gt;&amp;lt;a href="urn:sdmx:org.sdmx.infomodel.datastructure.Dataflow=ESTAT:DF_HC58(1.0)"&gt;urn:sdmx:org.sdmx.infomodel.datastructure.Dataflow=ESTAT:DF_HC58(1.0)&amp;lt;/a&gt;&amp;lt;/p&gt;&lt;/com:StructuredText&gt;
-        &lt;/gen:ReportedAttribute&gt;
-        &lt;gen:ReportedAttribute id="CATALOGUE_DESCRIPTION" value="Extended Description for DCAT Catalogue for Eurostat Data Sets"/&gt;
-        &lt;gen:ReportedAttribute id="CATALOGUE_PUBLISHER" value="urn:sdmx:org.sdmx.infomodel.base.Agency=ESTAT"/&gt;
-        &lt;gen:ReportedAttribute id="TITLE" value="DCAT Catalogue for Eurostat Data Sets"/&gt;
-        &lt;gen:ReportedAttribute id="CATALOGUE_HOMEPAGE"&gt;
-        &lt;com:StructuredText xml:lang="en" xmlns:com="http://www.sdmx.org/resources/sdmxml/schemas/v2_1/common"&gt;&amp;lt;p&gt;&amp;lt;a href="http://ec.europa.eu/DataCatalogue"&gt;http://ec.europa.eu/DataCatalogue&amp;lt;/a&gt;&amp;lt;/p&gt;&lt;/com:StructuredText&gt;
-        &lt;/gen:ReportedAttribute&gt;
-        &lt;gen:ReportedAttribute id="LANGUAGE" value="en"/&gt;
-        &lt;gen:ReportedAttribute id="CATALOGUE_LICENSE" value="Free to use provided Eurostat is acknowledged as the source"/&gt;
-        &lt;gen:ReportedAttribute id="CATALOGUE_THEME"&gt;
-        &lt;com:StructuredText xml:lang="en" xmlns:com="http://www.sdmx.org/resources/sdmxml/schemas/v2_1/common"&gt;&amp;lt;p&gt;&amp;lt;a href="urn:sdmx:org.sdmx.infomodel.categoryscheme.CategoryScheme=ESTAT:MDR_THEMES(1.0)"&gt;urn:sdmx:org.sdmx.infomodel.categoryscheme.CategoryScheme=ESTAT:MDR_THEMES(1.0)&amp;lt;/a&gt;&amp;lt;/p&gt;&lt;/com:StructuredText&gt;
-        &lt;/gen:ReportedAttribute&gt;
-    &lt;/gen:AttributeSet&gt;
-&lt;/gen:ReportedAttribute&gt;
-</code></pre>
-
-     <a href="html/appendices/annex-III-fig02.png"target="_blank">
-      <img src="html/appendices/annex-III-fig02.png"/>
-    </a>
-        <figcaption>Category Scheme mapping illustration (Catalogue theme).</figcaption>
-      </figure>
-
-      <!-- PART 3: DCAT_CATEGORY_SCHEME block up to ENER example -->
-      <pre><code class="language-xml">
-And so on….
-&lt;gen:ReportedAttribute id="DCAT_CATEGORY_SCHEME"&gt;
-&lt;com:StructuredText xml:lang="en" xmlns:com="http://www.sdmx.org/resources/sdmxml/schemas/v2_1/common"&gt;&amp;lt;p&gt;&amp;lt;a href="urn:sdmx:org.sdmx.infomodel.categoryscheme.CategoryScheme=ESTAT:MDR_THEMES(1.0)"&gt;urn:sdmx:org.sdmx.infomodel.categoryscheme.CategoryScheme=ESTAT:MDR_THEMES(1.0)&amp;lt;/a&gt;&amp;lt;/p&gt;&lt;/com:StructuredText&gt;
+        <!-- PART 2: Continue until the end of the DCAT_CATALOGUE block (2nd anchor) -->
+        <pre><code class="language-xml">
+    &lt;gen:ReportedAttribute id="DCAT_CATALOGUE"&gt;
+    &lt;com:StructuredText xml:lang="en" xmlns:com="http://www.sdmx.org/resources/sdmxml/schemas/v2_1/common"&gt;&amp;lt;p&gt;&amp;lt;a href="urn:sdmx:org.sdmx.infomodel.categoryscheme.CategoryScheme=ESTAT:DCAT_CATALOGUE(1.0)"&gt;urn:sdmx:org.sdmx.infomodel.categoryscheme.CategoryScheme=ESTAT:DCAT_CATALOGUE(1.0)&amp;lt;/a&gt;&amp;lt;/p&gt;&lt;/com:StructuredText&gt;
     &lt;gen:AttributeSet&gt;
-        &lt;gen:ReportedAttribute id="CATEGORY_SCHEME_TITLE" value="MDR Themes"/&gt;
-        &lt;gen:ReportedAttribute id="DCAT_CATEGORY" value="urn:sdmx:org.sdmx.infomodel.categoryscheme.Category=ESTAT:MDR_THEMES(1.0).AGRI"&gt;
-            &lt;gen:AttributeSet&gt;
-            &lt;gen:ReportedAttribute id="PREFERRED_LABEL" value="Agriculture, fisheries, forestry and food"/&gt;
-            &lt;/gen:AttributeSet&gt;
-        &lt;/gen:ReportedAttribute&gt;
-        gen:ReportedAttribute id="DCAT_CATEGORY" value="urn:sdmx:org.sdmx.infomodel.categoryscheme.Category=ESTAT:MDR_THEMES(1.0).ECON"&gt;
-            &lt;gen:AttributeSet&gt;
-            &lt;gen:ReportedAttribute id="PREFERRED_LABEL" value="Economy and finance"/&gt;
-            &lt;/gen:AttributeSet&gt;
-        &lt;/gen:ReportedAttribute&gt;
-        &lt;gen:ReportedAttribute id="DCAT_CATEGORY" value="urn:sdmx:org.sdmx.infomodel.categoryscheme.Category=ESTAT:MDR_THEMES(1.0).EDUC"&gt;
-            &lt;gen:AttributeSet&gt;
-            &lt;gen:ReportedAttribute id="PREFERRED_LABEL" value="Education, culture and sport"/&gt;
-            &lt;/gen:AttributeSet&gt;
-        &lt;/gen:ReportedAttribute&gt;
-        &lt;gen:ReportedAttribute id="DCAT_CATEGORY" value="urn:sdmx:org.sdmx.infomodel.categoryscheme.Category=ESTAT:MDR_THEMES(1.0).ENER"&gt;
-            &lt;gen:AttributeSet&gt;
-            &lt;gen:ReportedAttribute id="PREFERRED_LABEL" value="Energy"/&gt;
-            &lt;/gen:AttributeSet&gt;
-        &lt;/gen:ReportedAttribute&gt;
-</code></pre>
-
-      <!-- IMAGE 3 — after ENER preferred label + “And so on….” -->
-      <a href="html/appendices/annex-III-fig03.png"target="_blank">
-      <img src="html/appendices/annex-III-fig03.png"/>
-    </a>
-        <figcaption>ENERGY Metadata Attribute example.</figcaption>
-      </figure>
-
-      <pre><code class="language-xml">
-And so on….
- 
-                &lt;gen:ReportedAttribute id="DCAT_DATASET"&gt;
-                    &lt;gen:AttributeSet&gt;
-                        &lt;gen:ReportedAttribute id="DATASET_DESCRIPTION" value="Extended description for Population aged 15-74 by sex, age group, educational attainment (ISCED 1997) and occupation (ISCO 1988)"/&gt;
-                        &lt;gen:ReportedAttribute id="DATASET_TITLE" value="Population aged 15-74 by sex, age group, educational attainment (ISCED 1997) and occupation (ISCO 1988)"/&gt;
-                        &lt;gen:ReportedAttribute id="CONTACT_POINT" value="Dissemination"&gt;
-                            &lt;gen:AttributeSet&gt;
-                                &lt;gen:ReportedAttribute id="CONTACT_PHONE" value="+352431034320"/&gt;
-                                &lt;gen:ReportedAttribute id="CONTACT_EMAIL" value="dissemination@ec.europa.eu"/&gt;
-                            &lt;/gen:AttributeSet&gt;
-                        &lt;/gen:ReportedAttribute&gt;
-                        &lt;gen:ReportedAttribute id="DISTRIBUTION"&gt;
-                            &lt;com:StructuredText xml:lang="en" xmlns:com="http://www.sdmx.org/resources/sdmxml/schemas/v2_1/common"&gt;&amp;lt;p&gt;&amp;lt;a href="urn:sdmx:org.sdmx.infomodel.registry.ProvisionAgreement=ESTAT:AT-NEISCO(1.0)"&gt;urn:sdmx:org.sdmx.infomodel.registry.ProvisionAgreement=ESTAT:AT-NEISCO(1.0)&amp;lt;/a&gt;&amp;lt;/p&gt;&lt;/com:StructuredText&gt;
-                        &lt;/gen:ReportedAttribute&gt;
-                        &lt;gen:ReportedAttribute id="KEYWORD" value="Population"/&gt;
-                        &lt;gen:ReportedAttribute id="KEYWORD" value="Austria"/&gt;
-                        &lt;gen:ReportedAttribute id="KEYWORD" value="Census"/&gt;
-                        &lt;gen:ReportedAttribute id="DATASET_PUBLISHER" value="ESTAT"/&gt;
-                        &lt;gen:ReportedAttribute id="DATASET_THEME"&gt;
-                            &lt;com:StructuredText xml:lang="en" xmlns:com="http://www.sdmx.org/resources/sdmxml/schemas/v2_1/common"&gt;&amp;lt;p&gt;&amp;lt;a href="http://urn:sdmx:org.sdmx.infomodel.categoryscheme.Category=ESTAT:MDR_THEMES(1.0).SOCI"&gt;http://urn:sdmx:org.sdmx.infomodel.categoryscheme.Category=ESTAT:MDR_THEMES(1.0).SOCI&amp;lt;/a&gt;&amp;lt;/p&gt;&lt;/com:StructuredText&gt;
-                        &lt;/gen:ReportedAttribute&gt;
-                        &lt;gen:ReportedAttribute id="NUM_SERIES" value="110259"/&gt;
-                        &lt;gen:ReportedAttribute id="STAT_MEASURE"&gt;
-                            &lt;com:StructuredText xml:lang="en" xmlns:com="http://www.sdmx.org/resources/sdmxml/schemas/v2_1/common"&gt;&amp;lt;p&gt;&amp;lt;a href="http://example.com/measures/percentage"&gt;http://example.com/measures/percentage&amp;lt;/a&gt;&amp;lt;/p&gt;&lt;/com:StructuredText&gt;
-                        &lt;/gen:ReportedAttribute&gt;
-</code></pre>
-
-      <!-- IMAGE 4 — after the STAT_MEASURE StructuredText (percentage URL) -->
-      <a href="html/appendices/annex-III-fig04.png"target="_blank">
-      <img src="html/appendices/annex-III-fig04.png"/>
-    </a>
-        <figcaption>Statistical unit measure mapping (example link to a unit measure URI).</figcaption>
-      </figure>
-
-      <pre><code class="language-xml">
-                    &lt;/gen:AttributeSet&gt;
-                &lt;/gen:ReportedAttribute&gt;
-
-
-&lt;gen:ReportedAttribute id="DCAT_DISTRIBUTION"&gt;
-    &lt;com:StructuredText xml:lang="en" xmlns:com="http://www.sdmx.org/resources/sdmxml/schemas/v2_1/common"&gt;&amp;lt;p&gt;&amp;lt;a href="urn:sdmx:org.sdmx.infomodel.registry.ProvisionAgreement=ESTAT:AT-NEISCO(1.0)"&gt;urn:sdmx:org.sdmx.infomodel.registry.ProvisionAgreement=ESTAT:AT-NEISCO(1.0)&amp;lt;/a&gt;&amp;lt;/p&gt;&lt;/com:StructuredText&gt;
-    &lt;gen:AttributeSet&gt;
-        &lt;gen:ReportedAttribute id="ACCESS_URL"&gt;
-        &lt;com:StructuredText xml:lang="en" xmlns:com="http://www.sdmx.org/resources/sdmxml/schemas/v2_1/common"&gt;&amp;lt;p&gt;&amp;lt;a href="http://localhost:8080/FusionRegistry/ws/rest"&gt;http://localhost:8080/FusionRegistry/ws/rest&amp;lt;/a&gt;&amp;lt;/p&gt;&lt;/com:StructuredText&gt;
-        &lt;/gen:ReportedAttribute&gt;
-        &lt;gen:ReportedAttribute id="DISTRIBUTION_DESCRIPTION" value="Austria for Census by education and occupation"/&gt;
-        &lt;gen:ReportedAttribute id="DISTRIBUTION_FORMAT" value="SDMX Data Structure Specific"/&gt;
-        &lt;gen:ReportedAttribute id="DISTRIBUTION_LICENSE" value="Free to use provided Eurostat is acknowledged as the source"/&gt;
-    &lt;/gen:AttributeSet&gt;
-&lt;/gen:ReportedAttribute&gt;
-</code></pre>
-
-      <!-- IMAGE 5 — after DISTRIBUTION_FORMAT and DISTRIBUTION_LICENSE -->
-      <a href="html/appendices/annex-III-fig05.png"target="_blank">
-      <img src="html/appendices/annex-III-fig05.png"/>
-    </a>
-        <figcaption>Distribution metadata mapping (accessURL, format, license).</figcaption>
-      </figure>
-
-      <pre><code class="language-xml">
- 
-&lt;gen:ReportedAttribute id="DCAT_AGENT"&gt;
-    &lt;com:StructuredText xml:lang="en" xmlns:com="http://www.sdmx.org/resources/sdmxml/schemas/v2_1/common"&gt;&amp;lt;p&gt;&amp;lt;a href="urn:sdmx:org.sdmx.infomodel.base.Agency=ESTAT"&gt;urn:sdmx:org.sdmx.infomodel.base.Agency=ESTAT&amp;lt;/a&gt;&amp;lt;/p&gt;&lt;/com:StructuredText&gt;
-    &lt;gen:AttributeSet&gt;
-        &lt;gen:ReportedAttribute id="AGENT_NAME" value="Eurostat"/&gt;
-        &lt;gen:ReportedAttribute id="AGENT_TYPE" value="Publisher"/&gt;
-    &lt;/gen:AttributeSet&gt;
-&lt;/gen:ReportedAttribute&gt;
-End of Metadata Set
+            &lt;gen:ReportedAttribute id="DATASET"&gt;
+            &lt;com:StructuredText xml:lang="en" xmlns:com="http://www.sdmx.org/resources/sdmxml/schemas/v2_1/common"&gt;&amp;lt;p&gt;&amp;lt;a href="urn:sdmx:org.sdmx.infomodel.datastructure.Dataflow=ESTAT:cens_01neisco(1.0"&gt;urn:sdmx:org.sdmx.infomodel.datastructure.Dataflow=ESTAT:cens_01neisco(1.0&amp;lt;/a&gt;&amp;lt;/p&gt;&lt;/com:StructuredText&gt;
+            &lt;/gen:ReportedAttribute&gt;
+            &lt;gen:ReportedAttribute id="DATASET"&gt;
+            &lt;com:StructuredText xml:lang="en" xmlns:com="http://www.sdmx.org/resources/sdmxml/schemas/v2_1/common"&gt;&amp;lt;p&gt;&amp;lt;a href="urn:sdmx:org.sdmx.infomodel.datastructure.Dataflow=ESTAT:DF_HC58(1.0)"&gt;urn:sdmx:org.sdmx.infomodel.datastructure.Dataflow=ESTAT:DF_HC58(1.0)&amp;lt;/a&gt;&amp;lt;/p&gt;&lt;/com:StructuredText&gt;
+            &lt;/gen:ReportedAttribute&gt;
+            &lt;gen:ReportedAttribute id="CATALOGUE_DESCRIPTION" value="Extended Description for DCAT Catalogue for Eurostat Data Sets"/&gt;
+            &lt;gen:ReportedAttribute id="CATALOGUE_PUBLISHER" value="urn:sdmx:org.sdmx.infomodel.base.Agency=ESTAT"/&gt;
+            &lt;gen:ReportedAttribute id="TITLE" value="DCAT Catalogue for Eurostat Data Sets"/&gt;
+            &lt;gen:ReportedAttribute id="CATALOGUE_HOMEPAGE"&gt;
+            &lt;com:StructuredText xml:lang="en" xmlns:com="http://www.sdmx.org/resources/sdmxml/schemas/v2_1/common"&gt;&amp;lt;p&gt;&amp;lt;a href="http://ec.europa.eu/DataCatalogue"&gt;http://ec.europa.eu/DataCatalogue&amp;lt;/a&gt;&amp;lt;/p&gt;&lt;/com:StructuredText&gt;
+            &lt;/gen:ReportedAttribute&gt;
+            &lt;gen:ReportedAttribute id="LANGUAGE" value="en"/&gt;
+            &lt;gen:ReportedAttribute id="CATALOGUE_LICENSE" value="Free to use provided Eurostat is acknowledged as the source"/&gt;
+            &lt;gen:ReportedAttribute id="CATALOGUE_THEME"&gt;
+            &lt;com:StructuredText xml:lang="en" xmlns:com="http://www.sdmx.org/resources/sdmxml/schemas/v2_1/common"&gt;&amp;lt;p&gt;&amp;lt;a href="urn:sdmx:org.sdmx.infomodel.categoryscheme.CategoryScheme=ESTAT:MDR_THEMES(1.0)"&gt;urn:sdmx:org.sdmx.infomodel.categoryscheme.CategoryScheme=ESTAT:MDR_THEMES(1.0)&amp;lt;/a&gt;&amp;lt;/p&gt;&lt;/com:StructuredText&gt;
+            &lt;/gen:ReportedAttribute&gt;
         &lt;/gen:AttributeSet&gt;
-    &lt;/gen:Report&gt;
-&lt;/mes:MetadataSet&gt;
-</code></pre>
-    </details>
+    &lt;/gen:ReportedAttribute&gt;
+    </code></pre>
+
+        <a href="html/appendices/annex-III-fig02.png"target="_blank">
+        <img src="html/appendices/annex-III-fig02.png"/>
+        </a>
+            <figcaption>Category Scheme mapping illustration (Catalogue theme).</figcaption>
+        </figure>
+
+        <!-- PART 3: DCAT_CATEGORY_SCHEME block up to ENER example -->
+        <pre><code class="language-xml">
+    And so on….
+    &lt;gen:ReportedAttribute id="DCAT_CATEGORY_SCHEME"&gt;
+    &lt;com:StructuredText xml:lang="en" xmlns:com="http://www.sdmx.org/resources/sdmxml/schemas/v2_1/common"&gt;&amp;lt;p&gt;&amp;lt;a href="urn:sdmx:org.sdmx.infomodel.categoryscheme.CategoryScheme=ESTAT:MDR_THEMES(1.0)"&gt;urn:sdmx:org.sdmx.infomodel.categoryscheme.CategoryScheme=ESTAT:MDR_THEMES(1.0)&amp;lt;/a&gt;&amp;lt;/p&gt;&lt;/com:StructuredText&gt;
+        &lt;gen:AttributeSet&gt;
+            &lt;gen:ReportedAttribute id="CATEGORY_SCHEME_TITLE" value="MDR Themes"/&gt;
+            &lt;gen:ReportedAttribute id="DCAT_CATEGORY" value="urn:sdmx:org.sdmx.infomodel.categoryscheme.Category=ESTAT:MDR_THEMES(1.0).AGRI"&gt;
+                &lt;gen:AttributeSet&gt;
+                &lt;gen:ReportedAttribute id="PREFERRED_LABEL" value="Agriculture, fisheries, forestry and food"/&gt;
+                &lt;/gen:AttributeSet&gt;
+            &lt;/gen:ReportedAttribute&gt;
+            gen:ReportedAttribute id="DCAT_CATEGORY" value="urn:sdmx:org.sdmx.infomodel.categoryscheme.Category=ESTAT:MDR_THEMES(1.0).ECON"&gt;
+                &lt;gen:AttributeSet&gt;
+                &lt;gen:ReportedAttribute id="PREFERRED_LABEL" value="Economy and finance"/&gt;
+                &lt;/gen:AttributeSet&gt;
+            &lt;/gen:ReportedAttribute&gt;
+            &lt;gen:ReportedAttribute id="DCAT_CATEGORY" value="urn:sdmx:org.sdmx.infomodel.categoryscheme.Category=ESTAT:MDR_THEMES(1.0).EDUC"&gt;
+                &lt;gen:AttributeSet&gt;
+                &lt;gen:ReportedAttribute id="PREFERRED_LABEL" value="Education, culture and sport"/&gt;
+                &lt;/gen:AttributeSet&gt;
+            &lt;/gen:ReportedAttribute&gt;
+            &lt;gen:ReportedAttribute id="DCAT_CATEGORY" value="urn:sdmx:org.sdmx.infomodel.categoryscheme.Category=ESTAT:MDR_THEMES(1.0).ENER"&gt;
+                &lt;gen:AttributeSet&gt;
+                &lt;gen:ReportedAttribute id="PREFERRED_LABEL" value="Energy"/&gt;
+                &lt;/gen:AttributeSet&gt;
+            &lt;/gen:ReportedAttribute&gt;
+    </code></pre>
+
+        <!-- IMAGE 3 — after ENER preferred label + “And so on….” -->
+        <a href="html/appendices/annex-III-fig03.png"target="_blank">
+        <img src="html/appendices/annex-III-fig03.png"/>
+        </a>
+            <figcaption>ENERGY Metadata Attribute example.</figcaption>
+        </figure>
+
+        <pre><code class="language-xml">
+    And so on….
+    
+                    &lt;gen:ReportedAttribute id="DCAT_DATASET"&gt;
+                        &lt;gen:AttributeSet&gt;
+                            &lt;gen:ReportedAttribute id="DATASET_DESCRIPTION" value="Extended description for Population aged 15-74 by sex, age group, educational attainment (ISCED 1997) and occupation (ISCO 1988)"/&gt;
+                            &lt;gen:ReportedAttribute id="DATASET_TITLE" value="Population aged 15-74 by sex, age group, educational attainment (ISCED 1997) and occupation (ISCO 1988)"/&gt;
+                            &lt;gen:ReportedAttribute id="CONTACT_POINT" value="Dissemination"&gt;
+                                &lt;gen:AttributeSet&gt;
+                                    &lt;gen:ReportedAttribute id="CONTACT_PHONE" value="+352431034320"/&gt;
+                                    &lt;gen:ReportedAttribute id="CONTACT_EMAIL" value="dissemination@ec.europa.eu"/&gt;
+                                &lt;/gen:AttributeSet&gt;
+                            &lt;/gen:ReportedAttribute&gt;
+                            &lt;gen:ReportedAttribute id="DISTRIBUTION"&gt;
+                                &lt;com:StructuredText xml:lang="en" xmlns:com="http://www.sdmx.org/resources/sdmxml/schemas/v2_1/common"&gt;&amp;lt;p&gt;&amp;lt;a href="urn:sdmx:org.sdmx.infomodel.registry.ProvisionAgreement=ESTAT:AT-NEISCO(1.0)"&gt;urn:sdmx:org.sdmx.infomodel.registry.ProvisionAgreement=ESTAT:AT-NEISCO(1.0)&amp;lt;/a&gt;&amp;lt;/p&gt;&lt;/com:StructuredText&gt;
+                            &lt;/gen:ReportedAttribute&gt;
+                            &lt;gen:ReportedAttribute id="KEYWORD" value="Population"/&gt;
+                            &lt;gen:ReportedAttribute id="KEYWORD" value="Austria"/&gt;
+                            &lt;gen:ReportedAttribute id="KEYWORD" value="Census"/&gt;
+                            &lt;gen:ReportedAttribute id="DATASET_PUBLISHER" value="ESTAT"/&gt;
+                            &lt;gen:ReportedAttribute id="DATASET_THEME"&gt;
+                                &lt;com:StructuredText xml:lang="en" xmlns:com="http://www.sdmx.org/resources/sdmxml/schemas/v2_1/common"&gt;&amp;lt;p&gt;&amp;lt;a href="http://urn:sdmx:org.sdmx.infomodel.categoryscheme.Category=ESTAT:MDR_THEMES(1.0).SOCI"&gt;http://urn:sdmx:org.sdmx.infomodel.categoryscheme.Category=ESTAT:MDR_THEMES(1.0).SOCI&amp;lt;/a&gt;&amp;lt;/p&gt;&lt;/com:StructuredText&gt;
+                            &lt;/gen:ReportedAttribute&gt;
+                            &lt;gen:ReportedAttribute id="NUM_SERIES" value="110259"/&gt;
+                            &lt;gen:ReportedAttribute id="STAT_MEASURE"&gt;
+                                &lt;com:StructuredText xml:lang="en" xmlns:com="http://www.sdmx.org/resources/sdmxml/schemas/v2_1/common"&gt;&amp;lt;p&gt;&amp;lt;a href="http://example.com/measures/percentage"&gt;http://example.com/measures/percentage&amp;lt;/a&gt;&amp;lt;/p&gt;&lt;/com:StructuredText&gt;
+                            &lt;/gen:ReportedAttribute&gt;
+    </code></pre>
+
+        <!-- IMAGE 4 — after the STAT_MEASURE StructuredText (percentage URL) -->
+        <a href="html/appendices/annex-III-fig04.png"target="_blank">
+        <img src="html/appendices/annex-III-fig04.png"/>
+        </a>
+            <figcaption>Statistical unit measure mapping (example link to a unit measure URI).</figcaption>
+        </figure>
+
+        <pre><code class="language-xml">
+                        &lt;/gen:AttributeSet&gt;
+                    &lt;/gen:ReportedAttribute&gt;
+
+
+    &lt;gen:ReportedAttribute id="DCAT_DISTRIBUTION"&gt;
+        &lt;com:StructuredText xml:lang="en" xmlns:com="http://www.sdmx.org/resources/sdmxml/schemas/v2_1/common"&gt;&amp;lt;p&gt;&amp;lt;a href="urn:sdmx:org.sdmx.infomodel.registry.ProvisionAgreement=ESTAT:AT-NEISCO(1.0)"&gt;urn:sdmx:org.sdmx.infomodel.registry.ProvisionAgreement=ESTAT:AT-NEISCO(1.0)&amp;lt;/a&gt;&amp;lt;/p&gt;&lt;/com:StructuredText&gt;
+        &lt;gen:AttributeSet&gt;
+            &lt;gen:ReportedAttribute id="ACCESS_URL"&gt;
+            &lt;com:StructuredText xml:lang="en" xmlns:com="http://www.sdmx.org/resources/sdmxml/schemas/v2_1/common"&gt;&amp;lt;p&gt;&amp;lt;a href="http://localhost:8080/FusionRegistry/ws/rest"&gt;http://localhost:8080/FusionRegistry/ws/rest&amp;lt;/a&gt;&amp;lt;/p&gt;&lt;/com:StructuredText&gt;
+            &lt;/gen:ReportedAttribute&gt;
+            &lt;gen:ReportedAttribute id="DISTRIBUTION_DESCRIPTION" value="Austria for Census by education and occupation"/&gt;
+            &lt;gen:ReportedAttribute id="DISTRIBUTION_FORMAT" value="SDMX Data Structure Specific"/&gt;
+            &lt;gen:ReportedAttribute id="DISTRIBUTION_LICENSE" value="Free to use provided Eurostat is acknowledged as the source"/&gt;
+        &lt;/gen:AttributeSet&gt;
+    &lt;/gen:ReportedAttribute&gt;
+    </code></pre>
+
+        <!-- IMAGE 5 — after DISTRIBUTION_FORMAT and DISTRIBUTION_LICENSE -->
+        <a href="html/appendices/annex-III-fig05.png"target="_blank">
+        <img src="html/appendices/annex-III-fig05.png"/>
+        </a>
+            <figcaption>Distribution metadata mapping (accessURL, format, license).</figcaption>
+        </figure>
+
+        <pre><code class="language-xml">
+    
+    &lt;gen:ReportedAttribute id="DCAT_AGENT"&gt;
+        &lt;com:StructuredText xml:lang="en" xmlns:com="http://www.sdmx.org/resources/sdmxml/schemas/v2_1/common"&gt;&amp;lt;p&gt;&amp;lt;a href="urn:sdmx:org.sdmx.infomodel.base.Agency=ESTAT"&gt;urn:sdmx:org.sdmx.infomodel.base.Agency=ESTAT&amp;lt;/a&gt;&amp;lt;/p&gt;&lt;/com:StructuredText&gt;
+        &lt;gen:AttributeSet&gt;
+            &lt;gen:ReportedAttribute id="AGENT_NAME" value="Eurostat"/&gt;
+            &lt;gen:ReportedAttribute id="AGENT_TYPE" value="Publisher"/&gt;
+        &lt;/gen:AttributeSet&gt;
+    &lt;/gen:ReportedAttribute&gt;
+    End of Metadata Set
+            &lt;/gen:AttributeSet&gt;
+        &lt;/gen:Report&gt;
+    &lt;/mes:MetadataSet&gt;
+    </code></pre>
+        </details>
+    </section>
   </section>
-</section>
 </section>
 
 
