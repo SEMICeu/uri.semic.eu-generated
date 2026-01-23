@@ -1,8 +1,9 @@
 {
   "metadata": {
     "title": "Arachne Data Model",
-    "uri": "http://fixme.com",
+    "uri": "https://w3id.org/adm/model",
     "issued": "2026-01-19",
+    "baseURI": "https://w3id.org/adm/model/",
     "filename": "arachne",
     "navigation": {
       "prev": "https://semiceu.github.io/ADM/releases/1.0.0/",
@@ -16,14 +17,517 @@
     },
     "status": "Draft",
     "statuslabel": "Onbekend",
-    "repositoryurl": "git@uri.semic.eu-thema:SEMICeu/uri.semic.eu-thema.git/tree/e3aabe63c3a4766cbba46843a5097f3b6241986d",
-    "changelogurl": "git@uri.semic.eu-thema:SEMICeu/uri.semic.eu-thema.git/blob/e3aabe63c3a4766cbba46843a5097f3b6241986d/CHANGELOG",
+    "repositoryurl": "git@uri.semic.eu-thema:SEMICeu/uri.semic.eu-thema.git/tree/68aaeb740c6aa8f6f54f00992ae2f562ff6522ac",
+    "changelogurl": "git@uri.semic.eu-thema:SEMICeu/uri.semic.eu-thema.git/blob/68aaeb740c6aa8f6f54f00992ae2f562ff6522ac/CHANGELOG",
     "feedbackurl": "https://github.com/SEMICeu/ADM/issues",
     "standaardregisterurl": "https://github.com/SEMICeu/ADM/blob/master/releases/1.0.0/Changelog.md",
     "usesVocs": [],
     "usesAPs": []
   },
   "classes": [
+    {
+      "uri": "https://w3id.org/adm/model/Amount",
+      "name": "Amount",
+      "label": {
+        "en": "Amount"
+      },
+      "sort": "Amount",
+      "description": {
+        "en": "A sum of money."
+      },
+      "usage": {},
+      "parents": [],
+      "rawTags": {
+        "uri": "https://w3id.org/adm/model/Amount",
+        "label-en": "Amount",
+        "definition-en": "A sum of money."
+      },
+      "properties": [
+        {
+          "uri": "https://w3id.org/adm/model/currency",
+          "name": "currency",
+          "sort": "currency",
+          "label": {
+            "en": "currency"
+          },
+          "description": {
+            "en": "The system of money used for the amount."
+          },
+          "usage": {},
+          "domain": [
+            {
+              "EA-Name": "Amount",
+              "uri": "https://w3id.org/adm/model/Amount"
+            }
+          ],
+          "range": [
+            {
+              "range_label": "Code",
+              "range_uri": "http://www.w3.org/2004/02/skos/core#Concept"
+            }
+          ],
+          "scopedrange": [
+            {
+              "range_uri": "#Code",
+              "range_puri": "http://www.w3.org/2004/02/skos/core#Concept",
+              "range_label": {
+                "en": "Code"
+              }
+            }
+          ],
+          "cardinality": "1",
+          "codelist_uri": "",
+          "rawTags": {
+            "uri": "https://w3id.org/adm/model/currency",
+            "label-en": "currency",
+            "definition-en": "The system of money used for the amount."
+          }
+        },
+        {
+          "uri": "https://w3id.org/adm/model/value",
+          "name": "value",
+          "sort": "value",
+          "label": {
+            "en": "value"
+          },
+          "description": {
+            "en": "The number expressing the sum of money."
+          },
+          "usage": {},
+          "domain": [
+            {
+              "EA-Name": "Amount",
+              "uri": "https://w3id.org/adm/model/Amount"
+            }
+          ],
+          "range": [
+            {
+              "range_label": "Decimal",
+              "range_uri": "http://www.w3.org/2001/XMLSchema#decimal"
+            }
+          ],
+          "scopedrange": [
+            {
+              "range_uri": "#Decimal",
+              "range_puri": "http://www.w3.org/2001/XMLSchema#decimal",
+              "range_label": {
+                "en": "Decimal"
+              }
+            }
+          ],
+          "cardinality": "1",
+          "codelist_uri": "",
+          "rawTags": {
+            "uri": "https://w3id.org/adm/model/value",
+            "label-en": "value",
+            "definition-en": "The number expressing the sum of money."
+          }
+        }
+      ]
+    },
+    {
+      "uri": "https://w3id.org/adm/model/Beneficiary",
+      "name": "Beneficiary",
+      "label": {
+        "en": "Beneficiary"
+      },
+      "sort": "Beneficiary",
+      "description": {
+        "en": "A legal entity who receives money for a project."
+      },
+      "usage": {},
+      "parents": [
+        {
+          "label": "Legal Entity",
+          "name": "LegalEntity",
+          "package": "Core Business",
+          "uri": "http://www.w3.org/ns/legal#LegalEntity",
+          "scoped_uri": "#Legal Entity"
+        }
+      ],
+      "rawTags": {
+        "uri": "https://w3id.org/adm/model/Beneficiary",
+        "label-en": "Beneficiary",
+        "definition-en": "A legal entity who receives money for a project."
+      },
+      "properties": [
+        {
+          "uri": "https://w3id.org/adm/model/numberOfEmployees",
+          "name": "numberOfEmployees",
+          "sort": "number of employees",
+          "label": {
+            "en": "number of employees"
+          },
+          "description": {
+            "en": "Number of employees of the beneficiary at the moment of the\r\napproval of the application."
+          },
+          "usage": {},
+          "domain": [
+            {
+              "EA-Name": "Beneficiary",
+              "uri": "https://w3id.org/adm/model/Beneficiary"
+            }
+          ],
+          "range": [
+            {
+              "range_label": "Integer",
+              "range_uri": "http://www.w3.org/2001/XMLSchema#integer"
+            }
+          ],
+          "scopedrange": [
+            {
+              "range_uri": "#Integer",
+              "range_puri": "http://www.w3.org/2001/XMLSchema#integer",
+              "range_label": {
+                "en": "Integer"
+              }
+            }
+          ],
+          "cardinality": "0..1",
+          "codelist_uri": "",
+          "rawTags": {
+            "uri": "https://w3id.org/adm/model/numberOfEmployees",
+            "label-en": "number of employees",
+            "definition-en": "Number of employees of the beneficiary at the moment of the\r\napproval of the application."
+          }
+        },
+        {
+          "uri": "https://w3id.org/adm/model/turnover",
+          "name": "turnover",
+          "sort": "turnover",
+          "label": {
+            "en": "turnover"
+          },
+          "description": {
+            "en": "Turnover of the beneficiary at the moment of the approval of the\r\napplication."
+          },
+          "usage": {},
+          "domain": [
+            {
+              "EA-Name": "Beneficiary",
+              "uri": "https://w3id.org/adm/model/Beneficiary"
+            }
+          ],
+          "range": [
+            {
+              "range_label": "Amount",
+              "range_uri": "https://w3id.org/adm/model/Amount"
+            }
+          ],
+          "scopedrange": [
+            {
+              "range_uri": "#Amount",
+              "range_puri": "https://w3id.org/adm/model/Amount",
+              "range_label": {
+                "en": "Amount"
+              }
+            }
+          ],
+          "cardinality": "0..1",
+          "codelist_uri": "",
+          "rawTags": {
+            "uri": "https://w3id.org/adm/model/turnover",
+            "label-en": "turnover",
+            "definition-en": "Turnover of the beneficiary at the moment of the approval of the\r\napplication."
+          }
+        },
+        {
+          "uri": "https://w3id.org/adm/model/hasPartner",
+          "name": "hasPartner",
+          "sort": "has partner",
+          "label": {
+            "en": "has partner"
+          },
+          "description": {
+            "en": "Reference to an entity which is partner of the beneficiary of the project."
+          },
+          "usage": {},
+          "domain": [
+            {
+              "EA-Name": "Beneficiary",
+              "uri": "https://w3id.org/adm/model/Beneficiary"
+            }
+          ],
+          "range": [
+            {
+              "range_label": "Partner",
+              "range_uri": "https://w3id.org/adm/model/Partner"
+            }
+          ],
+          "scopedrange": [
+            {
+              "range_uri": "#Partner",
+              "range_puri": "https://w3id.org/adm/model/Partner",
+              "range_label": {
+                "en": "Partner"
+              }
+            }
+          ],
+          "cardinality": "0..*",
+          "codelist_uri": "",
+          "rawTags": {
+            "uri": "https://w3id.org/adm/model/hasPartner",
+            "label-en": "has partner",
+            "definition-en": "Reference to an entity which is partner of the beneficiary of the project."
+          }
+        },
+        {
+          "uri": "https://w3id.org/adm/model/hasUltimateOwner",
+          "name": "hasUltimateOwner",
+          "sort": "has ultimate owner",
+          "label": {
+            "en": "has ultimate owner"
+          },
+          "description": {
+            "en": "The ultimate\r\n owner of the beneficiary of the project."
+          },
+          "usage": {},
+          "domain": [
+            {
+              "EA-Name": "Beneficiary",
+              "uri": "https://w3id.org/adm/model/Beneficiary"
+            }
+          ],
+          "range": [
+            {
+              "range_label": "LegalEntity",
+              "range_uri": "http://www.w3.org/ns/legal#LegalEntity"
+            }
+          ],
+          "scopedrange": [
+            {
+              "range_uri": "#Legal Entity",
+              "range_puri": "http://www.w3.org/ns/legal#LegalEntity",
+              "range_label": {
+                "en": "Legal Entity"
+              }
+            }
+          ],
+          "cardinality": "0..1",
+          "codelist_uri": "",
+          "rawTags": {
+            "label-en": "has ultimate owner",
+            "definition-en": "The ultimate\r\n owner of the beneficiary of the project.",
+            "uri": "https://w3id.org/adm/model/hasUltimateOwner"
+          }
+        }
+      ]
+    },
+    {
+      "uri": "https://w3id.org/adm/model/Block",
+      "name": "Block",
+      "label": {
+        "en": "Block"
+      },
+      "sort": "Block",
+      "description": {
+        "en": "Information on the type of the project."
+      },
+      "usage": {},
+      "parents": [],
+      "rawTags": {
+        "uri": "https://w3id.org/adm/model/Block",
+        "label-en": "Block",
+        "definition-en": "Information on the type of the project."
+      },
+      "properties": [
+        {
+          "uri": "https://w3id.org/adm/model/dg",
+          "name": "dg",
+          "sort": "dg",
+          "label": {
+            "en": "dg"
+          },
+          "description": {
+            "en": "Directory general to which the project belongs to."
+          },
+          "usage": {
+            "en": "The recommended control vocabulary is the < a href=\" https://op.europa.eu/en/web/eu-vocabularies/concept-scheme/-/resource?uri=http://publications.europa.eu/resource/authority/corporate-body\" > Corporate Body </a> list from Publications Office."
+          },
+          "domain": [
+            {
+              "EA-Name": "Block",
+              "uri": "https://w3id.org/adm/model/Block"
+            }
+          ],
+          "range": [
+            {
+              "range_label": "Code",
+              "range_uri": "http://www.w3.org/2004/02/skos/core#Concept"
+            }
+          ],
+          "scopedrange": [
+            {
+              "range_uri": "#Code",
+              "range_puri": "http://www.w3.org/2004/02/skos/core#Concept",
+              "range_label": {
+                "en": "Code"
+              }
+            }
+          ],
+          "cardinality": "1",
+          "codelist_uri": "",
+          "rawTags": {
+            "uri": "https://w3id.org/adm/model/dg",
+            "label-en": "dg",
+            "definition-en": "Directory general to which the project belongs to.",
+            "usageNote-en": "The recommended control vocabulary is the < a href=\" https://op.europa.eu/en/web/eu-vocabularies/concept-scheme/-/resource?uri=http://publications.europa.eu/resource/authority/corporate-body\" > Corporate Body </a> list from Publications Office."
+          }
+        },
+        {
+          "uri": "https://w3id.org/adm/model/projectType",
+          "name": "projectType",
+          "sort": "project type",
+          "label": {
+            "en": "project type"
+          },
+          "description": {
+            "en": "A category to which the project belongs to."
+          },
+          "usage": {},
+          "domain": [
+            {
+              "EA-Name": "Block",
+              "uri": "https://w3id.org/adm/model/Block"
+            }
+          ],
+          "range": [
+            {
+              "range_label": "Code",
+              "range_uri": "http://www.w3.org/2004/02/skos/core#Concept"
+            }
+          ],
+          "scopedrange": [
+            {
+              "range_uri": "#Code",
+              "range_puri": "http://www.w3.org/2004/02/skos/core#Concept",
+              "range_label": {
+                "en": "Code"
+              }
+            }
+          ],
+          "cardinality": "1",
+          "codelist_uri": "",
+          "rawTags": {
+            "uri": "https://w3id.org/adm/model/projectType",
+            "label-en": "project type",
+            "definition-en": "A category to which the project belongs to."
+          }
+        }
+      ]
+    },
+    {
+      "uri": "https://w3id.org/adm/model/KeyExpert",
+      "name": "Keyexpert",
+      "label": {
+        "en": "KeyExpert"
+      },
+      "sort": "KeyExpert",
+      "description": {
+        "en": "The entity getting benefit from a contract"
+      },
+      "usage": {},
+      "parents": [
+        {
+          "label": "Person",
+          "name": "Person",
+          "package": "Core Person",
+          "uri": "http://www.w3.org/ns/person#Person",
+          "scoped_uri": "#Person"
+        }
+      ],
+      "rawTags": {
+        "uri": "https://w3id.org/adm/model/KeyExpert",
+        "label-en": "KeyExpert",
+        "definition-en": "The entity getting benefit from a contract"
+      },
+      "properties": []
+    },
+    {
+      "uri": "https://w3id.org/adm/model/Partner",
+      "name": "Partner",
+      "label": {
+        "en": "Partner"
+      },
+      "sort": "Partner",
+      "description": {
+        "en": "Entity which is partner of the beneficiary of th"
+      },
+      "usage": {},
+      "parents": [
+        {
+          "label": "Legal Entity",
+          "name": "LegalEntity",
+          "package": "Core Business",
+          "uri": "http://www.w3.org/ns/legal#LegalEntity",
+          "scoped_uri": "#Legal Entity"
+        }
+      ],
+      "rawTags": {
+        "uri": "https://w3id.org/adm/model/Partner",
+        "label-en": "Partner",
+        "definition-en": "Entity which is partner of the beneficiary of th"
+      },
+      "properties": []
+    },
+    {
+      "uri": "https://w3id.org/adm/model/Subcontract",
+      "name": "Subcontract",
+      "label": {
+        "en": "Subcontract"
+      },
+      "sort": "Subcontract",
+      "description": {},
+      "usage": {},
+      "parents": [],
+      "rawTags": {
+        "uri": "https://w3id.org/adm/model/Subcontract",
+        "label-en": "Subcontract",
+        "class-usage-scope": "main"
+      },
+      "properties": [
+        {
+          "uri": "http://purl.org/dc/terms/isPartOf",
+          "name": "isPartOf",
+          "sort": "is part of",
+          "label": {
+            "en": "is part of"
+          },
+          "description": {
+            "en": "A related resource in which the described resource is physically or logically included."
+          },
+          "usage": {},
+          "domain": [
+            {
+              "EA-Name": "Subcontract",
+              "uri": "https://w3id.org/adm/model/Subcontract"
+            }
+          ],
+          "range": [
+            {
+              "range_label": "Contract",
+              "range_uri": "http://data.europa.eu/a4g/ontology#Contract"
+            }
+          ],
+          "scopedrange": [
+            {
+              "range_uri": "#Contract",
+              "range_puri": "http://data.europa.eu/a4g/ontology#Contract",
+              "range_label": {
+                "en": "Contract"
+              }
+            }
+          ],
+          "cardinality": "1",
+          "codelist_uri": "",
+          "rawTags": {
+            "definition-en": "A related resource in which the described resource is physically or logically included.",
+            "label-en": "is part of",
+            "uri": "http://purl.org/dc/terms/isPartOf"
+          }
+        }
+      ]
+    },
     {
       "uri": "http://data.europa.eu/a4g/ontology#Contract",
       "name": "Contract",
@@ -52,7 +556,7 @@
       },
       "properties": [
         {
-          "uri": "http://example.com/belongsTo",
+          "uri": "https://w3id.org/adm/model/belongsTo",
           "name": "belongsTo",
           "sort": "belongs to",
           "label": {
@@ -87,12 +591,12 @@
           "codelist_uri": "",
           "rawTags": {
             "definition-en": "The project in which a contract is executed.",
-            "uri": "http://example.com/belongsTo",
+            "uri": "https://w3id.org/adm/model/belongsTo",
             "label-en": "belongs to"
           }
         },
         {
-          "uri": "http://example.com/hasKeyExpert",
+          "uri": "https://w3id.org/adm/model/hasKeyExpert",
           "name": "hasKeyexpert",
           "sort": "has KeyExpert",
           "label": {
@@ -111,13 +615,13 @@
           "range": [
             {
               "range_label": "KeyExpert",
-              "range_uri": "http://example.com/KeyExpert"
+              "range_uri": "https://w3id.org/adm/model/KeyExpert"
             }
           ],
           "scopedrange": [
             {
               "range_uri": "#KeyExpert",
-              "range_puri": "http://example.com/KeyExpert",
+              "range_puri": "https://w3id.org/adm/model/KeyExpert",
               "range_label": {
                 "en": "KeyExpert"
               }
@@ -126,7 +630,7 @@
           "cardinality": "0..*",
           "codelist_uri": "",
           "rawTags": {
-            "uri": "http://example.com/hasKeyExpert",
+            "uri": "https://w3id.org/adm/model/hasKeyExpert",
             "label-en": "has KeyExpert",
             "definition-en": "Expert assigned on a contract"
           }
@@ -213,6 +717,209 @@
       },
       "properties": [
         {
+          "uri": "https://w3id.org/adm/model/ECFinancialAssistance",
+          "name": "ecFinancialAssistance",
+          "sort": "EC financial assistance",
+          "label": {
+            "en": "EC financial assistance"
+          },
+          "description": {
+            "en": "Amount of the contribution financed by the EC."
+          },
+          "usage": {},
+          "domain": [
+            {
+              "EA-Name": "Project",
+              "uri": "http://dbpedia.org/ontology/Project"
+            }
+          ],
+          "range": [
+            {
+              "range_label": "Amount",
+              "range_uri": "https://w3id.org/adm/model/Amount"
+            }
+          ],
+          "scopedrange": [
+            {
+              "range_uri": "#Amount",
+              "range_puri": "https://w3id.org/adm/model/Amount",
+              "range_label": {
+                "en": "Amount"
+              }
+            }
+          ],
+          "cardinality": "0..1",
+          "codelist_uri": "",
+          "rawTags": {
+            "uri": "https://w3id.org/adm/model/ECFinancialAssistance",
+            "label-en": "EC financial assistance",
+            "definition-en": "Amount of the contribution financed by the EC."
+          }
+        },
+        {
+          "uri": "https://w3id.org/adm/model/income",
+          "name": "income",
+          "sort": "income",
+          "label": {
+            "en": "income"
+          },
+          "description": {
+            "en": "Amount of revenues generated by the project."
+          },
+          "usage": {},
+          "domain": [
+            {
+              "EA-Name": "Project",
+              "uri": "http://dbpedia.org/ontology/Project"
+            }
+          ],
+          "range": [
+            {
+              "range_label": "Amount",
+              "range_uri": "https://w3id.org/adm/model/Amount"
+            }
+          ],
+          "scopedrange": [
+            {
+              "range_uri": "#Amount",
+              "range_puri": "https://w3id.org/adm/model/Amount",
+              "range_label": {
+                "en": "Amount"
+              }
+            }
+          ],
+          "cardinality": "0..1",
+          "codelist_uri": "",
+          "rawTags": {
+            "uri": "https://w3id.org/adm/model/income",
+            "label-en": "income",
+            "definition-en": "Amount of revenues generated by the project."
+          }
+        },
+        {
+          "uri": "https://w3id.org/adm/model/otherContributions",
+          "name": "otherContributions",
+          "sort": "other contributions",
+          "label": {
+            "en": "other contributions"
+          },
+          "description": {
+            "en": "Amount of the other contributions to the project."
+          },
+          "usage": {},
+          "domain": [
+            {
+              "EA-Name": "Project",
+              "uri": "http://dbpedia.org/ontology/Project"
+            }
+          ],
+          "range": [
+            {
+              "range_label": "Amount",
+              "range_uri": "https://w3id.org/adm/model/Amount"
+            }
+          ],
+          "scopedrange": [
+            {
+              "range_uri": "#Amount",
+              "range_puri": "https://w3id.org/adm/model/Amount",
+              "range_label": {
+                "en": "Amount"
+              }
+            }
+          ],
+          "cardinality": "0..1",
+          "codelist_uri": "",
+          "rawTags": {
+            "uri": "https://w3id.org/adm/model/otherContributions",
+            "label-en": "other contributions",
+            "definition-en": "Amount of the other contributions to the project."
+          }
+        },
+        {
+          "uri": "https://w3id.org/adm/model/thematicObjective",
+          "name": "thematicObjective",
+          "sort": "thematic objective",
+          "label": {
+            "en": "thematic objective"
+          },
+          "description": {
+            "en": "A classification of the project."
+          },
+          "usage": {
+            "en": "The recommended codelist is the <a href= \"#project-thematicObjective\" > Thematic Objective </a>."
+          },
+          "domain": [
+            {
+              "EA-Name": "Project",
+              "uri": "http://dbpedia.org/ontology/Project"
+            }
+          ],
+          "range": [
+            {
+              "range_label": "Code",
+              "range_uri": "http://www.w3.org/2004/02/skos/core#Concept"
+            }
+          ],
+          "scopedrange": [
+            {
+              "range_uri": "#Code",
+              "range_puri": "http://www.w3.org/2004/02/skos/core#Concept",
+              "range_label": {
+                "en": "Code"
+              }
+            }
+          ],
+          "cardinality": "1",
+          "codelist_uri": "",
+          "rawTags": {
+            "uri": "https://w3id.org/adm/model/thematicObjective",
+            "label-en": "thematic objective",
+            "definition-en": "A classification of the project.",
+            "usageNote-en": "The recommended codelist is the <a href= \"#project-thematicObjective\" > Thematic Objective </a>."
+          }
+        },
+        {
+          "uri": "https://w3id.org/adm/model/totalCost",
+          "name": "totalCost",
+          "sort": "total cost",
+          "label": {
+            "en": "total cost"
+          },
+          "description": {
+            "en": "Total amount of the project as agreed on the project application."
+          },
+          "usage": {},
+          "domain": [
+            {
+              "EA-Name": "Project",
+              "uri": "http://dbpedia.org/ontology/Project"
+            }
+          ],
+          "range": [
+            {
+              "range_label": "Amount",
+              "range_uri": "https://w3id.org/adm/model/Amount"
+            }
+          ],
+          "scopedrange": [
+            {
+              "range_uri": "#Amount",
+              "range_puri": "https://w3id.org/adm/model/Amount",
+              "range_label": {
+                "en": "Amount"
+              }
+            }
+          ],
+          "cardinality": "1",
+          "codelist_uri": "",
+          "rawTags": {
+            "uri": "https://w3id.org/adm/model/totalCost",
+            "label-en": "total cost",
+            "definition-en": "Total amount of the project as agreed on the project application."
+          }
+        },
+        {
           "uri": "http://dbpedia.org/ontology/projectEndDate",
           "name": "endDate",
           "sort": "end date",
@@ -290,286 +997,6 @@
             "uri": "http://dbpedia.org/ontology/projectStartDate",
             "label-en": "start date",
             "definition-en": "The start date of the project."
-          }
-        },
-        {
-          "uri": "http://example.com/ECFinancialAssistance",
-          "name": "ecFinancialAssistance",
-          "sort": "EC financial assistance",
-          "label": {
-            "en": "EC financial assistance"
-          },
-          "description": {
-            "en": "Amount of the contribution financed by the EC."
-          },
-          "usage": {},
-          "domain": [
-            {
-              "EA-Name": "Project",
-              "uri": "http://dbpedia.org/ontology/Project"
-            }
-          ],
-          "range": [
-            {
-              "range_label": "Amount",
-              "range_uri": "http://example.com/Amount"
-            }
-          ],
-          "scopedrange": [
-            {
-              "range_uri": "#Amount",
-              "range_puri": "http://example.com/Amount",
-              "range_label": {
-                "en": "Amount"
-              }
-            }
-          ],
-          "cardinality": "0..1",
-          "codelist_uri": "",
-          "rawTags": {
-            "uri": "http://example.com/ECFinancialAssistance",
-            "label-en": "EC financial assistance",
-            "definition-en": "Amount of the contribution financed by the EC."
-          }
-        },
-        {
-          "uri": "http://example.com/hasBeneficiary",
-          "name": "hasBeneficiary",
-          "sort": "has beneficiary",
-          "label": {
-            "en": "has beneficiary"
-          },
-          "description": {
-            "en": "The beneficiary of a project."
-          },
-          "usage": {},
-          "domain": [
-            {
-              "EA-Name": "Project",
-              "uri": "http://dbpedia.org/ontology/Project"
-            }
-          ],
-          "range": [
-            {
-              "range_label": "Beneficiary",
-              "range_uri": "http://example.com/Beneficiary"
-            }
-          ],
-          "scopedrange": [
-            {
-              "range_uri": "#Beneficiary",
-              "range_puri": "http://example.com/Beneficiary",
-              "range_label": {
-                "en": "Beneficiary"
-              }
-            }
-          ],
-          "cardinality": "1",
-          "codelist_uri": "",
-          "rawTags": {
-            "uri": "http://example.com/hasBeneficiary",
-            "definition-en": "The beneficiary of a project.",
-            "label-en": "has beneficiary"
-          }
-        },
-        {
-          "uri": "http://example.com/hasBlock",
-          "name": "hasBlock",
-          "sort": "has block",
-          "label": {
-            "en": "has block"
-          },
-          "description": {
-            "en": "Reference to the type of the project."
-          },
-          "usage": {},
-          "domain": [
-            {
-              "EA-Name": "Project",
-              "uri": "http://dbpedia.org/ontology/Project"
-            }
-          ],
-          "range": [
-            {
-              "range_label": "Block",
-              "range_uri": "http://example.com/Block"
-            }
-          ],
-          "scopedrange": [
-            {
-              "range_uri": "#Block",
-              "range_puri": "http://example.com/Block",
-              "range_label": {
-                "en": "Block"
-              }
-            }
-          ],
-          "cardinality": "1",
-          "codelist_uri": "",
-          "rawTags": {
-            "definition-en": "Reference to the type of the project.",
-            "uri": "http://example.com/hasBlock",
-            "label-en": "has block"
-          }
-        },
-        {
-          "uri": "http://example.com/income",
-          "name": "income",
-          "sort": "income",
-          "label": {
-            "en": "income"
-          },
-          "description": {
-            "en": "Amount of revenues generated by the project."
-          },
-          "usage": {},
-          "domain": [
-            {
-              "EA-Name": "Project",
-              "uri": "http://dbpedia.org/ontology/Project"
-            }
-          ],
-          "range": [
-            {
-              "range_label": "Amount",
-              "range_uri": "http://example.com/Amount"
-            }
-          ],
-          "scopedrange": [
-            {
-              "range_uri": "#Amount",
-              "range_puri": "http://example.com/Amount",
-              "range_label": {
-                "en": "Amount"
-              }
-            }
-          ],
-          "cardinality": "0..1",
-          "codelist_uri": "",
-          "rawTags": {
-            "uri": "http://example.com/income",
-            "label-en": "income",
-            "definition-en": "Amount of revenues generated by the project."
-          }
-        },
-        {
-          "uri": "http://example.com/otherContributions",
-          "name": "otherContributions",
-          "sort": "other contributions",
-          "label": {
-            "en": "other contributions"
-          },
-          "description": {
-            "en": "Amount of the other contributions to the project."
-          },
-          "usage": {},
-          "domain": [
-            {
-              "EA-Name": "Project",
-              "uri": "http://dbpedia.org/ontology/Project"
-            }
-          ],
-          "range": [
-            {
-              "range_label": "Amount",
-              "range_uri": "http://example.com/Amount"
-            }
-          ],
-          "scopedrange": [
-            {
-              "range_uri": "#Amount",
-              "range_puri": "http://example.com/Amount",
-              "range_label": {
-                "en": "Amount"
-              }
-            }
-          ],
-          "cardinality": "0..1",
-          "codelist_uri": "",
-          "rawTags": {
-            "uri": "http://example.com/otherContributions",
-            "label-en": "other contributions",
-            "definition-en": "Amount of the other contributions to the project."
-          }
-        },
-        {
-          "uri": "http://example.com/thematicObjective",
-          "name": "thematicObjective",
-          "sort": "thematic objective",
-          "label": {
-            "en": "thematic objective"
-          },
-          "description": {
-            "en": "A classification of the project."
-          },
-          "usage": {},
-          "domain": [
-            {
-              "EA-Name": "Project",
-              "uri": "http://dbpedia.org/ontology/Project"
-            }
-          ],
-          "range": [
-            {
-              "range_label": "Code",
-              "range_uri": "http://www.w3.org/2004/02/skos/core#Concept"
-            }
-          ],
-          "scopedrange": [
-            {
-              "range_uri": "#Code",
-              "range_puri": "http://www.w3.org/2004/02/skos/core#Concept",
-              "range_label": {
-                "en": "Code"
-              }
-            }
-          ],
-          "cardinality": "1",
-          "codelist_uri": "",
-          "rawTags": {
-            "uri": "http://example.com/thematicObjective",
-            "label-en": "thematic objective",
-            "definition-en": "A classification of the project."
-          }
-        },
-        {
-          "uri": "http://example.com/totalCost",
-          "name": "totalCost",
-          "sort": "total cost",
-          "label": {
-            "en": "total cost"
-          },
-          "description": {
-            "en": "Total amount of the project as agreed on the project application."
-          },
-          "usage": {},
-          "domain": [
-            {
-              "EA-Name": "Project",
-              "uri": "http://dbpedia.org/ontology/Project"
-            }
-          ],
-          "range": [
-            {
-              "range_label": "Amount",
-              "range_uri": "http://example.com/Amount"
-            }
-          ],
-          "scopedrange": [
-            {
-              "range_uri": "#Amount",
-              "range_puri": "http://example.com/Amount",
-              "range_label": {
-                "en": "Amount"
-              }
-            }
-          ],
-          "cardinality": "1",
-          "codelist_uri": "",
-          "rawTags": {
-            "uri": "http://example.com/totalCost",
-            "label-en": "total cost",
-            "definition-en": "Total amount of the project as agreed on the project application."
           }
         },
         {
@@ -691,508 +1118,85 @@
             "label-en": "status",
             "definition-en": "The status of the Asset in the context of a particular workflow process."
           }
-        }
-      ]
-    },
-    {
-      "uri": "http://example.com/Amount",
-      "name": "Amount",
-      "label": {
-        "en": "Amount"
-      },
-      "sort": "Amount",
-      "description": {
-        "en": "A sum of money."
-      },
-      "usage": {},
-      "parents": [],
-      "rawTags": {
-        "uri": "http://example.com/Amount",
-        "label-en": "Amount",
-        "definition-en": "A sum of money."
-      },
-      "properties": [
+        },
         {
-          "uri": "http://example.com/currency",
-          "name": "currency",
-          "sort": "currency",
+          "uri": "https://w3id.org/adm/model/hasBeneficiary",
+          "name": "hasBeneficiary",
+          "sort": "has beneficiary",
           "label": {
-            "en": "currency"
+            "en": "has beneficiary"
           },
           "description": {
-            "en": "The system of money used for the amount."
+            "en": "The beneficiary of a project."
           },
           "usage": {},
           "domain": [
             {
-              "EA-Name": "Amount",
-              "uri": "http://example.com/Amount"
+              "EA-Name": "Project",
+              "uri": "http://dbpedia.org/ontology/Project"
             }
           ],
           "range": [
             {
-              "range_label": "Code",
-              "range_uri": "http://www.w3.org/2004/02/skos/core#Concept"
+              "range_label": "Beneficiary",
+              "range_uri": "https://w3id.org/adm/model/Beneficiary"
             }
           ],
           "scopedrange": [
             {
-              "range_uri": "#Code",
-              "range_puri": "http://www.w3.org/2004/02/skos/core#Concept",
+              "range_uri": "#Beneficiary",
+              "range_puri": "https://w3id.org/adm/model/Beneficiary",
               "range_label": {
-                "en": "Code"
+                "en": "Beneficiary"
               }
             }
           ],
           "cardinality": "1",
           "codelist_uri": "",
           "rawTags": {
-            "uri": "http://example.com/currency",
-            "label-en": "currency",
-            "definition-en": "The system of money used for the amount."
+            "uri": "https://w3id.org/adm/model/hasBeneficiary",
+            "definition-en": "The beneficiary of a project.",
+            "label-en": "has beneficiary"
           }
         },
         {
-          "uri": "http://example.com/value",
-          "name": "value",
-          "sort": "value",
+          "uri": "https://w3id.org/adm/model/hasBlock",
+          "name": "hasBlock",
+          "sort": "has block",
           "label": {
-            "en": "value"
+            "en": "has block"
           },
           "description": {
-            "en": "The number expressing the sum of money."
+            "en": "Reference to the type of the project."
           },
           "usage": {},
           "domain": [
             {
-              "EA-Name": "Amount",
-              "uri": "http://example.com/Amount"
+              "EA-Name": "Project",
+              "uri": "http://dbpedia.org/ontology/Project"
             }
           ],
           "range": [
             {
-              "range_label": "Integer",
-              "range_uri": "http://www.w3.org/2001/XMLSchema#integer"
+              "range_label": "Block",
+              "range_uri": "https://w3id.org/adm/model/Block"
             }
           ],
           "scopedrange": [
             {
-              "range_uri": "#Integer",
-              "range_puri": "http://www.w3.org/2001/XMLSchema#integer",
+              "range_uri": "#Block",
+              "range_puri": "https://w3id.org/adm/model/Block",
               "range_label": {
-                "en": "Integer"
+                "en": "Block"
               }
             }
           ],
           "cardinality": "1",
           "codelist_uri": "",
           "rawTags": {
-            "uri": "http://example.com/value",
-            "label-en": "value",
-            "definition-en": "The number expressing the sum of money."
-          }
-        }
-      ]
-    },
-    {
-      "uri": "http://example.com/Beneficiary",
-      "name": "Beneficiary",
-      "label": {
-        "en": "Beneficiary"
-      },
-      "sort": "Beneficiary",
-      "description": {
-        "en": "A legal entity who receives money for a project."
-      },
-      "usage": {},
-      "parents": [
-        {
-          "label": "Legal Entity",
-          "name": "LegalEntity",
-          "package": "Core Business",
-          "uri": "http://www.w3.org/ns/legal#LegalEntity",
-          "scoped_uri": "#Legal Entity"
-        }
-      ],
-      "rawTags": {
-        "uri": "http://example.com/Beneficiary",
-        "label-en": "Beneficiary",
-        "definition-en": "A legal entity who receives money for a project."
-      },
-      "properties": [
-        {
-          "uri": "http://example.com/hasPartner",
-          "name": "hasPartner",
-          "sort": "has partner",
-          "label": {
-            "en": "has partner"
-          },
-          "description": {
-            "en": "Reference to an entity which is partner of the beneficiary of the project."
-          },
-          "usage": {},
-          "domain": [
-            {
-              "EA-Name": "Beneficiary",
-              "uri": "http://example.com/Beneficiary"
-            }
-          ],
-          "range": [
-            {
-              "range_label": "Partner",
-              "range_uri": "http://example.com/Partner"
-            }
-          ],
-          "scopedrange": [
-            {
-              "range_uri": "#Partner",
-              "range_puri": "http://example.com/Partner",
-              "range_label": {
-                "en": "Partner"
-              }
-            }
-          ],
-          "cardinality": "0..*",
-          "codelist_uri": "",
-          "rawTags": {
-            "uri": "http://example.com/hasPartner",
-            "label-en": "has partner",
-            "definition-en": "Reference to an entity which is partner of the beneficiary of the project."
-          }
-        },
-        {
-          "uri": "http://example.com/hasUltimateOwner",
-          "name": "hasUltimateOwner",
-          "sort": "has ultimate owner",
-          "label": {
-            "en": "has ultimate owner"
-          },
-          "description": {
-            "en": "The ultimate\r\n owner of the beneficiary of the project."
-          },
-          "usage": {},
-          "domain": [
-            {
-              "EA-Name": "Beneficiary",
-              "uri": "http://example.com/Beneficiary"
-            }
-          ],
-          "range": [
-            {
-              "range_label": "LegalEntity",
-              "range_uri": "http://www.w3.org/ns/legal#LegalEntity"
-            }
-          ],
-          "scopedrange": [
-            {
-              "range_uri": "#Legal Entity",
-              "range_puri": "http://www.w3.org/ns/legal#LegalEntity",
-              "range_label": {
-                "en": "Legal Entity"
-              }
-            }
-          ],
-          "cardinality": "0..1",
-          "codelist_uri": "",
-          "rawTags": {
-            "label-en": "has ultimate owner",
-            "definition-en": "The ultimate\r\n owner of the beneficiary of the project.",
-            "uri": "http://example.com/hasUltimateOwner"
-          }
-        },
-        {
-          "uri": "http://example.com/numberOfEmployees",
-          "name": "numberOfEmployees",
-          "sort": "number of employees",
-          "label": {
-            "en": "number of employees"
-          },
-          "description": {
-            "en": "Number of employees of the beneficiary at the moment of the\r\napproval of the application."
-          },
-          "usage": {},
-          "domain": [
-            {
-              "EA-Name": "Beneficiary",
-              "uri": "http://example.com/Beneficiary"
-            }
-          ],
-          "range": [
-            {
-              "range_label": "Integer",
-              "range_uri": "http://www.w3.org/2001/XMLSchema#integer"
-            }
-          ],
-          "scopedrange": [
-            {
-              "range_uri": "#Integer",
-              "range_puri": "http://www.w3.org/2001/XMLSchema#integer",
-              "range_label": {
-                "en": "Integer"
-              }
-            }
-          ],
-          "cardinality": "0..1",
-          "codelist_uri": "",
-          "rawTags": {
-            "uri": "http://example.com/numberOfEmployees",
-            "label-en": "number of employees",
-            "definition-en": "Number of employees of the beneficiary at the moment of the\r\napproval of the application."
-          }
-        },
-        {
-          "uri": "http://example.com/turnover",
-          "name": "turnover",
-          "sort": "turnover",
-          "label": {
-            "en": "turnover"
-          },
-          "description": {
-            "en": "Turnover of the beneficiary at the moment of the approval of the\r\napplication."
-          },
-          "usage": {},
-          "domain": [
-            {
-              "EA-Name": "Beneficiary",
-              "uri": "http://example.com/Beneficiary"
-            }
-          ],
-          "range": [
-            {
-              "range_label": "Amount",
-              "range_uri": "http://example.com/Amount"
-            }
-          ],
-          "scopedrange": [
-            {
-              "range_uri": "#Amount",
-              "range_puri": "http://example.com/Amount",
-              "range_label": {
-                "en": "Amount"
-              }
-            }
-          ],
-          "cardinality": "0..1",
-          "codelist_uri": "",
-          "rawTags": {
-            "uri": "http://example.com/turnover",
-            "label-en": "turnover",
-            "definition-en": "Turnover of the beneficiary at the moment of the approval of the\r\napplication."
-          }
-        }
-      ]
-    },
-    {
-      "uri": "http://example.com/Block",
-      "name": "Block",
-      "label": {
-        "en": "Block"
-      },
-      "sort": "Block",
-      "description": {
-        "en": "Information on the type of the project."
-      },
-      "usage": {},
-      "parents": [],
-      "rawTags": {
-        "uri": "http://example.com/Block",
-        "label-en": "Block",
-        "definition-en": "Information on the type of the project."
-      },
-      "properties": [
-        {
-          "uri": "http://example.com/dg",
-          "name": "dg",
-          "sort": "dg",
-          "label": {
-            "en": "dg"
-          },
-          "description": {
-            "en": "Directory general to which the project belongs to."
-          },
-          "usage": {
-            "en": "The recommended control vocabulary is the < a href=\" https://op.europa.eu/en/web/eu-vocabularies/concept-scheme/-/resource?uri=http://publications.europa.eu/resource/authority/corporate-body\" > Corporate Body </a> list from Publications Office. "
-          },
-          "domain": [
-            {
-              "EA-Name": "Block",
-              "uri": "http://example.com/Block"
-            }
-          ],
-          "range": [
-            {
-              "range_label": "Code",
-              "range_uri": "http://www.w3.org/2004/02/skos/core#Concept"
-            }
-          ],
-          "scopedrange": [
-            {
-              "range_uri": "#Code",
-              "range_puri": "http://www.w3.org/2004/02/skos/core#Concept",
-              "range_label": {
-                "en": "Code"
-              }
-            }
-          ],
-          "cardinality": "1",
-          "codelist_uri": "",
-          "rawTags": {
-            "uri": "http://example.com/dg",
-            "label-en": "dg",
-            "definition-en": "Directory general to which the project belongs to.",
-            "usageNote-en": "The recommended control vocabulary is the < a href=\" https://op.europa.eu/en/web/eu-vocabularies/concept-scheme/-/resource?uri=http://publications.europa.eu/resource/authority/corporate-body\" > Corporate Body </a> list from Publications Office. "
-          }
-        },
-        {
-          "uri": "http://example.com/projectType",
-          "name": "projectType",
-          "sort": "project type",
-          "label": {
-            "en": "project type"
-          },
-          "description": {
-            "en": "A category to which the project belongs to. "
-          },
-          "usage": {},
-          "domain": [
-            {
-              "EA-Name": "Block",
-              "uri": "http://example.com/Block"
-            }
-          ],
-          "range": [
-            {
-              "range_label": "Code",
-              "range_uri": "http://www.w3.org/2004/02/skos/core#Concept"
-            }
-          ],
-          "scopedrange": [
-            {
-              "range_uri": "#Code",
-              "range_puri": "http://www.w3.org/2004/02/skos/core#Concept",
-              "range_label": {
-                "en": "Code"
-              }
-            }
-          ],
-          "cardinality": "1",
-          "codelist_uri": "",
-          "rawTags": {
-            "uri": "http://example.com/projectType",
-            "label-en": "project type",
-            "definition-en": "A category to which the project belongs to. "
-          }
-        }
-      ]
-    },
-    {
-      "uri": "http://example.com/KeyExpert",
-      "name": "Keyexpert",
-      "label": {
-        "en": "KeyExpert"
-      },
-      "sort": "KeyExpert",
-      "description": {
-        "en": "The entity getting benefit from a contract"
-      },
-      "usage": {},
-      "parents": [
-        {
-          "label": "Person",
-          "name": "Person",
-          "package": "Core Person",
-          "uri": "http://www.w3.org/ns/person#Person",
-          "scoped_uri": "#Person"
-        }
-      ],
-      "rawTags": {
-        "uri": "http://example.com/KeyExpert",
-        "label-en": "KeyExpert",
-        "definition-en": "The entity getting benefit from a contract"
-      },
-      "properties": []
-    },
-    {
-      "uri": "http://example.com/Partner",
-      "name": "Partner",
-      "label": {
-        "en": "Partner"
-      },
-      "sort": "Partner",
-      "description": {
-        "en": "Entity which is partner of the beneficiary of th"
-      },
-      "usage": {},
-      "parents": [
-        {
-          "label": "Legal Entity",
-          "name": "LegalEntity",
-          "package": "Core Business",
-          "uri": "http://www.w3.org/ns/legal#LegalEntity",
-          "scoped_uri": "#Legal Entity"
-        }
-      ],
-      "rawTags": {
-        "uri": "http://example.com/Partner",
-        "label-en": "Partner",
-        "definition-en": "Entity which is partner of the beneficiary of th"
-      },
-      "properties": []
-    },
-    {
-      "uri": "http://example.com/Subcontract",
-      "name": "Subcontract",
-      "label": {
-        "en": "Subcontract"
-      },
-      "sort": "Subcontract",
-      "description": {},
-      "usage": {},
-      "parents": [],
-      "rawTags": {
-        "uri": "http://example.com/Subcontract",
-        "label-en": "Subcontract",
-        "class-usage-scope": "main"
-      },
-      "properties": [
-        {
-          "uri": "http://purl.org/dc/terms/isPartOf",
-          "name": "isPartOf",
-          "sort": "is part of",
-          "label": {
-            "en": "is part of"
-          },
-          "description": {
-            "en": "A related resource in which the described resource is physically or logically included."
-          },
-          "usage": {},
-          "domain": [
-            {
-              "EA-Name": "Subcontract",
-              "uri": "http://example.com/Subcontract"
-            }
-          ],
-          "range": [
-            {
-              "range_label": "Contract",
-              "range_uri": "http://data.europa.eu/a4g/ontology#Contract"
-            }
-          ],
-          "scopedrange": [
-            {
-              "range_uri": "#Contract",
-              "range_puri": "http://data.europa.eu/a4g/ontology#Contract",
-              "range_label": {
-                "en": "Contract"
-              }
-            }
-          ],
-          "cardinality": "1",
-          "codelist_uri": "",
-          "rawTags": {
-            "definition-en": "A related resource in which the described resource is physically or logically included.",
-            "label-en": "is part of",
-            "uri": "http://purl.org/dc/terms/isPartOf"
+            "definition-en": "Reference to the type of the project.",
+            "uri": "https://w3id.org/adm/model/hasBlock",
+            "label-en": "has block"
           }
         }
       ]
@@ -1542,7 +1546,143 @@
       ]
     }
   ],
-  "properties": [],
+  "properties": [
+    {
+      "uri": "https://w3id.org/adm/model/ECFinancialAssistance",
+      "name": {
+        "en": "EC financial assistance",
+        "undefined": "ecFinancialAssistance"
+      },
+      "description": {},
+      "domain": [
+        null
+      ],
+      "range": [
+        null
+      ],
+      "parents": []
+    },
+    {
+      "uri": "https://w3id.org/adm/model/currency",
+      "name": {
+        "en": "currency",
+        "undefined": "currency"
+      },
+      "description": {},
+      "domain": [
+        null
+      ],
+      "range": [
+        null
+      ],
+      "parents": []
+    },
+    {
+      "uri": "https://w3id.org/adm/model/dg",
+      "name": {
+        "en": "dg",
+        "undefined": "dg"
+      },
+      "description": {},
+      "domain": [
+        null
+      ],
+      "range": [
+        null
+      ],
+      "parents": []
+    },
+    {
+      "uri": "https://w3id.org/adm/model/income",
+      "name": {
+        "en": "income",
+        "undefined": "income"
+      },
+      "description": {},
+      "domain": [
+        null
+      ],
+      "range": [
+        null
+      ],
+      "parents": []
+    },
+    {
+      "uri": "https://w3id.org/adm/model/otherContributions",
+      "name": {
+        "en": "other contributions",
+        "undefined": "otherContributions"
+      },
+      "description": {},
+      "domain": [
+        null
+      ],
+      "range": [
+        null
+      ],
+      "parents": []
+    },
+    {
+      "uri": "https://w3id.org/adm/model/projectType",
+      "name": {
+        "en": "project type",
+        "undefined": "projectType"
+      },
+      "description": {},
+      "domain": [
+        null
+      ],
+      "range": [
+        null
+      ],
+      "parents": []
+    },
+    {
+      "uri": "https://w3id.org/adm/model/thematicObjective",
+      "name": {
+        "en": "thematic objective",
+        "undefined": "thematicObjective"
+      },
+      "description": {},
+      "domain": [
+        null
+      ],
+      "range": [
+        null
+      ],
+      "parents": []
+    },
+    {
+      "uri": "https://w3id.org/adm/model/totalCost",
+      "name": {
+        "en": "total cost",
+        "undefined": "totalCost"
+      },
+      "description": {},
+      "domain": [
+        null
+      ],
+      "range": [
+        null
+      ],
+      "parents": []
+    },
+    {
+      "uri": "https://w3id.org/adm/model/turnover",
+      "name": {
+        "en": "turnover",
+        "undefined": "turnover"
+      },
+      "description": {},
+      "domain": [
+        null
+      ],
+      "range": [
+        null
+      ],
+      "parents": []
+    }
+  ],
   "contributors": [
     {
       "role": "E",
@@ -1643,6 +1783,25 @@
         "uri": "http://www.w3.org/2001/XMLSchema#date",
         "label-en": "Date",
         "definition-en": "Date represents top-open intervals of exactly one day in length on the timelines of dateTime, beginning on the beginning moment of each day, up to but not including the beginning moment of the next day).  For non-timezoned values, the top-open intervals disjointly cover the non-timezoned timeline, one per day.  For timezoned values, the intervals begin at every minute and therefore overlap."
+      },
+      "properties": []
+    },
+    {
+      "uri": "http://www.w3.org/2001/XMLSchema#decimal",
+      "name": "Decimal",
+      "label": {
+        "en": "Decimal"
+      },
+      "sort": "Decimal",
+      "description": {
+        "en": "Decimal represents a subset of the real numbers, which can be represented by decimal numerals."
+      },
+      "usage": {},
+      "parents": [],
+      "rawTags": {
+        "definition-en": "Decimal represents a subset of the real numbers, which can be represented by decimal numerals.",
+        "label-en": "Decimal",
+        "uri": "http://www.w3.org/2001/XMLSchema#decimal"
       },
       "properties": []
     },
