@@ -9,7 +9,6 @@
   <xs:element name="LinguisticSystem" type="LinguisticSystemType"/>
   <xs:element name="Location" type="LocationType"/>
   <xs:element name="Text" type="TextType"/>
-  <xs:element name="Uri" type="UriType"/>
   <xs:element name="Date" type="DateType"/>
   <xs:element name="Integer" type="IntegerType"/>
   <xs:element name="String" type="StringType"/>
@@ -112,6 +111,11 @@
           <xs:documentation xml:lang="en">The entity using the solution.</xs:documentation>
         </xs:annotation>
       </xs:element>
+      <xs:element name="language" ref="LinguisticSystemType" maxOccurs="1" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation xml:lang="en">A language of the CaseStudy.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
       <xs:element name="logo" ref="ImageObjectType" maxOccurs="1" minOccurs="1">
         <xs:annotation>
           <xs:documentation xml:lang="en">A graphic symbol to represent the Case Study.</xs:documentation>
@@ -164,9 +168,19 @@
   </xs:complexType>
   <xs:complexType name="MethodologyType">
     <xs:sequence>
+      <xs:element name="language" ref="LinguisticSystemType" maxOccurs="1" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation xml:lang="en">A language of the Methodology.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
       <xs:element name="name" type="xs:string" maxOccurs="1" minOccurs="1">
         <xs:annotation>
           <xs:documentation xml:lang="en">The title of the document.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="url" ref="DocumentType" maxOccurs="1" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation xml:lang="en">A web page of the Methodology.</xs:documentation>
         </xs:annotation>
       </xs:element>
     </xs:sequence>
@@ -202,7 +216,7 @@
           <xs:documentation xml:lang="en">A name given to the logo.</xs:documentation>
         </xs:annotation>
       </xs:element>
-      <xs:element name="url" type="xs:anyURI" maxOccurs="1" minOccurs="1">
+      <xs:element name="url" ref="DocumentType" maxOccurs="1" minOccurs="1">
         <xs:annotation>
           <xs:documentation xml:lang="en">A url for retrieving the ImageObject.</xs:documentation>
         </xs:annotation>
@@ -235,14 +249,6 @@
     <xs:attribute name="TextRef" type="xs:IDREF">
       <xs:annotation>
         <xs:documentation xml:lang="en">Reference to Text ID</xs:documentation>
-      </xs:annotation>
-    </xs:attribute>
-  </xs:complexType>
-  <xs:complexType name="UriType">
-    <xs:sequence/>
-    <xs:attribute name="UriRef" type="xs:IDREF">
-      <xs:annotation>
-        <xs:documentation xml:lang="en">Reference to Uri ID</xs:documentation>
       </xs:annotation>
     </xs:attribute>
   </xs:complexType>
@@ -353,7 +359,7 @@
           <xs:documentation xml:lang="en">The nature of the Organization.</xs:documentation>
         </xs:annotation>
       </xs:element>
-      <xs:element name="websiteUrl" type="xs:anyURI" maxOccurs="1" minOccurs="0">
+      <xs:element name="websiteUrl" ref="DocumentType" maxOccurs="1" minOccurs="0">
         <xs:annotation>
           <xs:documentation xml:lang="en">The web portal where information about the organization can be found.</xs:documentation>
         </xs:annotation>
