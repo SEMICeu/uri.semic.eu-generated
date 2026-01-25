@@ -1,5 +1,6 @@
 @prefix dc: <http://purl.org/dc/terms/> .
 @prefix dcat: <http://www.w3.org/ns/dcat#> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
 @prefix org: <http://www.w3.org/ns/org#> .
 @prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
 @prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
@@ -13,6 +14,7 @@
     <https://semiceu.github.io/EGDC_CaseStudy/releases/1.0.1#MethodologyShape>,
     <https://semiceu.github.io/EGDC_CaseStudy/releases/1.0.1#ContactPointShape>,
     <https://semiceu.github.io/EGDC_CaseStudy/releases/1.0.1#ImageObjectShape>,
+    <https://semiceu.github.io/EGDC_CaseStudy/releases/1.0.1#LinguisticSystemShape>,
     <https://semiceu.github.io/EGDC_CaseStudy/releases/1.0.1#LocationShape>,
     <https://semiceu.github.io/EGDC_CaseStudy/releases/1.0.1#TextShape>,
     <https://semiceu.github.io/EGDC_CaseStudy/releases/1.0.1#URIShape>,
@@ -22,7 +24,8 @@
     <https://semiceu.github.io/EGDC_CaseStudy/releases/1.0.1#CodeShape>,
     <https://semiceu.github.io/EGDC_CaseStudy/releases/1.0.1#DatasetShape>,
     <https://semiceu.github.io/EGDC_CaseStudy/releases/1.0.1#AddressShape>,
-    <https://semiceu.github.io/EGDC_CaseStudy/releases/1.0.1#OrganizationShape> .
+    <https://semiceu.github.io/EGDC_CaseStudy/releases/1.0.1#OrganizationShape>,
+    <https://semiceu.github.io/EGDC_CaseStudy/releases/1.0.1#DocumentShape> .
 
 <https://semiceu.github.io/EGDC_CaseStudy/releases/1.0.1#AddressShape> a shacl:NodeShape;
   shacl:closed false;
@@ -576,7 +579,12 @@
 <https://semiceu.github.io/EGDC_CaseStudy/releases/1.0.1#ContactPointShape> a shacl:NodeShape;
   shacl:closed false;
   shacl:property <https://semiceu.github.io/EGDC_CaseStudy/releases/1.0.1#ContactPointShape/0867cf853418cb9d7d1fb8b906e353ec44462596>,
-    <https://semiceu.github.io/EGDC_CaseStudy/releases/1.0.1#ContactPointShape/0c404fa56c64463c15f65878d02efa16eec065b0>;
+    <https://semiceu.github.io/EGDC_CaseStudy/releases/1.0.1#ContactPointShape/0c404fa56c64463c15f65878d02efa16eec065b0>,
+    <https://semiceu.github.io/EGDC_CaseStudy/releases/1.0.1#ContactPointShape/263a563c5bed08cdaadf4a0fd0a5fb9874d742bc>,
+    <https://semiceu.github.io/EGDC_CaseStudy/releases/1.0.1#ContactPointShape/398fb93e389fba9a790e6adb0152f10f2ba6023a>,
+    <https://semiceu.github.io/EGDC_CaseStudy/releases/1.0.1#ContactPointShape/4a468954b931f560241136ea65630a06ec4bb505>,
+    <https://semiceu.github.io/EGDC_CaseStudy/releases/1.0.1#ContactPointShape/96cdcbb0489a41ab01fc39c521f5ed607a0b2c41>,
+    <https://semiceu.github.io/EGDC_CaseStudy/releases/1.0.1#ContactPointShape/9caf9e629daa0e64ece77788576468821d7cff8c>;
   shacl:targetClass <http://data.europa.eu/m8g/ContactPoint> .
 
 <https://semiceu.github.io/EGDC_CaseStudy/releases/1.0.1#ContactPointShape/0867cf853418cb9d7d1fb8b906e353ec44462596> rdfs:seeAlso "https://semiceu.github.io/EGDC_CaseStudy/releases/1.0.1#ContactPoint.hasemail";
@@ -591,12 +599,48 @@
   shacl:nodeKind shacl:Literal;
   shacl:path <http://data.europa.eu/m8g/email> .
 
+<https://semiceu.github.io/EGDC_CaseStudy/releases/1.0.1#ContactPointShape/263a563c5bed08cdaadf4a0fd0a5fb9874d742bc> rdfs:seeAlso "https://semiceu.github.io/EGDC_CaseStudy/releases/1.0.1#ContactPoint.name";
+  shacl:datatype rdf:langString;
+  shacl:description "A name given to the ContactPoint."@en;
+  shacl:name "name"@en;
+  shacl:path dc:title .
+
+<https://semiceu.github.io/EGDC_CaseStudy/releases/1.0.1#ContactPointShape/398fb93e389fba9a790e6adb0152f10f2ba6023a> rdfs:seeAlso "https://semiceu.github.io/EGDC_CaseStudy/releases/1.0.1#ContactPoint.name";
+  shacl:description "A name given to the ContactPoint."@en;
+  shacl:maxCount 1;
+  shacl:name "name"@en;
+  shacl:path dc:title .
+
+<https://semiceu.github.io/EGDC_CaseStudy/releases/1.0.1#ContactPointShape/4a468954b931f560241136ea65630a06ec4bb505> rdfs:seeAlso "https://semiceu.github.io/EGDC_CaseStudy/releases/1.0.1#ContactPoint.hasemail";
+  shacl:description "An electronic address through which the Contact Point can be contacted."@en;
+  shacl:minCount 1;
+  shacl:name "has email"@en;
+  shacl:path <http://data.europa.eu/m8g/email> .
+
+<https://semiceu.github.io/EGDC_CaseStudy/releases/1.0.1#ContactPointShape/96cdcbb0489a41ab01fc39c521f5ed607a0b2c41> rdfs:seeAlso "https://semiceu.github.io/EGDC_CaseStudy/releases/1.0.1#ContactPoint.name";
+  shacl:description "A name given to the ContactPoint."@en;
+  shacl:minCount 1;
+  shacl:name "name"@en;
+  shacl:path dc:title .
+
+<https://semiceu.github.io/EGDC_CaseStudy/releases/1.0.1#ContactPointShape/9caf9e629daa0e64ece77788576468821d7cff8c> rdfs:seeAlso "https://semiceu.github.io/EGDC_CaseStudy/releases/1.0.1#ContactPoint.name";
+  shacl:description "A name given to the ContactPoint."@en;
+  shacl:name "name"@en;
+  shacl:nodeKind shacl:Literal;
+  shacl:path dc:title .
+
 <https://semiceu.github.io/EGDC_CaseStudy/releases/1.0.1#DatasetShape> a shacl:NodeShape;
   shacl:closed false;
   shacl:property <https://semiceu.github.io/EGDC_CaseStudy/releases/1.0.1#DatasetShape/263a563c5bed08cdaadf4a0fd0a5fb9874d742bc>,
+    <https://semiceu.github.io/EGDC_CaseStudy/releases/1.0.1#DatasetShape/29ba27566ab1f32c8bb73f3492436d4bd868d3d2>,
+    <https://semiceu.github.io/EGDC_CaseStudy/releases/1.0.1#DatasetShape/30e78cd98aa6cd5dbc31678289abb5e0cc0b55c7>,
     <https://semiceu.github.io/EGDC_CaseStudy/releases/1.0.1#DatasetShape/398fb93e389fba9a790e6adb0152f10f2ba6023a>,
+    <https://semiceu.github.io/EGDC_CaseStudy/releases/1.0.1#DatasetShape/3b3a467d376a3abb559def39aba63b4f856203d2>,
+    <https://semiceu.github.io/EGDC_CaseStudy/releases/1.0.1#DatasetShape/7aec081a3157b0088bf876dfe8ba996a07cb6648>,
     <https://semiceu.github.io/EGDC_CaseStudy/releases/1.0.1#DatasetShape/96cdcbb0489a41ab01fc39c521f5ed607a0b2c41>,
-    <https://semiceu.github.io/EGDC_CaseStudy/releases/1.0.1#DatasetShape/9caf9e629daa0e64ece77788576468821d7cff8c>;
+    <https://semiceu.github.io/EGDC_CaseStudy/releases/1.0.1#DatasetShape/9caf9e629daa0e64ece77788576468821d7cff8c>,
+    <https://semiceu.github.io/EGDC_CaseStudy/releases/1.0.1#DatasetShape/db878f1cb93930f64561d0504123c66feacfad5a>,
+    <https://semiceu.github.io/EGDC_CaseStudy/releases/1.0.1#DatasetShape/ffbbcd28b1fd92213d8350e1b6418d3d998c7197>;
   shacl:targetClass dcat:Dataset .
 
 <https://semiceu.github.io/EGDC_CaseStudy/releases/1.0.1#DatasetShape/263a563c5bed08cdaadf4a0fd0a5fb9874d742bc> rdfs:seeAlso "https://semiceu.github.io/EGDC_CaseStudy/releases/1.0.1#Dataset.name";
@@ -605,11 +649,35 @@
   shacl:name "name"@en;
   shacl:path dc:title .
 
+<https://semiceu.github.io/EGDC_CaseStudy/releases/1.0.1#DatasetShape/29ba27566ab1f32c8bb73f3492436d4bd868d3d2> rdfs:seeAlso "https://semiceu.github.io/EGDC_CaseStudy/releases/1.0.1#Dataset.language";
+  shacl:class dc:LinguisticSystem;
+  shacl:description "A language of the Dataset."@en;
+  shacl:name "language"@en;
+  shacl:path dc:language .
+
+<https://semiceu.github.io/EGDC_CaseStudy/releases/1.0.1#DatasetShape/30e78cd98aa6cd5dbc31678289abb5e0cc0b55c7> rdfs:seeAlso "https://semiceu.github.io/EGDC_CaseStudy/releases/1.0.1#Dataset.landingpage";
+  shacl:description "A web page that provides access to the Dataset, its Distributions and/or additional information."@en;
+  shacl:name "landing page"@en;
+  shacl:nodeKind shacl:BlankNodeOrIRI;
+  shacl:path foaf:page .
+
 <https://semiceu.github.io/EGDC_CaseStudy/releases/1.0.1#DatasetShape/398fb93e389fba9a790e6adb0152f10f2ba6023a> rdfs:seeAlso "https://semiceu.github.io/EGDC_CaseStudy/releases/1.0.1#Dataset.name";
   shacl:description "A name given to the Dataset."@en;
   shacl:maxCount 1;
   shacl:name "name"@en;
   shacl:path dc:title .
+
+<https://semiceu.github.io/EGDC_CaseStudy/releases/1.0.1#DatasetShape/3b3a467d376a3abb559def39aba63b4f856203d2> rdfs:seeAlso "https://semiceu.github.io/EGDC_CaseStudy/releases/1.0.1#Dataset.landingpage";
+  shacl:description "A web page that provides access to the Dataset, its Distributions and/or additional information."@en;
+  shacl:maxCount 1;
+  shacl:name "landing page"@en;
+  shacl:path foaf:page .
+
+<https://semiceu.github.io/EGDC_CaseStudy/releases/1.0.1#DatasetShape/7aec081a3157b0088bf876dfe8ba996a07cb6648> rdfs:seeAlso "https://semiceu.github.io/EGDC_CaseStudy/releases/1.0.1#Dataset.language";
+  shacl:description "A language of the Dataset."@en;
+  shacl:maxCount 1;
+  shacl:name "language"@en;
+  shacl:path dc:language .
 
 <https://semiceu.github.io/EGDC_CaseStudy/releases/1.0.1#DatasetShape/96cdcbb0489a41ab01fc39c521f5ed607a0b2c41> rdfs:seeAlso "https://semiceu.github.io/EGDC_CaseStudy/releases/1.0.1#Dataset.name";
   shacl:description "A name given to the Dataset."@en;
@@ -623,9 +691,25 @@
   shacl:nodeKind shacl:Literal;
   shacl:path dc:title .
 
+<https://semiceu.github.io/EGDC_CaseStudy/releases/1.0.1#DatasetShape/db878f1cb93930f64561d0504123c66feacfad5a> rdfs:seeAlso "https://semiceu.github.io/EGDC_CaseStudy/releases/1.0.1#Dataset.language";
+  shacl:description "A language of the Dataset."@en;
+  shacl:name "language"@en;
+  shacl:nodeKind shacl:BlankNodeOrIRI;
+  shacl:path dc:language .
+
+<https://semiceu.github.io/EGDC_CaseStudy/releases/1.0.1#DatasetShape/ffbbcd28b1fd92213d8350e1b6418d3d998c7197> rdfs:seeAlso "https://semiceu.github.io/EGDC_CaseStudy/releases/1.0.1#Dataset.landingpage";
+  shacl:class foaf:Document;
+  shacl:description "A web page that provides access to the Dataset, its Distributions and/or additional information."@en;
+  shacl:name "landing page"@en;
+  shacl:path foaf:page .
+
 <https://semiceu.github.io/EGDC_CaseStudy/releases/1.0.1#DateShape> a shacl:NodeShape;
   shacl:closed false;
   shacl:targetClass xsd:date .
+
+<https://semiceu.github.io/EGDC_CaseStudy/releases/1.0.1#DocumentShape> a shacl:NodeShape;
+  shacl:closed false;
+  shacl:targetClass foaf:Document .
 
 <https://semiceu.github.io/EGDC_CaseStudy/releases/1.0.1#EnvironmentalBenefitShape> a shacl:NodeShape;
   shacl:closed false;
@@ -688,6 +772,10 @@
   shacl:closed false;
   shacl:targetClass xsd:integer .
 
+<https://semiceu.github.io/EGDC_CaseStudy/releases/1.0.1#LinguisticSystemShape> a shacl:NodeShape;
+  shacl:closed false;
+  shacl:targetClass dc:LinguisticSystem .
+
 <https://semiceu.github.io/EGDC_CaseStudy/releases/1.0.1#LocationShape> a shacl:NodeShape;
   shacl:closed false;
   shacl:targetClass dc:Location .
@@ -726,21 +814,34 @@
 
 <https://semiceu.github.io/EGDC_CaseStudy/releases/1.0.1#OrganizationShape> a shacl:NodeShape;
   shacl:closed false;
-  shacl:property <https://semiceu.github.io/EGDC_CaseStudy/releases/1.0.1#OrganizationShape/236f0210baaf149903750c43bbe7012c21debb2a>,
+  shacl:property <https://semiceu.github.io/EGDC_CaseStudy/releases/1.0.1#OrganizationShape/19930a417cd6ff32e6df5337945bd74134c35f42>,
+    <https://semiceu.github.io/EGDC_CaseStudy/releases/1.0.1#OrganizationShape/236f0210baaf149903750c43bbe7012c21debb2a>,
     <https://semiceu.github.io/EGDC_CaseStudy/releases/1.0.1#OrganizationShape/251128db322f087a1f26ce0a3ab9cf9fca2867ea>,
     <https://semiceu.github.io/EGDC_CaseStudy/releases/1.0.1#OrganizationShape/263a563c5bed08cdaadf4a0fd0a5fb9874d742bc>,
+    <https://semiceu.github.io/EGDC_CaseStudy/releases/1.0.1#OrganizationShape/2b804922e5835bf4337e3a33a0b58cf48661e851>,
     <https://semiceu.github.io/EGDC_CaseStudy/releases/1.0.1#OrganizationShape/30c22fc321cd832f3d07730c7667cb745fb5fc29>,
     <https://semiceu.github.io/EGDC_CaseStudy/releases/1.0.1#OrganizationShape/322371a77364a50f049d46180f6192532eea26dc>,
+    <https://semiceu.github.io/EGDC_CaseStudy/releases/1.0.1#OrganizationShape/362d1bf0eab8051024cf5ec1345eb1ce50762580>,
     <https://semiceu.github.io/EGDC_CaseStudy/releases/1.0.1#OrganizationShape/3833ee6007343a68911e59f730b9c7d5625a15e1>,
     <https://semiceu.github.io/EGDC_CaseStudy/releases/1.0.1#OrganizationShape/38cdba2d3411fe95c0698cc43e2c9ffd78c46521>,
     <https://semiceu.github.io/EGDC_CaseStudy/releases/1.0.1#OrganizationShape/4f381639bb6e021939f65b4f41409d1edaeade9b>,
+    <https://semiceu.github.io/EGDC_CaseStudy/releases/1.0.1#OrganizationShape/6cae9880e515253132af1452a38a8a5827165149>,
+    <https://semiceu.github.io/EGDC_CaseStudy/releases/1.0.1#OrganizationShape/74feba662f4f65577bf45a8dd94f8faec0f03592>,
     <https://semiceu.github.io/EGDC_CaseStudy/releases/1.0.1#OrganizationShape/7b6713c1f4a52e964f5db57eabef294b6d04e90e>,
     <https://semiceu.github.io/EGDC_CaseStudy/releases/1.0.1#OrganizationShape/8a632f7dc3e54399033c42efed3517953c72c261>,
     <https://semiceu.github.io/EGDC_CaseStudy/releases/1.0.1#OrganizationShape/8d0887fb5b09da25cec1aa7e1ccb999acc379917>,
     <https://semiceu.github.io/EGDC_CaseStudy/releases/1.0.1#OrganizationShape/96cdcbb0489a41ab01fc39c521f5ed607a0b2c41>,
     <https://semiceu.github.io/EGDC_CaseStudy/releases/1.0.1#OrganizationShape/9adf9f5890592909cf3e67021ae7ab4f895a7745>,
-    <https://semiceu.github.io/EGDC_CaseStudy/releases/1.0.1#OrganizationShape/9caf9e629daa0e64ece77788576468821d7cff8c>;
+    <https://semiceu.github.io/EGDC_CaseStudy/releases/1.0.1#OrganizationShape/9caf9e629daa0e64ece77788576468821d7cff8c>,
+    <https://semiceu.github.io/EGDC_CaseStudy/releases/1.0.1#OrganizationShape/c6c38001d871287551416c9e2939be9d55b00201>,
+    <https://semiceu.github.io/EGDC_CaseStudy/releases/1.0.1#OrganizationShape/d4d4f2399b8cf2f615ac658920373b714726bed0>;
   shacl:targetClass org:Organization .
+
+<https://semiceu.github.io/EGDC_CaseStudy/releases/1.0.1#OrganizationShape/19930a417cd6ff32e6df5337945bd74134c35f42> rdfs:seeAlso "https://semiceu.github.io/EGDC_CaseStudy/releases/1.0.1#Organization.websiteurl";
+  shacl:description "The web portal where information about the organization can be found."@en;
+  shacl:maxCount 1;
+  shacl:name "website url"@en;
+  shacl:path <https://www.greendigitalcoalition.eu/model/websiteurl> .
 
 <https://semiceu.github.io/EGDC_CaseStudy/releases/1.0.1#OrganizationShape/236f0210baaf149903750c43bbe7012c21debb2a> rdfs:seeAlso "https://semiceu.github.io/EGDC_CaseStudy/releases/1.0.1#Organization.type";
   shacl:description "The nature of the Organization."@en;
@@ -760,6 +861,12 @@
   shacl:name "name"@en;
   shacl:path dc:title .
 
+<https://semiceu.github.io/EGDC_CaseStudy/releases/1.0.1#OrganizationShape/2b804922e5835bf4337e3a33a0b58cf48661e851> rdfs:seeAlso "https://semiceu.github.io/EGDC_CaseStudy/releases/1.0.1#Organization.websiteurl";
+  shacl:datatype xsd:anyURI;
+  shacl:description "The web portal where information about the organization can be found."@en;
+  shacl:name "website url"@en;
+  shacl:path <https://www.greendigitalcoalition.eu/model/websiteurl> .
+
 <https://semiceu.github.io/EGDC_CaseStudy/releases/1.0.1#OrganizationShape/30c22fc321cd832f3d07730c7667cb745fb5fc29> rdfs:seeAlso "https://semiceu.github.io/EGDC_CaseStudy/releases/1.0.1#Organization.subsector";
   shacl:description "The sub sector the Organization is intended for."@en;
   shacl:name "sub sector"@en;
@@ -771,6 +878,12 @@
   shacl:description "The nature of the Organization."@en;
   shacl:name "type"@en;
   shacl:path dc:type .
+
+<https://semiceu.github.io/EGDC_CaseStudy/releases/1.0.1#OrganizationShape/362d1bf0eab8051024cf5ec1345eb1ce50762580> rdfs:seeAlso "https://semiceu.github.io/EGDC_CaseStudy/releases/1.0.1#Organization.description";
+  shacl:description "A description of the organization."@en;
+  shacl:maxCount 1;
+  shacl:name "description"@en;
+  shacl:path dc:description .
 
 <https://semiceu.github.io/EGDC_CaseStudy/releases/1.0.1#OrganizationShape/3833ee6007343a68911e59f730b9c7d5625a15e1> rdfs:seeAlso "https://semiceu.github.io/EGDC_CaseStudy/releases/1.0.1#Organization.sector";
   shacl:class skos:Concept;
@@ -788,6 +901,18 @@
   shacl:description "The nature of the Organization."@en;
   shacl:name "type"@en;
   shacl:nodeKind shacl:BlankNodeOrIRI;
+  shacl:path dc:type .
+
+<https://semiceu.github.io/EGDC_CaseStudy/releases/1.0.1#OrganizationShape/6cae9880e515253132af1452a38a8a5827165149> rdfs:seeAlso "https://semiceu.github.io/EGDC_CaseStudy/releases/1.0.1#Organization.description";
+  shacl:description "A description of the organization."@en;
+  shacl:name "description"@en;
+  shacl:nodeKind shacl:Literal;
+  shacl:path dc:description .
+
+<https://semiceu.github.io/EGDC_CaseStudy/releases/1.0.1#OrganizationShape/74feba662f4f65577bf45a8dd94f8faec0f03592> rdfs:seeAlso "https://semiceu.github.io/EGDC_CaseStudy/releases/1.0.1#Organization.type";
+  shacl:description "The nature of the Organization."@en;
+  shacl:minCount 1;
+  shacl:name "type"@en;
   shacl:path dc:type .
 
 <https://semiceu.github.io/EGDC_CaseStudy/releases/1.0.1#OrganizationShape/7b6713c1f4a52e964f5db57eabef294b6d04e90e> rdfs:seeAlso "https://semiceu.github.io/EGDC_CaseStudy/releases/1.0.1#Organization.contactpoint";
@@ -825,6 +950,18 @@
   shacl:name "name"@en;
   shacl:nodeKind shacl:Literal;
   shacl:path dc:title .
+
+<https://semiceu.github.io/EGDC_CaseStudy/releases/1.0.1#OrganizationShape/c6c38001d871287551416c9e2939be9d55b00201> rdfs:seeAlso "https://semiceu.github.io/EGDC_CaseStudy/releases/1.0.1#Organization.websiteurl";
+  shacl:description "The web portal where information about the organization can be found."@en;
+  shacl:name "website url"@en;
+  shacl:nodeKind shacl:Literal;
+  shacl:path <https://www.greendigitalcoalition.eu/model/websiteurl> .
+
+<https://semiceu.github.io/EGDC_CaseStudy/releases/1.0.1#OrganizationShape/d4d4f2399b8cf2f615ac658920373b714726bed0> rdfs:seeAlso "https://semiceu.github.io/EGDC_CaseStudy/releases/1.0.1#Organization.description";
+  shacl:datatype rdf:langString;
+  shacl:description "A description of the organization."@en;
+  shacl:name "description"@en;
+  shacl:path dc:description .
 
 <https://semiceu.github.io/EGDC_CaseStudy/releases/1.0.1#StringShape> a shacl:NodeShape;
   shacl:closed false;

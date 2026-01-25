@@ -6,6 +6,7 @@
   <xs:element name="Methodology" type="MethodologyType"/>
   <xs:element name="ContactPoint" type="ContactPointType"/>
   <xs:element name="ImageObject" type="ImageObjectType"/>
+  <xs:element name="LinguisticSystem" type="LinguisticSystemType"/>
   <xs:element name="Location" type="LocationType"/>
   <xs:element name="Text" type="TextType"/>
   <xs:element name="Uri" type="UriType"/>
@@ -16,6 +17,7 @@
   <xs:element name="Dataset" type="DatasetType"/>
   <xs:element name="Address" type="AddressType"/>
   <xs:element name="Organization" type="OrganizationType"/>
+  <xs:element name="Document" type="DocumentType"/>
   <xs:simpleType name="Literal">
     <xs:restriction base="xs:string"/>
   </xs:simpleType>
@@ -176,9 +178,14 @@
   </xs:complexType>
   <xs:complexType name="ContactPointType">
     <xs:sequence>
-      <xs:element name="hasEmail" type="xs:string" maxOccurs="unbounded" minOccurs="0">
+      <xs:element name="hasEmail" type="xs:string" maxOccurs="unbounded" minOccurs="1">
         <xs:annotation>
           <xs:documentation xml:lang="en">An electronic address through which the Contact Point can be contacted.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="name" type="xs:string" maxOccurs="1" minOccurs="1">
+        <xs:annotation>
+          <xs:documentation xml:lang="en">A name given to the ContactPoint.</xs:documentation>
         </xs:annotation>
       </xs:element>
     </xs:sequence>
@@ -204,6 +211,14 @@
     <xs:attribute name="ImageObjectRef" type="xs:IDREF">
       <xs:annotation>
         <xs:documentation xml:lang="en">Reference to ImageObject ID</xs:documentation>
+      </xs:annotation>
+    </xs:attribute>
+  </xs:complexType>
+  <xs:complexType name="LinguisticSystemType">
+    <xs:sequence/>
+    <xs:attribute name="LinguisticSystemRef" type="xs:IDREF">
+      <xs:annotation>
+        <xs:documentation xml:lang="en">Reference to LinguisticSystem ID</xs:documentation>
       </xs:annotation>
     </xs:attribute>
   </xs:complexType>
@@ -265,9 +280,19 @@
   </xs:complexType>
   <xs:complexType name="DatasetType">
     <xs:sequence>
+      <xs:element name="language" ref="LinguisticSystemType" maxOccurs="1" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation xml:lang="en">A language of the Dataset.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
       <xs:element name="name" type="xs:string" maxOccurs="1" minOccurs="1">
         <xs:annotation>
           <xs:documentation xml:lang="en">A name given to the Dataset.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="landingPage" ref="DocumentType" maxOccurs="1" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation xml:lang="en">A web page that provides access to the Dataset, its Distributions and/or additional information.</xs:documentation>
         </xs:annotation>
       </xs:element>
     </xs:sequence>
@@ -303,6 +328,11 @@
           <xs:documentation xml:lang="en">The main contact information of the Organization.</xs:documentation>
         </xs:annotation>
       </xs:element>
+      <xs:element name="description" type="xs:string" maxOccurs="1" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation xml:lang="en">A description of the organization.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
       <xs:element name="name" type="xs:string" maxOccurs="unbounded" minOccurs="1">
         <xs:annotation>
           <xs:documentation xml:lang="en">The noun given to the Organization.</xs:documentation>
@@ -318,15 +348,28 @@
           <xs:documentation xml:lang="en">The sub sector the Organization is intended for.</xs:documentation>
         </xs:annotation>
       </xs:element>
-      <xs:element name="type" type="ConceptType" maxOccurs="1" minOccurs="0">
+      <xs:element name="type" type="ConceptType" maxOccurs="1" minOccurs="1">
         <xs:annotation>
           <xs:documentation xml:lang="en">The nature of the Organization.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="websiteUrl" type="xs:anyURI" maxOccurs="1" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation xml:lang="en">The web portal where information about the organization can be found.</xs:documentation>
         </xs:annotation>
       </xs:element>
     </xs:sequence>
     <xs:attribute name="OrganizationRef" type="xs:IDREF">
       <xs:annotation>
         <xs:documentation xml:lang="en">Reference to Organization ID</xs:documentation>
+      </xs:annotation>
+    </xs:attribute>
+  </xs:complexType>
+  <xs:complexType name="DocumentType">
+    <xs:sequence/>
+    <xs:attribute name="DocumentRef" type="xs:IDREF">
+      <xs:annotation>
+        <xs:documentation xml:lang="en">Reference to Document ID</xs:documentation>
       </xs:annotation>
     </xs:attribute>
   </xs:complexType>
