@@ -2,6 +2,7 @@
 <xs:schema xmlns="https://data.europa.eu/m8g/xml/" xmlns:xs="http://www.w3.org/2001/XMLSchema" targetNamespace="https://data.europa.eu/m8g/xml/" version="2.0.0" elementFormDefault="qualified" attributeFormDefault="unqualified" xmlns:cv="https://data.europa.eu/m8g/xml/">
   <xs:element name="Beneficiary" type="BeneficiaryType"/>
   <xs:element name="Block" type="BlockType"/>
+  <xs:element name="Esf" type="EsfType"/>
   <xs:element name="KeyExpert" type="KeyExpertType"/>
   <xs:element name="MonetaryAmount" type="MonetaryAmountType"/>
   <xs:element name="Partner" type="PartnerType"/>
@@ -10,7 +11,6 @@
   <xs:element name="Document" type="DocumentType"/>
   <xs:element name="GenericDate" type="GenericDateType"/>
   <xs:element name="Project" type="ProjectType"/>
-  <xs:element name="Esf" type="EsfType"/>
   <xs:element name="Text" type="TextType"/>
   <xs:element name="Literal" type="LiteralType"/>
   <xs:element name="Date" type="DateType"/>
@@ -86,6 +86,35 @@ application.</xs:documentation>
     <xs:attribute name="BlockRef" type="xs:IDREF">
       <xs:annotation>
         <xs:documentation xml:lang="en">Reference to Block ID</xs:documentation>
+      </xs:annotation>
+    </xs:attribute>
+  </xs:complexType>
+  <xs:complexType name="EsfType">
+    <xs:sequence>
+      <xs:element name="peopleToTrain" type="xs:integer" maxOccurs="1" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation xml:lang="en">The amount of people requested to follow the training. </xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="providedTrainingHours" type="xs:integer" maxOccurs="1" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation xml:lang="en">The amount of training hours given.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="trainedPeople" type="xs:integer" maxOccurs="1" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation xml:lang="en">The amount of people whom completed the training.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="trainingHours" type="xs:integer" maxOccurs="1" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation xml:lang="en">The time spent for the training.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+    </xs:sequence>
+    <xs:attribute name="EsfRef" type="xs:IDREF">
+      <xs:annotation>
+        <xs:documentation xml:lang="en">Reference to Esf ID</xs:documentation>
       </xs:annotation>
     </xs:attribute>
   </xs:complexType>
@@ -245,35 +274,6 @@ application.</xs:documentation>
     <xs:attribute name="ProjectRef" type="xs:IDREF">
       <xs:annotation>
         <xs:documentation xml:lang="en">Reference to Project ID</xs:documentation>
-      </xs:annotation>
-    </xs:attribute>
-  </xs:complexType>
-  <xs:complexType name="EsfType">
-    <xs:sequence>
-      <xs:element name="peopleToTrain" type="xs:integer" maxOccurs="1" minOccurs="0">
-        <xs:annotation>
-          <xs:documentation xml:lang="en">The amount of people requested to follow the training. </xs:documentation>
-        </xs:annotation>
-      </xs:element>
-      <xs:element name="providedTrainingHours" type="xs:integer" maxOccurs="1" minOccurs="0">
-        <xs:annotation>
-          <xs:documentation xml:lang="en">The amount of training hours given.</xs:documentation>
-        </xs:annotation>
-      </xs:element>
-      <xs:element name="trainedPeople" type="xs:integer" maxOccurs="1" minOccurs="0">
-        <xs:annotation>
-          <xs:documentation xml:lang="en">The amount of people whom completed the training.</xs:documentation>
-        </xs:annotation>
-      </xs:element>
-      <xs:element name="trainingHours" type="xs:integer" maxOccurs="1" minOccurs="0">
-        <xs:annotation>
-          <xs:documentation xml:lang="en">The time spent for the training.</xs:documentation>
-        </xs:annotation>
-      </xs:element>
-    </xs:sequence>
-    <xs:attribute name="EsfRef" type="xs:IDREF">
-      <xs:annotation>
-        <xs:documentation xml:lang="en">Reference to Esf ID</xs:documentation>
       </xs:annotation>
     </xs:attribute>
   </xs:complexType>
