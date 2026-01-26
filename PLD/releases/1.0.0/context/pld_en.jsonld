@@ -1,38 +1,132 @@
 {
   "@context": {
+    "AccessRight": "http://publications.europa.eu/ontology/cdm#access-right",
+    "Agent": "http://publications.europa.eu/ontology/cdm#agent",
+    "AnyURI": "http://fixme.com#anyURI",
     "CaseLaw": "http://publications.europa.eu/ontology/cdm#case-law",
-    "Code": "http://www.w3.org/2004/02/skos/core#Concept",
+    "Concept": "http://www.w3.org/2004/02/skos/core#Concept",
+    "Date": "http://www.w3.org/2001/XMLSchema#date",
+    "DecodingConcept": "http://publications.europa.eu/ontology/cdm#concept_decoding",
+    "EurovocConcept": "http://publications.europa.eu/ontology/cdm#concept_eurovoc",
+    "Expression": "http://publications.europa.eu/ontology/cdm#expression",
     "Judgement": "http://publications.europa.eu/ontology/cdm#judgement",
+    "Language": "http://publications.europa.eu/ontology/cdm#language",
+    "LegalResource": "http://publications.europa.eu/ontology/cdm#resource_legal",
+    "LegalResource.type": {
+      "@id": "http://publications.europa.eu/ontology/cdm#resource_legal_type",
+      "@type": "http://www.w3.org/2001/XMLSchema#string"
+    },
     "Location": "http://purl.org/dc/terms/Location",
+    "Manifestation": "http://publications.europa.eu/ontology/cdm#manifestation",
+    "ManifestationOfGeneralPublication": "http://publications.europa.eu/ontology/cdm#manifestation-publication-general",
+    "NationalCaseLaw": "http://publications.europa.eu/ontology/cdm#case-law_national",
     "NationalCourt": "http://publications.europa.eu/ontology/cdm#court_national",
+    "NationalCourt.type": {
+      "@id": "http://publications.europa.eu/ontology/cdm#court_national_has_type_concept_class_court_national",
+      "@type": "@id"
+    },
     "ProductLiabilityJudgment": "http://example.com/ontology/pld#ProductLiabilityJudgment",
     "String": "http://www.w3.org/2001/XMLSchema#string",
     "Text": "http://www.w3.org/1999/02/22-rdf-syntax-ns#langString",
+    "Work": "http://publications.europa.eu/ontology/cdm#work",
+    "accessRestriction": {
+      "@id": "http://publications.europa.eu/ontology/cdm#work_restricted-by_access-right",
+      "@type": "@id"
+    },
     "caseID": {
-      "@id": "http://example.com/ontology/pld#caseID",
+      "@id": "http://publications.europa.eu/ontology/cdm#caseID",
       "@type": "http://www.w3.org/2001/XMLSchema#string"
+    },
+    "citesWork": {
+      "@container": "@set",
+      "@id": "http://publications.europa.eu/ontology/cdm#work_cites_work",
+      "@type": "@id"
+    },
+    "contributesToWork": {
+      "@container": "@set",
+      "@id": "http://publications.europa.eu/ontology/cdm#contributesToWork",
+      "@type": "@id"
+    },
+    "dateOfDocument": {
+      "@id": "http://publications.europa.eu/ontology/cdm#work_date_document",
+      "@type": "http://www.w3.org/2001/XMLSchema#date"
     },
     "deliveredByCourtNational": {
       "@id": "http://publications.europa.eu/ontology/cdm#case-law_delivered_by_court_national",
       "@type": "@id"
     },
+    "description": {
+      "@id": "http://publications.europa.eu/ontology/cdm#case-law_national_keywords",
+      "@type": "http://www.w3.org/2001/XMLSchema#string"
+    },
     "ecli": {
       "@id": "http://publications.europa.eu/ontology/cdm#case-law_ecli",
       "@type": "http://www.w3.org/2001/XMLSchema#string"
+    },
+    "expressionUsesLanguage": {
+      "@container": "@set",
+      "@id": "http://publications.europa.eu/ontology/cdm#expression_uses_language",
+      "@type": "@id"
+    },
+    "hasExpression": {
+      "@container": "@set",
+      "@id": "http://publications.europa.eu/ontology/cdm#hasExpression",
+      "@type": "@id"
+    },
+    "internalIdentifier": {
+      "@id": "http://publications.europa.eu/ontology/cdm#case-law_national_decision_internal_identifier",
+      "@type": "http://www.w3.org/2001/XMLSchema#string"
+    },
+    "isAbout": {
+      "@container": "@set",
+      "@id": "http://publications.europa.eu/ontology/cdm#work_is_about_concept_eurovoc",
+      "@type": "@id"
+    },
+    "isManifestedBy": {
+      "@container": "@set",
+      "@id": "http://publications.europa.eu/ontology/cdm#isManifestedBy",
+      "@type": "@id"
+    },
+    "languageOfProcedure": {
+      "@container": "@set",
+      "@id": "http://publications.europa.eu/ontology/cdm#expression_case-law_procedure_language",
+      "@type": "@id"
     },
     "name": {
       "@container": "@set",
       "@id": "http://publications.europa.eu/ontology/cdm#court_national_name",
       "@type": "http://www.w3.org/1999/02/22-rdf-syntax-ns#langString"
     },
+    "null": {
+      "@container": "@set",
+      "@id": "http://publications.europa.eu/ontology/cdm#expression_manifested_by_manifestation",
+      "@type": "@id"
+    },
+    "productType": {
+      "@container": "@set",
+      "@id": "http://example.com/ontology/pld#productType",
+      "@type": "@id"
+    },
+    "publicationDate": {
+      "@id": "http://publications.europa.eu/ontology/cdm#publicationDate",
+      "@type": "http://www.w3.org/2001/XMLSchema#date"
+    },
+    "publicationURI": {
+      "@id": "http://publications.europa.eu/ontology/cdm#manifestation-publication-general_uri",
+      "@type": "@id"
+    },
+    "publishedInOfficialJournal": {
+      "@id": "http://publications.europa.eu/ontology/cdm#resource_legal_published_in_official-journal",
+      "@type": "http://www.w3.org/2001/XMLSchema#string"
+    },
     "spatial": {
       "@container": "@set",
       "@id": "http://purl.org/dc/terms/spatial",
       "@type": "@id"
     },
-    "type": {
-      "@id": "http://purl.org/dc/terms/type",
-      "@type": "@id"
+    "summary": {
+      "@id": "http://publications.europa.eu/ontology/cdm#summary_case-law",
+      "@type": "http://www.w3.org/2001/XMLSchema#string"
     }
   }
 }
