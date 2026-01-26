@@ -1,0 +1,61 @@
+@prefix dcterms: <http://purl.org/dc/terms/> . 
+@prefix eli: <http://data.europa.eu/eli/ontology#> . 
+@prefix skos: <http://www.w3.org/2004/02/skos/core#>. 
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> . 
+@prefix oa: <http://www.w3.org/ns/oa#> .
+@prefix time: <http://www.w3.org/2006/time#>. 
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> . 
+@prefix rrmv: <http://data.europa.eu/2qy/rrmv#> . 
+@prefix rrmv-codes: <http://data.europa.eu/2qy/rrmv-codes#> . 
+@prefix example: <https://system.org/example#> . 
+@prefix rrmv-extra: < http://data.europa.eu/2qy/rrmv/extra#> . 
+ 
+example:REG20181999OJART26PAR2
+  a example:Requirement ;
+  rrmv:hasURI "http://data.europa.eu/eli/reg/2018/1999/oj/art_26/par_2"^^xsd:anyURI ;
+  rrmv:isPartOf <http://data.europa.eu/eli/reg/2018/1999/oj> ;
+  rrmv:produces example:REG20181999OJART26PAR2_Action.
+.
+example:REG20181999OJART26PAR2_Action
+  rrmv:atTime example:temporalEntitySpec;
+  rrmv:hasAgentRole [
+    rrmv:forAgent example:TheCommission;
+    rrmv:withRole rrmv:addressee
+  ], [
+    rrmv:forAgent example:MemberState;
+    rrmv:withRole rrmv:addresser
+  ] ;
+  rrmv:hasResult example:REG20181999OJART26PAR2_ActionResult.
+  
+example:REG20181999OJART26PAR2_ActionResult a rrmv:ActionResult.
+example:MemberState a rrmv:Agent.
+example:TheCommission a rrmv:Agent.
+
+example:temporalEntitySpec
+ a rrmv:InstantSpec .
+
+
+[] a oa:Annotation;
+  rrmv:hasTarget <https://system.org/example#REG20181999OJART26PAR2> ;
+  rrmv:hasBody "By 31 July 2021, ... year X-1."@en 
+  
+[] a oa:Annotation;
+  rrmv:hasTarget example:REG20181999OJART26PAR2_Action;
+  rrmv:hasBody "Member States shall report to the Commission"@en .
+  
+[] a oa:Annotation;
+  rrmv:hasTarget example:TemporalEntitySpec;
+  rrmv:hasBody "By 31 July 2021, and every year hereafter"@en .
+
+[] a oa:Annotation;
+  rrmv:hasTarget example:TheCommission;
+  rrmv:hasBody "the Commission"@en .
+
+[] a oa:Annotation;
+  rrmv:hasTarget example:MemberState;
+  rrmv:hasBody "Member State"@en .
+
+[] a oa:Annotation;
+  rrmv:hasTarget example:REG20181999OJART26PAR2_ActionResult;
+  rrmv:hasBody "approximated greenhouse gas inventories for the year X-1"@en .
+

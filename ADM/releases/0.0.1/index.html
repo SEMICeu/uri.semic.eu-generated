@@ -1,0 +1,4139 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"> 
+ 
+
+
+
+<head>
+    
+	
+    <meta charset="utf-8" />
+    <title>Arachne Data Model</title>
+    <script src="https://www.w3.org/Tools/respec/respec-w3c" class="remove" defer></script>
+    <script class="remove">
+    // All config options at https://respec.org/docs/
+
+	var myeditors = [
+	
+	
+	    
+	    
+		
+		   {
+		    name: "Emidio Stani",
+		      
+		      
+		    company: "PwC EU Services",
+		      
+		      
+		    }
+		, 
+		
+		   {
+		    name: "Valy Van den Broeck",
+		      
+		      
+		    company: "PwC EU Services",
+		      
+		      
+		    }
+		
+		
+             
+        
+	
+		]
+
+	var myauthors = [
+	
+	
+	
+		]
+		
+	function quickreference() {
+		$('#table-quickoverview').DataTable();
+	};
+	var shaclfilepath = "./shacl/arachne-SHACL.ttl" ;
+
+   
+
+    var respecConfig = {
+      postProcess: [quickreference],
+      edDraftURI: "https://semiceu.github.io/ADM/releases/0.0.1",
+      latestVersion: "https://semiceu.github.io/ADM/releases/0.0.1/",
+      specStatus: "LD",
+      publishDate: "2026-01-26",
+      editors: myeditors,
+      authors: myauthors,
+      github: "SEMICeu/ADM",
+      shortName: "Arachne Data Model",
+      xref: "web-platform",
+      doJsonLd: true,
+      logos: [{
+        src: "https://semiceu.github.io/Core-Person-Vocabulary/releases/2.1.1/html/semic-icon.png",
+        url: "https://semic.eu",
+        alt: "SEMIC",
+        width: 154,
+        height: 140,
+        id: "semic-logo",
+      },],
+      generatedSubtitle: "",
+      additionalCopyrightHolders: "",
+      localBiblio: {
+        "DXWG": {
+          "href" : "https://www.w3.org/2017/dxwg/wiki/Main_Page",
+          "title" : "Dataset Exchange Working Group",
+          "publisher" : "W3C"
+          },
+        "ISA":{
+           "href":"https://ec.europa.eu/isa/",
+           "title":"Interoperability Solutions for European Public Administrations (ISA)",
+           "publisher":"European Commission"
+          },
+        "ISA2":{
+          "href":"https://ec.europa.eu/isa2/",
+          "title":"Interoperability solutions for public administrations, businesses and citizens (ISA²)",
+          "publisher":"European Commission"
+        },
+        "SEMIC":{
+          "href":"https://joinup.ec.europa.eu/",
+          "title":"JoinUp welcomes Interoperable Europe",
+          "publisher":"European Commission"
+         },
+        "DEU" : {
+          "href":"https://data.europa.eu",
+          "title":"The official portal for European data",
+          "publisher":"European Commission"
+        },
+		"HVD" : {
+		  "href":"https://eur-lex.europa.eu/legal-content/EN/TXT/?uri=CELEX:32023R0138",
+		  "title":"Implementing Regulation for High Value Datasets",
+		  "publisher":"European Union"
+		},
+		"DCAT-AP-HVD" : {
+		  "href":"https://semiceu.github.io/uri.semic.eu-generated/DCAT-AP/releases/2.2.0-hvd/",
+		  "title":"Usage Guidelines of DCAT-AP for High-Value Datasets",
+		  "publisher":"European Commission"
+		},
+                "PSI" : {
+                  "href": "https://eur-lex.europa.eu/eli/dir/2019/1024/oj",
+                  "title" :  "Directive on open data and the re-use of public sector information (recast)",
+                  "publisher" : "European Union"
+                }
+      }
+    };
+
+
+
+    </script>
+    <style>
+      .figure img, .sidefigure img, figure img, .figure object, .sidefigure object, figure object, img, .img {
+      max-width: 100%;
+      margin: auto;
+      height: auto;
+      }
+    </style>
+     
+    <p class="copyright">
+        Copyright © 2026
+    </p>
+    
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="msapplication-TileColor" content="#7ED956" />
+</head>
+<body>
+    
+
+    <!-- Start page content -->
+
+
+
+
+<section id="abstract">
+    <h2>Abstract</h2>
+	The Arachne Data Model (ADM) provides a minimum set of classes and properties for
+    describing a project with a contract.
+</section>
+
+
+<section id="specintro">
+    <h2>
+        Introduction
+    </h2>
+    
+	<p>
+	The Arachne Data Model (ADM) provides a minimum set of classes and properties for
+    describing a project with a contract. This model is being created by SEMIC to support the Arachne project by drafting a semantic model before writing technical artefacts.
+</p>
+
+</section>
+
+
+
+<!--  should support https://www.w3.org/2021/Process-20211102/, mostly like https://www.w3.org/2021/Process-20211102/#maturity-levels -->
+<section id="specstatus">
+    <h2>Status</h2>
+        <p>
+            This Core Vocabulary has the status SEMIC Draft published at 2026-01-26.
+        </p>
+        <p>
+            Information about the process and the decisions involved in the creation of this specification are consultable at the <a href="https://github.com/SEMICeu/ADM/blob/master/releases/0.0.1/Changelog.md">Changelog</a>.
+        </p>
+</section>
+
+
+
+
+<section id="speclicence">
+    <h2>
+        License
+    </h2>
+    
+        <p>
+	<!--
+            <span rel="dct:type"
+                  property="dct:title"
+                  href="http://purl.org/dc/dcmitype/Text"
+                  xmlns:dct="http://purl.org/dc/terms/">
+		  This specification </span> of <a rel="cc:attributionURL" property="cc:attributionName" href="ORGANISATION" xmlns:cc="http://creativecommons.org/ns#">ORGANISATION </a> 
+	          is published under <a href="https://creativecommons.org/licenses/by/4.0/" rel="license">"CC0"</a>.
+	-->
+             Copyright © 2026 European Union. All material in this repository is published under the license CC-BY 4.0, unless explicitly otherwise mentioned.
+        </p>
+    
+</section>
+
+
+
+<section id="conformance" class="informative">
+</section>
+
+
+
+
+<section id="specterminology">
+    <h2>
+        Terminology
+    </h2>
+        <p>
+            The Arachne Data Model (ADM) is an Application Profile that reuses other specifications, i.e. core vocabularies.
+            More information can be found on the <a href="https://semiceu.github.io/style-guide/1.0.0/terminological-clarifications.html#sec:what-is-an-ap-specification">SEMIC Style Guide</a>.
+        </p>
+    <h3>Used Prefixes</h3>
+        
+This specification uses the following prefixes to shorten the URIs for readibility.
+
+        <table id="table-namespaces" class="simple">
+            <thead><tr><th>Prefix</th><th>Namespace IRI</th></tr></thead>
+            <tbody>
+            <tr><td><code>adm</code></td><td><code>https://w3id.org/adm/model/</code></td></tr>
+            <tr><td><code>adms</code></td><td><code>http://www.w3.org/ns/adms#</code></td></tr>
+            <tr><td><code>cv</code></td><td><code>http://data.europa.eu/m8g/</code></td></tr>
+            <tr><td><code>dbo</code></td><td><code>http://dbpedia.org/ontology/</code></td></tr>          
+            <tr><td><code>dct</code></td><td><code>http://purl.org/dc/terms/</code></td></tr>
+            <tr><td><code>epo</code></td><td><code>http://data.europa.eu/a4g/ontology#</code></td></tr>
+            <tr><td><code>foaf</code></td><td><code>http://xmlns.com/foaf/0.1/</code></td></tr>
+            <tr><td><code>legal</code></td><td><code>http://www.w3.org/ns/legal#</code></td></tr>
+            <tr><td><code>locn</code></td><td><code>http://www.w3.org/ns/locn#</code></td></tr>
+            <tr><td><code>person</code></td><td><code>http://www.w3.org/ns/person#</code></td></tr>
+            <tr><td><code>rdf</code></td><td><code>http://www.w3.org/1999/02/22-rdf-syntax-ns#</code></td></tr>
+            <tr><td><code>rdfs</code></td><td><code>http://www.w3.org/2000/01/rdf-schema#</code></td></tr>
+            <tr><td><code>skos</code></td><td><code>http://www.w3.org/2004/02/skos/core#</code></td></tr>
+            <tr><td><code>xsd</code></td><td><code>http://www.w3.org/2001/XMLSchema#</code></td></tr>
+            
+
+            </tbody>
+        </table>
+
+
+</section>
+
+
+
+<section id="specoverview">
+    <h2>Overview</h2>
+    
+    
+    <div id="overview">
+                
+                        <p>
+                            This document describes the usage of the following main entities for a correct usage of the Application Profile :
+                            <br />
+                            |
+			      <a href="#Contract">Contract</a> |
+			      <a href="#LegalEntity">Legal Entity</a> |
+			      <a href="#Project">Project</a> |
+			      <a href="#Subcontract">Subcontract</a> |
+                        </p>
+                        <p>
+                            The main entities are supported by:
+                            <br />
+                            |
+			      <a href="#Beneficiary">Beneficiary</a> |
+			      <a href="#Block">Block</a> |
+			      <a href="#Document">Document</a> |
+			      <a href="#ESF">ESF</a> |
+			      <a href="#Identifier">Identifier</a> |
+			      <a href="#KeyExpert">KeyExpert</a> |
+			      <a href="#MonetaryAmount">Monetary Amount</a> |
+			      <a href="#Partner">Partner</a> |
+			      <a href="#Person">Person</a> |
+                        </p>
+                
+                
+                        <p>
+                            And supported by these datatypes:
+                            <br />
+                            | <a href="#Code">Code</a> | <a href="#Date">Date</a> | <a href="#Decimal">Decimal</a> | <a href="#Genericdate">Generic date</a> | <a href="#Integer">Integer</a> | <a href="#Literal">Literal</a> | <a href="#Text">Text</a> |
+                        </p>
+                
+    </div>
+    <div>
+        <a href="./html/overview.jpg"
+           target="_blank">
+            <img src="./html/overview.jpg"/>
+        </a>
+    </div>
+</section>
+
+
+<section>
+
+
+    
+
+<h2>
+   Main Entities
+</h2>
+The main entities are those that form the core of the Application Profile.
+
+
+
+
+
+
+
+   
+        <section>
+            <h3 id="Contract">
+                <a href="http://data.europa.eu/a4g/ontology#Contract"
+                   data-toggle="tooltip"
+                   data-content="http://data.europa.eu/a4g/ontology#Contract"
+                   data-placement="right">Contract</a>
+
+            </h3>
+	        <!-- XXX an image in the h3 will break the rendering of the Table Of Contents of Respec -->
+		<!-- outcomment github feedback possibility
+                <a href="https://github.com/SEMICeu/ADM/issues/new?title=Issue%20for%20Contract&body=Explain%20your%20issue"}}>
+                   <img src="html/callout.png" loading="lazy" alt="(create issue)" width="20" height="20"/>
+		</a>
+		-->
+            <dl>
+                <dt>
+                    Definition
+                </dt>
+                <dd>
+                    A voluntary, deliberate, and legally binding agreement between two or more competent parties.
+                </dd>
+                
+                
+                
+                    <dt>
+                        Subclass of
+                        <dt>
+                            <dd> <a href="#Document">Document</a>
+                                
+                        </dd>
+                    
+                    <dt>
+                        Properties
+                    </dt>
+                    
+                        <dd>
+                            For this entity the following properties are defined: <a href="#Contract.belongsto">belongs to</a>
+                            , <a href="#Contract.hasKeyExpert">has KeyExpert</a>
+                            .
+                    </dd>
+                
+            </dl>
+        </div>
+        
+            <div class="u-table-overflow">
+                <table class="data-table simple" id="table-mandatory-classes">
+                    <thead>
+                        <tr class="data-table__header">
+                            <th class="data-table__header-title--sortable" style="width:6%">
+                            </th>
+                            <th class="data-table__header-title--sortable data-table__header-title--sortable-active" style="width:14%">
+                                Property
+                            </th>
+                            <th class="data-table__header-title--sortable" style="width:14%">
+                                Range
+                            </th>
+                            <th class="data-table__header-title--sortable" style="width:6%">
+                                Card
+                            </th>
+                            <th class="data-table__header-title--sortable" style="width:30%">
+                                Definition 
+                            </th>
+                            <th class="data-table__header-title--sortable" style="width:30%">
+                                Usage
+                            </th>
+			    <!--
+                            <th class="data-table__header-title--sortable" style="width:3%">
+                                Codelist
+                            </th>
+                            <th class="data-table__header-title--sortable" style="width:5%">
+                                DCAT
+                            </th>
+			    -->
+                        </tr>
+                    </thead>
+                    <tbody class="supertype">
+                        
+                            <tr id="Contract.belongsto"
+                                typeof="rdf:Property"
+                                resource="https://w3id.org/adm/model/belongsTo"
+                                class="class mandatory">
+                                <td>
+				    <a href="https://github.com/SEMICeu/ADM/issues/new?title=Issue%20for%20belongs to%20in%20Contract&body=Explain%20your%20issue%20for%20https://semiceu.github.io/ADM/releases/0.0.1%23Contract.belongsto" target="_blank" rel="noopener noreferrer" >
+					    <!--                                        <i class="icon">[o]</i> -->
+                                        <img src="html/callout.png" loading="lazy" alt="[o]" width="100" height="100"/>
+                                    </a>
+                                </td>
+                                <td>
+                                        <a href="https://w3id.org/adm/model/belongsTo"
+                                           data-toggle="tooltip"
+                                           data-content="https://w3id.org/adm/model/belongsTo"
+                                           data-placement="right">
+                                        belongs to</a>
+                                </td>
+                                <td>
+                                    
+                                        
+                                            <a href="#Project" data-placement="right">Project</a>
+                                        
+                                    
+                                </td>
+                                <td>
+                                    1
+                                </td>
+                                <td property="rdfs:comment">
+                                    The project in which a contract is executed.
+                                </td>
+                                <td property="skos:scopeNote">
+                                    
+                                </td>
+				<!--
+                                <td>
+                                    
+                                </td>
+				-->
+                                <td>
+                                    
+                                </td>
+                            </tr>
+                        
+                            <tr id="Contract.hasKeyExpert"
+                                typeof="rdf:Property"
+                                resource="https://w3id.org/adm/model/hasKeyExpert"
+                                class="class mandatory">
+                                <td>
+				    <a href="https://github.com/SEMICeu/ADM/issues/new?title=Issue%20for%20has KeyExpert%20in%20Contract&body=Explain%20your%20issue%20for%20https://semiceu.github.io/ADM/releases/0.0.1%23Contract.hasKeyExpert" target="_blank" rel="noopener noreferrer" >
+					    <!--                                        <i class="icon">[o]</i> -->
+                                        <img src="html/callout.png" loading="lazy" alt="[o]" width="100" height="100"/>
+                                    </a>
+                                </td>
+                                <td>
+                                        <a href="https://w3id.org/adm/model/hasKeyExpert"
+                                           data-toggle="tooltip"
+                                           data-content="https://w3id.org/adm/model/hasKeyExpert"
+                                           data-placement="right">
+                                        has KeyExpert</a>
+                                </td>
+                                <td>
+                                    
+                                        
+                                            <a href="#KeyExpert" data-placement="right">KeyExpert</a>
+                                        
+                                    
+                                </td>
+                                <td>
+                                    0..*
+                                </td>
+                                <td property="rdfs:comment">
+                                    Expert assigned on a contract
+                                </td>
+                                <td property="skos:scopeNote">
+                                    
+                                </td>
+				<!--
+                                <td>
+                                    
+                                </td>
+				-->
+                                <td>
+                                    
+                                </td>
+                            </tr>
+                        
+                    </tbody>
+                </table>
+            </div>
+        
+    </div>
+</section>
+
+
+
+
+
+
+
+
+
+
+
+
+
+   
+        <section>
+            <h3 id="LegalEntity">
+                <a href="http://www.w3.org/ns/legal#LegalEntity"
+                   data-toggle="tooltip"
+                   data-content="http://www.w3.org/ns/legal#LegalEntity"
+                   data-placement="right">Legal Entity</a>
+
+            </h3>
+	        <!-- XXX an image in the h3 will break the rendering of the Table Of Contents of Respec -->
+		<!-- outcomment github feedback possibility
+                <a href="https://github.com/SEMICeu/ADM/issues/new?title=Issue%20for%20LegalEntity&body=Explain%20your%20issue"}}>
+                   <img src="html/callout.png" loading="lazy" alt="(create issue)" width="20" height="20"/>
+		</a>
+		-->
+            <dl>
+                <dt>
+                    Definition
+                </dt>
+                <dd>
+                    A self-employed person, company, or organization that has legal rights and obligations.
+                </dd>
+                
+                
+                    <dt>
+                        Usage Note
+                    </dt>
+                    <dd>
+                        A Legal Entity able to transact business, typically registered with a body able to confer legal status such as a national business register. It is able to trade, is legally liable for its actions, accounts, tax affairs etc. This makes Legal Entities distinct from the concept of organisations or groups. Many organisations exist that are not Legal Entities, yet to the outside world they have staff, hierarchies, locations etc. Other organisations exist that are an umbrella for several Legal Entities (universities are often good examples of this). This vocabulary is concerned solely with registered Legal Entities and does not attempt to cover all possible trading bodies.
+                    </dd>
+                
+                
+                    <dt>
+                        Subclass of
+                        <dt>
+                            <dd> <a href="http://www.w3.org/ns/org#FormalOrganization">Formal Organization</a>
+                                
+                        </dd>
+                    
+                    <dt>
+                        Properties
+                    </dt>
+                    
+                        <dd>
+                            For this entity the following properties are defined: <a href="#LegalEntity.identifier">identifier</a>
+                            , <a href="#LegalEntity.legalidentifier">legal identifier</a>
+                            .
+                    </dd>
+                
+            </dl>
+        </div>
+        
+            <div class="u-table-overflow">
+                <table class="data-table simple" id="table-mandatory-classes">
+                    <thead>
+                        <tr class="data-table__header">
+                            <th class="data-table__header-title--sortable" style="width:6%">
+                            </th>
+                            <th class="data-table__header-title--sortable data-table__header-title--sortable-active" style="width:14%">
+                                Property
+                            </th>
+                            <th class="data-table__header-title--sortable" style="width:14%">
+                                Range
+                            </th>
+                            <th class="data-table__header-title--sortable" style="width:6%">
+                                Card
+                            </th>
+                            <th class="data-table__header-title--sortable" style="width:30%">
+                                Definition 
+                            </th>
+                            <th class="data-table__header-title--sortable" style="width:30%">
+                                Usage
+                            </th>
+			    <!--
+                            <th class="data-table__header-title--sortable" style="width:3%">
+                                Codelist
+                            </th>
+                            <th class="data-table__header-title--sortable" style="width:5%">
+                                DCAT
+                            </th>
+			    -->
+                        </tr>
+                    </thead>
+                    <tbody class="supertype">
+                        
+                            <tr id="LegalEntity.identifier"
+                                typeof="rdf:Property"
+                                resource="http://www.w3.org/ns/adms#identifier"
+                                class="class mandatory">
+                                <td>
+				    <a href="https://github.com/SEMICeu/ADM/issues/new?title=Issue%20for%20identifier%20in%20Legal Entity&body=Explain%20your%20issue%20for%20https://semiceu.github.io/ADM/releases/0.0.1%23LegalEntity.identifier" target="_blank" rel="noopener noreferrer" >
+					    <!--                                        <i class="icon">[o]</i> -->
+                                        <img src="html/callout.png" loading="lazy" alt="[o]" width="100" height="100"/>
+                                    </a>
+                                </td>
+                                <td>
+                                        <a href="http://www.w3.org/ns/adms#identifier"
+                                           data-toggle="tooltip"
+                                           data-content="http://www.w3.org/ns/adms#identifier"
+                                           data-placement="right">
+                                        identifier</a>
+                                </td>
+                                <td>
+                                    
+                                        
+                                            <a href="#Identifier" data-placement="right">Identifier</a>
+                                        
+                                    
+                                </td>
+                                <td>
+                                    0..*
+                                </td>
+                                <td property="rdfs:comment">
+                                    The unambiguous structured reference for the Legal Entity, which is different from the one denoting its legal status.
+                                </td>
+                                <td property="skos:scopeNote">
+                                    Legal Entities may have any number of identifiers (but only one legal identifier). For example, in many jurisdictions, a business will have one or more tax numbers associated with them which do not, by themselves, confer legal entity status. An individual may be issued with identifiers for everything from social security to club membership. The identifier relationship must not be used to link to the identifier issued by the authority that conferred legal entity status on a business.
+                                </td>
+				<!--
+                                <td>
+                                    
+                                </td>
+				-->
+                                <td>
+                                    
+                                </td>
+                            </tr>
+                        
+                            <tr id="LegalEntity.legalidentifier"
+                                typeof="rdf:Property"
+                                resource="http://www.w3.org/ns/legal#legalIdentifier"
+                                class="class mandatory">
+                                <td>
+				    <a href="https://github.com/SEMICeu/ADM/issues/new?title=Issue%20for%20legal identifier%20in%20Legal Entity&body=Explain%20your%20issue%20for%20https://semiceu.github.io/ADM/releases/0.0.1%23LegalEntity.legalidentifier" target="_blank" rel="noopener noreferrer" >
+					    <!--                                        <i class="icon">[o]</i> -->
+                                        <img src="html/callout.png" loading="lazy" alt="[o]" width="100" height="100"/>
+                                    </a>
+                                </td>
+                                <td>
+                                        <a href="http://www.w3.org/ns/legal#legalIdentifier"
+                                           data-toggle="tooltip"
+                                           data-content="http://www.w3.org/ns/legal#legalIdentifier"
+                                           data-placement="right">
+                                        legal identifier</a>
+                                </td>
+                                <td>
+                                    
+                                        
+                                            <a href="#Identifier" data-placement="right">Identifier</a>
+                                        
+                                    
+                                </td>
+                                <td>
+                                    0..*
+                                </td>
+                                <td property="rdfs:comment">
+                                    The unambiguous structured reference assigned to the Legal Entity by the legal authority that registered it.
+                                </td>
+                                <td property="skos:scopeNote">
+                                    Legal Entity must have a unique identification number, allowing it to be clearly identified in communication across business registers.
+
+The details of the registration are provided as properties of the Identifier class. The Core vocabulary sets no restriction on the type of legal identifier. In many countries, the business register's identifier is the relevant data point.
+                                </td>
+				<!--
+                                <td>
+                                    
+                                </td>
+				-->
+                                <td>
+                                    
+                                </td>
+                            </tr>
+                        
+                    </tbody>
+                </table>
+            </div>
+        
+    </div>
+</section>
+
+
+
+
+
+
+
+
+
+
+
+   
+        <section>
+            <h3 id="Project">
+                <a href="http://dbpedia.org/ontology/Project"
+                   data-toggle="tooltip"
+                   data-content="http://dbpedia.org/ontology/Project"
+                   data-placement="right">Project</a>
+
+            </h3>
+	        <!-- XXX an image in the h3 will break the rendering of the Table Of Contents of Respec -->
+		<!-- outcomment github feedback possibility
+                <a href="https://github.com/SEMICeu/ADM/issues/new?title=Issue%20for%20Project&body=Explain%20your%20issue"}}>
+                   <img src="html/callout.png" loading="lazy" alt="(create issue)" width="20" height="20"/>
+		</a>
+		-->
+            <dl>
+                <dt>
+                    Definition
+                </dt>
+                <dd>
+                    A project is a temporary endeavor undertaken to achieve defined objectives.
+                </dd>
+                
+                
+                
+                    <dt>
+                        Properties
+                    </dt>
+                    
+                        <dd>
+                            For this entity the following properties are defined: <a href="#Project.ECfinancialassistance">EC financial assistance</a>
+                            , <a href="#Project.enddate">end date</a>
+                            , <a href="#Project.hasbeneficiary">has beneficiary</a>
+                            , <a href="#Project.hasblock">has block</a>
+                            , <a href="#Project.identifier">identifier</a>
+                            , <a href="#Project.income">income</a>
+                            , <a href="#Project.name">name</a>
+                            , <a href="#Project.othercontributions">other contributions</a>
+                            , <a href="#Project.startdate">start date</a>
+                            , <a href="#Project.status">status</a>
+                            , <a href="#Project.thematicobjective">thematic objective</a>
+                            , <a href="#Project.totalcost">total cost</a>
+                            .
+                    </dd>
+                
+            </dl>
+        </div>
+        
+            <div class="u-table-overflow">
+                <table class="data-table simple" id="table-mandatory-classes">
+                    <thead>
+                        <tr class="data-table__header">
+                            <th class="data-table__header-title--sortable" style="width:6%">
+                            </th>
+                            <th class="data-table__header-title--sortable data-table__header-title--sortable-active" style="width:14%">
+                                Property
+                            </th>
+                            <th class="data-table__header-title--sortable" style="width:14%">
+                                Range
+                            </th>
+                            <th class="data-table__header-title--sortable" style="width:6%">
+                                Card
+                            </th>
+                            <th class="data-table__header-title--sortable" style="width:30%">
+                                Definition 
+                            </th>
+                            <th class="data-table__header-title--sortable" style="width:30%">
+                                Usage
+                            </th>
+			    <!--
+                            <th class="data-table__header-title--sortable" style="width:3%">
+                                Codelist
+                            </th>
+                            <th class="data-table__header-title--sortable" style="width:5%">
+                                DCAT
+                            </th>
+			    -->
+                        </tr>
+                    </thead>
+                    <tbody class="supertype">
+                        
+                            <tr id="Project.ECfinancialassistance"
+                                typeof="rdf:Property"
+                                resource="https://w3id.org/adm/model/ECFinancialAssistance"
+                                class="class mandatory">
+                                <td>
+				    <a href="https://github.com/SEMICeu/ADM/issues/new?title=Issue%20for%20EC financial assistance%20in%20Project&body=Explain%20your%20issue%20for%20https://semiceu.github.io/ADM/releases/0.0.1%23Project.ECfinancialassistance" target="_blank" rel="noopener noreferrer" >
+					    <!--                                        <i class="icon">[o]</i> -->
+                                        <img src="html/callout.png" loading="lazy" alt="[o]" width="100" height="100"/>
+                                    </a>
+                                </td>
+                                <td>
+                                        <a href="https://w3id.org/adm/model/ECFinancialAssistance"
+                                           data-toggle="tooltip"
+                                           data-content="https://w3id.org/adm/model/ECFinancialAssistance"
+                                           data-placement="right">
+                                        EC financial assistance</a>
+                                </td>
+                                <td>
+                                    
+                                        
+                                            <a href="#MonetaryAmount" data-placement="right">Monetary Amount</a>
+                                        
+                                    
+                                </td>
+                                <td>
+                                    0..1
+                                </td>
+                                <td property="rdfs:comment">
+                                    Amount of the contribution financed by the EC.
+                                </td>
+                                <td property="skos:scopeNote">
+                                    
+                                </td>
+				<!--
+                                <td>
+                                    
+                                </td>
+				-->
+                                <td>
+                                    
+                                </td>
+                            </tr>
+                        
+                            <tr id="Project.enddate"
+                                typeof="rdf:Property"
+                                resource="http://dbpedia.org/ontology/projectEndDate"
+                                class="class mandatory">
+                                <td>
+				    <a href="https://github.com/SEMICeu/ADM/issues/new?title=Issue%20for%20end date%20in%20Project&body=Explain%20your%20issue%20for%20https://semiceu.github.io/ADM/releases/0.0.1%23Project.enddate" target="_blank" rel="noopener noreferrer" >
+					    <!--                                        <i class="icon">[o]</i> -->
+                                        <img src="html/callout.png" loading="lazy" alt="[o]" width="100" height="100"/>
+                                    </a>
+                                </td>
+                                <td>
+                                        <a href="http://dbpedia.org/ontology/projectEndDate"
+                                           data-toggle="tooltip"
+                                           data-content="http://dbpedia.org/ontology/projectEndDate"
+                                           data-placement="right">
+                                        end date</a>
+                                </td>
+                                <td>
+                                    
+                                        
+                                            <a href="#Date" data-placement="right">Date</a>
+                                        
+                                    
+                                </td>
+                                <td>
+                                    0..1
+                                </td>
+                                <td property="rdfs:comment">
+                                    The end date of the project.
+                                </td>
+                                <td property="skos:scopeNote">
+                                    
+                                </td>
+				<!--
+                                <td>
+                                    
+                                </td>
+				-->
+                                <td>
+                                    
+                                </td>
+                            </tr>
+                        
+                            <tr id="Project.hasbeneficiary"
+                                typeof="rdf:Property"
+                                resource="https://w3id.org/adm/model/hasBeneficiary"
+                                class="class mandatory">
+                                <td>
+				    <a href="https://github.com/SEMICeu/ADM/issues/new?title=Issue%20for%20has beneficiary%20in%20Project&body=Explain%20your%20issue%20for%20https://semiceu.github.io/ADM/releases/0.0.1%23Project.hasbeneficiary" target="_blank" rel="noopener noreferrer" >
+					    <!--                                        <i class="icon">[o]</i> -->
+                                        <img src="html/callout.png" loading="lazy" alt="[o]" width="100" height="100"/>
+                                    </a>
+                                </td>
+                                <td>
+                                        <a href="https://w3id.org/adm/model/hasBeneficiary"
+                                           data-toggle="tooltip"
+                                           data-content="https://w3id.org/adm/model/hasBeneficiary"
+                                           data-placement="right">
+                                        has beneficiary</a>
+                                </td>
+                                <td>
+                                    
+                                        
+                                            <a href="#Beneficiary" data-placement="right">Beneficiary</a>
+                                        
+                                    
+                                </td>
+                                <td>
+                                    1
+                                </td>
+                                <td property="rdfs:comment">
+                                    The beneficiary of a project.
+                                </td>
+                                <td property="skos:scopeNote">
+                                    
+                                </td>
+				<!--
+                                <td>
+                                    
+                                </td>
+				-->
+                                <td>
+                                    
+                                </td>
+                            </tr>
+                        
+                            <tr id="Project.hasblock"
+                                typeof="rdf:Property"
+                                resource="https://w3id.org/adm/model/hasBlock"
+                                class="class mandatory">
+                                <td>
+				    <a href="https://github.com/SEMICeu/ADM/issues/new?title=Issue%20for%20has block%20in%20Project&body=Explain%20your%20issue%20for%20https://semiceu.github.io/ADM/releases/0.0.1%23Project.hasblock" target="_blank" rel="noopener noreferrer" >
+					    <!--                                        <i class="icon">[o]</i> -->
+                                        <img src="html/callout.png" loading="lazy" alt="[o]" width="100" height="100"/>
+                                    </a>
+                                </td>
+                                <td>
+                                        <a href="https://w3id.org/adm/model/hasBlock"
+                                           data-toggle="tooltip"
+                                           data-content="https://w3id.org/adm/model/hasBlock"
+                                           data-placement="right">
+                                        has block</a>
+                                </td>
+                                <td>
+                                    
+                                        
+                                            <a href="#Block" data-placement="right">Block</a>
+                                        
+                                    
+                                </td>
+                                <td>
+                                    1
+                                </td>
+                                <td property="rdfs:comment">
+                                    Reference to the type of the project.
+                                </td>
+                                <td property="skos:scopeNote">
+                                    
+                                </td>
+				<!--
+                                <td>
+                                    
+                                </td>
+				-->
+                                <td>
+                                    
+                                </td>
+                            </tr>
+                        
+                            <tr id="Project.identifier"
+                                typeof="rdf:Property"
+                                resource="http://www.w3.org/ns/adms#identifier"
+                                class="class mandatory">
+                                <td>
+				    <a href="https://github.com/SEMICeu/ADM/issues/new?title=Issue%20for%20identifier%20in%20Project&body=Explain%20your%20issue%20for%20https://semiceu.github.io/ADM/releases/0.0.1%23Project.identifier" target="_blank" rel="noopener noreferrer" >
+					    <!--                                        <i class="icon">[o]</i> -->
+                                        <img src="html/callout.png" loading="lazy" alt="[o]" width="100" height="100"/>
+                                    </a>
+                                </td>
+                                <td>
+                                        <a href="http://www.w3.org/ns/adms#identifier"
+                                           data-toggle="tooltip"
+                                           data-content="http://www.w3.org/ns/adms#identifier"
+                                           data-placement="right">
+                                        identifier</a>
+                                </td>
+                                <td>
+                                    
+                                        
+                                            <a href="#Identifier" data-placement="right">Identifier</a>
+                                        
+                                    
+                                </td>
+                                <td>
+                                    1
+                                </td>
+                                <td property="rdfs:comment">
+                                    Links a resource to an adms:Identifier class.
+                                </td>
+                                <td property="skos:scopeNote">
+                                    
+                                </td>
+				<!--
+                                <td>
+                                    
+                                </td>
+				-->
+                                <td>
+                                    
+                                </td>
+                            </tr>
+                        
+                            <tr id="Project.income"
+                                typeof="rdf:Property"
+                                resource="https://w3id.org/adm/model/income"
+                                class="class mandatory">
+                                <td>
+				    <a href="https://github.com/SEMICeu/ADM/issues/new?title=Issue%20for%20income%20in%20Project&body=Explain%20your%20issue%20for%20https://semiceu.github.io/ADM/releases/0.0.1%23Project.income" target="_blank" rel="noopener noreferrer" >
+					    <!--                                        <i class="icon">[o]</i> -->
+                                        <img src="html/callout.png" loading="lazy" alt="[o]" width="100" height="100"/>
+                                    </a>
+                                </td>
+                                <td>
+                                        <a href="https://w3id.org/adm/model/income"
+                                           data-toggle="tooltip"
+                                           data-content="https://w3id.org/adm/model/income"
+                                           data-placement="right">
+                                        income</a>
+                                </td>
+                                <td>
+                                    
+                                        
+                                            <a href="#MonetaryAmount" data-placement="right">Monetary Amount</a>
+                                        
+                                    
+                                </td>
+                                <td>
+                                    0..1
+                                </td>
+                                <td property="rdfs:comment">
+                                    Amount of revenues generated by the project.
+                                </td>
+                                <td property="skos:scopeNote">
+                                    
+                                </td>
+				<!--
+                                <td>
+                                    
+                                </td>
+				-->
+                                <td>
+                                    
+                                </td>
+                            </tr>
+                        
+                            <tr id="Project.name"
+                                typeof="rdf:Property"
+                                resource="http://www.w3.org/2000/01/rdf-schema#label"
+                                class="class mandatory">
+                                <td>
+				    <a href="https://github.com/SEMICeu/ADM/issues/new?title=Issue%20for%20name%20in%20Project&body=Explain%20your%20issue%20for%20https://semiceu.github.io/ADM/releases/0.0.1%23Project.name" target="_blank" rel="noopener noreferrer" >
+					    <!--                                        <i class="icon">[o]</i> -->
+                                        <img src="html/callout.png" loading="lazy" alt="[o]" width="100" height="100"/>
+                                    </a>
+                                </td>
+                                <td>
+                                        <a href="http://www.w3.org/2000/01/rdf-schema#label"
+                                           data-toggle="tooltip"
+                                           data-content="http://www.w3.org/2000/01/rdf-schema#label"
+                                           data-placement="right">
+                                        name</a>
+                                </td>
+                                <td>
+                                    
+                                        
+                                            <a href="#Text" data-placement="right">Text</a>
+                                        
+                                    
+                                </td>
+                                <td>
+                                    1
+                                </td>
+                                <td property="rdfs:comment">
+                                    A human-readable version of a resource&#39;s name.
+                                </td>
+                                <td property="skos:scopeNote">
+                                    
+                                </td>
+				<!--
+                                <td>
+                                    
+                                </td>
+				-->
+                                <td>
+                                    
+                                </td>
+                            </tr>
+                        
+                            <tr id="Project.othercontributions"
+                                typeof="rdf:Property"
+                                resource="https://w3id.org/adm/model/otherContributions"
+                                class="class mandatory">
+                                <td>
+				    <a href="https://github.com/SEMICeu/ADM/issues/new?title=Issue%20for%20other contributions%20in%20Project&body=Explain%20your%20issue%20for%20https://semiceu.github.io/ADM/releases/0.0.1%23Project.othercontributions" target="_blank" rel="noopener noreferrer" >
+					    <!--                                        <i class="icon">[o]</i> -->
+                                        <img src="html/callout.png" loading="lazy" alt="[o]" width="100" height="100"/>
+                                    </a>
+                                </td>
+                                <td>
+                                        <a href="https://w3id.org/adm/model/otherContributions"
+                                           data-toggle="tooltip"
+                                           data-content="https://w3id.org/adm/model/otherContributions"
+                                           data-placement="right">
+                                        other contributions</a>
+                                </td>
+                                <td>
+                                    
+                                        
+                                            <a href="#MonetaryAmount" data-placement="right">Monetary Amount</a>
+                                        
+                                    
+                                </td>
+                                <td>
+                                    0..1
+                                </td>
+                                <td property="rdfs:comment">
+                                    Amount of the other contributions to the project.
+                                </td>
+                                <td property="skos:scopeNote">
+                                    
+                                </td>
+				<!--
+                                <td>
+                                    
+                                </td>
+				-->
+                                <td>
+                                    
+                                </td>
+                            </tr>
+                        
+                            <tr id="Project.startdate"
+                                typeof="rdf:Property"
+                                resource="http://dbpedia.org/ontology/projectStartDate"
+                                class="class mandatory">
+                                <td>
+				    <a href="https://github.com/SEMICeu/ADM/issues/new?title=Issue%20for%20start date%20in%20Project&body=Explain%20your%20issue%20for%20https://semiceu.github.io/ADM/releases/0.0.1%23Project.startdate" target="_blank" rel="noopener noreferrer" >
+					    <!--                                        <i class="icon">[o]</i> -->
+                                        <img src="html/callout.png" loading="lazy" alt="[o]" width="100" height="100"/>
+                                    </a>
+                                </td>
+                                <td>
+                                        <a href="http://dbpedia.org/ontology/projectStartDate"
+                                           data-toggle="tooltip"
+                                           data-content="http://dbpedia.org/ontology/projectStartDate"
+                                           data-placement="right">
+                                        start date</a>
+                                </td>
+                                <td>
+                                    
+                                        
+                                            <a href="#Date" data-placement="right">Date</a>
+                                        
+                                    
+                                </td>
+                                <td>
+                                    0..1
+                                </td>
+                                <td property="rdfs:comment">
+                                    The start date of the project.
+                                </td>
+                                <td property="skos:scopeNote">
+                                    
+                                </td>
+				<!--
+                                <td>
+                                    
+                                </td>
+				-->
+                                <td>
+                                    
+                                </td>
+                            </tr>
+                        
+                            <tr id="Project.status"
+                                typeof="rdf:Property"
+                                resource="http://www.w3.org/ns/adms#status"
+                                class="class mandatory">
+                                <td>
+				    <a href="https://github.com/SEMICeu/ADM/issues/new?title=Issue%20for%20status%20in%20Project&body=Explain%20your%20issue%20for%20https://semiceu.github.io/ADM/releases/0.0.1%23Project.status" target="_blank" rel="noopener noreferrer" >
+					    <!--                                        <i class="icon">[o]</i> -->
+                                        <img src="html/callout.png" loading="lazy" alt="[o]" width="100" height="100"/>
+                                    </a>
+                                </td>
+                                <td>
+                                        <a href="http://www.w3.org/ns/adms#status"
+                                           data-toggle="tooltip"
+                                           data-content="http://www.w3.org/ns/adms#status"
+                                           data-placement="right">
+                                        status</a>
+                                </td>
+                                <td>
+                                    
+                                        
+                                            <a href="#Code" data-placement="right">Code</a>
+                                        
+                                    
+                                </td>
+                                <td>
+                                    1
+                                </td>
+                                <td property="rdfs:comment">
+                                    The status of the Asset in the context of a particular workflow process.
+                                </td>
+                                <td property="skos:scopeNote">
+                                    The recommended codelist is the <a href= "#list-project-status" >Status</a> list.
+                                </td>
+				<!--
+                                <td>
+                                    
+                                </td>
+				-->
+                                <td>
+                                    
+                                </td>
+                            </tr>
+                        
+                            <tr id="Project.thematicobjective"
+                                typeof="rdf:Property"
+                                resource="https://w3id.org/adm/model/thematicObjective"
+                                class="class mandatory">
+                                <td>
+				    <a href="https://github.com/SEMICeu/ADM/issues/new?title=Issue%20for%20thematic objective%20in%20Project&body=Explain%20your%20issue%20for%20https://semiceu.github.io/ADM/releases/0.0.1%23Project.thematicobjective" target="_blank" rel="noopener noreferrer" >
+					    <!--                                        <i class="icon">[o]</i> -->
+                                        <img src="html/callout.png" loading="lazy" alt="[o]" width="100" height="100"/>
+                                    </a>
+                                </td>
+                                <td>
+                                        <a href="https://w3id.org/adm/model/thematicObjective"
+                                           data-toggle="tooltip"
+                                           data-content="https://w3id.org/adm/model/thematicObjective"
+                                           data-placement="right">
+                                        thematic objective</a>
+                                </td>
+                                <td>
+                                    
+                                        
+                                            <a href="#Code" data-placement="right">Code</a>
+                                        
+                                    
+                                </td>
+                                <td>
+                                    1
+                                </td>
+                                <td property="rdfs:comment">
+                                    A classification of the project.
+                                </td>
+                                <td property="skos:scopeNote">
+                                    The recommended codelist is the <a href= "#list-project-thematicObjective" >Thematic Objective</a> list.
+                                </td>
+				<!--
+                                <td>
+                                    
+                                </td>
+				-->
+                                <td>
+                                    
+                                </td>
+                            </tr>
+                        
+                            <tr id="Project.totalcost"
+                                typeof="rdf:Property"
+                                resource="https://w3id.org/adm/model/totalCost"
+                                class="class mandatory">
+                                <td>
+				    <a href="https://github.com/SEMICeu/ADM/issues/new?title=Issue%20for%20total cost%20in%20Project&body=Explain%20your%20issue%20for%20https://semiceu.github.io/ADM/releases/0.0.1%23Project.totalcost" target="_blank" rel="noopener noreferrer" >
+					    <!--                                        <i class="icon">[o]</i> -->
+                                        <img src="html/callout.png" loading="lazy" alt="[o]" width="100" height="100"/>
+                                    </a>
+                                </td>
+                                <td>
+                                        <a href="https://w3id.org/adm/model/totalCost"
+                                           data-toggle="tooltip"
+                                           data-content="https://w3id.org/adm/model/totalCost"
+                                           data-placement="right">
+                                        total cost</a>
+                                </td>
+                                <td>
+                                    
+                                        
+                                            <a href="#MonetaryAmount" data-placement="right">Monetary Amount</a>
+                                        
+                                    
+                                </td>
+                                <td>
+                                    1
+                                </td>
+                                <td property="rdfs:comment">
+                                    Total amount of the project as agreed on the project application.
+                                </td>
+                                <td property="skos:scopeNote">
+                                    
+                                </td>
+				<!--
+                                <td>
+                                    
+                                </td>
+				-->
+                                <td>
+                                    
+                                </td>
+                            </tr>
+                        
+                    </tbody>
+                </table>
+            </div>
+        
+    </div>
+</section>
+
+
+
+
+
+   
+        <section>
+            <h3 id="Subcontract">
+                <a href="https://w3id.org/adm/model/Subcontract"
+                   data-toggle="tooltip"
+                   data-content="https://w3id.org/adm/model/Subcontract"
+                   data-placement="right">Subcontract</a>
+
+            </h3>
+	        <!-- XXX an image in the h3 will break the rendering of the Table Of Contents of Respec -->
+		<!-- outcomment github feedback possibility
+                <a href="https://github.com/SEMICeu/ADM/issues/new?title=Issue%20for%20Subcontract&body=Explain%20your%20issue"}}>
+                   <img src="html/callout.png" loading="lazy" alt="(create issue)" width="20" height="20"/>
+		</a>
+		-->
+            <dl>
+                <dt>
+                    Definition
+                </dt>
+                <dd>
+                    
+                </dd>
+                
+                
+                
+                    <dt>
+                        Properties
+                    </dt>
+                    
+                        <dd>
+                            For this entity the following properties are defined: <a href="#Subcontract.ispartof">is part of</a>
+                            .
+                    </dd>
+                
+            </dl>
+        </div>
+        
+            <div class="u-table-overflow">
+                <table class="data-table simple" id="table-mandatory-classes">
+                    <thead>
+                        <tr class="data-table__header">
+                            <th class="data-table__header-title--sortable" style="width:6%">
+                            </th>
+                            <th class="data-table__header-title--sortable data-table__header-title--sortable-active" style="width:14%">
+                                Property
+                            </th>
+                            <th class="data-table__header-title--sortable" style="width:14%">
+                                Range
+                            </th>
+                            <th class="data-table__header-title--sortable" style="width:6%">
+                                Card
+                            </th>
+                            <th class="data-table__header-title--sortable" style="width:30%">
+                                Definition 
+                            </th>
+                            <th class="data-table__header-title--sortable" style="width:30%">
+                                Usage
+                            </th>
+			    <!--
+                            <th class="data-table__header-title--sortable" style="width:3%">
+                                Codelist
+                            </th>
+                            <th class="data-table__header-title--sortable" style="width:5%">
+                                DCAT
+                            </th>
+			    -->
+                        </tr>
+                    </thead>
+                    <tbody class="supertype">
+                        
+                            <tr id="Subcontract.ispartof"
+                                typeof="rdf:Property"
+                                resource="http://purl.org/dc/terms/isPartOf"
+                                class="class mandatory">
+                                <td>
+				    <a href="https://github.com/SEMICeu/ADM/issues/new?title=Issue%20for%20is part of%20in%20Subcontract&body=Explain%20your%20issue%20for%20https://semiceu.github.io/ADM/releases/0.0.1%23Subcontract.ispartof" target="_blank" rel="noopener noreferrer" >
+					    <!--                                        <i class="icon">[o]</i> -->
+                                        <img src="html/callout.png" loading="lazy" alt="[o]" width="100" height="100"/>
+                                    </a>
+                                </td>
+                                <td>
+                                        <a href="http://purl.org/dc/terms/isPartOf"
+                                           data-toggle="tooltip"
+                                           data-content="http://purl.org/dc/terms/isPartOf"
+                                           data-placement="right">
+                                        is part of</a>
+                                </td>
+                                <td>
+                                    
+                                        
+                                            <a href="#Contract" data-placement="right">Contract</a>
+                                        
+                                    
+                                </td>
+                                <td>
+                                    1
+                                </td>
+                                <td property="rdfs:comment">
+                                    A related resource in which the described resource is physically or logically included.
+                                </td>
+                                <td property="skos:scopeNote">
+                                    
+                                </td>
+				<!--
+                                <td>
+                                    
+                                </td>
+				-->
+                                <td>
+                                    
+                                </td>
+                            </tr>
+                        
+                    </tbody>
+                </table>
+            </div>
+        
+    </div>
+</section>
+
+
+
+
+</section>
+
+<section>
+<h2>
+   Supportive Entities
+</h2>
+The supportive entities are supporting the main entities in the Application Profile. 
+
+
+
+
+   
+        <section>
+            <h3 id="Beneficiary">
+                <a href="https://w3id.org/adm/model/Beneficiary"
+                   data-toggle="tooltip"
+                   data-content="https://w3id.org/adm/model/Beneficiary"
+                   data-placement="right">Beneficiary</a>
+
+            </h3>
+	        <!-- XXX an image in the h3 will break the rendering of the Table Of Contents of Respec -->
+		<!-- outcomment github feedback possibility
+                <a href="https://github.com/SEMICeu/ADM/issues/new?title=Issue%20for%20Beneficiary&body=Explain%20your%20issue"}}>
+                   <img src="html/callout.png" loading="lazy" alt="(create issue)" width="20" height="20"/>
+		</a>
+		-->
+            <dl>
+                <dt>
+                    Definition
+                </dt>
+                <dd>
+                    A legal entity who receives money for a project.
+                </dd>
+                
+                
+                
+                    <dt>
+                        Subclass of
+                        <dt>
+                            <dd> <a href="#LegalEntity">Legal Entity</a>
+                                
+                        </dd>
+                    
+                    <dt>
+                        Properties
+                    </dt>
+                    
+                        <dd>
+                            For this entity the following properties are defined: <a href="#Beneficiary.haspartner">has partner</a>
+                            , <a href="#Beneficiary.hasultimateowner">has ultimate owner</a>
+                            , <a href="#Beneficiary.numberofemployees">number of employees</a>
+                            , <a href="#Beneficiary.turnover">turnover</a>
+                            .
+                    </dd>
+                
+            </dl>
+        </div>
+        
+            <div class="u-table-overflow">
+                <table class="data-table simple" id="table-mandatory-classes">
+                    <thead>
+                        <tr class="data-table__header">
+                            <th class="data-table__header-title--sortable" style="width:6%">
+                            </th>
+                            <th class="data-table__header-title--sortable data-table__header-title--sortable-active" style="width:14%">
+                                Property
+                            </th>
+                            <th class="data-table__header-title--sortable" style="width:14%">
+                                Range
+                            </th>
+                            <th class="data-table__header-title--sortable" style="width:6%">
+                                Card
+                            </th>
+                            <th class="data-table__header-title--sortable" style="width:30%">
+                                Definition 
+                            </th>
+                            <th class="data-table__header-title--sortable" style="width:30%">
+                                Usage
+                            </th>
+			    <!--
+                            <th class="data-table__header-title--sortable" style="width:3%">
+                                Codelist
+                            </th>
+                            <th class="data-table__header-title--sortable" style="width:5%">
+                                DCAT
+                            </th>
+			    -->
+                        </tr>
+                    </thead>
+                    <tbody class="supertype">
+                        
+                            <tr id="Beneficiary.haspartner"
+                                typeof="rdf:Property"
+                                resource="https://w3id.org/adm/model/hasPartner"
+                                class="class mandatory">
+                                <td>
+				    <a href="https://github.com/SEMICeu/ADM/issues/new?title=Issue%20for%20has partner%20in%20Beneficiary&body=Explain%20your%20issue%20for%20https://semiceu.github.io/ADM/releases/0.0.1%23Beneficiary.haspartner" target="_blank" rel="noopener noreferrer" >
+					    <!--                                        <i class="icon">[o]</i> -->
+                                        <img src="html/callout.png" loading="lazy" alt="[o]" width="100" height="100"/>
+                                    </a>
+                                </td>
+                                <td>
+                                        <a href="https://w3id.org/adm/model/hasPartner"
+                                           data-toggle="tooltip"
+                                           data-content="https://w3id.org/adm/model/hasPartner"
+                                           data-placement="right">
+                                        has partner</a>
+                                </td>
+                                <td>
+                                    
+                                        
+                                            <a href="#Partner" data-placement="right">Partner</a>
+                                        
+                                    
+                                </td>
+                                <td>
+                                    0..*
+                                </td>
+                                <td property="rdfs:comment">
+                                    Reference to an entity which is partner of the beneficiary of the project.
+                                </td>
+                                <td property="skos:scopeNote">
+                                    
+                                </td>
+				<!--
+                                <td>
+                                    
+                                </td>
+				-->
+                                <td>
+                                    
+                                </td>
+                            </tr>
+                        
+                            <tr id="Beneficiary.hasultimateowner"
+                                typeof="rdf:Property"
+                                resource="https://w3id.org/adm/model/hasUltimateOwner"
+                                class="class mandatory">
+                                <td>
+				    <a href="https://github.com/SEMICeu/ADM/issues/new?title=Issue%20for%20has ultimate owner%20in%20Beneficiary&body=Explain%20your%20issue%20for%20https://semiceu.github.io/ADM/releases/0.0.1%23Beneficiary.hasultimateowner" target="_blank" rel="noopener noreferrer" >
+					    <!--                                        <i class="icon">[o]</i> -->
+                                        <img src="html/callout.png" loading="lazy" alt="[o]" width="100" height="100"/>
+                                    </a>
+                                </td>
+                                <td>
+                                        <a href="https://w3id.org/adm/model/hasUltimateOwner"
+                                           data-toggle="tooltip"
+                                           data-content="https://w3id.org/adm/model/hasUltimateOwner"
+                                           data-placement="right">
+                                        has ultimate owner</a>
+                                </td>
+                                <td>
+                                    
+                                        
+                                            <a href="#LegalEntity" data-placement="right">Legal Entity</a>
+                                        
+                                    
+                                </td>
+                                <td>
+                                    0..1
+                                </td>
+                                <td property="rdfs:comment">
+                                    The ultimate
+ owner of the beneficiary of the project.
+                                </td>
+                                <td property="skos:scopeNote">
+                                    
+                                </td>
+				<!--
+                                <td>
+                                    
+                                </td>
+				-->
+                                <td>
+                                    
+                                </td>
+                            </tr>
+                        
+                            <tr id="Beneficiary.numberofemployees"
+                                typeof="rdf:Property"
+                                resource="https://w3id.org/adm/model/numberOfEmployees"
+                                class="class mandatory">
+                                <td>
+				    <a href="https://github.com/SEMICeu/ADM/issues/new?title=Issue%20for%20number of employees%20in%20Beneficiary&body=Explain%20your%20issue%20for%20https://semiceu.github.io/ADM/releases/0.0.1%23Beneficiary.numberofemployees" target="_blank" rel="noopener noreferrer" >
+					    <!--                                        <i class="icon">[o]</i> -->
+                                        <img src="html/callout.png" loading="lazy" alt="[o]" width="100" height="100"/>
+                                    </a>
+                                </td>
+                                <td>
+                                        <a href="https://w3id.org/adm/model/numberOfEmployees"
+                                           data-toggle="tooltip"
+                                           data-content="https://w3id.org/adm/model/numberOfEmployees"
+                                           data-placement="right">
+                                        number of employees</a>
+                                </td>
+                                <td>
+                                    
+                                        
+                                            <a href="#Integer" data-placement="right">Integer</a>
+                                        
+                                    
+                                </td>
+                                <td>
+                                    0..1
+                                </td>
+                                <td property="rdfs:comment">
+                                    Number of employees of the beneficiary at the moment of the
+approval of the application.
+                                </td>
+                                <td property="skos:scopeNote">
+                                    
+                                </td>
+				<!--
+                                <td>
+                                    
+                                </td>
+				-->
+                                <td>
+                                    
+                                </td>
+                            </tr>
+                        
+                            <tr id="Beneficiary.turnover"
+                                typeof="rdf:Property"
+                                resource="https://w3id.org/adm/model/turnover"
+                                class="class mandatory">
+                                <td>
+				    <a href="https://github.com/SEMICeu/ADM/issues/new?title=Issue%20for%20turnover%20in%20Beneficiary&body=Explain%20your%20issue%20for%20https://semiceu.github.io/ADM/releases/0.0.1%23Beneficiary.turnover" target="_blank" rel="noopener noreferrer" >
+					    <!--                                        <i class="icon">[o]</i> -->
+                                        <img src="html/callout.png" loading="lazy" alt="[o]" width="100" height="100"/>
+                                    </a>
+                                </td>
+                                <td>
+                                        <a href="https://w3id.org/adm/model/turnover"
+                                           data-toggle="tooltip"
+                                           data-content="https://w3id.org/adm/model/turnover"
+                                           data-placement="right">
+                                        turnover</a>
+                                </td>
+                                <td>
+                                    
+                                        
+                                            <a href="#MonetaryAmount" data-placement="right">Monetary Amount</a>
+                                        
+                                    
+                                </td>
+                                <td>
+                                    0..1
+                                </td>
+                                <td property="rdfs:comment">
+                                    Turnover of the beneficiary at the moment of the approval of the
+application.
+                                </td>
+                                <td property="skos:scopeNote">
+                                    
+                                </td>
+				<!--
+                                <td>
+                                    
+                                </td>
+				-->
+                                <td>
+                                    
+                                </td>
+                            </tr>
+                        
+                    </tbody>
+                </table>
+            </div>
+        
+    </div>
+</section>
+
+
+
+
+
+   
+        <section>
+            <h3 id="Block">
+                <a href="https://w3id.org/adm/model/Block"
+                   data-toggle="tooltip"
+                   data-content="https://w3id.org/adm/model/Block"
+                   data-placement="right">Block</a>
+
+            </h3>
+	        <!-- XXX an image in the h3 will break the rendering of the Table Of Contents of Respec -->
+		<!-- outcomment github feedback possibility
+                <a href="https://github.com/SEMICeu/ADM/issues/new?title=Issue%20for%20Block&body=Explain%20your%20issue"}}>
+                   <img src="html/callout.png" loading="lazy" alt="(create issue)" width="20" height="20"/>
+		</a>
+		-->
+            <dl>
+                <dt>
+                    Definition
+                </dt>
+                <dd>
+                    Information on the type of the project.
+                </dd>
+                
+                
+                
+                    <dt>
+                        Properties
+                    </dt>
+                    
+                        <dd>
+                            For this entity the following properties are defined: <a href="#Block.dg">dg</a>
+                            , <a href="#Block.projecttype">project type</a>
+                            .
+                    </dd>
+                
+            </dl>
+        </div>
+        
+            <div class="u-table-overflow">
+                <table class="data-table simple" id="table-mandatory-classes">
+                    <thead>
+                        <tr class="data-table__header">
+                            <th class="data-table__header-title--sortable" style="width:6%">
+                            </th>
+                            <th class="data-table__header-title--sortable data-table__header-title--sortable-active" style="width:14%">
+                                Property
+                            </th>
+                            <th class="data-table__header-title--sortable" style="width:14%">
+                                Range
+                            </th>
+                            <th class="data-table__header-title--sortable" style="width:6%">
+                                Card
+                            </th>
+                            <th class="data-table__header-title--sortable" style="width:30%">
+                                Definition 
+                            </th>
+                            <th class="data-table__header-title--sortable" style="width:30%">
+                                Usage
+                            </th>
+			    <!--
+                            <th class="data-table__header-title--sortable" style="width:3%">
+                                Codelist
+                            </th>
+                            <th class="data-table__header-title--sortable" style="width:5%">
+                                DCAT
+                            </th>
+			    -->
+                        </tr>
+                    </thead>
+                    <tbody class="supertype">
+                        
+                            <tr id="Block.dg"
+                                typeof="rdf:Property"
+                                resource="https://w3id.org/adm/model/dg"
+                                class="class mandatory">
+                                <td>
+				    <a href="https://github.com/SEMICeu/ADM/issues/new?title=Issue%20for%20dg%20in%20Block&body=Explain%20your%20issue%20for%20https://semiceu.github.io/ADM/releases/0.0.1%23Block.dg" target="_blank" rel="noopener noreferrer" >
+					    <!--                                        <i class="icon">[o]</i> -->
+                                        <img src="html/callout.png" loading="lazy" alt="[o]" width="100" height="100"/>
+                                    </a>
+                                </td>
+                                <td>
+                                        <a href="https://w3id.org/adm/model/dg"
+                                           data-toggle="tooltip"
+                                           data-content="https://w3id.org/adm/model/dg"
+                                           data-placement="right">
+                                        dg</a>
+                                </td>
+                                <td>
+                                    
+                                        
+                                            <a href="#Code" data-placement="right">Code</a>
+                                        
+                                    
+                                </td>
+                                <td>
+                                    1
+                                </td>
+                                <td property="rdfs:comment">
+                                    Directory general to which the project belongs to.
+                                </td>
+                                <td property="skos:scopeNote">
+                                    The recommended control vocabulary is the <a href=" https://op.europa.eu/en/web/eu-vocabularies/concept-scheme/-/resource?uri=http://publications.europa.eu/resource/authority/corporate-body" > Corporate Body </a> list from Publications Office. 
+                                </td>
+				<!--
+                                <td>
+                                    
+                                </td>
+				-->
+                                <td>
+                                    
+                                </td>
+                            </tr>
+                        
+                            <tr id="Block.projecttype"
+                                typeof="rdf:Property"
+                                resource="https://w3id.org/adm/model/projectType"
+                                class="class mandatory">
+                                <td>
+				    <a href="https://github.com/SEMICeu/ADM/issues/new?title=Issue%20for%20project type%20in%20Block&body=Explain%20your%20issue%20for%20https://semiceu.github.io/ADM/releases/0.0.1%23Block.projecttype" target="_blank" rel="noopener noreferrer" >
+					    <!--                                        <i class="icon">[o]</i> -->
+                                        <img src="html/callout.png" loading="lazy" alt="[o]" width="100" height="100"/>
+                                    </a>
+                                </td>
+                                <td>
+                                        <a href="https://w3id.org/adm/model/projectType"
+                                           data-toggle="tooltip"
+                                           data-content="https://w3id.org/adm/model/projectType"
+                                           data-placement="right">
+                                        project type</a>
+                                </td>
+                                <td>
+                                    
+                                        
+                                            <a href="#Code" data-placement="right">Code</a>
+                                        
+                                    
+                                </td>
+                                <td>
+                                    1
+                                </td>
+                                <td property="rdfs:comment">
+                                    A category to which the project belongs to.
+                                </td>
+                                <td property="skos:scopeNote">
+                                    The recommended control vocabulary is the <a href="#list-project-type" > Project Type </a> list. 
+                                </td>
+				<!--
+                                <td>
+                                    
+                                </td>
+				-->
+                                <td>
+                                    
+                                </td>
+                            </tr>
+                        
+                    </tbody>
+                </table>
+            </div>
+        
+    </div>
+</section>
+
+
+
+
+
+
+
+   
+        <section>
+            <h3 id="Document">
+                <a href="http://data.europa.eu/a4g/ontology#Document"
+                   data-toggle="tooltip"
+                   data-content="http://data.europa.eu/a4g/ontology#Document"
+                   data-placement="right">Document</a>
+
+            </h3>
+	        <!-- XXX an image in the h3 will break the rendering of the Table Of Contents of Respec -->
+		<!-- outcomment github feedback possibility
+                <a href="https://github.com/SEMICeu/ADM/issues/new?title=Issue%20for%20Document&body=Explain%20your%20issue"}}>
+                   <img src="html/callout.png" loading="lazy" alt="(create issue)" width="20" height="20"/>
+		</a>
+		-->
+            <dl>
+                <dt>
+                    Definition
+                </dt>
+                <dd>
+                    A set of interrelated Business Information representing the Business facts and associated metadata.
+                </dd>
+                
+                
+                
+                    <dt>
+                        Properties
+                    </dt>
+                    
+                        <dd>
+                            For this entity the following properties are defined: <a href="#Document.identifier">identifier</a>
+                            .
+                    </dd>
+                
+            </dl>
+        </div>
+        
+            <div class="u-table-overflow">
+                <table class="data-table simple" id="table-mandatory-classes">
+                    <thead>
+                        <tr class="data-table__header">
+                            <th class="data-table__header-title--sortable" style="width:6%">
+                            </th>
+                            <th class="data-table__header-title--sortable data-table__header-title--sortable-active" style="width:14%">
+                                Property
+                            </th>
+                            <th class="data-table__header-title--sortable" style="width:14%">
+                                Range
+                            </th>
+                            <th class="data-table__header-title--sortable" style="width:6%">
+                                Card
+                            </th>
+                            <th class="data-table__header-title--sortable" style="width:30%">
+                                Definition 
+                            </th>
+                            <th class="data-table__header-title--sortable" style="width:30%">
+                                Usage
+                            </th>
+			    <!--
+                            <th class="data-table__header-title--sortable" style="width:3%">
+                                Codelist
+                            </th>
+                            <th class="data-table__header-title--sortable" style="width:5%">
+                                DCAT
+                            </th>
+			    -->
+                        </tr>
+                    </thead>
+                    <tbody class="supertype">
+                        
+                            <tr id="Document.identifier"
+                                typeof="rdf:Property"
+                                resource="http://www.w3.org/ns/adms#identifier"
+                                class="class mandatory">
+                                <td>
+				    <a href="https://github.com/SEMICeu/ADM/issues/new?title=Issue%20for%20identifier%20in%20Document&body=Explain%20your%20issue%20for%20https://semiceu.github.io/ADM/releases/0.0.1%23Document.identifier" target="_blank" rel="noopener noreferrer" >
+					    <!--                                        <i class="icon">[o]</i> -->
+                                        <img src="html/callout.png" loading="lazy" alt="[o]" width="100" height="100"/>
+                                    </a>
+                                </td>
+                                <td>
+                                        <a href="http://www.w3.org/ns/adms#identifier"
+                                           data-toggle="tooltip"
+                                           data-content="http://www.w3.org/ns/adms#identifier"
+                                           data-placement="right">
+                                        identifier</a>
+                                </td>
+                                <td>
+                                    
+                                        
+                                            <a href="#Identifier" data-placement="right">Identifier</a>
+                                        
+                                    
+                                </td>
+                                <td>
+                                    1
+                                </td>
+                                <td property="rdfs:comment">
+                                    Links a resource to an adms:Identifier class.
+                                </td>
+                                <td property="skos:scopeNote">
+                                    
+                                </td>
+				<!--
+                                <td>
+                                    
+                                </td>
+				-->
+                                <td>
+                                    
+                                </td>
+                            </tr>
+                        
+                    </tbody>
+                </table>
+            </div>
+        
+    </div>
+</section>
+
+
+
+
+
+   
+        <section>
+            <h3 id="ESF">
+                <a href="https://w3id.org/adm/model/ESF"
+                   data-toggle="tooltip"
+                   data-content="https://w3id.org/adm/model/ESF"
+                   data-placement="right">ESF</a>
+
+            </h3>
+	        <!-- XXX an image in the h3 will break the rendering of the Table Of Contents of Respec -->
+		<!-- outcomment github feedback possibility
+                <a href="https://github.com/SEMICeu/ADM/issues/new?title=Issue%20for%20Esf&body=Explain%20your%20issue"}}>
+                   <img src="html/callout.png" loading="lazy" alt="(create issue)" width="20" height="20"/>
+		</a>
+		-->
+            <dl>
+                <dt>
+                    Definition
+                </dt>
+                <dd>
+                    A project type for DG EMPL.
+                </dd>
+                
+                
+                
+                    <dt>
+                        Subclass of
+                        <dt>
+                            <dd> <a href="#Block">Block</a>
+                                
+                        </dd>
+                    
+                    <dt>
+                        Properties
+                    </dt>
+                    
+                        <dd>
+                            For this entity the following properties are defined: <a href="#ESF.peopletotrain">people to train</a>
+                            , <a href="#ESF.providedtraininghours">provided training hours</a>
+                            , <a href="#ESF.trainedpeople">trained people</a>
+                            , <a href="#ESF.traininghours">training hours</a>
+                            .
+                    </dd>
+                
+            </dl>
+        </div>
+        
+            <div class="u-table-overflow">
+                <table class="data-table simple" id="table-mandatory-classes">
+                    <thead>
+                        <tr class="data-table__header">
+                            <th class="data-table__header-title--sortable" style="width:6%">
+                            </th>
+                            <th class="data-table__header-title--sortable data-table__header-title--sortable-active" style="width:14%">
+                                Property
+                            </th>
+                            <th class="data-table__header-title--sortable" style="width:14%">
+                                Range
+                            </th>
+                            <th class="data-table__header-title--sortable" style="width:6%">
+                                Card
+                            </th>
+                            <th class="data-table__header-title--sortable" style="width:30%">
+                                Definition 
+                            </th>
+                            <th class="data-table__header-title--sortable" style="width:30%">
+                                Usage
+                            </th>
+			    <!--
+                            <th class="data-table__header-title--sortable" style="width:3%">
+                                Codelist
+                            </th>
+                            <th class="data-table__header-title--sortable" style="width:5%">
+                                DCAT
+                            </th>
+			    -->
+                        </tr>
+                    </thead>
+                    <tbody class="supertype">
+                        
+                            <tr id="ESF.peopletotrain"
+                                typeof="rdf:Property"
+                                resource="https://w3id.org/adm/model/peopleToTrain"
+                                class="class mandatory">
+                                <td>
+				    <a href="https://github.com/SEMICeu/ADM/issues/new?title=Issue%20for%20people to train%20in%20ESF&body=Explain%20your%20issue%20for%20https://semiceu.github.io/ADM/releases/0.0.1%23ESF.peopletotrain" target="_blank" rel="noopener noreferrer" >
+					    <!--                                        <i class="icon">[o]</i> -->
+                                        <img src="html/callout.png" loading="lazy" alt="[o]" width="100" height="100"/>
+                                    </a>
+                                </td>
+                                <td>
+                                        <a href="https://w3id.org/adm/model/peopleToTrain"
+                                           data-toggle="tooltip"
+                                           data-content="https://w3id.org/adm/model/peopleToTrain"
+                                           data-placement="right">
+                                        people to train</a>
+                                </td>
+                                <td>
+                                    
+                                        
+                                            <a href="#Integer" data-placement="right">Integer</a>
+                                        
+                                    
+                                </td>
+                                <td>
+                                    0..1
+                                </td>
+                                <td property="rdfs:comment">
+                                    The amount of people requested to follow the training. 
+                                </td>
+                                <td property="skos:scopeNote">
+                                    
+                                </td>
+				<!--
+                                <td>
+                                    
+                                </td>
+				-->
+                                <td>
+                                    
+                                </td>
+                            </tr>
+                        
+                            <tr id="ESF.providedtraininghours"
+                                typeof="rdf:Property"
+                                resource="https://w3id.org/adm/model/providedTrainingHours"
+                                class="class mandatory">
+                                <td>
+				    <a href="https://github.com/SEMICeu/ADM/issues/new?title=Issue%20for%20provided training hours%20in%20ESF&body=Explain%20your%20issue%20for%20https://semiceu.github.io/ADM/releases/0.0.1%23ESF.providedtraininghours" target="_blank" rel="noopener noreferrer" >
+					    <!--                                        <i class="icon">[o]</i> -->
+                                        <img src="html/callout.png" loading="lazy" alt="[o]" width="100" height="100"/>
+                                    </a>
+                                </td>
+                                <td>
+                                        <a href="https://w3id.org/adm/model/providedTrainingHours"
+                                           data-toggle="tooltip"
+                                           data-content="https://w3id.org/adm/model/providedTrainingHours"
+                                           data-placement="right">
+                                        provided training hours</a>
+                                </td>
+                                <td>
+                                    
+                                        
+                                            <a href="#Integer" data-placement="right">Integer</a>
+                                        
+                                    
+                                </td>
+                                <td>
+                                    0..1
+                                </td>
+                                <td property="rdfs:comment">
+                                    The amount of training hours given.
+                                </td>
+                                <td property="skos:scopeNote">
+                                    
+                                </td>
+				<!--
+                                <td>
+                                    
+                                </td>
+				-->
+                                <td>
+                                    
+                                </td>
+                            </tr>
+                        
+                            <tr id="ESF.trainedpeople"
+                                typeof="rdf:Property"
+                                resource="https://w3id.org/adm/model/trainedPeople"
+                                class="class mandatory">
+                                <td>
+				    <a href="https://github.com/SEMICeu/ADM/issues/new?title=Issue%20for%20trained people%20in%20ESF&body=Explain%20your%20issue%20for%20https://semiceu.github.io/ADM/releases/0.0.1%23ESF.trainedpeople" target="_blank" rel="noopener noreferrer" >
+					    <!--                                        <i class="icon">[o]</i> -->
+                                        <img src="html/callout.png" loading="lazy" alt="[o]" width="100" height="100"/>
+                                    </a>
+                                </td>
+                                <td>
+                                        <a href="https://w3id.org/adm/model/trainedPeople"
+                                           data-toggle="tooltip"
+                                           data-content="https://w3id.org/adm/model/trainedPeople"
+                                           data-placement="right">
+                                        trained people</a>
+                                </td>
+                                <td>
+                                    
+                                        
+                                            <a href="#Integer" data-placement="right">Integer</a>
+                                        
+                                    
+                                </td>
+                                <td>
+                                    0..1
+                                </td>
+                                <td property="rdfs:comment">
+                                    The amount of people whom completed the training.
+                                </td>
+                                <td property="skos:scopeNote">
+                                    
+                                </td>
+				<!--
+                                <td>
+                                    
+                                </td>
+				-->
+                                <td>
+                                    
+                                </td>
+                            </tr>
+                        
+                            <tr id="ESF.traininghours"
+                                typeof="rdf:Property"
+                                resource="https://w3id.org/adm/model/trainingHours"
+                                class="class mandatory">
+                                <td>
+				    <a href="https://github.com/SEMICeu/ADM/issues/new?title=Issue%20for%20training hours%20in%20ESF&body=Explain%20your%20issue%20for%20https://semiceu.github.io/ADM/releases/0.0.1%23ESF.traininghours" target="_blank" rel="noopener noreferrer" >
+					    <!--                                        <i class="icon">[o]</i> -->
+                                        <img src="html/callout.png" loading="lazy" alt="[o]" width="100" height="100"/>
+                                    </a>
+                                </td>
+                                <td>
+                                        <a href="https://w3id.org/adm/model/trainingHours"
+                                           data-toggle="tooltip"
+                                           data-content="https://w3id.org/adm/model/trainingHours"
+                                           data-placement="right">
+                                        training hours</a>
+                                </td>
+                                <td>
+                                    
+                                        
+                                            <a href="#Integer" data-placement="right">Integer</a>
+                                        
+                                    
+                                </td>
+                                <td>
+                                    0..1
+                                </td>
+                                <td property="rdfs:comment">
+                                    The time spent for the training.
+                                </td>
+                                <td property="skos:scopeNote">
+                                    
+                                </td>
+				<!--
+                                <td>
+                                    
+                                </td>
+				-->
+                                <td>
+                                    
+                                </td>
+                            </tr>
+                        
+                    </tbody>
+                </table>
+            </div>
+        
+    </div>
+</section>
+
+
+
+
+
+   
+        <section>
+            <h3 id="Identifier">
+                <a href="http://www.w3.org/ns/adms#Identifier"
+                   data-toggle="tooltip"
+                   data-content="http://www.w3.org/ns/adms#Identifier"
+                   data-placement="right">Identifier</a>
+
+            </h3>
+	        <!-- XXX an image in the h3 will break the rendering of the Table Of Contents of Respec -->
+		<!-- outcomment github feedback possibility
+                <a href="https://github.com/SEMICeu/ADM/issues/new?title=Issue%20for%20Identifier&body=Explain%20your%20issue"}}>
+                   <img src="html/callout.png" loading="lazy" alt="(create issue)" width="20" height="20"/>
+		</a>
+		-->
+            <dl>
+                <dt>
+                    Definition
+                </dt>
+                <dd>
+                    A structured reference that identifies an entity.
+                </dd>
+                
+                
+                    <dt>
+                        Usage Note
+                    </dt>
+                    <dd>
+                        The Identifier class is based on the <a href="https://www.gs1.org/standards/edi/gs1-un-cefact-xml/2012">UN/CEFACT</a> class of the same name and is defined under the ADMS namespace.
+                    </dd>
+                
+                
+                    <dt>
+                        Properties
+                    </dt>
+                    
+                        <dd>
+                            For this entity the following properties are defined: <a href="#Identifier.notation">notation</a>
+                            .
+                    </dd>
+                
+            </dl>
+        </div>
+        
+            <div class="u-table-overflow">
+                <table class="data-table simple" id="table-mandatory-classes">
+                    <thead>
+                        <tr class="data-table__header">
+                            <th class="data-table__header-title--sortable" style="width:6%">
+                            </th>
+                            <th class="data-table__header-title--sortable data-table__header-title--sortable-active" style="width:14%">
+                                Property
+                            </th>
+                            <th class="data-table__header-title--sortable" style="width:14%">
+                                Range
+                            </th>
+                            <th class="data-table__header-title--sortable" style="width:6%">
+                                Card
+                            </th>
+                            <th class="data-table__header-title--sortable" style="width:30%">
+                                Definition 
+                            </th>
+                            <th class="data-table__header-title--sortable" style="width:30%">
+                                Usage
+                            </th>
+			    <!--
+                            <th class="data-table__header-title--sortable" style="width:3%">
+                                Codelist
+                            </th>
+                            <th class="data-table__header-title--sortable" style="width:5%">
+                                DCAT
+                            </th>
+			    -->
+                        </tr>
+                    </thead>
+                    <tbody class="supertype">
+                        
+                            <tr id="Identifier.notation"
+                                typeof="rdf:Property"
+                                resource="http://www.w3.org/2004/02/skos/core#notation"
+                                class="class mandatory">
+                                <td>
+				    <a href="https://github.com/SEMICeu/ADM/issues/new?title=Issue%20for%20notation%20in%20Identifier&body=Explain%20your%20issue%20for%20https://semiceu.github.io/ADM/releases/0.0.1%23Identifier.notation" target="_blank" rel="noopener noreferrer" >
+					    <!--                                        <i class="icon">[o]</i> -->
+                                        <img src="html/callout.png" loading="lazy" alt="[o]" width="100" height="100"/>
+                                    </a>
+                                </td>
+                                <td>
+                                        <a href="http://www.w3.org/2004/02/skos/core#notation"
+                                           data-toggle="tooltip"
+                                           data-content="http://www.w3.org/2004/02/skos/core#notation"
+                                           data-placement="right">
+                                        notation</a>
+                                </td>
+                                <td>
+                                    
+                                        
+                                            <a href="#Literal" data-placement="right">Literal</a>
+                                        
+                                    
+                                </td>
+                                <td>
+                                    1
+                                </td>
+                                <td property="rdfs:comment">
+                                    A string of characters to uniquely identify a concept.
+                                </td>
+                                <td property="skos:scopeNote">
+                                    
+                                </td>
+				<!--
+                                <td>
+                                    
+                                </td>
+				-->
+                                <td>
+                                    
+                                </td>
+                            </tr>
+                        
+                    </tbody>
+                </table>
+            </div>
+        
+    </div>
+</section>
+
+
+
+
+
+   
+        <section>
+            <h3 id="KeyExpert">
+                <a href="https://w3id.org/adm/model/KeyExpert"
+                   data-toggle="tooltip"
+                   data-content="https://w3id.org/adm/model/KeyExpert"
+                   data-placement="right">KeyExpert</a>
+
+            </h3>
+	        <!-- XXX an image in the h3 will break the rendering of the Table Of Contents of Respec -->
+		<!-- outcomment github feedback possibility
+                <a href="https://github.com/SEMICeu/ADM/issues/new?title=Issue%20for%20Keyexpert&body=Explain%20your%20issue"}}>
+                   <img src="html/callout.png" loading="lazy" alt="(create issue)" width="20" height="20"/>
+		</a>
+		-->
+            <dl>
+                <dt>
+                    Definition
+                </dt>
+                <dd>
+                    The entity getting benefit from a contract
+                </dd>
+                
+                
+                
+                    <dt>
+                        Subclass of
+                        <dt>
+                            <dd> <a href="#Person">Person</a>
+                                
+                        </dd>
+                    
+                    <dt>
+                        Properties
+                    </dt>
+                    
+                    <dd>
+                        This specification does not impose any additional requirements to properties for this entity.
+                    </dd>
+                
+            </dl>
+        </div>
+        
+    </div>
+</section>
+
+
+
+
+
+
+
+   
+        <section>
+            <h3 id="MonetaryAmount">
+                <a href="https://w3id.org/adm/model/MonetaryAmount"
+                   data-toggle="tooltip"
+                   data-content="https://w3id.org/adm/model/MonetaryAmount"
+                   data-placement="right">Monetary Amount</a>
+
+            </h3>
+	        <!-- XXX an image in the h3 will break the rendering of the Table Of Contents of Respec -->
+		<!-- outcomment github feedback possibility
+                <a href="https://github.com/SEMICeu/ADM/issues/new?title=Issue%20for%20MonetaryAmount&body=Explain%20your%20issue"}}>
+                   <img src="html/callout.png" loading="lazy" alt="(create issue)" width="20" height="20"/>
+		</a>
+		-->
+            <dl>
+                <dt>
+                    Definition
+                </dt>
+                <dd>
+                    A sum of money.
+                </dd>
+                
+                
+                
+                    <dt>
+                        Properties
+                    </dt>
+                    
+                        <dd>
+                            For this entity the following properties are defined: <a href="#MonetaryAmount.currency">currency</a>
+                            , <a href="#MonetaryAmount.value">value</a>
+                            .
+                    </dd>
+                
+            </dl>
+        </div>
+        
+            <div class="u-table-overflow">
+                <table class="data-table simple" id="table-mandatory-classes">
+                    <thead>
+                        <tr class="data-table__header">
+                            <th class="data-table__header-title--sortable" style="width:6%">
+                            </th>
+                            <th class="data-table__header-title--sortable data-table__header-title--sortable-active" style="width:14%">
+                                Property
+                            </th>
+                            <th class="data-table__header-title--sortable" style="width:14%">
+                                Range
+                            </th>
+                            <th class="data-table__header-title--sortable" style="width:6%">
+                                Card
+                            </th>
+                            <th class="data-table__header-title--sortable" style="width:30%">
+                                Definition 
+                            </th>
+                            <th class="data-table__header-title--sortable" style="width:30%">
+                                Usage
+                            </th>
+			    <!--
+                            <th class="data-table__header-title--sortable" style="width:3%">
+                                Codelist
+                            </th>
+                            <th class="data-table__header-title--sortable" style="width:5%">
+                                DCAT
+                            </th>
+			    -->
+                        </tr>
+                    </thead>
+                    <tbody class="supertype">
+                        
+                            <tr id="MonetaryAmount.currency"
+                                typeof="rdf:Property"
+                                resource="https://w3id.org/adm/model/currency"
+                                class="class mandatory">
+                                <td>
+				    <a href="https://github.com/SEMICeu/ADM/issues/new?title=Issue%20for%20currency%20in%20Monetary Amount&body=Explain%20your%20issue%20for%20https://semiceu.github.io/ADM/releases/0.0.1%23MonetaryAmount.currency" target="_blank" rel="noopener noreferrer" >
+					    <!--                                        <i class="icon">[o]</i> -->
+                                        <img src="html/callout.png" loading="lazy" alt="[o]" width="100" height="100"/>
+                                    </a>
+                                </td>
+                                <td>
+                                        <a href="https://w3id.org/adm/model/currency"
+                                           data-toggle="tooltip"
+                                           data-content="https://w3id.org/adm/model/currency"
+                                           data-placement="right">
+                                        currency</a>
+                                </td>
+                                <td>
+                                    
+                                        
+                                            <a href="#Code" data-placement="right">Code</a>
+                                        
+                                    
+                                </td>
+                                <td>
+                                    1
+                                </td>
+                                <td property="rdfs:comment">
+                                    The system of money used for the amount.
+                                </td>
+                                <td property="skos:scopeNote">
+                                    
+                                </td>
+				<!--
+                                <td>
+                                    
+                                </td>
+				-->
+                                <td>
+                                    
+                                </td>
+                            </tr>
+                        
+                            <tr id="MonetaryAmount.value"
+                                typeof="rdf:Property"
+                                resource="https://w3id.org/adm/model/value"
+                                class="class mandatory">
+                                <td>
+				    <a href="https://github.com/SEMICeu/ADM/issues/new?title=Issue%20for%20value%20in%20Monetary Amount&body=Explain%20your%20issue%20for%20https://semiceu.github.io/ADM/releases/0.0.1%23MonetaryAmount.value" target="_blank" rel="noopener noreferrer" >
+					    <!--                                        <i class="icon">[o]</i> -->
+                                        <img src="html/callout.png" loading="lazy" alt="[o]" width="100" height="100"/>
+                                    </a>
+                                </td>
+                                <td>
+                                        <a href="https://w3id.org/adm/model/value"
+                                           data-toggle="tooltip"
+                                           data-content="https://w3id.org/adm/model/value"
+                                           data-placement="right">
+                                        value</a>
+                                </td>
+                                <td>
+                                    
+                                        
+                                            <a href="#Decimal" data-placement="right">Decimal</a>
+                                        
+                                    
+                                </td>
+                                <td>
+                                    1
+                                </td>
+                                <td property="rdfs:comment">
+                                    The number expressing the sum of money.
+                                </td>
+                                <td property="skos:scopeNote">
+                                    
+                                </td>
+				<!--
+                                <td>
+                                    
+                                </td>
+				-->
+                                <td>
+                                    
+                                </td>
+                            </tr>
+                        
+                    </tbody>
+                </table>
+            </div>
+        
+    </div>
+</section>
+
+
+
+
+
+   
+        <section>
+            <h3 id="Partner">
+                <a href="https://w3id.org/adm/model/Partner"
+                   data-toggle="tooltip"
+                   data-content="https://w3id.org/adm/model/Partner"
+                   data-placement="right">Partner</a>
+
+            </h3>
+	        <!-- XXX an image in the h3 will break the rendering of the Table Of Contents of Respec -->
+		<!-- outcomment github feedback possibility
+                <a href="https://github.com/SEMICeu/ADM/issues/new?title=Issue%20for%20Partner&body=Explain%20your%20issue"}}>
+                   <img src="html/callout.png" loading="lazy" alt="(create issue)" width="20" height="20"/>
+		</a>
+		-->
+            <dl>
+                <dt>
+                    Definition
+                </dt>
+                <dd>
+                    Entity which is partner of the beneficiary of th
+                </dd>
+                
+                
+                
+                    <dt>
+                        Subclass of
+                        <dt>
+                            <dd> <a href="#LegalEntity">Legal Entity</a>
+                                
+                        </dd>
+                    
+                    <dt>
+                        Properties
+                    </dt>
+                    
+                    <dd>
+                        This specification does not impose any additional requirements to properties for this entity.
+                    </dd>
+                
+            </dl>
+        </div>
+        
+    </div>
+</section>
+
+
+
+
+
+   
+        <section>
+            <h3 id="Person">
+                <a href="http://www.w3.org/ns/person#Person"
+                   data-toggle="tooltip"
+                   data-content="http://www.w3.org/ns/person#Person"
+                   data-placement="right">Person</a>
+
+            </h3>
+	        <!-- XXX an image in the h3 will break the rendering of the Table Of Contents of Respec -->
+		<!-- outcomment github feedback possibility
+                <a href="https://github.com/SEMICeu/ADM/issues/new?title=Issue%20for%20Person&body=Explain%20your%20issue"}}>
+                   <img src="html/callout.png" loading="lazy" alt="(create issue)" width="20" height="20"/>
+		</a>
+		-->
+            <dl>
+                <dt>
+                    Definition
+                </dt>
+                <dd>
+                    A individual human being who may be dead or alive, but not imaginary.
+                </dd>
+                
+                
+                    <dt>
+                        Usage Note
+                    </dt>
+                    <dd>
+                        The fact that a person in the context of Core Person Vocabulary cannot be imaginary makes person:Person a subclass of foaf:Person which cover imaginary characters as well as real people. The Person Class is a subclass of the more general foaf:Agent class.
+                    </dd>
+                
+                
+                    <dt>
+                        Subclass of
+                        <dt>
+                            <dd> <a href="http://xmlns.com/foaf/0.1/Person">Person</a>
+                                
+                        </dd>
+                    
+                    <dt>
+                        Properties
+                    </dt>
+                    
+                        <dd>
+                            For this entity the following properties are defined: <a href="#Person.dateofbirth">date of birth</a>
+                            , <a href="#Person.familyname">family name</a>
+                            , <a href="#Person.givenname">given name</a>
+                            .
+                    </dd>
+                
+            </dl>
+        </div>
+        
+            <div class="u-table-overflow">
+                <table class="data-table simple" id="table-mandatory-classes">
+                    <thead>
+                        <tr class="data-table__header">
+                            <th class="data-table__header-title--sortable" style="width:6%">
+                            </th>
+                            <th class="data-table__header-title--sortable data-table__header-title--sortable-active" style="width:14%">
+                                Property
+                            </th>
+                            <th class="data-table__header-title--sortable" style="width:14%">
+                                Range
+                            </th>
+                            <th class="data-table__header-title--sortable" style="width:6%">
+                                Card
+                            </th>
+                            <th class="data-table__header-title--sortable" style="width:30%">
+                                Definition 
+                            </th>
+                            <th class="data-table__header-title--sortable" style="width:30%">
+                                Usage
+                            </th>
+			    <!--
+                            <th class="data-table__header-title--sortable" style="width:3%">
+                                Codelist
+                            </th>
+                            <th class="data-table__header-title--sortable" style="width:5%">
+                                DCAT
+                            </th>
+			    -->
+                        </tr>
+                    </thead>
+                    <tbody class="supertype">
+                        
+                            <tr id="Person.dateofbirth"
+                                typeof="rdf:Property"
+                                resource="http://data.europa.eu/m8g/birthDate"
+                                class="class mandatory">
+                                <td>
+				    <a href="https://github.com/SEMICeu/ADM/issues/new?title=Issue%20for%20date of birth%20in%20Person&body=Explain%20your%20issue%20for%20https://semiceu.github.io/ADM/releases/0.0.1%23Person.dateofbirth" target="_blank" rel="noopener noreferrer" >
+					    <!--                                        <i class="icon">[o]</i> -->
+                                        <img src="html/callout.png" loading="lazy" alt="[o]" width="100" height="100"/>
+                                    </a>
+                                </td>
+                                <td>
+                                        <a href="http://data.europa.eu/m8g/birthDate"
+                                           data-toggle="tooltip"
+                                           data-content="http://data.europa.eu/m8g/birthDate"
+                                           data-placement="right">
+                                        date of birth</a>
+                                </td>
+                                <td>
+                                    
+                                        
+                                            <a href="#Genericdate" data-placement="right">Generic date</a>
+                                        
+                                    
+                                </td>
+                                <td>
+                                    0..*
+                                </td>
+                                <td property="rdfs:comment">
+                                    The point in time on which the Person was born.
+                                </td>
+                                <td property="skos:scopeNote">
+                                    The date of birth could be expressed as date, gYearMonth or gYear, example:
+<ul>
+<li>- 1980-09-16^^xs:date</li>
+<li>- 1980-09^^xs:gYearMonth</li>
+<li>- 1980^^xs:gYear</li>
+</ul>
+                                </td>
+				<!--
+                                <td>
+                                    
+                                </td>
+				-->
+                                <td>
+                                    
+                                </td>
+                            </tr>
+                        
+                            <tr id="Person.familyname"
+                                typeof="rdf:Property"
+                                resource="http://xmlns.com/foaf/0.1/familyName"
+                                class="class mandatory">
+                                <td>
+				    <a href="https://github.com/SEMICeu/ADM/issues/new?title=Issue%20for%20family name%20in%20Person&body=Explain%20your%20issue%20for%20https://semiceu.github.io/ADM/releases/0.0.1%23Person.familyname" target="_blank" rel="noopener noreferrer" >
+					    <!--                                        <i class="icon">[o]</i> -->
+                                        <img src="html/callout.png" loading="lazy" alt="[o]" width="100" height="100"/>
+                                    </a>
+                                </td>
+                                <td>
+                                        <a href="http://xmlns.com/foaf/0.1/familyName"
+                                           data-toggle="tooltip"
+                                           data-content="http://xmlns.com/foaf/0.1/familyName"
+                                           data-placement="right">
+                                        family name</a>
+                                </td>
+                                <td>
+                                    
+                                        
+                                            <a href="#Text" data-placement="right">Text</a>
+                                        
+                                    
+                                </td>
+                                <td>
+                                    1..*
+                                </td>
+                                <td property="rdfs:comment">
+                                    The hereditary surname of a family.
+                                </td>
+                                <td property="skos:scopeNote">
+                                    Usually referring to a group of people related by blood, marriage or adoption. This attribute also carries prefixes or suffixes which are part of the family name, e.g. "de Boer", "van de Putte", "von und zu Orlow". Multiple family names, such as are commonly found in Hispanic countries, are recorded in the single family name property so that, for example, Miguel de Cervantes Saavedra's family name would be recorded as "de Cervantes Saavedra".
+                                </td>
+				<!--
+                                <td>
+                                    
+                                </td>
+				-->
+                                <td>
+                                    
+                                </td>
+                            </tr>
+                        
+                            <tr id="Person.givenname"
+                                typeof="rdf:Property"
+                                resource="http://xmlns.com/foaf/0.1/givenName"
+                                class="class mandatory">
+                                <td>
+				    <a href="https://github.com/SEMICeu/ADM/issues/new?title=Issue%20for%20given name%20in%20Person&body=Explain%20your%20issue%20for%20https://semiceu.github.io/ADM/releases/0.0.1%23Person.givenname" target="_blank" rel="noopener noreferrer" >
+					    <!--                                        <i class="icon">[o]</i> -->
+                                        <img src="html/callout.png" loading="lazy" alt="[o]" width="100" height="100"/>
+                                    </a>
+                                </td>
+                                <td>
+                                        <a href="http://xmlns.com/foaf/0.1/givenName"
+                                           data-toggle="tooltip"
+                                           data-content="http://xmlns.com/foaf/0.1/givenName"
+                                           data-placement="right">
+                                        given name</a>
+                                </td>
+                                <td>
+                                    
+                                        
+                                            <a href="#Text" data-placement="right">Text</a>
+                                        
+                                    
+                                </td>
+                                <td>
+                                    0..*
+                                </td>
+                                <td property="rdfs:comment">
+                                    The name(s) that identify the Person within a family with a common surname.
+                                </td>
+                                <td property="skos:scopeNote">
+                                    Usually a first name or forename. Given to a person by his or her parents at birth or legally recognised as 'given names' through a formal process. All given names are ordered in one property so that, for example, the given name for Johann Sebastian Bach is "Johann Sebastian".
+                                </td>
+				<!--
+                                <td>
+                                    
+                                </td>
+				-->
+                                <td>
+                                    
+                                </td>
+                            </tr>
+                        
+                    </tbody>
+                </table>
+            </div>
+        
+    </div>
+</section>
+
+
+
+
+
+
+
+
+
+</section>
+
+    <section>
+        <h2>
+            Datatypes
+        </h2>
+
+	The following datatypes are used within this specification.
+
+	<table class="data-table simple" id="table-mandatory-classes">
+	    <thead>
+		<tr class="data-table__header">
+		    <th class="data-table__header-title--sortable">
+		    </th>
+		    <th class="data-table__header-title--sortable data-table__header-title--sortable-active">
+			Class
+		    </th>
+		    <th class="data-table__header-title--sortable">
+			Definition
+		    </th>
+		</tr>
+	    </thead>
+	    <tbody class="supertype">
+            
+		<tr><td>
+                   <a href="https://github.com/SEMICeu/ADM/issues/new?title=Issue%20for%20Code&body=Explain%20your%20issue"}}>
+                     <img src="html/callout.png" loading="lazy" alt="(create issue)" width="50" height="50"/>
+		   </a>
+		</td><td>
+                
+                    <div id="Code">
+                        <a href="http://www.w3.org/2004/02/skos/core#Concept"
+                           data-toggle="tooltip"
+                           data-content="http://www.w3.org/2004/02/skos/core#Concept"
+                           data-placement="right">Code</a>
+                    </div>
+                
+		</td><td>
+                    An idea or notion; a unit of thought.
+		</td></tr>
+		<tr><td>
+                   <a href="https://github.com/SEMICeu/ADM/issues/new?title=Issue%20for%20Date&body=Explain%20your%20issue"}}>
+                     <img src="html/callout.png" loading="lazy" alt="(create issue)" width="50" height="50"/>
+		   </a>
+		</td><td>
+                
+                    <div id="Date">
+                        <a href="http://www.w3.org/2001/XMLSchema#date"
+                           data-toggle="tooltip"
+                           data-content="http://www.w3.org/2001/XMLSchema#date"
+                           data-placement="right">Date</a>
+                    </div>
+                
+		</td><td>
+                    Date represents top-open intervals of exactly one day in length on the timelines of dateTime, beginning on the beginning moment of each day, up to but not including the beginning moment of the next day).  For non-timezoned values, the top-open intervals disjointly cover the non-timezoned timeline, one per day.  For timezoned values, the intervals begin at every minute and therefore overlap.
+		</td></tr>
+		<tr><td>
+                   <a href="https://github.com/SEMICeu/ADM/issues/new?title=Issue%20for%20Decimal&body=Explain%20your%20issue"}}>
+                     <img src="html/callout.png" loading="lazy" alt="(create issue)" width="50" height="50"/>
+		   </a>
+		</td><td>
+                
+                    <div id="Decimal">
+                        <a href="http://www.w3.org/2001/XMLSchema#decimal"
+                           data-toggle="tooltip"
+                           data-content="http://www.w3.org/2001/XMLSchema#decimal"
+                           data-placement="right">Decimal</a>
+                    </div>
+                
+		</td><td>
+                    Decimal represents a subset of the real numbers, which can be represented by decimal numerals.
+		</td></tr>
+		<tr><td>
+                   <a href="https://github.com/SEMICeu/ADM/issues/new?title=Issue%20for%20GenericDate&body=Explain%20your%20issue"}}>
+                     <img src="html/callout.png" loading="lazy" alt="(create issue)" width="50" height="50"/>
+		   </a>
+		</td><td>
+                
+                    <div id="Genericdate">
+                        <a href="http://data.europa.eu/m8g/GenericDate"
+                           data-toggle="tooltip"
+                           data-content="http://data.europa.eu/m8g/GenericDate"
+                           data-placement="right">Generic date</a>
+                    </div>
+                
+		</td><td>
+                    The date data type is the union of  xs:date, xs:gYearMonth and xs:gYear
+		</td></tr>
+		<tr><td>
+                   <a href="https://github.com/SEMICeu/ADM/issues/new?title=Issue%20for%20Integer&body=Explain%20your%20issue"}}>
+                     <img src="html/callout.png" loading="lazy" alt="(create issue)" width="50" height="50"/>
+		   </a>
+		</td><td>
+                
+                    <div id="Integer">
+                        <a href="http://www.w3.org/2001/XMLSchema#integer"
+                           data-toggle="tooltip"
+                           data-content="http://www.w3.org/2001/XMLSchema#integer"
+                           data-placement="right">Integer</a>
+                    </div>
+                
+		</td><td>
+                    Integer is ·derived· from decimal by fixing the value of ·fractionDigits· to be 0 and disallowing the trailing decimal point.  This results in the standard mathematical concept of the integer numbers.  The ·value space· of integer is the infinite set {...,-2,-1,0,1,2,...}.  The ·base type· of integer is decimal.
+		</td></tr>
+		<tr><td>
+                   <a href="https://github.com/SEMICeu/ADM/issues/new?title=Issue%20for%20Literal&body=Explain%20your%20issue"}}>
+                     <img src="html/callout.png" loading="lazy" alt="(create issue)" width="50" height="50"/>
+		   </a>
+		</td><td>
+                
+                    <div id="Literal">
+                        <a href="http://www.w3.org/2000/01/rdf-schema#Literal"
+                           data-toggle="tooltip"
+                           data-content="http://www.w3.org/2000/01/rdf-schema#Literal"
+                           data-placement="right">Literal</a>
+                    </div>
+                
+		</td><td>
+                    The class of literal values, eg. textual strings and integers.
+		</td></tr>
+		<tr><td>
+                   <a href="https://github.com/SEMICeu/ADM/issues/new?title=Issue%20for%20Text&body=Explain%20your%20issue"}}>
+                     <img src="html/callout.png" loading="lazy" alt="(create issue)" width="50" height="50"/>
+		   </a>
+		</td><td>
+                
+                    <div id="Text">
+                        <a href="http://www.w3.org/1999/02/22-rdf-syntax-ns#langString"
+                           data-toggle="tooltip"
+                           data-content="http://www.w3.org/1999/02/22-rdf-syntax-ns#langString"
+                           data-placement="right">Text</a>
+                    </div>
+                
+		</td><td>
+                    The text data type is a combination of a string and a language identifier.
+		</td></tr>
+            </tbody>
+	</table>
+
+
+</section>
+
+<!--
+<section class="informative">
+    <h2 aria-level="1" role="heading" id="h2_sotd">
+        JSON-LD context
+    </h2>
+    <div class="region region--no-space-top" id="jsonld">
+         (non normative)
+        
+            <p>
+                A reusable JSON-LD context definition for this Application Profile is retrievable at: <a href="/ADM/releases/0.0.1/context/arachne.jsonld"
+    target="_blank">/ADM/releases/0.0.1/context/arachne.jsonld</a>
+            </p>
+        
+    </div>
+</section>
+<section class="informative">
+    <h2 aria-level="1" role="heading" id="h2_sotd">
+        SHACL template
+    </h2>
+    <div class="region region--no-space-top" id="shacl">
+         (non normative)
+        
+            <p>
+                A reusable SHACL template for this Core Vocabulary is retrievable at: <a href="/ADM/releases/0.0.1/shacl/arachne-SHACL.ttl"
+    target="_blank">/ADM/releases/0.0.1/shacl/arachne-SHACL.ttl</a>
+            </p>
+        
+    </div>
+</section>
+-->
+
+<section class="informative">
+    <h2 aria-level="1" role="heading" id="h2_codelist">
+        Code List
+    </h2> 												   
+    
+
+
+<h3 id="list-project-type">Block - Project Type</h3> 
+<table id="table-block-projectType" class="simple">
+	 <thead><tr><th>URI</th><th>Identifier</th><th>Label</th><th>Description</th></tr></thead>
+    <tbody>
+        <tr>
+            <td>https://w3id.org/adm/codelist/projectType/1</td>
+            <td>1</td>
+            <td>ESF project</td>
+            <td>ESF project (Education and training)</td>
+        </tr>
+        <tr>
+            <td>https://w3id.org/adm/codelist/projectType/2</td>
+            <td>2</td>
+            <td>SME project</td>
+            <td>SME project</td>
+        </tr>
+        <tr>
+            <td>https://w3id.org/adm/codelist/projectType/3</td>
+            <td>3</td>
+            <td>Road construction project</td>
+            <td>Road construction project</td>
+        </tr>
+        <tr>
+            <td>https://w3id.org/adm/codelist/projectType/4</td>
+            <td>4</td>
+            <td>Railroad construction project</td>
+            <td>Railroad construction project</td>
+        </tr>
+        <tr>
+            <td>https://w3id.org/adm/codelist/projectType/5</td>
+            <td>5</td>
+            <td>Solid waste treatment project</td>
+            <td>Solid waste treatment project</td>
+        </tr>
+        <tr>
+            <td>https://w3id.org/adm/codelist/projectType/6</td>
+            <td>6</td>
+            <td>Water waste or water supply project</td>
+            <td>Water waste or water supply project</td>
+        </tr>
+        <tr>
+            <td>https://w3id.org/adm/codelist/projectType/7</td>
+            <td>7</td>
+            <td>Energy efficiency and urban development project</td>
+            <td>Energy efficiency (housing) / Urban development project</td>
+        </tr>
+        <tr>
+            <td>https://w3id.org/adm/codelist/projectType/8</td>
+            <td>8</td>
+            <td>Recovery and Resilience Facility</td>
+            <td>Recovery and Resilience Facility</td>
+        </tr>
+        <tr>
+            <td>https://w3id.org/adm/codelist/projectType/9</td>
+            <td>9</td>
+            <td>Other</td>
+            <td>Other</td>
+        </tr>
+        <tr>
+            <td>https://w3id.org/adm/codelist/projectType/11</td>
+            <td>11</td>
+            <td>EAGF - Direct Payments interventions</td>
+            <td>EAGF - Direct Payments interventions</td>
+        </tr>
+        <tr>
+            <td>https://w3id.org/adm/codelist/projectType/12</td>
+            <td>12</td>
+            <td>EAGF - Sectoral interventions and market measures</td>
+            <td>EAGF - Sectoral interventions and market measures</td>
+        </tr>
+        <tr>
+            <td>https://w3id.org/adm/codelist/projectType/13</td>
+            <td>13</td>
+            <td>EAFRD - Rural development Non-IACS interventions</td>
+            <td>EAFRD - Rural development Non-IACS interventions</td>
+        </tr>
+        <tr>
+            <td>https://w3id.org/adm/codelist/projectType/14</td>
+            <td>14</td>
+            <td>EAFRD - Rural development IACS interventions</td>
+            <td>EAFRD - Rural development IACS interventions</td>
+        </tr>
+  </tbody>
+</table>
+
+<h3 id="list-project-status">Project - Status</h3> 
+<table id="table-project-Status" class="simple">
+	 <thead><tr><th>URI</th><th>Identifier</th><th>Label</th><th>Description</th></tr></thead>
+    <tbody>
+        <tr>
+            <td>https://w3id.org/adm/codelist/projectStatus/1</td>
+            <td>1</td>
+            <td>Open</td>
+            <td>The project is ongoing</td>
+        </tr>
+        <tr>
+            <td>https://w3id.org/adm/codelist/projectStatus/2</td>
+            <td>2</td>
+            <td>Closed</td>
+            <td>The project is concluded</td>
+        </tr>
+        <tr>
+            <td>https://w3id.org/adm/codelist/projectStatus/3</td>
+            <td>3</td>
+            <td>Cancelled</td>
+            <td>The project is aborted</td>
+        </tr>
+    </tbody>
+</table>
+
+<h3 id="list-project-thematicObjective">Project - Thematic Objective</h3> 
+<table id="table-project-thematicObjective" class="simple">
+	<thead><tr><th>URI</th><th>Identifier</th><th>Label</th><th>Description</th></tr></thead>
+	<tbody>
+        <tr>
+            <td>https://w3id.org/adm/codelist/thematicObjective/0</td>
+            <td>0</td>
+            <td>Unknown</td>
+            <td>Unknown</td>
+        </tr>
+        <tr>
+            <td>https://w3id.org/adm/codelist/thematicObjective/1</td>
+            <td>1</td>
+            <td>Research</td>
+            <td>Strengthening research, technological development and innovation</td>
+        </tr>
+        <tr>
+            <td>https://w3id.org/adm/codelist/thematicObjective/2</td>
+            <td>2</td>
+            <td>Access</td>
+            <td>Enhancing access to, and use and quality of, ICT</td>
+        </tr>
+        <tr>
+            <td>https://w3id.org/adm/codelist/thematicObjective/3</td>
+            <td>3</td>
+            <td>Competitiveness</td>
+            <td>Enhancing the competitiveness of SMEs, of the agricultural sector (for the EAFRD) and of the fishery and aquaculture sector (for the EMFF)</td>
+        </tr>
+        <tr>
+            <td>https://w3id.org/adm/codelist/thematicObjective/4</td>
+            <td>4</td>
+            <td>Low-carbon</td>
+            <td>Supporting the shift towards a low-carbon economy in all sectors</td>
+        </tr>
+        <tr>
+            <td>https://w3id.org/adm/codelist/thematicObjective/5</td>
+            <td>5</td>
+            <td>Climate change</td>
+            <td>Promoting climate change adaptation, risk prevention and management</td>
+        </tr>
+        <tr>
+            <td>https://w3id.org/adm/codelist/thematicObjective/6</td>
+            <td>6</td>
+            <td>Environment</td>
+            <td>Preserving and protecting the environment and promoting resource efficiency</td>
+        </tr>
+        <tr>
+            <td>https://w3id.org/adm/codelist/thematicObjective/7</td>
+            <td>7</td>
+            <td>Transport</td>
+            <td>Promoting sustainable transport and removing bottlenecks in key network infrastructures</td>
+        </tr>
+        <tr>
+            <td>https://w3id.org/adm/codelist/thematicObjective/8</td>
+            <td>8</td>
+            <td>Labour</td>
+            <td>Promoting sustainable and quality employment and supporting labour mobility</td>
+        </tr>
+        <tr>
+            <td>https://w3id.org/adm/codelist/thematicObjective/9</td>
+            <td>9</td>
+            <td>Inclusion</td>
+            <td>Promoting social inclusion, combating poverty and any discrimination</td>
+        </tr>
+        <tr>
+            <td>https://w3id.org/adm/codelist/thematicObjective/10</td>
+            <td>10</td>
+            <td>Education</td>
+            <td>Investing in education, training and vocational training for skills and lifelong learning</td>
+        </tr>
+        <tr>
+            <td>https://w3id.org/adm/codelist/thematicObjective/11</td>
+            <td>11</td>
+            <td>Institutions</td>
+            <td>Enhancing institutional capacity of public authorities and stakeholders and efficient public administration</td>
+        </tr>
+        <tr>
+            <td>https://w3id.org/adm/codelist/thematicObjective/12</td>
+            <td>12</td>
+            <td>Not applicable</td>
+            <td>Not applicable (Technical assistance only)</td>
+        </tr>
+        <tr>
+            <td>https://w3id.org/adm/codelist/thematicObjective/13</td>
+            <td>13</td>
+            <td>Recovery</td>
+            <td>Fostering crisis repair in the context of the COVID-19 pandemic and preparing a green, digital and resilient recovery of the economy (REACT-EU)</td>
+        </tr>
+    </tbody>
+</table>
+
+
+</section>
+
+<section class="informative">
+    <h2> Examples </h2>
+        
+<h3 class="h3 examples" id="example-rdf_project">Example Project</h3>
+
+</section>
+
+
+<section class="informative">
+	<h2>Usage Guidelines</h2>
+    <section class="informative">
+  <h2>Support for implementation</h2>
+
+The following section provides support for implementing the Arachne Data Model.
+<p/>
+
+<h3>JSON-LD context file</h3>
+
+One common technical question is the format in which the data is being exchanged. 
+For conformance with the Arachne Data Model, it is not mandatory that this happens in an RDF serialisation, but the exchanged format SHOULD be unambiguously transformable into RDF.
+For the format JSON, a popular format to exchange data between systems, SEMIC provides a <a href="./context/arachne.jsonld">JSON-LD context file</a>. 
+JSON-LD is a W3C Recommendation [[[json-ld11]]] that provided a standard approach to interpret JSON structures as RDF.
+The provided JSON-LD context file can be used by implementers.
+This JSON-LD context is not normative, i.e. other JSON-LD contexts are allowed.
+<p/>
+The JSON-LD context file downloadable <a href="./context/arachne.jsonld">here</a>.
+<p/>
+
+<h3>Validation</h3>
+
+To verify if the data is (technically) conformant to the Arachne Data Model, the exchanged data can be validated using the provided SHACL shapes. 
+SHACL is a W3C Recommendation to express constraints on an RDF knowledge graph. 
+<p/>
+To support the check whether or not a catalogue satisfies the expressed constraints in this Core Vocabulary, the constraints in this specification are expressed using SHACL [[shacl]].
+Each constraint in this specification that could be converted into a SHACL expression has been included.
+As such this collection of SHACL expressions that can be used to build a validation check for data. 
+<p/>
+It is up to the implementers to define the validation they expect.
+Each implementation happens within a context, and that context is beyond the SHACL expressions here.
+<p/>
+The shapes can be found <a href="./shacl/arachne-SHACL.ttl">here</a>.
+
+<h3>RDF representation</h3>
+The RDF representation of the Arachne Data Model is available <a href="./voc/arachne.ttl">here</a>.
+
+<h3>UML representation</h3>
+The UML representation from which the Arachne Data Model has been build is available <a href="./uml">here</a>.
+
+<!--
+<h3>Mapping</h3>
+A mapping towards Schema.org can be found <a href="https://github.com/SEMICeu/Semantic-Mappings/tree/main/Core%20Location">here</a>
+<p/>
+-->
+
+</section>
+    <section class="informative">
+<h2>Governance</h2>
+
+<h3>Versioning governance</h3>
+All specifications produced in SEMIC will follow the versioning rule described by the SEMIC Style Guide rule 
+<a href="https://semiceu.github.io/style-guide/1.0.0/gc-publication-conventions.html#sec:pc-r3">PC-R3</a>.
+In case a SEMIC asset is deprecated the asset will remain available through its PURI.
+<p/>
+The serialisation will have:
+<ul>
+<li>a dct:isReplacedBy referencing the new assets used instead and</li>
+<li> an adms:status  indicating its deprecated <a href="http://publications.europa.eu/resource/authority/concept-status/DEPRECATED">status</a>.</li>
+</ul>
+<p/>
+
+<h3>Governance requirements for re-used assets</h3>
+In order to adhere to the SEMIC Style Guide rule <a href="https://semiceu.github.io/style-guide/1.0.0/gc-general-conventions.html#sec:gc-r2">GC-R2</a>
+ a specification should have quality and governance standards for the assets that are being reused.
+<p/>
+In order for an asset to be considered for reuse within a SEMIC specification it can be requested by a community member or it requires to adhere to the following requirements:
+<ul>
+<li> The asset is part of a recommendation by a major standards body or an EU institution.</li>
+<li> The asset is actively being maintained.</li>
+</ul>
+<p/>
+
+After being taken into consideration the asset will be validated in three steps:
+<ul>
+<li> Syntax validation will be performed on the relevant artefacts.</li>
+<li> Constraint validation will be performed on the relevant artefacts.</li>
+<li> The PURI will be validated.</li>
+</ul>
+Once considered and validated an asset can be adopted if it is approved by the community.
+<p/>
+
+<h3>Lexicalisation rules</h3>
+
+In order to adhere to the SEMIC Style Guide rule <a href="https://semiceu.github.io/style-guide/1.0.0/gc-semantic-conventions.html#sec:sc-r3">SC-R3</a> a specification requires formal lexicalisation rules.
+The Style Guide proposes two options either by using RDFS or SKOS lexicalisation.
+<p/>
+SEMIC uses and will use the RDFS lexicalisation for all of its specifications. More specifically:
+<ul>
+<li> rdfs:label is used to provide a human-readable version of a resource's name.</li>
+<li> The usage of certain resource can be clarified in a skos:usageNote.</li>
+</ul>
+
+</section>    
+</section>
+ 
+
+
+
+ 
+
+
+
+<section id="quick-reference" class="appendix">
+
+<h2>Quick Reference of Classes and Properties</h2>
+
+This section provides a condensed tabular overview of the mentioned classes and properties in this specification.
+The properties are indicated as <it>mandatory, recommended, optional</it> and <it>deprecated</it>. These terms have the following meaning.
+<ul>
+<li>Mandatory property: a receiver MUST be able to process the information for that property; a sender MUST provide the information for that property.</li>
+<li>Recommended property: a receiver MUST be able to process the information for that property; a sender SHOULD provide the information for that property if it is available.</li>
+<li>Optional property: a receiver MUST be able to process the information for that property; a sender MAY provide the information for that property but is not obliged to do so.</li>
+<li>Deprecated property: a receiver SHOULD be able to process information about instances of that property; a sender SHOULD NOT provide the information about instances of that property.</li>
+</ul>
+
+<table id="table-quickoverview" class="simple" style="width:100%; table-layout: fixed; word-wrap:break-word;">
+	<thead>
+		<tr><th>Class</th><th>Class IRI</th><th>Property Type</type><th>Property</th><th>Property IRI</th></tr>
+	</thead>
+	<tbody>
+		
+				
+					
+						
+					
+						
+					
+						
+					
+						
+					
+					
+						
+					
+						
+					
+						
+					
+						
+					
+					
+						
+							<tr>
+								<td><a href="#Beneficiary">Beneficiary</a></td>
+								<td><div class="shorten">https://w3id.org/adm/model/Beneficiary</div></td>
+								<td></td>
+								<td><a href="#Beneficiary.haspartner">has partner </a></td>
+								<td><div class="shorten">https://w3id.org/adm/model/hasPartner</div></td>
+							</tr>
+						
+					
+						
+							<tr>
+								<td><a href="#Beneficiary">Beneficiary</a></td>
+								<td><div class="shorten">https://w3id.org/adm/model/Beneficiary</div></td>
+								<td></td>
+								<td><a href="#Beneficiary.hasultimateowner">has ultimate owner </a></td>
+								<td><div class="shorten">https://w3id.org/adm/model/hasUltimateOwner</div></td>
+							</tr>
+						
+					
+						
+							<tr>
+								<td><a href="#Beneficiary">Beneficiary</a></td>
+								<td><div class="shorten">https://w3id.org/adm/model/Beneficiary</div></td>
+								<td></td>
+								<td><a href="#Beneficiary.numberofemployees">number of employees </a></td>
+								<td><div class="shorten">https://w3id.org/adm/model/numberOfEmployees</div></td>
+							</tr>
+						
+					
+						
+							<tr>
+								<td><a href="#Beneficiary">Beneficiary</a></td>
+								<td><div class="shorten">https://w3id.org/adm/model/Beneficiary</div></td>
+								<td></td>
+								<td><a href="#Beneficiary.turnover">turnover </a></td>
+								<td><div class="shorten">https://w3id.org/adm/model/turnover</div></td>
+							</tr>
+						
+					
+				
+			</tr>
+		
+				
+					
+						
+					
+						
+					
+					
+						
+					
+						
+					
+					
+						
+							<tr>
+								<td><a href="#Block">Block</a></td>
+								<td><div class="shorten">https://w3id.org/adm/model/Block</div></td>
+								<td></td>
+								<td><a href="#Block.dg">dg </a></td>
+								<td><div class="shorten">https://w3id.org/adm/model/dg</div></td>
+							</tr>
+						
+					
+						
+							<tr>
+								<td><a href="#Block">Block</a></td>
+								<td><div class="shorten">https://w3id.org/adm/model/Block</div></td>
+								<td></td>
+								<td><a href="#Block.projecttype">project type </a></td>
+								<td><div class="shorten">https://w3id.org/adm/model/projectType</div></td>
+							</tr>
+						
+					
+				
+			</tr>
+		
+				
+					
+						
+					
+						
+					
+					
+						
+					
+						
+					
+					
+						
+							<tr>
+								<td><a href="#Contract">Contract</a></td>
+								<td><div class="shorten">http://data.europa.eu/a4g/ontology#Contract</div></td>
+								<td></td>
+								<td><a href="#Contract.belongsto">belongs to </a></td>
+								<td><div class="shorten">https://w3id.org/adm/model/belongsTo</div></td>
+							</tr>
+						
+					
+						
+							<tr>
+								<td><a href="#Contract">Contract</a></td>
+								<td><div class="shorten">http://data.europa.eu/a4g/ontology#Contract</div></td>
+								<td></td>
+								<td><a href="#Contract.hasKeyExpert">has KeyExpert </a></td>
+								<td><div class="shorten">https://w3id.org/adm/model/hasKeyExpert</div></td>
+							</tr>
+						
+					
+				
+			</tr>
+		
+				
+					
+						
+					
+					
+						
+					
+					
+						
+							<tr>
+								<td><a href="#Document">Document</a></td>
+								<td><div class="shorten">http://data.europa.eu/a4g/ontology#Document</div></td>
+								<td></td>
+								<td><a href="#Document.identifier">identifier </a></td>
+								<td><div class="shorten">http://www.w3.org/ns/adms#identifier</div></td>
+							</tr>
+						
+					
+				
+			</tr>
+		
+				
+					
+						
+					
+						
+					
+						
+					
+						
+					
+					
+						
+					
+						
+					
+						
+					
+						
+					
+					
+						
+							<tr>
+								<td><a href="#ESF">ESF</a></td>
+								<td><div class="shorten">https://w3id.org/adm/model/ESF</div></td>
+								<td></td>
+								<td><a href="#ESF.peopletotrain">people to train </a></td>
+								<td><div class="shorten">https://w3id.org/adm/model/peopleToTrain</div></td>
+							</tr>
+						
+					
+						
+							<tr>
+								<td><a href="#ESF">ESF</a></td>
+								<td><div class="shorten">https://w3id.org/adm/model/ESF</div></td>
+								<td></td>
+								<td><a href="#ESF.providedtraininghours">provided training hours </a></td>
+								<td><div class="shorten">https://w3id.org/adm/model/providedTrainingHours</div></td>
+							</tr>
+						
+					
+						
+							<tr>
+								<td><a href="#ESF">ESF</a></td>
+								<td><div class="shorten">https://w3id.org/adm/model/ESF</div></td>
+								<td></td>
+								<td><a href="#ESF.trainedpeople">trained people </a></td>
+								<td><div class="shorten">https://w3id.org/adm/model/trainedPeople</div></td>
+							</tr>
+						
+					
+						
+							<tr>
+								<td><a href="#ESF">ESF</a></td>
+								<td><div class="shorten">https://w3id.org/adm/model/ESF</div></td>
+								<td></td>
+								<td><a href="#ESF.traininghours">training hours </a></td>
+								<td><div class="shorten">https://w3id.org/adm/model/trainingHours</div></td>
+							</tr>
+						
+					
+				
+			</tr>
+		
+				
+					
+						
+					
+					
+						
+					
+					
+						
+							<tr>
+								<td><a href="#Identifier">Identifier</a></td>
+								<td><div class="shorten">http://www.w3.org/ns/adms#Identifier</div></td>
+								<td></td>
+								<td><a href="#Identifier.notation">notation </a></td>
+								<td><div class="shorten">http://www.w3.org/2004/02/skos/core#notation</div></td>
+							</tr>
+						
+					
+				
+			</tr>
+		
+				
+					<tr>
+						<td><a href="#KeyExpert">KeyExpert</a></td>
+						<td><div class="shorten">https://w3id.org/adm/model/KeyExpert</div></td>
+						<td></td>
+						<td></td>
+						<td></td>
+					</tr>
+				
+			</tr>
+		
+				
+					
+						
+					
+						
+					
+					
+						
+					
+						
+					
+					
+						
+							<tr>
+								<td><a href="#LegalEntity">Legal Entity</a></td>
+								<td><div class="shorten">http://www.w3.org/ns/legal#LegalEntity</div></td>
+								<td></td>
+								<td><a href="#LegalEntity.identifier">identifier </a></td>
+								<td><div class="shorten">http://www.w3.org/ns/adms#identifier</div></td>
+							</tr>
+						
+					
+						
+							<tr>
+								<td><a href="#LegalEntity">Legal Entity</a></td>
+								<td><div class="shorten">http://www.w3.org/ns/legal#LegalEntity</div></td>
+								<td></td>
+								<td><a href="#LegalEntity.legalidentifier">legal identifier </a></td>
+								<td><div class="shorten">http://www.w3.org/ns/legal#legalIdentifier</div></td>
+							</tr>
+						
+					
+				
+			</tr>
+		
+				
+					
+						
+					
+						
+					
+					
+						
+					
+						
+					
+					
+						
+							<tr>
+								<td><a href="#MonetaryAmount">Monetary Amount</a></td>
+								<td><div class="shorten">https://w3id.org/adm/model/MonetaryAmount</div></td>
+								<td></td>
+								<td><a href="#MonetaryAmount.currency">currency </a></td>
+								<td><div class="shorten">https://w3id.org/adm/model/currency</div></td>
+							</tr>
+						
+					
+						
+							<tr>
+								<td><a href="#MonetaryAmount">Monetary Amount</a></td>
+								<td><div class="shorten">https://w3id.org/adm/model/MonetaryAmount</div></td>
+								<td></td>
+								<td><a href="#MonetaryAmount.value">value </a></td>
+								<td><div class="shorten">https://w3id.org/adm/model/value</div></td>
+							</tr>
+						
+					
+				
+			</tr>
+		
+				
+					<tr>
+						<td><a href="#Partner">Partner</a></td>
+						<td><div class="shorten">https://w3id.org/adm/model/Partner</div></td>
+						<td></td>
+						<td></td>
+						<td></td>
+					</tr>
+				
+			</tr>
+		
+				
+					
+						
+					
+						
+					
+						
+					
+					
+						
+					
+						
+					
+						
+					
+					
+						
+							<tr>
+								<td><a href="#Person">Person</a></td>
+								<td><div class="shorten">http://www.w3.org/ns/person#Person</div></td>
+								<td></td>
+								<td><a href="#Person.dateofbirth">date of birth </a></td>
+								<td><div class="shorten">http://data.europa.eu/m8g/birthDate</div></td>
+							</tr>
+						
+					
+						
+							<tr>
+								<td><a href="#Person">Person</a></td>
+								<td><div class="shorten">http://www.w3.org/ns/person#Person</div></td>
+								<td></td>
+								<td><a href="#Person.familyname">family name </a></td>
+								<td><div class="shorten">http://xmlns.com/foaf/0.1/familyName</div></td>
+							</tr>
+						
+					
+						
+							<tr>
+								<td><a href="#Person">Person</a></td>
+								<td><div class="shorten">http://www.w3.org/ns/person#Person</div></td>
+								<td></td>
+								<td><a href="#Person.givenname">given name </a></td>
+								<td><div class="shorten">http://xmlns.com/foaf/0.1/givenName</div></td>
+							</tr>
+						
+					
+				
+			</tr>
+		
+				
+					
+						
+					
+						
+					
+						
+					
+						
+					
+						
+					
+						
+					
+						
+					
+						
+					
+						
+					
+						
+					
+						
+					
+						
+					
+					
+						
+					
+						
+					
+						
+					
+						
+					
+						
+					
+						
+					
+						
+					
+						
+					
+						
+					
+						
+					
+						
+					
+						
+					
+					
+						
+							<tr>
+								<td><a href="#Project">Project</a></td>
+								<td><div class="shorten">http://dbpedia.org/ontology/Project</div></td>
+								<td></td>
+								<td><a href="#Project.ECfinancialassistance">EC financial assistance </a></td>
+								<td><div class="shorten">https://w3id.org/adm/model/ECFinancialAssistance</div></td>
+							</tr>
+						
+					
+						
+							<tr>
+								<td><a href="#Project">Project</a></td>
+								<td><div class="shorten">http://dbpedia.org/ontology/Project</div></td>
+								<td></td>
+								<td><a href="#Project.enddate">end date </a></td>
+								<td><div class="shorten">http://dbpedia.org/ontology/projectEndDate</div></td>
+							</tr>
+						
+					
+						
+							<tr>
+								<td><a href="#Project">Project</a></td>
+								<td><div class="shorten">http://dbpedia.org/ontology/Project</div></td>
+								<td></td>
+								<td><a href="#Project.hasbeneficiary">has beneficiary </a></td>
+								<td><div class="shorten">https://w3id.org/adm/model/hasBeneficiary</div></td>
+							</tr>
+						
+					
+						
+							<tr>
+								<td><a href="#Project">Project</a></td>
+								<td><div class="shorten">http://dbpedia.org/ontology/Project</div></td>
+								<td></td>
+								<td><a href="#Project.hasblock">has block </a></td>
+								<td><div class="shorten">https://w3id.org/adm/model/hasBlock</div></td>
+							</tr>
+						
+					
+						
+							<tr>
+								<td><a href="#Project">Project</a></td>
+								<td><div class="shorten">http://dbpedia.org/ontology/Project</div></td>
+								<td></td>
+								<td><a href="#Project.identifier">identifier </a></td>
+								<td><div class="shorten">http://www.w3.org/ns/adms#identifier</div></td>
+							</tr>
+						
+					
+						
+							<tr>
+								<td><a href="#Project">Project</a></td>
+								<td><div class="shorten">http://dbpedia.org/ontology/Project</div></td>
+								<td></td>
+								<td><a href="#Project.income">income </a></td>
+								<td><div class="shorten">https://w3id.org/adm/model/income</div></td>
+							</tr>
+						
+					
+						
+							<tr>
+								<td><a href="#Project">Project</a></td>
+								<td><div class="shorten">http://dbpedia.org/ontology/Project</div></td>
+								<td></td>
+								<td><a href="#Project.name">name </a></td>
+								<td><div class="shorten">http://www.w3.org/2000/01/rdf-schema#label</div></td>
+							</tr>
+						
+					
+						
+							<tr>
+								<td><a href="#Project">Project</a></td>
+								<td><div class="shorten">http://dbpedia.org/ontology/Project</div></td>
+								<td></td>
+								<td><a href="#Project.othercontributions">other contributions </a></td>
+								<td><div class="shorten">https://w3id.org/adm/model/otherContributions</div></td>
+							</tr>
+						
+					
+						
+							<tr>
+								<td><a href="#Project">Project</a></td>
+								<td><div class="shorten">http://dbpedia.org/ontology/Project</div></td>
+								<td></td>
+								<td><a href="#Project.startdate">start date </a></td>
+								<td><div class="shorten">http://dbpedia.org/ontology/projectStartDate</div></td>
+							</tr>
+						
+					
+						
+							<tr>
+								<td><a href="#Project">Project</a></td>
+								<td><div class="shorten">http://dbpedia.org/ontology/Project</div></td>
+								<td></td>
+								<td><a href="#Project.status">status </a></td>
+								<td><div class="shorten">http://www.w3.org/ns/adms#status</div></td>
+							</tr>
+						
+					
+						
+							<tr>
+								<td><a href="#Project">Project</a></td>
+								<td><div class="shorten">http://dbpedia.org/ontology/Project</div></td>
+								<td></td>
+								<td><a href="#Project.thematicobjective">thematic objective </a></td>
+								<td><div class="shorten">https://w3id.org/adm/model/thematicObjective</div></td>
+							</tr>
+						
+					
+						
+							<tr>
+								<td><a href="#Project">Project</a></td>
+								<td><div class="shorten">http://dbpedia.org/ontology/Project</div></td>
+								<td></td>
+								<td><a href="#Project.totalcost">total cost </a></td>
+								<td><div class="shorten">https://w3id.org/adm/model/totalCost</div></td>
+							</tr>
+						
+					
+				
+			</tr>
+		
+				
+					
+						
+					
+					
+						
+					
+					
+						
+							<tr>
+								<td><a href="#Subcontract">Subcontract</a></td>
+								<td><div class="shorten">https://w3id.org/adm/model/Subcontract</div></td>
+								<td></td>
+								<td><a href="#Subcontract.ispartof">is part of </a></td>
+								<td><div class="shorten">http://purl.org/dc/terms/isPartOf</div></td>
+							</tr>
+						
+					
+				
+			</tr>
+		
+	<tbody>
+</table>
+
+
+   
+   
+
+
+<!-- This must be at the end of the template, to ensure that the iterator properly works -->
+    <script defer>
+
+
+	    var prefixes = [ 
+{'pref':'ad:', 'ns': 'http://inspire.ec.europa.eu/ont/ad#'},
+{'pref':'adm:', 'ns': 'https://w3id.org/adm/model/'},
+{'pref':'adms:', 'ns': 'http://www.w3.org/ns/adms#'},
+{'pref':'atu:', 'ns': 'http://data.europa.eu/88u/dataset/'},
+{'pref':'cav:', 'ns': 'http://data.europa.eu/2sa/cav#'},
+{'pref':'cpsv:', 'ns': 'http://purl.org/vocab/cpsv#'},
+{'pref':'cv:', 'ns': 'http://data.europa.eu/m8g/'},
+{'pref':'dbo:', 'ns': 'http://dbpedia.org/ontology/'},
+{'pref':'dcat:', 'ns': 'http://www.w3.org/ns/dcat#'},
+{'pref':'dcatap:', 'ns': 'http://data.europa.eu/r5r/'},
+{'pref':'dct:', 'ns': 'http://purl.org/dc/terms/'},
+{'pref':'dctype:', 'ns': 'http://purl.org/dc/dcmitype/'},
+{'pref':'eli:', 'ns' : 'http://data.europa.eu/eli/ontology#'},
+{'pref':'epo:', 'ns' : 'http://data.europa.eu/a4g/ontology#'},
+{'pref':'foaf:', 'ns': 'http://xmlns.com/foaf/0.1/'},
+{'pref':'frbr:', 'ns': 'http://iflastandards.info/ns/fr/frbr/frbroo/'},
+{'pref':'geosparql:', 'ns': 'http://www.opengis.net/ont/geosparql#'},
+{'pref':'legal:', 'ns': 'http://www.w3.org/ns/legal#'},
+{'pref':'locn:', 'ns': 'http://www.w3.org/ns/locn#'},
+{'pref':'odrl:', 'ns': 'http://www.w3.org/ns/odrl/2/'},
+{'pref':'org:', 'ns': 'http://www.w3.org/ns/org#'},
+{'pref':'owl:', 'ns': 'http://www.w3.org/2002/07/owl#'},
+{'pref':'person:', 'ns': 'http://www.w3.org/ns/person#'},
+{'pref':'prov:', 'ns': 'http://www.w3.org/ns/prov#'},
+{'pref':'rdf:', 'ns': 'http://www.w3.org/1999/02/22-rdf-syntax-ns#'},
+{'pref':'rdfs:', 'ns': 'http://www.w3.org/2000/01/rdf-schema#'},
+{'pref':'schema:', 'ns': 'https://schema.org/'},
+{'pref':'skos:', 'ns': 'http://www.w3.org/2004/02/skos/core#'},
+{'pref':'spdx:', 'ns': 'http://spdx.org/rdf/terms#'},
+{'pref':'time:', 'ns': 'http://www.w3.org/2006/time#'},
+{'pref':'vcard:', 'ns': 'http://www.w3.org/2006/vcard/ns#'},
+{'pref':'xhv:', 'ns': 'http://www.w3.org/1999/xhtml/vocab#'},
+{'pref':'xsd:', 'ns': 'http://www.w3.org/2001/XMLSchema#'}
+				];
+
+	    function shorturl (url) {
+				var short = url;
+				for (e in prefixes) {
+				   var elem = prefixes[e];
+				   if (short.startsWith(elem.ns)) {
+  					short = elem.pref + short.slice(elem.ns.length);
+					}
+				};
+				return short;
+			};
+
+	    var shorten = document.getElementsByClassName("shorten");
+	    for (k=0;k < shorten.length ; k++){
+			var selem = shorten[k];	
+	                selem.innerHTML = shorturl(selem.innerHTML.trim());
+			}
+    </script>
+    
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.6/codemirror.min.css" />
+	<!--    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.css"> -->
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.13.2/themes/base/jquery-ui.min.css"> 
+	<!-- <script src="https://code.jquery.com/jquery-3.1.1.min.js" ></script> -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.0/jquery.min.js" ></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.6/codemirror.min.js" ></script>
+    <!--    <script src="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js" ></script> -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.13.2/jquery-ui.min.js" ></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.6/codemirror.min.js" ></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.6/mode/javascript/javascript.min.js" ></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.6/mode/turtle/turtle.min.js" ></script>
+    <script src="https://codemirror.net/5/mode/javascript/javascript.js" ></script>
+    <!--    <script src="https://semiceu.github.io/MLDCAT-AP/releases/1.0.0/example.js" ></script> -->
+    <script src="./html/example.js" ></script>
+	<script type="text/javascript">
+		function elementInView(elem){
+				goesIn = ($(window).height() + $(window).scrollTop()) > $(elem).offset().top;
+				goesOut = ($(window).scrollTop()) > ($(elem).offset().top + $(elem).height());
+				if (goesIn && !goesOut)
+					return 1;
+				else
+					return 0;
+			};
+
+		$(window).scroll(function(){
+			$('.CodeMirror').each(function(){
+				if (elementInView($(this))){
+					$(this).each(function(i, el){
+						el.CodeMirror.refresh();
+					});
+				}
+			});
+			
+		});
+	</script>
+	<style>
+		.CodeMirror {
+		  border: 1px solid #eee;
+		  height: auto;
+		}
+		.buttonsample {
+		cursor: pointer;
+		margin-top: 10px;
+		margin-left: 10px;
+		font-weight: 700;
+		border:0 outset buttonface;
+		background: #F5F6F8;
+		background-image: linear-gradient(to bottom,#F5F6F8,#DBDCDE);
+		border-radius:4px;
+		box-shadow:0 1px 3px #666;
+		font-family: Arial;
+		color: grey;
+		font-size: 14px;
+		padding: 10px 5px;
+		text-decoration: none;
+		float: right
+	}
+	.buttonsample:hover {color:#2a70d3}
+	.tabsstyle {
+		padding: 10px;
+		overflow: hidden;
+	}
+	li.ui-tabs-tab > a:hover {
+		background-color:dodgerblue;
+		color:white;
+	}
+    table.simple {                                                                      
+                  font-size: small;                                                           
+                          border-spacing:0;                                                   
+                          border-collapse:collapse;                                           
+                          border-bottom:3px solid #005a9c                                     
+        }                                                                                   
+        .simple th{background:#005a9c;color:#fff;padding:3px 5px;text-align:left}           
+        .simple th a{color:#fff;padding:3px 5px;text-align:left}                            
+        .simple th[scope=row]{background:inherit;color:inherit;border-top:1px solid #ddd}   
+        .simple td{padding:3px 10px;border-top:1px solid #ddd}                              
+        .simple tr:nth-child(even){background:#f0f6ff}
+    body.darkmode .simple th{background:#005a9c94;color:#ddd}
+    body.darkmode .simple th a{color:#ddd}
+    body.darkmode .simple tr:nth-child(even){background:#f0f6ff26}
+    body.darkmode :is(h4,h5,h6)+a.self-link::before {
+        color: var(--heading-text);
+    }
+    body.darkmode img {
+        background: none;
+    }
+    body.darkmode section#references :target {
+        background: #04162d;
+    }
+  </style>
+
+    	<link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.13.4/css/jquery.dataTables.min.css">
+	<script type="text/javascript" language="javascript" src="https://cdn.datatables.net/1.13.4/js/jquery.dataTables.min.js"></script>
+</html>

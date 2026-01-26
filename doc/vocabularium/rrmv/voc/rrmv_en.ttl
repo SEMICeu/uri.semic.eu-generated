@@ -4,14 +4,25 @@
 @prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
 @prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
 @prefix schemas: <https://schema.org/> .
+@prefix skos: <http://www.w3.org/2004/02/skos/core#> .
 @prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
 
-<http://data.europa.eu/2qy/rrmv#isIncomplete> a owl:DatatypeProperty;
-  rdfs:label "is incomplete"@en;
-  rdfs:comment "The temporal information is incomplete."@en;
-  rdfs:domain <http://www.w3.org/2006/time#ProperInterval>;
+<http://data.europa.eu/2qy/rrmv#hasFunction> a owl:ObjectProperty;
+  rdfs:label "has function"@en;
+  rdfs:comment "The function played by the TemporalEntitySpecification, such as a deadline or a validity period."@en;
+  rdfs:domain <http://data.europa.eu/2qy/rrmv#TemporalEntitySpec>;
   rdfs:isDefinedBy <http://data.europa.eu/2qy/rrmv>;
-  rdfs:range xsd:boolean .
+  rdfs:range <http://data.europa.eu/2qy/rrmv#TemporalFunction>;
+  skos:scopeNote "For instance as deadline, moment of entering into force, etc."@en .
+
+<http://data.europa.eu/2qy/rrmv#hasType> a owl:ObjectProperty;
+  rdfs:label "has type"@en;
+  rdfs:comment "indicates the kind of the resource"@en;
+  rdfs:domain <http://data.europa.eu/2qy/rrmv#Role>,
+    <http://data.europa.eu/2qy/rrmv#ActionResult>;
+  rdfs:isDefinedBy <http://data.europa.eu/2qy/rrmv>;
+  rdfs:range <http://data.europa.eu/2qy/rrmv#RoleType>,
+    <http://data.europa.eu/2qy/rrmv#ResultType> .
 
 <http://data.europa.eu/2qy/rrmv> a owl:Ontology;
   rdfs:label "rrmv"@en,
@@ -26,6 +37,11 @@
     foaf:firstName "Vidas";
     foaf:lastName "Daudaravicius";
     schemas:affiliation [foaf:name "JRC-ISPRA"]
+  ], [
+    a foaf:Person;
+    foaf:firstName "Pavlina";
+    foaf:lastName "Fragkou";
+    schemas:affiliation [foaf:name "DIGIT"]
   ], [
     a foaf:Person;
     foaf:firstName "Lorena";
@@ -112,18 +128,13 @@
     foaf:lastName "Willain";
     schemas:affiliation [foaf:name "DIGIT"]
   ];
-  dc:issued "2024-11-21";
+  dc:issued "2025-07-30";
   dc:license <https://creativecommons.org/licenses/by/4.0/>;
   dc:mediator [
     foaf:homepage <https://semic.eu>;
     foaf:name "Semantic Interoperability Community (SEMIC)"
   ];
   <http://www.w3.org/2001/02pd/rec54#editor> [
-    a foaf:Person;
-    foaf:firstName "Davide";
-    foaf:lastName "Audrito";
-    schemas:affiliation [foaf:name "DIGIT"]
-  ], [
     a foaf:Person;
     foaf:firstName "Florian";
     foaf:lastName "Barthelemy";
@@ -135,9 +146,14 @@
     schemas:affiliation [foaf:name "PwC EU Services"]
   ], [
     a foaf:Person;
-    foaf:firstName "Pavlina";
-    foaf:lastName "Fragkou";
-    schemas:affiliation [foaf:name "European Commission"]
+    foaf:firstName "Zsófia";
+    foaf:lastName "Dudás";
+    schemas:affiliation [foaf:name "PwC EU Services"]
+  ], [
+    a foaf:Person;
+    foaf:firstName "Thomas";
+    foaf:lastName "Francart";
+    schemas:affiliation [foaf:name "Sparna - OP.A1"]
   ], [
     a foaf:Person;
     foaf:firstName "Andrea Giovanni";
@@ -148,12 +164,22 @@
     foaf:firstName "Alexander";
     foaf:lastName "Potloot";
     schemas:affiliation [foaf:name "PwC EU Services"]
+  ], [
+    a foaf:Person;
+    foaf:firstName "Tomas";
+    foaf:lastName "Slangen";
+    schemas:affiliation [foaf:name "PwC EU Services"]
+  ], [
+    a foaf:Person;
+    foaf:firstName "Sander";
+    foaf:lastName "Van Dooren";
+    schemas:affiliation [foaf:name "DIGIT"]
   ];
   foaf:maker [
     a foaf:Person;
-    foaf:firstName "Zsófia";
-    foaf:lastName "Dudás";
-    schemas:affiliation [foaf:name "PwC EU Services"]
+    foaf:firstName "Davide";
+    foaf:lastName "Audrito";
+    schemas:affiliation [foaf:name "DIGIT"]
   ], [
     a foaf:Person;
     foaf:firstName "Cecile";
@@ -169,11 +195,6 @@
     foaf:firstName "Monica";
     foaf:lastName "Palmirani";
     schemas:affiliation [foaf:name "University of Bologna"]
-  ], [
-    a foaf:Person;
-    foaf:firstName "Tomas";
-    foaf:lastName "Slangen";
-    schemas:affiliation [foaf:name "PwC EU Services"]
   ], [
     a foaf:Person;
     foaf:firstName "Bert";
