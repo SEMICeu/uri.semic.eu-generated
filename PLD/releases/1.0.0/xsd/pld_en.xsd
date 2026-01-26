@@ -63,9 +63,9 @@
   </xs:complexType>
   <xs:complexType name="AgentType">
     <xs:sequence>
-      <xs:element name="contributesToWork" ref="WorkType" maxOccurs="unbounded" minOccurs="0">
+      <xs:element name="agentName" type="xs:string" maxOccurs="1" minOccurs="1">
         <xs:annotation>
-          <xs:documentation xml:lang="en">Agent acts as a contributor of a work.</xs:documentation>
+          <xs:documentation xml:lang="en">What is the name or other designation of this agent? The name can be the name of a person, an organization..., possibly qualified by language or script.</xs:documentation>
         </xs:annotation>
       </xs:element>
     </xs:sequence>
@@ -99,7 +99,7 @@
       </xs:element>
       <xs:element name="language" ref="LanguageType" maxOccurs="unbounded" minOccurs="1">
         <xs:annotation>
-          <xs:documentation xml:lang="en">Concept of a language (concepts from AT language or AT multilingual)</xs:documentation>
+          <xs:documentation xml:lang="en">The case uses a given language of procedure</xs:documentation>
         </xs:annotation>
       </xs:element>
       <xs:element name="summaryOfCaseLaw" type="xs:string" maxOccurs="1" minOccurs="1">
@@ -215,7 +215,7 @@
     <xs:sequence>
       <xs:element name="publicationDate" type="xs:date" maxOccurs="1" minOccurs="1">
         <xs:annotation>
-          <xs:documentation xml:lang="en">Publication date of a General Publication manifestation.</xs:documentation>
+          <xs:documentation xml:lang="en">The date of publication/distribution of the manifestation.The date of publication/distribution of the manifestation.</xs:documentation>
         </xs:annotation>
       </xs:element>
       <xs:element name="manifestationUri" ref="AnyUriType" maxOccurs="1" minOccurs="1">
@@ -259,6 +259,11 @@
       <xs:element name="workCitesWork" ref="WorkType" maxOccurs="unbounded" minOccurs="0">
         <xs:annotation>
           <xs:documentation xml:lang="en">A reference to another work.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="contributedToByAgent" ref="AgentType" maxOccurs="unbounded" minOccurs="1">
+        <xs:annotation>
+          <xs:documentation xml:lang="en">The work is contributed to by an agent.</xs:documentation>
         </xs:annotation>
       </xs:element>
       <xs:element name="dateOfDocument" type="xs:date" maxOccurs="1" minOccurs="1">
