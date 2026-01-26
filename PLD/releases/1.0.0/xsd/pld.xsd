@@ -1,13 +1,26 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <xs:schema xmlns="https://data.europa.eu/m8g/xml/" xmlns:xs="http://www.w3.org/2001/XMLSchema" targetNamespace="https://data.europa.eu/m8g/xml/" version="2.0.0" elementFormDefault="qualified" attributeFormDefault="unqualified" xmlns:cv="https://data.europa.eu/m8g/xml/">
   <xs:element name="ProductLiabilityJudgment" type="ProductLiabilityJudgmentType"/>
+  <xs:element name="AccessRight" type="AccessRightType"/>
+  <xs:element name="Agent" type="AgentType"/>
   <xs:element name="CaseLaw" type="CaseLawType"/>
+  <xs:element name="NationalCaseLaw" type="NationalCaseLawType"/>
+  <xs:element name="DecodingConcept" type="DecodingConceptType"/>
+  <xs:element name="EurovocConcept" type="EurovocConceptType"/>
   <xs:element name="NationalCourt" type="NationalCourtType"/>
+  <xs:element name="Expression" type="ExpressionType"/>
   <xs:element name="Judgement" type="JudgementType"/>
+  <xs:element name="Language" type="LanguageType"/>
+  <xs:element name="Manifestation" type="ManifestationType"/>
+  <xs:element name="ManifestationOfGeneralPublication" type="ManifestationOfGeneralPublicationType"/>
+  <xs:element name="LegalResource" type="LegalResourceType"/>
+  <xs:element name="Work" type="WorkType"/>
   <xs:element name="Location" type="LocationType"/>
   <xs:element name="Text" type="TextType"/>
+  <xs:element name="AnyUri" type="AnyUriType"/>
+  <xs:element name="Date" type="DateType"/>
   <xs:element name="String" type="StringType"/>
-  <xs:element name="Code" type="CodeType"/>
+  <xs:element name="Concept" type="ConceptType"/>
   <xs:simpleType name="Literal">
     <xs:restriction base="xs:string"/>
   </xs:simpleType>
@@ -27,10 +40,38 @@
     </xs:simpleContent>
   </xs:complexType>
   <xs:complexType name="ProductLiabilityJudgmentType">
-    <xs:sequence/>
+    <xs:sequence>
+      <xs:element name="productType" type="ConceptType" maxOccurs="unbounded" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation xml:lang="en">A classification for product liability judgment.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+    </xs:sequence>
     <xs:attribute name="ProductLiabilityJudgmentRef" type="xs:IDREF">
       <xs:annotation>
         <xs:documentation xml:lang="en">Reference to ProductLiabilityJudgment ID</xs:documentation>
+      </xs:annotation>
+    </xs:attribute>
+  </xs:complexType>
+  <xs:complexType name="AccessRightType">
+    <xs:sequence/>
+    <xs:attribute name="AccessRightRef" type="xs:IDREF">
+      <xs:annotation>
+        <xs:documentation xml:lang="en">Reference to AccessRight ID</xs:documentation>
+      </xs:annotation>
+    </xs:attribute>
+  </xs:complexType>
+  <xs:complexType name="AgentType">
+    <xs:sequence>
+      <xs:element name="contributesToWork" ref="WorkType" maxOccurs="unbounded" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation xml:lang="en">Agent acts as a contributor of a work.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+    </xs:sequence>
+    <xs:attribute name="AgentRef" type="xs:IDREF">
+      <xs:annotation>
+        <xs:documentation xml:lang="en">Reference to Agent ID</xs:documentation>
       </xs:annotation>
     </xs:attribute>
   </xs:complexType>
@@ -46,15 +87,60 @@
           <xs:documentation xml:lang="en">Reference to the national court who delivered the judgement</xs:documentation>
         </xs:annotation>
       </xs:element>
+      <xs:element name="description" type="xs:string" maxOccurs="1" minOccurs="1">
+        <xs:annotation>
+          <xs:documentation xml:lang="en">Formal Description of a case law.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
       <xs:element name="ecli" type="xs:string" maxOccurs="1" minOccurs="1">
         <xs:annotation>
           <xs:documentation xml:lang="en">European Case Law Identifier. Identifier of the decision, including all its summaries.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="language" ref="LanguageType" maxOccurs="unbounded" minOccurs="1">
+        <xs:annotation>
+          <xs:documentation xml:lang="en">Concept of a language (concepts from AT language or AT multilingual)</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="summaryOfCaseLaw" type="xs:string" maxOccurs="1" minOccurs="1">
+        <xs:annotation>
+          <xs:documentation xml:lang="en">Summary of case law, treated as a separate bibliographic item.</xs:documentation>
         </xs:annotation>
       </xs:element>
     </xs:sequence>
     <xs:attribute name="CaseLawRef" type="xs:IDREF">
       <xs:annotation>
         <xs:documentation xml:lang="en">Reference to CaseLaw ID</xs:documentation>
+      </xs:annotation>
+    </xs:attribute>
+  </xs:complexType>
+  <xs:complexType name="NationalCaseLawType">
+    <xs:sequence>
+      <xs:element name="internalIdentifier" type="xs:string" maxOccurs="1" minOccurs="1">
+        <xs:annotation>
+          <xs:documentation xml:lang="en">Internal identifier from the Court for the national decisions.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+    </xs:sequence>
+    <xs:attribute name="NationalCaseLawRef" type="xs:IDREF">
+      <xs:annotation>
+        <xs:documentation xml:lang="en">Reference to NationalCaseLaw ID</xs:documentation>
+      </xs:annotation>
+    </xs:attribute>
+  </xs:complexType>
+  <xs:complexType name="DecodingConceptType">
+    <xs:sequence/>
+    <xs:attribute name="DecodingConceptRef" type="xs:IDREF">
+      <xs:annotation>
+        <xs:documentation xml:lang="en">Reference to DecodingConcept ID</xs:documentation>
+      </xs:annotation>
+    </xs:attribute>
+  </xs:complexType>
+  <xs:complexType name="EurovocConceptType">
+    <xs:sequence/>
+    <xs:attribute name="EurovocConceptRef" type="xs:IDREF">
+      <xs:annotation>
+        <xs:documentation xml:lang="en">Reference to EurovocConcept ID</xs:documentation>
       </xs:annotation>
     </xs:attribute>
   </xs:complexType>
@@ -67,12 +153,12 @@
       </xs:element>
       <xs:element name="spatial" ref="LocationType" maxOccurs="unbounded" minOccurs="0">
         <xs:annotation>
-          <xs:documentation xml:lang="en">The country of the Agent.</xs:documentation>
+          <xs:documentation xml:lang="en">The country of the national court.</xs:documentation>
         </xs:annotation>
       </xs:element>
-      <xs:element name="type" type="ConceptType" maxOccurs="1" minOccurs="0">
+      <xs:element name="nationalCourtType" type="ConceptType" maxOccurs="1" minOccurs="0">
         <xs:annotation>
-          <xs:documentation xml:lang="en">The nature of the Agent.</xs:documentation>
+          <xs:documentation xml:lang="en">The type of national court.</xs:documentation>
         </xs:annotation>
       </xs:element>
     </xs:sequence>
@@ -82,11 +168,118 @@
       </xs:annotation>
     </xs:attribute>
   </xs:complexType>
+  <xs:complexType name="ExpressionType">
+    <xs:sequence>
+      <xs:element name="expressionLanguage" ref="LanguageType" maxOccurs="unbounded" minOccurs="1">
+        <xs:annotation>
+          <xs:documentation xml:lang="en">The expression uses a given language (can be repeated to cover expressions in several languages).</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="expressionManifestedByManifestation" ref="ManifestationType" maxOccurs="unbounded" minOccurs="1">
+        <xs:annotation>
+          <xs:documentation xml:lang="en">Expression manifested by manifestation.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+    </xs:sequence>
+    <xs:attribute name="ExpressionRef" type="xs:IDREF">
+      <xs:annotation>
+        <xs:documentation xml:lang="en">Reference to Expression ID</xs:documentation>
+      </xs:annotation>
+    </xs:attribute>
+  </xs:complexType>
   <xs:complexType name="JudgementType">
     <xs:sequence/>
     <xs:attribute name="JudgementRef" type="xs:IDREF">
       <xs:annotation>
         <xs:documentation xml:lang="en">Reference to Judgement ID</xs:documentation>
+      </xs:annotation>
+    </xs:attribute>
+  </xs:complexType>
+  <xs:complexType name="LanguageType">
+    <xs:sequence/>
+    <xs:attribute name="LanguageRef" type="xs:IDREF">
+      <xs:annotation>
+        <xs:documentation xml:lang="en">Reference to Language ID</xs:documentation>
+      </xs:annotation>
+    </xs:attribute>
+  </xs:complexType>
+  <xs:complexType name="ManifestationType">
+    <xs:sequence/>
+    <xs:attribute name="ManifestationRef" type="xs:IDREF">
+      <xs:annotation>
+        <xs:documentation xml:lang="en">Reference to Manifestation ID</xs:documentation>
+      </xs:annotation>
+    </xs:attribute>
+  </xs:complexType>
+  <xs:complexType name="ManifestationOfGeneralPublicationType">
+    <xs:sequence>
+      <xs:element name="publicationDate" type="xs:date" maxOccurs="1" minOccurs="1">
+        <xs:annotation>
+          <xs:documentation xml:lang="en">Publication date of a General Publication manifestation.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="manifestationUri" ref="AnyUriType" maxOccurs="1" minOccurs="1">
+        <xs:annotation>
+          <xs:documentation xml:lang="en">General publication manifestation URI.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+    </xs:sequence>
+    <xs:attribute name="ManifestationOfGeneralPublicationRef" type="xs:IDREF">
+      <xs:annotation>
+        <xs:documentation xml:lang="en">Reference to ManifestationOfGeneralPublication ID</xs:documentation>
+      </xs:annotation>
+    </xs:attribute>
+  </xs:complexType>
+  <xs:complexType name="LegalResourceType">
+    <xs:sequence>
+      <xs:element name="publishedInOfficialJournal" type="xs:string" maxOccurs="1" minOccurs="1">
+        <xs:annotation>
+          <xs:documentation xml:lang="en">The legal resource is published in a given official journal.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="typeOfLegalResource" type="xs:string" maxOccurs="1" minOccurs="1">
+        <xs:annotation>
+          <xs:documentation xml:lang="en">Indication of the legal type in celex identifier (DTT).</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+    </xs:sequence>
+    <xs:attribute name="LegalResourceRef" type="xs:IDREF">
+      <xs:annotation>
+        <xs:documentation xml:lang="en">Reference to LegalResource ID</xs:documentation>
+      </xs:annotation>
+    </xs:attribute>
+  </xs:complexType>
+  <xs:complexType name="WorkType">
+    <xs:sequence>
+      <xs:element name="accessRestriction" ref="AccessRightType" maxOccurs="1" minOccurs="1">
+        <xs:annotation>
+          <xs:documentation xml:lang="en">This property defines the access to a work resource, namely confidentiality.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="workCitesWork" ref="WorkType" maxOccurs="unbounded" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation xml:lang="en">A reference to another work.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="dateOfDocument" type="xs:date" maxOccurs="1" minOccurs="1">
+        <xs:annotation>
+          <xs:documentation xml:lang="en">The date of document (possibly including annotation properties).</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="hasExpression" ref="ExpressionType" maxOccurs="unbounded" minOccurs="1">
+        <xs:annotation>
+          <xs:documentation xml:lang="en">The work has one or more expressions.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="isAbout" ref="EurovocConceptType" maxOccurs="unbounded" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation xml:lang="en">The work is about a concept, typically expressed as a Eurovoc concept, but also through other taxonomies and thesauri.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+    </xs:sequence>
+    <xs:attribute name="WorkRef" type="xs:IDREF">
+      <xs:annotation>
+        <xs:documentation xml:lang="en">Reference to Work ID</xs:documentation>
       </xs:annotation>
     </xs:attribute>
   </xs:complexType>
@@ -106,6 +299,22 @@
       </xs:annotation>
     </xs:attribute>
   </xs:complexType>
+  <xs:complexType name="AnyUriType">
+    <xs:sequence/>
+    <xs:attribute name="AnyUriRef" type="xs:IDREF">
+      <xs:annotation>
+        <xs:documentation xml:lang="en">Reference to AnyUri ID</xs:documentation>
+      </xs:annotation>
+    </xs:attribute>
+  </xs:complexType>
+  <xs:complexType name="DateType">
+    <xs:sequence/>
+    <xs:attribute name="DateRef" type="xs:IDREF">
+      <xs:annotation>
+        <xs:documentation xml:lang="en">Reference to Date ID</xs:documentation>
+      </xs:annotation>
+    </xs:attribute>
+  </xs:complexType>
   <xs:complexType name="StringType">
     <xs:sequence/>
     <xs:attribute name="StringRef" type="xs:IDREF">
@@ -114,11 +323,11 @@
       </xs:annotation>
     </xs:attribute>
   </xs:complexType>
-  <xs:complexType name="CodeType">
+  <xs:complexType name="ConceptType">
     <xs:sequence/>
-    <xs:attribute name="CodeRef" type="xs:IDREF">
+    <xs:attribute name="ConceptRef" type="xs:IDREF">
       <xs:annotation>
-        <xs:documentation xml:lang="en">Reference to Code ID</xs:documentation>
+        <xs:documentation xml:lang="en">Reference to Concept ID</xs:documentation>
       </xs:annotation>
     </xs:attribute>
   </xs:complexType>
