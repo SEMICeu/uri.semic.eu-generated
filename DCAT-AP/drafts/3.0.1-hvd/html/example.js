@@ -65,22 +65,16 @@ function myIndexOf(list, val) {
 }
 
 function createTurtleEditorFrom(selector) {
-  const isDarkMode = document.body.classList.contains('dark') || 
-                     (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches);
   return CodeMirror.fromTextArea(selector, {
     mode: "turtle",
-    lineNumbers: true,
-    theme: isDarkMode ? "monokai" : "default"
+    lineNumbers: true
   });
 }
 
 function createJSONLDEditorFrom(selector) {
-  const isDarkMode = document.body.classList.contains('dark') || 
-                     (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches);
   return CodeMirror.fromTextArea(selector, {
     mode: "application/ld+json",
-    lineNumbers: true,
-    theme: isDarkMode ? "monokai" : "default"
+    lineNumbers: true
   });
 }
 
@@ -96,55 +90,6 @@ $(document).ready(function () {
 	var examples_class = ".h3";
 	var folder = "./html/examples/";
 	var $examples = $(examples_id);
-
-	// Dark mode support for Respec
-	const applyDarkMode = (isDark) => {
-		const theme = isDark ? "monokai" : "default";
-		editors.forEach(editor => {
-			if (editor.CM0) editor.CM0.setOption("theme", theme);
-			if (editor.CM1) editor.CM1.setOption("theme", theme);
-		});
-		
-		// Apply dark mode styles to tabs and buttons
-		if (isDark) {
-			$('.tabs').addClass('dark-mode');
-			$('.buttonsample').addClass('dark-mode');
-		} else {
-			$('.tabs').removeClass('dark-mode');
-			$('.buttonsample').removeClass('dark-mode');
-		}
-	};
-	
-	// Watch for Respec dark mode changes (using .dark class on body)
-	const observeDarkMode = () => {
-		const observer = new MutationObserver((mutations) => {
-			mutations.forEach((mutation) => {
-				if (mutation.attributeName === 'class') {
-					const isDark = document.body.classList.contains('dark');
-					applyDarkMode(isDark);
-				}
-			});
-		});
-		
-		observer.observe(document.body, {
-			attributes: true,
-			attributeFilter: ['class']
-		});
-	};
-	
-	// Also listen for system color scheme changes as fallback
-	if (window.matchMedia) {
-		const darkModeQuery = window.matchMedia('(prefers-color-scheme: dark)');
-		darkModeQuery.addEventListener('change', (e) => {
-			// Only apply if Respec hasn't set a preference
-			if (!document.body.classList.contains('dark') && !document.body.classList.contains('light')) {
-				applyDarkMode(e.matches);
-			}
-		});
-	}
-	
-	// Start observing for Respec dark mode changes
-	observeDarkMode();
 
 //	$examples.children(examples_class).each(function(index){
 	$examples.each(function(index){
@@ -173,11 +118,6 @@ $(document).ready(function () {
 		loadFile(editors[index].CM1, path_to_file + ".jsonld");
 		
 	});
-
-	// Apply initial dark mode state (check Respec first, then system preference)
-	const isDarkMode = document.body.classList.contains('dark') || 
-	                   (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches);
-	applyDarkMode(isDarkMode);
 
 	$("button.copyturtletoclipboard").on({
 		"click": function() {
