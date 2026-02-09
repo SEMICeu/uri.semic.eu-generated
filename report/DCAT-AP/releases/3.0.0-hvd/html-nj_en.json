@@ -2,7 +2,7 @@
   "metadata": {
     "title": "DCAT-AP High Value Datasets",
     "uri": "http://data.europa.eu/r5r",
-    "issued": "2024-10-25",
+    "issued": "2026-02-05",
     "baseURI": "http://data.europa.eu/r5r/",
     "filename": "hvd",
     "navigation": {
@@ -12,15 +12,15 @@
     "license": "https://creativecommons.org/licenses/by/4.0/",
     "documenttype": "ap",
     "documentconfig": {
-      "editorDocumentroot-old": "https://semiceu.github.io/uri.semic.eu-generated/DCAT-AP/releases/3.0.0-hvd/",
-      "statuslabel": "SEMIC Recommendation"
+      "editorDocumentroot-old": "https://semiceu.github.io/uri.semic.eu-generated/DCAT-AP/drafts/3.0.1-hvd/",
+      "statuslabel": "SEMIC Draft"
     },
     "status": "https://www.w3.org/2021/Process-20211102/#RecsW3C",
     "statuslabel": "Onbekend",
-    "repositoryurl": "git@semicthema-DCAT-AP:SEMICeu/Semicthema-DCAT-AP.git/tree/9851343f6e64fe3e85b389487c1dba41589ca364",
-    "changelogurl": "git@semicthema-DCAT-AP:SEMICeu/Semicthema-DCAT-AP.git/blob/9851343f6e64fe3e85b389487c1dba41589ca364/CHANGELOG",
+    "repositoryurl": "git@semicthema-DCAT-AP:SEMICeu/Semicthema-DCAT-AP.git/tree/4052dc9634f92d816d802511c77e88b14dd30a9f",
+    "changelogurl": "git@semicthema-DCAT-AP:SEMICeu/Semicthema-DCAT-AP.git/blob/4052dc9634f92d816d802511c77e88b14dd30a9f/CHANGELOG",
     "feedbackurl": "https://github.com/SEMICeu/DCAT-AP/issues",
-    "standaardregisterurl": "https://semiceu.github.io/DCAT-AP/releases/3.0.0-hvd/CHANGELOG.html",
+    "standaardregisterurl": "https://semiceu.github.io/DCAT-AP/drafts/3.0.1-hvd/CHANGELOG.html",
     "usesVocs": [],
     "usesAPs": []
   },
@@ -40,12 +40,12 @@
       },
       "parents": [],
       "rawTags": {
+        "uri": "http://data.europa.eu/eli/ontology#LegalResource",
+        "reuse": "asis",
         "label-en": "Legal Resource",
         "definition-en": "This class represents the legislation, policy or policies that lie behind the Rules that govern the service.",
-        "ap-usageNote-en": "The definition and properties of the Legal Resource class are aligned with the ontology included in \"Council conclusions inviting the introduction of the European Legislation Identifier (<a href=\"https://eur-lex.europa.eu/legal-content/EN/TXT/?uri=celex%3A52012XG1026%2801%29\">ELI</a>)\". For describing the attributes of a Legal Resource (labels, preferred labels, alternative labels, definition, etc.) we refer to the ELI ontology.\r\n\r\nIn this data specification the use is restricted to instances of this class that follow the ELI URI guidelines.",
-        "uri": "http://data.europa.eu/eli/ontology#LegalResource",
         "class-usage-scope": "supportive",
-        "reuse": "asis"
+        "ap-usageNote-en": "The definition and properties of the Legal Resource class are aligned with the ontology included in \"Council conclusions inviting the introduction of the European Legislation Identifier (<a href=\"https://eur-lex.europa.eu/legal-content/EN/TXT/?uri=celex%3A52012XG1026%2801%29\">ELI</a>)\". For describing the attributes of a Legal Resource (labels, preferred labels, alternative labels, definition, etc.) we refer to the ELI ontology.\r\n\r\nIn this data specification the use is restricted to instances of this class that follow the ELI URI guidelines."
       },
       "properties": []
     },
@@ -60,19 +60,102 @@
         "en": "A legal document giving official permission to do something with a resource."
       },
       "usage": {
-        "en": "The HVD regulation requires a machine readable representation of a Licence. The minimal data model to describe a licence Document is beyond this specification. Nevertheless in [[[#c3]]] some suggestions are made."
+        "en": "The HVD regulation requires a machine readable representation of a Licence. The minimal data model to describe a licence Document is beyond this specification, except for mapping to [[NAL-Licence]]. Nevertheless in [[[#c3]]] some suggestions are made."
       },
       "parents": [],
       "rawTags": {
-        "ap-label-en": "Licence Document",
         "uri": "http://purl.org/dc/terms/LicenseDocument",
-        "ap-definition-en": "A legal document giving official permission to do something with a resource.",
+        "reuse": "asis",
+        "DCAT-AP": "https://semiceu.github.io/DCAT-AP/releases/3.0.1/#LicenceDocument",
         "class-usage-scope": "main",
-        "ap-usageNote-en": "The HVD regulation requires a machine readable representation of a Licence. The minimal data model to describe a licence Document is beyond this specification. Nevertheless in [[[#c3]]] some suggestions are made.",
-        "DCAT-AP": "https://semiceu.github.io/DCAT-AP/releases/3.0.0/#LicenceDocument",
-        "reuse": "asis"
+        "ap-usageNote-en": "The HVD regulation requires a machine readable representation of a Licence. The minimal data model to describe a licence Document is beyond this specification, except for mapping to [[NAL-Licence]]. Nevertheless in [[[#c3]]] some suggestions are made.",
+        "ap-label-en": "Licence Document",
+        "ap-definition-en": "A legal document giving official permission to do something with a resource."
       },
-      "properties": []
+      "properties": [
+        {
+          "uri": "http://www.w3.org/2004/02/skos/core#exactMatch",
+          "name": "asPermissiveAs",
+          "sort": "as permissive as",
+          "label": {
+            "en": "as permissive as"
+          },
+          "description": {
+            "en": "A licence with the same permissiveness."
+          },
+          "usage": {},
+          "domain": [
+            {
+              "EA-Name": "dct:LicenseDocument",
+              "uri": "http://purl.org/dc/terms/LicenseDocument"
+            }
+          ],
+          "range": [
+            {
+              "range_label": "skos:Concept",
+              "range_uri": "http://www.w3.org/2004/02/skos/core#Concept"
+            }
+          ],
+          "scopedrange": [
+            {
+              "range_uri": "#Concept",
+              "range_puri": "http://www.w3.org/2004/02/skos/core#Concept",
+              "range_label": {
+                "en": "Concept"
+              }
+            }
+          ],
+          "cardinality": "0..1",
+          "codelist_uri": "",
+          "rawTags": {
+            "ap-definition-en": "A licence with the same permissiveness.",
+            "uri": "http://www.w3.org/2004/02/skos/core#exactMatch",
+            "reuse": "profile",
+            "ap-label-en": "as permissive as"
+          }
+        },
+        {
+          "uri": "http://www.w3.org/2004/02/skos/core#exactMatch",
+          "name": "morePermissiveThan",
+          "sort": "more permissive than",
+          "label": {
+            "en": "more permissive than"
+          },
+          "description": {
+            "en": "A more permissive licence."
+          },
+          "usage": {},
+          "domain": [
+            {
+              "EA-Name": "dct:LicenseDocument",
+              "uri": "http://purl.org/dc/terms/LicenseDocument"
+            }
+          ],
+          "range": [
+            {
+              "range_label": "skos:Concept",
+              "range_uri": "http://www.w3.org/2004/02/skos/core#Concept"
+            }
+          ],
+          "scopedrange": [
+            {
+              "range_uri": "#Concept",
+              "range_puri": "http://www.w3.org/2004/02/skos/core#Concept",
+              "range_label": {
+                "en": "Concept"
+              }
+            }
+          ],
+          "cardinality": "0..1",
+          "codelist_uri": "",
+          "rawTags": {
+            "ap-definition-en": "A more permissive licence.",
+            "uri": "http://www.w3.org/2004/02/skos/core#exactMatch",
+            "reuse": "profile",
+            "ap-label-en": "more permissive than"
+          }
+        }
+      ]
     },
     {
       "uri": "http://purl.org/dc/terms/RightsStatement",
@@ -87,12 +170,12 @@
       "usage": {},
       "parents": [],
       "rawTags": {
-        "ap-label-en": "Rights statement",
-        "ap-definition-en": "A statement about the intellectual property rights (IPR) held in or over a resource, a legal document giving official permission to do something with a resource, or a statement about access rights.",
         "uri": "http://purl.org/dc/terms/RightsStatement",
+        "reuse": "asis",
+        "DCAT-AP": "https://semiceu.github.io/DCAT-AP/releases/3.0.1/#Rightsstatement",
         "class-usage-scope": "supportive",
-        "DCAT-AP": "https://semiceu.github.io/DCAT-AP/releases/3.0.0/#Rightsstatement",
-        "reuse": "asis"
+        "ap-label-en": "Rights statement",
+        "ap-definition-en": "A statement about the intellectual property rights (IPR) held in or over a resource, a legal document giving official permission to do something with a resource, or a statement about access rights."
       },
       "properties": []
     },
@@ -109,35 +192,12 @@
       "usage": {},
       "parents": [],
       "rawTags": {
-        "ap-label-en": "Standard",
-        "ap-definition-en": "A standard or other specification to which a Dataset or Distribution conforms.",
         "uri": "http://purl.org/dc/terms/Standard",
+        "reuse": "asis",
+        "DCAT-AP": "https://semiceu.github.io/DCAT-AP/releases/3.0.1/#Standard",
         "class-usage-scope": "supportive",
-        "DCAT-AP": "https://semiceu.github.io/DCAT-AP/releases/3.0.0/#Standard",
-        "reuse": "asis"
-      },
-      "properties": []
-    },
-    {
-      "uri": "http://www.w3.org/2000/01/rdf-schema#Literal",
-      "name": "Literal",
-      "label": {
-        "en": "Literal"
-      },
-      "sort": "Literal",
-      "description": {
-        "en": "A literal value such as a string or integer; Literals may be typed, e.g. as a date according to xsd:date. Literals that contain human-readable text have an optional language tag as defined by BCP 4715 [[rfc5646]]."
-      },
-      "usage": {},
-      "parents": [],
-      "rawTags": {
-        "ap-label-en": "Literal",
-        "ap-definition-en": "A literal value such as a string or integer; Literals may be typed, e.g. as a date according to xsd:date. Literals that contain human-readable text have an optional language tag as defined by BCP 4715 [[rfc5646]].",
-        "uri": "http://www.w3.org/2000/01/rdf-schema#Literal",
-        "ap-label-nl": "http://www.w3.org/2000/01/rdf-schema#",
-        "class-usage-scope": "supportive",
-        "DCAT-AP": "https://semiceu.github.io/DCAT-AP/releases/3.0.0/#Literal",
-        "reuse": "asis"
+        "ap-label-en": "Standard",
+        "ap-definition-en": "A standard or other specification to which a Dataset or Distribution conforms."
       },
       "properties": []
     },
@@ -154,12 +214,12 @@
       "usage": {},
       "parents": [],
       "rawTags": {
-        "ap-label-en": "Resource",
-        "ap-definition-en": "Anything described by RDF.",
         "uri": "http://www.w3.org/2000/01/rdf-schema#Resource",
+        "reuse": "asis",
+        "DCAT-AP": "https://semiceu.github.io/DCAT-AP/releases/3.0.1/#Resource",
         "class-usage-scope": "supportive",
-        "DCAT-AP": "https://semiceu.github.io/DCAT-AP/releases/3.0.0/#Resource",
-        "reuse": "asis"
+        "ap-label-en": "Resource",
+        "ap-definition-en": "Anything described by RDF."
       },
       "properties": []
     },
@@ -179,12 +239,12 @@
       "parents": [],
       "rawTags": {
         "uri": "http://www.w3.org/2004/02/skos/core#Concept",
-        "ap-label-en": "Concept",
-        "class-usage-scope": "supportive",
-        "DCAT-AP": "https://semiceu.github.io/DCAT-AP/releases/3.0.0/#Concept",
         "reuse": "asis",
         "definition-en": "An idea or notion; a unit of thought.",
-        "ap-usageNote-en": "In DCAT-AP, a Concept is used to denote codes within a codelist. In section [[[#controlled-vocs]]] the expectations are elaborated in more detail."
+        "DCAT-AP": "https://semiceu.github.io/DCAT-AP/releases/3.0.1/#Concept",
+        "class-usage-scope": "supportive",
+        "ap-usageNote-en": "In DCAT-AP, a Concept is used to denote codes within a codelist. In section [[[#controlled-vocs]]] the expectations are elaborated in more detail.",
+        "ap-label-en": "Concept"
       },
       "properties": []
     },
@@ -203,13 +263,13 @@
       },
       "parents": [],
       "rawTags": {
-        "ap-label-en": "Kind",
-        "ap-definition-en": "A description following the vCard specification, e.g. to provide telephone number and e-mail address for a contact point.",
         "uri": "http://www.w3.org/2006/vcard/ns#Kind",
-        "ap-usageNote-en": "Article3.4 requires to designate a point of contact for an API. It is recommended to provide  at least either an email or a contact form from e.g. a service desk.",
+        "reuse": "asis",
+        "DCAT-AP": "https://semiceu.github.io/DCAT-AP/releases/3.0.1/#Kind",
         "class-usage-scope": "main",
-        "DCAT-AP": "https://semiceu.github.io/DCAT-AP/releases/3.0.0/#Kind",
-        "reuse": "asis"
+        "ap-usageNote-en": "Article3.4 requires to designate a point of contact for an API. It is recommended to provide  at least either an email or a contact form from e.g. a service desk.",
+        "ap-label-en": "Kind",
+        "ap-definition-en": "A description following the vCard specification, e.g. to provide telephone number and e-mail address for a contact point."
       },
       "properties": [
         {
@@ -247,11 +307,11 @@
           "cardinality": "0..1",
           "codelist_uri": "",
           "rawTags": {
-            "uri": "http://www.w3.org/2006/vcard/ns#hasEmail",
-            "label-en": "email",
-            "ap-definition-en": "A email address via which contact can be made.\r\n",
             "property-usage-scope": "recommended",
-            "reuse": "additional"
+            "reuse": "additional",
+            "label-en": "email",
+            "uri": "http://www.w3.org/2006/vcard/ns#hasEmail",
+            "ap-definition-en": "A email address via which contact can be made.\r\n"
           }
         },
         {
@@ -262,7 +322,7 @@
             "en": "contact page"
           },
           "description": {
-            "en": "A webpage that either allows to make contact (i.e. a webform) or the information contains how to get into contact. "
+            "en": "A webpage that either allows to make contact (i.e. a webform) or the information contains how to get into contact.ï¿½"
           },
           "usage": {},
           "domain": [
@@ -289,11 +349,11 @@
           "cardinality": "0..1",
           "codelist_uri": "",
           "rawTags": {
+            "ap-definition-en": "A webpage that either allows to make contact (i.e. a webform) or the information contains how to get into contact.ï¿½",
+            "reuse": "additional",
             "label-en": "contact page",
             "uri": "http://www.w3.org/2006/vcard/ns#hasURL",
-            "ap-definition-en": "A webpage that either allows to make contact (i.e. a webform) or the information contains how to get into contact. ",
-            "property-usage-scope": "recommended",
-            "reuse": "additional"
+            "property-usage-scope": "recommended"
           }
         }
       ]
@@ -311,14 +371,14 @@
       "usage": {},
       "parents": [],
       "rawTags": {
-        "label-en": "Catalogue",
-        "ap-label-en": "Catalogue",
-        "ap-definition-en": "A catalogue or repository that hosts the Datasets or Data Services being described.",
         "uri": "http://www.w3.org/ns/dcat#Catalog",
-        "DCAT": "https://w3c.github.io/dxwg/dcat/#Class:Catalog",
+        "reuse": "asis",
+        "label-en": "Catalogue",
+        "DCAT-AP": "https://semiceu.github.io/DCAT-AP/releases/3.0.1/#Catalogue",
+        "DCAT": "https://www.w3.org/TR/vocab-dcat-3/#Class:Catalog",
         "class-usage-scope": "main",
-        "DCAT-AP": "https://semiceu.github.io/DCAT-AP/releases/3.0.0/#Catalogue",
-        "reuse": "asis"
+        "ap-label-en": "Catalogue",
+        "ap-definition-en": "A catalogue or repository that hosts the Datasets or Data Services being described."
       },
       "properties": [
         {
@@ -358,14 +418,14 @@
           "cardinality": "0..*",
           "codelist_uri": "",
           "rawTags": {
+            "DCAT-AP": "https://semiceu.github.io/DCAT-AP/releases/3.0.1/#Catalogue.dataset",
+            "DCAT": "https://www.w3.org/TR/vocab-dcat-3/#Property:catalog_dataset",
+            "property-usage-scope": "recommended",
+            "reuse": "asis",
             "ap-label-en": "dataset",
-            "ap-definition-en": "A Dataset that is part of the Catalogue.",
             "uri": "http://www.w3.org/ns/dcat#dataset",
             "ap-usageNote-en": "As empty Catalogues are usually indications of problems, this property should be combined with the next property service to implement an empty Catalogue check.",
-            "property-usage-scope": "recommended",
-            "DCAT": "https://w3c.github.io/dxwg/dcat/#Property:catalog_dataset",
-            "DCAT-AP": "https://semiceu.github.io/DCAT-AP/releases/3.0.0/#Catalogue.dataset",
-            "reuse": "asis"
+            "ap-definition-en": "A Dataset that is part of the Catalogue."
           }
         },
         {
@@ -403,13 +463,13 @@
           "cardinality": "0..*",
           "codelist_uri": "",
           "rawTags": {
-            "ap-label-en": "record",
-            "ap-definition-en": "A Catalogue Record that is part of the Catalogue",
             "uri": "http://www.w3.org/ns/dcat#record",
-            "property-usage-scope": "optional",
-            "DCAT": "https://w3c.github.io/dxwg/dcat/#Property:catalog_catalog_record",
-            "DCAT-AP": "https://semiceu.github.io/DCAT-AP/releases/3.0.0/#Catalogue.record",
-            "reuse": "asis"
+            "DCAT-AP": "https://semiceu.github.io/DCAT-AP/releases/3.0.1/#Catalogue.record",
+            "reuse": "asis",
+            "ap-definition-en": "A Catalogue Record that is part of the Catalogue",
+            "DCAT": "https://www.w3.org/TR/vocab-dcat-3/#Property:catalog_catalog_record",
+            "ap-label-en": "record",
+            "property-usage-scope": "optional"
           }
         },
         {
@@ -451,11 +511,11 @@
           "rawTags": {
             "ap-label-en": "service",
             "ap-definition-en": "A site or end-point (Data Service) that is listed in the Catalogue.",
-            "uri": "http://www.w3.org/ns/dcat#service",
-            "ap-usageNote-en": "As empty Catalogues are usually indications of problems, this property should be combined with the previous property dataset to implement an empty Catalogue check.",
+            "DCAT": "https://www.w3.org/TR/vocab-dcat-3/#Property:catalog_service",
             "property-usage-scope": "recommended",
-            "DCAT": "https://w3c.github.io/dxwg/dcat/#Property:catalog_service",
-            "DCAT-AP": "https://semiceu.github.io/DCAT-AP/releases/3.0.0/#Catalogue.service",
+            "DCAT-AP": "https://semiceu.github.io/DCAT-AP/releases/3.0.1/#Catalogue.service",
+            "ap-usageNote-en": "As empty Catalogues are usually indications of problems, this property should be combined with the previous property dataset to implement an empty Catalogue check.",
+            "uri": "http://www.w3.org/ns/dcat#service",
             "reuse": "asis"
           }
         }
@@ -474,13 +534,13 @@
       "usage": {},
       "parents": [],
       "rawTags": {
-        "ap-label-en": "Catalogue Record",
         "uri": "http://www.w3.org/ns/dcat#CatalogRecord",
-        "ap-definition-en": "A description of a Dataset's entry in the Catalogue.",
-        "DCAT": "https://w3c.github.io/dxwg/dcat/#Class:Catalog_Record",
+        "reuse": "asis",
+        "DCAT-AP": "https://semiceu.github.io/DCAT-AP/releases/3.0.1/#CatalogueRecord",
+        "DCAT": "https://www.w3.org/TR/vocab-dcat-3/#Class:Catalog_Record",
         "class-usage-scope": "main",
-        "DCAT-AP": "https://semiceu.github.io/DCAT-AP/releases/3.0.0/#CatalogueRecord",
-        "reuse": "asis"
+        "ap-label-en": "Catalogue Record",
+        "ap-definition-en": "A description of a Dataset's entry in the Catalogue."
       },
       "properties": [
         {
@@ -520,13 +580,13 @@
           "cardinality": "1",
           "codelist_uri": "",
           "rawTags": {
-            "ap-label-en": "primary topic",
-            "uri": "http://xmlns.com/foaf/0.1/primaryTopic",
+            "DCAT": "https://www.w3.org/TR/vocab-dcat-3/#Property:record_primary_topic",
             "ap-definition-en": "A link to the Dataset, Data service or Catalog described in the record.",
-            "property-usage-scope": "mandatory",
-            "DCAT": "https://w3c.github.io/dxwg/dcat/#Property:record_primary_topic",
+            "ap-label-en": "primary topic",
             "ap-usageNote-en": "A catalogue record will refer to one entity in a catalogue. This can be either a Dataset or a Data Service. To ensure an unambigous reading of the cardinality the range is set to Catalogued Resource. However it is not the intend with this range to require the explicit use of the class Catalogued Record. As abstract class, an subclass should be used.",
-            "DCAT-AP": "https://semiceu.github.io/DCAT-AP/releases/3.0.0/#CatalogueRecord.primarytopic",
+            "uri": "http://xmlns.com/foaf/0.1/primaryTopic",
+            "property-usage-scope": "mandatory",
+            "DCAT-AP": "https://semiceu.github.io/DCAT-AP/releases/3.0.1/#CatalogueRecord.primarytopic",
             "reuse": "asis"
           }
         }
@@ -553,13 +613,13 @@
         }
       ],
       "rawTags": {
-        "ap-label-en": "Data Service",
         "uri": "http://www.w3.org/ns/dcat#DataService",
-        "ap-definition-en": "A collection of operations that provides access to one or more datasets or data processing functions.",
-        "DCAT": "https://w3c.github.io/dxwg/dcat/#Class:Data_Service",
+        "reuse": "asis",
+        "DCAT-AP": "https://semiceu.github.io/DCAT-AP/releases/3.0.1/#DataService",
+        "DCAT": "https://www.w3.org/TR/vocab-dcat-3/#Class:Data_Service",
         "class-usage-scope": "main",
-        "DCAT-AP": "https://semiceu.github.io/DCAT-AP/releases/3.0.0/#DataService",
-        "reuse": "asis"
+        "ap-label-en": "Data Service",
+        "ap-definition-en": "A collection of operations that provides access to one or more datasets or data processing functions."
       },
       "properties": [
         {
@@ -599,13 +659,13 @@
           "cardinality": "1..*",
           "codelist_uri": "",
           "rawTags": {
-            "name": "applicableLegislation",
             "ap-definition-en": "The legislation that mandates the creation or management of the Data Service.",
             "ap-label-en": "applicable legislation",
-            "property-usage-scope": "mandatory",
+            "name": "applicableLegislation",
             "ap-usageNote-en": "For HVD the value MUST include the ELI <a href=\"http://data.europa.eu/eli/reg_impl/2023/138/oj\">http://data.europa.eu/eli/reg_impl/2023/138/oj</a>. \r\n<br/>\r\nAs multiple legislations may apply to the resource the maximum cardinality is not limited.",
-            "reuse": "additional",
-            "DCAT-AP": "https://semiceu.github.io/DCAT-AP/releases/3.0.0/#DataService.applicablelegislation"
+            "DCAT-AP": "https://semiceu.github.io/DCAT-AP/releases/3.0.1/#DataService.applicablelegislation",
+            "property-usage-scope": "mandatory",
+            "reuse": "extended"
           }
         },
         {
@@ -643,12 +703,12 @@
           "cardinality": "1..*",
           "codelist_uri": "",
           "rawTags": {
-            "uri": "http://data.europa.eu/r5r/hvdCategory",
+            "reuse": "profile",
+            "property-usage-scope": "mandatory",
+            "ap-label-en": "HVD category",
             "label-en": "HVD Category",
             "ap-definition-en": "The HVD category to which this Data Service belongs.",
-            "ap-label-en": "HVD category",
-            "property-usage-scope": "mandatory",
-            "reuse": "additional"
+            "uri": "http://data.europa.eu/r5r/hvdCategory"
           }
         },
         {
@@ -688,13 +748,13 @@
           "cardinality": "0..1",
           "codelist_uri": "",
           "rawTags": {
-            "ap-label-en": "licence",
-            "uri": "http://purl.org/dc/terms/license",
-            "ap-definition-en": "A licence under which the Data service is made available.",
             "property-usage-scope": "optional",
-            "DCAT": "https://w3c.github.io/dxwg/dcat/#Property:resource_license",
-            "DCAT-AP": "https://semiceu.github.io/DCAT-AP/releases/3.0.0/#DataService.licence",
+            "uri": "http://purl.org/dc/terms/license",
+            "DCAT": "https://www.w3.org/TR/vocab-dcat-3/#Property:resource_license",
+            "ap-label-en": "licence",
             "reuse": "additional",
+            "DCAT-AP": "https://semiceu.github.io/DCAT-AP/releases/3.0.1/#DataService.licence",
+            "ap-definition-en": "A licence under which the Data service is made available.",
             "ap-usageNote-en": "Article 3.3 specifies that the terms of use should be provided. According to the guidelines for <a href=\"#c3\">legal Information</a> in DCAT-AP HVD this is fulfilled by providing by preference a licence. As alternative rights can be used."
           }
         },
@@ -737,10 +797,10 @@
           "rawTags": {
             "uri": "http://purl.org/dc/terms/rights",
             "ap-definition-en": "A statement that specifies rights associated with the Distribution.",
+            "ap-usageNote-en": "Article 3.3 specifies that the terms of use should be provided. According to the guidelines for <a href=\"#c3\">legal Information</a> in DCAT-AP HVD this is fulfilled by providing by preference a licence. As alternative rights can be used.",
             "ap-label-en": "rights",
             "property-usage-scope": "optional",
-            "reuse": "additional",
-            "ap-usageNote-en": "Article 3.3 specifies that the terms of use should be provided. According to the guidelines for <a href=\"#c3\">legal Information</a> in DCAT-AP HVD this is fulfilled by providing by preference a licence. As alternative rights can be used."
+            "reuse": "extended"
           }
         },
         {
@@ -780,14 +840,14 @@
           "cardinality": "1..*",
           "codelist_uri": "",
           "rawTags": {
+            "ap-usageNote-en": "Article 3.4 requires the designation of a point of contact for an API.",
+            "DCAT": "https://www.w3.org/TR/vocab-dcat-3/#Property:resource_contact_point",
+            "reuse": "extended",
+            "ap-label-en": "contact point",
+            "DCAT-AP": "https://semiceu.github.io/DCAT-AP/releases/3.0.1/#DataService.contactpoint",
             "uri": "http://www.w3.org/ns/dcat#contactPoint",
             "ap-definition-en": "Contact information that can be used for sending comments about the Data Service.",
-            "ap-label-en": "contact point",
-            "DCAT": "https://w3c.github.io/dxwg/dcat/#Property:resource_contact_point",
-            "property-usage-scope": "mandatory",
-            "reuse": "additional",
-            "ap-usageNote-en": "Article 3.4 requires the designation of a point of contact for an API.",
-            "DCAT-AP": "https://semiceu.github.io/DCAT-AP/releases/3.0.0/#DataService.contactpoint"
+            "property-usage-scope": "mandatory"
           }
         },
         {
@@ -827,14 +887,14 @@
           "cardinality": "0..*",
           "codelist_uri": "",
           "rawTags": {
+            "reuse": "extended",
             "ap-label-en": "endpoint description",
             "uri": "http://www.w3.org/ns/dcat#endpointDescription",
-            "ap-definition-en": "A description of the services available via the end-points, including their operations, parameters etc.",
             "ap-usageNote-en": "The property gives specific details of the actual endpoint instances, while dct:conformsTo is used to indicate the general standard or specification that the endpoints implement.\r\n<br/>\r\nArticle 3.3 requires to provide API documentation in a Union or internationally recognised open, human-readable and machine-readable format.",
             "property-usage-scope": "recommended",
-            "DCAT": "https://w3c.github.io/dxwg/dcat/#Property:data_service_endpoint_description",
-            "DCAT-AP": "https://semiceu.github.io/DCAT-AP/releases/3.0.0/#DataService.endpointdescription",
-            "reuse": "additional"
+            "DCAT": "https://www.w3.org/TR/vocab-dcat-3/#Property:data_service_endpoint_description",
+            "DCAT-AP": "https://semiceu.github.io/DCAT-AP/releases/3.0.1/#DataService.endpointdescription",
+            "ap-definition-en": "A description of the services available via the end-points, including their operations, parameters etc."
           }
         },
         {
@@ -874,14 +934,14 @@
           "cardinality": "1..*",
           "codelist_uri": "",
           "rawTags": {
-            "ap-label-en": "endpoint URL",
-            "uri": "http://www.w3.org/ns/dcat#endpointURL",
-            "ap-definition-en": "The root location or primary endpoint of the service (an IRI).",
+            "reuse": "extended",
             "property-usage-scope": "mandatory",
-            "DCAT": "https://w3c.github.io/dxwg/dcat/#Property:data_service_endpoint_url",
+            "DCAT-AP": "https://semiceu.github.io/DCAT-AP/releases/3.0.1/#DataService.endpointURL",
+            "DCAT": "https://www.w3.org/TR/vocab-dcat-3/#Property:data_service_endpoint_url",
             "ap-usageNote-en": "The endpoint URL SHOULD be persistent. This means that publishers should do everything in their power to maintain the value stable and existing.",
-            "DCAT-AP": "https://semiceu.github.io/DCAT-AP/releases/3.0.0/#DataService.endpointURL",
-            "reuse": "additional"
+            "ap-label-en": "endpoint URL",
+            "ap-definition-en": "The root location or primary endpoint of the service (an IRI).",
+            "uri": "http://www.w3.org/ns/dcat#endpointURL"
           }
         },
         {
@@ -921,14 +981,14 @@
           "cardinality": "0..*",
           "codelist_uri": "",
           "rawTags": {
-            "ap-label-en": "serves dataset",
             "uri": "http://www.w3.org/ns/dcat#servesDataset",
-            "ap-definition-en": "This property refers to a collection of data that this data service can distribute.",
             "property-usage-scope": "recommended",
-            "DCAT": "https://w3c.github.io/dxwg/dcat/#Property:data_service_serves_dataset",
-            "DCAT-AP": "https://semiceu.github.io/DCAT-AP/releases/3.0.0/#DataService.servesdataset",
+            "ap-definition-en": "This property refers to a collection of data that this data service can distribute.",
+            "ap-usageNote-en": "An API in the context of HVD is not a standalone resource. It is used to open up HVD datasets. Therefore each Data Service is at least tightly connected with a Dataset.\r\n<br/>\r\nA Dataset MUST have an associated Data Service, besides the exceptions listed in the HVD IR. This can be either specified directly, using this property, or indirectly. More information on this obligation see [[[#apis-are-mandatory]]].",
+            "DCAT": "https://www.w3.org/TR/vocab-dcat-3/#Property:data_service_serves_dataset",
+            "DCAT-AP": "https://semiceu.github.io/DCAT-AP/releases/3.0.1/#DataService.servesdataset",
             "reuse": "additional",
-            "ap-usageNote-en": "An API in the context of HVD is not a standalone resource. It is used to open up HVD datasets. Therefore each Data Service is at least tightly connected with a Dataset.\r\n<br/>\r\nA Dataset MUST have an associated Data Service, besides the exceptions listed in the HVD IR. This can be either specified directly, using this property, or indirectly. More information on this obligation see [[[#apis-are-mandatory]]]."
+            "ap-label-en": "serves dataset"
           }
         },
         {
@@ -968,13 +1028,13 @@
           "cardinality": "1..*",
           "codelist_uri": "",
           "rawTags": {
-            "ap-usageNote-en": "Quality of service covers a broad spectrum of aspects. The HVD regulation does not list any mandatory topic. Therefore quality of service information is considered part of the generic documentation of a Data Service.",
-            "uri": "http://xmlns.com/foaf/0.1/page",
-            "label-en": "documentation",
-            "ap-definition-en": "A page that provides additional information about the Data Service.",
             "property-usage-scope": "mandatory",
-            "reuse": "additional",
-            "DCAT-AP": "https://semiceu.github.io/DCAT-AP/releases/3.0.0/#DataService.documentation"
+            "DCAT-AP": "https://semiceu.github.io/DCAT-AP/releases/3.0.1/#DataService.documentation",
+            "ap-definition-en": "A page that provides additional information about the Data Service.",
+            "label-en": "documentation",
+            "uri": "http://xmlns.com/foaf/0.1/page",
+            "ap-usageNote-en": "Quality of service covers a broad spectrum of aspects. The HVD regulation does not list any mandatory topic. Therefore quality of service information is considered part of the generic documentation of a Data Service.",
+            "reuse": "extended"
           }
         }
       ]
@@ -1000,13 +1060,13 @@
         }
       ],
       "rawTags": {
-        "ap-label-en": "Dataset",
         "uri": "http://www.w3.org/ns/dcat#Dataset",
-        "ap-definition-en": "A conceptual entity that represents the information published.",
-        "DCAT": "https://w3c.github.io/dxwg/dcat/#Class:Dataset",
+        "reuse": "asis",
+        "DCAT-AP": "https://semiceu.github.io/DCAT-AP/releases/3.0.1/#Dataset",
+        "DCAT": "https://www.w3.org/TR/vocab-dcat-3/#Class:Dataset",
         "class-usage-scope": "main",
-        "DCAT-AP": "https://semiceu.github.io/DCAT-AP/releases/3.0.0/#Dataset",
-        "reuse": "asis"
+        "ap-label-en": "Dataset",
+        "ap-definition-en": "A conceptual entity that represents the information published."
       },
       "properties": [
         {
@@ -1046,16 +1106,16 @@
           "cardinality": "1..*",
           "codelist_uri": "",
           "rawTags": {
-            "uri": "http://data.europa.eu/r5r/applicableLegislation",
-            "label-en": "applicable legislation",
-            "definition-en": "The legislation that is applicable to this resource.",
-            "ap-usageNote-en": "For HVD the value must include the ELI <a href=\"http://data.europa.eu/eli/reg_impl/2023/138/oj\">http://data.europa.eu/eli/reg_impl/2023/138/oj</a>. \r\n<br/>\r\nAs multiple legislations may apply to the resource the maximum cardinality is not limited.",
             "name": "applicableLegislation",
+            "ap-usageNote-en": "For HVD the value must include the ELI <a href=\"http://data.europa.eu/eli/reg_impl/2023/138/oj\">http://data.europa.eu/eli/reg_impl/2023/138/oj</a>. \r\n<br/>\r\nAs multiple legislations may apply to the resource the maximum cardinality is not limited.",
+            "reuse": "extended",
             "ap-definition-en": "The legislation that mandates the creation or management of the Dataset.",
-            "ap-label-en": "applicable legislation",
+            "definition-en": "The legislation that is applicable to this resource.",
+            "label-en": "applicable legislation",
             "property-usage-scope": "mandatory",
-            "reuse": "additional",
-            "DCAT-AP": "https://semiceu.github.io/DCAT-AP/releases/3.0.0/#DataService.applicablelegislation"
+            "uri": "http://data.europa.eu/r5r/applicableLegislation",
+            "ap-label-en": "applicable legislation",
+            "DCAT-AP": "https://semiceu.github.io/DCAT-AP/releases/3.0.1/#DataService.applicablelegislation"
           }
         },
         {
@@ -1093,11 +1153,11 @@
           "cardinality": "1..*",
           "codelist_uri": "",
           "rawTags": {
-            "uri": "http://data.europa.eu/r5r/hvdCategory",
-            "label-en": "HVD Category",
+            "reuse": "profile",
             "ap-definition-en": "The HVD category to which this Dataset belongs.",
-            "property-usage-scope": "mandatory",
-            "reuse": "additional"
+            "label-en": "HVD Category",
+            "uri": "http://data.europa.eu/r5r/hvdCategory",
+            "property-usage-scope": "mandatory"
           }
         },
         {
@@ -1137,14 +1197,108 @@
           "cardinality": "0..*",
           "codelist_uri": "",
           "rawTags": {
-            "ap-label-en": "conforms to",
-            "uri": "http://purl.org/dc/terms/conformsTo",
-            "ap-definition-en": "An implementing rule or other specification.",
             "property-usage-scope": "optional",
-            "DCAT": "https://w3c.github.io/dxwg/dcat/#Property:resource_conforms_to",
-            "ap-usageNote-en": "The provided information should enable to the verification whether the detailed information requirements by the HVD is satisfied. For more usage suggestions see section on <a href=\"#c7\">specific data requirements</a>.",
-            "DCAT-AP": "https://semiceu.github.io/DCAT-AP/releases/3.0.0/#Dataset.conformsto",
-            "reuse": "asis"
+            "ap-label-en": "conforms to",
+            "ap-definition-en": "An implementing rule or other specification.",
+            "uri": "http://purl.org/dc/terms/conformsTo",
+            "reuse": "asis",
+            "DCAT-AP": "https://semiceu.github.io/DCAT-AP/releases/3.0.1/#Dataset.conformsto",
+            "DCAT": "https://www.w3.org/TR/vocab-dcat-3/#Property:resource_conforms_to",
+            "ap-usageNote-en": "The provided information should enable to the verification whether the detailed information requirements by the HVD is satisfied. For more usage suggestions see section on <a href=\"#c7\">specific data requirements</a>."
+          }
+        },
+        {
+          "uri": "http://purl.org/dc/terms/description",
+          "name": "description",
+          "sort": "description",
+          "label": {
+            "en": "description"
+          },
+          "description": {
+            "en": "A free-text account of the Dataset."
+          },
+          "usage": {
+            "en": "This property can be repeated for parallel language versions of the description."
+          },
+          "domain": [
+            {
+              "EA-Name": "dcat:Dataset",
+              "uri": "http://www.w3.org/ns/dcat#Dataset"
+            }
+          ],
+          "range": [
+            {
+              "range_label": "rdf:langString",
+              "range_uri": "http://www.w3.org/1999/02/22-rdf-syntax-ns#langString"
+            }
+          ],
+          "scopedrange": [
+            {
+              "range_uri": "#Language-tagged string",
+              "range_puri": "http://www.w3.org/1999/02/22-rdf-syntax-ns#langString",
+              "range_label": {
+                "en": "Language-tagged string"
+              }
+            }
+          ],
+          "cardinality": "1..*",
+          "codelist_uri": "",
+          "rawTags": {
+            "ap-definition-en": "A free-text account of the Dataset.",
+            "ap-label-en": "description",
+            "DCAT": "https://www.w3.org/TR/vocab-dcat-3/#Property:resource_description",
+            "property-usage-scope": "optional",
+            "uri": "http://purl.org/dc/terms/description",
+            "reuse": "extended",
+            "DCAT-AP": "https://semiceu.github.io/DCAT-AP/releases/3.0.1/#Dataset.description",
+            "ap-usageNote-en": "This property can be repeated for parallel language versions of the description."
+          }
+        },
+        {
+          "uri": "http://purl.org/dc/terms/title",
+          "name": "title",
+          "sort": "title",
+          "label": {
+            "en": "title"
+          },
+          "description": {
+            "en": "A name given to the Dataset."
+          },
+          "usage": {
+            "en": "This property can be repeated for parallel language versions of the name."
+          },
+          "domain": [
+            {
+              "EA-Name": "dcat:Dataset",
+              "uri": "http://www.w3.org/ns/dcat#Dataset"
+            }
+          ],
+          "range": [
+            {
+              "range_label": "rdf:langString",
+              "range_uri": "http://www.w3.org/1999/02/22-rdf-syntax-ns#langString"
+            }
+          ],
+          "scopedrange": [
+            {
+              "range_uri": "#Language-tagged string",
+              "range_puri": "http://www.w3.org/1999/02/22-rdf-syntax-ns#langString",
+              "range_label": {
+                "en": "Language-tagged string"
+              }
+            }
+          ],
+          "cardinality": "1..*",
+          "codelist_uri": "",
+          "rawTags": {
+            "ap-usageNote-en": "This property can be repeated for parallel language versions of the name.",
+            "ap-label-en": "title",
+            "ap-definition-en": "A name given to the Dataset.",
+            "DCAT": "https://www.w3.org/TR/vocab-dcat-3/#Property:resource_title",
+            "uri": "http://purl.org/dc/terms/title",
+            "reuse": "extended",
+            "DCAT-AP": "https://semiceu.github.io/DCAT-AP/releases/3.0.1/#Dataset.title",
+            "property-usage-scope": "mandatory"
           }
         },
         {
@@ -1183,13 +1337,12 @@
           "codelist_uri": "",
           "rawTags": {
             "ap-label-en": "contact point",
+            "DCAT": "https://www.w3.org/TR/vocab-dcat-3/#Property:resource_contact_point",
+            "reuse": "asis",
             "uri": "http://www.w3.org/ns/dcat#contactPoint",
             "ap-definition-en": "Contact information that can be used for sending comments about the Dataset.",
             "property-usage-scope": "recommended",
-            "DCAT": "https://w3c.github.io/dxwg/dcat/#Property:resource_contact_point",
-            "DCAT-AP": "https://semiceu.github.io/DCAT-AP/releases/3.0.0/#Dataset.contactpoint",
-            "reuse": "asis",
-            "igore": "true"
+            "DCAT-AP": "https://semiceu.github.io/DCAT-AP/releases/3.0.1/#Dataset.contactpoint"
           }
         },
         {
@@ -1229,14 +1382,14 @@
           "cardinality": "0..*",
           "codelist_uri": "",
           "rawTags": {
-            "ap-label-en": "dataset distribution",
-            "uri": "http://www.w3.org/ns/dcat#distribution",
-            "ap-definition-en": "An available Distribution for the Dataset.",
-            "property-usage-scope": "recommended",
-            "DCAT": "https://w3c.github.io/dxwg/dcat/#Property:dataset_distribution",
-            "DCAT-AP": "https://semiceu.github.io/DCAT-AP/releases/3.0.0/#Dataset.datasetdistribution",
+            "ap-usageNote-en": "The HVD IR is a quality improvement of existing datasets. The intention is that HVD datasets are publicly and open accessible. Therefore a Distribution is expected to be present. (Article 3.1)\r\n\r\nThis <a href=\"#apis-are-mandatory\">section</a> provides more information how this strong recommendation is implemented.",
             "reuse": "additional",
-            "ap-usageNote-en": "The HVD IR is a quality improvement of existing datasets. The intention is that HVD datasets are publicly and open accessible. Therefore a Distribution is expected to be present. (Article 3.1)\r\n\r\nThis <a href=\"#apis-are-mandatory\">section</a> provides more information how this strong recommendation is implemented."
+            "ap-definition-en": "An available Distribution for the Dataset.",
+            "uri": "http://www.w3.org/ns/dcat#distribution",
+            "DCAT": "https://www.w3.org/TR/vocab-dcat-3/#Property:dataset_distribution",
+            "property-usage-scope": "recommended",
+            "DCAT-AP": "https://semiceu.github.io/DCAT-AP/releases/3.0.1/#Dataset.datasetdistribution",
+            "ap-label-en": "dataset distribution"
           }
         },
         {
@@ -1274,13 +1427,13 @@
           "cardinality": "0..*",
           "codelist_uri": "",
           "rawTags": {
-            "definition-en": "A dataset series of which the dataset is part.",
-            "label-en": "in series",
-            "uri": "http://www.w3.org/ns/dcat#inSeries",
             "DCAT": "https://www.w3.org/TR/vocab-dcat-3/#Property:dataset_in_series",
-            "property-usage-scope": "optional",
+            "label-en": "in series",
             "reuse": "additional",
-            "DCAT-AP": "https://semiceu.github.io/DCAT-AP/releases/3.0.0/#Dataset.inseries"
+            "property-usage-scope": "optional",
+            "uri": "http://www.w3.org/ns/dcat#inSeries",
+            "definition-en": "A dataset series of which the dataset is part.",
+            "DCAT-AP": "https://semiceu.github.io/DCAT-AP/releases/3.0.1/#Dataset.inseries"
           }
         }
       ]
@@ -1308,13 +1461,14 @@
         }
       ],
       "rawTags": {
-        "ap-usageNote-en": "The class has been extended minimally to enable the identification of Dataset Series in scope of the HVD IR. The motivation and usage guidelines are found in section [[[#guidelines-datasetseries]]].",
-        "class-usage-scope": "main",
-        "DCAT": "https://www.w3.org/TR/vocab-dcat-3/#Class:Dataset_Series",
-        "definition-en": "A collection of datasets that are published separately, but share some characteristics that group them.",
-        "label-en": "Dataset Series",
+        "uri": "http://www.w3.org/ns/dcat#DatasetSeries",
         "reuse": "additional",
-        "uri": "http://www.w3.org/ns/dcat#DatasetSeries"
+        "label-en": "Dataset Series",
+        "definition-en": "A collection of datasets that are published separately, but share some characteristics that group them.",
+        "DCAT-AP": "https://semiceu.github.io/DCAT-AP/releases/3.0.1/#DatasetSeries",
+        "DCAT": "https://www.w3.org/TR/vocab-dcat-3/#Class:Dataset_Series",
+        "class-usage-scope": "main",
+        "ap-usageNote-en": "The class has been extended minimally to enable the identification of Dataset Series in scope of the HVD IR. The motivation and usage guidelines are found in section [[[#guidelines-datasetseries]]]."
       },
       "properties": [
         {
@@ -1354,13 +1508,13 @@
           "cardinality": "1..*",
           "codelist_uri": "",
           "rawTags": {
+            "reuse": "extended",
             "ap-definition-en": "The legislation that mandates the creation or management of the Dataset Series.",
             "property-usage-scope": "mandatory",
-            "ap-label-en": "applicable legislation",
             "uri": "http://data.europa.eu/r5r/applicableLegislation",
-            "reuse": "additional",
-            "ap-usageNote-en": "For HVD the value must include the ELI <a href=\"http://data.europa.eu/eli/reg_impl/2023/138/oj\">http://data.europa.eu/eli/reg_impl/2023/138/oj</a>. \r\n<br/>\r\nAs multiple legislations may apply to the resource the maximum cardinality is not limited.",
-            "DCAT-AP": "https://semiceu.github.io/DCAT-AP/releases/3.0.0/#DatasetSeries.applicablelegislation"
+            "DCAT-AP": "https://semiceu.github.io/DCAT-AP/releases/3.0.1/#DatasetSeries.applicablelegislation",
+            "ap-label-en": "applicable legislation",
+            "ap-usageNote-en": "For HVD the value must include the ELI <a href=\"http://data.europa.eu/eli/reg_impl/2023/138/oj\">http://data.europa.eu/eli/reg_impl/2023/138/oj</a>. \r\n<br/>\r\nAs multiple legislations may apply to the resource the maximum cardinality is not limited."
           }
         },
         {
@@ -1371,7 +1525,7 @@
             "en": "HVD Category"
           },
           "description": {
-            "en": "The HVD category to which this Dataset belongs."
+            "en": "The HVD category to which this Dataset Series belongs."
           },
           "usage": {},
           "domain": [
@@ -1398,9 +1552,9 @@
           "cardinality": "1..*",
           "codelist_uri": "",
           "rawTags": {
-            "ap-definition-en": "The HVD category to which this Dataset belongs.",
-            "ap-label-en": "HVD Category",
+            "ap-definition-en": "The HVD category to which this Dataset Series belongs.",
             "uri": "http://data.europa.eu/r5r/hvdCategory",
+            "ap-label-en": "HVD Category",
             "reuse": "profile",
             "property-usage-scope": "mandatory"
           }
@@ -1422,14 +1576,14 @@
       },
       "parents": [],
       "rawTags": {
-        "ap-label-en": "Distribution",
         "uri": "http://www.w3.org/ns/dcat#Distribution",
-        "ap-definition-en": "A physical embodiment of the Dataset in a particular format.",
-        "DCAT": "https://w3c.github.io/dxwg/dcat/#Class:Distribution",
+        "reuse": "extended",
+        "DCAT-AP": "https://semiceu.github.io/DCAT-AP/releases/3.0.1/#Distribution",
+        "DCAT": "https://www.w3.org/TR/vocab-dcat-3/#Class:Distribution",
         "class-usage-scope": "main",
         "ap-usageNote-en": "Bulk downloads should be encoded as a Distribution.",
-        "DCAT-AP": "https://semiceu.github.io/DCAT-AP/releases/3.0.0/#Distribution",
-        "reuse": "extended"
+        "ap-label-en": "Distribution",
+        "ap-definition-en": "A physical embodiment of the Dataset in a particular format."
       },
       "properties": [
         {
@@ -1469,13 +1623,13 @@
           "cardinality": "1..*",
           "codelist_uri": "",
           "rawTags": {
+            "reuse": "extended",
             "name": "applicableLegislation",
-            "ap-definition-en": "The legislation that mandates the creation or management of the Distribution",
-            "ap-label-en": "applicable legislation",
             "property-usage-scope": "mandatory",
             "ap-usageNote-en": "For HVD the value must include the ELI <a href=\"http://data.europa.eu/eli/reg_impl/2023/138/oj\">http://data.europa.eu/eli/reg_impl/2023/138/oj</a>. \r\n<br/>\r\nAs multiple legislations may apply to the resource the maximum cardinality is not limited.",
-            "reuse": "additional",
-            "DCAT-AP": "https://semiceu.github.io/DCAT-AP/releases/3.0.0/#Distribution.applicablelegislation"
+            "ap-definition-en": "The legislation that mandates the creation or management of the Distribution",
+            "ap-label-en": "applicable legislation",
+            "DCAT-AP": "https://semiceu.github.io/DCAT-AP/releases/3.0.1/#Distribution.applicablelegislation"
           }
         },
         {
@@ -1515,14 +1669,14 @@
           "cardinality": "0..*",
           "codelist_uri": "",
           "rawTags": {
-            "ap-label-en": "linked schemas",
-            "uri": "http://purl.org/dc/terms/conformsTo",
+            "DCAT": "https://www.w3.org/TR/vocab-dcat-3/#Property:distribution_conforms_to",
+            "ap-usageNote-en": "The provided information should enable to the verification whether the detailed information requirements by the HVD is satisfied. For more usage suggestions see section on <a href=\"#c7\">specific data requirements</a>.",
             "ap-definition-en": "An established schema to which the described Distribution conforms.",
             "property-usage-scope": "optional",
-            "DCAT": "https://w3c.github.io/dxwg/dcat/#Property:distribution_conforms_to",
-            "DCAT-AP": "https://semiceu.github.io/DCAT-AP/releases/3.0.0/#Distribution.linkedschemas",
+            "DCAT-AP": "https://semiceu.github.io/DCAT-AP/releases/3.0.1/#Distribution.linkedschemas",
             "reuse": "asis",
-            "ap-usageNote-en": "The provided information should enable to the verification whether the detailed information requirements by the HVD is satisfied. For more usage suggestions see section on <a href=\"#c7\">specific data requirements</a>."
+            "ap-label-en": "linked schemas",
+            "uri": "http://purl.org/dc/terms/conformsTo"
           }
         },
         {
@@ -1562,14 +1716,14 @@
           "cardinality": "0..1",
           "codelist_uri": "",
           "rawTags": {
-            "ap-label-en": "licence",
+            "reuse": "additional",
+            "DCAT-AP": "https://semiceu.github.io/DCAT-AP/releases/3.0.1/#Distribution.licence",
             "uri": "http://purl.org/dc/terms/license",
             "ap-definition-en": "A licence under which the Distribution is made available.",
+            "ap-label-en": "licence",
+            "ap-usageNote-en": "Article 4.3 specifies that High-value datasets should be made available for reuse. According to the guidelines for <a href=\"#c3\">legal Information</a> in DCAT-AP HVD this is fulfilled by providing by preference a licence. As alternative rights can be used.",
             "property-usage-scope": "recommended",
-            "DCAT": "https://w3c.github.io/dxwg/dcat/#Property:distribution_license",
-            "DCAT-AP": "https://semiceu.github.io/DCAT-AP/releases/3.0.0/#Distribution.licence",
-            "reuse": "additional",
-            "ap-usageNote-en": "Article 4.3 specifies that High-value datasets should be made available for reuse. According to the guidelines for <a href=\"#c3\">legal Information</a> in DCAT-AP HVD this is fulfilled by providing by preference a licence. As alternative rights can be used."
+            "DCAT": "https://www.w3.org/TR/vocab-dcat-3/#Property:distribution_license"
           }
         },
         {
@@ -1609,14 +1763,14 @@
           "cardinality": "0..*",
           "codelist_uri": "",
           "rawTags": {
-            "ap-label-en": "rights",
             "uri": "http://purl.org/dc/terms/rights",
             "ap-definition-en": "A statement that specifies rights associated with the Distribution.",
+            "reuse": "extended",
             "property-usage-scope": "optional",
-            "DCAT": "https://w3c.github.io/dxwg/dcat/#Property:distribution_rights",
+            "ap-label-en": "rights",
+            "DCAT": "https://www.w3.org/TR/vocab-dcat-3/#Property:distribution_rights",
             "ap-usageNote-en": "Article 4.3 specifies that High-value datasets should be made available for reuse.\r\nAccording to the guidelines for <a href=\"#c3\">legal Information</a> in DCAT-AP HVD this is fulfilled by providing by preference a licence. As alternative rights can be used.",
-            "DCAT-AP": "https://semiceu.github.io/DCAT-AP/releases/3.0.0/#Distribution.rights",
-            "reuse": "additional"
+            "DCAT-AP": "https://semiceu.github.io/DCAT-AP/releases/3.0.1/#Distribution.rights"
           }
         },
         {
@@ -1656,12 +1810,12 @@
           "cardinality": "0..*",
           "codelist_uri": "",
           "rawTags": {
-            "ap-label-en": "access service",
+            "DCAT": "https://www.w3.org/TR/vocab-dcat-3/#Property:distribution_access_service",
             "uri": "http://www.w3.org/ns/dcat#accessService",
-            "ap-definition-en": "A data service that gives access to the distribution of the dataset",
             "property-usage-scope": "recommended",
-            "DCAT": "https://w3c.github.io/dxwg/dcat/#Property:distribution_access_service",
-            "DCAT-AP": "https://semiceu.github.io/DCAT-AP/releases/3.0.0/#Distribution.accessservice",
+            "ap-definition-en": "A data service that gives access to the distribution of the dataset",
+            "DCAT-AP": "https://semiceu.github.io/DCAT-AP/releases/3.0.1/#Distribution.accessservice",
+            "ap-label-en": "access service",
             "reuse": "additional",
             "ap-usageNote-en": "An API in the context of HVD is not a standalone resource. It is used to open up HVD datasets. Therefore each Data Service is at least tightly connected with a Dataset.\r\n<br/>\r\nA Dataset MUST have an associated Data Service, besides the exceptions listed in the HVD IR. This can be either specified directly or indirectly using this property. More information on this obligation see [[[#apis-are-mandatory]]]."
           }
@@ -1677,7 +1831,7 @@
             "en": "A URL that gives access to a Distribution of the Dataset."
           },
           "usage": {
-            "en": "The resource at the access URL  contains information about how to get the Dataset.\r\nIn accordance to the DCAT guidelines it is preferred to also set the downloadURL property if the URL is a reference to a downloadable resource."
+            "en": "The resource at the access URL contains information about how to get the Dataset. For Distribution representing HVD bulk download, it is mandatory to also set the download URL property."
           },
           "domain": [
             {
@@ -1703,14 +1857,61 @@
           "cardinality": "1..*",
           "codelist_uri": "",
           "rawTags": {
-            "uri": "http://www.w3.org/ns/dcat#accessURL",
-            "ap-label-en": "access URL",
             "ap-definition-en": "A URL that gives access to a Distribution of the Dataset.",
-            "ap-usageNote-en": "The resource at the access URL  contains information about how to get the Dataset.\r\nIn accordance to the DCAT guidelines it is preferred to also set the downloadURL property if the URL is a reference to a downloadable resource.",
+            "ap-usageNote-en": "The resource at the access URL contains information about how to get the Dataset. For Distribution representing HVD bulk download, it is mandatory to also set the download URL property.",
+            "ap-label-en": "access URL",
+            "DCAT": "https://www.w3.org/TR/vocab-dcat-3/#Property:distribution_access_url",
+            "uri": "http://www.w3.org/ns/dcat#accessURL",
+            "reuse": "extended",
             "property-usage-scope": "mandatory",
-            "DCAT": "https://w3c.github.io/dxwg/dcat/#Property:distribution_access_url",
-            "DCAT-AP": "https://semiceu.github.io/DCAT-AP/releases/3.0.0/#Distribution.accessURL",
-            "reuse": "asis"
+            "DCAT-AP": "https://semiceu.github.io/DCAT-AP/releases/3.0.1/#Distribution.accessURL"
+          }
+        },
+        {
+          "uri": "http://www.w3.org/ns/dcat#downloadURL",
+          "name": "downloadUrl",
+          "sort": "download URL",
+          "label": {
+            "en": "download URL"
+          },
+          "description": {
+            "en": "A URL that is a direct link to a downloadable file in a given format."
+          },
+          "usage": {
+            "en": "For Distribution representing Bulk download, download URL is mandatory, and is expected to be the same as access URL."
+          },
+          "domain": [
+            {
+              "EA-Name": "dcat:Distribution",
+              "uri": "http://www.w3.org/ns/dcat#Distribution"
+            }
+          ],
+          "range": [
+            {
+              "range_label": "rdfs:Resource",
+              "range_uri": "http://www.w3.org/2000/01/rdf-schema#Resource"
+            }
+          ],
+          "scopedrange": [
+            {
+              "range_uri": "#Resource",
+              "range_puri": "http://www.w3.org/2000/01/rdf-schema#Resource",
+              "range_label": {
+                "en": "Resource"
+              }
+            }
+          ],
+          "cardinality": "0..*",
+          "codelist_uri": "",
+          "rawTags": {
+            "DCAT": "https://www.w3.org/TR/vocab-dcat-3/#Property:distribution_download_url",
+            "property-usage-scope": "optional",
+            "DCAT-AP": "https://semiceu.github.io/DCAT-AP/releases/3.0.1/#Distribution.downloadURL",
+            "reuse": "extended",
+            "ap-usageNote-en": "For Distribution representing Bulk download, download URL is mandatory, and is expected to be the same as access URL.",
+            "uri": "http://www.w3.org/ns/dcat#downloadURL",
+            "ap-definition-en": "A URL that is a direct link to a downloadable file in a given format.",
+            "ap-label-en": "download URL"
           }
         }
       ]
@@ -1730,14 +1931,14 @@
       },
       "parents": [],
       "rawTags": {
-        "ap-label-en": "Catalogued Resource",
         "uri": "http://www.w3.org/ns/dcat#Resource",
-        "ap-definition-en": "Resource published or curated by a single agent.",
-        "DCAT": "https://w3c.github.io/dxwg/dcat/#Class:Resource",
-        "ap-usageNote-en": "For DCAT-AP, the class is considered an abstract notion.",
+        "reuse": "asis",
+        "DCAT-AP": "https://semiceu.github.io/DCAT-AP/releases/3.0.1/#CataloguedResource",
+        "DCAT": "https://www.w3.org/TR/vocab-dcat-3/#Class:Resource",
         "class-usage-scope": "main",
-        "DCAT-AP": "https://semiceu.github.io/DCAT-AP/releases/3.0.0/#CataloguedResource",
-        "reuse": "asis"
+        "ap-usageNote-en": "For DCAT-AP, the class is considered an abstract notion.",
+        "ap-label-en": "Catalogued Resource",
+        "ap-definition-en": "Resource published or curated by a single agent."
       },
       "properties": []
     },
@@ -1754,12 +1955,12 @@
       "usage": {},
       "parents": [],
       "rawTags": {
-        "ap-label-en": "Document",
-        "ap-definition-en": "A textual resource intended for human consumption that contains information, e.g. a web page about a Dataset.",
         "uri": "http://xmlns.com/foaf/0.1/Document",
+        "reuse": "asis",
+        "DCAT-AP": "https://semiceu.github.io/DCAT-AP/releases/3.0.1/#Document",
         "class-usage-scope": "supportive",
-        "DCAT-AP": "https://semiceu.github.io/DCAT-AP/releases/3.0.0/#Document",
-        "reuse": "asis"
+        "ap-label-en": "Document",
+        "ap-definition-en": "A textual resource intended for human consumption that contains information, e.g. a web page about a Dataset."
       },
       "properties": []
     }
@@ -1885,30 +2086,24 @@
       "first_name": "Jitse",
       "last_name": "De Cock",
       "affiliation": {
-        "name": "SEMIC EU"
+        "name": "PwC EU Services"
       }
     },
     {
       "role": "E",
-      "first_name": "Pavlina",
-      "last_name": "Fragkou",
+      "first_name": "Jakub",
+      "last_name": "Klímek",
       "affiliation": {
-        "name": "SEMIC EU"
-      }
-    },
-    {
-      "role": "E",
-      "first_name": "Arthur",
-      "last_name": "Schiltz",
-      "affiliation": {
-        "name": "SEMIC EU"
+        "name": "CUIT"
       }
     },
     {
       "role": "E",
       "first_name": "Natasa",
       "last_name": "Sofou",
-      "affiliation": {}
+      "affiliation": {
+        "name": "DIGIT-EXT"
+      }
     },
     {
       "role": "C",
@@ -2213,9 +2408,9 @@
     {
       "role": "C",
       "first_name": "Jakub",
-      "last_name": "Klimek",
+      "last_name": "Klímek",
       "affiliation": {
-        "name": "Ministry of the Interior of the Czech Republic"
+        "name": "Czech Digital and Information Agency"
       }
     },
     {
@@ -2436,8 +2631,8 @@
     },
     {
       "role": "C",
-      "first_name": "Jiri",
-      "last_name": "Pilar",
+      "first_name": "Jiří",
+      "last_name": "Pilař",
       "affiliation": {
         "name": "European Commission"
       }
@@ -2501,7 +2696,7 @@
     {
       "role": "C",
       "first_name": "Michal",
-      "last_name": "Ruzicka",
+      "last_name": "Růžička",
       "affiliation": {
         "name": "Masaryk University"
       }
@@ -2528,6 +2723,14 @@
       "last_name": "Scaglione",
       "affiliation": {
         "name": "Agency for Digital Italy (AgID)"
+      }
+    },
+    {
+      "role": "C",
+      "first_name": "Arthur",
+      "last_name": "Schiltz",
+      "affiliation": {
+        "name": "SEMIC EU"
       }
     },
     {
@@ -2685,7 +2888,29 @@
       }
     }
   ],
-  "datatypes": [],
+  "datatypes": [
+    {
+      "uri": "http://www.w3.org/1999/02/22-rdf-syntax-ns#langString",
+      "name": "Language-taggedString",
+      "label": {
+        "en": "Language-tagged string"
+      },
+      "sort": "Language-tagged string",
+      "description": {
+        "en": "The class rdf:langString is the class of language-tagged string values. rdf:langString is an instance of rdfs:Datatype and a subclass of rdfs:Literal."
+      },
+      "usage": {},
+      "parents": [],
+      "rawTags": {
+        "uri": "http://www.w3.org/1999/02/22-rdf-syntax-ns#langString",
+        "literal": "true",
+        "label-en": "Language-tagged string",
+        "class-usage-scope": "datatype",
+        "definition-en": "The class rdf:langString is the class of language-tagged string values. rdf:langString is an instance of rdfs:Datatype and a subclass of rdfs:Literal."
+      },
+      "properties": []
+    }
+  ],
   "parents": [],
   "documentroot": "/DCAT-AP/releases/3.0.0-hvd"
 }
