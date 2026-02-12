@@ -222,7 +222,7 @@
         </p>
     <h3>Used Prefixes</h3>
         
-This specification uses the following prefixes to shorten the URIs for readibility.
+This specification uses the following prefixes to shorten the URIs for readability.
 
         <table id="table-namespaces" class="simple">
             <thead><tr><th>Prefix</th><th>Namespace IRI</th></tr></thead>
@@ -272,13 +272,17 @@ This specification uses the following prefixes to shorten the URIs for readibili
                             |
 			      <a href="#Beneficiary">Beneficiary</a> |
 			      <a href="#Block">Block</a> |
+			      <a href="#ContractAddenda">Contract Addenda</a> |
 			      <a href="#Document">Document</a> |
 			      <a href="#ESF">ESF</a> |
 			      <a href="#Identifier">Identifier</a> |
 			      <a href="#KeyExpert">KeyExpert</a> |
+			      <a href="#Lot">Lot</a> |
 			      <a href="#MonetaryValue">Monetary Value</a> |
+			      <a href="#Notice">Notice</a> |
 			      <a href="#Partner">Partner</a> |
 			      <a href="#Person">Person</a> |
+			      <a href="#Procedure">Procedure</a> |
                         </p>
                 
                 
@@ -354,10 +358,13 @@ The main entities are those that form the core of the Application Profile.
                             For this entity the following properties are defined: <a href="#Contract.belongsto">belongs to</a>
                             , <a href="#Contract.contracttype">contract type</a>
                             , <a href="#Contract.finalenddate">final end date</a>
+                            , <a href="#Contract.hascontractaddenda">has contract addenda</a>
                             , <a href="#Contract.hascontractconclusiondate">has contract conclusion date</a>
+                            , <a href="#Contract.hascontractvalue">has contract value</a>
                             , <a href="#Contract.hascontractor">has contractor</a>
                             , <a href="#Contract.hasinitialenddate">has initial end date</a>
                             , <a href="#Contract.hasKeyExpert">has KeyExpert</a>
+                            , <a href="#Contract.haslotreference">has lot reference</a>
                             , <a href="#Contract.modified">modified</a>
                             .
                     </dd>
@@ -527,6 +534,49 @@ The main entities are those that form the core of the Application Profile.
                                 </td>
                             </tr>
                         
+                            <tr id="Contract.hascontractaddenda"
+                                typeof="rdf:Property"
+                                resource="https://w3id.org/adm/model/hasContractAddenda"
+                                class="class mandatory">
+                                <td>
+				    <a href="https://github.com/SEMICeu/ADM/issues/new?title=Issue%20for%20has contract addenda%20in%20Contract&body=Explain%20your%20issue%20for%20https://semiceu.github.io/ADM/releases/0.0.1%23Contract.hascontractaddenda" target="_blank" rel="noopener noreferrer" >
+					    <!--                                        <i class="icon">[o]</i> -->
+                                        <img src="html/callout.png" loading="lazy" alt="[o]" width="100" height="100"/>
+                                    </a>
+                                </td>
+                                <td>
+                                        <a href="https://w3id.org/adm/model/hasContractAddenda"
+                                           data-toggle="tooltip"
+                                           data-content="https://w3id.org/adm/model/hasContractAddenda"
+                                           data-placement="right">
+                                        has contract addenda</a>
+                                </td>
+                                <td>
+                                    
+                                        
+                                            <a href="#ContractAddenda" data-placement="right">Contract Addenda</a>
+                                        
+                                    
+                                </td>
+                                <td>
+                                    0..1
+                                </td>
+                                <td property="rdfs:comment">
+                                    The aggregated addendum to the contract.
+                                </td>
+                                <td property="skos:scopeNote">
+                                    
+                                </td>
+				<!--
+                                <td>
+                                    
+                                </td>
+				-->
+                                <td>
+                                    
+                                </td>
+                            </tr>
+                        
                             <tr id="Contract.hascontractconclusiondate"
                                 typeof="rdf:Property"
                                 resource="http://data.europa.eu/a4g/ontology#hasContractConclusionDate"
@@ -556,6 +606,49 @@ The main entities are those that form the core of the Application Profile.
                                 </td>
                                 <td property="rdfs:comment">
                                     The date the contract was signed by the last signatory party.
+                                </td>
+                                <td property="skos:scopeNote">
+                                    
+                                </td>
+				<!--
+                                <td>
+                                    
+                                </td>
+				-->
+                                <td>
+                                    
+                                </td>
+                            </tr>
+                        
+                            <tr id="Contract.hascontractvalue"
+                                typeof="rdf:Property"
+                                resource="http://data.europa.eu/a4g/ontology#hasContractValue"
+                                class="class mandatory">
+                                <td>
+				    <a href="https://github.com/SEMICeu/ADM/issues/new?title=Issue%20for%20has contract value%20in%20Contract&body=Explain%20your%20issue%20for%20https://semiceu.github.io/ADM/releases/0.0.1%23Contract.hascontractvalue" target="_blank" rel="noopener noreferrer" >
+					    <!--                                        <i class="icon">[o]</i> -->
+                                        <img src="html/callout.png" loading="lazy" alt="[o]" width="100" height="100"/>
+                                    </a>
+                                </td>
+                                <td>
+                                        <a href="http://data.europa.eu/a4g/ontology#hasContractValue"
+                                           data-toggle="tooltip"
+                                           data-content="http://data.europa.eu/a4g/ontology#hasContractValue"
+                                           data-placement="right">
+                                        has contract value</a>
+                                </td>
+                                <td>
+                                    
+                                        
+                                            <a href="#MonetaryValue" data-placement="right">Monetary Value</a>
+                                        
+                                    
+                                </td>
+                                <td>
+                                    1
+                                </td>
+                                <td property="rdfs:comment">
+                                    Relation indicating the Monetary value of the Contract.
                                 </td>
                                 <td property="skos:scopeNote">
                                     
@@ -701,6 +794,49 @@ signed.
                                 </td>
                             </tr>
                         
+                            <tr id="Contract.haslotreference"
+                                typeof="rdf:Property"
+                                resource="http://data.europa.eu/a4g/ontology#hasLotReference"
+                                class="class mandatory">
+                                <td>
+				    <a href="https://github.com/SEMICeu/ADM/issues/new?title=Issue%20for%20has lot reference%20in%20Contract&body=Explain%20your%20issue%20for%20https://semiceu.github.io/ADM/releases/0.0.1%23Contract.haslotreference" target="_blank" rel="noopener noreferrer" >
+					    <!--                                        <i class="icon">[o]</i> -->
+                                        <img src="html/callout.png" loading="lazy" alt="[o]" width="100" height="100"/>
+                                    </a>
+                                </td>
+                                <td>
+                                        <a href="http://data.europa.eu/a4g/ontology#hasLotReference"
+                                           data-toggle="tooltip"
+                                           data-content="http://data.europa.eu/a4g/ontology#hasLotReference"
+                                           data-placement="right">
+                                        has lot reference</a>
+                                </td>
+                                <td>
+                                    
+                                        
+                                            <a href="#Lot" data-placement="right">Lot</a>
+                                        
+                                    
+                                </td>
+                                <td>
+                                    1..*
+                                </td>
+                                <td property="rdfs:comment">
+                                    The related reference of the lot the contract is covering.
+                                </td>
+                                <td property="skos:scopeNote">
+                                    
+                                </td>
+				<!--
+                                <td>
+                                    
+                                </td>
+				-->
+                                <td>
+                                    
+                                </td>
+                            </tr>
+                        
                             <tr id="Contract.modified"
                                 typeof="rdf:Property"
                                 resource="https://w3id.org/adm/model/modified"
@@ -751,6 +887,8 @@ contract, or not.
         
     </div>
 </section>
+
+
 
 
 
@@ -943,6 +1081,12 @@ The details of the registration are provided as properties of the Identifier cla
         
     </div>
 </section>
+
+
+
+
+
+
 
 
 
@@ -2135,6 +2279,174 @@ application.
 
    
         <section>
+            <h3 id="ContractAddenda">
+                <a href="https://w3id.org/adm/model/ContractAddenda"
+                   data-toggle="tooltip"
+                   data-content="https://w3id.org/adm/model/ContractAddenda"
+                   data-placement="right">Contract Addenda</a>
+
+            </h3>
+	        <!-- XXX an image in the h3 will break the rendering of the Table Of Contents of Respec -->
+		<!-- outcomment github feedback possibility
+                <a href="https://github.com/SEMICeu/ADM/issues/new?title=Issue%20for%20ContractAddenda&body=Explain%20your%20issue"}}>
+                   <img src="html/callout.png" loading="lazy" alt="(create issue)" width="20" height="20"/>
+		</a>
+		-->
+            <dl>
+                <dt>
+                    Definition
+                </dt>
+                <dd>
+                    Monetary additions to a contract.
+                </dd>
+                
+                
+                
+                    <dt>
+                        Properties
+                    </dt>
+                    
+                        <dd>
+                            For this entity the following properties are defined: <a href="#ContractAddenda.amount">amount</a>
+                            , <a href="#ContractAddenda.count">count</a>
+                            .
+                    </dd>
+                
+            </dl>
+        </div>
+        
+            <div class="u-table-overflow">
+                <table class="data-table simple" id="table-mandatory-classes">
+                    <thead>
+                        <tr class="data-table__header">
+                            <th class="data-table__header-title--sortable" style="width:6%">
+                            </th>
+                            <th class="data-table__header-title--sortable data-table__header-title--sortable-active" style="width:14%">
+                                Property
+                            </th>
+                            <th class="data-table__header-title--sortable" style="width:14%">
+                                Range
+                            </th>
+                            <th class="data-table__header-title--sortable" style="width:6%">
+                                Card
+                            </th>
+                            <th class="data-table__header-title--sortable" style="width:30%">
+                                Definition 
+                            </th>
+                            <th class="data-table__header-title--sortable" style="width:30%">
+                                Usage
+                            </th>
+			    <!--
+                            <th class="data-table__header-title--sortable" style="width:3%">
+                                Codelist
+                            </th>
+                            <th class="data-table__header-title--sortable" style="width:5%">
+                                DCAT
+                            </th>
+			    -->
+                        </tr>
+                    </thead>
+                    <tbody class="supertype">
+                        
+                            <tr id="ContractAddenda.amount"
+                                typeof="rdf:Property"
+                                resource="https://w3id.org/adm/model/amount"
+                                class="class mandatory">
+                                <td>
+				    <a href="https://github.com/SEMICeu/ADM/issues/new?title=Issue%20for%20amount%20in%20Contract Addenda&body=Explain%20your%20issue%20for%20https://semiceu.github.io/ADM/releases/0.0.1%23ContractAddenda.amount" target="_blank" rel="noopener noreferrer" >
+					    <!--                                        <i class="icon">[o]</i> -->
+                                        <img src="html/callout.png" loading="lazy" alt="[o]" width="100" height="100"/>
+                                    </a>
+                                </td>
+                                <td>
+                                        <a href="https://w3id.org/adm/model/amount"
+                                           data-toggle="tooltip"
+                                           data-content="https://w3id.org/adm/model/amount"
+                                           data-placement="right">
+                                        amount</a>
+                                </td>
+                                <td>
+                                    
+                                        
+                                            <a href="#MonetaryValue" data-placement="right">Monetary Value</a>
+                                        
+                                    
+                                </td>
+                                <td>
+                                    1
+                                </td>
+                                <td property="rdfs:comment">
+                                    The total amount of the contract addenda.
+                                </td>
+                                <td property="skos:scopeNote">
+                                    
+                                </td>
+				<!--
+                                <td>
+                                    
+                                </td>
+				-->
+                                <td>
+                                    
+                                </td>
+                            </tr>
+                        
+                            <tr id="ContractAddenda.count"
+                                typeof="rdf:Property"
+                                resource="https://w3id.org/adm/model/count"
+                                class="class mandatory">
+                                <td>
+				    <a href="https://github.com/SEMICeu/ADM/issues/new?title=Issue%20for%20count%20in%20Contract Addenda&body=Explain%20your%20issue%20for%20https://semiceu.github.io/ADM/releases/0.0.1%23ContractAddenda.count" target="_blank" rel="noopener noreferrer" >
+					    <!--                                        <i class="icon">[o]</i> -->
+                                        <img src="html/callout.png" loading="lazy" alt="[o]" width="100" height="100"/>
+                                    </a>
+                                </td>
+                                <td>
+                                        <a href="https://w3id.org/adm/model/count"
+                                           data-toggle="tooltip"
+                                           data-content="https://w3id.org/adm/model/count"
+                                           data-placement="right">
+                                        count</a>
+                                </td>
+                                <td>
+                                    
+                                        
+                                            <a href="#Integer" data-placement="right">Integer</a>
+                                        
+                                    
+                                </td>
+                                <td>
+                                    1
+                                </td>
+                                <td property="rdfs:comment">
+                                    
+                                </td>
+                                <td property="skos:scopeNote">
+                                    
+                                </td>
+				<!--
+                                <td>
+                                    
+                                </td>
+				-->
+                                <td>
+                                    
+                                </td>
+                            </tr>
+                        
+                    </tbody>
+                </table>
+            </div>
+        
+    </div>
+</section>
+
+
+
+
+
+   
+        <section>
             <h3 id="Document">
                 <a href="http://data.europa.eu/a4g/ontology#Document"
                    data-toggle="tooltip"
@@ -2793,6 +3105,49 @@ application.
 
    
         <section>
+            <h3 id="Lot">
+                <a href="http://data.europa.eu/a4g/ontology#Lot"
+                   data-toggle="tooltip"
+                   data-content="http://data.europa.eu/a4g/ontology#Lot"
+                   data-placement="right">Lot</a>
+
+            </h3>
+	        <!-- XXX an image in the h3 will break the rendering of the Table Of Contents of Respec -->
+		<!-- outcomment github feedback possibility
+                <a href="https://github.com/SEMICeu/ADM/issues/new?title=Issue%20for%20Lot&body=Explain%20your%20issue"}}>
+                   <img src="html/callout.png" loading="lazy" alt="(create issue)" width="20" height="20"/>
+		</a>
+		-->
+            <dl>
+                <dt>
+                    Definition
+                </dt>
+                <dd>
+                    A qualitative, quantitative or strategic subdivision of the goods, services or works to be procured, allowing the award of one or more Contracts.
+                </dd>
+                
+                
+                
+                    <dt>
+                        Properties
+                    </dt>
+                    
+                    <dd>
+                        This specification does not impose any additional requirements to properties for this entity.
+                    </dd>
+                
+            </dl>
+        </div>
+        
+    </div>
+</section>
+
+
+
+
+
+   
+        <section>
             <h3 id="MonetaryValue">
                 <a href="http://data.europa.eu/a4g/ontology#MonetaryValue"
                    data-toggle="tooltip"
@@ -2937,6 +3292,177 @@ application.
                                 </td>
                                 <td property="skos:scopeNote">
                                     The recommended control vocabulary is the <a href="https://op.europa.eu/en/web/eu-vocabularies/concept-scheme/-/resource?uri=http://publications.europa.eu/resource/authority/currency" > Currency </a> list from Publications Office. 
+                                </td>
+				<!--
+                                <td>
+                                    
+                                </td>
+				-->
+                                <td>
+                                    
+                                </td>
+                            </tr>
+                        
+                    </tbody>
+                </table>
+            </div>
+        
+    </div>
+</section>
+
+
+
+
+
+   
+        <section>
+            <h3 id="Notice">
+                <a href="http://data.europa.eu/a4g/ontology#Notice"
+                   data-toggle="tooltip"
+                   data-content="http://data.europa.eu/a4g/ontology#Notice"
+                   data-placement="right">Notice</a>
+
+            </h3>
+	        <!-- XXX an image in the h3 will break the rendering of the Table Of Contents of Respec -->
+		<!-- outcomment github feedback possibility
+                <a href="https://github.com/SEMICeu/ADM/issues/new?title=Issue%20for%20Notice&body=Explain%20your%20issue"}}>
+                   <img src="html/callout.png" loading="lazy" alt="(create issue)" width="20" height="20"/>
+		</a>
+		-->
+            <dl>
+                <dt>
+                    Definition
+                </dt>
+                <dd>
+                    Document published by the Buyer about market opportunities and results.
+                </dd>
+                
+                
+                
+                    <dt>
+                        Properties
+                    </dt>
+                    
+                        <dd>
+                            For this entity the following properties are defined: <a href="#Notice.haselectronicsenderdispatchdate">has electronic sender dispatch date</a>
+                            , <a href="#Notice.referstoprocedure">refers to procedure</a>
+                            .
+                    </dd>
+                
+            </dl>
+        </div>
+        
+            <div class="u-table-overflow">
+                <table class="data-table simple" id="table-mandatory-classes">
+                    <thead>
+                        <tr class="data-table__header">
+                            <th class="data-table__header-title--sortable" style="width:6%">
+                            </th>
+                            <th class="data-table__header-title--sortable data-table__header-title--sortable-active" style="width:14%">
+                                Property
+                            </th>
+                            <th class="data-table__header-title--sortable" style="width:14%">
+                                Range
+                            </th>
+                            <th class="data-table__header-title--sortable" style="width:6%">
+                                Card
+                            </th>
+                            <th class="data-table__header-title--sortable" style="width:30%">
+                                Definition 
+                            </th>
+                            <th class="data-table__header-title--sortable" style="width:30%">
+                                Usage
+                            </th>
+			    <!--
+                            <th class="data-table__header-title--sortable" style="width:3%">
+                                Codelist
+                            </th>
+                            <th class="data-table__header-title--sortable" style="width:5%">
+                                DCAT
+                            </th>
+			    -->
+                        </tr>
+                    </thead>
+                    <tbody class="supertype">
+                        
+                            <tr id="Notice.haselectronicsenderdispatchdate"
+                                typeof="rdf:Property"
+                                resource="http://data.europa.eu/a4g/ontology#hasESenderDispatchDate"
+                                class="class mandatory">
+                                <td>
+				    <a href="https://github.com/SEMICeu/ADM/issues/new?title=Issue%20for%20has electronic sender dispatch date%20in%20Notice&body=Explain%20your%20issue%20for%20https://semiceu.github.io/ADM/releases/0.0.1%23Notice.haselectronicsenderdispatchdate" target="_blank" rel="noopener noreferrer" >
+					    <!--                                        <i class="icon">[o]</i> -->
+                                        <img src="html/callout.png" loading="lazy" alt="[o]" width="100" height="100"/>
+                                    </a>
+                                </td>
+                                <td>
+                                        <a href="http://data.europa.eu/a4g/ontology#hasESenderDispatchDate"
+                                           data-toggle="tooltip"
+                                           data-content="http://data.europa.eu/a4g/ontology#hasESenderDispatchDate"
+                                           data-placement="right">
+                                        has electronic sender dispatch date</a>
+                                </td>
+                                <td>
+                                    
+                                        
+                                            <a href="#DateTime"
+                                               data-toggle="tooltip"
+                                               data-content="http://www.w3.org/2001/XMLSchema#dateTime"
+                                               data-placement="right">DateTime</a>
+                                        
+                                    
+                                </td>
+                                <td>
+                                    0..1
+                                </td>
+                                <td property="rdfs:comment">
+                                    	The date and time the notice was transmitted electronically by the eSender to the Publications Office of the European Union.
+                                </td>
+                                <td property="skos:scopeNote">
+                                    
+                                </td>
+				<!--
+                                <td>
+                                    
+                                </td>
+				-->
+                                <td>
+                                    
+                                </td>
+                            </tr>
+                        
+                            <tr id="Notice.referstoprocedure"
+                                typeof="rdf:Property"
+                                resource="http://data.europa.eu/a4g/ontology#refersToProcedure"
+                                class="class mandatory">
+                                <td>
+				    <a href="https://github.com/SEMICeu/ADM/issues/new?title=Issue%20for%20refers to procedure%20in%20Notice&body=Explain%20your%20issue%20for%20https://semiceu.github.io/ADM/releases/0.0.1%23Notice.referstoprocedure" target="_blank" rel="noopener noreferrer" >
+					    <!--                                        <i class="icon">[o]</i> -->
+                                        <img src="html/callout.png" loading="lazy" alt="[o]" width="100" height="100"/>
+                                    </a>
+                                </td>
+                                <td>
+                                        <a href="http://data.europa.eu/a4g/ontology#refersToProcedure"
+                                           data-toggle="tooltip"
+                                           data-content="http://data.europa.eu/a4g/ontology#refersToProcedure"
+                                           data-placement="right">
+                                        refers to procedure</a>
+                                </td>
+                                <td>
+                                    
+                                        
+                                            <a href="#Procedure" data-placement="right">Procedure</a>
+                                        
+                                    
+                                </td>
+                                <td>
+                                    0..1
+                                </td>
+                                <td property="rdfs:comment">
+                                    The related procedure to which the notice refers to.
+                                </td>
+                                <td property="skos:scopeNote">
+                                    
                                 </td>
 				<!--
                                 <td>
@@ -3218,6 +3744,175 @@ application.
                                 </td>
                                 <td property="skos:scopeNote">
                                     Usually a first name or forename. Given to a person by his or her parents at birth or legally recognised as 'given names' through a formal process. All given names are ordered in one property so that, for example, the given name for Johann Sebastian Bach is "Johann Sebastian".
+                                </td>
+				<!--
+                                <td>
+                                    
+                                </td>
+				-->
+                                <td>
+                                    
+                                </td>
+                            </tr>
+                        
+                    </tbody>
+                </table>
+            </div>
+        
+    </div>
+</section>
+
+
+
+
+
+   
+        <section>
+            <h3 id="Procedure">
+                <a href="http://data.europa.eu/a4g/ontology#Procedure"
+                   data-toggle="tooltip"
+                   data-content="http://data.europa.eu/a4g/ontology#Procedure"
+                   data-placement="right">Procedure</a>
+
+            </h3>
+	        <!-- XXX an image in the h3 will break the rendering of the Table Of Contents of Respec -->
+		<!-- outcomment github feedback possibility
+                <a href="https://github.com/SEMICeu/ADM/issues/new?title=Issue%20for%20Procedure&body=Explain%20your%20issue"}}>
+                   <img src="html/callout.png" loading="lazy" alt="(create issue)" width="20" height="20"/>
+		</a>
+		-->
+            <dl>
+                <dt>
+                    Definition
+                </dt>
+                <dd>
+                    A legally defined set of administrative activities conducted  to conclude one or more Contracts.
+                </dd>
+                
+                
+                
+                    <dt>
+                        Properties
+                    </dt>
+                    
+                        <dd>
+                            For this entity the following properties are defined: <a href="#Procedure.hasproceduretype">has procedure type</a>
+                            , <a href="#Procedure.hasprocurementdividedintolot">has procurement divided into lot</a>
+                            .
+                    </dd>
+                
+            </dl>
+        </div>
+        
+            <div class="u-table-overflow">
+                <table class="data-table simple" id="table-mandatory-classes">
+                    <thead>
+                        <tr class="data-table__header">
+                            <th class="data-table__header-title--sortable" style="width:6%">
+                            </th>
+                            <th class="data-table__header-title--sortable data-table__header-title--sortable-active" style="width:14%">
+                                Property
+                            </th>
+                            <th class="data-table__header-title--sortable" style="width:14%">
+                                Range
+                            </th>
+                            <th class="data-table__header-title--sortable" style="width:6%">
+                                Card
+                            </th>
+                            <th class="data-table__header-title--sortable" style="width:30%">
+                                Definition 
+                            </th>
+                            <th class="data-table__header-title--sortable" style="width:30%">
+                                Usage
+                            </th>
+			    <!--
+                            <th class="data-table__header-title--sortable" style="width:3%">
+                                Codelist
+                            </th>
+                            <th class="data-table__header-title--sortable" style="width:5%">
+                                DCAT
+                            </th>
+			    -->
+                        </tr>
+                    </thead>
+                    <tbody class="supertype">
+                        
+                            <tr id="Procedure.hasproceduretype"
+                                typeof="rdf:Property"
+                                resource="http://data.europa.eu/a4g/ontology#hasProcedureType"
+                                class="class mandatory">
+                                <td>
+				    <a href="https://github.com/SEMICeu/ADM/issues/new?title=Issue%20for%20has procedure type%20in%20Procedure&body=Explain%20your%20issue%20for%20https://semiceu.github.io/ADM/releases/0.0.1%23Procedure.hasproceduretype" target="_blank" rel="noopener noreferrer" >
+					    <!--                                        <i class="icon">[o]</i> -->
+                                        <img src="html/callout.png" loading="lazy" alt="[o]" width="100" height="100"/>
+                                    </a>
+                                </td>
+                                <td>
+                                        <a href="http://data.europa.eu/a4g/ontology#hasProcedureType"
+                                           data-toggle="tooltip"
+                                           data-content="http://data.europa.eu/a4g/ontology#hasProcedureType"
+                                           data-placement="right">
+                                        has procedure type</a>
+                                </td>
+                                <td>
+                                    
+                                        
+                                            <a href="#Code" data-placement="right">Code</a>
+                                        
+                                    
+                                </td>
+                                <td>
+                                    0..1
+                                </td>
+                                <td property="rdfs:comment">
+                                    Identification of the Procedure used.
+                                </td>
+                                <td property="skos:scopeNote">
+                                    The recommended control vocabulary is the <a href=" 	
+https://op.europa.eu/web/eu-vocabularies/concept-scheme/-/resource?uri=http://publications.europa.eu/resource/authority/procurement-procedure-type" > Procurement Procedure Type </a> list from Publications Office. 
+                                </td>
+				<!--
+                                <td>
+                                    
+                                </td>
+				-->
+                                <td>
+                                    
+                                </td>
+                            </tr>
+                        
+                            <tr id="Procedure.hasprocurementdividedintolot"
+                                typeof="rdf:Property"
+                                resource="http://data.europa.eu/a4g/ontology#hasProcurementDividedIntoLot"
+                                class="class mandatory">
+                                <td>
+				    <a href="https://github.com/SEMICeu/ADM/issues/new?title=Issue%20for%20has procurement divided into lot%20in%20Procedure&body=Explain%20your%20issue%20for%20https://semiceu.github.io/ADM/releases/0.0.1%23Procedure.hasprocurementdividedintolot" target="_blank" rel="noopener noreferrer" >
+					    <!--                                        <i class="icon">[o]</i> -->
+                                        <img src="html/callout.png" loading="lazy" alt="[o]" width="100" height="100"/>
+                                    </a>
+                                </td>
+                                <td>
+                                        <a href="http://data.europa.eu/a4g/ontology#hasProcurementDividedIntoLot"
+                                           data-toggle="tooltip"
+                                           data-content="http://data.europa.eu/a4g/ontology#hasProcurementDividedIntoLot"
+                                           data-placement="right">
+                                        has procurement divided into lot</a>
+                                </td>
+                                <td>
+                                    
+                                        
+                                            <a href="#Lot" data-placement="right">Lot</a>
+                                        
+                                    
+                                </td>
+                                <td>
+                                    1..*
+                                </td>
+                                <td property="rdfs:comment">
+                                    The related part of the procedure divided in the lot.
+                                </td>
+                                <td property="skos:scopeNote">
+                                    
                                 </td>
 				<!--
                                 <td>
@@ -3915,6 +4610,18 @@ The properties are indicated as <it>mandatory, recommended, optional</it> and <i
 					
 						
 					
+						
+					
+						
+					
+						
+					
+					
+						
+					
+						
+					
+						
 					
 						
 					
@@ -3968,8 +4675,28 @@ The properties are indicated as <it>mandatory, recommended, optional</it> and <i
 								<td><a href="#Contract">Contract</a></td>
 								<td><div class="shorten">http://data.europa.eu/a4g/ontology#Contract</div></td>
 								<td></td>
+								<td><a href="#Contract.hascontractaddenda">has contract addenda </a></td>
+								<td><div class="shorten">https://w3id.org/adm/model/hasContractAddenda</div></td>
+							</tr>
+						
+					
+						
+							<tr>
+								<td><a href="#Contract">Contract</a></td>
+								<td><div class="shorten">http://data.europa.eu/a4g/ontology#Contract</div></td>
+								<td></td>
 								<td><a href="#Contract.hascontractconclusiondate">has contract conclusion date </a></td>
 								<td><div class="shorten">http://data.europa.eu/a4g/ontology#hasContractConclusionDate</div></td>
+							</tr>
+						
+					
+						
+							<tr>
+								<td><a href="#Contract">Contract</a></td>
+								<td><div class="shorten">http://data.europa.eu/a4g/ontology#Contract</div></td>
+								<td></td>
+								<td><a href="#Contract.hascontractvalue">has contract value </a></td>
+								<td><div class="shorten">http://data.europa.eu/a4g/ontology#hasContractValue</div></td>
 							</tr>
 						
 					
@@ -4008,8 +4735,53 @@ The properties are indicated as <it>mandatory, recommended, optional</it> and <i
 								<td><a href="#Contract">Contract</a></td>
 								<td><div class="shorten">http://data.europa.eu/a4g/ontology#Contract</div></td>
 								<td></td>
+								<td><a href="#Contract.haslotreference">has lot reference </a></td>
+								<td><div class="shorten">http://data.europa.eu/a4g/ontology#hasLotReference</div></td>
+							</tr>
+						
+					
+						
+							<tr>
+								<td><a href="#Contract">Contract</a></td>
+								<td><div class="shorten">http://data.europa.eu/a4g/ontology#Contract</div></td>
+								<td></td>
 								<td><a href="#Contract.modified">modified </a></td>
 								<td><div class="shorten">https://w3id.org/adm/model/modified</div></td>
+							</tr>
+						
+					
+				
+			</tr>
+		
+				
+					
+						
+					
+						
+					
+					
+						
+					
+						
+					
+					
+						
+							<tr>
+								<td><a href="#ContractAddenda">Contract Addenda</a></td>
+								<td><div class="shorten">https://w3id.org/adm/model/ContractAddenda</div></td>
+								<td></td>
+								<td><a href="#ContractAddenda.amount">amount </a></td>
+								<td><div class="shorten">https://w3id.org/adm/model/amount</div></td>
+							</tr>
+						
+					
+						
+							<tr>
+								<td><a href="#ContractAddenda">Contract Addenda</a></td>
+								<td><div class="shorten">https://w3id.org/adm/model/ContractAddenda</div></td>
+								<td></td>
+								<td><a href="#ContractAddenda.count">count </a></td>
+								<td><div class="shorten">https://w3id.org/adm/model/count</div></td>
 							</tr>
 						
 					
@@ -4196,6 +4968,17 @@ The properties are indicated as <it>mandatory, recommended, optional</it> and <i
 			</tr>
 		
 				
+					<tr>
+						<td><a href="#Lot">Lot</a></td>
+						<td><div class="shorten">http://data.europa.eu/a4g/ontology#Lot</div></td>
+						<td></td>
+						<td></td>
+						<td></td>
+					</tr>
+				
+			</tr>
+		
+				
 					
 						
 					
@@ -4224,6 +5007,41 @@ The properties are indicated as <it>mandatory, recommended, optional</it> and <i
 								<td></td>
 								<td><a href="#MonetaryValue.hascurrency">has currency </a></td>
 								<td><div class="shorten">http://data.europa.eu/a4g/ontology#hasCurrency</div></td>
+							</tr>
+						
+					
+				
+			</tr>
+		
+				
+					
+						
+					
+						
+					
+					
+						
+					
+						
+					
+					
+						
+							<tr>
+								<td><a href="#Notice">Notice</a></td>
+								<td><div class="shorten">http://data.europa.eu/a4g/ontology#Notice</div></td>
+								<td></td>
+								<td><a href="#Notice.haselectronicsenderdispatchdate">has electronic sender dispatch date </a></td>
+								<td><div class="shorten">http://data.europa.eu/a4g/ontology#hasESenderDispatchDate</div></td>
+							</tr>
+						
+					
+						
+							<tr>
+								<td><a href="#Notice">Notice</a></td>
+								<td><div class="shorten">http://data.europa.eu/a4g/ontology#Notice</div></td>
+								<td></td>
+								<td><a href="#Notice.referstoprocedure">refers to procedure </a></td>
+								<td><div class="shorten">http://data.europa.eu/a4g/ontology#refersToProcedure</div></td>
 							</tr>
 						
 					
@@ -4284,6 +5102,41 @@ The properties are indicated as <it>mandatory, recommended, optional</it> and <i
 								<td></td>
 								<td><a href="#Person.givenname">given name </a></td>
 								<td><div class="shorten">http://xmlns.com/foaf/0.1/givenName</div></td>
+							</tr>
+						
+					
+				
+			</tr>
+		
+				
+					
+						
+					
+						
+					
+					
+						
+					
+						
+					
+					
+						
+							<tr>
+								<td><a href="#Procedure">Procedure</a></td>
+								<td><div class="shorten">http://data.europa.eu/a4g/ontology#Procedure</div></td>
+								<td></td>
+								<td><a href="#Procedure.hasproceduretype">has procedure type </a></td>
+								<td><div class="shorten">http://data.europa.eu/a4g/ontology#hasProcedureType</div></td>
+							</tr>
+						
+					
+						
+							<tr>
+								<td><a href="#Procedure">Procedure</a></td>
+								<td><div class="shorten">http://data.europa.eu/a4g/ontology#Procedure</div></td>
+								<td></td>
+								<td><a href="#Procedure.hasprocurementdividedintolot">has procurement divided into lot </a></td>
+								<td><div class="shorten">http://data.europa.eu/a4g/ontology#hasProcurementDividedIntoLot</div></td>
 							</tr>
 						
 					
