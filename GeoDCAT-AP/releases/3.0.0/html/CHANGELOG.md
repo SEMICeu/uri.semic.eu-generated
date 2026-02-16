@@ -1,86 +1,47 @@
-# Consolidated ChangeLog
+# **Consolidated Changelog**
 
-## Editorial changes
+This changelog provides an overview of the changes incorporated in GeoDCAT-AP 3.1.0. A complete list of the issues closed with this release is accessible on [GitHub](https://github.com/SEMICeu/GeoDCAT-AP/issues?q=is%3Aissue+is%3Aopen+label%3Arelease%3A3.1.0).
 
-  - turned PDF document into html representation (RESPEC style) (issue 150)
-  - included all adopted guidelines and texts surrounding the DCAT-AP into the new document
-  - added cross-references to existing texts so that readers can take benifit from the HTML representation
-  
+# **Editorial changes**
 
-##  Adaptions to the different sections
+- Updated links from DCAT-AP 3.0.0 to DCAT-AP 3.0.1
+- Propagated Period of time => Period of Time label change
+- Propagated Catalog => Catalogue spelling change in Catalogue.applicableLegislation
+- Changed Data Service format reuse type to "as-is"
+- Adjusted A.7.13 Spatial resolution section [#144](https://github.com/SEMICeu/GeoDCAT-AP/issues/144)
+- Restructured Controlled Vocabularies in alignment with DCAT-AP 3.0.1 and the new expected usage types
+- Propagated AT LEAST 1 usage for the Theme CV [#138](https://github.com/SEMICeu/GeoDCAT-AP/issues/138)
+- Fixed readability of even table rows [#160](https://github.com/SEMICeu/GeoDCAT-AP/issues/160)
+- Support for HVD [#136](https://github.com/SEMICeu/GeoDCAT-AP/issues/136)
+- Inconsistent `cnt:` prefix [#149](https://github.com/SEMICeu/GeoDCAT-AP/issues/149)
+- `accessRights` usage note clarification [#150](https://github.com/SEMICeu/GeoDCAT-AP/issues/150)
+- Change ADMS-AP spec link [#157](https://github.com/SEMICeu/GeoDCAT-AP/issues/157)
+- Removed duplicate paragraph in Scope of this AP [#159](https://github.com/SEMICeu/GeoDCAT-AP/issues/159)
+- Fixed chapter number in reference to controlled vocabularies [#161](https://github.com/SEMICeu/GeoDCAT-AP/issues/161)
+- Make capitalization of application profile, open data portal and pan-European consistent[#168](https://github.com/SEMICeu/GeoDCAT-AP/issues/168)
 
-  - Introduction: revised the introduction and context to be more up to date
-  - Conformance: reflect the html specification by cross-referencing, fit the RESPEC requirements, moved the steoreotype annotation definitions to the quick-reference section
-  - Terminology: updated the list of prefixes
-  - Formal data model presentation: introduced the notions of Main Entities, Supportive Entities and Datatypes to enhance the readibility
-  - Controlled Vocabularies: removed the section on licence vocabularies as there is a new section on expressing legal information
-  - Legal information: new section on legal conditions, matching the use case of Czechia (issue 209, 
-  - Agent roles: added paragraph to cross-reference to the guidelines in DCAT 3.
-  - Accessibility and Multilingual Aspects: no change
-  - Usage guide on Datasets, Distributions and Data Services: integrated this GitHub located section in the document
-  - High Value Datasets: new section to create a reference to the guidelines for High Value Datasets
-  - Validation of DCAT-AP: integrated this GitHub located section in the document
-  - Example Dataset Series: new section containing examples for Dataset Series
-  - Annex Quick Reference of Classes and Properties: 
-          - adapted the information to fit the HTML representation. 
-          - The quick reference generated from the Data Model to be always in sync. (Issue 235)
-          - Moved the overview of deprecated terms to this section
-  - Annex Acknowledgments: updated the list.
-  
+## **Data model adaptations**
 
+- Added `geodcatap:purpose` property [#154](https://github.com/SEMICeu/GeoDCAT-AP/issues/154) to Dataset, Dataset Series and Data Service
+- Added Attribution usage note [#143](https://github.com/SEMICeu/GeoDCAT-AP/issues/143)
+- Added proper support for Conformity and data quality pattern [#146](https://github.com/SEMICeu/GeoDCAT-AP/issues/146). This includes adding: `Entity`: `degree of conformity`, `description`, `qualified association`, `TestPlan`: `was derived from`, `Association`: `had plan`.
+- Removed `dct:created` from CatalogueRecord [#151](https://github.com/SEMICeu/GeoDCAT-AP/issues/151)
+- Removed INSPIRE Maintenance Frequency code list [#153](https://github.com/SEMICeu/GeoDCAT-AP/issues/153)
+- Changed `geodcatap:referenceSystem` range to `skos:Concept` [#170](https://github.com/SEMICeu/GeoDCAT-AP/issues/170)
 
-## Data model adaptations
+# **Alignment with DCAT-AP 3.0.1**
+- Updated Maintenance information section [#56](https://github.com/SEMICeu/GeoDCAT-AP/issues/56), [#153](https://github.com/SEMICeu/GeoDCAT-AP/issues/153) and removed the INSPIRE Maintenance Frequency controlled vocabulary as the EU Vocabularies Frequency NAL is mandatory and fully covers the INSPIRE one
+- Aligned `accessRights` CV usage [#84](https://github.com/SEMICeu/GeoDCAT-AP/issues/84)
+- Media Type and Media Type or Extent are now supportive entities instead of Datatypes [#155](https://github.com/SEMICeu/GeoDCAT-AP/issues/155)
 
-  - DCAT-AP 2.1.1 has no notion of definition and usage notes. Splitted the exiting desciptive texts in definitions and usage nodes according to the SEMIC best practices for definitions as advised by the SEMIC style guide.
-  - added for classes and properties that are explictly mentioned in DCAT 3 a direct link to the W3C specification
-    Where appropriate we aligned the definitions and usage notes. (issue 128, 135, 179)
-  - Reorganised the Application Profile in Main Entities, Supportive Entities and Datatypes in order to enhance the readibility.
-  - Added the classes Dataset Series and Dataset member of a Dataset Series to reflect the new notions in DCAT 3 
-  - applied the deprecation by replacing the mapping to the URIs for the impacted properties
+# **Alignment with INSPIRE**
+- Mentioned the INSPIRE HVD tagging good practice, its implementation in the XSLT, and its limitations in the HVD section
 
-### detailed issues
+# **Alignment with the SEMIC Style Guide**
 
-  - issue 177, 247: Range of locn:geometry is locn:Geometry  
-  - Issue 228: Replace controlled vocabulary for Distribution status
-  - Issue 207: applied new usage notes for Catalogue themes
-  - Issue 214, 246: Bytesize range aligned with W3C to xsd:nonNegativeInteger
-  - Issue 217: add format to Data service as the structure that can be returned by querying the endpointURL
-  - Issue 236: missing class is included (coherency throughout UML visualisation, data model, quick-reference)
-  - Issue 232: fix typo in class name
+# **Bug fixes**
 
+These are issues that point out editorial improvements.
 
-
-## Alignement with DCAT 3
-
-### introduction Dataset Series
-(issue 155, 239, 240, 249): added a subsection to section 14 with summary of the webinar discussion and generic advices.
-
-### other topics
-
-  - issue 203, 241: Versioning - not explicitly included, DCAT-AP users are advised to follow the generic DCAT 3 best practices.
-  - issue 242: indication of a need in which status the dataset is, no consensus reached.
-  - issue 243: the interpretation of Dataset Series as a Dataset is added in section 14. 
-  - issue 244: adoption of the practice in DCAT-AP in DCAT
-  - Issue 214, 246: Bytesize range aligned with W3C to xsd:nonNegativeInteger
-  - issue 177, 247: Range of locn:geometry is locn:Geometry  
-
-
-## SHACL
-  - issue 245: replace sh:name with rdfs:label in shacl 
-
-## Other issue handling
-
-issue 209: provided a new guideline for legal information
-
-
-## specification agnostic issues or questions for information/assistance
-issue 56, 99i, 152: relate to the governance of the specification on GitHub. 
-issue 234: request for information on behaviour of dereferencable URIs of EU Vocabularies
-issue 261: question on DCAT-AP for agriculture
-issue 233: question to reach out on SEMIC conference
-
-
-
-## TODO
-issue 175: propose a guideline for expressing geospatical coverage
-issue 48: propose SHACL version with individual constraints
+- Changed link from DCAT-AP HVD 2.2.0 to 3.0.0 in the Legal section
+- Fixed DataService example to use `geodcatap:referenceSystem` [#166](https://github.com/SEMICeu/GeoDCAT-AP/issues/166)
