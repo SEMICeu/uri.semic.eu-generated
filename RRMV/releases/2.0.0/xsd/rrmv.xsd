@@ -6,6 +6,7 @@
   <xs:element name="AgentCategory" type="AgentCategoryType"/>
   <xs:element name="AgentRole" type="AgentRoleType"/>
   <xs:element name="DurationTemporalEntitySpecification" type="DurationTemporalEntitySpecificationType"/>
+  <xs:element name="ExecutionCondition" type="ExecutionConditionType"/>
   <xs:element name="Frequency" type="FrequencyType"/>
   <xs:element name="Group" type="GroupType"/>
   <xs:element name="InstantTemporalEntitySpecification" type="InstantTemporalEntitySpecificationType"/>
@@ -29,6 +30,7 @@
   <xs:element name="Xsdduration" type="XsddurationType"/>
   <xs:element name="Xsdstring" type="XsdstringType"/>
   <xs:element name="Concept" type="ConceptType"/>
+  <xs:element name="CatalogedResource" type="CatalogedResourceType"/>
   <xs:element name="Annotation" type="AnnotationType"/>
   <xs:simpleType name="Literal">
     <xs:restriction base="xs:string"/>
@@ -55,7 +57,7 @@
           <xs:documentation xml:lang="en">An action or an agent role is at a specific time if it occurs, is valid, or is relevant at that particular point in time or during a specific time period. </xs:documentation>
         </xs:annotation>
       </xs:element>
-      <xs:element name="executionCondition" maxOccurs="unbounded" minOccurs="0">
+      <xs:element name="executionCondition" ref="ExecutionConditionType" maxOccurs="unbounded" minOccurs="0">
         <xs:annotation>
           <xs:documentation xml:lang="en">The operational status or condition of an aspect in the proces to deliver the Action Result. </xs:documentation>
         </xs:annotation>
@@ -99,7 +101,7 @@
           <xs:documentation xml:lang="en">A kind of result</xs:documentation>
         </xs:annotation>
       </xs:element>
-      <xs:element name="theDataResourceThatManifestsOrContainsTheRealizedOutput" maxOccurs="unbounded" minOccurs="0">
+      <xs:element name="theDataResourceThatManifestsOrContainsTheRealizedOutput" ref="CatalogedResourceType" maxOccurs="unbounded" minOccurs="0">
         <xs:annotation>
           <xs:documentation xml:lang="en">manifested in</xs:documentation>
         </xs:annotation>
@@ -178,6 +180,20 @@
     <xs:attribute name="DurationTemporalEntitySpecificationRef" type="xs:IDREF">
       <xs:annotation>
         <xs:documentation xml:lang="en">Reference to DurationTemporalEntitySpecification ID</xs:documentation>
+      </xs:annotation>
+    </xs:attribute>
+  </xs:complexType>
+  <xs:complexType name="ExecutionConditionType">
+    <xs:sequence>
+      <xs:element name="type" type="ConceptType" maxOccurs="1" minOccurs="1">
+        <xs:annotation>
+          <xs:documentation xml:lang="en">The aspect of which the status is being shared. </xs:documentation>
+        </xs:annotation>
+      </xs:element>
+    </xs:sequence>
+    <xs:attribute name="ExecutionConditionRef" type="xs:IDREF">
+      <xs:annotation>
+        <xs:documentation xml:lang="en">Reference to ExecutionCondition ID</xs:documentation>
       </xs:annotation>
     </xs:attribute>
   </xs:complexType>
@@ -527,6 +543,14 @@
     <xs:attribute name="ConceptRef" type="xs:IDREF">
       <xs:annotation>
         <xs:documentation xml:lang="en">Reference to Concept ID</xs:documentation>
+      </xs:annotation>
+    </xs:attribute>
+  </xs:complexType>
+  <xs:complexType name="CatalogedResourceType">
+    <xs:sequence/>
+    <xs:attribute name="CatalogedResourceRef" type="xs:IDREF">
+      <xs:annotation>
+        <xs:documentation xml:lang="en">Reference to CatalogedResource ID</xs:documentation>
       </xs:annotation>
     </xs:attribute>
   </xs:complexType>
