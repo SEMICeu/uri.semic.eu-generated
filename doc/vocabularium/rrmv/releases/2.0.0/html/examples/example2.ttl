@@ -1,0 +1,58 @@
+@prefix dcterms: <http://purl.org/dc/terms/> .
+@prefix eli: <http://data.europa.eu/eli/ontology#> .
+@prefix skos: <http://www.w3.org/2004/02/skos/core#>.
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix oa: <http://www.w3.org/ns/oa#> .
+@prefix time: <http://www.w3.org/2006/time#>.
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix rrmv: <http://data.europa.eu/2qy/rrmv#> .
+@prefix rrmv-codes: <http://data.europa.eu/2qy/rrmv-codes#> .
+@prefix example: <https://system.org/example#> .
+@prefix rrmv-extra: <http://data.europa.eu/2qy/rrmv/extra#> .
+ 
+ 
+example:REG20181999OJART26PAR2_FRANCE
+ rrmv:produces example:REG20181999OJART26PAR2_ACTION_FRANCE ;
+ rrmv:isPartOf <http://data.europa.eu/eli/reg/2018/1999/oj/art_26/par_2> ; 
+ a rrmv:Requirement .
+ 
+example:REG20181999OJART26PAR2_ACTION_FRANCE a rrmv:Action ;
+ rrmv:atTime example:By31July2023 ; 
+ rrmv:hasAgentRole [ 
+   a rrmv:AgentRole ;
+   rrmv:forAgent example:thecommission; 
+   rrmv:withRole rrmv:addressee 
+ ], [
+   a rrmv:AgentRole ; 
+   rrmv:forAgent example:france; 
+   rrmv:withRole rrmv:addresser 
+ ] ; 
+ rrmv:hasResult example:example:REG20181999OJART26PAR2_RESULT_FRANCE_2022 .
+ 
+example:example:REG20181999OJART26PAR2_RESULT_FRANCE_2022 a rrmv:ActionResult. 
+ 
+ 
+[] a oa:Annotation;
+ rrmv:hasBody "France shall report to the Commission by 31 July 2023"@en ; 
+ rrmv:hasTarget example:REG20181999OJART26PAR2_ACTION_FRANCE .
+ 
+[] a oa:Annotation;
+ rrmv:hasBody "approximated greenhouse gas inventories for the year 2022"@en ; 
+ rrmv:hasTarget example:example:REG20181999OJART26PAR2_RESULT_FRANCE_2022 .
+ 
+example:By31July2023
+ rrmv-extra:moment "2023-07-31"^^xsd:date ; 
+ a rrmv:InstantSpec .
+ 
+[] a oa:Annotation;
+ rrmv:hasBody "By 31 July 2023"@en ; 
+ rrmv:hasTarget example:By31July2023.
+ 
+[] a oa:Annotation;
+ rrmv:hasBody "the Commission"@en ; 
+ rrmv:hasTarget example:thecommission.
+ 
+[] a oa:Annotation;
+ rrmv:hasBody "France"@en ; 
+ rrmv:hasTarget example:france. 
+ 
