@@ -19,6 +19,7 @@
   <xs:element name="Instant" type="InstantType"/>
   <xs:element name="PeriodOfTime" type="PeriodOfTimeType"/>
   <xs:element name="Agent" type="AgentType"/>
+  <xs:element name="Asset" type="AssetType"/>
   <xs:simpleType name="Literal">
     <xs:restriction base="xs:string"/>
   </xs:simpleType>
@@ -171,7 +172,7 @@
           <xs:documentation xml:lang="en">Refers to the Location where an Evidence Type is issued.</xs:documentation>
         </xs:annotation>
       </xs:element>
-      <xs:element name="sample" maxOccurs="1" minOccurs="1">
+      <xs:element name="sample" ref="AssetType" maxOccurs="unbounded" minOccurs="0">
         <xs:annotation>
           <xs:documentation xml:lang="en">Links to a sample of an Asset (which is itself an Asset).
 </xs:documentation>
@@ -463,6 +464,14 @@
     <xs:attribute name="AgentRef" type="xs:IDREF">
       <xs:annotation>
         <xs:documentation xml:lang="en">Reference to Agent ID</xs:documentation>
+      </xs:annotation>
+    </xs:attribute>
+  </xs:complexType>
+  <xs:complexType name="AssetType">
+    <xs:sequence/>
+    <xs:attribute name="AssetRef" type="xs:IDREF">
+      <xs:annotation>
+        <xs:documentation xml:lang="en">Reference to Asset ID</xs:documentation>
       </xs:annotation>
     </xs:attribute>
   </xs:complexType>
