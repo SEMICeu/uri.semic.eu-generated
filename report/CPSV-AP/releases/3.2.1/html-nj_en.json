@@ -17,8 +17,8 @@
     },
     "status": "SEMIC Recommendation",
     "statuslabel": "Onbekend",
-    "repositoryurl": "git@uri.semic.eu-thema:SEMICeu/uri.semic.eu-thema.git/tree/37fcce508ebf5379c71a597ae14b829b9494800c",
-    "changelogurl": "git@uri.semic.eu-thema:SEMICeu/uri.semic.eu-thema.git/blob/37fcce508ebf5379c71a597ae14b829b9494800c/CHANGELOG",
+    "repositoryurl": "git@uri.semic.eu-thema:SEMICeu/uri.semic.eu-thema.git/tree/e7a6ea236ecf30ce003bba554972d8c40881e539",
+    "changelogurl": "git@uri.semic.eu-thema:SEMICeu/uri.semic.eu-thema.git/blob/e7a6ea236ecf30ce003bba554972d8c40881e539/CHANGELOG",
     "feedbackurl": "https://github.com/SEMICeu/CPSV-AP/issues",
     "standaardregisterurl": "https://github.com/SEMICeu/CPSV-AP/blob/master/releases/3.2.0/Changelog.md",
     "usesVocs": [],
@@ -1076,8 +1076,7 @@
         "definition-en": "This class represents an event that can be of any type that triggers, makes use of, or in some way is related to, a Public Service.",
         "label-en": "Event",
         "usageNote-en": "It is not expected to be used directly, rather, one or other of its subclasses should be used. The properties of the class are, of course, inherited by those subclasses. The Event class is used as a hook either to a single related Public Service, such as diagnosis of illness being related to application for sickness benefit; or to a group of Public Services, such as all those related to the establishment of a new business.",
-        "uri": "http://data.europa.eu/m8g/Event",
-        "class-usage-scope": "main"
+        "uri": "http://data.europa.eu/m8g/Event"
       },
       "properties": [
         {
@@ -1759,6 +1758,50 @@
             "definition-en": "Unambiguous reference to the Evidence Type.",
             "property-usage-scope": "mandatory"
           }
+        },
+        {
+          "uri": "http://purl.org/dc/terms/language",
+          "name": "language",
+          "sort": "language",
+          "label": {
+            "en": "language"
+          },
+          "description": {
+            "en": "The language(s) of the piece of Evidence."
+          },
+          "usage": {
+            "en": "The recommended controlled vocabularies for this property is the <a href=\"https://op.europa.eu/en/web/eu-vocabularies/dataset/-/resource?uri=http://publications.europa.eu/resource/dataset/language\">Language</a> Authority Table of the Publications Office."
+          },
+          "domain": [
+            {
+              "EA-Name": "EvidenceType",
+              "uri": "http://data.europa.eu/m8g/EvidenceType"
+            }
+          ],
+          "range": [
+            {
+              "range_label": "LinguisticSystem",
+              "range_uri": "http://purl.org/dc/terms/LinguisticSystem"
+            }
+          ],
+          "scopedrange": [
+            {
+              "range_uri": "#Linguistic System",
+              "range_puri": "http://purl.org/dc/terms/LinguisticSystem",
+              "range_label": {
+                "en": "Linguistic System"
+              }
+            }
+          ],
+          "cardinality": "0..*",
+          "codelist_uri": "",
+          "rawTags": {
+            "uri": "http://purl.org/dc/terms/language",
+            "label-en": "language",
+            "definition-en": "The language(s) of the piece of Evidence.",
+            "usageNote-en": "The recommended controlled vocabularies for this property is the <a href=\"https://op.europa.eu/en/web/eu-vocabularies/dataset/-/resource?uri=http://publications.europa.eu/resource/dataset/language\">Language</a> Authority Table of the Publications Office.",
+            "property-usage-scope": "optional"
+          }
         }
       ]
     },
@@ -2133,8 +2176,7 @@
         "definition-en": "The Participation class allows to define roles within a certain context.",
         "label-en": "Participation",
         "usageNote-en": "The CPSV-AP recognises a common role connected with public services, i.e. the Competent Authority.\r\n<br/><br/>\r\nThis simple structure does not allow statements to be made about those participants, such as the start and end date of a contract, nor does it support the inclusion of other roles. The Participation class supports this extra complexity if required, for instance, the description of a service user or a service provider. The model is consistent with the CPOV which in turn is based on the W3C Organization Ontology that supports the common cases simply but allows the complex cases where necessary. The Participation class can be mapped to the Organization Ontology&#39;s Membership class that allows more complex relationships and richer metadata to be applied to a role filled by a given Agent.",
-        "uri": "http://data.europa.eu/m8g/Participation",
-        "class-usage-scope": "main"
+        "uri": "http://data.europa.eu/m8g/Participation"
       },
       "properties": [
         {
@@ -2804,6 +2846,86 @@
             "label-en": "has economic operator",
             "property-usage-scope": "mandatory",
             "definition-en": "NOTE$ea_notes=It links a Service Concession Contract with the Economic Operator in charge for the provision and the management of public services."
+          }
+        },
+        {
+          "uri": "http://data.europa.eu/m8g/hasServiceConcessionContract",
+          "name": "hasServiceConcessionContract",
+          "sort": "has service concession contract",
+          "label": {
+            "en": "has service concession contract"
+          },
+          "description": {
+            "en": "The Public Service related to the service concession contract."
+          },
+          "usage": {},
+          "domain": [
+            {
+              "EA-Name": "ServiceConcessionContract",
+              "uri": "http://data.europa.eu/m8g/ServiceConcessionContract"
+            }
+          ],
+          "range": [
+            {
+              "range_label": "PublicService",
+              "range_uri": "http://purl.org/vocab/cpsv#PublicService"
+            }
+          ],
+          "scopedrange": [
+            {
+              "range_uri": "#Public Service",
+              "range_puri": "http://purl.org/vocab/cpsv#PublicService",
+              "range_label": {
+                "en": "Public Service"
+              }
+            }
+          ],
+          "cardinality": "0..*",
+          "codelist_uri": "",
+          "rawTags": {
+            "definition-en": "The Public Service related to the service concession contract.",
+            "label-en": "has service concession contract",
+            "uri": "http://data.europa.eu/m8g/hasServiceConcessionContract"
+          }
+        },
+        {
+          "uri": "http://data.europa.eu/m8g/hasServiceConcessionContract",
+          "name": "hasServiceConcessionContract",
+          "sort": "has service concession contract",
+          "label": {
+            "en": "has service concession contract"
+          },
+          "description": {
+            "en": "The channel related to the service concession contract."
+          },
+          "usage": {},
+          "domain": [
+            {
+              "EA-Name": "ServiceConcessionContract",
+              "uri": "http://data.europa.eu/m8g/ServiceConcessionContract"
+            }
+          ],
+          "range": [
+            {
+              "range_label": "Channel",
+              "range_uri": "http://data.europa.eu/m8g/Channel"
+            }
+          ],
+          "scopedrange": [
+            {
+              "range_uri": "#Channel",
+              "range_puri": "http://data.europa.eu/m8g/Channel",
+              "range_label": {
+                "en": "Channel"
+              }
+            }
+          ],
+          "cardinality": "0..*",
+          "codelist_uri": "",
+          "rawTags": {
+            "uri": "http://data.europa.eu/m8g/hasServiceConcessionContract",
+            "label-en": "has service concession contract",
+            "definition-en": "The channel related to the service concession contract."
           }
         },
         {
@@ -5656,7 +5778,7 @@
       "first_name": "Emiel",
       "last_name": "Dhondt",
       "affiliation": {
-        "name": "PwC EU Services"
+        "name": "Digital Flanders"
       }
     },
     {
