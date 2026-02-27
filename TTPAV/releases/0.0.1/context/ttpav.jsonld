@@ -1,27 +1,72 @@
 {
   "@context": {
     "Address": "http://www.w3.org/ns/locn#Address",
+    "Agent": "http://xmlns.com/foaf/0.1/Agent",
+    "Agent.hasEmail": {
+      "@container": "@set",
+      "@id": "http://xmlns.com/foaf/0.1/hasEmail"
+    },
+    "Agent.name": {
+      "@container": "@set",
+      "@id": "http://purl.org/dc/terms/title",
+      "@type": "http://www.w3.org/1999/02/22-rdf-syntax-ns#langString"
+    },
     "AnyURI": "http://www.w3.org/2001/XMLSchema#anyURI",
     "Boolean": "http://www.w3.org/2001/XMLSchema#boolean",
-    "Campaign Financial Info": "example.org/CampaignFinancialInfo",
+    "Campaign Financial Info": "http://example.org/CampaignFinancialInfo",
     "Code": "http://www.w3.org/2004/02/skos/core#Concept",
     "Date": "http://www.w3.org/2001/XMLSchema#date",
     "Double": "http://www.w3.org/2001/XMLSchema#double",
-    "Funding ": "example.org/Funding",
-    "Initiative": "example.org/Initiative",
+    "ElectionEvent": "http://example.org/ElectionEvent",
+    "Foaf:Person": "http://xmlns.com/foaf/0.1/Person",
+    "Foaf:Person.hasEmail": {
+      "@container": "@set",
+      "@id": "http://xmlns.com/foaf/0.1/hasEmail"
+    },
+    "Foaf:Person.name": {
+      "@container": "@set",
+      "@id": "http://xmlns.com/foaf/0.1/name",
+      "@type": "http://www.w3.org/1999/02/22-rdf-syntax-ns#langString"
+    },
+    "Funding ": "http://example.org/Funding",
+    "Initiative": "http://example.org/Initiative",
+    "Instant": "http://www.w3.org/2006/time#Instant",
     "Integer": "http://www.w3.org/2001/XMLSchema#integer",
     "LegalEntity": "http://www.w3.org/ns/legal#LegalEntity",
+    "LegalEntity.hasEmail": {
+      "@container": "@set",
+      "@id": "http://data.europa.eu/m8g/email"
+    },
     "Literal": "http://www.w3.org/2000/01/rdf-schema#Literal",
-    "Political Advertisement": "example.org/PoliticalAdvertisement",
-    "Political Advertisement Financial Info": "example.org/PoliticalAdvertisementInfo",
+    "Political Advertisement": "http://example.org/PoliticalAdvertisement",
+    "Political Advertisement Financial Info": "http://example.org/PoliticalAdvertisementInfo",
+    "Political Advertisement.hasBeginning": {
+      "@container": "@set",
+      "@id": "http://www.w3.org/2006/time#hasBeginning"
+    },
+    "Political Advertisement.hasEnd": {
+      "@container": "@set",
+      "@id": "http://www.w3.org/2006/time#hasEnd",
+      "@type": "http://www.w3.org/2001/XMLSchema#date"
+    },
+    "PublicEvent": "example.org/PublicEvent",
     "String": "http://www.w3.org/2001/XMLSchema#string",
-    "Targeting": "example.org/Targeting",
+    "Targeting": "http://example.org/Targeting",
+    "Targeting.hasBeginning": {
+      "@container": "@set",
+      "@id": "https://www.w3.org/TR/owl-time/#time:hasBeginning",
+      "@type": "@id"
+    },
+    "Targeting.hasEnd": {
+      "@container": "@set",
+      "@id": "https://www.w3.org/TR/owl-time/#time:hasEnd",
+      "@type": "@id"
+    },
     "Text": "http://www.w3.org/1999/02/22-rdf-syntax-ns#langString",
-    "Transparency Notice": "example.org/TransparencyNotice",
-    "Vote": "example.org/Vote",
+    "Transparency Notice": "http://example.org/TransparencyNotice",
     "adDeliveryTechniqueDescription": {
       "@container": "@set",
-      "@id": "example.org/adDeliveryTechniqueDescription",
+      "@id": "http://example.org/adDeliveryTechniqueDescription",
       "@type": "http://www.w3.org/1999/02/22-rdf-syntax-ns#langString"
     },
     "address": {
@@ -44,12 +89,10 @@
       "@type": "http://www.w3.org/1999/02/22-rdf-syntax-ns#langString"
     },
     "adminUnitLevel1": {
-      "@container": "@set",
       "@id": "http://www.w3.org/ns/locn#adminUnitL1",
       "@type": "@id"
     },
     "adminUnitLevel2": {
-      "@container": "@set",
       "@id": "http://www.w3.org/ns/locn#adminUnitL2",
       "@type": "@id"
     },
@@ -59,7 +102,7 @@
     },
     "analytics": {
       "@container": "@set",
-      "@id": "example.org/analytics",
+      "@id": "http://example.org/analytics",
       "@type": "http://www.w3.org/1999/02/22-rdf-syntax-ns#langString"
     },
     "calculationMethodology": {
@@ -69,7 +112,7 @@
     },
     "campaignFinancialInfo": {
       "@container": "@set",
-      "@id": "example.org/campaignFinancialInfo",
+      "@id": "http://example.org/campaignFinancialInfo",
       "@type": "@id"
     },
     "consentNotice": {
@@ -97,20 +140,15 @@
       "@id": "http://data.europa.eu/m8g/currency",
       "@type": "@id"
     },
-    "date": {
-      "@container": "@set",
-      "@id": "http://purl.org/dc/terms/date",
-      "@type": "http://www.w3.org/2001/XMLSchema#date"
-    },
     "description": {
       "@container": "@set",
       "@id": "http://purl.org/dc/terms/description",
       "@type": "http://www.w3.org/1999/02/22-rdf-syntax-ns#langString"
     },
-    "endDate": {
+    "election": {
       "@container": "@set",
-      "@id": "https://schema.org/endDate",
-      "@type": "http://www.w3.org/2001/XMLSchema#date"
+      "@id": "http://example.org/vote",
+      "@type": "@id"
     },
     "fullAddress": {
       "@container": "@set",
@@ -119,25 +157,32 @@
     },
     "funding": {
       "@container": "@set",
-      "@id": "example.org/funding",
+      "@id": "http://example.org/funding",
       "@type": "@id"
     },
-    "hasEmail": {
+    "hasPersonalData": {
       "@container": "@set",
-      "@id": "http://data.europa.eu/m8g/email"
+      "@id": "https://w3id.org/dpv#hasPersonalData",
+      "@type": "@id"
     },
     "hasPolicy": {
       "@container": "@set",
       "@id": "https://w3id.org/dpv#hasPolicy",
       "@type": "@id"
     },
+    "hasTime": {
+      "@id": "http://www.w3.org/2006/time#hasTime"
+    },
     "hasValue": {
       "@container": "@set",
       "@id": "http://data.europa.eu/m8g/hasValue",
       "@type": "http://www.w3.org/2001/XMLSchema#double"
     },
+    "homepage": {
+      "@id": "http://xmlns.com/foaf/0.1/homepage",
+      "@type": "@id"
+    },
     "identifier": {
-      "@container": "@set",
       "@id": "http://purl.org/dc/terms/identifier",
       "@type": "@id"
     },
@@ -147,42 +192,42 @@
     },
     "initiative": {
       "@container": "@set",
-      "@id": "example.org/initiative",
+      "@id": "http://example.org/initiative",
       "@type": "@id"
     },
     "intendedEndPublicationDate": {
       "@container": "@set",
-      "@id": "example.org/intendedEndPublicationDate",
+      "@id": "http://example.org/intendedEndPublicationDate",
       "@type": "http://www.w3.org/2001/XMLSchema#date"
     },
     "intendedStartPublicationDate": {
       "@container": "@set",
-      "@id": "example.org/intendedStartPublicationDate",
+      "@id": "http://example.org/intendedStartPublicationDate",
       "@type": "http://www.w3.org/2001/XMLSchema#date"
     },
     "internalPolicyUrl": {
       "@container": "@set",
-      "@id": "example.org/internalPolicyUrl",
+      "@id": "http://example.org/internalPolicyUrl",
       "@type": "@id"
     },
     "isAddressPublic": {
       "@container": "@set",
-      "@id": "example.org/isAddressPublic",
+      "@id": "http://example.org/isAddressPublic",
       "@type": "http://www.w3.org/2001/XMLSchema#boolean"
     },
     "isLinkedToLegislativeProcess": {
       "@container": "@set",
-      "@id": "example.org/isLinkedToLegislativeProcess",
+      "@id": "http://example.org/isLinkedToLegislativeProcess",
       "@type": "http://www.w3.org/2001/XMLSchema#boolean"
     },
     "isLinkedToVote": {
       "@container": "@set",
-      "@id": "example.org/isLinkedToVote",
+      "@id": "http://example.org/isLinkedToVote",
       "@type": "http://www.w3.org/2001/XMLSchema#boolean"
     },
     "isPostalAddressDifferentThanEstablishment": {
       "@container": "@set",
-      "@id": "example.org/isPostalAddressDifferentThanEstablishment",
+      "@id": "http://example.org/isPostalAddressDifferentThanEstablishment",
       "@type": "http://www.w3.org/2001/XMLSchema#boolean"
     },
     "label": {
@@ -206,7 +251,7 @@
     },
     "levelOther": {
       "@container": "@set",
-      "@id": "example.org/levelOther",
+      "@id": "http://example.org/levelOther",
       "@type": "http://www.w3.org/2001/XMLSchema#string"
     },
     "locatorName": {
@@ -216,12 +261,12 @@
     },
     "nature": {
       "@container": "@set",
-      "@id": "example.org/nature",
+      "@id": "http://example.org/nature",
       "@type": "@id"
     },
     "nonComplianceMechanismInformation": {
       "@container": "@set",
-      "@id": "example.org/nonComplianceMechanismInformation",
+      "@id": "http://example.org/nonComplianceMechanismInformation",
       "@type": "http://www.w3.org/1999/02/22-rdf-syntax-ns#langString"
     },
     "notation": {
@@ -230,46 +275,40 @@
     },
     "numberOfClicksLikeComments": {
       "@container": "@set",
-      "@id": "example.org/numberOfClicksLikeComments",
+      "@id": "http://example.org/numberOfClicksLikeComments",
       "@type": "http://www.w3.org/2001/XMLSchema#integer"
     },
     "numberOfViews": {
       "@container": "@set",
-      "@id": "example.org/numberOfViews",
+      "@id": "http://example.org/numberOfViews",
       "@type": "http://www.w3.org/2001/XMLSchema#integer"
     },
     "origin": {
       "@container": "@set",
-      "@id": "example.org/fundingOrigin",
+      "@id": "http://example.org/fundingOrigin",
       "@type": "@id"
     },
     "otherRelevantInformation": {
       "@container": "@set",
-      "@id": "example.org/otherRelevantInformation",
+      "@id": "http://example.org/otherRelevantInformation",
       "@type": "http://www.w3.org/1999/02/22-rdf-syntax-ns#langString"
     },
     "payingEntity": {
       "@container": "@set",
-      "@id": "example.org/payingEntity",
-      "@type": "@id"
-    },
-    "personalDataCategories": {
-      "@container": "@set",
-      "@id": "https://w3id.org/dpv#PersonalDataCategory",
+      "@id": "http://example.org/payingEntity",
       "@type": "@id"
     },
     "politicalAdvertisement": {
-      "@id": "example.org/politicalAdvertisement",
+      "@id": "http://example.org/politicalAdvertisement",
       "@type": "@id"
     },
     "politicalAdvertisementFinancialInfo": {
       "@container": "@set",
-      "@id": "example.org/politicalAdvertisementFinancialInfo",
+      "@id": "http://example.org/politicalAdvertisementFinancialInfo",
       "@type": "@id"
     },
     "politicalLevel": {
-      "@container": "@set",
-      "@id": "example.org/politicalLevel",
+      "@id": "http://example.org/politicalLevel",
       "@type": "@id"
     },
     "postCode": {
@@ -283,23 +322,23 @@
     },
     "previousNonComplianceExists": {
       "@container": "@set",
-      "@id": "example.org/previousNonComplianceExists",
+      "@id": "http://example.org/previousNonComplianceExists",
       "@type": "http://www.w3.org/2001/XMLSchema#boolean"
     },
     "registeredAddress": {
       "@container": "@set",
-      "@id": " http://data.europa.eu/m8g/registeredAddress",
+      "@id": "http://data.europa.eu/m8g/registeredAddress",
       "@type": "@id"
     },
     "sponsor": {
       "@container": "@set",
-      "@id": "example.org/sponsor",
+      "@id": "http://example.org/sponsor",
       "@type": "@id"
     },
-    "startDate": {
+    "subclass": {
       "@container": "@set",
-      "@id": "https://schema.org/startDate",
-      "@type": "http://www.w3.org/2001/XMLSchema#date"
+      "@id": "example.org/subclass",
+      "@type": "@id"
     },
     "subject": {
       "@container": "@set",
@@ -308,17 +347,17 @@
     },
     "targeting": {
       "@container": "@set",
-      "@id": "example.org/targeting",
+      "@id": "http://example.org/targeting",
       "@type": "@id"
     },
     "targetingGoals": {
       "@container": "@set",
-      "@id": "example.org/targetingGoals",
+      "@id": "http://example.org/targetingGoals",
       "@type": "http://www.w3.org/1999/02/22-rdf-syntax-ns#langString"
     },
     "targetingParameters": {
       "@container": "@set",
-      "@id": "example.org/targetingParameters",
+      "@id": "http://example.org/targetingParameters",
       "@type": "http://www.w3.org/1999/02/22-rdf-syntax-ns#langString"
     },
     "thoroughfare": {
@@ -327,7 +366,6 @@
       "@type": "http://www.w3.org/1999/02/22-rdf-syntax-ns#langString"
     },
     "title": {
-      "@container": "@set",
       "@id": "http://purl.org/dc/terms/title",
       "@type": "http://www.w3.org/1999/02/22-rdf-syntax-ns#langString"
     },
@@ -336,29 +374,19 @@
       "@id": "http://purl.org/dc/terms/type",
       "@type": "@id"
     },
-    "url": {
-      "@container": "@set",
-      "@id": "https://schema.org/url",
-      "@type": "@id"
-    },
     "useAdDeliveryTechniquesBasedOnPersonalData": {
       "@container": "@set",
-      "@id": "example.org/useAdDeliveryTechniquesBasedOnPersonalData",
+      "@id": "http://example.org/useAdDeliveryTechniquesBasedOnPersonalData",
       "@type": "http://www.w3.org/2001/XMLSchema#boolean"
     },
     "useOfTargetingTechniques": {
       "@container": "@set",
-      "@id": "example.org/useOfTargetingTechniques",
+      "@id": "http://example.org/useOfTargetingTechniques",
       "@type": "http://www.w3.org/2001/XMLSchema#boolean"
     },
     "userRightsExerciseUrl": {
       "@container": "@set",
-      "@id": "example.org/userRightsExerciseUrl",
-      "@type": "@id"
-    },
-    "vote": {
-      "@container": "@set",
-      "@id": "example.org/vote",
+      "@id": "http://example.org/userRightsExerciseUrl",
       "@type": "@id"
     }
   }
