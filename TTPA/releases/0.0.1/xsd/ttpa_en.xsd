@@ -1,0 +1,680 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<xs:schema xmlns="https://data.europa.eu/m8g/xml/" xmlns:xs="http://www.w3.org/2001/XMLSchema" targetNamespace="https://data.europa.eu/m8g/xml/" version="2.0.0" elementFormDefault="qualified" attributeFormDefault="unqualified" xmlns:cv="https://data.europa.eu/m8g/xml/">
+  <xs:element name="PublicEvent" type="PublicEventType"/>
+  <xs:element name="CampaignFinancialInformation" type="CampaignFinancialInformationType"/>
+  <xs:element name="ElectionEvent" type="ElectionEventType"/>
+  <xs:element name="Funding" type="FundingType"/>
+  <xs:element name="Initiative" type="InitiativeType"/>
+  <xs:element name="PoliticalAdvertisement" type="PoliticalAdvertisementType"/>
+  <xs:element name="PoliticalAdvertisementInformation" type="PoliticalAdvertisementInformationType"/>
+  <xs:element name="Targeting" type="TargetingType"/>
+  <xs:element name="TransparencyNotice" type="TransparencyNoticeType"/>
+  <xs:element name="Text" type="TextType"/>
+  <xs:element name="Literal" type="LiteralType"/>
+  <xs:element name="AnyUri" type="AnyUriType"/>
+  <xs:element name="Boolean" type="BooleanType"/>
+  <xs:element name="Date" type="DateType"/>
+  <xs:element name="Double" type="DoubleType"/>
+  <xs:element name="Integer" type="IntegerType"/>
+  <xs:element name="String" type="StringType"/>
+  <xs:element name="Code" type="CodeType"/>
+  <xs:element name="Instant" type="InstantType"/>
+  <xs:element name="TemporalEntity" type="TemporalEntityType"/>
+  <xs:element name="LegalEntity" type="LegalEntityType"/>
+  <xs:element name="Address" type="AddressType"/>
+  <xs:element name="Person" type="PersonType"/>
+  <xs:element name="Agent" type="AgentType"/>
+  <xs:simpleType name="Literal">
+    <xs:restriction base="xs:string"/>
+  </xs:simpleType>
+  <xs:complexType name="langstring">
+    <xs:simpleContent>
+      <xs:extension base="xs:string">
+        <xs:attribute name="lang" type="xs:language"/>
+      </xs:extension>
+    </xs:simpleContent>
+  </xs:complexType>
+  <xs:complexType name="ConceptType">
+    <xs:simpleContent>
+      <xs:extension base="xs:token">
+        <xs:attribute name="ref" type="xs:IDREF"/>
+        <xs:attribute name="conceptSchemeRef" type="xs:IDREF"/>
+      </xs:extension>
+    </xs:simpleContent>
+  </xs:complexType>
+  <xs:complexType name="PublicEventType">
+    <xs:sequence>
+      <xs:element name="hasTime" ref="TemporalEntityType" maxOccurs="1" minOccurs="1">
+        <xs:annotation>
+          <xs:documentation xml:lang="en">	The association of a temporal entity (instant or interval) to any thing.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="homepage" maxOccurs="1" minOccurs="1">
+        <xs:annotation>
+          <xs:documentation xml:lang="en">The website of the Public Event.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="title" type="xs:string" maxOccurs="1" minOccurs="1">
+        <xs:annotation>
+          <xs:documentation xml:lang="en">The name given to the Public Event.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+    </xs:sequence>
+    <xs:attribute name="PublicEventRef" type="xs:IDREF">
+      <xs:annotation>
+        <xs:documentation xml:lang="en">Reference to PublicEvent ID</xs:documentation>
+      </xs:annotation>
+    </xs:attribute>
+  </xs:complexType>
+  <xs:complexType name="CampaignFinancialInformationType">
+    <xs:sequence>
+      <xs:element name="currency" type="ConceptType" maxOccurs="unbounded" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation xml:lang="en">The currency in which the Cost needs to be paid and the value of the Cost is expressed.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="hasValue" type="xs:double" maxOccurs="unbounded" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation xml:lang="en">A numeric value indicating the amount of the Cost.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+    </xs:sequence>
+    <xs:attribute name="CampaignFinancialInformationRef" type="xs:IDREF">
+      <xs:annotation>
+        <xs:documentation xml:lang="en">Reference to CampaignFinancialInformation ID</xs:documentation>
+      </xs:annotation>
+    </xs:attribute>
+  </xs:complexType>
+  <xs:complexType name="ElectionEventType">
+    <xs:sequence>
+      <xs:element name="country" type="ConceptType" maxOccurs="1" minOccurs="1">
+        <xs:annotation>
+          <xs:documentation xml:lang="en">The uppermost administrative unit for the address, almost always a country. The domain of locn:adminUnitL1 is locn:Address and the range is a literal, conceptually defined by the INSPIRE Geographical Name data type.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="administrativeUnitLevel2" type="ConceptType" maxOccurs="1" minOccurs="1">
+        <xs:annotation>
+          <xs:documentation xml:lang="en">The region of the address, usually a county, state or other such area that typically encompasses several localities. The domain of locn:adminUnitL2 is locn:Address and the range is a literal, conceptually defined by the INSPIRE Geographical Name data type.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="politicalLevel" type="ConceptType" maxOccurs="1" minOccurs="1">
+        <xs:annotation>
+          <xs:documentation xml:lang="en">The political or administrative level at which the initiative is undertaken.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="title" type="xs:string" maxOccurs="1" minOccurs="1">
+        <xs:annotation>
+          <xs:documentation xml:lang="en">A name given to the resource.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+    </xs:sequence>
+    <xs:attribute name="ElectionEventRef" type="xs:IDREF">
+      <xs:annotation>
+        <xs:documentation xml:lang="en">Reference to ElectionEvent ID</xs:documentation>
+      </xs:annotation>
+    </xs:attribute>
+  </xs:complexType>
+  <xs:complexType name="FundingType">
+    <xs:sequence>
+      <xs:element name="calculationMethodology" type="xs:string" maxOccurs="unbounded" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation xml:lang="en">The method or approach used to calculate the amount or allocation of funding.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="hasCampaignFinancialInfo" ref="CampaignFinancialInformationType" maxOccurs="unbounded" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation xml:lang="en">Financial information related to the campaign.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="hasPoliticalAdvertisementFinancialInfo" ref="PoliticalAdvertisementInformationType" maxOccurs="unbounded" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation xml:lang="en">Financial information related to the political advertisement.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="nature" type="ConceptType" maxOccurs="1" minOccurs="1">
+        <xs:annotation>
+          <xs:documentation xml:lang="en">The nature of the funding (e.g., public, private, mixed).</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="origin" type="ConceptType" maxOccurs="1" minOccurs="1">
+        <xs:annotation>
+          <xs:documentation xml:lang="en">Indicates whether the origin of the funding is from the EU, from outside the EU.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+    </xs:sequence>
+    <xs:attribute name="FundingRef" type="xs:IDREF">
+      <xs:annotation>
+        <xs:documentation xml:lang="en">Reference to Funding ID</xs:documentation>
+      </xs:annotation>
+    </xs:attribute>
+  </xs:complexType>
+  <xs:complexType name="InitiativeType">
+    <xs:sequence>
+      <xs:element name="country" type="ConceptType" maxOccurs="unbounded" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation xml:lang="en">The uppermost administrative unit for the address, almost always a country. The domain of locn:adminUnitL1 is locn:Address and the range is a literal, conceptually defined by the INSPIRE Geographical Name data type.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="administrativeUnitLevel2" type="ConceptType" maxOccurs="unbounded" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation xml:lang="en">The region of the address, usually a county, state or other such area that typically encompasses several localities. The domain of locn:adminUnitL2 is locn:Address and the range is a literal, conceptually defined by the INSPIRE Geographical Name data type.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="otherLevel" type="xs:string" maxOccurs="unbounded" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation xml:lang="en">A description of the political or administrative level if not covered by the controlled vocabulary.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="politicalLevel" type="ConceptType" maxOccurs="unbounded" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation xml:lang="en">The political or administrative level at which the initiative is undertaken.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="title" type="xs:string" maxOccurs="unbounded" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation xml:lang="en">A name given to the resource.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="type" type="ConceptType" maxOccurs="unbounded" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation xml:lang="en">The nature or genre of the resource.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+    </xs:sequence>
+    <xs:attribute name="InitiativeRef" type="xs:IDREF">
+      <xs:annotation>
+        <xs:documentation xml:lang="en">Reference to Initiative ID</xs:documentation>
+      </xs:annotation>
+    </xs:attribute>
+  </xs:complexType>
+  <xs:complexType name="PoliticalAdvertisementType">
+    <xs:sequence>
+      <xs:element name="dateCreated" type="xs:date" maxOccurs="unbounded" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation xml:lang="en">Date of creation of the resource.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="description" type="xs:string" maxOccurs="unbounded" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation xml:lang="en">An account of the resource.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="hasBeginning" maxOccurs="unbounded" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation xml:lang="en">The beginning of a period or interval.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="hasElection" ref="ElectionEventType" maxOccurs="unbounded" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation xml:lang="en">The election related to the event</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="hasEnd" type="xs:date" maxOccurs="unbounded" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation xml:lang="en">The end of a period or interval.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="hasInitiative" ref="InitiativeType" maxOccurs="unbounded" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation xml:lang="en">The initiative related to the advertisement.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="hasPreviousVersion" ref="PoliticalAdvertisementType" maxOccurs="unbounded" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation xml:lang="en">A reference to a previous version of the same resource that was suspended or discontinued due to a regulatory or legal infringement.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="intendedEndPublicationDate" type="xs:date" maxOccurs="unbounded" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation xml:lang="en">The planned date for the end of publication of the political advertisement.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="intendedStartPublicationDate" type="xs:date" maxOccurs="unbounded" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation xml:lang="en">The planned date for the start of publication of the political advertisement.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="isLinkedToElection" type="xs:boolean" maxOccurs="unbounded" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation xml:lang="en">Indicates whether the political advertisement is linked to a vote.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="isLinkedToLegislativeProcess" type="xs:boolean" maxOccurs="unbounded" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation xml:lang="en">Indicates whether the political advertisement is linked to a legislative process.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="language" type="ConceptType" maxOccurs="unbounded" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation xml:lang="en">A language of the resource.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="nonComplianceMechanismInformation" type="xs:string" maxOccurs="unbounded" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation xml:lang="en">Information about the mechanism for addressing previous non-compliance.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="previousNonComplianceExists" type="xs:boolean" maxOccurs="unbounded" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation xml:lang="en">Indicates whether there has been previous non-compliance related to the political advertisement.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="status" type="ConceptType" maxOccurs="unbounded" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation xml:lang="en">Indicates the compliance status of the political advertisement, including whether it has a history of previous non-compliance.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="subject" type="ConceptType" maxOccurs="unbounded" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation xml:lang="en">A topic of the resource.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="type" type="ConceptType" maxOccurs="unbounded" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation xml:lang="en">The nature or genre of the resource.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+    </xs:sequence>
+    <xs:attribute name="PoliticalAdvertisementRef" type="xs:IDREF">
+      <xs:annotation>
+        <xs:documentation xml:lang="en">Reference to PoliticalAdvertisement ID</xs:documentation>
+      </xs:annotation>
+    </xs:attribute>
+  </xs:complexType>
+  <xs:complexType name="PoliticalAdvertisementInformationType">
+    <xs:sequence>
+      <xs:element name="currency" type="ConceptType" maxOccurs="unbounded" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation xml:lang="en">The currency in which the Cost needs to be paid and the value of the Cost is expressed.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="hasValue" type="xs:double" maxOccurs="unbounded" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation xml:lang="en">	A numeric value indicating the amount of the Cost.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+    </xs:sequence>
+    <xs:attribute name="PoliticalAdvertisementInformationRef" type="xs:IDREF">
+      <xs:annotation>
+        <xs:documentation xml:lang="en">Reference to PoliticalAdvertisementInformation ID</xs:documentation>
+      </xs:annotation>
+    </xs:attribute>
+  </xs:complexType>
+  <xs:complexType name="TargetingType">
+    <xs:sequence>
+      <xs:element name="adDeliveryTechniqueDescription" type="xs:string" maxOccurs="unbounded" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation xml:lang="en">Description of the techniques used to deliver advertisements to targeted audiences.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="analytics" type="xs:string" maxOccurs="unbounded" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation xml:lang="en">Information about the analytics performed on the advertisement or its audience.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="consentNotice" ref="AnyUriType" maxOccurs="unbounded" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation xml:lang="en">A Notice for information provision associated with Consent.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="hasBeginning" ref="InstantType" maxOccurs="unbounded" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation xml:lang="en">Beginning of a temporal entity.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="hasController" ref="AgentType" maxOccurs="unbounded" minOccurs="1">
+        <xs:annotation>
+          <xs:documentation xml:lang="en">The natural or legal person, public authority, agency or other body which, alone or jointly with others, determines the purposes and means of the processing of personal data in the context of a targeted activity or service.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="hasEnd" ref="InstantType" maxOccurs="unbounded" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation xml:lang="en">End of a temporal entity.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="hasPersonalData" type="ConceptType" maxOccurs="unbounded" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation xml:lang="en">Indicates association with Personal Data.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="hasPolicy" ref="AnyUriType" maxOccurs="unbounded" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation xml:lang="en">Indicates policy applicable or used.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="internalPolicyUrl" ref="AnyUriType" maxOccurs="unbounded" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation xml:lang="en">URL to the internal policy regarding targeting or personal data processing.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="numberOfClicksLikesOrComments" type="xs:integer" maxOccurs="unbounded" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation xml:lang="en">The number of user interactions such as clicks, likes, or comments on the advertisement.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="numberOfViews" type="xs:integer" maxOccurs="unbounded" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation xml:lang="en">The number of times the advertisement was viewed.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="otherRelevantInformation" type="xs:string" maxOccurs="unbounded" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation xml:lang="en">Any other information relevant to the targeting of the advertisement.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="targetingGoals" type="xs:string" maxOccurs="unbounded" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation xml:lang="en">The objectives or goals of the targeting strategy.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="targetingParameters" type="ConceptType" maxOccurs="unbounded" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation xml:lang="en">The parameters or criteria used to target the advertisement.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="useAdDeliveryTechniquesBasedOnPersonalData" type="xs:boolean" maxOccurs="unbounded" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation xml:lang="en">Indicates whether ad delivery techniques are based on personal data.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="usageOfAiSystems" type="xs:string" maxOccurs="1" minOccurs="1">
+        <xs:annotation>
+          <xs:documentation xml:lang="en">Indicates whether an artificial intelligence system was used in the targeting or delivery of a resource to an audience, including a description of its role and functioning.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="useOfTargetingTechniques" type="xs:boolean" maxOccurs="unbounded" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation xml:lang="en">Indicates whether targeting techniques are used for this advertisement.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="userRightsSupportUrl" ref="AnyUriType" maxOccurs="unbounded" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation xml:lang="en">Link to an interface allowing the exercise of data protection rights, such as submitting requests for access, rectification, erasure, or other rights under the applicable data protection legal framework.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+    </xs:sequence>
+    <xs:attribute name="TargetingRef" type="xs:IDREF">
+      <xs:annotation>
+        <xs:documentation xml:lang="en">Reference to Targeting ID</xs:documentation>
+      </xs:annotation>
+    </xs:attribute>
+  </xs:complexType>
+  <xs:complexType name="TransparencyNoticeType">
+    <xs:sequence>
+      <xs:element name="format" type="ConceptType" maxOccurs="unbounded" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation xml:lang="en">The file format, physical medium, or dimensions of the resource.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="hasFunding" ref="FundingType" maxOccurs="unbounded" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation xml:lang="en">Information about the financial resources used for the political advertisement or campaign.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="hasPoliticalAdvertisement" ref="PoliticalAdvertisementType" maxOccurs="1" minOccurs="1">
+        <xs:annotation>
+          <xs:documentation xml:lang="en">A paid communication intended to influence the outcome of an election or referendum, or to support or oppose a political party or candidate.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="hasTargeting" ref="TargetingType" maxOccurs="unbounded" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation xml:lang="en">Information about the targeting techniques and parameters used for the political advertisement.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="language" type="ConceptType" maxOccurs="unbounded" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation xml:lang="en">A language of the resource.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="modified" type="xs:string" maxOccurs="unbounded" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation xml:lang="en">Date on which the resource was changed.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="payingEntity" ref="AgentType" maxOccurs="unbounded" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation xml:lang="en">The entity that paid for the political advertisement.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="retentionDeadline" maxOccurs="unbounded" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation xml:lang="en">The date after which a resource or record is no longer required to be retained.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="seeAlso" ref="AnyUriType" maxOccurs="unbounded" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation xml:lang="en">Further information about the subject resource.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="sponsor" ref="AgentType" maxOccurs="unbounded" minOccurs="1">
+        <xs:annotation>
+          <xs:documentation xml:lang="en">The entity that provides financial or other support for the political advertisement.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+    </xs:sequence>
+    <xs:attribute name="TransparencyNoticeRef" type="xs:IDREF">
+      <xs:annotation>
+        <xs:documentation xml:lang="en">Reference to TransparencyNotice ID</xs:documentation>
+      </xs:annotation>
+    </xs:attribute>
+  </xs:complexType>
+  <xs:complexType name="TextType">
+    <xs:sequence/>
+    <xs:attribute name="TextRef" type="xs:IDREF">
+      <xs:annotation>
+        <xs:documentation xml:lang="en">Reference to Text ID</xs:documentation>
+      </xs:annotation>
+    </xs:attribute>
+  </xs:complexType>
+  <xs:complexType name="LiteralType">
+    <xs:sequence/>
+    <xs:attribute name="LiteralRef" type="xs:IDREF">
+      <xs:annotation>
+        <xs:documentation xml:lang="en">Reference to Literal ID</xs:documentation>
+      </xs:annotation>
+    </xs:attribute>
+  </xs:complexType>
+  <xs:complexType name="AnyUriType">
+    <xs:sequence/>
+    <xs:attribute name="AnyUriRef" type="xs:IDREF">
+      <xs:annotation>
+        <xs:documentation xml:lang="en">Reference to AnyUri ID</xs:documentation>
+      </xs:annotation>
+    </xs:attribute>
+  </xs:complexType>
+  <xs:complexType name="BooleanType">
+    <xs:sequence/>
+    <xs:attribute name="BooleanRef" type="xs:IDREF">
+      <xs:annotation>
+        <xs:documentation xml:lang="en">Reference to Boolean ID</xs:documentation>
+      </xs:annotation>
+    </xs:attribute>
+  </xs:complexType>
+  <xs:complexType name="DateType">
+    <xs:sequence/>
+    <xs:attribute name="DateRef" type="xs:IDREF">
+      <xs:annotation>
+        <xs:documentation xml:lang="en">Reference to Date ID</xs:documentation>
+      </xs:annotation>
+    </xs:attribute>
+  </xs:complexType>
+  <xs:complexType name="DoubleType">
+    <xs:sequence/>
+    <xs:attribute name="DoubleRef" type="xs:IDREF">
+      <xs:annotation>
+        <xs:documentation xml:lang="en">Reference to Double ID</xs:documentation>
+      </xs:annotation>
+    </xs:attribute>
+  </xs:complexType>
+  <xs:complexType name="IntegerType">
+    <xs:sequence/>
+    <xs:attribute name="IntegerRef" type="xs:IDREF">
+      <xs:annotation>
+        <xs:documentation xml:lang="en">Reference to Integer ID</xs:documentation>
+      </xs:annotation>
+    </xs:attribute>
+  </xs:complexType>
+  <xs:complexType name="StringType">
+    <xs:sequence/>
+    <xs:attribute name="StringRef" type="xs:IDREF">
+      <xs:annotation>
+        <xs:documentation xml:lang="en">Reference to String ID</xs:documentation>
+      </xs:annotation>
+    </xs:attribute>
+  </xs:complexType>
+  <xs:complexType name="CodeType">
+    <xs:sequence/>
+    <xs:attribute name="CodeRef" type="xs:IDREF">
+      <xs:annotation>
+        <xs:documentation xml:lang="en">Reference to Code ID</xs:documentation>
+      </xs:annotation>
+    </xs:attribute>
+  </xs:complexType>
+  <xs:complexType name="InstantType">
+    <xs:sequence/>
+    <xs:attribute name="InstantRef" type="xs:IDREF">
+      <xs:annotation>
+        <xs:documentation xml:lang="en">Reference to Instant ID</xs:documentation>
+      </xs:annotation>
+    </xs:attribute>
+  </xs:complexType>
+  <xs:complexType name="TemporalEntityType">
+    <xs:sequence/>
+    <xs:attribute name="TemporalEntityRef" type="xs:IDREF">
+      <xs:annotation>
+        <xs:documentation xml:lang="en">Reference to TemporalEntity ID</xs:documentation>
+      </xs:annotation>
+    </xs:attribute>
+  </xs:complexType>
+  <xs:complexType name="LegalEntityType">
+    <xs:sequence>
+      <xs:element name="alternativeTitle" type="xs:string" maxOccurs="unbounded" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation xml:lang="en">An alternative name for the resource.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="hasEmail" type="xs:string" maxOccurs="unbounded" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation xml:lang="en">An electronic address through which the Contact Point can be contacted.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="isPostalAddressDifferentThanEstablishment" type="xs:boolean" maxOccurs="unbounded" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation xml:lang="en">Indicates whether the postal address is different from the establishment address (true) or not (false).</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="legalName" type="xs:string" maxOccurs="unbounded" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation xml:lang="en">The name under which the Legal Entity is legally registered.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="notation" type="xs:string" maxOccurs="unbounded" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation xml:lang="en">A string of characters to uniquely identify a concept.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+    </xs:sequence>
+    <xs:attribute name="LegalEntityRef" type="xs:IDREF">
+      <xs:annotation>
+        <xs:documentation xml:lang="en">Reference to LegalEntity ID</xs:documentation>
+      </xs:annotation>
+    </xs:attribute>
+  </xs:complexType>
+  <xs:complexType name="AddressType">
+    <xs:sequence>
+      <xs:element name="addressId" type="xs:string" maxOccurs="unbounded" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation xml:lang="en">A globally unique identifier for each instance of an Address.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="administrativeUnitLevel1" type="xs:string" maxOccurs="unbounded" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation xml:lang="en">The name of the uppermost level of the address, almost always a country.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="administrativeUnitLevel2" type="xs:string" maxOccurs="unbounded" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation xml:lang="en">The name of a secondary level/region of the address, usually a county, state or other such area that typically encompasses several localities.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="locatorName" type="xs:string" maxOccurs="unbounded" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation xml:lang="en">Proper noun(s) applied to the real world entity identified by the locator. The locator name could be the name of the property or complex, of the building or part of the building, or it could be the name of a room inside a building.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="postCode" type="xs:string" maxOccurs="unbounded" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation xml:lang="en">The code created and maintained for postal purposes to identify a subdivision of addresses and postal delivery points.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="postName" type="xs:string" maxOccurs="unbounded" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation xml:lang="en">A name created and maintained for postal purposes to identify a subdivision of addresses and postal delivery points.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="thoroughfare" type="xs:string" maxOccurs="unbounded" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation xml:lang="en">The name of a passage or way through from one location to another.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+    </xs:sequence>
+    <xs:attribute name="AddressRef" type="xs:IDREF">
+      <xs:annotation>
+        <xs:documentation xml:lang="en">Reference to Address ID</xs:documentation>
+      </xs:annotation>
+    </xs:attribute>
+  </xs:complexType>
+  <xs:complexType name="PersonType">
+    <xs:sequence>
+      <xs:element name="familyName" type="xs:string" maxOccurs="unbounded" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation xml:lang="en">The hereditary surname of a family.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="givenName" type="xs:string" maxOccurs="unbounded" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation xml:lang="en">The name(s) that identify the Person within a family with a common surname.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="hasEmail" type="xs:string" maxOccurs="unbounded" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation xml:lang="en">An electronic address through which the Contact Point can be contacted.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+    </xs:sequence>
+    <xs:attribute name="PersonRef" type="xs:IDREF">
+      <xs:annotation>
+        <xs:documentation xml:lang="en">Reference to Person ID</xs:documentation>
+      </xs:annotation>
+    </xs:attribute>
+  </xs:complexType>
+  <xs:complexType name="AgentType">
+    <xs:sequence>
+      <xs:element name="address" ref="AddressType" maxOccurs="unbounded" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation xml:lang="en">An "address representation" as conceptually defined by the INSPIRE Address Representation data type. The locn:addressId property may be used to link this locn:Address to other representations.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="isPostalAddressDifferentThanEstablishment" type="xs:boolean" maxOccurs="unbounded" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation xml:lang="en">Indicates whether the postal address is different from the establishment address (true) or not (false).</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="registeredAddress" ref="AddressType" maxOccurs="unbounded" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation xml:lang="en">The registered address relationship links a Resource with the legally registered Address.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="type" type="ConceptType" maxOccurs="unbounded" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation xml:lang="en">A classification assigned to an Agent.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+    </xs:sequence>
+    <xs:attribute name="AgentRef" type="xs:IDREF">
+      <xs:annotation>
+        <xs:documentation xml:lang="en">Reference to Agent ID</xs:documentation>
+      </xs:annotation>
+    </xs:attribute>
+  </xs:complexType>
+</xs:schema>
