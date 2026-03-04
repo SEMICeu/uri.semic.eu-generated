@@ -1,4 +1,3 @@
-@prefix dc: <http://purl.org/dc/terms/> .
 @prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
 @prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
 @prefix shacl: <http://www.w3.org/ns/shacl#> .
@@ -12,6 +11,7 @@
     <https://semiceu.github.io/PLD/releases/1.0.0#NationalCaseLawShape>,
     <https://semiceu.github.io/PLD/releases/1.0.0#DecodingConceptShape>,
     <https://semiceu.github.io/PLD/releases/1.0.0#EurovocConceptShape>,
+    <https://semiceu.github.io/PLD/releases/1.0.0#CountryShape>,
     <https://semiceu.github.io/PLD/releases/1.0.0#NationalCourtShape>,
     <https://semiceu.github.io/PLD/releases/1.0.0#ExpressionShape>,
     <https://semiceu.github.io/PLD/releases/1.0.0#JudgementShape>,
@@ -20,7 +20,6 @@
     <https://semiceu.github.io/PLD/releases/1.0.0#ManifestationOfGeneralPublicationShape>,
     <https://semiceu.github.io/PLD/releases/1.0.0#LegalResourceShape>,
     <https://semiceu.github.io/PLD/releases/1.0.0#WorkShape>,
-    <https://semiceu.github.io/PLD/releases/1.0.0#LocationShape>,
     <https://semiceu.github.io/PLD/releases/1.0.0#TextShape>,
     <https://semiceu.github.io/PLD/releases/1.0.0#anyURIShape>,
     <https://semiceu.github.io/PLD/releases/1.0.0#DateShape>,
@@ -69,7 +68,9 @@
     <https://semiceu.github.io/PLD/releases/1.0.0#CaseLawShape/07bec317a64a5532531a24797d0ec7e0a27c5d90>,
     <https://semiceu.github.io/PLD/releases/1.0.0#CaseLawShape/29ba27566ab1f32c8bb73f3492436d4bd868d3d2>,
     <https://semiceu.github.io/PLD/releases/1.0.0#CaseLawShape/362d1bf0eab8051024cf5ec1345eb1ce50762580>,
+    <https://semiceu.github.io/PLD/releases/1.0.0#CaseLawShape/3734127f85f87d2de6d130c606aa7a1347c7feaf>,
     <https://semiceu.github.io/PLD/releases/1.0.0#CaseLawShape/606d97cd2186443d72b842b0e0b4b7c5778f9e59>,
+    <https://semiceu.github.io/PLD/releases/1.0.0#CaseLawShape/6727ec956ada8a1f189909ca5249fc293160dc30>,
     <https://semiceu.github.io/PLD/releases/1.0.0#CaseLawShape/6cae9880e515253132af1452a38a8a5827165149>,
     <https://semiceu.github.io/PLD/releases/1.0.0#CaseLawShape/7055f6d8f78ecd4d165ac4447b1c4bbd0bf81e27>,
     <https://semiceu.github.io/PLD/releases/1.0.0#CaseLawShape/740e505c8cfbde135fa8189e9daeea671418c608>,
@@ -110,11 +111,23 @@
   shacl:name "description"@en;
   shacl:path <http://publications.europa.eu/ontology/cdm#case-law_national_keywords> .
 
+<https://semiceu.github.io/PLD/releases/1.0.0#CaseLawShape/3734127f85f87d2de6d130c606aa7a1347c7feaf> rdfs:seeAlso "https://semiceu.github.io/PLD/releases/1.0.0#CaseLaw.originatesInCountry";
+  shacl:description "country of origin of a question referred for a preliminary ruling"@en;
+  shacl:name "originatesInCountry"@en;
+  shacl:nodeKind shacl:BlankNodeOrIRI;
+  shacl:path <http://publications.europa.eu/ontology/cdm#case-law_originates_in_country> .
+
 <https://semiceu.github.io/PLD/releases/1.0.0#CaseLawShape/606d97cd2186443d72b842b0e0b4b7c5778f9e59> rdfs:seeAlso "https://semiceu.github.io/PLD/releases/1.0.0#CaseLaw.ecli";
   shacl:description "European Case Law Identifier. Identifier of the decision, including all its summaries."@en;
   shacl:minCount 1;
   shacl:name "ecli"@en;
   shacl:path <http://publications.europa.eu/ontology/cdm#case-law_ecli> .
+
+<https://semiceu.github.io/PLD/releases/1.0.0#CaseLawShape/6727ec956ada8a1f189909ca5249fc293160dc30> rdfs:seeAlso "https://semiceu.github.io/PLD/releases/1.0.0#CaseLaw.originatesInCountry";
+  shacl:class <http://publications.europa.eu/ontology/cdm#country>;
+  shacl:description "country of origin of a question referred for a preliminary ruling"@en;
+  shacl:name "originatesInCountry"@en;
+  shacl:path <http://publications.europa.eu/ontology/cdm#case-law_originates_in_country> .
 
 <https://semiceu.github.io/PLD/releases/1.0.0#CaseLawShape/6cae9880e515253132af1452a38a8a5827165149> rdfs:seeAlso "https://semiceu.github.io/PLD/releases/1.0.0#CaseLaw.description";
   shacl:description "Formal Description of a case law."@en;
@@ -203,6 +216,10 @@
 <https://semiceu.github.io/PLD/releases/1.0.0#ConceptShape> a shacl:NodeShape;
   shacl:closed false;
   shacl:targetClass skos:Concept .
+
+<https://semiceu.github.io/PLD/releases/1.0.0#CountryShape> a shacl:NodeShape;
+  shacl:closed false;
+  shacl:targetClass <http://publications.europa.eu/ontology/cdm#country> .
 
 <https://semiceu.github.io/PLD/releases/1.0.0#DateShape> a shacl:NodeShape;
   shacl:closed false;
@@ -330,10 +347,6 @@
   shacl:nodeKind shacl:Literal;
   shacl:path <http://publications.europa.eu/ontology/cdm#resource_legal_type> .
 
-<https://semiceu.github.io/PLD/releases/1.0.0#LocationShape> a shacl:NodeShape;
-  shacl:closed false;
-  shacl:targetClass dc:Location .
-
 <https://semiceu.github.io/PLD/releases/1.0.0#ManifestationOfGeneralPublicationShape> a shacl:NodeShape;
   shacl:closed false;
   shacl:property <https://semiceu.github.io/PLD/releases/1.0.0#ManifestationOfGeneralPublicationShape/0dc20c6846cc8a15b1e4f2bc260b8163806560f6>,
@@ -455,10 +468,8 @@
   shacl:closed false;
   shacl:property <https://semiceu.github.io/PLD/releases/1.0.0#NationalCourtShape/263a563c5bed08cdaadf4a0fd0a5fb9874d742bc>,
     <https://semiceu.github.io/PLD/releases/1.0.0#NationalCourtShape/34b07c2a74d3a8a93e8e4eac8f875a2320e348b4>,
-    <https://semiceu.github.io/PLD/releases/1.0.0#NationalCourtShape/8fd1cd7a406ec3816234c1ec0c69f985a9117476>,
     <https://semiceu.github.io/PLD/releases/1.0.0#NationalCourtShape/96cdcbb0489a41ab01fc39c521f5ed607a0b2c41>,
     <https://semiceu.github.io/PLD/releases/1.0.0#NationalCourtShape/9caf9e629daa0e64ece77788576468821d7cff8c>,
-    <https://semiceu.github.io/PLD/releases/1.0.0#NationalCourtShape/b93b49bf7122a561ecc9674449665256e441faf5>,
     <https://semiceu.github.io/PLD/releases/1.0.0#NationalCourtShape/f7c6eda790e238289fa7fe1846c80240203371b1>,
     <https://semiceu.github.io/PLD/releases/1.0.0#NationalCourtShape/f88d47679476bd525f7698c2e0a3477b3bf7b8ab>;
   shacl:targetClass <http://publications.europa.eu/ontology/cdm#court_national> .
@@ -475,12 +486,6 @@
   shacl:name "national court type"@en;
   shacl:path <http://publications.europa.eu/ontology/cdm#court_national_has_type_concept_class_court_national> .
 
-<https://semiceu.github.io/PLD/releases/1.0.0#NationalCourtShape/8fd1cd7a406ec3816234c1ec0c69f985a9117476> rdfs:seeAlso "https://semiceu.github.io/PLD/releases/1.0.0#Nationalcourt.spatial";
-  shacl:class dc:Location;
-  shacl:description "The country of the national court."@en;
-  shacl:name "spatial"@en;
-  shacl:path dc:spatial .
-
 <https://semiceu.github.io/PLD/releases/1.0.0#NationalCourtShape/96cdcbb0489a41ab01fc39c521f5ed607a0b2c41> rdfs:seeAlso "https://semiceu.github.io/PLD/releases/1.0.0#Nationalcourt.name";
   shacl:description "Name of this national court, possibly qualified by language. "@en;
   shacl:minCount 1;
@@ -492,12 +497,6 @@
   shacl:name "name"@en;
   shacl:nodeKind shacl:Literal;
   shacl:path <http://publications.europa.eu/ontology/cdm#court_national_name> .
-
-<https://semiceu.github.io/PLD/releases/1.0.0#NationalCourtShape/b93b49bf7122a561ecc9674449665256e441faf5> rdfs:seeAlso "https://semiceu.github.io/PLD/releases/1.0.0#Nationalcourt.spatial";
-  shacl:description "The country of the national court."@en;
-  shacl:name "spatial"@en;
-  shacl:nodeKind shacl:BlankNodeOrIRI;
-  shacl:path dc:spatial .
 
 <https://semiceu.github.io/PLD/releases/1.0.0#NationalCourtShape/f7c6eda790e238289fa7fe1846c80240203371b1> rdfs:seeAlso "https://semiceu.github.io/PLD/releases/1.0.0#Nationalcourt.nationalcourttype";
   shacl:description "The type of national court."@en;
