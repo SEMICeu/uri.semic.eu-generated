@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <xs:schema xmlns="https://data.europa.eu/m8g/xml/" xmlns:xs="http://www.w3.org/2001/XMLSchema" targetNamespace="https://data.europa.eu/m8g/xml/" version="2.0.0" elementFormDefault="qualified" attributeFormDefault="unqualified" xmlns:cv="https://data.europa.eu/m8g/xml/">
   <xs:element name="ProductLiabilityJudgment" type="ProductLiabilityJudgmentType"/>
+  <xs:element name="Country" type="CountryType"/>
   <xs:element name="AccessRight" type="AccessRightType"/>
   <xs:element name="Agent" type="AgentType"/>
   <xs:element name="CaseLaw" type="CaseLawType"/>
@@ -53,6 +54,14 @@
       </xs:annotation>
     </xs:attribute>
   </xs:complexType>
+  <xs:complexType name="CountryType">
+    <xs:sequence/>
+    <xs:attribute name="CountryRef" type="xs:IDREF">
+      <xs:annotation>
+        <xs:documentation xml:lang="en">Reference to Country ID</xs:documentation>
+      </xs:annotation>
+    </xs:attribute>
+  </xs:complexType>
   <xs:complexType name="AccessRightType">
     <xs:sequence/>
     <xs:attribute name="AccessRightRef" type="xs:IDREF">
@@ -95,6 +104,11 @@
       <xs:element name="language" ref="LanguageType" maxOccurs="unbounded" minOccurs="1">
         <xs:annotation>
           <xs:documentation xml:lang="en">The case uses a given language of procedure</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="originatesInCountry" ref="CountryType" maxOccurs="unbounded" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation xml:lang="en">country of origin of a question referred for a preliminary ruling</xs:documentation>
         </xs:annotation>
       </xs:element>
       <xs:element name="summaryOfCaseLaw" type="xs:string" maxOccurs="1" minOccurs="1">
@@ -144,11 +158,6 @@
       <xs:element name="name" type="xs:string" maxOccurs="unbounded" minOccurs="1">
         <xs:annotation>
           <xs:documentation xml:lang="en">Name of this national court, possibly qualified by language. </xs:documentation>
-        </xs:annotation>
-      </xs:element>
-      <xs:element name="spatial" ref="LocationType" maxOccurs="unbounded" minOccurs="0">
-        <xs:annotation>
-          <xs:documentation xml:lang="en">The country of the national court.</xs:documentation>
         </xs:annotation>
       </xs:element>
       <xs:element name="nationalCourtType" type="ConceptType" maxOccurs="1" minOccurs="0">
