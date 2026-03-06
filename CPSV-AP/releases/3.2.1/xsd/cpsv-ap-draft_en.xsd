@@ -473,14 +473,14 @@ the Legal Resource under which the Service Concession Contracts are being define
           <xs:documentation xml:lang="en">It links a Service Concession Contract with the Economic Operator in charge for the provision and the management of public services.</xs:documentation>
         </xs:annotation>
       </xs:element>
-      <xs:element name="hasServiceConcessionContract" ref="ChannelType" maxOccurs="unbounded" minOccurs="0">
-        <xs:annotation>
-          <xs:documentation xml:lang="en">The channel related to the service concession contract.</xs:documentation>
-        </xs:annotation>
-      </xs:element>
       <xs:element name="hasServiceConcessionContract" ref="PublicServiceType" maxOccurs="unbounded" minOccurs="0">
         <xs:annotation>
           <xs:documentation xml:lang="en">The Public Service related to the service concession contract.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="hasServiceConcessionContract" ref="ChannelType" maxOccurs="unbounded" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation xml:lang="en">The channel related to the service concession contract.</xs:documentation>
         </xs:annotation>
       </xs:element>
       <xs:element name="identifier" type="xs:string" maxOccurs="1" minOccurs="1">
@@ -528,7 +528,7 @@ the Legal Resource under which the Service Concession Contracts are being define
           <xs:documentation xml:lang="en">The main contact information of the resource.</xs:documentation>
         </xs:annotation>
       </xs:element>
-      <xs:element name="crossborderType" type="ConceptType" maxOccurs="1" minOccurs="0">
+      <xs:element name="crossborderType" type="ConceptType" maxOccurs="unbounded" minOccurs="0">
         <xs:annotation>
           <xs:documentation xml:lang="en">Indicates whether a public service is provided exclusively within a single national jurisdiction or is intended to be provided across national borders.
 
@@ -605,6 +605,11 @@ the Legal Resource under which the Service Concession Contracts are being define
           <xs:documentation xml:lang="en">It links the Public Service to the Event class.</xs:documentation>
         </xs:annotation>
       </xs:element>
+      <xs:element name="isInstanceOf" ref="PublicServiceType" maxOccurs="unbounded" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation xml:lang="en">Relates a public service to a more generic public service of which it is an instance.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
       <xs:element name="isPartOf" ref="DatasetType" maxOccurs="unbounded" minOccurs="0">
         <xs:annotation>
           <xs:documentation xml:lang="en">A related resource in which the described resource is physically or logically included.</xs:documentation>
@@ -618,6 +623,13 @@ the Legal Resource under which the Service Concession Contracts are being define
       <xs:element name="language" ref="LinguisticSystemType" maxOccurs="unbounded" minOccurs="0">
         <xs:annotation>
           <xs:documentation xml:lang="en">The language(s) in which the Public Service is available.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="level" type="ConceptType" maxOccurs="unbounded" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation xml:lang="en">Indicates the level at which a public service is described.
+
+</xs:documentation>
         </xs:annotation>
       </xs:element>
       <xs:element name="name" type="xs:string" maxOccurs="unbounded" minOccurs="1">
