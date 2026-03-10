@@ -1,9 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <xs:schema xmlns="https://data.europa.eu/m8g/xml/" xmlns:xs="http://www.w3.org/2001/XMLSchema" targetNamespace="https://data.europa.eu/m8g/xml/" version="2.0.0" elementFormDefault="qualified" attributeFormDefault="unqualified" xmlns:cv="https://data.europa.eu/m8g/xml/">
-  <xs:element name="Benefit" type="BenefitType"/>
-  <xs:element name="CaseStudy" type="CaseStudyType"/>
-  <xs:element name="EnvironmentalBenefit" type="EnvironmentalBenefitType"/>
-  <xs:element name="Methodology" type="MethodologyType"/>
   <xs:element name="ContactPoint" type="ContactPointType"/>
   <xs:element name="ImageObject" type="ImageObjectType"/>
   <xs:element name="LinguisticSystem" type="LinguisticSystemType"/>
@@ -19,6 +15,10 @@
   <xs:element name="Organization" type="OrganizationType"/>
   <xs:element name="Document" type="DocumentType"/>
   <xs:element name="OnlineAccount" type="OnlineAccountType"/>
+  <xs:element name="Benefit" type="BenefitType"/>
+  <xs:element name="CaseStudy" type="CaseStudyType"/>
+  <xs:element name="EnvironmentalBenefit" type="EnvironmentalBenefitType"/>
+  <xs:element name="Methodology" type="MethodologyType"/>
   <xs:simpleType name="Literal">
     <xs:restriction base="xs:string"/>
   </xs:simpleType>
@@ -36,201 +36,6 @@
         <xs:attribute name="conceptSchemeRef" type="xs:IDREF"/>
       </xs:extension>
     </xs:simpleContent>
-  </xs:complexType>
-  <xs:complexType name="BenefitType">
-    <xs:sequence>
-      <xs:element name="functionalUnit" type="xs:string" maxOccurs="unbounded" minOccurs="0">
-        <xs:annotation>
-          <xs:documentation xml:lang="en">The functional unit indicated in the Benefit.</xs:documentation>
-        </xs:annotation>
-      </xs:element>
-      <xs:element name="name" type="xs:string" maxOccurs="1" minOccurs="1">
-        <xs:annotation>
-          <xs:documentation xml:lang="en">The name of the Benefit.</xs:documentation>
-        </xs:annotation>
-      </xs:element>
-      <xs:element name="type" type="ConceptType" maxOccurs="1" minOccurs="1">
-        <xs:annotation>
-          <xs:documentation xml:lang="en">The type of benefit.</xs:documentation>
-        </xs:annotation>
-      </xs:element>
-      <xs:element name="unit" type="ConceptType" maxOccurs="1" minOccurs="1">
-        <xs:annotation>
-          <xs:documentation xml:lang="en">The unit of the amount value.</xs:documentation>
-        </xs:annotation>
-      </xs:element>
-      <xs:element name="value" type="xs:integer" maxOccurs="1" minOccurs="1">
-        <xs:annotation>
-          <xs:documentation xml:lang="en">The amount value.</xs:documentation>
-        </xs:annotation>
-      </xs:element>
-    </xs:sequence>
-    <xs:attribute name="BenefitRef" type="xs:IDREF">
-      <xs:annotation>
-        <xs:documentation xml:lang="en">Reference to Benefit ID</xs:documentation>
-      </xs:annotation>
-    </xs:attribute>
-  </xs:complexType>
-  <xs:complexType name="CaseStudyType">
-    <xs:sequence>
-      <xs:element name="address" ref="AddressType" maxOccurs="unbounded" minOccurs="1">
-        <xs:annotation>
-          <xs:documentation xml:lang="en">Associates any Resource with the corresponding Address.</xs:documentation>
-        </xs:annotation>
-      </xs:element>
-      <xs:element name="created" type="xs:date" maxOccurs="1" minOccurs="0">
-        <xs:annotation>
-          <xs:documentation xml:lang="en">Date of creation of the resource.</xs:documentation>
-        </xs:annotation>
-      </xs:element>
-      <xs:element name="creator" ref="OnlineAccountType" maxOccurs="1" minOccurs="1">
-        <xs:annotation>
-          <xs:documentation xml:lang="en">An entity responsible for making the resource.</xs:documentation>
-        </xs:annotation>
-      </xs:element>
-      <xs:element name="fundingProgrammeUrl" type="xs:anyURI" maxOccurs="1" minOccurs="0">
-        <xs:annotation>
-          <xs:documentation xml:lang="en">The url of the funding programme.</xs:documentation>
-        </xs:annotation>
-      </xs:element>
-      <xs:element name="fundingType" type="ConceptType" maxOccurs="1" minOccurs="0">
-        <xs:annotation>
-          <xs:documentation xml:lang="en">The type of financing of the Case Study.</xs:documentation>
-        </xs:annotation>
-      </xs:element>
-      <xs:element name="hasBenefit" ref="BenefitType" maxOccurs="unbounded" minOccurs="0">
-        <xs:annotation>
-          <xs:documentation xml:lang="en">The benefit measured by the case study.</xs:documentation>
-        </xs:annotation>
-      </xs:element>
-      <xs:element name="hasDataset" ref="DatasetType" maxOccurs="1" minOccurs="1">
-        <xs:annotation>
-          <xs:documentation xml:lang="en">The dataset attached to the Case Study.</xs:documentation>
-        </xs:annotation>
-      </xs:element>
-      <xs:element name="hasDocument" ref="DocumentType" maxOccurs="unbounded" minOccurs="0">
-        <xs:annotation>
-          <xs:documentation xml:lang="en">A document providing additional information to the Case Study.</xs:documentation>
-        </xs:annotation>
-      </xs:element>
-      <xs:element name="hasEnvironmentalBenefit" ref="EnvironmentalBenefitType" maxOccurs="unbounded" minOccurs="1">
-        <xs:annotation>
-          <xs:documentation xml:lang="en">The benefit measured by the case study.</xs:documentation>
-        </xs:annotation>
-      </xs:element>
-      <xs:element name="hasMethodology" ref="MethodologyType" maxOccurs="1" minOccurs="1">
-        <xs:annotation>
-          <xs:documentation xml:lang="en">The methodology provided with the Case Study.</xs:documentation>
-        </xs:annotation>
-      </xs:element>
-      <xs:element name="isFundedBy" ref="OrganizationType" maxOccurs="unbounded" minOccurs="0">
-        <xs:annotation>
-          <xs:documentation xml:lang="en">An entity responsible for the financial support.</xs:documentation>
-        </xs:annotation>
-      </xs:element>
-      <xs:element name="isProvidedBy" ref="OrganizationType" maxOccurs="unbounded" minOccurs="1">
-        <xs:annotation>
-          <xs:documentation xml:lang="en">An entity responsible for making the resource.</xs:documentation>
-        </xs:annotation>
-      </xs:element>
-      <xs:element name="isUsedBy" ref="OrganizationType" maxOccurs="unbounded" minOccurs="0">
-        <xs:annotation>
-          <xs:documentation xml:lang="en">The entity using the solution.</xs:documentation>
-        </xs:annotation>
-      </xs:element>
-      <xs:element name="issueDate" type="xs:date" maxOccurs="1" minOccurs="0">
-        <xs:annotation>
-          <xs:documentation xml:lang="en">Date of formal issuance of the resource.</xs:documentation>
-        </xs:annotation>
-      </xs:element>
-      <xs:element name="language" ref="LinguisticSystemType" maxOccurs="1" minOccurs="0">
-        <xs:annotation>
-          <xs:documentation xml:lang="en">A language of the CaseStudy.</xs:documentation>
-        </xs:annotation>
-      </xs:element>
-      <xs:element name="logo" ref="ImageObjectType" maxOccurs="1" minOccurs="1">
-        <xs:annotation>
-          <xs:documentation xml:lang="en">A graphic symbol to represent the Case Study.</xs:documentation>
-        </xs:annotation>
-      </xs:element>
-      <xs:element name="longDescription" type="xs:string" maxOccurs="1" minOccurs="0">
-        <xs:annotation>
-          <xs:documentation xml:lang="en">An extended description of the Case Study.</xs:documentation>
-        </xs:annotation>
-      </xs:element>
-      <xs:element name="name" type="xs:string" maxOccurs="1" minOccurs="0">
-        <xs:annotation>
-          <xs:documentation xml:lang="en">A name given to the Case Study.</xs:documentation>
-        </xs:annotation>
-      </xs:element>
-      <xs:element name="problemSolved" type="xs:string" maxOccurs="1" minOccurs="0">
-        <xs:annotation>
-          <xs:documentation xml:lang="en">The type of challenge the Case Study resolved.</xs:documentation>
-        </xs:annotation>
-      </xs:element>
-      <xs:element name="rejectionComment" type="xs:string" maxOccurs="1" minOccurs="0">
-        <xs:annotation>
-          <xs:documentation xml:lang="en">The comment in case the CaseStudy is rejected.</xs:documentation>
-        </xs:annotation>
-      </xs:element>
-      <xs:element name="shortDescription" type="xs:string" maxOccurs="1" minOccurs="0">
-        <xs:annotation>
-          <xs:documentation xml:lang="en">An account of the Case Study.</xs:documentation>
-        </xs:annotation>
-      </xs:element>
-      <xs:element name="status" type="ConceptType" maxOccurs="1" minOccurs="1">
-        <xs:annotation>
-          <xs:documentation xml:lang="en">The status of the Case Study.</xs:documentation>
-        </xs:annotation>
-      </xs:element>
-      <xs:element name="technology" type="ConceptType" maxOccurs="1" minOccurs="0">
-        <xs:annotation>
-          <xs:documentation xml:lang="en">The type of equipment used by the Case Study.</xs:documentation>
-        </xs:annotation>
-      </xs:element>
-      <xs:element name="typeOfCalculation" type="ConceptType" maxOccurs="1" minOccurs="0">
-        <xs:annotation>
-          <xs:documentation xml:lang="en">The Type of computation used for the Case Study.</xs:documentation>
-        </xs:annotation>
-      </xs:element>
-    </xs:sequence>
-    <xs:attribute name="CaseStudyRef" type="xs:IDREF">
-      <xs:annotation>
-        <xs:documentation xml:lang="en">Reference to CaseStudy ID</xs:documentation>
-      </xs:annotation>
-    </xs:attribute>
-  </xs:complexType>
-  <xs:complexType name="EnvironmentalBenefitType">
-    <xs:sequence/>
-    <xs:attribute name="EnvironmentalBenefitRef" type="xs:IDREF">
-      <xs:annotation>
-        <xs:documentation xml:lang="en">Reference to EnvironmentalBenefit ID</xs:documentation>
-      </xs:annotation>
-    </xs:attribute>
-  </xs:complexType>
-  <xs:complexType name="MethodologyType">
-    <xs:sequence>
-      <xs:element name="language" ref="LinguisticSystemType" maxOccurs="1" minOccurs="0">
-        <xs:annotation>
-          <xs:documentation xml:lang="en">A language of the Methodology.</xs:documentation>
-        </xs:annotation>
-      </xs:element>
-      <xs:element name="name" type="xs:string" maxOccurs="1" minOccurs="1">
-        <xs:annotation>
-          <xs:documentation xml:lang="en">The title of the methodology.</xs:documentation>
-        </xs:annotation>
-      </xs:element>
-      <xs:element name="url" type="xs:anyURI" maxOccurs="1" minOccurs="0">
-        <xs:annotation>
-          <xs:documentation xml:lang="en">A web page of the Methodology.</xs:documentation>
-        </xs:annotation>
-      </xs:element>
-    </xs:sequence>
-    <xs:attribute name="MethodologyRef" type="xs:IDREF">
-      <xs:annotation>
-        <xs:documentation xml:lang="en">Reference to Methodology ID</xs:documentation>
-      </xs:annotation>
-    </xs:attribute>
   </xs:complexType>
   <xs:complexType name="ContactPointType">
     <xs:sequence>
@@ -466,6 +271,201 @@
     <xs:attribute name="OnlineAccountRef" type="xs:IDREF">
       <xs:annotation>
         <xs:documentation xml:lang="en">Reference to OnlineAccount ID</xs:documentation>
+      </xs:annotation>
+    </xs:attribute>
+  </xs:complexType>
+  <xs:complexType name="BenefitType">
+    <xs:sequence>
+      <xs:element name="functionalUnit" type="xs:string" maxOccurs="unbounded" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation xml:lang="en">The functional unit indicated in the Benefit.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="name" type="xs:string" maxOccurs="1" minOccurs="1">
+        <xs:annotation>
+          <xs:documentation xml:lang="en">The name of the Benefit.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="type" type="ConceptType" maxOccurs="1" minOccurs="1">
+        <xs:annotation>
+          <xs:documentation xml:lang="en">The type of benefit.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="unit" type="ConceptType" maxOccurs="1" minOccurs="1">
+        <xs:annotation>
+          <xs:documentation xml:lang="en">The unit of the amount value.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="value" type="xs:integer" maxOccurs="1" minOccurs="1">
+        <xs:annotation>
+          <xs:documentation xml:lang="en">The amount value.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+    </xs:sequence>
+    <xs:attribute name="BenefitRef" type="xs:IDREF">
+      <xs:annotation>
+        <xs:documentation xml:lang="en">Reference to Benefit ID</xs:documentation>
+      </xs:annotation>
+    </xs:attribute>
+  </xs:complexType>
+  <xs:complexType name="CaseStudyType">
+    <xs:sequence>
+      <xs:element name="address" ref="AddressType" maxOccurs="unbounded" minOccurs="1">
+        <xs:annotation>
+          <xs:documentation xml:lang="en">Associates any Resource with the corresponding Address.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="created" type="xs:date" maxOccurs="1" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation xml:lang="en">Date of creation of the resource.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="creator" ref="OnlineAccountType" maxOccurs="1" minOccurs="1">
+        <xs:annotation>
+          <xs:documentation xml:lang="en">An entity responsible for making the resource.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="fundingProgrammeUrl" type="xs:anyURI" maxOccurs="1" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation xml:lang="en">The url of the funding programme.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="fundingType" type="ConceptType" maxOccurs="1" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation xml:lang="en">The type of financing of the Case Study.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="hasBenefit" ref="BenefitType" maxOccurs="unbounded" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation xml:lang="en">The benefit measured by the case study.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="hasDataset" ref="DatasetType" maxOccurs="1" minOccurs="1">
+        <xs:annotation>
+          <xs:documentation xml:lang="en">The dataset attached to the Case Study.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="hasDocument" ref="DocumentType" maxOccurs="unbounded" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation xml:lang="en">A document providing additional information to the Case Study.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="hasEnvironmentalBenefit" ref="EnvironmentalBenefitType" maxOccurs="unbounded" minOccurs="1">
+        <xs:annotation>
+          <xs:documentation xml:lang="en">The benefit measured by the case study.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="hasMethodology" ref="MethodologyType" maxOccurs="1" minOccurs="1">
+        <xs:annotation>
+          <xs:documentation xml:lang="en">The methodology provided with the Case Study.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="isFundedBy" ref="OrganizationType" maxOccurs="unbounded" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation xml:lang="en">An entity responsible for the financial support.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="isProvidedBy" ref="OrganizationType" maxOccurs="unbounded" minOccurs="1">
+        <xs:annotation>
+          <xs:documentation xml:lang="en">An entity responsible for making the resource.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="isUsedBy" ref="OrganizationType" maxOccurs="unbounded" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation xml:lang="en">The entity using the solution.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="issueDate" type="xs:date" maxOccurs="1" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation xml:lang="en">Date of formal issuance of the resource.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="language" ref="LinguisticSystemType" maxOccurs="1" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation xml:lang="en">A language of the CaseStudy.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="logo" ref="ImageObjectType" maxOccurs="1" minOccurs="1">
+        <xs:annotation>
+          <xs:documentation xml:lang="en">A graphic symbol to represent the Case Study.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="longDescription" type="xs:string" maxOccurs="1" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation xml:lang="en">An extended description of the Case Study.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="name" type="xs:string" maxOccurs="1" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation xml:lang="en">A name given to the Case Study.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="problemSolved" type="xs:string" maxOccurs="1" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation xml:lang="en">The type of challenge the Case Study resolved.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="rejectionComment" type="xs:string" maxOccurs="1" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation xml:lang="en">The comment in case the CaseStudy is rejected.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="shortDescription" type="xs:string" maxOccurs="1" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation xml:lang="en">An account of the Case Study.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="status" type="ConceptType" maxOccurs="1" minOccurs="1">
+        <xs:annotation>
+          <xs:documentation xml:lang="en">The status of the Case Study.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="technology" type="ConceptType" maxOccurs="1" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation xml:lang="en">The type of equipment used by the Case Study.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="typeOfCalculation" type="ConceptType" maxOccurs="1" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation xml:lang="en">The Type of computation used for the Case Study.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+    </xs:sequence>
+    <xs:attribute name="CaseStudyRef" type="xs:IDREF">
+      <xs:annotation>
+        <xs:documentation xml:lang="en">Reference to CaseStudy ID</xs:documentation>
+      </xs:annotation>
+    </xs:attribute>
+  </xs:complexType>
+  <xs:complexType name="EnvironmentalBenefitType">
+    <xs:sequence/>
+    <xs:attribute name="EnvironmentalBenefitRef" type="xs:IDREF">
+      <xs:annotation>
+        <xs:documentation xml:lang="en">Reference to EnvironmentalBenefit ID</xs:documentation>
+      </xs:annotation>
+    </xs:attribute>
+  </xs:complexType>
+  <xs:complexType name="MethodologyType">
+    <xs:sequence>
+      <xs:element name="language" ref="LinguisticSystemType" maxOccurs="1" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation xml:lang="en">A language of the Methodology.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="name" type="xs:string" maxOccurs="1" minOccurs="1">
+        <xs:annotation>
+          <xs:documentation xml:lang="en">The title of the methodology.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="url" type="xs:anyURI" maxOccurs="1" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation xml:lang="en">A web page of the Methodology.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+    </xs:sequence>
+    <xs:attribute name="MethodologyRef" type="xs:IDREF">
+      <xs:annotation>
+        <xs:documentation xml:lang="en">Reference to Methodology ID</xs:documentation>
       </xs:annotation>
     </xs:attribute>
   </xs:complexType>
