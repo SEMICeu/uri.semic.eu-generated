@@ -24,6 +24,7 @@
   <xs:element name="Address" type="AddressType"/>
   <xs:element name="Person" type="PersonType"/>
   <xs:element name="Agent" type="AgentType"/>
+  <xs:element name="Document" type="DocumentType"/>
   <xs:simpleType name="Literal">
     <xs:restriction base="xs:string"/>
   </xs:simpleType>
@@ -49,7 +50,7 @@
           <xs:documentation xml:lang="en">	The association of a temporal entity (instant or interval) to any thing.</xs:documentation>
         </xs:annotation>
       </xs:element>
-      <xs:element name="homepage" maxOccurs="1" minOccurs="1">
+      <xs:element name="homepage" ref="DocumentType" maxOccurs="1" minOccurs="1">
         <xs:annotation>
           <xs:documentation xml:lang="en">The website of the Public Event.</xs:documentation>
         </xs:annotation>
@@ -199,7 +200,7 @@
           <xs:documentation xml:lang="en">An account of the resource.</xs:documentation>
         </xs:annotation>
       </xs:element>
-      <xs:element name="hasBeginning" maxOccurs="unbounded" minOccurs="0">
+      <xs:element name="hasBeginning" type="xs:date" maxOccurs="unbounded" minOccurs="0">
         <xs:annotation>
           <xs:documentation xml:lang="en">The beginning of a period or interval.</xs:documentation>
         </xs:annotation>
@@ -429,6 +430,11 @@
       <xs:element name="modified" type="xs:string" maxOccurs="unbounded" minOccurs="0">
         <xs:annotation>
           <xs:documentation xml:lang="en">Date on which the resource was changed.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="notificationMechanism" ref="AnyUriType" maxOccurs="unbounded" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation xml:lang="en">Information on the mechanism for notifying possibly non-compliant political advertisements, as required by Article 15(1) of Regulation (EU) 2024/900. This may be a URL to an online notification form, an email address, or a description of the notification process.</xs:documentation>
         </xs:annotation>
       </xs:element>
       <xs:element name="payingEntity" ref="AgentType" maxOccurs="unbounded" minOccurs="0">
@@ -674,6 +680,14 @@
     <xs:attribute name="AgentRef" type="xs:IDREF">
       <xs:annotation>
         <xs:documentation xml:lang="en">Reference to Agent ID</xs:documentation>
+      </xs:annotation>
+    </xs:attribute>
+  </xs:complexType>
+  <xs:complexType name="DocumentType">
+    <xs:sequence/>
+    <xs:attribute name="DocumentRef" type="xs:IDREF">
+      <xs:annotation>
+        <xs:documentation xml:lang="en">Reference to Document ID</xs:documentation>
       </xs:annotation>
     </xs:attribute>
   </xs:complexType>

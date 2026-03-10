@@ -284,6 +284,16 @@
       "usage": {
         "en": "Use this class to represent any natural or legal person acting as a sponsor, paying entity, or controlling entity in the context of political advertising. It is the common superclass of Person and LegalEntity."
       }
+    },
+    {
+      "EA-Guid": "{C5F58912-E841-41b6-A0BD-15498FADF539}",
+      "name": "Document",
+      "label": {
+        "en": "Document"
+      },
+      "definition": {
+        "en": "A document."
+      }
     }
   ],
   "externalproperties": [
@@ -418,6 +428,19 @@
       }
     },
     {
+      "EA-Guid": "{44E617E3-34D0-4ecb-8F6C-BF41D72AEEB4}",
+      "name": "origin",
+      "label": {
+        "en": "origin"
+      },
+      "definition": {
+        "en": "Indicates whether the origin of the funding is from the EU, from outside the EU."
+      },
+      "usage": {
+        "en": "Use a controlled vocabulary with values \"EU\", \"Non-EU\", or \"EU and non-EU\". If possible, align with official EU country groupings."
+      }
+    },
+    {
       "EA-Guid": "{D00C94AF-3883-407a-BA9A-2B8688733B0E}",
       "name": "hasCampaignFinancialInfo",
       "label": {
@@ -444,6 +467,19 @@
       }
     },
     {
+      "EA-Guid": "{207D622A-FAB7-410c-9B24-8F3499744642}",
+      "name": "hasElection",
+      "label": {
+        "en": "has election"
+      },
+      "definition": {
+        "en": "The election related to the event"
+      },
+      "usage": {
+        "en": "Links the political advertisement to an election event with which it has a clear and substantial link. The title, level, and date of the election must be disclosed in the transparency notice."
+      }
+    },
+    {
       "EA-Guid": "{9ED80D71-41A7-4714-8A99-50DE4F55F12B}",
       "name": "hasFunding",
       "label": {
@@ -457,29 +493,42 @@
       }
     },
     {
-      "EA-Guid": "{44E617E3-34D0-4ecb-8F6C-BF41D72AEEB4}",
-      "name": "origin",
+      "EA-Guid": "{11C61BBC-45BE-45f6-96DC-3092BF861F1A}",
+      "name": "hasInitiative",
       "label": {
-        "en": "origin"
+        "en": "has Initiative"
       },
       "definition": {
-        "en": "Indicates whether the origin of the funding is from the EU, from outside the EU."
+        "en": "The initiative related to the advertisement."
       },
       "usage": {
-        "en": "Use a controlled vocabulary with values \"EU\", \"Non-EU\", or \"EU and non-EU\". If possible, align with official EU country groupings."
+        "en": "Links the political advertisement to a legislative or regulatory initiative with which it has a clear and substantial link. The title and level of the initiative must be disclosed in the transparency notice."
       }
     },
     {
-      "EA-Guid": "{207D622A-FAB7-410c-9B24-8F3499744642}",
-      "name": "hasElection",
+      "EA-Guid": "{0CE9B2B0-E613-4208-9FE7-443B914D5EA1}",
+      "name": "hasPoliticalAdvertisement",
       "label": {
-        "en": "has election"
+        "en": "has political advertisement"
       },
       "definition": {
-        "en": "The election related to the event"
+        "en": "A paid communication intended to influence the outcome of an election or referendum, or to support or oppose a political party or candidate."
       },
       "usage": {
-        "en": "Links the political advertisement to an election event with which it has a clear and substantial link. The title, level, and date of the election must be disclosed in the transparency notice."
+        "en": "Links the Transparency Notice to the political advertisement it describes. Each transparency notice must be associated with exactly one political advertisement."
+      }
+    },
+    {
+      "EA-Guid": "{E6AA3219-1FA7-4389-94F0-724F7574AA35}",
+      "name": "hasPoliticalAdvertisementFinancialInfo",
+      "label": {
+        "en": "has political advertisement financial info"
+      },
+      "definition": {
+        "en": "Financial information related to the political advertisement."
+      },
+      "usage": {
+        "en": "Links the funding record to the financial information specific to this individual political advertisement. Mandatory in all transparency notices."
       }
     },
     {
@@ -496,16 +545,16 @@
       }
     },
     {
-      "EA-Guid": "{11C61BBC-45BE-45f6-96DC-3092BF861F1A}",
-      "name": "hasInitiative",
+      "EA-Guid": "{EBFAE396-9502-4464-A627-88964E25856E}",
+      "name": "hasTargeting",
       "label": {
-        "en": "has Initiative"
+        "en": "has targeting"
       },
       "definition": {
-        "en": "The initiative related to the advertisement."
+        "en": "Information about the targeting techniques and parameters used for the political advertisement."
       },
       "usage": {
-        "en": "Links the political advertisement to a legislative or regulatory initiative with which it has a clear and substantial link. The title and level of the initiative must be disclosed in the transparency notice."
+        "en": "Links the Transparency Notice to the targeting and ad-delivery information. Must be populated when the political advertisement uses targeting or ad-delivery techniques based on personal data."
       }
     },
     {
@@ -600,19 +649,6 @@
       }
     },
     {
-      "EA-Guid": "{E6E92036-9477-43ab-A966-7FF6A160FCE8}",
-      "name": "otherLevel",
-      "label": {
-        "en": "other level"
-      },
-      "definition": {
-        "en": "A description of the political or administrative level if not covered by the controlled vocabulary."
-      },
-      "usage": {
-        "en": "If the initiatives level does not fit standard categories."
-      }
-    },
-    {
       "EA-Guid": "{9088B907-DF11-494d-9211-BACAFCFB4D1B}",
       "name": "nature",
       "label": {
@@ -636,6 +672,19 @@
       },
       "usage": {
         "en": "Provide details of the previous suspension or discontinuation if previousNonComplianceExists is true, describing the nature of the infringement."
+      }
+    },
+    {
+      "EA-Guid": "{1D81F94C-DA22-46c5-AF0D-0C56E7C03A07}",
+      "name": "notificationMechanism",
+      "label": {
+        "en": "notification mechanism"
+      },
+      "definition": {
+        "en": "Information on the mechanism for notifying possibly non-compliant political advertisements, as required by Article 15(1) of Regulation (EU) 2024/900. This may be a URL to an online notification form, an email address, or a description of the notification process."
+      },
+      "usage": {
+        "en": "Provide a URL, email address, or other contact method where individuals can notify the publisher or competent authority about possibly non-compliant political advertisements. If the notification mechanism is online, the link should be described as Notify possibly non-compliant political advertisements."
       }
     },
     {
@@ -665,6 +714,19 @@
       }
     },
     {
+      "EA-Guid": "{E6E92036-9477-43ab-A966-7FF6A160FCE8}",
+      "name": "otherLevel",
+      "label": {
+        "en": "other level"
+      },
+      "definition": {
+        "en": "A description of the political or administrative level if not covered by the controlled vocabulary."
+      },
+      "usage": {
+        "en": "If the initiatives level does not fit standard categories."
+      }
+    },
+    {
       "EA-Guid": "{829D783E-E82F-4538-BC08-EFAF3220498C}",
       "name": "otherRelevantInformation",
       "label": {
@@ -688,32 +750,6 @@
       },
       "usage": {
         "en": "Links the Transparency Notice to the natural or legal person that provided remuneration in exchange for the political advertisement, if different from the sponsor or the entity ultimately controlling the sponsor."
-      }
-    },
-    {
-      "EA-Guid": "{0CE9B2B0-E613-4208-9FE7-443B914D5EA1}",
-      "name": "hasPoliticalAdvertisement",
-      "label": {
-        "en": "has political advertisement"
-      },
-      "definition": {
-        "en": "A paid communication intended to influence the outcome of an election or referendum, or to support or oppose a political party or candidate."
-      },
-      "usage": {
-        "en": "Links the Transparency Notice to the political advertisement it describes. Each transparency notice must be associated with exactly one political advertisement."
-      }
-    },
-    {
-      "EA-Guid": "{E6AA3219-1FA7-4389-94F0-724F7574AA35}",
-      "name": "hasPoliticalAdvertisementFinancialInfo",
-      "label": {
-        "en": "has political advertisement financial info"
-      },
-      "definition": {
-        "en": "Financial information related to the political advertisement."
-      },
-      "usage": {
-        "en": "Links the funding record to the financial information specific to this individual political advertisement. Mandatory in all transparency notices."
       }
     },
     {
@@ -792,19 +828,6 @@
       },
       "usage": {
         "en": "Record the compliance status of the political advertisement. If the advertisement or an earlier version has been suspended or discontinued due to an infringement, indicate this here."
-      }
-    },
-    {
-      "EA-Guid": "{EBFAE396-9502-4464-A627-88964E25856E}",
-      "name": "hasTargeting",
-      "label": {
-        "en": "has targeting"
-      },
-      "definition": {
-        "en": "Information about the targeting techniques and parameters used for the political advertisement."
-      },
-      "usage": {
-        "en": "Links the Transparency Notice to the targeting and ad-delivery information. Must be populated when the political advertisement uses targeting or ad-delivery techniques based on personal data."
       }
     },
     {
