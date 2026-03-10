@@ -17,8 +17,8 @@
     },
     "status": "Draft",
     "statuslabel": "Onbekend",
-    "repositoryurl": "git@uri.semic.eu-thema:SEMICeu/uri.semic.eu-thema.git/tree/f6dd7af8992a13795188200bb5f591a13846e3a0",
-    "changelogurl": "git@uri.semic.eu-thema:SEMICeu/uri.semic.eu-thema.git/blob/f6dd7af8992a13795188200bb5f591a13846e3a0/CHANGELOG",
+    "repositoryurl": "git@uri.semic.eu-thema:SEMICeu/uri.semic.eu-thema.git/tree/b36bc852f9702c7ee0d2f188e3b3ac807bb4a07b",
+    "changelogurl": "git@uri.semic.eu-thema:SEMICeu/uri.semic.eu-thema.git/blob/b36bc852f9702c7ee0d2f188e3b3ac807bb4a07b/CHANGELOG",
     "feedbackurl": "https://github.com/SEMICeu/ADM/issues",
     "standaardregisterurl": "https://github.com/SEMICeu/ADM/blob/master/releases/0.0.2/Changelog.md",
     "usesVocs": [],
@@ -556,11 +556,11 @@
     },
     {
       "uri": "https://w3id.org/adm/model/KeyExpert",
-      "name": "Keyexpert",
+      "name": "KeyExpert",
       "label": {
-        "en": "KeyExpert"
+        "en": "Key Expert"
       },
-      "sort": "KeyExpert",
+      "sort": "Key Expert",
       "description": {
         "en": "The entity getting benefit from a contract"
       },
@@ -576,7 +576,7 @@
       ],
       "rawTags": {
         "uri": "https://w3id.org/adm/model/KeyExpert",
-        "label-en": "KeyExpert",
+        "label-en": "Key Expert",
         "definition-en": "The entity getting benefit from a contract"
       },
       "properties": []
@@ -816,6 +816,33 @@
       "properties": []
     },
     {
+      "uri": "https://w3id.org/adm/model/SubContractor",
+      "name": "Subcontractor",
+      "label": {
+        "en": "Subcontractor"
+      },
+      "sort": "Subcontractor",
+      "description": {
+        "en": "The entity participating into the subcontract."
+      },
+      "usage": {},
+      "parents": [
+        {
+          "label": "Agent In Role",
+          "name": "AgentInRole",
+          "package": "epo",
+          "uri": "http://data.europa.eu/a4g/ontology#AgentInRole",
+          "scoped_uri": "#Agent In Role"
+        }
+      ],
+      "rawTags": {
+        "definition-en": "The entity participating into the subcontract.",
+        "label-en": "Subcontractor",
+        "uri": "https://w3id.org/adm/model/SubContractor"
+      },
+      "properties": []
+    },
+    {
       "uri": "https://w3id.org/adm/model/Subcontract",
       "name": "Subcontract",
       "label": {
@@ -834,6 +861,46 @@
         "class-usage-scope": "main"
       },
       "properties": [
+        {
+          "uri": "https://w3id.org/adm/model/amount",
+          "name": "amount",
+          "sort": "amount",
+          "label": {
+            "en": "amount"
+          },
+          "description": {
+            "en": "The total amount of the subcontract."
+          },
+          "usage": {},
+          "domain": [
+            {
+              "EA-Name": "Subcontract",
+              "uri": "https://w3id.org/adm/model/Subcontract"
+            }
+          ],
+          "range": [
+            {
+              "range_label": "MonetaryValue",
+              "range_uri": "http://data.europa.eu/a4g/ontology#MonetaryValue"
+            }
+          ],
+          "scopedrange": [
+            {
+              "range_uri": "#Monetary Value",
+              "range_puri": "http://data.europa.eu/a4g/ontology#MonetaryValue",
+              "range_label": {
+                "en": "Monetary Value"
+              }
+            }
+          ],
+          "cardinality": "0..1",
+          "codelist_uri": "",
+          "rawTags": {
+            "uri": "https://w3id.org/adm/model/amount",
+            "label-en": "amount",
+            "definition-en": "The total amount of the subcontract."
+          }
+        },
         {
           "uri": "http://purl.org/dc/terms/isPartOf",
           "name": "isPartOf",
@@ -872,6 +939,83 @@
             "definition-en": "A related resource in which the described resource is physically or logically included.",
             "label-en": "is part of",
             "uri": "http://purl.org/dc/terms/isPartOf"
+          }
+        },
+        {
+          "uri": "http://www.w3.org/ns/adms#identifier",
+          "name": "identifier",
+          "sort": "identifier",
+          "label": {
+            "en": "identifier"
+          },
+          "description": {},
+          "usage": {},
+          "domain": [
+            {
+              "EA-Name": "Subcontract",
+              "uri": "https://w3id.org/adm/model/Subcontract"
+            }
+          ],
+          "range": [
+            {
+              "range_label": "Identifier",
+              "range_uri": "http://www.w3.org/ns/adms#Identifier"
+            }
+          ],
+          "scopedrange": [
+            {
+              "range_uri": "#Identifier",
+              "range_puri": "http://www.w3.org/ns/adms#Identifier",
+              "range_label": {
+                "en": "Identifier"
+              }
+            }
+          ],
+          "cardinality": "1",
+          "codelist_uri": "",
+          "rawTags": {
+            "label-en": "identifier",
+            "uri": "Links a resource to an adms:Identifier class."
+          }
+        },
+        {
+          "uri": "https://w3id.org/adm/model/hasSubContractor",
+          "name": "hasSubcontractor",
+          "sort": "has subcontractor",
+          "label": {
+            "en": "has subcontractor"
+          },
+          "description": {
+            "en": "Sub Contractor assigned on a subcontract."
+          },
+          "usage": {},
+          "domain": [
+            {
+              "EA-Name": "Subcontract",
+              "uri": "https://w3id.org/adm/model/Subcontract"
+            }
+          ],
+          "range": [
+            {
+              "range_label": "SubContractor",
+              "range_uri": "https://w3id.org/adm/model/SubContractor"
+            }
+          ],
+          "scopedrange": [
+            {
+              "range_uri": "#Subcontractor",
+              "range_puri": "https://w3id.org/adm/model/SubContractor",
+              "range_label": {
+                "en": "Subcontractor"
+              }
+            }
+          ],
+          "cardinality": "1",
+          "codelist_uri": "",
+          "rawTags": {
+            "uri": "https://w3id.org/adm/model/hasSubContractor",
+            "definition-en": "Sub Contractor assigned on a subcontract.",
+            "label-en": "has subcontractor"
           }
         }
       ]
@@ -1226,13 +1370,13 @@
           "range": [
             {
               "range_label": "Project",
-              "range_uri": "http://dbpedia.org/ontology/Project"
+              "range_uri": "http://xmlns.com/foaf/0.1/Project"
             }
           ],
           "scopedrange": [
             {
               "range_uri": "#Project",
-              "range_puri": "http://dbpedia.org/ontology/Project",
+              "range_puri": "http://xmlns.com/foaf/0.1/Project",
               "range_label": {
                 "en": "Project"
               }
@@ -1244,6 +1388,44 @@
             "definition-en": "The project in which a contract is executed.",
             "uri": "https://w3id.org/adm/model/belongsTo",
             "label-en": "belongs to"
+          }
+        },
+        {
+          "uri": "https://w3id.org/adm/model/hasConsortiumMember",
+          "name": "",
+          "sort": "",
+          "label": {},
+          "description": {
+            "en": "Member of the consortium assigned on a contract."
+          },
+          "usage": {},
+          "domain": [
+            {
+              "EA-Name": "Contract",
+              "uri": "http://data.europa.eu/a4g/ontology#Contract"
+            }
+          ],
+          "range": [
+            {
+              "range_label": "Consortium Member",
+              "range_uri": "https://w3id.org/adm/model/ConsortiumMember"
+            }
+          ],
+          "scopedrange": [
+            {
+              "range_uri": "#Consortium Member",
+              "range_puri": "https://w3id.org/adm/model/ConsortiumMember",
+              "range_label": {
+                "en": "Consortium Member"
+              }
+            }
+          ],
+          "cardinality": "0..*",
+          "codelist_uri": "",
+          "rawTags": {
+            "uri": "https://w3id.org/adm/model/hasConsortiumMember",
+            "definition-en": "Member of the consortium assigned on a contract.",
+            "label-": "has Consortium Member"
           }
         },
         {
@@ -1328,13 +1510,13 @@
         },
         {
           "uri": "https://w3id.org/adm/model/hasKeyExpert",
-          "name": "hasKeyexpert",
-          "sort": "has KeyExpert",
+          "name": "hasKeyExpert",
+          "sort": "has Key Expert",
           "label": {
-            "en": "has KeyExpert"
+            "en": "has Key Expert"
           },
           "description": {
-            "en": "Expert assigned on a contract"
+            "en": "Expert assigned on a contract."
           },
           "usage": {},
           "domain": [
@@ -1351,10 +1533,10 @@
           ],
           "scopedrange": [
             {
-              "range_uri": "#KeyExpert",
+              "range_uri": "#Key Expert",
               "range_puri": "https://w3id.org/adm/model/KeyExpert",
               "range_label": {
-                "en": "KeyExpert"
+                "en": "Key Expert"
               }
             }
           ],
@@ -1362,8 +1544,8 @@
           "codelist_uri": "",
           "rawTags": {
             "uri": "https://w3id.org/adm/model/hasKeyExpert",
-            "label-en": "has KeyExpert",
-            "definition-en": "Expert assigned on a contract"
+            "label-en": "has Key Expert",
+            "definition-en": "Expert assigned on a contract."
           }
         },
         {
@@ -1885,508 +2067,61 @@
       ]
     },
     {
-      "uri": "http://dbpedia.org/ontology/Project",
-      "name": "Project",
+      "uri": "http://purl.org/cerif/frapo/FundingProgramme",
+      "name": "FundingProgramme",
       "label": {
-        "en": "Project"
+        "en": "Funding Programme"
       },
-      "sort": "Project",
+      "sort": "Funding Programme",
       "description": {
-        "en": "A project is a temporary endeavor undertaken to achieve defined objectives."
+        "en": "A programme of related funded activities or projects, typically established by a funding agency. Often associated with publication of a call for applications (fabio:CallForApplications)."
       },
       "usage": {},
       "parents": [],
       "rawTags": {
-        "uri": "http://dbpedia.org/ontology/Project",
-        "label-en": "Project",
-        "class-usage-scope": "main",
-        "definition-en": "A project is a temporary endeavor undertaken to achieve defined objectives."
+        "definition-en": "A programme of related funded activities or projects, typically established by a funding agency. Often associated with publication of a call for applications (fabio:CallForApplications).",
+        "uri": "http://purl.org/cerif/frapo/FundingProgramme",
+        "label-en": "Funding Programme"
       },
       "properties": [
         {
-          "uri": "https://w3id.org/adm/model/ECFinancialAssistance",
-          "name": "ecFinancialAssistance",
-          "sort": "EC financial assistance",
+          "uri": "https://w3id.org/adm/model/hasProject",
+          "name": "hasProject",
+          "sort": "has project",
           "label": {
-            "en": "EC financial assistance"
+            "en": "has project"
           },
           "description": {
-            "en": "Amount of the contribution financed by the EC."
+            "en": "The reference to a project within a programme."
           },
           "usage": {},
           "domain": [
             {
-              "EA-Name": "Project",
-              "uri": "http://dbpedia.org/ontology/Project"
+              "EA-Name": "FundingProgramme",
+              "uri": "http://purl.org/cerif/frapo/FundingProgramme"
             }
           ],
           "range": [
             {
-              "range_label": "MonetaryValue",
-              "range_uri": "http://data.europa.eu/a4g/ontology#MonetaryValue"
+              "range_label": "Project",
+              "range_uri": "http://xmlns.com/foaf/0.1/Project"
             }
           ],
           "scopedrange": [
             {
-              "range_uri": "#Monetary Value",
-              "range_puri": "http://data.europa.eu/a4g/ontology#MonetaryValue",
+              "range_uri": "#Project",
+              "range_puri": "http://xmlns.com/foaf/0.1/Project",
               "range_label": {
-                "en": "Monetary Value"
+                "en": "Project"
               }
             }
           ],
-          "cardinality": "0..1",
+          "cardinality": "1..*",
           "codelist_uri": "",
           "rawTags": {
-            "uri": "https://w3id.org/adm/model/ECFinancialAssistance",
-            "label-en": "EC financial assistance",
-            "definition-en": "Amount of the contribution financed by the EC."
-          }
-        },
-        {
-          "uri": "https://w3id.org/adm/model/income",
-          "name": "income",
-          "sort": "income",
-          "label": {
-            "en": "income"
-          },
-          "description": {
-            "en": "Amount of revenues generated by the project."
-          },
-          "usage": {},
-          "domain": [
-            {
-              "EA-Name": "Project",
-              "uri": "http://dbpedia.org/ontology/Project"
-            }
-          ],
-          "range": [
-            {
-              "range_label": "MonetaryValue",
-              "range_uri": "http://data.europa.eu/a4g/ontology#MonetaryValue"
-            }
-          ],
-          "scopedrange": [
-            {
-              "range_uri": "#Monetary Value",
-              "range_puri": "http://data.europa.eu/a4g/ontology#MonetaryValue",
-              "range_label": {
-                "en": "Monetary Value"
-              }
-            }
-          ],
-          "cardinality": "0..1",
-          "codelist_uri": "",
-          "rawTags": {
-            "uri": "https://w3id.org/adm/model/income",
-            "label-en": "income",
-            "definition-en": "Amount of revenues generated by the project."
-          }
-        },
-        {
-          "uri": "https://w3id.org/adm/model/otherContributions",
-          "name": "otherContributions",
-          "sort": "other contributions",
-          "label": {
-            "en": "other contributions"
-          },
-          "description": {
-            "en": "Amount of the other contributions to the project."
-          },
-          "usage": {},
-          "domain": [
-            {
-              "EA-Name": "Project",
-              "uri": "http://dbpedia.org/ontology/Project"
-            }
-          ],
-          "range": [
-            {
-              "range_label": "MonetaryValue",
-              "range_uri": "http://data.europa.eu/a4g/ontology#MonetaryValue"
-            }
-          ],
-          "scopedrange": [
-            {
-              "range_uri": "#Monetary Value",
-              "range_puri": "http://data.europa.eu/a4g/ontology#MonetaryValue",
-              "range_label": {
-                "en": "Monetary Value"
-              }
-            }
-          ],
-          "cardinality": "0..1",
-          "codelist_uri": "",
-          "rawTags": {
-            "uri": "https://w3id.org/adm/model/otherContributions",
-            "label-en": "other contributions",
-            "definition-en": "Amount of the other contributions to the project."
-          }
-        },
-        {
-          "uri": "https://w3id.org/adm/model/thematicObjective",
-          "name": "thematicObjective",
-          "sort": "thematic objective",
-          "label": {
-            "en": "thematic objective"
-          },
-          "description": {
-            "en": "A classification of the project."
-          },
-          "usage": {
-            "en": "The recommended codelist is the <a href= \"#list-project-thematicObjective\" >Thematic Objective</a> list."
-          },
-          "domain": [
-            {
-              "EA-Name": "Project",
-              "uri": "http://dbpedia.org/ontology/Project"
-            }
-          ],
-          "range": [
-            {
-              "range_label": "Code",
-              "range_uri": "http://www.w3.org/2004/02/skos/core#Concept"
-            }
-          ],
-          "scopedrange": [
-            {
-              "range_uri": "#Code",
-              "range_puri": "http://www.w3.org/2004/02/skos/core#Concept",
-              "range_label": {
-                "en": "Code"
-              }
-            }
-          ],
-          "cardinality": "1",
-          "codelist_uri": "",
-          "rawTags": {
-            "uri": "https://w3id.org/adm/model/thematicObjective",
-            "label-en": "thematic objective",
-            "definition-en": "A classification of the project.",
-            "usageNote-en": "The recommended codelist is the <a href= \"#list-project-thematicObjective\" >Thematic Objective</a> list."
-          }
-        },
-        {
-          "uri": "https://w3id.org/adm/model/totalCost",
-          "name": "totalCost",
-          "sort": "total cost",
-          "label": {
-            "en": "total cost"
-          },
-          "description": {
-            "en": "Total amount of the project as agreed on the project application."
-          },
-          "usage": {},
-          "domain": [
-            {
-              "EA-Name": "Project",
-              "uri": "http://dbpedia.org/ontology/Project"
-            }
-          ],
-          "range": [
-            {
-              "range_label": "MonetaryValue",
-              "range_uri": "http://data.europa.eu/a4g/ontology#MonetaryValue"
-            }
-          ],
-          "scopedrange": [
-            {
-              "range_uri": "#Monetary Value",
-              "range_puri": "http://data.europa.eu/a4g/ontology#MonetaryValue",
-              "range_label": {
-                "en": "Monetary Value"
-              }
-            }
-          ],
-          "cardinality": "1",
-          "codelist_uri": "",
-          "rawTags": {
-            "uri": "https://w3id.org/adm/model/totalCost",
-            "label-en": "total cost",
-            "definition-en": "Total amount of the project as agreed on the project application."
-          }
-        },
-        {
-          "uri": "http://dbpedia.org/ontology/projectEndDate",
-          "name": "endDate",
-          "sort": "end date",
-          "label": {
-            "en": "end date"
-          },
-          "description": {
-            "en": "The end date of the project."
-          },
-          "usage": {},
-          "domain": [
-            {
-              "EA-Name": "Project",
-              "uri": "http://dbpedia.org/ontology/Project"
-            }
-          ],
-          "range": [
-            {
-              "range_label": "Date",
-              "range_uri": "http://www.w3.org/2001/XMLSchema#date"
-            }
-          ],
-          "scopedrange": [
-            {
-              "range_uri": "#Date",
-              "range_puri": "http://www.w3.org/2001/XMLSchema#date",
-              "range_label": {
-                "en": "Date"
-              }
-            }
-          ],
-          "cardinality": "0..1",
-          "codelist_uri": "",
-          "rawTags": {
-            "uri": "http://dbpedia.org/ontology/projectEndDate",
-            "label-en": "end date",
-            "definition-en": "The end date of the project."
-          }
-        },
-        {
-          "uri": "http://dbpedia.org/ontology/projectStartDate",
-          "name": "startDate",
-          "sort": "start date",
-          "label": {
-            "en": "start date"
-          },
-          "description": {
-            "en": "The start date of the project."
-          },
-          "usage": {},
-          "domain": [
-            {
-              "EA-Name": "Project",
-              "uri": "http://dbpedia.org/ontology/Project"
-            }
-          ],
-          "range": [
-            {
-              "range_label": "Date",
-              "range_uri": "http://www.w3.org/2001/XMLSchema#date"
-            }
-          ],
-          "scopedrange": [
-            {
-              "range_uri": "#Date",
-              "range_puri": "http://www.w3.org/2001/XMLSchema#date",
-              "range_label": {
-                "en": "Date"
-              }
-            }
-          ],
-          "cardinality": "0..1",
-          "codelist_uri": "",
-          "rawTags": {
-            "uri": "http://dbpedia.org/ontology/projectStartDate",
-            "label-en": "start date",
-            "definition-en": "The start date of the project."
-          }
-        },
-        {
-          "uri": "http://www.w3.org/2000/01/rdf-schema#label",
-          "name": "title",
-          "sort": "title",
-          "label": {
-            "en": "title"
-          },
-          "description": {
-            "en": "A human-readable version of a resource's name."
-          },
-          "usage": {},
-          "domain": [
-            {
-              "EA-Name": "Project",
-              "uri": "http://dbpedia.org/ontology/Project"
-            }
-          ],
-          "range": [
-            {
-              "range_label": "Text",
-              "range_uri": "http://www.w3.org/1999/02/22-rdf-syntax-ns#langString"
-            }
-          ],
-          "scopedrange": [
-            {
-              "range_uri": "#Text",
-              "range_puri": "http://www.w3.org/1999/02/22-rdf-syntax-ns#langString",
-              "range_label": {
-                "en": "Text"
-              }
-            }
-          ],
-          "cardinality": "1",
-          "codelist_uri": "",
-          "rawTags": {
-            "uri": "http://www.w3.org/2000/01/rdf-schema#label",
-            "label-en": "title",
-            "definition-en": "A human-readable version of a resource's name."
-          }
-        },
-        {
-          "uri": "http://www.w3.org/ns/adms#identifier",
-          "name": "identifier",
-          "sort": "identifier",
-          "label": {
-            "en": "identifier"
-          },
-          "description": {
-            "en": "Links a resource to an adms:Identifier class."
-          },
-          "usage": {},
-          "domain": [
-            {
-              "EA-Name": "Project",
-              "uri": "http://dbpedia.org/ontology/Project"
-            }
-          ],
-          "range": [
-            {
-              "range_label": "Identifier",
-              "range_uri": "http://www.w3.org/ns/adms#Identifier"
-            }
-          ],
-          "scopedrange": [
-            {
-              "range_uri": "#Identifier",
-              "range_puri": "http://www.w3.org/ns/adms#Identifier",
-              "range_label": {
-                "en": "Identifier"
-              }
-            }
-          ],
-          "cardinality": "1",
-          "codelist_uri": "",
-          "rawTags": {
-            "uri": "http://www.w3.org/ns/adms#identifier",
-            "label-en": "identifier",
-            "definition-en": "Links a resource to an adms:Identifier class."
-          }
-        },
-        {
-          "uri": "http://www.w3.org/ns/adms#status",
-          "name": "status",
-          "sort": "status",
-          "label": {
-            "en": "status"
-          },
-          "description": {
-            "en": "The status of the Asset in the context of a particular workflow process."
-          },
-          "usage": {
-            "en": "The recommended codelist is the <a href= \"#list-project-status\" >Status</a> list."
-          },
-          "domain": [
-            {
-              "EA-Name": "Project",
-              "uri": "http://dbpedia.org/ontology/Project"
-            }
-          ],
-          "range": [
-            {
-              "range_label": "Code",
-              "range_uri": "http://www.w3.org/2004/02/skos/core#Concept"
-            }
-          ],
-          "scopedrange": [
-            {
-              "range_uri": "#Code",
-              "range_puri": "http://www.w3.org/2004/02/skos/core#Concept",
-              "range_label": {
-                "en": "Code"
-              }
-            }
-          ],
-          "cardinality": "1",
-          "codelist_uri": "",
-          "rawTags": {
-            "uri": "http://www.w3.org/ns/adms#status",
-            "label-en": "status",
-            "definition-en": "The status of the Asset in the context of a particular workflow process.",
-            "usageNote-en": "The recommended codelist is the <a href= \"#list-project-status\" >Status</a> list."
-          }
-        },
-        {
-          "uri": "https://w3id.org/adm/model/hasBeneficiary",
-          "name": "hasBeneficiary",
-          "sort": "has beneficiary",
-          "label": {
-            "en": "has beneficiary"
-          },
-          "description": {
-            "en": "The beneficiary of a project."
-          },
-          "usage": {},
-          "domain": [
-            {
-              "EA-Name": "Project",
-              "uri": "http://dbpedia.org/ontology/Project"
-            }
-          ],
-          "range": [
-            {
-              "range_label": "Beneficiary",
-              "range_uri": "https://w3id.org/adm/model/Beneficiary"
-            }
-          ],
-          "scopedrange": [
-            {
-              "range_uri": "#Beneficiary",
-              "range_puri": "https://w3id.org/adm/model/Beneficiary",
-              "range_label": {
-                "en": "Beneficiary"
-              }
-            }
-          ],
-          "cardinality": "1",
-          "codelist_uri": "",
-          "rawTags": {
-            "uri": "https://w3id.org/adm/model/hasBeneficiary",
-            "definition-en": "The beneficiary of a project.",
-            "label-en": "has beneficiary"
-          }
-        },
-        {
-          "uri": "https://w3id.org/adm/model/hasBlock",
-          "name": "hasBlock",
-          "sort": "has block",
-          "label": {
-            "en": "has block"
-          },
-          "description": {
-            "en": "Reference to the type of the project."
-          },
-          "usage": {},
-          "domain": [
-            {
-              "EA-Name": "Project",
-              "uri": "http://dbpedia.org/ontology/Project"
-            }
-          ],
-          "range": [
-            {
-              "range_label": "Block",
-              "range_uri": "https://w3id.org/adm/model/Block"
-            }
-          ],
-          "scopedrange": [
-            {
-              "range_uri": "#Block",
-              "range_puri": "https://w3id.org/adm/model/Block",
-              "range_label": {
-                "en": "Block"
-              }
-            }
-          ],
-          "cardinality": "1",
-          "codelist_uri": "",
-          "rawTags": {
-            "definition-en": "Reference to the type of the project.",
-            "uri": "https://w3id.org/adm/model/hasBlock",
-            "label-en": "has block"
+            "definition-en": "The reference to a project within a programme.",
+            "uri": "https://w3id.org/adm/model/hasProject",
+            "label-en": "has project"
           }
         }
       ]
@@ -2929,6 +2664,513 @@
           }
         }
       ]
+    },
+    {
+      "uri": "http://xmlns.com/foaf/0.1/Project",
+      "name": "Project",
+      "label": {
+        "en": "Project"
+      },
+      "sort": "Project",
+      "description": {
+        "en": "A project (a collective endeavour of some kind)."
+      },
+      "usage": {},
+      "parents": [],
+      "rawTags": {
+        "uri": "http://xmlns.com/foaf/0.1/Project",
+        "label-en": "Project",
+        "class-usage-scope": "main",
+        "definition-en": "A project (a collective endeavour of some kind)."
+      },
+      "properties": [
+        {
+          "uri": "https://w3id.org/adm/model/ECFinancialAssistance",
+          "name": "ecFinancialAssistance",
+          "sort": "EC financial assistance",
+          "label": {
+            "en": "EC financial assistance"
+          },
+          "description": {
+            "en": "Amount of the contribution financed by the EC."
+          },
+          "usage": {},
+          "domain": [
+            {
+              "EA-Name": "Project",
+              "uri": "http://xmlns.com/foaf/0.1/Project"
+            }
+          ],
+          "range": [
+            {
+              "range_label": "MonetaryValue",
+              "range_uri": "http://data.europa.eu/a4g/ontology#MonetaryValue"
+            }
+          ],
+          "scopedrange": [
+            {
+              "range_uri": "#Monetary Value",
+              "range_puri": "http://data.europa.eu/a4g/ontology#MonetaryValue",
+              "range_label": {
+                "en": "Monetary Value"
+              }
+            }
+          ],
+          "cardinality": "0..1",
+          "codelist_uri": "",
+          "rawTags": {
+            "uri": "https://w3id.org/adm/model/ECFinancialAssistance",
+            "label-en": "EC financial assistance",
+            "definition-en": "Amount of the contribution financed by the EC."
+          }
+        },
+        {
+          "uri": "https://w3id.org/adm/model/income",
+          "name": "income",
+          "sort": "income",
+          "label": {
+            "en": "income"
+          },
+          "description": {
+            "en": "Amount of revenues generated by the project."
+          },
+          "usage": {},
+          "domain": [
+            {
+              "EA-Name": "Project",
+              "uri": "http://xmlns.com/foaf/0.1/Project"
+            }
+          ],
+          "range": [
+            {
+              "range_label": "MonetaryValue",
+              "range_uri": "http://data.europa.eu/a4g/ontology#MonetaryValue"
+            }
+          ],
+          "scopedrange": [
+            {
+              "range_uri": "#Monetary Value",
+              "range_puri": "http://data.europa.eu/a4g/ontology#MonetaryValue",
+              "range_label": {
+                "en": "Monetary Value"
+              }
+            }
+          ],
+          "cardinality": "0..1",
+          "codelist_uri": "",
+          "rawTags": {
+            "uri": "https://w3id.org/adm/model/income",
+            "label-en": "income",
+            "definition-en": "Amount of revenues generated by the project."
+          }
+        },
+        {
+          "uri": "https://w3id.org/adm/model/otherContributions",
+          "name": "otherContributions",
+          "sort": "other contributions",
+          "label": {
+            "en": "other contributions"
+          },
+          "description": {
+            "en": "Amount of the other contributions to the project."
+          },
+          "usage": {},
+          "domain": [
+            {
+              "EA-Name": "Project",
+              "uri": "http://xmlns.com/foaf/0.1/Project"
+            }
+          ],
+          "range": [
+            {
+              "range_label": "MonetaryValue",
+              "range_uri": "http://data.europa.eu/a4g/ontology#MonetaryValue"
+            }
+          ],
+          "scopedrange": [
+            {
+              "range_uri": "#Monetary Value",
+              "range_puri": "http://data.europa.eu/a4g/ontology#MonetaryValue",
+              "range_label": {
+                "en": "Monetary Value"
+              }
+            }
+          ],
+          "cardinality": "0..1",
+          "codelist_uri": "",
+          "rawTags": {
+            "uri": "https://w3id.org/adm/model/otherContributions",
+            "label-en": "other contributions",
+            "definition-en": "Amount of the other contributions to the project."
+          }
+        },
+        {
+          "uri": "https://w3id.org/adm/model/thematicObjective",
+          "name": "thematicObjective",
+          "sort": "thematic objective",
+          "label": {
+            "en": "thematic objective"
+          },
+          "description": {
+            "en": "A classification of the project."
+          },
+          "usage": {
+            "en": "The recommended codelist is the <a href= \"#list-project-thematicObjective\" >Thematic Objective</a> list."
+          },
+          "domain": [
+            {
+              "EA-Name": "Project",
+              "uri": "http://xmlns.com/foaf/0.1/Project"
+            }
+          ],
+          "range": [
+            {
+              "range_label": "Code",
+              "range_uri": "http://www.w3.org/2004/02/skos/core#Concept"
+            }
+          ],
+          "scopedrange": [
+            {
+              "range_uri": "#Code",
+              "range_puri": "http://www.w3.org/2004/02/skos/core#Concept",
+              "range_label": {
+                "en": "Code"
+              }
+            }
+          ],
+          "cardinality": "1",
+          "codelist_uri": "",
+          "rawTags": {
+            "uri": "https://w3id.org/adm/model/thematicObjective",
+            "label-en": "thematic objective",
+            "definition-en": "A classification of the project.",
+            "usageNote-en": "The recommended codelist is the <a href= \"#list-project-thematicObjective\" >Thematic Objective</a> list."
+          }
+        },
+        {
+          "uri": "https://w3id.org/adm/model/totalCost",
+          "name": "totalCost",
+          "sort": "total cost",
+          "label": {
+            "en": "total cost"
+          },
+          "description": {
+            "en": "Total amount of the project as agreed on the project application."
+          },
+          "usage": {},
+          "domain": [
+            {
+              "EA-Name": "Project",
+              "uri": "http://xmlns.com/foaf/0.1/Project"
+            }
+          ],
+          "range": [
+            {
+              "range_label": "MonetaryValue",
+              "range_uri": "http://data.europa.eu/a4g/ontology#MonetaryValue"
+            }
+          ],
+          "scopedrange": [
+            {
+              "range_uri": "#Monetary Value",
+              "range_puri": "http://data.europa.eu/a4g/ontology#MonetaryValue",
+              "range_label": {
+                "en": "Monetary Value"
+              }
+            }
+          ],
+          "cardinality": "1",
+          "codelist_uri": "",
+          "rawTags": {
+            "uri": "https://w3id.org/adm/model/totalCost",
+            "label-en": "total cost",
+            "definition-en": "Total amount of the project as agreed on the project application."
+          }
+        },
+        {
+          "uri": "http://purl.org/cerif/frapo/hasEndDate",
+          "name": "hasEndDate",
+          "sort": "has end date",
+          "label": {
+            "en": "has end date"
+          },
+          "description": {
+            "en": "A data property linking something such as a project to its end date."
+          },
+          "usage": {},
+          "domain": [
+            {
+              "EA-Name": "Project",
+              "uri": "http://xmlns.com/foaf/0.1/Project"
+            }
+          ],
+          "range": [
+            {
+              "range_label": "Date",
+              "range_uri": "http://www.w3.org/2001/XMLSchema#date"
+            }
+          ],
+          "scopedrange": [
+            {
+              "range_uri": "#Date",
+              "range_puri": "http://www.w3.org/2001/XMLSchema#date",
+              "range_label": {
+                "en": "Date"
+              }
+            }
+          ],
+          "cardinality": "0..1",
+          "codelist_uri": "",
+          "rawTags": {
+            "uri": "http://purl.org/cerif/frapo/hasEndDate",
+            "label-en": "has end date",
+            "definition-en": "A data property linking something such as a project to its end date."
+          }
+        },
+        {
+          "uri": "http://purl.org/cerif/frapo/hasStartDate",
+          "name": "hasStartDate",
+          "sort": "has start date",
+          "label": {
+            "en": "has start date"
+          },
+          "description": {
+            "en": "A data property linking something such as a project to its start date."
+          },
+          "usage": {},
+          "domain": [
+            {
+              "EA-Name": "Project",
+              "uri": "http://xmlns.com/foaf/0.1/Project"
+            }
+          ],
+          "range": [
+            {
+              "range_label": "Date",
+              "range_uri": "http://www.w3.org/2001/XMLSchema#date"
+            }
+          ],
+          "scopedrange": [
+            {
+              "range_uri": "#Date",
+              "range_puri": "http://www.w3.org/2001/XMLSchema#date",
+              "range_label": {
+                "en": "Date"
+              }
+            }
+          ],
+          "cardinality": "0..1",
+          "codelist_uri": "",
+          "rawTags": {
+            "uri": "http://purl.org/cerif/frapo/hasStartDate",
+            "label-en": "has start date",
+            "definition-en": "A data property linking something such as a project to its start date."
+          }
+        },
+        {
+          "uri": "http://www.w3.org/2000/01/rdf-schema#label",
+          "name": "title",
+          "sort": "title",
+          "label": {
+            "en": "title"
+          },
+          "description": {
+            "en": "A human-readable version of a resource's name."
+          },
+          "usage": {},
+          "domain": [
+            {
+              "EA-Name": "Project",
+              "uri": "http://xmlns.com/foaf/0.1/Project"
+            }
+          ],
+          "range": [
+            {
+              "range_label": "Text",
+              "range_uri": "http://www.w3.org/1999/02/22-rdf-syntax-ns#langString"
+            }
+          ],
+          "scopedrange": [
+            {
+              "range_uri": "#Text",
+              "range_puri": "http://www.w3.org/1999/02/22-rdf-syntax-ns#langString",
+              "range_label": {
+                "en": "Text"
+              }
+            }
+          ],
+          "cardinality": "1",
+          "codelist_uri": "",
+          "rawTags": {
+            "uri": "http://www.w3.org/2000/01/rdf-schema#label",
+            "label-en": "title",
+            "definition-en": "A human-readable version of a resource's name."
+          }
+        },
+        {
+          "uri": "http://www.w3.org/ns/adms#identifier",
+          "name": "identifier",
+          "sort": "identifier",
+          "label": {
+            "en": "identifier"
+          },
+          "description": {
+            "en": "Links a resource to an adms:Identifier class."
+          },
+          "usage": {},
+          "domain": [
+            {
+              "EA-Name": "Project",
+              "uri": "http://xmlns.com/foaf/0.1/Project"
+            }
+          ],
+          "range": [
+            {
+              "range_label": "Identifier",
+              "range_uri": "http://www.w3.org/ns/adms#Identifier"
+            }
+          ],
+          "scopedrange": [
+            {
+              "range_uri": "#Identifier",
+              "range_puri": "http://www.w3.org/ns/adms#Identifier",
+              "range_label": {
+                "en": "Identifier"
+              }
+            }
+          ],
+          "cardinality": "1",
+          "codelist_uri": "",
+          "rawTags": {
+            "uri": "http://www.w3.org/ns/adms#identifier",
+            "label-en": "identifier",
+            "definition-en": "Links a resource to an adms:Identifier class."
+          }
+        },
+        {
+          "uri": "http://www.w3.org/ns/adms#status",
+          "name": "status",
+          "sort": "status",
+          "label": {
+            "en": "status"
+          },
+          "description": {
+            "en": "The status of the Asset in the context of a particular workflow process."
+          },
+          "usage": {
+            "en": "The recommended codelist is the <a href= \"#list-project-status\" >Status</a> list."
+          },
+          "domain": [
+            {
+              "EA-Name": "Project",
+              "uri": "http://xmlns.com/foaf/0.1/Project"
+            }
+          ],
+          "range": [
+            {
+              "range_label": "Code",
+              "range_uri": "http://www.w3.org/2004/02/skos/core#Concept"
+            }
+          ],
+          "scopedrange": [
+            {
+              "range_uri": "#Code",
+              "range_puri": "http://www.w3.org/2004/02/skos/core#Concept",
+              "range_label": {
+                "en": "Code"
+              }
+            }
+          ],
+          "cardinality": "1",
+          "codelist_uri": "",
+          "rawTags": {
+            "uri": "http://www.w3.org/ns/adms#status",
+            "label-en": "status",
+            "definition-en": "The status of the Asset in the context of a particular workflow process.",
+            "usageNote-en": "The recommended codelist is the <a href= \"#list-project-status\" >Status</a> list."
+          }
+        },
+        {
+          "uri": "https://w3id.org/adm/model/hasBeneficiary",
+          "name": "hasBeneficiary",
+          "sort": "has beneficiary",
+          "label": {
+            "en": "has beneficiary"
+          },
+          "description": {
+            "en": "The beneficiary of a project."
+          },
+          "usage": {},
+          "domain": [
+            {
+              "EA-Name": "Project",
+              "uri": "http://xmlns.com/foaf/0.1/Project"
+            }
+          ],
+          "range": [
+            {
+              "range_label": "Beneficiary",
+              "range_uri": "https://w3id.org/adm/model/Beneficiary"
+            }
+          ],
+          "scopedrange": [
+            {
+              "range_uri": "#Beneficiary",
+              "range_puri": "https://w3id.org/adm/model/Beneficiary",
+              "range_label": {
+                "en": "Beneficiary"
+              }
+            }
+          ],
+          "cardinality": "1",
+          "codelist_uri": "",
+          "rawTags": {
+            "uri": "https://w3id.org/adm/model/hasBeneficiary",
+            "definition-en": "The beneficiary of a project.",
+            "label-en": "has beneficiary"
+          }
+        },
+        {
+          "uri": "https://w3id.org/adm/model/hasBlock",
+          "name": "hasBlock",
+          "sort": "has block",
+          "label": {
+            "en": "has block"
+          },
+          "description": {
+            "en": "Reference to the type of the project."
+          },
+          "usage": {},
+          "domain": [
+            {
+              "EA-Name": "Project",
+              "uri": "http://xmlns.com/foaf/0.1/Project"
+            }
+          ],
+          "range": [
+            {
+              "range_label": "Block",
+              "range_uri": "https://w3id.org/adm/model/Block"
+            }
+          ],
+          "scopedrange": [
+            {
+              "range_uri": "#Block",
+              "range_puri": "https://w3id.org/adm/model/Block",
+              "range_label": {
+                "en": "Block"
+              }
+            }
+          ],
+          "cardinality": "1",
+          "codelist_uri": "",
+          "rawTags": {
+            "definition-en": "Reference to the type of the project.",
+            "uri": "https://w3id.org/adm/model/hasBlock",
+            "label-en": "has block"
+          }
+        }
+      ]
     }
   ],
   "properties": [
@@ -2937,6 +3179,21 @@
       "name": {
         "en": "EC financial assistance",
         "undefined": "ecFinancialAssistance"
+      },
+      "description": {},
+      "domain": [
+        null
+      ],
+      "range": [
+        null
+      ],
+      "parents": []
+    },
+    {
+      "uri": "https://w3id.org/adm/model/amount",
+      "name": {
+        "en": "amount",
+        "undefined": "amount"
       },
       "description": {},
       "domain": [
