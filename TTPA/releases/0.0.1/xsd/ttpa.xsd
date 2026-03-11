@@ -1,12 +1,10 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <xs:schema xmlns="https://data.europa.eu/m8g/xml/" xmlns:xs="http://www.w3.org/2001/XMLSchema" targetNamespace="https://data.europa.eu/m8g/xml/" version="2.0.0" elementFormDefault="qualified" attributeFormDefault="unqualified" xmlns:cv="https://data.europa.eu/m8g/xml/">
   <xs:element name="PublicEvent" type="PublicEventType"/>
-  <xs:element name="CampaignFinancialInformation" type="CampaignFinancialInformationType"/>
   <xs:element name="ElectionEvent" type="ElectionEventType"/>
   <xs:element name="Funding" type="FundingType"/>
   <xs:element name="Initiative" type="InitiativeType"/>
   <xs:element name="PoliticalAdvertisement" type="PoliticalAdvertisementType"/>
-  <xs:element name="PoliticalAdvertisementInformation" type="PoliticalAdvertisementInformationType"/>
   <xs:element name="Targeting" type="TargetingType"/>
   <xs:element name="TransparencyNotice" type="TransparencyNoticeType"/>
   <xs:element name="Text" type="TextType"/>
@@ -67,25 +65,6 @@
       </xs:annotation>
     </xs:attribute>
   </xs:complexType>
-  <xs:complexType name="CampaignFinancialInformationType">
-    <xs:sequence>
-      <xs:element name="currency" type="ConceptType" maxOccurs="unbounded" minOccurs="0">
-        <xs:annotation>
-          <xs:documentation xml:lang="en">The currency in which the Cost needs to be paid and the value of the Cost is expressed.</xs:documentation>
-        </xs:annotation>
-      </xs:element>
-      <xs:element name="hasValue" type="xs:double" maxOccurs="unbounded" minOccurs="0">
-        <xs:annotation>
-          <xs:documentation xml:lang="en">A numeric value indicating the amount of the Cost.</xs:documentation>
-        </xs:annotation>
-      </xs:element>
-    </xs:sequence>
-    <xs:attribute name="CampaignFinancialInformationRef" type="xs:IDREF">
-      <xs:annotation>
-        <xs:documentation xml:lang="en">Reference to CampaignFinancialInformation ID</xs:documentation>
-      </xs:annotation>
-    </xs:attribute>
-  </xs:complexType>
   <xs:complexType name="ElectionEventType">
     <xs:sequence>
       <xs:element name="country" type="ConceptType" maxOccurs="1" minOccurs="1">
@@ -122,14 +101,24 @@
           <xs:documentation xml:lang="en">The method or approach used to calculate the amount or allocation of funding.</xs:documentation>
         </xs:annotation>
       </xs:element>
-      <xs:element name="hasCampaignFinancialInfo" ref="CampaignFinancialInformationType" maxOccurs="unbounded" minOccurs="0">
+      <xs:element name="currency" type="ConceptType" maxOccurs="1" minOccurs="1">
         <xs:annotation>
-          <xs:documentation xml:lang="en">Financial information related to the campaign.</xs:documentation>
+          <xs:documentation xml:lang="en">The currency in which the Cost needs to be paid and the value of the Cost is expressed.</xs:documentation>
         </xs:annotation>
       </xs:element>
-      <xs:element name="hasPoliticalAdvertisementFinancialInfo" ref="PoliticalAdvertisementInformationType" maxOccurs="unbounded" minOccurs="0">
+      <xs:element name="hasPayingEntity" ref="AgentType" maxOccurs="unbounded" minOccurs="0">
         <xs:annotation>
-          <xs:documentation xml:lang="en">Financial information related to the political advertisement.</xs:documentation>
+          <xs:documentation xml:lang="en">The entity that paid for the political advertisement.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="hasPoliticalAdvertisement" ref="PoliticalAdvertisementType" maxOccurs="unbounded" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation xml:lang="en">A paid communication intended to influence the outcome of an election or referendum, or to support or oppose a political party or candidate.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="hasValue" type="xs:double" maxOccurs="1" minOccurs="1">
+        <xs:annotation>
+          <xs:documentation xml:lang="en">A numeric value indicating the amount of the Cost.</xs:documentation>
         </xs:annotation>
       </xs:element>
       <xs:element name="nature" type="ConceptType" maxOccurs="1" minOccurs="1">
@@ -282,25 +271,6 @@
       </xs:annotation>
     </xs:attribute>
   </xs:complexType>
-  <xs:complexType name="PoliticalAdvertisementInformationType">
-    <xs:sequence>
-      <xs:element name="currency" type="ConceptType" maxOccurs="unbounded" minOccurs="0">
-        <xs:annotation>
-          <xs:documentation xml:lang="en">The currency in which the Cost needs to be paid and the value of the Cost is expressed.</xs:documentation>
-        </xs:annotation>
-      </xs:element>
-      <xs:element name="hasValue" type="xs:double" maxOccurs="unbounded" minOccurs="0">
-        <xs:annotation>
-          <xs:documentation xml:lang="en">	A numeric value indicating the amount of the Cost.</xs:documentation>
-        </xs:annotation>
-      </xs:element>
-    </xs:sequence>
-    <xs:attribute name="PoliticalAdvertisementInformationRef" type="xs:IDREF">
-      <xs:annotation>
-        <xs:documentation xml:lang="en">Reference to PoliticalAdvertisementInformation ID</xs:documentation>
-      </xs:annotation>
-    </xs:attribute>
-  </xs:complexType>
   <xs:complexType name="TargetingType">
     <xs:sequence>
       <xs:element name="adDeliveryTechniqueDescription" type="xs:string" maxOccurs="unbounded" minOccurs="0">
@@ -323,7 +293,7 @@
           <xs:documentation xml:lang="en">Beginning of a temporal entity.</xs:documentation>
         </xs:annotation>
       </xs:element>
-      <xs:element name="hasController" ref="AgentType" maxOccurs="unbounded" minOccurs="1">
+      <xs:element name="hasControllingEntity" ref="AgentType" maxOccurs="unbounded" minOccurs="1">
         <xs:annotation>
           <xs:documentation xml:lang="en">The natural or legal person, public authority, agency or other body which, alone or jointly with others, determines the purposes and means of the processing of personal data in the context of a targeted activity or service.</xs:documentation>
         </xs:annotation>
@@ -378,7 +348,7 @@
           <xs:documentation xml:lang="en">Indicates whether ad delivery techniques are based on personal data.</xs:documentation>
         </xs:annotation>
       </xs:element>
-      <xs:element name="usageOfAiSystems" type="xs:string" maxOccurs="1" minOccurs="1">
+      <xs:element name="usageOfAiSystems" type="xs:string" maxOccurs="unbounded" minOccurs="0">
         <xs:annotation>
           <xs:documentation xml:lang="en">Indicates whether an artificial intelligence system was used in the targeting or delivery of a resource to an audience, including a description of its role and functioning.</xs:documentation>
         </xs:annotation>
@@ -412,9 +382,9 @@
           <xs:documentation xml:lang="en">Information about the financial resources used for the political advertisement or campaign.</xs:documentation>
         </xs:annotation>
       </xs:element>
-      <xs:element name="hasPoliticalAdvertisement" ref="PoliticalAdvertisementType" maxOccurs="1" minOccurs="1">
+      <xs:element name="hasSponsor" ref="AgentType" maxOccurs="unbounded" minOccurs="1">
         <xs:annotation>
-          <xs:documentation xml:lang="en">A paid communication intended to influence the outcome of an election or referendum, or to support or oppose a political party or candidate.</xs:documentation>
+          <xs:documentation xml:lang="en">The entity that provides financial or other support for the political advertisement.</xs:documentation>
         </xs:annotation>
       </xs:element>
       <xs:element name="hasTargeting" ref="TargetingType" maxOccurs="unbounded" minOccurs="0">
@@ -442,11 +412,6 @@
           <xs:documentation xml:lang="en">Information on the mechanism for notifying possibly non-compliant political advertisements, as required by Article 15(1) of Regulation (EU) 2024/900. This may be a URL to an online notification form, an email address, or a description of the notification process.</xs:documentation>
         </xs:annotation>
       </xs:element>
-      <xs:element name="payingEntity" ref="AgentType" maxOccurs="unbounded" minOccurs="0">
-        <xs:annotation>
-          <xs:documentation xml:lang="en">The entity that paid for the political advertisement.</xs:documentation>
-        </xs:annotation>
-      </xs:element>
       <xs:element name="retentionDeadline" maxOccurs="unbounded" minOccurs="0">
         <xs:annotation>
           <xs:documentation xml:lang="en">The date after which a resource or record is no longer required to be retained.</xs:documentation>
@@ -455,11 +420,6 @@
       <xs:element name="seeAlso" ref="AnyUriType" maxOccurs="unbounded" minOccurs="0">
         <xs:annotation>
           <xs:documentation xml:lang="en">Further information about the subject resource.</xs:documentation>
-        </xs:annotation>
-      </xs:element>
-      <xs:element name="sponsor" ref="AgentType" maxOccurs="unbounded" minOccurs="1">
-        <xs:annotation>
-          <xs:documentation xml:lang="en">The entity that provides financial or other support for the political advertisement.</xs:documentation>
         </xs:annotation>
       </xs:element>
     </xs:sequence>
@@ -577,11 +537,6 @@
       <xs:element name="legalName" type="xs:string" maxOccurs="unbounded" minOccurs="0">
         <xs:annotation>
           <xs:documentation xml:lang="en">The name under which the Legal Entity is legally registered.</xs:documentation>
-        </xs:annotation>
-      </xs:element>
-      <xs:element name="notation" type="xs:string" maxOccurs="unbounded" minOccurs="0">
-        <xs:annotation>
-          <xs:documentation xml:lang="en">A string of characters to uniquely identify a concept.</xs:documentation>
         </xs:annotation>
       </xs:element>
     </xs:sequence>
