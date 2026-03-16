@@ -10,6 +10,7 @@
   <xs:element name="Country" type="CountryType"/>
   <xs:element name="NationalCourt" type="NationalCourtType"/>
   <xs:element name="Expression" type="ExpressionType"/>
+  <xs:element name="Item" type="ItemType"/>
   <xs:element name="Judgement" type="JudgementType"/>
   <xs:element name="Language" type="LanguageType"/>
   <xs:element name="Manifestation" type="ManifestationType"/>
@@ -97,7 +98,7 @@
           <xs:documentation xml:lang="en">The case uses a given language of procedure</xs:documentation>
         </xs:annotation>
       </xs:element>
-      <xs:element name="originatesInCountry" ref="CountryType" maxOccurs="unbounded" minOccurs="0">
+      <xs:element name="originatesInCountry" ref="CountryType" maxOccurs="unbounded" minOccurs="1">
         <xs:annotation>
           <xs:documentation xml:lang="en">country of origin of a question referred for a preliminary ruling</xs:documentation>
         </xs:annotation>
@@ -195,6 +196,20 @@
       </xs:annotation>
     </xs:attribute>
   </xs:complexType>
+  <xs:complexType name="ItemType">
+    <xs:sequence>
+      <xs:element name="identifier" type="xs:string" maxOccurs="1" minOccurs="1">
+        <xs:annotation>
+          <xs:documentation xml:lang="en">Identifier of this data stream.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+    </xs:sequence>
+    <xs:attribute name="ItemRef" type="xs:IDREF">
+      <xs:annotation>
+        <xs:documentation xml:lang="en">Reference to Item ID</xs:documentation>
+      </xs:annotation>
+    </xs:attribute>
+  </xs:complexType>
   <xs:complexType name="JudgementType">
     <xs:sequence/>
     <xs:attribute name="JudgementRef" type="xs:IDREF">
@@ -213,9 +228,19 @@
   </xs:complexType>
   <xs:complexType name="ManifestationType">
     <xs:sequence>
+      <xs:element name="hasItem" ref="ItemType" maxOccurs="unbounded" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation xml:lang="en">A manifestation has a given item (typically a datastream in the CCR). Some manifestations have no content (e.g. print manifestations).</xs:documentation>
+        </xs:annotation>
+      </xs:element>
       <xs:element name="manifestationManifestsExpression" ref="ExpressionType" maxOccurs="1" minOccurs="1">
         <xs:annotation>
           <xs:documentation xml:lang="en">A Manifestation manifests a given expression.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="manifestationType" type="xs:string" maxOccurs="1" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation xml:lang="en">Type of this manifestation.</xs:documentation>
         </xs:annotation>
       </xs:element>
     </xs:sequence>

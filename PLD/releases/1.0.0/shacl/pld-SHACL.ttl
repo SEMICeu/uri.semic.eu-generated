@@ -14,6 +14,7 @@
     <https://semiceu.github.io/PLD/releases/1.0.0#CountryShape>,
     <https://semiceu.github.io/PLD/releases/1.0.0#NationalCourtShape>,
     <https://semiceu.github.io/PLD/releases/1.0.0#ExpressionShape>,
+    <https://semiceu.github.io/PLD/releases/1.0.0#ItemShape>,
     <https://semiceu.github.io/PLD/releases/1.0.0#JudgementShape>,
     <https://semiceu.github.io/PLD/releases/1.0.0#LanguageShape>,
     <https://semiceu.github.io/PLD/releases/1.0.0#ManifestationShape>,
@@ -75,6 +76,7 @@
     <https://semiceu.github.io/PLD/releases/1.0.0#CaseLawShape/7055f6d8f78ecd4d165ac4447b1c4bbd0bf81e27>,
     <https://semiceu.github.io/PLD/releases/1.0.0#CaseLawShape/740e505c8cfbde135fa8189e9daeea671418c608>,
     <https://semiceu.github.io/PLD/releases/1.0.0#CaseLawShape/8403add0bbd8f1a2c0858e205a15a8651576073b>,
+    <https://semiceu.github.io/PLD/releases/1.0.0#CaseLawShape/843c1740cd9f7f6392e2fbcd063d3c48d5059328>,
     <https://semiceu.github.io/PLD/releases/1.0.0#CaseLawShape/8f61614144aa7bca188b24f5976593dc08aad0e6>,
     <https://semiceu.github.io/PLD/releases/1.0.0#CaseLawShape/99fae5fa384e12c4ba021f3c0089e0c1f7f482de>,
     <https://semiceu.github.io/PLD/releases/1.0.0#CaseLawShape/b8ec5d22e7a59d8d2c1cef830dcd7a23f44380a5>,
@@ -152,6 +154,12 @@
   shacl:description "Summary of case law, treated as a separate bibliographic item."@en;
   shacl:name "summary of case law"@en;
   shacl:path <http://publications.europa.eu/ontology/cdm#summary_case-law> .
+
+<https://semiceu.github.io/PLD/releases/1.0.0#CaseLawShape/843c1740cd9f7f6392e2fbcd063d3c48d5059328> rdfs:seeAlso "https://semiceu.github.io/PLD/releases/1.0.0#CaseLaw.originatesInCountry";
+  shacl:description "country of origin of a question referred for a preliminary ruling"@en;
+  shacl:minCount 1;
+  shacl:name "originatesInCountry"@en;
+  shacl:path <http://publications.europa.eu/ontology/cdm#case-law_originates_in_country> .
 
 <https://semiceu.github.io/PLD/releases/1.0.0#CaseLawShape/8f61614144aa7bca188b24f5976593dc08aad0e6> rdfs:seeAlso "https://semiceu.github.io/PLD/releases/1.0.0#CaseLaw.description";
   shacl:description "Formal Description of a case law."@en;
@@ -300,6 +308,38 @@
   shacl:name "expression language"@en;
   shacl:path <http://publications.europa.eu/ontology/cdm#expression_uses_language> .
 
+<https://semiceu.github.io/PLD/releases/1.0.0#ItemShape> a shacl:NodeShape;
+  shacl:closed false;
+  shacl:property <https://semiceu.github.io/PLD/releases/1.0.0#ItemShape/6c7c1bd2ab3b7761e5be759a078a9fd93f411a57>,
+    <https://semiceu.github.io/PLD/releases/1.0.0#ItemShape/aadbd67a77a624f073be2076627fb9dc883cbe48>,
+    <https://semiceu.github.io/PLD/releases/1.0.0#ItemShape/c0d17764e84e711728581fda7356a51e99a9040a>,
+    <https://semiceu.github.io/PLD/releases/1.0.0#ItemShape/e2017f72421063cd9ff494011ec78f35f9632a4a>;
+  shacl:targetClass <http://publications.europa.eu/ontology/cdm#item> .
+
+<https://semiceu.github.io/PLD/releases/1.0.0#ItemShape/6c7c1bd2ab3b7761e5be759a078a9fd93f411a57> rdfs:seeAlso "https://semiceu.github.io/PLD/releases/1.0.0#Item.identifier";
+  shacl:description "Identifier of this data stream."@en;
+  shacl:minCount 1;
+  shacl:name "identifier"@en;
+  shacl:path <http://publications.europa.eu/ontology/cdm#item_identifier> .
+
+<https://semiceu.github.io/PLD/releases/1.0.0#ItemShape/aadbd67a77a624f073be2076627fb9dc883cbe48> rdfs:seeAlso "https://semiceu.github.io/PLD/releases/1.0.0#Item.identifier";
+  shacl:description "Identifier of this data stream."@en;
+  shacl:name "identifier"@en;
+  shacl:nodeKind shacl:Literal;
+  shacl:path <http://publications.europa.eu/ontology/cdm#item_identifier> .
+
+<https://semiceu.github.io/PLD/releases/1.0.0#ItemShape/c0d17764e84e711728581fda7356a51e99a9040a> rdfs:seeAlso "https://semiceu.github.io/PLD/releases/1.0.0#Item.identifier";
+  shacl:description "Identifier of this data stream."@en;
+  shacl:maxCount 1;
+  shacl:name "identifier"@en;
+  shacl:path <http://publications.europa.eu/ontology/cdm#item_identifier> .
+
+<https://semiceu.github.io/PLD/releases/1.0.0#ItemShape/e2017f72421063cd9ff494011ec78f35f9632a4a> rdfs:seeAlso "https://semiceu.github.io/PLD/releases/1.0.0#Item.identifier";
+  shacl:datatype xsd:string;
+  shacl:description "Identifier of this data stream."@en;
+  shacl:name "identifier"@en;
+  shacl:path <http://publications.europa.eu/ontology/cdm#item_identifier> .
+
 <https://semiceu.github.io/PLD/releases/1.0.0#JudgementShape> a shacl:NodeShape;
   shacl:closed false;
   shacl:targetClass <http://publications.europa.eu/ontology/cdm#judgement> .
@@ -431,9 +471,14 @@
 <https://semiceu.github.io/PLD/releases/1.0.0#ManifestationShape> a shacl:NodeShape;
   shacl:closed false;
   shacl:property <https://semiceu.github.io/PLD/releases/1.0.0#ManifestationShape/01d5289ef2b72e7551bba2507d17b9c3b431bdbb>,
+    <https://semiceu.github.io/PLD/releases/1.0.0#ManifestationShape/06f04ba2fc9f7fc4930f4ca6c5f264341b52f253>,
     <https://semiceu.github.io/PLD/releases/1.0.0#ManifestationShape/19dcb36c5cc5b09ae5167ffa8d5092b2aa873c1f>,
+    <https://semiceu.github.io/PLD/releases/1.0.0#ManifestationShape/24751a1b61cf058e7a2a9c0241b4726107fb597e>,
+    <https://semiceu.github.io/PLD/releases/1.0.0#ManifestationShape/6269c0c9d3c93822fcd785568793fb169795155e>,
     <https://semiceu.github.io/PLD/releases/1.0.0#ManifestationShape/83af6c317232cc8aeb34831454d9cd67b514939c>,
-    <https://semiceu.github.io/PLD/releases/1.0.0#ManifestationShape/b59ac092ed3c61032feef838ba7af4a0c0b2db7c>;
+    <https://semiceu.github.io/PLD/releases/1.0.0#ManifestationShape/b0290579ef1b727171fb6c196210faf23600b918>,
+    <https://semiceu.github.io/PLD/releases/1.0.0#ManifestationShape/b59ac092ed3c61032feef838ba7af4a0c0b2db7c>,
+    <https://semiceu.github.io/PLD/releases/1.0.0#ManifestationShape/f008ee11d8887c93a4dc1fe509ec977b1b5843f5>;
   shacl:targetClass <http://publications.europa.eu/ontology/cdm#manifestation> .
 
 <https://semiceu.github.io/PLD/releases/1.0.0#ManifestationShape/01d5289ef2b72e7551bba2507d17b9c3b431bdbb> rdfs:seeAlso "https://semiceu.github.io/PLD/releases/1.0.0#Manifestation.manifestationmanifestsexpression";
@@ -442,11 +487,29 @@
   shacl:name "manifestation manifests expression"@en;
   shacl:path <http://publications.europa.eu/ontology/cdm#manifestation_manifests_expression> .
 
+<https://semiceu.github.io/PLD/releases/1.0.0#ManifestationShape/06f04ba2fc9f7fc4930f4ca6c5f264341b52f253> rdfs:seeAlso "https://semiceu.github.io/PLD/releases/1.0.0#Manifestation.manifestationtype";
+  shacl:datatype xsd:string;
+  shacl:description "Type of this manifestation."@en;
+  shacl:name "manifestation type"@en;
+  shacl:path <http://publications.europa.eu/ontology/cdm#manifestation_type> .
+
 <https://semiceu.github.io/PLD/releases/1.0.0#ManifestationShape/19dcb36c5cc5b09ae5167ffa8d5092b2aa873c1f> rdfs:seeAlso "https://semiceu.github.io/PLD/releases/1.0.0#Manifestation.manifestationmanifestsexpression";
   shacl:description "A Manifestation manifests a given expression."@en;
   shacl:maxCount 1;
   shacl:name "manifestation manifests expression"@en;
   shacl:path <http://publications.europa.eu/ontology/cdm#manifestation_manifests_expression> .
+
+<https://semiceu.github.io/PLD/releases/1.0.0#ManifestationShape/24751a1b61cf058e7a2a9c0241b4726107fb597e> rdfs:seeAlso "https://semiceu.github.io/PLD/releases/1.0.0#Manifestation.manifestationtype";
+  shacl:description "Type of this manifestation."@en;
+  shacl:maxCount 1;
+  shacl:name "manifestation type"@en;
+  shacl:path <http://publications.europa.eu/ontology/cdm#manifestation_type> .
+
+<https://semiceu.github.io/PLD/releases/1.0.0#ManifestationShape/6269c0c9d3c93822fcd785568793fb169795155e> rdfs:seeAlso "https://semiceu.github.io/PLD/releases/1.0.0#Manifestation.hasitem";
+  shacl:description "A manifestation has a given item (typically a datastream in the CCR). Some manifestations have no content (e.g. print manifestations)."@en;
+  shacl:name "has item"@en;
+  shacl:nodeKind shacl:BlankNodeOrIRI;
+  shacl:path <http://publications.europa.eu/ontology/cdm#manifestation_has_item> .
 
 <https://semiceu.github.io/PLD/releases/1.0.0#ManifestationShape/83af6c317232cc8aeb34831454d9cd67b514939c> rdfs:seeAlso "https://semiceu.github.io/PLD/releases/1.0.0#Manifestation.manifestationmanifestsexpression";
   shacl:class <http://publications.europa.eu/ontology/cdm#expression>;
@@ -454,11 +517,23 @@
   shacl:name "manifestation manifests expression"@en;
   shacl:path <http://publications.europa.eu/ontology/cdm#manifestation_manifests_expression> .
 
+<https://semiceu.github.io/PLD/releases/1.0.0#ManifestationShape/b0290579ef1b727171fb6c196210faf23600b918> rdfs:seeAlso "https://semiceu.github.io/PLD/releases/1.0.0#Manifestation.manifestationtype";
+  shacl:description "Type of this manifestation."@en;
+  shacl:name "manifestation type"@en;
+  shacl:nodeKind shacl:Literal;
+  shacl:path <http://publications.europa.eu/ontology/cdm#manifestation_type> .
+
 <https://semiceu.github.io/PLD/releases/1.0.0#ManifestationShape/b59ac092ed3c61032feef838ba7af4a0c0b2db7c> rdfs:seeAlso "https://semiceu.github.io/PLD/releases/1.0.0#Manifestation.manifestationmanifestsexpression";
   shacl:description "A Manifestation manifests a given expression."@en;
   shacl:name "manifestation manifests expression"@en;
   shacl:nodeKind shacl:BlankNodeOrIRI;
   shacl:path <http://publications.europa.eu/ontology/cdm#manifestation_manifests_expression> .
+
+<https://semiceu.github.io/PLD/releases/1.0.0#ManifestationShape/f008ee11d8887c93a4dc1fe509ec977b1b5843f5> rdfs:seeAlso "https://semiceu.github.io/PLD/releases/1.0.0#Manifestation.hasitem";
+  shacl:class <http://publications.europa.eu/ontology/cdm#item>;
+  shacl:description "A manifestation has a given item (typically a datastream in the CCR). Some manifestations have no content (e.g. print manifestations)."@en;
+  shacl:name "has item"@en;
+  shacl:path <http://publications.europa.eu/ontology/cdm#manifestation_has_item> .
 
 <https://semiceu.github.io/PLD/releases/1.0.0#NationalCaseLawShape> a shacl:NodeShape;
   shacl:closed false;
@@ -595,7 +670,7 @@
   shacl:class <http://publications.europa.eu/ontology/cdm#expression>;
   shacl:description "The Expression being part of the Work."@en;
   shacl:name "has expression"@en;
-  shacl:path <http://publications.europa.eu/ontology/cdm#expression_belongs_to_work> .
+  shacl:path <http://publications.europa.eu/ontology/cdm#work_has_expression> .
 
 <https://semiceu.github.io/PLD/releases/1.0.0#WorkShape/25a256131a9a5f29b23286b5afef580dafe833b3> rdfs:seeAlso "https://semiceu.github.io/PLD/releases/1.0.0#Work.contributedtobyagent";
   shacl:class <http://publications.europa.eu/ontology/cdm#agent>;
@@ -619,7 +694,7 @@
   shacl:description "The Expression being part of the Work."@en;
   shacl:name "has expression"@en;
   shacl:nodeKind shacl:BlankNodeOrIRI;
-  shacl:path <http://publications.europa.eu/ontology/cdm#expression_belongs_to_work> .
+  shacl:path <http://publications.europa.eu/ontology/cdm#work_has_expression> .
 
 <https://semiceu.github.io/PLD/releases/1.0.0#WorkShape/6a03163f45a64a2a557c6140b78fda0ff9b313af> rdfs:seeAlso "https://semiceu.github.io/PLD/releases/1.0.0#Work.workciteswork";
   shacl:class <http://publications.europa.eu/ontology/cdm#work>;

@@ -17,8 +17,8 @@
     },
     "status": "Draft",
     "statuslabel": "Onbekend",
-    "repositoryurl": "git@uri.semic.eu-thema:SEMICeu/uri.semic.eu-thema.git/tree/e7a8e24311472198c0db3ed151a275163a32fe2d",
-    "changelogurl": "git@uri.semic.eu-thema:SEMICeu/uri.semic.eu-thema.git/blob/e7a8e24311472198c0db3ed151a275163a32fe2d/CHANGELOG",
+    "repositoryurl": "git@uri.semic.eu-thema:SEMICeu/uri.semic.eu-thema.git/tree/ea8a3d0c54c4c4405fdf09553bfe4d68a2a65099",
+    "changelogurl": "git@uri.semic.eu-thema:SEMICeu/uri.semic.eu-thema.git/blob/ea8a3d0c54c4c4405fdf09553bfe4d68a2a65099/CHANGELOG",
     "feedbackurl": "https://github.com/SEMICeu/PLD/issues",
     "standaardregisterurl": "https://github.com/SEMICeu/PLD/blob/master/releases/1.0.0/Changelog.md",
     "usesVocs": [],
@@ -363,7 +363,7 @@
               }
             }
           ],
-          "cardinality": "0..*",
+          "cardinality": "1..*",
           "codelist_uri": "",
           "rawTags": {
             "uri": "http://publications.europa.eu/ontology/cdm#case-law_originates_in_country",
@@ -852,6 +852,66 @@
       ]
     },
     {
+      "uri": "http://publications.europa.eu/ontology/cdm#item",
+      "name": "Item",
+      "label": {
+        "en": "Item"
+      },
+      "sort": "Item",
+      "description": {
+        "en": "A single exemplar of a manifestation (FRBR)."
+      },
+      "usage": {},
+      "parents": [],
+      "rawTags": {
+        "uri": "http://publications.europa.eu/ontology/cdm#item",
+        "label-en": "Item",
+        "definition-en": "A single exemplar of a manifestation (FRBR)."
+      },
+      "properties": [
+        {
+          "uri": "http://publications.europa.eu/ontology/cdm#item_identifier",
+          "name": "identifier",
+          "sort": "identifier",
+          "label": {
+            "en": "identifier"
+          },
+          "description": {
+            "en": "Identifier of this data stream."
+          },
+          "usage": {},
+          "domain": [
+            {
+              "EA-Name": "Item",
+              "uri": "http://publications.europa.eu/ontology/cdm#item"
+            }
+          ],
+          "range": [
+            {
+              "range_label": "String",
+              "range_uri": "http://www.w3.org/2001/XMLSchema#string"
+            }
+          ],
+          "scopedrange": [
+            {
+              "range_uri": "#String",
+              "range_puri": "http://www.w3.org/2001/XMLSchema#string",
+              "range_label": {
+                "en": "String"
+              }
+            }
+          ],
+          "cardinality": "1",
+          "codelist_uri": "",
+          "rawTags": {
+            "uri": "http://publications.europa.eu/ontology/cdm#item_identifier",
+            "label-en": "identifier",
+            "definition-en": "Identifier of this data stream."
+          }
+        }
+      ]
+    },
+    {
       "uri": "http://publications.europa.eu/ontology/cdm#judgement",
       "name": "Judgement",
       "label": {
@@ -924,6 +984,46 @@
       },
       "properties": [
         {
+          "uri": "http://publications.europa.eu/ontology/cdm#manifestation_has_item",
+          "name": "hasItem",
+          "sort": "has item",
+          "label": {
+            "en": "has item"
+          },
+          "description": {
+            "en": "A manifestation has a given item (typically a datastream in the CCR). Some manifestations have no content (e.g. print manifestations)."
+          },
+          "usage": {},
+          "domain": [
+            {
+              "EA-Name": "Manifestation",
+              "uri": "http://publications.europa.eu/ontology/cdm#manifestation"
+            }
+          ],
+          "range": [
+            {
+              "range_label": "Item",
+              "range_uri": "http://publications.europa.eu/ontology/cdm#item"
+            }
+          ],
+          "scopedrange": [
+            {
+              "range_uri": "#Item",
+              "range_puri": "http://publications.europa.eu/ontology/cdm#item",
+              "range_label": {
+                "en": "Item"
+              }
+            }
+          ],
+          "cardinality": "0..*",
+          "codelist_uri": "",
+          "rawTags": {
+            "label-en": "has item",
+            "uri": "http://publications.europa.eu/ontology/cdm#manifestation_has_item",
+            "definition-en": "A manifestation has a given item (typically a datastream in the CCR). Some manifestations have no content (e.g. print manifestations)."
+          }
+        },
+        {
           "uri": "http://publications.europa.eu/ontology/cdm#manifestation_manifests_expression",
           "name": "manifestationManifestsExpression",
           "sort": "manifestation manifests expression",
@@ -961,6 +1061,46 @@
             "definition-en": "A Manifestation manifests a given expression.",
             "label-en": "manifestation manifests expression",
             "uri": "http://publications.europa.eu/ontology/cdm#manifestation_manifests_expression"
+          }
+        },
+        {
+          "uri": "http://publications.europa.eu/ontology/cdm#manifestation_type",
+          "name": "manifestationType",
+          "sort": "manifestation type",
+          "label": {
+            "en": "manifestation type"
+          },
+          "description": {
+            "en": "Type of this manifestation."
+          },
+          "usage": {},
+          "domain": [
+            {
+              "EA-Name": "Manifestation",
+              "uri": "http://publications.europa.eu/ontology/cdm#manifestation"
+            }
+          ],
+          "range": [
+            {
+              "range_label": "String",
+              "range_uri": "http://www.w3.org/2001/XMLSchema#string"
+            }
+          ],
+          "scopedrange": [
+            {
+              "range_uri": "#String",
+              "range_puri": "http://www.w3.org/2001/XMLSchema#string",
+              "range_label": {
+                "en": "String"
+              }
+            }
+          ],
+          "cardinality": "0..1",
+          "codelist_uri": "",
+          "rawTags": {
+            "uri": "http://publications.europa.eu/ontology/cdm#manifestation_type",
+            "label-en": "manifestation type",
+            "definition-en": "Type of this manifestation."
           }
         }
       ]
@@ -1243,46 +1383,6 @@
       },
       "properties": [
         {
-          "uri": "http://publications.europa.eu/ontology/cdm#expression_belongs_to_work",
-          "name": "hasExpression",
-          "sort": "has expression",
-          "label": {
-            "en": "has expression"
-          },
-          "description": {
-            "en": "The Expression being part of the Work."
-          },
-          "usage": {},
-          "domain": [
-            {
-              "EA-Name": "Work",
-              "uri": "http://publications.europa.eu/ontology/cdm#work"
-            }
-          ],
-          "range": [
-            {
-              "range_label": "Expression",
-              "range_uri": "http://publications.europa.eu/ontology/cdm#expression"
-            }
-          ],
-          "scopedrange": [
-            {
-              "range_uri": "#Expression",
-              "range_puri": "http://publications.europa.eu/ontology/cdm#expression",
-              "range_label": {
-                "en": "Expression"
-              }
-            }
-          ],
-          "cardinality": "0..*",
-          "codelist_uri": "",
-          "rawTags": {
-            "definition-en": "The Expression being part of the Work.",
-            "label-en": "has expression",
-            "uri": "http://publications.europa.eu/ontology/cdm#expression_belongs_to_work"
-          }
-        },
-        {
           "uri": "http://publications.europa.eu/ontology/cdm#work_cites_work",
           "name": "workCitesWork",
           "sort": "work cites work",
@@ -1400,6 +1500,46 @@
             "uri": "http://publications.europa.eu/ontology/cdm#work_date_document",
             "definition-en": "The date of document (possibly including annotation properties).",
             "label-en": "date of document"
+          }
+        },
+        {
+          "uri": "http://publications.europa.eu/ontology/cdm#work_has_expression",
+          "name": "hasExpression",
+          "sort": "has expression",
+          "label": {
+            "en": "has expression"
+          },
+          "description": {
+            "en": "The Expression being part of the Work."
+          },
+          "usage": {},
+          "domain": [
+            {
+              "EA-Name": "Work",
+              "uri": "http://publications.europa.eu/ontology/cdm#work"
+            }
+          ],
+          "range": [
+            {
+              "range_label": "Expression",
+              "range_uri": "http://publications.europa.eu/ontology/cdm#expression"
+            }
+          ],
+          "scopedrange": [
+            {
+              "range_uri": "#Expression",
+              "range_puri": "http://publications.europa.eu/ontology/cdm#expression",
+              "range_label": {
+                "en": "Expression"
+              }
+            }
+          ],
+          "cardinality": "0..*",
+          "codelist_uri": "",
+          "rawTags": {
+            "definition-en": "The Expression being part of the Work.",
+            "label-en": "has expression",
+            "uri": "http://publications.europa.eu/ontology/cdm#work_has_expression"
           }
         },
         {
