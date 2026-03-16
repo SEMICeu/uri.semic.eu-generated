@@ -173,7 +173,7 @@
   </xs:complexType>
   <xs:complexType name="ExpressionType">
     <xs:sequence>
-      <xs:element name="expressionBelongsToWork" ref="WorkType" maxOccurs="unbounded" minOccurs="1">
+      <xs:element name="expressionBelongsToWork" ref="WorkType" maxOccurs="1" minOccurs="1">
         <xs:annotation>
           <xs:documentation xml:lang="en">Expression of a given work.</xs:documentation>
         </xs:annotation>
@@ -181,6 +181,11 @@
       <xs:element name="expressionLanguage" ref="LanguageType" maxOccurs="unbounded" minOccurs="1">
         <xs:annotation>
           <xs:documentation xml:lang="en">The expression uses a given language (can be repeated to cover expressions in several languages).</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="isManifestedBy" ref="ManifestationType" maxOccurs="unbounded" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation xml:lang="en">The Manifestation being representing the Expression.</xs:documentation>
         </xs:annotation>
       </xs:element>
     </xs:sequence>
@@ -208,7 +213,7 @@
   </xs:complexType>
   <xs:complexType name="ManifestationType">
     <xs:sequence>
-      <xs:element name="manifestationManifestsExpression" ref="ExpressionType" maxOccurs="unbounded" minOccurs="1">
+      <xs:element name="manifestationManifestsExpression" ref="ExpressionType" maxOccurs="1" minOccurs="1">
         <xs:annotation>
           <xs:documentation xml:lang="en">A Manifestation manifests a given expression.</xs:documentation>
         </xs:annotation>
@@ -283,6 +288,11 @@
       <xs:element name="dateOfDocument" type="xs:date" maxOccurs="1" minOccurs="1">
         <xs:annotation>
           <xs:documentation xml:lang="en">The date of document (possibly including annotation properties).</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="hasExpression" ref="ExpressionType" maxOccurs="unbounded" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation xml:lang="en">The Expression being part of the Work.</xs:documentation>
         </xs:annotation>
       </xs:element>
       <xs:element name="isAbout" ref="EurovocConceptType" maxOccurs="unbounded" minOccurs="0">
