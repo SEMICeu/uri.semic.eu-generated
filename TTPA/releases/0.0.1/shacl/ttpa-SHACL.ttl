@@ -744,6 +744,7 @@
     <https://semiceu.github.io/TTPA/releases/0.0.1#PoliticalAdvertisementShape/9380ee54faf9ee92c4f4ea00d9c9132fc5ce831f>,
     <https://semiceu.github.io/TTPA/releases/0.0.1#PoliticalAdvertisementShape/9392e549446c9d8afffd4f6851202d2a6a6170f5>,
     <https://semiceu.github.io/TTPA/releases/0.0.1#PoliticalAdvertisementShape/958ee22381b731f42ee31551e061d78c282047ae>,
+    <https://semiceu.github.io/TTPA/releases/0.0.1#PoliticalAdvertisementShape/aadbd67a77a624f073be2076627fb9dc883cbe48>,
     <https://semiceu.github.io/TTPA/releases/0.0.1#PoliticalAdvertisementShape/b4a20ae0e752e8ed8913a7045340185cde2edc7e>,
     <https://semiceu.github.io/TTPA/releases/0.0.1#PoliticalAdvertisementShape/b8df7f66f3d46b1a9f7ffad5aaf79e9a0991fea4>,
     <https://semiceu.github.io/TTPA/releases/0.0.1#PoliticalAdvertisementShape/bd1f97f9bb717a66bda9bd88581379590427fe09>,
@@ -763,7 +764,7 @@
   shacl:path <http://example.org/status> .
 
 <https://semiceu.github.io/TTPA/releases/0.0.1#PoliticalAdvertisementShape/237c6b545148b3ac922ae797b5d5b1ed250b0a0a> rdfs:seeAlso "https://semiceu.github.io/TTPA/releases/0.0.1#PoliticalAdvertisement.hasEnd";
-  shacl:datatype xsd:date;
+  shacl:class <http://www.w3.org/2006/time#Instant>;
   shacl:description "The end of a period or interval."@en;
   shacl:name "hasEnd"@en;
   shacl:path <http://www.w3.org/2006/time#hasEnd> .
@@ -888,6 +889,12 @@
   shacl:nodeKind shacl:Literal;
   shacl:path dc:created .
 
+<https://semiceu.github.io/TTPA/releases/0.0.1#PoliticalAdvertisementShape/aadbd67a77a624f073be2076627fb9dc883cbe48> rdfs:seeAlso "https://semiceu.github.io/TTPA/releases/0.0.1#PoliticalAdvertisement.identifier";
+  shacl:description "An unambiguous reference to the resource within a given context."@en;
+  shacl:name "identifier"@en;
+  shacl:nodeKind shacl:Literal;
+  shacl:path dc:identifier .
+
 <https://semiceu.github.io/TTPA/releases/0.0.1#PoliticalAdvertisementShape/b4a20ae0e752e8ed8913a7045340185cde2edc7e> rdfs:seeAlso "https://semiceu.github.io/TTPA/releases/0.0.1#PoliticalAdvertisement.hasInitiative";
   shacl:class <http://example.org/Initiative>;
   shacl:description "The initiative related to the advertisement."@en;
@@ -939,7 +946,7 @@
 <https://semiceu.github.io/TTPA/releases/0.0.1#PoliticalAdvertisementShape/ef221ccdce6f3a94f5ed83945bfb4c22debebb90> rdfs:seeAlso "https://semiceu.github.io/TTPA/releases/0.0.1#PoliticalAdvertisement.hasEnd";
   shacl:description "The end of a period or interval."@en;
   shacl:name "hasEnd"@en;
-  shacl:nodeKind shacl:Literal;
+  shacl:nodeKind shacl:BlankNodeOrIRI;
   shacl:path <http://www.w3.org/2006/time#hasEnd> .
 
 <https://semiceu.github.io/TTPA/releases/0.0.1#PoliticalAdvertisementShape/fa801e10134ccfa28bea95b810ec8f1537de1972> rdfs:seeAlso "https://semiceu.github.io/TTPA/releases/0.0.1#PoliticalAdvertisement.intendedendpublicationdate";
@@ -1418,7 +1425,8 @@
   shacl:path <http://example.org/hasFunding> .
 
 <https://semiceu.github.io/TTPA/releases/0.0.1#TransparencyNoticeShape/784ed8e26e3aed8b689abdc2f335272e51dc184e> rdfs:seeAlso "https://semiceu.github.io/TTPA/releases/0.0.1#TransparencyNotice.hassponsor";
-  shacl:class foaf:Agent;
+  shacl:class foaf:Agent,
+    <http://example.org/PoliticalAdvertisement>;
   shacl:description "The entity that provides financial or other support for the political advertisement."@en;
   shacl:name "has sponsor"@en;
   shacl:path <http://example.org/hasSponsor> .
