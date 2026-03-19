@@ -11,6 +11,7 @@
   <xs:element name="ProjectType" type="ProjectTypeType"/>
   <xs:element name="ServiceProvider" type="ServiceProviderType"/>
   <xs:element name="Subcontract" type="SubcontractType"/>
+  <xs:element name="UltimateOwner" type="UltimateOwnerType"/>
   <xs:element name="AgentInRole" type="AgentInRoleType"/>
   <xs:element name="Contract" type="ContractType"/>
   <xs:element name="Contractor" type="ContractorType"/>
@@ -32,6 +33,7 @@
   <xs:element name="Code" type="CodeType"/>
   <xs:element name="Identifier" type="IdentifierType"/>
   <xs:element name="LegalEntity" type="LegalEntityType"/>
+  <xs:element name="Address" type="AddressType"/>
   <xs:element name="Person" type="PersonType"/>
   <xs:element name="Agent" type="AgentType"/>
   <xs:element name="Project" type="ProjectType"/>
@@ -55,12 +57,18 @@
   </xs:complexType>
   <xs:complexType name="BeneficiaryType">
     <xs:sequence>
+      <xs:element name="correctionProcurementProcedure" type="xs:boolean" maxOccurs="1" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation xml:lang="en">It indicates whether the entity has been subject to a financial correction in a procurement procedure in the past, or not.
+Only relevant when the entity is a beneficiary of a project.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
       <xs:element name="hasPartner" ref="PartnerType" maxOccurs="unbounded" minOccurs="0">
         <xs:annotation>
           <xs:documentation xml:lang="en">Reference to an entity which is partner of the beneficiary of the project.</xs:documentation>
         </xs:annotation>
       </xs:element>
-      <xs:element name="hasUltimateOwner" ref="LegalEntityType" maxOccurs="1" minOccurs="0">
+      <xs:element name="hasUltimateOwner" ref="UltimateOwnerType" maxOccurs="1" minOccurs="0">
         <xs:annotation>
           <xs:documentation xml:lang="en">The ultimate
  owner of the beneficiary of the project.</xs:documentation>
@@ -241,6 +249,14 @@
     <xs:attribute name="SubcontractRef" type="xs:IDREF">
       <xs:annotation>
         <xs:documentation xml:lang="en">Reference to Subcontract ID</xs:documentation>
+      </xs:annotation>
+    </xs:attribute>
+  </xs:complexType>
+  <xs:complexType name="UltimateOwnerType">
+    <xs:sequence/>
+    <xs:attribute name="UltimateOwnerRef" type="xs:IDREF">
+      <xs:annotation>
+        <xs:documentation xml:lang="en">Reference to UltimateOwner ID</xs:documentation>
       </xs:annotation>
     </xs:attribute>
   </xs:complexType>
@@ -558,7 +574,17 @@ contract, or not.</xs:documentation>
   </xs:complexType>
   <xs:complexType name="LegalEntityType">
     <xs:sequence>
-      <xs:element name="legalIdentifier" ref="IdentifierType" maxOccurs="unbounded" minOccurs="0">
+      <xs:element name="vatNumber" ref="IdentifierType" maxOccurs="1" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation xml:lang="en">The company VAT number.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="entityType" type="ConceptType" maxOccurs="1" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation xml:lang="en">A classification of the Legal Entity based on its ownership structure and nature.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="legalIdentifier" ref="IdentifierType" maxOccurs="1" minOccurs="1">
         <xs:annotation>
           <xs:documentation xml:lang="en">The unambiguous structured reference assigned to the Legal Entity by the legal authority that registered it.</xs:documentation>
         </xs:annotation>
@@ -567,6 +593,11 @@ contract, or not.</xs:documentation>
         <xs:annotation>
           <xs:documentation xml:lang="en">Number of employees of the beneficiary at the moment of the
 approval of the application.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="registeredAddress" ref="AddressType" maxOccurs="1" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation xml:lang="en">The address at which the Legal Entity is legally registered.</xs:documentation>
         </xs:annotation>
       </xs:element>
       <xs:element name="turnover" ref="MonetaryValueType" maxOccurs="1" minOccurs="0">
@@ -579,6 +610,45 @@ application.</xs:documentation>
     <xs:attribute name="LegalEntityRef" type="xs:IDREF">
       <xs:annotation>
         <xs:documentation xml:lang="en">Reference to LegalEntity ID</xs:documentation>
+      </xs:annotation>
+    </xs:attribute>
+  </xs:complexType>
+  <xs:complexType name="AddressType">
+    <xs:sequence>
+      <xs:element name="administrativeUnitLevel1" type="xs:string" maxOccurs="1" minOccurs="1">
+        <xs:annotation>
+          <xs:documentation xml:lang="en">The name of the uppermost level of the address, almost always a country.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="locatorDesignator" type="xs:string" maxOccurs="1" minOccurs="1">
+        <xs:annotation>
+          <xs:documentation xml:lang="en">A number or sequence of characters that uniquely identifies the locator within the relevant scope.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="locatorName" type="xs:string" maxOccurs="1" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation xml:lang="en">Proper noun(s) applied to the real world entity identified by the locator. The locator name could be the name of the property or complex, of the building or part of the building, or it could be the name of a room inside a building.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="postCode" type="xs:string" maxOccurs="1" minOccurs="1">
+        <xs:annotation>
+          <xs:documentation xml:lang="en">The code created and maintained for postal purposes to identify a subdivision of addresses and postal delivery points.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="postName" type="xs:string" maxOccurs="1" minOccurs="1">
+        <xs:annotation>
+          <xs:documentation xml:lang="en">A name created and maintained for postal purposes to identify a subdivision of addresses and postal delivery points.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="thoroughfare" type="xs:string" maxOccurs="1" minOccurs="1">
+        <xs:annotation>
+          <xs:documentation xml:lang="en">The name of a passage or way through from one location to another.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+    </xs:sequence>
+    <xs:attribute name="AddressRef" type="xs:IDREF">
+      <xs:annotation>
+        <xs:documentation xml:lang="en">Reference to Address ID</xs:documentation>
       </xs:annotation>
     </xs:attribute>
   </xs:complexType>

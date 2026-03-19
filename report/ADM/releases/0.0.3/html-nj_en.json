@@ -17,8 +17,8 @@
     },
     "status": "Draft",
     "statuslabel": "Onbekend",
-    "repositoryurl": "git@uri.semic.eu-thema:SEMICeu/uri.semic.eu-thema.git/tree/ade3326ceecf48a628c3260177dc4c256e456ab7",
-    "changelogurl": "git@uri.semic.eu-thema:SEMICeu/uri.semic.eu-thema.git/blob/ade3326ceecf48a628c3260177dc4c256e456ab7/CHANGELOG",
+    "repositoryurl": "git@uri.semic.eu-thema:SEMICeu/uri.semic.eu-thema.git/tree/e2f3b629ed65ae420c4b746f2212181a32fb4498",
+    "changelogurl": "git@uri.semic.eu-thema:SEMICeu/uri.semic.eu-thema.git/blob/e2f3b629ed65ae420c4b746f2212181a32fb4498/CHANGELOG",
     "feedbackurl": "https://github.com/SEMICeu/ADM/issues",
     "standaardregisterurl": "https://github.com/SEMICeu/ADM/blob/master/releases/0.0.3/Changelog.md",
     "usesVocs": [],
@@ -51,6 +51,46 @@
         "definition-en": "A legal entity who receives money for a project."
       },
       "properties": [
+        {
+          "uri": "https://w3id.org/adm/model/corrProcurementProcedure",
+          "name": "correctionProcurementProcedure",
+          "sort": "correction procurement procedure",
+          "label": {
+            "en": "correction procurement procedure"
+          },
+          "description": {
+            "en": "It indicates whether the entity has been subject to a financial correction in a procurement procedure in the past, or not.\r\nOnly relevant when the entity is a beneficiary of a project."
+          },
+          "usage": {},
+          "domain": [
+            {
+              "EA-Name": "Beneficiary",
+              "uri": "https://w3id.org/adm/model/Beneficiary"
+            }
+          ],
+          "range": [
+            {
+              "range_label": "Boolean",
+              "range_uri": "http://www.w3.org/2001/XMLSchema#boolean"
+            }
+          ],
+          "scopedrange": [
+            {
+              "range_uri": "#Boolean",
+              "range_puri": "http://www.w3.org/2001/XMLSchema#boolean",
+              "range_label": {
+                "en": "Boolean"
+              }
+            }
+          ],
+          "cardinality": "0..1",
+          "codelist_uri": "",
+          "rawTags": {
+            "uri": "https://w3id.org/adm/model/corrProcurementProcedure",
+            "label-en": "correction procurement procedure",
+            "definition-en": "It indicates whether the entity has been subject to a financial correction in a procurement procedure in the past, or not.\r\nOnly relevant when the entity is a beneficiary of a project."
+          }
+        },
         {
           "uri": "https://w3id.org/adm/model/hasPartner",
           "name": "hasPartner",
@@ -110,16 +150,16 @@
           ],
           "range": [
             {
-              "range_label": "LegalEntity",
-              "range_uri": "http://www.w3.org/ns/legal#LegalEntity"
+              "range_label": "UltimateOwner",
+              "range_uri": "https://w3id.org/adm/model/UltimateOwner"
             }
           ],
           "scopedrange": [
             {
-              "range_uri": "#Legal Entity",
-              "range_puri": "http://www.w3.org/ns/legal#LegalEntity",
+              "range_uri": "#Ultimate Owner",
+              "range_puri": "https://w3id.org/adm/model/UltimateOwner",
               "range_label": {
-                "en": "Legal Entity"
+                "en": "Ultimate Owner"
               }
             }
           ],
@@ -1062,6 +1102,33 @@
           }
         }
       ]
+    },
+    {
+      "uri": "https://w3id.org/adm/model/UltimateOwner",
+      "name": "UltimateOwner",
+      "label": {
+        "en": "Ultimate Owner"
+      },
+      "sort": "Ultimate Owner",
+      "description": {
+        "en": "The legal entity who ultimately owns or controls the beneficiary."
+      },
+      "usage": {},
+      "parents": [
+        {
+          "label": "Agent In Role",
+          "name": "AgentInRole",
+          "package": "epo",
+          "uri": "http://data.europa.eu/a4g/ontology#AgentInRole",
+          "scoped_uri": "#Agent In Role"
+        }
+      ],
+      "rawTags": {
+        "uri": "https://w3id.org/adm/model/UltimateOwner",
+        "label-en": "Ultimate Owner",
+        "definition-en": "The legal entity who ultimately owns or controls the beneficiary."
+      },
+      "properties": []
     },
     {
       "uri": "http://data.europa.eu/a4g/ontology#AgentInRole",
@@ -2480,6 +2547,89 @@
       },
       "properties": [
         {
+          "uri": "https://w3id.org/adm/model/VATNumber",
+          "name": "vatNumber",
+          "sort": "VAT number",
+          "label": {
+            "en": "VAT number"
+          },
+          "description": {
+            "en": "The company VAT number."
+          },
+          "usage": {
+            "en": "In VIES format with or without country code  preferable with country code. See <a href=\"http://ec.europa.eu/taxation_customs/vies/vieshome.do?locale=en\">vies page</a> for more details."
+          },
+          "domain": [
+            {
+              "EA-Name": "LegalEntity",
+              "uri": "http://www.w3.org/ns/legal#LegalEntity"
+            }
+          ],
+          "range": [
+            {
+              "range_label": "Identifier",
+              "range_uri": "http://www.w3.org/ns/adms#Identifier"
+            }
+          ],
+          "scopedrange": [
+            {
+              "range_uri": "#Identifier",
+              "range_puri": "http://www.w3.org/ns/adms#Identifier",
+              "range_label": {
+                "en": "Identifier"
+              }
+            }
+          ],
+          "cardinality": "0..1",
+          "codelist_uri": "",
+          "rawTags": {
+            "uri": "https://w3id.org/adm/model/VATNumber",
+            "label-en": "VAT number",
+            "definition-en": "The company VAT number.",
+            "usageNote-en": "In VIES format with or without country code  preferable with country code. See <a href=\"http://ec.europa.eu/taxation_customs/vies/vieshome.do?locale=en\">vies page</a> for more details."
+          }
+        },
+        {
+          "uri": "https://w3id.org/adm/model/entityType",
+          "name": "entityType",
+          "sort": "entity type",
+          "label": {
+            "en": "entity type"
+          },
+          "description": {
+            "en": "A classification of the Legal Entity based on its ownership structure and nature."
+          },
+          "usage": {},
+          "domain": [
+            {
+              "EA-Name": "LegalEntity",
+              "uri": "http://www.w3.org/ns/legal#LegalEntity"
+            }
+          ],
+          "range": [
+            {
+              "range_label": "Code",
+              "range_uri": "http://www.w3.org/2004/02/skos/core#Concept"
+            }
+          ],
+          "scopedrange": [
+            {
+              "range_uri": "#Code",
+              "range_puri": "http://www.w3.org/2004/02/skos/core#Concept",
+              "range_label": {
+                "en": "Code"
+              }
+            }
+          ],
+          "cardinality": "0..1",
+          "codelist_uri": "",
+          "rawTags": {
+            "uri": "https://w3id.org/adm/model/entityType",
+            "label-en": "entity type",
+            "definition-en": "A classification of the Legal Entity based on its ownership structure and nature."
+          }
+        },
+        {
           "uri": "https://w3id.org/adm/model/numberOfEmployees",
           "name": "numberOfEmployees",
           "sort": "number of employees",
@@ -2560,6 +2710,50 @@
           }
         },
         {
+          "uri": "http://data.europa.eu/m8g/registeredAddress",
+          "name": "registeredAddress",
+          "sort": "registered address",
+          "label": {
+            "en": "registered address"
+          },
+          "description": {
+            "en": "The address at which the Legal Entity is legally registered."
+          },
+          "usage": {
+            "en": "In almost all jurisdictions, Legal Entities must register a public address. This may or may not be the actual address at which the Legal Entity does its business, it is commonly the address of their lawyer or accountant, but it is the address to which formal communications can be sent. The registered address property points to the Address of the Registered Site. This property can be seen as a shorthand for this property path."
+          },
+          "domain": [
+            {
+              "EA-Name": "LegalEntity",
+              "uri": "http://www.w3.org/ns/legal#LegalEntity"
+            }
+          ],
+          "range": [
+            {
+              "range_label": "Address",
+              "range_uri": "http://www.w3.org/ns/locn#Address"
+            }
+          ],
+          "scopedrange": [
+            {
+              "range_uri": "#Address",
+              "range_puri": "http://www.w3.org/ns/locn#Address",
+              "range_label": {
+                "en": "Address"
+              }
+            }
+          ],
+          "cardinality": "0..1",
+          "codelist_uri": "",
+          "rawTags": {
+            "uri": "http://data.europa.eu/m8g/registeredAddress",
+            "usageNote-en": "NOTE$ea_notes=In almost all jurisdictions, Legal Entities must register a public address. This may or may not be the actual address at which the Legal Entity does its business, it is commonly the address of their lawyer or accountant, but it is the address to which formal communications can be sent. The registered address property points to the Address of the Registered Site. This property can be seen as a shorthand for this property path.",
+            "package": "Core Location",
+            "definition-en": "The address at which the Legal Entity is legally registered.",
+            "label-en": "registered address"
+          }
+        },
+        {
           "uri": "http://www.w3.org/ns/legal#legalIdentifier",
           "name": "legalIdentifier",
           "sort": "legal identifier",
@@ -2593,13 +2787,295 @@
               }
             }
           ],
-          "cardinality": "0..*",
+          "cardinality": "1",
           "codelist_uri": "",
           "rawTags": {
             "uri": "http://www.w3.org/ns/legal#legalIdentifier",
             "label-en": "legal identifier",
             "definition-en": "The unambiguous structured reference assigned to the Legal Entity by the legal authority that registered it.",
             "usageNote-en": "Legal Entity must have a unique identification number, allowing it to be clearly identified in communication across business registers.\r\n\r\nThe details of the registration are provided as properties of the Identifier class. The Core vocabulary sets no restriction on the type of legal identifier. In many countries, the business register's identifier is the relevant data point."
+          }
+        }
+      ]
+    },
+    {
+      "uri": "http://www.w3.org/ns/locn#Address",
+      "name": "Address",
+      "label": {
+        "en": "Address"
+      },
+      "sort": "Address",
+      "description": {
+        "en": "A spatial object that in a human-readable way identifies a fixed location."
+      },
+      "usage": {
+        "en": "An \"address representation\" as conceptually defined by the <a href=\"https://knowledge-base.inspire.ec.europa.eu/publications/inspire-data-specification-addresses-technical-guidelines_en\">INSPIRE Address Representation data type</a>: \"Representation of an address spatial object for use in external application schemas that need to include the basic, address information in a readable way.\".\r\n<br/><br/>\r\nThe representation of Addresses varies widely from one country's postal system to another. Even within countries, there are almost always examples of Addresses that do not conform to the stated national standard. However, <a href=\"https://www.iso.org/standard/61710.html\">ISO 19160-1</a> provides a method through which different Addresses can be converted from one conceptual model to another.\r\n<br/><br/>\r\nThis specification was heavily based on the INSPIRE Address Representation data type. It is noteworthy that if an Address is provided using the detailed breakdown suggested by the properties for this class, then it will be INSPIRE-conformant. To this very granular set of properties, we add two further properties:\r\n<br/><br/>\r\n- full address (the complete address as a formatted string)<br/>\r\n- addressID (a unique identifier for the address).\r\n<br/><br/>\r\nThe first of these allows publishers to simply provide the complete Address as one string, with or without formatting. This is analogous to <a href=\"https://www.w3.org/TR/vcard-rdf/#d4e953\">vCard's label property</a>.\r\n<br/><br/>\r\nThe addressID is part of the <a href=\"https://knowledge-base.inspire.ec.europa.eu/index_en\">INSPIRE guidelines</a> and provides a hook that can be used to link the Address to an alternative representation, such as <a href=\"https://www.w3.org/TR/vcard-rdf\">vCard</a> or <a href=\"https://www.oasis-open.org/committees/ciq/ciq.html#6\">OASIS xAL.</a>\r\n<br/><br/>\r\nThis class belongs to <a href=\"https://semiceu.github.io/Core-Location-Vocabulary/\">Core Location Vocabulary</a>"
+      },
+      "parents": [],
+      "rawTags": {
+        "uri": "http://www.w3.org/ns/locn#Address",
+        "label-en": "Address",
+        "definition-en": "A spatial object that in a human-readable way identifies a fixed location.",
+        "usageNote-en": "An \"address representation\" as conceptually defined by the <a href=\"https://knowledge-base.inspire.ec.europa.eu/publications/inspire-data-specification-addresses-technical-guidelines_en\">INSPIRE Address Representation data type</a>: \"Representation of an address spatial object for use in external application schemas that need to include the basic, address information in a readable way.\".\r\n<br/><br/>\r\nThe representation of Addresses varies widely from one country's postal system to another. Even within countries, there are almost always examples of Addresses that do not conform to the stated national standard. However, <a href=\"https://www.iso.org/standard/61710.html\">ISO 19160-1</a> provides a method through which different Addresses can be converted from one conceptual model to another.\r\n<br/><br/>\r\nThis specification was heavily based on the INSPIRE Address Representation data type. It is noteworthy that if an Address is provided using the detailed breakdown suggested by the properties for this class, then it will be INSPIRE-conformant. To this very granular set of properties, we add two further properties:\r\n<br/><br/>\r\n- full address (the complete address as a formatted string)<br/>\r\n- addressID (a unique identifier for the address).\r\n<br/><br/>\r\nThe first of these allows publishers to simply provide the complete Address as one string, with or without formatting. This is analogous to <a href=\"https://www.w3.org/TR/vcard-rdf/#d4e953\">vCard's label property</a>.\r\n<br/><br/>\r\nThe addressID is part of the <a href=\"https://knowledge-base.inspire.ec.europa.eu/index_en\">INSPIRE guidelines</a> and provides a hook that can be used to link the Address to an alternative representation, such as <a href=\"https://www.w3.org/TR/vcard-rdf\">vCard</a> or <a href=\"https://www.oasis-open.org/committees/ciq/ciq.html#6\">OASIS xAL.</a>\r\n<br/><br/>\r\nThis class belongs to <a href=\"https://semiceu.github.io/Core-Location-Vocabulary/\">Core Location Vocabulary</a>",
+        "class-usage-scope": "main"
+      },
+      "properties": [
+        {
+          "uri": "http://www.w3.org/ns/locn#adminUnitL1",
+          "name": "administrativeUnitLevel1",
+          "sort": "administrative unit level 1",
+          "label": {
+            "en": "administrative unit level 1"
+          },
+          "description": {
+            "en": "The name of the uppermost level of the address, almost always a country."
+          },
+          "usage": {
+            "en": "Best practice is to use the <a href=\"https://www.iso.org/standard/72482.html\">ISO 3166-1 code</a> but if this is inappropriate for the context, country names should be provided in a consistent manner to reduce ambiguity. For example, either write 'France' or 'FRA' consistently throughout the dataset and avoid mixing the two. The <a href=\"https://op.europa.eu/en/web/eu-vocabularies/dataset/-/resource?uri=http://publications.europa.eu/resource/dataset/country\">Country controlled vocabulary</a> from the Publications Office can be reused for this."
+          },
+          "domain": [
+            {
+              "EA-Name": "Address",
+              "uri": "http://www.w3.org/ns/locn#Address"
+            }
+          ],
+          "range": [
+            {
+              "range_label": "Text",
+              "range_uri": "http://www.w3.org/1999/02/22-rdf-syntax-ns#langString"
+            }
+          ],
+          "scopedrange": [
+            {
+              "range_uri": "#Text",
+              "range_puri": "http://www.w3.org/1999/02/22-rdf-syntax-ns#langString",
+              "range_label": {
+                "en": "Text"
+              }
+            }
+          ],
+          "cardinality": "1",
+          "codelist_uri": "",
+          "rawTags": {
+            "label-en": "administrative unit level 1",
+            "uri": "http://www.w3.org/ns/locn#adminUnitL1",
+            "definition-en": "The name of the uppermost level of the address, almost always a country.",
+            "usageNote-en": "Best practice is to use the <a href=\"https://www.iso.org/standard/72482.html\">ISO 3166-1 code</a> but if this is inappropriate for the context, country names should be provided in a consistent manner to reduce ambiguity. For example, either write 'France' or 'FRA' consistently throughout the dataset and avoid mixing the two. The <a href=\"https://op.europa.eu/en/web/eu-vocabularies/dataset/-/resource?uri=http://publications.europa.eu/resource/dataset/country\">Country controlled vocabulary</a> from the Publications Office can be reused for this."
+          }
+        },
+        {
+          "uri": "http://www.w3.org/ns/locn#locatorDesignator",
+          "name": "locatorDesignator",
+          "sort": "locator designator",
+          "label": {
+            "en": "locator designator"
+          },
+          "description": {
+            "en": "A number or sequence of characters that uniquely identifies the locator within the relevant scope."
+          },
+          "usage": {
+            "en": "In simpler terms, this is the building number, apartment number, etc. For an address such as \"Flat 3, 17 Bridge Street\", the locator is \"flat 3, 17\"."
+          },
+          "domain": [
+            {
+              "EA-Name": "Address",
+              "uri": "http://www.w3.org/ns/locn#Address"
+            }
+          ],
+          "range": [
+            {
+              "range_label": "Literal",
+              "range_uri": "http://www.w3.org/2000/01/rdf-schema#Literal"
+            }
+          ],
+          "scopedrange": [
+            {
+              "range_uri": "#Literal",
+              "range_puri": "http://www.w3.org/2000/01/rdf-schema#Literal",
+              "range_label": {
+                "en": "Literal"
+              }
+            }
+          ],
+          "cardinality": "1",
+          "codelist_uri": "",
+          "rawTags": {
+            "label-en": "locator designator",
+            "uri": "http://www.w3.org/ns/locn#locatorDesignator",
+            "definition-en": "A number or sequence of characters that uniquely identifies the locator within the relevant scope.",
+            "usageNote-en": "In simpler terms, this is the building number, apartment number, etc. For an address such as \"Flat 3, 17 Bridge Street\", the locator is \"flat 3, 17\"."
+          }
+        },
+        {
+          "uri": "http://www.w3.org/ns/locn#locatorName",
+          "name": "locatorName",
+          "sort": "locator name",
+          "label": {
+            "en": "locator name"
+          },
+          "description": {
+            "en": "Proper noun(s) applied to the real world entity identified by the locator. The locator name could be the name of the property or complex, of the building or part of the building, or it could be the name of a room inside a building."
+          },
+          "usage": {
+            "en": "The locator name could be the name of the property or complex, of the building or part of the building, or it could be the name of a room inside a building.\r\n<br/>\r\nThe key difference between a locator designator and a locator name is that the latter is a proper name and is unlikely to include digits. For example, \"Shumann, Berlaymont\" is a meeting room within the European Commission headquarters for which locator name is more appropriate than locator."
+          },
+          "domain": [
+            {
+              "EA-Name": "Address",
+              "uri": "http://www.w3.org/ns/locn#Address"
+            }
+          ],
+          "range": [
+            {
+              "range_label": "Text",
+              "range_uri": "http://www.w3.org/1999/02/22-rdf-syntax-ns#langString"
+            }
+          ],
+          "scopedrange": [
+            {
+              "range_uri": "#Text",
+              "range_puri": "http://www.w3.org/1999/02/22-rdf-syntax-ns#langString",
+              "range_label": {
+                "en": "Text"
+              }
+            }
+          ],
+          "cardinality": "0..1",
+          "codelist_uri": "",
+          "rawTags": {
+            "uri": "http://www.w3.org/ns/locn#locatorName",
+            "label-en": "locator name",
+            "definition-en": "Proper noun(s) applied to the real world entity identified by the locator. The locator name could be the name of the property or complex, of the building or part of the building, or it could be the name of a room inside a building.",
+            "usageNote-en": "The locator name could be the name of the property or complex, of the building or part of the building, or it could be the name of a room inside a building.\r\n<br/>\r\nThe key difference between a locator designator and a locator name is that the latter is a proper name and is unlikely to include digits. For example, \"Shumann, Berlaymont\" is a meeting room within the European Commission headquarters for which locator name is more appropriate than locator."
+          }
+        },
+        {
+          "uri": "http://www.w3.org/ns/locn#postCode",
+          "name": "postCode",
+          "sort": "post code",
+          "label": {
+            "en": "post code"
+          },
+          "description": {
+            "en": "The code created and maintained for postal purposes to identify a subdivision of addresses and postal delivery points."
+          },
+          "usage": {
+            "en": "Post codes are common elements in many countries' postal address systems. One of the many post codes of Paris is for example \"75000\"."
+          },
+          "domain": [
+            {
+              "EA-Name": "Address",
+              "uri": "http://www.w3.org/ns/locn#Address"
+            }
+          ],
+          "range": [
+            {
+              "range_label": "Literal",
+              "range_uri": "http://www.w3.org/2000/01/rdf-schema#Literal"
+            }
+          ],
+          "scopedrange": [
+            {
+              "range_uri": "#Literal",
+              "range_puri": "http://www.w3.org/2000/01/rdf-schema#Literal",
+              "range_label": {
+                "en": "Literal"
+              }
+            }
+          ],
+          "cardinality": "1",
+          "codelist_uri": "",
+          "rawTags": {
+            "uri": "http://www.w3.org/ns/locn#postCode",
+            "label-en": "post code",
+            "definition-en": "The code created and maintained for postal purposes to identify a subdivision of addresses and postal delivery points.",
+            "usageNote-en": "Post codes are common elements in many countries' postal address systems. One of the many post codes of Paris is for example \"75000\"."
+          }
+        },
+        {
+          "uri": "http://www.w3.org/ns/locn#postName",
+          "name": "postName",
+          "sort": "post name",
+          "label": {
+            "en": "post name"
+          },
+          "description": {
+            "en": "A name created and maintained for postal purposes to identify a subdivision of addresses and postal delivery points."
+          },
+          "usage": {
+            "en": "Usually a city, for example \"Paris\"."
+          },
+          "domain": [
+            {
+              "EA-Name": "Address",
+              "uri": "http://www.w3.org/ns/locn#Address"
+            }
+          ],
+          "range": [
+            {
+              "range_label": "Text",
+              "range_uri": "http://www.w3.org/1999/02/22-rdf-syntax-ns#langString"
+            }
+          ],
+          "scopedrange": [
+            {
+              "range_uri": "#Text",
+              "range_puri": "http://www.w3.org/1999/02/22-rdf-syntax-ns#langString",
+              "range_label": {
+                "en": "Text"
+              }
+            }
+          ],
+          "cardinality": "1",
+          "codelist_uri": "",
+          "rawTags": {
+            "uri": "http://www.w3.org/ns/locn#postName",
+            "label-en": "post name",
+            "definition-en": "A name created and maintained for postal purposes to identify a subdivision of addresses and postal delivery points.",
+            "usageNote-en": "Usually a city, for example \"Paris\"."
+          }
+        },
+        {
+          "uri": "http://www.w3.org/ns/locn#thoroughfare",
+          "name": "thoroughfare",
+          "sort": "thoroughfare",
+          "label": {
+            "en": "thoroughfare"
+          },
+          "description": {
+            "en": "The name of a passage or way through from one location to another."
+          },
+          "usage": {
+            "en": "A thoroughfare is usually a street, but it might be a waterway or some other feature. For example, \"Avenue des Champs-Élysées\"."
+          },
+          "domain": [
+            {
+              "EA-Name": "Address",
+              "uri": "http://www.w3.org/ns/locn#Address"
+            }
+          ],
+          "range": [
+            {
+              "range_label": "Text",
+              "range_uri": "http://www.w3.org/1999/02/22-rdf-syntax-ns#langString"
+            }
+          ],
+          "scopedrange": [
+            {
+              "range_uri": "#Text",
+              "range_puri": "http://www.w3.org/1999/02/22-rdf-syntax-ns#langString",
+              "range_label": {
+                "en": "Text"
+              }
+            }
+          ],
+          "cardinality": "1",
+          "codelist_uri": "",
+          "rawTags": {
+            "uri": "http://www.w3.org/ns/locn#thoroughfare",
+            "label-en": "thoroughfare",
+            "definition-en": "The name of a passage or way through from one location to another.",
+            "usageNote-en": "A thoroughfare is usually a street, but it might be a waterway or some other feature. For example, \"Avenue des Champs-Élysées\"."
           }
         }
       ]
@@ -3479,6 +3955,21 @@
       "parents": []
     },
     {
+      "uri": "https://w3id.org/adm/model/VATNumber",
+      "name": {
+        "en": "VAT number",
+        "undefined": "vatNumber"
+      },
+      "description": {},
+      "domain": [
+        null
+      ],
+      "range": [
+        null
+      ],
+      "parents": []
+    },
+    {
       "uri": "https://w3id.org/adm/model/amount",
       "name": {
         "en": "amount",
@@ -3528,6 +4019,21 @@
       "name": {
         "en": "dg",
         "undefined": "dg"
+      },
+      "description": {},
+      "domain": [
+        null
+      ],
+      "range": [
+        null
+      ],
+      "parents": []
+    },
+    {
+      "uri": "https://w3id.org/adm/model/entityType",
+      "name": {
+        "en": "entity type",
+        "undefined": "entityType"
       },
       "description": {},
       "domain": [
