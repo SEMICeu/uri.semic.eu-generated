@@ -5,6 +5,7 @@
   <xs:element name="ContractAddenda" type="ContractAddendaType"/>
   <xs:element name="Esf" type="EsfType"/>
   <xs:element name="KeyExpert" type="KeyExpertType"/>
+  <xs:element name="OperationalProgramme" type="OperationalProgrammeType"/>
   <xs:element name="Partner" type="PartnerType"/>
   <xs:element name="ProcurementInfo" type="ProcurementInfoType"/>
   <xs:element name="ProjectRole" type="ProjectRoleType"/>
@@ -21,6 +22,7 @@
   <xs:element name="Procedure" type="ProcedureType"/>
   <xs:element name="Subcontractor" type="SubcontractorType"/>
   <xs:element name="GenericDate" type="GenericDateType"/>
+  <xs:element name="PublicOrganisation" type="PublicOrganisationType"/>
   <xs:element name="Funding" type="FundingType"/>
   <xs:element name="FundingProgramme" type="FundingProgrammeType"/>
   <xs:element name="Text" type="TextType"/>
@@ -142,6 +144,25 @@ Only relevant when the entity is a beneficiary of a project.</xs:documentation>
     <xs:attribute name="KeyExpertRef" type="xs:IDREF">
       <xs:annotation>
         <xs:documentation xml:lang="en">Reference to KeyExpert ID</xs:documentation>
+      </xs:annotation>
+    </xs:attribute>
+  </xs:complexType>
+  <xs:complexType name="OperationalProgrammeType">
+    <xs:sequence>
+      <xs:element name="hasProject" ref="ProjectType" maxOccurs="unbounded" minOccurs="1">
+        <xs:annotation>
+          <xs:documentation xml:lang="en">The reference to a project within a programme.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="implements" ref="FundingProgrammeType" maxOccurs="unbounded" minOccurs="1">
+        <xs:annotation>
+          <xs:documentation xml:lang="en">The Funding Programme that is carried out through an Operational Programme.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+    </xs:sequence>
+    <xs:attribute name="OperationalProgrammeRef" type="xs:IDREF">
+      <xs:annotation>
+        <xs:documentation xml:lang="en">Reference to OperationalProgramme ID</xs:documentation>
       </xs:annotation>
     </xs:attribute>
   </xs:complexType>
@@ -451,8 +472,32 @@ contract, or not.</xs:documentation>
       </xs:annotation>
     </xs:attribute>
   </xs:complexType>
+  <xs:complexType name="PublicOrganisationType">
+    <xs:sequence>
+      <xs:element name="manages" ref="OperationalProgrammeType" maxOccurs="1" minOccurs="1">
+        <xs:annotation>
+          <xs:documentation xml:lang="en">The Operational Programme managed by the authority.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="preferredLabel" type="xs:string" maxOccurs="unbounded" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation xml:lang="en">A preferred label is used to provide the primary, legally recognised name of the Public Organization, as defined in the ORG Ontology.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+    </xs:sequence>
+    <xs:attribute name="PublicOrganisationRef" type="xs:IDREF">
+      <xs:annotation>
+        <xs:documentation xml:lang="en">Reference to PublicOrganisation ID</xs:documentation>
+      </xs:annotation>
+    </xs:attribute>
+  </xs:complexType>
   <xs:complexType name="FundingType">
     <xs:sequence>
+      <xs:element name="fundingAmount" ref="MonetaryValueType" maxOccurs="1" minOccurs="1">
+        <xs:annotation>
+          <xs:documentation xml:lang="en">The amount of money available for funding.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
       <xs:element name="fundingType" type="ConceptType" maxOccurs="1" minOccurs="1">
         <xs:annotation>
           <xs:documentation xml:lang="en">Information on the type of the funding.</xs:documentation>
@@ -471,23 +516,7 @@ contract, or not.</xs:documentation>
     </xs:attribute>
   </xs:complexType>
   <xs:complexType name="FundingProgrammeType">
-    <xs:sequence>
-      <xs:element name="hasProject" ref="ProjectType" maxOccurs="unbounded" minOccurs="1">
-        <xs:annotation>
-          <xs:documentation xml:lang="en">The reference to a project within a programme.</xs:documentation>
-        </xs:annotation>
-      </xs:element>
-      <xs:element name="identifier" ref="IdentifierType" maxOccurs="1" minOccurs="1">
-        <xs:annotation>
-          <xs:documentation xml:lang="en">Links a resource to an adms:Identifier class.</xs:documentation>
-        </xs:annotation>
-      </xs:element>
-      <xs:element name="title" type="xs:string" maxOccurs="1" minOccurs="1">
-        <xs:annotation>
-          <xs:documentation xml:lang="en">A human-readable version of a resource's name.</xs:documentation>
-        </xs:annotation>
-      </xs:element>
-    </xs:sequence>
+    <xs:sequence/>
     <xs:attribute name="FundingProgrammeRef" type="xs:IDREF">
       <xs:annotation>
         <xs:documentation xml:lang="en">Reference to FundingProgramme ID</xs:documentation>
