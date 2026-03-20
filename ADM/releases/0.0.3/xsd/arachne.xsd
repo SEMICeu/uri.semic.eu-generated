@@ -25,6 +25,7 @@
   <xs:element name="PublicOrganisation" type="PublicOrganisationType"/>
   <xs:element name="Funding" type="FundingType"/>
   <xs:element name="FundingProgramme" type="FundingProgrammeType"/>
+  <xs:element name="Invoice" type="InvoiceType"/>
   <xs:element name="Text" type="TextType"/>
   <xs:element name="Literal" type="LiteralType"/>
   <xs:element name="Boolean" type="BooleanType"/>
@@ -520,6 +521,25 @@ contract, or not.</xs:documentation>
     <xs:attribute name="FundingProgrammeRef" type="xs:IDREF">
       <xs:annotation>
         <xs:documentation xml:lang="en">Reference to FundingProgramme ID</xs:documentation>
+      </xs:annotation>
+    </xs:attribute>
+  </xs:complexType>
+  <xs:complexType name="InvoiceType">
+    <xs:sequence>
+      <xs:element name="hasInvoiceDate" type="xs:date" maxOccurs="1" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation xml:lang="en">A data property linking an invoice to its date.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="refersTo" ref="ProjectType" maxOccurs="1" minOccurs="1">
+        <xs:annotation>
+          <xs:documentation xml:lang="en">The project in which the invoice is linked to.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+    </xs:sequence>
+    <xs:attribute name="InvoiceRef" type="xs:IDREF">
+      <xs:annotation>
+        <xs:documentation xml:lang="en">Reference to Invoice ID</xs:documentation>
       </xs:annotation>
     </xs:attribute>
   </xs:complexType>
