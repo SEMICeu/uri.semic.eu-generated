@@ -17,8 +17,8 @@
     },
     "status": "Draft",
     "statuslabel": "Onbekend",
-    "repositoryurl": "git@uri.semic.eu-thema:SEMICeu/uri.semic.eu-thema.git/tree/89e2ca896475a4dc919acc5ae956b240ba3980e9",
-    "changelogurl": "git@uri.semic.eu-thema:SEMICeu/uri.semic.eu-thema.git/blob/89e2ca896475a4dc919acc5ae956b240ba3980e9/CHANGELOG",
+    "repositoryurl": "git@uri.semic.eu-thema:SEMICeu/uri.semic.eu-thema.git/tree/73b8e5d1e76d2b0e39d2df7a2095b3d797d38656",
+    "changelogurl": "git@uri.semic.eu-thema:SEMICeu/uri.semic.eu-thema.git/blob/73b8e5d1e76d2b0e39d2df7a2095b3d797d38656/CHANGELOG",
     "feedbackurl": "https://github.com/SEMICeu/ADM/issues",
     "standaardregisterurl": "https://github.com/SEMICeu/ADM/blob/master/releases/0.0.3/Changelog.md",
     "usesVocs": [],
@@ -541,7 +541,8 @@
       "rawTags": {
         "definition-en": "An operational programme or plan is a document submitted by a Member State and adopted by the Commission setting out a development strategy with a coherent set of priorities to be carried out with the aid of a Fund, or, in the case of the Convergence objective, with the aid of the Cohesion Fund and the ERDF.",
         "uri": "https://w3id.org/adm/model/OperationalProgramme",
-        "label-en": "Operational Programme"
+        "label-en": "Operational Programme",
+        "class-usge-scope": "main"
       },
       "properties": [
         {
@@ -622,6 +623,46 @@
             "label-en": "implements",
             "uri": "https://w3id.org/adm/model/implements",
             "definition-en": "The Funding Programme that is carried out through an Operational Programme."
+          }
+        },
+        {
+          "uri": "https://w3id.org/adm/model/isManagedBy",
+          "name": "isManagedBy",
+          "sort": "is managed by",
+          "label": {
+            "en": "is managed by"
+          },
+          "description": {
+            "en": "The authority.in charge of the Operational Programme."
+          },
+          "usage": {},
+          "domain": [
+            {
+              "EA-Name": "OperationalProgramme",
+              "uri": "https://w3id.org/adm/model/OperationalProgramme"
+            }
+          ],
+          "range": [
+            {
+              "range_label": "PublicOrganisation",
+              "range_uri": "http://data.europa.eu/m8g/PublicOrganisation"
+            }
+          ],
+          "scopedrange": [
+            {
+              "range_uri": "#Public Organisation",
+              "range_puri": "http://data.europa.eu/m8g/PublicOrganisation",
+              "range_label": {
+                "en": "Public Organisation"
+              }
+            }
+          ],
+          "cardinality": "1",
+          "codelist_uri": "",
+          "rawTags": {
+            "label-en": "is managed by",
+            "uri": "https://w3id.org/adm/model/isManagedBy",
+            "definition-en": "The authority.in charge of the Operational Programme."
           }
         }
       ]
@@ -2348,8 +2389,7 @@
         "uri": "http://data.europa.eu/m8g/PublicOrganisation",
         "label-en": "Public Organisation",
         "definition-en": "An Organization that is defined as being part of the public sector by a legal framework at any level.",
-        "usageNote-en": "Organizations which exist to provide services for its citizens and companies are called Public Organizations. The Public Organization class represents the organization. One organization may comprise several sub-organizations and any organization may have one or more organizational units. Each of these is described using the same properties and relationships.\r\n<br/><br/>\r\nThis definition is consistent with the more detailed definition of a \"public sector body\" as given in the <a href=\"https://eur-lex.europa.eu/legal-content/EN/TXT/?uri=CELEX%3A32019L1024&qid=1706001352901\">PSI Directive</a>: \"the State, regional or local authorities, bodies governed by public law and associations formed by one or several such authorities or one or several such bodies governed by public law\". It further defines a body governed by public law as any body \"(a) established for the specific purpose of meeting needs in the general interest, not having an industrial or commercial character; and (b) having legal personality; and (c) financed, for the most part by the State, or regional or local authorities, or other bodies governed by public law; or subject to management supervision by those bodies; or having an administrative, managerial or supervisory board, more than half of whose members are appointed by the State, regional or local authorities or by other bodies governed by public law\".",
-        "class-usage-scope": "main"
+        "usageNote-en": "Organizations which exist to provide services for its citizens and companies are called Public Organizations. The Public Organization class represents the organization. One organization may comprise several sub-organizations and any organization may have one or more organizational units. Each of these is described using the same properties and relationships.\r\n<br/><br/>\r\nThis definition is consistent with the more detailed definition of a \"public sector body\" as given in the <a href=\"https://eur-lex.europa.eu/legal-content/EN/TXT/?uri=CELEX%3A32019L1024&qid=1706001352901\">PSI Directive</a>: \"the State, regional or local authorities, bodies governed by public law and associations formed by one or several such authorities or one or several such bodies governed by public law\". It further defines a body governed by public law as any body \"(a) established for the specific purpose of meeting needs in the general interest, not having an industrial or commercial character; and (b) having legal personality; and (c) financed, for the most part by the State, or regional or local authorities, or other bodies governed by public law; or subject to management supervision by those bodies; or having an administrative, managerial or supervisory board, more than half of whose members are appointed by the State, regional or local authorities or by other bodies governed by public law\"."
       },
       "properties": [
         {
@@ -2393,46 +2433,6 @@
             "label-en": "preferred label",
             "definition-en": "A preferred label is used to provide the primary, legally recognised name of the Public Organization, as defined in the ORG Ontology.",
             "usageNote-en": "Refers to the official or legal name of a Public Organization. An organization may only have one such name in any given language. Primary names may be provided in multiple languages with multiple instances of the preferred label property."
-          }
-        },
-        {
-          "uri": "https://w3id.org/adm/model/manages",
-          "name": "manages",
-          "sort": "manages",
-          "label": {
-            "en": "manages"
-          },
-          "description": {
-            "en": "The Operational Programme managed by the authority."
-          },
-          "usage": {},
-          "domain": [
-            {
-              "EA-Name": "PublicOrganisation",
-              "uri": "http://data.europa.eu/m8g/PublicOrganisation"
-            }
-          ],
-          "range": [
-            {
-              "range_label": "OperationalProgramme",
-              "range_uri": "https://w3id.org/adm/model/OperationalProgramme"
-            }
-          ],
-          "scopedrange": [
-            {
-              "range_uri": "#Operational Programme",
-              "range_puri": "https://w3id.org/adm/model/OperationalProgramme",
-              "range_label": {
-                "en": "Operational Programme"
-              }
-            }
-          ],
-          "cardinality": "1",
-          "codelist_uri": "",
-          "rawTags": {
-            "label-en": "manages",
-            "uri": "https://w3id.org/adm/model/manages",
-            "definition-en": "The Operational Programme managed by the authority."
           }
         }
       ]
@@ -2970,8 +2970,7 @@
         "uri": "http://www.w3.org/ns/locn#Address",
         "label-en": "Address",
         "definition-en": "A spatial object that in a human-readable way identifies a fixed location.",
-        "usageNote-en": "An \"address representation\" as conceptually defined by the <a href=\"https://knowledge-base.inspire.ec.europa.eu/publications/inspire-data-specification-addresses-technical-guidelines_en\">INSPIRE Address Representation data type</a>: \"Representation of an address spatial object for use in external application schemas that need to include the basic, address information in a readable way.\".\r\n<br/><br/>\r\nThe representation of Addresses varies widely from one country's postal system to another. Even within countries, there are almost always examples of Addresses that do not conform to the stated national standard. However, <a href=\"https://www.iso.org/standard/61710.html\">ISO 19160-1</a> provides a method through which different Addresses can be converted from one conceptual model to another.\r\n<br/><br/>\r\nThis specification was heavily based on the INSPIRE Address Representation data type. It is noteworthy that if an Address is provided using the detailed breakdown suggested by the properties for this class, then it will be INSPIRE-conformant. To this very granular set of properties, we add two further properties:\r\n<br/><br/>\r\n- full address (the complete address as a formatted string)<br/>\r\n- addressID (a unique identifier for the address).\r\n<br/><br/>\r\nThe first of these allows publishers to simply provide the complete Address as one string, with or without formatting. This is analogous to <a href=\"https://www.w3.org/TR/vcard-rdf/#d4e953\">vCard's label property</a>.\r\n<br/><br/>\r\nThe addressID is part of the <a href=\"https://knowledge-base.inspire.ec.europa.eu/index_en\">INSPIRE guidelines</a> and provides a hook that can be used to link the Address to an alternative representation, such as <a href=\"https://www.w3.org/TR/vcard-rdf\">vCard</a> or <a href=\"https://www.oasis-open.org/committees/ciq/ciq.html#6\">OASIS xAL.</a>\r\n<br/><br/>\r\nThis class belongs to <a href=\"https://semiceu.github.io/Core-Location-Vocabulary/\">Core Location Vocabulary</a>",
-        "class-usage-scope": "main"
+        "usageNote-en": "An \"address representation\" as conceptually defined by the <a href=\"https://knowledge-base.inspire.ec.europa.eu/publications/inspire-data-specification-addresses-technical-guidelines_en\">INSPIRE Address Representation data type</a>: \"Representation of an address spatial object for use in external application schemas that need to include the basic, address information in a readable way.\".\r\n<br/><br/>\r\nThe representation of Addresses varies widely from one country's postal system to another. Even within countries, there are almost always examples of Addresses that do not conform to the stated national standard. However, <a href=\"https://www.iso.org/standard/61710.html\">ISO 19160-1</a> provides a method through which different Addresses can be converted from one conceptual model to another.\r\n<br/><br/>\r\nThis specification was heavily based on the INSPIRE Address Representation data type. It is noteworthy that if an Address is provided using the detailed breakdown suggested by the properties for this class, then it will be INSPIRE-conformant. To this very granular set of properties, we add two further properties:\r\n<br/><br/>\r\n- full address (the complete address as a formatted string)<br/>\r\n- addressID (a unique identifier for the address).\r\n<br/><br/>\r\nThe first of these allows publishers to simply provide the complete Address as one string, with or without formatting. This is analogous to <a href=\"https://www.w3.org/TR/vcard-rdf/#d4e953\">vCard's label property</a>.\r\n<br/><br/>\r\nThe addressID is part of the <a href=\"https://knowledge-base.inspire.ec.europa.eu/index_en\">INSPIRE guidelines</a> and provides a hook that can be used to link the Address to an alternative representation, such as <a href=\"https://www.w3.org/TR/vcard-rdf\">vCard</a> or <a href=\"https://www.oasis-open.org/committees/ciq/ciq.html#6\">OASIS xAL.</a>\r\n<br/><br/>\r\nThis class belongs to <a href=\"https://semiceu.github.io/Core-Location-Vocabulary/\">Core Location Vocabulary</a>"
       },
       "properties": [
         {
