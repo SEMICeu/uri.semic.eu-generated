@@ -2135,10 +2135,10 @@
       "extra": {
         "EA-Name": "corrProcurementProcedure",
         "EA-Guid": "{1DD9788B-716F-4688-95B2-56FF7DEC0C0C}",
-        "EA-Package": "Arachne",
+        "EA-Package": "Core Business",
         "EA-Type": "attribute",
-        "EA-Domain": "Beneficiary",
-        "EA-Domain-Guid": "{4837698A-F01B-4c0a-92D3-E7815EC8929C}",
+        "EA-Domain": "LegalEntity",
+        "EA-Domain-Guid": "{FAFDAEBD-DC17-48ab-B8A3-B2311DA155BE}",
         "EA-Range": "Boolean",
         "RangeData": {
           "EA-Name": "Boolean",
@@ -2182,8 +2182,8 @@
       "codelist": [],
       "domain": [
         {
-          "uri": "https://w3id.org/adm/model/Beneficiary",
-          "EA-Name": "Beneficiary"
+          "uri": "http://www.w3.org/ns/legal#LegalEntity",
+          "EA-Name": "LegalEntity"
         }
       ],
       "range": [
@@ -2449,90 +2449,6 @@
           "EA-Name": "Integer",
           "EA-Package": "",
           "uri": "http://www.w3.org/2001/XMLSchema#integer"
-        }
-      ],
-      "generalization": [],
-      "minCardinality": "0",
-      "maxCardinality": "1"
-    },
-    {
-      "@id": "https://w3id.org/adm/model/entityType",
-      "@type": "http://www.w3.org/2002/07/owl#ObjectProperty",
-      "name": "entityType",
-      "inpackage": "ACTIVE_PACKAGE",
-      "ap-definition-en": {
-        "en": "A classification of the Legal Entity based on its ownership structure and nature."
-      },
-      "ap-label-en": {
-        "en": "entity type"
-      },
-      "definition": {
-        "en": "A classification of the Legal Entity based on its ownership structure and nature."
-      },
-      "label": {
-        "en": "entity type"
-      },
-      "extra": {
-        "EA-Name": "entityType",
-        "EA-Guid": "{007DF51D-9C36-419d-9182-201B023BC848}",
-        "EA-Package": "Core Business",
-        "EA-Type": "attribute",
-        "EA-Domain": "LegalEntity",
-        "EA-Domain-Guid": "{FAFDAEBD-DC17-48ab-B8A3-B2311DA155BE}",
-        "EA-Range": "Code",
-        "RangeData": {
-          "EA-Name": "Code",
-          "EA-GUID": "{1AFECB03-6AE2-4459-8DC4-ABEF3B30A8CC}",
-          "EA-Package": "DataTypes",
-          "uri": "http://www.w3.org/2004/02/skos/core#Concept"
-        },
-        "label": {
-          "en": "entity type"
-        },
-        "definition": {
-          "en": "A classification of the Legal Entity based on its ownership structure and nature."
-        },
-        "usage": "",
-        "ap-label-en": {
-          "en": "entity type"
-        },
-        "ap-definition-en": {
-          "en": "A classification of the Legal Entity based on its ownership structure and nature."
-        },
-        "ap-usageNote-en": "",
-        "ap-codelist": "",
-        "RawTags": [
-          {
-            "key": "uri",
-            "value": "https://w3id.org/adm/model/entityType",
-            "note": "null"
-          },
-          {
-            "key": "label-en",
-            "value": "entity type",
-            "note": "null"
-          },
-          {
-            "key": "definition-en",
-            "value": "A classification of the Legal Entity based on its ownership structure and nature.",
-            "note": "null"
-          }
-        ],
-        "Scope": "FULL_DEFINITON"
-      },
-      "codelist": [],
-      "domain": [
-        {
-          "uri": "http://www.w3.org/ns/legal#LegalEntity",
-          "EA-Name": "LegalEntity"
-        }
-      ],
-      "range": [
-        {
-          "EA-Name": "Code",
-          "EA-GUID": "{1AFECB03-6AE2-4459-8DC4-ABEF3B30A8CC}",
-          "EA-Package": "DataTypes",
-          "uri": "http://www.w3.org/2004/02/skos/core#Concept"
         }
       ],
       "generalization": [],
@@ -4652,7 +4568,7 @@
         "en": "A category to which the project belongs to."
       },
       "usage": {
-        "en": "The recommended control vocabulary is the <a href=\"#list-block-projectType\" > Project Type </a> list. "
+        "en": "The recommended control vocabulary is the <a href=\"#list-projecttype-projectType\" > Project Type </a> list. "
       },
       "ap-label-en": {
         "en": "project type"
@@ -4684,7 +4600,7 @@
           "en": "A category to which the project belongs to."
         },
         "usage": {
-          "en": "The recommended control vocabulary is the <a href=\"#list-block-projectType\" > Project Type </a> list. "
+          "en": "The recommended control vocabulary is the <a href=\"#list-projecttype-projectType\" > Project Type </a> list. "
         },
         "ap-label-en": {
           "en": "project type"
@@ -4713,7 +4629,7 @@
           {
             "key": "usageNote-en",
             "value": "NOTE",
-            "note": "The recommended control vocabulary is the <a href=\"#list-block-projectType\" > Project Type </a> list. "
+            "note": "The recommended control vocabulary is the <a href=\"#list-projecttype-projectType\" > Project Type </a> list. "
           }
         ],
         "Scope": "FULL_DEFINITON"
@@ -10868,76 +10784,66 @@
       "maxCardinality": "1"
     },
     {
-      "@id": "http://www.w3.org/ns/legal#legalIdentifier",
-      "@type": "http://www.w3.org/2002/07/owl#ObjectProperty",
-      "name": "legalIdentifier",
+      "@id": "http://www.w3.org/ns/legal#legalName",
+      "@type": "http://www.w3.org/2002/07/owl#DatatypeProperty",
+      "name": "legalName",
       "inpackage": "OTHER_PACKAGE",
       "ap-definition-en": {
-        "en": "The unambiguous structured reference assigned to the Legal Entity by the legal authority that registered it."
-      },
-      "usage": {
-        "en": "Legal Entity must have a unique identification number, allowing it to be clearly identified in communication across business registers.\r\n\r\nThe details of the registration are provided as properties of the Identifier class. The Core vocabulary sets no restriction on the type of legal identifier. In many countries, the business register's identifier is the relevant data point."
+        "en": "\tThe name under which the Legal Entity is legally registered."
       },
       "ap-label-en": {
-        "en": "legal identifier"
+        "en": "legal name"
       },
       "definition": {
-        "en": "The unambiguous structured reference assigned to the Legal Entity by the legal authority that registered it."
+        "en": "\tThe name under which the Legal Entity is legally registered."
       },
       "label": {
-        "en": "legal identifier"
+        "en": "legal name"
       },
       "extra": {
-        "EA-Name": "legalIdentifier",
-        "EA-Guid": "{E8A99579-2BF9-4627-9439-125669BC2591}",
+        "EA-Name": "legalName",
+        "EA-Guid": "{73C147A3-79C6-4957-AB76-EC1FAF7B28E7}",
         "EA-Package": "Core Business",
         "EA-Type": "attribute",
         "EA-Domain": "LegalEntity",
         "EA-Domain-Guid": "{FAFDAEBD-DC17-48ab-B8A3-B2311DA155BE}",
-        "EA-Range": "Identifier",
+        "EA-Range": "Text",
         "RangeData": {
-          "EA-Name": "Identifier",
-          "EA-GUID": "{4252FD49-50E1-4fa8-AE37-1FE59010D3AB}",
-          "EA-Package": "adms",
-          "uri": "http://www.w3.org/ns/adms#Identifier"
+          "EA-Name": "Text",
+          "EA-GUID": "{01DDF84E-BA04-467c-B657-9A8877C293F9}",
+          "EA-Package": "DataTypes",
+          "uri": "http://www.w3.org/1999/02/22-rdf-syntax-ns#langString"
         },
         "label": {
-          "en": "legal identifier"
+          "en": "legal name"
         },
         "definition": {
-          "en": "The unambiguous structured reference assigned to the Legal Entity by the legal authority that registered it."
+          "en": "\tThe name under which the Legal Entity is legally registered."
         },
-        "usage": {
-          "en": "Legal Entity must have a unique identification number, allowing it to be clearly identified in communication across business registers.\r\n\r\nThe details of the registration are provided as properties of the Identifier class. The Core vocabulary sets no restriction on the type of legal identifier. In many countries, the business register's identifier is the relevant data point."
-        },
+        "usage": "",
         "ap-label-en": {
-          "en": "legal identifier"
+          "en": "legal name"
         },
         "ap-definition-en": {
-          "en": "The unambiguous structured reference assigned to the Legal Entity by the legal authority that registered it."
+          "en": "\tThe name under which the Legal Entity is legally registered."
         },
         "ap-usageNote-en": "",
         "ap-codelist": "",
         "RawTags": [
           {
             "key": "uri",
-            "value": "http://www.w3.org/ns/legal#legalIdentifier",
+            "value": "http://www.w3.org/ns/legal#legalName",
             "note": "null"
           },
           {
             "key": "label-en",
-            "value": "legal identifier",
+            "value": "legal name",
             "note": "null"
           },
           {
             "key": "definition-en",
-            "value": "The unambiguous structured reference assigned to the Legal Entity by the legal authority that registered it.",
+            "value": "\tThe name under which the Legal Entity is legally registered.",
             "note": "null"
-          },
-          {
-            "key": "usageNote-en",
-            "value": "NOTE",
-            "note": "Legal Entity must have a unique identification number, allowing it to be clearly identified in communication across business registers.\r\n\r\nThe details of the registration are provided as properties of the Identifier class. The Core vocabulary sets no restriction on the type of legal identifier. In many countries, the business register's identifier is the relevant data point."
           }
         ],
         "Scope": "NOTHING"
@@ -10951,14 +10857,14 @@
       ],
       "range": [
         {
-          "EA-Name": "Identifier",
-          "EA-GUID": "{4252FD49-50E1-4fa8-AE37-1FE59010D3AB}",
-          "EA-Package": "adms",
-          "uri": "http://www.w3.org/ns/adms#Identifier"
+          "EA-Name": "Text",
+          "EA-GUID": "{01DDF84E-BA04-467c-B657-9A8877C293F9}",
+          "EA-Package": "DataTypes",
+          "uri": "http://www.w3.org/1999/02/22-rdf-syntax-ns#langString"
         }
       ],
       "generalization": [],
-      "minCardinality": "0",
+      "minCardinality": "1",
       "maxCardinality": "1"
     },
     {
@@ -12131,110 +12037,6 @@
       "name": "hasContractor",
       "inpackage": "OTHER_PACKAGE",
       "ap-definition-en": {
-        "en": "The reference to the entity which is the contractor of the contract."
-      },
-      "ap-label-en": {
-        "en": "has contractor"
-      },
-      "definition": {
-        "en": "The reference to the entity which is the contractor of the contract."
-      },
-      "label": {
-        "en": "has contractor"
-      },
-      "extra": {
-        "EA-Name": "hasContractor",
-        "EA-Guid": "{540B7E6A-CFFB-4fd7-9B16-2CCCA47F8EF0}",
-        "derived": "false",
-        "EA-Package": "",
-        "EA-Type": "connector",
-        "EA-Domain": "Invoice",
-        "EA-Domain-Guid": "{18A5FEBA-F510-4237-98E6-46480E666A9B}",
-        "EA-Range": "Contractor",
-        "RangeData": {
-          "EA-Name": "Contractor",
-          "EA-GUID": "{B86A0BDF-D163-468f-8132-42D69E542DF8}",
-          "EA-Package": "epo",
-          "uri": "http://data.europa.eu/a4g/ontology#Contractor"
-        },
-        "sourceRole": "null",
-        "destRole": "hasContractor",
-        "label": {
-          "en": "has contractor"
-        },
-        "definition": {
-          "en": "The reference to the entity which is the contractor of the contract."
-        },
-        "usage": "",
-        "ap-label-en": {
-          "en": "has contractor"
-        },
-        "ap-definition-en": {
-          "en": "The reference to the entity which is the contractor of the contract."
-        },
-        "ap-usageNote-en": "",
-        "ap-codelist": "",
-        "RawTags": [
-          {
-            "key": "uri",
-            "value": "NOTE",
-            "note": "https://w3id.org/adm/model/hasContractor"
-          },
-          {
-            "key": "definition-en",
-            "value": "NOTE",
-            "note": "The reference to the entity which is the contractor of the contract."
-          },
-          {
-            "key": "label-en",
-            "value": "NOTE",
-            "note": "has contractor"
-          }
-        ],
-        "DestRoleTags": [
-          {
-            "key": "uri",
-            "value": "NOTE",
-            "note": "https://w3id.org/adm/model/hasContractor"
-          },
-          {
-            "key": "definition-en",
-            "value": "NOTE",
-            "note": "The reference to the entity which is the contractor of the contract."
-          },
-          {
-            "key": "label-en",
-            "value": "NOTE",
-            "note": "has contractor"
-          }
-        ],
-        "Scope": "NOTHING"
-      },
-      "codelist": [],
-      "domain": [
-        {
-          "uri": "http://data.europa.eu/a4g/ontology#Invoice",
-          "EA-Name": "Invoice"
-        }
-      ],
-      "range": [
-        {
-          "EA-Name": "Contractor",
-          "EA-GUID": "{B86A0BDF-D163-468f-8132-42D69E542DF8}",
-          "EA-Package": "epo",
-          "uri": "http://data.europa.eu/a4g/ontology#Contractor"
-        }
-      ],
-      "generalization": [],
-      "minCardinality": "1",
-      "maxCardinality": "1"
-    },
-    {
-      "@id": "https://w3id.org/adm/model/hasContractor",
-      "@type": "http://www.w3.org/2002/07/owl#ObjectProperty",
-      "name": "hasContractor",
-      "inpackage": "OTHER_PACKAGE",
-      "ap-definition-en": {
         "en": "The reference to the entity which is the \r\ncontractor of the contract."
       },
       "ap-label-en": {
@@ -12319,6 +12121,110 @@
         {
           "uri": "http://data.europa.eu/a4g/ontology#Contract",
           "EA-Name": "Contract"
+        }
+      ],
+      "range": [
+        {
+          "EA-Name": "Contractor",
+          "EA-GUID": "{B86A0BDF-D163-468f-8132-42D69E542DF8}",
+          "EA-Package": "epo",
+          "uri": "http://data.europa.eu/a4g/ontology#Contractor"
+        }
+      ],
+      "generalization": [],
+      "minCardinality": "1",
+      "maxCardinality": "1"
+    },
+    {
+      "@id": "https://w3id.org/adm/model/hasContractor",
+      "@type": "http://www.w3.org/2002/07/owl#ObjectProperty",
+      "name": "hasContractor",
+      "inpackage": "OTHER_PACKAGE",
+      "ap-definition-en": {
+        "en": "The reference to the entity which is the contractor of the contract."
+      },
+      "ap-label-en": {
+        "en": "has contractor"
+      },
+      "definition": {
+        "en": "The reference to the entity which is the contractor of the contract."
+      },
+      "label": {
+        "en": "has contractor"
+      },
+      "extra": {
+        "EA-Name": "hasContractor",
+        "EA-Guid": "{540B7E6A-CFFB-4fd7-9B16-2CCCA47F8EF0}",
+        "derived": "false",
+        "EA-Package": "",
+        "EA-Type": "connector",
+        "EA-Domain": "Invoice",
+        "EA-Domain-Guid": "{18A5FEBA-F510-4237-98E6-46480E666A9B}",
+        "EA-Range": "Contractor",
+        "RangeData": {
+          "EA-Name": "Contractor",
+          "EA-GUID": "{B86A0BDF-D163-468f-8132-42D69E542DF8}",
+          "EA-Package": "epo",
+          "uri": "http://data.europa.eu/a4g/ontology#Contractor"
+        },
+        "sourceRole": "null",
+        "destRole": "hasContractor",
+        "label": {
+          "en": "has contractor"
+        },
+        "definition": {
+          "en": "The reference to the entity which is the contractor of the contract."
+        },
+        "usage": "",
+        "ap-label-en": {
+          "en": "has contractor"
+        },
+        "ap-definition-en": {
+          "en": "The reference to the entity which is the contractor of the contract."
+        },
+        "ap-usageNote-en": "",
+        "ap-codelist": "",
+        "RawTags": [
+          {
+            "key": "uri",
+            "value": "NOTE",
+            "note": "https://w3id.org/adm/model/hasContractor"
+          },
+          {
+            "key": "definition-en",
+            "value": "NOTE",
+            "note": "The reference to the entity which is the contractor of the contract."
+          },
+          {
+            "key": "label-en",
+            "value": "NOTE",
+            "note": "has contractor"
+          }
+        ],
+        "DestRoleTags": [
+          {
+            "key": "uri",
+            "value": "NOTE",
+            "note": "https://w3id.org/adm/model/hasContractor"
+          },
+          {
+            "key": "definition-en",
+            "value": "NOTE",
+            "note": "The reference to the entity which is the contractor of the contract."
+          },
+          {
+            "key": "label-en",
+            "value": "NOTE",
+            "note": "has contractor"
+          }
+        ],
+        "Scope": "NOTHING"
+      },
+      "codelist": [],
+      "domain": [
+        {
+          "uri": "http://data.europa.eu/a4g/ontology#Invoice",
+          "EA-Name": "Invoice"
         }
       ],
       "range": [
@@ -13821,7 +13727,7 @@
   },
   "config": "config/config-ap.json",
   "branchtag": "ReSpecCV",
-  "dummy": "68",
+  "dummy": "69",
   "filename": "config/arachne.json",
   "navigation": {
     "prev": "https://semiceu.github.io/ADM/releases/0.0.3/"
@@ -13831,7 +13737,7 @@
     "parameters": "-m individual -c nodekind"
   },
   "urlref": "/ADM/releases/0.0.3",
-  "documentcommit": "05bf246c9a6674db6075011d815f233c44356f5d",
-  "toolchaincommit": "43e5e23e6870bff4bfb7c85d293113c2d37e2cdc",
+  "documentcommit": "afb30a140d4eaee664952904ac1bd511e85b3c14",
+  "toolchaincommit": "d400c3a2d952c6ad5471b6b451f358cef6703e8d",
   "hostname": "https://semiceu.github.io"
 }

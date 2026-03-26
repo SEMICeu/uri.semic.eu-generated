@@ -414,9 +414,9 @@ The main entities are those that form the core of the Application Profile.
                     </dt>
                     
                         <dd>
-                            For this entity the following properties are defined: <a href="#LegalEntity.entitytype">entity type</a>
+                            For this entity the following properties are defined: <a href="#LegalEntity.correctionprocurementprocedure">correction procurement procedure</a>
                             , <a href="#LegalEntity.hasfinalbeneficialowner">has final beneficial owner</a>
-                            , <a href="#LegalEntity.legalidentifier">legal identifier</a>
+                            , <a href="#LegalEntity.legalname">legal name</a>
                             , <a href="#LegalEntity.numberofemployees">number of employees</a>
                             , <a href="#LegalEntity.registeredaddress">registered address</a>
                             , <a href="#LegalEntity.turnover">turnover</a>
@@ -460,27 +460,27 @@ The main entities are those that form the core of the Application Profile.
                     </thead>
                     <tbody class="supertype">
                         
-                            <tr id="LegalEntity.entitytype"
+                            <tr id="LegalEntity.correctionprocurementprocedure"
                                 typeof="rdf:Property"
-                                resource="https://w3id.org/adm/model/entityType"
+                                resource="https://w3id.org/adm/model/corrProcurementProcedure"
                                 class="class mandatory">
                                 <td>
-				    <a href="https://github.com/SEMICeu/ADM/issues/new?title=Issue%20for%20entity type%20in%20Legal Entity&body=Explain%20your%20issue%20for%20https://semiceu.github.io/ADM/releases/0.0.3%23LegalEntity.entitytype" target="_blank" rel="noopener noreferrer" >
+				    <a href="https://github.com/SEMICeu/ADM/issues/new?title=Issue%20for%20correction procurement procedure%20in%20Legal Entity&body=Explain%20your%20issue%20for%20https://semiceu.github.io/ADM/releases/0.0.3%23LegalEntity.correctionprocurementprocedure" target="_blank" rel="noopener noreferrer" >
 					    <!--                                        <i class="icon">[o]</i> -->
                                         <img src="html/callout.png" loading="lazy" alt="[o]" width="100" height="100"/>
                                     </a>
                                 </td>
                                 <td>
-                                        <a href="https://w3id.org/adm/model/entityType"
+                                        <a href="https://w3id.org/adm/model/corrProcurementProcedure"
                                            data-toggle="tooltip"
-                                           data-content="https://w3id.org/adm/model/entityType"
+                                           data-content="https://w3id.org/adm/model/corrProcurementProcedure"
                                            data-placement="right">
-                                        entity type</a>
+                                        correction procurement procedure</a>
                                 </td>
                                 <td>
                                     
                                         
-                                            <a href="#Code" data-placement="right">Code</a>
+                                            <a href="#Boolean" data-placement="right">Boolean</a>
                                         
                                     
                                 </td>
@@ -488,7 +488,8 @@ The main entities are those that form the core of the Application Profile.
                                     0..1
                                 </td>
                                 <td property="rdfs:comment">
-                                    A classification of the Legal Entity based on its ownership structure and nature.
+                                    It indicates whether the entity has been subject to a financial correction in a procurement procedure in the past, or not.
+Only relevant when the entity is a beneficiary of a project.
                                 </td>
                                 <td property="skos:scopeNote">
                                     
@@ -546,40 +547,38 @@ The main entities are those that form the core of the Application Profile.
                                 </td>
                             </tr>
                         
-                            <tr id="LegalEntity.legalidentifier"
+                            <tr id="LegalEntity.legalname"
                                 typeof="rdf:Property"
-                                resource="http://www.w3.org/ns/legal#legalIdentifier"
+                                resource="http://www.w3.org/ns/legal#legalName"
                                 class="class mandatory">
                                 <td>
-				    <a href="https://github.com/SEMICeu/ADM/issues/new?title=Issue%20for%20legal identifier%20in%20Legal Entity&body=Explain%20your%20issue%20for%20https://semiceu.github.io/ADM/releases/0.0.3%23LegalEntity.legalidentifier" target="_blank" rel="noopener noreferrer" >
+				    <a href="https://github.com/SEMICeu/ADM/issues/new?title=Issue%20for%20legal name%20in%20Legal Entity&body=Explain%20your%20issue%20for%20https://semiceu.github.io/ADM/releases/0.0.3%23LegalEntity.legalname" target="_blank" rel="noopener noreferrer" >
 					    <!--                                        <i class="icon">[o]</i> -->
                                         <img src="html/callout.png" loading="lazy" alt="[o]" width="100" height="100"/>
                                     </a>
                                 </td>
                                 <td>
-                                        <a href="http://www.w3.org/ns/legal#legalIdentifier"
+                                        <a href="http://www.w3.org/ns/legal#legalName"
                                            data-toggle="tooltip"
-                                           data-content="http://www.w3.org/ns/legal#legalIdentifier"
+                                           data-content="http://www.w3.org/ns/legal#legalName"
                                            data-placement="right">
-                                        legal identifier</a>
+                                        legal name</a>
                                 </td>
                                 <td>
                                     
                                         
-                                            <a href="#Identifier" data-placement="right">Identifier</a>
+                                            <a href="#Text" data-placement="right">Text</a>
                                         
                                     
                                 </td>
                                 <td>
-                                    0..1
+                                    1
                                 </td>
                                 <td property="rdfs:comment">
-                                    The unambiguous structured reference assigned to the Legal Entity by the legal authority that registered it.
+                                    	The name under which the Legal Entity is legally registered.
                                 </td>
                                 <td property="skos:scopeNote">
-                                    Legal Entity must have a unique identification number, allowing it to be clearly identified in communication across business registers.
-
-The details of the registration are provided as properties of the Identifier class. The Core vocabulary sets no restriction on the type of legal identifier. In many countries, the business register's identifier is the relevant data point.
+                                    
                                 </td>
 				<!--
                                 <td>
@@ -2446,8 +2445,7 @@ The key difference between a locator designator and a locator name is that the l
                     </dt>
                     
                         <dd>
-                            For this entity the following properties are defined: <a href="#Beneficiary.correctionprocurementprocedure">correction procurement procedure</a>
-                            , <a href="#Beneficiary.haspartner">has partner</a>
+                            For this entity the following properties are defined: <a href="#Beneficiary.haspartner">has partner</a>
                             , <a href="#Beneficiary.hasultimateowner">has ultimate owner</a>
                             .
                     </dd>
@@ -2487,50 +2485,6 @@ The key difference between a locator designator and a locator name is that the l
                         </tr>
                     </thead>
                     <tbody class="supertype">
-                        
-                            <tr id="Beneficiary.correctionprocurementprocedure"
-                                typeof="rdf:Property"
-                                resource="https://w3id.org/adm/model/corrProcurementProcedure"
-                                class="class mandatory">
-                                <td>
-				    <a href="https://github.com/SEMICeu/ADM/issues/new?title=Issue%20for%20correction procurement procedure%20in%20Beneficiary&body=Explain%20your%20issue%20for%20https://semiceu.github.io/ADM/releases/0.0.3%23Beneficiary.correctionprocurementprocedure" target="_blank" rel="noopener noreferrer" >
-					    <!--                                        <i class="icon">[o]</i> -->
-                                        <img src="html/callout.png" loading="lazy" alt="[o]" width="100" height="100"/>
-                                    </a>
-                                </td>
-                                <td>
-                                        <a href="https://w3id.org/adm/model/corrProcurementProcedure"
-                                           data-toggle="tooltip"
-                                           data-content="https://w3id.org/adm/model/corrProcurementProcedure"
-                                           data-placement="right">
-                                        correction procurement procedure</a>
-                                </td>
-                                <td>
-                                    
-                                        
-                                            <a href="#Boolean" data-placement="right">Boolean</a>
-                                        
-                                    
-                                </td>
-                                <td>
-                                    0..1
-                                </td>
-                                <td property="rdfs:comment">
-                                    It indicates whether the entity has been subject to a financial correction in a procurement procedure in the past, or not.
-Only relevant when the entity is a beneficiary of a project.
-                                </td>
-                                <td property="skos:scopeNote">
-                                    
-                                </td>
-				<!--
-                                <td>
-                                    
-                                </td>
-				-->
-                                <td>
-                                    
-                                </td>
-                            </tr>
                         
                             <tr id="Beneficiary.haspartner"
                                 typeof="rdf:Property"
@@ -6381,7 +6335,7 @@ https://op.europa.eu/web/eu-vocabularies/concept-scheme/-/resource?uri=http://pu
                                     A category to which the project belongs to.
                                 </td>
                                 <td property="skos:scopeNote">
-                                    The recommended control vocabulary is the <a href="#list-block-projectType" > Project Type </a> list. 
+                                    The recommended control vocabulary is the <a href="#list-projecttype-projectType" > Project Type </a> list. 
                                 </td>
 				<!--
                                 <td>
@@ -8699,9 +8653,113 @@ project is finished (latest available information).
     </h2> 												   
     
 
+h3 id="list-agent-type">Agent - Type</h3>
+<table id="table-agent-type" class="simple">
+  <thead>
+    <tr><th>URI</th><th>Identifier</th><th>Label</th><th>Description</th></tr>
+  </thead>
+  <tbody>
+    <tr id="table-agent-type-0">
+      <td>https://w3id.org/adm/codelist/agentType/0</td>
+      <td>0</td>
+      <td>Unknown</td>
+      <td>The agent type is unknown.</td>
+    </tr>
+    <tr id="table-agent-type-1">
+      <td>https://w3id.org/adm/codelist/agentType/1</td>
+      <td>1</td>
+      <td>Insurance companies</td>
+      <td>An agent that is classified as an insurance company.</td>
+    </tr>
+    <tr id="table-agent-type-2">
+      <td>https://w3id.org/adm/codelist/agentType/2</td>
+      <td>2</td>
+      <td>Banks</td>
+      <td>An agent that is classified as a bank or banking institution.</td>
+    </tr>
+    <tr id="table-agent-type-3">
+      <td>https://w3id.org/adm/codelist/agentType/3</td>
+      <td>3</td>
+      <td>Industrial companies</td>
+      <td>An agent that is classified as an industrial company.</td>
+    </tr>
+    <tr id="table-agent-type-4">
+      <td>https://w3id.org/adm/codelist/agentType/4</td>
+      <td>4</td>
+      <td>Unnamed private shareholders, aggregated</td>
+      <td>An agent representing unnamed private shareholders reported in aggregate.</td>
+    </tr>
+    <tr id="table-agent-type-5">
+      <td>https://w3id.org/adm/codelist/agentType/5</td>
+      <td>5</td>
+      <td>Mutual &amp; pension funds / nominees / trusts / trustees</td>
+      <td>An agent classified as a mutual fund, pension fund, nominee, trust, or trustee.</td>
+    </tr>
+    <tr id="table-agent-type-6">
+      <td>https://w3id.org/adm/codelist/agentType/6</td>
+      <td>6</td>
+      <td>Financial companies</td>
+      <td>An agent that is classified as a financial company, excluding banks and insurance companies.</td>
+    </tr>
+    <tr id="table-agent-type-7">
+      <td>https://w3id.org/adm/codelist/agentType/7</td>
+      <td>7</td>
+      <td>Self-owned</td>
+      <td>An agent that holds shares in itself, i.e. treasury shares held by the company.</td>
+    </tr>
+    <tr id="table-agent-type-8">
+      <td>https://w3id.org/adm/codelist/agentType/8</td>
+      <td>8</td>
+      <td>One or more named individuals or families</td>
+      <td>An agent representing one or more named individuals or family shareholders.</td>
+    </tr>
+    <tr id="table-agent-type-9">
+      <td>https://w3id.org/adm/codelist/agentType/9</td>
+      <td>9</td>
+      <td>Foundations / research institutes</td>
+      <td>An agent classified as a foundation or research institute.</td>
+    </tr>
+    <tr id="table-agent-type-10">
+      <td>https://w3id.org/adm/codelist/agentType/10</td>
+      <td>10</td>
+      <td>Other unnamed shareholders, aggregated</td>
+      <td>An agent representing other unnamed shareholders reported in aggregate.</td>
+    </tr>
+    <tr id="table-agent-type-11">
+      <td>https://w3id.org/adm/codelist/agentType/11</td>
+      <td>11</td>
+      <td>Employees / managers / directors</td>
+      <td>An agent representing employees, managers, or directors of the company.</td>
+    </tr>
+    <tr id="table-agent-type-12">
+      <td>https://w3id.org/adm/codelist/agentType/12</td>
+      <td>12</td>
+      <td>Public authorities / states / governments</td>
+      <td>An agent classified as a public authority, state, or government body.</td>
+    </tr>
+    <tr id="table-agent-type-13">
+      <td>https://w3id.org/adm/codelist/agentType/13</td>
+      <td>13</td>
+      <td>Public (publicly listed companies)</td>
+      <td>An agent classified as a publicly listed company or free-float shareholder.</td>
+    </tr>
+    <tr id="table-agent-type-14">
+      <td>https://w3id.org/adm/codelist/agentType/14</td>
+      <td>14</td>
+      <td>Private Equity</td>
+      <td>An agent classified as a private equity firm or fund.</td>
+    </tr>
+    <tr id="table-agent-type-15">
+      <td>https://w3id.org/adm/codelist/agentType/15</td>
+      <td>15</td>
+      <td>Branches</td>
+      <td>An agent representing a branch of a parent company.</td>
+    </tr>
+  </tbody>
+</table>
 
-<h3 id="list-block-projectType">Block - Project Type</h3> 
-<table id="table-block-projectType" class="simple">
+<h3 id="list-projecttype-projectType">ProjectType - Project Type</h3> 
+<table id="table-projecttype-projectType" class="simple">
 	 <thead><tr><th>URI</th><th>Identifier</th><th>Label</th><th>Description</th></tr></thead>
     <tbody>
         <tr>
@@ -8983,6 +9041,7 @@ project is finished (latest available information).
 <h3 class="h3 examples" id="example-rdf_project">Example Project</h3>
 <h3 class="h3 examples" id="example-rdf_contract">Example Contract</h3>
 <h3 class="h3 examples" id="example-rdf_subcontract">Example Subcontract</h3>
+<h3 class="h3 examples" id="example-rdf_entity">Example Entity</h3>
 
 </section>
 
@@ -9262,25 +9321,11 @@ The properties are indicated as <it>mandatory, recommended, optional</it> and <i
 					
 						
 					
-						
-					
 					
 						
 					
 						
 					
-						
-					
-					
-						
-							<tr>
-								<td><a href="#Beneficiary">Beneficiary</a></td>
-								<td><div class="shorten">https://w3id.org/adm/model/Beneficiary</div></td>
-								<td></td>
-								<td><a href="#Beneficiary.correctionprocurementprocedure">correction procurement procedure </a></td>
-								<td><div class="shorten">https://w3id.org/adm/model/corrProcurementProcedure</div></td>
-							</tr>
-						
 					
 						
 							<tr>
@@ -9943,8 +9988,8 @@ The properties are indicated as <it>mandatory, recommended, optional</it> and <i
 								<td><a href="#LegalEntity">Legal Entity</a></td>
 								<td><div class="shorten">http://www.w3.org/ns/legal#LegalEntity</div></td>
 								<td></td>
-								<td><a href="#LegalEntity.entitytype">entity type </a></td>
-								<td><div class="shorten">https://w3id.org/adm/model/entityType</div></td>
+								<td><a href="#LegalEntity.correctionprocurementprocedure">correction procurement procedure </a></td>
+								<td><div class="shorten">https://w3id.org/adm/model/corrProcurementProcedure</div></td>
 							</tr>
 						
 					
@@ -9963,8 +10008,8 @@ The properties are indicated as <it>mandatory, recommended, optional</it> and <i
 								<td><a href="#LegalEntity">Legal Entity</a></td>
 								<td><div class="shorten">http://www.w3.org/ns/legal#LegalEntity</div></td>
 								<td></td>
-								<td><a href="#LegalEntity.legalidentifier">legal identifier </a></td>
-								<td><div class="shorten">http://www.w3.org/ns/legal#legalIdentifier</div></td>
+								<td><a href="#LegalEntity.legalname">legal name </a></td>
+								<td><div class="shorten">http://www.w3.org/ns/legal#legalName</div></td>
 							</tr>
 						
 					
