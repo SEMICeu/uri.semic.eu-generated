@@ -25,6 +25,7 @@
   <xs:element name="Contractor" type="ContractorType"/>
   <xs:element name="Document" type="DocumentType"/>
   <xs:element name="Invoice" type="InvoiceType"/>
+  <xs:element name="LegalRepresentative" type="LegalRepresentativeType"/>
   <xs:element name="MonetaryValue" type="MonetaryValueType"/>
   <xs:element name="Notice" type="NoticeType"/>
   <xs:element name="Procedure" type="ProcedureType"/>
@@ -653,6 +654,14 @@ contract, or not.</xs:documentation>
       </xs:annotation>
     </xs:attribute>
   </xs:complexType>
+  <xs:complexType name="LegalRepresentativeType">
+    <xs:sequence/>
+    <xs:attribute name="LegalRepresentativeRef" type="xs:IDREF">
+      <xs:annotation>
+        <xs:documentation xml:lang="en">Reference to LegalRepresentative ID</xs:documentation>
+      </xs:annotation>
+    </xs:attribute>
+  </xs:complexType>
   <xs:complexType name="MonetaryValueType">
     <xs:sequence>
       <xs:element name="hasAmountValue" type="xs:decimal" maxOccurs="1" minOccurs="1">
@@ -940,6 +949,11 @@ Only relevant when the entity is a beneficiary of a project.</xs:documentation>
       <xs:element name="hasFinalBeneficialOwner" ref="FinalBeneficialOwnerType" maxOccurs="unbounded" minOccurs="0">
         <xs:annotation>
           <xs:documentation xml:lang="en">The reference to the final beneficial owner of the entity.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="hasLegalRepresentative" ref="LegalRepresentativeType" maxOccurs="unbounded" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation xml:lang="en">The reference to the legal representative of the entity.</xs:documentation>
         </xs:annotation>
       </xs:element>
       <xs:element name="legalName" type="xs:string" maxOccurs="1" minOccurs="1">
