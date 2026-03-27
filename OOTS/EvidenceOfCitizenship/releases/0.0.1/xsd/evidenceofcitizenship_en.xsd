@@ -4,6 +4,7 @@
   <xs:element name="GenericDate" type="GenericDateType"/>
   <xs:element name="Attribute" type="AttributeType"/>
   <xs:element name="AttributeSet" type="AttributeSetType"/>
+  <xs:element name="Citizenship" type="CitizenshipType"/>
   <xs:element name="EvidenceOfCitizenship" type="EvidenceOfCitizenshipType"/>
   <xs:element name="OotsEvidence" type="OotsEvidenceType"/>
   <xs:element name="Jurisdiction" type="JurisdictionType"/>
@@ -66,8 +67,37 @@
       </xs:annotation>
     </xs:attribute>
   </xs:complexType>
+  <xs:complexType name="CitizenshipType">
+    <xs:sequence>
+      <xs:element name="citizenship" ref="JurisdictionType" maxOccurs="unbounded" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation xml:lang="en">	The Jurisdiction that has conferred citizenship rights on the Person such as the right to vote, to receive certain protection from the community or the issuance of a passport.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="hasAttributeSet" ref="AttributeSetType" maxOccurs="1" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation xml:lang="en">Relates a concept to the AttributeSet that provides its additional descriptive information.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="citizenshipIssueDate" type="http://data.europa.eu/m8g/GenericDate" maxOccurs="1" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation xml:lang="en">The date on which the Identifier was assigned.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+    </xs:sequence>
+    <xs:attribute name="CitizenshipRef" type="xs:IDREF">
+      <xs:annotation>
+        <xs:documentation xml:lang="en">Reference to Citizenship ID</xs:documentation>
+      </xs:annotation>
+    </xs:attribute>
+  </xs:complexType>
   <xs:complexType name="EvidenceOfCitizenshipType">
     <xs:sequence>
+      <xs:element name="hasCitizenship" ref="CitizenshipType" maxOccurs="1" minOccurs="1">
+        <xs:annotation>
+          <xs:documentation xml:lang="en">Citizenship event that is the object in the provided Evidence.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
       <xs:element name="isAbout" ref="PersonType" maxOccurs="1" minOccurs="1">
         <xs:annotation>
           <xs:documentation xml:lang="en">Agent that is the subject in the provided Evidence.</xs:documentation>
@@ -96,16 +126,6 @@
   </xs:complexType>
   <xs:complexType name="JurisdictionType">
     <xs:sequence>
-      <xs:element name="hasAttributeSet" ref="AttributeSetType" maxOccurs="1" minOccurs="0">
-        <xs:annotation>
-          <xs:documentation xml:lang="en">Relates a concept to the AttributeSet that provides its additional descriptive information.</xs:documentation>
-        </xs:annotation>
-      </xs:element>
-      <xs:element name="citizenshipIssueDate" type="http://data.europa.eu/m8g/GenericDate" maxOccurs="1" minOccurs="0">
-        <xs:annotation>
-          <xs:documentation xml:lang="en">The date on which the Identifier was assigned.</xs:documentation>
-        </xs:annotation>
-      </xs:element>
       <xs:element name="name" type="xs:string" maxOccurs="1" minOccurs="0">
         <xs:annotation>
           <xs:documentation xml:lang="en">A string of characters that represents a Jurisdiction.</xs:documentation>
@@ -136,11 +156,6 @@
   </xs:complexType>
   <xs:complexType name="PersonType">
     <xs:sequence>
-      <xs:element name="citizenship" ref="JurisdictionType" maxOccurs="unbounded" minOccurs="0">
-        <xs:annotation>
-          <xs:documentation xml:lang="en">	The Jurisdiction that has conferred citizenship rights on the Person such as the right to vote, to receive certain protection from the community or the issuance of a passport.</xs:documentation>
-        </xs:annotation>
-      </xs:element>
       <xs:element name="dateOfBirth" type="http://data.europa.eu/m8g/GenericDate" maxOccurs="1" minOccurs="0">
         <xs:annotation>
           <xs:documentation xml:lang="en">The point in time on which the Person was born.</xs:documentation>
