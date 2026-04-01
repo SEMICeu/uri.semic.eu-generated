@@ -1,12 +1,12 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <xs:schema xmlns="https://data.europa.eu/m8g/xml/" xmlns:xs="http://www.w3.org/2001/XMLSchema" targetNamespace="https://data.europa.eu/m8g/xml/" version="2.0.0" elementFormDefault="qualified" attributeFormDefault="unqualified" xmlns:cv="https://data.europa.eu/m8g/xml/">
   <xs:element name="AdDeliveryTechnique" type="AdDeliveryTechniqueType"/>
-  <xs:element name="AdDeliveryTechnique" type="AdDeliveryTechniqueType"/>
   <xs:element name="ElectionEvent" type="ElectionEventType"/>
   <xs:element name="Funding" type="FundingType"/>
   <xs:element name="Initiative" type="InitiativeType"/>
   <xs:element name="PoliticalAdvertisement" type="PoliticalAdvertisementType"/>
   <xs:element name="TargetingTechnique" type="TargetingTechniqueType"/>
+  <xs:element name="Technique" type="TechniqueType"/>
   <xs:element name="TransparencyNotice" type="TransparencyNoticeType"/>
   <xs:element name="PublicEvent" type="PublicEventType"/>
   <xs:element name="Text" type="TextType"/>
@@ -53,70 +53,6 @@
       <xs:element name="useOfAiSystems" type="xs:string" maxOccurs="unbounded" minOccurs="0">
         <xs:annotation>
           <xs:documentation xml:lang="en">Indicates whether an artificial intelligence system was used in the targeting or delivery of a resource to an audience, including a description of its role and functioning.</xs:documentation>
-        </xs:annotation>
-      </xs:element>
-      <xs:element name="userRightsSupportUrl" ref="AnyUriType" maxOccurs="unbounded" minOccurs="0">
-        <xs:annotation>
-          <xs:documentation xml:lang="en">Link to an interface allowing the exercise of data protection rights, such as submitting requests for access, rectification, erasure, or other rights under the applicable data protection legal framework.</xs:documentation>
-        </xs:annotation>
-      </xs:element>
-    </xs:sequence>
-    <xs:attribute name="AdDeliveryTechniqueRef" type="xs:IDREF">
-      <xs:annotation>
-        <xs:documentation xml:lang="en">Reference to AdDeliveryTechnique ID</xs:documentation>
-      </xs:annotation>
-    </xs:attribute>
-  </xs:complexType>
-  <xs:complexType name="AdDeliveryTechniqueType">
-    <xs:sequence>
-      <xs:element name="consentNotice" ref="AnyUriType" maxOccurs="unbounded" minOccurs="0">
-        <xs:annotation>
-          <xs:documentation xml:lang="en">A Notice for information provision associated with Consent.</xs:documentation>
-        </xs:annotation>
-      </xs:element>
-      <xs:element name="hasBeginning" ref="InstantType" maxOccurs="unbounded" minOccurs="0">
-        <xs:annotation>
-          <xs:documentation xml:lang="en">The beginning of a period or interval.</xs:documentation>
-        </xs:annotation>
-      </xs:element>
-      <xs:element name="hasControllingEntity" ref="AgentType" maxOccurs="unbounded" minOccurs="1">
-        <xs:annotation>
-          <xs:documentation xml:lang="en">The natural or legal person, public authority, agency or other body which, alone or jointly with others, determines the purposes and means of the processing of personal data in the context of a targeted activity or service.</xs:documentation>
-        </xs:annotation>
-      </xs:element>
-      <xs:element name="hasEnd" ref="InstantType" maxOccurs="unbounded" minOccurs="0">
-        <xs:annotation>
-          <xs:documentation xml:lang="en">The end of a period or interval.</xs:documentation>
-        </xs:annotation>
-      </xs:element>
-      <xs:element name="hasPersonalData" type="ConceptType" maxOccurs="unbounded" minOccurs="0">
-        <xs:annotation>
-          <xs:documentation xml:lang="en">Indicates association with Personal Data.</xs:documentation>
-        </xs:annotation>
-      </xs:element>
-      <xs:element name="hasPolicy" ref="AnyUriType" maxOccurs="unbounded" minOccurs="0">
-        <xs:annotation>
-          <xs:documentation xml:lang="en">Indicates policy applicable or used.</xs:documentation>
-        </xs:annotation>
-      </xs:element>
-      <xs:element name="numberOfComments" type="xs:integer" maxOccurs="unbounded" minOccurs="0">
-        <xs:annotation>
-          <xs:documentation xml:lang="en">The total number of user comments submitted in response to the ressource during its dissemination period.</xs:documentation>
-        </xs:annotation>
-      </xs:element>
-      <xs:element name="numberOfLikes" type="xs:integer" maxOccurs="unbounded" minOccurs="0">
-        <xs:annotation>
-          <xs:documentation xml:lang="en">The total number of times users have indicated a positive reaction (such as "like" or equivalent) to the ressource during its dissemination period.</xs:documentation>
-        </xs:annotation>
-      </xs:element>
-      <xs:element name="numberOfViews" type="xs:integer" maxOccurs="unbounded" minOccurs="0">
-        <xs:annotation>
-          <xs:documentation xml:lang="en">The number of times the ressource was viewed.</xs:documentation>
-        </xs:annotation>
-      </xs:element>
-      <xs:element name="otherRelevantInformation" type="xs:string" maxOccurs="unbounded" minOccurs="0">
-        <xs:annotation>
-          <xs:documentation xml:lang="en">Any other information relevant to the targeting of the advertisement.</xs:documentation>
         </xs:annotation>
       </xs:element>
       <xs:element name="userRightsSupportUrl" ref="AnyUriType" maxOccurs="unbounded" minOccurs="0">
@@ -280,7 +216,7 @@
           <xs:documentation xml:lang="en">A reference to a previous version of the same resource that was suspended or discontinued due to a regulatory or legal infringement.</xs:documentation>
         </xs:annotation>
       </xs:element>
-      <xs:element name="hasTargeting" ref="AdDeliveryTechniqueType" maxOccurs="unbounded" minOccurs="0">
+      <xs:element name="hasTargeting" ref="TechniqueType" maxOccurs="unbounded" minOccurs="0">
         <xs:annotation>
           <xs:documentation xml:lang="en">Information about the targeting techniques and parameters used for the political advertisement.</xs:documentation>
         </xs:annotation>
@@ -363,6 +299,70 @@
     <xs:attribute name="TargetingTechniqueRef" type="xs:IDREF">
       <xs:annotation>
         <xs:documentation xml:lang="en">Reference to TargetingTechnique ID</xs:documentation>
+      </xs:annotation>
+    </xs:attribute>
+  </xs:complexType>
+  <xs:complexType name="TechniqueType">
+    <xs:sequence>
+      <xs:element name="consentNotice" ref="AnyUriType" maxOccurs="unbounded" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation xml:lang="en">A Notice for information provision associated with Consent.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="hasBeginning" ref="InstantType" maxOccurs="unbounded" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation xml:lang="en">The beginning of a period or interval.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="hasControllingEntity" ref="AgentType" maxOccurs="unbounded" minOccurs="1">
+        <xs:annotation>
+          <xs:documentation xml:lang="en">The natural or legal person, public authority, agency or other body which, alone or jointly with others, determines the purposes and means of the processing of personal data in the context of a targeted activity or service.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="hasEnd" ref="InstantType" maxOccurs="unbounded" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation xml:lang="en">The end of a period or interval.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="hasPersonalData" type="ConceptType" maxOccurs="unbounded" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation xml:lang="en">Indicates association with Personal Data.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="hasPolicy" ref="AnyUriType" maxOccurs="unbounded" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation xml:lang="en">Indicates policy applicable or used.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="numberOfComments" type="xs:integer" maxOccurs="unbounded" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation xml:lang="en">The total number of user comments submitted in response to the ressource during its dissemination period.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="numberOfLikes" type="xs:integer" maxOccurs="unbounded" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation xml:lang="en">The total number of times users have indicated a positive reaction (such as "like" or equivalent) to the ressource during its dissemination period.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="numberOfViews" type="xs:integer" maxOccurs="unbounded" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation xml:lang="en">The number of times the ressource was viewed.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="otherRelevantInformation" type="xs:string" maxOccurs="unbounded" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation xml:lang="en">Any other information relevant to the targeting of the advertisement.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="userRightsSupportUrl" ref="AnyUriType" maxOccurs="unbounded" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation xml:lang="en">Link to an interface allowing the exercise of data protection rights, such as submitting requests for access, rectification, erasure, or other rights under the applicable data protection legal framework.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+    </xs:sequence>
+    <xs:attribute name="TechniqueRef" type="xs:IDREF">
+      <xs:annotation>
+        <xs:documentation xml:lang="en">Reference to Technique ID</xs:documentation>
       </xs:annotation>
     </xs:attribute>
   </xs:complexType>
