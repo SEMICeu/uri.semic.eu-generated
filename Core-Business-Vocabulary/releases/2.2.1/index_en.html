@@ -366,6 +366,7 @@ This specification uses the following prefixes to shorten the URIs for readabili
 			      <a href="#Agent">Agent</a> |
 			      <a href="#Document">Document</a> |
 			      <a href="#FormalOrganization">Formal Organization</a> |
+			      <a href="#IdentifierScheme">Identifier Scheme</a> |
 			      <a href="#Organization">Organization</a> |
 			      <a href="#PowerofAttorney">Power of Attorney</a> |
                         </p>
@@ -1361,7 +1362,7 @@ The key difference between a locator designator and a locator name is that the l
                             , <a href="#Identifier.identifies">identifies</a>
                             , <a href="#Identifier.notation">notation</a>
                             , <a href="#Identifier.schemaagency">schema agency</a>
-                            , <a href="#Identifier.schemename">scheme name</a>
+                            , <a href="#Identifier.schemeURI">scheme URI</a>
                             , <a href="#Identifier.schemeURI">scheme URI</a>
                             .
                     </dd>
@@ -1574,27 +1575,27 @@ The key difference between a locator designator and a locator name is that the l
                                 </td>
                             </tr>
                         
-                            <tr id="Identifier.schemename"
+                            <tr id="Identifier.schemeURI"
                                 typeof="rdf:Property"
-                                resource="http://www.w3.org/2000/01/rdf-schema#label"
+                                resource="http://purl.org/dc/terms/conformsTo"
                                 class="class mandatory">
                                 <td>
-				    <a href="https://github.com/SEMICeu/Core-Business-Vocabulary/issues/new?title=Issue%20for%20scheme name%20in%20Identifier&body=Explain%20your%20issue%20for%20https://semiceu.github.io/Core-Business-Vocabulary/releases/2.2.1%23Identifier.schemename" target="_blank" rel="noopener noreferrer" >
+				    <a href="https://github.com/SEMICeu/Core-Business-Vocabulary/issues/new?title=Issue%20for%20scheme URI%20in%20Identifier&body=Explain%20your%20issue%20for%20https://semiceu.github.io/Core-Business-Vocabulary/releases/2.2.1%23Identifier.schemeURI" target="_blank" rel="noopener noreferrer" >
 					    <!--                                        <i class="icon">[o]</i> -->
                                         <img src="html/callout.png" loading="lazy" alt="[o]" width="100" height="100"/>
                                     </a>
                                 </td>
                                 <td>
-                                        <a href="http://www.w3.org/2000/01/rdf-schema#label"
+                                        <a href="http://purl.org/dc/terms/conformsTo"
                                            data-toggle="tooltip"
-                                           data-content="http://www.w3.org/2000/01/rdf-schema#label"
+                                           data-content="http://purl.org/dc/terms/conformsTo"
                                            data-placement="right">
-                                        scheme name</a>
+                                        scheme URI</a>
                                 </td>
                                 <td>
                                     
                                         
-                                            <a href="#Text" data-placement="right">Text</a>
+                                            <a href="#IdentifierScheme" data-placement="right">Identifier Scheme</a>
                                         
                                     
                                 </td>
@@ -1602,7 +1603,7 @@ The key difference between a locator designator and a locator name is that the l
                                     0..*
                                 </td>
                                 <td property="rdfs:comment">
-                                    Name of the scheme used to construct the identifier.
+                                    URI of the scheme used to construct the identifier.
                                 </td>
                                 <td property="skos:scopeNote">
                                     
@@ -1666,6 +1667,8 @@ The key difference between a locator designator and a locator name is that the l
         
     </div>
 </section>
+
+
 
 
 
@@ -2572,6 +2575,7 @@ They are included in the Core Vocabulary because they form the range of properti
                     
                         <dd>
                             For this entity the following properties are defined: <a href="#Agent.headof">head of</a>
+                            , <a href="#Agent.issuedby">issued by</a>
                             , <a href="#Agent.memberof">member of</a>
                             , <a href="#Agent.name">name</a>
                             , <a href="#Agent.type">type</a>
@@ -2643,6 +2647,49 @@ They are included in the Core Vocabulary because they form the range of properti
                                 </td>
                                 <td property="rdfs:comment">
                                     Indicates that a person (or other agent) is the leader or formal head of the Organization.
+                                </td>
+                                <td property="skos:scopeNote">
+                                    
+                                </td>
+				<!--
+                                <td>
+                                    
+                                </td>
+				-->
+                                <td>
+                                    
+                                </td>
+                            </tr>
+                        
+                            <tr id="Agent.issuedby"
+                                typeof="rdf:Property"
+                                resource="http://purl.org/dc/terms/publisher"
+                                class="class mandatory">
+                                <td>
+				    <a href="https://github.com/SEMICeu/Core-Business-Vocabulary/issues/new?title=Issue%20for%20issued by%20in%20Agent&body=Explain%20your%20issue%20for%20https://semiceu.github.io/Core-Business-Vocabulary/releases/2.2.1%23Agent.issuedby" target="_blank" rel="noopener noreferrer" >
+					    <!--                                        <i class="icon">[o]</i> -->
+                                        <img src="html/callout.png" loading="lazy" alt="[o]" width="100" height="100"/>
+                                    </a>
+                                </td>
+                                <td>
+                                        <a href="http://purl.org/dc/terms/publisher"
+                                           data-toggle="tooltip"
+                                           data-content="http://purl.org/dc/terms/publisher"
+                                           data-placement="right">
+                                        issued by</a>
+                                </td>
+                                <td>
+                                    
+                                        
+                                            <a href="#Identifier" data-placement="right">Identifier</a>
+                                        
+                                    
+                                </td>
+                                <td>
+                                    0..*
+                                </td>
+                                <td property="rdfs:comment">
+                                    Agent legally responsible for the Identifier.
                                 </td>
                                 <td property="skos:scopeNote">
                                     
@@ -2903,6 +2950,130 @@ They are included in the Core Vocabulary because they form the range of properti
 </section>
 
 
+
+
+
+
+
+   
+        <section>
+            <h3 id="IdentifierScheme">
+                <a href="http://data.europa.eu/m8g/IdentifierScheme"
+                   data-toggle="tooltip"
+                   data-content="http://data.europa.eu/m8g/IdentifierScheme"
+                   data-placement="right">Identifier Scheme</a>
+
+            </h3>
+	        <!-- XXX an image in the h3 will break the rendering of the Table Of Contents of Respec -->
+		<!-- outcomment github feedback possibility
+                <a href="https://github.com/SEMICeu/Core-Business-Vocabulary/issues/new?title=Issue%20for%20IdentifierScheme&body=Explain%20your%20issue"}}>
+                   <img src="html/callout.png" loading="lazy" alt="(create issue)" width="20" height="20"/>
+		</a>
+		-->
+            <dl>
+                <dt>
+                    Definition
+                </dt>
+                <dd>
+                    The scheme used to assign and manage an identifier to an entity.
+                </dd>
+                
+                
+                
+                    <dt>
+                        Properties
+                    </dt>
+                    
+                        <dd>
+                            For this entity the following properties are defined: <a href="#IdentifierScheme.schemename">scheme name</a>
+                            .
+                    </dd>
+                
+            </dl>
+        </div>
+        
+            <div class="u-table-overflow">
+                <table class="data-table simple" id="table-mandatory-classes">
+                    <thead>
+                        <tr class="data-table__header">
+                            <th class="data-table__header-title--sortable" style="width:6%">
+                            </th>
+                            <th class="data-table__header-title--sortable data-table__header-title--sortable-active" style="width:14%">
+                                Property
+                            </th>
+                            <th class="data-table__header-title--sortable" style="width:14%">
+                                Range
+                            </th>
+                            <th class="data-table__header-title--sortable" style="width:6%">
+                                Card
+                            </th>
+                            <th class="data-table__header-title--sortable" style="width:30%">
+                                Definition 
+                            </th>
+                            <th class="data-table__header-title--sortable" style="width:30%">
+                                Usage
+                            </th>
+			    <!--
+                            <th class="data-table__header-title--sortable" style="width:3%">
+                                Codelist
+                            </th>
+                            <th class="data-table__header-title--sortable" style="width:5%">
+                                DCAT
+                            </th>
+			    -->
+                        </tr>
+                    </thead>
+                    <tbody class="supertype">
+                        
+                            <tr id="IdentifierScheme.schemename"
+                                typeof="rdf:Property"
+                                resource="http://www.w3.org/2000/01/rdf-schema#label"
+                                class="class mandatory">
+                                <td>
+				    <a href="https://github.com/SEMICeu/Core-Business-Vocabulary/issues/new?title=Issue%20for%20scheme name%20in%20Identifier Scheme&body=Explain%20your%20issue%20for%20https://semiceu.github.io/Core-Business-Vocabulary/releases/2.2.1%23IdentifierScheme.schemename" target="_blank" rel="noopener noreferrer" >
+					    <!--                                        <i class="icon">[o]</i> -->
+                                        <img src="html/callout.png" loading="lazy" alt="[o]" width="100" height="100"/>
+                                    </a>
+                                </td>
+                                <td>
+                                        <a href="http://www.w3.org/2000/01/rdf-schema#label"
+                                           data-toggle="tooltip"
+                                           data-content="http://www.w3.org/2000/01/rdf-schema#label"
+                                           data-placement="right">
+                                        scheme name</a>
+                                </td>
+                                <td>
+                                    
+                                        
+                                            <a href="#Text" data-placement="right">Text</a>
+                                        
+                                    
+                                </td>
+                                <td>
+                                    0..*
+                                </td>
+                                <td property="rdfs:comment">
+                                    Name of the scheme used to construct the identifier.
+                                </td>
+                                <td property="skos:scopeNote">
+                                    
+                                </td>
+				<!--
+                                <td>
+                                    
+                                </td>
+				-->
+                                <td>
+                                    
+                                </td>
+                            </tr>
+                        
+                    </tbody>
+                </table>
+            </div>
+        
+    </div>
+</section>
 
 
 
@@ -3815,6 +3986,10 @@ The properties are indicated as <it>mandatory, recommended, optional</it> and <i
 					
 						
 					
+						
+					
+					
+						
 					
 						
 					
@@ -3832,6 +4007,16 @@ The properties are indicated as <it>mandatory, recommended, optional</it> and <i
 								<td></td>
 								<td><a href="#Agent.headof">head of </a></td>
 								<td><div class="shorten">http://www.w3.org/ns/org#headOf</div></td>
+							</tr>
+						
+					
+						
+							<tr>
+								<td><a href="#Agent">Agent</a></td>
+								<td><div class="shorten">http://xmlns.com/foaf/0.1/Agent</div></td>
+								<td></td>
+								<td><a href="#Agent.issuedby">issued by </a></td>
+								<td><div class="shorten">http://purl.org/dc/terms/publisher</div></td>
 							</tr>
 						
 					
@@ -4012,8 +4197,8 @@ The properties are indicated as <it>mandatory, recommended, optional</it> and <i
 								<td><a href="#Identifier">Identifier</a></td>
 								<td><div class="shorten">http://www.w3.org/ns/adms#Identifier</div></td>
 								<td></td>
-								<td><a href="#Identifier.schemename">scheme name </a></td>
-								<td><div class="shorten">http://www.w3.org/2000/01/rdf-schema#label</div></td>
+								<td><a href="#Identifier.schemeURI">scheme URI </a></td>
+								<td><div class="shorten">http://purl.org/dc/terms/conformsTo</div></td>
 							</tr>
 						
 					
@@ -4024,6 +4209,27 @@ The properties are indicated as <it>mandatory, recommended, optional</it> and <i
 								<td></td>
 								<td><a href="#Identifier.schemeURI">scheme URI </a></td>
 								<td><div class="shorten">http://purl.org/dc/terms/conformsTo</div></td>
+							</tr>
+						
+					
+				
+			</tr>
+		
+				
+					
+						
+					
+					
+						
+					
+					
+						
+							<tr>
+								<td><a href="#IdentifierScheme">Identifier Scheme</a></td>
+								<td><div class="shorten">http://data.europa.eu/m8g/IdentifierScheme</div></td>
+								<td></td>
+								<td><a href="#IdentifierScheme.schemename">scheme name </a></td>
+								<td><div class="shorten">http://www.w3.org/2000/01/rdf-schema#label</div></td>
 							</tr>
 						
 					
