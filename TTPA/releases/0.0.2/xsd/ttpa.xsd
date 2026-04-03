@@ -2,19 +2,19 @@
 <xs:schema xmlns="https://data.europa.eu/m8g/xml/" xmlns:xs="http://www.w3.org/2001/XMLSchema" targetNamespace="https://data.europa.eu/m8g/xml/" version="2.0.0" elementFormDefault="qualified" attributeFormDefault="unqualified" xmlns:cv="https://data.europa.eu/m8g/xml/">
   <xs:element name="AdDeliveryTechnique" type="AdDeliveryTechniqueType"/>
   <xs:element name="ElectionEvent" type="ElectionEventType"/>
-  <xs:element name="Funding" type="FundingType"/>
   <xs:element name="Initiative" type="InitiativeType"/>
   <xs:element name="PoliticalAdvertisement" type="PoliticalAdvertisementType"/>
   <xs:element name="TargetingTechnique" type="TargetingTechniqueType"/>
   <xs:element name="Technique" type="TechniqueType"/>
   <xs:element name="TransparencyNotice" type="TransparencyNoticeType"/>
   <xs:element name="PublicEvent" type="PublicEventType"/>
+  <xs:element name="Funding" type="FundingType"/>
   <xs:element name="Text" type="TextType"/>
   <xs:element name="Literal" type="LiteralType"/>
   <xs:element name="AnyUri" type="AnyUriType"/>
   <xs:element name="Boolean" type="BooleanType"/>
   <xs:element name="Date" type="DateType"/>
-  <xs:element name="Double" type="DoubleType"/>
+  <xs:element name="Decimal" type="DecimalType"/>
   <xs:element name="Integer" type="IntegerType"/>
   <xs:element name="String" type="StringType"/>
   <xs:element name="Code" type="CodeType"/>
@@ -88,50 +88,6 @@
     <xs:attribute name="ElectionEventRef" type="xs:IDREF">
       <xs:annotation>
         <xs:documentation xml:lang="en">Reference to ElectionEvent ID</xs:documentation>
-      </xs:annotation>
-    </xs:attribute>
-  </xs:complexType>
-  <xs:complexType name="FundingType">
-    <xs:sequence>
-      <xs:element name="calculationMethodology" type="xs:string" maxOccurs="unbounded" minOccurs="0">
-        <xs:annotation>
-          <xs:documentation xml:lang="en">The method or approach used to calculate the amount or allocation of funding.</xs:documentation>
-        </xs:annotation>
-      </xs:element>
-      <xs:element name="currency" type="ConceptType" maxOccurs="1" minOccurs="1">
-        <xs:annotation>
-          <xs:documentation xml:lang="en">The currency in which the Cost needs to be paid and the value of the Cost is expressed.</xs:documentation>
-        </xs:annotation>
-      </xs:element>
-      <xs:element name="hasPayingEntity" ref="AgentType" maxOccurs="unbounded" minOccurs="0">
-        <xs:annotation>
-          <xs:documentation xml:lang="en">The entity that paid for the political advertisement.</xs:documentation>
-        </xs:annotation>
-      </xs:element>
-      <xs:element name="hasPoliticalAdvertisement" ref="PoliticalAdvertisementType" maxOccurs="unbounded" minOccurs="0">
-        <xs:annotation>
-          <xs:documentation xml:lang="en">A paid communication intended to influence the outcome of an election or referendum, or to support or oppose a political party or candidate.</xs:documentation>
-        </xs:annotation>
-      </xs:element>
-      <xs:element name="hasValue" type="xs:double" maxOccurs="1" minOccurs="1">
-        <xs:annotation>
-          <xs:documentation xml:lang="en">A numeric value indicating the amount of the Cost.</xs:documentation>
-        </xs:annotation>
-      </xs:element>
-      <xs:element name="nature" type="ConceptType" maxOccurs="1" minOccurs="1">
-        <xs:annotation>
-          <xs:documentation xml:lang="en">The nature of the funding (e.g., public, private, mixed).</xs:documentation>
-        </xs:annotation>
-      </xs:element>
-      <xs:element name="origin" type="ConceptType" maxOccurs="1" minOccurs="1">
-        <xs:annotation>
-          <xs:documentation xml:lang="en">Indicates whether the origin of the funding is from the EU, from outside the EU.</xs:documentation>
-        </xs:annotation>
-      </xs:element>
-    </xs:sequence>
-    <xs:attribute name="FundingRef" type="xs:IDREF">
-      <xs:annotation>
-        <xs:documentation xml:lang="en">Reference to Funding ID</xs:documentation>
       </xs:annotation>
     </xs:attribute>
   </xs:complexType>
@@ -216,9 +172,9 @@
           <xs:documentation xml:lang="en">A reference to a previous version of the same resource that was suspended or discontinued due to a regulatory or legal infringement.</xs:documentation>
         </xs:annotation>
       </xs:element>
-      <xs:element name="hasTargeting" ref="TechniqueType" maxOccurs="unbounded" minOccurs="0">
+      <xs:element name="hasTechnique" ref="TechniqueType" maxOccurs="unbounded" minOccurs="0">
         <xs:annotation>
-          <xs:documentation xml:lang="en">Information about the targeting techniques and parameters used for the political advertisement.</xs:documentation>
+          <xs:documentation xml:lang="en">Information about the techniques used for the political advertisement.</xs:documentation>
         </xs:annotation>
       </xs:element>
       <xs:element name="identifier" type="xs:string" maxOccurs="unbounded" minOccurs="0">
@@ -439,6 +395,50 @@
       </xs:annotation>
     </xs:attribute>
   </xs:complexType>
+  <xs:complexType name="FundingType">
+    <xs:sequence>
+      <xs:element name="calculationMethodology" type="xs:string" maxOccurs="unbounded" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation xml:lang="en">The method or approach used to calculate the amount or allocation of funding.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="currency" type="ConceptType" maxOccurs="1" minOccurs="1">
+        <xs:annotation>
+          <xs:documentation xml:lang="en">The currency in which the Cost needs to be paid and the value of the Cost is expressed.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="hasPayingEntity" ref="AgentType" maxOccurs="unbounded" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation xml:lang="en">The entity that paid for the political advertisement.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="hasPoliticalAdvertisement" ref="PoliticalAdvertisementType" maxOccurs="unbounded" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation xml:lang="en">A paid communication intended to influence the outcome of an election or referendum, or to support or oppose a political party or candidate.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="hasValue" type="xs:decimal" maxOccurs="1" minOccurs="1">
+        <xs:annotation>
+          <xs:documentation xml:lang="en">A numeric value indicating the amount of the Cost.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="nature" type="ConceptType" maxOccurs="1" minOccurs="1">
+        <xs:annotation>
+          <xs:documentation xml:lang="en">The nature of the funding (e.g., public, private, mixed).</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="origin" type="ConceptType" maxOccurs="1" minOccurs="1">
+        <xs:annotation>
+          <xs:documentation xml:lang="en">Indicates whether the origin of the funding is from the EU, from outside the EU.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+    </xs:sequence>
+    <xs:attribute name="FundingRef" type="xs:IDREF">
+      <xs:annotation>
+        <xs:documentation xml:lang="en">Reference to Funding ID</xs:documentation>
+      </xs:annotation>
+    </xs:attribute>
+  </xs:complexType>
   <xs:complexType name="TextType">
     <xs:sequence/>
     <xs:attribute name="TextRef" type="xs:IDREF">
@@ -479,11 +479,11 @@
       </xs:annotation>
     </xs:attribute>
   </xs:complexType>
-  <xs:complexType name="DoubleType">
+  <xs:complexType name="DecimalType">
     <xs:sequence/>
-    <xs:attribute name="DoubleRef" type="xs:IDREF">
+    <xs:attribute name="DecimalRef" type="xs:IDREF">
       <xs:annotation>
-        <xs:documentation xml:lang="en">Reference to Double ID</xs:documentation>
+        <xs:documentation xml:lang="en">Reference to Decimal ID</xs:documentation>
       </xs:annotation>
     </xs:attribute>
   </xs:complexType>
