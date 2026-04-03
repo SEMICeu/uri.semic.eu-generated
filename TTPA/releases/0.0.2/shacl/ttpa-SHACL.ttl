@@ -1,4 +1,5 @@
 @prefix dc: <http://purl.org/dc/terms/> .
+@prefix dcat: <http://www.w3.org/ns/dcat#> .
 @prefix foaf: <http://xmlns.com/foaf/0.1/> .
 @prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
 @prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
@@ -775,6 +776,7 @@
     <https://semiceu.github.io/TTPA/releases/0.0.2#PoliticalAdvertisementShape/2b97ea236c3a794d3cd6315394ccca0024da2123>,
     <https://semiceu.github.io/TTPA/releases/0.0.2#PoliticalAdvertisementShape/31455690336445ed9f46b5bc615f8cce04aaa854>,
     <https://semiceu.github.io/TTPA/releases/0.0.2#PoliticalAdvertisementShape/322371a77364a50f049d46180f6192532eea26dc>,
+    <https://semiceu.github.io/TTPA/releases/0.0.2#PoliticalAdvertisementShape/334bd09cb2d51fee7cf3d3112df24d33e535f70f>,
     <https://semiceu.github.io/TTPA/releases/0.0.2#PoliticalAdvertisementShape/35fc00646dfcf573da2e72086eb5d60ea1811060>,
     <https://semiceu.github.io/TTPA/releases/0.0.2#PoliticalAdvertisementShape/396a8b30fcc362c6a128dd50caf78cc275503ab5>,
     <https://semiceu.github.io/TTPA/releases/0.0.2#PoliticalAdvertisementShape/3b6b12c2ce65053701aa9d6d63439d37c6305fd4>,
@@ -784,7 +786,6 @@
     <https://semiceu.github.io/TTPA/releases/0.0.2#PoliticalAdvertisementShape/65671e031859ce7cb06a015bec5c91303267d447>,
     <https://semiceu.github.io/TTPA/releases/0.0.2#PoliticalAdvertisementShape/66ba20cf996fc7ab107b82684b8d89e44a3f0e44>,
     <https://semiceu.github.io/TTPA/releases/0.0.2#PoliticalAdvertisementShape/6cae9880e515253132af1452a38a8a5827165149>,
-    <https://semiceu.github.io/TTPA/releases/0.0.2#PoliticalAdvertisementShape/758479cfa4bd962536b2200839c2dfa9b4df4b69>,
     <https://semiceu.github.io/TTPA/releases/0.0.2#PoliticalAdvertisementShape/768bb4171e00505886fe9a1e949b4cd71f0eb548>,
     <https://semiceu.github.io/TTPA/releases/0.0.2#PoliticalAdvertisementShape/7c354b3d72b1ca2da7b3a370dca49b952ba6d393>,
     <https://semiceu.github.io/TTPA/releases/0.0.2#PoliticalAdvertisementShape/7f68e2d61903ca172ea2ddd1496b62e00032b45f>,
@@ -801,7 +802,7 @@
     <https://semiceu.github.io/TTPA/releases/0.0.2#PoliticalAdvertisementShape/c233f57bc7362a70e07a6f9d19124a31e06658c8>,
     <https://semiceu.github.io/TTPA/releases/0.0.2#PoliticalAdvertisementShape/d4d4f2399b8cf2f615ac658920373b714726bed0>,
     <https://semiceu.github.io/TTPA/releases/0.0.2#PoliticalAdvertisementShape/db878f1cb93930f64561d0504123c66feacfad5a>,
-    <https://semiceu.github.io/TTPA/releases/0.0.2#PoliticalAdvertisementShape/e683532a71314a287ba78d0058d51ec0d7829566>,
+    <https://semiceu.github.io/TTPA/releases/0.0.2#PoliticalAdvertisementShape/eaa7f0e48d95ac15f906e0f393b9e3435fda6152>,
     <https://semiceu.github.io/TTPA/releases/0.0.2#PoliticalAdvertisementShape/ef1f6988658b38a9f35b8a925955806d466943a5>,
     <https://semiceu.github.io/TTPA/releases/0.0.2#PoliticalAdvertisementShape/fa801e10134ccfa28bea95b810ec8f1537de1972>,
     <https://semiceu.github.io/TTPA/releases/0.0.2#PoliticalAdvertisementShape/faf051d531004a5849821262156fac7f92b87541>;
@@ -837,6 +838,12 @@
   shacl:name "type"@en;
   shacl:path dc:type .
 
+<https://semiceu.github.io/TTPA/releases/0.0.2#PoliticalAdvertisementShape/334bd09cb2d51fee7cf3d3112df24d33e535f70f> rdfs:seeAlso "https://semiceu.github.io/TTPA/releases/0.0.2#PoliticalAdvertisement.isfundedby";
+  shacl:description "An amount of money to finance the Political Advertisement."@en;
+  shacl:name "is funded by"@en;
+  shacl:nodeKind shacl:BlankNodeOrIRI;
+  shacl:path <http://purl.org/cerif/frapo/isFundedBy> .
+
 <https://semiceu.github.io/TTPA/releases/0.0.2#PoliticalAdvertisementShape/35fc00646dfcf573da2e72086eb5d60ea1811060> rdfs:seeAlso "https://semiceu.github.io/TTPA/releases/0.0.2#PoliticalAdvertisement.non-compliancemechanisminformation";
   shacl:datatype rdf:langString;
   shacl:description "Information about the mechanism for addressing previous non-compliance."@en;
@@ -844,10 +851,10 @@
   shacl:path <http://example.org/nonComplianceMechanismInformation> .
 
 <https://semiceu.github.io/TTPA/releases/0.0.2#PoliticalAdvertisementShape/396a8b30fcc362c6a128dd50caf78cc275503ab5> rdfs:seeAlso "https://semiceu.github.io/TTPA/releases/0.0.2#PoliticalAdvertisement.hasbeginning";
-  shacl:description "The beginning of a period or interval."@en;
+  shacl:description "The start of the period."@en;
   shacl:name "has beginning"@en;
-  shacl:nodeKind shacl:BlankNodeOrIRI;
-  shacl:path <http://www.w3.org/2006/time#hasBeginning> .
+  shacl:nodeKind shacl:Literal;
+  shacl:path dcat:startDate .
 
 <https://semiceu.github.io/TTPA/releases/0.0.2#PoliticalAdvertisementShape/3b6b12c2ce65053701aa9d6d63439d37c6305fd4> rdfs:seeAlso "https://semiceu.github.io/TTPA/releases/0.0.2#PoliticalAdvertisement.intendedstartpublicationdate";
   shacl:description "The planned date for the start of publication of the political advertisement."@en;
@@ -891,12 +898,6 @@
   shacl:nodeKind shacl:Literal;
   shacl:path dc:description .
 
-<https://semiceu.github.io/TTPA/releases/0.0.2#PoliticalAdvertisementShape/758479cfa4bd962536b2200839c2dfa9b4df4b69> rdfs:seeAlso "https://semiceu.github.io/TTPA/releases/0.0.2#PoliticalAdvertisement.hasfunding";
-  shacl:description "An amount of money to finance the Political Advertisement."@en;
-  shacl:name "has funding"@en;
-  shacl:nodeKind shacl:BlankNodeOrIRI;
-  shacl:path <http://example.org/hasFunding> .
-
 <https://semiceu.github.io/TTPA/releases/0.0.2#PoliticalAdvertisementShape/768bb4171e00505886fe9a1e949b4cd71f0eb548> rdfs:seeAlso "https://semiceu.github.io/TTPA/releases/0.0.2#PoliticalAdvertisement.description";
   shacl:description "An account of the resource."@en;
   shacl:name "description"@en;
@@ -904,16 +905,16 @@
   shacl:uniqueLang true .
 
 <https://semiceu.github.io/TTPA/releases/0.0.2#PoliticalAdvertisementShape/7c354b3d72b1ca2da7b3a370dca49b952ba6d393> rdfs:seeAlso "https://semiceu.github.io/TTPA/releases/0.0.2#PoliticalAdvertisement.hasend";
-  shacl:description "The end of a period or interval."@en;
+  shacl:description "The end of the period."@en;
   shacl:name "has end"@en;
-  shacl:nodeKind shacl:BlankNodeOrIRI;
-  shacl:path <http://www.w3.org/2006/time#hasEnd> .
+  shacl:nodeKind shacl:Literal;
+  shacl:path dcat:endDate .
 
 <https://semiceu.github.io/TTPA/releases/0.0.2#PoliticalAdvertisementShape/7f68e2d61903ca172ea2ddd1496b62e00032b45f> rdfs:seeAlso "https://semiceu.github.io/TTPA/releases/0.0.2#PoliticalAdvertisement.hasend";
-  shacl:class <http://www.w3.org/2006/time#Instant>;
-  shacl:description "The end of a period or interval."@en;
+  shacl:datatype xsd:date;
+  shacl:description "The end of the period."@en;
   shacl:name "has end"@en;
-  shacl:path <http://www.w3.org/2006/time#hasEnd> .
+  shacl:path dcat:endDate .
 
 <https://semiceu.github.io/TTPA/releases/0.0.2#PoliticalAdvertisementShape/82a60b5f2ad7fa1802f923b128d6d1423e7cd726> rdfs:seeAlso "https://semiceu.github.io/TTPA/releases/0.0.2#PoliticalAdvertisement.non-compliancemechanisminformation";
   shacl:description "Information about the mechanism for addressing previous non-compliance."@en;
@@ -958,10 +959,10 @@
   shacl:path <http://example.org/hasTechnique> .
 
 <https://semiceu.github.io/TTPA/releases/0.0.2#PoliticalAdvertisementShape/b8df7f66f3d46b1a9f7ffad5aaf79e9a0991fea4> rdfs:seeAlso "https://semiceu.github.io/TTPA/releases/0.0.2#PoliticalAdvertisement.hasbeginning";
-  shacl:class <http://www.w3.org/2006/time#Instant>;
-  shacl:description "The beginning of a period or interval."@en;
+  shacl:datatype xsd:date;
+  shacl:description "The start of the period."@en;
   shacl:name "has beginning"@en;
-  shacl:path <http://www.w3.org/2006/time#hasBeginning> .
+  shacl:path dcat:startDate .
 
 <https://semiceu.github.io/TTPA/releases/0.0.2#PoliticalAdvertisementShape/bd1f97f9bb717a66bda9bd88581379590427fe09> rdfs:seeAlso "https://semiceu.github.io/TTPA/releases/0.0.2#PoliticalAdvertisement.haselection";
   shacl:class <http://example.org/ElectionEvent>;
@@ -993,11 +994,11 @@
   shacl:nodeKind shacl:BlankNodeOrIRI;
   shacl:path dc:language .
 
-<https://semiceu.github.io/TTPA/releases/0.0.2#PoliticalAdvertisementShape/e683532a71314a287ba78d0058d51ec0d7829566> rdfs:seeAlso "https://semiceu.github.io/TTPA/releases/0.0.2#PoliticalAdvertisement.hasfunding";
+<https://semiceu.github.io/TTPA/releases/0.0.2#PoliticalAdvertisementShape/eaa7f0e48d95ac15f906e0f393b9e3435fda6152> rdfs:seeAlso "https://semiceu.github.io/TTPA/releases/0.0.2#PoliticalAdvertisement.isfundedby";
   shacl:class <http://purl.org/cerif/frapo/Funding>;
   shacl:description "An amount of money to finance the Political Advertisement."@en;
-  shacl:name "has funding"@en;
-  shacl:path <http://example.org/hasFunding> .
+  shacl:name "is funded by"@en;
+  shacl:path <http://purl.org/cerif/frapo/isFundedBy> .
 
 <https://semiceu.github.io/TTPA/releases/0.0.2#PoliticalAdvertisementShape/ef1f6988658b38a9f35b8a925955806d466943a5> rdfs:seeAlso "https://semiceu.github.io/TTPA/releases/0.0.2#PoliticalAdvertisement.hasinitiative";
   shacl:description "The initiative related to the advertisement."@en;
@@ -1231,10 +1232,10 @@
   shacl:path <http://example.org/consentNotice> .
 
 <https://semiceu.github.io/TTPA/releases/0.0.2#TechniqueShape/396a8b30fcc362c6a128dd50caf78cc275503ab5> rdfs:seeAlso "https://semiceu.github.io/TTPA/releases/0.0.2#Technique.hasbeginning";
-  shacl:description "The beginning of a period or interval."@en;
+  shacl:description "The start of the period."@en;
   shacl:name "has beginning"@en;
-  shacl:nodeKind shacl:BlankNodeOrIRI;
-  shacl:path <http://www.w3.org/2006/time#hasBeginning> .
+  shacl:nodeKind shacl:Literal;
+  shacl:path dcat:startDate .
 
 <https://semiceu.github.io/TTPA/releases/0.0.2#TechniqueShape/39c470dbf405f0d153e902180d21fc92a3d7ed03> rdfs:seeAlso "https://semiceu.github.io/TTPA/releases/0.0.2#Technique.haspersonaldata";
   shacl:class skos:Concept;
@@ -1273,10 +1274,10 @@
   shacl:path <http://example.org/hasControllingEntity> .
 
 <https://semiceu.github.io/TTPA/releases/0.0.2#TechniqueShape/7c354b3d72b1ca2da7b3a370dca49b952ba6d393> rdfs:seeAlso "https://semiceu.github.io/TTPA/releases/0.0.2#Technique.hasend";
-  shacl:description "The end of a period or interval."@en;
+  shacl:description "The end of the period."@en;
   shacl:name "has end"@en;
-  shacl:nodeKind shacl:BlankNodeOrIRI;
-  shacl:path <http://www.w3.org/2006/time#hasEnd> .
+  shacl:nodeKind shacl:Literal;
+  shacl:path dcat:endDate .
 
 <https://semiceu.github.io/TTPA/releases/0.0.2#TechniqueShape/7c72c93dff3ba8a83b8c75f2de17c56b7fbd4930> rdfs:seeAlso "https://semiceu.github.io/TTPA/releases/0.0.2#Technique.numberofviews";
   shacl:description "The number of times the ressource was viewed."@en;
@@ -1291,10 +1292,10 @@
   shacl:path <http://example.org/numberOfViews> .
 
 <https://semiceu.github.io/TTPA/releases/0.0.2#TechniqueShape/7f68e2d61903ca172ea2ddd1496b62e00032b45f> rdfs:seeAlso "https://semiceu.github.io/TTPA/releases/0.0.2#Technique.hasend";
-  shacl:class <http://www.w3.org/2006/time#Instant>;
-  shacl:description "The end of a period or interval."@en;
+  shacl:datatype xsd:date;
+  shacl:description "The end of the period."@en;
   shacl:name "has end"@en;
-  shacl:path <http://www.w3.org/2006/time#hasEnd> .
+  shacl:path dcat:endDate .
 
 <https://semiceu.github.io/TTPA/releases/0.0.2#TechniqueShape/8c1e0d1ac55cc7da56ed33785c09a2980899a997> rdfs:seeAlso "https://semiceu.github.io/TTPA/releases/0.0.2#Technique.haspolicy";
   shacl:datatype xsd:anyURI;
@@ -1327,10 +1328,10 @@
   shacl:path <http://example.org/numberOfComments> .
 
 <https://semiceu.github.io/TTPA/releases/0.0.2#TechniqueShape/b8df7f66f3d46b1a9f7ffad5aaf79e9a0991fea4> rdfs:seeAlso "https://semiceu.github.io/TTPA/releases/0.0.2#Technique.hasbeginning";
-  shacl:class <http://www.w3.org/2006/time#Instant>;
-  shacl:description "The beginning of a period or interval."@en;
+  shacl:datatype xsd:date;
+  shacl:description "The start of the period."@en;
   shacl:name "has beginning"@en;
-  shacl:path <http://www.w3.org/2006/time#hasBeginning> .
+  shacl:path dcat:startDate .
 
 <https://semiceu.github.io/TTPA/releases/0.0.2#TechniqueShape/ba68b0d876615647939dd6b3a588e8331ee697ba> rdfs:seeAlso "https://semiceu.github.io/TTPA/releases/0.0.2#Technique.otherrelevantinformation";
   shacl:description "Any other information relevant to the targeting of the advertisement."@en;
@@ -1435,7 +1436,7 @@
   shacl:path <http://example.org/hasFunding> .
 
 <https://semiceu.github.io/TTPA/releases/0.0.2#TransparencyNoticeShape/784ed8e26e3aed8b689abdc2f335272e51dc184e> rdfs:seeAlso "https://semiceu.github.io/TTPA/releases/0.0.2#TransparencyNotice.hassponsor";
-  shacl:class <http://example.org/PoliticalAdvertisement>;
+  shacl:class foaf:Agent;
   shacl:description "The entity that provides financial or other support for the political advertisement."@en;
   shacl:name "has sponsor"@en;
   shacl:path <http://example.org/hasSponsor> .
