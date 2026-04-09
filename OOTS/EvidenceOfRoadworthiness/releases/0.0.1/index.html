@@ -172,7 +172,6 @@
     <h2>Abstract</h2>
 Evidence of roadworthiness is a simplified data model describing an evidence regarding the vehicle's roadworthiness. Draws upon the <a href="https://eur-lex.europa.eu/legal-content/EN/TXT/PDF/?uri=CELEX:32014L0045">specifications of Annex II, of Council Directive 2014/45/EU.</a>.
 
-
 </section>
 
 
@@ -1700,25 +1699,23 @@ In some cases, the Output of one service will be Evidence for another service. S
 
     <p>The XML schema is based on the OOTS requirements and it allows some flexibility to include fields that Member States can add in addition to those foreseen in the OOTS requirements.</p>
 
-    <p>The XML schema is based on 3 parts:
+    <p>The XML schema is based on 3 parts:</p>
     <ul>
     <li>The subject part, to indicate the Person subject of the evidence</li>
     <li>The event/status part, to indicate the data about the event related to the subject</li>
-    <li>Optional additional part, to add optional fields (attributes) for the evidence type, such as issuing date or issuing authority
+    <li>Optional additional part, to add optional fields (attributes) for the evidence type, such as issuing date or issuing authority</li>
     </ul>
-    </p>
 
     <p>All the parts with their respective attributes are optional (min cardinality set to 0).</p>
 
     <p>The XML schema is based on the SEMIC <a href="https://github.com/SEMICeu/CCCEV">Core Criterion and Core Evidence (CCCEV)</a> specification, and on the <a href="https://github.com/SEMICeu/Core-Person-Vocabulary/">Core Person vocabulary</a>. 
     In CCCEV, the Evidence <a href="https://semiceu.github.io/CCCEV/releases/2.1.0/#Evidence.isabout">is about</a> an Agent that is the subject in the provided Evidence; in the case of Evidence of Birth, the Agent is the Person.
-    An EvidenceOfRoadworthiness is then an OOTSEvidenceType (based on CCCEV Evidence) by having the 3 parts:
+    An EvidenceOfRoadworthiness is then an OOTSEvidenceType (based on CCCEV Evidence) by having the 3 parts:</p>
     <ul>
     <li>cv:isAbout. Since the value of cv:isAbout is a generic AgentType, in SDG a PersonType is defined as an AgentType with cv:FamilyName, cv:GivenName, cv:Sex and sdg:AttributeSet, that it means that is possible to add additional fields to the subject.</li>
     <li>sdg:Birth, defined by the OOTSBirthType, that includes cv:CountryOfBirth, cv:DateOfBirth, cv:PlaceOfBirth (as foreseen in OOTS requirements) and sdg:AttributeSet</li>
     <li>sdg:AttributeSet, that can contains many attributes, where the name, language and type fields could be defined for each attribute</li>
     </ul>
-    </p>
 
     <p>The design of the XML schema is based on the <a href="https://www.oracle.com/technical-resources/articles/java/design-patterns.html">Garden Of Eden Pattern</a> where complex types and elements are defined globals so they can be reused.</p>
     
