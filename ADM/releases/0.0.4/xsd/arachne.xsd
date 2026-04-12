@@ -5,6 +5,7 @@
   <xs:element name="ContractAddenda" type="ContractAddendaType"/>
   <xs:element name="Esf" type="EsfType"/>
   <xs:element name="EnergyEfficiency" type="EnergyEfficiencyType"/>
+  <xs:element name="Expense" type="ExpenseType"/>
   <xs:element name="FinalBeneficialOwner" type="FinalBeneficialOwnerType"/>
   <xs:element name="KeyExpert" type="KeyExpertType"/>
   <xs:element name="OperationalProgramme" type="OperationalProgrammeType"/>
@@ -24,7 +25,6 @@
   <xs:element name="Contract" type="ContractType"/>
   <xs:element name="Contractor" type="ContractorType"/>
   <xs:element name="Document" type="DocumentType"/>
-  <xs:element name="Invoice" type="InvoiceType"/>
   <xs:element name="LegalRepresentative" type="LegalRepresentativeType"/>
   <xs:element name="MonetaryValue" type="MonetaryValueType"/>
   <xs:element name="Notice" type="NoticeType"/>
@@ -163,6 +163,50 @@
     <xs:attribute name="EnergyEfficiencyRef" type="xs:IDREF">
       <xs:annotation>
         <xs:documentation xml:lang="en">Reference to EnergyEfficiency ID</xs:documentation>
+      </xs:annotation>
+    </xs:attribute>
+  </xs:complexType>
+  <xs:complexType name="ExpenseType">
+    <xs:sequence>
+      <xs:element name="amount" ref="MonetaryValueType" maxOccurs="1" minOccurs="1">
+        <xs:annotation>
+          <xs:documentation xml:lang="en">The total amount of the invoice.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="hasContractor" ref="ContractorType" maxOccurs="1" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation xml:lang="en">The reference to the entity which is the contractor of the contract.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="identifier" ref="IdentifierType" maxOccurs="1" minOccurs="1">
+        <xs:annotation>
+          <xs:documentation xml:lang="en">Links a resource to an adms:Identifier class.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="invoiceDate" type="xs:date" maxOccurs="1" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation xml:lang="en">Invoice date of the expense.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="invoiceType" type="ConceptType" maxOccurs="1" minOccurs="1">
+        <xs:annotation>
+          <xs:documentation xml:lang="en">The corresponding expense type of the expense.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="paymentDate" type="xs:date" maxOccurs="1" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation xml:lang="en">Effective payment date of the expense.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="refersToProject" ref="ProjectType" maxOccurs="1" minOccurs="1">
+        <xs:annotation>
+          <xs:documentation xml:lang="en">Reference to a Project.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+    </xs:sequence>
+    <xs:attribute name="ExpenseRef" type="xs:IDREF">
+      <xs:annotation>
+        <xs:documentation xml:lang="en">Reference to Expense ID</xs:documentation>
       </xs:annotation>
     </xs:attribute>
   </xs:complexType>
@@ -617,40 +661,6 @@ contract, or not.</xs:documentation>
     <xs:attribute name="DocumentRef" type="xs:IDREF">
       <xs:annotation>
         <xs:documentation xml:lang="en">Reference to Document ID</xs:documentation>
-      </xs:annotation>
-    </xs:attribute>
-  </xs:complexType>
-  <xs:complexType name="InvoiceType">
-    <xs:sequence>
-      <xs:element name="amount" ref="MonetaryValueType" maxOccurs="1" minOccurs="1">
-        <xs:annotation>
-          <xs:documentation xml:lang="en">The total amount of the invoice.</xs:documentation>
-        </xs:annotation>
-      </xs:element>
-      <xs:element name="hasContractor" ref="ContractorType" maxOccurs="1" minOccurs="1">
-        <xs:annotation>
-          <xs:documentation xml:lang="en">The reference to the entity which is the contractor of the contract.</xs:documentation>
-        </xs:annotation>
-      </xs:element>
-      <xs:element name="invoiceType" type="ConceptType" maxOccurs="1" minOccurs="1">
-        <xs:annotation>
-          <xs:documentation xml:lang="en">The corresponding expense type of the expense.</xs:documentation>
-        </xs:annotation>
-      </xs:element>
-      <xs:element name="paymentDate" type="xs:date" maxOccurs="1" minOccurs="0">
-        <xs:annotation>
-          <xs:documentation xml:lang="en">Effective payment date of the expense.</xs:documentation>
-        </xs:annotation>
-      </xs:element>
-      <xs:element name="refersToProject" ref="ProjectType" maxOccurs="1" minOccurs="1">
-        <xs:annotation>
-          <xs:documentation xml:lang="en">Reference to a Project.</xs:documentation>
-        </xs:annotation>
-      </xs:element>
-    </xs:sequence>
-    <xs:attribute name="InvoiceRef" type="xs:IDREF">
-      <xs:annotation>
-        <xs:documentation xml:lang="en">Reference to Invoice ID</xs:documentation>
       </xs:annotation>
     </xs:attribute>
   </xs:complexType>
