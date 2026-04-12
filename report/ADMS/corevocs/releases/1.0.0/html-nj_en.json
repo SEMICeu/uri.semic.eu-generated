@@ -3,20 +3,21 @@
     "title": "ADMS Vocabulary - Core Vocabularies",
     "uri": "http://www.w3.org/ns/adms",
     "issued": "2026-04-10",
+    "baseURI": "http://www.w3.org/ns/adms#",
     "filename": "adms-corevocs",
     "navigation": {
       "prev": "https://www.w3.org/TR/vocab-adms",
       "self": "https://semiceu.github.io/ADMS/corevocs/releases/1.0.0"
     },
     "license": "https://creativecommons.org/licenses/by/4.0/",
-    "documenttype": "voc",
+    "documenttype": "ap",
     "documentconfig": {
       "statuslabel": "SEMIC Recommendation"
     },
     "status": "https://www.w3.org/2023/Process-20231103/#RecsW3C",
     "statuslabel": "Onbekend",
-    "repositoryurl": "git@semicthema-DCAT-AP:SEMICeu/Semicthema-DCAT-AP.git/tree/6680f492c3405a263f1b85424a6353faa68f141c",
-    "changelogurl": "git@semicthema-DCAT-AP:SEMICeu/Semicthema-DCAT-AP.git/blob/6680f492c3405a263f1b85424a6353faa68f141c/CHANGELOG",
+    "repositoryurl": "git@semicthema-DCAT-AP:SEMICeu/Semicthema-DCAT-AP.git/tree/b452a9b7549e3a56436e388cfaa011913757c0fc",
+    "changelogurl": "git@semicthema-DCAT-AP:SEMICeu/Semicthema-DCAT-AP.git/blob/b452a9b7549e3a56436e388cfaa011913757c0fc/CHANGELOG",
     "feedbackurl": "https://github.com/SEMICeu/ADMS/issues",
     "standaardregisterurl": "https://github.com/SEMICeu/ADMS/blob/main/releases/2.00/CHANGELOG.md",
     "usesVocs": [],
@@ -36,33 +37,387 @@
       "usage": {
         "en": "The Identifier class is based on the <a href=\"https://www.gs1.org/standards/edi/gs1-un-cefact-xml/2012\">UN/CEFACT</a> class of the same name and is defined under the ADMS namespace."
       },
-      "equivalent": [],
-      "parents": []
-    }
-  ],
-  "properties": [
-    {
-      "uri": "http://www.w3.org/ns/adms#schemeAgency",
-      "name": "schemeAgency",
-      "label": {
-        "en": "scheme agency"
+      "parents": [],
+      "rawTags": {
+        "definition-en": "A structured reference that identifies an entity.",
+        "label-en": "Identifier",
+        "uri": "http://www.w3.org/ns/adms#Identifier",
+        "usageNote-en": "The Identifier class is based on the <a href=\"https://www.gs1.org/standards/edi/gs1-un-cefact-xml/2012\">UN/CEFACT</a> class of the same name and is defined under the ADMS namespace.",
+        "class-usage-scope": "main"
       },
-      "sort": "scheme agency",
+      "properties": [
+        {
+          "uri": "http://www.w3.org/ns/adms#schemeAgency",
+          "name": "schemeAgency",
+          "sort": "scheme agency",
+          "label": {
+            "en": "scheme agency"
+          },
+          "description": {
+            "en": "The name of the agency that issued the identifier."
+          },
+          "usage": {
+            "en": "use dcterms:creator to link to a class describing the agency that manages the identifier scheme or adms:schemaAgency to provide the name as a literal."
+          },
+          "domain": [
+            {
+              "EA-Name": "Identifier",
+              "uri": "http://www.w3.org/ns/adms#Identifier"
+            }
+          ],
+          "range": [
+            {
+              "range_label": "Literal",
+              "range_uri": "http://www.w3.org/2000/01/rdf-schema#Literal"
+            }
+          ],
+          "scopedrange": [
+            {
+              "range_uri": "#Literal",
+              "range_puri": "http://www.w3.org/2000/01/rdf-schema#Literal",
+              "range_label": {
+                "en": "Literal"
+              }
+            }
+          ],
+          "cardinality": "0..*",
+          "codelist_uri": "",
+          "rawTags": {
+            "definition-en": "The name of the agency that issued the identifier.",
+            "label-en": "scheme agency",
+            "uri": "http://www.w3.org/ns/adms#schemeAgency",
+            "usageNote-en": "use dcterms:creator to link to a class describing the agency that manages the identifier scheme or adms:schemaAgency to provide the name as a literal."
+          }
+        },
+        {
+          "uri": "http://purl.org/dc/terms/conformsTo",
+          "name": "schemeUri",
+          "sort": "scheme URI",
+          "label": {
+            "en": "scheme URI"
+          },
+          "description": {
+            "en": "URI of the scheme used to construct the identifier."
+          },
+          "usage": {},
+          "domain": [
+            {
+              "EA-Name": "Identifier",
+              "uri": "http://www.w3.org/ns/adms#Identifier"
+            }
+          ],
+          "range": [
+            {
+              "range_label": "IdentifierScheme",
+              "range_uri": "http://data.europa.eu/adms/IdentifierScheme"
+            }
+          ],
+          "scopedrange": [
+            {
+              "range_uri": "#Identifier Scheme",
+              "range_puri": "http://data.europa.eu/adms/IdentifierScheme",
+              "range_label": {
+                "en": "Identifier Scheme"
+              }
+            }
+          ],
+          "cardinality": "0..*",
+          "codelist_uri": "",
+          "rawTags": {
+            "uri": "http://purl.org/dc/terms/conformsTo",
+            "label-en": "scheme URI",
+            "definition-en": "URI of the scheme used to construct the identifier."
+          }
+        },
+        {
+          "uri": "http://purl.org/dc/terms/issued",
+          "name": "dateOfIssue",
+          "sort": "date of issue",
+          "label": {
+            "en": "date of issue"
+          },
+          "description": {
+            "en": "The date on which the Identifier was assigned."
+          },
+          "usage": {},
+          "domain": [
+            {
+              "EA-Name": "Identifier",
+              "uri": "http://www.w3.org/ns/adms#Identifier"
+            }
+          ],
+          "range": [
+            {
+              "range_label": "Date",
+              "range_uri": "http://www.w3.org/2001/XMLSchema#date"
+            }
+          ],
+          "scopedrange": [
+            {
+              "range_uri": "#Date",
+              "range_puri": "http://www.w3.org/2001/XMLSchema#date",
+              "range_label": {
+                "en": "Date"
+              }
+            }
+          ],
+          "cardinality": "0..*",
+          "codelist_uri": "",
+          "rawTags": {
+            "definition-en": "The date on which the Identifier was assigned.",
+            "uri": "http://purl.org/dc/terms/issued",
+            "label-en": "date of issue"
+          }
+        },
+        {
+          "uri": "http://www.w3.org/2004/02/skos/core#notation",
+          "name": "notation",
+          "sort": "notation",
+          "label": {
+            "en": "notation"
+          },
+          "description": {
+            "en": "A string of characters to uniquely identify a concept."
+          },
+          "usage": {},
+          "domain": [
+            {
+              "EA-Name": "Identifier",
+              "uri": "http://www.w3.org/ns/adms#Identifier"
+            }
+          ],
+          "range": [
+            {
+              "range_label": "Literal",
+              "range_uri": "http://www.w3.org/2000/01/rdf-schema#Literal"
+            }
+          ],
+          "scopedrange": [
+            {
+              "range_uri": "#Literal",
+              "range_puri": "http://www.w3.org/2000/01/rdf-schema#Literal",
+              "range_label": {
+                "en": "Literal"
+              }
+            }
+          ],
+          "cardinality": "0..*",
+          "codelist_uri": "",
+          "rawTags": {
+            "definition-en": "A string of characters to uniquely identify a concept.",
+            "label-en": "notation",
+            "uri": "http://www.w3.org/2004/02/skos/core#notation"
+          }
+        }
+      ]
+    },
+    {
+      "uri": "http://data.europa.eu/adms/IdentifierScheme",
+      "name": "IdentifierScheme",
+      "label": {
+        "en": "Identifier Scheme"
+      },
+      "sort": "Identifier Scheme",
       "description": {
-        "en": "The name of the agency that issued the identifier."
+        "en": "The scheme used to assign and manage an identifier to an entity."
+      },
+      "usage": {},
+      "parents": [],
+      "rawTags": {
+        "definition-en": "The scheme used to assign and manage an identifier to an entity.",
+        "label-en": "Identifier Scheme",
+        "uri": "http://data.europa.eu/adms/IdentifierScheme",
+        "class-usage-scope": "main"
+      },
+      "properties": [
+        {
+          "uri": "http://www.w3.org/2000/01/rdf-schema#label",
+          "name": "schemeName",
+          "sort": "scheme name",
+          "label": {
+            "en": "scheme name"
+          },
+          "description": {
+            "en": "Name of the scheme used to construct the identifier."
+          },
+          "usage": {},
+          "domain": [
+            {
+              "EA-Name": "IdentifierScheme",
+              "uri": "http://data.europa.eu/adms/IdentifierScheme"
+            }
+          ],
+          "range": [
+            {
+              "range_label": "Text",
+              "range_uri": "http://www.w3.org/1999/02/22-rdf-syntax-ns#langString"
+            }
+          ],
+          "scopedrange": [
+            {
+              "range_uri": "#Text",
+              "range_puri": "http://www.w3.org/1999/02/22-rdf-syntax-ns#langString",
+              "range_label": {
+                "en": "Text"
+              }
+            }
+          ],
+          "cardinality": "0..*",
+          "codelist_uri": "",
+          "rawTags": {
+            "label-en": "scheme name",
+            "definition-en": "Name of the scheme used to construct the identifier.",
+            "uri": "http://www.w3.org/2000/01/rdf-schema#label"
+          }
+        }
+      ]
+    },
+    {
+      "uri": "http://xmlns.com/foaf/0.1/Agent",
+      "name": "Agent",
+      "label": {
+        "en": "Agent"
+      },
+      "sort": "Agent",
+      "description": {
+        "en": "Entity that is able to carry out action."
       },
       "usage": {
-        "en": "use dcterms:creator to link to a class describing the agency that manages the identifier scheme or adms:schemaAgency to provide the name as a literal."
+        "en": "In compliance with the description from <a href=\"http://xmlns.com/foaf/spec/\">FOAF</a>, an Agent is considered as any entity that is able to carry out actions. The Agent class acts as a generic element which can be further specified by implementers for their usages, for example by defining the Person class from <a href=\"https://github.com/SEMICeu/Core-Person-Vocabulary\">the Core Person Vocabulary</a> or Organization from <a href=\"https://www.w3.org/TR/vocab-org/\">W3C's Organization Ontology</a> as a subclasses of Agent. This Person or Organization can then issue a certain Requirement or be concerned by an Evidence provided."
       },
-      "domain": [
-        "http://www.w3.org/ns/adms#Identifier"
-      ],
-      "range": [
-        "http://www.w3.org/2000/01/rdf-schema#Literal"
-      ],
-      "parents": []
+      "parents": [],
+      "rawTags": {
+        "definition-en": "Entity that is able to carry out action.",
+        "label-en": "Agent",
+        "uri": "http://xmlns.com/foaf/0.1/Agent",
+        "usageNote-en": "In compliance with the description from <a href=\"http://xmlns.com/foaf/spec/\">FOAF</a>, an Agent is considered as any entity that is able to carry out actions. The Agent class acts as a generic element which can be further specified by implementers for their usages, for example by defining the Person class from <a href=\"https://github.com/SEMICeu/Core-Person-Vocabulary\">the Core Person Vocabulary</a> or Organization from <a href=\"https://www.w3.org/TR/vocab-org/\">W3C's Organization Ontology</a> as a subclasses of Agent. This Person or Organization can then issue a certain Requirement or be concerned by an Evidence provided.",
+        "class-usage-scope": "main"
+      },
+      "properties": [
+        {
+          "uri": "http://purl.org/dc/terms/creator",
+          "name": "issuedBy",
+          "sort": "issued by",
+          "label": {
+            "en": "issued by"
+          },
+          "description": {
+            "en": "Agent legally responsible for the Identifier."
+          },
+          "usage": {},
+          "domain": [
+            {
+              "EA-Name": "Agent",
+              "uri": "http://xmlns.com/foaf/0.1/Agent"
+            }
+          ],
+          "range": [
+            {
+              "range_label": "Identifier",
+              "range_uri": "http://www.w3.org/ns/adms#Identifier"
+            }
+          ],
+          "scopedrange": [
+            {
+              "range_uri": "#Identifier",
+              "range_puri": "http://www.w3.org/ns/adms#Identifier",
+              "range_label": {
+                "en": "Identifier"
+              }
+            }
+          ],
+          "cardinality": "0..*",
+          "codelist_uri": "",
+          "rawTags": {
+            "uri": "http://purl.org/dc/terms/creator",
+            "definition-en": "Agent legally responsible for the Identifier.",
+            "label-en": "issued by"
+          }
+        },
+        {
+          "uri": "http://purl.org/dc/terms/title",
+          "name": "name",
+          "sort": "name",
+          "label": {
+            "en": "name"
+          },
+          "description": {
+            "en": "The noun given to the Agent."
+          },
+          "usage": {},
+          "domain": [
+            {
+              "EA-Name": "Agent",
+              "uri": "http://xmlns.com/foaf/0.1/Agent"
+            }
+          ],
+          "range": [
+            {
+              "range_label": "Text",
+              "range_uri": "http://www.w3.org/1999/02/22-rdf-syntax-ns#langString"
+            }
+          ],
+          "scopedrange": [
+            {
+              "range_uri": "#Text",
+              "range_puri": "http://www.w3.org/1999/02/22-rdf-syntax-ns#langString",
+              "range_label": {
+                "en": "Text"
+              }
+            }
+          ],
+          "cardinality": "0..*",
+          "codelist_uri": "",
+          "rawTags": {
+            "definition-en": "The noun given to the Agent.",
+            "uri": "http://purl.org/dc/terms/title",
+            "label-en": "name"
+          }
+        },
+        {
+          "uri": "http://purl.org/dc/terms/type",
+          "name": "type",
+          "sort": "type",
+          "label": {
+            "en": "type"
+          },
+          "description": {
+            "en": "A classification assigned to an Agent."
+          },
+          "usage": {},
+          "domain": [
+            {
+              "EA-Name": "Agent",
+              "uri": "http://xmlns.com/foaf/0.1/Agent"
+            }
+          ],
+          "range": [
+            {
+              "range_label": "Code",
+              "range_uri": "http://www.w3.org/2004/02/skos/core#Concept"
+            }
+          ],
+          "scopedrange": [
+            {
+              "range_uri": "#code",
+              "range_puri": "http://www.w3.org/2004/02/skos/core#Concept",
+              "range_label": {
+                "en": "code"
+              }
+            }
+          ],
+          "cardinality": "0..*",
+          "codelist_uri": "",
+          "rawTags": {
+            "label-en": "type",
+            "definition-en": "A classification assigned to an Agent.",
+            "uri": "http://purl.org/dc/terms/type"
+          }
+        }
+      ]
     }
   ],
+  "properties": [],
   "contributors": [
     {
       "role": "A",
@@ -284,6 +639,88 @@
       "affiliation": {}
     }
   ],
-  "external_terms": [],
+  "datatypes": [
+    {
+      "uri": "http://www.w3.org/1999/02/22-rdf-syntax-ns#langString",
+      "name": "Text",
+      "label": {
+        "en": "Text"
+      },
+      "sort": "Text",
+      "description": {
+        "en": "The text data type is a combination of a string and a language identifier."
+      },
+      "usage": {
+        "en": "It is useful for names and descriptions that are available in multiple languages. Where this is so, each version of the data should be included and each one associated with the relevant language identifier. RFC 3066 provides a commonly used set of identifiers for natural languages. This is the set recognised by UN/CEFACT and XML Schema.\r\nLanguages are represented by two character codes, optionally followed by a locale definition such as \"de\" meaning German and \"de-at\" meaning \"German as spoken in Austria.\""
+      },
+      "parents": [],
+      "rawTags": {
+        "uri": "http://www.w3.org/1999/02/22-rdf-syntax-ns#langString",
+        "literal": "True",
+        "label-en": "Text",
+        "definition-en": "The text data type is a combination of a string and a language identifier.",
+        "class-usage-scope": "datatype",
+        "usageNote-en": "It is useful for names and descriptions that are available in multiple languages. Where this is so, each version of the data should be included and each one associated with the relevant language identifier. RFC 3066 provides a commonly used set of identifiers for natural languages. This is the set recognised by UN/CEFACT and XML Schema.\r\nLanguages are represented by two character codes, optionally followed by a locale definition such as \"de\" meaning German and \"de-at\" meaning \"German as spoken in Austria.\""
+      },
+      "properties": []
+    },
+    {
+      "uri": "http://www.w3.org/2000/01/rdf-schema#Literal",
+      "name": "Literal",
+      "label": {
+        "en": "Literal"
+      },
+      "sort": "Literal",
+      "description": {
+        "en": "The class of literal values, eg. textual strings and integers."
+      },
+      "usage": {},
+      "parents": [],
+      "rawTags": {
+        "uri": "http://www.w3.org/2000/01/rdf-schema#Literal",
+        "label-en": "Literal",
+        "definition-en": "The class of literal values, eg. textual strings and integers.",
+        "literal": "true",
+        "class-usage-scope": "datatype"
+      },
+      "properties": []
+    },
+    {
+      "uri": "http://www.w3.org/2001/XMLSchema#date",
+      "name": "Date",
+      "label": {
+        "en": "Date"
+      },
+      "sort": "Date",
+      "description": {
+        "en": "Date represents top-open intervals of exactly one day in length on the timelines of dateTime, beginning on the beginning moment of each day, up to but not including the beginning moment of the next day).  For non-timezoned values, the top-open intervals disjointly cover the non-timezoned timeline, one per day.  For timezoned values, the intervals begin at every minute and therefore overlap."
+      },
+      "usage": {},
+      "parents": [],
+      "rawTags": {
+        "uri": "http://www.w3.org/2001/XMLSchema#date",
+        "label-en": "Date",
+        "definition-en": "Date represents top-open intervals of exactly one day in length on the timelines of dateTime, beginning on the beginning moment of each day, up to but not including the beginning moment of the next day).  For non-timezoned values, the top-open intervals disjointly cover the non-timezoned timeline, one per day.  For timezoned values, the intervals begin at every minute and therefore overlap."
+      },
+      "properties": []
+    },
+    {
+      "uri": "http://www.w3.org/2004/02/skos/core#Concept",
+      "name": "Code",
+      "label": {
+        "en": "code"
+      },
+      "sort": "code",
+      "description": {},
+      "usage": {},
+      "parents": [],
+      "rawTags": {
+        "label-en": "code",
+        "uri": "http://www.w3.org/2004/02/skos/core#Concept"
+      },
+      "properties": []
+    }
+  ],
+  "parents": [],
   "documentroot": "/ADMS/corevocs/releases/1.0.0"
 }
