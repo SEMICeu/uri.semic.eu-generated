@@ -1,11 +1,10 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <xs:schema xmlns="https://data.europa.eu/m8g/xml/" xmlns:xs="http://www.w3.org/2001/XMLSchema" targetNamespace="https://data.europa.eu/m8g/xml/" version="2.0.0" elementFormDefault="qualified" attributeFormDefault="unqualified" xmlns:cv="https://data.europa.eu/m8g/xml/">
   <xs:element name="Identifier" type="IdentifierType"/>
-  <xs:element name="IdentifierScheme" type="IdentifierSchemeType"/>
+  <xs:element name="IdentifierSchema" type="IdentifierSchemaType"/>
   <xs:element name="Text" type="TextType"/>
   <xs:element name="Literal" type="LiteralType"/>
   <xs:element name="Date" type="DateType"/>
-  <xs:element name="Code" type="CodeType"/>
   <xs:element name="Agent" type="AgentType"/>
   <xs:simpleType name="Literal">
     <xs:restriction base="xs:string"/>
@@ -27,24 +26,24 @@
   </xs:complexType>
   <xs:complexType name="IdentifierType">
     <xs:sequence>
-      <xs:element name="dateOfIssue" type="xs:date" maxOccurs="unbounded" minOccurs="0">
+      <xs:element name="dateIssued" type="xs:date" maxOccurs="unbounded" minOccurs="0">
         <xs:annotation>
-          <xs:documentation xml:lang="en">The date on which the Identifier was assigned.</xs:documentation>
+          <xs:documentation xml:lang="en">Date of formal issuance of the identifier.</xs:documentation>
         </xs:annotation>
       </xs:element>
       <xs:element name="notation" type="xs:string" maxOccurs="unbounded" minOccurs="0">
         <xs:annotation>
-          <xs:documentation xml:lang="en">A string of characters to uniquely identify a concept.</xs:documentation>
+          <xs:documentation xml:lang="en">A string of characters to uniquely identify an identifier.</xs:documentation>
         </xs:annotation>
       </xs:element>
-      <xs:element name="schemeAgency" type="xs:string" maxOccurs="unbounded" minOccurs="0">
+      <xs:element name="schema" ref="IdentifierSchemaType" maxOccurs="unbounded" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation xml:lang="en">The schema used to construct the identifier.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="schemaAgency" type="xs:string" maxOccurs="unbounded" minOccurs="0">
         <xs:annotation>
           <xs:documentation xml:lang="en">The name of the agency that issued the identifier.</xs:documentation>
-        </xs:annotation>
-      </xs:element>
-      <xs:element name="schemeUri" ref="IdentifierSchemeType" maxOccurs="unbounded" minOccurs="0">
-        <xs:annotation>
-          <xs:documentation xml:lang="en">URI of the scheme used to construct the identifier.</xs:documentation>
         </xs:annotation>
       </xs:element>
     </xs:sequence>
@@ -54,17 +53,17 @@
       </xs:annotation>
     </xs:attribute>
   </xs:complexType>
-  <xs:complexType name="IdentifierSchemeType">
+  <xs:complexType name="IdentifierSchemaType">
     <xs:sequence>
-      <xs:element name="schemeName" type="xs:string" maxOccurs="unbounded" minOccurs="0">
+      <xs:element name="schemaName" type="xs:string" maxOccurs="unbounded" minOccurs="0">
         <xs:annotation>
-          <xs:documentation xml:lang="en">Name of the scheme used to construct the identifier.</xs:documentation>
+          <xs:documentation xml:lang="en">Name of the schema used to construct the identifier.</xs:documentation>
         </xs:annotation>
       </xs:element>
     </xs:sequence>
-    <xs:attribute name="IdentifierSchemeRef" type="xs:IDREF">
+    <xs:attribute name="IdentifierSchemaRef" type="xs:IDREF">
       <xs:annotation>
-        <xs:documentation xml:lang="en">Reference to IdentifierScheme ID</xs:documentation>
+        <xs:documentation xml:lang="en">Reference to IdentifierSchema ID</xs:documentation>
       </xs:annotation>
     </xs:attribute>
   </xs:complexType>
@@ -92,29 +91,11 @@
       </xs:annotation>
     </xs:attribute>
   </xs:complexType>
-  <xs:complexType name="CodeType">
-    <xs:sequence/>
-    <xs:attribute name="CodeRef" type="xs:IDREF">
-      <xs:annotation>
-        <xs:documentation xml:lang="en">Reference to Code ID</xs:documentation>
-      </xs:annotation>
-    </xs:attribute>
-  </xs:complexType>
   <xs:complexType name="AgentType">
     <xs:sequence>
       <xs:element name="issuedBy" ref="IdentifierType" maxOccurs="unbounded" minOccurs="0">
         <xs:annotation>
           <xs:documentation xml:lang="en">Agent legally responsible for the Identifier.</xs:documentation>
-        </xs:annotation>
-      </xs:element>
-      <xs:element name="name" type="xs:string" maxOccurs="unbounded" minOccurs="0">
-        <xs:annotation>
-          <xs:documentation xml:lang="en">The noun given to the Agent.</xs:documentation>
-        </xs:annotation>
-      </xs:element>
-      <xs:element name="type" type="ConceptType" maxOccurs="unbounded" minOccurs="0">
-        <xs:annotation>
-          <xs:documentation xml:lang="en">A classification assigned to an Agent.</xs:documentation>
         </xs:annotation>
       </xs:element>
     </xs:sequence>
