@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <xs:schema xmlns="https://data.europa.eu/m8g/xml/" xmlns:xs="http://www.w3.org/2001/XMLSchema" targetNamespace="https://data.europa.eu/m8g/xml/" version="2.0.0" elementFormDefault="qualified" attributeFormDefault="unqualified" xmlns:cv="https://data.europa.eu/m8g/xml/">
   <xs:element name="Identifier" type="IdentifierType"/>
-  <xs:element name="IdentifierSchema" type="IdentifierSchemaType"/>
   <xs:element name="Text" type="TextType"/>
   <xs:element name="Literal" type="LiteralType"/>
   <xs:element name="Date" type="DateType"/>
+  <xs:element name="IdentifierSchema" type="IdentifierSchemaType"/>
   <xs:element name="Agent" type="AgentType"/>
   <xs:simpleType name="Literal">
     <xs:restriction base="xs:string"/>
@@ -53,20 +53,6 @@
       </xs:annotation>
     </xs:attribute>
   </xs:complexType>
-  <xs:complexType name="IdentifierSchemaType">
-    <xs:sequence>
-      <xs:element name="schemaName" type="xs:string" maxOccurs="unbounded" minOccurs="0">
-        <xs:annotation>
-          <xs:documentation xml:lang="en">Name of the schema used to construct the identifier.</xs:documentation>
-        </xs:annotation>
-      </xs:element>
-    </xs:sequence>
-    <xs:attribute name="IdentifierSchemaRef" type="xs:IDREF">
-      <xs:annotation>
-        <xs:documentation xml:lang="en">Reference to IdentifierSchema ID</xs:documentation>
-      </xs:annotation>
-    </xs:attribute>
-  </xs:complexType>
   <xs:complexType name="TextType">
     <xs:sequence/>
     <xs:attribute name="TextRef" type="xs:IDREF">
@@ -88,6 +74,20 @@
     <xs:attribute name="DateRef" type="xs:IDREF">
       <xs:annotation>
         <xs:documentation xml:lang="en">Reference to Date ID</xs:documentation>
+      </xs:annotation>
+    </xs:attribute>
+  </xs:complexType>
+  <xs:complexType name="IdentifierSchemaType">
+    <xs:sequence>
+      <xs:element name="schemaName" type="xs:string" maxOccurs="unbounded" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation xml:lang="en">Name of the schema used to construct the identifier.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+    </xs:sequence>
+    <xs:attribute name="IdentifierSchemaRef" type="xs:IDREF">
+      <xs:annotation>
+        <xs:documentation xml:lang="en">Reference to IdentifierSchema ID</xs:documentation>
       </xs:annotation>
     </xs:attribute>
   </xs:complexType>
