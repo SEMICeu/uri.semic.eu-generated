@@ -1,4 +1,5 @@
 @prefix dc: <http://purl.org/dc/terms/> .
+@prefix dcat: <http://www.w3.org/ns/dcat#> .
 @prefix foaf: <http://xmlns.com/foaf/0.1/> .
 @prefix owl: <http://www.w3.org/2002/07/owl#> .
 @prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
@@ -6,6 +7,13 @@
 @prefix schemas: <https://schema.org/> .
 @prefix skos: <http://www.w3.org/2004/02/skos/core#> .
 @prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+<http://data.europa.eu/s1n/DataStructureDefinition> a owl:ObjectProperty;
+  rdfs:label "data structure definition"@en;
+  rdfs:comment "Links a statistical dataset to the Data Structure Definition (DSD) that defines its dimensions, attributes, measures, and overall observation structure."@en;
+  rdfs:domain rdfs:Resource;
+  rdfs:isDefinedBy <http://data.europa.eu/s1n>;
+  rdfs:range <http://purl.org/linked-data/cube#DataStructureDefinition> .
 
 <http://data.europa.eu/s1n/attribute> a owl:ObjectProperty;
   rdfs:label "attribute"@en;
@@ -19,16 +27,32 @@ Attribute is a \"conceptual\" entity that applies to all distribution formats, e
   rdfs:label "dimension"@en;
   rdfs:comment """a component that identifies observations, e.g. the time to which the observation applies , or a geographic region which the observation covers.
 
-Dimension is a\"conceptual\" entity that applies to all distribution formats, e.g. in case a dataset is provided both in SDMX and in DataCube. """@en;
+Dimension is a \"conceptual\" entity that applies to all distribution formats, e.g. in case a dataset is provided both in SDMX and in DataCube. """@en;
   rdfs:domain rdfs:Resource;
   rdfs:isDefinedBy <http://data.europa.eu/s1n>;
   rdfs:range <http://purl.org/linked-data/cube#DimensionProperty> .
 
+<http://data.europa.eu/s1n/measure> a owl:ObjectProperty;
+  rdfs:label "measure"@en;
+  rdfs:comment """a component that represents the phenomenon being observed.
+
+Measure is a \"conceptual\" entity that applies to all distribution formats, e.g. in case a dataset is provided both in SDMX and in DataCube."""@en;
+  rdfs:domain rdfs:Resource;
+  rdfs:isDefinedBy <http://data.europa.eu/s1n>;
+  rdfs:range <http://purl.org/linked-data/cube#MeasureProperty> .
+
 <http://data.europa.eu/s1n/numSeries> a rdf:Property;
   rdfs:label "number of data series"@en;
-  rdfs:comment "number of data series contained in the dataset"@en;
+  rdfs:comment """represents the number of distinct time series available in the dataset that contain data.
+A distinct time series is defined as a unique combination of dimension values (such as country, sex, age, unit of measure, etc.) that has at least one observation value or attribute associated with it  where an attribute may include a flag even in the absence of an actual data value. Time (e.g., year) is treated as one dimension among others, not as a unit of aggregation."""@en;
   rdfs:domain rdfs:Resource;
   rdfs:isDefinedBy <http://data.europa.eu/s1n> .
+
+<http://data.europa.eu/s1n/s1n:Dataflow> a owl:Class;
+  rdfs:label "Dataflow"@en;
+  rdfs:comment "An abstract concept of the Data Sets, i.e. a structure without any data."@en;
+  rdfs:isDefinedBy <http://data.europa.eu/s1n>;
+  rdfs:subClassOf dcat:Catalog .
 
 <http://data.europa.eu/s1n/statUnitMeasure> a owl:ObjectProperty;
   rdfs:label "unit of measurement"@en;
@@ -45,20 +69,228 @@ e.g. in the case when a dataset is provided both in SDMX and in Data Cube."""@en
     "s1n"@nl;
   dc:contributor [
     a foaf:Person;
+    foaf:firstName "Øystein";
+    foaf:lastName "Åsnes"
+  ], [
+    a foaf:Person;
+    foaf:firstName "Joeri";
+    foaf:lastName "van der Velde"
+  ], [
+    a foaf:Person;
+    foaf:firstName "Agnieszka";
+    foaf:lastName "Zajac"
+  ], [
+    a foaf:Person;
+    foaf:firstName "Christian";
+    foaf:lastName "Wittig"
+  ], [
+    a foaf:Person;
+    foaf:firstName "Suzanne";
+    foaf:lastName "Wigard"
+  ], [
+    a foaf:Person;
+    foaf:firstName "Thomas";
+    foaf:lastName "Weber"
+  ], [
+    a foaf:Person;
+    foaf:firstName "William";
+    foaf:lastName "Verbeeck"
+  ], [
+    a foaf:Person;
+    foaf:firstName "Bert";
+    foaf:lastName "Van Nuffelen"
+  ], [
+    a foaf:Person;
+    foaf:firstName "Sander";
+    foaf:lastName "Van Dooren"
+  ], [
+    a foaf:Person;
+    foaf:firstName "Kristine";
+    foaf:lastName "Ulander"
+  ], [
+    a foaf:Person;
+    foaf:firstName "Thomas";
+    foaf:lastName "Tursics"
+  ], [
+    a foaf:Person;
+    foaf:firstName "Kees";
+    foaf:lastName "Trautwein"
+  ], [
+    a foaf:Person;
+    foaf:firstName "Igor";
+    foaf:lastName "Stefelin"
+  ], [
+    a foaf:Person;
+    foaf:firstName "Emidio";
+    foaf:lastName "Stani"
+  ], [
+    a foaf:Person;
+    foaf:firstName "Michele";
+    foaf:lastName "Spichtig"
+  ], [
+    a foaf:Person;
+    foaf:firstName "Sebastian";
+    foaf:lastName "Sklarß"
+  ], [
+    a foaf:Person;
+    foaf:firstName "Maxime";
+    foaf:lastName "Servais"
+  ], [
+    a foaf:Person;
+    foaf:firstName "Giampaolo";
+    foaf:lastName "Sellitto"
+  ], [
+    a foaf:Person;
+    foaf:firstName "Fabian";
+    foaf:lastName "Santi"
+  ], [
+    a foaf:Person;
+    foaf:firstName "Maik";
+    foaf:lastName "Roth"
+  ], [
+    a foaf:Person;
+    foaf:firstName "Daniele";
+    foaf:lastName "Rizzi"
+  ], [
+    a foaf:Person;
     foaf:firstName "Ludger";
-    foaf:lastName "A. Rinsche"
+    foaf:lastName "Rinsche"
   ], [
     a foaf:Person;
-    foaf:firstName "Kuldar";
-    foaf:lastName "Aasaga"
+    foaf:firstName "Taavi";
+    foaf:lastName "Ploompuu"
   ], [
     a foaf:Person;
-    foaf:firstName "Anssi";
-    foaf:lastName "Ahlberg"
+    foaf:firstName "Andrea";
+    foaf:lastName "Perego"
   ], [
     a foaf:Person;
-    foaf:firstName "Matej";
-    foaf:lastName "Alic"
+    foaf:firstName "Matthias";
+    foaf:lastName "Palmer"
+  ], [
+    a foaf:Person;
+    foaf:firstName "Frederik";
+    foaf:lastName "Nordlander"
+  ], [
+    a foaf:Person;
+    foaf:firstName "Geraldine";
+    foaf:lastName "Nolf"
+  ], [
+    a foaf:Person;
+    foaf:firstName "Anastasija";
+    foaf:lastName "Nikiforova"
+  ], [
+    a foaf:Person;
+    foaf:firstName "Lina";
+    foaf:lastName "Molinas Comet"
+  ], [
+    a foaf:Person;
+    foaf:firstName "Peter";
+    foaf:lastName "Lubrich"
+  ], [
+    a foaf:Person;
+    foaf:firstName "Giorgia";
+    foaf:lastName "Lodi"
+  ], [
+    a foaf:Person;
+    foaf:firstName "Anja";
+    foaf:lastName "Loddenkemper"
+  ], [
+    a foaf:Person;
+    foaf:firstName "Petros";
+    foaf:lastName "Likidis"
+  ], [
+    a foaf:Person;
+    foaf:firstName "Christoph";
+    foaf:lastName "Lange"
+  ], [
+    a foaf:Person;
+    foaf:firstName "Christine";
+    foaf:lastName "Laaboudi-Spoiden"
+  ], [
+    a foaf:Person;
+    foaf:firstName "Andreas";
+    foaf:lastName "Kuckartz"
+  ], [
+    a foaf:Person;
+    foaf:firstName "Nataliia";
+    foaf:lastName "Kovalchuk"
+  ], [
+    a foaf:Person;
+    foaf:firstName "Jakub";
+    foaf:lastName "Klímek"
+  ], [
+    a foaf:Person;
+    foaf:firstName "Fabian";
+    foaf:lastName "Kirstein"
+  ], [
+    a foaf:Person;
+    foaf:firstName "Agnieszka";
+    foaf:lastName "Jasiczek"
+  ], [
+    a foaf:Person;
+    foaf:firstName "Bart";
+    foaf:lastName "Hanssens"
+  ], [
+    a foaf:Person;
+    foaf:firstName "Bart";
+    foaf:lastName "Hanssens"
+  ], [
+    a foaf:Person;
+    foaf:firstName "Casper";
+    foaf:lastName "Gras"
+  ], [
+    a foaf:Person;
+    foaf:firstName "Stijn";
+    foaf:lastName "Goedertier"
+  ], [
+    a foaf:Person;
+    foaf:firstName "Dietmar";
+    foaf:lastName "Gattwinkel"
+  ], [
+    a foaf:Person;
+    foaf:firstName "Adina";
+    foaf:lastName "Dragan"
+  ], [
+    a foaf:Person;
+    foaf:firstName "Ulrika";
+    foaf:lastName "Domellöf Mattsson"
+  ], [
+    a foaf:Person;
+    foaf:firstName "Emiel";
+    foaf:lastName "Dhondt"
+  ], [
+    a foaf:Person;
+    foaf:firstName "Jean";
+    foaf:lastName "Delahousse"
+  ], [
+    a foaf:Person;
+    foaf:firstName "Makx";
+    foaf:lastName "Dekkers"
+  ], [
+    a foaf:Person;
+    foaf:firstName "Ine";
+    foaf:lastName "De Visser"
+  ], [
+    a foaf:Person;
+    foaf:firstName "Jitse";
+    foaf:lastName "De Cock"
+  ], [
+    a foaf:Person;
+    foaf:firstName "Luis";
+    foaf:lastName "Daniel Ibáñez"
+  ], [
+    a foaf:Person;
+    foaf:firstName "Peter";
+    foaf:lastName "Burian"
+  ], [
+    a foaf:Person;
+    foaf:firstName "Oystein";
+    foaf:lastName "Asnes"
+  ], [
+    a foaf:Person;
+    foaf:firstName "Stefano";
+    foaf:lastName "Ambrogio"
   ], [
     a foaf:Person;
     foaf:firstName "Martin";
@@ -69,230 +301,22 @@ e.g. in the case when a dataset is provided both in SDMX and in Data Cube."""@en
     foaf:lastName "Alvarez"
   ], [
     a foaf:Person;
-    foaf:firstName "Stefano";
-    foaf:lastName "Ambrogio"
+    foaf:firstName "Matej";
+    foaf:lastName "Alic"
   ], [
     a foaf:Person;
-    foaf:firstName "Oystein";
-    foaf:lastName "Asnes"
+    foaf:firstName "Anssi";
+    foaf:lastName "Ahlberg"
   ], [
     a foaf:Person;
-    foaf:firstName "Peter";
-    foaf:lastName "Burian"
-  ], [
-    a foaf:Person;
-    foaf:firstName "Luis";
-    foaf:lastName "Daniel Ibáñez"
-  ], [
-    a foaf:Person;
-    foaf:firstName "Jitse";
-    foaf:lastName "De Cock"
-  ], [
-    a foaf:Person;
-    foaf:firstName "Ine";
-    foaf:lastName "De Visser"
-  ], [
-    a foaf:Person;
-    foaf:firstName "Makx";
-    foaf:lastName "Dekkers"
-  ], [
-    a foaf:Person;
-    foaf:firstName "Jean";
-    foaf:lastName "Delahousse"
-  ], [
-    a foaf:Person;
-    foaf:firstName "Emiel";
-    foaf:lastName "Dhondt"
-  ], [
-    a foaf:Person;
-    foaf:firstName "Ulrika";
-    foaf:lastName "Domellöf Mattsson"
-  ], [
-    a foaf:Person;
-    foaf:firstName "Adina";
-    foaf:lastName "Dragan"
-  ], [
-    a foaf:Person;
-    foaf:firstName "Dietmar";
-    foaf:lastName "Gattwinkel"
-  ], [
-    a foaf:Person;
-    foaf:firstName "Stijn";
-    foaf:lastName "Goedertier"
-  ], [
-    a foaf:Person;
-    foaf:firstName "Casper";
-    foaf:lastName "Gras"
-  ], [
-    a foaf:Person;
-    foaf:firstName "Bart";
-    foaf:lastName "Hanssens"
-  ], [
-    a foaf:Person;
-    foaf:firstName "Bart";
-    foaf:lastName "Hanssens"
-  ], [
-    a foaf:Person;
-    foaf:firstName "Agnieszka";
-    foaf:lastName "Jasiczek"
-  ], [
-    a foaf:Person;
-    foaf:firstName "Fabian";
-    foaf:lastName "Kirstein"
-  ], [
-    a foaf:Person;
-    foaf:firstName "Jakub";
-    foaf:lastName "Klímek"
-  ], [
-    a foaf:Person;
-    foaf:firstName "Nataliia";
-    foaf:lastName "Kovalchuk"
-  ], [
-    a foaf:Person;
-    foaf:firstName "Andreas";
-    foaf:lastName "Kuckartz"
-  ], [
-    a foaf:Person;
-    foaf:firstName "Christine";
-    foaf:lastName "Laaboudi-Spoiden"
-  ], [
-    a foaf:Person;
-    foaf:firstName "Christoph";
-    foaf:lastName "Lange"
-  ], [
-    a foaf:Person;
-    foaf:firstName "Petros";
-    foaf:lastName "Likidis"
-  ], [
-    a foaf:Person;
-    foaf:firstName "Anja";
-    foaf:lastName "Loddenkemper"
-  ], [
-    a foaf:Person;
-    foaf:firstName "Giorgia";
-    foaf:lastName "Lodi"
-  ], [
-    a foaf:Person;
-    foaf:firstName "Peter";
-    foaf:lastName "Lubrich"
-  ], [
-    a foaf:Person;
-    foaf:firstName "Lina";
-    foaf:lastName "Molinas Comet"
-  ], [
-    a foaf:Person;
-    foaf:firstName "Anastasija";
-    foaf:lastName "Nikiforova"
-  ], [
-    a foaf:Person;
-    foaf:firstName "Geraldine";
-    foaf:lastName "Nolf"
-  ], [
-    a foaf:Person;
-    foaf:firstName "Frederik";
-    foaf:lastName "Nordlander"
-  ], [
-    a foaf:Person;
-    foaf:firstName "Matthias";
-    foaf:lastName "Palmer"
-  ], [
-    a foaf:Person;
-    foaf:firstName "Andrea";
-    foaf:lastName "Perego"
-  ], [
-    a foaf:Person;
-    foaf:firstName "Taavi";
-    foaf:lastName "Ploompuu"
+    foaf:firstName "Kuldar";
+    foaf:lastName "Aasaga"
   ], [
     a foaf:Person;
     foaf:firstName "Ludger";
-    foaf:lastName "Rinsche"
-  ], [
-    a foaf:Person;
-    foaf:firstName "Daniele";
-    foaf:lastName "Rizzi"
-  ], [
-    a foaf:Person;
-    foaf:firstName "Maik";
-    foaf:lastName "Roth"
-  ], [
-    a foaf:Person;
-    foaf:firstName "Fabian";
-    foaf:lastName "Santi"
-  ], [
-    a foaf:Person;
-    foaf:firstName "Giampaolo";
-    foaf:lastName "Sellitto"
-  ], [
-    a foaf:Person;
-    foaf:firstName "Maxime";
-    foaf:lastName "Servais"
-  ], [
-    a foaf:Person;
-    foaf:firstName "Sebastian";
-    foaf:lastName "Sklarß"
-  ], [
-    a foaf:Person;
-    foaf:firstName "Michele";
-    foaf:lastName "Spichtig"
-  ], [
-    a foaf:Person;
-    foaf:firstName "Emidio";
-    foaf:lastName "Stani"
-  ], [
-    a foaf:Person;
-    foaf:firstName "Igor";
-    foaf:lastName "Stefelin"
-  ], [
-    a foaf:Person;
-    foaf:firstName "Kees";
-    foaf:lastName "Trautwein"
-  ], [
-    a foaf:Person;
-    foaf:firstName "Thomas";
-    foaf:lastName "Tursics"
-  ], [
-    a foaf:Person;
-    foaf:firstName "Kristine";
-    foaf:lastName "Ulander"
-  ], [
-    a foaf:Person;
-    foaf:firstName "Sander";
-    foaf:lastName "Van Dooren"
-  ], [
-    a foaf:Person;
-    foaf:firstName "Bert";
-    foaf:lastName "Van Nuffelen"
-  ], [
-    a foaf:Person;
-    foaf:firstName "William";
-    foaf:lastName "Verbeeck"
-  ], [
-    a foaf:Person;
-    foaf:firstName "Thomas";
-    foaf:lastName "Weber"
-  ], [
-    a foaf:Person;
-    foaf:firstName "Suzanne";
-    foaf:lastName "Wigard"
-  ], [
-    a foaf:Person;
-    foaf:firstName "Christian";
-    foaf:lastName "Wittig"
-  ], [
-    a foaf:Person;
-    foaf:firstName "Agnieszka";
-    foaf:lastName "Zajac"
-  ], [
-    a foaf:Person;
-    foaf:firstName "Joeri";
-    foaf:lastName "van der Velde"
-  ], [
-    a foaf:Person;
-    foaf:firstName "Øystein";
-    foaf:lastName "Åsnes"
+    foaf:lastName "A. Rinsche"
   ];
-  dc:issued "2026-01-20";
+  dc:issued "2026-04-27";
   dc:license <https://creativecommons.org/licenses/by/4.0/>;
   dc:mediator [
     foaf:homepage <https://semic.eu>;
@@ -300,9 +324,9 @@ e.g. in the case when a dataset is provided both in SDMX and in Data Cube."""@en
   ];
   <http://www.w3.org/2001/02pd/rec54#editor> [
     a foaf:Person;
-    foaf:firstName "Jitse";
-    foaf:lastName "De Cock";
-    schemas:affiliation [foaf:name "PwC EU Services"]
+    foaf:firstName "Anastasia";
+    foaf:lastName "Sofou";
+    schemas:affiliation [foaf:name "DIGIT-EXT"]
   ], [
     a foaf:Person;
     foaf:firstName "Jakub";
@@ -310,9 +334,9 @@ e.g. in the case when a dataset is provided both in SDMX and in Data Cube."""@en
     schemas:affiliation [foaf:name "CUIT"]
   ], [
     a foaf:Person;
-    foaf:firstName "Anastasia";
-    foaf:lastName "Sofou";
-    schemas:affiliation [foaf:name "DIGIT-EXT"]
+    foaf:firstName "Jitse";
+    foaf:lastName "De Cock";
+    schemas:affiliation [foaf:name "PwC EU Services"]
   ];
   foaf:maker [
     a foaf:Person;
