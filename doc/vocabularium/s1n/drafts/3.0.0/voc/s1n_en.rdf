@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:owl="http://www.w3.org/2002/07/owl#" xmlns:dc="http://purl.org/dc/terms/" xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#" xmlns:foaf="http://xmlns.com/foaf/0.1/" xmlns:ns0="http://www.w3.org/2001/02pd/rec54#" xmlns:dcat="http://www.w3.org/ns/dcat#" xmlns:skos="http://www.w3.org/2004/02/skos/core#" xmlns:schemas="https://schema.org/">
+<rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:owl="http://www.w3.org/2002/07/owl#" xmlns:dc="http://purl.org/dc/terms/" xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#" xmlns:foaf="http://xmlns.com/foaf/0.1/" xmlns:ns0="http://www.w3.org/2001/02pd/rec54#" xmlns:dcat="http://www.w3.org/ns/dcat#" xmlns:skos="http://www.w3.org/2004/02/skos/core#" xmlns:xsd="http://www.w3.org/2001/XMLSchema#" xmlns:schemas="https://schema.org/">
   <owl:Class rdf:about="http://data.europa.eu/s1n/Dataflow">
     <rdfs:isDefinedBy>
       <owl:Ontology rdf:about="http://data.europa.eu/s1n">
@@ -461,13 +461,14 @@ Measure is a "conceptual" entity that applies to all distribution formats, e.g. 
     <rdfs:domain rdf:resource="http://www.w3.org/ns/dcat#Dataset"/>
     <rdfs:range rdf:resource="http://purl.org/linked-data/cube#MeasureProperty"/>
   </owl:ObjectProperty>
-  <rdf:Property rdf:about="http://data.europa.eu/s1n/numSeries">
+  <owl:DatatypeProperty rdf:about="http://data.europa.eu/s1n/numSeries">
     <rdfs:isDefinedBy rdf:resource="http://data.europa.eu/s1n"/>
     <rdfs:label xml:lang="en">number of data series</rdfs:label>
     <rdfs:comment xml:lang="en">represents the number of distinct time series available in the dataset that contain data.
 A distinct time series is defined as a unique combination of dimension values (such as country, sex, age, unit of measure, etc.) that has at least one observation value or attribute associated with it - where an attribute may include a flag even in the absence of an actual data value. Time (e.g., year) is treated as one dimension among others, not as a unit of aggregation.</rdfs:comment>
     <rdfs:domain rdf:resource="http://www.w3.org/ns/dcat#Dataset"/>
-  </rdf:Property>
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#nonNegativeInteger"/>
+  </owl:DatatypeProperty>
   <owl:ObjectProperty rdf:about="http://data.europa.eu/s1n/statUnitMeasure">
     <rdfs:isDefinedBy rdf:resource="http://data.europa.eu/s1n"/>
     <rdfs:label xml:lang="en">unit of measurement</rdfs:label>
