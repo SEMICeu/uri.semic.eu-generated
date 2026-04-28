@@ -1409,7 +1409,7 @@ The following webinars have been held for the creation of this release
             <tr><td><code>rdfs</code></td><td><code>http://www.w3.org/2000/01/rdf-schema#</code></td></tr>
             <tr><td><code>sdmx-attribute</code></td><td><code>http://purl.org/linked-data/sdmx/2009/attribute#</code></td></tr>
             <tr><td><code>skos</code></td><td><code>http://www.w3.org/2004/02/skos/core#</code></td></tr>
-            <tr><td><code>stat</code></td><td><code>http://data.europa.eu/s1n/</code></td></tr>
+            <tr><td><code>statdcatap</code></td><td><code>http://data.europa.eu/s1n/</code></td></tr>
             <tr><td><code>spdx</code></td><td><code>http://spdx.org/rdf/terms#</code></td></tr>
             <tr><td><code>time</code></td><td><code>http://www.w3.org/2006/time#</code></td></tr>
             <tr><td><code>vcard</code></td><td><code>http://www.w3.org/2006/vcard/ns#</code></td></tr>
@@ -5316,7 +5316,7 @@ For instance the data service adheres to the OGC WFS API standard, while the ass
                                     0..*
                                 </td>
                                 <td property="rdfs:comment">
-                                    
+                                    A Dataset conformant to the Dataflow.
                                 </td>
                                 <td property="skos:scopeNote">
                                     
@@ -8464,7 +8464,7 @@ It is recommended to provide an indication about the dimensions the Dataset Seri
                                     
                                 </td>
                                 <td>
-                                    1
+                                    0..*
                                 </td>
                                 <td property="rdfs:comment">
                                     A page or document about this Dataset Series.
@@ -8838,7 +8838,7 @@ This is not equal to the release date of the oldest dataset in the collection of
                                     
                                 </td>
                                 <td>
-                                    1
+                                    0..*
                                 </td>
                                 <td property="rdfs:comment">
                                     A category of the Dataset Series.
@@ -13565,53 +13565,58 @@ How multilingual information is handled in systems, for example in indexing and 
             This section provides guidance specifically tailored to statistical organisations on how to apply the Dataset Series concept correctly within StatDCAT-AP.
         </p>
 
+        <section>
         <h4>1. How to identify whether your datasets constitute a Dataset Series</h4>
 
-        <h5>General Principle</h5>
+            <section>
+            <h5>General Principle</h5>
 
-        <p>
-            Before describing a Dataset Series, a statistical organisation should assess whether a collection of datasets qualifies as such.
-            The key question is whether the datasets form a coherent, managed statistical product released over time, and that users would recognise and access as a single entity.
-        </p>
+                <p>
+                    Before describing a Dataset Series, a statistical organisation should assess whether a collection of datasets qualifies as such.
+                    The key question is whether the datasets form a coherent, managed statistical product released over time, and that users would recognise and access as a single entity.
+                </p>
 
-        <p>
-            A Dataset Series is not merely a grouping of related datasets.
-            It represents a stable, governed collection with a clear identity, consistent scope, and shared production context.
-            In practice, this corresponds to what is commonly referred to as a statistical product or output (e.g. Labour Force Survey, Harmonised Index of Consumer Prices, Population and Housing Census).
-        </p>
+                <p>
+                    A Dataset Series is not merely a grouping of related datasets.
+                    It represents a stable, governed collection with a clear identity, consistent scope, and shared production context.
+                    In practice, this corresponds to what is commonly referred to as a statistical product or output (e.g. Labour Force Survey, Harmonised Index of Consumer Prices, Population and Housing Census).
+                </p>
 
-        <p>
-            From an information modelling perspective, a Dataset Series aligns with two complementary GSIM 2.0 concepts: a <a href="https://unece.github.io/GSIM-2.0/#data-resource">Data Resource</a> (an organised collection of Data Sets) and a <a href="https://unece.github.io/GSIM-2.0/#referential-metadata-resource">Referential Metadata Resource</a> (a collection of metadata describing those Data Sets).
-            The presence of both - for example, datasets accompanied by consistent SIMS or ESSMH reports across releases - is a strong indication that the collection constitutes a Dataset Series.
-        </p>
+                <p>
+                    From an information modelling perspective, a Dataset Series aligns with two complementary GSIM 2.0 concepts: a <a href="https://unece.github.io/GSIM-2.0/#data-resource">Data Resource</a> (an organised collection of Data Sets) and a <a href="https://unece.github.io/GSIM-2.0/#referential-metadata-resource">Referential Metadata Resource</a> (a collection of metadata describing those Data Sets).
+                    The presence of both - for example, datasets accompanied by consistent SIMS or ESSMH reports across releases - is a strong indication that the collection constitutes a Dataset Series.
+                </p>
+            </section>
+        
+            <section>
+            <h5>Indicators that a collection forms a Dataset Series</h5>
 
-        <h5>Indicators that a collection forms a Dataset Series</h5>
+                <p>
+                    A collection of datasets is likely to constitute a Dataset Series when most of the following conditions apply:
+                </p>
 
-        <p>
-            A collection of datasets is likely to constitute a Dataset Series when most of the following conditions apply:
-        </p>
+                <ul>
+                    <li>The datasets are produced within the same statistical programme or activity (e.g. outputs of a Labour Force Survey or editions of a harmonised price index).</li>
+                    <li>They share a common legal or regulatory basis.</li>
+                    <li>They are released recurrently by the same organisation according to a regular schedule (e.g. annual, quarterly, monthly).</li>
+                    <li>They cover the same subject matter and statistical population, with a consistent reference area.</li>
+                    <li>They are documented using a common reference metadata structure (e.g. consistent SIMS or ESSMH reports across releases).</li>
+                    <li>They are commonly understood and referred to as a single statistical product with multiple editions.</li>
+                </ul>
 
-        <ul>
-            <li>The datasets are produced within the same statistical programme or activity (e.g. outputs of a Labour Force Survey or editions of a harmonised price index).</li>
-            <li>They share a common legal or regulatory basis.</li>
-            <li>They are released recurrently by the same organisation according to a regular schedule (e.g. annual, quarterly, monthly).</li>
-            <li>They cover the same subject matter and statistical population, with a consistent reference area.</li>
-            <li>They are documented using a common reference metadata structure (e.g. consistent SIMS or ESSMH reports across releases).</li>
-            <li>They are commonly understood and referred to as a single statistical product with multiple editions.</li>
-        </ul>
+                <section>
+                <h6>Use Case: Two parallel series on the same topic: Eurostat vs. national series</h6>
 
-        <h6>Use Case: Two parallel series on the same topic: Eurostat vs. national series</h6>
+                    <p>
+                        Eurostat's <a href="https://ec.europa.eu/eurostat/data/database?node_code=lfsi_emp_a">Employment and activity - LFS adjusted series - annual data</a> (<code>lfsi_emp_a</code>) is described as a <code>dcat:DatasetSeries</code>, grouping its individual annual dataset releases as members via <code>dcat:seriesMember</code>.
+                        All members share the same institutional mandate, legal basis, and harmonised methodology, which justifies their grouping into a single series.
+                    </p>
 
-        <p>
-            Eurostat's <a href="https://ec.europa.eu/eurostat/data/database?node_code=lfsi_emp_a">Employment and activity - LFS adjusted series - annual data</a> (<code>lfsi_emp_a</code>) is described as a <code>dcat:DatasetSeries</code>, grouping its individual annual dataset releases as members via <code>dcat:seriesMember</code>.
-            All members share the same institutional mandate, legal basis, and harmonised methodology, which justifies their grouping into a single series.
-        </p>
-
-        <p>
-            The <a href="https://www.data.gouv.fr/datasets/activite-emploi-et-chomage-enquete-emploi-en-continu">INSEE Enquête emploi en continu</a> covers the same subject matter, but originates from a different institution, geographic scope, legal basis, and methodology.
-            It therefore constitutes a separate <code>dcat:DatasetSeries</code> and cannot be listed as a <code>dcat:seriesMember</code> of the Eurostat series.
-            Instead, a <code>dct:relation</code> triple is added to the Eurostat series description to signal the thematic proximity and partial overlap between the two series, without implying any methodological equivalence or shared provenance.
-        </p>
+                    <p>
+                        The <a href="https://www.data.gouv.fr/datasets/activite-emploi-et-chomage-enquete-emploi-en-continu">INSEE Enquête emploi en continu</a> covers the same subject matter, but originates from a different institution, geographic scope, legal basis, and methodology.
+                        It therefore constitutes a separate <code>dcat:DatasetSeries</code> and cannot be listed as a <code>dcat:seriesMember</code> of the Eurostat series.
+                        Instead, a <code>dct:relation</code> triple is added to the Eurostat series description to signal the thematic proximity and partial overlap between the two series, without implying any methodological equivalence or shared provenance.
+                    </p>
 
 <pre class="turtle">
 @prefix dcat:     &lt;http://www.w3.org/ns/dcat#&gt; .
@@ -13627,30 +13632,36 @@ How multilingual information is handled in systems, for example in indexing and 
                     &lt;http://data.europa.eu/88u/dataset/jaziwgz3wgoopsvtcod7qg&gt; ;
     dct:relation &lt;https://www.data.gouv.fr/datasets/activite-emploi-et-chomage-enquete-emploi-en-continu&gt; .
 </pre>
+                </section>        
+            </section>
+        </section>
 
+        <section>
         <h4>2. When should a Dataset Series be extended, and when should a new one be started?</h4>
 
-        <h5>General principle</h5>
+            <section>
+            <h5>General principle</h5>
 
-        <p>
-            A Dataset Series is a stable, evolving collection of datasets sharing a common subject matter, statistical methodology, and institutional mandate.
-            New datasets should be added to an existing series as long as these characteristics remain substantially unchanged.
-        </p>
+                <p>
+                    A Dataset Series is a stable, evolving collection of datasets sharing a common subject matter, statistical methodology, and institutional mandate.
+                    New datasets should be added to an existing series as long as these characteristics remain substantially unchanged.
+                </p>
 
-        <p>
-            A new Dataset Series should be created when any of the following conditions apply:
-        </p>
-        
-        <ul>
-            <li>the statistical concept, methodology, or legal basis changes in a way that is not reconcilable with prior datasets;</li>
-            <li>a retroactive revision to the underlying data makes the new series incompatible with the old.</li>
-        </ul>
+                <p>
+                    A new Dataset Series should be created when any of the following conditions apply:
+                </p>
+                
+                <ul>
+                    <li>the statistical concept, methodology, or legal basis changes in a way that is not reconcilable with prior datasets;</li>
+                    <li>a retroactive revision to the underlying data makes the new series incompatible with the old.</li>
+                </ul>
 
-        <p>
-            When a new series succeeds a previous one, the relationship shall be documented using <code>dct:isReplacedBy</code> on the old series and <code>dct:replaces</code> on the new one.
-        </p>
-
-        <h6>Old series — EU-LFS historical employment data covering 1989-2020</h6>
+                <p>
+                    When a new series succeeds a previous one, the relationship shall be documented using <code>dct:isReplacedBy</code> on the old series and <code>dct:replaces</code> on the new one.
+                </p>
+            
+                <section>
+                <h6>Old series — EU-LFS historical employment data covering 1989-2020</h6>
 
 <pre class="turtle">
 @prefix dcat:     &lt;http://www.w3.org/ns/dcat#&gt; .
@@ -13674,23 +13685,29 @@ How multilingual information is handled in systems, for example in indexing and 
     dct:replaces &lt;http://data.europa.eu/88u/datasetseries/fsi_emp_h&gt; ;
     dct:relation &lt;https://www.data.gouv.fr/datasets/activite-emploi-et-chomage-enquete-emploi-en-continu&gt; .
 </pre>
+                </section>
+            </section>
+        </section>
 
+        <section>
         <h4>3. How should nested Dataset Series be handled?</h4>
 
-        <p>
-            Nesting of Dataset Series is permitted but should remain the exception.
-            A Dataset Series should be created at the lowest level where datasets share a coherent structure and release schedule.
-            When datasets are organised into thematic levels, two options are available: either reflect the hierarchy through nested series (Option 1) or keep the series flat and express the thematic grouping through descriptive metadata properties such as <code>dct:subject</code> or <code>dcat:theme</code> (Option 2).
-        </p>
+            <p>
+                Nesting of Dataset Series is permitted but should remain the exception.
+                A Dataset Series should be created at the lowest level where datasets share a coherent structure and release schedule.
+                When datasets are organised into thematic levels, two options are available: either reflect the hierarchy through nested series (Option 1) or keep the series flat and express the thematic grouping through descriptive metadata properties such as <code>dct:subject</code> or <code>dcat:theme</code> (Option 2).
+            </p>
 
-        <h5>Option 1: Nested series</h5>
+            <section>
+            <h5>Option 1: Nested series</h5>
 
-        <p>
-            A parent series groups several child series, each managing its own dataset releases.
-            This pattern is appropriate when each child series has its own coherent structure and release schedule.
-        </p>
+                <p>
+                    A parent series groups several child series, each managing its own dataset releases.
+                    This pattern is appropriate when each child series has its own coherent structure and release schedule.
+                </p>
 
-        <h6>Nested Serie - Level 1 (object of dcat:seriesMember = dcat:DatasetSeries)</h6>
+                <section>
+                <h6>Nested Serie - Level 1 (object of dcat:seriesMember = dcat:DatasetSeries)</h6>
 
 <pre class="turtle">
 @prefix dcat:     &lt;http://www.w3.org/ns/dcat#&gt; .
@@ -13705,8 +13722,9 @@ How multilingual information is handled in systems, for example in indexing and 
         &lt;http://data.europa.eu/88u/datasetseries/eq_pop1&gt;,
         &lt;http://data.europa.eu/88u/datasetseries/eq_pop2&gt;.
 </pre>
-
-        <h6>Nested Serie - Level 2 (object of dcat:seriesMember = dcat:Dataset)</h6>
+                </section>
+                <section>
+                <h6>Nested Serie - Level 2 (object of dcat:seriesMember = dcat:Dataset)</h6>
 
 <pre class="turtle" >
 &lt;http://data.europa.eu/88u/datasetseries/eq_pop1&gt;
@@ -13757,16 +13775,19 @@ How multilingual information is handled in systems, for example in indexing and 
     dct:title "Median age of residents by sex and citizenship (demo_popmdctz)"@en .
     dcat:inSeries &lt;http://data.europa.eu/88u/datasetseries/eq_pop2&gt; .
 </pre>
+                </section>
+            </section>
+            
+            <section>
+            <h5>Option 2: Flat series with thematic metadata</h5>
 
-        <h3>Option 2: Flat series with thematic metadata</h3>
+                <p>
+                    When the higher-level grouping does not correspond to a genuine organisational distinction, the preferred alternative is to keep the series flat and express the thematic grouping through <code>dct:subject</code> or <code>dcat:theme</code>.
+                </p>
 
-        <p>
-            When the higher-level grouping does not correspond to a genuine organisational distinction, the preferred alternative is to keep the series flat and express the thematic grouping through <code>dct:subject</code> or <code>dcat:theme</code>.
-        </p>
-
-        <p>
-            In this pattern, the thematic grouping "Demography" is conveyed through controlled vocabulary terms "population" from the Classification of Statistical Activities, rather than an intermediate series, avoiding unnecessary nesting while preserving discoverability.
-        </p>
+                <p>
+                    In this pattern, the thematic grouping "Demography" is conveyed through controlled vocabulary terms "population" from the Classification of Statistical Activities, rather than an intermediate series, avoiding unnecessary nesting while preserving discoverability.
+                </p>
 
 <pre class="turtle">
 @prefix dcat:     &lt;http://www.w3.org/ns/dcat#&gt; .
@@ -13782,10 +13803,12 @@ How multilingual information is handled in systems, for example in indexing and 
                     &lt;http://data.europa.eu/88u/dataset/eq_pop02&gt; ,
                     &lt;http://data.europa.eu/88u/dataset/eq_pop03&gt; .
 </pre>
+            </section>
+        </section>
     </section>
 
     <section>
-        <h3>Usage guide on Number of data series</h3>
+    <h3>Usage guide on Number of data series</h3>
         <p>
         The dataset <em><a href="https://data.europa.eu/data/datasets/jqhch6zcxktvr2i6sbacg?locale=en">migr_asyrescra</a></em> has the following 7 dimensions as declared in the dataset:
         </p>
@@ -14377,8 +14400,8 @@ The shape is downloadable <a href="./shacl/statdcatap-SHACL.ttl">here</a>.
       <tr><td><code>dcat:keyword</code></td><td>AnnotatationText</td></tr>
       <tr><td><code>dct:publisher</code></td><td>Dataflow.agencyID</td></tr>
       <tr><td><code>dcat:theme</code></td><td>AnnotationURL</td></tr>
-      <tr><td><strong><code>stat:numSeries</code></strong></td><td><strong>AnnotationText</strong></td></tr>
-      <tr><td><strong><code>stat:statUnitMeasure</code></strong></td><td><strong>AnnotationURL</strong></td></tr>
+      <tr><td><strong><code>statdcatap:numSeries</code></strong></td><td><strong>AnnotationText</strong></td></tr>
+      <tr><td><strong><code>statdcatap:statUnitMeasure</code></strong></td><td><strong>AnnotationURL</strong></td></tr>
       <tr><td><code>dct:description</code></td><td>Description</td></tr>
       <tr><td><code>dct:title</code></td><td>Name</td></tr>
     </tbody>
@@ -14875,12 +14898,12 @@ https://registry.sdmx.org/schemas/v2_1/SDMXMessage.xsd"&gt;
         &lt;com:AnnotationType&gt; http://data.europa.eu/s1n &lt;/com:AnnotationType&gt;     &lt;com:AnnotationURL&gt;urn:sdmx:org.sdmx.infomodel.categoryscheme.Category=ESTAT:MDR_THEMES(1.0).SOC&lt;/com:AnnotationURL&gt;
     &lt;/com:Annotation&gt;
     &lt;com:Annotation&gt;
-        &lt;com:AnnotationTitle&gt;stat:numSeries&lt;/com:AnnotationTitle&gt;
+        &lt;com:AnnotationTitle&gt;statdcatap:numSeries&lt;/com:AnnotationTitle&gt;
         &lt;com:AnnotationType&gt; http://data.europa.eu/s1n &lt;/com:AnnotationType&gt;
         &lt;com:AnnotationText&gt;106850&lt;/com:AnnotationText&gt;
     &lt;/com:Annotation&gt;
     &lt;com:Annotation&gt;
-        &lt;com:AnnotationTitle&gt;stat:statUnitMeasure&lt;/com:AnnotationTitle&gt;
+        &lt;com:AnnotationTitle&gt;statdcatap:statUnitMeasure&lt;/com:AnnotationTitle&gt;
         &lt;com:AnnotationType&gt; http://data.europa.eu/s1n &lt;/com:AnnotationType&gt;
         &lt;com:AnnotationURL&gt;http://example.com/measures/percentage&lt;/com:AnnotationURL&gt;
     &lt;/com:Annotation&gt;
@@ -15266,7 +15289,7 @@ End of Metadata Set
 @prefix geonames: &lt;http://sws.geonames.org/&gt; . 
 @prefix sdmx-dimension:  &lt;http://purl.org/linked-data/sdmx/2009/dimension#&gt; .
 @prefix sdmx-attribute:  &lt;http://purl.org/linked-data/sdmx/2009/attribute#&gt; .
-@prefix stat:     &lt;http://data.europa.eu/s1n/&gt; .
+@prefix statdcatap:     &lt;http://data.europa.eu/s1n/&gt; .
 @prefix theme:    &lt;http://publications.europa.eu/resource/authority/data-theme/&gt; .
 @prefix xsd:      &lt;http://www.w3.org/2001/XMLSchema#&gt; .
 
@@ -15297,15 +15320,15 @@ eg:dataset-le3 a dcat:Dataset ;
 # The subject in the source mapped to dct:spatial and value from Geonames. Note again that 
 # this may require specific mapping tables or owl:sameAs assertions.
 
-    stat:dimension  eg:refArea ;
-    stat:dimension  eg:refPeriod ;
-    stat:dimension  sdmx-dimension:sex ;
-    stat:attribute  sdmx-attribute:unitMeasure ;
+    statdcatap:dimension  eg:refArea ;
+    statdcatap:dimension  eg:refPeriod ;
+    statdcatap:dimension  sdmx-dimension:sex ;
+    statdcatap:attribute  sdmx-attribute:unitMeasure ;
 
 # The values of these properties copied from the qb:attribute and qb:dimension properties
 # in the source metadata.
 
-    stat:statUnitMeasure &lt;http://dbpedia.org/resource/Year&gt; .
+    statdcatap:statUnitMeasure &lt;http://dbpedia.org/resource/Year&gt; .
 
 # The value of this property copied from the sdmx-attribute:unitMeasure property
 # in the source metadata.
@@ -15354,7 +15377,7 @@ eg:distribution-le3 a dcat:Distribution ;
 @prefix ns39:     &lt;http://publications.europa.eu/resource/authority/distribution-type/&gt; .
 @prefix ns40:     &lt;http://digital-agenda-data.eu/datasets/digital_agenda_scoreboard_key_indicators#&gt; .
 @prefix ns41:     &lt;http://digital-agenda-data.eu/datasets/&gt; .
-@prefix stat:     &lt;http://data.europa.eu/s1n/&gt; .
+@prefix statdcatap:     &lt;http://data.europa.eu/s1n/&gt; .
 @prefix vcard:    &lt;http://www.w3.org/2006/vcard/ns#&gt; .
 @prefix xsd:      &lt;http://www.w3.org/2001/XMLSchema#&gt; .
 
@@ -15388,13 +15411,13 @@ ns22:digital-agenda-scoreboard-key-indicators a dcat:Dataset ;
 
     dct:accrualPeriodicity ns35:ANNUAL_2 ;
 
-    stat:attribute          dad-prop:flag ;
-    stat:attribute          dad-prop:note ;
-    stat:dimension          dad-prop:breakdown ;
-    stat:dimension          dad-prop:indicator ;
-    stat:dimension          dad-prop:ref-area ;
-    stat:dimension          dad-prop:time-period ;
-    stat:dimension          dad-prop:unit-measure .
+    statdcatap:attribute          dad-prop:flag ;
+    statdcatap:attribute          dad-prop:note ;
+    statdcatap:dimension          dad-prop:breakdown ;
+    statdcatap:dimension          dad-prop:indicator ;
+    statdcatap:dimension          dad-prop:ref-area ;
+    statdcatap:dimension          dad-prop:time-period ;
+    statdcatap:dimension          dad-prop:unit-measure .
 
 # ---- Distributions ----------------------------------------------
 
