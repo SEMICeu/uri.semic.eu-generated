@@ -96,6 +96,7 @@
       prevRecURI: "https://interoperable-europe.ec.europa.eu/collection/semic-support-centre/solution/statdcat-application-profile-data-portals-europe/release/101",
       latestVersion: "https://semiceu.github.io/StatDCAT-AP/drafts/3.0.0/",
       specStatus: "base",
+      maxTocLevel: 3,
       publishDate: "2026-04-28",
       editors: myeditors,
       authors: myauthors,
@@ -853,13 +854,6 @@
         "href":"http://www.qudt.org/vocab/unit",
         "title":"QUDT Units Vocabulary",
         "publisher":"QUDT.org",
-      },
-      "QUDT-UNITS-21": {
-        "href":"http://www.qudt.org/2.1/vocab/unit",
-        "title":"QUDT Units Vocabulary. Version 2.1",
-        "publisher":"QUDT.org",
-        "date":"28 January 2021",
-        "authors":["Ralph Hodgson"]
       },
       "OM": {
         "href":"http://www.wurvoc.org/vocabularies/om-1.8/",
@@ -13374,6 +13368,7 @@ The tables below show the usage of the codelists with the expected qualification
 		<tr><td>dct:format</td><td><a href="#Distribution">Distribution</a>,<a href="#DataService">Data Service </a></td><td><a href="http://publications.europa.eu/resource/authority/file-type">EU Vocabularies File Type Named Authority List</a></td><td></td></tr>
 		<tr><td>dct:language</td><td><a href="#Catalogue">Catalogue</a>,<a href="#Dataset">Dataset</a>, <a href="#CatalogueRecord">Catalogue Records</a>, <a href="#Distribution">Distribution</a></td><td><a href="http://publications.europa.eu/resource/authority/language">EU Vocabularies Languages Named Authority List</a></td><td></td></tr>
 		<tr><td>dct:type</td><td><a href="#Distribution">Distribution</a></td><td><a href="http://publications.europa.eu/resource/dataset/distribution-type">EU Vocabularies Distribution type</a></td><td></td></tr>
+		<tr><td>adms:status</td><td><a href="#Dataset">Dataset</a></td><td><a href="http://publications.europa.eu/resource/authority/dataset-status">EU Vocabularies Dataset Status</a></td><td></td></tr>
 		<tr><td>adms:status</td><td><a href="#Distribution">Distribution</a></td><td><a href="http://publications.europa.eu/resource/authority/distribution-status">EU Vocabularies Distribution Status</a></td><td></td></tr>
 		<tr><td>dcatap:availability</td><td><a href="#Distribution">Distribution</a></td><td><a href="http://publications.europa.eu/resource/authority/planned-availability">Distribution availability vocabulary</a></td><td>The list of terms for the avalability levels of a dataset distribution in the DCAT-AP  specification.</td></tr>
 		<tr><td>spdx:algorithm</td><td><a href="#Checksum">Checksum</a></td><td><a href="https://spdx.org/rdf/terms/#d4e2129">Checksum algorithm members</a></td><td>The members listed are considered a controlled vocabulary of supported checksum algorithms.</td></tr>
@@ -13387,7 +13382,7 @@ The tables below show the usage of the codelists with the expected qualification
 <table id="table-cv" class="simple">
 	<thead><tr><th>Property URI</th><th>Used for Class</th><th>Vocabulary name</th><th>Usage note</th></tr></thead>
 	<tbody>
-		<tr><td>dcat:theme</td><td><a href="#Dataset">Dataset</a>, <a href="#DataService">Data Service</a> </td><td><a href="http://publications.europa.eu/resource/authority/data-theme">Dataset Theme Vocabulary</a></td><td>The values to be used for this property are the URIs of the concepts in the vocabulary.</td></tr>
+		<tr><td>dcat:theme</td><td><a href="#Dataflow">Dataflow</a>, <a href="#Dataset">Dataset</a>, <a href="#DataService">Data Service</a> </td><td><a href="http://publications.europa.eu/resource/authority/data-theme">Data Theme Vocabulary</a></td><td>The values to be used for this property are the URIs of the concepts in the vocabulary.</td></tr>
 	</tbody>
 </table>
 
@@ -13407,7 +13402,7 @@ The tables below show the usage of the codelists with the expected qualification
 	<tbody>
 		<tr><td>dct:publisher</td><td><a href="#Catalogue">Catalogue</a>,<a href="#Dataset">Dataset</a>,<a href="#DatasetSeries">Dataset Series</a>,<a href="#DataService">Data Service</a></td><td><a href="http://publications.europa.eu/resource/authority/corporate-body">EU Vocabularies Corporate bodies Named Authority List</a></td><td>The Corporate bodies NAL must be used for European institutions and a small set of international organisations. In case of other types of organisations, national, regional or local vocabularies should be used.</td></tr>
 		<tr><td>dct:spatial</td><td><a href="#Catalogue">Catalogue</a>,<a href="#Dataset">Dataset</a>,<a href="#DatasetSeries">Dataset Series</a></td><td><a href="http://publications.europa.eu/resource/authority/continent/">EU Vocabularies Continents Named Authority List</a>, <a href="http://publications.europa.eu/resource/authority/country">EU Vocabularies Countries Named Authority List</a>, <a href="http://publications.europa.eu/resource/authority/place/">EU Vocabularies Places Named Authority List</a>, <a href="http://sws.geonames.org/">Geonames</a></td><td> The EU Vocabularies Name Authority Lists must be used for continents, countries and places that are in those lists; if a particular location is not in one of the mentioned Named Authority Lists, Geonames URIs must be used.</td></tr>
-<tr><td>dct:type</td><td><a href="#Dataset">Dataset</a></td><td><a href="http://publications.europa.eu/resource/authority/dataset-type">Dataset-type authority table</a></td><td>This list of terms provide types of datasets. Its main scope is to support dataset categorisation of the EU Open Data Portal.</td></tr>
+		<tr><td>dct:type</td><td><a href="#Dataset">Dataset</a></td><td><a href="http://publications.europa.eu/resource/authority/dataset-type">Dataset-type authority table</a></td><td>This list of terms provide types of datasets. Its main scope is to support dataset categorisation of the EU Open Data Portal.</td></tr>
 	</tbody>
 </table>
 
@@ -14028,27 +14023,24 @@ The shape is downloadable <a href="./shacl/statdcatap-SHACL.ttl">here</a>.
         </p>
 <pre class="turtle">
 # Source dataset
-&lt;http://data.europa.eu/88u/dataset/dzzomwhlfy7s3kylnvaslg&gt;
-	rdf:type                dcat:Dataset;
-	dct:title               "Production in industry - monthly data"@en ;
-	dct:publisher           &lt;http://publications.europa.eu/resource/authority/corporate-body/ESTAT&gt;;
-	dct:accrualPeriodicity  &lt;http://publications.europa.eu/resource/authority/frequency/MONTHLY&gt;.
+&lt;http://data.europa.eu/88u/dataset/dzzomwhlfy7s3kylnvaslg&gt; a dcat:Dataset;
+    dct:title "Production in industry - monthly data"@en ;
+    dct:publisher &lt;http://publications.europa.eu/resource/authority/corporate-body/ESTAT&gt;;
+    dct:accrualPeriodicity &lt;http://publications.europa.eu/resource/authority/frequency/MONTHLY&gt;.
 
 # Derived dataset 1
-&lt;http://data.europa.eu/88u/dataset/lqutym4nv76rqtpmvaedq&gt;
-	rdf:type                dcat:Dataset;
-	dct:title               "Production in industry - total (excluding construction)"@en , 
-	dct:publisher           &lt;http://publications.europa.eu/resource/authority/corporate-body/ESTAT&gt;;
-	dct:accrualPeriodicity  &lt;http://publications.europa.eu/resource/authority/frequency/MONTHLY&gt;;
-	dct:source              &lt;http://data.europa.eu/88u/dataset/dzzomwhlfy7s3kylnvaslg&gt;.
+&lt;http://data.europa.eu/88u/dataset/lqutym4nv76rqtpmvaedq&gt; a dcat:Dataset;
+    dct:title "Production in industry - total (excluding construction)"@en , 
+    dct:publisher &lt;http://publications.europa.eu/resource/authority/corporate-body/ESTAT&gt;;
+    dct:accrualPeriodicity &lt;http://publications.europa.eu/resource/authority/frequency/MONTHLY&gt;;
+    dct:source &lt;http://data.europa.eu/88u/dataset/dzzomwhlfy7s3kylnvaslg&gt;.
 
 # Derived dataset 2
-&lt;http://data.europa.eu/88u/dataset/vxgamoslvqoeqgwghocjw&gt;
-	rdf:type                dcat:Dataset;
-	dct:title               "Production in industry - energy"@en ;
-	dct:publisher           &lt;http://publications.europa.eu/resource/authority/corporate-body/ESTAT&gt;;
-	dct:accrualPeriodicity  &lt;http://publications.europa.eu/resource/authority/frequency/MONTHLY&gt;;
-	dct:source              &lt;http://data.europa.eu/88u/dataset/dzzomwhlfy7s3kylnvaslg&gt;.
+&lt;http://data.europa.eu/88u/dataset/vxgamoslvqoeqgwghocjw&gt; a dcat:Dataset;
+    dct:title  "Production in industry - energy"@en ;
+    dct:publisher &lt;http://publications.europa.eu/resource/authority/corporate-body/ESTAT&gt;;
+    dct:accrualPeriodicity &lt;http://publications.europa.eu/resource/authority/frequency/MONTHLY&gt;;
+    dct:source &lt;http://data.europa.eu/88u/dataset/dzzomwhlfy7s3kylnvaslg&gt;.
 </pre>
     </section>
 </section>
