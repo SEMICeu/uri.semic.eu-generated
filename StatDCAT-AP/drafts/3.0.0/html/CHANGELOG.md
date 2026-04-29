@@ -17,6 +17,7 @@ This changelog provides an overview of the changes incorporated in StatDCAT-AP 3
 - Added Dataset.measure [#19](https://github.com/SEMICeu/StatDCAT-AP/issues/19)
 - Added Dataset series usage guidelines [#13](https://github.com/SEMICeu/StatDCAT-AP/issues/13)
 - Added `Standard.conformsTo` to support indicating the specification a linked schema follows [#25](https://github.com/SEMICeu/StatDCAT-AP/issues/25), added example
+- Added guideline on usage of CSV on the Web for statistical CSV datasets [#17](https://github.com/SEMICeu/StatDCAT-AP/issues/17)
   
 # **Alignment with DCAT-AP 3.0.1**
 
