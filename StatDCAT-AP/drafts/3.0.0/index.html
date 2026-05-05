@@ -13591,7 +13591,7 @@ How multilingual information is handled in systems, for example in indexing and 
   <section id="UsageGuidelines" class="informative">
 <h2>General usage guidelines</h2>
     <section>
-        <h3>Usage guide on Datasets, Distributions and Data Services</h3>
+    <h3>Usage guide on Datasets, Distributions and Data Services</h3>
         <p>
             The introduction of Data Services as first class citizens in DCAT 2.0 raised questions about the usage of Data Services and Distributions.
             This section provides a guideline for publishers: what to consider as a Distribution and what as a Data Service.
@@ -13645,7 +13645,7 @@ How multilingual information is handled in systems, for example in indexing and 
     </section>
 
     <section>
-        <h3>Usage guide on Dataset Series</h3>
+    <h3>Usage guide on Dataset Series</h3>
         <p>
             StatDCAT-AP follows the <a href="https://semiceu.github.io/DCAT-AP/releases/3.0.1/#usage-guide-on-dataset-series">DCAT-AP Usage guide on Dataset Series</a>.
             In this section, we provide specific guidelines for dataset series in the context of statistical data.
@@ -13662,27 +13662,23 @@ How multilingual information is handled in systems, for example in indexing and 
         </p>
 
         <section>
-        <h4>1. How to identify whether your datasets constitute a Dataset Series</h4>
+        <h4>How to identify whether your datasets constitute a Dataset Series</h4>
 
-            <section>
-            <h5>General Principle</h5>
+            <p>
+                Before describing a Dataset Series, a statistical organisation should assess whether a collection of datasets qualifies as such.
+                The key question is whether the datasets form a coherent, managed statistical product released over time, and that users would recognise and access as a single entity.
+            </p>
 
-                <p>
-                    Before describing a Dataset Series, a statistical organisation should assess whether a collection of datasets qualifies as such.
-                    The key question is whether the datasets form a coherent, managed statistical product released over time, and that users would recognise and access as a single entity.
-                </p>
+            <p>
+                A Dataset Series is not merely a grouping of related datasets.
+                It represents a stable, governed collection with a clear identity, consistent scope, and shared production context.
+                In practice, this corresponds to what is commonly referred to as a statistical product or output (e.g. Labour Force Survey, Harmonised Index of Consumer Prices, Population and Housing Census).
+            </p>
 
-                <p>
-                    A Dataset Series is not merely a grouping of related datasets.
-                    It represents a stable, governed collection with a clear identity, consistent scope, and shared production context.
-                    In practice, this corresponds to what is commonly referred to as a statistical product or output (e.g. Labour Force Survey, Harmonised Index of Consumer Prices, Population and Housing Census).
-                </p>
-
-                <p>
-                    From an information modelling perspective, a Dataset Series aligns with two complementary GSIM 2.0 concepts: a <a href="https://unece.github.io/GSIM-2.0/#data-resource">Data Resource</a> (an organised collection of Data Sets) and a <a href="https://unece.github.io/GSIM-2.0/#referential-metadata-resource">Referential Metadata Resource</a> (a collection of metadata describing those Data Sets).
-                    The presence of both - for example, datasets accompanied by consistent SIMS or ESSMH reports across releases - is a strong indication that the collection constitutes a Dataset Series.
-                </p>
-            </section>
+            <p>
+                From an information modelling perspective, a Dataset Series aligns with two complementary GSIM 2.0 concepts: a <a href="https://unece.github.io/GSIM-2.0/#data-resource">Data Resource</a> (an organised collection of Data Sets) and a <a href="https://unece.github.io/GSIM-2.0/#referential-metadata-resource">Referential Metadata Resource</a> (a collection of metadata describing those Data Sets).
+                The presence of both - for example, datasets accompanied by consistent SIMS or ESSMH reports across releases - is a strong indication that the collection constitutes a Dataset Series.
+            </p>
         
             <section>
             <h5>Indicators that a collection forms a Dataset Series</h5>
@@ -13699,20 +13695,21 @@ How multilingual information is handled in systems, for example in indexing and 
                     <li>They are documented using a common reference metadata structure (e.g. consistent SIMS or ESSMH reports across releases).</li>
                     <li>They are commonly understood and referred to as a single statistical product with multiple editions.</li>
                 </ul>
+            </section>
+            
+            <section>
+            <h5>Use Case: Two parallel series on the same topic: Eurostat vs. national series</h5>
 
-                <section>
-                <h6>Use Case: Two parallel series on the same topic: Eurostat vs. national series</h6>
+                <p>
+                    Eurostat's <a href="https://ec.europa.eu/eurostat/data/database?node_code=lfsi_emp_a">Employment and activity - LFS adjusted series - annual data</a> (<code>lfsi_emp_a</code>) is described as a <code>dcat:DatasetSeries</code>, grouping its individual annual dataset releases as members via <code>dcat:seriesMember</code>.
+                    All members share the same institutional mandate, legal basis, and harmonised methodology, which justifies their grouping into a single series.
+                </p>
 
-                    <p>
-                        Eurostat's <a href="https://ec.europa.eu/eurostat/data/database?node_code=lfsi_emp_a">Employment and activity - LFS adjusted series - annual data</a> (<code>lfsi_emp_a</code>) is described as a <code>dcat:DatasetSeries</code>, grouping its individual annual dataset releases as members via <code>dcat:seriesMember</code>.
-                        All members share the same institutional mandate, legal basis, and harmonised methodology, which justifies their grouping into a single series.
-                    </p>
-
-                    <p>
-                        The <a href="https://www.data.gouv.fr/datasets/activite-emploi-et-chomage-enquete-emploi-en-continu">INSEE Enquête emploi en continu</a> covers the same subject matter, but originates from a different institution, geographic scope, legal basis, and methodology.
-                        It therefore constitutes a separate <code>dcat:DatasetSeries</code> and cannot be listed as a <code>dcat:seriesMember</code> of the Eurostat series.
-                        Instead, a <code>dct:relation</code> triple is added to the Eurostat series description to signal the thematic proximity and partial overlap between the two series, without implying any methodological equivalence or shared provenance.
-                    </p>
+                <p>
+                    The <a href="https://www.data.gouv.fr/datasets/activite-emploi-et-chomage-enquete-emploi-en-continu">INSEE Enquête emploi en continu</a> covers the same subject matter, but originates from a different institution, geographic scope, legal basis, and methodology.
+                    It therefore constitutes a separate <code>dcat:DatasetSeries</code> and cannot be listed as a <code>dcat:seriesMember</code> of the Eurostat series.
+                    Instead, a <code>dct:relation</code> triple is added to the Eurostat series description to signal the thematic proximity and partial overlap between the two series, without implying any methodological equivalence or shared provenance.
+                </p>
 
 <pre class="turtle">
 @prefix dcat:     &lt;http://www.w3.org/ns/dcat#&gt; .
@@ -13728,36 +13725,31 @@ How multilingual information is handled in systems, for example in indexing and 
                     &lt;http://data.europa.eu/88u/dataset/jaziwgz3wgoopsvtcod7qg&gt; ;
     dct:relation &lt;https://www.data.gouv.fr/datasets/activite-emploi-et-chomage-enquete-emploi-en-continu&gt; .
 </pre>
-                </section>        
             </section>
         </section>
 
         <section>
-        <h4>2. When should a Dataset Series be extended, and when should a new one be started?</h4>
+        <h4>When should a Dataset Series be extended, and when should a new one be started?</h4>
 
-            <section>
-            <h5>General principle</h5>
+            <p>
+                A Dataset Series is a stable, evolving collection of datasets sharing a common subject matter, statistical methodology, and institutional mandate.
+                New datasets should be added to an existing series as long as these characteristics remain substantially unchanged.
+            </p>
 
-                <p>
-                    A Dataset Series is a stable, evolving collection of datasets sharing a common subject matter, statistical methodology, and institutional mandate.
-                    New datasets should be added to an existing series as long as these characteristics remain substantially unchanged.
-                </p>
-
-                <p>
-                    A new Dataset Series should be created when any of the following conditions apply:
-                </p>
-                
-                <ul>
-                    <li>the statistical concept, methodology, or legal basis changes in a way that is not reconcilable with prior datasets;</li>
-                    <li>a retroactive revision to the underlying data makes the new series incompatible with the old.</li>
-                </ul>
-
-                <p>
-                    When a new series succeeds a previous one, the relationship shall be documented using <code>dct:isReplacedBy</code> on the old series and <code>dct:replaces</code> on the new one.
-                </p>
+            <p>
+                A new Dataset Series should be created when any of the following conditions apply:
+            </p>
             
-                <section>
-                <h6>Old series — EU-LFS historical employment data covering 1989-2020</h6>
+            <ul>
+                <li>the statistical concept, methodology, or legal basis changes in a way that is not reconcilable with prior datasets;</li>
+                <li>a retroactive revision to the underlying data makes the new series incompatible with the old.</li>
+            </ul>
+
+            <p>
+                When a new series succeeds a previous one, the relationship shall be documented using <code>dct:isReplacedBy</code> on the old series and <code>dct:replaces</code> on the new one.
+            </p>
+            
+            <p>Old series — EU-LFS historical employment data covering 1989-2020:</p>
 
 <pre class="turtle">
 @prefix dcat:     &lt;http://www.w3.org/ns/dcat#&gt; .
@@ -13770,8 +13762,7 @@ How multilingual information is handled in systems, for example in indexing and 
     dct:publisher &lt;http://publications.europa.eu/resource/authority/corporate-body/ESTAT&gt; ;
     dct:isReplacedBy &lt;http://data.europa.eu/88u/datasetseries/lfsi_emp&gt; .
 </pre>
-
-        <h6>New series — EU-LFS historical employment data covering from 2021 onwards</h6>
+            <p>New series — EU-LFS historical employment data covering from 2021 onwards:</p>
 
 <pre class="turtle">
 &lt;http://data.europa.eu/88u/datasetseries/lfsi_emp&gt;
@@ -13781,12 +13772,10 @@ How multilingual information is handled in systems, for example in indexing and 
     dct:replaces &lt;http://data.europa.eu/88u/datasetseries/fsi_emp_h&gt; ;
     dct:relation &lt;https://www.data.gouv.fr/datasets/activite-emploi-et-chomage-enquete-emploi-en-continu&gt; .
 </pre>
-                </section>
-            </section>
         </section>
 
         <section>
-        <h4>3. How should nested Dataset Series be handled?</h4>
+        <h4>How should nested Dataset Series be handled?</h4>
 
             <p>
                 Nesting of Dataset Series is permitted but should remain the exception.
@@ -13802,8 +13791,7 @@ How multilingual information is handled in systems, for example in indexing and 
                     This pattern is appropriate when each child series has its own coherent structure and release schedule.
                 </p>
 
-                <section>
-                <h6>Nested Serie - Level 1 (object of dcat:seriesMember = dcat:DatasetSeries)</h6>
+                <p>Nested Serie - Level 1 (object of dcat:seriesMember = dcat:DatasetSeries):</p>
 
 <pre class="turtle">
 @prefix dcat:     &lt;http://www.w3.org/ns/dcat#&gt; .
@@ -13818,9 +13806,7 @@ How multilingual information is handled in systems, for example in indexing and 
         &lt;http://data.europa.eu/88u/datasetseries/eq_pop1&gt;,
         &lt;http://data.europa.eu/88u/datasetseries/eq_pop2&gt;.
 </pre>
-                </section>
-                <section>
-                <h6>Nested Serie - Level 2 (object of dcat:seriesMember = dcat:Dataset)</h6>
+                <p>Nested Serie - Level 2 (object of dcat:seriesMember = dcat:Dataset):</p>
 
 <pre class="turtle" >
 &lt;http://data.europa.eu/88u/datasetseries/eq_pop1&gt;
@@ -13871,7 +13857,6 @@ How multilingual information is handled in systems, for example in indexing and 
     dct:title "Median age of residents by sex and citizenship (demo_popmdctz)"@en .
     dcat:inSeries &lt;http://data.europa.eu/88u/datasetseries/eq_pop2&gt; .
 </pre>
-                </section>
             </section>
             
             <section>
