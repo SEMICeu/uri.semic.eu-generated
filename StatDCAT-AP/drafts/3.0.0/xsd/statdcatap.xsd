@@ -121,6 +121,11 @@
           <xs:documentation xml:lang="en">Range of validity of a Dataflow.</xs:documentation>
         </xs:annotation>
       </xs:element>
+      <xs:element name="documentation" ref="DocumentType" maxOccurs="unbounded" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation xml:lang="en">A page or document about this Dataflow.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
     </xs:sequence>
     <xs:attribute name="DataflowRef" type="xs:IDREF">
       <xs:annotation>
@@ -1220,7 +1225,13 @@
     </xs:attribute>
   </xs:complexType>
   <xs:complexType name="DocumentType">
-    <xs:sequence/>
+    <xs:sequence>
+      <xs:element name="conformsTo" ref="StandardType" maxOccurs="unbounded" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation xml:lang="en">An established specification to which the described Document conforms.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+    </xs:sequence>
     <xs:attribute name="DocumentRef" type="xs:IDREF">
       <xs:annotation>
         <xs:documentation xml:lang="en">Reference to Document ID</xs:documentation>
