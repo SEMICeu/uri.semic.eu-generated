@@ -6,6 +6,7 @@ This changelog provides an overview of the changes incorporated in StatDCAT-AP 3
 - Updated statdcatap prefix
 - Added information on working groups - TODO: MoMs for WG2 and WG3
 - Added missing prefixes to overview table and used prefixes
+- Updated Related work section [#29](https://github.com/SEMICeu/StatDCAT-AP/issues/29)
   
 ## **Data model adaptations**
 - Updated usage note of `statistical unit of measurement` [#9](https://github.com/SEMICeu/StatDCAT-AP/issues/9)
