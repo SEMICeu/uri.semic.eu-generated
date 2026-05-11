@@ -2,6 +2,7 @@
 <xs:schema xmlns="https://data.europa.eu/m8g/xml/" xmlns:xs="http://www.w3.org/2001/XMLSchema" targetNamespace="https://data.europa.eu/m8g/xml/" version="2.0.0" elementFormDefault="qualified" attributeFormDefault="unqualified" xmlns:cv="https://data.europa.eu/m8g/xml/">
   <xs:element name="AdDeliveryTechnique" type="AdDeliveryTechniqueType"/>
   <xs:element name="ElectionEvent" type="ElectionEventType"/>
+  <xs:element name="Engagement" type="EngagementType"/>
   <xs:element name="Initiative" type="InitiativeType"/>
   <xs:element name="PoliticalAdvertisement" type="PoliticalAdvertisementType"/>
   <xs:element name="TargetingTechnique" type="TargetingTechniqueType"/>
@@ -86,6 +87,35 @@
     <xs:attribute name="ElectionEventRef" type="xs:IDREF">
       <xs:annotation>
         <xs:documentation xml:lang="en">Reference to ElectionEvent ID</xs:documentation>
+      </xs:annotation>
+    </xs:attribute>
+  </xs:complexType>
+  <xs:complexType name="EngagementType">
+    <xs:sequence>
+      <xs:element name="engagementMetric" type="xs:integer" maxOccurs="1" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation xml:lang="en">A combined metric that be used to measure engagement.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="numberOfComments" type="xs:integer" maxOccurs="1" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation xml:lang="en">The total number of user comments submitted in response to the resource during its dissemination period.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="numberOfLikes" type="xs:integer" maxOccurs="1" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation xml:lang="en">The total number of times users have indicated a positive reaction (such as "like" or equivalent) to the resource during its dissemination period.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="numberOfViews" type="xs:integer" maxOccurs="1" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation xml:lang="en">The number of times the resource was viewed.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+    </xs:sequence>
+    <xs:attribute name="EngagementRef" type="xs:IDREF">
+      <xs:annotation>
+        <xs:documentation xml:lang="en">Reference to Engagement ID</xs:documentation>
       </xs:annotation>
     </xs:attribute>
   </xs:complexType>
@@ -298,6 +328,11 @@
           <xs:documentation xml:lang="en">The natural or legal person, public authority, agency or other body which, alone or jointly with others, determines the purposes and means of the processing of personal data in the context of a targeted activity or service.</xs:documentation>
         </xs:annotation>
       </xs:element>
+      <xs:element name="hasEngagement" ref="EngagementType" maxOccurs="unbounded" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation xml:lang="en">Statistics resulting of user engagement.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
       <xs:element name="hasPersonalData" type="ConceptType" maxOccurs="unbounded" minOccurs="0">
         <xs:annotation>
           <xs:documentation xml:lang="en">Indicates association with Personal Data.</xs:documentation>
@@ -311,21 +346,6 @@
       <xs:element name="linkToGdprInformation" type="xs:anyURI" maxOccurs="unbounded" minOccurs="0">
         <xs:annotation>
           <xs:documentation xml:lang="en">A URL linking to information provided pursuant to Regulation (EU) 2016/679 (General Data Protection Regulation), including privacy notices, data subject rights, and relevant data protection policies.</xs:documentation>
-        </xs:annotation>
-      </xs:element>
-      <xs:element name="numberOfComments" type="xs:integer" maxOccurs="unbounded" minOccurs="0">
-        <xs:annotation>
-          <xs:documentation xml:lang="en">The total number of user comments submitted in response to the resource during its dissemination period.</xs:documentation>
-        </xs:annotation>
-      </xs:element>
-      <xs:element name="numberOfLikes" type="xs:integer" maxOccurs="unbounded" minOccurs="0">
-        <xs:annotation>
-          <xs:documentation xml:lang="en">The total number of times users have indicated a positive reaction (such as "like" or equivalent) to the resource during its dissemination period.</xs:documentation>
-        </xs:annotation>
-      </xs:element>
-      <xs:element name="numberOfViews" type="xs:integer" maxOccurs="unbounded" minOccurs="0">
-        <xs:annotation>
-          <xs:documentation xml:lang="en">The number of times the resource was viewed.</xs:documentation>
         </xs:annotation>
       </xs:element>
       <xs:element name="otherRelevantInformation" type="xs:string" maxOccurs="unbounded" minOccurs="0">
