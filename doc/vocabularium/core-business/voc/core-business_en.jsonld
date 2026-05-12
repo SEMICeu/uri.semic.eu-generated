@@ -95,7 +95,7 @@
   "issued": "TODO",
   "navigation": {},
   "publication-state": "Semic Recommendation",
-  "publication-date": "2024-05-06",
+  "publication-date": "2026-05-12",
   "classes": [
     {
       "@id": "http://data.europa.eu/m8g/AccountingDocument",
@@ -112,6 +112,20 @@
       "parents": []
     },
     {
+      "@id": "http://data.europa.eu/m8g/AdminUnit",
+      "@type": "http://www.w3.org/2002/07/owl#Class",
+      "label": {
+        "en": "Administrative Unit"
+      },
+      "definition": {
+        "en": "A detailed administrative unit organized in a hierarchy."
+      },
+      "usage": {
+        "en": "This class should be used whenever a classification mechanism is in place, in alternative to the properties adminUnitL1 and adminUnitL2 of the Address class which allow free text."
+      },
+      "parents": []
+    },
+    {
       "@id": "http://data.europa.eu/m8g/ContactPoint",
       "@type": "http://www.w3.org/2002/07/owl#Class",
       "label": {
@@ -122,6 +136,17 @@
       },
       "usage": {
         "en": "The Core Public Organization Vocabulary defines properties for telephone number, e-mail address and opening hours although it is noteworthy that the class is based on schema.org's <a href=\"http://schema.org/ContactPoint\"> ContactPoint </a> class  that has additional properties that some implementations may find useful."
+      },
+      "parents": []
+    },
+    {
+      "@id": "http://data.europa.eu/m8g/LegalStatus",
+      "@type": "http://www.w3.org/2002/07/owl#Class",
+      "label": {
+        "en": "Legal Status"
+      },
+      "definition": {
+        "en": "Information about the viability of the position of the legal entity at a certain point of time."
       },
       "parents": []
     }
@@ -137,10 +162,10 @@
   ],
   "properties": [
     {
-      "@id": "http://data.europa.eu/m8g/AdminUnit",
+      "@id": "http://data.europa.eu/m8g/adminUnit",
       "@type": "http://www.w3.org/2002/07/owl#ObjectProperty",
       "label": {
-        "en": "Administrative Unit"
+        "en": "administrative unit"
       },
       "definition": {
         "en": "A detailed administrative unit organized in a hierarchy."
@@ -150,6 +175,23 @@
       ],
       "range": [
         "http://data.europa.eu/m8g/AdminUnit"
+      ],
+      "generalization": []
+    },
+    {
+      "@id": "http://data.europa.eu/m8g/code",
+      "@type": "http://www.w3.org/2002/07/owl#ObjectProperty",
+      "label": {
+        "en": "code"
+      },
+      "definition": {
+        "en": "The classification of the administrative unit."
+      },
+      "domain": [
+        "http://data.europa.eu/m8g/AdminUnit"
+      ],
+      "range": [
+        "http://www.w3.org/2004/02/skos/core#Concept"
       ],
       "generalization": []
     },
@@ -188,6 +230,43 @@
       "generalization": []
     },
     {
+      "@id": "http://data.europa.eu/m8g/legalStatusDate",
+      "@type": "http://www.w3.org/2002/07/owl#DatatypeProperty",
+      "label": {
+        "en": "legal status date"
+      },
+      "definition": {
+        "en": "Information date of the current position of the legal entity."
+      },
+      "domain": [
+        "http://data.europa.eu/m8g/LegalStatus"
+      ],
+      "range": [
+        "http://www.w3.org/2001/XMLSchema#date"
+      ],
+      "generalization": []
+    },
+    {
+      "@id": "http://data.europa.eu/m8g/level",
+      "@type": "http://www.w3.org/2002/07/owl#ObjectProperty",
+      "label": {
+        "en": "level"
+      },
+      "definition": {
+        "en": "The level of the administrative unit in the hierarchy."
+      },
+      "usage": {
+        "en": "The recommended code list to indicate the level of an Admin Unit is the <a href=https://op.europa.eu/en/web/eu-vocabularies/dataset/-/resource?uri=http://publications.europa.eu/resource/dataset/atu-type>Administrative territorial unit type</a> Controlled Vocabulary maintained by the Publications Office of the EU. "
+      },
+      "domain": [
+        "http://data.europa.eu/m8g/AdminUnit"
+      ],
+      "range": [
+        "http://www.w3.org/2004/02/skos/core#Concept"
+      ],
+      "generalization": []
+    },
+    {
       "@id": "http://data.europa.eu/m8g/registrationDate",
       "@type": "http://www.w3.org/2002/07/owl#DatatypeProperty",
       "label": {
@@ -201,6 +280,43 @@
       ],
       "range": [
         "http://www.w3.org/2001/XMLSchema#date"
+      ],
+      "generalization": []
+    },
+    {
+      "@id": "http://data.europa.eu/m8g/role",
+      "@type": "http://www.w3.org/2002/07/owl#ObjectProperty",
+      "label": {
+        "en": "Role"
+      },
+      "definition": {
+        "en": "The function of an Agent within a context."
+      },
+      "usage": {
+        "en": "This should be provided using a controlled vocabulary."
+      },
+      "domain": [
+        "http://data.europa.eu/a4g/ontology#PowerOfAttorney"
+      ],
+      "range": [
+        "http://www.w3.org/2004/02/skos/core#Concept"
+      ],
+      "generalization": []
+    },
+    {
+      "@id": "http://data.europa.eu/m8g/scopeOfAttorney",
+      "@type": "http://www.w3.org/2002/07/owl#DatatypeProperty",
+      "label": {
+        "en": "scope of attorney"
+      },
+      "definition": {
+        "en": "The context in which the power of attorney can be applied."
+      },
+      "domain": [
+        "http://data.europa.eu/a4g/ontology#PowerOfAttorney"
+      ],
+      "range": [
+        "http://www.w3.org/1999/02/22-rdf-syntax-ns#langString"
       ],
       "generalization": []
     },
@@ -239,6 +355,13 @@
     },
     {
       "name": {
+        "en": "has legal status"
+      },
+      "@id": "http://data.europa.eu/m8g/hasLegalStatus",
+      "@type": "rdf:Property"
+    },
+    {
+      "name": {
         "en": "identifies"
       },
       "@id": "http://data.europa.eu/m8g/identifies",
@@ -256,6 +379,13 @@
         "en": "legal entity activity"
       },
       "@id": "http://www.w3.org/ns/legal#companyActivity",
+      "@type": "rdf:Property"
+    },
+    {
+      "name": {
+        "en": "legal entity status"
+      },
+      "@id": "http://www.w3.org/ns/legal#companyStatus",
       "@type": "rdf:Property"
     },
     {

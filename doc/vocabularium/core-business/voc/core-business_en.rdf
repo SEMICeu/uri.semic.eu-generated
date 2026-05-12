@@ -116,7 +116,7 @@
           </foaf:Person>
         </ns0:editor>
         <dc:license rdf:resource="https://creativecommons.org/licenses/by/4.0/"/>
-        <dc:issued>2024-05-06</dc:issued>
+        <dc:issued>2026-05-12</dc:issued>
       </owl:Ontology>
     </rdfs:isDefinedBy>
     <rdfs:label xml:lang="en">Accounting Document</rdfs:label>
@@ -128,6 +128,27 @@
 &lt;li&gt; Annual financial reports.&lt;/li&gt;
 &lt;/ul&gt;</skos:scopeNote>
   </owl:Class>
+  <owl:ObjectProperty rdf:about="http://data.europa.eu/m8g/adminUnit">
+    <rdfs:isDefinedBy rdf:resource="http://data.europa.eu/m8g"/>
+    <rdfs:label xml:lang="en">administrative unit</rdfs:label>
+    <rdfs:comment xml:lang="en">A detailed administrative unit organized in a hierarchy.</rdfs:comment>
+    <rdfs:domain rdf:resource="http://www.w3.org/ns/locn#Address"/>
+    <rdfs:range>
+      <owl:Class rdf:about="http://data.europa.eu/m8g/AdminUnit">
+        <rdfs:isDefinedBy rdf:resource="http://data.europa.eu/m8g"/>
+        <rdfs:label xml:lang="en">Administrative Unit</rdfs:label>
+        <rdfs:comment xml:lang="en">A detailed administrative unit organized in a hierarchy.</rdfs:comment>
+        <skos:scopeNote xml:lang="en">This class should be used whenever a classification mechanism is in place, in alternative to the properties adminUnitL1 and adminUnitL2 of the Address class which allow free text.</skos:scopeNote>
+      </owl:Class>
+    </rdfs:range>
+  </owl:ObjectProperty>
+  <owl:ObjectProperty rdf:about="http://data.europa.eu/m8g/code">
+    <rdfs:isDefinedBy rdf:resource="http://data.europa.eu/m8g"/>
+    <rdfs:label xml:lang="en">code</rdfs:label>
+    <rdfs:comment xml:lang="en">The classification of the administrative unit.</rdfs:comment>
+    <rdfs:domain rdf:resource="http://data.europa.eu/m8g/AdminUnit"/>
+    <rdfs:range rdf:resource="http://www.w3.org/2004/02/skos/core#Concept"/>
+  </owl:ObjectProperty>
   <owl:ObjectProperty rdf:about="http://data.europa.eu/m8g/contactPage">
     <rdfs:isDefinedBy rdf:resource="http://data.europa.eu/m8g"/>
     <rdfs:label xml:lang="en">contact page</rdfs:label>
@@ -149,12 +170,48 @@
     <rdfs:domain rdf:resource="http://data.europa.eu/m8g/ContactPoint"/>
     <rdfs:range rdf:resource="http://www.w3.org/2000/01/rdf-schema#Literal"/>
   </owl:DatatypeProperty>
+  <owl:DatatypeProperty rdf:about="http://data.europa.eu/m8g/legalStatusDate">
+    <rdfs:isDefinedBy rdf:resource="http://data.europa.eu/m8g"/>
+    <rdfs:label xml:lang="en">legal status date</rdfs:label>
+    <rdfs:comment xml:lang="en">Information date of the current position of the legal entity.</rdfs:comment>
+    <rdfs:domain>
+      <owl:Class rdf:about="http://data.europa.eu/m8g/LegalStatus">
+        <rdfs:isDefinedBy rdf:resource="http://data.europa.eu/m8g"/>
+        <rdfs:label xml:lang="en">Legal Status</rdfs:label>
+        <rdfs:comment xml:lang="en">Information about the viability of the position of the legal entity at a certain point of time.</rdfs:comment>
+      </owl:Class>
+    </rdfs:domain>
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#date"/>
+  </owl:DatatypeProperty>
+  <owl:ObjectProperty rdf:about="http://data.europa.eu/m8g/level">
+    <rdfs:isDefinedBy rdf:resource="http://data.europa.eu/m8g"/>
+    <rdfs:label xml:lang="en">level</rdfs:label>
+    <rdfs:comment xml:lang="en">The level of the administrative unit in the hierarchy.</rdfs:comment>
+    <skos:scopeNote xml:lang="en">The recommended code list to indicate the level of an Admin Unit is the &lt;a href=https://op.europa.eu/en/web/eu-vocabularies/dataset/-/resource?uri=http://publications.europa.eu/resource/dataset/atu-type&gt;Administrative territorial unit type&lt;/a&gt; Controlled Vocabulary maintained by the Publications Office of the EU. </skos:scopeNote>
+    <rdfs:domain rdf:resource="http://data.europa.eu/m8g/AdminUnit"/>
+    <rdfs:range rdf:resource="http://www.w3.org/2004/02/skos/core#Concept"/>
+  </owl:ObjectProperty>
   <owl:DatatypeProperty rdf:about="http://data.europa.eu/m8g/registrationDate">
     <rdfs:isDefinedBy rdf:resource="http://data.europa.eu/m8g"/>
     <rdfs:label xml:lang="en">registration date</rdfs:label>
     <rdfs:comment xml:lang="en">The date on which the legal entity has registered in some jurisdiction for regulatory and / or for tax purposes.</rdfs:comment>
     <rdfs:domain rdf:resource="http://www.w3.org/ns/legal#LegalEntity"/>
     <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#date"/>
+  </owl:DatatypeProperty>
+  <owl:ObjectProperty rdf:about="http://data.europa.eu/m8g/role">
+    <rdfs:isDefinedBy rdf:resource="http://data.europa.eu/m8g"/>
+    <rdfs:label xml:lang="en">Role</rdfs:label>
+    <rdfs:comment xml:lang="en">The function of an Agent within a context.</rdfs:comment>
+    <skos:scopeNote xml:lang="en">This should be provided using a controlled vocabulary.</skos:scopeNote>
+    <rdfs:domain rdf:resource="http://data.europa.eu/a4g/ontology#PowerOfAttorney"/>
+    <rdfs:range rdf:resource="http://www.w3.org/2004/02/skos/core#Concept"/>
+  </owl:ObjectProperty>
+  <owl:DatatypeProperty rdf:about="http://data.europa.eu/m8g/scopeOfAttorney">
+    <rdfs:isDefinedBy rdf:resource="http://data.europa.eu/m8g"/>
+    <rdfs:label xml:lang="en">scope of attorney</rdfs:label>
+    <rdfs:comment xml:lang="en">The context in which the power of attorney can be applied.</rdfs:comment>
+    <rdfs:domain rdf:resource="http://data.europa.eu/a4g/ontology#PowerOfAttorney"/>
+    <rdfs:range rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#langString"/>
   </owl:DatatypeProperty>
   <owl:DatatypeProperty rdf:about="http://data.europa.eu/m8g/telephone">
     <rdfs:isDefinedBy rdf:resource="http://data.europa.eu/m8g"/>
@@ -163,11 +220,4 @@
     <rdfs:domain rdf:resource="http://data.europa.eu/m8g/ContactPoint"/>
     <rdfs:range rdf:resource="http://www.w3.org/2000/01/rdf-schema#Literal"/>
   </owl:DatatypeProperty>
-  <owl:ObjectProperty rdf:about="http://data.europa.eu/m8g/AdminUnit">
-    <rdfs:isDefinedBy rdf:resource="http://data.europa.eu/m8g"/>
-    <rdfs:label xml:lang="en">Administrative Unit</rdfs:label>
-    <rdfs:comment xml:lang="en">A detailed administrative unit organized in a hierarchy.</rdfs:comment>
-    <rdfs:domain rdf:resource="http://www.w3.org/ns/locn#Address"/>
-    <rdfs:range rdf:resource="http://data.europa.eu/m8g/AdminUnit"/>
-  </owl:ObjectProperty>
 </rdf:RDF>

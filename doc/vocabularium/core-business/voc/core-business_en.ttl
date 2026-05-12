@@ -18,6 +18,20 @@
 <li> Annual financial reports.</li>
 </ul>"""@en .
 
+<http://data.europa.eu/m8g/adminUnit> a owl:ObjectProperty;
+  rdfs:label "administrative unit"@en;
+  rdfs:comment "A detailed administrative unit organized in a hierarchy."@en;
+  rdfs:domain <http://www.w3.org/ns/locn#Address>;
+  rdfs:isDefinedBy <http://data.europa.eu/m8g>;
+  rdfs:range <http://data.europa.eu/m8g/AdminUnit> .
+
+<http://data.europa.eu/m8g/code> a owl:ObjectProperty;
+  rdfs:label "code"@en;
+  rdfs:comment "The classification of the administrative unit."@en;
+  rdfs:domain <http://data.europa.eu/m8g/AdminUnit>;
+  rdfs:isDefinedBy <http://data.europa.eu/m8g>;
+  rdfs:range skos:Concept .
+
 <http://data.europa.eu/m8g/contactPage> a owl:ObjectProperty;
   rdfs:label "contact page"@en;
   rdfs:comment "A web page that could be used to reach out the Contact Point."@en;
@@ -32,12 +46,42 @@
   rdfs:isDefinedBy <http://data.europa.eu/m8g>;
   rdfs:range rdfs:Literal .
 
+<http://data.europa.eu/m8g/legalStatusDate> a owl:DatatypeProperty;
+  rdfs:label "legal status date"@en;
+  rdfs:comment "Information date of the current position of the legal entity."@en;
+  rdfs:domain <http://data.europa.eu/m8g/LegalStatus>;
+  rdfs:isDefinedBy <http://data.europa.eu/m8g>;
+  rdfs:range xsd:date .
+
+<http://data.europa.eu/m8g/level> a owl:ObjectProperty;
+  rdfs:label "level"@en;
+  rdfs:comment "The level of the administrative unit in the hierarchy."@en;
+  rdfs:domain <http://data.europa.eu/m8g/AdminUnit>;
+  rdfs:isDefinedBy <http://data.europa.eu/m8g>;
+  rdfs:range skos:Concept;
+  skos:scopeNote "The recommended code list to indicate the level of an Admin Unit is the <a href=https://op.europa.eu/en/web/eu-vocabularies/dataset/-/resource?uri=http://publications.europa.eu/resource/dataset/atu-type>Administrative territorial unit type</a> Controlled Vocabulary maintained by the Publications Office of the EU. "@en .
+
 <http://data.europa.eu/m8g/registrationDate> a owl:DatatypeProperty;
   rdfs:label "registration date"@en;
   rdfs:comment "The date on which the legal entity has registered in some jurisdiction for regulatory and / or for tax purposes."@en;
   rdfs:domain <http://www.w3.org/ns/legal#LegalEntity>;
   rdfs:isDefinedBy <http://data.europa.eu/m8g>;
   rdfs:range xsd:date .
+
+<http://data.europa.eu/m8g/role> a owl:ObjectProperty;
+  rdfs:label "Role"@en;
+  rdfs:comment "The function of an Agent within a context."@en;
+  rdfs:domain <http://data.europa.eu/a4g/ontology#PowerOfAttorney>;
+  rdfs:isDefinedBy <http://data.europa.eu/m8g>;
+  rdfs:range skos:Concept;
+  skos:scopeNote "This should be provided using a controlled vocabulary."@en .
+
+<http://data.europa.eu/m8g/scopeOfAttorney> a owl:DatatypeProperty;
+  rdfs:label "scope of attorney"@en;
+  rdfs:comment "The context in which the power of attorney can be applied."@en;
+  rdfs:domain <http://data.europa.eu/a4g/ontology#PowerOfAttorney>;
+  rdfs:isDefinedBy <http://data.europa.eu/m8g>;
+  rdfs:range rdf:langString .
 
 <http://data.europa.eu/m8g/telephone> a owl:DatatypeProperty;
   rdfs:label "has telephone"@en;
@@ -46,12 +90,16 @@
   rdfs:isDefinedBy <http://data.europa.eu/m8g>;
   rdfs:range rdfs:Literal .
 
-<http://data.europa.eu/m8g/AdminUnit> a owl:ObjectProperty;
+<http://data.europa.eu/m8g/LegalStatus> a owl:Class;
+  rdfs:label "Legal Status"@en;
+  rdfs:comment "Information about the viability of the position of the legal entity at a certain point of time."@en;
+  rdfs:isDefinedBy <http://data.europa.eu/m8g> .
+
+<http://data.europa.eu/m8g/AdminUnit> a owl:Class;
   rdfs:label "Administrative Unit"@en;
   rdfs:comment "A detailed administrative unit organized in a hierarchy."@en;
-  rdfs:domain <http://www.w3.org/ns/locn#Address>;
   rdfs:isDefinedBy <http://data.europa.eu/m8g>;
-  rdfs:range <http://data.europa.eu/m8g/AdminUnit> .
+  skos:scopeNote "This class should be used whenever a classification mechanism is in place, in alternative to the properties adminUnitL1 and adminUnitL2 of the Address class which allow free text."@en .
 
 <http://data.europa.eu/m8g/ContactPoint> a owl:Class;
   rdfs:label "Contact Point"@en;
@@ -62,7 +110,7 @@
 <http://data.europa.eu/m8g> a owl:Ontology;
   rdfs:label "core-business"@en,
     "core-business"@nl;
-  dc:issued "2024-05-06";
+  dc:issued "2026-05-12";
   dc:license <https://creativecommons.org/licenses/by/4.0/>;
   dc:mediator [
     foaf:homepage <https://semic.eu>;

@@ -2,7 +2,7 @@
   "metadata": {
     "title": "Core Business Vocabulary",
     "uri": "http://data.europa.eu/m8g",
-    "issued": "2024-05-06",
+    "issued": "2026-05-12",
     "filename": "core-business",
     "navigation": {
       "self": "https://semiceu.github.io/doc/vocabularium/core-business"
@@ -12,10 +12,10 @@
     "documentconfig": {},
     "status": "Semic Recommendation",
     "statuslabel": "Onbekend",
-    "repositoryurl": "git@uri.semic.eu-thema:SEMICeu/uri.semic.eu-thema.git/tree/f28521db80a8b0caebcb9bdb991acddc010a19df",
-    "changelogurl": "git@uri.semic.eu-thema:SEMICeu/uri.semic.eu-thema.git/blob/f28521db80a8b0caebcb9bdb991acddc010a19df/CHANGELOG",
+    "repositoryurl": "git@uri.semic.eu-thema:SEMICeu/uri.semic.eu-thema.git/tree/27beb1ac3041da011ed64a41006d6838689d4018",
+    "changelogurl": "git@uri.semic.eu-thema:SEMICeu/uri.semic.eu-thema.git/blob/27beb1ac3041da011ed64a41006d6838689d4018/CHANGELOG",
     "feedbackurl": "https://github.com/SEMICeu/Core-Business-Vocabulary/issues",
-    "standaardregisterurl": "https://github.com/SEMICeu/Core-Business-Vocabulary/blob/master/releases/2.2.0/Changelog.md",
+    "standaardregisterurl": "https://github.com/SEMICeu/Core-Business-Vocabulary/blob/master/releases/2.3.0/Changelog.md",
     "usesVocs": [],
     "usesAPs": []
   },
@@ -37,6 +37,22 @@
       "parents": []
     },
     {
+      "uri": "http://data.europa.eu/m8g/AdminUnit",
+      "name": "AdministrativeUnit",
+      "label": {
+        "en": "Administrative Unit"
+      },
+      "sort": "Administrative Unit",
+      "description": {
+        "en": "A detailed administrative unit organized in a hierarchy."
+      },
+      "usage": {
+        "en": "This class should be used whenever a classification mechanism is in place, in alternative to the properties adminUnitL1 and adminUnitL2 of the Address class which allow free text."
+      },
+      "equivalent": [],
+      "parents": []
+    },
+    {
       "uri": "http://data.europa.eu/m8g/ContactPoint",
       "name": "ContactPoint",
       "label": {
@@ -51,16 +67,30 @@
       },
       "equivalent": [],
       "parents": []
+    },
+    {
+      "uri": "http://data.europa.eu/m8g/LegalStatus",
+      "name": "LegalStatus",
+      "label": {
+        "en": "Legal Status"
+      },
+      "sort": "Legal Status",
+      "description": {
+        "en": "Information about the viability of the position of the legal entity at a certain point of time."
+      },
+      "usage": {},
+      "equivalent": [],
+      "parents": []
     }
   ],
   "properties": [
     {
-      "uri": "http://data.europa.eu/m8g/AdminUnit",
+      "uri": "http://data.europa.eu/m8g/adminUnit",
       "name": "administrativeUnit",
       "label": {
-        "en": "Administrative Unit"
+        "en": "administrative unit"
       },
-      "sort": "Administrative Unit",
+      "sort": "administrative unit",
       "description": {
         "en": "A detailed administrative unit organized in a hierarchy."
       },
@@ -70,6 +100,25 @@
       ],
       "range": [
         "http://data.europa.eu/m8g/AdminUnit"
+      ],
+      "parents": []
+    },
+    {
+      "uri": "http://data.europa.eu/m8g/code",
+      "name": "code",
+      "label": {
+        "en": "code"
+      },
+      "sort": "code",
+      "description": {
+        "en": "The classification of the administrative unit."
+      },
+      "usage": {},
+      "domain": [
+        "http://data.europa.eu/m8g/AdminUnit"
+      ],
+      "range": [
+        "http://www.w3.org/2004/02/skos/core#Concept"
       ],
       "parents": []
     },
@@ -112,6 +161,46 @@
       "parents": []
     },
     {
+      "uri": "http://data.europa.eu/m8g/legalStatusDate",
+      "name": "legalStatusDate",
+      "label": {
+        "en": "legal status date"
+      },
+      "sort": "legal status date",
+      "description": {
+        "en": "Information date of the current position of the legal entity."
+      },
+      "usage": {},
+      "domain": [
+        "http://data.europa.eu/m8g/LegalStatus"
+      ],
+      "range": [
+        "http://www.w3.org/2001/XMLSchema#date"
+      ],
+      "parents": []
+    },
+    {
+      "uri": "http://data.europa.eu/m8g/level",
+      "name": "level",
+      "label": {
+        "en": "level"
+      },
+      "sort": "level",
+      "description": {
+        "en": "The level of the administrative unit in the hierarchy."
+      },
+      "usage": {
+        "en": "The recommended code list to indicate the level of an Admin Unit is the <a href=https://op.europa.eu/en/web/eu-vocabularies/dataset/-/resource?uri=http://publications.europa.eu/resource/dataset/atu-type>Administrative territorial unit type</a> Controlled Vocabulary maintained by the Publications Office of the EU. "
+      },
+      "domain": [
+        "http://data.europa.eu/m8g/AdminUnit"
+      ],
+      "range": [
+        "http://www.w3.org/2004/02/skos/core#Concept"
+      ],
+      "parents": []
+    },
+    {
       "uri": "http://data.europa.eu/m8g/registrationDate",
       "name": "registrationDate",
       "label": {
@@ -127,6 +216,46 @@
       ],
       "range": [
         "http://www.w3.org/2001/XMLSchema#date"
+      ],
+      "parents": []
+    },
+    {
+      "uri": "http://data.europa.eu/m8g/role",
+      "name": "role",
+      "label": {
+        "en": "Role"
+      },
+      "sort": "Role",
+      "description": {
+        "en": "The function of an Agent within a context."
+      },
+      "usage": {
+        "en": "This should be provided using a controlled vocabulary."
+      },
+      "domain": [
+        "http://data.europa.eu/a4g/ontology#PowerOfAttorney"
+      ],
+      "range": [
+        "http://www.w3.org/2004/02/skos/core#Concept"
+      ],
+      "parents": []
+    },
+    {
+      "uri": "http://data.europa.eu/m8g/scopeOfAttorney",
+      "name": "scopeOfAttorney",
+      "label": {
+        "en": "scope of attorney"
+      },
+      "sort": "scope of attorney",
+      "description": {
+        "en": "The context in which the power of attorney can be applied."
+      },
+      "usage": {},
+      "domain": [
+        "http://data.europa.eu/a4g/ontology#PowerOfAttorney"
+      ],
+      "range": [
+        "http://www.w3.org/1999/02/22-rdf-syntax-ns#langString"
       ],
       "parents": []
     },
@@ -283,6 +412,22 @@
       "show": true
     },
     {
+      "uri": "http://data.europa.eu/m8g/hasLegalStatus",
+      "name": "hasLegalStatus",
+      "label": {
+        "en": "has legal status"
+      },
+      "description": {
+        "en": "The legal status provided by an organisation."
+      },
+      "usage": {},
+      "sort": "has legal status",
+      "inscope": true,
+      "indvl": false,
+      "inpackage": false,
+      "show": true
+    },
+    {
       "uri": "http://data.europa.eu/m8g/identifies",
       "name": "identifies",
       "label": {
@@ -329,6 +474,24 @@
         "en": "This is a general term that encompasses all the economic activities carried out by a company during the course of business. The activity of a company should be recorded using a controlled vocabulary. Several such vocabularies exist, many of which map to the UN's <a href=\"https://unstats.un.org/unsd/classifications/Econ/ISIC.cshtml\">ISIC</a> codes. Where a particular controlled vocabulary is in use within a given context, such as <a href=\"https://resources.companieshouse.gov.uk/sic/\">SIC codes</a> in the UK, it is acceptable to use these, however, the preferred choice for European interoperability is <a href=\"https://op.europa.eu/en/web/eu-vocabularies/dataset/-/resource?uri=http://publications.europa.eu/resource/dataset/nace2\">NACE</a>."
       },
       "sort": "legal entity activity",
+      "inscope": true,
+      "indvl": false,
+      "inpackage": false,
+      "show": true
+    },
+    {
+      "uri": "http://www.w3.org/ns/legal#companyStatus",
+      "name": "legalEntityStatus",
+      "label": {
+        "en": "legal entity status"
+      },
+      "description": {
+        "en": "Information about the viability of the position of the legal entity."
+      },
+      "usage": {
+        "en": "Recording the status of a company presents the same issues as its type. The terms 'insolvent', 'bankrupt' and 'in receivership,' for example, are likely to mean slightly different things with different legal implications in different jurisdictions. Best practice for recording various other status levels is to use the relevant jurisdiction's terms and to identify the controlled vocabulary used."
+      },
+      "sort": "legal entity status",
       "inscope": true,
       "indvl": false,
       "inpackage": false,

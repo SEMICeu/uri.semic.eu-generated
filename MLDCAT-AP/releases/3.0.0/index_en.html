@@ -275,6 +275,7 @@ This specification uses the following prefixes to shorten the URIs for readabili
 		<tr><td><code>mlso</code></td><td><code>http://w3id.org/mlso/</code></td></tr>
 		<tr><td><code>odrl</code></td><td><code>http://www.w3.org/ns/odrl/2/</code></td></tr>
 		<tr><td><code>owl</code></td><td><code>http://www.w3.org/2002/07/owl#</code></td></tr>
+		<tr><td><code>prov</code></td><td><code>http://www.w3.org/ns/prov#</code></td></tr>
 		<tr><td><code>qb</code></td><td><code>http://purl.org/linked-data/cube#</code></td></tr>
 		<tr><td><code>rdf</code></td><td><code>http://www.w3.org/1999/02/22-rdf-syntax-ns#</code></td></tr>
 		<tr><td><code>rdfs</code></td><td><code>http://www.w3.org/2000/01/rdf-schema#</code></td></tr>
@@ -314,6 +315,7 @@ This specification uses the following prefixes to shorten the URIs for readabili
                             The main entities are supported by:
                             <br />
                             |
+			      <a href="#Activity">Activity</a> |
 			      <a href="#Benchmark">Benchmark</a> |
 			      <a href="#BibliographicReference">Bibliographic Reference</a> |
 			      <a href="#CatalogueRecord">Catalogue Record</a> |
@@ -357,6 +359,7 @@ This specification uses the following prefixes to shorten the URIs for readabili
 			      <a href="#Run">Run</a> |
 			      <a href="#RunCollection">Run Collection</a> |
 			      <a href="#Split">Split</a> |
+			      <a href="#Standard">Standard</a> |
 			      <a href="#Task">Task</a> |
 			      <a href="#TaskCollection">Task Collection</a> |
 			      <a href="#TaskType">Task Type</a> |
@@ -398,6 +401,8 @@ In addition to the constraints also cross-references are provided to DCAT. To sa
 </ul>
 This reuse qualification assessement is with respect to a specific version of DCAT. 
 Therefore it may vary over time when new versions of DCAT-AP are created.
+
+
 
 
    
@@ -460,7 +465,8 @@ Therefore it may vary over time when new versions of DCAT-AP are created.
                     </dt>
                     
                         <dd>
-                            For this entity the following properties are defined: <a href="#Agent.name">name</a>
+                            For this entity the following properties are defined: <a href="#Agent.actedonbehalfof">acted on behalf of</a>
+                            , <a href="#Agent.name">name</a>
                             .
                     </dd>
                 
@@ -500,6 +506,68 @@ Therefore it may vary over time when new versions of DCAT-AP are created.
                         </tr>
                     </thead>
                     <tbody class="supertype">
+                        
+                            <tr id="Agent.actedonbehalfof"
+                                typeof="rdf:Property"
+                                resource="http://www.w3.org/ns/prov#actedOnBehalfOf"
+                                class="class mandatory">
+                                <td>
+				    <a href="https://github.com/SEMICeu/MLDCAT-AP/issues/new?title=Issue%20for%20acted on behalf of%20in%20Agent&body=Explain%20your%20issue%20for%20https://semiceu.github.io/MLDCAT-AP/releases/3.0.0%23Agent.actedonbehalfof" target="_blank" rel="noopener noreferrer" >
+					    <!--                                        <i class="icon">[o]</i> -->
+                                        <img src="html/callout.png" loading="lazy" alt="[o]" width="100" height="100"/>
+                                    </a>
+                                </td>
+                                <td>
+                                        <a href="http://www.w3.org/ns/prov#actedOnBehalfOf"
+                                           data-toggle="tooltip"
+                                           data-content="http://www.w3.org/ns/prov#actedOnBehalfOf"
+                                           data-placement="right">
+                                        acted on behalf of</a>
+                                </td>
+                                <td>
+                                    
+                                        
+                                            <a href="#Agent" data-placement="right">Agent</a>
+                                        
+                                    
+                                </td>
+                                <td>
+                                    0..*
+                                </td>
+                                <td property="rdfs:comment">
+                                    Delegation is the assignment of authority and responsibility to an agent (by itself or by another agent) to carry out a specific activity as a delegate or representative.
+                                </td>
+                                <td property="skos:scopeNote">
+                                    It can including a software agent that for example can generate a dataset but also, a person as authorised representative of providers of general-purpose AI models.
+                                </td>
+				<!--
+                                <td>
+                                    
+                                </td>
+				-->
+                                <td>
+                                    
+                                    
+                                        
+                                        
+                                            
+                                            
+
+                                            
+                                                
+                                                    
+													
+														<a href="https://eur-lex.europa.eu/legal-content/EN/TXT/HTML/?uri=OJ:L_202401689#d1e5680-1-1">AI Act Art. 54</a>
+													
+                                                
+                                            
+
+                                            
+                                        
+                                        
+                                    
+                                </td>
+                            </tr>
                         
                             <tr id="Agent.name"
                                 typeof="rdf:Property"
@@ -1750,9 +1818,11 @@ Therefore it may vary over time when new versions of DCAT-AP are created.
 
                                 
                                     
-                                        
-                                        <a href="https://eur-lex.europa.eu/legal-content/EN/TXT/HTML/?uri=OJ:L_202401689#anx_XI">AI Act anx_XI</a>
-                                    
+										
+										
+											<a href="https://eur-lex.europa.eu/legal-content/EN/TXT/HTML/?uri=OJ:L_202401689#anx_XI">AI Act anx_XI</a>
+										
+									
                                 
 
                                 
@@ -1810,6 +1880,7 @@ Therefore it may vary over time when new versions of DCAT-AP are created.
                             , <a href="#Dataset.version">version</a>
                             , <a href="#Dataset.versionlabel">version label</a>
                             , <a href="#Dataset.visibility">visibility</a>
+                            , <a href="#Dataset.wasgeneratedby">was generated by</a>
                             .
                     </dd>
                 
@@ -2070,7 +2141,9 @@ Therefore it may vary over time when new versions of DCAT-AP are created.
                                             
                                                 
                                                     
-                                                    <a href="https://eur-lex.europa.eu/legal-content/EN/TXT/HTML/?uri=OJ:L_202401689#anx_XI">AI Act anx_XI</a>
+													
+														<a href="https://eur-lex.europa.eu/legal-content/EN/TXT/HTML/?uri=OJ:L_202401689#anx_XI">AI Act anx_XI</a>
+													
                                                 
                                             
 
@@ -2861,7 +2934,7 @@ Therefore it may vary over time when new versions of DCAT-AP are created.
                                     
                                 </td>
                                 <td>
-                                    0..1
+                                    0..*
                                 </td>
                                 <td property="rdfs:comment">
                                     A language of the Dataset.
@@ -3484,6 +3557,65 @@ Therefore it may vary over time when new versions of DCAT-AP are created.
                                 </td>
                             </tr>
                         
+                            <tr id="Dataset.wasgeneratedby"
+                                typeof="rdf:Property"
+                                resource="http://www.w3.org/ns/prov#wasGeneratedBy"
+                                class="class mandatory">
+                                <td>
+				    <a href="https://github.com/SEMICeu/MLDCAT-AP/issues/new?title=Issue%20for%20was generated by%20in%20Dataset&body=Explain%20your%20issue%20for%20https://semiceu.github.io/MLDCAT-AP/releases/3.0.0%23Dataset.wasgeneratedby" target="_blank" rel="noopener noreferrer" >
+					    <!--                                        <i class="icon">[o]</i> -->
+                                        <img src="html/callout.png" loading="lazy" alt="[o]" width="100" height="100"/>
+                                    </a>
+                                </td>
+                                <td>
+                                        <a href="http://www.w3.org/ns/prov#wasGeneratedBy"
+                                           data-toggle="tooltip"
+                                           data-content="http://www.w3.org/ns/prov#wasGeneratedBy"
+                                           data-placement="right">
+                                        was generated by</a>
+                                </td>
+                                <td>
+                                    
+                                        
+                                            <a href="#Activity" data-placement="right">Activity</a>
+                                        
+                                    
+                                </td>
+                                <td>
+                                    0..*
+                                </td>
+                                <td property="rdfs:comment">
+                                    An activity that generated, or provides the business context for, the creation of the dataset.
+                                </td>
+                                <td property="skos:scopeNote">
+                                    
+                                </td>
+				<!--
+                                <td>
+                                    
+                                </td>
+				-->
+                                <td>
+                                    
+                                    
+                                        
+                                        
+                                            
+                                            
+
+                                            
+                                                
+                                                    <a href="https://semiceu.github.io/DCAT-AP/releases/3.0.1/#Dataset.wasgeneratedby">DCAT-AP [A]</a>
+                                                
+                                            
+
+                                            
+                                        
+                                        
+                                    
+                                </td>
+                            </tr>
+                        
                     </tbody>
                 </table>
             </div>
@@ -3563,6 +3695,7 @@ Therefore it may vary over time when new versions of DCAT-AP are created.
                             , <a href="#Distribution.ignoreattribute">ignore attribute</a>
                             , <a href="#Distribution.language">language</a>
                             , <a href="#Distribution.licence">licence</a>
+                            , <a href="#Distribution.linkedschemas">linked schemas</a>
                             , <a href="#Distribution.mediatype">media type</a>
                             , <a href="#Distribution.numberofdatapoints">number of datapoints</a>
                             , <a href="#Distribution.processingdate">processing date</a>
@@ -4426,6 +4559,65 @@ Therefore it may vary over time when new versions of DCAT-AP are created.
                                 </td>
                             </tr>
                         
+                            <tr id="Distribution.linkedschemas"
+                                typeof="rdf:Property"
+                                resource="http://purl.org/dc/terms/conformsTo"
+                                class="class mandatory">
+                                <td>
+				    <a href="https://github.com/SEMICeu/MLDCAT-AP/issues/new?title=Issue%20for%20linked schemas%20in%20Distribution&body=Explain%20your%20issue%20for%20https://semiceu.github.io/MLDCAT-AP/releases/3.0.0%23Distribution.linkedschemas" target="_blank" rel="noopener noreferrer" >
+					    <!--                                        <i class="icon">[o]</i> -->
+                                        <img src="html/callout.png" loading="lazy" alt="[o]" width="100" height="100"/>
+                                    </a>
+                                </td>
+                                <td>
+                                        <a href="http://purl.org/dc/terms/conformsTo"
+                                           data-toggle="tooltip"
+                                           data-content="http://purl.org/dc/terms/conformsTo"
+                                           data-placement="right">
+                                        linked schemas</a>
+                                </td>
+                                <td>
+                                    
+                                        
+                                            <a href="#Standard" data-placement="right">Standard</a>
+                                        
+                                    
+                                </td>
+                                <td>
+                                    0..*
+                                </td>
+                                <td property="rdfs:comment">
+                                    An established schema to which the described Distribution conforms.
+                                </td>
+                                <td property="skos:scopeNote">
+                                    
+                                </td>
+				<!--
+                                <td>
+                                    
+                                </td>
+				-->
+                                <td>
+                                    
+                                    
+                                        
+                                        
+                                            
+                                            
+
+                                            
+                                                
+                                                    <a href="https://semiceu.github.io/DCAT-AP/releases/3.0.1/#Distribution.linkedschemas">DCAT-AP [A]</a>
+                                                
+                                            
+
+                                            
+                                        
+                                        
+                                    
+                                </td>
+                            </tr>
+                        
                             <tr id="Distribution.mediatype"
                                 typeof="rdf:Property"
                                 resource="http://www.w3.org/ns/dcat#mediaType"
@@ -4543,7 +4735,9 @@ Therefore it may vary over time when new versions of DCAT-AP are created.
                                             
                                                 
                                                     
-                                                    <a href="https://eur-lex.europa.eu/legal-content/EN/TXT/HTML/?uri=OJ:L_202401689#anx_XI">AI Act anx_XI</a>
+													
+														<a href="https://eur-lex.europa.eu/legal-content/EN/TXT/HTML/?uri=OJ:L_202401689#anx_XI">AI Act anx_XI</a>
+													
                                                 
                                             
 
@@ -4555,7 +4749,9 @@ Therefore it may vary over time when new versions of DCAT-AP are created.
                                             
                                                 
                                                     
-                                                    <a href="https://eur-lex.europa.eu/legal-content/EN/TXT/HTML/?uri=OJ:L_202401689#anx_XII">AI Act anx_XII</a>
+													
+														<a href="https://eur-lex.europa.eu/legal-content/EN/TXT/HTML/?uri=OJ:L_202401689#anx_XII">AI Act anx_XII</a>
+													
                                                 
                                             
 
@@ -4567,7 +4763,9 @@ Therefore it may vary over time when new versions of DCAT-AP are created.
                                             
                                                 
                                                     
-                                                    <a href="https://eur-lex.europa.eu/legal-content/EN/TXT/HTML/?uri=OJ:L_202401689#anx_XIII">AI Act anx_XIII</a>
+													
+														<a href="https://eur-lex.europa.eu/legal-content/EN/TXT/HTML/?uri=OJ:L_202401689#anx_XIII">AI Act anx_XIII</a>
+													
                                                 
                                             
 
@@ -4882,9 +5080,11 @@ Therefore it may vary over time when new versions of DCAT-AP are created.
 
                                 
                                     
-                                        
-                                        <a href="https://eur-lex.europa.eu/legal-content/EN/TXT/HTML/?uri=OJ:L_202401689#anx_XI">AI Act anx_XI</a>
-                                    
+										
+										
+											<a href="https://eur-lex.europa.eu/legal-content/EN/TXT/HTML/?uri=OJ:L_202401689#anx_XI">AI Act anx_XI</a>
+										
+									
                                 
 
                                 
@@ -5239,9 +5439,11 @@ Therefore it may vary over time when new versions of DCAT-AP are created.
 
                                 
                                     
-                                        
-                                        <a href="https://eur-lex.europa.eu/legal-content/EN/TXT/HTML/?uri=OJ:L_202401689#art_3.tit_1">AI Act art_3.tit_1</a>
-                                    
+										
+										
+											<a href="https://eur-lex.europa.eu/legal-content/EN/TXT/HTML/?uri=OJ:L_202401689#art_3.tit_1">AI Act art_3.tit_1</a>
+										
+									
                                 
 
                                 
@@ -5400,7 +5602,9 @@ Therefore it may vary over time when new versions of DCAT-AP are created.
                                             
                                                 
                                                     
-                                                    <a href="https://eur-lex.europa.eu/legal-content/EN/TXT/HTML/?uri=OJ:L_202401689#rct_114">AI Act rct_114</a>
+													
+														<a href="https://eur-lex.europa.eu/legal-content/EN/TXT/HTML/?uri=OJ:L_202401689#rct_114">AI Act rct_114</a>
+													
                                                 
                                             
 
@@ -5460,7 +5664,9 @@ Therefore it may vary over time when new versions of DCAT-AP are created.
                                             
                                                 
                                                     
-                                                    <a href="https://eur-lex.europa.eu/legal-content/EN/TXT/HTML/?uri=OJ:L_202401689#rct_116">AI Act rct_116</a>
+													
+														<a href="https://eur-lex.europa.eu/legal-content/EN/TXT/HTML/?uri=OJ:L_202401689#rct_116">AI Act rct_116</a>
+													
                                                 
                                             
 
@@ -5520,7 +5726,9 @@ Therefore it may vary over time when new versions of DCAT-AP are created.
                                             
                                                 
                                                     
-                                                    <a href="https://eur-lex.europa.eu/legal-content/EN/TXT/HTML/?uri=OJ:L_202401689#art_3.tit_1">AI Act art_3.tit_1</a>
+													
+														<a href="https://eur-lex.europa.eu/legal-content/EN/TXT/HTML/?uri=OJ:L_202401689#art_3.tit_1">AI Act art_3.tit_1</a>
+													
                                                 
                                             
 
@@ -5580,7 +5788,9 @@ Therefore it may vary over time when new versions of DCAT-AP are created.
                                             
                                                 
                                                     
-                                                    <a href="https://eur-lex.europa.eu/legal-content/EN/TXT/HTML/?uri=OJ:L_202401689#art_3.tit_1">AI Act art_3.tit_1</a>
+													
+														<a href="https://eur-lex.europa.eu/legal-content/EN/TXT/HTML/?uri=OJ:L_202401689#art_3.tit_1">AI Act art_3.tit_1</a>
+													
                                                 
                                             
 
@@ -5640,7 +5850,9 @@ Therefore it may vary over time when new versions of DCAT-AP are created.
                                             
                                                 
                                                     
-                                                    <a href="https://eur-lex.europa.eu/legal-content/EN/TXT/HTML/?uri=OJ:L_202401689#rct_116">AI Act rct_116</a>
+													
+														<a href="https://eur-lex.europa.eu/legal-content/EN/TXT/HTML/?uri=OJ:L_202401689#rct_116">AI Act rct_116</a>
+													
                                                 
                                             
 
@@ -5809,8 +6021,8 @@ Therefore it may vary over time when new versions of DCAT-AP are created.
 
                                 
                                     
-                                        <a href="https://eur-lex.europa.eu/legal-content/EN/TXT/HTML/?uri=OJ:L_202401689">AI Act</a>
-                                    
+										<a href="https://eur-lex.europa.eu/legal-content/EN/TXT/HTML/?uri=OJ:L_202401689">AI Act</a>
+									
                                 
 
                                 
@@ -6297,7 +6509,9 @@ Therefore it may vary over time when new versions of DCAT-AP are created.
                                             
                                                 
                                                     
-                                                    <a href="https://eur-lex.europa.eu/legal-content/EN/TXT/HTML/?uri=OJ:L_202401689#anx_XI">AI Act anx_XI</a>
+													
+														<a href="https://eur-lex.europa.eu/legal-content/EN/TXT/HTML/?uri=OJ:L_202401689#anx_XI">AI Act anx_XI</a>
+													
                                                 
                                             
 
@@ -6403,7 +6617,9 @@ Therefore it may vary over time when new versions of DCAT-AP are created.
                                             
                                                 
                                                     
-                                                    <a href="https://eur-lex.europa.eu/legal-content/EN/TXT/HTML/?uri=OJ:L_202401689#anx_XIII">AI Act anx_XIII</a>
+													
+														<a href="https://eur-lex.europa.eu/legal-content/EN/TXT/HTML/?uri=OJ:L_202401689#anx_XIII">AI Act anx_XIII</a>
+													
                                                 
                                             
 
@@ -6555,7 +6771,9 @@ Therefore it may vary over time when new versions of DCAT-AP are created.
                                             
                                                 
                                                     
-                                                    <a href="https://eur-lex.europa.eu/legal-content/EN/TXT/HTML/?uri=OJ:L_202401689#anx_XI">AI Act anx_XI</a>
+													
+														<a href="https://eur-lex.europa.eu/legal-content/EN/TXT/HTML/?uri=OJ:L_202401689#anx_XI">AI Act anx_XI</a>
+													
                                                 
                                             
 
@@ -6624,7 +6842,9 @@ Therefore it may vary over time when new versions of DCAT-AP are created.
                                             
                                                 
                                                     
-                                                    <a href="https://eur-lex.europa.eu/legal-content/EN/TXT/HTML/?uri=OJ:L_202401689#anx_XI">AI Act anx_XI</a>
+													
+														<a href="https://eur-lex.europa.eu/legal-content/EN/TXT/HTML/?uri=OJ:L_202401689#anx_XI">AI Act anx_XI</a>
+													
                                                 
                                             
 
@@ -6693,7 +6913,9 @@ Therefore it may vary over time when new versions of DCAT-AP are created.
                                             
                                                 
                                                     
-                                                    <a href="https://eur-lex.europa.eu/legal-content/EN/TXT/HTML/?uri=OJ:L_202401689#anx_XI">AI Act anx_XI</a>
+													
+														<a href="https://eur-lex.europa.eu/legal-content/EN/TXT/HTML/?uri=OJ:L_202401689#anx_XI">AI Act anx_XI</a>
+													
                                                 
                                             
 
@@ -6762,7 +6984,9 @@ Therefore it may vary over time when new versions of DCAT-AP are created.
                                             
                                                 
                                                     
-                                                    <a href="https://eur-lex.europa.eu/legal-content/EN/TXT/HTML/?uri=OJ:L_202401689#anx_XI">AI Act anx_XI</a>
+													
+														<a href="https://eur-lex.europa.eu/legal-content/EN/TXT/HTML/?uri=OJ:L_202401689#anx_XI">AI Act anx_XI</a>
+													
                                                 
                                             
 
@@ -6822,7 +7046,9 @@ Therefore it may vary over time when new versions of DCAT-AP are created.
                                             
                                                 
                                                     
-                                                    <a href="https://eur-lex.europa.eu/legal-content/EN/TXT/HTML/?uri=OJ:L_202401689#anx_XI">AI Act anx_XI</a>
+													
+														<a href="https://eur-lex.europa.eu/legal-content/EN/TXT/HTML/?uri=OJ:L_202401689#anx_XI">AI Act anx_XI</a>
+													
                                                 
                                             
 
@@ -6928,7 +7154,9 @@ Therefore it may vary over time when new versions of DCAT-AP are created.
                                             
                                                 
                                                     
-                                                    <a href="https://eur-lex.europa.eu/legal-content/EN/TXT/HTML/?uri=OJ:L_202401689#anx_XIII">AI Act anx_XIII</a>
+													
+														<a href="https://eur-lex.europa.eu/legal-content/EN/TXT/HTML/?uri=OJ:L_202401689#anx_XIII">AI Act anx_XIII</a>
+													
                                                 
                                             
 
@@ -7284,7 +7512,9 @@ Therefore it may vary over time when new versions of DCAT-AP are created.
                                             
                                                 
                                                     
-                                                    <a href="https://eur-lex.europa.eu/legal-content/EN/TXT/HTML/?uri=OJ:L_202401689#anx_XI">AI Act anx_XI</a>
+													
+														<a href="https://eur-lex.europa.eu/legal-content/EN/TXT/HTML/?uri=OJ:L_202401689#anx_XI">AI Act anx_XI</a>
+													
                                                 
                                             
 
@@ -7296,7 +7526,9 @@ Therefore it may vary over time when new versions of DCAT-AP are created.
                                             
                                                 
                                                     
-                                                    <a href="https://eur-lex.europa.eu/legal-content/EN/TXT/HTML/?uri=OJ:L_202401689#anx_XII">AI Act anx_XII</a>
+													
+														<a href="https://eur-lex.europa.eu/legal-content/EN/TXT/HTML/?uri=OJ:L_202401689#anx_XII">AI Act anx_XII</a>
+													
                                                 
                                             
 
@@ -7503,7 +7735,9 @@ Therefore it may vary over time when new versions of DCAT-AP are created.
                                             
                                                 
                                                     
-                                                    <a href="https://eur-lex.europa.eu/legal-content/EN/TXT/HTML/?uri=OJ:L_202401689#anx_XI">AI Act anx_XI</a>
+													
+														<a href="https://eur-lex.europa.eu/legal-content/EN/TXT/HTML/?uri=OJ:L_202401689#anx_XI">AI Act anx_XI</a>
+													
                                                 
                                             
 
@@ -7515,7 +7749,9 @@ Therefore it may vary over time when new versions of DCAT-AP are created.
                                             
                                                 
                                                     
-                                                    <a href="https://eur-lex.europa.eu/legal-content/EN/TXT/HTML/?uri=OJ:L_202401689#anx_XII">AI Act anx_XII</a>
+													
+														<a href="https://eur-lex.europa.eu/legal-content/EN/TXT/HTML/?uri=OJ:L_202401689#anx_XII">AI Act anx_XII</a>
+													
                                                 
                                             
 
@@ -7676,7 +7912,9 @@ Therefore it may vary over time when new versions of DCAT-AP are created.
                                             
                                                 
                                                     
-                                                    <a href="https://eur-lex.europa.eu/legal-content/EN/TXT/HTML/?uri=OJ:L_202401689#anx_XII">AI Act anx_XII</a>
+													
+														<a href="https://eur-lex.europa.eu/legal-content/EN/TXT/HTML/?uri=OJ:L_202401689#anx_XII">AI Act anx_XII</a>
+													
                                                 
                                             
 
@@ -7745,7 +7983,9 @@ Therefore it may vary over time when new versions of DCAT-AP are created.
                                             
                                                 
                                                     
-                                                    <a href="https://eur-lex.europa.eu/legal-content/EN/TXT/HTML/?uri=OJ:L_202401689#anx_XI">AI Act anx_XI</a>
+													
+														<a href="https://eur-lex.europa.eu/legal-content/EN/TXT/HTML/?uri=OJ:L_202401689#anx_XI">AI Act anx_XI</a>
+													
                                                 
                                             
 
@@ -7985,7 +8225,9 @@ Therefore it may vary over time when new versions of DCAT-AP are created.
                                             
                                                 
                                                     
-                                                    <a href="https://eur-lex.europa.eu/legal-content/EN/TXT/HTML/?uri=OJ:L_202401689#anx_XI">AI Act anx_XI</a>
+													
+														<a href="https://eur-lex.europa.eu/legal-content/EN/TXT/HTML/?uri=OJ:L_202401689#anx_XI">AI Act anx_XI</a>
+													
                                                 
                                             
 
@@ -7997,7 +8239,9 @@ Therefore it may vary over time when new versions of DCAT-AP are created.
                                             
                                                 
                                                     
-                                                    <a href="https://eur-lex.europa.eu/legal-content/EN/TXT/HTML/?uri=OJ:L_202401689#anx_XII">AI Act anx_XII</a>
+													
+														<a href="https://eur-lex.europa.eu/legal-content/EN/TXT/HTML/?uri=OJ:L_202401689#anx_XII">AI Act anx_XII</a>
+													
                                                 
                                             
 
@@ -8149,7 +8393,9 @@ Therefore it may vary over time when new versions of DCAT-AP are created.
                                             
                                                 
                                                     
-                                                    <a href="https://eur-lex.europa.eu/legal-content/EN/TXT/HTML/?uri=OJ:L_202401689#anx_XI">AI Act anx_XI</a>
+													
+														<a href="https://eur-lex.europa.eu/legal-content/EN/TXT/HTML/?uri=OJ:L_202401689#anx_XI">AI Act anx_XI</a>
+													
                                                 
                                             
 
@@ -8209,7 +8455,9 @@ Therefore it may vary over time when new versions of DCAT-AP are created.
                                             
                                                 
                                                     
-                                                    <a href="https://eur-lex.europa.eu/legal-content/EN/TXT/HTML/?uri=OJ:L_202401689#anx_XI">AI Act anx_XI</a>
+													
+														<a href="https://eur-lex.europa.eu/legal-content/EN/TXT/HTML/?uri=OJ:L_202401689#anx_XI">AI Act anx_XI</a>
+													
                                                 
                                             
 
@@ -8278,7 +8526,9 @@ Therefore it may vary over time when new versions of DCAT-AP are created.
                                             
                                                 
                                                     
-                                                    <a href="https://eur-lex.europa.eu/legal-content/EN/TXT/HTML/?uri=OJ:L_202401689#anx_XII">AI Act anx_XII</a>
+													
+														<a href="https://eur-lex.europa.eu/legal-content/EN/TXT/HTML/?uri=OJ:L_202401689#anx_XII">AI Act anx_XII</a>
+													
                                                 
                                             
 
@@ -8338,7 +8588,9 @@ Therefore it may vary over time when new versions of DCAT-AP are created.
                                             
                                                 
                                                     
-                                                    <a href="https://eur-lex.europa.eu/legal-content/EN/TXT/HTML/?uri=OJ:L_202401689#anx_XI">AI Act anx_XI</a>
+													
+														<a href="https://eur-lex.europa.eu/legal-content/EN/TXT/HTML/?uri=OJ:L_202401689#anx_XI">AI Act anx_XI</a>
+													
                                                 
                                             
 
@@ -8407,7 +8659,9 @@ Therefore it may vary over time when new versions of DCAT-AP are created.
                                             
                                                 
                                                     
-                                                    <a href="https://eur-lex.europa.eu/legal-content/EN/TXT/HTML/?uri=OJ:L_202401689#anx_XI">AI Act anx_XI</a>
+													
+														<a href="https://eur-lex.europa.eu/legal-content/EN/TXT/HTML/?uri=OJ:L_202401689#anx_XI">AI Act anx_XI</a>
+													
                                                 
                                             
 
@@ -8476,7 +8730,9 @@ Therefore it may vary over time when new versions of DCAT-AP are created.
                                             
                                                 
                                                     
-                                                    <a href="https://eur-lex.europa.eu/legal-content/EN/TXT/HTML/?uri=OJ:L_202401689#anx_XI">AI Act anx_XI</a>
+													
+														<a href="https://eur-lex.europa.eu/legal-content/EN/TXT/HTML/?uri=OJ:L_202401689#anx_XI">AI Act anx_XI</a>
+													
                                                 
                                             
 
@@ -8582,7 +8838,9 @@ Therefore it may vary over time when new versions of DCAT-AP are created.
                                             
                                                 
                                                     
-                                                    <a href="https://eur-lex.europa.eu/legal-content/EN/TXT/HTML/?uri=OJ:L_202401689#anx_XI">AI Act anx_XI</a>
+													
+														<a href="https://eur-lex.europa.eu/legal-content/EN/TXT/HTML/?uri=OJ:L_202401689#anx_XI">AI Act anx_XI</a>
+													
                                                 
                                             
 
@@ -9642,6 +9900,8 @@ Therefore it may vary over time when new versions of DCAT-AP are created.
 
 
 
+
+
 </section>
 
 <section>
@@ -9650,6 +9910,72 @@ Therefore it may vary over time when new versions of DCAT-AP are created.
 </h2>
 The supportive entities are supporting the main entities in the Application Profile. 
 They are included in the Application Profile because they form the range of properties.
+
+
+
+
+   
+        <section>
+            <h3 id="Activity">
+                <a href="http://www.w3.org/ns/prov#Activity"
+                   data-toggle="tooltip"
+                   data-content="http://www.w3.org/ns/prov#Activity"
+                   data-placement="right">Activity</a>
+
+            </h3>
+	        <!-- XXX an image in the h3 will break the rendering of the Table Of Contents of Respec -->
+		<!-- outcomment github feedback possibility
+                <a href="https://github.com/SEMICeu/MLDCAT-AP/issues/new?title=Issue%20for%20Activity&body=Explain%20your%20issue"}}>
+                   <img src="html/callout.png" loading="lazy" alt="(create issue)" width="20" height="20"/>
+		</a>
+		-->
+            <dl>
+                <dt>
+                    Definition
+                </dt>
+                <dd>
+                    An activity is something that occurs over a period of time and acts upon or with entities; it may include consuming, processing, transforming, modifying, relocating, using, or generating entities.
+                </dd>
+                
+					<dt>
+						Reference
+					</dt>
+					<dd>
+                        
+                        
+                            
+                            
+                                
+                                
+
+                                
+                                    
+                                        <a href="https://semiceu.github.io/DCAT-AP/releases/3.0.1/#Activity">DCAT-AP [A]</a>
+                                    
+                                
+
+                                
+                            
+                            
+                        
+					</dd>
+				
+                
+                
+                    <dt>
+                        Properties
+                    </dt>
+                    
+                    <dd>
+                        This specification does not impose any additional requirements to properties for this entity.
+                    </dd>
+                
+            </dl>
+        </div>
+        
+    </div>
+</section>
+
 
 
 
@@ -9694,9 +10020,11 @@ They are included in the Application Profile because they form the range of prop
 
                                 
                                     
-                                        
-                                        <a href="https://eur-lex.europa.eu/legal-content/EN/TXT/HTML/?uri=OJ:L_202401689#anx_XIII">AI Act anx_XIII</a>
-                                    
+										
+										
+											<a href="https://eur-lex.europa.eu/legal-content/EN/TXT/HTML/?uri=OJ:L_202401689#anx_XIII">AI Act anx_XIII</a>
+										
+									
                                 
 
                                 
@@ -9778,7 +10106,7 @@ They are included in the Application Profile because they form the range of prop
                                     
                                 </td>
                                 <td>
-                                    1
+                                    1..*
                                 </td>
                                 <td property="rdfs:comment">
                                     The name assigned to the resource.
@@ -9802,7 +10130,9 @@ They are included in the Application Profile because they form the range of prop
                                             
                                                 
                                                     
-                                                    <a href="https://eur-lex.europa.eu/legal-content/EN/TXT/HTML/?uri=OJ:L_202401689#anx_XIII">AI Act anx_XIII</a>
+													
+														<a href="https://eur-lex.europa.eu/legal-content/EN/TXT/HTML/?uri=OJ:L_202401689#anx_XIII">AI Act anx_XIII</a>
+													
                                                 
                                             
 
@@ -11148,9 +11478,11 @@ They are included in the Application Profile because they form the range of prop
 
                                 
                                     
-                                        
-                                        <a href="https://eur-lex.europa.eu/legal-content/EN/TXT/HTML/?uri=OJ:L_202401689#anx_XI">AI Act anx_XI</a>
-                                    
+										
+										
+											<a href="https://eur-lex.europa.eu/legal-content/EN/TXT/HTML/?uri=OJ:L_202401689#anx_XI">AI Act anx_XI</a>
+										
+									
                                 
 
                                 , 
@@ -11169,9 +11501,11 @@ They are included in the Application Profile because they form the range of prop
 
                                 
                                     
-                                        
-                                        <a href="https://eur-lex.europa.eu/legal-content/EN/TXT/HTML/?uri=OJ:L_202401689#anx_XII">AI Act anx_XII</a>
-                                    
+										
+										
+											<a href="https://eur-lex.europa.eu/legal-content/EN/TXT/HTML/?uri=OJ:L_202401689#anx_XII">AI Act anx_XII</a>
+										
+									
                                 
 
                                 
@@ -11371,7 +11705,9 @@ They are included in the Application Profile because they form the range of prop
                                             
                                                 
                                                     
-                                                    <a href="https://eur-lex.europa.eu/legal-content/EN/TXT/HTML/?uri=OJ:L_202401689#anx_XI">AI Act anx_XI</a>
+													
+														<a href="https://eur-lex.europa.eu/legal-content/EN/TXT/HTML/?uri=OJ:L_202401689#anx_XI">AI Act anx_XI</a>
+													
                                                 
                                             
 
@@ -12377,9 +12713,11 @@ They are included in the Application Profile because they form the range of prop
 
                                 
                                     
-                                        
-                                        <a href="https://eur-lex.europa.eu/legal-content/EN/TXT/HTML/?uri=OJ:L_202401689#anx_XI">AI Act anx_XI</a>
-                                    
+										
+										
+											<a href="https://eur-lex.europa.eu/legal-content/EN/TXT/HTML/?uri=OJ:L_202401689#anx_XI">AI Act anx_XI</a>
+										
+									
                                 
 
                                 , 
@@ -12389,9 +12727,11 @@ They are included in the Application Profile because they form the range of prop
 
                                 
                                     
-                                        
-                                        <a href="https://eur-lex.europa.eu/legal-content/EN/TXT/HTML/?uri=OJ:L_202401689#anx_XIII">AI Act anx_XIII</a>
-                                    
+										
+										
+											<a href="https://eur-lex.europa.eu/legal-content/EN/TXT/HTML/?uri=OJ:L_202401689#anx_XIII">AI Act anx_XIII</a>
+										
+									
                                 
 
                                 
@@ -12499,7 +12839,9 @@ They are included in the Application Profile because they form the range of prop
                                             
                                                 
                                                     
-                                                    <a href="https://eur-lex.europa.eu/legal-content/EN/TXT/HTML/?uri=OJ:L_202401689#anx_XI">AI Act anx_XI</a>
+													
+														<a href="https://eur-lex.europa.eu/legal-content/EN/TXT/HTML/?uri=OJ:L_202401689#anx_XI">AI Act anx_XI</a>
+													
                                                 
                                             
 
@@ -12616,7 +12958,9 @@ They are included in the Application Profile because they form the range of prop
                                             
                                                 
                                                     
-                                                    <a href="https://eur-lex.europa.eu/legal-content/EN/TXT/HTML/?uri=OJ:L_202401689#anx_XI">AI Act anx_XI</a>
+													
+														<a href="https://eur-lex.europa.eu/legal-content/EN/TXT/HTML/?uri=OJ:L_202401689#anx_XI">AI Act anx_XI</a>
+													
                                                 
                                             
 
@@ -12628,7 +12972,9 @@ They are included in the Application Profile because they form the range of prop
                                             
                                                 
                                                     
-                                                    <a href="https://eur-lex.europa.eu/legal-content/EN/TXT/HTML/?uri=OJ:L_202401689#anx_XIII">AI Act anx_XIII</a>
+													
+														<a href="https://eur-lex.europa.eu/legal-content/EN/TXT/HTML/?uri=OJ:L_202401689#anx_XIII">AI Act anx_XIII</a>
+													
                                                 
                                             
 
@@ -15366,9 +15712,11 @@ They are included in the Application Profile because they form the range of prop
 
                                 
                                     
-                                        
-                                        <a href="https://eur-lex.europa.eu/legal-content/EN/TXT/HTML/?uri=OJ:L_202401689#anx_XII">AI Act anx_XII</a>
-                                    
+										
+										
+											<a href="https://eur-lex.europa.eu/legal-content/EN/TXT/HTML/?uri=OJ:L_202401689#anx_XII">AI Act anx_XII</a>
+										
+									
                                 
 
                                 
@@ -15621,9 +15969,11 @@ They are included in the Application Profile because they form the range of prop
 
                                 
                                     
-                                        
-                                        <a href="https://eur-lex.europa.eu/legal-content/EN/TXT/HTML/?uri=OJ:L_202401689#anx_XII">AI Act anx_XII</a>
-                                    
+										
+										
+											<a href="https://eur-lex.europa.eu/legal-content/EN/TXT/HTML/?uri=OJ:L_202401689#anx_XII">AI Act anx_XII</a>
+										
+									
                                 
 
                                 , 
@@ -16387,9 +16737,11 @@ They are included in the Application Profile because they form the range of prop
 
                                 
                                     
-                                        
-                                        <a href="https://eur-lex.europa.eu/legal-content/EN/TXT/HTML/?uri=OJ:L_202401689#anx_XI">AI Act anx_XI</a>
-                                    
+										
+										
+											<a href="https://eur-lex.europa.eu/legal-content/EN/TXT/HTML/?uri=OJ:L_202401689#anx_XI">AI Act anx_XI</a>
+										
+									
                                 
 
                                 , 
@@ -16399,9 +16751,11 @@ They are included in the Application Profile because they form the range of prop
 
                                 
                                     
-                                        
-                                        <a href="https://eur-lex.europa.eu/legal-content/EN/TXT/HTML/?uri=OJ:L_202401689#anx_XII">AI Act anx_XII</a>
-                                    
+										
+										
+											<a href="https://eur-lex.europa.eu/legal-content/EN/TXT/HTML/?uri=OJ:L_202401689#anx_XII">AI Act anx_XII</a>
+										
+									
                                 
 
                                 , 
@@ -16411,9 +16765,11 @@ They are included in the Application Profile because they form the range of prop
 
                                 
                                     
-                                        
-                                        <a href="https://eur-lex.europa.eu/legal-content/EN/TXT/HTML/?uri=OJ:L_202401689#anx_XIII">AI Act anx_XIII</a>
-                                    
+										
+										
+											<a href="https://eur-lex.europa.eu/legal-content/EN/TXT/HTML/?uri=OJ:L_202401689#anx_XIII">AI Act anx_XIII</a>
+										
+									
                                 
 
                                 
@@ -16529,7 +16885,9 @@ They are included in the Application Profile because they form the range of prop
                                             
                                                 
                                                     
-                                                    <a href="https://eur-lex.europa.eu/legal-content/EN/TXT/HTML/?uri=OJ:L_202401689#anx_XI">AI Act anx_XI</a>
+													
+														<a href="https://eur-lex.europa.eu/legal-content/EN/TXT/HTML/?uri=OJ:L_202401689#anx_XI">AI Act anx_XI</a>
+													
                                                 
                                             
 
@@ -16541,7 +16899,9 @@ They are included in the Application Profile because they form the range of prop
                                             
                                                 
                                                     
-                                                    <a href="https://eur-lex.europa.eu/legal-content/EN/TXT/HTML/?uri=OJ:L_202401689#anx_XII">AI Act anx_XII</a>
+													
+														<a href="https://eur-lex.europa.eu/legal-content/EN/TXT/HTML/?uri=OJ:L_202401689#anx_XII">AI Act anx_XII</a>
+													
                                                 
                                             
 
@@ -16553,7 +16913,9 @@ They are included in the Application Profile because they form the range of prop
                                             
                                                 
                                                     
-                                                    <a href="https://eur-lex.europa.eu/legal-content/EN/TXT/HTML/?uri=OJ:L_202401689#anx_XIII">AI Act anx_XIII</a>
+													
+														<a href="https://eur-lex.europa.eu/legal-content/EN/TXT/HTML/?uri=OJ:L_202401689#anx_XIII">AI Act anx_XIII</a>
+													
                                                 
                                             
 
@@ -18578,7 +18940,9 @@ They are included in the Application Profile because they form the range of prop
                                             
                                                 
                                                     
-                                                    <a href="https://eur-lex.europa.eu/legal-content/EN/TXT/HTML/?uri=OJ:L_202401689#anx_XI">AI Act anx_XI</a>
+													
+														<a href="https://eur-lex.europa.eu/legal-content/EN/TXT/HTML/?uri=OJ:L_202401689#anx_XI">AI Act anx_XI</a>
+													
                                                 
                                             
 
@@ -18590,7 +18954,9 @@ They are included in the Application Profile because they form the range of prop
                                             
                                                 
                                                     
-                                                    <a href="https://eur-lex.europa.eu/legal-content/EN/TXT/HTML/?uri=OJ:L_202401689#anx_XIII">AI Act anx_XIII</a>
+													
+														<a href="https://eur-lex.europa.eu/legal-content/EN/TXT/HTML/?uri=OJ:L_202401689#anx_XIII">AI Act anx_XIII</a>
+													
                                                 
                                             
 
@@ -19388,6 +19754,56 @@ They are included in the Application Profile because they form the range of prop
                     </tbody>
                 </table>
             </div>
+        
+    </div>
+</section>
+
+
+
+
+
+   
+        <section>
+            <h3 id="Standard">
+                <a href="http://purl.org/dc/terms/Standard"
+                   data-toggle="tooltip"
+                   data-content="http://purl.org/dc/terms/Standard"
+                   data-placement="right">Standard</a>
+
+            </h3>
+	        <!-- XXX an image in the h3 will break the rendering of the Table Of Contents of Respec -->
+		<!-- outcomment github feedback possibility
+                <a href="https://github.com/SEMICeu/MLDCAT-AP/issues/new?title=Issue%20for%20Standard&body=Explain%20your%20issue"}}>
+                   <img src="html/callout.png" loading="lazy" alt="(create issue)" width="20" height="20"/>
+		</a>
+		-->
+            <dl>
+                <dt>
+                    Definition
+                </dt>
+                <dd>
+                    A standard or other specification to which a resource conforms.
+                </dd>
+                
+                
+                    <dt>
+                        Usage Note
+                    </dt>
+                    <dd>
+                        It could be used, for example, to point directly to a Croissant file. In alignment with <a href="https://github.com/SEMICeu/StatDCAT-AP/issues/25">STATDCAT-AP #25</a>
+                    </dd>
+                
+                
+                    <dt>
+                        Properties
+                    </dt>
+                    
+                    <dd>
+                        This specification does not impose any additional requirements to properties for this entity.
+                    </dd>
+                
+            </dl>
+        </div>
         
     </div>
 </section>
@@ -20759,6 +21175,19 @@ The properties are indicated as <it>mandatory, recommended, optional</it> and <i
 	<tbody>
 		
 				
+					<tr>
+						<td><a href="#Activity">Activity</a></td>
+						<td><div class="shorten">http://www.w3.org/ns/prov#Activity</div></td>
+						<td></td>
+						<td></td>
+						<td></td>
+					</tr>
+				
+			</tr>
+		
+				
+					
+						
 					
 						
 							<tr>
@@ -20773,6 +21202,18 @@ The properties are indicated as <it>mandatory, recommended, optional</it> and <i
 					
 						
 					
+						
+					
+					
+						
+							<tr>
+								<td><a href="#Agent">Agent</a></td>
+								<td><div class="shorten">http://xmlns.com/foaf/0.1/Agent</div></td>
+								<td></td>
+								<td><a href="#Agent.actedonbehalfof">acted on behalf of </a></td>
+								<td><div class="shorten">http://www.w3.org/ns/prov#actedOnBehalfOf</div></td>
+							</tr>
+						
 					
 						
 					
@@ -21549,6 +21990,10 @@ The properties are indicated as <it>mandatory, recommended, optional</it> and <i
 					
 						
 					
+						
+					
+					
+						
 					
 						
 					
@@ -21863,6 +22308,16 @@ The properties are indicated as <it>mandatory, recommended, optional</it> and <i
 							</tr>
 						
 					
+						
+							<tr>
+								<td><a href="#Dataset">Dataset</a></td>
+								<td><div class="shorten">http://www.w3.org/ns/dcat#Dataset</div></td>
+								<td></td>
+								<td><a href="#Dataset.wasgeneratedby">was generated by </a></td>
+								<td><div class="shorten">http://www.w3.org/ns/prov#wasGeneratedBy</div></td>
+							</tr>
+						
+					
 				
 			</tr>
 		
@@ -21928,6 +22383,10 @@ The properties are indicated as <it>mandatory, recommended, optional</it> and <i
 					
 						
 					
+						
+					
+					
+						
 					
 						
 					
@@ -22105,6 +22564,16 @@ The properties are indicated as <it>mandatory, recommended, optional</it> and <i
 								<td>Optional</td>
 								<td><a href="#Distribution.licence">licence </a></td>
 								<td><div class="shorten">http://purl.org/dc/terms/license</div></td>
+							</tr>
+						
+					
+						
+							<tr>
+								<td><a href="#Distribution">Distribution</a></td>
+								<td><div class="shorten">http://www.w3.org/ns/dcat#Distribution</div></td>
+								<td></td>
+								<td><a href="#Distribution.linkedschemas">linked schemas </a></td>
+								<td><div class="shorten">http://purl.org/dc/terms/conformsTo</div></td>
 							</tr>
 						
 					
@@ -24914,6 +25383,17 @@ The properties are indicated as <it>mandatory, recommended, optional</it> and <i
 			</tr>
 		
 				
+					<tr>
+						<td><a href="#Standard">Standard</a></td>
+						<td><div class="shorten">http://purl.org/dc/terms/Standard</div></td>
+						<td></td>
+						<td></td>
+						<td></td>
+					</tr>
+				
+			</tr>
+		
+				
 					
 						
 					
@@ -25160,6 +25640,7 @@ The properties are indicated as <it>mandatory, recommended, optional</it> and <i
 {'pref':'odrl:', 'ns': 'http://www.w3.org/ns/odrl/2/'},
 {'pref':'owl:', 'ns': 'http://www.w3.org/2002/07/owl#'},
 {'pref':'qb:', 'ns': 'http://purl.org/linked-data/cube#'},
+{'pref':'prov:', 'ns': 'http://www.w3.org/ns/prov#'},
 {'pref':'rdf:', 'ns': 'http://www.w3.org/1999/02/22-rdf-syntax-ns#'},
 {'pref':'rdfs:', 'ns': 'http://www.w3.org/2000/01/rdf-schema#'},
 {'pref':'skos:', 'ns': 'http://www.w3.org/2004/02/skos/core#'},
