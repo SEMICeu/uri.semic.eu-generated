@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <xs:schema xmlns="https://data.europa.eu/m8g/xml/" xmlns:xs="http://www.w3.org/2001/XMLSchema" targetNamespace="https://data.europa.eu/m8g/xml/" version="2.0.0" elementFormDefault="qualified" attributeFormDefault="unqualified" xmlns:cv="https://data.europa.eu/m8g/xml/">
+  <xs:element name="AdministrativeUnit" type="AdministrativeUnitType"/>
   <xs:element name="ContactPoint" type="ContactPointType"/>
   <xs:element name="ImageObject" type="ImageObjectType"/>
   <xs:element name="PublicOrganisation" type="PublicOrganisationType"/>
@@ -35,6 +36,30 @@
         <xs:attribute name="conceptSchemeRef" type="xs:IDREF"/>
       </xs:extension>
     </xs:simpleContent>
+  </xs:complexType>
+  <xs:complexType name="AdministrativeUnitType">
+    <xs:sequence>
+      <xs:element name="code" type="ConceptType" maxOccurs="unbounded" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation xml:lang="en">The classification of the administrative unit.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="level" type="ConceptType" maxOccurs="unbounded" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation xml:lang="en">The level of the administrative unit in the hierarchy.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="name" type="xs:string" maxOccurs="unbounded" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation xml:lang="en">Official, geographical name of the administrative unit, given in different languages where required.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+    </xs:sequence>
+    <xs:attribute name="AdministrativeUnitRef" type="xs:IDREF">
+      <xs:annotation>
+        <xs:documentation xml:lang="en">Reference to AdministrativeUnit ID</xs:documentation>
+      </xs:annotation>
+    </xs:attribute>
   </xs:complexType>
   <xs:complexType name="ContactPointType">
     <xs:sequence>
@@ -307,9 +332,14 @@
           <xs:documentation xml:lang="en">A globally unique identifier for each instance of an Address.</xs:documentation>
         </xs:annotation>
       </xs:element>
-      <xs:element name="administrativeUnit" maxOccurs="unbounded" minOccurs="0">
+      <xs:element name="administrativeUnit" ref="AdministrativeUnitType" maxOccurs="unbounded" minOccurs="0">
         <xs:annotation>
           <xs:documentation xml:lang="en">A detailed administrative unit organized in a hierarchy.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="httpdataEuropaEum8GadminUnit" ref="AdministrativeUnitType" maxOccurs="unbounded" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation xml:lang="en">The adminUnit relationship links an Address with the Administrative Unit class.The adminUnit relationship links an Address with the Administrative Unit class.</xs:documentation>
         </xs:annotation>
       </xs:element>
       <xs:element name="administrativeUnitLevel1" type="xs:string" maxOccurs="unbounded" minOccurs="0">
