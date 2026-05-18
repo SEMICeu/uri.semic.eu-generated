@@ -35,6 +35,13 @@ This definition is consistent with the more detailed definition of a \"public se
   rdfs:isDefinedBy <http://data.europa.eu/m8g>;
   rdfs:range <http://data.europa.eu/m8g/AdminUnit> .
 
+<http://data.europa.eu/m8g/code> a owl:ObjectProperty;
+  rdfs:label "code"@en;
+  rdfs:comment "The classification of the administrative unit."@en;
+  rdfs:domain <http://data.europa.eu/m8g/AdminUnit>;
+  rdfs:isDefinedBy <http://data.europa.eu/m8g>;
+  rdfs:range skos:Concept .
+
 <http://data.europa.eu/m8g/contactPage> a owl:ObjectProperty;
   rdfs:label "contact page"@en;
   rdfs:comment "A web page that could be used to reach out the Contact Point."@en;
@@ -57,12 +64,26 @@ This definition is consistent with the more detailed definition of a \"public se
   rdfs:range skos:Concept;
   skos:scopeNote "It is recommended to use the frequency from an existing vocabulary like the <a href=\"https://op.europa.eu/en/web/eu-vocabularies/concept-scheme/-/resource?uri=http://publications.europa.eu/resource/authority/frequency\">Frequency</a> from the Publications Office."@en .
 
+<http://data.europa.eu/m8g/level> a owl:ObjectProperty;
+  rdfs:label "level"@en;
+  rdfs:comment "The level of the administrative unit in the hierarchy."@en;
+  rdfs:domain <http://data.europa.eu/m8g/AdminUnit>;
+  rdfs:isDefinedBy <http://data.europa.eu/m8g>;
+  rdfs:range skos:Concept;
+  skos:scopeNote "The recommended code list to indicate the level of an Admin Unit is the <a href=https://op.europa.eu/en/web/eu-vocabularies/dataset/-/resource?uri=http://publications.europa.eu/resource/dataset/atu-type>Administrative territorial unit type</a> Controlled Vocabulary maintained by the Publications Office of the EU. "@en .
+
 <http://data.europa.eu/m8g/telephone> a owl:DatatypeProperty;
   rdfs:label "has telephone"@en;
   rdfs:comment "A telephone number through which the Contact Point can be contacted."@en;
   rdfs:domain <http://data.europa.eu/m8g/ContactPoint>;
   rdfs:isDefinedBy <http://data.europa.eu/m8g>;
   rdfs:range rdfs:Literal .
+
+<http://data.europa.eu/m8g/AdminUnit> a owl:Class;
+  rdfs:label "Administrative Unit"@en;
+  rdfs:comment "A detailed administrative unit organized in a hierarchy."@en;
+  rdfs:isDefinedBy <http://data.europa.eu/m8g>;
+  skos:scopeNote "This class should be used whenever a classification mechanism is in place, in alternative to the properties adminUnitL1 and adminUnitL2 of the Address class which allow free text."@en .
 
 <http://data.europa.eu/m8g/ContactPoint> a owl:Class;
   rdfs:label "Contact Point"@en;
