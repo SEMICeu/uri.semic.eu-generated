@@ -247,32 +247,24 @@
 
 
 <section id="abstract">
-    <h2>Motivation for this specification</h2>
+<h3>Motivation</h3>
 <p>
-Someone searching for a Semantic Asset is likely to have different needs, priorities and expectations than someone searching for a dataset in a data catalogue and these differences are reflected in ADMS. 
-In particular, users seeking an Asset are likely to be searching for a document — something they can open and read using familiar desktop software, as opposed to something that needs to be processed. 
-Of course this is a very broad generalisation. 
-If a code list is published as a SKOS Concept scheme [[skos-reference]] then it is both an Asset and a dataset offered to be exploited in a data exchange.
-As a vocabulary ADMS focusses on the nature of the Assets, rather than on the organisation of the Assets in a catalogue.
+In the past ADMS provided in the context of the <a href="https://semiceu.github.io/ADMS/releases/draft/2.0.1/#interpretation-of-adms-in-the-context-of-dcat">DCAT embedding</a> a recommended use fo the <a href="#Identifier">Identifier</a> class according to the <a href="https://www.gs1.org/standards/edi/gs1-un-cefact-xml/2012">UN/CEFACT</a> specification. 
+In the ADMS vocabulary release 2.00 this recommended use was made implicit. 
 </p><p>
-
-Although ADMS has been designed with the use case above in mind, some terms are used beyond that use case and operate in a broader context.
-For instance <code>adms:identifier</code> has received wide adoption in various vocabularies such as DCAT-AP [[dcat-ap]] and the SEMIC Core Vocabularies. 
-In this new release of ADMS this usage has been made more visible, by decoupling ADMS in a formal sense from DCAT and restricting the specification to the classes and properties defined in the ADMS namespace.
-The historic connection with DCAT has been reformulated as an usage example of ADMS.
+In the context of the Core Business Vocabulary the need for documenting more formally this recommended use was identified. 
+Not only to address the existing recommendation, but also to address additional needs. 
+The intend of this section is not to create a complete ADMS application profile, but only to document the aspect of idenfitiers. 
 </p><p>
-The namespace for ADMS is <code>http://www.w3.org/ns/adms#</code> .
+The ADMS Identifier class is used when identifiers cannot be treated as simple literal values, in which case dct:identifier is recommended to be used, but when the origin of the identifier is important or when one like to relate the identifier to the rules according to which the identifier has been constructed or assigned. 
+It thus addresses the more complex identifier use cases.
 </p><p>
-The vocabulary is also provided in different RDF serialisations [ <a href="http://www.w3.org/ns/adms.ttl">turtle</a> | <a href="https://www.w3.org/ns/adms.nt">ntriples</a> | <a href="https://www.w3.org/ns/adms.rdf">rdf/xml</a> ].
-</p>
-
-<p>
-    <h2>Meeting minutes</h2>
-    <ul>
-    <li>Webinar 17 June 2026 (<a href="https://interoperable-europe.ec.europa.eu/sites/default/files/event/attachment/2025-09/20250617-meeting-minutes-webinar-core-vocabularies.pdf">Meeting Minutes</a>, <a href="https://youtu.be/IxzkRdBcOrA?si=mPAJODXHk6CgwGh7">recording</a>, <a href="https://interoperable-europe.ec.europa.eu/sites/default/files/event/attachment/2025-06/SEMIC_Webinar_Core_Vocabulary_17_06_2025.pdf">slides</a>) </li>
-    </ul>
-</p>
+The raised use case within the Core Business Vocabulary expressed the need for relating the identifier with its identifier schema. And documenting who issued the identifier and who governed the identifier schema. 
+The data specification in this section addresses these needs. 
+Users of the ADMS Identifiers are recommended to apply this data model in their specifications. 
+  </p>
 </section>
+
 
 
 <section id="specintro">
@@ -280,14 +272,7 @@ The vocabulary is also provided in different RDF serialisations [ <a href="http:
         Introduction
     </h2>
     
-        <p>
-            This document describes a <strong>vocabulary</strong>, in this case <strong>ADMS Vocabulary - Core Vocabularies</strong>. 
-	    A vocabulary is a semantic data specification designed so that the included terms are highly reusable.
-	    The included classes and properties come with a limited set of constraints.
-        </p>
-        <p>
-        ADMS, the Asset Description Metadata Schema, is a vocabulary for describing semantic assets (or just 'Assets'), defined as highly reusable metadata (e.g. XML schemata, generic data models) and reference data (e.g. code lists, taxonomies, dictionaries, vocabularies).
-        </p>
+NaN
 
 </section>
 
@@ -302,43 +287,8 @@ The vocabulary is also provided in different RDF serialisations [ <a href="http:
             Information about the process and the decisions involved in the creation of this specification are consultable at the <a href="https://github.com/SEMICeu/ADMS/blob/main/releases/2.00/CHANGELOG.md">Changelog</a>.
         </p>
 
-<h3>History</h3>
-<p>
-ADMS was first developed by and published by the European Commission ISA Programme. Contributors included representatives of Member States of the European Union, operators of national repositories, standardisation bodies and independent experts whose work was published in April 2012 [[ADMS1]]. That document includes the original history and motivation behind the development of ADMS, as well as the business needs and usage scenario for it.
-
-</p><p>
-Further development and review was undertaken by the Government Linked Data Working Group [[WG-GLD]]. This version of ADMS builds on the original work in a broader, global context. It also includes some changes to the original version made as a result of implementation experience, particularly on the European Commission's JoinUp Platform.
-Under supervision of the Government Linked Data Working Group a minor update has been published, which did not include any substantial changes compared to the first published version by the Working Group.
-The latest document was published as a W3C Working Group Note [[vocab-adms]] on 1 August 2013 and has not been revised since then.
-</p>
-
-
-<h3>Motivation for this vocabulary</h3>
-<p>
-This vocabulary is motivated by the need to provide a precise and interoperable semantic model for identifiers and identifier schemes, in line with recent modelling practices and international alignment efforts.
-Experience across multiple data modelling initiatives has shown that identifiers cannot be treated as simple literal values, nor can multiple identifiers associated with the same entity be assumed to be semantically equivalent.
-</p>
-<p>
-In particular, it has become clear that an identifier and the system or scheme that defines its meaning represent distinct concepts.
-An identifier denotes a specific value assigned to an entity, while an identifier scheme provides the contextual semantics that explain how that value was issued, governed, and interpreted.
-Modelling these concerns within a single construct obscures this distinction and limits the ability to describe identifier schemes as reusable, globally addressable resources.
-</p>
-<p>
-Earlier approaches, including the original <code>adms:Identifier</code> pattern, allowed identifier scheme information to be embedded within the identifier itself.
-While functionally sufficient, this approach has proven difficult to apply consistently, as implementers naturally expect to state that an entity “has an identifier”, without collapsing different identifiers into a single semantic identity.
-Explicitly separating identifiers from identifier schemes resolves this ambiguity and avoids unintended assumptions equivalent to <code>owl:sameAs</code>.
-</p>
-
-<p>
-This revision aligns with the modelling principles adopted in the UN/CEFACT Transparency Protocol and related initiatives, such as the euBusinessGraph data model.
-Identifier schemes are therefore defined as independent resources that can be referenced across vocabularies and domains, allowing common identification systems to be reused consistently without duplication.
-</p>
-
-<p>
-By clarifying the relationship between identifiers and identifier schemes, this vocabulary supports semantically correct identification across the SEMIC ecosystem.
-Domain vocabularies can continue to state that an entity has one or more identifiers, while relying on shared identifier scheme definitions to provide their meaning, governance, and characteristics in a consistent and interoperable manner.
-  </p>
 </section>
+
 
 
 
@@ -364,15 +314,7 @@ Domain vocabularies can continue to state that an entity has one or more identif
 
 
 <section id="conformance">
-<p>
-ADMS is a vocabulary that defines a collection of terms while having minimal usage restrictions. 
-Usage of the terms is considered conformant with ADMS if the terms from ADMS (classes and properties) are utilised in a manner that aligns with their semantics as specified in the ADMS vocabulary specification.
-That means the usage is conformant to 
-<ul>
-<li> the definitions and usage notes for the classes and properties, and</li> 
-<li> the domain and ranges of the properties</li>
-</ul>
-In this vocabulary the rdfs:Resource class is used to denote any possible resource. Thus meaning no restriction in usage.
+NaN
 </section>
 
 
@@ -386,16 +328,11 @@ In this vocabulary the rdfs:Resource class is used to denote any possible resour
             <thead><tr><th>Prefix</th><th>Namespace IRI</th></tr></thead>
             <tbody>
             <tr><td><code>adms</code></td><td><code>http://www.w3.org/ns/adms#</code></td></tr>
-            <tr><td><code>dcat</code></td><td><code>http://www.w3.org/ns/dcat#</code></td></tr>
-            <tr><td><code>dcterms</code></td><td><code>http://purl.org/dc/terms/</code></td></tr>
-            <tr><td><code>foaf</code></td><td><code>http://xmlns.com/foaf/0.1/</code></td></tr>
-            <tr><td><code>owl</code></td><td><code>http://www.w3.org/2002/07/owl#</code></td></tr>
+            <tr><td><code>dc</code></td><td><code>http://purl.org/dc/terms/</code></td></tr>
             <tr><td><code>rdf</code></td><td><code>http://www.w3.org/1999/02/22-rdf-syntax-ns#</code></td></tr>
             <tr><td><code>rdfs</code></td><td><code>http://www.w3.org/2000/01/rdf-schema#</code></td></tr>
             <tr><td><code>skos</code></td><td><code>http://www.w3.org/2004/02/skos/core#</code></td></tr>
-            <tr><td><code>vcard</code></td><td><code>http://www.w3.org/2006/vcard/ns#</code></td></tr>
             <tr><td><code>xsd</code></td><td><code>http://www.w3.org/2001/XMLSchema#</code></td></tr>
-            <tr><td><code>xvh</code></td><td><code>http://www.w3.org/1999/xhtml/vocab#</code></td></tr>
             </tbody>
         </table>
 
@@ -557,9 +494,11 @@ They are included in the Application Profile because they form the range of prop
                                 DCAT
                             </th>
 			    -->
+			    <!--
                             <th class="data-table__header-title--sortable" style="width:3%">
 				    <a href="#reuse-column">Reuse</a>
                             </th>
+			    -->
                         </tr>
                     </thead>
                     <tbody class="supertype">
@@ -608,11 +547,13 @@ They are included in the Application Profile because they form the range of prop
                                     
                                 </td>
 				-->
+				<!--
                                 <td>
                                     
 				       P
 				    
                                 </td>
+				-->
                             </tr>
                         
                     </tbody>
@@ -706,9 +647,11 @@ They are included in the Application Profile because they form the range of prop
                                 DCAT
                             </th>
 			    -->
+			    <!--
                             <th class="data-table__header-title--sortable" style="width:3%">
 				    <a href="#reuse-column">Reuse</a>
                             </th>
+			    -->
                         </tr>
                     </thead>
                     <tbody class="supertype">
@@ -757,11 +700,13 @@ They are included in the Application Profile because they form the range of prop
                                     
                                 </td>
 				-->
+				<!--
                                 <td>
                                     
 				       P
 				    
                                 </td>
+				-->
                             </tr>
                         
                             <tr id="Identifier.notation"
@@ -808,11 +753,13 @@ They are included in the Application Profile because they form the range of prop
                                     
                                 </td>
 				-->
+				<!--
                                 <td>
                                     
 				       P
 				    
                                 </td>
+				-->
                             </tr>
                         
                             <tr id="Identifier.schema"
@@ -859,11 +806,13 @@ They are included in the Application Profile because they form the range of prop
                                     
                                 </td>
 				-->
+				<!--
                                 <td>
                                     
 				       P
 				    
                                 </td>
+				-->
                             </tr>
                         
                             <tr id="Identifier.schemaagency"
@@ -910,11 +859,13 @@ They are included in the Application Profile because they form the range of prop
                                     
                                 </td>
 				-->
+				<!--
                                 <td>
                                     
 				       P
 				    
                                 </td>
+				-->
                             </tr>
                         
                     </tbody>
@@ -998,9 +949,11 @@ They are included in the Application Profile because they form the range of prop
                                 DCAT
                             </th>
 			    -->
+			    <!--
                             <th class="data-table__header-title--sortable" style="width:3%">
 				    <a href="#reuse-column">Reuse</a>
                             </th>
+			    -->
                         </tr>
                     </thead>
                     <tbody class="supertype">
@@ -1049,11 +1002,13 @@ They are included in the Application Profile because they form the range of prop
                                     
                                 </td>
 				-->
+				<!--
                                 <td>
                                     
 				       P
 				    
                                 </td>
+				-->
                             </tr>
                         
                     </tbody>
