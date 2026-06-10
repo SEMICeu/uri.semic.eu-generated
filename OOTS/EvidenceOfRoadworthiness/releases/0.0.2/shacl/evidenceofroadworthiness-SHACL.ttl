@@ -6,20 +6,17 @@
 @prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
 
 <https://semiceu.github.io/OOTS/EvidenceOfRoadworthiness/releases/0.0.2/> rdfs:member <https://semiceu.github.io/OOTS/EvidenceOfRoadworthiness/releases/0.0.2/#EvidenceShape>,
-    <https://semiceu.github.io/OOTS/EvidenceOfRoadworthiness/releases/0.0.2/#GenericDateShape>,
     <https://semiceu.github.io/OOTS/EvidenceOfRoadworthiness/releases/0.0.2/#AttributeShape>,
     <https://semiceu.github.io/OOTS/EvidenceOfRoadworthiness/releases/0.0.2/#AttributeSetShape>,
     <https://semiceu.github.io/OOTS/EvidenceOfRoadworthiness/releases/0.0.2/#EvidenceOfRoadworthinessShape>,
     <https://semiceu.github.io/OOTS/EvidenceOfRoadworthiness/releases/0.0.2/#OOTSEvidenceShape>,
     <https://semiceu.github.io/OOTS/EvidenceOfRoadworthiness/releases/0.0.2/#TextShape>,
-    <https://semiceu.github.io/OOTS/EvidenceOfRoadworthiness/releases/0.0.2/#LiteralShape>,
     <https://semiceu.github.io/OOTS/EvidenceOfRoadworthiness/releases/0.0.2/#DateTimeShape>,
     <https://semiceu.github.io/OOTS/EvidenceOfRoadworthiness/releases/0.0.2/#StringShape>,
     <https://semiceu.github.io/OOTS/EvidenceOfRoadworthiness/releases/0.0.2/#CodeShape>,
     <https://semiceu.github.io/OOTS/EvidenceOfRoadworthiness/releases/0.0.2/#LegalEntityShape>,
     <https://semiceu.github.io/OOTS/EvidenceOfRoadworthiness/releases/0.0.2/#CheckShape>,
     <https://semiceu.github.io/OOTS/EvidenceOfRoadworthiness/releases/0.0.2/#RoadVehicleShape>,
-    <https://semiceu.github.io/OOTS/EvidenceOfRoadworthiness/releases/0.0.2/#InstantShape>,
     <https://semiceu.github.io/OOTS/EvidenceOfRoadworthiness/releases/0.0.2/#DecimalShape> .
 
 <https://semiceu.github.io/OOTS/EvidenceOfRoadworthiness/releases/0.0.2/#AttributeSetShape> a shacl:NodeShape;
@@ -64,6 +61,7 @@
     <https://semiceu.github.io/OOTS/EvidenceOfRoadworthiness/releases/0.0.2/#CheckShape/93f73e69bb03d2928fcf758a253ef316becdf9b9>,
     <https://semiceu.github.io/OOTS/EvidenceOfRoadworthiness/releases/0.0.2/#CheckShape/b3ec0655204c62a2531244aaeab12f1a2c5e5b5d>,
     <https://semiceu.github.io/OOTS/EvidenceOfRoadworthiness/releases/0.0.2/#CheckShape/df97aebb7c564f62ae86dbca2dda12585c44046c>,
+    <https://semiceu.github.io/OOTS/EvidenceOfRoadworthiness/releases/0.0.2/#CheckShape/e7668051bbf10c839f22e5d68014f92e80304646>,
     <https://semiceu.github.io/OOTS/EvidenceOfRoadworthiness/releases/0.0.2/#CheckShape/f311fd285195983f857d749a586bc1668f97e070>,
     <https://semiceu.github.io/OOTS/EvidenceOfRoadworthiness/releases/0.0.2/#CheckShape/fccc8e86ed66812c0c65ee4aff75adf9f66a6c16>;
   shacl:targetClass <https://spec.edmcouncil.org/auto/ontology/VC/VehicleCore/Check> .
@@ -133,6 +131,12 @@
   shacl:name "odometer reading at the time of the roadworthiness test"@en;
   shacl:nodeKind shacl:Literal;
   shacl:path <http://data.europa.eu/p4s/odometerReading> .
+
+<https://semiceu.github.io/OOTS/EvidenceOfRoadworthiness/releases/0.0.2/#CheckShape/e7668051bbf10c839f22e5d68014f92e80304646> rdfs:seeAlso "https://semiceu.github.io/OOTS/EvidenceOfRoadworthiness/releases/0.0.2/#Check.dateofexpiryroadworthinesstest";
+  shacl:datatype xsd:dateTime;
+  shacl:description "The end of the validity of the inspection."@en;
+  shacl:name "date of expiry roadworthiness test"@en;
+  shacl:path <https://spec.edmcouncil.org/auto/ontology/VC/VehicleCore/validThrough> .
 
 <https://semiceu.github.io/OOTS/EvidenceOfRoadworthiness/releases/0.0.2/#CheckShape/f311fd285195983f857d749a586bc1668f97e070> rdfs:seeAlso "https://semiceu.github.io/OOTS/EvidenceOfRoadworthiness/releases/0.0.2/#Check.hasattributeset";
   shacl:class <http://data.europa.eu/p4s/AttributeSet>;
@@ -222,14 +226,6 @@
   shacl:closed false;
   shacl:targetClass <http://data.europa.eu/m8g/Evidence> .
 
-<https://semiceu.github.io/OOTS/EvidenceOfRoadworthiness/releases/0.0.2/#GenericDateShape> a shacl:NodeShape;
-  shacl:closed false;
-  shacl:targetClass <http://data.europa.eu/m8g/GenericDate> .
-
-<https://semiceu.github.io/OOTS/EvidenceOfRoadworthiness/releases/0.0.2/#InstantShape> a shacl:NodeShape;
-  shacl:closed false;
-  shacl:targetClass <https://www.w3.org/TR/owl-time/#time:Instant> .
-
 <https://semiceu.github.io/OOTS/EvidenceOfRoadworthiness/releases/0.0.2/#LegalEntityShape> a shacl:NodeShape;
   shacl:closed false;
   shacl:property <https://semiceu.github.io/OOTS/EvidenceOfRoadworthiness/releases/0.0.2/#LegalEntityShape/3c66d90f800857e73f71bfdc8d8bd41f1344b3b5>,
@@ -257,10 +253,6 @@
   shacl:name "name of roadworthiness testing organisation/centre"@en;
   shacl:nodeKind shacl:Literal;
   shacl:path dc:mediator .
-
-<https://semiceu.github.io/OOTS/EvidenceOfRoadworthiness/releases/0.0.2/#LiteralShape> a shacl:NodeShape;
-  shacl:closed false;
-  shacl:targetClass rdfs:Literal .
 
 <https://semiceu.github.io/OOTS/EvidenceOfRoadworthiness/releases/0.0.2/#OOTSEvidenceShape> a shacl:NodeShape;
   shacl:closed false;
