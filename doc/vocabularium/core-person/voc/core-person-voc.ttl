@@ -7,13 +7,6 @@
 @prefix skos: <http://www.w3.org/2004/02/skos/core#> .
 @prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
 
-<http://data.europa.eu/m8g/adminUnit> a owl:ObjectProperty;
-  rdfs:label "administrative unit"@en;
-  rdfs:comment "A detailed administrative unit organized in a hierarchy."@en;
-  rdfs:domain <http://www.w3.org/ns/locn#Address>;
-  rdfs:isDefinedBy <http://data.europa.eu/m8g>;
-  rdfs:range <http://data.europa.eu/m8g/AdminUnit> .
-
 <http://data.europa.eu/m8g/birthDate> a owl:DatatypeProperty;
   rdfs:label "date of birth"@en;
   rdfs:comment "The point in time on which the Person was born."@en;
@@ -26,6 +19,13 @@
 <li>- 1980-09^^xs:gYearMonth</li>
 <li>- 1980^^xs:gYear</li>
 </ul>"""@en .
+
+<http://data.europa.eu/m8g/code> a owl:ObjectProperty;
+  rdfs:label "code"@en;
+  rdfs:comment "The classification of the administrative unit."@en;
+  rdfs:domain <http://data.europa.eu/m8g/AdminUnit>;
+  rdfs:isDefinedBy <http://data.europa.eu/m8g>;
+  rdfs:range skos:Concept .
 
 <http://data.europa.eu/m8g/contactPage> a owl:ObjectProperty;
   rdfs:label "contact page"@en;
@@ -61,6 +61,14 @@
   rdfs:isDefinedBy <http://data.europa.eu/m8g>;
   rdfs:range skos:Concept;
   skos:scopeNote "The gender of an individual should be recorded using a controlled vocabulary that is appropriate for the specific context. In some cases, the chromosomal or physical state of an individual will be more important than the gender that they express, in others the reverse will be true. What is always important is that the controlled vocabulary used to describe an individual's gender is stated explicitly."@en .
+
+<http://data.europa.eu/m8g/level> a owl:ObjectProperty;
+  rdfs:label "level"@en;
+  rdfs:comment "The level of the administrative unit in the hierarchy."@en;
+  rdfs:domain <http://data.europa.eu/m8g/AdminUnit>;
+  rdfs:isDefinedBy <http://data.europa.eu/m8g>;
+  rdfs:range skos:Concept;
+  skos:scopeNote "The recommended code list to indicate the level of an Admin Unit is the <a href=https://op.europa.eu/en/web/eu-vocabularies/dataset/-/resource?uri=http://publications.europa.eu/resource/dataset/atu-type>Administrative territorial unit type</a> Controlled Vocabulary maintained by the Publications Office of the EU. "@en .
 
 <http://data.europa.eu/m8g/matronymicName> a owl:DatatypeProperty;
   rdfs:label "matronymic name"@en;
