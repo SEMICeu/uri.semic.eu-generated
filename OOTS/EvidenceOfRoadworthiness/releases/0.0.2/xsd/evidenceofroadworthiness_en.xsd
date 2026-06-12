@@ -7,12 +7,12 @@
   <xs:element name="OotsEvidence" type="OotsEvidenceType"/>
   <xs:element name="Text" type="TextType"/>
   <xs:element name="DateTime" type="DateTimeType"/>
+  <xs:element name="NonNegativeInteger" type="NonNegativeIntegerType"/>
   <xs:element name="String" type="StringType"/>
   <xs:element name="Code" type="CodeType"/>
   <xs:element name="LegalEntity" type="LegalEntityType"/>
   <xs:element name="Check" type="CheckType"/>
   <xs:element name="RoadVehicle" type="RoadVehicleType"/>
-  <xs:element name="Decimal" type="DecimalType"/>
   <xs:simpleType name="Literal">
     <xs:restriction base="xs:string"/>
   </xs:simpleType>
@@ -110,6 +110,14 @@
       </xs:annotation>
     </xs:attribute>
   </xs:complexType>
+  <xs:complexType name="NonNegativeIntegerType">
+    <xs:sequence/>
+    <xs:attribute name="NonNegativeIntegerRef" type="xs:IDREF">
+      <xs:annotation>
+        <xs:documentation xml:lang="en">Reference to NonNegativeInteger ID</xs:documentation>
+      </xs:annotation>
+    </xs:attribute>
+  </xs:complexType>
   <xs:complexType name="StringType">
     <xs:sequence/>
     <xs:attribute name="StringRef" type="xs:IDREF">
@@ -157,7 +165,7 @@
           <xs:documentation xml:lang="en">Relates a concept to the AttributeSet that provides its additional descriptive information.</xs:documentation>
         </xs:annotation>
       </xs:element>
-      <xs:element name="odometerReadingAtTheTimeOfTheCheck" type="xs:decimal" maxOccurs="1" minOccurs="0">
+      <xs:element name="odometerReadingAtTheTimeOfTheCheck" ref="NonNegativeIntegerType" maxOccurs="1" minOccurs="0">
         <xs:annotation>
           <xs:documentation xml:lang="en">The total distance travelled by the particular vehicle since its initial production, as read from its odometer at the time of the check.</xs:documentation>
         </xs:annotation>
@@ -205,14 +213,6 @@
     <xs:attribute name="RoadVehicleRef" type="xs:IDREF">
       <xs:annotation>
         <xs:documentation xml:lang="en">Reference to RoadVehicle ID</xs:documentation>
-      </xs:annotation>
-    </xs:attribute>
-  </xs:complexType>
-  <xs:complexType name="DecimalType">
-    <xs:sequence/>
-    <xs:attribute name="DecimalRef" type="xs:IDREF">
-      <xs:annotation>
-        <xs:documentation xml:lang="en">Reference to Decimal ID</xs:documentation>
       </xs:annotation>
     </xs:attribute>
   </xs:complexType>
