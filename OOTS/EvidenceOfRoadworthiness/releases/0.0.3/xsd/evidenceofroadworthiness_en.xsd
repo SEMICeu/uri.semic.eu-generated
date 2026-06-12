@@ -1,0 +1,224 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<xs:schema xmlns="https://data.europa.eu/m8g/xml/" xmlns:xs="http://www.w3.org/2001/XMLSchema" targetNamespace="https://data.europa.eu/m8g/xml/" version="2.0.0" elementFormDefault="qualified" attributeFormDefault="unqualified" xmlns:cv="https://data.europa.eu/m8g/xml/">
+  <xs:element name="Evidence" type="EvidenceType"/>
+  <xs:element name="Attribute" type="AttributeType"/>
+  <xs:element name="AttributeSet" type="AttributeSetType"/>
+  <xs:element name="EvidenceOfRoadworthiness" type="EvidenceOfRoadworthinessType"/>
+  <xs:element name="OotsEvidence" type="OotsEvidenceType"/>
+  <xs:element name="Text" type="TextType"/>
+  <xs:element name="DateTime" type="DateTimeType"/>
+  <xs:element name="NonNegativeInteger" type="NonNegativeIntegerType"/>
+  <xs:element name="String" type="StringType"/>
+  <xs:element name="Code" type="CodeType"/>
+  <xs:element name="LegalEntity" type="LegalEntityType"/>
+  <xs:element name="Check" type="CheckType"/>
+  <xs:element name="RoadVehicle" type="RoadVehicleType"/>
+  <xs:simpleType name="Literal">
+    <xs:restriction base="xs:string"/>
+  </xs:simpleType>
+  <xs:complexType name="langstring">
+    <xs:simpleContent>
+      <xs:extension base="xs:string">
+        <xs:attribute name="lang" type="xs:language"/>
+      </xs:extension>
+    </xs:simpleContent>
+  </xs:complexType>
+  <xs:complexType name="ConceptType">
+    <xs:simpleContent>
+      <xs:extension base="xs:token">
+        <xs:attribute name="ref" type="xs:IDREF"/>
+        <xs:attribute name="conceptSchemeRef" type="xs:IDREF"/>
+      </xs:extension>
+    </xs:simpleContent>
+  </xs:complexType>
+  <xs:complexType name="EvidenceType">
+    <xs:sequence/>
+    <xs:attribute name="EvidenceRef" type="xs:IDREF">
+      <xs:annotation>
+        <xs:documentation xml:lang="en">Reference to Evidence ID</xs:documentation>
+      </xs:annotation>
+    </xs:attribute>
+  </xs:complexType>
+  <xs:complexType name="AttributeType">
+    <xs:sequence/>
+    <xs:attribute name="AttributeRef" type="xs:IDREF">
+      <xs:annotation>
+        <xs:documentation xml:lang="en">Reference to Attribute ID</xs:documentation>
+      </xs:annotation>
+    </xs:attribute>
+  </xs:complexType>
+  <xs:complexType name="AttributeSetType">
+    <xs:sequence>
+      <xs:element name="hasAttribute" ref="AttributeType" maxOccurs="unbounded" minOccurs="1">
+        <xs:annotation>
+          <xs:documentation xml:lang="en">The optional property that provides additional descriptive information.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+    </xs:sequence>
+    <xs:attribute name="AttributeSetRef" type="xs:IDREF">
+      <xs:annotation>
+        <xs:documentation xml:lang="en">Reference to AttributeSet ID</xs:documentation>
+      </xs:annotation>
+    </xs:attribute>
+  </xs:complexType>
+  <xs:complexType name="EvidenceOfRoadworthinessType">
+    <xs:sequence>
+      <xs:element name="isAbout" ref="RoadVehicleType" maxOccurs="1" minOccurs="1">
+        <xs:annotation>
+          <xs:documentation xml:lang="en">Entity that is the subject in the provided Evidence.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="requires" ref="CheckType" maxOccurs="1" minOccurs="1">
+        <xs:annotation>
+          <xs:documentation xml:lang="en">A related resource that is required by the described resource to support its function, delivery, or coherence.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+    </xs:sequence>
+    <xs:attribute name="EvidenceOfRoadworthinessRef" type="xs:IDREF">
+      <xs:annotation>
+        <xs:documentation xml:lang="en">Reference to EvidenceOfRoadworthiness ID</xs:documentation>
+      </xs:annotation>
+    </xs:attribute>
+  </xs:complexType>
+  <xs:complexType name="OotsEvidenceType">
+    <xs:sequence>
+      <xs:element name="hasAttributeSet" ref="AttributeSetType" maxOccurs="1" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation xml:lang="en">Relates a concept to the AttributeSet that provides its additional descriptive information.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+    </xs:sequence>
+    <xs:attribute name="OotsEvidenceRef" type="xs:IDREF">
+      <xs:annotation>
+        <xs:documentation xml:lang="en">Reference to OotsEvidence ID</xs:documentation>
+      </xs:annotation>
+    </xs:attribute>
+  </xs:complexType>
+  <xs:complexType name="TextType">
+    <xs:sequence/>
+    <xs:attribute name="TextRef" type="xs:IDREF">
+      <xs:annotation>
+        <xs:documentation xml:lang="en">Reference to Text ID</xs:documentation>
+      </xs:annotation>
+    </xs:attribute>
+  </xs:complexType>
+  <xs:complexType name="DateTimeType">
+    <xs:sequence/>
+    <xs:attribute name="DateTimeRef" type="xs:IDREF">
+      <xs:annotation>
+        <xs:documentation xml:lang="en">Reference to DateTime ID</xs:documentation>
+      </xs:annotation>
+    </xs:attribute>
+  </xs:complexType>
+  <xs:complexType name="NonNegativeIntegerType">
+    <xs:sequence/>
+    <xs:attribute name="NonNegativeIntegerRef" type="xs:IDREF">
+      <xs:annotation>
+        <xs:documentation xml:lang="en">Reference to NonNegativeInteger ID</xs:documentation>
+      </xs:annotation>
+    </xs:attribute>
+  </xs:complexType>
+  <xs:complexType name="StringType">
+    <xs:sequence/>
+    <xs:attribute name="StringRef" type="xs:IDREF">
+      <xs:annotation>
+        <xs:documentation xml:lang="en">Reference to String ID</xs:documentation>
+      </xs:annotation>
+    </xs:attribute>
+  </xs:complexType>
+  <xs:complexType name="CodeType">
+    <xs:sequence/>
+    <xs:attribute name="CodeRef" type="xs:IDREF">
+      <xs:annotation>
+        <xs:documentation xml:lang="en">Reference to Code ID</xs:documentation>
+      </xs:annotation>
+    </xs:attribute>
+  </xs:complexType>
+  <xs:complexType name="LegalEntityType">
+    <xs:sequence>
+      <xs:element name="legalName" type="xs:string" maxOccurs="unbounded" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation xml:lang="en">The name under which the Legal Entity is legally registered.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+    </xs:sequence>
+    <xs:attribute name="LegalEntityRef" type="xs:IDREF">
+      <xs:annotation>
+        <xs:documentation xml:lang="en">Reference to LegalEntity ID</xs:documentation>
+      </xs:annotation>
+    </xs:attribute>
+  </xs:complexType>
+  <xs:complexType name="CheckType">
+    <xs:sequence>
+      <xs:element name="dateOfExpiryRoadworthinessTest" type="xs:dateTime" maxOccurs="1" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation xml:lang="en">The end of the validity of the inspection.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="dateOfRoadworthinessTest" type="xs:dateTime" maxOccurs="1" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation xml:lang="en">The beginning of the validity of the inspection.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="hasAttributeSet" ref="AttributeSetType" maxOccurs="1" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation xml:lang="en">Relates a concept to the AttributeSet that provides its additional descriptive information.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="odometerReadingAtTheTimeOfTheCheck" ref="NonNegativeIntegerType" maxOccurs="1" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation xml:lang="en">The total distance travelled by the particular vehicle since its initial production, as read from its odometer at the time of the check.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="placeOfRoadworthinessTest" type="ConceptType" maxOccurs="1" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation xml:lang="en">Code of the country where the check was recorded.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="publisher" ref="LegalEntityType" maxOccurs="unbounded" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation xml:lang="en">The entity responsible for making the item available.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+    </xs:sequence>
+    <xs:attribute name="CheckRef" type="xs:IDREF">
+      <xs:annotation>
+        <xs:documentation xml:lang="en">Reference to Check ID</xs:documentation>
+      </xs:annotation>
+    </xs:attribute>
+  </xs:complexType>
+  <xs:complexType name="RoadVehicleType">
+    <xs:sequence>
+      <xs:element name="countrySymbolOfTheStateOfRegistration" type="ConceptType" maxOccurs="1" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation xml:lang="en">The country code of State of registration.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="hasAttributeSet" ref="AttributeSetType" maxOccurs="1" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation xml:lang="en">Relates a concept to the AttributeSet that provides its additional descriptive information.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="registrationPlateNumber" type="xs:string" maxOccurs="1" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation xml:lang="en">A vehicle registration number.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="vehicleCategory" type="ConceptType" maxOccurs="1" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation xml:lang="en">A type of vehicle.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="vehicleIdentificationNumber" type="xs:string" maxOccurs="1" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation xml:lang="en">The Vehicle Identification Number (VIN) is a unique serial number used by the automotive industry to identify individual motor vehicles.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+    </xs:sequence>
+    <xs:attribute name="RoadVehicleRef" type="xs:IDREF">
+      <xs:annotation>
+        <xs:documentation xml:lang="en">Reference to RoadVehicle ID</xs:documentation>
+      </xs:annotation>
+    </xs:attribute>
+  </xs:complexType>
+</xs:schema>
