@@ -8,12 +8,14 @@
 @prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
 
 <https://semiceu.github.io/EGDC_Rule/releases/1.0.0> rdfs:member <https://semiceu.github.io/EGDC_Rule/releases/1.0.0#TextShape>,
+    <https://semiceu.github.io/EGDC_Rule/releases/1.0.0#BooleanShape>,
     <https://semiceu.github.io/EGDC_Rule/releases/1.0.0#DateShape>,
     <https://semiceu.github.io/EGDC_Rule/releases/1.0.0#IntegerShape>,
     <https://semiceu.github.io/EGDC_Rule/releases/1.0.0#StringShape>,
     <https://semiceu.github.io/EGDC_Rule/releases/1.0.0#CodeShape>,
     <https://semiceu.github.io/EGDC_Rule/releases/1.0.0#AgentShape>,
     <https://semiceu.github.io/EGDC_Rule/releases/1.0.0#DocumentShape>,
+    <https://semiceu.github.io/EGDC_Rule/releases/1.0.0#FormulaShape>,
     <https://semiceu.github.io/EGDC_Rule/releases/1.0.0#InputParameterShape>,
     <https://semiceu.github.io/EGDC_Rule/releases/1.0.0#OutputShape>,
     <https://semiceu.github.io/EGDC_Rule/releases/1.0.0#RangeShape>,
@@ -51,6 +53,10 @@
   shacl:name "name"@en;
   shacl:nodeKind shacl:Literal;
   shacl:path dc:title .
+
+<https://semiceu.github.io/EGDC_Rule/releases/1.0.0#BooleanShape> a shacl:NodeShape;
+  shacl:closed false;
+  shacl:targetClass xsd:boolean .
 
 <https://semiceu.github.io/EGDC_Rule/releases/1.0.0#CodeShape> a shacl:NodeShape;
   shacl:closed false;
@@ -162,11 +168,93 @@
   shacl:nodeKind shacl:BlankNodeOrIRI;
   shacl:path dc:language .
 
+<https://semiceu.github.io/EGDC_Rule/releases/1.0.0#FormulaShape> a shacl:NodeShape;
+  shacl:closed false;
+  shacl:property <https://semiceu.github.io/EGDC_Rule/releases/1.0.0#FormulaShape/28c96d33e07c5243051ff187ce949ff22528bb8e>,
+    <https://semiceu.github.io/EGDC_Rule/releases/1.0.0#FormulaShape/28e5456122dfcefb4ab15a1a5a3b7cbb012faa7a>,
+    <https://semiceu.github.io/EGDC_Rule/releases/1.0.0#FormulaShape/2938df39a9a737bfe1f2ebf9bb09fe7f1e3c8e13>,
+    <https://semiceu.github.io/EGDC_Rule/releases/1.0.0#FormulaShape/35db55f6dce9075b02e8bae0ca1bed9840752e7b>,
+    <https://semiceu.github.io/EGDC_Rule/releases/1.0.0#FormulaShape/755b594f28793effe1bdc7fe544bb680e0314c6d>,
+    <https://semiceu.github.io/EGDC_Rule/releases/1.0.0#FormulaShape/8c88be5b8cc9b4c269da3fd90416f9bdcf44fcc3>,
+    <https://semiceu.github.io/EGDC_Rule/releases/1.0.0#FormulaShape/8eb9e9be030f7058cee1c62dac9fdf792a84a744>,
+    <https://semiceu.github.io/EGDC_Rule/releases/1.0.0#FormulaShape/944890f18f068a280e60fd2fc16e409e3b7fe936>,
+    <https://semiceu.github.io/EGDC_Rule/releases/1.0.0#FormulaShape/9e6ac5dcacb75878388ddf185028b5822b621033>,
+    <https://semiceu.github.io/EGDC_Rule/releases/1.0.0#FormulaShape/c2f567da315cbc5aa6de633d8ba6d5a17a9a9b57>,
+    <https://semiceu.github.io/EGDC_Rule/releases/1.0.0#FormulaShape/fef2b5815abf9c6f0c72037c0366e8c87a5623a0>;
+  shacl:targetClass <https://w3id.org/egdc/rule/Formula> .
+
+<https://semiceu.github.io/EGDC_Rule/releases/1.0.0#FormulaShape/28c96d33e07c5243051ff187ce949ff22528bb8e> rdfs:seeAlso "https://semiceu.github.io/EGDC_Rule/releases/1.0.0#Formula.isquantitative";
+  shacl:description "A flag to indicate if a formula is quantitative or qualitative."@en;
+  shacl:minCount 1;
+  shacl:name "is quantitative"@en;
+  shacl:path <https://w3id.org/egdc/rule/isQuantitative> .
+
+<https://semiceu.github.io/EGDC_Rule/releases/1.0.0#FormulaShape/28e5456122dfcefb4ab15a1a5a3b7cbb012faa7a> rdfs:seeAlso "https://semiceu.github.io/EGDC_Rule/releases/1.0.0#Formula.writtenout";
+  shacl:description "The expression of a formula in natural language."@en;
+  shacl:name "written out"@en;
+  shacl:nodeKind shacl:Literal;
+  shacl:path <https://w3id.org/egdc/rule/writtenOut> .
+
+<https://semiceu.github.io/EGDC_Rule/releases/1.0.0#FormulaShape/2938df39a9a737bfe1f2ebf9bb09fe7f1e3c8e13> rdfs:seeAlso "https://semiceu.github.io/EGDC_Rule/releases/1.0.0#Formula.isquantitative";
+  shacl:datatype xsd:boolean;
+  shacl:description "A flag to indicate if a formula is quantitative or qualitative."@en;
+  shacl:name "is quantitative"@en;
+  shacl:path <https://w3id.org/egdc/rule/isQuantitative> .
+
+<https://semiceu.github.io/EGDC_Rule/releases/1.0.0#FormulaShape/35db55f6dce9075b02e8bae0ca1bed9840752e7b> rdfs:seeAlso "https://semiceu.github.io/EGDC_Rule/releases/1.0.0#Formula.writtenout";
+  shacl:description "The expression of a formula in natural language."@en;
+  shacl:maxCount 1;
+  shacl:name "written out"@en;
+  shacl:path <https://w3id.org/egdc/rule/writtenOut> .
+
+<https://semiceu.github.io/EGDC_Rule/releases/1.0.0#FormulaShape/755b594f28793effe1bdc7fe544bb680e0314c6d> rdfs:seeAlso "https://semiceu.github.io/EGDC_Rule/releases/1.0.0#Formula.expression";
+  shacl:datatype xsd:string;
+  shacl:description "The expression of a formula as it could be evaluated by an engine."@en;
+  shacl:name "expression"@en;
+  shacl:path <https://w3id.org/egdc/rule/expression> .
+
+<https://semiceu.github.io/EGDC_Rule/releases/1.0.0#FormulaShape/8c88be5b8cc9b4c269da3fd90416f9bdcf44fcc3> rdfs:seeAlso "https://semiceu.github.io/EGDC_Rule/releases/1.0.0#Formula.isquantitative";
+  shacl:description "A flag to indicate if a formula is quantitative or qualitative."@en;
+  shacl:maxCount 1;
+  shacl:name "is quantitative"@en;
+  shacl:path <https://w3id.org/egdc/rule/isQuantitative> .
+
+<https://semiceu.github.io/EGDC_Rule/releases/1.0.0#FormulaShape/8eb9e9be030f7058cee1c62dac9fdf792a84a744> rdfs:seeAlso "https://semiceu.github.io/EGDC_Rule/releases/1.0.0#Formula.writtenout";
+  shacl:datatype xsd:string;
+  shacl:description "The expression of a formula in natural language."@en;
+  shacl:name "written out"@en;
+  shacl:path <https://w3id.org/egdc/rule/writtenOut> .
+
+<https://semiceu.github.io/EGDC_Rule/releases/1.0.0#FormulaShape/944890f18f068a280e60fd2fc16e409e3b7fe936> rdfs:seeAlso "https://semiceu.github.io/EGDC_Rule/releases/1.0.0#Formula.isquantitative";
+  shacl:description "A flag to indicate if a formula is quantitative or qualitative."@en;
+  shacl:name "is quantitative"@en;
+  shacl:nodeKind shacl:Literal;
+  shacl:path <https://w3id.org/egdc/rule/isQuantitative> .
+
+<https://semiceu.github.io/EGDC_Rule/releases/1.0.0#FormulaShape/9e6ac5dcacb75878388ddf185028b5822b621033> rdfs:seeAlso "https://semiceu.github.io/EGDC_Rule/releases/1.0.0#Formula.expression";
+  shacl:description "The expression of a formula as it could be evaluated by an engine."@en;
+  shacl:maxCount 1;
+  shacl:name "expression"@en;
+  shacl:path <https://w3id.org/egdc/rule/expression> .
+
+<https://semiceu.github.io/EGDC_Rule/releases/1.0.0#FormulaShape/c2f567da315cbc5aa6de633d8ba6d5a17a9a9b57> rdfs:seeAlso "https://semiceu.github.io/EGDC_Rule/releases/1.0.0#Formula.writtenout";
+  shacl:description "The expression of a formula in natural language."@en;
+  shacl:minCount 1;
+  shacl:name "written out"@en;
+  shacl:path <https://w3id.org/egdc/rule/writtenOut> .
+
+<https://semiceu.github.io/EGDC_Rule/releases/1.0.0#FormulaShape/fef2b5815abf9c6f0c72037c0366e8c87a5623a0> rdfs:seeAlso "https://semiceu.github.io/EGDC_Rule/releases/1.0.0#Formula.expression";
+  shacl:description "The expression of a formula as it could be evaluated by an engine."@en;
+  shacl:name "expression"@en;
+  shacl:nodeKind shacl:Literal;
+  shacl:path <https://w3id.org/egdc/rule/expression> .
+
 <https://semiceu.github.io/EGDC_Rule/releases/1.0.0#InputParameterShape> a shacl:NodeShape;
   shacl:closed false;
   shacl:property <https://semiceu.github.io/EGDC_Rule/releases/1.0.0#InputParameterShape/00707e7fa75c02405e4f5a82044f66cfd5c31866>,
     <https://semiceu.github.io/EGDC_Rule/releases/1.0.0#InputParameterShape/0a7e49be174067ebf134fe9c0b74a0c513b01629>,
     <https://semiceu.github.io/EGDC_Rule/releases/1.0.0#InputParameterShape/1bc7e687ba4ad3867eb28c2e07959e4e680db922>,
+    <https://semiceu.github.io/EGDC_Rule/releases/1.0.0#InputParameterShape/2074aafe3d23735dce89f134b4917a1a0aa77900>,
     <https://semiceu.github.io/EGDC_Rule/releases/1.0.0#InputParameterShape/263a563c5bed08cdaadf4a0fd0a5fb9874d742bc>,
     <https://semiceu.github.io/EGDC_Rule/releases/1.0.0#InputParameterShape/267d43aa1a43f429042d4ede69462ebef720b92d>,
     <https://semiceu.github.io/EGDC_Rule/releases/1.0.0#InputParameterShape/289c17a270cfb8c4b1c0725cb8dea9ff36a856fe>,
@@ -175,6 +263,7 @@
     <https://semiceu.github.io/EGDC_Rule/releases/1.0.0#InputParameterShape/6c7c1bd2ab3b7761e5be759a078a9fd93f411a57>,
     <https://semiceu.github.io/EGDC_Rule/releases/1.0.0#InputParameterShape/6cae9880e515253132af1452a38a8a5827165149>,
     <https://semiceu.github.io/EGDC_Rule/releases/1.0.0#InputParameterShape/73e6f6ec017861cef814353947c6bfa64379d118>,
+    <https://semiceu.github.io/EGDC_Rule/releases/1.0.0#InputParameterShape/75f6abca9f868e2b8dcf86f9b79dc2fd1f403ecc>,
     <https://semiceu.github.io/EGDC_Rule/releases/1.0.0#InputParameterShape/7cb7c6d29d1c151758a419c76dfe47cd2dcbab6a>,
     <https://semiceu.github.io/EGDC_Rule/releases/1.0.0#InputParameterShape/806cd590711309963ddbb63a2bdbf3c596d16ac6>,
     <https://semiceu.github.io/EGDC_Rule/releases/1.0.0#InputParameterShape/96cdcbb0489a41ab01fc39c521f5ed607a0b2c41>,
@@ -182,6 +271,7 @@
     <https://semiceu.github.io/EGDC_Rule/releases/1.0.0#InputParameterShape/9caf9e629daa0e64ece77788576468821d7cff8c>,
     <https://semiceu.github.io/EGDC_Rule/releases/1.0.0#InputParameterShape/a8d32c7b12baf55b70c2b1878d3952960280d37b>,
     <https://semiceu.github.io/EGDC_Rule/releases/1.0.0#InputParameterShape/aadbd67a77a624f073be2076627fb9dc883cbe48>,
+    <https://semiceu.github.io/EGDC_Rule/releases/1.0.0#InputParameterShape/af3c889a27a931cd88b8c3082001d59d1b221f2a>,
     <https://semiceu.github.io/EGDC_Rule/releases/1.0.0#InputParameterShape/b183a858802d9aec5ed8e099c31363617f6360f8>,
     <https://semiceu.github.io/EGDC_Rule/releases/1.0.0#InputParameterShape/c0d17764e84e711728581fda7356a51e99a9040a>,
     <https://semiceu.github.io/EGDC_Rule/releases/1.0.0#InputParameterShape/d4d4f2399b8cf2f615ac658920373b714726bed0>,
@@ -209,6 +299,12 @@
   shacl:description "The associated Range of hte Input Parameter."@en;
   shacl:name "has range"@en;
   shacl:path <https://w3id.org/egdc/rule/hasRange> .
+
+<https://semiceu.github.io/EGDC_Rule/releases/1.0.0#InputParameterShape/2074aafe3d23735dce89f134b4917a1a0aa77900> rdfs:seeAlso "https://semiceu.github.io/EGDC_Rule/releases/1.0.0#InputParameter.isusedby";
+  shacl:class <https://w3id.org/egdc/rule/Rule>;
+  shacl:description "The Rule associated to an Input Parameter."@en;
+  shacl:name "is used by"@en;
+  shacl:path <https://w3id.org/egdc/rule/isUsedBy> .
 
 <https://semiceu.github.io/EGDC_Rule/releases/1.0.0#InputParameterShape/263a563c5bed08cdaadf4a0fd0a5fb9874d742bc> rdfs:seeAlso "https://semiceu.github.io/EGDC_Rule/releases/1.0.0#InputParameter.name";
   shacl:datatype rdf:langString;
@@ -258,6 +354,12 @@
   shacl:name "has range"@en;
   shacl:path <https://w3id.org/egdc/rule/hasRange> .
 
+<https://semiceu.github.io/EGDC_Rule/releases/1.0.0#InputParameterShape/75f6abca9f868e2b8dcf86f9b79dc2fd1f403ecc> rdfs:seeAlso "https://semiceu.github.io/EGDC_Rule/releases/1.0.0#InputParameter.isusedby";
+  shacl:description "The Rule associated to an Input Parameter."@en;
+  shacl:name "is used by"@en;
+  shacl:nodeKind shacl:BlankNodeOrIRI;
+  shacl:path <https://w3id.org/egdc/rule/isUsedBy> .
+
 <https://semiceu.github.io/EGDC_Rule/releases/1.0.0#InputParameterShape/7cb7c6d29d1c151758a419c76dfe47cd2dcbab6a> rdfs:seeAlso "https://semiceu.github.io/EGDC_Rule/releases/1.0.0#InputParameter.hasrange";
   shacl:description "The associated Range of hte Input Parameter."@en;
   shacl:name "has range"@en;
@@ -299,6 +401,12 @@
   shacl:name "identifier"@en;
   shacl:nodeKind shacl:Literal;
   shacl:path dc:identifier .
+
+<https://semiceu.github.io/EGDC_Rule/releases/1.0.0#InputParameterShape/af3c889a27a931cd88b8c3082001d59d1b221f2a> rdfs:seeAlso "https://semiceu.github.io/EGDC_Rule/releases/1.0.0#InputParameter.isusedby";
+  shacl:description "The Rule associated to an Input Parameter."@en;
+  shacl:minCount 1;
+  shacl:name "is used by"@en;
+  shacl:path <https://w3id.org/egdc/rule/isUsedBy> .
 
 <https://semiceu.github.io/EGDC_Rule/releases/1.0.0#InputParameterShape/b183a858802d9aec5ed8e099c31363617f6360f8> rdfs:seeAlso "https://semiceu.github.io/EGDC_Rule/releases/1.0.0#InputParameter.example";
   shacl:datatype xsd:string;
@@ -490,6 +598,7 @@
   shacl:closed false;
   shacl:property <https://semiceu.github.io/EGDC_Rule/releases/1.0.0#RuleShape/03e95d45951b85c569b0da6c09effbff6cc80b0f>,
     <https://semiceu.github.io/EGDC_Rule/releases/1.0.0#RuleShape/06201044ee2260942e572926db13768d7ae49089>,
+    <https://semiceu.github.io/EGDC_Rule/releases/1.0.0#RuleShape/0ae1553de31ec64f12b3f71adf7d3c88eb5f2bff>,
     <https://semiceu.github.io/EGDC_Rule/releases/1.0.0#RuleShape/0bfb317cb37f72fb13afd56109628ea13aa23e50>,
     <https://semiceu.github.io/EGDC_Rule/releases/1.0.0#RuleShape/0c6b02433cfa73d8b8722f9924d10ba90a0a13ee>,
     <https://semiceu.github.io/EGDC_Rule/releases/1.0.0#RuleShape/0f6cb927d0d26f3819cba3fb903a075cd426180d>,
@@ -523,6 +632,7 @@
     <https://semiceu.github.io/EGDC_Rule/releases/1.0.0#RuleShape/66e4a4ff923a508fe57946ac9ae1929ba7238d1f>,
     <https://semiceu.github.io/EGDC_Rule/releases/1.0.0#RuleShape/6c7c1bd2ab3b7761e5be759a078a9fd93f411a57>,
     <https://semiceu.github.io/EGDC_Rule/releases/1.0.0#RuleShape/6cae9880e515253132af1452a38a8a5827165149>,
+    <https://semiceu.github.io/EGDC_Rule/releases/1.0.0#RuleShape/6d20d8a172fdc1367c11b95340274faa59a9e107>,
     <https://semiceu.github.io/EGDC_Rule/releases/1.0.0#RuleShape/6dc2a375f04122fef1497324a860c05b1989d711>,
     <https://semiceu.github.io/EGDC_Rule/releases/1.0.0#RuleShape/781b4df04d19527857f3fef5de332f8a37f823a1>,
     <https://semiceu.github.io/EGDC_Rule/releases/1.0.0#RuleShape/7d4c667652f23f3a51353271e3800bca87ed3f68>,
@@ -536,12 +646,14 @@
     <https://semiceu.github.io/EGDC_Rule/releases/1.0.0#RuleShape/96cbaeca3072ae95ece229e03d2af52ab3302835>,
     <https://semiceu.github.io/EGDC_Rule/releases/1.0.0#RuleShape/96cdcbb0489a41ab01fc39c521f5ed607a0b2c41>,
     <https://semiceu.github.io/EGDC_Rule/releases/1.0.0#RuleShape/98574c038fcf5773c9cb8d4b08ecddac942f02eb>,
+    <https://semiceu.github.io/EGDC_Rule/releases/1.0.0#RuleShape/994faa7106c598fd585c5bfb3b31f543c0de2c0a>,
     <https://semiceu.github.io/EGDC_Rule/releases/1.0.0#RuleShape/9abbb84b5ccb9c0b1595d40f9cd705eb802e446b>,
     <https://semiceu.github.io/EGDC_Rule/releases/1.0.0#RuleShape/9caf9e629daa0e64ece77788576468821d7cff8c>,
     <https://semiceu.github.io/EGDC_Rule/releases/1.0.0#RuleShape/a0e3bb96f6cac3c7eb662e526c1e04d8f5fcdaac>,
     <https://semiceu.github.io/EGDC_Rule/releases/1.0.0#RuleShape/a14b6ebe2fe0ff56dc36e84558cc10a53cae4d0a>,
     <https://semiceu.github.io/EGDC_Rule/releases/1.0.0#RuleShape/a274b5f230e8c8c66751a6bed3538683e762f0f3>,
     <https://semiceu.github.io/EGDC_Rule/releases/1.0.0#RuleShape/a2804cd533572ba7c052fd800762abbbe7ac2ddc>,
+    <https://semiceu.github.io/EGDC_Rule/releases/1.0.0#RuleShape/a481b86ca387a5b602e506f32263fe3fc6b5858a>,
     <https://semiceu.github.io/EGDC_Rule/releases/1.0.0#RuleShape/aadbd67a77a624f073be2076627fb9dc883cbe48>,
     <https://semiceu.github.io/EGDC_Rule/releases/1.0.0#RuleShape/ab9a1bdf1400e233b14ab6f4bc4434ebc98a1a57>,
     <https://semiceu.github.io/EGDC_Rule/releases/1.0.0#RuleShape/b470699d77015a5066d1f99054f2b5067afd9331>,
@@ -554,13 +666,11 @@
     <https://semiceu.github.io/EGDC_Rule/releases/1.0.0#RuleShape/d4d4f2399b8cf2f615ac658920373b714726bed0>,
     <https://semiceu.github.io/EGDC_Rule/releases/1.0.0#RuleShape/d7aa547734a41360e2eec147806d265876fb387f>,
     <https://semiceu.github.io/EGDC_Rule/releases/1.0.0#RuleShape/db0d21a8a91fc95df7ba5aa9290f5adb0f4e8ca3>,
-    <https://semiceu.github.io/EGDC_Rule/releases/1.0.0#RuleShape/e0564b695fd3251faed7f7a8aa30fbdb59a6f63a>,
     <https://semiceu.github.io/EGDC_Rule/releases/1.0.0#RuleShape/e2017f72421063cd9ff494011ec78f35f9632a4a>,
     <https://semiceu.github.io/EGDC_Rule/releases/1.0.0#RuleShape/e8ac7cd26c5072ab169f5455146a25903e442a20>,
     <https://semiceu.github.io/EGDC_Rule/releases/1.0.0#RuleShape/e998f1e1744928e57687173f501ae445da928f8a>,
     <https://semiceu.github.io/EGDC_Rule/releases/1.0.0#RuleShape/f1249f171bcbfa12f01658d50155b64beb61e40f>,
     <https://semiceu.github.io/EGDC_Rule/releases/1.0.0#RuleShape/f1db4963126c4a52c815fce110fd8f36a5106dc9>,
-    <https://semiceu.github.io/EGDC_Rule/releases/1.0.0#RuleShape/f3c9a44185e43e19eda99f7282c79a1143000aeb>,
     <https://semiceu.github.io/EGDC_Rule/releases/1.0.0#RuleShape/f9a41c4d42e7bf79ae1651e9cd522c433e84fe61>,
     <https://semiceu.github.io/EGDC_Rule/releases/1.0.0#RuleShape/fd6658bace5565d427e5e50be17c794aec72752b>,
     <https://semiceu.github.io/EGDC_Rule/releases/1.0.0#RuleShape/ffc248f678a96192fc9993312b1cdea98a416bb6>;
@@ -577,6 +687,12 @@
   shacl:description "A description of the kind of effect."@en;
   shacl:name "type of effect"@en;
   shacl:path <https://w3id.org/egdc/rule/effectType> .
+
+<https://semiceu.github.io/EGDC_Rule/releases/1.0.0#RuleShape/0ae1553de31ec64f12b3f71adf7d3c88eb5f2bff> rdfs:seeAlso "https://semiceu.github.io/EGDC_Rule/releases/1.0.0#Rule.hasformula";
+  shacl:description "The formula associated to a Rule."@en;
+  shacl:minCount 1;
+  shacl:name "has formula"@en;
+  shacl:path <https://w3id.org/egdc/rule/hasFormula> .
 
 <https://semiceu.github.io/EGDC_Rule/releases/1.0.0#RuleShape/0bfb317cb37f72fb13afd56109628ea13aa23e50> rdfs:seeAlso "https://semiceu.github.io/EGDC_Rule/releases/1.0.0#Rule.hassource";
   shacl:description "A related resource from which the described Rule is derived."@en;
@@ -776,6 +892,12 @@
   shacl:nodeKind shacl:Literal;
   shacl:path dc:description .
 
+<https://semiceu.github.io/EGDC_Rule/releases/1.0.0#RuleShape/6d20d8a172fdc1367c11b95340274faa59a9e107> rdfs:seeAlso "https://semiceu.github.io/EGDC_Rule/releases/1.0.0#Rule.hasformula";
+  shacl:description "The formula associated to a Rule."@en;
+  shacl:name "has formula"@en;
+  shacl:nodeKind shacl:BlankNodeOrIRI;
+  shacl:path <https://w3id.org/egdc/rule/hasFormula> .
+
 <https://semiceu.github.io/EGDC_Rule/releases/1.0.0#RuleShape/6dc2a375f04122fef1497324a860c05b1989d711> rdfs:seeAlso "https://semiceu.github.io/EGDC_Rule/releases/1.0.0#Rule.version";
   shacl:description "The version of a Rule."@en;
   shacl:minCount 1;
@@ -854,6 +976,12 @@
   shacl:name "type of effect"@en;
   shacl:path <https://w3id.org/egdc/rule/effectType> .
 
+<https://semiceu.github.io/EGDC_Rule/releases/1.0.0#RuleShape/994faa7106c598fd585c5bfb3b31f543c0de2c0a> rdfs:seeAlso "https://semiceu.github.io/EGDC_Rule/releases/1.0.0#Rule.hasformula";
+  shacl:description "The formula associated to a Rule."@en;
+  shacl:maxCount 1;
+  shacl:name "has formula"@en;
+  shacl:path <https://w3id.org/egdc/rule/hasFormula> .
+
 <https://semiceu.github.io/EGDC_Rule/releases/1.0.0#RuleShape/9abbb84b5ccb9c0b1595d40f9cd705eb802e446b> rdfs:seeAlso "https://semiceu.github.io/EGDC_Rule/releases/1.0.0#Rule.effectorder";
   shacl:description "The degree of the effect."@en;
   shacl:minCount 1;
@@ -889,6 +1017,12 @@
   shacl:description "Date of creation of a Rule."@en;
   shacl:name "created"@en;
   shacl:path dc:created .
+
+<https://semiceu.github.io/EGDC_Rule/releases/1.0.0#RuleShape/a481b86ca387a5b602e506f32263fe3fc6b5858a> rdfs:seeAlso "https://semiceu.github.io/EGDC_Rule/releases/1.0.0#Rule.hasformula";
+  shacl:class <https://w3id.org/egdc/rule/Formula>;
+  shacl:description "The formula associated to a Rule."@en;
+  shacl:name "has formula"@en;
+  shacl:path <https://w3id.org/egdc/rule/hasFormula> .
 
 <https://semiceu.github.io/EGDC_Rule/releases/1.0.0#RuleShape/aadbd67a77a624f073be2076627fb9dc883cbe48> rdfs:seeAlso "https://semiceu.github.io/EGDC_Rule/releases/1.0.0#Rule.identifier";
   shacl:description "An unambiguous reference to a resource within a given context."@en;
@@ -962,12 +1096,6 @@
   shacl:name "category"@en;
   shacl:path <https://w3id.org/egdc/rule/category> .
 
-<https://semiceu.github.io/EGDC_Rule/releases/1.0.0#RuleShape/e0564b695fd3251faed7f7a8aa30fbdb59a6f63a> rdfs:seeAlso "https://semiceu.github.io/EGDC_Rule/releases/1.0.0#Rule.hasinputparameter";
-  shacl:description "The Input Parameter needed by the Rule."@en;
-  shacl:minCount 1;
-  shacl:name "has input parameter"@en;
-  shacl:path <https://w3id.org/egdc/rule/hasInputParameter> .
-
 <https://semiceu.github.io/EGDC_Rule/releases/1.0.0#RuleShape/e2017f72421063cd9ff494011ec78f35f9632a4a> rdfs:seeAlso "https://semiceu.github.io/EGDC_Rule/releases/1.0.0#Rule.identifier";
   shacl:datatype xsd:string;
   shacl:description "An unambiguous reference to a resource within a given context."@en;
@@ -997,12 +1125,6 @@
   shacl:name "modified"@en;
   shacl:nodeKind shacl:Literal;
   shacl:path dc:modified .
-
-<https://semiceu.github.io/EGDC_Rule/releases/1.0.0#RuleShape/f3c9a44185e43e19eda99f7282c79a1143000aeb> rdfs:seeAlso "https://semiceu.github.io/EGDC_Rule/releases/1.0.0#Rule.hasoutput";
-  shacl:description "The Output generated by the Rule."@en;
-  shacl:minCount 1;
-  shacl:name "has output"@en;
-  shacl:path <https://w3id.org/egdc/rule/hasOutput> .
 
 <https://semiceu.github.io/EGDC_Rule/releases/1.0.0#RuleShape/f9a41c4d42e7bf79ae1651e9cd522c433e84fe61> rdfs:seeAlso "https://semiceu.github.io/EGDC_Rule/releases/1.0.0#Rule.popular";
   shacl:class skos:Concept;
