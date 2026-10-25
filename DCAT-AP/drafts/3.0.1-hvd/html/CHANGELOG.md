@@ -4,30 +4,45 @@ This Changelog provides an overview of the changes incorporated in DCAT-AP HVD 3
   
 # **Editorial Changes**  
   
-- Resolve spelling mistakes.
-- Dark mode support.
-- Change overview to SVG.
-- Fix examples - syntax, `dcat:downloadURL` in Bulk download
+- Resolve spelling mistakes, including changing “High Value datasets” to “High-Value datasets”
+- Dark mode support
+- Change overview to SVG
+- Fix examples - syntax, `dcat:downloadURL` in Bulk download example
 - Fix links from `DataService.rights` and `DataService.licence` to Article 3.2 instead of 3.3
 - Add a note about validating shapes concerning controlled vocabularies
-- Fix typos
-  
+- Update the editors, Interoperable Europe representatives and collaborating Directorate-General in the Acknowledgments
+- Fix typos - Add a Datatypes section
+- Add the `eli` prefix
+
 # **Adaptations to the Different Sections**  
+- Align the specification with DCAT-AP 3.0.1, previously DCAT-AP 3.0.0, and updated the corresponding references and reuse links
+- Change the HVD data category guidance from RECOMMENDED to MUST for annotating datasets and APIs with the most precise applicable HVD category concept. This is a normative change
+- Update the Scope section to mention GeoDCAT-AP and StatDCAT-AP
+- Change the Scope example of a requirement that DCAT-AP cannot verify from licence permissiveness to identifier persistence
+- Remove Meeting minutes subsection containing links to the 2023 webinars
    
 # **Data Model Adaptations**  
   
 - Add Dataset `title` and `description` attributes, as they are required for the HVD reporting, and add usage notes specifying the requirement on their English versions
-- Add Data Service `title` as it is mandatory for DCAT-AP, to make it visible
+- Add Data Service `title` making the existing mandatory DCAT-AP property explicit in this profile, with range `rdf:langString` and reuse qualification `E`
+- Add Dataset Series `title` and `description` with range `rdf:langString`
 - Change Dataset title and description range to `rdf:langString` to support auto-translation activities
-- Add Distribution `downloadURL`, which is mandatory for HVD bulk downloads for the HVD reporting.
+- Add Distribution `downloadURL` (`dcat:downloadURL`), mandatory for Distributions representing HVD bulk downloads (for the HVD reporting), not for Distributions providing API access
+- Update the Distribution `access URL` usage note to cover bulk downloads and change its reuse qualification from A to E
 - Add LicenceDocument `as permissive as` and `more permissive than` properties for mapping to the EU Vocabularies Licences NAL, add the NAL to Controlled Vocabularies
 - Explicitly added `owl:sameAs` as a Licence mapping option
+- Remove the supportive class Literal
 
 # **SHACL Validation Changes**  
+- Add English-language title and description checks for Dataset, with severity Warning
 - Added CV shape explicitly validating for expected licence or licence mapping usage
+- Add Data Service title validation shapes
+- Update Dataset and Dataset Series title and description shapes
+- Update download URL validation shapes
 - Relaxed bulk download presence check to give Warning, not Violation
 - Removed unnecessary shapes checking for instances of `rdfs:Resource`
 - Tightened validation of URLs (endpoint, download, access, etc.) not to allow blank nodes
+- Change the prefix used for the Dublin Core Terms namespace from `dc` to `dct`
 - SHACL ShapesGraphs now follow [SHACL 1.2 Profiling Packaging recommendation](https://www.w3.org/TR/shacl12-profiling/#packaging)
 
 ## **Detailed Issue Feedback**  
