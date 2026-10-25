@@ -1189,6 +1189,14 @@
   		shacl:path vcard:hasURL;
 			shacl:minCount 1 ;
 		]
+ 		[
+  		shacl:path ([shacl:inversePath dcat:accessService] dct:license);
+			shacl:minCount 1 ;
+		]
+ 		[
+  		shacl:path ([shacl:inversePath dcat:accessService] dct:rights);
+			shacl:minCount 1 ;
+		]
 	) ; 
   a shacl:NodeShape ;
   shacl:targetClass vcard:Kind ;
@@ -1475,6 +1483,11 @@
     [
         shacl:path dct:license;
         shacl:node :EULicenceMappingRestriction; 
+        shacl:minCount 1 ;
+    ]
+    [
+        shacl:path [shacl:inversePath dcat:accessService];
+        shacl:node :DistributionLicenceShape;
         shacl:minCount 1 ;
     ]
   ).
