@@ -1,3 +1,5 @@
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix sh: <http://www.w3.org/ns/shacl#> .
 @prefix dct: <http://purl.org/dc/terms/> .
 @prefix dcat: <http://www.w3.org/ns/dcat#> .
 @prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
@@ -13,12 +15,13 @@
           :CatalogShapeCV,
           :DistributionShapeCV,
           :DataServiceShapeCVr, 
-          :DatasetSeriesShapeCV .
+          :DatasetSeriesShapeCV,
+          :DatasetLicenceShape.
 
 :HVDCategoryRestriction
     a shacl:NodeShape ;
-    rdfs:comment "HVD Category restriction" ;
-    rdfs:label "HVD Category restriction" ;
+    rdfs:comment "HVD Category restriction"@en ;
+    rdfs:label "HVD Category restriction"@en ;
     shacl:property [
         shacl:hasValue <http://data.europa.eu/bna/asd487ae75> ;
         shacl:minCount 1 ;
@@ -26,16 +29,102 @@
         shacl:path skos:inScheme
     ] .
 
-:EULicenceRestriction
-    a shacl:NodeShape ;
-    rdfs:comment "EU Licence restriction" ;
-    rdfs:label "EU Licence restriction" ;
-    shacl:property [
-        shacl:hasValue <http://publications.europa.eu/resource/authority/licence> ;
+:DatasetLicenceShape a shacl:NodeShape;
+    rdfs:comment "HVD reporting licence restriction"@en ;
+    rdfs:label "HVD reporting licence restriction"@en ;
+    shacl:or (
+        [
+            shacl:path (shacl:inversePath dcat:servesDataset) ;
+            shacl:node :ServiceLicenceShape ;
+            shacl:minCount 1 ;
+        ]
+        [
+            shacl:path dcat:distribution;
+            shacl:node :DistributionLicenceShape ;
+            shacl:minCount 1 ;
+        ]
+        [
+            shacl:path (dcat:distribution dcat:accessService);
+            shacl:node :ServiceLicenceShape ;
+            shacl:minCount 1 ;
+        ]
+    );
+    shacl:severity shacl:Warning ;
+    shacl:targetClass dcat:Dataset .
+
+# EU Licence HVD restrictions - CC0, CC BY 4.0, or mapped to them via owl:sameAs,skos:exactMatch or skos:narrowMatch.
+:ServiceLicenceShape a shacl:NodeShape;
+  shacl:or (
+    [
+        shacl:path dct:license;
+        shacl:hasValue <http://publications.europa.eu/resource/authority/licence/CC_BY_4_0>;
         shacl:minCount 1 ;
-        shacl:nodeKind shacl:IRI ;
-        shacl:path skos:inScheme
-    ] .
+    ]
+    [
+        shacl:path dct:license;
+        shacl:hasValue <http://publications.europa.eu/resource/authority/licence/CC0> ;
+        shacl:minCount 1 ;
+    ]
+    [
+        shacl:path dct:license;
+        shacl:node :EULicenceMappingRestriction; 
+        shacl:minCount 1 ;
+    ]
+  ).
+
+# EU Licence HVD restrictions - CC0, CC BY 4.0, or mapped to them via owl:sameAs,skos:exactMatch or skos:narrowMatch.
+:DistributionLicenceShape a shacl:NodeShape;
+  shacl:or (
+    [
+        shacl:path dct:license;
+        shacl:hasValue <http://publications.europa.eu/resource/authority/licence/CC_BY_4_0>;
+        shacl:minCount 1 ;
+    ]
+    [
+        shacl:path dct:license;
+        shacl:hasValue <http://publications.europa.eu/resource/authority/licence/CC0> ;
+        shacl:minCount 1 ;
+    ]
+    [
+        shacl:path dct:license;
+        shacl:node :EULicenceMappingRestriction; 
+        shacl:minCount 1 ;
+    ]
+  ).
+
+:EULicenceMappingRestriction a sh:NodeShape ;
+    sh:or (
+		[
+  			shacl:path skos:exactMatch;
+            shacl:hasValue <http://publications.europa.eu/resource/authority/licence/CC_BY_4_0>;
+			shacl:minCount 1 ;
+		]
+		[
+  			shacl:path owl:sameAs;
+            shacl:hasValue <http://publications.europa.eu/resource/authority/licence/CC_BY_4_0>;
+			shacl:minCount 1 ;
+		]
+		[
+  			shacl:path skos:narrowMatch;
+            shacl:hasValue <http://publications.europa.eu/resource/authority/licence/CC_BY_4_0>;
+			shacl:minCount 1 ;
+		]
+		[
+  			shacl:path skos:exactMatch;
+            shacl:hasValue <http://publications.europa.eu/resource/authority/licence/CC0>;
+			shacl:minCount 1 ;
+		]
+		[
+  			shacl:path owl:sameAs;
+            shacl:hasValue <http://publications.europa.eu/resource/authority/licence/CC0>;
+			shacl:minCount 1 ;
+		]
+		[
+  			shacl:path skos:narrowMatch;
+            shacl:hasValue <http://publications.europa.eu/resource/authority/licence/CC0>;
+			shacl:minCount 1 ;
+		]
+	).
 
 :DatasetShapeCV
     a shacl:NodeShape ;
@@ -65,17 +154,3 @@
         shacl:path r5r:hvdCategory
     ] ; 
     shacl:targetClass dcat:DatasetSeries.
-
-:LicenseDocumentShapeCV
-    a shacl:NodeShape ;
-    shacl:property [
-        shacl:node :EULicenceRestriction ;
-        shacl:nodeKind shacl:IRI ;
-        shacl:path skos:narrowMatch
-    ] ;
-    shacl:property [
-        shacl:node :EULicenceRestriction ;
-        shacl:nodeKind shacl:IRI ;
-        shacl:path skos:exactMatch
-    ] ; 
-    shacl:targetClass dct:LicenseDocument.

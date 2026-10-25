@@ -44,14 +44,19 @@
   </xs:complexType>
   <xs:complexType name="LicenceDocumentType">
     <xs:sequence>
+      <xs:element name="sameAs" ref="LicenceDocumentType" maxOccurs="1" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation xml:lang="en">A licence that is as permissive as this license.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
       <xs:element name="asPermissiveAs" type="ConceptType" maxOccurs="1" minOccurs="0">
         <xs:annotation>
-          <xs:documentation xml:lang="en">A licence with the same permissiveness.</xs:documentation>
+          <xs:documentation xml:lang="en">A licence that is as permissive as this license.</xs:documentation>
         </xs:annotation>
       </xs:element>
       <xs:element name="morePermissiveThan" type="ConceptType" maxOccurs="1" minOccurs="0">
         <xs:annotation>
-          <xs:documentation xml:lang="en">A less permissive licence.</xs:documentation>
+          <xs:documentation xml:lang="en">A licence that is less permissive than this licence.</xs:documentation>
         </xs:annotation>
       </xs:element>
     </xs:sequence>

@@ -18,7 +18,12 @@ This Changelog provides an overview of the changes incorporated in DCAT-AP HVD 3
 - Change Dataset title and description range to `rdf:langString` to support auto-translation activities
 - Add Distribution `downloadURL`, which is mandatory for HVD bulk downloads for the HVD reporting.
 - Add LicenceDocument `as permissive as` and `more permissive than` properties for mapping to the EU Vocabularies Licences NAL, add the NAL to Controlled Vocabularies
-  
+- Explicitly added `owl:sameAs` as a Licence mapping option
+
+# **SHACL Validation Changes**  
+- Added CV shape explicitly validating for expected licence or licence mapping usage
+
+
 ## **Detailed Issue Feedback**  
   
 - Issue [460](https://github.com/SEMICeu/dcat-ap/issues/460), `Dataset.datasetdistribution` cardinality

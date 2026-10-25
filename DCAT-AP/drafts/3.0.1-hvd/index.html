@@ -107,7 +107,7 @@
       prevVersionURI: "https://semiceu.github.io/DCAT-AP/releases/3.0.0-hvd",
       latestVersion: "https://semiceu.github.io/DCAT-AP/drafts/3.0.1-hvd",
       specStatus: "base",
-      publishDate: "2026-10-06",
+      publishDate: "2026-10-25",
       editors: myeditors,
       authors: myauthors,
       otherLinks: [
@@ -299,9 +299,9 @@ Any improvement of the metadata will immediately flow throughout the European ne
     <h2>Status</h2>
         <p>
 <!-- readd when SEMIC has a codelist about it process 
-	This application profile has the status <a href="https://www.w3.org/2021/Process-20211102/#RecsW3C">SEMIC Draft</a> published at 2026-10-06.
+	This application profile has the status <a href="https://www.w3.org/2021/Process-20211102/#RecsW3C">SEMIC Draft</a> published at 2026-10-25.
 -->
-	This application profile has the status SEMIC Draft published at 2026-10-06.
+	This application profile has the status SEMIC Draft published at 2026-10-25.
         </p>
         <p>
             Information about the process and the decisions involved in the creation of this specification are consultable at the <a href="CHANGELOG">Changelog</a>.
@@ -338,7 +338,7 @@ Any improvement of the metadata will immediately flow throughout the European ne
 <section id="conformance">
 <h2>Conformance Statement</h2>
 
-In order for applications to conform to DCAT-AP HVD, it MUST conform to DCAT-AP. 
+In order for applications to conform to DCAT-AP HVD, they MUST conform to DCAT-AP. 
 In addition, the application must conform to the mentioned constraints and usage guidelines following similar conformance statements as specified in DCAT-AP.
 
 <h3>Provider requirements</h3>
@@ -392,7 +392,7 @@ This specification uses the following prefixes to shorten the URIs for readibili
             <tr><td><code>dcat</code></td><td><code>http://www.w3.org/ns/dcat#</code></td></tr>
             <tr><td><code>dcatap</code></td><td><code>http://data.europa.eu/r5r/</code></td></tr>
             <tr><td><code>dct</code></td><td><code>http://purl.org/dc/terms/</code></td></tr>
-            <tr><td><code>dct</code></td><td><code>http://data.europa.eu/eli/ontology#</code></td></tr>
+            <tr><td><code>eli</code></td><td><code>http://data.europa.eu/eli/ontology#</code></td></tr>
             <tr><td><code>foaf</code></td><td><code>http://xmlns.com/foaf/0.1/</code></td></tr>
             <tr><td><code>rdf</code></td><td><code>http://www.w3.org/1999/02/22-rdf-syntax-ns#</code></td></tr>
             <tr><td><code>rdfs</code></td><td><code>http://www.w3.org/2000/01/rdf-schema#</code></td></tr>
@@ -3269,6 +3269,7 @@ According to the guidelines for <a href="#c3">legal Information</a> in DCAT-AP H
                         <dd>
                             For this entity the following properties are defined: <a href="#LicenceDocument.aspermissiveas">as permissive as</a>
                             , <a href="#LicenceDocument.morepermissivethan">more permissive than</a>
+                            , <a href="#LicenceDocument.sameas">same as</a>
                             .
                     </dd>
                 
@@ -3344,7 +3345,7 @@ According to the guidelines for <a href="#c3">legal Information</a> in DCAT-AP H
                                     0..1
                                 </td>
                                 <td property="rdfs:comment">
-                                    A licence with the same permissiveness.
+                                    A licence that is as permissive as this license.
                                 </td>
                                 <td property="skos:scopeNote">
                                     
@@ -3397,7 +3398,60 @@ According to the guidelines for <a href="#c3">legal Information</a> in DCAT-AP H
                                     0..1
                                 </td>
                                 <td property="rdfs:comment">
-                                    A less permissive licence.
+                                    A licence that is less permissive than this licence.
+                                </td>
+                                <td property="skos:scopeNote">
+                                    
+                                </td>
+				<!--
+                                <td>
+                                    
+                                </td>
+				-->
+				<!--
+                                <td>
+                                    
+                                </td>
+				-->
+                                <td>
+                                    
+                                       
+				        P
+				       
+				    
+                                </td>
+                            </tr>
+                        
+                            <tr id="LicenceDocument.sameas"
+                                typeof="rdf:Property"
+                                resource="http://www.w3.org/2002/07/owl#sameAs"
+                                class="class mandatory">
+<!--
+                                <td>
+				    <a href="https://github.com/SEMICeu/DCAT-AP/issues/new?title=Issue%20for%20same as%20in%20Licence Document&body=Explain%20your%20issue%20for%20https://semiceu.github.io/DCAT-AP/drafts/3.0.1-hvd%23LicenceDocument.sameas" target="_blank" rel="noopener noreferrer" >
+                                        <img src="html/callout.png" loading="lazy" alt="[o]" width="100" height="100"/>
+                                    </a>
+                                </td>
+--->
+                                <td>
+                                        <a href="http://www.w3.org/2002/07/owl#sameAs"
+                                           data-toggle="tooltip"
+                                           data-content="http://www.w3.org/2002/07/owl#sameAs"
+                                           data-placement="right">
+                                        same as</a>
+                                </td>
+                                <td>
+                                    
+                                        
+                                            <a href="#LicenceDocument" data-placement="right">Licence Document</a>
+                                        
+                                    
+                                </td>
+                                <td>
+                                    0..1
+                                </td>
+                                <td property="rdfs:comment">
+                                    A licence that is as permissive as this license.
                                 </td>
                                 <td property="skos:scopeNote">
                                     
@@ -3926,6 +3980,7 @@ Validation systems SHOULD produce errors.
 <tr><td>dcatap:hvdCategory</td><td><a href="#DatasetSeries">Dataset Series </a></td><td><a href="https://op.europa.eu/en/web/eu-vocabularies/dataset/-/resource?uri=http://publications.europa.eu/resource/dataset/high-value-dataset-category">EU Vocabularies HVD Categories</a></td><td><a href="http://data.europa.eu/bna/asd487ae75">http://data.europa.eu/bna/asd487ae75</a></td><td></td></tr>
 <tr><td>skos:narrowMatch</td><td><a href="#LicenceDocument">Licence Document </a></td><td><a href="https://op.europa.eu/en/web/eu-vocabularies/dataset/-/resource?uri=http://publications.europa.eu/resource/dataset/licence">EU Vocabularies Licence</a></td><td><a href="http://publications.europa.eu/resource/dataset/licence">http://publications.europa.eu/resource/dataset/licence</a></td><td></td></tr>
 <tr><td>skos:exactMatch</td><td><a href="#LicenceDocument">Licence Document </a></td><td><a href="https://op.europa.eu/en/web/eu-vocabularies/dataset/-/resource?uri=http://publications.europa.eu/resource/dataset/licence">EU Vocabularies Licence</a></td><td><a href="http://publications.europa.eu/resource/dataset/licence">http://publications.europa.eu/resource/dataset/licence</a></td><td></td></tr>
+<tr><td>owl:sameAs</td><td><a href="#LicenceDocument">Licence Document </a></td><td><a href="https://op.europa.eu/en/web/eu-vocabularies/dataset/-/resource?uri=http://publications.europa.eu/resource/dataset/licence">EU Vocabularies Licence</a></td><td><a href="http://publications.europa.eu/resource/dataset/licence">http://publications.europa.eu/resource/dataset/licence</a></td><td></td></tr>
             </tbody>
             </table>
 
@@ -4004,7 +4059,7 @@ As stated in the introduction, the use of DCAT-AP HVD is not obliged by the HVD 
 </p>
 
 <h4>Denoting an HVD Dataset</h4>
-Each entity (Dataset, Data Service, Distribution, Catalogue) that is identified by a MS in scope of the HVD IR should provide the European Legislation Identifier (ELI) <code>http://data.europa.eu/eli/reg_impl/2023/138/oj</code> of the HVD IR for the property <a href="http://data.europa.eu/r5r/applicableLegislation">applicable legislation</a>.
+Each entity (Dataset, Dataset Series, Data Service, Distribution, Catalogue) that is identified by a MS in scope of the HVD IR should provide the European Legislation Identifier (ELI) <code>http://data.europa.eu/eli/reg_impl/2023/138/oj</code> of the HVD IR for the property <a href="http://data.europa.eu/r5r/applicableLegislation">applicable legislation</a>.
 
 For the reporting, a Member State can provide a catalogue containing all elements that are within scope for the reporting of the HVD IR. 
 In that case the catalogue should also set the value for the property applicable legislation to the ELI of the HVD.
@@ -4046,7 +4101,7 @@ According to HVD IR the identifiers provided in the report should be an online r
 </p><p>
 In short these are:
 <ul>
-  <li>Identifiers for the main entities (Catalogue, Dataset, Data Service and Distribution) are managed URIs.</li>
+  <li>Identifiers for the main entities included in the reporting (Catalogue, Dataset, Dataset Series, Data Service and Distribution) are managed URIs.</li>
   <li>These URIs are dereferenceable, i.e. users are redirected to the metadata describing the entity.</li>
   <li>URIs are well defined, i.e. follow the 10 principles for good URIs.</li>
   <li>Data portals and harvesters implement the identifier guidelines in order not to lose information of alternative identifiers.</li> 
@@ -4155,17 +4210,14 @@ The decision trees in the figures allow to assess whether or not additional effo
 In the reporting requirements of the HVD IR, the notion <strong>terms of use</strong> is used. 
 It has been agreed, by the Working Group for DCAT-AP HVD, that providing terms of use information is the same as providing legal information for a Data Service. 
 
-<h4>Assessment support for  licences</h4>
+<h4>Assessment support for licences</h4>
 To support the assessment whether the assigned legal conditions are equal or more permissive than the reference CC-BY 4.0, the recommendation is to augment the machine-readable publication of MS-specific or publisher-specific licences with mapping information on the EU Vocabularies Licence NAL [[NAL-Licence]].
 It is recommended to express this mapping in the first place using properties that express equivalence. 
 In order of preference 
 <ul>
-<li>use properties that express a strong equality: <code>skos:exactMatch</code> or <code>owl:sameAs</code> </li>
-<li>use properties that express a permissiveness relation: <code>skos:broadMatch</code> or <code>skos:narrowMatch</code> </li>
+<li>use properties that express a strong equality: <code>skos:exactMatch</code> or <code>owl:sameAs</code></li>
+<li>use the property <code>skos:narrowMatch</code> to indicate a licence that is less permissive. For the HVD reporting, only <code>http://publications.europa.eu/resource/authority/licence/CC_BY_4_0</code> and <code>http://publications.europa.eu/resource/authority/licence/CC0</code> are accepted.</li>
 </ul>
-The use of properties that express a weak(er) equality, e.g. <code>skos:closeMatch</code> or <code>rdfs:seeAlso</code> is not recommended; they should only be used as last resort. 
-If none of the first two approaches could be used, then sharing  matching information using these weaker properties may still assist the assessment. 
-But the decision on compliance with the HVD IR is then left to the interpretation by the European Commission. 
 
 </p><p>
 Using the SKOS matching properties requires to agree on a direction to indicate "more permissive than". 
@@ -4388,13 +4440,14 @@ With that all the necessary information for the reporting is extracted from the 
 </section>
 
   <section id="validation" class="informative">
-<h2>Validation</h2>
+<h2>Validation of DCAT-AP HVD</h2>
 
 To support the assessment if a Catalogue satisfies DCAT-AP HVD, the following SHACL templates are provided.
 
 <ul>
 <li><a href="html/hvd-SHACL-base.ttl">base.ttl</a>: all base constraints expressed in this document.</li>
 <li><a href="html/hvd-SHACL-ranges.ttl">ranges.ttl</a>: all the class range constraints expressed in this document.</li>
+<li><a href="html/hvd-SHACL-cv.ttl">cv.ttl</a>: constraints concerning the usage of controlled vocabularies.</li>
 <li><a href="html/hvd-SHACL-usagenotes.ttl">usagenotes.ttl</a>: additional constraints that are expressed as usagenotes or recommendations. Including controlled vocabularies, and the presence of an API or a bulk download for a dataset.</li>
 </ul>
 
@@ -5015,6 +5068,10 @@ The properties are grouped under headings <it>mandatory, recommended, optional</
 					
 						
 					
+						
+					
+					
+						
 					
 						
 					
@@ -5025,7 +5082,7 @@ The properties are grouped under headings <it>mandatory, recommended, optional</
 							<tr>
 								<td><a href="#LicenceDocument">Licence Document</a></td>
 								<td><div class="shorten">http://purl.org/dc/terms/LicenseDocument</div></td>
-								<td></td>
+								<td>Optional</td>
 								<td><a href="#LicenceDocument.aspermissiveas">as permissive as </a></td>
 								<td><div class="shorten">http://www.w3.org/2004/02/skos/core#exactMatch</div></td>
 							</tr>
@@ -5035,9 +5092,19 @@ The properties are grouped under headings <it>mandatory, recommended, optional</
 							<tr>
 								<td><a href="#LicenceDocument">Licence Document</a></td>
 								<td><div class="shorten">http://purl.org/dc/terms/LicenseDocument</div></td>
-								<td></td>
+								<td>Optional</td>
 								<td><a href="#LicenceDocument.morepermissivethan">more permissive than </a></td>
 								<td><div class="shorten">http://www.w3.org/2004/02/skos/core#narrowMatch</div></td>
+							</tr>
+						
+					
+						
+							<tr>
+								<td><a href="#LicenceDocument">Licence Document</a></td>
+								<td><div class="shorten">http://purl.org/dc/terms/LicenseDocument</div></td>
+								<td>Optional</td>
+								<td><a href="#LicenceDocument.sameas">same as </a></td>
+								<td><div class="shorten">http://www.w3.org/2002/07/owl#sameAs</div></td>
 							</tr>
 						
 					
