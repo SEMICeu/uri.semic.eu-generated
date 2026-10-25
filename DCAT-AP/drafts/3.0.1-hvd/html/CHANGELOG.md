@@ -8,6 +8,9 @@ This Changelog provides an overview of the changes incorporated in DCAT-AP HVD 3
 - Dark mode support.
 - Change overview to SVG.
 - Fix examples - syntax, `dcat:downloadURL` in Bulk download
+- Fix links from `DataService.rights` and `DataService.licence` to Article 3.2 instead of 3.3
+- Add a note about validating shapes concerning controlled vocabularies
+- Fix typos
   
 # **Adaptations to the Different Sections**  
    
@@ -22,11 +25,13 @@ This Changelog provides an overview of the changes incorporated in DCAT-AP HVD 3
 
 # **SHACL Validation Changes**  
 - Added CV shape explicitly validating for expected licence or licence mapping usage
-
+- Relaxed bulk download presence check to give Warning, not Violation
+- Removed unnecessary shapes checking for instances of `rdfs:Resource`
+- Tightened validation of URLs (endpoint, download, access, etc.) not to allow blank nodes
 
 ## **Detailed Issue Feedback**  
   
-- Issue [460](https://github.com/SEMICeu/dcat-ap/issues/460), `Dataset.datasetdistribution` cardinality
+- Issue [460](https://github.com/SEMICeu/dcat-ap/issues/460), `Dataset.datasetdistribution` cardinality - explained why it is recommended and `0..*`
 - Issue [461](https://github.com/SEMICeu/dcat-ap/issues/461), missing `inseries` `<<optional>>` qualification in diagram
 - Issue [463](https://github.com/SEMICeu/dcat-ap/issues/463), missing reference to DCAT-AP for Dataset Series
 - Issue [459](https://github.com/SEMICeu/dcat-ap/issues/459), missing contact point for Dataset in diagram
@@ -34,5 +39,6 @@ This Changelog provides an overview of the changes incorporated in DCAT-AP HVD 3
 - Issue [482](https://github.com/SEMICeu/DCAT-AP/issues/482), `High Value datasets` changed to `High-Value datasets`
 - Issue [487](https://github.com/SEMICeu/DCAT-AP/issues/487), add note about illustrativeness of INSPIRE ELI
 - Issue [492](https://github.com/SEMICeu/DCAT-AP/issues/492), change `DataService.title` reuse qualification to `E`
+- Issue [493](https://github.com/SEMICeu/DCAT-AP/issues/493), better explain the reporting requirement on titles and description in English
 - Issue [494](https://github.com/SEMICeu/DCAT-AP/issues/494), add Dataset Series `title` and `description`
 - Issue [497](https://github.com/SEMICeu/DCAT-AP/issues/497), fix license document `more permissive than` property
