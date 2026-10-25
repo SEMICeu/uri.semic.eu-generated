@@ -10,16 +10,12 @@
 @prefix : <https://semiceu.github.io/DCAT-AP/drafts/3.0.1-hvd#>.
 
 
-<https://semiceu.github.io/DCAT-AP/drafts/3.0.1-hvd> rdfs:member 
-          :DatasetShapeCV ,
-          :CatalogShapeCV,
-          :DistributionShapeCV,
-          :DataServiceShapeCVr, 
-          :DatasetSeriesShapeCV,
-          :DatasetLicenceShape.
+<https://semiceu.github.io/DCAT-AP/drafts/3.0.1-hvd/html/hvd-SHACL-cv.ttl> a shacl:ShapesGraph ;
+  rdfs:label "DCAT-AP HVD SHACL shapes for Controlled Vocabularies"@en .
 
-:HVDCategoryRestriction
-    a shacl:NodeShape ;
+
+:HVDCategoryRestriction a shacl:NodeShape ;
+  rdfs:isDefinedBy <https://semiceu.github.io/DCAT-AP/drafts/3.0.1-hvd/html/hvd-SHACL-cv.ttl> ;
     rdfs:comment "HVD Category restriction"@en ;
     rdfs:label "HVD Category restriction"@en ;
     shacl:property [
@@ -29,7 +25,8 @@
         shacl:path skos:inScheme
     ] .
 
-:DatasetLicenceShape a shacl:NodeShape;
+:DatasetLicenceShape a shacl:NodeShape ;
+  rdfs:isDefinedBy <https://semiceu.github.io/DCAT-AP/drafts/3.0.1-hvd/html/hvd-SHACL-cv.ttl> ;
     rdfs:comment "HVD reporting licence restriction"@en ;
     rdfs:label "HVD reporting licence restriction"@en ;
     shacl:or (
@@ -53,7 +50,8 @@
     shacl:targetClass dcat:Dataset .
 
 # EU Licence HVD restrictions - CC0, CC BY 4.0, or mapped to them via owl:sameAs,skos:exactMatch or skos:narrowMatch.
-:ServiceLicenceShape a shacl:NodeShape;
+:ServiceLicenceShape a shacl:NodeShape ;
+  rdfs:isDefinedBy <https://semiceu.github.io/DCAT-AP/drafts/3.0.1-hvd/html/hvd-SHACL-cv.ttl> ;
   shacl:or (
     [
         shacl:path dct:license;
@@ -73,7 +71,8 @@
   ).
 
 # EU Licence HVD restrictions - CC0, CC BY 4.0, or mapped to them via owl:sameAs,skos:exactMatch or skos:narrowMatch.
-:DistributionLicenceShape a shacl:NodeShape;
+:DistributionLicenceShape a shacl:NodeShape ;
+  rdfs:isDefinedBy <https://semiceu.github.io/DCAT-AP/drafts/3.0.1-hvd/html/hvd-SHACL-cv.ttl> ;
   shacl:or (
     [
         shacl:path dct:license;
@@ -92,7 +91,8 @@
     ]
   ).
 
-:EULicenceMappingRestriction a sh:NodeShape ;
+:EULicenceMappingRestriction rdfs:isDefinedBy <https://semiceu.github.io/DCAT-AP/drafts/3.0.1-hvd/html/hvd-SHACL-cv.ttl> ;
+  a sh:NodeShape ;
     sh:or (
 		[
   			shacl:path skos:exactMatch;
@@ -126,8 +126,8 @@
 		]
 	).
 
-:DatasetShapeCV
-    a shacl:NodeShape ;
+:DatasetShapeCV a shacl:NodeShape ;
+  rdfs:isDefinedBy <https://semiceu.github.io/DCAT-AP/drafts/3.0.1-hvd/html/hvd-SHACL-cv.ttl> ;
     shacl:property [
         shacl:node :HVDCategoryRestriction ;
         shacl:nodeKind shacl:IRI ;
@@ -136,8 +136,8 @@
     shacl:targetClass dcat:Dataset.
 
 
-:DataServiceShapeCV
-    a shacl:NodeShape ;
+:DataServiceShapeCV a shacl:NodeShape ;
+  rdfs:isDefinedBy <https://semiceu.github.io/DCAT-AP/drafts/3.0.1-hvd/html/hvd-SHACL-cv.ttl> ;
     shacl:property [
         shacl:node :HVDCategoryRestriction ;
         shacl:nodeKind shacl:IRI ;
@@ -146,8 +146,8 @@
     shacl:targetClass dcat:DataService.
 
 
-:DatasetSeriesShapeCV
-    a shacl:NodeShape ;
+:DatasetSeriesShapeCV a shacl:NodeShape ;
+  rdfs:isDefinedBy <https://semiceu.github.io/DCAT-AP/drafts/3.0.1-hvd/html/hvd-SHACL-cv.ttl> ;
     shacl:property [
         shacl:node :HVDCategoryRestriction ;
         shacl:nodeKind shacl:IRI ;

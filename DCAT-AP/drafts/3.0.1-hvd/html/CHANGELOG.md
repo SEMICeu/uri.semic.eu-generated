@@ -28,6 +28,7 @@ This Changelog provides an overview of the changes incorporated in DCAT-AP HVD 3
 - Relaxed bulk download presence check to give Warning, not Violation
 - Removed unnecessary shapes checking for instances of `rdfs:Resource`
 - Tightened validation of URLs (endpoint, download, access, etc.) not to allow blank nodes
+- SHACL ShapesGraphs now follow [SHACL 1.2 Profiling Packaging recommendation](https://www.w3.org/TR/shacl12-profiling/#packaging)
 
 ## **Detailed Issue Feedback**  
   
