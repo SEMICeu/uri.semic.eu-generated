@@ -44,14 +44,19 @@
   </xs:complexType>
   <xs:complexType name="LicenceDocumentType">
     <xs:sequence>
+      <xs:element name="sameAs" type="ConceptType" maxOccurs="1" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation xml:lang="en">A licence that is as permissive as this licence.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
       <xs:element name="asPermissiveAs" type="ConceptType" maxOccurs="1" minOccurs="0">
         <xs:annotation>
-          <xs:documentation xml:lang="en">A licence with the same permissiveness.</xs:documentation>
+          <xs:documentation xml:lang="en">A licence that is as permissive as this licence.</xs:documentation>
         </xs:annotation>
       </xs:element>
       <xs:element name="morePermissiveThan" type="ConceptType" maxOccurs="1" minOccurs="0">
         <xs:annotation>
-          <xs:documentation xml:lang="en">A less permissive licence.</xs:documentation>
+          <xs:documentation xml:lang="en">A licence that is less permissive than this licence.</xs:documentation>
         </xs:annotation>
       </xs:element>
     </xs:sequence>
@@ -105,7 +110,7 @@
     <xs:sequence>
       <xs:element name="email" ref="ResourceType" maxOccurs="1" minOccurs="0">
         <xs:annotation>
-          <xs:documentation xml:lang="en">A email address via which contact can be made.</xs:documentation>
+          <xs:documentation xml:lang="en">An email address via which contact can be made.</xs:documentation>
         </xs:annotation>
       </xs:element>
       <xs:element name="contactPage" ref="ResourceType" maxOccurs="1" minOccurs="0">
@@ -148,7 +153,7 @@
     <xs:sequence>
       <xs:element name="primaryTopic" ref="CataloguedResourceType" maxOccurs="1" minOccurs="1">
         <xs:annotation>
-          <xs:documentation xml:lang="en">A link to the Dataset, Data service or Catalog described in the record.</xs:documentation>
+          <xs:documentation xml:lang="en">A link to the Dataset, Data Service or Catalogue described in the record.</xs:documentation>
         </xs:annotation>
       </xs:element>
     </xs:sequence>
@@ -165,7 +170,7 @@
           <xs:documentation xml:lang="en">Contact information that can be used for sending comments about the Data Service.</xs:documentation>
         </xs:annotation>
       </xs:element>
-      <xs:element name="endpointDescription" ref="ResourceType" maxOccurs="unbounded" minOccurs="0">
+      <xs:element name="endpointDescription" ref="ResourceType" maxOccurs="unbounded" minOccurs="1">
         <xs:annotation>
           <xs:documentation xml:lang="en">A description of the services available via the end-points, including their operations, parameters etc.</xs:documentation>
         </xs:annotation>
@@ -197,7 +202,7 @@
       </xs:element>
       <xs:element name="rights" ref="RightsStatementType" maxOccurs="unbounded" minOccurs="0">
         <xs:annotation>
-          <xs:documentation xml:lang="en">A statement that specifies rights associated with the Distribution.</xs:documentation>
+          <xs:documentation xml:lang="en">A statement that specifies rights associated with the Data Service.</xs:documentation>
         </xs:annotation>
       </xs:element>
       <xs:element name="title" type="xs:string" maxOccurs="unbounded" minOccurs="1">
