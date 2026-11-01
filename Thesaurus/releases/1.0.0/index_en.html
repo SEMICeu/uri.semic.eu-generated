@@ -1,0 +1,2243 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"> 
+ 
+
+
+
+<head>
+    
+	
+    <meta charset="utf-8" />
+    <title>Semantic Thesaurus</title>
+    <script src="https://www.w3.org/Tools/respec/respec-w3c" class="remove" defer></script>
+    <script class="remove">
+    // All config options at https://respec.org/docs/
+
+	var myeditors = [
+	
+	
+	    
+	    
+		
+		   {
+		    name: "Claudio Baldassarre",
+		      
+		      
+		    company: "European Commission",
+		      
+		      
+		    }
+		, 
+		
+		   {
+		    name: "Arthur Schiltz",
+		      
+		      
+		    company: "PwC EU Services",
+		      
+		      
+		    }
+		, 
+		
+		   {
+		    name: "Emidio Stani",
+		      
+		      
+		    company: "PwC EU Services",
+		      
+		      
+		    }
+		
+		
+             
+        
+	
+		]
+
+	var myauthors = [
+	
+	
+	
+		]
+		
+	function quickreference() {
+		$('#table-quickoverview').DataTable();
+	};
+	var shaclfilepath = "shacl/thesaurus-SHACL.ttl" ;
+	var folder = "./html/examples/";
+	var model = "any" ;
+	var version_list = [
+		{
+		"type": "v3.2.0",
+		"description": "CPSV-AP 2.1.0"
+		}
+	] ;
+	var linkinfo = "https://semiceu.github.io/Thesaurus/releases/1.0.0" + "#validation" ;
+
+   
+
+    var respecConfig = {
+      postProcess: [quickreference],
+      edDraftURI: "https://semiceu.github.io/Thesaurus/releases/1.0.0",
+      latestVersion: "https://semiceu.github.io/Thesaurus/releases/1.0.0/",
+      specStatus: "LD",
+      publishDate: "2025-12-12",
+      editors: myeditors,
+      authors: myauthors,
+      github: "SEMICeu/Thesaurus",
+      shortName: "Semantic Thesaurus",
+      xref: "web-platform",
+      doJsonLd: true,
+      logos: [{
+        src: "https://semiceu.github.io/CPOV/releases/2.1.0/html/semic-icon.png",
+        url: "https://semic.eu",
+        alt: "SEMIC",
+        width: 154,
+        height: 140,
+        id: "semic-logo",
+      },],
+      generatedSubtitle: "",
+      additionalCopyrightHolders: "",
+      localBiblio: {
+        "DXWG": {
+          "href" : "https://www.w3.org/2017/dxwg/wiki/Main_Page",
+          "title" : "Dataset Exchange Working Group",
+          "publisher" : "W3C"
+          },
+        "ISA":{
+           "href":"https://ec.europa.eu/isa/",
+           "title":"Interoperability Solutions for European Public Administrations (ISA)",
+           "publisher":"European Commission"
+          },
+        "ISA2":{
+          "href":"https://ec.europa.eu/isa2/",
+          "title":"Interoperability solutions for public administrations, businesses and citizens (ISA²)",
+          "publisher":"European Commission"
+        },
+        "SEMIC":{
+          "href":"https://joinup.ec.europa.eu/",
+          "title":"JoinUp welcomes Interoperable Europe",
+          "publisher":"European Commission"
+         },
+        "DEU" : {
+          "href":"https://data.europa.eu",
+          "title":"The official portal for European data",
+          "publisher":"European Commission"
+        },
+		"HVD" : {
+		  "href":"https://eur-lex.europa.eu/legal-content/EN/TXT/?uri=CELEX:32023R0138",
+		  "title":"Implementing Regulation for High Value Datasets",
+		  "publisher":"European Union"
+		},
+		"DCAT-AP-HVD" : {
+		  "href":"https://semiceu.github.io/uri.semic.eu-generated/DCAT-AP/releases/2.2.0-hvd/",
+		  "title":"Usage Guidelines of DCAT-AP for High-Value Datasets",
+		  "publisher":"European Commission"
+		},
+                "PSI" : {
+                  "href": "https://eur-lex.europa.eu/eli/dir/2019/1024/oj",
+                  "title" :  "Directive on open data and the re-use of public sector information (recast)",
+                  "publisher" : "European Union"
+                }
+      }
+    };
+
+
+
+    </script>
+    <style>
+      .figure img, .sidefigure img, figure img, .figure object, .sidefigure object, figure object, img, .img {
+      max-width: 100%;
+      margin: auto;
+      height: auto;
+      }
+    </style>
+     
+    <p class="copyright">
+        Copyright © 2024
+    </p>
+    
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="msapplication-TileColor" content="#7ED956" />
+</head>
+<body>
+    
+
+    <!-- Start page content -->
+
+
+
+
+<section id="abstract">
+    <h2>Abstract</h2>
+This specification provides a minimal common basis within SEMIC to describe a thesaurus.
+</section>
+
+
+<section id="specintro">
+    <h2>
+        Introduction
+    </h2>
+    
+<p>
+  This model is an application profile that allows to express the thesaurus used to classify concepts.
+</p>
+<p>
+  The Thesaurus is designed to meet the following use cases:
+  <ul>
+    <li>facilitating the findability of the concepts;</li>
+    <li>being compliant with existing standards to reach semantic interoperability.</li>
+  </ul>
+</p>
+<p>
+  The specification of the Thesaurus is represented in a UML class diagram.
+  The figure here beneath shows the full profile which includes the classes and properties that define the thesaurus itself.
+</p>
+
+</section>
+
+
+
+<!--  should support https://www.w3.org/2021/Process-20211102/, mostly like https://www.w3.org/2021/Process-20211102/#maturity-levels -->
+<section id="specstatus">
+    <h2>Status</h2>
+        <p>
+            This Application Profile has the status Draft published at 2025-12-12.
+        </p>
+        <p>
+            Information about the process and the decisions involved in the creation of this specification can be found at the <a href="https://github.com/SEMICeu/Thesaurus/blob/master/releases/1.0.0/Changelog.md">Changelog</a>.
+        </p>
+</section>
+
+
+
+
+<section id="speclicence">
+    <h2>
+        License
+    </h2>
+    
+        <p>
+	<!--
+            <span rel="dct:type"
+                  property="dct:title"
+                  href="http://purl.org/dc/dcmitype/Text"
+                  xmlns:dct="http://purl.org/dc/terms/">
+		  This specification </span> of <a rel="cc:attributionURL" property="cc:attributionName" href="ORGANISATION" xmlns:cc="http://creativecommons.org/ns#">ORGANISATION </a> 
+	          is published under <a href="https://creativecommons.org/licenses/by/4.0/" rel="license">"CC0"</a>.
+	-->
+             Copyright © 2024 European Union. All material in this repository is published under the license CC-BY 4.0, unless explicitly otherwise mentioned.
+        </p>
+    
+</section>
+
+
+
+<section id="conformance" class="informative">
+</section>
+
+
+
+
+<section id="specterminology">
+    <h2>
+        Terminology
+    </h2>
+        <p>
+           An Application Profile (AP) is a specification that reuses terms from one or more base standards, adding more specificity by identifying mandatory,
+           recommended and optional elements to be used for a particular application, as well as recommendations for controlled vocabularies to be used. 
+        </p>
+        <p>
+            A Core Vocabulary (CV) is a basic, reusable and extensible data specification that captures the fundamental characteristics of an entity in a context-neutral fashion. Its main objective is to provide terms to be reused in the broadest possible context.
+            More information can be found on the <a href="https://semiceu.github.io/style-guide/1.0.0/terminological-clarifications.html#sec:what-is-a-cv-specification">SEMIC Style Guide</a>.
+        </p>
+    <h3>Used Prefixes</h3>
+        
+This specification uses the following prefixes to shorten the URIs for readability.
+
+        <table id="table-namespaces" class="simple">
+            <thead><tr><th>Prefix</th><th>Namespace IRI</th></tr></thead>
+            <tbody>
+            <tr><td><code>dct</code></td><td><code>http://purl.org/dc/terms/</code></td></tr>
+			<tr><td><code>euvoc</code></td><td><code>http://publications.europa.eu/ontology/euvoc#</code></td></tr>
+			<tr><td><code>owl</code></td><td><code>http://www.w3.org/2002/07/owl#</code></td></tr>
+			<tr><td><code>rdf</code></td><td><code>http://www.w3.org/1999/02/22-rdf-syntax-ns#</code></td></tr>
+            <tr><td><code>skos</code></td><td><code>http://www.w3.org/2004/02/skos/core#</code></td></tr>
+			<tr><td><code>xsd</code></td><td><code>http://www.w3.org/2001/XMLSchema#</code></td></tr>
+            </tbody>
+        </table>
+
+
+</section>
+
+
+
+<section id="specoverview">
+    <h2>Overview</h2>
+    
+    
+    <div id="overview">
+                
+                        <p>
+                            This document describes the usage of the following main entities for a correct usage of the Application Profile:
+                            <br />
+                            |
+			      <a href="#Concept">Concept</a> |
+			      <a href="#ConceptScheme">Concept Scheme</a> |
+                        </p>
+                        <p>
+                            The main entities are supported by:
+                            <br />
+                            |
+                        </p>
+                
+                
+                        <p>
+                            And supported by these datatypes:
+                            <br />
+                            | <a href="#Date">Date</a> | <a href="#String">String</a> | <a href="#Text">Text</a> |
+                        </p>
+                
+    </div>
+    <div>
+        <a href="https://semiceu.github.io/uri.semic.eu-generated/Thesaurus/releases/1.0.0/html/overview.jpg"
+           target="_blank">
+            <img src="https://semiceu.github.io/uri.semic.eu-generated/Thesaurus/releases/1.0.0/html/overview.jpg"/>
+        </a>
+    </div>
+</section>
+
+
+<section>
+
+
+    
+
+<h2>
+   Main Entities
+</h2>
+The main entities are those that form the core of the Application Profile.
+
+
+
+   
+        <section>
+            <h3 id="Concept">
+                <a href="http://www.w3.org/2004/02/skos/core#Concept"
+                   data-toggle="tooltip"
+                   data-content="http://www.w3.org/2004/02/skos/core#Concept"
+                   data-placement="right">Concept</a>
+
+            </h3>
+	        <!-- XXX an image in the h3 will break the rendering of the Table Of Contents of Respec -->
+		<!-- outcomment github feedback possibility
+                <a href="https://github.com/SEMICeu/Thesaurus/issues/new?title=Issue%20for%20Concept&body=Explain%20your%20issue"}}>
+                   <img src="html/callout.png" loading="lazy" alt="(create issue)" width="20" height="20"/>
+		</a>
+		-->
+            <dl>
+                <dt>
+                    Definition
+                </dt>
+                <dd>
+                    This class represents any concept that can be used for classifying the Public Service and which relates to the Public Service through the property Is Classified By.
+                </dd>
+                
+                
+                    <dt>
+                        Usage Note
+                    </dt>
+                    <dd>
+                        This class has been added in the CPSV-AP to complement the need for adding other ways of classifying the Public Service, which have not been explicitly defined in the CPSV-AP. In this context, the CPSV-AP reuses the Concept class as defined in <a href="https://www.w3.org/2004/02/skos/">the SKOS Simple Knowledge Organization System</a>. For describing the attributes of a Concept (labels, preferred labels, alternative labels, definition, etc.) we refer to <a href="https://www.w3.org/2004/02/skos/">SKOS</a>. The Concept may or may not belong to (member) a certain Collection.
+                    </dd>
+                
+                
+                    <dt>
+                        Properties
+                    </dt>
+                    
+                        <dd>
+                            For this entity the following properties are defined: <a href="#Concept.alternativelabel">alternative label</a>
+                            , <a href="#Concept.definition">definition</a>
+                            , <a href="#Concept.hasbroader">has broader</a>
+                            , <a href="#Concept.identifier">identifier</a>
+                            , <a href="#Concept.isinscheme">is in scheme</a>
+                            , <a href="#Concept.isreplacedby">is replaced by</a>
+                            , <a href="#Concept.istopconceptof">is top concept of</a>
+                            , <a href="#Concept.preferredlabel">preferred label</a>
+                            , <a href="#Concept.replaces">replaces</a>
+                            , <a href="#Concept.status">status</a>
+                            , <a href="#Concept.title">title</a>
+                            , <a href="#Concept.versioninfo">version info</a>
+                            .
+                    </dd>
+                
+            </dl>
+        </div>
+        
+            <div class="u-table-overflow">
+                <table class="data-table simple" id="table-mandatory-classes">
+                    <thead>
+                        <tr class="data-table__header">
+                            <th class="data-table__header-title--sortable" style="width:6%">
+                            </th>
+                            <th class="data-table__header-title--sortable data-table__header-title--sortable-active" style="width:14%">
+                                Property
+                            </th>
+                            <th class="data-table__header-title--sortable" style="width:14%">
+                                Range
+                            </th>
+                            <th class="data-table__header-title--sortable" style="width:6%">
+                                Card
+                            </th>
+                            <th class="data-table__header-title--sortable" style="width:30%">
+                                Definition 
+                            </th>
+                            <th class="data-table__header-title--sortable" style="width:30%">
+                                Usage
+                            </th>
+			    <!--
+                            <th class="data-table__header-title--sortable" style="width:3%">
+                                Codelist
+                            </th>
+                            <th class="data-table__header-title--sortable" style="width:5%">
+                                DCAT
+                            </th>
+			    -->
+                        </tr>
+                    </thead>
+                    <tbody class="supertype">
+                        
+                            <tr id="Concept.alternativelabel"
+                                typeof="rdf:Property"
+                                resource="http://www.w3.org/2004/02/skos/core#altLabel"
+                                class="class mandatory">
+                                <td>
+				    <a href="https://github.com/SEMICeu/Thesaurus/issues/new?title=Issue%20for%20alternative label%20in%20Concept&body=Explain%20your%20issue%20for%20https://semiceu.github.io/Thesaurus/releases/1.0.0%23Concept.alternativelabel" target="_blank" rel="noopener noreferrer" >
+					    <!--                                        <i class="icon">[o]</i> -->
+                                        <img src="html/callout.png" loading="lazy" alt="[o]" width="100" height="100"/>
+                                    </a>
+                                </td>
+                                <td>
+                                        <a href="http://www.w3.org/2004/02/skos/core#altLabel"
+                                           data-toggle="tooltip"
+                                           data-content="http://www.w3.org/2004/02/skos/core#altLabel"
+                                           data-placement="right">
+                                        alternative label</a>
+                                </td>
+                                <td>
+                                    
+                                        
+                                            <a href="#Text" data-placement="right">Text</a>
+                                        
+                                    
+                                </td>
+                                <td>
+                                    0..*
+                                </td>
+                                <td property="rdfs:comment">
+                                    An alternative lexical label for a resource.
+                                </td>
+                                <td property="skos:scopeNote">
+                                    Acronyms, abbreviations, spelling variants, and irregular plural/singular forms may be included among the alternative labels for a concept. Mis-spelled terms are normally included as hidden labels (see skos:hiddenLabel).
+                                </td>
+				<!--
+                                <td>
+                                    
+                                </td>
+				-->
+                                <td>
+                                    
+                                </td>
+                            </tr>
+                        
+                            <tr id="Concept.definition"
+                                typeof="rdf:Property"
+                                resource="http://www.w3.org/2004/02/skos/core#definition"
+                                class="class mandatory">
+                                <td>
+				    <a href="https://github.com/SEMICeu/Thesaurus/issues/new?title=Issue%20for%20definition%20in%20Concept&body=Explain%20your%20issue%20for%20https://semiceu.github.io/Thesaurus/releases/1.0.0%23Concept.definition" target="_blank" rel="noopener noreferrer" >
+					    <!--                                        <i class="icon">[o]</i> -->
+                                        <img src="html/callout.png" loading="lazy" alt="[o]" width="100" height="100"/>
+                                    </a>
+                                </td>
+                                <td>
+                                        <a href="http://www.w3.org/2004/02/skos/core#definition"
+                                           data-toggle="tooltip"
+                                           data-content="http://www.w3.org/2004/02/skos/core#definition"
+                                           data-placement="right">
+                                        definition</a>
+                                </td>
+                                <td>
+                                    
+                                        
+                                            <a href="#Text" data-placement="right">Text</a>
+                                        
+                                    
+                                </td>
+                                <td>
+                                    1..*
+                                </td>
+                                <td property="rdfs:comment">
+                                    A statement or formal explanation of the meaning of a concept.
+                                </td>
+                                <td property="skos:scopeNote">
+                                    
+                                </td>
+				<!--
+                                <td>
+                                    
+                                </td>
+				-->
+                                <td>
+                                    
+                                </td>
+                            </tr>
+                        
+                            <tr id="Concept.hasbroader"
+                                typeof="rdf:Property"
+                                resource="http://www.w3.org/2004/02/skos/core#broader"
+                                class="class mandatory">
+                                <td>
+				    <a href="https://github.com/SEMICeu/Thesaurus/issues/new?title=Issue%20for%20has broader%20in%20Concept&body=Explain%20your%20issue%20for%20https://semiceu.github.io/Thesaurus/releases/1.0.0%23Concept.hasbroader" target="_blank" rel="noopener noreferrer" >
+					    <!--                                        <i class="icon">[o]</i> -->
+                                        <img src="html/callout.png" loading="lazy" alt="[o]" width="100" height="100"/>
+                                    </a>
+                                </td>
+                                <td>
+                                        <a href="http://www.w3.org/2004/02/skos/core#broader"
+                                           data-toggle="tooltip"
+                                           data-content="http://www.w3.org/2004/02/skos/core#broader"
+                                           data-placement="right">
+                                        has broader</a>
+                                </td>
+                                <td>
+                                    
+                                        
+                                            <a href="#Concept" data-placement="right">Concept</a>
+                                        
+                                    
+                                </td>
+                                <td>
+                                    0..1
+                                </td>
+                                <td property="rdfs:comment">
+                                    Relates a concept to a concept that is more general in meaning.
+                                </td>
+                                <td property="skos:scopeNote">
+                                    
+                                </td>
+				<!--
+                                <td>
+                                    
+                                </td>
+				-->
+                                <td>
+                                    
+                                </td>
+                            </tr>
+                        
+                            <tr id="Concept.identifier"
+                                typeof="rdf:Property"
+                                resource="http://purl.org/dc/terms/identifier"
+                                class="class mandatory">
+                                <td>
+				    <a href="https://github.com/SEMICeu/Thesaurus/issues/new?title=Issue%20for%20identifier%20in%20Concept&body=Explain%20your%20issue%20for%20https://semiceu.github.io/Thesaurus/releases/1.0.0%23Concept.identifier" target="_blank" rel="noopener noreferrer" >
+					    <!--                                        <i class="icon">[o]</i> -->
+                                        <img src="html/callout.png" loading="lazy" alt="[o]" width="100" height="100"/>
+                                    </a>
+                                </td>
+                                <td>
+                                        <a href="http://purl.org/dc/terms/identifier"
+                                           data-toggle="tooltip"
+                                           data-content="http://purl.org/dc/terms/identifier"
+                                           data-placement="right">
+                                        identifier</a>
+                                </td>
+                                <td>
+                                    
+                                        
+                                            <a href="#String" data-placement="right">String</a>
+                                        
+                                    
+                                </td>
+                                <td>
+                                    1
+                                </td>
+                                <td property="rdfs:comment">
+                                    An unambiguous reference to the resource within a given context.
+                                </td>
+                                <td property="skos:scopeNote">
+                                    
+                                </td>
+				<!--
+                                <td>
+                                    
+                                </td>
+				-->
+                                <td>
+                                    
+                                </td>
+                            </tr>
+                        
+                            <tr id="Concept.isinscheme"
+                                typeof="rdf:Property"
+                                resource="http://www.w3.org/2004/02/skos/core#inScheme"
+                                class="class mandatory">
+                                <td>
+				    <a href="https://github.com/SEMICeu/Thesaurus/issues/new?title=Issue%20for%20is in scheme%20in%20Concept&body=Explain%20your%20issue%20for%20https://semiceu.github.io/Thesaurus/releases/1.0.0%23Concept.isinscheme" target="_blank" rel="noopener noreferrer" >
+					    <!--                                        <i class="icon">[o]</i> -->
+                                        <img src="html/callout.png" loading="lazy" alt="[o]" width="100" height="100"/>
+                                    </a>
+                                </td>
+                                <td>
+                                        <a href="http://www.w3.org/2004/02/skos/core#inScheme"
+                                           data-toggle="tooltip"
+                                           data-content="http://www.w3.org/2004/02/skos/core#inScheme"
+                                           data-placement="right">
+                                        is in scheme</a>
+                                </td>
+                                <td>
+                                    
+                                        
+                                            <a href="#ConceptScheme" data-placement="right">Concept Scheme</a>
+                                        
+                                    
+                                </td>
+                                <td>
+                                    1
+                                </td>
+                                <td property="rdfs:comment">
+                                    Relates a resource (for example a concept) to a concept scheme in which it is included.
+                                </td>
+                                <td property="skos:scopeNote">
+                                    
+                                </td>
+				<!--
+                                <td>
+                                    
+                                </td>
+				-->
+                                <td>
+                                    
+                                </td>
+                            </tr>
+                        
+                            <tr id="Concept.isreplacedby"
+                                typeof="rdf:Property"
+                                resource="http://purl.org/dc/terms/isReplacedBy"
+                                class="class mandatory">
+                                <td>
+				    <a href="https://github.com/SEMICeu/Thesaurus/issues/new?title=Issue%20for%20is replaced by%20in%20Concept&body=Explain%20your%20issue%20for%20https://semiceu.github.io/Thesaurus/releases/1.0.0%23Concept.isreplacedby" target="_blank" rel="noopener noreferrer" >
+					    <!--                                        <i class="icon">[o]</i> -->
+                                        <img src="html/callout.png" loading="lazy" alt="[o]" width="100" height="100"/>
+                                    </a>
+                                </td>
+                                <td>
+                                        <a href="http://purl.org/dc/terms/isReplacedBy"
+                                           data-toggle="tooltip"
+                                           data-content="http://purl.org/dc/terms/isReplacedBy"
+                                           data-placement="right">
+                                        is replaced by</a>
+                                </td>
+                                <td>
+                                    
+                                        
+                                            <a href="#Concept" data-placement="right">Concept</a>
+                                        
+                                    
+                                </td>
+                                <td>
+                                    0..1
+                                </td>
+                                <td property="rdfs:comment">
+                                    A related resource that supplants, displaces, or supersedes the described resource.
+                                </td>
+                                <td property="skos:scopeNote">
+                                    
+                                </td>
+				<!--
+                                <td>
+                                    
+                                </td>
+				-->
+                                <td>
+                                    
+                                </td>
+                            </tr>
+                        
+                            <tr id="Concept.istopconceptof"
+                                typeof="rdf:Property"
+                                resource="http://www.w3.org/2004/02/skos/core#topConceptOf"
+                                class="class mandatory">
+                                <td>
+				    <a href="https://github.com/SEMICeu/Thesaurus/issues/new?title=Issue%20for%20is top concept of%20in%20Concept&body=Explain%20your%20issue%20for%20https://semiceu.github.io/Thesaurus/releases/1.0.0%23Concept.istopconceptof" target="_blank" rel="noopener noreferrer" >
+					    <!--                                        <i class="icon">[o]</i> -->
+                                        <img src="html/callout.png" loading="lazy" alt="[o]" width="100" height="100"/>
+                                    </a>
+                                </td>
+                                <td>
+                                        <a href="http://www.w3.org/2004/02/skos/core#topConceptOf"
+                                           data-toggle="tooltip"
+                                           data-content="http://www.w3.org/2004/02/skos/core#topConceptOf"
+                                           data-placement="right">
+                                        is top concept of</a>
+                                </td>
+                                <td>
+                                    
+                                        
+                                            <a href="#ConceptScheme" data-placement="right">Concept Scheme</a>
+                                        
+                                    
+                                </td>
+                                <td>
+                                    0..1
+                                </td>
+                                <td property="rdfs:comment">
+                                    Relates a concept to the concept scheme that it is a top level concept of.
+                                </td>
+                                <td property="skos:scopeNote">
+                                    
+                                </td>
+				<!--
+                                <td>
+                                    
+                                </td>
+				-->
+                                <td>
+                                    
+                                </td>
+                            </tr>
+                        
+                            <tr id="Concept.preferredlabel"
+                                typeof="rdf:Property"
+                                resource="http://www.w3.org/2004/02/skos/core#prefLabel"
+                                class="class mandatory">
+                                <td>
+				    <a href="https://github.com/SEMICeu/Thesaurus/issues/new?title=Issue%20for%20preferred label%20in%20Concept&body=Explain%20your%20issue%20for%20https://semiceu.github.io/Thesaurus/releases/1.0.0%23Concept.preferredlabel" target="_blank" rel="noopener noreferrer" >
+					    <!--                                        <i class="icon">[o]</i> -->
+                                        <img src="html/callout.png" loading="lazy" alt="[o]" width="100" height="100"/>
+                                    </a>
+                                </td>
+                                <td>
+                                        <a href="http://www.w3.org/2004/02/skos/core#prefLabel"
+                                           data-toggle="tooltip"
+                                           data-content="http://www.w3.org/2004/02/skos/core#prefLabel"
+                                           data-placement="right">
+                                        preferred label</a>
+                                </td>
+                                <td>
+                                    
+                                        
+                                            <a href="#Text" data-placement="right">Text</a>
+                                        
+                                    
+                                </td>
+                                <td>
+                                    1..*
+                                </td>
+                                <td property="rdfs:comment">
+                                    The preferred lexical label for a resource, in a given language.
+                                </td>
+                                <td property="skos:scopeNote">
+                                    Labels should be in French or English.<br/>
+Labels should be at least in French.<br/>
+Labels should start with capital letters.<br/>
+Labels should not contain special characters such as & ( ) \ or /.
+                                </td>
+				<!--
+                                <td>
+                                    
+                                </td>
+				-->
+                                <td>
+                                    
+                                </td>
+                            </tr>
+                        
+                            <tr id="Concept.replaces"
+                                typeof="rdf:Property"
+                                resource="http://purl.org/dc/terms/replaces"
+                                class="class mandatory">
+                                <td>
+				    <a href="https://github.com/SEMICeu/Thesaurus/issues/new?title=Issue%20for%20replaces%20in%20Concept&body=Explain%20your%20issue%20for%20https://semiceu.github.io/Thesaurus/releases/1.0.0%23Concept.replaces" target="_blank" rel="noopener noreferrer" >
+					    <!--                                        <i class="icon">[o]</i> -->
+                                        <img src="html/callout.png" loading="lazy" alt="[o]" width="100" height="100"/>
+                                    </a>
+                                </td>
+                                <td>
+                                        <a href="http://purl.org/dc/terms/replaces"
+                                           data-toggle="tooltip"
+                                           data-content="http://purl.org/dc/terms/replaces"
+                                           data-placement="right">
+                                        replaces</a>
+                                </td>
+                                <td>
+                                    
+                                        
+                                            <a href="#Concept" data-placement="right">Concept</a>
+                                        
+                                    
+                                </td>
+                                <td>
+                                    0..1
+                                </td>
+                                <td property="rdfs:comment">
+                                    A related resource that is supplanted, displaced, or superseded by the described resource.
+                                </td>
+                                <td property="skos:scopeNote">
+                                    
+                                </td>
+				<!--
+                                <td>
+                                    
+                                </td>
+				-->
+                                <td>
+                                    
+                                </td>
+                            </tr>
+                        
+                            <tr id="Concept.status"
+                                typeof="rdf:Property"
+                                resource="http://publications.europa.eu/ontology/euvoc#status"
+                                class="class mandatory">
+                                <td>
+				    <a href="https://github.com/SEMICeu/Thesaurus/issues/new?title=Issue%20for%20status%20in%20Concept&body=Explain%20your%20issue%20for%20https://semiceu.github.io/Thesaurus/releases/1.0.0%23Concept.status" target="_blank" rel="noopener noreferrer" >
+					    <!--                                        <i class="icon">[o]</i> -->
+                                        <img src="html/callout.png" loading="lazy" alt="[o]" width="100" height="100"/>
+                                    </a>
+                                </td>
+                                <td>
+                                        <a href="http://publications.europa.eu/ontology/euvoc#status"
+                                           data-toggle="tooltip"
+                                           data-content="http://publications.europa.eu/ontology/euvoc#status"
+                                           data-placement="right">
+                                        status</a>
+                                </td>
+                                <td>
+                                    
+                                        
+                                            <a href="#Concept" data-placement="right">Concept</a>
+                                        
+                                    
+                                </td>
+                                <td>
+                                    1
+                                </td>
+                                <td property="rdfs:comment">
+                                    The status of the concept in the context of a particular workflow process.
+                                </td>
+                                <td property="skos:scopeNote">
+                                    The recommended controlled vocabulary is the Publications Office <a href="https://op.europa.eu/en/web/eu-vocabularies/dataset/-/resource?uri=http://publications.europa.eu/resource/dataset/concept-status">Concept status</a> authority table.
+                                </td>
+				<!--
+                                <td>
+                                    
+                                </td>
+				-->
+                                <td>
+                                    
+                                </td>
+                            </tr>
+                        
+                            <tr id="Concept.title"
+                                typeof="rdf:Property"
+                                resource="http://purl.org/dc/terms/title"
+                                class="class mandatory">
+                                <td>
+				    <a href="https://github.com/SEMICeu/Thesaurus/issues/new?title=Issue%20for%20title%20in%20Concept&body=Explain%20your%20issue%20for%20https://semiceu.github.io/Thesaurus/releases/1.0.0%23Concept.title" target="_blank" rel="noopener noreferrer" >
+					    <!--                                        <i class="icon">[o]</i> -->
+                                        <img src="html/callout.png" loading="lazy" alt="[o]" width="100" height="100"/>
+                                    </a>
+                                </td>
+                                <td>
+                                        <a href="http://purl.org/dc/terms/title"
+                                           data-toggle="tooltip"
+                                           data-content="http://purl.org/dc/terms/title"
+                                           data-placement="right">
+                                        title</a>
+                                </td>
+                                <td>
+                                    
+                                        
+                                            <a href="#Text" data-placement="right">Text</a>
+                                        
+                                    
+                                </td>
+                                <td>
+                                    0..*
+                                </td>
+                                <td property="rdfs:comment">
+                                    A name given to the resource.
+                                </td>
+                                <td property="skos:scopeNote">
+                                    This property is used as the "popularized title".
+                                </td>
+				<!--
+                                <td>
+                                    
+                                </td>
+				-->
+                                <td>
+                                    
+                                </td>
+                            </tr>
+                        
+                            <tr id="Concept.versioninfo"
+                                typeof="rdf:Property"
+                                resource="http://www.w3.org/2002/07/owl#versionInfo"
+                                class="class mandatory">
+                                <td>
+				    <a href="https://github.com/SEMICeu/Thesaurus/issues/new?title=Issue%20for%20version info%20in%20Concept&body=Explain%20your%20issue%20for%20https://semiceu.github.io/Thesaurus/releases/1.0.0%23Concept.versioninfo" target="_blank" rel="noopener noreferrer" >
+					    <!--                                        <i class="icon">[o]</i> -->
+                                        <img src="html/callout.png" loading="lazy" alt="[o]" width="100" height="100"/>
+                                    </a>
+                                </td>
+                                <td>
+                                        <a href="http://www.w3.org/2002/07/owl#versionInfo"
+                                           data-toggle="tooltip"
+                                           data-content="http://www.w3.org/2002/07/owl#versionInfo"
+                                           data-placement="right">
+                                        version info</a>
+                                </td>
+                                <td>
+                                    
+                                        
+                                            <a href="#String" data-placement="right">String</a>
+                                        
+                                    
+                                </td>
+                                <td>
+                                    1
+                                </td>
+                                <td property="rdfs:comment">
+                                    This element contains a string giving information about this version such as RCS/CVS keywords.
+                                </td>
+                                <td property="skos:scopeNote">
+                                    The values should follow <a href="https://semver.org/">Semantic Versioning (X.X.X)</a>.
+                                </td>
+				<!--
+                                <td>
+                                    
+                                </td>
+				-->
+                                <td>
+                                    
+                                </td>
+                            </tr>
+                        
+                    </tbody>
+                </table>
+            </div>
+        
+    </div>
+</section>
+
+
+
+
+
+   
+        <section>
+            <h3 id="ConceptScheme">
+                <a href="http://www.w3.org/2004/02/skos/core#ConceptScheme"
+                   data-toggle="tooltip"
+                   data-content="http://www.w3.org/2004/02/skos/core#ConceptScheme"
+                   data-placement="right">Concept Scheme</a>
+
+            </h3>
+	        <!-- XXX an image in the h3 will break the rendering of the Table Of Contents of Respec -->
+		<!-- outcomment github feedback possibility
+                <a href="https://github.com/SEMICeu/Thesaurus/issues/new?title=Issue%20for%20ConceptScheme&body=Explain%20your%20issue"}}>
+                   <img src="html/callout.png" loading="lazy" alt="(create issue)" width="20" height="20"/>
+		</a>
+		-->
+            <dl>
+                <dt>
+                    Definition
+                </dt>
+                <dd>
+                    A set of concepts, optionally including statements about semantic relationships between those concepts.
+                </dd>
+                
+                
+                    <dt>
+                        Usage Note
+                    </dt>
+                    <dd>
+                        A concept scheme may be defined to include concepts from different sources.
+                    </dd>
+                
+                
+                    <dt>
+                        Properties
+                    </dt>
+                    
+                        <dd>
+                            For this entity the following properties are defined: <a href="#ConceptScheme.datecreated">date created</a>
+                            , <a href="#ConceptScheme.dateissued">date issued</a>
+                            , <a href="#ConceptScheme.datemodified">date modified</a>
+                            , <a href="#ConceptScheme.hastopconcept">has top concept</a>
+                            , <a href="#ConceptScheme.identifier">identifier</a>
+                            , <a href="#ConceptScheme.isreplacedby">is replaced by</a>
+                            , <a href="#ConceptScheme.preferredlabel">preferred label</a>
+                            , <a href="#ConceptScheme.replaces">replaces</a>
+                            , <a href="#ConceptScheme.title">title</a>
+                            , <a href="#ConceptScheme.versioninfo">version info</a>
+                            .
+                    </dd>
+                
+            </dl>
+        </div>
+        
+            <div class="u-table-overflow">
+                <table class="data-table simple" id="table-mandatory-classes">
+                    <thead>
+                        <tr class="data-table__header">
+                            <th class="data-table__header-title--sortable" style="width:6%">
+                            </th>
+                            <th class="data-table__header-title--sortable data-table__header-title--sortable-active" style="width:14%">
+                                Property
+                            </th>
+                            <th class="data-table__header-title--sortable" style="width:14%">
+                                Range
+                            </th>
+                            <th class="data-table__header-title--sortable" style="width:6%">
+                                Card
+                            </th>
+                            <th class="data-table__header-title--sortable" style="width:30%">
+                                Definition 
+                            </th>
+                            <th class="data-table__header-title--sortable" style="width:30%">
+                                Usage
+                            </th>
+			    <!--
+                            <th class="data-table__header-title--sortable" style="width:3%">
+                                Codelist
+                            </th>
+                            <th class="data-table__header-title--sortable" style="width:5%">
+                                DCAT
+                            </th>
+			    -->
+                        </tr>
+                    </thead>
+                    <tbody class="supertype">
+                        
+                            <tr id="ConceptScheme.datecreated"
+                                typeof="rdf:Property"
+                                resource="http://purl.org/dc/terms/created"
+                                class="class mandatory">
+                                <td>
+				    <a href="https://github.com/SEMICeu/Thesaurus/issues/new?title=Issue%20for%20date created%20in%20Concept Scheme&body=Explain%20your%20issue%20for%20https://semiceu.github.io/Thesaurus/releases/1.0.0%23ConceptScheme.datecreated" target="_blank" rel="noopener noreferrer" >
+					    <!--                                        <i class="icon">[o]</i> -->
+                                        <img src="html/callout.png" loading="lazy" alt="[o]" width="100" height="100"/>
+                                    </a>
+                                </td>
+                                <td>
+                                        <a href="http://purl.org/dc/terms/created"
+                                           data-toggle="tooltip"
+                                           data-content="http://purl.org/dc/terms/created"
+                                           data-placement="right">
+                                        date created</a>
+                                </td>
+                                <td>
+                                    
+                                        
+                                            <a href="#Date" data-placement="right">Date</a>
+                                        
+                                    
+                                </td>
+                                <td>
+                                    1
+                                </td>
+                                <td property="rdfs:comment">
+                                    Date of creation of the resource.
+                                </td>
+                                <td property="skos:scopeNote">
+                                    
+                                </td>
+				<!--
+                                <td>
+                                    
+                                </td>
+				-->
+                                <td>
+                                    
+                                </td>
+                            </tr>
+                        
+                            <tr id="ConceptScheme.dateissued"
+                                typeof="rdf:Property"
+                                resource="http://purl.org/dc/terms/issued"
+                                class="class mandatory">
+                                <td>
+				    <a href="https://github.com/SEMICeu/Thesaurus/issues/new?title=Issue%20for%20date issued%20in%20Concept Scheme&body=Explain%20your%20issue%20for%20https://semiceu.github.io/Thesaurus/releases/1.0.0%23ConceptScheme.dateissued" target="_blank" rel="noopener noreferrer" >
+					    <!--                                        <i class="icon">[o]</i> -->
+                                        <img src="html/callout.png" loading="lazy" alt="[o]" width="100" height="100"/>
+                                    </a>
+                                </td>
+                                <td>
+                                        <a href="http://purl.org/dc/terms/issued"
+                                           data-toggle="tooltip"
+                                           data-content="http://purl.org/dc/terms/issued"
+                                           data-placement="right">
+                                        date issued</a>
+                                </td>
+                                <td>
+                                    
+                                        
+                                            <a href="#Date" data-placement="right">Date</a>
+                                        
+                                    
+                                </td>
+                                <td>
+                                    0..1
+                                </td>
+                                <td property="rdfs:comment">
+                                    Date of formal issuance of the resource.
+                                </td>
+                                <td property="skos:scopeNote">
+                                    
+                                </td>
+				<!--
+                                <td>
+                                    
+                                </td>
+				-->
+                                <td>
+                                    
+                                </td>
+                            </tr>
+                        
+                            <tr id="ConceptScheme.datemodified"
+                                typeof="rdf:Property"
+                                resource="http://purl.org/dc/terms/modified"
+                                class="class mandatory">
+                                <td>
+				    <a href="https://github.com/SEMICeu/Thesaurus/issues/new?title=Issue%20for%20date modified%20in%20Concept Scheme&body=Explain%20your%20issue%20for%20https://semiceu.github.io/Thesaurus/releases/1.0.0%23ConceptScheme.datemodified" target="_blank" rel="noopener noreferrer" >
+					    <!--                                        <i class="icon">[o]</i> -->
+                                        <img src="html/callout.png" loading="lazy" alt="[o]" width="100" height="100"/>
+                                    </a>
+                                </td>
+                                <td>
+                                        <a href="http://purl.org/dc/terms/modified"
+                                           data-toggle="tooltip"
+                                           data-content="http://purl.org/dc/terms/modified"
+                                           data-placement="right">
+                                        date modified</a>
+                                </td>
+                                <td>
+                                    
+                                        
+                                            <a href="#Date" data-placement="right">Date</a>
+                                        
+                                    
+                                </td>
+                                <td>
+                                    0..1
+                                </td>
+                                <td property="rdfs:comment">
+                                    Date on which the resource was changed.
+                                </td>
+                                <td property="skos:scopeNote">
+                                    
+                                </td>
+				<!--
+                                <td>
+                                    
+                                </td>
+				-->
+                                <td>
+                                    
+                                </td>
+                            </tr>
+                        
+                            <tr id="ConceptScheme.hastopconcept"
+                                typeof="rdf:Property"
+                                resource="http://www.w3.org/2004/02/skos/core#hasTopConcept"
+                                class="class mandatory">
+                                <td>
+				    <a href="https://github.com/SEMICeu/Thesaurus/issues/new?title=Issue%20for%20has top concept%20in%20Concept Scheme&body=Explain%20your%20issue%20for%20https://semiceu.github.io/Thesaurus/releases/1.0.0%23ConceptScheme.hastopconcept" target="_blank" rel="noopener noreferrer" >
+					    <!--                                        <i class="icon">[o]</i> -->
+                                        <img src="html/callout.png" loading="lazy" alt="[o]" width="100" height="100"/>
+                                    </a>
+                                </td>
+                                <td>
+                                        <a href="http://www.w3.org/2004/02/skos/core#hasTopConcept"
+                                           data-toggle="tooltip"
+                                           data-content="http://www.w3.org/2004/02/skos/core#hasTopConcept"
+                                           data-placement="right">
+                                        has top concept</a>
+                                </td>
+                                <td>
+                                    
+                                        
+                                            <a href="#Concept" data-placement="right">Concept</a>
+                                        
+                                    
+                                </td>
+                                <td>
+                                    0..*
+                                </td>
+                                <td property="rdfs:comment">
+                                    Relates, by convention, a concept scheme to a concept which is topmost in the broader/narrower concept hierarchies for that scheme, providing an entry point to these hierarchies.
+                                </td>
+                                <td property="skos:scopeNote">
+                                    
+                                </td>
+				<!--
+                                <td>
+                                    
+                                </td>
+				-->
+                                <td>
+                                    
+                                </td>
+                            </tr>
+                        
+                            <tr id="ConceptScheme.identifier"
+                                typeof="rdf:Property"
+                                resource="http://purl.org/dc/terms/identifier"
+                                class="class mandatory">
+                                <td>
+				    <a href="https://github.com/SEMICeu/Thesaurus/issues/new?title=Issue%20for%20identifier%20in%20Concept Scheme&body=Explain%20your%20issue%20for%20https://semiceu.github.io/Thesaurus/releases/1.0.0%23ConceptScheme.identifier" target="_blank" rel="noopener noreferrer" >
+					    <!--                                        <i class="icon">[o]</i> -->
+                                        <img src="html/callout.png" loading="lazy" alt="[o]" width="100" height="100"/>
+                                    </a>
+                                </td>
+                                <td>
+                                        <a href="http://purl.org/dc/terms/identifier"
+                                           data-toggle="tooltip"
+                                           data-content="http://purl.org/dc/terms/identifier"
+                                           data-placement="right">
+                                        identifier</a>
+                                </td>
+                                <td>
+                                    
+                                        
+                                            <a href="#String" data-placement="right">String</a>
+                                        
+                                    
+                                </td>
+                                <td>
+                                    1
+                                </td>
+                                <td property="rdfs:comment">
+                                    An unambiguous reference to the resource within a given context.
+                                </td>
+                                <td property="skos:scopeNote">
+                                    
+                                </td>
+				<!--
+                                <td>
+                                    
+                                </td>
+				-->
+                                <td>
+                                    
+                                </td>
+                            </tr>
+                        
+                            <tr id="ConceptScheme.isreplacedby"
+                                typeof="rdf:Property"
+                                resource="http://purl.org/dc/terms/isReplacedBy"
+                                class="class mandatory">
+                                <td>
+				    <a href="https://github.com/SEMICeu/Thesaurus/issues/new?title=Issue%20for%20is replaced by%20in%20Concept Scheme&body=Explain%20your%20issue%20for%20https://semiceu.github.io/Thesaurus/releases/1.0.0%23ConceptScheme.isreplacedby" target="_blank" rel="noopener noreferrer" >
+					    <!--                                        <i class="icon">[o]</i> -->
+                                        <img src="html/callout.png" loading="lazy" alt="[o]" width="100" height="100"/>
+                                    </a>
+                                </td>
+                                <td>
+                                        <a href="http://purl.org/dc/terms/isReplacedBy"
+                                           data-toggle="tooltip"
+                                           data-content="http://purl.org/dc/terms/isReplacedBy"
+                                           data-placement="right">
+                                        is replaced by</a>
+                                </td>
+                                <td>
+                                    
+                                        
+                                            <a href="#ConceptScheme" data-placement="right">Concept Scheme</a>
+                                        
+                                    
+                                </td>
+                                <td>
+                                    0..1
+                                </td>
+                                <td property="rdfs:comment">
+                                    A related resource that supplants, displaces, or supersedes the described resource.
+                                </td>
+                                <td property="skos:scopeNote">
+                                    
+                                </td>
+				<!--
+                                <td>
+                                    
+                                </td>
+				-->
+                                <td>
+                                    
+                                </td>
+                            </tr>
+                        
+                            <tr id="ConceptScheme.preferredlabel"
+                                typeof="rdf:Property"
+                                resource="http://www.w3.org/2004/02/skos/core#prefLabel"
+                                class="class mandatory">
+                                <td>
+				    <a href="https://github.com/SEMICeu/Thesaurus/issues/new?title=Issue%20for%20preferred label%20in%20Concept Scheme&body=Explain%20your%20issue%20for%20https://semiceu.github.io/Thesaurus/releases/1.0.0%23ConceptScheme.preferredlabel" target="_blank" rel="noopener noreferrer" >
+					    <!--                                        <i class="icon">[o]</i> -->
+                                        <img src="html/callout.png" loading="lazy" alt="[o]" width="100" height="100"/>
+                                    </a>
+                                </td>
+                                <td>
+                                        <a href="http://www.w3.org/2004/02/skos/core#prefLabel"
+                                           data-toggle="tooltip"
+                                           data-content="http://www.w3.org/2004/02/skos/core#prefLabel"
+                                           data-placement="right">
+                                        preferred label</a>
+                                </td>
+                                <td>
+                                    
+                                        
+                                            <a href="#Text" data-placement="right">Text</a>
+                                        
+                                    
+                                </td>
+                                <td>
+                                    1..*
+                                </td>
+                                <td property="rdfs:comment">
+                                    The preferred lexical label for a resource, in a given language.
+                                </td>
+                                <td property="skos:scopeNote">
+                                    Labels should be in French or English.<br/>
+Labels should be at least in French.<br/>
+Labels should start with capital letters.<br/>
+Labels should not contain special characters such as & - ( ) \ or /.
+                                </td>
+				<!--
+                                <td>
+                                    
+                                </td>
+				-->
+                                <td>
+                                    
+                                </td>
+                            </tr>
+                        
+                            <tr id="ConceptScheme.replaces"
+                                typeof="rdf:Property"
+                                resource="http://purl.org/dc/terms/replaces"
+                                class="class mandatory">
+                                <td>
+				    <a href="https://github.com/SEMICeu/Thesaurus/issues/new?title=Issue%20for%20replaces%20in%20Concept Scheme&body=Explain%20your%20issue%20for%20https://semiceu.github.io/Thesaurus/releases/1.0.0%23ConceptScheme.replaces" target="_blank" rel="noopener noreferrer" >
+					    <!--                                        <i class="icon">[o]</i> -->
+                                        <img src="html/callout.png" loading="lazy" alt="[o]" width="100" height="100"/>
+                                    </a>
+                                </td>
+                                <td>
+                                        <a href="http://purl.org/dc/terms/replaces"
+                                           data-toggle="tooltip"
+                                           data-content="http://purl.org/dc/terms/replaces"
+                                           data-placement="right">
+                                        replaces</a>
+                                </td>
+                                <td>
+                                    
+                                        
+                                            <a href="#ConceptScheme" data-placement="right">Concept Scheme</a>
+                                        
+                                    
+                                </td>
+                                <td>
+                                    0..1
+                                </td>
+                                <td property="rdfs:comment">
+                                    A related resource that is supplanted, displaced, or superseded by the described resource.
+                                </td>
+                                <td property="skos:scopeNote">
+                                    
+                                </td>
+				<!--
+                                <td>
+                                    
+                                </td>
+				-->
+                                <td>
+                                    
+                                </td>
+                            </tr>
+                        
+                            <tr id="ConceptScheme.title"
+                                typeof="rdf:Property"
+                                resource="http://purl.org/dc/terms/title"
+                                class="class mandatory">
+                                <td>
+				    <a href="https://github.com/SEMICeu/Thesaurus/issues/new?title=Issue%20for%20title%20in%20Concept Scheme&body=Explain%20your%20issue%20for%20https://semiceu.github.io/Thesaurus/releases/1.0.0%23ConceptScheme.title" target="_blank" rel="noopener noreferrer" >
+					    <!--                                        <i class="icon">[o]</i> -->
+                                        <img src="html/callout.png" loading="lazy" alt="[o]" width="100" height="100"/>
+                                    </a>
+                                </td>
+                                <td>
+                                        <a href="http://purl.org/dc/terms/title"
+                                           data-toggle="tooltip"
+                                           data-content="http://purl.org/dc/terms/title"
+                                           data-placement="right">
+                                        title</a>
+                                </td>
+                                <td>
+                                    
+                                        
+                                            <a href="#Text" data-placement="right">Text</a>
+                                        
+                                    
+                                </td>
+                                <td>
+                                    0..*
+                                </td>
+                                <td property="rdfs:comment">
+                                    A name given to the resource.
+                                </td>
+                                <td property="skos:scopeNote">
+                                    
+                                </td>
+				<!--
+                                <td>
+                                    
+                                </td>
+				-->
+                                <td>
+                                    
+                                </td>
+                            </tr>
+                        
+                            <tr id="ConceptScheme.versioninfo"
+                                typeof="rdf:Property"
+                                resource="http://www.w3.org/2002/07/owl#versionInfo"
+                                class="class mandatory">
+                                <td>
+				    <a href="https://github.com/SEMICeu/Thesaurus/issues/new?title=Issue%20for%20version info%20in%20Concept Scheme&body=Explain%20your%20issue%20for%20https://semiceu.github.io/Thesaurus/releases/1.0.0%23ConceptScheme.versioninfo" target="_blank" rel="noopener noreferrer" >
+					    <!--                                        <i class="icon">[o]</i> -->
+                                        <img src="html/callout.png" loading="lazy" alt="[o]" width="100" height="100"/>
+                                    </a>
+                                </td>
+                                <td>
+                                        <a href="http://www.w3.org/2002/07/owl#versionInfo"
+                                           data-toggle="tooltip"
+                                           data-content="http://www.w3.org/2002/07/owl#versionInfo"
+                                           data-placement="right">
+                                        version info</a>
+                                </td>
+                                <td>
+                                    
+                                        
+                                            <a href="#String" data-placement="right">String</a>
+                                        
+                                    
+                                </td>
+                                <td>
+                                    1
+                                </td>
+                                <td property="rdfs:comment">
+                                    This element contains a string giving information about this version such as RCS/CVS keywords.
+                                </td>
+                                <td property="skos:scopeNote">
+                                    The values should follow <a href="https://semver.org/">Semantic Versioning (X.X.X)</a>.
+                                </td>
+				<!--
+                                <td>
+                                    
+                                </td>
+				-->
+                                <td>
+                                    
+                                </td>
+                            </tr>
+                        
+                    </tbody>
+                </table>
+            </div>
+        
+    </div>
+</section>
+
+
+
+
+</section>
+
+<section>
+<h2>
+   Supportive Entities
+</h2>
+The supportive entities are supporting the main entities in the Application Profile. 
+They are included in the Application Profile because they form the range of properties.
+
+
+
+
+
+
+
+
+</section>
+
+    <section>
+        <h2>
+            Datatypes
+        </h2>
+
+	The following datatypes are used within this specification.
+
+	<table class="data-table simple" id="table-mandatory-classes">
+	    <thead>
+		<tr class="data-table__header">
+		    <th class="data-table__header-title--sortable">
+		    </th>
+		    <th class="data-table__header-title--sortable data-table__header-title--sortable-active">
+			Class
+		    </th>
+		    <th class="data-table__header-title--sortable">
+			Definition
+		    </th>
+		</tr>
+	    </thead>
+	    <tbody class="supertype">
+            
+		<tr><td>
+                   <a href="https://github.com/SEMICeu/Thesaurus/issues/new?title=Issue%20for%20Date&body=Explain%20your%20issue"}}>
+                     <img src="html/callout.png" loading="lazy" alt="(create issue)" width="50" height="50"/>
+		   </a>
+		</td><td>
+                
+                    <div id="Date">
+                        <a href="http://www.w3.org/2001/XMLSchema#date"
+                           data-toggle="tooltip"
+                           data-content="http://www.w3.org/2001/XMLSchema#date"
+                           data-placement="right">Date</a>
+                    </div>
+                
+		</td><td>
+                    The ·value space· of date consists of top-open intervals of exactly one day in length on the timelines of dateTime, beginning on the beginning moment of each day (in each timezone), i.e. &#39;00:00:00&#39;, up to but not including &#39;24:00:00&#39; (which is identical with &#39;00:00:00&#39; of the next day). For nontimezoned values, the top-open intervals disjointly cover the nontimezoned timeline, one per day. For timezoned values, the intervals begin at every minute and therefore overlap.
+		</td></tr>
+		<tr><td>
+                   <a href="https://github.com/SEMICeu/Thesaurus/issues/new?title=Issue%20for%20String&body=Explain%20your%20issue"}}>
+                     <img src="html/callout.png" loading="lazy" alt="(create issue)" width="50" height="50"/>
+		   </a>
+		</td><td>
+                
+                    <div id="String">
+                        <a href="http://www.w3.org/2001/XMLSchema#double"
+                           data-toggle="tooltip"
+                           data-content="http://www.w3.org/2001/XMLSchema#double"
+                           data-placement="right">String</a>
+                    </div>
+                
+		</td><td>
+                    The string datatype represents character strings in XML. The ·value space· of string is the set of finite-length sequences of characters (as defined in [XML 1.0 (Second Edition)]) that ·match· the Char production from [XML 1.0 (Second Edition)]. A character is an atomic unit of communication; it is not further specified except to note that every character has a corresponding Universal Character Set code point, which is an integer.
+		</td></tr>
+		<tr><td>
+                   <a href="https://github.com/SEMICeu/Thesaurus/issues/new?title=Issue%20for%20Text&body=Explain%20your%20issue"}}>
+                     <img src="html/callout.png" loading="lazy" alt="(create issue)" width="50" height="50"/>
+		   </a>
+		</td><td>
+                
+                    <div id="Text">
+                        <a href="http://www.w3.org/1999/02/22-rdf-syntax-ns#langString"
+                           data-toggle="tooltip"
+                           data-content="http://www.w3.org/1999/02/22-rdf-syntax-ns#langString"
+                           data-placement="right">Text</a>
+                    </div>
+                
+		</td><td>
+                    The text data type is a combination of a string and a language identifier.
+		</td></tr>
+            </tbody>
+	</table>
+
+
+</section>
+
+<!--
+<section class="informative">
+    <h2 aria-level="1" role="heading" id="h2_sotd">
+        JSON-LD context
+    </h2>
+    <div class="region region--no-space-top" id="jsonld">
+         (non normative)
+        
+            <p>
+                A reusable JSON-LD context definition for this Core Vocabulary is retrievable at: <a href="/Thesaurus/releases/1.0.0/context/thesaurus.jsonld"
+    target="_blank">/Thesaurus/releases/1.0.0/context/thesaurus.jsonld</a>
+            </p>
+        
+    </div>
+</section>
+<section class="informative">
+    <h2 aria-level="1" role="heading" id="h2_sotd">
+        SHACL template
+    </h2>
+    <div class="region region--no-space-top" id="shacl">
+         (non normative)
+        
+            <p>
+                A reusable SHACL template for this Core Vocabulary is retrievable at: <a href="/Thesaurus/releases/1.0.0/shacl/thesaurus-SHACL.ttl"
+    target="_blank">/Thesaurus/releases/1.0.0/shacl/thesaurus-SHACL.ttl</a>
+            </p>
+        
+    </div>
+</section>
+-->
+
+<section class="informative">
+    <h2> Examples </h2>
+        
+<div class="h3 examples" id="example-rdf_thesaurus">Example Thesaurus</div>
+
+</section>
+
+
+
+<section class="informative">
+	<h2>Usage Guidelines</h2>
+    <section class="informative">
+  <h2>Support for implementation</h2>
+
+The following section provides support for implementing the Semantic Thesaurus.
+<p/>
+
+<h3>JSON-LD context file</h3>
+
+One common technical question is the format in which the data is being exchanged. 
+For conformance with the Semantic Thesaurus, it is not mandatory that this happens in an RDF serialisation, but the exchanged format SHOULD be unambiguously transformable into RDF.
+For the format JSON, a popular format to exchange data between systems, SEMIC provides a <a href="./context/thesaurus.jsonld">JSON-LD context file</a>. 
+JSON-LD is a W3C Recommendation [[[json-ld11]]] that provided a standard approach to interpret JSON structures as RDF.
+The provided JSON-LD context file can be used by implementers.
+This JSON-LD context is not normative, i.e. other JSON-LD contexts are allowed.
+<p/>
+The JSON-LD context file is downloadable <a href="./context/thesaurus.jsonld">here</a>.
+<p/>
+
+<h3>Validation</h3>
+
+To verify if the data is (technically) conformant to the Semantic Thesaurus, the exchanged data can be validated using the provided SHACL shapes. 
+SHACL is a W3C Recommendation to express constraints on an RDF knowledge graph. 
+<p/>
+To support the check whether or not a catalogue satisfies the expressed constraints in this Application Profile, the constraints in this specification are expressed using SHACL [[shacl]].
+Each constraint in this specification that could be converted into a SHACL expression has been included.
+As such this collection of SHACL expressions that can be used to build a validation check for data. 
+<p/>
+It is up to the implementers to define the validation they expect.
+Each implementation happens within a context, and that context is beyond the SHACL expressions here.
+<p/>
+The shapes can be found <a href="./shacl/thesaurus-SHACL.ttl">here</a>.
+
+
+<h3>UML representation</h3>
+The UML representation from which the Semantic Thesaurus has been build is available <a href="./UML">here</a>.
+
+<!--
+<h3>Mapping</h3>
+A mapping towards Schema.org can be found <a href="https://github.com/SEMICeu/Semantic-Mappings/tree/main/Core%20Location">here</a>
+<p/>
+-->
+
+</section>
+    <section class="informative">
+<h2>Governance</h2>
+
+<h3>Versioning governance</h3>
+All specifications produced in SEMIC will follow the versioning rule described by the SEMIC Style Guide rule 
+<a href="https://semiceu.github.io/style-guide/1.0.0/gc-publication-conventions.html#sec:pc-r3">PC-R3</a>.
+In case a SEMIC asset is deprecated the asset will remain available through its PURI.
+<p/>
+The serialisation will have:
+<ul>
+<li>a dct:isReplacedBy referencing the new assets used instead and</li>
+<li> an adms:status  indicating its deprecated <a href="http://publications.europa.eu/resource/authority/concept-status/DEPRECATED">status</a>.</li>
+</ul>
+<p/>
+
+<h3>Governance requirements for re-used assets</h3>
+In order to adhere to the SEMIC Style Guide rule <a href="https://semiceu.github.io/style-guide/1.0.0/gc-general-conventions.html#sec:gc-r2">GC-R2</a>
+ a specification should have quality and governance standards for the assets that are being reused.
+<p/>
+In order for an asset to be considered for reuse within a SEMIC specification it can be requested by a community member or it requires to adhere to the following requirements:
+<ul>
+<li> The asset is part of a recommendation by a major standards body or an EU institution.</li>
+<li> The asset is actively being maintained.</li>
+</ul>
+<p/>
+
+After being taken into consideration the asset will be validated in three steps:
+<ul>
+<li> Syntax validation will be performed on the relevant artefacts.</li>
+<li> Constraint validation will be performed on the relevant artefacts.</li>
+<li> The PURI will be validated.</li>
+</ul>
+Once considered and validated an asset can be adopted if it is approved by the community.
+<p/>
+
+<h3>Lexicalisation rules</h3>
+
+In order to adhere to the SEMIC Style Guide rule <a href="https://semiceu.github.io/style-guide/1.0.0/gc-semantic-conventions.html#sec:sc-r3">SC-R3</a> a specification requires formal lexicalisation rules.
+The Style Guide proposes two options either by using RDFS or SKOS lexicalisation.
+<p/>
+SEMIC uses and will use the RDFS lexicalisation for all of its specifications. More specifically:
+<ul>
+<li> rdfs:label is used to provide a human-readable version of a resource's name.</li>
+<li> The usage of certain resource can be clarified in a skos:usageNote.</li>
+</ul>
+
+</section>
+</section>
+ 
+
+
+
+ 
+
+
+
+<section id="quick-reference" class="appendix">
+
+<h2>Quick Reference of Classes and Properties</h2>
+
+This section provides a condensed tabular overview of the mentioned classes and properties in this specification.
+The properties are indicated as <it>mandatory, recommended, optional</it> and <it>deprecated</it>. These terms have the following meaning.
+<ul>
+<li>Mandatory property: a receiver MUST be able to process the information for that property; a sender MUST provide the information for that property.</li>
+<li>Recommended property: a receiver MUST be able to process the information for that property; a sender SHOULD provide the information for that property if it is available.</li>
+<li>Optional property: a receiver MUST be able to process the information for that property; a sender MAY provide the information for that property but is not obliged to do so.</li>
+<li>Deprecated property: a receiver SHOULD be able to process information about instances of that property; a sender SHOULD NOT provide the information about instances of that property.</li>
+</ul>
+
+<table id="table-quickoverview" class="simple" style="width:100%; table-layout: fixed; word-wrap:break-word;">
+	<thead>
+		<tr><th>Class</th><th>Class IRI</th><th>Property Type</type><th>Property</th><th>Property IRI</th></tr>
+	</thead>
+	<tbody>
+		
+				
+					
+						
+					
+						
+					
+						
+					
+						
+					
+						
+					
+						
+					
+						
+					
+						
+					
+						
+					
+						
+					
+						
+					
+						
+					
+					
+						
+					
+						
+					
+						
+					
+						
+					
+						
+					
+						
+					
+						
+					
+						
+					
+						
+					
+						
+					
+						
+					
+						
+					
+					
+						
+							<tr>
+								<td><a href="#Concept">Concept</a></td>
+								<td><div class="shorten">http://www.w3.org/2004/02/skos/core#Concept</div></td>
+								<td></td>
+								<td><a href="#Concept.alternativelabel">alternative label </a></td>
+								<td><div class="shorten">http://www.w3.org/2004/02/skos/core#altLabel</div></td>
+							</tr>
+						
+					
+						
+							<tr>
+								<td><a href="#Concept">Concept</a></td>
+								<td><div class="shorten">http://www.w3.org/2004/02/skos/core#Concept</div></td>
+								<td></td>
+								<td><a href="#Concept.definition">definition </a></td>
+								<td><div class="shorten">http://www.w3.org/2004/02/skos/core#definition</div></td>
+							</tr>
+						
+					
+						
+							<tr>
+								<td><a href="#Concept">Concept</a></td>
+								<td><div class="shorten">http://www.w3.org/2004/02/skos/core#Concept</div></td>
+								<td></td>
+								<td><a href="#Concept.hasbroader">has broader </a></td>
+								<td><div class="shorten">http://www.w3.org/2004/02/skos/core#broader</div></td>
+							</tr>
+						
+					
+						
+							<tr>
+								<td><a href="#Concept">Concept</a></td>
+								<td><div class="shorten">http://www.w3.org/2004/02/skos/core#Concept</div></td>
+								<td></td>
+								<td><a href="#Concept.identifier">identifier </a></td>
+								<td><div class="shorten">http://purl.org/dc/terms/identifier</div></td>
+							</tr>
+						
+					
+						
+							<tr>
+								<td><a href="#Concept">Concept</a></td>
+								<td><div class="shorten">http://www.w3.org/2004/02/skos/core#Concept</div></td>
+								<td></td>
+								<td><a href="#Concept.isinscheme">is in scheme </a></td>
+								<td><div class="shorten">http://www.w3.org/2004/02/skos/core#inScheme</div></td>
+							</tr>
+						
+					
+						
+							<tr>
+								<td><a href="#Concept">Concept</a></td>
+								<td><div class="shorten">http://www.w3.org/2004/02/skos/core#Concept</div></td>
+								<td></td>
+								<td><a href="#Concept.isreplacedby">is replaced by </a></td>
+								<td><div class="shorten">http://purl.org/dc/terms/isReplacedBy</div></td>
+							</tr>
+						
+					
+						
+							<tr>
+								<td><a href="#Concept">Concept</a></td>
+								<td><div class="shorten">http://www.w3.org/2004/02/skos/core#Concept</div></td>
+								<td></td>
+								<td><a href="#Concept.istopconceptof">is top concept of </a></td>
+								<td><div class="shorten">http://www.w3.org/2004/02/skos/core#topConceptOf</div></td>
+							</tr>
+						
+					
+						
+							<tr>
+								<td><a href="#Concept">Concept</a></td>
+								<td><div class="shorten">http://www.w3.org/2004/02/skos/core#Concept</div></td>
+								<td></td>
+								<td><a href="#Concept.preferredlabel">preferred label </a></td>
+								<td><div class="shorten">http://www.w3.org/2004/02/skos/core#prefLabel</div></td>
+							</tr>
+						
+					
+						
+							<tr>
+								<td><a href="#Concept">Concept</a></td>
+								<td><div class="shorten">http://www.w3.org/2004/02/skos/core#Concept</div></td>
+								<td></td>
+								<td><a href="#Concept.replaces">replaces </a></td>
+								<td><div class="shorten">http://purl.org/dc/terms/replaces</div></td>
+							</tr>
+						
+					
+						
+							<tr>
+								<td><a href="#Concept">Concept</a></td>
+								<td><div class="shorten">http://www.w3.org/2004/02/skos/core#Concept</div></td>
+								<td></td>
+								<td><a href="#Concept.status">status </a></td>
+								<td><div class="shorten">http://publications.europa.eu/ontology/euvoc#status</div></td>
+							</tr>
+						
+					
+						
+							<tr>
+								<td><a href="#Concept">Concept</a></td>
+								<td><div class="shorten">http://www.w3.org/2004/02/skos/core#Concept</div></td>
+								<td></td>
+								<td><a href="#Concept.title">title </a></td>
+								<td><div class="shorten">http://purl.org/dc/terms/title</div></td>
+							</tr>
+						
+					
+						
+							<tr>
+								<td><a href="#Concept">Concept</a></td>
+								<td><div class="shorten">http://www.w3.org/2004/02/skos/core#Concept</div></td>
+								<td></td>
+								<td><a href="#Concept.versioninfo">version info </a></td>
+								<td><div class="shorten">http://www.w3.org/2002/07/owl#versionInfo</div></td>
+							</tr>
+						
+					
+				
+			</tr>
+		
+				
+					
+						
+					
+						
+					
+						
+					
+						
+					
+						
+					
+						
+					
+						
+					
+						
+					
+						
+					
+						
+					
+					
+						
+					
+						
+					
+						
+					
+						
+					
+						
+					
+						
+					
+						
+					
+						
+					
+						
+					
+						
+					
+					
+						
+							<tr>
+								<td><a href="#ConceptScheme">Concept Scheme</a></td>
+								<td><div class="shorten">http://www.w3.org/2004/02/skos/core#ConceptScheme</div></td>
+								<td></td>
+								<td><a href="#ConceptScheme.datecreated">date created </a></td>
+								<td><div class="shorten">http://purl.org/dc/terms/created</div></td>
+							</tr>
+						
+					
+						
+							<tr>
+								<td><a href="#ConceptScheme">Concept Scheme</a></td>
+								<td><div class="shorten">http://www.w3.org/2004/02/skos/core#ConceptScheme</div></td>
+								<td></td>
+								<td><a href="#ConceptScheme.dateissued">date issued </a></td>
+								<td><div class="shorten">http://purl.org/dc/terms/issued</div></td>
+							</tr>
+						
+					
+						
+							<tr>
+								<td><a href="#ConceptScheme">Concept Scheme</a></td>
+								<td><div class="shorten">http://www.w3.org/2004/02/skos/core#ConceptScheme</div></td>
+								<td></td>
+								<td><a href="#ConceptScheme.datemodified">date modified </a></td>
+								<td><div class="shorten">http://purl.org/dc/terms/modified</div></td>
+							</tr>
+						
+					
+						
+							<tr>
+								<td><a href="#ConceptScheme">Concept Scheme</a></td>
+								<td><div class="shorten">http://www.w3.org/2004/02/skos/core#ConceptScheme</div></td>
+								<td></td>
+								<td><a href="#ConceptScheme.hastopconcept">has top concept </a></td>
+								<td><div class="shorten">http://www.w3.org/2004/02/skos/core#hasTopConcept</div></td>
+							</tr>
+						
+					
+						
+							<tr>
+								<td><a href="#ConceptScheme">Concept Scheme</a></td>
+								<td><div class="shorten">http://www.w3.org/2004/02/skos/core#ConceptScheme</div></td>
+								<td></td>
+								<td><a href="#ConceptScheme.identifier">identifier </a></td>
+								<td><div class="shorten">http://purl.org/dc/terms/identifier</div></td>
+							</tr>
+						
+					
+						
+							<tr>
+								<td><a href="#ConceptScheme">Concept Scheme</a></td>
+								<td><div class="shorten">http://www.w3.org/2004/02/skos/core#ConceptScheme</div></td>
+								<td></td>
+								<td><a href="#ConceptScheme.isreplacedby">is replaced by </a></td>
+								<td><div class="shorten">http://purl.org/dc/terms/isReplacedBy</div></td>
+							</tr>
+						
+					
+						
+							<tr>
+								<td><a href="#ConceptScheme">Concept Scheme</a></td>
+								<td><div class="shorten">http://www.w3.org/2004/02/skos/core#ConceptScheme</div></td>
+								<td></td>
+								<td><a href="#ConceptScheme.preferredlabel">preferred label </a></td>
+								<td><div class="shorten">http://www.w3.org/2004/02/skos/core#prefLabel</div></td>
+							</tr>
+						
+					
+						
+							<tr>
+								<td><a href="#ConceptScheme">Concept Scheme</a></td>
+								<td><div class="shorten">http://www.w3.org/2004/02/skos/core#ConceptScheme</div></td>
+								<td></td>
+								<td><a href="#ConceptScheme.replaces">replaces </a></td>
+								<td><div class="shorten">http://purl.org/dc/terms/replaces</div></td>
+							</tr>
+						
+					
+						
+							<tr>
+								<td><a href="#ConceptScheme">Concept Scheme</a></td>
+								<td><div class="shorten">http://www.w3.org/2004/02/skos/core#ConceptScheme</div></td>
+								<td></td>
+								<td><a href="#ConceptScheme.title">title </a></td>
+								<td><div class="shorten">http://purl.org/dc/terms/title</div></td>
+							</tr>
+						
+					
+						
+							<tr>
+								<td><a href="#ConceptScheme">Concept Scheme</a></td>
+								<td><div class="shorten">http://www.w3.org/2004/02/skos/core#ConceptScheme</div></td>
+								<td></td>
+								<td><a href="#ConceptScheme.versioninfo">version info </a></td>
+								<td><div class="shorten">http://www.w3.org/2002/07/owl#versionInfo</div></td>
+							</tr>
+						
+					
+				
+			</tr>
+		
+	<tbody>
+</table>
+
+   
+   
+
+
+<!-- This must be at the end of the template, to ensure that the iterator properly works -->
+    <script defer>
+
+
+	    var prefixes = [ 
+{'pref':'ad:', 'ns': 'http://inspire.ec.europa.eu/ont/ad#'},
+{'pref':'adms:', 'ns': 'http://www.w3.org/ns/adms#'},
+{'pref':'atu:', 'ns': 'http://data.europa.eu/88u/dataset/'},
+{'pref':'cpsv:', 'ns': 'http://purl.org/vocab/cpsv#'},
+{'pref':'cv:', 'ns': 'http://data.europa.eu/m8g/'},
+{'pref':'dcat:', 'ns': 'http://www.w3.org/ns/dcat#'},
+{'pref':'dcatap:', 'ns': 'http://data.europa.eu/r5r/'},
+{'pref':'dct:', 'ns': 'http://purl.org/dc/terms/'},
+{'pref':'dctype:', 'ns': 'http://purl.org/dc/dcmitype/'},
+{'pref':'eli:', 'ns' : 'http://data.europa.eu/eli/ontology#'},
+{'pref':'epo:', 'ns': 'http://data.europa.eu/a4g/ontology#'},
+{'pref':'foaf:', 'ns': 'http://xmlns.com/foaf/0.1/'},
+{'pref':'geo:', 'ns': 'http://www.opengis.net/ont/geosparql#'},
+{'pref':'legal:', 'ns': 'http://www.w3.org/ns/legal#'},
+{'pref':'locn:', 'ns': 'http://www.w3.org/ns/locn#'},
+{'pref':'odrl:', 'ns': 'http://www.w3.org/ns/odrl/2/'},
+{'pref':'org:', 'ns': 'http://www.w3.org/ns/org#'},
+{'pref':'owl:', 'ns': 'http://www.w3.org/2002/07/owl#'},
+{'pref':'person:', 'ns': 'http://www.w3.org/ns/person#'},
+{'pref':'prof:', 'ns': 'http://www.w3.org/ns/dx/prof/'},
+{'pref':'prov:', 'ns': 'http://www.w3.org/ns/prov#'},
+{'pref':'rdf:', 'ns': 'http://www.w3.org/1999/02/22-rdf-syntax-ns#'},
+{'pref':'rdfs:', 'ns': 'http://www.w3.org/2000/01/rdf-schema#'},
+{'pref':'schema:', 'ns': 'https://schema.org/'},
+{'pref':'skos:', 'ns': 'http://www.w3.org/2004/02/skos/core#'},
+{'pref':'spdx:', 'ns': 'http://spdx.org/rdf/terms#'},
+{'pref':'time:', 'ns': 'http://www.w3.org/2006/time#'},
+{'pref':'vann:', 'ns': 'http://purl.org/vocab/vann/'},
+{'pref':'vcard:', 'ns': 'http://www.w3.org/2006/vcard/ns#'},
+{'pref':'xhv:', 'ns': 'http://www.w3.org/1999/xhtml/vocab#'},
+{'pref':'xsd:', 'ns': 'http://www.w3.org/2001/XMLSchema#'},
+
+				];
+
+	    function shorturl (url) {
+				var short = url;
+				for (e in prefixes) {
+				   var elem = prefixes[e];
+				   if (short.startsWith(elem.ns)) {
+  					short = elem.pref + short.slice(elem.ns.length);
+					}
+				};
+				return short;
+			};
+
+	    var shorten = document.getElementsByClassName("shorten");
+	    for (k=0;k < shorten.length ; k++){
+			var selem = shorten[k];	
+	                selem.innerHTML = shorturl(selem.innerHTML.trim());
+			}
+    </script>
+    
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.6/codemirror.min.css" />
+	<!--    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.css"> -->
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.13.2/themes/base/jquery-ui.min.css"> 
+	<!-- <script src="https://code.jquery.com/jquery-3.1.1.min.js" ></script> -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.0/jquery.min.js" ></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.6/codemirror.min.js" ></script>
+    <!--    <script src="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js" ></script> -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.13.2/jquery-ui.min.js" ></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.6/codemirror.min.js" ></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.6/mode/javascript/javascript.min.js" ></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.6/mode/turtle/turtle.min.js" ></script>
+    <script src="https://codemirror.net/5/mode/javascript/javascript.js" ></script>
+	<script src="https://unpkg.com/n3@1.14.0/browser/n3.min.js"></script>
+	<script src="https://rdf.js.org/comunica-browser/versions/v4/engines/query-sparql/comunica-browser.js"></script>
+    <script src="./html/example.js" ></script>
+	<script type="text/javascript">
+		function elementInView(elem){
+				goesIn = ($(window).height() + $(window).scrollTop()) > $(elem).offset().top;
+				goesOut = ($(window).scrollTop()) > ($(elem).offset().top + $(elem).height());
+				if (goesIn && !goesOut)
+					return 1;
+				else
+					return 0;
+			};
+
+		$(window).scroll(function(){
+			$('.CodeMirror').each(function(){
+				if (elementInView($(this))){
+					$(this).each(function(i, el){
+						el.CodeMirror.refresh();
+					});
+				}
+			});
+			
+		});
+	</script>
+	<style>
+		.CodeMirror {
+			border: 1px solid #eee;
+			height: auto;
+		}
+		.buttonsample {
+			cursor: pointer;
+			margin-top: 10px;
+			margin-left: 10px;
+			font-weight: 700;
+			border:0 outset buttonface;
+			background: #F5F6F8;
+			background-image: linear-gradient(to bottom,#F5F6F8,#DBDCDE);
+			border-radius:4px;
+			box-shadow:0 1px 3px #666;
+			font-family: Arial;
+			color: grey;
+			font-size: 13px !important;
+			padding: 10px 5px;
+			text-decoration: none;
+			float: right
+		}
+	    .chooseVersion {
+			cursor: pointer;
+			margin-top: 10px;
+			margin-left: 10px;
+			font-weight: 700;
+			border:0 outset buttonface;
+			background: #F5F6F8;
+			background-image: linear-gradient(to bottom,#F5F6F8,#DBDCDE);
+			border-radius:4px;
+			box-shadow:0 1px 3px #666;
+			font-family: Arial;
+			color: grey;
+			font-size: 13px !important;
+			padding: 9px 5px;
+			text-decoration: none;
+			float: right
+		}
+		.infosample {
+			cursor: pointer;
+			margin-top: 10px;
+			font-weight: 700;
+			border:0 outset buttonface;
+			border-radius:4px;
+			font-family: Arial;
+			color: grey;
+			font-size: 14px;
+			padding: 10px 0px;
+			text-decoration: none;
+			float: right
+		}
+		.buttonsample:hover {color:#2a70d3}
+		.tabsstyle {
+			padding: 10px;
+			overflow: hidden;
+		}
+		li.ui-tabs-tab > a:hover {
+			background-color:dodgerblue;
+			color:white;
+		}
+		table.simple {
+			font-size: small;
+			border-spacing:0;
+			border-collapse:collapse;
+			border-bottom:3px solid #005a9c
+		}
+		.simple th{background:#005a9c;color:#fff;padding:3px 5px;text-align:left}
+		.simple th a{color:#fff;padding:3px 5px;text-align:left}
+		.simple th[scope=row]{background:inherit;color:inherit;border-top:1px solid #ddd}
+		.simple td{padding:3px 10px;border-top:1px solid #ddd}
+		.simple tr:nth-child(even){background:#f0f6ff}
+		body.darkmode .simple th{background:#005a9c94;color:#ddd}
+		body.darkmode .simple th a{color:#ddd}
+		body.darkmode .simple tr:nth-child(even){background:#f0f6ff26}
+		body.darkmode :is(h4,h5,h6)+a.self-link::before {
+			color: var(--heading-text);
+		}
+		body.darkmode img {
+			background: none;
+		}
+		body.darkmode section#references :target {
+			background: #04162d;
+		}
+	</style>
+
+	<link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/2.2.2/css/dataTables.dataTables.min.css">
+	<link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/buttons/3.2.2/css/buttons.dataTables.min.css">
+	<script type="text/javascript" language="javascript" src="https://cdn.datatables.net/2.2.2/js/dataTables.min.js"></script>
+	<script type="text/javascript" language="javascript" src="https://cdn.datatables.net/buttons/3.2.2/js/dataTables.buttons.min.js"></script>
+	<script type="text/javascript" language="javascript" src="https://cdn.datatables.net/buttons/3.2.2/js/buttons.dataTables.js"></script>
+	<script type="text/javascript" language="javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.10.1/jszip.min.js"></script>
+	<script type="text/javascript" language="javascript" src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.2.7/pdfmake.min.js"></script>
+	<script type="text/javascript" language="javascript" src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.2.7/vfs_fonts.js"></script>
+	<script type="text/javascript" language="javascript" src="https://cdn.datatables.net/buttons/3.2.0/js/buttons.html5.min.js"></script>
+	<script type="text/javascript" language="javascript" src="https://cdn.datatables.net/buttons/3.2.0/js/buttons.print.min.js"></script>
+</html>
