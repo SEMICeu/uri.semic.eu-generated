@@ -1,10 +1,13 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <xs:schema xmlns="https://data.europa.eu/m8g/xml/" xmlns:xs="http://www.w3.org/2001/XMLSchema" targetNamespace="https://data.europa.eu/m8g/xml/" version="2.0.0" elementFormDefault="qualified" attributeFormDefault="unqualified" xmlns:cv="https://data.europa.eu/m8g/xml/">
   <xs:element name="Text" type="TextType"/>
+  <xs:element name="Uri" type="UriType"/>
   <xs:element name="Date" type="DateType"/>
   <xs:element name="String" type="StringType"/>
+  <xs:element name="Collection" type="CollectionType"/>
   <xs:element name="Concept" type="ConceptType"/>
   <xs:element name="ConceptScheme" type="ConceptSchemeType"/>
+  <xs:element name="Label" type="LabelType"/>
   <xs:simpleType name="Literal">
     <xs:restriction base="xs:string"/>
   </xs:simpleType>
@@ -31,6 +34,14 @@
       </xs:annotation>
     </xs:attribute>
   </xs:complexType>
+  <xs:complexType name="UriType">
+    <xs:sequence/>
+    <xs:attribute name="UriRef" type="xs:IDREF">
+      <xs:annotation>
+        <xs:documentation xml:lang="en">Reference to Uri ID</xs:documentation>
+      </xs:annotation>
+    </xs:attribute>
+  </xs:complexType>
   <xs:complexType name="DateType">
     <xs:sequence/>
     <xs:attribute name="DateRef" type="xs:IDREF">
@@ -47,6 +58,35 @@
       </xs:annotation>
     </xs:attribute>
   </xs:complexType>
+  <xs:complexType name="CollectionType">
+    <xs:sequence>
+      <xs:element name="collectionType" type="xs:string" maxOccurs="1" minOccurs="1">
+        <xs:annotation>
+          <xs:documentation xml:lang="en">The kind of collection, e.g. Main concept or Proof.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="isInScheme" ref="ConceptSchemeType" maxOccurs="1" minOccurs="1">
+        <xs:annotation>
+          <xs:documentation xml:lang="en">Relates a resource (for example a collection) to a concept scheme in which it is included.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="member" type="ConceptType" maxOccurs="unbounded" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation xml:lang="en">It indicates the Concepts that are part of the Collection.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="preferredLabel" type="xs:string" maxOccurs="unbounded" minOccurs="1">
+        <xs:annotation>
+          <xs:documentation xml:lang="en">The preferred lexical label for a resource, in a given language.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+    </xs:sequence>
+    <xs:attribute name="CollectionRef" type="xs:IDREF">
+      <xs:annotation>
+        <xs:documentation xml:lang="en">Reference to Collection ID</xs:documentation>
+      </xs:annotation>
+    </xs:attribute>
+  </xs:complexType>
   <xs:complexType name="ConceptType">
     <xs:sequence>
       <xs:element name="alternativeLabel" type="xs:string" maxOccurs="unbounded" minOccurs="0">
@@ -59,9 +99,29 @@
           <xs:documentation xml:lang="en">Relates a concept to a concept that is more general in meaning.</xs:documentation>
         </xs:annotation>
       </xs:element>
+      <xs:element name="closeMatch" type="xs:anyURI" maxOccurs="unbounded" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation xml:lang="en">A concept in another scheme or vocabulary that is similar enough in meaning to be used interchangeably in some contexts.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="dataType" type="xs:string" maxOccurs="1" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation xml:lang="en">The data type of the data element, e.g. Text, Literal, code, generic date, Location, Decimal.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
       <xs:element name="definition" type="xs:string" maxOccurs="unbounded" minOccurs="1">
         <xs:annotation>
           <xs:documentation xml:lang="en">A statement or formal explanation of the meaning of a concept.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="definitionSource" type="xs:string" maxOccurs="1" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation xml:lang="en">The vocabulary or standard from which the definition is taken, e.g. Core Person 2.1.1.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="definitionStatus" type="xs:string" maxOccurs="1" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation xml:lang="en">Whether the definition is reused as is from its source or is a new definition.</xs:documentation>
         </xs:annotation>
       </xs:element>
       <xs:element name="identifier" type="xs:string" maxOccurs="1" minOccurs="1">
@@ -79,6 +139,11 @@
           <xs:documentation xml:lang="en">A related resource that supplants, displaces, or supersedes the described resource.</xs:documentation>
         </xs:annotation>
       </xs:element>
+      <xs:element name="dateModified" type="xs:date" maxOccurs="1" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation xml:lang="en">Date on which the resource was changed.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
       <xs:element name="preferredLabel" type="xs:string" maxOccurs="unbounded" minOccurs="1">
         <xs:annotation>
           <xs:documentation xml:lang="en">The preferred lexical label for a resource, in a given language.</xs:documentation>
@@ -89,9 +154,19 @@
           <xs:documentation xml:lang="en">A related resource that is supplanted, displaced, or superseded by the described resource.</xs:documentation>
         </xs:annotation>
       </xs:element>
+      <xs:element name="sourceType" type="xs:string" maxOccurs="1" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation xml:lang="en">Whether the source of the definition is Transversal or Domain Specific.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
       <xs:element name="status" type="ConceptType" maxOccurs="1" minOccurs="1">
         <xs:annotation>
           <xs:documentation xml:lang="en">The status of the concept in the context of a particular workflow process.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="subject" ref="CollectionType" maxOccurs="unbounded" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation xml:lang="en">A topic of the resource; here, the Collection (proof type) a concept is a subject of.</xs:documentation>
         </xs:annotation>
       </xs:element>
       <xs:element name="title" type="xs:string" maxOccurs="unbounded" minOccurs="0">
@@ -109,6 +184,11 @@
           <xs:documentation xml:lang="en">This element contains a string giving information about this version such as RCS/CVS keywords.</xs:documentation>
         </xs:annotation>
       </xs:element>
+      <xs:element name="preferredLabelskosXl" ref="LabelType" maxOccurs="unbounded" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation xml:lang="en">The preferred lexical label of the concept, expressed as a Label resource.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
     </xs:sequence>
     <xs:attribute name="ConceptRef" type="xs:IDREF">
       <xs:annotation>
@@ -121,6 +201,11 @@
       <xs:element name="dateCreated" type="xs:date" maxOccurs="1" minOccurs="1">
         <xs:annotation>
           <xs:documentation xml:lang="en">Date of creation of the resource.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="description" type="xs:string" maxOccurs="unbounded" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation xml:lang="en">An account of the resource.</xs:documentation>
         </xs:annotation>
       </xs:element>
       <xs:element name="hasTopConcept" type="ConceptType" maxOccurs="unbounded" minOccurs="0">
@@ -143,6 +228,11 @@
           <xs:documentation xml:lang="en">Date of formal issuance of the resource.</xs:documentation>
         </xs:annotation>
       </xs:element>
+      <xs:element name="license" type="xs:anyURI" maxOccurs="1" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation xml:lang="en">A legal document giving official permission to do something with the resource.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
       <xs:element name="dateModified" type="xs:date" maxOccurs="1" minOccurs="0">
         <xs:annotation>
           <xs:documentation xml:lang="en">Date on which the resource was changed.</xs:documentation>
@@ -151,6 +241,11 @@
       <xs:element name="preferredLabel" type="xs:string" maxOccurs="unbounded" minOccurs="1">
         <xs:annotation>
           <xs:documentation xml:lang="en">The preferred lexical label for a resource, in a given language.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="publisher" type="xs:anyURI" maxOccurs="1" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation xml:lang="en">An entity responsible for making the resource available.</xs:documentation>
         </xs:annotation>
       </xs:element>
       <xs:element name="replaces" ref="ConceptSchemeType" maxOccurs="1" minOccurs="0">
@@ -172,6 +267,25 @@
     <xs:attribute name="ConceptSchemeRef" type="xs:IDREF">
       <xs:annotation>
         <xs:documentation xml:lang="en">Reference to ConceptScheme ID</xs:documentation>
+      </xs:annotation>
+    </xs:attribute>
+  </xs:complexType>
+  <xs:complexType name="LabelType">
+    <xs:sequence>
+      <xs:element name="literalForm" type="xs:string" maxOccurs="1" minOccurs="1">
+        <xs:annotation>
+          <xs:documentation xml:lang="en">The lexical form of the label, as a language-tagged text.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="source" ref="ConceptSchemeType" maxOccurs="1" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation xml:lang="en">A related resource from which the described resource is derived; here, the scheme that provides the label.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+    </xs:sequence>
+    <xs:attribute name="LabelRef" type="xs:IDREF">
+      <xs:annotation>
+        <xs:documentation xml:lang="en">Reference to Label ID</xs:documentation>
       </xs:annotation>
     </xs:attribute>
   </xs:complexType>

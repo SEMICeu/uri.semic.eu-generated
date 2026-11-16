@@ -4,40 +4,147 @@
 @prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
 @prefix shacl: <http://www.w3.org/ns/shacl#> .
 @prefix skos: <http://www.w3.org/2004/02/skos/core#> .
+@prefix skosxl: <http://www.w3.org/2008/05/skos-xl#> .
 @prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
 
 <https://semiceu.github.io/Thesaurus/releases/1.0.0> rdfs:member <https://semiceu.github.io/Thesaurus/releases/1.0.0#TextShape>,
+    <https://semiceu.github.io/Thesaurus/releases/1.0.0#URIShape>,
     <https://semiceu.github.io/Thesaurus/releases/1.0.0#DateShape>,
     <https://semiceu.github.io/Thesaurus/releases/1.0.0#StringShape>,
+    <https://semiceu.github.io/Thesaurus/releases/1.0.0#CollectionShape>,
     <https://semiceu.github.io/Thesaurus/releases/1.0.0#ConceptShape>,
-    <https://semiceu.github.io/Thesaurus/releases/1.0.0#ConceptSchemeShape> .
+    <https://semiceu.github.io/Thesaurus/releases/1.0.0#ConceptSchemeShape>,
+    <https://semiceu.github.io/Thesaurus/releases/1.0.0#LabelShape> .
+
+<https://semiceu.github.io/Thesaurus/releases/1.0.0#CollectionShape> a shacl:NodeShape;
+  shacl:closed false;
+  shacl:property <https://semiceu.github.io/Thesaurus/releases/1.0.0#CollectionShape/16fb4abdb226552af1f08a1b63a72d1738a11b9e>,
+    <https://semiceu.github.io/Thesaurus/releases/1.0.0#CollectionShape/322ac30abbb777e02239ab84ebf7d14ebde22688>,
+    <https://semiceu.github.io/Thesaurus/releases/1.0.0#CollectionShape/3f3ac3da36bd97a70457280aa2680bdede945537>,
+    <https://semiceu.github.io/Thesaurus/releases/1.0.0#CollectionShape/5c5edf699f76380042d7b59ca4ed6efa00d48d0e>,
+    <https://semiceu.github.io/Thesaurus/releases/1.0.0#CollectionShape/6c1e9889b61390a031e6b1e129f2ae7cb5568f74>,
+    <https://semiceu.github.io/Thesaurus/releases/1.0.0#CollectionShape/6cd0f0f5e19a1c8dce362ecbe8a196575b9cd85f>,
+    <https://semiceu.github.io/Thesaurus/releases/1.0.0#CollectionShape/75cc72bd3bfa5bdbf60d2024711270a9478a5fc0>,
+    <https://semiceu.github.io/Thesaurus/releases/1.0.0#CollectionShape/c6fd64c9a41aa39534bde93eeaca8d8f121f28b4>,
+    <https://semiceu.github.io/Thesaurus/releases/1.0.0#CollectionShape/c7eb9be243cde97cb94ae0db43fa44ed928a9b53>,
+    <https://semiceu.github.io/Thesaurus/releases/1.0.0#CollectionShape/d1b848aaa9218dcd827e88c2a604aa9509e598fc>,
+    <https://semiceu.github.io/Thesaurus/releases/1.0.0#CollectionShape/d875a34c2a5b0d03bcfe904f1f9b83872f37ed3b>,
+    <https://semiceu.github.io/Thesaurus/releases/1.0.0#CollectionShape/e4d44fb0d3c41df2a4042ee73fec8d83fc141a60>,
+    <https://semiceu.github.io/Thesaurus/releases/1.0.0#CollectionShape/eec2528a2b2cd0f630d947e9c188087c6d0726d7>;
+  shacl:targetClass skos:Collection .
+
+<https://semiceu.github.io/Thesaurus/releases/1.0.0#CollectionShape/16fb4abdb226552af1f08a1b63a72d1738a11b9e> rdfs:seeAlso "https://semiceu.github.io/Thesaurus/releases/1.0.0#Collection.collectiontype";
+  shacl:description "The kind of collection, e.g. Main concept or Proof."@en;
+  shacl:maxCount 1;
+  shacl:name "collection type"@en;
+  shacl:path <http://data.europa.eu/p4s/collectionType> .
+
+<https://semiceu.github.io/Thesaurus/releases/1.0.0#CollectionShape/322ac30abbb777e02239ab84ebf7d14ebde22688> rdfs:seeAlso "https://semiceu.github.io/Thesaurus/releases/1.0.0#Collection.preferredlabel";
+  shacl:datatype rdf:langString;
+  shacl:description "The preferred lexical label for a resource, in a given language."@en;
+  shacl:name "preferred label"@en;
+  shacl:path skos:prefLabel .
+
+<https://semiceu.github.io/Thesaurus/releases/1.0.0#CollectionShape/3f3ac3da36bd97a70457280aa2680bdede945537> rdfs:seeAlso "https://semiceu.github.io/Thesaurus/releases/1.0.0#Collection.collectiontype";
+  shacl:description "The kind of collection, e.g. Main concept or Proof."@en;
+  shacl:minCount 1;
+  shacl:name "collection type"@en;
+  shacl:path <http://data.europa.eu/p4s/collectionType> .
+
+<https://semiceu.github.io/Thesaurus/releases/1.0.0#CollectionShape/5c5edf699f76380042d7b59ca4ed6efa00d48d0e> rdfs:seeAlso "https://semiceu.github.io/Thesaurus/releases/1.0.0#Collection.isinscheme";
+  shacl:description "Relates a resource (for example a collection) to a concept scheme in which it is included."@en;
+  shacl:maxCount 1;
+  shacl:name "is in scheme"@en;
+  shacl:path skos:inScheme .
+
+<https://semiceu.github.io/Thesaurus/releases/1.0.0#CollectionShape/6c1e9889b61390a031e6b1e129f2ae7cb5568f74> rdfs:seeAlso "https://semiceu.github.io/Thesaurus/releases/1.0.0#Collection.collectiontype";
+  shacl:datatype xsd:string;
+  shacl:description "The kind of collection, e.g. Main concept or Proof."@en;
+  shacl:name "collection type"@en;
+  shacl:path <http://data.europa.eu/p4s/collectionType> .
+
+<https://semiceu.github.io/Thesaurus/releases/1.0.0#CollectionShape/6cd0f0f5e19a1c8dce362ecbe8a196575b9cd85f> rdfs:seeAlso "https://semiceu.github.io/Thesaurus/releases/1.0.0#Collection.preferredlabel";
+  shacl:description "The preferred lexical label for a resource, in a given language."@en;
+  shacl:name "preferred label"@en;
+  shacl:nodeKind shacl:Literal;
+  shacl:path skos:prefLabel .
+
+<https://semiceu.github.io/Thesaurus/releases/1.0.0#CollectionShape/75cc72bd3bfa5bdbf60d2024711270a9478a5fc0> rdfs:seeAlso "https://semiceu.github.io/Thesaurus/releases/1.0.0#Collection.isinscheme";
+  shacl:description "Relates a resource (for example a collection) to a concept scheme in which it is included."@en;
+  shacl:name "is in scheme"@en;
+  shacl:nodeKind shacl:BlankNodeOrIRI;
+  shacl:path skos:inScheme .
+
+<https://semiceu.github.io/Thesaurus/releases/1.0.0#CollectionShape/c6fd64c9a41aa39534bde93eeaca8d8f121f28b4> rdfs:seeAlso "https://semiceu.github.io/Thesaurus/releases/1.0.0#Collection.isinscheme";
+  shacl:description "Relates a resource (for example a collection) to a concept scheme in which it is included."@en;
+  shacl:minCount 1;
+  shacl:name "is in scheme"@en;
+  shacl:path skos:inScheme .
+
+<https://semiceu.github.io/Thesaurus/releases/1.0.0#CollectionShape/c7eb9be243cde97cb94ae0db43fa44ed928a9b53> rdfs:seeAlso "https://semiceu.github.io/Thesaurus/releases/1.0.0#Collection.collectiontype";
+  shacl:description "The kind of collection, e.g. Main concept or Proof."@en;
+  shacl:name "collection type"@en;
+  shacl:nodeKind shacl:Literal;
+  shacl:path <http://data.europa.eu/p4s/collectionType> .
+
+<https://semiceu.github.io/Thesaurus/releases/1.0.0#CollectionShape/d1b848aaa9218dcd827e88c2a604aa9509e598fc> rdfs:seeAlso "https://semiceu.github.io/Thesaurus/releases/1.0.0#Collection.member";
+  shacl:description "It indicates the Concepts that are part of the Collection."@en;
+  shacl:name "member"@en;
+  shacl:nodeKind shacl:BlankNodeOrIRI;
+  shacl:path skos:member .
+
+<https://semiceu.github.io/Thesaurus/releases/1.0.0#CollectionShape/d875a34c2a5b0d03bcfe904f1f9b83872f37ed3b> rdfs:seeAlso "https://semiceu.github.io/Thesaurus/releases/1.0.0#Collection.member";
+  shacl:class skos:Concept;
+  shacl:description "It indicates the Concepts that are part of the Collection."@en;
+  shacl:name "member"@en;
+  shacl:path skos:member .
+
+<https://semiceu.github.io/Thesaurus/releases/1.0.0#CollectionShape/e4d44fb0d3c41df2a4042ee73fec8d83fc141a60> rdfs:seeAlso "https://semiceu.github.io/Thesaurus/releases/1.0.0#Collection.preferredlabel";
+  shacl:description "The preferred lexical label for a resource, in a given language."@en;
+  shacl:minCount 1;
+  shacl:name "preferred label"@en;
+  shacl:path skos:prefLabel .
+
+<https://semiceu.github.io/Thesaurus/releases/1.0.0#CollectionShape/eec2528a2b2cd0f630d947e9c188087c6d0726d7> rdfs:seeAlso "https://semiceu.github.io/Thesaurus/releases/1.0.0#Collection.isinscheme";
+  shacl:class skos:ConceptScheme;
+  shacl:description "Relates a resource (for example a collection) to a concept scheme in which it is included."@en;
+  shacl:name "is in scheme"@en;
+  shacl:path skos:inScheme .
 
 <https://semiceu.github.io/Thesaurus/releases/1.0.0#ConceptSchemeShape> a shacl:NodeShape;
   shacl:closed false;
-  shacl:property <https://semiceu.github.io/Thesaurus/releases/1.0.0#ConceptSchemeShape/16a39520e446e5b794a01467eaeb5fe3e10ab704>,
+  shacl:property <https://semiceu.github.io/Thesaurus/releases/1.0.0#ConceptSchemeShape/136bb2abfdf5aa444a60bb48633b362319dea4db>,
+    <https://semiceu.github.io/Thesaurus/releases/1.0.0#ConceptSchemeShape/16a39520e446e5b794a01467eaeb5fe3e10ab704>,
     <https://semiceu.github.io/Thesaurus/releases/1.0.0#ConceptSchemeShape/1e12f3c359c42b1a3eecfb6da7021421876f0b6d>,
     <https://semiceu.github.io/Thesaurus/releases/1.0.0#ConceptSchemeShape/203c9e087d4af4374273c4e2bf22610d8642e403>,
     <https://semiceu.github.io/Thesaurus/releases/1.0.0#ConceptSchemeShape/22f1578dcd99ac6439079f483b4886754ddf6ec4>,
     <https://semiceu.github.io/Thesaurus/releases/1.0.0#ConceptSchemeShape/2f24e5e77199a0d328c94cb874400d574fc8e87f>,
     <https://semiceu.github.io/Thesaurus/releases/1.0.0#ConceptSchemeShape/322ac30abbb777e02239ab84ebf7d14ebde22688>,
     <https://semiceu.github.io/Thesaurus/releases/1.0.0#ConceptSchemeShape/3bbdbd65941f58187b251bba520894472f60f953>,
+    <https://semiceu.github.io/Thesaurus/releases/1.0.0#ConceptSchemeShape/44e0945e932b142aa37108f9c7baac138213357d>,
     <https://semiceu.github.io/Thesaurus/releases/1.0.0#ConceptSchemeShape/488f0bcb1b2d7cb5288ca9952a7b94f106f95859>,
     <https://semiceu.github.io/Thesaurus/releases/1.0.0#ConceptSchemeShape/517df872c0d40c23da2371a4b362e0948d18746d>,
     <https://semiceu.github.io/Thesaurus/releases/1.0.0#ConceptSchemeShape/5719d6b651172a215daa43adb8922b37ba02102d>,
+    <https://semiceu.github.io/Thesaurus/releases/1.0.0#ConceptSchemeShape/67dcdb36167ca7969c0532898e11a98e9c2a80f5>,
     <https://semiceu.github.io/Thesaurus/releases/1.0.0#ConceptSchemeShape/6c7c1bd2ab3b7761e5be759a078a9fd93f411a57>,
+    <https://semiceu.github.io/Thesaurus/releases/1.0.0#ConceptSchemeShape/6cae9880e515253132af1452a38a8a5827165149>,
     <https://semiceu.github.io/Thesaurus/releases/1.0.0#ConceptSchemeShape/6cd0f0f5e19a1c8dce362ecbe8a196575b9cd85f>,
     <https://semiceu.github.io/Thesaurus/releases/1.0.0#ConceptSchemeShape/6fedca0d35fd32f6fdac8bb55c552b7d49e04963>,
     <https://semiceu.github.io/Thesaurus/releases/1.0.0#ConceptSchemeShape/82568aed016ce4cb01dbf2e4b6cca1639034047f>,
     <https://semiceu.github.io/Thesaurus/releases/1.0.0#ConceptSchemeShape/860f4efa1f0580955d2891ff76eee1d7956b44b9>,
     <https://semiceu.github.io/Thesaurus/releases/1.0.0#ConceptSchemeShape/9380ee54faf9ee92c4f4ea00d9c9132fc5ce831f>,
+    <https://semiceu.github.io/Thesaurus/releases/1.0.0#ConceptSchemeShape/93f73e69bb03d2928fcf758a253ef316becdf9b9>,
     <https://semiceu.github.io/Thesaurus/releases/1.0.0#ConceptSchemeShape/9512099dadc4456834bcbf88af15fccc7554129c>,
     <https://semiceu.github.io/Thesaurus/releases/1.0.0#ConceptSchemeShape/958ee22381b731f42ee31551e061d78c282047ae>,
     <https://semiceu.github.io/Thesaurus/releases/1.0.0#ConceptSchemeShape/aadbd67a77a624f073be2076627fb9dc883cbe48>,
     <https://semiceu.github.io/Thesaurus/releases/1.0.0#ConceptSchemeShape/ab629bb6aed53f147c0664483836a8783880b7d5>,
+    <https://semiceu.github.io/Thesaurus/releases/1.0.0#ConceptSchemeShape/b3ec0655204c62a2531244aaeab12f1a2c5e5b5d>,
     <https://semiceu.github.io/Thesaurus/releases/1.0.0#ConceptSchemeShape/ba94cef889ef8df6c461af7786957a20b3271b97>,
     <https://semiceu.github.io/Thesaurus/releases/1.0.0#ConceptSchemeShape/c0d17764e84e711728581fda7356a51e99a9040a>,
     <https://semiceu.github.io/Thesaurus/releases/1.0.0#ConceptSchemeShape/c1730b90b5f67fd4e0b6a93a4d751c57392c80e1>,
     <https://semiceu.github.io/Thesaurus/releases/1.0.0#ConceptSchemeShape/cc690f56d4e515fa4e04625718e23c5dbeb6883d>,
+    <https://semiceu.github.io/Thesaurus/releases/1.0.0#ConceptSchemeShape/cd035d5fcf2aa42f83e614e12afd8905d4d6bcf8>,
+    <https://semiceu.github.io/Thesaurus/releases/1.0.0#ConceptSchemeShape/d4d4f2399b8cf2f615ac658920373b714726bed0>,
     <https://semiceu.github.io/Thesaurus/releases/1.0.0#ConceptSchemeShape/d5d74574f70f9a979535f3624608f88180dd0c97>,
     <https://semiceu.github.io/Thesaurus/releases/1.0.0#ConceptSchemeShape/d95cbc3c12075d87aa0a5059de6ac8e4ff89a687>,
     <https://semiceu.github.io/Thesaurus/releases/1.0.0#ConceptSchemeShape/e2017f72421063cd9ff494011ec78f35f9632a4a>,
@@ -46,6 +153,12 @@
     <https://semiceu.github.io/Thesaurus/releases/1.0.0#ConceptSchemeShape/ec458b5b609f8e8eda0ab24a6d0e586b1b88f7a1>,
     <https://semiceu.github.io/Thesaurus/releases/1.0.0#ConceptSchemeShape/f4d3e24a8374fe765ac04ca800506ff76a678ea8>;
   shacl:targetClass skos:ConceptScheme .
+
+<https://semiceu.github.io/Thesaurus/releases/1.0.0#ConceptSchemeShape/136bb2abfdf5aa444a60bb48633b362319dea4db> rdfs:seeAlso "https://semiceu.github.io/Thesaurus/releases/1.0.0#ConceptScheme.license";
+  shacl:description "A legal document giving official permission to do something with the resource."@en;
+  shacl:name "license"@en;
+  shacl:nodeKind shacl:Literal;
+  shacl:path dc:license .
 
 <https://semiceu.github.io/Thesaurus/releases/1.0.0#ConceptSchemeShape/16a39520e446e5b794a01467eaeb5fe3e10ab704> rdfs:seeAlso "https://semiceu.github.io/Thesaurus/releases/1.0.0#ConceptScheme.dateissued";
   shacl:description "Date of formal issuance of the resource."@en;
@@ -89,6 +202,12 @@
   shacl:name "date issued"@en;
   shacl:path dc:issued .
 
+<https://semiceu.github.io/Thesaurus/releases/1.0.0#ConceptSchemeShape/44e0945e932b142aa37108f9c7baac138213357d> rdfs:seeAlso "https://semiceu.github.io/Thesaurus/releases/1.0.0#ConceptScheme.license";
+  shacl:datatype xsd:anyURI;
+  shacl:description "A legal document giving official permission to do something with the resource."@en;
+  shacl:name "license"@en;
+  shacl:path dc:license .
+
 <https://semiceu.github.io/Thesaurus/releases/1.0.0#ConceptSchemeShape/488f0bcb1b2d7cb5288ca9952a7b94f106f95859> rdfs:seeAlso "https://semiceu.github.io/Thesaurus/releases/1.0.0#ConceptScheme.title";
   shacl:datatype rdf:langString;
   shacl:description "A name given to the resource."@en;
@@ -107,11 +226,23 @@
   shacl:nodeKind shacl:BlankNodeOrIRI;
   shacl:path skos:hasTopConcept .
 
+<https://semiceu.github.io/Thesaurus/releases/1.0.0#ConceptSchemeShape/67dcdb36167ca7969c0532898e11a98e9c2a80f5> rdfs:seeAlso "https://semiceu.github.io/Thesaurus/releases/1.0.0#ConceptScheme.publisher";
+  shacl:description "An entity responsible for making the resource available."@en;
+  shacl:maxCount 1;
+  shacl:name "publisher"@en;
+  shacl:path dc:publisher .
+
 <https://semiceu.github.io/Thesaurus/releases/1.0.0#ConceptSchemeShape/6c7c1bd2ab3b7761e5be759a078a9fd93f411a57> rdfs:seeAlso "https://semiceu.github.io/Thesaurus/releases/1.0.0#ConceptScheme.identifier";
   shacl:description "An unambiguous reference to the resource within a given context."@en;
   shacl:minCount 1;
   shacl:name "identifier"@en;
   shacl:path dc:identifier .
+
+<https://semiceu.github.io/Thesaurus/releases/1.0.0#ConceptSchemeShape/6cae9880e515253132af1452a38a8a5827165149> rdfs:seeAlso "https://semiceu.github.io/Thesaurus/releases/1.0.0#ConceptScheme.description";
+  shacl:description "An account of the resource."@en;
+  shacl:name "description"@en;
+  shacl:nodeKind shacl:Literal;
+  shacl:path dc:description .
 
 <https://semiceu.github.io/Thesaurus/releases/1.0.0#ConceptSchemeShape/6cd0f0f5e19a1c8dce362ecbe8a196575b9cd85f> rdfs:seeAlso "https://semiceu.github.io/Thesaurus/releases/1.0.0#ConceptScheme.preferredlabel";
   shacl:description "The preferred lexical label for a resource, in a given language."@en;
@@ -143,6 +274,12 @@
   shacl:name "date created"@en;
   shacl:path dc:created .
 
+<https://semiceu.github.io/Thesaurus/releases/1.0.0#ConceptSchemeShape/93f73e69bb03d2928fcf758a253ef316becdf9b9> rdfs:seeAlso "https://semiceu.github.io/Thesaurus/releases/1.0.0#ConceptScheme.publisher";
+  shacl:description "An entity responsible for making the resource available."@en;
+  shacl:name "publisher"@en;
+  shacl:nodeKind shacl:Literal;
+  shacl:path dc:publisher .
+
 <https://semiceu.github.io/Thesaurus/releases/1.0.0#ConceptSchemeShape/9512099dadc4456834bcbf88af15fccc7554129c> rdfs:seeAlso "https://semiceu.github.io/Thesaurus/releases/1.0.0#ConceptScheme.versioninfo";
   shacl:description "This element contains a string giving information about this version such as RCS/CVS keywords."@en;
   shacl:maxCount 1;
@@ -167,6 +304,12 @@
   shacl:name "is replaced by"@en;
   shacl:path dc:isReplacedBy .
 
+<https://semiceu.github.io/Thesaurus/releases/1.0.0#ConceptSchemeShape/b3ec0655204c62a2531244aaeab12f1a2c5e5b5d> rdfs:seeAlso "https://semiceu.github.io/Thesaurus/releases/1.0.0#ConceptScheme.publisher";
+  shacl:datatype xsd:anyURI;
+  shacl:description "An entity responsible for making the resource available."@en;
+  shacl:name "publisher"@en;
+  shacl:path dc:publisher .
+
 <https://semiceu.github.io/Thesaurus/releases/1.0.0#ConceptSchemeShape/ba94cef889ef8df6c461af7786957a20b3271b97> rdfs:seeAlso "https://semiceu.github.io/Thesaurus/releases/1.0.0#ConceptScheme.datecreated";
   shacl:description "Date of creation of the resource."@en;
   shacl:maxCount 1;
@@ -190,6 +333,18 @@
   shacl:name "is replaced by"@en;
   shacl:nodeKind shacl:BlankNodeOrIRI;
   shacl:path dc:isReplacedBy .
+
+<https://semiceu.github.io/Thesaurus/releases/1.0.0#ConceptSchemeShape/cd035d5fcf2aa42f83e614e12afd8905d4d6bcf8> rdfs:seeAlso "https://semiceu.github.io/Thesaurus/releases/1.0.0#ConceptScheme.license";
+  shacl:description "A legal document giving official permission to do something with the resource."@en;
+  shacl:maxCount 1;
+  shacl:name "license"@en;
+  shacl:path dc:license .
+
+<https://semiceu.github.io/Thesaurus/releases/1.0.0#ConceptSchemeShape/d4d4f2399b8cf2f615ac658920373b714726bed0> rdfs:seeAlso "https://semiceu.github.io/Thesaurus/releases/1.0.0#ConceptScheme.description";
+  shacl:datatype rdf:langString;
+  shacl:description "An account of the resource."@en;
+  shacl:name "description"@en;
+  shacl:path dc:description .
 
 <https://semiceu.github.io/Thesaurus/releases/1.0.0#ConceptSchemeShape/d5d74574f70f9a979535f3624608f88180dd0c97> rdfs:seeAlso "https://semiceu.github.io/Thesaurus/releases/1.0.0#ConceptScheme.title";
   shacl:description "A name given to the resource."@en;
@@ -236,41 +391,62 @@
 <https://semiceu.github.io/Thesaurus/releases/1.0.0#ConceptShape> a shacl:NodeShape;
   shacl:closed false;
   shacl:property <https://semiceu.github.io/Thesaurus/releases/1.0.0#ConceptShape/0f6cb927d0d26f3819cba3fb903a075cd426180d>,
+    <https://semiceu.github.io/Thesaurus/releases/1.0.0#ConceptShape/203c9e087d4af4374273c4e2bf22610d8642e403>,
     <https://semiceu.github.io/Thesaurus/releases/1.0.0#ConceptShape/22f1578dcd99ac6439079f483b4886754ddf6ec4>,
+    <https://semiceu.github.io/Thesaurus/releases/1.0.0#ConceptShape/23a1ab19a987d4b891683180d5ef267ed5878ddc>,
     <https://semiceu.github.io/Thesaurus/releases/1.0.0#ConceptShape/23a895b40bd36552818f33296a2f1c32cc9b3709>,
     <https://semiceu.github.io/Thesaurus/releases/1.0.0#ConceptShape/2bc917d85a4ffccfa9de4268bf84b517c322ce2c>,
     <https://semiceu.github.io/Thesaurus/releases/1.0.0#ConceptShape/2f24e5e77199a0d328c94cb874400d574fc8e87f>,
+    <https://semiceu.github.io/Thesaurus/releases/1.0.0#ConceptShape/30d447d13088daf109722072ab1551f350144df8>,
+    <https://semiceu.github.io/Thesaurus/releases/1.0.0#ConceptShape/311513ed6121e3d1711b3c817fd35ffe28c8cc2b>,
     <https://semiceu.github.io/Thesaurus/releases/1.0.0#ConceptShape/322ac30abbb777e02239ab84ebf7d14ebde22688>,
     <https://semiceu.github.io/Thesaurus/releases/1.0.0#ConceptShape/33a30c3851be5c91eadb39bb00f2bfbcc5730451>,
     <https://semiceu.github.io/Thesaurus/releases/1.0.0#ConceptShape/3c1ab2e1170c5050c8b7742e97810027ddc104b1>,
     <https://semiceu.github.io/Thesaurus/releases/1.0.0#ConceptShape/3e0a046965e7d33273185fa6f7a61e8fa6e7b9d0>,
+    <https://semiceu.github.io/Thesaurus/releases/1.0.0#ConceptShape/42fa649c0d51d975f59facd8a7d1839f7a4d7ea9>,
     <https://semiceu.github.io/Thesaurus/releases/1.0.0#ConceptShape/488f0bcb1b2d7cb5288ca9952a7b94f106f95859>,
+    <https://semiceu.github.io/Thesaurus/releases/1.0.0#ConceptShape/4d20ba5fc33d921ceb4d83fd224af766538f9245>,
     <https://semiceu.github.io/Thesaurus/releases/1.0.0#ConceptShape/517df872c0d40c23da2371a4b362e0948d18746d>,
     <https://semiceu.github.io/Thesaurus/releases/1.0.0#ConceptShape/559dab14a90a8ddc0150dd1d09a443ecb37b90dd>,
     <https://semiceu.github.io/Thesaurus/releases/1.0.0#ConceptShape/5c5edf699f76380042d7b59ca4ed6efa00d48d0e>,
+    <https://semiceu.github.io/Thesaurus/releases/1.0.0#ConceptShape/65671e031859ce7cb06a015bec5c91303267d447>,
     <https://semiceu.github.io/Thesaurus/releases/1.0.0#ConceptShape/6c7c1bd2ab3b7761e5be759a078a9fd93f411a57>,
     <https://semiceu.github.io/Thesaurus/releases/1.0.0#ConceptShape/6cd0f0f5e19a1c8dce362ecbe8a196575b9cd85f>,
     <https://semiceu.github.io/Thesaurus/releases/1.0.0#ConceptShape/75cc72bd3bfa5bdbf60d2024711270a9478a5fc0>,
     <https://semiceu.github.io/Thesaurus/releases/1.0.0#ConceptShape/7aa458aca83d248036387c90bfca39af9925977d>,
+    <https://semiceu.github.io/Thesaurus/releases/1.0.0#ConceptShape/806cd590711309963ddbb63a2bdbf3c596d16ac6>,
     <https://semiceu.github.io/Thesaurus/releases/1.0.0#ConceptShape/82568aed016ce4cb01dbf2e4b6cca1639034047f>,
     <https://semiceu.github.io/Thesaurus/releases/1.0.0#ConceptShape/860f4efa1f0580955d2891ff76eee1d7956b44b9>,
     <https://semiceu.github.io/Thesaurus/releases/1.0.0#ConceptShape/88b702e12401b15cdfbfb284e359477f384bce54>,
+    <https://semiceu.github.io/Thesaurus/releases/1.0.0#ConceptShape/8c4246da902e95ba8157fe71792b22d362e125a4>,
+    <https://semiceu.github.io/Thesaurus/releases/1.0.0#ConceptShape/8d02f4a907045e33ae2e03718624cf62852c5932>,
     <https://semiceu.github.io/Thesaurus/releases/1.0.0#ConceptShape/9512099dadc4456834bcbf88af15fccc7554129c>,
     <https://semiceu.github.io/Thesaurus/releases/1.0.0#ConceptShape/9cb6232f5b441940af2ef6cf86c3736ae9c32fd9>,
+    <https://semiceu.github.io/Thesaurus/releases/1.0.0#ConceptShape/9f4dc8340899f40ef0eed7cf6a5be90d2807e310>,
     <https://semiceu.github.io/Thesaurus/releases/1.0.0#ConceptShape/a0745c853f0fa115aae85574c6262ca1102ab248>,
     <https://semiceu.github.io/Thesaurus/releases/1.0.0#ConceptShape/a650b0becef614ffd5c6e1d9029c529161a13469>,
     <https://semiceu.github.io/Thesaurus/releases/1.0.0#ConceptShape/aadbd67a77a624f073be2076627fb9dc883cbe48>,
     <https://semiceu.github.io/Thesaurus/releases/1.0.0#ConceptShape/ab629bb6aed53f147c0664483836a8783880b7d5>,
+    <https://semiceu.github.io/Thesaurus/releases/1.0.0#ConceptShape/b5f61b6fb641e10ce6c9983eebd2feff8665a5b7>,
+    <https://semiceu.github.io/Thesaurus/releases/1.0.0#ConceptShape/b9c1089e8fe5f7fa66333d753f52a1b24dc71256>,
     <https://semiceu.github.io/Thesaurus/releases/1.0.0#ConceptShape/c0d17764e84e711728581fda7356a51e99a9040a>,
+    <https://semiceu.github.io/Thesaurus/releases/1.0.0#ConceptShape/c1730b90b5f67fd4e0b6a93a4d751c57392c80e1>,
+    <https://semiceu.github.io/Thesaurus/releases/1.0.0#ConceptShape/c40dd30f34bb212aabc30f957167fa16cd5f2726>,
     <https://semiceu.github.io/Thesaurus/releases/1.0.0#ConceptShape/c6fd64c9a41aa39534bde93eeaca8d8f121f28b4>,
     <https://semiceu.github.io/Thesaurus/releases/1.0.0#ConceptShape/cc690f56d4e515fa4e04625718e23c5dbeb6883d>,
+    <https://semiceu.github.io/Thesaurus/releases/1.0.0#ConceptShape/ccd8e77f257c97aee6fad45e595aff915cb66c3c>,
     <https://semiceu.github.io/Thesaurus/releases/1.0.0#ConceptShape/d5d74574f70f9a979535f3624608f88180dd0c97>,
+    <https://semiceu.github.io/Thesaurus/releases/1.0.0#ConceptShape/d645b2feb86f2efbc1a26dc5ac15c6fae367124f>,
     <https://semiceu.github.io/Thesaurus/releases/1.0.0#ConceptShape/d94c14fe5ee5bbb147447229b6bae0a2668fffd6>,
     <https://semiceu.github.io/Thesaurus/releases/1.0.0#ConceptShape/d95cbc3c12075d87aa0a5059de6ac8e4ff89a687>,
+    <https://semiceu.github.io/Thesaurus/releases/1.0.0#ConceptShape/dbc19cae8f39659b73b31f21d629ed12345eb368>,
+    <https://semiceu.github.io/Thesaurus/releases/1.0.0#ConceptShape/dcad970cccb3997376dd69ff8457106462cb5e32>,
+    <https://semiceu.github.io/Thesaurus/releases/1.0.0#ConceptShape/de593762ff7c827cfee803ca767a057849b1f889>,
     <https://semiceu.github.io/Thesaurus/releases/1.0.0#ConceptShape/df8b2c9e02420be7c084e02e27d381c156611731>,
     <https://semiceu.github.io/Thesaurus/releases/1.0.0#ConceptShape/e2017f72421063cd9ff494011ec78f35f9632a4a>,
     <https://semiceu.github.io/Thesaurus/releases/1.0.0#ConceptShape/e4ba85d4634072a147fb21c2a1f2ff37cdc7872a>,
     <https://semiceu.github.io/Thesaurus/releases/1.0.0#ConceptShape/e4d44fb0d3c41df2a4042ee73fec8d83fc141a60>,
+    <https://semiceu.github.io/Thesaurus/releases/1.0.0#ConceptShape/ec458b5b609f8e8eda0ab24a6d0e586b1b88f7a1>,
     <https://semiceu.github.io/Thesaurus/releases/1.0.0#ConceptShape/ecf35f57dbb17d81d9a945af444f294b79b1d92c>,
     <https://semiceu.github.io/Thesaurus/releases/1.0.0#ConceptShape/eec2528a2b2cd0f630d947e9c188087c6d0726d7>;
   shacl:targetClass skos:Concept .
@@ -281,11 +457,23 @@
   shacl:name "status"@en;
   shacl:path <http://publications.europa.eu/ontology/euvoc#status> .
 
+<https://semiceu.github.io/Thesaurus/releases/1.0.0#ConceptShape/203c9e087d4af4374273c4e2bf22610d8642e403> rdfs:seeAlso "https://semiceu.github.io/Thesaurus/releases/1.0.0#Concept.datemodified";
+  shacl:description "Date on which the resource was changed."@en;
+  shacl:name "date modified"@en;
+  shacl:nodeKind shacl:Literal;
+  shacl:path dc:modified .
+
 <https://semiceu.github.io/Thesaurus/releases/1.0.0#ConceptShape/22f1578dcd99ac6439079f483b4886754ddf6ec4> rdfs:seeAlso "https://semiceu.github.io/Thesaurus/releases/1.0.0#Concept.versioninfo";
   shacl:datatype xsd:string;
   shacl:description "This element contains a string giving information about this version such as RCS/CVS keywords."@en;
   shacl:name "version info"@en;
   shacl:path owl:versionInfo .
+
+<https://semiceu.github.io/Thesaurus/releases/1.0.0#ConceptShape/23a1ab19a987d4b891683180d5ef267ed5878ddc> rdfs:seeAlso "https://semiceu.github.io/Thesaurus/releases/1.0.0#Concept.preferredlabel(SKOS-XL)";
+  shacl:description "The preferred lexical label of the concept, expressed as a Label resource."@en;
+  shacl:name "preferred label (SKOS-XL)"@en;
+  shacl:nodeKind shacl:BlankNodeOrIRI;
+  shacl:path skosxl:prefLabel .
 
 <https://semiceu.github.io/Thesaurus/releases/1.0.0#ConceptShape/23a895b40bd36552818f33296a2f1c32cc9b3709> rdfs:seeAlso "https://semiceu.github.io/Thesaurus/releases/1.0.0#Concept.definition";
   shacl:description "A statement or formal explanation of the meaning of a concept."@en;
@@ -304,6 +492,18 @@
   shacl:name "version info"@en;
   shacl:nodeKind shacl:Literal;
   shacl:path owl:versionInfo .
+
+<https://semiceu.github.io/Thesaurus/releases/1.0.0#ConceptShape/30d447d13088daf109722072ab1551f350144df8> rdfs:seeAlso "https://semiceu.github.io/Thesaurus/releases/1.0.0#Concept.preferredlabel(SKOS-XL)";
+  shacl:class skosxl:Label;
+  shacl:description "The preferred lexical label of the concept, expressed as a Label resource."@en;
+  shacl:name "preferred label (SKOS-XL)"@en;
+  shacl:path skosxl:prefLabel .
+
+<https://semiceu.github.io/Thesaurus/releases/1.0.0#ConceptShape/311513ed6121e3d1711b3c817fd35ffe28c8cc2b> rdfs:seeAlso "https://semiceu.github.io/Thesaurus/releases/1.0.0#Concept.sourcetype";
+  shacl:description "Whether the source of the definition is Transversal or Domain Specific."@en;
+  shacl:maxCount 1;
+  shacl:name "source type"@en;
+  shacl:path <http://data.europa.eu/p4s/sourceType> .
 
 <https://semiceu.github.io/Thesaurus/releases/1.0.0#ConceptShape/322ac30abbb777e02239ab84ebf7d14ebde22688> rdfs:seeAlso "https://semiceu.github.io/Thesaurus/releases/1.0.0#Concept.preferredlabel";
   shacl:datatype rdf:langString;
@@ -329,11 +529,23 @@
   shacl:name "definition"@en;
   shacl:path skos:definition .
 
+<https://semiceu.github.io/Thesaurus/releases/1.0.0#ConceptShape/42fa649c0d51d975f59facd8a7d1839f7a4d7ea9> rdfs:seeAlso "https://semiceu.github.io/Thesaurus/releases/1.0.0#Concept.definitionsource";
+  shacl:description "The vocabulary or standard from which the definition is taken, e.g. Core Person 2.1.1."@en;
+  shacl:maxCount 1;
+  shacl:name "definition source"@en;
+  shacl:path <http://data.europa.eu/p4s/definitionSource> .
+
 <https://semiceu.github.io/Thesaurus/releases/1.0.0#ConceptShape/488f0bcb1b2d7cb5288ca9952a7b94f106f95859> rdfs:seeAlso "https://semiceu.github.io/Thesaurus/releases/1.0.0#Concept.title";
   shacl:datatype rdf:langString;
   shacl:description "A name given to the resource."@en;
   shacl:name "title"@en;
   shacl:path dc:title .
+
+<https://semiceu.github.io/Thesaurus/releases/1.0.0#ConceptShape/4d20ba5fc33d921ceb4d83fd224af766538f9245> rdfs:seeAlso "https://semiceu.github.io/Thesaurus/releases/1.0.0#Concept.definitionsource";
+  shacl:description "The vocabulary or standard from which the definition is taken, e.g. Core Person 2.1.1."@en;
+  shacl:name "definition source"@en;
+  shacl:nodeKind shacl:Literal;
+  shacl:path <http://data.europa.eu/p4s/definitionSource> .
 
 <https://semiceu.github.io/Thesaurus/releases/1.0.0#ConceptShape/517df872c0d40c23da2371a4b362e0948d18746d> rdfs:seeAlso "https://semiceu.github.io/Thesaurus/releases/1.0.0#Concept.replaces";
   shacl:description "A related resource that is supplanted, displaced, or superseded by the described resource."@en;
@@ -352,6 +564,12 @@
   shacl:maxCount 1;
   shacl:name "is in scheme"@en;
   shacl:path skos:inScheme .
+
+<https://semiceu.github.io/Thesaurus/releases/1.0.0#ConceptShape/65671e031859ce7cb06a015bec5c91303267d447> rdfs:seeAlso "https://semiceu.github.io/Thesaurus/releases/1.0.0#Concept.subject";
+  shacl:class skos:Collection;
+  shacl:description "A topic of the resource; here, the Collection (proof type) a concept is a subject of."@en;
+  shacl:name "subject"@en;
+  shacl:path dc:subject .
 
 <https://semiceu.github.io/Thesaurus/releases/1.0.0#ConceptShape/6c7c1bd2ab3b7761e5be759a078a9fd93f411a57> rdfs:seeAlso "https://semiceu.github.io/Thesaurus/releases/1.0.0#Concept.identifier";
   shacl:description "An unambiguous reference to the resource within a given context."@en;
@@ -377,6 +595,12 @@
   shacl:nodeKind shacl:BlankNodeOrIRI;
   shacl:path skos:broader .
 
+<https://semiceu.github.io/Thesaurus/releases/1.0.0#ConceptShape/806cd590711309963ddbb63a2bdbf3c596d16ac6> rdfs:seeAlso "https://semiceu.github.io/Thesaurus/releases/1.0.0#Concept.datatype";
+  shacl:description "The data type of the data element, e.g. Text, Literal, code, generic date, Location, Decimal."@en;
+  shacl:maxCount 1;
+  shacl:name "data type"@en;
+  shacl:path <http://data.europa.eu/p4s/dataType> .
+
 <https://semiceu.github.io/Thesaurus/releases/1.0.0#ConceptShape/82568aed016ce4cb01dbf2e4b6cca1639034047f> rdfs:seeAlso "https://semiceu.github.io/Thesaurus/releases/1.0.0#Concept.replaces";
   shacl:class skos:Concept;
   shacl:description "A related resource that is supplanted, displaced, or superseded by the described resource."@en;
@@ -395,6 +619,18 @@
   shacl:nodeKind shacl:Literal;
   shacl:path skos:altLabel .
 
+<https://semiceu.github.io/Thesaurus/releases/1.0.0#ConceptShape/8c4246da902e95ba8157fe71792b22d362e125a4> rdfs:seeAlso "https://semiceu.github.io/Thesaurus/releases/1.0.0#Concept.definitionstatus";
+  shacl:datatype xsd:string;
+  shacl:description "Whether the definition is reused as is from its source or is a new definition."@en;
+  shacl:name "definition status"@en;
+  shacl:path <http://data.europa.eu/p4s/definitionStatus> .
+
+<https://semiceu.github.io/Thesaurus/releases/1.0.0#ConceptShape/8d02f4a907045e33ae2e03718624cf62852c5932> rdfs:seeAlso "https://semiceu.github.io/Thesaurus/releases/1.0.0#Concept.subject";
+  shacl:description "A topic of the resource; here, the Collection (proof type) a concept is a subject of."@en;
+  shacl:name "subject"@en;
+  shacl:nodeKind shacl:BlankNodeOrIRI;
+  shacl:path dc:subject .
+
 <https://semiceu.github.io/Thesaurus/releases/1.0.0#ConceptShape/9512099dadc4456834bcbf88af15fccc7554129c> rdfs:seeAlso "https://semiceu.github.io/Thesaurus/releases/1.0.0#Concept.versioninfo";
   shacl:description "This element contains a string giving information about this version such as RCS/CVS keywords."@en;
   shacl:maxCount 1;
@@ -406,6 +642,12 @@
   shacl:description "Relates a concept to a concept that is more general in meaning."@en;
   shacl:name "has broader"@en;
   shacl:path skos:broader .
+
+<https://semiceu.github.io/Thesaurus/releases/1.0.0#ConceptShape/9f4dc8340899f40ef0eed7cf6a5be90d2807e310> rdfs:seeAlso "https://semiceu.github.io/Thesaurus/releases/1.0.0#Concept.sourcetype";
+  shacl:description "Whether the source of the definition is Transversal or Domain Specific."@en;
+  shacl:name "source type"@en;
+  shacl:nodeKind shacl:Literal;
+  shacl:path <http://data.europa.eu/p4s/sourceType> .
 
 <https://semiceu.github.io/Thesaurus/releases/1.0.0#ConceptShape/a0745c853f0fa115aae85574c6262ca1102ab248> rdfs:seeAlso "https://semiceu.github.io/Thesaurus/releases/1.0.0#Concept.hasbroader";
   shacl:description "Relates a concept to a concept that is more general in meaning."@en;
@@ -431,11 +673,35 @@
   shacl:name "is replaced by"@en;
   shacl:path dc:isReplacedBy .
 
+<https://semiceu.github.io/Thesaurus/releases/1.0.0#ConceptShape/b5f61b6fb641e10ce6c9983eebd2feff8665a5b7> rdfs:seeAlso "https://semiceu.github.io/Thesaurus/releases/1.0.0#Concept.closematch";
+  shacl:description "A concept in another scheme or vocabulary that is similar enough in meaning to be used interchangeably in some contexts."@en;
+  shacl:name "close match"@en;
+  shacl:nodeKind shacl:Literal;
+  shacl:path skos:closeMatch .
+
+<https://semiceu.github.io/Thesaurus/releases/1.0.0#ConceptShape/b9c1089e8fe5f7fa66333d753f52a1b24dc71256> rdfs:seeAlso "https://semiceu.github.io/Thesaurus/releases/1.0.0#Concept.definitionstatus";
+  shacl:description "Whether the definition is reused as is from its source or is a new definition."@en;
+  shacl:name "definition status"@en;
+  shacl:nodeKind shacl:Literal;
+  shacl:path <http://data.europa.eu/p4s/definitionStatus> .
+
 <https://semiceu.github.io/Thesaurus/releases/1.0.0#ConceptShape/c0d17764e84e711728581fda7356a51e99a9040a> rdfs:seeAlso "https://semiceu.github.io/Thesaurus/releases/1.0.0#Concept.identifier";
   shacl:description "An unambiguous reference to the resource within a given context."@en;
   shacl:maxCount 1;
   shacl:name "identifier"@en;
   shacl:path dc:identifier .
+
+<https://semiceu.github.io/Thesaurus/releases/1.0.0#ConceptShape/c1730b90b5f67fd4e0b6a93a4d751c57392c80e1> rdfs:seeAlso "https://semiceu.github.io/Thesaurus/releases/1.0.0#Concept.datemodified";
+  shacl:datatype xsd:date;
+  shacl:description "Date on which the resource was changed."@en;
+  shacl:name "date modified"@en;
+  shacl:path dc:modified .
+
+<https://semiceu.github.io/Thesaurus/releases/1.0.0#ConceptShape/c40dd30f34bb212aabc30f957167fa16cd5f2726> rdfs:seeAlso "https://semiceu.github.io/Thesaurus/releases/1.0.0#Concept.closematch";
+  shacl:datatype xsd:anyURI;
+  shacl:description "A concept in another scheme or vocabulary that is similar enough in meaning to be used interchangeably in some contexts."@en;
+  shacl:name "close match"@en;
+  shacl:path skos:closeMatch .
 
 <https://semiceu.github.io/Thesaurus/releases/1.0.0#ConceptShape/c6fd64c9a41aa39534bde93eeaca8d8f121f28b4> rdfs:seeAlso "https://semiceu.github.io/Thesaurus/releases/1.0.0#Concept.isinscheme";
   shacl:description "Relates a resource (for example a concept) to a concept scheme in which it is included."@en;
@@ -449,11 +715,23 @@
   shacl:nodeKind shacl:BlankNodeOrIRI;
   shacl:path dc:isReplacedBy .
 
+<https://semiceu.github.io/Thesaurus/releases/1.0.0#ConceptShape/ccd8e77f257c97aee6fad45e595aff915cb66c3c> rdfs:seeAlso "https://semiceu.github.io/Thesaurus/releases/1.0.0#Concept.sourcetype";
+  shacl:datatype xsd:string;
+  shacl:description "Whether the source of the definition is Transversal or Domain Specific."@en;
+  shacl:name "source type"@en;
+  shacl:path <http://data.europa.eu/p4s/sourceType> .
+
 <https://semiceu.github.io/Thesaurus/releases/1.0.0#ConceptShape/d5d74574f70f9a979535f3624608f88180dd0c97> rdfs:seeAlso "https://semiceu.github.io/Thesaurus/releases/1.0.0#Concept.title";
   shacl:description "A name given to the resource."@en;
   shacl:name "title"@en;
   shacl:nodeKind shacl:Literal;
   shacl:path dc:title .
+
+<https://semiceu.github.io/Thesaurus/releases/1.0.0#ConceptShape/d645b2feb86f2efbc1a26dc5ac15c6fae367124f> rdfs:seeAlso "https://semiceu.github.io/Thesaurus/releases/1.0.0#Concept.definitionstatus";
+  shacl:description "Whether the definition is reused as is from its source or is a new definition."@en;
+  shacl:maxCount 1;
+  shacl:name "definition status"@en;
+  shacl:path <http://data.europa.eu/p4s/definitionStatus> .
 
 <https://semiceu.github.io/Thesaurus/releases/1.0.0#ConceptShape/d94c14fe5ee5bbb147447229b6bae0a2668fffd6> rdfs:seeAlso "https://semiceu.github.io/Thesaurus/releases/1.0.0#Concept.alternativelabel";
   shacl:datatype rdf:langString;
@@ -466,6 +744,24 @@
   shacl:minCount 1;
   shacl:name "version info"@en;
   shacl:path owl:versionInfo .
+
+<https://semiceu.github.io/Thesaurus/releases/1.0.0#ConceptShape/dbc19cae8f39659b73b31f21d629ed12345eb368> rdfs:seeAlso "https://semiceu.github.io/Thesaurus/releases/1.0.0#Concept.datatype";
+  shacl:description "The data type of the data element, e.g. Text, Literal, code, generic date, Location, Decimal."@en;
+  shacl:name "data type"@en;
+  shacl:nodeKind shacl:Literal;
+  shacl:path <http://data.europa.eu/p4s/dataType> .
+
+<https://semiceu.github.io/Thesaurus/releases/1.0.0#ConceptShape/dcad970cccb3997376dd69ff8457106462cb5e32> rdfs:seeAlso "https://semiceu.github.io/Thesaurus/releases/1.0.0#Concept.datatype";
+  shacl:datatype xsd:string;
+  shacl:description "The data type of the data element, e.g. Text, Literal, code, generic date, Location, Decimal."@en;
+  shacl:name "data type"@en;
+  shacl:path <http://data.europa.eu/p4s/dataType> .
+
+<https://semiceu.github.io/Thesaurus/releases/1.0.0#ConceptShape/de593762ff7c827cfee803ca767a057849b1f889> rdfs:seeAlso "https://semiceu.github.io/Thesaurus/releases/1.0.0#Concept.definitionsource";
+  shacl:datatype xsd:string;
+  shacl:description "The vocabulary or standard from which the definition is taken, e.g. Core Person 2.1.1."@en;
+  shacl:name "definition source"@en;
+  shacl:path <http://data.europa.eu/p4s/definitionSource> .
 
 <https://semiceu.github.io/Thesaurus/releases/1.0.0#ConceptShape/df8b2c9e02420be7c084e02e27d381c156611731> rdfs:seeAlso "https://semiceu.github.io/Thesaurus/releases/1.0.0#Concept.istopconceptof";
   shacl:class skos:ConceptScheme;
@@ -491,6 +787,12 @@
   shacl:name "preferred label"@en;
   shacl:path skos:prefLabel .
 
+<https://semiceu.github.io/Thesaurus/releases/1.0.0#ConceptShape/ec458b5b609f8e8eda0ab24a6d0e586b1b88f7a1> rdfs:seeAlso "https://semiceu.github.io/Thesaurus/releases/1.0.0#Concept.datemodified";
+  shacl:description "Date on which the resource was changed."@en;
+  shacl:maxCount 1;
+  shacl:name "date modified"@en;
+  shacl:path dc:modified .
+
 <https://semiceu.github.io/Thesaurus/releases/1.0.0#ConceptShape/ecf35f57dbb17d81d9a945af444f294b79b1d92c> rdfs:seeAlso "https://semiceu.github.io/Thesaurus/releases/1.0.0#Concept.istopconceptof";
   shacl:description "Relates a concept to the concept scheme that it is a top level concept of."@en;
   shacl:maxCount 1;
@@ -507,10 +809,67 @@
   shacl:closed false;
   shacl:targetClass xsd:date .
 
+<https://semiceu.github.io/Thesaurus/releases/1.0.0#LabelShape> a shacl:NodeShape;
+  shacl:closed false;
+  shacl:property <https://semiceu.github.io/Thesaurus/releases/1.0.0#LabelShape/0b0ce5d873def985219750e08b22371c538f3cd5>,
+    <https://semiceu.github.io/Thesaurus/releases/1.0.0#LabelShape/176a1df2bbe7c64718806ffbc29f6f42f30f01de>,
+    <https://semiceu.github.io/Thesaurus/releases/1.0.0#LabelShape/2d388ed1a94fa93a83fb179a4ecb339b2566b790>,
+    <https://semiceu.github.io/Thesaurus/releases/1.0.0#LabelShape/806b10977d0eb9328cb7568cb6d60aa297ae6526>,
+    <https://semiceu.github.io/Thesaurus/releases/1.0.0#LabelShape/8178a43200b0efd5b41e7309efb017f24bb8ef41>,
+    <https://semiceu.github.io/Thesaurus/releases/1.0.0#LabelShape/93f3e48ab39e29b6eab27b0cfc67f292a17123e5>,
+    <https://semiceu.github.io/Thesaurus/releases/1.0.0#LabelShape/949dbd165e729f6b1c63b62d1be5450f0e610b54>;
+  shacl:targetClass skosxl:Label .
+
+<https://semiceu.github.io/Thesaurus/releases/1.0.0#LabelShape/0b0ce5d873def985219750e08b22371c538f3cd5> rdfs:seeAlso "https://semiceu.github.io/Thesaurus/releases/1.0.0#Label.source";
+  shacl:description "A related resource from which the described resource is derived; here, the scheme that provides the label."@en;
+  shacl:maxCount 1;
+  shacl:name "source"@en;
+  shacl:path dc:source .
+
+<https://semiceu.github.io/Thesaurus/releases/1.0.0#LabelShape/176a1df2bbe7c64718806ffbc29f6f42f30f01de> rdfs:seeAlso "https://semiceu.github.io/Thesaurus/releases/1.0.0#Label.literalform";
+  shacl:description "The lexical form of the label, as a language-tagged text."@en;
+  shacl:name "literal form"@en;
+  shacl:nodeKind shacl:Literal;
+  shacl:path skosxl:literalForm .
+
+<https://semiceu.github.io/Thesaurus/releases/1.0.0#LabelShape/2d388ed1a94fa93a83fb179a4ecb339b2566b790> rdfs:seeAlso "https://semiceu.github.io/Thesaurus/releases/1.0.0#Label.source";
+  shacl:class skos:ConceptScheme;
+  shacl:description "A related resource from which the described resource is derived; here, the scheme that provides the label."@en;
+  shacl:name "source"@en;
+  shacl:path dc:source .
+
+<https://semiceu.github.io/Thesaurus/releases/1.0.0#LabelShape/806b10977d0eb9328cb7568cb6d60aa297ae6526> rdfs:seeAlso "https://semiceu.github.io/Thesaurus/releases/1.0.0#Label.literalform";
+  shacl:description "The lexical form of the label, as a language-tagged text."@en;
+  shacl:maxCount 1;
+  shacl:name "literal form"@en;
+  shacl:path skosxl:literalForm .
+
+<https://semiceu.github.io/Thesaurus/releases/1.0.0#LabelShape/8178a43200b0efd5b41e7309efb017f24bb8ef41> rdfs:seeAlso "https://semiceu.github.io/Thesaurus/releases/1.0.0#Label.source";
+  shacl:description "A related resource from which the described resource is derived; here, the scheme that provides the label."@en;
+  shacl:name "source"@en;
+  shacl:nodeKind shacl:BlankNodeOrIRI;
+  shacl:path dc:source .
+
+<https://semiceu.github.io/Thesaurus/releases/1.0.0#LabelShape/93f3e48ab39e29b6eab27b0cfc67f292a17123e5> rdfs:seeAlso "https://semiceu.github.io/Thesaurus/releases/1.0.0#Label.literalform";
+  shacl:description "The lexical form of the label, as a language-tagged text."@en;
+  shacl:minCount 1;
+  shacl:name "literal form"@en;
+  shacl:path skosxl:literalForm .
+
+<https://semiceu.github.io/Thesaurus/releases/1.0.0#LabelShape/949dbd165e729f6b1c63b62d1be5450f0e610b54> rdfs:seeAlso "https://semiceu.github.io/Thesaurus/releases/1.0.0#Label.literalform";
+  shacl:datatype rdf:langString;
+  shacl:description "The lexical form of the label, as a language-tagged text."@en;
+  shacl:name "literal form"@en;
+  shacl:path skosxl:literalForm .
+
 <https://semiceu.github.io/Thesaurus/releases/1.0.0#StringShape> a shacl:NodeShape;
   shacl:closed false;
-  shacl:targetClass xsd:double .
+  shacl:targetClass xsd:string .
 
 <https://semiceu.github.io/Thesaurus/releases/1.0.0#TextShape> a shacl:NodeShape;
   shacl:closed false;
   shacl:targetClass rdf:langString .
+
+<https://semiceu.github.io/Thesaurus/releases/1.0.0#URIShape> a shacl:NodeShape;
+  shacl:closed false;
+  shacl:targetClass xsd:anyURI .
