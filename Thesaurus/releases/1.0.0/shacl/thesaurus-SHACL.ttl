@@ -8,7 +8,7 @@
 @prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
 
 <https://semiceu.github.io/Thesaurus/releases/1.0.0> rdfs:member <https://semiceu.github.io/Thesaurus/releases/1.0.0#TextShape>,
-    <https://semiceu.github.io/Thesaurus/releases/1.0.0#URIShape>,
+    <https://semiceu.github.io/Thesaurus/releases/1.0.0#ResourceShape>,
     <https://semiceu.github.io/Thesaurus/releases/1.0.0#DateShape>,
     <https://semiceu.github.io/Thesaurus/releases/1.0.0#StringShape>,
     <https://semiceu.github.io/Thesaurus/releases/1.0.0#CollectionShape>,
@@ -157,7 +157,7 @@
 <https://semiceu.github.io/Thesaurus/releases/1.0.0#ConceptSchemeShape/136bb2abfdf5aa444a60bb48633b362319dea4db> rdfs:seeAlso "https://semiceu.github.io/Thesaurus/releases/1.0.0#ConceptScheme.license";
   shacl:description "A legal document giving official permission to do something with the resource."@en;
   shacl:name "license"@en;
-  shacl:nodeKind shacl:Literal;
+  shacl:nodeKind shacl:BlankNodeOrIRI;
   shacl:path dc:license .
 
 <https://semiceu.github.io/Thesaurus/releases/1.0.0#ConceptSchemeShape/16a39520e446e5b794a01467eaeb5fe3e10ab704> rdfs:seeAlso "https://semiceu.github.io/Thesaurus/releases/1.0.0#ConceptScheme.dateissued";
@@ -203,7 +203,7 @@
   shacl:path dc:issued .
 
 <https://semiceu.github.io/Thesaurus/releases/1.0.0#ConceptSchemeShape/44e0945e932b142aa37108f9c7baac138213357d> rdfs:seeAlso "https://semiceu.github.io/Thesaurus/releases/1.0.0#ConceptScheme.license";
-  shacl:datatype xsd:anyURI;
+  shacl:class rdfs:Resource;
   shacl:description "A legal document giving official permission to do something with the resource."@en;
   shacl:name "license"@en;
   shacl:path dc:license .
@@ -277,7 +277,7 @@
 <https://semiceu.github.io/Thesaurus/releases/1.0.0#ConceptSchemeShape/93f73e69bb03d2928fcf758a253ef316becdf9b9> rdfs:seeAlso "https://semiceu.github.io/Thesaurus/releases/1.0.0#ConceptScheme.publisher";
   shacl:description "An entity responsible for making the resource available."@en;
   shacl:name "publisher"@en;
-  shacl:nodeKind shacl:Literal;
+  shacl:nodeKind shacl:BlankNodeOrIRI;
   shacl:path dc:publisher .
 
 <https://semiceu.github.io/Thesaurus/releases/1.0.0#ConceptSchemeShape/9512099dadc4456834bcbf88af15fccc7554129c> rdfs:seeAlso "https://semiceu.github.io/Thesaurus/releases/1.0.0#ConceptScheme.versioninfo";
@@ -305,7 +305,7 @@
   shacl:path dc:isReplacedBy .
 
 <https://semiceu.github.io/Thesaurus/releases/1.0.0#ConceptSchemeShape/b3ec0655204c62a2531244aaeab12f1a2c5e5b5d> rdfs:seeAlso "https://semiceu.github.io/Thesaurus/releases/1.0.0#ConceptScheme.publisher";
-  shacl:datatype xsd:anyURI;
+  shacl:class rdfs:Resource;
   shacl:description "An entity responsible for making the resource available."@en;
   shacl:name "publisher"@en;
   shacl:path dc:publisher .
@@ -676,7 +676,7 @@
 <https://semiceu.github.io/Thesaurus/releases/1.0.0#ConceptShape/b5f61b6fb641e10ce6c9983eebd2feff8665a5b7> rdfs:seeAlso "https://semiceu.github.io/Thesaurus/releases/1.0.0#Concept.closematch";
   shacl:description "A concept in another scheme or vocabulary that is similar enough in meaning to be used interchangeably in some contexts."@en;
   shacl:name "close match"@en;
-  shacl:nodeKind shacl:Literal;
+  shacl:nodeKind shacl:BlankNodeOrIRI;
   shacl:path skos:closeMatch .
 
 <https://semiceu.github.io/Thesaurus/releases/1.0.0#ConceptShape/b9c1089e8fe5f7fa66333d753f52a1b24dc71256> rdfs:seeAlso "https://semiceu.github.io/Thesaurus/releases/1.0.0#Concept.definitionstatus";
@@ -698,7 +698,7 @@
   shacl:path dc:modified .
 
 <https://semiceu.github.io/Thesaurus/releases/1.0.0#ConceptShape/c40dd30f34bb212aabc30f957167fa16cd5f2726> rdfs:seeAlso "https://semiceu.github.io/Thesaurus/releases/1.0.0#Concept.closematch";
-  shacl:datatype xsd:anyURI;
+  shacl:class rdfs:Resource;
   shacl:description "A concept in another scheme or vocabulary that is similar enough in meaning to be used interchangeably in some contexts."@en;
   shacl:name "close match"@en;
   shacl:path skos:closeMatch .
@@ -862,6 +862,10 @@
   shacl:name "literal form"@en;
   shacl:path skosxl:literalForm .
 
+<https://semiceu.github.io/Thesaurus/releases/1.0.0#ResourceShape> a shacl:NodeShape;
+  shacl:closed false;
+  shacl:targetClass rdfs:Resource .
+
 <https://semiceu.github.io/Thesaurus/releases/1.0.0#StringShape> a shacl:NodeShape;
   shacl:closed false;
   shacl:targetClass xsd:string .
@@ -869,7 +873,3 @@
 <https://semiceu.github.io/Thesaurus/releases/1.0.0#TextShape> a shacl:NodeShape;
   shacl:closed false;
   shacl:targetClass rdf:langString .
-
-<https://semiceu.github.io/Thesaurus/releases/1.0.0#URIShape> a shacl:NodeShape;
-  shacl:closed false;
-  shacl:targetClass xsd:anyURI .
