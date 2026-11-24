@@ -17,8 +17,8 @@
     },
     "status": "Working Draft",
     "statuslabel": "Onbekend",
-    "repositoryurl": "git@uri.semic.eu-thema:SEMICeu/uri.semic.eu-thema.git/tree/45847818eaea592a55faa4b4fa1f80066a5afc7e",
-    "changelogurl": "git@uri.semic.eu-thema:SEMICeu/uri.semic.eu-thema.git/blob/45847818eaea592a55faa4b4fa1f80066a5afc7e/CHANGELOG",
+    "repositoryurl": "git@uri.semic.eu-thema:SEMICeu/uri.semic.eu-thema.git/tree/f244bfb6b41ac24b3637289e87f643cbed1d6efd",
+    "changelogurl": "git@uri.semic.eu-thema:SEMICeu/uri.semic.eu-thema.git/blob/f244bfb6b41ac24b3637289e87f643cbed1d6efd/CHANGELOG",
     "feedbackurl": "https://github.com/SEMICeu/AIDCAT-AP/issues",
     "standaardregisterurl": "https://github.com/SEMICeu/AIDCAT-AP/blob/main/releases/3.0.0/html/Changelog.md",
     "usesVocs": [],
@@ -1449,13 +1449,13 @@
           "cardinality": "0..*",
           "codelist_uri": "",
           "rawTags": {
-            "ap-label-en": "theme",
             "uri": "http://www.w3.org/ns/dcat#theme",
             "ap-definition-en": "A main category or application domain of the AI system.",
             "property-usage-scope": "optional",
             "definition-en": "A main category or application domain of the AI system.",
             "label-en": "theme",
-            "ap-usageNote-en": "The use of a controlled vocabulary is recommended, for example the OASF domains. Record the version of the vocabulary."
+            "ap-usageNote-en": "The use of a controlled vocabulary is recommended, for example the OASF domains. Record the version of the vocabulary.",
+            "ap-label-en": "theme"
           }
         },
         {
@@ -2461,25 +2461,25 @@
       },
       "sort": "MCP Server",
       "description": {
-        "en": "A remote server that implements the Model Context Protocol (MCP) and exposes tools, resources or prompts to AI agents. It is a specialisation of Data Service, so the endpoint URL, conformance to a standard and access rights are inherited."
+        "en": "Software that implements the Model Context Protocol (MCP) and exposes tools, resources or prompts to AI agents, either through a data service or as a local process."
       },
       "usage": {
-        "en": "Only a server that is reachable at an endpoint is described as MCP Server. A server that is launched locally over stdio has no endpoint URL, which Data Service requires; it is described as Software that the AI agent uses. Use conforms to to state the version of the MCP specification."
+        "en": "Use this class for every MCP server, whether it is hosted or launched locally. A hosted server is reached through a Data Service, which gives the endpoint URL and is linked to the server with is implemented by. A server launched locally over stdio has no Data Service and needs no endpoint URL. One server can have several Data Services. Use conforms to on the Data Service to state the version of the MCP specification."
       },
       "parents": [
         {
-          "label": "Data Service",
-          "name": "DataService",
-          "package": "dcat",
-          "uri": "http://www.w3.org/ns/dcat#DataService",
-          "scoped_uri": "#Data Service"
+          "label": "Software",
+          "name": "Software",
+          "package": "it6",
+          "uri": "http://data.europa.eu/it6/Software",
+          "scoped_uri": "#Software"
         }
       ],
       "rawTags": {
-        "ap-definition-en": "A remote server that implements the Model Context Protocol (MCP) and exposes tools, resources or prompts to AI agents. It is a specialisation of Data Service, so the endpoint URL, conformance to a standard and access rights are inherited.",
+        "ap-definition-en": "Software that implements the Model Context Protocol (MCP) and exposes tools, resources or prompts to AI agents, either through a data service or as a local process.",
         "ap-label-en": "MCP Server",
-        "ap-usageNote-en": "Only a server that is reachable at an endpoint is described as MCP Server. A server that is launched locally over stdio has no endpoint URL, which Data Service requires; it is described as Software that the AI agent uses. Use conforms to to state the version of the MCP specification.",
-        "definition-en": "A remote server that implements the Model Context Protocol (MCP) and exposes tools, resources or prompts to AI agents. It is a specialisation of Data Service, so the endpoint URL, conformance to a standard and access rights are inherited.",
+        "ap-usageNote-en": "Use this class for every MCP server, whether it is hosted or launched locally. A hosted server is reached through a Data Service, which gives the endpoint URL and is linked to the server with is implemented by. A server launched locally over stdio has no Data Service and needs no endpoint URL. One server can have several Data Services. Use conforms to on the Data Service to state the version of the MCP specification.",
+        "definition-en": "Software that implements the Model Context Protocol (MCP) and exposes tools, resources or prompts to AI agents, either through a data service or as a local process.",
         "label-en": "MCP Server",
         "uri": "http://data.europa.eu/it6/MCPServer"
       },
@@ -2541,7 +2541,7 @@
             "en": "The transport used to reach the MCP server, for example streamable HTTP or the deprecated HTTP with Server-Sent Events."
           },
           "usage": {
-            "en": "A server launched over stdio has no endpoint and is not described as MCP Server."
+            "en": "A server launched locally as a process of the AI agent uses the stdio transport and has no Data Service. The use of a controlled vocabulary is recommended."
           },
           "domain": [
             {
@@ -2564,7 +2564,7 @@
               }
             }
           ],
-          "cardinality": "0..1",
+          "cardinality": "0..*",
           "codelist_uri": "",
           "rawTags": {
             "ap-label-en": "transport",
@@ -2573,7 +2573,7 @@
             "property-usage-scope": "optional",
             "definition-en": "The transport used to reach the MCP server, for example streamable HTTP or the deprecated HTTP with Server-Sent Events.",
             "label-en": "transport",
-            "ap-usageNote-en": "A server launched over stdio has no endpoint and is not described as MCP Server."
+            "ap-usageNote-en": "A server launched locally as a process of the AI agent uses the stdio transport and has no Data Service. The use of a controlled vocabulary is recommended."
           }
         }
       ]
@@ -4323,7 +4323,7 @@
             "en": "The software that implements the data service."
           },
           "usage": {
-            "en": "Links a data service, for example an MCP server, to the software that runs it, such as a container image or a package. The same software can be described with its repository and licence. A server that is only launched locally has no data service and is described as software alone."
+            "en": "Links a data service to the software that runs it, for example an MCP server, a container image or a package. The same software can be described with its repository and licence. An MCP server that is only launched locally has no data service and is described as MCP Server alone."
           },
           "domain": [
             {
@@ -4353,7 +4353,7 @@
             "property-usage-scope": "optional",
             "ap-label-en": "is implemented by",
             "ap-definition-en": "The software that implements the data service.",
-            "ap-usageNote-en": "NOTE$ea_notes=Links a data service, for example an MCP server, to the software that runs it, such as a container image or a package. The same software can be described with its repository and licence. A server that is only launched locally has no data service and is described as software alone.",
+            "ap-usageNote-en": "NOTE$ea_notes=Links a data service to the software that runs it, for example an MCP server, a container image or a package. The same software can be described with its repository and licence. An MCP server that is only launched locally has no data service and is described as MCP Server alone.",
             "label-en": "is implemented by",
             "definition-en": "The software that implements the data service."
           }

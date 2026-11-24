@@ -103,10 +103,10 @@
         "en": "MCP Server"
       },
       "definition": {
-        "en": "A remote server that implements the Model Context Protocol (MCP) and exposes tools, resources or prompts to AI agents. It is a specialisation of Data Service, so the endpoint URL, conformance to a standard and access rights are inherited."
+        "en": "Software that implements the Model Context Protocol (MCP) and exposes tools, resources or prompts to AI agents, either through a data service or as a local process."
       },
       "usage": {
-        "en": "Only a server that is reachable at an endpoint is described as MCP Server. A server that is launched locally over stdio has no endpoint URL, which Data Service requires; it is described as Software that the AI agent uses. Use conforms to to state the version of the MCP specification."
+        "en": "Use this class for every MCP server, whether it is hosted or launched locally. A hosted server is reached through a Data Service, which gives the endpoint URL and is linked to the server with is implemented by. A server launched locally over stdio has no Data Service and needs no endpoint URL. One server can have several Data Services. Use conforms to on the Data Service to state the version of the MCP specification."
       }
     },
     {
@@ -344,7 +344,7 @@
         "en": "The transport used to reach the MCP server, for example streamable HTTP or the deprecated HTTP with Server-Sent Events."
       },
       "usage": {
-        "en": "A server launched over stdio has no endpoint and is not described as MCP Server."
+        "en": "A server launched locally as a process of the AI agent uses the stdio transport and has no Data Service. The use of a controlled vocabulary is recommended."
       }
     },
     {
@@ -557,6 +557,13 @@
       }
     },
     {
+      "EA-Guid": "{8D95BFC4-23AC-4cec-9CD6-79019E2739EF}",
+      "name": "hasFile",
+      "label": {
+        "en": "has file"
+      }
+    },
+    {
       "EA-Guid": "{8B53CE1C-44E7-4140-BCE6-03CFAF44CF23}",
       "name": "hasFile",
       "label": {
@@ -564,13 +571,6 @@
       },
       "definition": {
         "en": "The file in which the model is expressed."
-      }
-    },
-    {
-      "EA-Guid": "{8D95BFC4-23AC-4cec-9CD6-79019E2739EF}",
-      "name": "hasFile",
-      "label": {
-        "en": "has file"
       }
     },
     {
@@ -650,16 +650,6 @@
       }
     },
     {
-      "EA-Guid": "{B96AC8E5-0DD3-4b51-AFD6-1C2B22D76AAF}",
-      "name": "hasOutputModality",
-      "label": {
-        "en": "has output modality"
-      },
-      "definition": {
-        "en": "The modality of the output of the model."
-      }
-    },
-    {
       "EA-Guid": "{1C055D7F-7519-5675-8882-76E56EEACDAF}",
       "name": "hasOutputModality",
       "label": {
@@ -667,6 +657,16 @@
       },
       "definition": {
         "en": "The modality of the output that the AI agent can produce."
+      }
+    },
+    {
+      "EA-Guid": "{B96AC8E5-0DD3-4b51-AFD6-1C2B22D76AAF}",
+      "name": "hasOutputModality",
+      "label": {
+        "en": "has output modality"
+      },
+      "definition": {
+        "en": "The modality of the output of the model."
       }
     },
     {
@@ -710,6 +710,16 @@
       }
     },
     {
+      "EA-Guid": "{2B780CA6-AB72-50E4-9995-7379EA956995}",
+      "name": "hasRepository",
+      "label": {
+        "en": "has repository"
+      },
+      "definition": {
+        "en": "The repository associated."
+      }
+    },
+    {
       "EA-Guid": "{19EE6744-F591-4729-91A5-19B8FD7C71FB}",
       "name": "hasRepository",
       "label": {
@@ -720,16 +730,6 @@
       },
       "usage": {
         "en": "The same software can be available in several repositories."
-      }
-    },
-    {
-      "EA-Guid": "{2B780CA6-AB72-50E4-9995-7379EA956995}",
-      "name": "hasRepository",
-      "label": {
-        "en": "has repository"
-      },
-      "definition": {
-        "en": "The repository associated."
       }
     },
     {
@@ -808,7 +808,7 @@
         "en": "The software that implements the data service."
       },
       "usage": {
-        "en": "Links a data service, for example an MCP server, to the software that runs it, such as a container image or a package. The same software can be described with its repository and licence. A server that is only launched locally has no data service and is described as software alone."
+        "en": "Links a data service to the software that runs it, for example an MCP server, a container image or a package. The same software can be described with its repository and licence. An MCP server that is only launched locally has no data service and is described as MCP Server alone."
       }
     },
     {
@@ -938,7 +938,7 @@
       }
     },
     {
-      "EA-Guid": "{DF2B6374-4004-4cf3-973F-FE144A7ABB12}",
+      "EA-Guid": "{80015FC3-6481-5F63-B962-5C3CCEDCF577}",
       "name": "creator",
       "label": {
         "en": "creator"
@@ -958,7 +958,7 @@
       }
     },
     {
-      "EA-Guid": "{80015FC3-6481-5F63-B962-5C3CCEDCF577}",
+      "EA-Guid": "{DF2B6374-4004-4cf3-973F-FE144A7ABB12}",
       "name": "creator",
       "label": {
         "en": "creator"
@@ -1097,13 +1097,16 @@
       }
     },
     {
-      "EA-Guid": "{66EFB8B0-84CB-5486-8F7E-1AFE0783CCF2}",
+      "EA-Guid": "{23CD97CD-BE4D-452d-9982-4AD75918289C}",
       "name": "licence",
       "label": {
         "en": "licence"
       },
       "definition": {
-        "en": "A licence under which the AI system is made available."
+        "en": "A licence under which the software is made available."
+      },
+      "usage": {
+        "en": "Use a standard licence identifier, for example an SPDX identifier."
       }
     },
     {
@@ -1117,16 +1120,13 @@
       }
     },
     {
-      "EA-Guid": "{23CD97CD-BE4D-452d-9982-4AD75918289C}",
+      "EA-Guid": "{66EFB8B0-84CB-5486-8F7E-1AFE0783CCF2}",
       "name": "licence",
       "label": {
         "en": "licence"
       },
       "definition": {
-        "en": "A licence under which the software is made available."
-      },
-      "usage": {
-        "en": "Use a standard licence identifier, for example an SPDX identifier."
+        "en": "A licence under which the AI system is made available."
       }
     },
     {
