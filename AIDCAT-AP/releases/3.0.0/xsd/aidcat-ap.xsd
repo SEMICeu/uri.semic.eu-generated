@@ -1,0 +1,793 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<xs:schema xmlns="https://data.europa.eu/m8g/xml/" xmlns:xs="http://www.w3.org/2001/XMLSchema" targetNamespace="https://data.europa.eu/m8g/xml/" version="2.0.0" elementFormDefault="qualified" attributeFormDefault="unqualified" xmlns:cv="https://data.europa.eu/m8g/xml/">
+  <xs:element name="AiAgent" type="AiAgentType"/>
+  <xs:element name="AiSystem" type="AiSystemType"/>
+  <xs:element name="AgentInterface" type="AgentInterfaceType"/>
+  <xs:element name="Capability" type="CapabilityType"/>
+  <xs:element name="ComputerInfrastructure" type="ComputerInfrastructureType"/>
+  <xs:element name="Disclosure" type="DisclosureType"/>
+  <xs:element name="File" type="FileType"/>
+  <xs:element name="HarmRisk" type="HarmRiskType"/>
+  <xs:element name="McpServer" type="McpServerType"/>
+  <xs:element name="MachineLearningModel" type="MachineLearningModelType"/>
+  <xs:element name="Modality" type="ModalityType"/>
+  <xs:element name="Skill" type="SkillType"/>
+  <xs:element name="Software" type="SoftwareType"/>
+  <xs:element name="LicenceDocument" type="LicenceDocumentType"/>
+  <xs:element name="Checksum" type="ChecksumType"/>
+  <xs:element name="ChecksumAlgorithm" type="ChecksumAlgorithmType"/>
+  <xs:element name="TemporalLiteral" type="TemporalLiteralType"/>
+  <xs:element name="Literal" type="LiteralType"/>
+  <xs:element name="Resource" type="ResourceType"/>
+  <xs:element name="HexBinary" type="HexBinaryType"/>
+  <xs:element name="Concept" type="ConceptType"/>
+  <xs:element name="DataService" type="DataServiceType"/>
+  <xs:element name="Dataset" type="DatasetType"/>
+  <xs:element name="Policy" type="PolicyType"/>
+  <xs:element name="Agent" type="AgentType"/>
+  <xs:element name="Repository" type="RepositoryType"/>
+  <xs:simpleType name="Literal">
+    <xs:restriction base="xs:string"/>
+  </xs:simpleType>
+  <xs:complexType name="langstring">
+    <xs:simpleContent>
+      <xs:extension base="xs:string">
+        <xs:attribute name="lang" type="xs:language"/>
+      </xs:extension>
+    </xs:simpleContent>
+  </xs:complexType>
+  <xs:complexType name="ConceptType">
+    <xs:simpleContent>
+      <xs:extension base="xs:token">
+        <xs:attribute name="ref" type="xs:IDREF"/>
+        <xs:attribute name="conceptSchemeRef" type="xs:IDREF"/>
+      </xs:extension>
+    </xs:simpleContent>
+  </xs:complexType>
+  <xs:complexType name="AiAgentType">
+    <xs:sequence>
+      <xs:element name="goal" type="xs:string" maxOccurs="unbounded" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation xml:lang="en">A specific goal that the AI agent is designed to achieve.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="hasCapability" ref="CapabilityType" maxOccurs="unbounded" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation xml:lang="en">A capability that the AI agent supports.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="hasComponent" ref="AiSystemType" maxOccurs="unbounded" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation xml:lang="en">An AI system that is part of the coordinated set of AI systems forming the AI agent.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="hasInputModality" ref="ModalityType" maxOccurs="unbounded" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation xml:lang="en">The modality of the input that the AI agent can perceive.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="hasInterface" ref="AgentInterfaceType" maxOccurs="unbounded" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation xml:lang="en">An interface through which the AI agent can be invoked.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="hasNativeDescription" ref="FileType" maxOccurs="unbounded" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation xml:lang="en">A document in which the AI agent is described in its native format.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="hasOutputModality" ref="ModalityType" maxOccurs="unbounded" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation xml:lang="en">The modality of the output that the AI agent can produce.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="hasSkill" ref="SkillType" maxOccurs="unbounded" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation xml:lang="en">A skill that the AI agent offers.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="usesService" ref="DataServiceType" maxOccurs="unbounded" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation xml:lang="en">A data service that the AI agent can call.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="usesSoftware" ref="SoftwareType" maxOccurs="unbounded" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation xml:lang="en">Software that the AI agent executes or invokes to perform tasks.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+    </xs:sequence>
+    <xs:attribute name="AiAgentRef" type="xs:IDREF">
+      <xs:annotation>
+        <xs:documentation xml:lang="en">Reference to AiAgent ID</xs:documentation>
+      </xs:annotation>
+    </xs:attribute>
+  </xs:complexType>
+  <xs:complexType name="AiSystemType">
+    <xs:sequence>
+      <xs:element name="autonomyLevel" type="ConceptType" maxOccurs="1" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation xml:lang="en">The degree of autonomy with which the AI system operates.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="creator" ref="AgentType" maxOccurs="unbounded" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation xml:lang="en">An entity responsible for making the resource.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="description" type="xs:string" maxOccurs="unbounded" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation xml:lang="en">A free-text account of the AI system.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="hasDeployer" ref="AgentType" maxOccurs="unbounded" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation xml:lang="en">A natural or legal person, public authority, agency or other body using the AI system under its authority, except where it is used in the course of a personal non-professional activity.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="hasDisclosure" ref="DisclosureType" maxOccurs="unbounded" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation xml:lang="en">A disclosure by which the AI system informs people that they are interacting with an AI system.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="hasDistributor" ref="AgentType" maxOccurs="unbounded" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation xml:lang="en">A natural or legal person in the supply chain, other than the provider or the importer, that makes an AI system available on the Union market.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="hasImporter" ref="AgentType" maxOccurs="unbounded" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation xml:lang="en">A natural or legal person located or established in the Union that places on the market an AI system bearing the name or trademark of a person established in a third country.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="hasPolicy" ref="PolicyType" maxOccurs="unbounded" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation xml:lang="en">A policy expressing permissions, prohibitions or obligations on the use of the AI system.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="hasProvider" ref="AgentType" maxOccurs="unbounded" minOccurs="1">
+        <xs:annotation>
+          <xs:documentation xml:lang="en">A natural or legal person, public authority, agency or other body that develops the AI system or has it developed and places it on the market or puts it into service under its own name or trademark.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="hasRepository" ref="RepositoryType" maxOccurs="unbounded" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation xml:lang="en">The repository associated.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="hasRisk" ref="HarmRiskType" maxOccurs="unbounded" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation xml:lang="en">A possible risk that can occur.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="hostedOn" ref="ComputerInfrastructureType" maxOccurs="unbounded" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation xml:lang="en">The computer infrastructure on which the AI system runs.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="identifier" type="xs:string" maxOccurs="1" minOccurs="1">
+        <xs:annotation>
+          <xs:documentation xml:lang="en">A unique identifier of the AI system.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="intendedUse" type="xs:string" maxOccurs="unbounded" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation xml:lang="en">The use for which the AI system is intended by its provider.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="keyword" type="xs:string" maxOccurs="unbounded" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation xml:lang="en">A keyword or tag describing the AI system.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="licence" ref="LicenceDocumentType" maxOccurs="unbounded" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation xml:lang="en">A licence under which the AI system is made available.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="placedOnMarketDate" type="xs:string" maxOccurs="1" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation xml:lang="en">The date on which the AI system was first made available on the market.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="putIntoServiceDate" type="xs:string" maxOccurs="1" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation xml:lang="en">The date on which the AI system was first supplied to a deployer, or put into use for the provider's own use, in accordance with its intended purpose.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="theme" type="ConceptType" maxOccurs="unbounded" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation xml:lang="en">A main category or application domain of the AI system.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="title" type="xs:string" maxOccurs="unbounded" minOccurs="1">
+        <xs:annotation>
+          <xs:documentation xml:lang="en">The name of the AI system.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="usesDataset" ref="DatasetType" maxOccurs="unbounded" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation xml:lang="en">A dataset that the AI system uses at run time.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="usesModel" ref="MachineLearningModelType" maxOccurs="unbounded" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation xml:lang="en">A machine learning model used by the AI system.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="version" type="xs:string" maxOccurs="1" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation xml:lang="en">The version of the AI system.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+    </xs:sequence>
+    <xs:attribute name="AiSystemRef" type="xs:IDREF">
+      <xs:annotation>
+        <xs:documentation xml:lang="en">Reference to AiSystem ID</xs:documentation>
+      </xs:annotation>
+    </xs:attribute>
+  </xs:complexType>
+  <xs:complexType name="AgentInterfaceType">
+    <xs:sequence>
+      <xs:element name="protocolBinding" type="ConceptType" maxOccurs="1" minOccurs="1">
+        <xs:annotation>
+          <xs:documentation xml:lang="en">The protocol binding or transport used by the interface.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+    </xs:sequence>
+    <xs:attribute name="AgentInterfaceRef" type="xs:IDREF">
+      <xs:annotation>
+        <xs:documentation xml:lang="en">Reference to AgentInterface ID</xs:documentation>
+      </xs:annotation>
+    </xs:attribute>
+  </xs:complexType>
+  <xs:complexType name="CapabilityType">
+    <xs:sequence>
+      <xs:element name="description" type="xs:string" maxOccurs="unbounded" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation xml:lang="en">A free-text account of the capability.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="identifier" type="xs:string" maxOccurs="1" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation xml:lang="en">An identifier of the capability.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="title" type="xs:string" maxOccurs="unbounded" minOccurs="1">
+        <xs:annotation>
+          <xs:documentation xml:lang="en">The name of the capability.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+    </xs:sequence>
+    <xs:attribute name="CapabilityRef" type="xs:IDREF">
+      <xs:annotation>
+        <xs:documentation xml:lang="en">Reference to Capability ID</xs:documentation>
+      </xs:annotation>
+    </xs:attribute>
+  </xs:complexType>
+  <xs:complexType name="ComputerInfrastructureType">
+    <xs:sequence>
+      <xs:element name="hasInfrastructureProvider" ref="AgentType" maxOccurs="1" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation xml:lang="en">The entity that operates the computer infrastructure.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="hasSoftware" ref="SoftwareType" maxOccurs="unbounded" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation xml:lang="en">The software associated with the computer infrastructure.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="title" type="xs:string" maxOccurs="1" minOccurs="1">
+        <xs:annotation>
+          <xs:documentation xml:lang="en">The name assigned to the resource.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+    </xs:sequence>
+    <xs:attribute name="ComputerInfrastructureRef" type="xs:IDREF">
+      <xs:annotation>
+        <xs:documentation xml:lang="en">Reference to ComputerInfrastructure ID</xs:documentation>
+      </xs:annotation>
+    </xs:attribute>
+  </xs:complexType>
+  <xs:complexType name="DisclosureType">
+    <xs:sequence>
+      <xs:element name="channel" type="ConceptType" maxOccurs="unbounded" minOccurs="1">
+        <xs:annotation>
+          <xs:documentation xml:lang="en">The form in which the disclosure is perceived by people.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="notice" type="xs:string" maxOccurs="unbounded" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation xml:lang="en">The wording of the information as it is shown or spoken to people.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="timing" type="ConceptType" maxOccurs="1" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation xml:lang="en">The moment at which the information is given to people.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+    </xs:sequence>
+    <xs:attribute name="DisclosureRef" type="xs:IDREF">
+      <xs:annotation>
+        <xs:documentation xml:lang="en">Reference to Disclosure ID</xs:documentation>
+      </xs:annotation>
+    </xs:attribute>
+  </xs:complexType>
+  <xs:complexType name="FileType">
+    <xs:sequence>
+      <xs:element name="checksum" ref="ChecksumType" maxOccurs="unbounded" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation xml:lang="en">A mechanism that can be used to verify that the contents of a distribution have not changed.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="format" type="ConceptType" maxOccurs="1" minOccurs="1">
+        <xs:annotation>
+          <xs:documentation xml:lang="en">The file format, physical medium, or dimensions of the resource.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="id" type="xs:string" maxOccurs="1" minOccurs="1">
+        <xs:annotation>
+          <xs:documentation xml:lang="en">An unambiguous identifier for the resource.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="title" type="xs:string" maxOccurs="1" minOccurs="1">
+        <xs:annotation>
+          <xs:documentation xml:lang="en">The name assigned to the resource.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="url" ref="ResourceType" maxOccurs="1" minOccurs="1">
+        <xs:annotation>
+          <xs:documentation xml:lang="en">The url of the file to be downloaded.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+    </xs:sequence>
+    <xs:attribute name="FileRef" type="xs:IDREF">
+      <xs:annotation>
+        <xs:documentation xml:lang="en">Reference to File ID</xs:documentation>
+      </xs:annotation>
+    </xs:attribute>
+  </xs:complexType>
+  <xs:complexType name="HarmRiskType">
+    <xs:sequence>
+      <xs:element name="description" type="xs:string" maxOccurs="1" minOccurs="1">
+        <xs:annotation>
+          <xs:documentation xml:lang="en">An account of the resource.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="title" type="xs:string" maxOccurs="1" minOccurs="1">
+        <xs:annotation>
+          <xs:documentation xml:lang="en">A name associated to the risk.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+    </xs:sequence>
+    <xs:attribute name="HarmRiskRef" type="xs:IDREF">
+      <xs:annotation>
+        <xs:documentation xml:lang="en">Reference to HarmRisk ID</xs:documentation>
+      </xs:annotation>
+    </xs:attribute>
+  </xs:complexType>
+  <xs:complexType name="McpServerType">
+    <xs:sequence>
+      <xs:element name="supportedFeature" type="ConceptType" maxOccurs="unbounded" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation xml:lang="en">A protocol-level feature that the MCP server supports.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="transport" type="ConceptType" maxOccurs="unbounded" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation xml:lang="en">The transport used to reach the MCP server.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+    </xs:sequence>
+    <xs:attribute name="McpServerRef" type="xs:IDREF">
+      <xs:annotation>
+        <xs:documentation xml:lang="en">Reference to McpServer ID</xs:documentation>
+      </xs:annotation>
+    </xs:attribute>
+  </xs:complexType>
+  <xs:complexType name="MachineLearningModelType">
+    <xs:sequence>
+      <xs:element name="contributor" ref="AgentType" maxOccurs="unbounded" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation xml:lang="en">An entity responsible for making contributions to the resource.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="created" type="xs:string" maxOccurs="1" minOccurs="1">
+        <xs:annotation>
+          <xs:documentation xml:lang="en">Date of creation of the resource.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="creator" ref="AgentType" maxOccurs="unbounded" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation xml:lang="en">An entity responsible for making the resource.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="hasFile" ref="FileType" maxOccurs="unbounded" minOccurs="1">
+        <xs:annotation>
+          <xs:documentation xml:lang="en">The file in which the model is expressed.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="hasInputModality" ref="ModalityType" maxOccurs="unbounded" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation xml:lang="en">The modality of the input of the model.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="hasOutputModality" ref="ModalityType" maxOccurs="unbounded" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation xml:lang="en">The modality of the output of the model.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="hasProvider" ref="AgentType" maxOccurs="unbounded" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation xml:lang="en">A natural or legal person, public authority, agency or other body that develops a Machine Learning Model or places it on the market or puts the it into service under its own name or trademark, whether for payment or free of charge.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="hasRegisteredUser" ref="AgentType" maxOccurs="unbounded" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation xml:lang="en">The registered user associated to the model.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="hasRepository" ref="RepositoryType" maxOccurs="unbounded" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation xml:lang="en">The repository associated.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="hasRisk" ref="HarmRiskType" maxOccurs="unbounded" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation xml:lang="en">A possible risk that can occur.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="hasUploader" ref="AgentType" maxOccurs="1" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation xml:lang="en">An entity responsible for uploading the resource.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="identifier" type="xs:string" maxOccurs="1" minOccurs="1">
+        <xs:annotation>
+          <xs:documentation xml:lang="en">An unambiguous identifier for the resource.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="isFundedBy" ref="AgentType" maxOccurs="unbounded" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation xml:lang="en">An object property linking something to the funding that funds it (i.e. that finances or pays for it), or to the funding agency providing that funding.  This flexibility is given because of alternative usages of the English word 'funds'.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="licence" ref="LicenceDocumentType" maxOccurs="unbounded" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation xml:lang="en">The licence under which the resource is made available.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="name" type="xs:string" maxOccurs="unbounded" minOccurs="1">
+        <xs:annotation>
+          <xs:documentation xml:lang="en">The name assigned to the resource.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="trainedOn" ref="DatasetType" maxOccurs="unbounded" minOccurs="1">
+        <xs:annotation>
+          <xs:documentation xml:lang="en">The training dataset used to train the machine learning model.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="version" type="xs:string" maxOccurs="1" minOccurs="1">
+        <xs:annotation>
+          <xs:documentation xml:lang="en">The current version of the model.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+    </xs:sequence>
+    <xs:attribute name="MachineLearningModelRef" type="xs:IDREF">
+      <xs:annotation>
+        <xs:documentation xml:lang="en">Reference to MachineLearningModel ID</xs:documentation>
+      </xs:annotation>
+    </xs:attribute>
+  </xs:complexType>
+  <xs:complexType name="ModalityType">
+    <xs:sequence>
+      <xs:element name="classification" type="ConceptType" maxOccurs="unbounded" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation xml:lang="en">The classification of the modality.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="size" type="xs:string" maxOccurs="unbounded" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation xml:lang="en">The maximum size of the modality.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+    </xs:sequence>
+    <xs:attribute name="ModalityRef" type="xs:IDREF">
+      <xs:annotation>
+        <xs:documentation xml:lang="en">Reference to Modality ID</xs:documentation>
+      </xs:annotation>
+    </xs:attribute>
+  </xs:complexType>
+  <xs:complexType name="SkillType">
+    <xs:sequence>
+      <xs:element name="description" type="xs:string" maxOccurs="unbounded" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation xml:lang="en">A free-text account of the skill.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="identifier" type="xs:string" maxOccurs="1" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation xml:lang="en">An identifier of the skill.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="keyword" type="xs:string" maxOccurs="unbounded" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation xml:lang="en">A keyword or tag describing the skill.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="theme" type="ConceptType" maxOccurs="unbounded" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation xml:lang="en">A main category of the skill.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="title" type="xs:string" maxOccurs="unbounded" minOccurs="1">
+        <xs:annotation>
+          <xs:documentation xml:lang="en">The name of the skill.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+    </xs:sequence>
+    <xs:attribute name="SkillRef" type="xs:IDREF">
+      <xs:annotation>
+        <xs:documentation xml:lang="en">Reference to Skill ID</xs:documentation>
+      </xs:annotation>
+    </xs:attribute>
+  </xs:complexType>
+  <xs:complexType name="SoftwareType">
+    <xs:sequence>
+      <xs:element name="description" type="xs:string" maxOccurs="unbounded" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation xml:lang="en">A free-text account of the software.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="hasManufacturer" ref="AgentType" maxOccurs="unbounded" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation xml:lang="en">The agent that designs, develops or maintains the software.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="hasRepository" ref="RepositoryType" maxOccurs="unbounded" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation xml:lang="en">A repository in which the software is made available.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="licence" ref="LicenceDocumentType" maxOccurs="unbounded" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation xml:lang="en">A licence under which the software is made available.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="title" type="xs:string" maxOccurs="unbounded" minOccurs="1">
+        <xs:annotation>
+          <xs:documentation xml:lang="en">The name of the software.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="version" type="xs:string" maxOccurs="1" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation xml:lang="en">The version of the software.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+    </xs:sequence>
+    <xs:attribute name="SoftwareRef" type="xs:IDREF">
+      <xs:annotation>
+        <xs:documentation xml:lang="en">Reference to Software ID</xs:documentation>
+      </xs:annotation>
+    </xs:attribute>
+  </xs:complexType>
+  <xs:complexType name="LicenceDocumentType">
+    <xs:sequence/>
+    <xs:attribute name="LicenceDocumentRef" type="xs:IDREF">
+      <xs:annotation>
+        <xs:documentation xml:lang="en">Reference to LicenceDocument ID</xs:documentation>
+      </xs:annotation>
+    </xs:attribute>
+  </xs:complexType>
+  <xs:complexType name="ChecksumType">
+    <xs:sequence>
+      <xs:element name="algorithm" ref="ChecksumAlgorithmType" maxOccurs="1" minOccurs="1">
+        <xs:annotation>
+          <xs:documentation xml:lang="en">The algorithm used to produce the subject Checksum.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="checksumValue" type="xs:hexBinary" maxOccurs="1" minOccurs="1">
+        <xs:annotation>
+          <xs:documentation xml:lang="en">A lower case hexadecimal encoded digest value produced using a specific algorithm.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+    </xs:sequence>
+    <xs:attribute name="ChecksumRef" type="xs:IDREF">
+      <xs:annotation>
+        <xs:documentation xml:lang="en">Reference to Checksum ID</xs:documentation>
+      </xs:annotation>
+    </xs:attribute>
+  </xs:complexType>
+  <xs:complexType name="ChecksumAlgorithmType">
+    <xs:sequence/>
+    <xs:attribute name="ChecksumAlgorithmRef" type="xs:IDREF">
+      <xs:annotation>
+        <xs:documentation xml:lang="en">Reference to ChecksumAlgorithm ID</xs:documentation>
+      </xs:annotation>
+    </xs:attribute>
+  </xs:complexType>
+  <xs:complexType name="TemporalLiteralType">
+    <xs:sequence/>
+    <xs:attribute name="TemporalLiteralRef" type="xs:IDREF">
+      <xs:annotation>
+        <xs:documentation xml:lang="en">Reference to TemporalLiteral ID</xs:documentation>
+      </xs:annotation>
+    </xs:attribute>
+  </xs:complexType>
+  <xs:complexType name="LiteralType">
+    <xs:sequence/>
+    <xs:attribute name="LiteralRef" type="xs:IDREF">
+      <xs:annotation>
+        <xs:documentation xml:lang="en">Reference to Literal ID</xs:documentation>
+      </xs:annotation>
+    </xs:attribute>
+  </xs:complexType>
+  <xs:complexType name="ResourceType">
+    <xs:sequence/>
+    <xs:attribute name="ResourceRef" type="xs:IDREF">
+      <xs:annotation>
+        <xs:documentation xml:lang="en">Reference to Resource ID</xs:documentation>
+      </xs:annotation>
+    </xs:attribute>
+  </xs:complexType>
+  <xs:complexType name="HexBinaryType">
+    <xs:sequence/>
+    <xs:attribute name="HexBinaryRef" type="xs:IDREF">
+      <xs:annotation>
+        <xs:documentation xml:lang="en">Reference to HexBinary ID</xs:documentation>
+      </xs:annotation>
+    </xs:attribute>
+  </xs:complexType>
+  <xs:complexType name="ConceptType">
+    <xs:sequence/>
+    <xs:attribute name="ConceptRef" type="xs:IDREF">
+      <xs:annotation>
+        <xs:documentation xml:lang="en">Reference to Concept ID</xs:documentation>
+      </xs:annotation>
+    </xs:attribute>
+  </xs:complexType>
+  <xs:complexType name="DataServiceType">
+    <xs:sequence>
+      <xs:element name="accessRights" type="ConceptType" maxOccurs="1" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation xml:lang="en">Information about who can access the interface.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="assuranceLevel" type="ConceptType" maxOccurs="1" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation xml:lang="en">The Union assurance level that the cloud computing service is declared to meet.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="conformsTo" ref="ResourceType" maxOccurs="unbounded" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation xml:lang="en">A standard or specification, including its version, that the interface conforms to.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="endpointDescription" ref="FileType" maxOccurs="1" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation xml:lang="en">A description of the services available via the end-points.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="endpointUrl" ref="ResourceType" maxOccurs="unbounded" minOccurs="1">
+        <xs:annotation>
+          <xs:documentation xml:lang="en">The root location or primary endpoint of the service (an IRI).</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="isImplementedBy" ref="SoftwareType" maxOccurs="unbounded" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation xml:lang="en">The software that implements the data service.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="securityScheme" type="ConceptType" maxOccurs="unbounded" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation xml:lang="en">The kind of authentication scheme needed to call the interface.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="servesDataset" ref="DatasetType" maxOccurs="unbounded" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation xml:lang="en">A collection of data that this data service can distribute.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="servesModel" ref="MachineLearningModelType" maxOccurs="unbounded" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation xml:lang="en">A model that this data service can distribute.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="title" type="xs:string" maxOccurs="unbounded" minOccurs="1">
+        <xs:annotation>
+          <xs:documentation xml:lang="en">A name given to the Data Service.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+    </xs:sequence>
+    <xs:attribute name="DataServiceRef" type="xs:IDREF">
+      <xs:annotation>
+        <xs:documentation xml:lang="en">Reference to DataService ID</xs:documentation>
+      </xs:annotation>
+    </xs:attribute>
+  </xs:complexType>
+  <xs:complexType name="DatasetType">
+    <xs:sequence>
+      <xs:element name="collectionDate" type="xs:string" maxOccurs="1" minOccurs="1">
+        <xs:annotation>
+          <xs:documentation xml:lang="en">The date the data was originally collected, given by the uploader.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="contributor" ref="AgentType" maxOccurs="unbounded" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation xml:lang="en">	An entity responsible for making contributions to the dataset.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="creator" ref="AgentType" maxOccurs="unbounded" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation xml:lang="en">An entity responsible for producing the Dataset.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="description" type="xs:string" maxOccurs="unbounded" minOccurs="1">
+        <xs:annotation>
+          <xs:documentation xml:lang="en">A free-text account of the Dataset.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="publisher" ref="AgentType" maxOccurs="1" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation xml:lang="en">An entity (organisation) responsible for making the resource available.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="title" type="xs:string" maxOccurs="unbounded" minOccurs="1">
+        <xs:annotation>
+          <xs:documentation xml:lang="en">A name given to the Dataset.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+    </xs:sequence>
+    <xs:attribute name="DatasetRef" type="xs:IDREF">
+      <xs:annotation>
+        <xs:documentation xml:lang="en">Reference to Dataset ID</xs:documentation>
+      </xs:annotation>
+    </xs:attribute>
+  </xs:complexType>
+  <xs:complexType name="PolicyType">
+    <xs:sequence/>
+    <xs:attribute name="PolicyRef" type="xs:IDREF">
+      <xs:annotation>
+        <xs:documentation xml:lang="en">Reference to Policy ID</xs:documentation>
+      </xs:annotation>
+    </xs:attribute>
+  </xs:complexType>
+  <xs:complexType name="AgentType">
+    <xs:sequence>
+      <xs:element name="actedOnBehalfOf" ref="AgentType" maxOccurs="unbounded" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation xml:lang="en">Delegation is the assignment of authority and responsibility to an agent (by itself or by another agent) to carry out a specific activity as a delegate or representative.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="name" type="xs:string" maxOccurs="unbounded" minOccurs="1">
+        <xs:annotation>
+          <xs:documentation xml:lang="en">A name of the agent.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+    </xs:sequence>
+    <xs:attribute name="AgentRef" type="xs:IDREF">
+      <xs:annotation>
+        <xs:documentation xml:lang="en">Reference to Agent ID</xs:documentation>
+      </xs:annotation>
+    </xs:attribute>
+  </xs:complexType>
+  <xs:complexType name="RepositoryType">
+    <xs:sequence>
+      <xs:element name="hasFile" ref="FileType" maxOccurs="unbounded" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation xml:lang="en">A file stored in the repository.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="name" type="xs:string" maxOccurs="1" minOccurs="1">
+        <xs:annotation>
+          <xs:documentation xml:lang="en">The name assigned to the resource.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+    </xs:sequence>
+    <xs:attribute name="RepositoryRef" type="xs:IDREF">
+      <xs:annotation>
+        <xs:documentation xml:lang="en">Reference to Repository ID</xs:documentation>
+      </xs:annotation>
+    </xs:attribute>
+  </xs:complexType>
+</xs:schema>
