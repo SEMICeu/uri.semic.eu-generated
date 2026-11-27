@@ -14,6 +14,8 @@
   <xs:element name="Skill" type="SkillType"/>
   <xs:element name="Software" type="SoftwareType"/>
   <xs:element name="LicenceDocument" type="LicenceDocumentType"/>
+  <xs:element name="Location" type="LocationType"/>
+  <xs:element name="Standard" type="StandardType"/>
   <xs:element name="Checksum" type="ChecksumType"/>
   <xs:element name="ChecksumAlgorithm" type="ChecksumAlgorithmType"/>
   <xs:element name="TemporalLiteral" type="TemporalLiteralType"/>
@@ -23,8 +25,10 @@
   <xs:element name="Concept" type="ConceptType"/>
   <xs:element name="DataService" type="DataServiceType"/>
   <xs:element name="Dataset" type="DatasetType"/>
+  <xs:element name="Address" type="AddressType"/>
   <xs:element name="Policy" type="PolicyType"/>
   <xs:element name="Agent" type="AgentType"/>
+  <xs:element name="Document" type="DocumentType"/>
   <xs:element name="Repository" type="RepositoryType"/>
   <xs:simpleType name="Literal">
     <xs:restriction base="xs:string"/>
@@ -110,6 +114,11 @@
           <xs:documentation xml:lang="en">The degree of autonomy with which the AI system operates.</xs:documentation>
         </xs:annotation>
       </xs:element>
+      <xs:element name="conformsTo" ref="StandardType" maxOccurs="unbounded" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation xml:lang="en">A standard or other specification to which the AI system conforms.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
       <xs:element name="creator" ref="AgentType" maxOccurs="unbounded" minOccurs="0">
         <xs:annotation>
           <xs:documentation xml:lang="en">An entity responsible for making the resource.</xs:documentation>
@@ -180,9 +189,19 @@
           <xs:documentation xml:lang="en">A keyword or tag describing the AI system.</xs:documentation>
         </xs:annotation>
       </xs:element>
+      <xs:element name="landingPage" ref="DocumentType" maxOccurs="unbounded" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation xml:lang="en">A web page that gives access to the AI system and to additional information about it.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
       <xs:element name="licence" ref="LicenceDocumentType" maxOccurs="unbounded" minOccurs="0">
         <xs:annotation>
           <xs:documentation xml:lang="en">A licence under which the AI system is made available.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="documentation" ref="DocumentType" maxOccurs="unbounded" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation xml:lang="en">A page or document about the AI system.</xs:documentation>
         </xs:annotation>
       </xs:element>
       <xs:element name="placedOnMarketDate" type="xs:string" maxOccurs="1" minOccurs="0">
@@ -193,6 +212,16 @@
       <xs:element name="putIntoServiceDate" type="xs:string" maxOccurs="1" minOccurs="0">
         <xs:annotation>
           <xs:documentation xml:lang="en">The date on which the AI system was first supplied to a deployer, or put into use for the provider's own use, in accordance with its intended purpose.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="geographicalCoverage" ref="LocationType" maxOccurs="unbounded" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation xml:lang="en">A geographical area in which the AI system has been placed on the market, put into service or made available.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="status" type="ConceptType" maxOccurs="1" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation xml:lang="en">The status of the AI system with regard to its availability on the market or in service.</xs:documentation>
         </xs:annotation>
       </xs:element>
       <xs:element name="theme" type="ConceptType" maxOccurs="unbounded" minOccurs="0">
@@ -579,6 +608,22 @@
       </xs:annotation>
     </xs:attribute>
   </xs:complexType>
+  <xs:complexType name="LocationType">
+    <xs:sequence/>
+    <xs:attribute name="LocationRef" type="xs:IDREF">
+      <xs:annotation>
+        <xs:documentation xml:lang="en">Reference to Location ID</xs:documentation>
+      </xs:annotation>
+    </xs:attribute>
+  </xs:complexType>
+  <xs:complexType name="StandardType">
+    <xs:sequence/>
+    <xs:attribute name="StandardRef" type="xs:IDREF">
+      <xs:annotation>
+        <xs:documentation xml:lang="en">Reference to Standard ID</xs:documentation>
+      </xs:annotation>
+    </xs:attribute>
+  </xs:complexType>
   <xs:complexType name="ChecksumType">
     <xs:sequence>
       <xs:element name="algorithm" ref="ChecksumAlgorithmType" maxOccurs="1" minOccurs="1">
@@ -744,6 +789,40 @@
       </xs:annotation>
     </xs:attribute>
   </xs:complexType>
+  <xs:complexType name="AddressType">
+    <xs:sequence>
+      <xs:element name="administrativeUnitLevel1" type="xs:string" maxOccurs="1" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation xml:lang="en">The name of the uppermost level of the address, almost always a country.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="administrativeUnitLevel2" type="xs:string" maxOccurs="1" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation xml:lang="en">The name of a secondary level/region of the address, usually a county, state or other such area that typically encompasses several localities.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="postCode" type="xs:string" maxOccurs="1" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation xml:lang="en">The code created and maintained for postal purposes to identify a subdivision of addresses and postal delivery points.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="postName" type="xs:string" maxOccurs="1" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation xml:lang="en">A name created and maintained for postal purposes to identify a subdivision of addresses and postal delivery points.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="streetAddress" type="xs:string" maxOccurs="1" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation xml:lang="en">The name of a passage or way through from one location to another.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+    </xs:sequence>
+    <xs:attribute name="AddressRef" type="xs:IDREF">
+      <xs:annotation>
+        <xs:documentation xml:lang="en">Reference to Address ID</xs:documentation>
+      </xs:annotation>
+    </xs:attribute>
+  </xs:complexType>
   <xs:complexType name="PolicyType">
     <xs:sequence/>
     <xs:attribute name="PolicyRef" type="xs:IDREF">
@@ -759,15 +838,38 @@
           <xs:documentation xml:lang="en">Delegation is the assignment of authority and responsibility to an agent (by itself or by another agent) to carry out a specific activity as a delegate or representative.</xs:documentation>
         </xs:annotation>
       </xs:element>
+      <xs:element name="address" ref="AddressType" maxOccurs="1" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation xml:lang="en">The postal address of the agent.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="email" ref="ResourceType" maxOccurs="1" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation xml:lang="en">The e-mail address of the agent.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
       <xs:element name="name" type="xs:string" maxOccurs="unbounded" minOccurs="1">
         <xs:annotation>
           <xs:documentation xml:lang="en">A name of the agent.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="phone" ref="ResourceType" maxOccurs="1" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation xml:lang="en">The telephone number of the agent.</xs:documentation>
         </xs:annotation>
       </xs:element>
     </xs:sequence>
     <xs:attribute name="AgentRef" type="xs:IDREF">
       <xs:annotation>
         <xs:documentation xml:lang="en">Reference to Agent ID</xs:documentation>
+      </xs:annotation>
+    </xs:attribute>
+  </xs:complexType>
+  <xs:complexType name="DocumentType">
+    <xs:sequence/>
+    <xs:attribute name="DocumentRef" type="xs:IDREF">
+      <xs:annotation>
+        <xs:documentation xml:lang="en">Reference to Document ID</xs:documentation>
       </xs:annotation>
     </xs:attribute>
   </xs:complexType>
